@@ -21,10 +21,36 @@ import (
 )
 
 const (
-	// Landscape and Portrait constaints come from:
+	// Pkg23 Apk compiled against target SDK 23 (Pre-N)
+	Pkg23 = "org.chromium.arc.testapp.windowmanager23"
+	// Pkg24 Apk compiled against target SDK 24 (N)
+	Pkg24 = "org.chromium.arc.testapp.windowmanager24"
+
+	// ResizeableLandscapeActivity used by the subtests.
+	ResizeableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
+	// NonResizeableLandscapeActivity used by the subtests.
+	NonResizeableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableLandscapeActivity"
+	// ResizeableUnspecifiedActivity used by the subtests.
+	ResizeableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+	// NonResizeableUnspecifiedActivity used by the subtests.
+	NonResizeableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
+	// ResizeablePortraitActivity used by the subtests.
+	ResizeablePortraitActivity = "org.chromium.arc.testapp.windowmanager.ResizeablePortraitActivity"
+	// NonResizeablePortraitActivity used by the subtests.
+	NonResizeablePortraitActivity = "org.chromium.arc.testapp.windowmanager.NonResizeablePortraitActivity"
+	// LandscapeActivity used by the subtests.
+	LandscapeActivity = "org.chromium.arc.testapp.windowmanager.LandscapeActivity"
+	// UnspecifiedActivity used by the subtests.
+	UnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
+	// PortraitActivity used by the subtests.
+	PortraitActivity = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
+
+	// Landscape and Portrait constraints come from:
 	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
-	wmLandscape = "landscape"
-	wmPortrait  = "portrait"
+	// Landscape used by the subtests.
+	Landscape = "landscape"
+	// Portrait used by the subtests.
+	Portrait = "portrait"
 )
 
 // CheckMaximizeResizeable checks that the window is both maximized and resizeable.
@@ -78,7 +104,7 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 		return err
 	}
 
-	const wanted = wmPortrait
+	const wanted = Portrait
 	o, err := UIOrientation(ctx, act, d)
 	if err != nil {
 		return err
@@ -335,6 +361,40 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID
 	p := display.DisplayProperties{DisplayZoomFactor: &zoomFactor}
 	if err := display.SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
 		return errors.Wrap(err, "failed to set zoom factor")
+	}
+	return nil
+}
+
+// CommonWMSetUp for help
+func CommonWMSetUp(ctx context.Context, s *testing.State, apks []string) (*chrome.TestConn, *ui.Device, error) {
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
+	for _, apk := range apks {
+		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+			return nil, nil, err
+		}
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return tconn, d, nil
+}
+
+// RestoreTabletSettings restores tablet mode to the original state.
+func RestoreTabletSettings(ctx context.Context, tconn *chrome.TestConn, tabletModeEnabled bool) error {
+	if tabletModeEnabled {
+		if err := ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled); err != nil {
+			return err
+		}
 	}
 	return nil
 }

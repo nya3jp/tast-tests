@@ -24,29 +24,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	// Apk compiled against target SDK 23 (Pre-N)
-	wmPkg23 = "org.chromium.arc.testapp.windowmanager23"
-	// Apk compiled against target SDK 24 (N)
-	wmPkg24 = "org.chromium.arc.testapp.windowmanager24"
-
-	// Different activities used by the subtests.
-	wmResizeableLandscapeActivity      = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
-	wmNonResizeableLandscapeActivity   = "org.chromium.arc.testapp.windowmanager.NonResizeableLandscapeActivity"
-	wmResizeableUnspecifiedActivity    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
-	wmNonResizeableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
-	wmResizeablePortraitActivity       = "org.chromium.arc.testapp.windowmanager.ResizeablePortraitActivity"
-	wmNonResizeablePortraitActivity    = "org.chromium.arc.testapp.windowmanager.NonResizeablePortraitActivity"
-	wmLandscapeActivity                = "org.chromium.arc.testapp.windowmanager.LandscapeActivity"
-	wmUnspecifiedActivity              = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
-	wmPortraitActivity                 = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
-
-	// Landscape and Portrait constaints come from:
-	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
-	wmLandscape = "landscape"
-	wmPortrait  = "portrait"
-)
-
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
 type wmTestStateFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
 
@@ -186,21 +163,21 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 	}{
 		// The are four possible default states (windows #A to #D) from six possible different activities.
 		// Window #A.
-		{"Landscape + Resize enabled", wmResizeableLandscapeActivity, wm.CheckMaximizeResizeable},
+		{"Landscape + Resize enabled", wm.ResizeableLandscapeActivity, wm.CheckMaximizeResizeable},
 		// Window #B.
-		{"Landscape + Resize disabled", wmNonResizeableLandscapeActivity, wm.CheckMaximizeNonResizeable},
+		{"Landscape + Resize disabled", wm.NonResizeableLandscapeActivity, wm.CheckMaximizeNonResizeable},
 		// Window #A.
-		{"Unspecified + Resize enabled", wmResizeableUnspecifiedActivity, wm.CheckMaximizeResizeable},
+		{"Unspecified + Resize enabled", wm.ResizeableUnspecifiedActivity, wm.CheckMaximizeResizeable},
 		// Window #B.
-		{"Unspecified + Resize disabled", wmNonResizeableUnspecifiedActivity, wm.CheckMaximizeNonResizeable},
+		{"Unspecified + Resize disabled", wm.NonResizeableUnspecifiedActivity, wm.CheckMaximizeNonResizeable},
 		// Window #C.
-		{"Portrait + Resized enabled", wmResizeablePortraitActivity, wm.CheckRestoreResizeable},
+		{"Portrait + Resized enabled", wm.ResizeablePortraitActivity, wm.CheckRestoreResizeable},
 		// Window #D.
-		{"Portrait + Resize disabled", wmNonResizeablePortraitActivity, wm.CheckPillarboxNonResizeable},
+		{"Portrait + Resize disabled", wm.NonResizeablePortraitActivity, wm.CheckPillarboxNonResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wmPkg24, test.act)
+			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -234,15 +211,15 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 	}{
 		// The are two possible default states (windows #A to #B) from three possible different activities.
 		// Window #A.
-		{"Unspecified", wmUnspecifiedActivity, wm.CheckRestoreResizeable},
+		{"Unspecified", wm.UnspecifiedActivity, wm.CheckRestoreResizeable},
 		// Window #A.
-		{"Portrait", wmPortraitActivity, wm.CheckRestoreResizeable},
+		{"Portrait", wm.PortraitActivity, wm.CheckRestoreResizeable},
 		// Window #B.
-		{"Landscape", wmLandscapeActivity, wm.CheckRestoreResizeable},
+		{"Landscape", wm.LandscapeActivity, wm.CheckRestoreResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wmPkg23, test.act)
+			act, err := arc.NewActivity(a, wm.Pkg23, test.act)
 			if err != nil {
 				return err
 			}
@@ -276,16 +253,16 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a
 		stateB       ash.WMEventType
 		wantedStateB wmTestStateFunc
 	}{
-		{"Unspecified", wmResizeableUnspecifiedActivity,
+		{"Unspecified", wm.ResizeableUnspecifiedActivity,
 			ash.WMEventMaximize, wm.CheckMaximizeResizeable, ash.WMEventNormal, wm.CheckRestoreResizeable},
-		{"Portrait", wmResizeablePortraitActivity,
+		{"Portrait", wm.ResizeablePortraitActivity,
 			ash.WMEventNormal, wm.CheckRestoreResizeable, ash.WMEventMaximize, wm.CheckPillarboxResizeable},
-		{"Landscape", wmResizeableLandscapeActivity,
+		{"Landscape", wm.ResizeableLandscapeActivity,
 			ash.WMEventMaximize, wm.CheckMaximizeResizeable, ash.WMEventNormal, wm.CheckRestoreResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wmPkg24, test.act)
+			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -329,13 +306,13 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 		act            string
 		maximizedState wmTestStateFunc
 	}{
-		{"Landscape", wmLandscapeActivity, wm.CheckMaximizeResizeable},
-		{"Unspecified", wmUnspecifiedActivity, wm.CheckMaximizeResizeable},
-		{"Portrait", wmPortraitActivity, wm.CheckPillarboxResizeable},
+		{"Landscape", wm.LandscapeActivity, wm.CheckMaximizeResizeable},
+		{"Unspecified", wm.UnspecifiedActivity, wm.CheckMaximizeResizeable},
+		{"Portrait", wm.PortraitActivity, wm.CheckPillarboxResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wmPkg23, test.act)
+			act, err := arc.NewActivity(a, wm.Pkg23, test.act)
 			if err != nil {
 				return err
 			}
@@ -397,13 +374,13 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 		act     string
 	}{
 		// Root activities.
-		{"Unspecified (N)", wmPkg24, wmResizeableUnspecifiedActivity},
-		{"Portrait (N)", wmPkg24, wmResizeablePortraitActivity},
-		{"Landscape (N)", wmPkg24, wmResizeableLandscapeActivity},
+		{"Unspecified (N)", wm.Pkg24, wm.ResizeableUnspecifiedActivity},
+		{"Portrait (N)", wm.Pkg24, wm.ResizeablePortraitActivity},
+		{"Landscape (N)", wm.Pkg24, wm.ResizeableLandscapeActivity},
 
-		{"Unspecified (Pre-N)", wmPkg23, wmUnspecifiedActivity},
-		{"Portrait (Pre-N)", wmPkg23, wmPortraitActivity},
-		{"Landscape (Pre-N)", wmPkg23, wmLandscapeActivity},
+		{"Unspecified (Pre-N)", wm.Pkg23, wm.UnspecifiedActivity},
+		{"Portrait (Pre-N)", wm.Pkg23, wm.PortraitActivity},
+		{"Landscape (Pre-N)", wm.Pkg23, wm.LandscapeActivity},
 	} {
 		for _, orientation := range []struct {
 			name string
@@ -488,21 +465,21 @@ func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 		pkgName string
 		act     string
 	}{
-		{"Unspecified (N)", wmPkg24, wmResizeableUnspecifiedActivity},
-		{"Portrait (N)", wmPkg24, wmResizeablePortraitActivity},
-		{"Landscape (N)", wmPkg24, wmResizeableLandscapeActivity},
+		{"Unspecified (N)", wm.Pkg24, wm.ResizeableUnspecifiedActivity},
+		{"Portrait (N)", wm.Pkg24, wm.ResizeablePortraitActivity},
+		{"Landscape (N)", wm.Pkg24, wm.ResizeableLandscapeActivity},
 
-		{"Unspecified (Pre-N)", wmPkg23, wmUnspecifiedActivity},
-		{"Portrait (Pre-N)", wmPkg23, wmPortraitActivity},
-		{"Landscape (Pre-N)", wmPkg23, wmLandscapeActivity},
+		{"Unspecified (Pre-N)", wm.Pkg23, wm.UnspecifiedActivity},
+		{"Portrait (Pre-N)", wm.Pkg23, wm.PortraitActivity},
+		{"Landscape (Pre-N)", wm.Pkg23, wm.LandscapeActivity},
 	} {
 		for _, orientation := range []struct {
 			name   string
 			fn     uiClickFunc
 			wanted string
 		}{
-			{"Landscape", wm.UIClickLandscape, wmLandscape},
-			{"Portrait", wm.UIClickPortrait, wmPortrait},
+			{"Landscape", wm.UIClickLandscape, wm.Landscape},
+			{"Portrait", wm.UIClickPortrait, wm.Portrait},
 		} {
 			if err := func() error {
 				testing.ContextLogf(ctx, "Running subtest: parent = %q, child = %q", test.name, orientation.name)
@@ -578,7 +555,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 func wmLightsOutIn(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Slides #19 and #20 describe this scenario with "Landscape" activities. But using "unspecified" since
 	// a tablet in portrait mode (like Dru) + keyboard means that we have a clamshell device in portrait mode.
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableUnspecifiedActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -656,13 +633,13 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 		activity string
 	}{
 		// Slide #22
-		{"Landscape + Resize enabled + N", wmPkg24, wmResizeableLandscapeActivity},
+		{"Landscape + Resize enabled + N", wm.Pkg24, wm.ResizeableLandscapeActivity},
 		// Slide #23
-		{"Portrait + Resize enabled + N", wmPkg24, wmResizeablePortraitActivity},
+		{"Portrait + Resize enabled + N", wm.Pkg24, wm.ResizeablePortraitActivity},
 		// Slide #22
-		{"Landscape + PreN", wmPkg23, wmLandscapeActivity},
+		{"Landscape + PreN", wm.Pkg23, wm.LandscapeActivity},
 		// Slide #23
-		{"Portrait + PreN", wmPkg23, wmPortraitActivity},
+		{"Portrait + PreN", wm.Pkg23, wm.PortraitActivity},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -731,7 +708,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 
 	// 2) Launch a maximized application to make sure that it occludes the previous activity.
 	testing.ContextLog(ctx, "Launching maximized activity")
-	actOther, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	actOther, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -748,7 +725,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 // wmFreeformResize verifies that a window can be resized as defined in:
 // go/arc-wm-p "Clamshell: freeform resize" (slide #26)
 func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -813,7 +790,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	}
 	defer kb.Close()
 
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -851,7 +828,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		if snappedBounds.Left != 0 {
 			return errors.Errorf("invalid window origin: got %d, want 0", snappedBounds.Left)
 		}
-		state, err := ash.GetARCAppWindowState(ctx, tconn, wmPkg24)
+		state, err := ash.GetARCAppWindowState(ctx, tconn, wm.Pkg24)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -865,7 +842,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 // wmDisplayResolution verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
 func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -965,7 +942,7 @@ func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 // wmPageZoom verifies that the Android zoom level gets updated as defined in:
 // go/arc-wm-p "Clamshell: Page/content zoom" (slides #30-#31).
 func wmPageZoom(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizeableLandscapeActivity)
 	if err != nil {
 		return err
 	}
