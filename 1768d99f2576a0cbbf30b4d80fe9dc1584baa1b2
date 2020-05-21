@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbed3e8d_999acff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T17:10:02Z",
+      "side": 1,
+      "message": "nit: to mimick a reboot/crash.",
+      "revId": "1768d99f2576a0cbbf30b4d80fe9dc1584baa1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dacc0d85_a3c812ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T17:10:02Z",
+      "side": 1,
+      "message": "How do you this install wen\u0027t through without going through update_engine. Shouldn\u0027t we just not bring up nebraska at least?",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 9
+      },
+      "revId": "1768d99f2576a0cbbf30b4d80fe9dc1584baa1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
