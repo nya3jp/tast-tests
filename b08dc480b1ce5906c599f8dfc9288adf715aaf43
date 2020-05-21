@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfd67c95_44e8e4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T05:12:25Z",
+      "side": 1,
+      "message": "Hmm..., I\u0027m not quite sure if WaitAll fits here. Is it possible that WiFi.FrequencyList changes but WiFi.Frequency doesn\u0027t?\n\nFor the usage of Prefer5G test, maybe it\u0027s simpler to have ExpectWifiFrequency waiting only for FrequencyList before connection. Then, let QueryService to return WiFi.Frequency of the connected service and check it after connection. WDYT?",
+      "range": {
+        "startLine": 481,
+        "startChar": 18,
+        "endLine": 481,
+        "endChar": 25
+      },
+      "revId": "b08dc480b1ce5906c599f8dfc9288adf715aaf43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
