@@ -168,11 +168,11 @@ func Install(ctx context.Context, id, omahaURL string) error {
 	return nil
 }
 
-// Uninstall calls the DBus method to uninstall a DLC.
-func Uninstall(ctx context.Context, id string) error {
-	testing.ContextLog(ctx, "Uninstalling DLC: ", id)
-	if err := testexec.CommandContext(ctx, "dlcservice_util", "--uninstall", "--id="+id).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to uninstall")
+// Purge calls the DBus method to Purge a DLC.
+func Purge(ctx context.Context, id string) error {
+	testing.ContextLog(ctx, "Purging DLC: ", id)
+	if err := testexec.CommandContext(ctx, "dlcservice_util", "--purge", "--id="+id).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to purge")
 	}
 	return nil
 }
