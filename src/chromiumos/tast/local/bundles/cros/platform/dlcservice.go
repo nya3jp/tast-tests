@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DLCService,
-		Desc:         "Verifies that DLC D-Bus API (install, uninstall, etc.) works",
+		Desc:         "Verifies that DLC D-Bus API (install, uninstall, purge, etc.) works",
 		Contacts:     []string{"kimjae@chromium.org", "ahassani@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
 		Attr:         []string{"group:mainline"},
@@ -185,9 +185,15 @@ func DLCService(ctx context.Context, s *testing.State) {
 		runCmd("install", "dlcservice_util", "--install", "--id="+dlc, "--omaha_url="+omahaURL)
 	}
 
-	uninstall := func(dlc string) {
-		s.Log("Uninstalling DLC: ", dlc)
-		runCmd("uninstall", "dlcservice_util", "--uninstall", "--id="+dlc)
+	// TODO(crbug.com/1069162): Add '--uninstall' tets when ref counting is implemented.
+	//uninstall := func(dlc string) {
+	//	s.Log("Uninstalling DLC: ", dlc)
+	//	runCmd("uninstall", "dlcservice_util", "--uninstall", "--id="+dlc)
+	//}
+
+	purge := func(dlc string) {
+		s.Log("Purging DLC: ", dlc)
+		runCmd("purge", "dlcservice_util", "--purge", "--id="+dlc)
 	}
 
 	startNebraska := func() (string, *testexec.Cmd) {
@@ -263,17 +269,17 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Before performing anything.
+	dumpAndVerifyInstalledDLCs("initial_state")
+
 	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
 		func() {
 			url, cmd := startNebraska()
 			defer stopNebraska(cmd, "single-dlc")
 
-			// Before performing any Install/Uninstall.
-			dumpAndVerifyInstalledDLCs("initial_state")
-
-			// Uninstall DLC before installing.
-			uninstall(dlcID1)
-			dumpAndVerifyInstalledDLCs("uninstall_before_installing")
+			// Purge DLC before installing.
+			purge(dlcID1)
+			dumpAndVerifyInstalledDLCs("purge_before_installing")
 
 			// Install DLC from Nebraska/Omaha.
 			install(dlcID1, url)
@@ -284,13 +290,13 @@ func DLCService(ctx context.Context, s *testing.State) {
 		install(dlcID1, "")
 		dumpAndVerifyInstalledDLCs("install_already_installed_no_url", dlcID1)
 
-		// Uninstall DLC after installing.
-		uninstall(dlcID1)
-		dumpAndVerifyInstalledDLCs("uninstall_after_installing")
+		// Purge DLC after installing.
+		purge(dlcID1)
+		dumpAndVerifyInstalledDLCs("purge_after_installing")
 
-		// Uninstall already uninstalled DLC.
-		uninstall(dlcID1)
-		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
+		// Purge already purged DLC.
+		purge(dlcID1)
+		dumpAndVerifyInstalledDLCs("purge_already_purged")
 	})
 
 	s.Run(ctx, "Mimic device reboot tests", func(context.Context, *testing.State) {
@@ -309,13 +315,13 @@ func DLCService(ctx context.Context, s *testing.State) {
 		// Restart dlcservice to mimic a device reboot.
 		restartUpstartJob(dlcserviceJob, dlcserviceServiceName)
 
-		// Install single DLC after mimicking a reboot. Pass an empty url so
+		// Install DLC after mimicking a reboot. Pass an empty url so
 		// Nebraska/Omaha aren't hit.
 		install(dlcID1, "")
-		dumpAndVerifyInstalledDLCs("install_single_after_reboot", dlcID1)
+		dumpAndVerifyInstalledDLCs("install_after_reboot", dlcID1)
 
-		// Uninstall single DLC after mimicking a reboot.
-		uninstall(dlcID1)
-		dumpAndVerifyInstalledDLCs("uninstall_single_after_reboot")
+		// Purge DLC after mimicking a reboot.
+		purge(dlcID1)
+		dumpAndVerifyInstalledDLCs("purge_after_reboot")
 	})
 }
