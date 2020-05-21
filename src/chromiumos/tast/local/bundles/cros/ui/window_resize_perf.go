@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -110,7 +111,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		if len(ws) > 1 {
 			// For multiple windows; hover on the boundary, wait for the resize-handle
 			// to appear, and move onto the resize handle.
-			if err = ash.MouseMove(ctx, tconn, start, 0); err != nil {
+			if err = mouse.Move(ctx, tconn, start, 0); err != nil {
 				s.Fatal("Failed to move the mouse: ", err)
 			}
 			// Waiting for the resize-handle to appear. TODO(mukai): find the right
@@ -120,13 +121,13 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 			// 20 DIP would be good enough to move the drag handle.
 			start.Y += 20
-			if err = ash.MouseMove(ctx, tconn, start, 0); err != nil {
+			if err = mouse.Move(ctx, tconn, start, 0); err != nil {
 				s.Fatal("Failed to move the mouse: ", err)
 			}
 		}
 		end := coords.NewPoint(start.X-bounds.Width/4, start.Y)
 		hists, err := metrics.Run(ctx, tconn, func() error {
-			if err := ash.MouseDrag(ctx, tconn, start, end, time.Second*2); err != nil {
+			if err := mouse.Drag(ctx, tconn, start, end, time.Second*2); err != nil {
 				return errors.Wrap(err, "failed to drag")
 			}
 			return nil

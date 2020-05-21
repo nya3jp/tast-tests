@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
@@ -226,7 +226,7 @@ func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	}
 	// Compute the node coordinates in cros-chrome root window coordinate space by
 	// adding the top left coordinate of the lacros-chrome window in cros-chrome root window coorindates.
-	return ash.MouseClick(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), ash.LeftButton)
+	return mouse.Click(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), mouse.LeftButton)
 }
 
 func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
@@ -235,7 +235,7 @@ func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn fun
 		Role:      ui.RoleTypePopUpButton,
 		ClassName: "BrowserAppMenuButton",
 	}
-	menu, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	menu, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the three dot menu")
 	}
@@ -252,7 +252,7 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 	params := ui.FindParams{
 		ClassName: "ash/StatusAreaWidgetDelegate",
 	}
-	statusArea, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
 	}
@@ -267,7 +267,7 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 		Name:      name,
 		ClassName: "FeaturePodIconButton",
 	}
-	nbtn, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	nbtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find button")
 	}
@@ -611,7 +611,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			// TODO(crbug.com/1067535): Subtract -1 to ensure drag-resize occurs for now.
 			start := coords.NewPoint(sb.Left+sb.Width-1, sb.Top+sb.Height-1)
 			end := coords.NewPoint(sb.Left+sb.Height, sb.Top+sb.Width)
-			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag resize")
 			}
 			return nil
@@ -646,7 +646,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
 			end := coords.NewPoint(sbl.Left, sbr.Top+1)
-			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag move")
 			}
 			return nil
