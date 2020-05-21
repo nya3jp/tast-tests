@@ -22,6 +22,29 @@
       "revId": "bf3c86d0c4aecf0896ab9dd8a982caa4e3b35977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e82b4e_8c9a398e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:03:59Z",
+      "side": 1,
+      "message": "Clar: do we want to terminate the test here? or want to continue following check even if bootType check fails?\n\nIn case of the latter, s.Errorf() looks better.",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "bf3c86d0c4aecf0896ab9dd8a982caa4e3b35977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
