@@ -94,6 +94,30 @@
       "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ada240_342135c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T19:12:04Z",
+      "side": 1,
+      "message": "Will have a followup to do this. Ack\u0027ing",
+      "parentUuid": "6b10e227_a8b40b6c",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
