@@ -21,14 +21,49 @@ import (
 )
 
 const (
-	// Landscape and Portrait constaints come from:
+	// Pkg23 Apk compiled against target SDK 23 (Pre-N)
+	Pkg23 = "org.chromium.arc.testapp.windowmanager23"
+	// Pkg24 Apk compiled against target SDK 24 (N)
+	Pkg24 = "org.chromium.arc.testapp.windowmanager24"
+
+	// APKNameArcWMTestApp23 APK name for ArcWMTestApp_23.apk
+	APKNameArcWMTestApp23 = "ArcWMTestApp_23.apk"
+
+	// APKNameArcWMTestApp24 APK name for ArcWMTestApp_24.apk
+	APKNameArcWMTestApp24 = "ArcWMTestApp_24.apk"
+
+	// APKNameArcPipSimpleTastTest APK name for ArcPipSimpleTastTest.apk
+	APKNameArcPipSimpleTastTest = "ArcPipSimpleTastTest.apk"
+
+	// ResizableLandscapeActivity used by the subtests.
+	ResizableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
+	// NonResizableLandscapeActivity used by the subtests.
+	NonResizableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableLandscapeActivity"
+	// ResizableUnspecifiedActivity used by the subtests.
+	ResizableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+	// NonResizableUnspecifiedActivity used by the subtests.
+	NonResizableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
+	// ResizablePortraitActivity used by the subtests.
+	ResizablePortraitActivity = "org.chromium.arc.testapp.windowmanager.ResizeablePortraitActivity"
+	// NonResizablePortraitActivity used by the subtests.
+	NonResizablePortraitActivity = "org.chromium.arc.testapp.windowmanager.NonResizeablePortraitActivity"
+	// LandscapeActivity used by the subtests.
+	LandscapeActivity = "org.chromium.arc.testapp.windowmanager.LandscapeActivity"
+	// UnspecifiedActivity used by the subtests.
+	UnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
+	// PortraitActivity used by the subtests.
+	PortraitActivity = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
+
+	// Landscape and Portrait constraints come from:
 	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
-	wmLandscape = "landscape"
-	wmPortrait  = "portrait"
+	// Landscape used by the subtests.
+	Landscape = "landscape"
+	// Portrait used by the subtests.
+	Portrait = "portrait"
 )
 
-// CheckMaximizeResizeable checks that the window is both maximized and resizeable.
-func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+// CheckMaximizeResizable checks that the window is both maximized and resizable.
+func CheckMaximizeResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -36,8 +71,8 @@ func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.TestConn, act *a
 	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// CheckMaximizeNonResizeable checks that the window is both maximized and not resizeable.
-func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+// CheckMaximizeNonResizable checks that the window is both maximized and not resizable.
+func CheckMaximizeNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -45,8 +80,8 @@ func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.TestConn, act
 	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// CheckRestoreResizeable checks that the window is both in restore mode and is resizeable.
-func CheckRestoreResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+// CheckRestoreResizable checks that the window is both in restore mode and is resizable.
+func CheckRestoreResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
@@ -54,8 +89,8 @@ func CheckRestoreResizeable(ctx context.Context, tconn *chrome.TestConn, act *ar
 	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// CheckPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
-func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+// CheckPillarboxResizable checks that the window is both in pillar-box mode and is resizable.
+func CheckPillarboxResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
@@ -63,8 +98,8 @@ func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.TestConn, act *
 	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// CheckPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
-func CheckPillarboxNonResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+// CheckPillarboxNonResizable checks that the window is both in pillar-box mode and is not resizable.
+func CheckPillarboxNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
@@ -78,7 +113,7 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 		return err
 	}
 
-	const wanted = wmPortrait
+	const wanted = Portrait
 	o, err := UIOrientation(ctx, act, d)
 	if err != nil {
 		return err
@@ -337,4 +372,29 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID
 		return errors.Wrap(err, "failed to set zoom factor")
 	}
 	return nil
+}
+
+// CommonWMSetUp performs initial steps for running WM tast-tests.
+// This includes APK installation, Test API connection and New Device creation.
+func CommonWMSetUp(ctx context.Context, s *testing.State, apks []string) (*chrome.TestConn, *ui.Device, error) {
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
+	for _, apk := range apks {
+		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+			return nil, nil, err
+		}
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return tconn, d, nil
 }
