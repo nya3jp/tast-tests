@@ -54,7 +54,6 @@ func (p *Properties) GetString(prop string) (string, error) {
 		return "", errors.Errorf("property %s is not a string: %q", prop, value)
 	}
 	return str, nil
-
 }
 
 // GetStrings returns property value as string array.
@@ -68,7 +67,6 @@ func (p *Properties) GetStrings(prop string) ([]string, error) {
 		return nil, errors.Errorf("property %s is not a string array: %q", prop, value)
 	}
 	return str, nil
-
 }
 
 // GetBool returns the property value as a boolean.
@@ -82,7 +80,32 @@ func (p *Properties) GetBool(prop string) (bool, error) {
 		return false, errors.Errorf("property %s is not a bool: %q", prop, value)
 	}
 	return b, nil
+}
 
+// GetUint16 returns the property value as uint16.
+func (p *Properties) GetUint16(prop string) (uint16, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(uint16)
+	if !ok {
+		return 0, errors.Errorf("property %s is not an uint16: %q", prop, value)
+	}
+	return ret, nil
+}
+
+// GetUint16s returns the property value as uint16 array.
+func (p *Properties) GetUint16s(prop string) ([]uint16, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return nil, err
+	}
+	ret, ok := value.([]uint16)
+	if !ok {
+		return nil, errors.Errorf("property %s is not an uint16 array: %q", prop, value)
+	}
+	return ret, nil
 }
 
 // GetObjectPath returns the DBus ObjectPath of the given property name.
