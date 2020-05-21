@@ -93,24 +93,30 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Before performing any Install/Uninstall.
+	dlc.DumpAndVerifyInstalledDLCs(ctx, s, "initial_state")
+
 	s.Run(ctx, "Single DLC combination tests", func(ctx context.Context, s *testing.State) {
-		url, cmd := nebraska.StartNebraska(ctx, s)
-		defer nebraska.StopNebraska(s, cmd, "single-dlc")
+		func() {
+			url, cmd := nebraska.StartNebraska(ctx, s)
+			defer nebraska.StopNebraska(s, cmd, "single-dlc")
 
-		// Before performing any Install/Uninstall.
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "initial_state")
+			// Uninstall DLC before installing.
+			dlc.Uninstall(ctx, s, dlcID1)
+			dlc.DumpAndVerifyInstalledDLCs(ctx, s, "uninstall_before_installing")
 
-		// Install single DLC.
-		dlc.Install(ctx, s, dlcID1, url)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_single", dlcID1)
+			// Install DLC from Nebraska/Omaha.
+			dlc.Install(ctx, s, dlcID1, url)
+			dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_from_url", dlcID1)
+		}()
 
-		// Install already installed DLC.
-		dlc.Install(ctx, s, dlcID1, url)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_already_installed", dlcID1)
+		// Install already installed DLC when Nebraska/Omaha is down with empty url.
+		dlc.Install(ctx, s, dlcID1, "")
+		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_already_installed_no_url", dlcID1)
 
-		// Uninstall single DLC.
+		// Uninstall DLC after installing.
 		dlc.Uninstall(ctx, s, dlcID1)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "uninstall_dlc")
+		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "uninstall_after_installing")
 
 		// Uninstall already uninstalled DLC.
 		dlc.Uninstall(ctx, s, dlcID1)
