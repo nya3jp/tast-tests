@@ -138,6 +138,11 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 
 	for _, component := range probedNetworkComponents {
 		name := component.GetName()
+		if info := component.GetInformation(); info != nil {
+			if compGroup := info.GetCompGroup(); compGroup != "" {
+				name = compGroup
+			}
+		}
 		values := component.GetValues()
 		networkType := values.GetType()
 		if name == "generic" {
