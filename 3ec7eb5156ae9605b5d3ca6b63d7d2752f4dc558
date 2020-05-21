@@ -399,6 +399,30 @@
       "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ebab5da_b4f74dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-21T07:38:56Z",
+      "side": 1,
+      "message": "Sounds good, I will add it separately and then remove it from this test as part of that CL",
+      "parentUuid": "04b4e5d4_7005a8ff",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

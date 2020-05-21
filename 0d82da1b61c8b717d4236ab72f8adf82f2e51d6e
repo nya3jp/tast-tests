@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c54cc4d5_9adbcb3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-21T07:38:56Z",
+      "side": 1,
+      "message": "Lol I can see how this could be a little \"concise\". Updated with more detailed logging, let me know what you think",
+      "parentUuid": "641b04ed_55775ffc",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "0d82da1b61c8b717d4236ab72f8adf82f2e51d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22830374_d9c6c6d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
         "patchSetId": 5
@@ -69,6 +93,30 @@
       "revId": "0d82da1b61c8b717d4236ab72f8adf82f2e51d6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa20009_dc635591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-21T07:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22830374_d9c6c6d8",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 15
+      },
+      "revId": "0d82da1b61c8b717d4236ab72f8adf82f2e51d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
