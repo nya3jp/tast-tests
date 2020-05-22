@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40213afb_128214a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-22T05:08:52Z",
+      "side": 1,
+      "message": "I\u0027m aware that comparing floats like this generally is not a good idea, although it does work fine in this case. Would it be better to change this to range just in case, though? Like actual \u003c 1e-X or something like that.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "0c1afee6faabec9cf14dbb51a961d04cff60c9bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

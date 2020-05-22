@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9768a7a1_0d50cfa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-22T05:08:52Z",
+      "side": 1,
+      "message": "I uncovered a problem with this when running it on a different DUT today. If the brightness is some higher value, like 100%, brightnessCheck will return too fast sometimes, before we\u0027ve settled at 50% UI brightness (~26% from backlight_tool). The brightness will be somewhere in between, like 60% backlight, and the next call to brightnessCheck fails since it won\u0027t be increased that high.\n\nSetting it to 0 is an easy way to initialize it properly, since the UI and backlight_tool percentages match up at 0 and 100 percent.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "194ff4d9c9706ac8cf2bf5aa740459921ce6a902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5a71129_5cc6ecf7",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
         "patchSetId": 6
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b356af03_f2e1d98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-22T05:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a71129_5cc6ecf7",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 53
+      },
+      "revId": "194ff4d9c9706ac8cf2bf5aa740459921ce6a902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7028c53a_055e49ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
         "patchSetId": 6
@@ -36,6 +83,30 @@
       "writtenOn": "2020-05-21T09:13:48Z",
       "side": 1,
       "message": "No idea what this is telling me",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 100
+      },
+      "revId": "194ff4d9c9706ac8cf2bf5aa740459921ce6a902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df65162e_1329dda9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-22T05:08:52Z",
+      "side": 1,
+      "message": "Added more detail and an example to the comment, let me know if it\u0027s clearer now.",
+      "parentUuid": "7028c53a_055e49ec",
       "range": {
         "startLine": 85,
         "startChar": 0,
