@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6660a893_1823e817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-22T17:07:03Z",
+      "side": 1,
+      "message": "Indeed I was wrong about not-stopping, but that does not change the conclusion. inner function of s.Run should use the passed context and state.",
+      "parentUuid": "02d0714c_3f633f50",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 29
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc849226_374cb3a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff089dc8_5beb21f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-22T17:07:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ba649be_e3cb9d6b",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 61
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
