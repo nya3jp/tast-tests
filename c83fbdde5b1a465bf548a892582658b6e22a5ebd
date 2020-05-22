@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "3044bd93_b54585ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-22T00:21:25Z",
+      "side": 1,
+      "message": "I added dptf dependency. See CL:2212950, CL:2213050",
+      "parentUuid": "d7622180_d889681f",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
