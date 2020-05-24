@@ -128,8 +128,19 @@ func PortraitModeTestConfig(outDir, portraitModeTestFile string) TestConfig {
 	return TestConfig{
 		GtestFilter:            "Camera3FrameTest/Camera3PortraitModeTest.*",
 		ConnectToCameraService: true,
-		GeneratePerfLog:        true,
 		PortraitModeTestData:   portraitModeTestFile,
+		OutDir:                 outDir,
+	}
+}
+
+// PortraitModePerfTestConfig returns test config for running
+// HAL3PortraitModePerf test.
+func PortraitModePerfTestConfig(outDir, PortraitModeTestFile string) TestConfig {
+	return TestConfig{
+		GtestFilter:            "Camera3FrameTest/Camera3PortraitModeTest.*",
+		ConnectToCameraService: true,
+		GeneratePerfLog:        true,
+		PortraitModeTestData:   PortraitModeTestFile,
 		OutDir:                 outDir,
 	}
 }
