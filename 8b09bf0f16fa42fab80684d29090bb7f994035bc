@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "92679b9f_1e361947",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T08:34:45Z",
+      "side": 1,
+      "message": "I just noticed that \"-json\" option is not yet supported on routers. I\u0027ll change the logic here in next patchset.",
+      "parentUuid": "a528458d_c4420a5a",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0849a4d7_8000be41",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 2
