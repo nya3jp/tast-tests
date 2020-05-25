@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22e52388_3d597a93",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-25T08:39:12Z",
+      "side": 1,
+      "message": "If there\u0027s any plan on porting this to remote or common, then maybe you can consider using CmdRunner. If not, please disregard this comment.",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "dfe43788c3d7cf7ebefe227c26439f442e765d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
