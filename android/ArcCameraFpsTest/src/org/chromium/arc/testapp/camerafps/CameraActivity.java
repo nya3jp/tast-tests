@@ -19,12 +19,16 @@ public class CameraActivity extends Activity {
 
     private static final String TAG = "ArcCameraFpsTest";
 
+    private static final String ACTION_GET_AVG_SNAPSHOT_TIME =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_AVG_SNAPSHOT_TIME";
     private static final String ACTION_GET_CAMERA_CLOSE_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME";
     private static final String ACTION_GET_CAMERA_OPEN_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME";
     private static final String ACTION_GET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM";
+    private static final String ACTION_GET_LAST_SNAPSHOT_TIME =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_LAST_SNAPSHOT_TIME";
     private static final String ACTION_GET_NUM_FRAMES =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES";
     private static final String ACTION_GET_NUM_DROPPED_FRAMES =
@@ -76,6 +80,9 @@ public class CameraActivity extends Activity {
                 public void onReceive(Context context, Intent intent) {
                     try {
                         switch (intent.getAction()) {
+                            case ACTION_GET_AVG_SNAPSHOT_TIME:
+                                setResultData(Double.toString(mHistogram.getAverageSnapshotTime()));
+                                break;
                             case ACTION_GET_CAMERA_CLOSE_TIME:
                                 setResultData(Long.toString(mCameraFragment.getCameraCloseTime()));
                                 break;
@@ -106,6 +113,9 @@ public class CameraActivity extends Activity {
                             case ACTION_RESET_HISTOGRAM:
                                 mHistogram.resetHistogram();
                                 break;
+                            case ACTION_GET_LAST_SNAPSHOT_TIME:
+                                setResultData(Long.toString(mHistogram.getLastSnapshotTime()));
+                                break;
                             case ACTION_GET_SNAPSHOT_RESOLUTIONS:
                                 setResultData(mCameraFragment.getSnapshotResolutions());
                                 break;
@@ -134,15 +144,15 @@ public class CameraActivity extends Activity {
                                 mCameraFragment.startPreview();
                                 break;
                             case ACTION_START_RECORDING:
-                                String filename = mCameraFragment.startRecordingVideo();
-                                setResultData(filename);
+                                String videoFilename = mCameraFragment.startRecordingVideo();
+                                setResultData(videoFilename);
                                 break;
                             case ACTION_STOP_RECORDING:
                                 mCameraFragment.stopRecordingVideo();
                                 break;
                             case ACTION_TAKE_PHOTO:
-                                long time = mCameraFragment.takeCameraPicture();
-                                setResultData(Long.toString(time));
+                                String snapshotFilename = mCameraFragment.takeCameraPicture();
+                                setResultData(snapshotFilename);
                                 break;
                         }
                         setResultCode(Activity.RESULT_OK);
@@ -156,9 +166,11 @@ public class CameraActivity extends Activity {
 
     private static IntentFilter getFilter() {
         IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_GET_AVG_SNAPSHOT_TIME);
         filter.addAction(ACTION_GET_CAMERA_CLOSE_TIME);
         filter.addAction(ACTION_GET_CAMERA_OPEN_TIME);
         filter.addAction(ACTION_GET_HISTOGRAM);
+        filter.addAction(ACTION_GET_LAST_SNAPSHOT_TIME);
         filter.addAction(ACTION_GET_NUM_FRAMES);
         filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES);
         filter.addAction(ACTION_GET_PREVIEW_RESOLUTIONS);

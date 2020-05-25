@@ -42,13 +42,14 @@ func init() {
 
 func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	const (
-		cameraAppActivity        = ".CameraActivity"
-		cameraAppApk             = "ArcCameraFpsTest.apk"
-		cameraAppPackage         = "org.chromium.arc.testapp.camerafps"
-		intentGetCameraCloseTime = "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME"
-		intentGetCameraOpenTime  = "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME"
-		intentResetCamera        = "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA"
-		intentTakePhoto          = "org.chromium.arc.testapp.camerafps.ACTION_TAKE_PHOTO"
+		cameraAppActivity         = ".CameraActivity"
+		cameraAppApk              = "ArcCameraFpsTest.apk"
+		cameraAppPackage          = "org.chromium.arc.testapp.camerafps"
+		intentGetCameraCloseTime  = "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME"
+		intentGetCameraOpenTime   = "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME"
+		intentGetLastSnapshotTime = "org.chromium.arc.testapp.camerafps.ACTION_GET_LAST_SNAPSHOT_TIME"
+		intentResetCamera         = "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA"
+		intentTakePhoto           = "org.chromium.arc.testapp.camerafps.ACTION_TAKE_PHOTO"
 	)
 
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
@@ -94,8 +95,10 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	const (
 		afterBootWarmupDuration = 30 * time.Second
 		cameraResetCount        = 15
-		snapshotCount           = 15
-		snapshotWarmupCount     = 5
+		// Snapshots can be really small if the room is dark, but JPEGs are never smaller than 100 bytes.
+		minExpectedFileSize = 100
+		snapshotCount       = 15
+		snapshotWarmupCount = 5
 	)
 
 	s.Log("Warmup: Waiting for Android to settle down")
@@ -118,14 +121,14 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 		if o, err := a.BroadcastIntentGetData(ctx, intentGetCameraOpenTime); err != nil {
 			s.Fatal("Could not send intent: ", err)
 		} else if openTime, err = strconv.Atoi(o); err != nil {
-			s.Fatal("Unexpected result from intent " + intentGetCameraOpenTime + ": " + o)
+			s.Fatalf("Unexpected result from intent %s: %q", intentGetCameraOpenTime, o)
 		}
 
 		closeTime := 0
 		if o, err := a.BroadcastIntentGetData(ctx, intentGetCameraCloseTime); err != nil {
 			s.Fatal("Could not send intent: ", err)
 		} else if openTime, err = strconv.Atoi(o); err != nil {
-			s.Fatal("Unexpected result from intent " + intentGetCameraCloseTime + ": " + o)
+			s.Fatalf("Unexpected result from intent %s: %q", intentGetCameraCloseTime, o)
 		}
 
 		p.Append(openCameraMetric, float64(openTime))
@@ -139,14 +142,32 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	for i := 0; i < snapshotCount+snapshotWarmupCount; i++ {
 		s.Logf("Iteration %d snapshot", i)
 
-		snapshotTime := 0
-		if o, err := a.BroadcastIntentGetData(ctx, intentTakePhoto); err != nil {
-			s.Fatal("Could not send intent: ", err)
-		} else if snapshotTime, err = strconv.Atoi(o); err != nil {
-			s.Fatal("Unexpected result from intent " + intentTakePhoto + ": " + o)
+		if outputFile, err := a.BroadcastIntentGetData(ctx, intentTakePhoto); err != nil {
+			s.Error("Could not send intent: ", err)
+		} else {
+			s.Log("Output file: ", outputFile)
+			// Check if photo file was generated.
+			if fileSize, err := a.FileSize(ctx, outputFile); err != nil {
+				s.Error("Could not determine size of photo file: ", err)
+			} else if fileSize < minExpectedFileSize {
+				s.Errorf("Photo file is smaller than expected: got %d, want >= %d", fileSize, minExpectedFileSize)
+			}
 		}
 
-		if i > snapshotWarmupCount {
+		if i >= snapshotWarmupCount {
+			o, err := a.BroadcastIntentGetData(ctx, intentGetLastSnapshotTime)
+			if err != nil {
+				s.Fatal("Could not send intent: ", err)
+			}
+
+			snapshotTime, err := strconv.Atoi(o)
+			if err != nil {
+				s.Fatalf("Unexpected result from intent %s: %q", intentGetLastSnapshotTime, o)
+			}
+
+			if snapshotTime == -1 {
+				s.Fatalf("Intent %q failed: No snapshot time was recorded", intentGetLastSnapshotTime)
+			}
 			p.Append(snapshotMetric, float64(snapshotTime))
 		}
 	}
