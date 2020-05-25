@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6266afd_2cb58ca2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T12:48:17Z",
+      "side": 1,
+      "message": "No for any device policy tests. And we will not have any until pre v2 lands. group:enrollment only runs 1/build or ~2/day.",
+      "parentUuid": "993a585f_66d95c35",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "748a2532_d57ccb0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-25T12:35:40Z",
       "side": 1,
       "message": "Can you please choose another timezone? I guess it\u0027s better to avoid timezone where we have a lot of devices for testing.\n\n\n\"Does X to verify Y\": https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4540509_68fffda6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T12:48:17Z",
+      "side": 1,
+      "message": "A device can\u0027t be in both timezones :).",
+      "parentUuid": "748a2532_d57ccb0b",
       "range": {
         "startLine": 60,
         "startChar": 41,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e874f80_cd212700",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T12:48:17Z",
+      "side": 1,
+      "message": "To run the defers before the reboot. It breaks otherwise.",
+      "parentUuid": "36c6e6b5_8a275984",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02be6126_931709ab",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-25T12:35:40Z",
       "side": 1,
       "message": "If was not able to find in the policy description whether we need reboot the device to apply policy. Is it really needed?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def8314c_4cd9a24e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T12:48:17Z",
+      "side": 1,
+      "message": "Good point. The autotest just logs out: \n\nhttps://osscs.corp.google.com/android/platform/superproject/+/master:external/autotest/client/site_tests/policy_SystemTimezone/policy_SystemTimezone.py;l\u003d99",
+      "parentUuid": "02be6126_931709ab",
       "range": {
         "startLine": 94,
         "startChar": 0,
