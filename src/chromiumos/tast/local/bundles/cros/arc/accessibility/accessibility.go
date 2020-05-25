@@ -252,21 +252,26 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				s.Fatal("Failed to start activity: ", err)
 			}
 
-			if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
-				ClassName: TextView,
-				Name:      activity.Title,
-				Role:      ui.RoleTypeStaticText,
-			}, 10*time.Second); err != nil {
-				s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
-			}
-			if err := f(ctx, cvconn, tconn, activity); err != nil {
+			if err := func() error {
+				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+					ClassName: TextView,
+					Name:      activity.Title,
+					Role:      ui.RoleTypeStaticText,
+				}, 10*time.Second); err != nil {
+					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
+				}
+
+				return f(ctx, cvconn, tconn, activity)
+			}(); err != nil {
 				// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
 				path := filepath.Join(s.OutDir(), "screenshot-with-chromevox"+activity.Name+".png")
-				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-					s.Log("Failed to capture screenshot: ", err)
+				if screenshotErr := screenshot.CaptureChrome(ctx, cr, path); screenshotErr != nil {
+					s.Fatal(screenshotErr, "failed to capture screenshot, and the previous error is: ", err)
 				}
+				testing.ContextLogf(ctx, "Saved screenshot to: %q", path)
 				s.Fatal("Failed to run the test: ", err)
 			}
+
 		})
 	}
 }
