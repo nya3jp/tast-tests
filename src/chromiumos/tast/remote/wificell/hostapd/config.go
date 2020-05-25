@@ -196,6 +196,14 @@ func DTIMPeriod(period int) Option {
 	}
 }
 
+// BeaconInterval returns an Option which sets the beacon interval in hostapd config.
+// The unit is 1kus = 1.024ms. The value should be in 15..65535.
+func BeaconInterval(bi int) Option {
+	return func(c *Config) {
+		c.BeaconInterval = bi
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -226,6 +234,7 @@ type Config struct {
 	VHTChWidth         VHTChWidthEnum
 	Hidden             bool
 	SpectrumManagement bool
+	BeaconInterval     int
 	SecurityConfig     security.Config
 	PMF                PMFEnum
 	DTIMPeriod         int
@@ -290,6 +299,9 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("ieee80211d", "1")             // Required for local_pwr_constraint
 		configure("local_pwr_constraint", "0")   // No local constraint
 		configure("spectrum_mgmt_required", "1") // Requires local_pwr_constraint
+	}
+	if c.BeaconInterval != 0 {
+		configure("beacon_int", strconv.Itoa(c.BeaconInterval))
 	}
 
 	if c.DTIMPeriod != 0 {
@@ -399,6 +411,9 @@ func (c *Config) validate() error {
 	}
 	if err := c.validateChannel(); err != nil {
 		return err
+	}
+	if c.BeaconInterval != 0 && (c.BeaconInterval > 65535 || c.BeaconInterval < 15) {
+		return errors.Errorf("invalid beacon interval setting %d", c.BeaconInterval)
 	}
 	if c.SecurityConfig == nil {
 		return errors.New("no SecurityConfig set")
