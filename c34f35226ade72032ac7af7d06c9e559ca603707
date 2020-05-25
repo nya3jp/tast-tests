@@ -34,6 +34,24 @@
       "revId": "c34f35226ade72032ac7af7d06c9e559ca603707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3032d0e_d3e1d0a7",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T16:17:05Z",
+      "side": 1,
+      "message": "Update by generating.",
+      "parentUuid": "e7e45aee_c09129ee",
+      "revId": "c34f35226ade72032ac7af7d06c9e559ca603707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
