@@ -16,6 +16,24 @@
       "revId": "c34f35226ade72032ac7af7d06c9e559ca603707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e45aee_c09129ee",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-25T16:14:06Z",
+      "side": 1,
+      "message": "Right, will update shortly. Should I update this file as well by generating it or just roll back changes?",
+      "parentUuid": "95a3730a_8281d077",
+      "revId": "c34f35226ade72032ac7af7d06c9e559ca603707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
