@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92e18cc9_6e9a399e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:53:45Z",
+      "side": 1,
+      "message": "contains methods rely on running \"ip\" command.",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a528458d_c4420a5a",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:53:45Z",
+      "side": 1,
+      "message": "JSON",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0849a4d7_8000be41",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:53:45Z",
+      "side": 1,
+      "message": "Do we need to export the field?",
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644d2cda_78fd9b7e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:53:45Z",
+      "side": 1,
+      "message": "What does \"brd\" mean?",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
