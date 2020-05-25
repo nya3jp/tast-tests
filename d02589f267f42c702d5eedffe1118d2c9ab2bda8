@@ -22,6 +22,30 @@
       "revId": "d02589f267f42c702d5eedffe1118d2c9ab2bda8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7be7dc7_ed669cad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-25T11:02:11Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "4f5e72b5_af14c542",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "d02589f267f42c702d5eedffe1118d2c9ab2bda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
