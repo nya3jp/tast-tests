@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c750916c_f6532fa7",
+        "filename": "src/chromiumos/tast/local/hwsec/pca_agent_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-05-25T04:22:33Z",
+      "side": 1,
+      "message": "\u003e \"reqeust\" is a possible misspelling of \"request\".\n\nPlease fix.",
+      "parentUuid": "46006ebb_f41b7d8d",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "78e1fbeaccacaeb674b70dc5097372dec5416a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48c3dfe5_c89a5126",
+        "filename": "src/chromiumos/tast/local/hwsec/pca_agent_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-05-25T04:22:33Z",
+      "side": 1,
+      "message": "\u003e \"reqeust\" is a possible misspelling of \"request\".\n\nPlease fix.",
+      "parentUuid": "9086a884_f4df403d",
+      "range": {
+        "startLine": 60,
+        "startChar": 78,
+        "endLine": 60,
+        "endChar": 85
+      },
+      "revId": "78e1fbeaccacaeb674b70dc5097372dec5416a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
