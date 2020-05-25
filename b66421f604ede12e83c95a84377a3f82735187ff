@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0220966c_1de980e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "tests",
+      "range": {
+        "startLine": 5,
+        "startChar": 65,
+        "endLine": 5,
+        "endChar": 69
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125c07a4_1ff957cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "maybe: helpers?",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 44
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467e8002_dd86fa02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "to get the",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea228501_23d7bda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "nit: remove double negative",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4619fa49_e6fa6988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_cros_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "Unexpected DPTF profile",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af450198_ac2debea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_cros_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": ";",
+      "range": {
+        "startLine": 38,
+        "startChar": 44,
+        "endLine": 38,
+        "endChar": 45
+      },
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15dd452_ab23a726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_cros_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "minor nit: just use 1 line",
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41f1132_a2f65f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:15:07Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "b66421f604ede12e83c95a84377a3f82735187ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
