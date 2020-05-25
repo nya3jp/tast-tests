@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "404c9179_46b3b8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Although doable, it would potentially be a good amount of supplementary work:\n- some operations being already implemented in the files app (e.g. execute a given task on selected entries, with the different intent, zip, unzip)\n- using buttons and keyboard shortcuts make things easier\n- the UI is a good tool for debugging tests and to make sure everything works as intended when it comes to making sure an operation is finished before proceeding, that folders management is right.\n\nFor example, I have doubts regarding what\u0027s involved when copy-pasting data from a compressed file, since the time taken for this operation is not linear with the number of files to copy-paste. So the main point is that triggering tasks through the UI provides the insurance that the performances measured correspond to what the users would experience, and for now I\u0027m not confident enough about the code/processes/security aspects involved to reproduce manually what the files app does.\n\nWe\u0027re updating the zip implementation and might change the UX a bit. Since it\u0027s a files app project, maybe it\u0027s also a good reason to run the test with the files app UI.\n\nI hope it makes sense 😊",
+      "parentUuid": "77a4a448_4f7148d4",
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddb65e5f_5c9d5b02",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-21T19:39:56Z",
       "side": 1,
       "message": "There is an effort to move test out of the ui package because it is too generic. Can we put this in a files app package? There are enough files app tests, that I think it would be good to move them to their own package.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0661c9e4_26296f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "I can probably do that in another CL. However, maybe this other CL should come before this one so that we don\u0027t lose the link to this review. For now I just addressed the other comments.\n\nI\u0027m not sure what I\u0027m missing but I can\u0027t make the test work when creating another package:\n- creating a files folder inside bundles/cros (to avoid name collision with the filesapp package situated in another location?)\n- copy/pasting these zip tests in \"files\", changing package to files at the top\n- running the test \"files.FilesAppZipPerf\"\nThe test is not found. Maybe the new package should be registered somewhere?",
+      "parentUuid": "ddb65e5f_5c9d5b02",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9570b08d_4928d49b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337ae1dd_5b0ee6b1",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8dd848d_3b14e98e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -85,6 +151,30 @@
       "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a0c6688_3e3fe582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Setting the permissions for the zip files is needed to extract its content.\nMounting a file just involves scanning the entries of the zip files in order to list them on the UI, I don\u0027t need to set reading permissions.\n\nBetter to merge this code with the for loop though.",
+      "parentUuid": "f8dd848d_3b14e98e",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c6ef10de_8fea998c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9107fd1f_0fced555",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c32698c2_dfc1e3f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -131,6 +245,30 @@
       "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4692f21c_fa422701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c32698c2_dfc1e3f2",
+      "range": {
+        "startLine": 209,
+        "startChar": 20,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "75fa2c65_06392d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad745d5_219046c1",
+      "range": {
+        "startLine": 240,
+        "startChar": 11,
+        "endLine": 240,
+        "endChar": 43
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984736aa_48fc95e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "c453e4b3_9b7c9261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984736aa_48fc95e4",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 41
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e97c1c3_6560b65e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -200,6 +386,30 @@
       "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13a2e56_c49d52cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-25T07:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e97c1c3_6560b65e",
+      "range": {
+        "startLine": 269,
+        "startChar": 31,
+        "endLine": 269,
+        "endChar": 40
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
