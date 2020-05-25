@@ -48,19 +48,11 @@ func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty
 		return nil, errors.Wrap(err, "failed to stop ui")
 	}
 
-	m, err := shill.NewManager(ctx)
+	m, dev, err := s.wifiDev(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create Manager object")
+		return nil, err
 	}
-	// Turn on the WiFi device.
-	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get a WiFi device")
-	}
-	dev, err := m.DeviceByName(ctx, iface)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
-	}
+
 	if err := dev.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable WiFi device")
 	}
@@ -539,4 +531,57 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 // Note: shill has the hex in upper case.
 func (s *WifiService) hexSSID(ssid []byte) string {
 	return strings.ToUpper(hex.EncodeToString(ssid))
+}
+
+func (s *WifiService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Device, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+	if err != nil {
+		return m, nil, errors.Wrap(err, "failed to get a WiFi device")
+	}
+	dev, err := m.DeviceByName(ctx, iface)
+	if err != nil {
+		return m, nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
+	}
+	return m, dev, nil
+}
+
+func (s *WifiService) GetBgscanMethod(ctx context.Context, e *empty.Empty) (*network.GetBgscanMethodResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.GetBgscanMethod")
+	defer st.End()
+
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	props, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi device properties")
+	}
+	method, err := props.GetString(shill.DevicePropertyWiFiBgscanMethod)
+	if err != nil {
+		return nil, err
+	}
+	return &network.GetBgscanMethodResponse{
+		Method: method,
+	}, nil
+}
+
+func (s *WifiService) SetBgscanMethod(ctx context.Context, method *network.SetBgscanMethodRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SetBgscanMethod")
+	defer st.End()
+
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := dev.SetProperty(ctx, shill.DevicePropertyWiFiBgscanMethod, method.Method); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the WiFi device property %s with value %s", shill.DevicePropertyWiFiBgscanMethod, method.Method)
+	}
+	return &empty.Empty{}, nil
 }
