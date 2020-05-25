@@ -38,6 +38,12 @@ service WifiService {
 
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
+  // GetBgscanMethod returns the bgscan method the device's WiFi module currently uses.
+  rpc GetBgscanMethod(google.protobuf.Empty) returns (GetBgscanMethodResponse) {}
+
+  // SetBgscanMethod sets the device's WiFi module's bgscan method.
+  rpc SetBgscanMethod(SetBgscanMethodRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -111,4 +117,12 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message GetBgscanMethodResponse {
+  string method = 1;
+}
+
+message SetBgscanMethodRequest {
+  string method = 1;
 }
