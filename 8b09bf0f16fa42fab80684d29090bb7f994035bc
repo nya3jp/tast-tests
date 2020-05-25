@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67962b21_d7550e4e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T10:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92e18cc9_6e9a399e",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a528458d_c4420a5a",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f59529b7_45ff1163",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T10:02:51Z",
+      "side": 1,
+      "message": "Use \"-br\" instead for a simpler format than the normal output. PTAL. (I also tried on Whirlwind router, \"-br\" is supported.)",
+      "parentUuid": "92679b9f_1e361947",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0849a4d7_8000be41",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 2
@@ -86,6 +134,24 @@
       "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fad0562_bc5108ed",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T10:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0849a4d7_8000be41",
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -109,6 +175,30 @@
       "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1cbb4a_0c082ad3",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T10:02:51Z",
+      "side": 1,
+      "message": "It is used as abbreviation of broadcast in ip. e.g. [1]\nRename to broadcastIP for readability.\n\n[1] https://github.com/shemminger/iproute2/blob/master/ip/iplink.c#L630",
+      "parentUuid": "644d2cda_78fd9b7e",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "8b09bf0f16fa42fab80684d29090bb7f994035bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
