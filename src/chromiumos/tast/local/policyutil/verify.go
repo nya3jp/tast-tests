@@ -30,6 +30,12 @@ type DUTPolicy struct {
 	Error     string
 }
 
+// String turns a DUTPolicy struct into a human readable string.
+func (dp *DUTPolicy) String() string {
+	return fmt.Sprintf("{level: %s, scope: %s, source: %s, status: %s, value: %s, error: %s}",
+		dp.Level, dp.Scope, dp.Source, dp.Status, string(dp.ValueJSON), dp.Error)
+}
+
 // DUTPolicies represents the format returned from the getAllEnterprisePolicies API.
 // Each member map matches a string policy name (as shown in chrome://policy,
 // not a device policy field name) to a DUTPolicy struct of information on that
@@ -38,12 +44,6 @@ type DUTPolicies struct {
 	Chrome      map[string]*DUTPolicy `json:"chromePolicies"`
 	DeviceLocal map[string]*DUTPolicy `json:"deviceLocalAccountPolicies"`
 	Extension   map[string]*DUTPolicy `json:"extensionPolicies"`
-}
-
-// String turns a DUTPolicy struct into a human readable string.
-func (dp *DUTPolicy) String() string {
-	return fmt.Sprintf("{level: %s, scope: %s, source: %s, status: %s, value: %s, error: %s}",
-		dp.Level, dp.Scope, dp.Source, dp.Status, string(dp.ValueJSON), dp.Error)
 }
 
 // Constant values as returned by getAllEnterprisePolicies API.
