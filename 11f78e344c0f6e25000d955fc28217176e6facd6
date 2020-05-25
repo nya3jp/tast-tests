@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "400983b9_08e09751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-25T02:07:46Z",
+      "side": 1,
+      "message": "nit: Make this more clear. e.g. \u0027Tighten\u0027\nAlso, \u0027A11y timeouts\u0027 sounds like Android-Q\u0027s new feature.\n\nHow about \"Tighten polling timeout in arc a11y tests\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "11f78e344c0f6e25000d955fc28217176e6facd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437e12d4_a26ed7ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-25T02:07:46Z",
+      "side": 1,
+      "message": "nit: This is understandable, but technically, when we use \"default\", I think it usually refers a timeout used when a user doesn\u0027t specified, and it is `ctxutil.MaxTimeout` for testing.Poll (which is max value of Int64, see testingutil/poll.go) So I don\u0027t think the current description is clear.\n\nAlso, the \"highlighted in various reviews\" is not helpful when others read it in the future.\n\nI would say \"align to other tests and reduce unnecessary wait times\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "11f78e344c0f6e25000d955fc28217176e6facd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
