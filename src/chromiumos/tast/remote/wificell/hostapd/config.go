@@ -182,6 +182,14 @@ func PMF(p PMFEnum) Option {
 	}
 }
 
+// BeaconInterval returns an Option which sets the beacon interval in hostapd config.
+// The unit is 1kus = 1.024ms. The value should be in 15..65535.
+func BeaconInterval(bi int) Option {
+	return func(c *Config) {
+		c.BeaconInterval = bi
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -211,6 +219,7 @@ type Config struct {
 	VHTCenterChannel int
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
+	BeaconInterval   int
 	SecurityConfig   security.Config
 	PMF              PMFEnum
 }
@@ -268,6 +277,9 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	if c.Hidden {
 		configure("ignore_broadcast_ssid", "1")
+	}
+	if c.BeaconInterval != 0 {
+		configure("beacon_int", strconv.Itoa(c.BeaconInterval))
 	}
 
 	securityConf, err := c.SecurityConfig.HostapdConfig()
@@ -341,6 +353,9 @@ func (c *Config) validate() error {
 	}
 	if err := c.validateChannel(); err != nil {
 		return err
+	}
+	if c.BeaconInterval != 0 && (c.BeaconInterval > 65535 || c.BeaconInterval < 15) {
+		return errors.Errorf("invalid beacon interval setting %d", c.BeaconInterval)
 	}
 	if c.SecurityConfig == nil {
 		return errors.New("no SecurityConfig set")
