@@ -22,6 +22,30 @@
       "revId": "d79939c85675b3db012e3a67a2658b8bcf52e3a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e66f87_5390b5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T05:11:14Z",
+      "side": 1,
+      "message": "Because proto3 only provides int32/int64-based types: https://developers.google.com/protocol-buffers/docs/proto3#scalar",
+      "parentUuid": "4f982986_c9b9e434",
+      "range": {
+        "startLine": 358,
+        "startChar": 18,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "d79939c85675b3db012e3a67a2658b8bcf52e3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
