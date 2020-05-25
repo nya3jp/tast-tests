@@ -30,6 +30,7 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.SystemClock;
@@ -279,11 +280,14 @@ public class Camera2VideoFragment extends Fragment {
     }
 
     /** Triggers and waits for snapshot to finish. */
-    public long takeCameraPicture() throws InterruptedException {
-        long startTime = SystemClock.elapsedRealtime();
-        final CountDownLatch latch = new CountDownLatch(1);
-
+    public String takeCameraPicture() throws InterruptedException {
         try {
+            long startTime = SystemClock.elapsedRealtime();
+            final CountDownLatch latch = new CountDownLatch(1);
+
+            final String filename = getPhotoFilePath(getActivity());
+            Log.i(TAG, "Saving picture in file: " + filename);
+
             Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
             Size[] hrSizes =
                     mStreamConfigurationMap.getHighResolutionOutputSizes(ImageFormat.JPEG);
@@ -308,9 +312,6 @@ public class Camera2VideoFragment extends Fragment {
                     mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             captureBuilder.addTarget(reader.getSurface());
             captureBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-
-            String filename = getPhotoFilePath(getActivity());
-            Log.i(TAG, "Saving picture in file: " + filename);
 
             ImageReader.OnImageAvailableListener readerListener =
                     new ImageReader.OnImageAvailableListener() {
@@ -354,12 +355,15 @@ public class Camera2VideoFragment extends Fragment {
                         public void onConfigureFailed(CameraCaptureSession session) {}
                     },
                     mBackgroundHandler);
+
+            latch.await();
+            ((CameraActivity) getActivity()).getHistogram().addSnapshotTime(
+                    SystemClock.elapsedRealtime() - startTime);
+
+            return filename;
         } catch (CameraAccessException e) {
             throw new RuntimeException("No Camera access", e);
         }
-
-        latch.await();
-        return SystemClock.elapsedRealtime() - startTime;
     }
 
     // Open the camera device.
@@ -560,14 +564,14 @@ public class Camera2VideoFragment extends Fragment {
     }
 
     private String getVideoFilePath(Context context) {
-        return context.getExternalFilesDir(null).getAbsolutePath()
+        return context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath()
                 + "/"
                 + System.currentTimeMillis()
                 + ".mp4";
     }
 
     private String getPhotoFilePath(Context context) {
-        return context.getExternalFilesDir(null).getAbsolutePath()
+        return context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath()
                 + "/"
                 + System.currentTimeMillis()
                 + ".jpeg";
