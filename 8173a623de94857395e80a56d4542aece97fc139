@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2095298_5df641e5",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:13:43Z",
+      "side": 1,
+      "message": "configuration",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 18
+      },
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4843d7_bbfc17ae",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:13:43Z",
+      "side": 1,
+      "message": "ieee80211d",
+      "range": {
+        "startLine": 272,
+        "startChar": 59,
+        "endLine": 272,
+        "endChar": 79
+      },
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306d08c9_adb48fbd",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T06:13:43Z",
+      "side": 1,
+      "message": "That reminds me if there are order sensitive configurations regarding security.",
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
