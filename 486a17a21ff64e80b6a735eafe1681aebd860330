@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "993a585f_66d95c35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-25T12:35:40Z",
+      "side": 1,
+      "message": "Victor, do we have other remote policy tests running in the CQ?\nIt may slow down CQ a lot.",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748a2532_d57ccb0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-25T12:35:40Z",
+      "side": 1,
+      "message": "Can you please choose another timezone? I guess it\u0027s better to avoid timezone where we have a lot of devices for testing.\n\n\n\"Does X to verify Y\": https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c6e6b5_8a275984",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-25T12:35:40Z",
+      "side": 1,
+      "message": "Why do we need this function here?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02be6126_931709ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-25T12:35:40Z",
+      "side": 1,
+      "message": "If was not able to find in the policy description whether we need reboot the device to apply policy. Is it really needed?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
