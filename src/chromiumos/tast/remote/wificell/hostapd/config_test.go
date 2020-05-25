@@ -117,6 +117,25 @@ func TestNewConfig(t *testing.T) {
 			expected:   nil,
 			shouldFail: true, // should not set VHTChWidth on mode other than 802.11ac
 		},
+		// Check beacon interval validation.
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				BeaconInterval(10),
+			},
+			expected:   nil,
+			shouldFail: true, // BeaconInterval should be in 15...65535.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				BeaconInterval(66000),
+			},
+			expected:   nil,
+			shouldFail: true, // BeaconInterval should be in 15...65535.
+		},
 		// Good cases.
 		{
 			ops: []Option{
@@ -414,6 +433,19 @@ func TestConfigFormat(t *testing.T) {
 				"ssid2": `P"\x07\x08\x0c\n\r\t\x0b'\"\e"`,
 			},
 		},
+		// Check beacon interval.
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				BeaconInterval: 200,
+			},
+			verify: map[string]string{
+				"beacon_int": "200",
+			},
+		},
 		{
 			conf: &Config{
 				Ssid:           "\xe9\x89\xbb", // UTF-8
@@ -434,6 +466,18 @@ func TestConfigFormat(t *testing.T) {
 			},
 			verify: map[string]string{
 				"ssid2": `P"\xf2\xe3\x00\xd4\xc5\xb6"`,
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				BeaconInterval: 0,
+			},
+			verify: map[string]string{
+				"beacon_int": "", // Let hostapd have its default when not specified.
 			},
 		},
 	}
