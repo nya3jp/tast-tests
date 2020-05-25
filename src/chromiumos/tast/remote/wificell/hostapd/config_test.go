@@ -136,6 +136,25 @@ func TestNewConfig(t *testing.T) {
 			expected:   nil,
 			shouldFail: true, // should not set DTIMPeriod to a value out of the range (1..255)
 		},
+		// Check beacon interval validation.
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				BeaconInterval(10),
+			},
+			expected:   nil,
+			shouldFail: true, // BeaconInterval should be in 15...65535.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				BeaconInterval(66000),
+			},
+			expected:   nil,
+			shouldFail: true, // BeaconInterval should be in 15...65535.
+		},
 		// Good cases.
 		{
 			ops: []Option{
@@ -512,6 +531,31 @@ func TestConfigFormat(t *testing.T) {
 				"ieee80211d":             "1",
 				"local_pwr_constraint":   "0",
 				"spectrum_mgmt_required": "1",
+			},
+		},
+		// Check beacon interval.
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				BeaconInterval: 200,
+			},
+			verify: map[string]string{
+				"beacon_int": "200",
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				BeaconInterval: 0,
+			},
+			verify: map[string]string{
+				"beacon_int": "", // Let hostapd have its default when not specified.
 			},
 		},
 	}
