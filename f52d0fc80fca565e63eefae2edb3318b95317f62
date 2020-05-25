@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f913cb_f7695cc6",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-05-25T00:13:25Z",
+      "side": 1,
+      "message": "nit: space before VKEnabled",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "f52d0fc80fca565e63eefae2edb3318b95317f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fda6bfc_e52e159d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-05-25T00:13:25Z",
+      "side": 1,
+      "message": "nit: SwitchingToFloatingMode (\"layout\" usually refers to QWERTY etc.)",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "f52d0fc80fca565e63eefae2edb3318b95317f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
