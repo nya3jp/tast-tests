@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "bb8a89f1_d0a33aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-05-25T08:46:41Z",
+      "side": 1,
+      "message": "thanks for explanation.\nJust to be clear, in patchset # 2 it is already fixed.",
+      "parentUuid": "5cd386ba_93718b25",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ffb96e_0fba3b38",
         "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
         "patchSetId": 1
