@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2eb9a0bc_27c3a623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T05:50:44Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "17775022_ab3b0a27",
+      "range": {
+        "startLine": 500,
+        "startChar": 32,
+        "endLine": 500,
+        "endChar": 41
+      },
+      "revId": "d99a9251215517f88a6337300a85d85bc17bc8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c2e560_e1cc034f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "d99a9251215517f88a6337300a85d85bc17bc8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655437ee_0893a064",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T05:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c2e560_e1cc034f",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "d99a9251215517f88a6337300a85d85bc17bc8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
