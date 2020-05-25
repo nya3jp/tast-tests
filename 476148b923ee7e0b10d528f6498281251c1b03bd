@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a8dff27_040f2b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-25T02:17:08Z",
+      "side": 1,
+      "message": "Instead of making a function for screenshot, how about wrapping this section by anonymous function and capture the error?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 4
+      },
+      "revId": "476148b923ee7e0b10d528f6498281251c1b03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
