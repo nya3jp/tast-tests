@@ -22,6 +22,30 @@
       "revId": "dfe43788c3d7cf7ebefe227c26439f442e765d40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2062d5_64ffa033",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-05-25T08:42:56Z",
+      "side": 1,
+      "message": "No such a plan. \nAnd I think what is the right thing to do is to just port our solution to gRPC. Abusing the CmdRunner was a mistake i made.",
+      "parentUuid": "22e52388_3d597a93",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "dfe43788c3d7cf7ebefe227c26439f442e765d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
