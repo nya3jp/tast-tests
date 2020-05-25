@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "9f6d8a80_3fac3f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T04:34:39Z",
+      "side": 1,
+      "message": "ACK.",
+      "parentUuid": "8c4b46e9_aeb7a4d6",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30327cae_5e4d4f1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 1
