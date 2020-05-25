@@ -30,6 +30,9 @@ const (
 	DevicePropertyEthernetMACSource = "Ethernet.UsbEthernetMacAddressSource"
 	DevicePropertyEapDetected       = "EapAuthenticatorDetected"
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
+
+	// WiFi device property names.
+	DevicePropertyWiFiBgscanMethod = "BgscanMethod"
 )
 
 // Device wraps a Device D-Bus object in shill.

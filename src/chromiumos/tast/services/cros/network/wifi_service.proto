@@ -41,6 +41,12 @@ service WifiService {
 
   // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
   rpc ExpectWifiFrequencies(ExpectWifiFrequenciesRequest) returns (google.protobuf.Empty) {}
+
+  // GetBgscanMethod returns the bgscan method the device's WiFi module currently uses.
+  rpc GetBgscanMethod(google.protobuf.Empty) returns (GetBgscanMethodResponse) {}
+
+  // SetBgscanMethod sets the device's WiFi module's bgscan method.
+  rpc SetBgscanMethod(SetBgscanMethodRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -121,4 +127,12 @@ message ExpectWifiFrequenciesRequest {
   bytes ssid = 1;
   // Expected list of frequencies for the SSID.
   repeated uint32 frequencies = 2;
+}
+
+message GetBgscanMethodResponse {
+  string method = 1;
+}
+
+message SetBgscanMethodRequest {
+  string method = 1;
 }
