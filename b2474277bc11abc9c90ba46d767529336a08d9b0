@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3465ee3_553d4576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T02:28:26Z",
+      "side": 1,
+      "message": "\u003e \"rquires\" is a possible misspelling of \"requires\".\n\nPlease fix.",
+      "parentUuid": "f98c331f_fe633c78",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "b2474277bc11abc9c90ba46d767529336a08d9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
