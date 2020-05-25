@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45d3aa44_01cf23cb",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T09:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2095298_5df641e5",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 18
+      },
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd4843d7_bbfc17ae",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9173b636_f5568fb9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T09:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4843d7_bbfc17ae",
+      "range": {
+        "startLine": 272,
+        "startChar": 59,
+        "endLine": 272,
+        "endChar": 79
+      },
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "306d08c9_adb48fbd",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2020-05-25T06:13:43Z",
       "side": 1,
       "message": "That reminds me if there are order sensitive configurations regarding security.",
+      "revId": "8173a623de94857395e80a56d4542aece97fc139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d84474_67577e61",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-25T09:59:55Z",
+      "side": 1,
+      "message": "I guess the order does not matter that much as the original code comments. From the source, it seems to usually read all the config and then check. e.g. [1]. And in hostapd_config_fill, it does not quite check the dependency requirement [2], it is more in hostpad_config_check [3]. I tried to re-order the SpectrumManagement settings, it seems to still work on gale.\n\nHowever, order still matters when similar fields are set, e.g. ssid, ssid2 are both set, only one will work.\n\n[1] http://cs/chromeos_public/src/third_party/wpa_supplicant-2.8/hostapd/config_file.c?l\u003d4368\u0026rcl\u003dbbed23aee6d963ba2f09fe988e6b1ad90a1ae2ff\n[2] http://cs/chromeos_public/src/third_party/wpa_supplicant-2.8/hostapd/config_file.c?l\u003d2379\u0026rcl\u003dbbed23aee6d963ba2f09fe988e6b1ad90a1ae2ff\n[3] http://cs/chromeos_public/src/third_party/wpa_supplicant-2.8/src/ap/ap_config.c?l\u003d1114\u0026rcl\u003dbf0021ede3e5a5189de9679d22b69054b99f07e4",
+      "parentUuid": "306d08c9_adb48fbd",
       "revId": "8173a623de94857395e80a56d4542aece97fc139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
