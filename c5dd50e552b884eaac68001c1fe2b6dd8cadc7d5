@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e896049_99e6270d",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "I\u0027m afraid this computation is wrong.\n\nLet\u0027s say the interval is 10s, snapshot() always takes 3s, and the clock starts from 0s.\n\nThe first iteration:\n\n clock \u003d 0, previousTime \u003d 0\n sleepTime :\u003d 10 - (0 - 0) \u003d 10\n previousTime \u003d 0 + 10 \u003d 10\n \u003d\u003e sleeps for 10s and takes a snapshot for 3s\n\nThe second iteration:\n\n clock \u003d 13, previousTime \u003d 10\n sleepTime :\u003d 10 - (13 - 10) \u003d 7\n previousTime \u003d 13 + 10 \u003d 23\n \u003d\u003e sleeps for 7s and takes a snapshot for 3s\n\nThe third iteration:\n\n clock \u003d 23, previousTime \u003d 23\n sleepTime :\u003d 10 - (23 - 23) \u003d 10\n previousTime \u003d 23 + 10 \u003d 33\n \u003d\u003e sleeps for 10s (wrong!)\n\n\n\nKeeping track of the *next* time to take a snapshot might make the logic simpler, e.g.\n\n nextTime :\u003d t.clock.Now().Add(t.interval)\n for {\n   sleepTime :\u003d nextTime.Sub(t.clock.Now()) // how long do we sleep?\n   if sleepTime \u003c 0 { err... }\n   nextTime \u003d nextTime.Add(t.interval) // we want to take a snapshot in a regular interval\n   ...\n }",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5203c9b5_5f32495b",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "nit: %v formats time.Duration in a clean way, e.g. 5s.",
+      "range": {
+        "startLine": 182,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 80
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65a3aec_b7c02300",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "For deterministic tests, it is rare that a test expectation is A or B. So I recommend making this method to handle only the case where a snapshot is taken, and report an error when it\u0027s not the case.\n\n func (d *testTimelineDatasource) WaitForSnapshot() {\n   // Wait for Snapshot to be called.\n   // If it is not called for 5 seconds, panic.\n }",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3f059b_57c7ceac",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "Let\u0027s initialize clock with a fixed time, e.g. time.Unix(0, 0), to keep the test deterministic.",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c8f1e0_5ec3f945",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "Using a weighted semaphore is an interesting idea, but this edge case seems to suggest that it\u0027s not a best fit. In particular, with a weighted semaphore, we end up managing the \"current\" clock in two fields, c.clock and c.sem. And here they go out of sync.\n\nI rather recommend the approach I mentioned earlier, that is, to manage the current clock in c.clock only and use sync.Mutex and channels to wait for the value change.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae1ab0ad_5132e30d",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "For this change, it is important to check that the goroutine slept for an expected amount of time. Can we check it by changing this method to return the duration passed to Sleep, i.e.\n\n func (c *fakeClock) WaitForSleep() time.Duration",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a15afe7_fe4e9855",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-25T09:52:45Z",
+      "side": 1,
+      "message": "Similarly to WaitForSnapshot, let us make this method to return only when Sleep is called.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 26
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
