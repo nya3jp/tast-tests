@@ -397,6 +397,30 @@
       "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2d46700_8d194137",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T12:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7d927a_c2051309",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
