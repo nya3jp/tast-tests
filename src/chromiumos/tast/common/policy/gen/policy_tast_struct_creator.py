@@ -422,9 +422,29 @@ def parse_override_extension_settings(p, refs):
       value_name, p.schema['properties']['*'], refs)
   return 'map[string]' + attr_type, additional_structs
 
+def parse_override_arc_policy(p, refs):
+  value_name = p.name + 'Value'
+  attr_type, attr_structs =  parse_schema(
+      value_name, p.schema, refs, references_only=False)
+  attr_type = '*' + value_name
+  attr_structs = """
+type Application struct {
+\tPackageName\tstring\t`json:"packageName"`
+\tInstallType\tstring\t`json:"installType"`
+\tDefaultPermissionPolicy\tstring\t`json:"defaultPermissionPolicy"`
+\tManagedConfiguration\tstring\t`json:"managedConfiguration"`
+}
+
+type ArcPolicyValue struct {
+\tApplications\t[]Application\t`json:"applications"`
+}
+""" + attr_structs
+  return attr_type, attr_structs
+
 # Functions to use instead of parse_schema() if the default way won't work.
 PARSE_OVERRIDES = {
-    'ExtensionSettings': parse_override_extension_settings
+    'ExtensionSettings': parse_override_extension_settings,
+    'ArcPolicy': parse_override_arc_policy
 }
 
 # Go code to replace the contents of Equal() for the named policy.
@@ -468,7 +488,16 @@ UNMARSHAL_OVERRIDES = {
 \tif err := json.Unmarshal(m, &v); err != nil {
 \t\treturn nil, errors.Wrapf(err, "could not read %s as sensitive string", m)
 \t}
-\treturn v, nil"""
+\treturn v, nil""",
+    'ArcPolicy': """\tvar v string
+\tif err := json.Unmarshal(m, &v); err != nil {
+\t\treturn nil, errors.Wrapf(err, "could not read %s as string", m)
+\t}
+\tvar value ArcPolicyValue
+\tif err := json.Unmarshal([]byte(v), &value); err != nil {
+\t\treturn nil, errors.Wrapf(err, "could not read %s as ArcPolicyValue", m)
+\t}
+\treturn value, nil"""
 }
 
 def write_code(output_path, policies_by_id, schema_ids):
