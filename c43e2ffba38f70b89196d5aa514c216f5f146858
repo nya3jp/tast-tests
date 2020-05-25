@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "893fa442_abae3cb8",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T07:20:08Z",
+      "side": 1,
+      "message": "Curious the use scenario of the footer.",
+      "revId": "c43e2ffba38f70b89196d5aa514c216f5f146858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ecdcac_a2df4e9d",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T07:20:08Z",
+      "side": 1,
+      "message": "Name it as \"stderr\"?",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "c43e2ffba38f70b89196d5aa514c216f5f146858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b22eb41_8cddaa6b",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-25T07:20:08Z",
+      "side": 1,
+      "message": "Would it be needed to add an unittest for this?",
+      "revId": "c43e2ffba38f70b89196d5aa514c216f5f146858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
