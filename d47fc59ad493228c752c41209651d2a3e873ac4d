@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ddd043_57167135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693344b0_374fb1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ffb96e_0fba3b38",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "log errors",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615f5e4b_6ee89b13",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "Why use defer here? Just call the functions normally.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877d6e06_6decced8",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "Log the errors. It helps determine if multiple things failed.",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a589625_99b59b49",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "Log errors.\n\nDo we need to remove the file if it was already present?",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e021e4b6_137ea428",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "log errors",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f388ee_7019ac95",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T07:09:26Z",
+      "side": 1,
+      "message": "Maybe it\u0027s easier to just set lastErr after StopFakePCAAgent than to invert the flow using defer. You can then use a plain return at the end.",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
