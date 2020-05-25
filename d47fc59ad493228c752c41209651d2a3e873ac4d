@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "5cd386ba_93718b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:37:15Z",
+      "side": 1,
+      "message": "Remaining defers will continue to run. https://golang.org/pkg/runtime/#Goexit\n\nThe difference is in semantics: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging\n\nFatal is used to immediately stop the test. Error is used to mark failure (multiple calls are shown correctly).",
+      "parentUuid": "64dc7274_77aabc83",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8ffb96e_0fba3b38",
         "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
         "patchSetId": 1
@@ -282,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "3b122d36_3be2ac6a",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:37:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b3fcb2c_3ee67a9b",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e021e4b6_137ea428",
         "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
         "patchSetId": 1
@@ -349,6 +391,24 @@
       "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afccbe16_0cfb1235",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-25T08:37:15Z",
+      "side": 1,
+      "message": "Duplicated error messages is fine. It\u0027s better than hiding one of the errors or making the code hard to read.",
+      "parentUuid": "941e2f82_877ba68f",
+      "revId": "d47fc59ad493228c752c41209651d2a3e873ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
