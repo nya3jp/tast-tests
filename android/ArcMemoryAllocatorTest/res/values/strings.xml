@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+
+<resources>
+    <!-- Name of a simple app to allocate ARC memory [CHAR LIMIT=65536] -->
+    <string name="app_name">ArcMemoryAllocator</string>
+</resources>

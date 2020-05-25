@@ -17,6 +17,7 @@ group("all") {
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
+    "ArcMemoryAllocatorTest:all",
     "ArcMidiClientTest:ArcMidiClientTest",
     "ArcMotionInputTest:ArcMotionInputTest",
     "ArcMulticastForwarderTest:ArcMulticastForwarderTest",
