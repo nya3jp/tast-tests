@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482601ef_af57f041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-25T02:29:50Z",
+      "side": 1,
+      "message": "Is this fixed? If so, could you add the original value where this comes from in a comment?\nIf not, any other way to find the button other than the fixed location?",
+      "revId": "edda7474f8770c3464914c7182d4adc42cc74102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
