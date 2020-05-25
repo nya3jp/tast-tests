@@ -131,7 +131,11 @@ func (a *ARC) BroadcastIntentGetData(ctx context.Context, action string, params 
 	}
 
 	if result.result != intentResultActivityResultOk {
-		return "", errors.Errorf("broadcast of %q failed, status = %d", action, result.result)
+		if result.data == nil {
+			return "", errors.Errorf("broadcast of %q failed, status = %d", action, result.result)
+		}
+
+		return "", errors.Errorf("broadcast of %q failed, status = %d, data = %q", action, result.result, *result.data)
 	}
 
 	if result.data == nil {
