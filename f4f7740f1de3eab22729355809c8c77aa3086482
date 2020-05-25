@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30337580_90d1e5d8",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-25T08:03:29Z",
+      "side": 1,
+      "message": "A \u0027\u003d\u0027 is missing. It should be \"--slot\u003d\".",
+      "range": {
+        "startLine": 134,
+        "startChar": 55,
+        "endLine": 134,
+        "endChar": 63
+      },
+      "revId": "f4f7740f1de3eab22729355809c8c77aa3086482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
