@@ -40,6 +40,12 @@ func SecChange(fullCtx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
+	defer func() {
+		if err := tf.Close(fullCtx); err != nil {
+			s.Log("Failed to tear down test fixture, err: ", err)
+		}
+	}()
+
 	ctx, cancel := tf.ReserveForClose(fullCtx)
 	defer cancel()
 
