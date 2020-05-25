@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5db72c_15ab7e0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-25T03:07:12Z",
+      "side": 1,
+      "message": "nit: it may be ok to drop OutDir from path.\nIn precise, this path is for something temporary in DUT. Actual log dir (in case of failure) is extracted and then copied into GCS whose path is much different from this.",
+      "range": {
+        "startLine": 72,
+        "startChar": 60,
+        "endLine": 72,
+        "endChar": 70
+      },
+      "revId": "197a499ba98d8aa631364c9890094c2da7d85e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde4ce9b_ae602b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-25T03:07:12Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 108,
+        "startChar": 79,
+        "endLine": 108,
+        "endChar": 85
+      },
+      "revId": "197a499ba98d8aa631364c9890094c2da7d85e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
