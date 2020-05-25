@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c305cb6_83043bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-25T09:01:50Z",
+      "side": 1,
+      "message": "How bout just do |return f(ctx, cvconn, tconn, activity)| and writing loggable error on line 275?\n\nAlso, I think the TODO comment belongs to the screenshot section other than here.",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 14
+      },
+      "revId": "5e3f329fba8d8c0224c5281306411b464f030872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
