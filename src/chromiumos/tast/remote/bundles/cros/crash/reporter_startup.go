@@ -26,6 +26,7 @@ func init() {
 		Func: ReporterStartup,
 		Desc: "Verifies crash reporter after reboot",
 		Contacts: []string{
+			"cros-telemetry@google.com",
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author
 		},
