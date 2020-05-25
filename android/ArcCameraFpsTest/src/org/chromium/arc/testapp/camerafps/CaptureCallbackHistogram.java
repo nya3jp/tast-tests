@@ -30,6 +30,12 @@ class CaptureCallbackHistogram extends CaptureCallback {
     // Target frame duration in milliseconds, i.e., time between two frames.
     // Default: 30 FPS -> 33 ms
     private int mTargetFrameDuration = 33;
+    // Sum of all snapshot durations.
+    private long mSnapshotTimeSum = 0;
+    // Total number of snapshots.
+    private long mNumSnapshots = 0;
+    // Time it took (in ms) to take the last snapshot.
+    private long mLastSnapshotTime = -1;
 
     // Get histogram as string.
     public String getHistogramString() {
@@ -50,6 +56,26 @@ class CaptureCallbackHistogram extends CaptureCallback {
 
     public long getNumDroppedFrames() {
         return mNumDroppedFrames;
+    }
+
+    // Returns the time it took to take a snapshot on average.
+    public double getAverageSnapshotTime() {
+        if (mNumSnapshots == 0) {
+            return 0.0;
+        } else {
+            return ((double) mSnapshotTimeSum) / mNumSnapshots;
+        }
+    }
+
+    public long getLastSnapshotTime() {
+        return mLastSnapshotTime;
+    }
+
+    // Store the time it took to take one snapshot.
+    public void addSnapshotTime(long time) {
+        mNumSnapshots++;
+        mSnapshotTimeSum += time;
+        mLastSnapshotTime = time;
     }
 
     // Callback is fired when a frame arrives.
@@ -82,6 +108,9 @@ class CaptureCallbackHistogram extends CaptureCallback {
         mLastTimeStamp = 0;
         mNumDroppedFrames = 0;
         mNumFrames = 0;
+        mSnapshotTimeSum = 0;
+        mNumSnapshots = 0;
+        mLastSnapshotTime = -1;
     }
 
     public void setTargetFrameDuration(int duration) {
