@@ -181,6 +181,15 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 	return nil
 }
 
+func takeScreenshot(ctx context.Context, cr *chrome.Chrome, outDir, fileName string) error {
+	path := filepath.Join(outDir, fileName+".png")
+	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+		return errors.Wrap(err, "failed to capture screenshot")
+	}
+	testing.ContextLogf(ctx, "Saved screenshot to: %q", path)
+	return nil
+}
+
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready. It requires an array activities containing the list of activities
 // to run the test cases over, and the currently running activity is passed as a string to f().
@@ -257,13 +266,15 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				Name:      activity.Title,
 				Role:      ui.RoleTypeStaticText,
 			}, 10*time.Second); err != nil {
+				if screenshotErr := takeScreenshot(ctx, cr, s.OutDir(), "screenshot-chromevox-initial-focus"+activity.Name); screenshotErr != nil {
+					s.Fatal(screenshotErr, "failed taking screenshot, and the previous error is: ", err)
+				}
 				s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
 			}
 			if err := f(ctx, cvconn, tconn, activity); err != nil {
 				// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
-				path := filepath.Join(s.OutDir(), "screenshot-with-chromevox"+activity.Name+".png")
-				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-					s.Log("Failed to capture screenshot: ", err)
+				if screenshotErr := takeScreenshot(ctx, cr, s.OutDir(), "screenshot-with-chromevox"+activity.Name); screenshotErr != nil {
+					s.Fatal(screenshotErr, "failed taking screenshot, and the previous error is: ", err)
 				}
 				s.Fatal("Failed to run the test: ", err)
 			}
