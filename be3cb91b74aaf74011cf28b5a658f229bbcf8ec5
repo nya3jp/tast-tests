@@ -22,6 +22,30 @@
       "revId": "be3cb91b74aaf74011cf28b5a658f229bbcf8ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4b120c_086f612f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-25T10:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4d7935_cb8ff45d",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "be3cb91b74aaf74011cf28b5a658f229bbcf8ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
