@@ -16,6 +16,24 @@
       "revId": "f59e67c7de62b6eea1b2658f70cb77305e798747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec1b437_cec952cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-25T16:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8e3c7d_d1967dde",
+      "revId": "f59e67c7de62b6eea1b2658f70cb77305e798747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
