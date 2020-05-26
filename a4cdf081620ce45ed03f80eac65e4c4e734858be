@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76bbd2d4_9c4d3333",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T03:34:26Z",
+      "side": 1,
+      "message": "typo: integration?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63353f4_8f6d504a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T03:34:26Z",
+      "side": 1,
+      "message": "Don\u0027t we need to login first? If we don\u0027t, then this test doesn\u0027t have to swdep on chrome?",
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20bf6ff8_40aa2ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_multi_profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T03:34:26Z",
+      "side": 1,
+      "message": "I think KeepState is keeping the \"previous\" state but this is the first New?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9612b089_08217ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T03:34:26Z",
+      "side": 1,
+      "message": "I guess you\u0027re trying to login once first and verify the behavior of cr2 login with KeepState?\nIf so, this should be cr2.Close(ctx) and cr should be closed right after its New?",
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
