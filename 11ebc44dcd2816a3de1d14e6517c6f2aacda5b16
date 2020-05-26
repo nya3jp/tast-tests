@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86858595_e6c31144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-26T00:25:21Z",
+      "side": 1,
+      "message": "Keeping the previous implementation looks simpler to me. Can you restore the change of this section?",
+      "range": {
+        "startLine": 268,
+        "startChar": 7,
+        "endLine": 270,
+        "endChar": 5
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e0e2f4_64f53ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-26T00:25:21Z",
+      "side": 1,
+      "message": "the path is the one in DUT, not the path in the host. I don\u0027t think outputting the fullpath is useful.\nIf you want to add the logging, can you output without the directory?",
+      "range": {
+        "startLine": 271,
+        "startChar": 56,
+        "endLine": 271,
+        "endChar": 60
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
