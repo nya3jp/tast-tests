@@ -59,7 +59,8 @@ const (
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
-var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
+// Use a timeout to get the actual error when polling.
+var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 30 * time.Second}
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
 var locked = false
