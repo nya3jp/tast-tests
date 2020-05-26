@@ -16,6 +16,24 @@
       "revId": "35b03c1ab758f18444373e1184f4bd45d7f45638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a193e2_0e15d6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-26T09:07:17Z",
+      "side": 1,
+      "message": "How about just clear all cached data in |app.Close()|? IIRC, we don\u0027t have scenario need to preserve the cached options.",
+      "parentUuid": "4927fed0_0912fbad",
+      "revId": "35b03c1ab758f18444373e1184f4bd45d7f45638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
