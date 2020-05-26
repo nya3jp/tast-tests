@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e98e0422_c7a0d6e0",
+        "filename": "src/chromiumos/tast/common/network/eapcerts/eapcerts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "I think Brian already added some of these in another place? see: crrev.com/c/2106937",
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da831824_d253dc4c",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "Maybe worth defining this as a shill constant?",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2a97aa_fd0698d8",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "This still looks weird to me that when Gen() is called twice, they\u0027ll get the same pointer, but the second call will modify the content and affect the return value of the first one.\n\nAs eap configs will now have states, I think it might be better to always allocate a new object per Gen() so that they won\u0027t affect each other.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81010615_d9165d56",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "I think filepath.Join is preferred here. same for the following ones.",
+      "range": {
+        "startLine": 114,
+        "startChar": 30,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d37a70d_d79e7bf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "Just a reminder: We had a bug related to the rekey b/147396284. As we have a much shorter ping period in Tast, we might not be able to cover a rekey during the connectivity test. (so we might consider adding a ping option field in simpleConnectTestcase?)",
+      "range": {
+        "startLine": 412,
+        "startChar": 30,
+        "endLine": 412,
+        "endChar": 32
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a509e5a4_bbb56290",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T06:26:42Z",
+      "side": 1,
+      "message": "Maybe this should be in the NeedsTPMStore if? Otherwise passing a nil looks a little awkward. \n(And maybe with NeedsTPMStore -\u003e NeedClientCredentials, it might look a little more straightforward?)",
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
