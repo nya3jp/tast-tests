@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "deae7dd9_43045fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-05-26T01:27:41Z",
+      "side": 1,
+      "message": "I understand we want to report err anyway, but reporting two errors on one line is not common. How about changing the logic like this?\n\nif screenshot fail {\n  s.Error(\"failed ...)\n} else {\n  testing.ContextLofg(ctx, \"Saved ...\")\n}\ns.Fatal(\"Failed to run the test: \", err))\n\nOr if it\u0027s fine to change Fatal to Error,\n\ns.Error(\"Failed to run the test: \", err))\nif screenshot fail {\n  s.Error(\"failed ...)\n} else {\n  testing.ContextLofg(ctx, \"Saved ...\")\n}",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 93
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86858595_e6c31144",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
