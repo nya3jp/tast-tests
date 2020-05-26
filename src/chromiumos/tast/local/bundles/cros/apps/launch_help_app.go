@@ -51,7 +51,7 @@ func LaunchHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get current ui mode: ", err)
 	}
 
-	// Verify HelpApp (aka Discover) launched in Clamshell mode.
+	// Verify HelpApp (aka Explore) launched in Clamshell mode.
 	if !tabletEnabled {
 		if _, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: apps.Help.Name}, 20*time.Second); err != nil {
 			s.Error("Failed to wait for Help app launched: ", err)
@@ -66,7 +66,7 @@ func LaunchHelpApp(ctx context.Context, s *testing.State) {
 			s.Error("Failed to render Help app: ", err)
 		}
 	} else {
-		// Verify HelpApp (aka Discover) not to launch in Tablet mode.
+		// Verify HelpApp (aka Explore) not to launch in Tablet mode.
 		isHelpAppLaunched, err := ui.Exists(ctx, tconn, ui.FindParams{Name: apps.Help.Name})
 		if err != nil {
 			s.Error("Failed to check HelpApp existence: ", err)

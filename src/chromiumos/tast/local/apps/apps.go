@@ -59,10 +59,10 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
-// Help (aka Discover) has details about the Help app.
+// Help (aka Explore) has details about the Help app.
 var Help = App{
 	ID:   "nbljnnecbjbmifnoehiemkgefbnpoeak",
-	Name: "Discover",
+	Name: "Explore",
 }
 
 // WhatsNew has details about the What's New app.
