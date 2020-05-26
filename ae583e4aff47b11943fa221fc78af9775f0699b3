@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2c20eee_0b488bf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-26T09:33:45Z",
+      "side": 1,
+      "message": "I guess you want to limit a single TimedScan within 5 seconds? If so, I guess this should be in the anonymous function in Poll. \n\nFor current code, this ctx will also be the deadline of Poll and will not really gives the it the 10s timeout specified in PollOption.\n\n(and btw in Autotest the timeout is 10s or 15s)",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "ae583e4aff47b11943fa221fc78af9775f0699b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
