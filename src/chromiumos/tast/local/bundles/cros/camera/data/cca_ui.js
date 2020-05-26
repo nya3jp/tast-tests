@@ -181,13 +181,12 @@ window.Tast = class {
   }
 
   /**
-   * Removes the cached key value pair in chrome.storage.local.
-   * @param{Array<string>} keys
-   * @return Promise
+   * Removes all the cached data in chrome.storage.local.
+   * @return {Promise}
    */
-  static removeCacheData(keys) {
+  static removeCacheData() {
     return new Promise((resolve, reject) => {
-      chrome.storage.local.remove(keys, () => {
+      chrome.storage.local.clear(() => {
         if (chrome.runtime.lastError) {
           reject(chrome.runtime.lastError);
         }
