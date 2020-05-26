@@ -7,7 +7,6 @@ package optin
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -41,8 +40,7 @@ type arcApp struct {
 
 // SetPlayStoreEnabled is a wrapper for chrome.autotestPrivate.setPlayStoreEnabled.
 func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setPlayStoreEnabled)(%t)`, enabled)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setPlayStoreEnabled)`, enabled)
 }
 
 // FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
@@ -65,7 +63,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 		}
 	}
 
-	if err := conn.Exec(ctx, "termsPage.onAgree()"); err != nil {
+	if err := conn.Eval(ctx, "termsPage.onAgree()", nil); err != nil {
 		return errors.Wrap(err, "failed to execute 'termsPage.onAgree()'")
 	}
 
@@ -94,8 +92,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var app arcApp
-		expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getArcApp)('%s')`, apps.PlayStore.ID)
-		if err := tconn.EvalPromise(ctx, expr, &app); err != nil {
+		if err := tconn.Call(ctx, &app, `tast.promisify(chrome.autotestPrivate.getArcApp)`, apps.PlayStore.ID); err != nil {
 			return testing.PollBreak(err)
 		}
 		if !app.Ready {
@@ -116,7 +113,7 @@ func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn) error {
 // GetPlayStoreState is a wrapper for chrome.autotestPrivate.getPlayStoreState.
 func GetPlayStoreState(ctx context.Context, tconn *chrome.TestConn) (map[string]bool, error) {
 	state := make(map[string]bool)
-	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getPlayStoreState)()`, &state); err != nil {
+	if err := tconn.Call(ctx, &state, `tast.promisify(chrome.autotestPrivate.getPlayStoreState)`); err != nil {
 		return nil, errors.Wrap(err, "failed running autotestPrivate.getPlayStoreState")
 	}
 	return state, nil
