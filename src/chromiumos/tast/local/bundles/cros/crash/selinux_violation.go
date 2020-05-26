@@ -120,7 +120,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 		s.Fatalf("Couldn't find expected files: %v. Attempting to save audit log", err)
 	}
 
-	expectedLogMsgs := []string{"AVC avc:  granted  { create }",
+	expectedLogMsgs := []string{"avc:  granted  { create }",
 		fileName,
 		"cros_audit_sanity_test_file"}
 
