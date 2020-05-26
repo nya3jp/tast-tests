@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38c710b1_aba6b03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Nit: should be \u0027were\u0027",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f97b68_379873fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Nit: mixed tabs and spaces",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f3267e_10f7c25a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Nit: should be capitals (\"MAC\")",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b5c900_bd27a788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63ee2e3_d5aa061e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Nit: typo",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed16726_8094136f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-26T18:20:42Z",
+      "side": 1,
+      "message": "Again, mixed tabs and spaces",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "a88deea7ce24ac4107eea618a3db0e3b52cfe0bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
