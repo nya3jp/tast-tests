@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4927fed0_0912fbad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-26T08:32:46Z",
+      "side": 1,
+      "message": "I am thinking maybe we should have two variants:\n1. app.Close() would only close the app\n2. app.ClearAndClose() would clear the local storage and close the app\n\nand use ClearAndClose() in most of the cases unless we would like to persist the data in some test scenarios, WDYT?",
+      "revId": "35b03c1ab758f18444373e1184f4bd45d7f45638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
