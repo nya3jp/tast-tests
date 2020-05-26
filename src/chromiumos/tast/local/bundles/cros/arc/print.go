@@ -39,12 +39,11 @@ func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Loading preview",
 	}
-	// Wait for the loading text to appear to indicate print preview has
-	// launched and is loading. There should be a sufficient amount of time
-	// between the text appearing and being removed, but the test may fail here
-	// if the text is removed too quickly.
+	// Wait for the loading text to appear to indicate print preview is loading.
+	// If print preview loads too fast to find the loading text, ignore the
+	// error.
 	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to find loading text")
+		// Ignore error.
 	}
 	// Wait for the loading text to be removed to indicate print preview is no
 	// longer loading.
