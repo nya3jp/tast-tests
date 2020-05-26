@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24dd8bfb_0752cd99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-26T15:32:50Z",
+      "side": 1,
+      "message": "The name is confusing: maybe TestSystemTimezone",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5054d4dd_8b1b3cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-26T15:32:50Z",
+      "side": 1,
+      "message": "set a timeout of 30 seconds",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3776cde_0a8780ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-26T15:32:50Z",
+      "side": 1,
+      "message": "don\u0027t defer here, you are restarting Chrome",
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
