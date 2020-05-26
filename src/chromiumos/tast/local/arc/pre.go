@@ -100,9 +100,9 @@ var bootedWithVideoLoggingPre = &preImpl{
 	extraArgs: []string{
 		"--vmodule=" + strings.Join([]string{
 			"*/media/gpu/chromeos/*=2",
-			"*/media/gpu/vaapi/*==2",
+			"*/media/gpu/vaapi/*=2",
 			"*/media/gpu/v4l2/*=2",
-			"*/components/arc/video_accelerator/*"}, ",")},
+			"*/components/arc/video_accelerator/*=2"}, ",")},
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
