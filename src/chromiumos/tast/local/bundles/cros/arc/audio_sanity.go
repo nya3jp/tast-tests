@@ -9,15 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/bundles/cros/arc/audio"
 	"chromiumos/tast/testing"
 )
-
-type testParameters struct {
-	Permission string
-	Class      string
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -36,7 +30,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "playback",
-				Val: testParameters{
+				Val: audio.TestParameters{
 					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -44,7 +38,7 @@ func init() {
 			},
 			{
 				Name: "playback_vm",
-				Val: testParameters{
+				Val: audio.TestParameters{
 					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
@@ -52,7 +46,7 @@ func init() {
 			},
 			{
 				Name: "record",
-				Val: testParameters{
+				Val: audio.TestParameters{
 					Permission: "android.permission.RECORD_AUDIO",
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
@@ -61,7 +55,7 @@ func init() {
 			},
 			{
 				Name: "record_vm",
-				Val: testParameters{
+				Val: audio.TestParameters{
 					Permission: "android.permission.RECORD_AUDIO",
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
@@ -72,71 +66,12 @@ func init() {
 	})
 }
 
+// AudioSanity runs audio sanity tests.
 func AudioSanity(ctx context.Context, s *testing.State) {
-	const (
-		apk = "ArcAudioTest.apk"
-		pkg = "org.chromium.arc.testapp.arcaudiotestapp"
-		// UI IDs in the app.
-		idPrefix = pkg + ":id/"
-		resultID = idPrefix + "test_result"
-		logID    = idPrefix + "test_result_log"
-	)
-	param := s.Param().(testParameters)
-
-	cr := s.PreValue().(arc.PreData).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
 	a := s.PreValue().(arc.PreData).ARC
-	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
-		s.Fatal("Failed installing app: ", err)
-	}
-
-	if param.Permission != "" {
-		s.Log("Granting permission")
-		if err := a.Command(ctx, "pm", "grant", pkg, param.Permission).Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to grant permission: ", err)
-		}
-	}
-
-	s.Log("New Activity")
-	act, err := arc.NewActivity(a, pkg, param.Class)
-	if err != nil {
-		s.Fatal("Failed to create activity: ", err)
-	}
-	defer act.Close()
-
-	// Launch the activity.
-	s.Log("Start Activity")
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed start activity: ", err)
-	}
-
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close()
-
-	if err := d.Object(ui.ID(resultID), ui.TextMatches("[01]")).WaitForExists(ctx, 20*time.Second); err != nil {
-		s.Fatal("Timed out for waiting result updated: ", err)
-	}
-
-	// Test result can be either '0' or '1', where '0' means fail and '1'
-	// means pass.
-	if result, err := d.Object(ui.ID(resultID)).GetText(ctx); err != nil {
-		s.Fatal("Failed to get the result: ", err)
-	} else if result != "1" {
-		// Note: failure reason reported from the app is one line,
-		// so directly print it here.
-		reason, err := d.Object(ui.ID(logID)).GetText(ctx)
-		if err != nil {
-			s.Fatal("Failed to get failure reason: ", err)
-		}
-		s.Error("Test failed: ", reason)
+	cr := s.PreValue().(arc.PreData).Chrome
+	param := s.Param().(audio.TestParameters)
+	if err := audio.RunAppTest(ctx, a, cr, s.DataPath(audio.Apk), param); err != nil {
+		s.Error("Test failed: ", err)
 	}
 }
