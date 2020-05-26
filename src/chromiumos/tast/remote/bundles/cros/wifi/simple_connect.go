@@ -132,7 +132,7 @@ func init() {
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
-				// Verifies that DUT can connect to an hidden network on 2.4GHz and 5GHz channels.
+				// Verifies that DUT can connect to a hidden network on 2.4GHz and 5GHz channels.
 				Name: "hidden",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(6), ap.Hidden()}},
@@ -140,7 +140,7 @@ func init() {
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()}},
 				},
 			}, {
-				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 40-bit pre-shared keys.
+				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
 				Name: "wep40",
 				Val: []simpleConnectTestcase{
 					{
@@ -177,7 +177,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 104-bit pre-shared keys.
+				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
 				Name: "wep104",
 				Val: []simpleConnectTestcase{
 					{
@@ -214,7 +214,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
+				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
 				Name: "wephidden",
 				Val: []simpleConnectTestcase{
 					{
@@ -235,7 +235,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with TKIP.
 				Name: "wpatkip",
 				Val: []simpleConnectTestcase{
 					{
@@ -247,7 +247,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with AES based CCMP.
 				Name: "wpaccmp",
 				Val: []simpleConnectTestcase{
 					{
@@ -259,7 +259,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
 				Name: "wpamulti",
 				Val: []simpleConnectTestcase{
 					{
@@ -271,7 +271,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
 				Name: "wpa2tkip",
 				Val: []simpleConnectTestcase{
 					{
@@ -283,7 +283,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
 				Name: "wpa2",
 				Val: []simpleConnectTestcase{
 					{
@@ -295,7 +295,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				// Verifies that DUT can connect to a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
 				Name: "wpamixed",
 				Val: []simpleConnectTestcase{
 					{
@@ -308,7 +308,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
 				Name: "wpavht80",
 				Val: []simpleConnectTestcase{
 					{
@@ -324,7 +324,7 @@ func init() {
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
-				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
 				Name: "wpaoddpassphrase",
 				Val: []simpleConnectTestcase{
 					{
@@ -371,7 +371,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				// Verifies that DUT can connect to a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
 				Name: "wpahidden",
 				Val: []simpleConnectTestcase{
 					{
