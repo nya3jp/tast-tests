@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8faea530_912d0f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-05-26T08:13:29Z",
+      "side": 1,
+      "message": "nit: do we need this `audio` here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "73ecf3c48cc81daeabac976bc78600147b37f954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
