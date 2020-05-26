@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fafcd4f_8092ce54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:18:14Z",
+      "side": 1,
+      "message": "Maybe we should make a note that this is a closed-open interval? (i.e. that end is not included in the byte string?)",
+      "revId": "2a75f846504d6f656043359284647dc9a58a25a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9122512_600d8884",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:18:14Z",
+      "side": 1,
+      "message": "should we assert this, or will byte(i) panic if you pass i \u003e\u003d 256 into it?",
+      "revId": "2a75f846504d6f656043359284647dc9a58a25a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
