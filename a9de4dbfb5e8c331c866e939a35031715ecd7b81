@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a585aef2_6068aab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-26T23:26:26Z",
+      "side": 1,
+      "message": "If the failure is ignored anyway, can you  remove the wait as well?",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "a9de4dbfb5e8c331c866e939a35031715ecd7b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03284324_5f1c75e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-26T23:26:26Z",
+      "side": 1,
+      "message": "Can you add testing.ContextLog here to record the failure?",
+      "revId": "a9de4dbfb5e8c331c866e939a35031715ecd7b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
