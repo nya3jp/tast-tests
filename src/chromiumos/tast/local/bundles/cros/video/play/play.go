@@ -214,6 +214,9 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	s.Log("usesPlatformVideoDecoder? ", usesPlatformVideoDecoder)
 
+	videoDecoderName, _ := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, server.URL)
+	s.Log("videoDecoderName: ", videoDecoderName)
+
 	if mode == VerifyHWAcceleratorUsed && !usesPlatformVideoDecoder {
 		return errors.New("video decode acceleration was not used when it was expected to")
 	}
