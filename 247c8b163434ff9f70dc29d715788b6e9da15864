@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "81c824d1_6a846000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-26T22:24:48Z",
+      "side": 1,
+      "message": "Done, with functions using it correctly as well.\nPlease review the CL chain when you can, thank you",
+      "parentUuid": "6660a893_1823e817",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 29
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc849226_374cb3a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
