@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07ce0ea3_26100ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-05-26T08:10:45Z",
+      "side": 1,
+      "message": "Can we have a regular expression to\n* grep\n```\nstream: 5177344 dev: 9\ndirection: Input\nstream_type: CRAS_STREAM_TYPE_DEFAULT\nclient_type: CRAS_CLIENT_TYPE_TEST\nbuffer_frames: 480\ncb_threshold: 240\neffects: 0x0000\nframe_rate: 48000\nnum_channels: 2\nlongest_fetch_sec: 0.000000000\nnum_overruns: 0\nis_pinned: 0\npinned_dev_idx: 0\nnum_missed_cb: 0\ngain: 1.000000\nruntime: 4.765707508\nchannel map:0 1 -1 -1 -1 -1 -1 -1 -1 -1 -1\n```\nout\n* mapped a dictionary and\n* add them (might be multiple streams there is sth goes wrong) to a lists?\n\nThen the list should have property size\u003d1 \u0026\u0026 list[0][\u0027effects\u0027] \u003d \u00270x0000\u0027\n\nAnd abstract it to a A get_active_input_streams function might be better. It contains\n* The cras_test_client call\n* parse and return a list of dictionaries",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "03f505a5e0eba4e08eed284bd19825bd01ebba47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
