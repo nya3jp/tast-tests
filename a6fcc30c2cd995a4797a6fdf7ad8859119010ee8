@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "d80e26cb_c74566dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-26T23:56:04Z",
+      "side": 1,
+      "message": "nit: not clear what NC means. expand to \"non-resizable clamshell\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "356ead62_d803ffea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
@@ -233,6 +256,24 @@
     },
     {
       "key": {
+        "uuid": "c927d449_67561114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-26T23:56:04Z",
+      "side": 1,
+      "message": "it is a tricky one this one.\nI discussed this with oshima@ a few months ago (a year ago?), and the problem appears when you launch a new activity while the switch from clamshell to tablet (and vice-versa).\nwe discussed different approaches, but AFAIK, there is no way (at least back then) to know when the animation finished.\n\nd.waitforidle wouldn\u0027t work. not familiar with ui.EventWatcher though.",
+      "parentUuid": "27a880ac_2082a39b",
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "baa4a116_f04a4586",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
@@ -249,6 +290,53 @@
         "startChar": 0,
         "endLine": 82,
         "endChar": 49
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b81a05_e34cc29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-26T23:56:04Z",
+      "side": 1,
+      "message": "this comes from the WM test in P.\nthe rationale behind this is that there are many sub-tests. And it is useful to take a screenshot after each subtest.\nAFAIK, the Tast screenshot is taken only at the end of the tests. And usually, that screenshot is not very useful when your test run multiple subtests.\n\nbut in this case there is only one subtests, so this code can be removed. But should be re-added when a new subtest is added.",
+      "parentUuid": "baa4a116_f04a4586",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c038d23_57f1bf46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-26T23:56:04Z",
+      "side": 1,
+      "message": "nit: add docstring for each non trivial function",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 11
       },
       "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
