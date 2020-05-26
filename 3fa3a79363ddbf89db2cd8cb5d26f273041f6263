@@ -22,6 +22,30 @@
       "revId": "3fa3a79363ddbf89db2cd8cb5d26f273041f6263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5330dd7b_b79064f4",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-26T22:42:22Z",
+      "side": 0,
+      "message": "Ah hmm well this part should also not be there since we\u0027d like to\ntest Guest login with the \"Default\" video decoder. But it can happen\nin a separate CL to ease bisections etc. But other than that yeah\nthis CL is -hopefully- a straightforward refactor. A subsequent one\nwill cone adding more meat in the isLegacyVideoDecoderEnabled(), but\nuntil the new Video Decoder is enabled, this CL should not change\nthe behaviour. Should I add that to the CL commit message?",
+      "parentUuid": "1d77bf0e_83bb4ecd",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "3fa3a79363ddbf89db2cd8cb5d26f273041f6263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
