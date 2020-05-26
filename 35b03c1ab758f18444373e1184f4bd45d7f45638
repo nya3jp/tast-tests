@@ -34,6 +34,24 @@
       "revId": "35b03c1ab758f18444373e1184f4bd45d7f45638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac009b0_46c68816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-26T09:17:08Z",
+      "side": 1,
+      "message": "Hmm this sounds like a missing coverage area for our CCA integration tests... if so then I am ok to just clear all cached data in app.Close(). We can make a new version when we need it.",
+      "parentUuid": "d8a193e2_0e15d6f2",
+      "revId": "35b03c1ab758f18444373e1184f4bd45d7f45638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
