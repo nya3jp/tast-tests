@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08216ad7_4ca499b6",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-26T03:09:39Z",
+      "side": 1,
+      "message": "Can\u0027t we reuse args used for non-ARC video conditions?\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/media/pre/pre.go?rcl\u003d0bb31729175ebda38c2ff9e7b5efde87508abcd7\u0026l\u003d116\n\nThough it doesn\u0027t have `*/components/arc/video_accelerator/*\u003d2`, I think it\u0027s okay to add it.",
+      "revId": "7be25655da49fb854784b6466fe4faf18209454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
