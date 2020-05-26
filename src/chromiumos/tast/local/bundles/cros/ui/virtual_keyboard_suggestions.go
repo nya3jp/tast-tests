@@ -9,9 +9,11 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -19,10 +21,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardSuggestions,
-		Desc:         "Checks that the virtual keyboard displays suggestions",
-		Contacts:     []string{"essential-inputs-team@google.com"},
+		Desc:         "Checks that the virtual keyboard suggestions work for various languages",
+		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -38,16 +41,9 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// TODO(https://crbug.com/930775): Test languages officially supported by
-	// Chrome OS by iterating through them and testing each decoder one by one.
-	const xkbExtensionID = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
-	const inputMethodIDEnUS = xkbExtensionID + "xkb:us::eng"
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodIDEnUS); err != nil {
-		s.Fatal("Failed to set the input method: ", err)
-	}
-
-	// Show a page with a text field that autofocuses.
-	const html = `<input type="text" id="text" autofocus/>`
+	// Show a page with a text field that autofocuses. Turn off autocorrect as it
+	// can interfere with the test.
+	const html = `<input type="text" id="target" autocorrect="off" autofocus/>`
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		io.WriteString(w, html)
@@ -62,7 +58,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 
 	// Wait for the text field to focus.
 	if err := conn.WaitForExpr(ctx,
-		`document.getElementById('text') === document.activeElement`); err != nil {
+		`document.getElementById('target') === document.activeElement`); err != nil {
 		s.Fatal("Failed to wait for text field to focus: ", err)
 	}
 
@@ -82,31 +78,72 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
+		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
 	}
 	defer kconn.Close()
 
-	// The IME decoder, which provides the suggestions for the virtual keyboard,
-	// ignores key presses until it is fully loaded. Thus, this test presses keys
-	// periodically until the decoder is ready and suggestions are shown.
-	// TODO(https://crbug.com/980768): Fix the decoder so that it no longer drops
-	// key presses, then combine with VirtualKeyboardSuggestionsInformational.
-	s.Log("Waiting for the decoder to provide suggestions")
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if err := vkb.TapKey(ctx, kconn, "a"); err != nil {
-			return err
-		}
-		suggestions, err := vkb.GetSuggestions(ctx, kconn)
-		if err != nil {
-			return err
-		}
-		if len(suggestions) == 0 {
-			return errors.New("no suggestions found")
-		}
-		return nil
-	}, nil)
+	// The input method ID is from:
+	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
+	// Each input method should only have one test case.
+	testCases := []struct {
+		InputMethod        string
+		Keys               []string
+		ExpectedSuggestion string
+		LanguageLabel      string
+	}{
+		{"xkb:us::eng", []string{"a"}, "a", "US"},
+		{"nacl_mozc_us", []string{"n", "i", "h", "o", "n", "g", "o"}, "日本語", "あ"},
+	}
 
-	if err != nil {
-		s.Fatal("Failed to wait for suggestions to appear: ", err)
+	for _, testCase := range testCases {
+		s.Log("Testing ", testCase.InputMethod)
+
+		if err := vkb.SetCurrentInputMethod(ctx, tconn, testCase.InputMethod); err != nil {
+			s.Error("Failed to set input method: ", err)
+			continue
+		}
+
+		s.Log("Clear text field before test")
+		if err := conn.Exec(ctx,
+			`document.getElementById('target').value='';`); err != nil {
+			s.Error("Failed to clear text field: ", err)
+			continue
+		}
+
+		params := ui.FindParams{
+			Name: testCase.LanguageLabel,
+		}
+		if err := ui.WaitUntilExists(ctx, tconn, params, 3*time.Second); err != nil {
+			s.Errorf("Failed to switch to language %s: %v", testCase.InputMethod, err)
+			continue
+		}
+
+		if err := vkb.TapKeys(ctx, kconn, testCase.Keys); err != nil {
+			s.Error("Failed to type: ", err)
+			continue
+		}
+
+		s.Log("Waiting for the decoder to provide suggestions")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			suggestions, err := vkb.GetSuggestions(ctx, kconn)
+			if err != nil {
+				return err
+			}
+			for _, suggestion := range suggestions {
+				if suggestion == testCase.ExpectedSuggestion {
+					return nil
+				}
+			}
+			return errors.Errorf("%q not found in suggestions", testCase.ExpectedSuggestion)
+		}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+			s.Error("Failed to wait for suggestions to appear: ", err)
+			continue
+		}
+
+		// Tap enter to exit composition mode.
+		if err := vkb.TapKey(ctx, kconn, "enter"); err != nil {
+			s.Error("Failed to tap enter: ", err)
+			continue
+		}
 	}
 }
