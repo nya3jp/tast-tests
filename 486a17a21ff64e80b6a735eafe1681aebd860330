@@ -187,6 +187,30 @@
       "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65011a7e_37289494",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-26T15:15:06Z",
+      "side": 1,
+      "message": "Logging out is sufficient. I changed the test to avoid the reboot.",
+      "parentUuid": "def8314c_4cd9a24e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
