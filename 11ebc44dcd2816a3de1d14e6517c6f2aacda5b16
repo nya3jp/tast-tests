@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2cce08f_1067005c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-26T03:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deae7dd9_43045fd5",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 93
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86858595_e6c31144",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7e0b3eaa_29ab4b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-26T03:40:08Z",
+      "side": 1,
+      "message": "Done, updated as per oka-san\u0027s comment",
+      "parentUuid": "86858595_e6c31144",
+      "range": {
+        "startLine": 268,
+        "startChar": 7,
+        "endLine": 270,
+        "endChar": 5
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e0e2f4_64f53ec7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5f685d_9c70b25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-26T03:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e0e2f4_64f53ec7",
+      "range": {
+        "startLine": 271,
+        "startChar": 56,
+        "endLine": 271,
+        "endChar": 60
+      },
+      "revId": "11ebc44dcd2816a3de1d14e6517c6f2aacda5b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
