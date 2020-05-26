@@ -308,6 +308,10 @@ func (a *App) Close(ctx context.Context) error {
 		return nil
 	}
 
+	if err := a.conn.Eval(ctx, "Tast.removeCacheData()", nil); err != nil {
+		return errors.Wrap(err, "failed to clear cached data in local storage")
+	}
+
 	// TODO(b/144747002): Some tests (e.g. CCUIIntent) might trigger auto closing of CCA before
 	// calling Close(). We should handle it gracefully to get the coverage report for them.
 	err := a.OutputCodeCoverage(ctx)
@@ -973,25 +977,6 @@ func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int)
 func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
 	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
 	return a.conn.Eval(ctx, code, nil)
-}
-
-// RemoveCacheData removes the cached key value pair in local storage.
-func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
-	keyArray := "["
-	for i, key := range keys {
-		if i == 0 {
-			keyArray += fmt.Sprintf("%q", key)
-		} else {
-			keyArray += fmt.Sprintf(", %q", key)
-		}
-	}
-	keyArray += "]"
-	code := fmt.Sprintf("Tast.removeCacheData(%v)", keyArray)
-	if err := a.conn.EvalPromise(ctx, code, nil); err != nil {
-		testing.ContextLogf(ctx, "Failed to remove cache (%q): %v", code, err)
-		return err
-	}
-	return nil
 }
 
 // RunThroughCameras runs function f in app after switching to each available camera.
