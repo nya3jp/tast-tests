@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4ba84a5_ddea9335",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-05-26T22:43:07Z",
+      "side": 1,
+      "message": "Maybe make zoneNames a map so we don\u0027t have to do this?\n\nI\u0027m not sure which way is more idiomatic though.",
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
