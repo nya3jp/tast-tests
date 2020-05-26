@@ -6,17 +6,11 @@ package platform
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
-	"syscall"
-	"time"
 
+	"chromiumos/tast/local/bundles/cros/platform/dlc"
+	"chromiumos/tast/local/bundles/cros/platform/nebraska"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -46,23 +40,12 @@ func DLCService(ctx context.Context, s *testing.State) {
 		tmpDir                  = "/tmp"
 	)
 
-	type expect bool
-	const (
-		success expect = true
-		failure expect = false
-	)
-
-	// TODO(kimjae): Manage this in separate .go file..
-	type dlcListOutput struct {
-		RootMount string `json:"root_mount"`
-	}
-
 	// Check dlcservice is up and running.
 	if err := upstart.EnsureJobRunning(ctx, dlcserviceJob); err != nil {
 		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
 	}
 
-	restartUpstartJob := func(job, serviceName string) {
+	restartUpstartJob := func(ctx context.Context, s *testing.State, job, serviceName string) {
 		// Restart job.
 		s.Logf("Restarting %s job", job)
 		if err := upstart.RestartJob(ctx, job); err != nil {
@@ -92,168 +75,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart update-engine to pick up the new prefs.
-	restartUpstartJob(updateEngineJob, updateEngineServiceName)
-
-	readFile := func(path string) []byte {
-		b, err := ioutil.ReadFile(path)
-		if err != nil {
-			s.Fatal("Failed to read file: ", err)
-		}
-		return b
-	}
-
-	dlcList := func(path string) (output map[string][]dlcListOutput) {
-		if err := json.Unmarshal(readFile(path), &output); err != nil {
-			s.Fatal("Failed to read json: ", err)
-		}
-		return output
-	}
-
-	verifyDlcContent := func(path, dlc string) {
-		removeExt := func(path string) string {
-			return strings.TrimSuffix(path, filepath.Ext(path))
-		}
-		checkSHA2Sum := func(hash_path string) {
-			path := removeExt(hash_path)
-			actualSumBytes := sha256.Sum256(readFile(path))
-			actualSum := hex.EncodeToString(actualSumBytes[:])
-			expectedSum := strings.Fields(string(readFile(hash_path)))[0]
-			if actualSum != expectedSum {
-				s.Fatalf("SHA2 checksum do not match for %s. Actual=%s Expected=%s",
-					path, actualSum, expectedSum)
-			}
-		}
-		checkPerms := func(perms_path string) {
-			path := removeExt(perms_path)
-			info, err := os.Stat(path)
-			if err != nil {
-				s.Fatal("Failed to stat: ", err)
-			}
-			actualPerm := fmt.Sprintf("%#o", info.Mode().Perm())
-			expectedPerm := strings.TrimSpace(string(readFile(perms_path)))
-			if actualPerm != expectedPerm {
-				s.Fatalf("Permissions do not match for %s. Actual=%s Expected=%s",
-					path, actualPerm, expectedPerm)
-			}
-		}
-		getRootMounts := func(path, dlc string) (rootMounts []string) {
-			if l, ok := dlcList(path)[dlc]; ok {
-				for _, val := range l {
-					rootMounts = append(rootMounts, val.RootMount)
-				}
-			}
-			return rootMounts
-		}
-
-		rootMounts := getRootMounts(path, dlc)
-		if len(rootMounts) == 0 {
-			s.Fatal("Failed to get root mount for ", dlc)
-		}
-		for _, rootMount := range rootMounts {
-			filepath.Walk(rootMount, func(path string, info os.FileInfo, err error) error {
-				switch filepath.Ext(path) {
-				case ".sum":
-					checkSHA2Sum(path)
-					break
-				case ".perms":
-					checkPerms(path)
-					break
-				}
-				return nil
-			})
-		}
-	}
-
-	// dumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
-	// via dlcservice_util command.
-	dumpAndVerifyInstalledDLCs := func(tag string, dlcs ...string) {
-		s.Log("Asking dlcservice for installed DLC modules")
-		f := tag + ".log"
-		path := filepath.Join(s.OutDir(), f)
-		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
-		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to get installed DLC modules: ", err)
-		}
-		for _, dlc := range dlcs {
-			verifyDlcContent(path, dlc)
-		}
-	}
-
-	runCmd := func(msg string, e expect, name string, args ...string) {
-		cmd := testexec.CommandContext(ctx, name, args...)
-		if err := cmd.Run(testexec.DumpLogOnError); err != nil && e {
-			s.Fatal("Failed to ", msg, err)
-		} else if err == nil && !e {
-			s.Fatal("Should have failed to ", msg)
-		}
-	}
-
-	install := func(dlc, omahaURL string, e expect) {
-		s.Log("Installing DLC: ", dlc, " using ", omahaURL)
-		runCmd("install", e, "dlcservice_util", "--install", "--id="+dlc, "--omaha_url="+omahaURL)
-	}
-
-	uninstall := func(dlc string, e expect) {
-		s.Log("Uninstalling DLC: ", dlc)
-		runCmd("uninstall", e, "dlcservice_util", "--uninstall", "--id="+dlc)
-	}
-
-	startNebraska := func() (string, *testexec.Cmd) {
-		s.Log("Starting Nebraska")
-		cmd := testexec.CommandContext(ctx, "nebraska.py",
-			"--runtime-root", "/tmp/nebraska",
-			"--install-metadata", "/usr/local/dlc",
-			"--install-payloads-address", "file:///usr/local/dlc")
-		if err := cmd.Start(); err != nil {
-			s.Fatal("Failed to start Nebraska: ", err)
-		}
-
-		success := false
-		defer func() {
-			if success {
-				return
-			}
-			cmd.Kill()
-			cmd.Wait()
-		}()
-
-		// Try a few times to make sure Nebraska is up.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if _, err := os.Stat("/tmp/nebraska/port"); os.IsNotExist(err) {
-				return err
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: time.Second * 5}); err != nil {
-			s.Fatal("Nebraska did not start: ", err)
-		}
-
-		port, err := ioutil.ReadFile("/tmp/nebraska/port")
-		if err != nil {
-			s.Fatal("Failed to read the Nebraska's port file: ", err)
-		}
-
-		success = true
-		return fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", string(port)), cmd
-	}
-
-	stopNebraska := func(cmd *testexec.Cmd, name string) {
-		s.Log("Stopping Nebraska")
-		// Kill the Nebraska. with SIGINT so it has time to remove port/pid files
-		// and cleanup properly.
-		cmd.Signal(syscall.SIGINT)
-		cmd.Wait()
-
-		if !s.HasError() {
-			return
-		}
-
-		// Read nebraska log and dump it out.
-		if b, err := ioutil.ReadFile("/tmp/nebraska.log"); err != nil {
-			s.Error("Nebraska log does not exist: ", err)
-		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), name+"-nebraska.log"), b, 0644); err != nil {
-			s.Error("Failed to write nebraska log: ", err)
-		}
-	}
+	restartUpstartJob(ctx, s, updateEngineJob, updateEngineServiceName)
 
 	defer func() {
 		// Removes the installed DLC module and unmounts all test DLC images mounted under /run/imageloader.
@@ -271,53 +93,76 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
-		url, cmd := startNebraska()
-		defer stopNebraska(cmd, "single-dlc")
+	install := func(ctx context.Context, s *testing.State, id, omahaURL string) {
+		if err := dlc.Install(ctx, id, omahaURL); err != nil {
+			s.Fatal("Install failed: ", err)
+		}
+	}
 
-		// Before performing any Install/Uninstall.
-		dumpAndVerifyInstalledDLCs("initial_state")
+	uninstall := func(ctx context.Context, s *testing.State, id string) {
+		if err := dlc.Uninstall(ctx, id); err != nil {
+			s.Fatal("Install failed: ", err)
+		}
+	}
+
+	dump := func(ctx context.Context, s *testing.State, tag string, ids ...string) {
+		if err := dlc.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), tag, ids...); err != nil {
+			s.Fatal("Dump failed: ", err)
+		}
+	}
+
+	s.Run(ctx, "Single DLC combination tests", func(ctx context.Context, s *testing.State) {
+		n, err := nebraska.Start(ctx)
+		if err != nil {
+			s.Fatal("Nebraska failed to start: ", err)
+		}
+		s.Log("Started Nebraska")
+		defer n.Stop(s, "single-dlc")
 
 		// Install single DLC.
-		install(dlcID1, url, success)
-		dumpAndVerifyInstalledDLCs("install_single", dlcID1)
+		install(ctx, s, dlcID1, n.URL)
+		dump(ctx, s, "install_single", dlcID1)
 
 		// Install already installed DLC.
-		install(dlcID1, url, success)
-		dumpAndVerifyInstalledDLCs("install_already_installed", dlcID1)
+		install(ctx, s, dlcID1, n.URL)
+		dump(ctx, s, "install_already_installed", dlcID1)
 
 		// Uninstall single DLC.
-		uninstall(dlcID1, success)
-		dumpAndVerifyInstalledDLCs("uninstall_dlc")
+		uninstall(ctx, s, dlcID1)
+		dump(ctx, s, "uninstall_dlc")
 
 		// Uninstall already uninstalled DLC.
-		uninstall(dlcID1, success)
-		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
+		uninstall(ctx, s, dlcID1)
+		dump(ctx, s, "uninstall_already_uninstalled")
 	})
 
-	s.Run(ctx, "Mimic device reboot tests", func(context.Context, *testing.State) {
+	s.Run(ctx, "Mimic device reboot tests", func(ctx context.Context, s *testing.State) {
 		// Stop nebraska after the first install to validate that the following
 		// install after the dlcservice restart will perform a quick install from
 		// DLC cache.
 		func() {
-			url, cmd := startNebraska()
-			defer stopNebraska(cmd, "reboot-mimic-dlc")
+			n, err := nebraska.Start(ctx)
+			if err != nil {
+				s.Fatal("Nebraska failed to start: ", err)
+			}
+			s.Log("Started Nebraska")
+			defer n.Stop(s, "reboot-mimic-dlc")
 
 			// Install single DLC.
-			install(dlcID1, url, success)
-			dumpAndVerifyInstalledDLCs("reboot_install_before_reboot", dlcID1)
+			install(ctx, s, dlcID1, n.URL)
+			dump(ctx, s, "reboot_install_before_reboot", dlcID1)
 		}()
 
 		// Restart dlcservice to mimic a device reboot.
-		restartUpstartJob(dlcserviceJob, dlcserviceServiceName)
+		restartUpstartJob(ctx, s, dlcserviceJob, dlcserviceServiceName)
 
 		// Install single DLC after mimicking a reboot. Pass an empty url so
 		// Nebraska/Omaha aren't hit.
-		install(dlcID1, "", success)
-		dumpAndVerifyInstalledDLCs("install_single_after_reboot", dlcID1)
+		install(ctx, s, dlcID1, "")
+		dump(ctx, s, "install_single_after_reboot", dlcID1)
 
 		// Uninstall single DLC after mimicking a reboot.
-		uninstall(dlcID1, success)
-		dumpAndVerifyInstalledDLCs("uninstall_single_after_reboot")
+		uninstall(ctx, s, dlcID1)
+		dump(ctx, s, "uninstall_single_after_reboot")
 	})
 }
