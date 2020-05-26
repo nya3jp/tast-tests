@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "70784480_fbba60c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-26T21:46:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "404c9179_46b3b8db",
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddb65e5f_5c9d5b02",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
         "patchSetId": 9
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "I can probably do that in another CL. However, maybe this other CL should come before this one so that we don\u0027t lose the link to this review. For now I just addressed the other comments.\n\nI\u0027m not sure what I\u0027m missing but I can\u0027t make the test work when creating another package:\n- creating a files folder inside bundles/cros (to avoid name collision with the filesapp package situated in another location?)\n- copy/pasting these zip tests in \"files\", changing package to files at the top\n- running the test \"files.FilesAppZipPerf\"\nThe test is not found. Maybe the new package should be registered somewhere?",
       "parentUuid": "ddb65e5f_5c9d5b02",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abc11e5_6c400c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-26T21:46:03Z",
+      "side": 1,
+      "message": "They need to be registered in bundles/cros/main.go\n\nAlso, a note on moving this test, since it is a crosbolt test, when it is moved, it will loose connection to its result history due to the new name. You would need to work with crosbolt team to update their database to the new name.",
+      "parentUuid": "0661c9e4_26296f2a",
       "range": {
         "startLine": 5,
         "startChar": 0,
