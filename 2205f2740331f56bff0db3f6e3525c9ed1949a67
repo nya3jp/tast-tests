@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb5acaff_8c0bd909",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-26T23:19:38Z",
+      "side": 1,
+      "message": "It changes the behavior of the tests based on Software Features on the DUT. Not sure if this is what tast would like but I like it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f14c1d_62f5e9b1",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-26T23:19:38Z",
+      "side": 1,
+      "message": "Can you remove this function and add it back till it is implemented? This would makes our codebase cleaner.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
