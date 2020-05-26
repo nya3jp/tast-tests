@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b26fad4_c6b42c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-26T16:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24dd8bfb_0752cd99",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5054d4dd_8b1b3cdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_service.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d7749606_1f46e27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-26T16:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5054d4dd_8b1b3cdc",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3776cde_0a8780ae",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
         "patchSetId": 7
@@ -62,6 +110,24 @@
       "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b436870_1c0ff5ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-26T16:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3776cde_0a8780ae",
+      "revId": "2f64c6fef537869f2160afed991ab0c166bc0bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
