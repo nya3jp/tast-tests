@@ -22,6 +22,30 @@
       "revId": "fb2e445942c7ad32b99ca02eb1000513f9b90a11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669e33a3_2865c0cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcAudioTest.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-26T08:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d44e4d40_1f178687",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "fb2e445942c7ad32b99ca02eb1000513f9b90a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
