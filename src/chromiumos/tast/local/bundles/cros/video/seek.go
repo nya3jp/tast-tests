@@ -99,42 +99,42 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp8_alt",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp8.webm"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp9_alt",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "switch_h264_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "switch_vp8_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "switch_vp9_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "stress_vp8_alt",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 1000},
@@ -142,7 +142,7 @@ func init() {
 			ExtraData:         []string{"720_vp8.webm"},
 			Timeout:           20 * time.Minute,
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "stress_vp9_alt",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 1000},
@@ -150,7 +150,7 @@ func init() {
 			ExtraData:         []string{"720_vp9.webm"},
 			Timeout:           20 * time.Minute,
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "stress_h264_alt",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 1000},
@@ -158,7 +158,7 @@ func init() {
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeVideoVD(),
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},
 	})
 }
