@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9738b68_35eb790e",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:28:39Z",
+      "side": 1,
+      "message": "is there any whitespace to trim here? (trailing newline, maybe?)",
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c91d7a_349f5e8e",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:28:39Z",
+      "side": 1,
+      "message": "maybe we should name this so it\u0027s clear that this is a template for mktemp, rather than a path itself",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca77df85_7ea62bcf",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:28:39Z",
+      "side": 1,
+      "message": "I think we should name the testcases here so we can print a better message than e.g. \"case #3\", especially since if this table grows, then users will be stuck counting array members.",
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a06ab9_3af1e7b2",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T23:28:39Z",
+      "side": 1,
+      "message": "micro nit/YMMV: you can also just use\n\n } else if\n\nhere, as well",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
