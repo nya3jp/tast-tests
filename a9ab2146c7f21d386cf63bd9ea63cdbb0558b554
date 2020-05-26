@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c285c12c_f7a41180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-26T21:51:09Z",
+      "side": 1,
+      "message": "I think these are backwards now?",
+      "range": {
+        "startLine": 108,
+        "startChar": 96,
+        "endLine": 108,
+        "endChar": 126
+      },
+      "revId": "a9ab2146c7f21d386cf63bd9ea63cdbb0558b554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
