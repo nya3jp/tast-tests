@@ -40,6 +40,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/power"
 	_ "chromiumos/tast/local/bundles/cros/printer"
 	_ "chromiumos/tast/local/bundles/cros/qemu"
+	_ "chromiumos/tast/local/bundles/cros/scanner"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/ui"
