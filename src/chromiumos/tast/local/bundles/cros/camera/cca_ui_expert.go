@@ -34,8 +34,6 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
-	defer app.RemoveCacheData(ctx,
-		[]string{"expert", "showMetadata", "saveMetadata"})
 
 	for i, action := range []struct {
 		Name    string

@@ -36,9 +36,6 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	app.RemoveCacheData(ctx,
-		[]string{"toggle3sec", "toggle10sec", "toggle3x3", "toggle4x4", "toggleGolden"})
-
 	restartApp := func() {
 		s.Log("Restarts CCA")
 		if err := app.Restart(ctx); err != nil {
