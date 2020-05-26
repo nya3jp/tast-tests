@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3808ad52_3d9962b2",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "Good catch",
+      "parentUuid": "9e896049_99e6270d",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5203c9b5_5f32495b",
         "filename": "src/chromiumos/tast/common/perf/timeline.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d41b8f_e415075d",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5203c9b5_5f32495b",
+      "range": {
+        "startLine": 182,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 80
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d071abf6_324ef6ab",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "Done. Created a second function `WaitForSnapshottingDone`. Some tests wait for the snapshotting goroutine to return by itself.",
+      "parentUuid": "a65a3aec_b7c02300",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc3f059b_57c7ceac",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd55b03_ac6ae3ba",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3f059b_57c7ceac",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6001bac0_1100f5cd",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "I managed to remove this edge case. It is sufficient to create a new semaphore at the beginning of each Sleep(). Is this better?\n\nI am trying to avoid the sync.Mutex solution because it would further increase the complexity this CL. semaphore.Weighted does essentially the same thing (also implemented with channels and a mutex), but its complexity is hidden behind a high-level interface.",
+      "parentUuid": "93c8f1e0_5ec3f945",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae1ab0ad_5132e30d",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 8
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4308d7bf_1ca06d28",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "I am not sure what to return here and what to do with the return value. We advance the clock in the tests, so the tests determine the sleep time. I could check for the requested sleep duration...\n\nOne nice thing (even though not needed right now) is that this function (and the other WaitFor* functions) works properly even if called from multiple goroutines. If this function returns the time duration, it would have to be passed through a channel, making this property harder to ensure.",
+      "parentUuid": "ae1ab0ad_5132e30d",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a15afe7_fe4e9855",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 8
@@ -160,6 +304,30 @@
       "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a663aba0_b32f33e8",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-26T03:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a15afe7_fe4e9855",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 26
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
