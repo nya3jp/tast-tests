@@ -28,5 +28,9 @@
         <activity android:name=".OverscrollTestActivity"
                   android:label="ARC Keyboard Test (Overscroll)"
                   android:exported="true"></activity>
+        <activity android:name=".CheckKeyPreImeActivity"
+                  android:label="ARC Keyboard Test (PreIme)"
+                  android:exported="true">
+        </activity>
     </application>
 </manifest>
