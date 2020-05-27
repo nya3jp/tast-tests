@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "7aa5a0ec_3c0abfdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T23:36:59Z",
+      "side": 1,
+      "message": "Converted all Functions in package \u0027dlc\u0027 as well.",
+      "parentUuid": "492fdfe8_a8b2c7ff",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b028793_b775b358",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 2
@@ -235,6 +259,30 @@
       "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98661293_0c000ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T23:36:59Z",
+      "side": 1,
+      "message": "Seems like docs allow it for short and concise functions, but following your recommendation.\nDone",
+      "parentUuid": "1897d8e9_aa49e3de",
+      "range": {
+        "startLine": 61,
+        "startChar": 31,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
