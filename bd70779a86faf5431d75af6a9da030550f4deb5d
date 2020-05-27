@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ecf549_b31dc771",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:46:15Z",
+      "side": 1,
+      "message": "you\u0027re not actually calling this anywhere...\n\ndid you resolve this in some other way?\nhttps://chromium-review.googlesource.com/219844\n(It does seem like we shouldn\u0027t need to do that... Or if we do, that means we need to fix up the test teardown or initialization, not just sprinkle ClearBlacklist() around in tests.)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "bd70779a86faf5431d75af6a9da030550f4deb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
