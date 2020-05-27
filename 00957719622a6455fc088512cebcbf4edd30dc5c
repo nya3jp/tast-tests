@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b1047b6_469c5950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Just use ioutil.ReadFile https://golang.org/pkg/io/ioutil/#ReadFile",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d0612f_513b3fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Please do not use s. Just return an error. Same on all other functions.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b028793_b775b358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "why not checking with the values rather than string representation?  You can use strconv.ParseInt.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b072f8a_6a2dbcc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Please do not name the return value just for omitting a line or two.\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 61,
+        "startChar": 31,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1789b156_dfa4ced3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Remove this function, and use like\n  if err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil { ... }",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c496f12_dcb4a0e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
         "patchSetId": 2
@@ -13,6 +122,109 @@
       "writtenOn": "2020-05-27T00:05:04Z",
       "side": 1,
       "message": "I prefer if you call this nebraska_wrapper to be consistent with all other nebraska wrappers.",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5128c62_4dc3a366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Since this is nebraska package, you don\u0027t need \"Nebraska\" in your function name: see https://golang.org/doc/effective_go.html#package-names",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a689624e_31632559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "Rather returning a pair of string and cmd, I guess you can define a type.\n\n  type Nebraska {\n    URL string\n    cmd *testexec.Cmd\n  }\n\nAnd then this would be named as:\n  func New(ctx context.Context) (*Nebraska, error)\n\nand the other is:\n  func (n *Nebraska) Stop(s *testing.State) error {\n  }",
+      "range": {
+        "startLine": 23,
+        "startChar": 58,
+        "endLine": 23,
+        "endChar": 81
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38339421_17690f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "With returning error, testing.State may not be necessarily passed to this function. If so, testing.ContextLog() can be used for logging.",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4cc05e_0adb2ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "It is nicer to return an error rather than s.Fatal.\nSame on other places.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95560de9_e31d2435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T01:23:21Z",
+      "side": 1,
+      "message": "This looks like, if an unexpected error happens, testing.Poll finish with a success. I don\u0027t think that\u0027s expected. Possibly this would be:\n  if _, err :\u003d os.Stat(\"/tmp/nebraska/port\"); err !\u003d nil {\n    if os.IsNotExist(err) {\n      return err\n    }\n    return testing.PollBreak(err)\n  }\n  return nil",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 3
+      },
       "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
