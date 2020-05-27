@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4791559_20526fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T23:36:48Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this comment and other comments of mine in this file aren\u0027t addressed yet.",
+      "parentUuid": "33df4851_ee6a46f6",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90f0b8b2_41726137",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 2
@@ -323,6 +347,30 @@
       "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae343c0f_c68b34c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T23:36:48Z",
+      "side": 1,
+      "message": "I was wondering since I was thinking android_vm doesn\u0027t specify the version of Android; if there\u0027s android_r, it might be great. But I\u0027m fine with android_vm.\n\nAnyways, I think it is fine to be android_vm for now as Arthur says.",
+      "parentUuid": "c9c19ac0_7c62f60c",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
