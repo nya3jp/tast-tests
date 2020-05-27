@@ -22,6 +22,30 @@
       "revId": "b8c7c3d432a439b2c229a38e8bfbe8c3cbf2765d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf81b26_e40adf40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-27T10:40:42Z",
+      "side": 1,
+      "message": "That is too much. The test finishes in 2:15 on sarien and I don\u0027t expect it to be much slower on other machines.",
+      "parentUuid": "7e54c816_5fae86b8",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "b8c7c3d432a439b2c229a38e8bfbe8c3cbf2765d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
