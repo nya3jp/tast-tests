@@ -16,6 +16,24 @@
       "revId": "5fd59dfbbe47a773923d624024249035fcc71a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0bca536_68d25612",
+        "filename": "src/chromiumos/tast/services/cros/policy/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-27T07:50:25Z",
+      "side": 1,
+      "message": "Yes, the policy proto will still be regenerated.",
+      "parentUuid": "b9316169_8f650724",
+      "revId": "5fd59dfbbe47a773923d624024249035fcc71a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
