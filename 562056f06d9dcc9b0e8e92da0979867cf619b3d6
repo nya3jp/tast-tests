@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c3d75ff_1c5941c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "no longer simulating -- drop?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1ed3d1_3ba85d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "this should have died in previous CLs, but maybe drop it now?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 71
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d7a000_0d23ebd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "shouldn\u0027t we be prepping Chrome before this point? Otherwise, we might (but not guaranteed) still be logged in from a previous test, and things like setUp() -\u003e eraseState() will be operating on a previous login instance. See also my comments on setUp().",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe2d459_d788212c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "failed to start Chrome. Same elsewhere",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 55
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c7d88b3_59b9d17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "Chrome failed to log in",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b673d502_218e8a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_start_loggedin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "log in",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335dd082_520f5416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "are we sure this is really going to erase the right profile on setup? we haven\u0027t really guaranteed whether the correct user is logged in or not. (e.g., we could have been running a guest test before this? or a user test? or no user logged in yet?)\n\nperhaps it would be clearer to have this [1] all done either in the test itself, or all in shillscript.go -- but not split partly between the two.\n\nPossible solution: don\u0027t stick ShillUserProfileDir in CreatedDirectories at all. The test should perform a login and delete this itself, if needed. No need to clear it on cleanup.\n\n[1] i.e., handling initial login, profile clearing (or not), and cleanup",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 81
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ece3be_a92a99b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "no one\u0027s calling this any more. delete?",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 66
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7c8a88_5000715c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 67
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a28ab25_b44ea893",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T20:49:04Z",
+      "side": 1,
+      "message": "feels like this could be a separate CL, since there\u0027s a lot of unrelated commotion in the shill-specific test bits",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 55
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
