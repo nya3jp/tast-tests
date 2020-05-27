@@ -127,7 +127,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 	if err := checkMountState(ctx, utility, false); err != nil {
 		return errors.Wrap(err, "vault mounted before testing AddKeyEx")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount vault with the added key")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
@@ -147,7 +147,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 	}
 
 	// The old key should still work as expected.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount vault with the old key after adding pin")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
@@ -168,7 +168,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 	if err := utility.RemoveVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PinLabel); err != nil {
 		return errors.Wrap(err, "failed to remove key")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false); err == nil {
 		return errors.New("still can mount vault with removed key")
 	}
 	if err := checkMountState(ctx, utility, false); err != nil {
@@ -188,12 +188,12 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinar
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstChangedPassword, util.FirstPassword); err != nil {
 		return errors.Wrap(err, "incorrect CheckKeyEx behaviour right after MigrateKeyEx")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err == nil {
 		return errors.New("still can mount vault with old password")
 	}
 
 	// Mount with new password and try MigrateKeyEx() again.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstChangedPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstChangedPassword, util.PasswordLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount with new password")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
@@ -244,10 +244,10 @@ func testUpdateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary
 	}
 
 	// Mounting with old and new label should behave as expected.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err == nil {
 		return errors.New("still can mount vault with old label")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount with new label")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
@@ -337,7 +337,7 @@ func CryptohomeKeysAndMountSanity(ctx context.Context, s *testing.State) {
 
 	// Create the user and check it is correctly mounted and can be unmounted.
 	func() {
-		if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+		if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
 			s.Fatal("Failed to create user: ", err)
 		}
 		// Unmount within this closure, because we want to have the thing
@@ -359,7 +359,7 @@ func CryptohomeKeysAndMountSanity(ctx context.Context, s *testing.State) {
 		if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
 			s.Fatal("Failed to remove vault: ", err)
 		}
-		if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
+		if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err == nil {
 			s.Fatal("Still can mount vault after removing vault: ")
 		}
 		if err := checkMountState(ctx, utility, false); err != nil {

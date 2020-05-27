@@ -376,38 +376,9 @@ func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
 	return nil
 }
 
-// VaultConfig specifies the extra options to Mounting/Creating a vault.
-type VaultConfig struct {
-	// Ephemeral is set to true if the vault is ephemeral, that is, the vault is erased after the user logs out.
-	Ephemeral bool
-
-	// Ecryptfs is set to true if the vault should be backed by eCryptfs.
-	Ecryptfs bool
-}
-
-// NewVaultConfig creates a default vault config.
-func NewVaultConfig() *VaultConfig {
-	return &VaultConfig{}
-}
-
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
-// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
-func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, password, label string, create bool, config *VaultConfig) error {
-	const (
-		// mountFlagEphemeral is the flag passed to cryptohome command line when you want the vault to be ephemeral.
-		mountFlagEphemeral = "--ensure_ephemeral"
-		// mountFlagEcryptfs is the flag passed to cryptohome command line when you want the vault to use ecryptfs.
-		mountFlagEcryptfs = "--ecryptfs"
-	)
-
-	var extraFlags []string
-	if config.Ephemeral {
-		extraFlags = append(extraFlags, mountFlagEphemeral)
-	}
-	if config.Ecryptfs {
-		extraFlags = append(extraFlags, mountFlagEcryptfs)
-	}
-	if _, err := u.binary.MountEx(ctx, username, password, create, label, extraFlags); err != nil {
+func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, password, label string, create bool) error {
+	if _, err := u.binary.MountEx(ctx, username, password, create, label); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
