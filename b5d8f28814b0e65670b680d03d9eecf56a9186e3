@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1dc7ccd_601f8678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-05-27T19:36:43Z",
+      "side": 1,
+      "message": "nit: Do not refer to slide number. We deliberately use code like NC01 to avoid that.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 114
+      },
+      "revId": "b5d8f28814b0e65670b680d03d9eecf56a9186e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
