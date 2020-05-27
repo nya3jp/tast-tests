@@ -30,6 +30,7 @@ group("all") {
     "ArcPipTest:ArcPipTest",
     "ArcPipVideoTest:ArcPipVideoTest",
     "ArcPrintTest:ArcPrintTest",
+    "ArcPreImeKeyEventTest:ArcPreImeKeyEventTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
