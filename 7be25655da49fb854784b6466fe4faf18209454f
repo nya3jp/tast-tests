@@ -16,6 +16,24 @@
       "revId": "7be25655da49fb854784b6466fe4faf18209454f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3321cc66_d5128151",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-05-27T04:33:25Z",
+      "side": 1,
+      "message": "We could reuse them, but I think I prefer to just duplicate the arguments:\n- The arguments are not entirely the same. We could add the ARC-specific param to Chrome, but I prefer to only add Chrome-specific logging for clarity and to avoid any possible noise in the logs. (Though it most probably will be fine)\n- The duplication here is only 3 lines.\n- It\u0027s easy to immediately see which arguments are passed to Chrome when looking at the \"bootedWithVideoLoggingPre\", without having to dig further into the code.\n\nWe can always merge them together later if they grow bigger. WDYT?",
+      "parentUuid": "08216ad7_4ca499b6",
+      "revId": "7be25655da49fb854784b6466fe4faf18209454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
