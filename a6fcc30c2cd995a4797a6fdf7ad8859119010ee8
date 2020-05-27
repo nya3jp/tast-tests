@@ -472,6 +472,24 @@
     },
     {
       "key": {
+        "uuid": "dd8a8f4a_9e38c41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-27T15:37:38Z",
+      "side": 1,
+      "message": "you can leave it as it is now, without the sleep.\nif the test becomes flaky, then you can add it.\n\nalternative, since this file is going to include only clamshell-mode tests, then you can use a precondition for that.\nIIRC, we don\u0027t have a \"Clamshell\" precondition ATM, but we have a Tablet one... so perhaps it makes sense to add a \"Clamshell\" one.",
+      "parentUuid": "680a8fc4_4d1be1cb",
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "baa4a116_f04a4586",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
