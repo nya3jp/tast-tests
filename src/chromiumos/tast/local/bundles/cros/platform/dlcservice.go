@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/platform/dlc"
 	"chromiumos/tast/local/bundles/cros/platform/nebraska"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -56,21 +55,6 @@ func DLCService(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
 	}
 
-	restartUpstartJob := func(ctx context.Context, s *testing.State, job, serviceName string) {
-		// Restart job.
-		s.Logf("Restarting %s job", job)
-		if err := upstart.RestartJob(ctx, job); err != nil {
-			s.Fatalf("Failed to restart %s: %v", job, err)
-		}
-
-		// Wait for service to be ready.
-		if bus, err := dbusutil.SystemBus(); err != nil {
-			s.Fatal("Failed to connect to the message bus: ", err)
-		} else if err := dbusutil.WaitForService(ctx, bus, serviceName); err != nil {
-			s.Fatal("Failed to wait for D-Bus service: ", err)
-		}
-	}
-
 	// Delete rollback-version and rollback-happened pref which are
 	// generated during Rollback and Enterprise Rollback.
 	// rollback-version is written when update_engine Rollback D-Bus API is
@@ -86,7 +70,8 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart update-engine to pick up the new prefs.
-	restartUpstartJob(ctx, s, updateEngineJob, updateEngineServiceName)
+	s.Logf("Restarting %s job", updateEngineJob)
+	dlc.RestartUpstartJob(ctx, updateEngineJob, updateEngineServiceName)
 
 	cleanup := func() {
 		// Removes the installed DLC module and unmounts all test DLC images mounted under /run/imageloader.
@@ -175,7 +160,8 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}()
 
 		// Restart dlcservice to mimic a device reboot.
-		restartUpstartJob(ctx, s, dlcserviceJob, dlcserviceServiceName)
+		s.Logf("Restarting %s job", dlcserviceJob)
+		dlc.RestartUpstartJob(ctx, dlcserviceJob, dlcserviceServiceName)
 
 		// Install DLC after mimicking a reboot. Pass an empty url so
 		// Nebraska/Omaha aren't hit.
