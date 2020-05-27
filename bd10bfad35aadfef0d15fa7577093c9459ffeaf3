@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7d319ce_dc9ac618",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-27T08:06:39Z",
+      "side": 1,
+      "message": "May perform sanity check? iface \u003d\u003d m[0]",
+      "parentUuid": "57ef6529_db4724f1",
+      "range": {
+        "startLine": 325,
+        "startChar": 25,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "360db625_895e5455",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 2
@@ -41,6 +65,29 @@
         "startChar": 0,
         "endLine": 347,
         "endChar": 2
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83789ba8_7b87f2b4",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-27T08:06:39Z",
+      "side": 1,
+      "message": "\"failed to set the powersave mode to %s\", turnOn",
+      "range": {
+        "startLine": 349,
+        "startChar": 28,
+        "endLine": 349,
+        "endChar": 60
       },
       "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
