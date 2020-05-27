@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89084005_bb24511a",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-27T00:34:45Z",
+      "side": 1,
+      "message": "nit: here and elsewhere capitalize acronym (i.e. \"DUT\")",
+      "range": {
+        "startLine": 182,
+        "startChar": 61,
+        "endLine": 182,
+        "endChar": 64
+      },
+      "revId": "814b4edfdae063e6091d630673b9dddd7544c77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90697ad3_a85cd37f",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-27T00:34:45Z",
+      "side": 1,
+      "message": "Can you poll here instead of sleeping?",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "814b4edfdae063e6091d630673b9dddd7544c77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
