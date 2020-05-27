@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be84704b_032158fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-27T23:07:08Z",
+      "side": 1,
+      "message": "It might be good to define a constant for this string at the top of the file, which you can reuse in both the test struct definition and this DataPath. Ditto for golden.",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
