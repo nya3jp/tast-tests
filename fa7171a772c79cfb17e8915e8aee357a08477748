@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0e541cd_0e5cbe6d",
+        "filename": "src/chromiumos/tast/common/network/eapcerts/eapcerts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-27T07:02:46Z",
+      "side": 1,
+      "message": "There are some problems in that file: crrev.com/c/2217271.\nI will keep this file here for a more while until the CL merge.",
+      "parentUuid": "e98e0422_c7a0d6e0",
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da831824_d253dc4c",
         "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89de455d_3d2fd346",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-27T07:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da831824_d253dc4c",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c006c014_8cf9347c",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-27T07:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2a97aa_fd0698d8",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81010615_d9165d56",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 9
@@ -85,6 +151,30 @@
       "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb980719_1172575c",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-27T07:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81010615_d9165d56",
+      "range": {
+        "startLine": 114,
+        "startChar": 30,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +215,24 @@
       "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbec3c75_50022a82",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-27T07:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a509e5a4_bbb56290",
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
