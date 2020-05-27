@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "12018996_6a8220cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T16:08:06Z",
+      "side": 1,
+      "message": "The err nicely has that for us",
+      "parentUuid": "63b0eea4_4026426b",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44287847_de5c99d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8647e7c_dd1003cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T16:08:06Z",
+      "side": 1,
+      "message": "Yes this is the old logic, and our dlcservice_util prints out `root_mount`\nAck",
+      "parentUuid": "5a6b28d7_63535b54",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
