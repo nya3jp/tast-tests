@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2fd63d7_784377dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-27T06:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76bbd2d4_9c4d3333",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a63353f4_8f6d504a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86a6d0c_7df36ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-27T06:33:13Z",
+      "side": 1,
+      "message": "We do need to login first and I added that.",
+      "parentUuid": "a63353f4_8f6d504a",
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9302dd79_82c11367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_multi_profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-27T06:33:13Z",
+      "side": 1,
+      "message": "Actually, that\u0027s true. I deleted it.",
+      "parentUuid": "20bf6ff8_40aa2ada",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9612b089_08217ad3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
         "patchSetId": 6
@@ -79,6 +145,24 @@
       "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06ba7db_a983c42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-27T06:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9612b089_08217ad3",
+      "revId": "a4cdf081620ce45ed03f80eac65e4c4e734858be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
