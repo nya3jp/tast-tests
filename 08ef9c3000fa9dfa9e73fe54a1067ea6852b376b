@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "c0e159c4_fbbd9233",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-27T00:13:36Z",
+      "side": 1,
+      "message": "in Go, when you know the struct members (they are well defined and you won\u0027t add/delete them in runtime), it is preferred to use a Struct.\n\ncould you describe in more detail what problems did you find when  using Struct?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8603c72_eb5237dd",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-27T00:13:36Z",
+      "side": 1,
+      "message": "huge nit: here and below. end sentence with a period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 56,
+        "startChar": 50,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4ba84a5_ddea9335",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
@@ -13,6 +59,29 @@
       "writtenOn": "2020-05-26T22:43:07Z",
       "side": 1,
       "message": "Maybe make zoneNames a map so we don\u0027t have to do this?\n\nI\u0027m not sure which way is more idiomatic though.",
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13406e34_4ed27b8d",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-27T00:13:36Z",
+      "side": 1,
+      "message": "any particular reason for returning \"rapl\" here, and not \"nil\"?",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 14
+      },
       "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
