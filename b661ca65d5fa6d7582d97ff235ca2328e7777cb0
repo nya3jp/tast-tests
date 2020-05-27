@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289b59f9_a63540a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-27T00:30:07Z",
+      "side": 1,
+      "message": "nit: s/familiar/friendly?",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
