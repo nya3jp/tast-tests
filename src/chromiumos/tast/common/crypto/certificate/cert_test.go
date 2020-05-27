@@ -7,6 +7,7 @@ package certificate
 import (
 	"crypto/x509"
 	"encoding/pem"
+	"reflect"
 	"testing"
 
 	"chromiumos/tast/errors"
@@ -35,6 +36,27 @@ func validateCertSignature(cert, parent *x509.Certificate) error {
 			return err
 		}
 	}
+	return nil
+}
+
+func validatePrivateKey(privateKey string, cert *x509.Certificate) error {
+	// Parse private key. It should be a PKCS#1 key in PEM format.
+	pem, err := pemDecode(privateKey)
+	if err != nil {
+		return err
+	}
+	key, err := x509.ParsePKCS1PrivateKey(pem)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse private key")
+	}
+	if err = key.Validate(); err != nil {
+		return errors.Wrap(err, "private key failed validation")
+	}
+
+	if !reflect.DeepEqual(&key.PublicKey, cert.PublicKey) {
+		return errors.New("public key does not match")
+	}
+
 	return nil
 }
 
@@ -67,24 +89,24 @@ func TestCertificate(t *testing.T) {
 		}
 	}
 
-	// Parse private key. It should be a PKCS#1 key in PEM format.
-	pem, err := pemDecode(c.PrivateKey)
-	if err != nil {
-		t.Fatal(err)
+	// Validate private keys.
+	if err := validatePrivateKey(c.PrivateKey, cert); err != nil {
+		t.Fatal("Failed private key check: ", err)
 	}
-	key, err := x509.ParsePKCS1PrivateKey(pem)
-	if err != nil {
-		t.Fatal("Failed to parse private key: ", err)
-	}
-	if err = key.Validate(); err != nil {
-		t.Fatal("Private key failed validation: ", err)
+	if err := validatePrivateKey(c.ClientPrivateKey, clientCert); err != nil {
+		t.Fatal("Failed client private key check: ", err)
 	}
 
 	// Check cert signatures.
 	if err := validateCertSignature(cert, caCert); err != nil {
 		t.Error("Failed CA cert check: ", err)
 	}
-	if err = validateCertSignature(caCert, caCert); err != nil {
+	// Check clientCert signatures.
+	if err := validateCertSignature(clientCert, caCert); err != nil {
+		t.Error("Failed client CA cert check: ", err)
+	}
+
+	if err := validateCertSignature(caCert, caCert); err != nil {
 		t.Error("Unexpeted: CA cert isn't self-signed")
 	}
 }
