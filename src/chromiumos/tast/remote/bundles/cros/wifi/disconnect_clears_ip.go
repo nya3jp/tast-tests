@@ -68,7 +68,7 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
-	addr, err := ipv4Addrs(ctx, tf)
+	addr, err := tf.ClientIPv4Addrs(ctx)
 	if err != nil {
 		s.Fatal("DUT: failed to get the IP address: ", err)
 	}
@@ -88,7 +88,7 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 	wCtx, st := timing.Start(ctx, "waitIPGone")
 	defer st.End()
 	if err := testing.Poll(wCtx, func(wCtx context.Context) error {
-		addr, err := ipv4Addrs(wCtx, tf)
+		addr, err := tf.ClientIPv4Addrs(wCtx)
 		if err != nil {
 			s.Fatal("DUT: failed to get the IP address: ", err)
 		}
@@ -100,22 +100,4 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear the IP after WiFi disconnected: ", err)
 	}
 
-}
-
-// ipv4Addrs returns the IPv4 addresses for the network interface.
-func ipv4Addrs(ctx context.Context, tf *wificell.TestFixture) ([]string, error) {
-	iface, err := tf.ClientInterface(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
-	}
-
-	netIface := &network.GetIPv4AddrsRequest{
-		InterfaceName: iface,
-	}
-	addr, err := tf.WifiClient().GetIPv4Addrs(ctx, netIface)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the IPv4 addresses")
-	}
-
-	return addr.Ipv4, nil
 }
