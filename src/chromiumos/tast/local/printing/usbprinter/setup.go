@@ -78,15 +78,14 @@ func RemoveModules(ctx context.Context) error {
 	return nil
 }
 
-// Start sets up and runs a new virtual printer and attaches it to the system
-// using USBIP. The given descriptors and attributes provide the virtual printer
-// with paths to the USB descriptors and IPP attributes files respectively. The
-// path to the file to write received documents is specified by record. The
-// returned command is already started and must be stopped (by calling its Kill
-// and Wait methods) when testing is complete.
-func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
+// runVirtualUsbPrinter starts an instance of virtual-usb-printer with the
+// given arguments.  Waits until the printer has been launched successfully,
+// and then returns the command.
+// The returned command must be stopped using Kill()/Wait() once testing is
+// complete.
+func runVirtualUsbPrinter(ctx context.Context, descriptors, attributes, record, esclCaps, scanPath string) (cmd *testexec.Cmd, err error) {
 	testing.ContextLog(ctx, "Starting virtual printer")
-	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record)
+	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record, "--scanner_capabilities_path="+esclCaps, "--scanner_doc_path="+scanPath)
 
 	p, err := launch.StdoutPipe()
 	if err != nil {
@@ -114,6 +113,13 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	// writing to stdout
 	go io.Copy(ioutil.Discard, p)
 
+	cmdToKill = nil
+	return launch, nil
+}
+
+// attachUsbipDevice attaches the UsbIp device specified by devInfo to the
+// system. Returns nil if the device was attached successfully.
+func attachUsbipDevice(ctx context.Context, devInfo DevInfo) error {
 	// Begin waiting for udev event.
 	udevCh := make(chan error, 1)
 	go func() {
@@ -125,7 +131,7 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	attach := testexec.CommandContext(ctx, "usbip", "attach", "-r", "localhost",
 		"-b", "1-1")
 	if err := attach.Run(); err != nil {
-		return nil, errors.Wrap(err, "failed to attach virtual usb printer")
+		return errors.Wrap(err, "failed to attach virtual usb printer")
 	}
 
 	// Wait for a signal from udevadm to see if the device was successfully
@@ -134,11 +140,11 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	select {
 	case err := <-udevCh:
 		if err != nil {
-			return nil, err
+			return err
 		}
 		testing.ContextLog(ctx, "Found add event")
 	case <-ctx.Done():
-		return nil, errors.Wrap(ctx.Err(), "didn't get udev event")
+		return errors.Wrap(ctx.Err(), "didn't get udev event")
 	}
 
 	// Run lsusb to sanity check that that the device is actually connected.
@@ -146,11 +152,68 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	checkAttached := testexec.CommandContext(ctx, "lsusb", "-d", id)
 	if err := checkAttached.Run(); err != nil {
 		checkAttached.DumpLog(ctx)
-		return nil, errors.Wrap(err, "printer was not successfully attached")
+		return errors.Wrap(err, "printer was not successfully attached")
 	}
+	return nil
+}
 
+// StartScanner sets up and runs a new virtual printer with scanner support and
+// attaches it to the system using USBIP. The given descriptors and attributes
+// provide the virtual printer with paths to the USB descriptors and IPP
+// attributes files, which are necessary to setup the eSCL over IPP connection.
+//
+// scanPath is the path to use as the source for scanned documents, while
+// esclCaps is a path to a JSON config file which specifies the supported
+// behavior of the scanner.
+//
+// The returned command is already started and must be stopped (by calling its
+// Kill and Wait methods) when testing is complete.
+func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes, esclCaps, scanPath string) (cmd *testexec.Cmd, err error) {
+	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, "", esclCaps, scanPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
+	}
+	cmdToKill := virtualUsbPrinter
+	defer func() {
+		if cmdToKill != nil {
+			virtualUsbPrinter.Kill()
+			virtualUsbPrinter.Wait()
+		}
+	}()
+
+	err = attachUsbipDevice(ctx, devInfo)
+	if err != nil {
+		return nil, errors.Wrap(err, "attaching usbip device failed")
+	}
 	cmdToKill = nil
-	return launch, nil
+	return virtualUsbPrinter, nil
+}
+
+// Start sets up and runs a new virtual printer and attaches it to the system
+// using USBIP. The given descriptors and attributes provide the virtual printer
+// with paths to the USB descriptors and IPP attributes files respectively. The
+// path to the file to write received documents is specified by record. The
+// returned command is already started and must be stopped (by calling its Kill
+// and Wait methods) when testing is complete.
+func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
+	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, record, "", "")
+	if err != nil {
+		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
+	}
+	cmdToKill := virtualUsbPrinter
+	defer func() {
+		if cmdToKill != nil {
+			virtualUsbPrinter.Kill()
+			virtualUsbPrinter.Wait()
+		}
+	}()
+
+	err = attachUsbipDevice(ctx, devInfo)
+	if err != nil {
+		return nil, errors.Wrap(err, "attaching usbip device failed")
+	}
+	cmdToKill = nil
+	return virtualUsbPrinter, nil
 }
 
 // StartIPPUSB performs the same configuration as Start(), with the additional
