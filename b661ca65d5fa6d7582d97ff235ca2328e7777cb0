@@ -57,6 +57,24 @@
       "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a8c742_5b3ee40c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-27T01:34:02Z",
+      "side": 1,
+      "message": "All the solutions looks good to me. I would prefer the first one, and we can explicitly set the value when we actually need it.\nThanks!",
+      "parentUuid": "5f10a166_d4a0cfc7",
+      "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
