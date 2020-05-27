@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "04c45b16_bb8c2698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-27T01:47:41Z",
+      "side": 1,
+      "message": "If you only plan to use this in QueryService, you can also inline it there at ~L345 or so.",
+      "revId": "d79939c85675b3db012e3a67a2658b8bcf52e3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f982986_c9b9e434",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
