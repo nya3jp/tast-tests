@@ -43,10 +43,10 @@ func create2VaultsForTesting(ctx context.Context, utility *hwsec.UtilityCryptoho
 	}()
 
 	// Create 2 vaults for testing.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
 		return errors.Wrap(err, "failed to create first user")
 	}
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, true); err != nil {
 		return errors.Wrap(err, "failed to create second user")
 	}
 
@@ -82,13 +82,13 @@ func cleanupVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) (
 
 // checkVaultWorks will check that the vault specified by username, password and pin works in both mounting and unlock (CheckKeyEx).
 func checkVaultWorks(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, username, password, pin string) error {
-	if err := utility.MountVault(ctx, username, password, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, username, password, util.PasswordLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount with password")
 	}
 	if err := utility.UnmountAll(ctx); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
-	if err := utility.MountVault(ctx, username, pin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, username, pin, util.PinLabel, false); err != nil {
 		return errors.Wrap(err, "failed to mount with password")
 	}
 	if err := utility.UnmountAll(ctx); err != nil {
@@ -122,10 +122,10 @@ func checkBothVaultsAreOperational(ctx context.Context, utility *hwsec.UtilityCr
 // checkOthersAreBlocked will check that users other than util.FirstUsername are blocked from mounting and CheckKeyEx (unlock).
 func checkOthersAreBlocked(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
 	// Mount should fail.
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, false); err == nil {
 		return errors.Wrap(err, "second user is mountable with password after locking to single user")
 	}
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPin, util.PinLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPin, util.PinLabel, false); err == nil {
 		return errors.Wrap(err, "second user is mountable with pin after locking to single user")
 	}
 
@@ -138,7 +138,7 @@ func checkOthersAreBlocked(ctx context.Context, utility *hwsec.UtilityCryptohome
 	}
 
 	// Shouldn't be able to create new users.
-	if err := utility.MountVault(ctx, util.ThirdUsername, util.ThirdPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.ThirdUsername, util.ThirdPassword, util.PasswordLabel, true); err == nil {
 		return errors.Wrap(err, "create user succeeded after locking to single user")
 	}
 	return nil
@@ -175,7 +175,7 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	}
 
 	// Now mount the first user's vault and lock to single user mount.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false); err != nil {
 		s.Fatal("Failed to mount the user for lock to single user mount")
 	}
 	if err := utility.LockToSingleUserMountUntilReboot(ctx, util.FirstUsername); err != nil {
