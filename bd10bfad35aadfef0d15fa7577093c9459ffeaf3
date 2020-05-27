@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57ef6529_db4724f1",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "As you don\u0027t check this group, maybe ignore it \u0027?:\u0027 ?\n\nsee: https://golang.org/pkg/regexp/syntax/",
+      "range": {
+        "startLine": 325,
+        "startChar": 25,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360db625_895e5455",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we really need this. The original bug of adding this is b/29517730. From the thread, it looks like the second commit (moving powersave_switch after set_device_enabled) is the actual fix and the first one is kind of work-around?",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 2
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a2d410_ebb99f47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "I guess you can use nil literal here and don\u0027t need to declare the var.",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59cf770_f835af8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "In Autotest version, it checks power save is disabled here. However, we don\u0027t always disable power save in TestFixture as Autotest and just keep the default. So maybe we can get the initial setting here and restore it in a defer?",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb30d72_8489e1af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "If it reaches this line, DisconnectWifi will not be called.\n\nSo I guess you can either:\n- still have disconnect in line80 defer, but keep a flag to tell if it should be skipped.\n- wrap line 77-90 in an anonymous function and then Disconnect can be placed in defer of the function.\nWDYT?",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a526d252_7c664feb",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "Do you remove the Runner type alias intentionally?",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7ad26c_edb3294a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T06:18:46Z",
+      "side": 1,
+      "message": "According to the doc: # DTIM (delivery traffic information message) period (range 1..255)\n\nMaybe worth adding a validation for the value? (and also unit test)",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
