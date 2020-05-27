@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc182a6d_8e638bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "most of the functions you added here are not adhering to this sentences. They are not interfacing with dlcservice daemon. Is dlcservice_util.go is supposed to be a wrapper on dlcservice_util tool in the platform? or is it supposed to be a list of utilities for testing dlcs? I think it should be clarified better.",
+      "range": {
+        "startLine": 5,
+        "startChar": 24,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f71deca_a71225c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "add some comments for these functions. some of them are not obviously understandable.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b0eea4_4026426b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "did you wanted to tell which file?",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44287847_de5c99d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "nit: add a new line between these functions please.",
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6b28d7_63535b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "what is a root mount? you mean the root directory on a mounted dlc? I think its better to use root_path or dlc_root_path to be consistent with the dlcservice API?\n\nedit: I see that you\u0027re just moving stuff around. feel free to ignore my comment then.",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb39c34_f67d6d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska_wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T16:01:36Z",
+      "side": 1,
+      "message": "Start",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "9aa66e5b23f19eb6f5df8eda2e46e75028947fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
