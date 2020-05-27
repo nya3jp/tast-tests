@@ -34,6 +34,24 @@
       "revId": "7be25655da49fb854784b6466fe4faf18209454f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a999b80_36170c55",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-27T04:44:49Z",
+      "side": 1,
+      "message": "Fair enough. Thanks for the reply.",
+      "parentUuid": "3321cc66_d5128151",
+      "revId": "7be25655da49fb854784b6466fe4faf18209454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
