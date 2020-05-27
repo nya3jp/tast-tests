@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9100a14f_dec8ca46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-27T00:24:32Z",
+      "side": 1,
+      "message": "micro nit: filepath.Join?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "b0eff565cdea5d1e87f9ca34fba625bdf4c28778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02dd2230_f7f47bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf/dptf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-27T00:24:32Z",
+      "side": 1,
+      "message": "micro nit: filepath.Join?",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "b0eff565cdea5d1e87f9ca34fba625bdf4c28778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
