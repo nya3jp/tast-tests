@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c496f12_dcb4a0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T00:05:04Z",
+      "side": 1,
+      "message": "I prefer if you call this nebraska_wrapper to be consistent with all other nebraska wrappers.",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
