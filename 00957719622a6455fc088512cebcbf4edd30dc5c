@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "492fdfe8_a8b2c7ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T21:13:59Z",
+      "side": 1,
+      "message": "I\u0027m really nervous about this. Usually testing.State isn\u0027t passed to utility functions. Utility function should return an error when fails, and the caller test code can invoke with s.Fatal().\n\ntesting.State is allowed here by our linter, but this style isn\u0027t very like Golang. I still believe that you should follow golang style, which always return an error on failure.\n\nPreviously it was okay, since it was a part of a test case. Now it is not.",
+      "parentUuid": "ec8c5e24_bd7aecff",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b028793_b775b358",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Renamed the return variable and made it naked returns. Please confirm",
       "parentUuid": "9b072f8a_6a2dbcc3",
+      "range": {
+        "startLine": 61,
+        "startChar": 31,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1897d8e9_aa49e3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T21:13:59Z",
+      "side": 1,
+      "message": "No, my point is, do not name the return value.  func(path string) map[string][]dlcListOutput\n\nYou can define the return value. Your code just saves one line for no good reason.",
+      "parentUuid": "bed0b864_7effc956",
       "range": {
         "startLine": 61,
         "startChar": 31,
