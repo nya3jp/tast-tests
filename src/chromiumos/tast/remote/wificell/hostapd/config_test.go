@@ -117,12 +117,33 @@ func TestNewConfig(t *testing.T) {
 			expected:   nil,
 			shouldFail: true, // should not set VHTChWidth on mode other than 802.11ac
 		},
+		/*
+			{
+				ops: []Option{
+					Mode(Mode80211a),
+					Channel(36),
+					DTIMPeriod(256),
+				},
+				expected:   nil,
+				shouldFail: true, // should not set DTIMPeriod to a value out of the range (1..255)
+			},
+			{
+				ops: []Option{
+					Mode(Mode80211a),
+					Channel(36),
+					DTIMPeriod(-2),
+				},
+				expected:   nil,
+				shouldFail: true, // should not set DTIMPeriod to a value out of the range (1..255)
+			},
+		*/
 		// Good cases.
 		{
 			ops: []Option{
 				SSID("ssid"),
 				Mode(Mode80211a),
 				Channel(36),
+				//DTIMPeriod(5),
 			},
 			expected: &Config{
 				Ssid:           "ssid",
@@ -130,6 +151,7 @@ func TestNewConfig(t *testing.T) {
 				Channel:        36,
 				HTCaps:         0,
 				SecurityConfig: &base.Config{},
+				//DTIMPeriod:     5,
 			},
 			shouldFail: false,
 		},
@@ -138,6 +160,7 @@ func TestNewConfig(t *testing.T) {
 				SSID("ssid"),
 				Mode(Mode80211g),
 				Channel(1),
+				//DTIMPeriod(254),
 			},
 			expected: &Config{
 				Ssid:           "ssid",
@@ -145,6 +168,7 @@ func TestNewConfig(t *testing.T) {
 				Channel:        1,
 				HTCaps:         0,
 				SecurityConfig: &base.Config{},
+				//DTIMPeriod:     254,
 			},
 			shouldFail: false,
 		},
@@ -154,6 +178,7 @@ func TestNewConfig(t *testing.T) {
 				Mode(Mode80211nMixed),
 				Channel(1),
 				HTCaps(HTCapHT20),
+				//DTIMPeriod(1),
 			},
 			expected: &Config{
 				Ssid:           "ssid",
@@ -161,6 +186,7 @@ func TestNewConfig(t *testing.T) {
 				Channel:        1,
 				HTCaps:         HTCapHT20,
 				SecurityConfig: &base.Config{},
+				//DTIMPeriod:     1,
 			},
 			shouldFail: false,
 		},
@@ -171,6 +197,7 @@ func TestNewConfig(t *testing.T) {
 				Channel(36),
 				HTCaps(HTCapHT40),
 				HTCaps(HTCapSGI20),
+				//DTIMPeriod(100),
 			},
 			expected: &Config{
 				Ssid:           "ssid",
@@ -178,6 +205,7 @@ func TestNewConfig(t *testing.T) {
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20,
 				SecurityConfig: &base.Config{},
+				//DTIMPeriod:     100,
 			},
 			shouldFail: false,
 		},
@@ -190,6 +218,7 @@ func TestNewConfig(t *testing.T) {
 				VHTCaps(VHTCapSGI80),
 				VHTCenterChannel(155),
 				VHTChWidth(VHTChWidth80),
+				//DTIMPeriod(50),
 			},
 			expected: &Config{
 				Ssid:             "ssid",
@@ -200,6 +229,7 @@ func TestNewConfig(t *testing.T) {
 				VHTCenterChannel: 155,
 				VHTChWidth:       VHTChWidth80,
 				SecurityConfig:   &base.Config{},
+				//DTIMPeriod:       50,
 			},
 			shouldFail: false,
 		},
@@ -209,6 +239,7 @@ func TestNewConfig(t *testing.T) {
 				Mode(Mode80211a),
 				Channel(36),
 				Hidden(),
+				//DTIMPeriod(200),
 			},
 			expected: &Config{
 				Ssid:           "ssid",
@@ -217,6 +248,7 @@ func TestNewConfig(t *testing.T) {
 				HTCaps:         0,
 				Hidden:         true,
 				SecurityConfig: &base.Config{},
+				//DTIMPeriod:     200,
 			},
 			shouldFail: false,
 		},

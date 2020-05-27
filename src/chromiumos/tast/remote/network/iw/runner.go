@@ -11,10 +11,7 @@ import (
 	"chromiumos/tast/ssh"
 )
 
-// Runner is an alias for common iw Runner but only for remote execution.
-type Runner = iw.Runner
-
-// NewRunner creates a iw runner for remote execution.
-func NewRunner(host *ssh.Conn) *Runner {
+// NewRunner creates an iw runner for remote execution.
+func NewRunner(host *ssh.Conn) *iw.Runner {
 	return iw.NewRunner(&cmd.RemoteCmdRunner{Host: host})
 }
