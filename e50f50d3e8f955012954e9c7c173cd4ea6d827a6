@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "627fcbe0_049624f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-27T00:03:28Z",
+      "side": 1,
+      "message": "what is the point of unintalling it before you ever install it? you just want to test uninstalling a non-existent dlc succeeds? isn\u0027t that line 121 for? otherwise add comments to why this is needed. If not remove it.",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "e50f50d3e8f955012954e9c7c173cd4ea6d827a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
