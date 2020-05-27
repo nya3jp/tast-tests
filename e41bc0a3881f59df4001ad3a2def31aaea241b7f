@@ -22,6 +22,30 @@
       "revId": "e41bc0a3881f59df4001ad3a2def31aaea241b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02691d6_ede88506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T02:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5502b204_85a31f0b",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "e41bc0a3881f59df4001ad3a2def31aaea241b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
