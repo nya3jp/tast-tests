@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0587e16_a8d2e11e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:47:43Z",
+      "side": 1,
+      "message": "this seems like a strange utility to stick in a \"wpacli\" library. IMO, tests should take care of it, or really, just not do it at all.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "9701c28cce8bb0656bb95a8f5dc9c18d612253cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbda7d3_21381817",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:47:43Z",
+      "side": 1,
+      "message": "I know this exists in the test already, but why? Seems like an implementation detail that we shouldn\u0027t be specifying here at all. And for tests run on the server, it\u0027s wrong/misleading -- test results will be uploaded to a test server, and that path won\u0027t be \"/tmp/tast/\u003cfoo\u003e\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "9701c28cce8bb0656bb95a8f5dc9c18d612253cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b42cc9e_6e043bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:47:43Z",
+      "side": 1,
+      "message": "This conditional output seems like unnecessary complexity. IMO, we should just do the same thing unconditionally: either always dump to file, or always dump to log/stdout.",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "9701c28cce8bb0656bb95a8f5dc9c18d612253cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
