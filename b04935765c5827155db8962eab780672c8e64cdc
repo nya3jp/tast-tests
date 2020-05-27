@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fc96c48_35c56b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/memory_stress.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-05-27T04:41:25Z",
+      "side": 1,
+      "message": "Is it possible to reference src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.html from inside the arc bundle?\n\nI would like to avoid copying this file.",
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaaefd91_271f616c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-05-27T04:41:25Z",
+      "side": 1,
+      "message": "Where can I move kernelmeter and memoryuser so that they can be referenced from here and cros without running afoul of the Tast linter.",
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
