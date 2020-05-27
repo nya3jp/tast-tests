@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
-	remoteping "chromiumos/tast/remote/network/ping"
+	remote_ping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/rpc"
@@ -386,7 +386,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) err
 	if tf.curAP == nil {
 		return errors.New("not connected")
 	}
-	pr := remoteping.NewRunner(tf.dut.Conn())
+	pr := remote_ping.NewRunner(tf.dut.Conn())
 	res, err := pr.Ping(ctx, tf.curAP.ServerIP().String(), opts...)
 	if err != nil {
 		return err
