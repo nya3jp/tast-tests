@@ -302,6 +302,30 @@
     },
     {
       "key": {
+        "uuid": "c9c19ac0_7c62f60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-05-27T20:45:39Z",
+      "side": 1,
+      "message": "I think Mukai-san means something like this:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2015809\n\nI added the android_r dependency but it\u0027s for container. I think you want to change that one to VM first then come back to this CL to change to android_r.",
+      "parentUuid": "4058d2ce_77b45109",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcce15b5_77fc3c95",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
