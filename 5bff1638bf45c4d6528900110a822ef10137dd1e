@@ -117,6 +117,30 @@
       "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1dae23d_af4e6402",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:52Z",
+      "side": 1,
+      "message": "Hmm, OK. Maybe this should be made clearer in CL:2169588.",
+      "parentUuid": "ccd2cd59_46d5891b",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

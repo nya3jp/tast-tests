@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d25cf2fc_1b27a16c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:52Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 73
+      },
+      "revId": "91c50c8cb5fc113c1d58b25e7f34effa5cf65ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d43007e4_5638f3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:52Z",
+      "side": 1,
+      "message": "association and configuration failures are pretty common. Should this have a nice error wrapping, that says \"failed to associate\" or similar?",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "91c50c8cb5fc113c1d58b25e7f34effa5cf65ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c00d8d_ec64809c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 200,
+        "startChar": 16,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "91c50c8cb5fc113c1d58b25e7f34effa5cf65ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9af81fd_4871d7c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:52Z",
+      "side": 1,
+      "message": "move this up, in case the Hidden ConfigureService() kicks anything off for us?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 20
+      },
+      "revId": "91c50c8cb5fc113c1d58b25e7f34effa5cf65ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
