@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ca924eb5_c592c018",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T08:12:44Z",
+      "side": 1,
+      "message": "Tried on my DUT, the output seems to be: \"Power save: off\\n\". So maybe directly have the const string in the regexp if we want to check it?",
+      "parentUuid": "d7d319ce_dc9ac618",
+      "range": {
+        "startLine": 325,
+        "startChar": 25,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "360db625_895e5455",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 2
