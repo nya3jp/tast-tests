@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a832f9_1aacbe85",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T21:43:32Z",
+      "side": 1,
+      "message": "does not",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "275669b16269918e4e6d634be94ba2dff3bba7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
