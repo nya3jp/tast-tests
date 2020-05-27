@@ -16,6 +16,24 @@
       "revId": "527c8cba35d8c15a0074556893d063778c124e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48961140_47f99be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-05-27T20:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972fc233_6e5aec08",
+      "revId": "527c8cba35d8c15a0074556893d063778c124e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
