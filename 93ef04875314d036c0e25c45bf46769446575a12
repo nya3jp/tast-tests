@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01d06e3f_1a27e861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T23:37:49Z",
+      "side": 1,
+      "message": "Updated comments.",
+      "parentUuid": "6768cfb2_6a6c2384",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "revId": "93ef04875314d036c0e25c45bf46769446575a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac106555_b0b2424f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-27T21:20:21Z",
       "side": 1,
       "message": "Similarly, this comment does not make much sense to me.\n  // Verify that the initial state before performing any Install/Uninstall\n\nBy the way, does cleanup() uninstall something?  Isn\u0027t it a part of \"any uninstall\"?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "93ef04875314d036c0e25c45bf46769446575a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de2aa42_bed1c74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T23:37:49Z",
+      "side": 1,
+      "message": "The cleanup() is a forced uninstall, without going through the dlcservice_util+dlcservice daemon.\n\nComment updated.",
+      "parentUuid": "ac106555_b0b2424f",
       "range": {
         "startLine": 100,
         "startChar": 1,
