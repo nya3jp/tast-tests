@@ -278,6 +278,30 @@
     },
     {
       "key": {
+        "uuid": "3cd37c8a_0a5367bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-05-27T20:42:28Z",
+      "side": 1,
+      "message": "And things that will work only on S+ will have vm_s, am I wrong? It\u0027s up to ARC team, but my recommendation is still to use explicit versioning.",
+      "parentUuid": "4058d2ce_77b45109",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcce15b5_77fc3c95",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
