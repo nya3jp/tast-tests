@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92136c7e_6348277b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T23:40:22Z",
+      "side": 1,
+      "message": "\u003e \"retrives\" is a possible misspelling of \"retrieves\".\n\nPlease fix.",
+      "parentUuid": "f55e5c67_7876dd79",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "f8b04835e70fb0d820b5bb9013e3215e5272e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
