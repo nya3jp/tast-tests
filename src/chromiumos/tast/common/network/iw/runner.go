@@ -315,6 +315,42 @@ func (r *Runner) OperatingMode(ctx context.Context, iface string) (string, error
 	return "", errors.Wrapf(err, "unsupported operating mode %s found for interface: %s", opMode, iface)
 }
 
+// PowersaveMode returns true if powersave mode is enabled and false if it is disabled.
+func (r *Runner) PowersaveMode(ctx context.Context, iface string) (bool, error) {
+	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "get", "power_save")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get powersave mode")
+	}
+
+	m, err := extractMatch(`Power save:\s+(\w+)`, string(out))
+	if err != nil {
+		return false, errors.Wrap(err, "failed to parse powersave mode")
+	}
+
+	psMode := m[0]
+	if psMode == "on" {
+		return true, nil
+	} else if psMode == "off" {
+		return false, nil
+	}
+
+	return false, errors.Wrapf(err, "unexpected powersave mode: got %s; want [on, off]", psMode)
+}
+
+// SetPowersaveMode sets the powersave mode.
+func (r *Runner) SetPowersaveMode(ctx context.Context, iface string, turnOn bool) error {
+	mode := "off"
+	if turnOn {
+		mode = "on"
+	}
+
+	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "power_save", mode); err != nil {
+		return errors.Wrapf(err, "failed to set the powersave mode %s", mode)
+	}
+
+	return nil
+}
+
 // RadioConfig gets the radio configuration from the interface's information.
 func (r *Runner) RadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
