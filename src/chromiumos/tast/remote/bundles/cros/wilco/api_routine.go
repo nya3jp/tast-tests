@@ -98,7 +98,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		expectedStatus wilco.DiagnosticRoutineStatus,
 		postRoutineSanityCheck sanityCheckFn) error {
 
-		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 35*time.Second)
 		defer cancel()
 
 		data, err := proto.Marshal(&rrRequest)

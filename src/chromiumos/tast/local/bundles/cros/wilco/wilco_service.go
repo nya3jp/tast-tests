@@ -182,7 +182,7 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	uuid := rrResponse.Uuid
 	response := dtcpb.GetRoutineUpdateResponse{}
 
-	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 15*time.Second); err != nil {
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 30*time.Second); err != nil {
 		return nil, errors.Wrap(err, "routine not finished")
 	}
 
@@ -231,7 +231,7 @@ func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.Exe
 	// Because cancellation is slow, we time how long it takes to change from
 	// STATUS_CANCELLING.
 	ctx, st := timing.Start(ctx, "cancel")
-	err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 10*time.Second)
+	err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 30*time.Second)
 	st.End()
 	if err != nil {
 		return nil, errors.Wrap(err, "routine not finished")
