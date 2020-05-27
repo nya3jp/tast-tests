@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c37837b_58d6c51c",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T02:23:44Z",
+      "side": 1,
+      "message": "We had a longer discussion in [1] a while ago about how this pattern could\nbe implemented and IIUC this was the preferred way.\n\n[1] https://groups.google.com/a/google.com/g/chromeos-gfx-video/c/asO-BR0b4-U/m/7hQYuoUlGgAJ",
+      "parentUuid": "fb5acaff_8c0bd909",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73f14c1d_62f5e9b1",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105e035e_b5926433",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T02:23:44Z",
+      "side": 1,
+      "message": "Hmm that\u0027d make this CL complicated because the if() in l.31 will read\n`if true` and make the code look weird :-)\nWhat I can do is to hold off this CL and post the next one in the row\nthat should fill in isLegacyVideoDecoderEnabled() with some meaty code.",
+      "parentUuid": "73f14c1d_62f5e9b1",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
