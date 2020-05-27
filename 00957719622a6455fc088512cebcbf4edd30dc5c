@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c897b2a9_0361514d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "This simply already wraps ioutil.ReadFile, it fatals on a failed read",
+      "parentUuid": "4b1047b6_469c5950",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80d0612f_513b3fb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-27T01:23:21Z",
       "side": 1,
       "message": "Please do not use s. Just return an error. Same on all other functions.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8c5e24_bd7aecff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "These are all local to this function, as calling s.Fatal would eventually happen.\nThese were all previous code approved to leave as s.Fatal.\nIs okay to keep Jun?",
+      "parentUuid": "80d0612f_513b3fb8",
       "range": {
         "startLine": 44,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b88440c3_0713735a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "It become a lot more verbose and there is a new line at the end of the file.",
+      "parentUuid": "2b028793_b775b358",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b072f8a_6a2dbcc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-27T01:23:21Z",
       "side": 1,
       "message": "Please do not name the return value just for omitting a line or two.\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 61,
+        "startChar": 31,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed0b864_7effc956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Renamed the return variable and made it naked returns. Please confirm",
+      "parentUuid": "9b072f8a_6a2dbcc3",
       "range": {
         "startLine": 61,
         "startChar": 31,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "7593b11f_8db37333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1789b156_dfa4ced3",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c496f12_dcb4a0e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
         "patchSetId": 2
@@ -125,6 +239,24 @@
       "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647bf996_91861692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c496f12_dcb4a0e0",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +300,48 @@
     },
     {
       "key": {
+        "uuid": "09b22183_9b592011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5128c62_4dc3a366",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44f38c1b_444a58c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Thanks, this is nice\nDone!",
+      "parentUuid": "a689624e_31632559",
+      "range": {
+        "startLine": 23,
+        "startChar": 58,
+        "endLine": 23,
+        "endChar": 81
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38339421_17690f8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
         "patchSetId": 2
@@ -182,6 +356,24 @@
       "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbc5a04_7b5c6905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Just didn\u0027t pass testing.State to New().",
+      "parentUuid": "38339421_17690f8c",
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "fd5116e6_752bec79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4cc05e_0adb2ef3",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95560de9_e31d2435",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
         "patchSetId": 2
@@ -228,6 +444,30 @@
       "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba8dfb5_2915f142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nebraska/nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95560de9_e31d2435",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "00957719622a6455fc088512cebcbf4edd30dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
