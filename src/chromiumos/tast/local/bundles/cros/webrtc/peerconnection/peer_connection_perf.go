@@ -236,60 +236,6 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 	return nil
 }
 
-// measureGPUCounters measures GPU usage for a period of time into p.
-func measureGPUCounters(ctx context.Context, p *perf.Values) error {
-	testing.ContextLog(ctx, "Measuring GPU usage for ", gpuMeasuring)
-	counters, megaPeriods, err := graphics.CollectPerformanceCounters(ctx, gpuMeasuring)
-	if err != nil {
-		return errors.Wrap(err, "error collecting graphics performance counters")
-	}
-	if counters == nil {
-		return nil
-	}
-	if counters["total"].Milliseconds() == 0 {
-		return errors.New("total elapsed time counter is zero")
-	}
-
-	if megaPeriods != 0 {
-		frequencyMHz := float64(megaPeriods) / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "Average frequency: %fMHz", frequencyMHz)
-		p.Set(perf.Metric{
-			Name:      "frequency",
-			Unit:      "MHz",
-			Direction: perf.SmallerIsBetter,
-		}, frequencyMHz)
-	}
-	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
-		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)
-		p.Set(perf.Metric{
-			Name:      "rcs_usage",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter,
-		}, rcsUsage)
-	}
-	if vcs, ok := counters["vcs"]; ok && vcs.Seconds() != 0 {
-		vcsUsage := 100 * vcs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "VCS usage: %f%%", vcsUsage)
-		p.Set(perf.Metric{
-			Name:      "vcs_usage",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter,
-		}, vcsUsage)
-	}
-	if vecs, ok := counters["vecs"]; ok && vecs.Seconds() != 0 {
-		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
-		p.Set(perf.Metric{
-			Name:      "vecs_usage",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter,
-		}, vecsUsage)
-	}
-
-	return nil
-}
-
 // decodePerf opens a WebRTC Loopback connection and streams while collecting
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
@@ -343,7 +289,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	if err := measureCPU(shortCtx, cr, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
-	if err := measureGPUCounters(shortCtx, p); err != nil {
+	if err := graphics.MeasureGPUCounters(shortCtx, gpuMeasuring, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
 

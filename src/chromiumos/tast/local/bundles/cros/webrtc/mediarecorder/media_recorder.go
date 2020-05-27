@@ -68,44 +68,6 @@ func measureCPU(ctx context.Context, s, t time.Duration, p *perf.Values) error {
 	return nil
 }
 
-// measureGPUCounters measures GPU usage for a period of time t into p.
-func measureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
-	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
-	counters, megaPeriods, err := graphics.CollectPerformanceCounters(ctx, t)
-	if err != nil {
-		return errors.Wrap(err, "error collecting graphics performance counters")
-	}
-	if counters == nil {
-		return nil
-	}
-	if counters["total"].Milliseconds() == 0 {
-		return errors.New("total elapsed time counter is zero")
-	}
-
-	if megaPeriods != 0 {
-		frequencyMHz := float64(megaPeriods) / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "Average frequency: %fMHz", frequencyMHz)
-		reportMetric("frequency", "MHz", frequencyMHz, perf.SmallerIsBetter, p)
-	}
-	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
-		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)
-		reportMetric("rcs_usage", "percent", rcsUsage, perf.SmallerIsBetter, p)
-	}
-	if vcs, ok := counters["vcs"]; ok && vcs.Seconds() != 0 {
-		vcsUsage := 100 * vcs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "VCS usage: %f%%", vcsUsage)
-		reportMetric("vcs_usage", "percent", vcsUsage, perf.SmallerIsBetter, p)
-	}
-	if vecs, ok := counters["vecs"]; ok && vecs.Seconds() != 0 {
-		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
-		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
-		reportMetric("vecs_usage", "percent", vecsUsage, perf.SmallerIsBetter, p)
-	}
-
-	return nil
-}
-
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
 func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool) error {
 
@@ -158,7 +120,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	if err := measureCPU(ctx, stabilizationDuration, measurementDuration, p); err != nil {
 		return errors.Wrap(err, "error measuring CPU usage/power consumption")
 	}
-	if err := measureGPUCounters(ctx, measurementDuration, p); err != nil {
+	if err := graphics.MeasureGPUCounters(ctx, measurementDuration, p); err != nil {
 		return errors.Wrap(err, "error measuring GPU usage")
 	}
 
