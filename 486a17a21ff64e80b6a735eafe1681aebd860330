@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e501e57_65924ab9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-27T09:25:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6266afd_2cb58ca2",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "748a2532_d57ccb0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2a14e7f7_c042bf40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-27T09:25:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4540509_68fffda6",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36c6e6b5_8a275984",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
         "patchSetId": 4
@@ -140,6 +188,30 @@
       "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38f8c5e_f4479beb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-27T09:25:11Z",
+      "side": 1,
+      "message": "looks like this is not needed anymore",
+      "parentUuid": "0e874f80_cd212700",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "486a17a21ff64e80b6a735eafe1681aebd860330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
