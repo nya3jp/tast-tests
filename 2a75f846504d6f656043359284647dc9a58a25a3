@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "293c9a26_f74dee30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T04:54:16Z",
+      "side": 1,
+      "message": "More comments added (but the behavior changed due to another comment).",
+      "parentUuid": "4fafcd4f_8092ce54",
+      "revId": "2a75f846504d6f656043359284647dc9a58a25a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9122512_600d8884",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-26T23:18:14Z",
       "side": 1,
       "message": "should we assert this, or will byte(i) panic if you pass i \u003e\u003d 256 into it?",
+      "revId": "2a75f846504d6f656043359284647dc9a58a25a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c2601b_b3e1fca2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T04:54:16Z",
+      "side": 1,
+      "message": "No, byte(i) will just do modulo on it. I think panic is not recommended in Tast but the function will be kind of hard to use with error return as it is called in init().\n\nMake the parameters byte typed and end included so at least we can detect out of range number literals in compile time. PTAL.",
+      "parentUuid": "d9122512_600d8884",
       "revId": "2a75f846504d6f656043359284647dc9a58a25a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
