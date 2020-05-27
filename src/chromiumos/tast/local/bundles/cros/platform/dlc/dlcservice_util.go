@@ -21,8 +21,32 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dlcListOutput struct {
+// Dlcservice related constants.
+const (
+	CacheDir    = "/var/cache/dlc"
+	JobName     = "dlcservice"
+	ServiceName = "org.chromium.DlcService"
+	ImageFile   = "dlc.img"
+	LibDir      = "/var/lib/dlcservice/dlc"
+	ManifestDir = "/opt/google/dlc"
+	PreloadDir  = "/mnt/stateful_partition/var_overlay/cache/dlc-images"
+	TestDir     = "/usr/local/dlc"
+	TestID1     = "test1-dlc"
+	TestID2     = "test2-dlc"
+	TestPackage = "test-package"
+)
+
+// ListOutput holds the output from running `dlcservice_util --list`.
+type ListOutput struct {
+	ID        string `json:"id"`
+	Package   string `json:"package"`
 	RootMount string `json:"root_mount"`
+}
+
+// IDPackage holds the ID and Package for a DLC.
+type IDPackage struct {
+	ID      string
+	Package string
 }
 
 // removeExt removes the suffix extension for the given path.
@@ -31,12 +55,12 @@ func removeExt(path string) string {
 }
 
 // dlcList reads in the given path and then converts it to a map of structs.
-func dlcList(path string) (map[string][]dlcListOutput, error) {
+func dlcList(path string) (map[string][]ListOutput, error) {
 	b, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	listOutput := make(map[string][]dlcListOutput)
+	listOutput := make(map[string][]ListOutput)
 	if err := json.Unmarshal(b, &listOutput); err != nil {
 		return nil, err
 	}
@@ -141,15 +165,34 @@ func verifyDlcContent(path, id string) error {
 	return nil
 }
 
+// listDlcs is a helper to call into dlcservice_util for `--list` option and
+// will dump the output at the given path. If the path already exists, it will
+// return an error.
+func listDlcs(ctx context.Context, path string) error {
+	// Path already exists.
+	if _, err := os.Stat(path); err == nil {
+		return errors.Wrapf(err, "file already exists at: %v", path)
+	}
+	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to list installed DLCs")
+	}
+	// TODO(kimjae): Fix dlcservice_util to throw error when dumping fails.
+	// Until then keep this check.
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		return errors.New("dlcservice_util failed to dump")
+	}
+	return nil
+}
+
 // DumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
 // via dlcservice_util command.
 func DumpAndVerifyInstalledDLCs(ctx context.Context, dumpPath, tag string, ids ...string) error {
 	testing.ContextLog(ctx, "Asking dlcservice for installed DLC modules")
 	f := tag + ".log"
 	path := filepath.Join(dumpPath, f)
-	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to get installed DLCs")
+	if err := listDlcs(ctx, path); err != nil {
+		return err
 	}
 	for _, id := range ids {
 		if err := verifyDlcContent(path, id); err != nil {
@@ -157,6 +200,38 @@ func DumpAndVerifyInstalledDLCs(ctx context.Context, dumpPath, tag string, ids .
 		}
 	}
 	return nil
+}
+
+// GetInstalled calls the DBus methods to get installed DLCs.
+func GetInstalled(ctx context.Context) ([]ListOutput, error) {
+	testing.ContextLog(ctx, "Getting installed DLCs")
+	d, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get OutDir from context")
+	}
+	path := filepath.Join(d, "tmp_get_installed")
+	defer os.Remove(path)
+	// listDlcs needs a non-existent file.
+	if err := listDlcs(ctx, path); err != nil {
+		return nil, err
+	}
+	m, err := dlcList(path)
+	if err != nil {
+		return nil, err
+	}
+	var installedIDs []ListOutput
+	for id, l := range m {
+		for _, val := range l {
+			if id != val.ID {
+				return nil, errors.Errorf("list has mismatching IDs: %s %s", id, val.ID)
+			}
+			if val.Package == "" {
+				return nil, errors.Errorf("empty package for ID: %s", id)
+			}
+			installedIDs = append(installedIDs, val)
+		}
+	}
+	return installedIDs, nil
 }
 
 // Install calls the DBus method to install a DLC.
@@ -173,6 +248,27 @@ func Purge(ctx context.Context, id string) error {
 	testing.ContextLog(ctx, "Purging DLC: ", id)
 	if err := testexec.CommandContext(ctx, "dlcservice_util", "--purge", "--id="+id).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to purge")
+	}
+	return nil
+}
+
+// Cleanup removes all DLC related states and restarts dlcservice.
+func Cleanup(ctx context.Context, dlcs ...IDPackage) error {
+	for _, dlc := range dlcs {
+		// Unmount the DLC.
+		path := filepath.Join("/run/imageloader", dlc.ID, dlc.Package)
+		if err := testexec.CommandContext(ctx, "imageloader", "--unmount", "--mount_point="+path).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to unmount DLC (%s)", dlc.ID)
+		}
+		// Remove all related directories.
+		for _, dir := range []string{CacheDir, LibDir, PreloadDir} {
+			if err := os.RemoveAll(filepath.Join(dir, dlc.ID)); err != nil {
+				return errors.Wrapf(err, "failed to cleanup directory (%s)", dir)
+			}
+		}
+	}
+	if err := RestartUpstartJob(ctx, JobName, ServiceName); err != nil {
+		return errors.Wrap(err, "failed to restart dlcservice")
 	}
 	return nil
 }
