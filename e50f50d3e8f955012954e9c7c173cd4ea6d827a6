@@ -22,6 +22,30 @@
       "revId": "e50f50d3e8f955012954e9c7c173cd4ea6d827a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4c24f2_d5922a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-27T03:52:34Z",
+      "side": 1,
+      "message": "Removed\nAdded cleanup pre+post test for consistent test entry + exit.",
+      "parentUuid": "627fcbe0_049624f0",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "e50f50d3e8f955012954e9c7c173cd4ea6d827a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
