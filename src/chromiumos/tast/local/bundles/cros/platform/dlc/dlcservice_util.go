@@ -21,7 +21,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dlcListOutput struct {
+// ListOutput holds the output from running `dlcservice_util --list`.
+type ListOutput struct {
+	ID        string `json:"id"`
+	Package   string `json:"package"`
 	RootMount string `json:"root_mount"`
 }
 
@@ -31,12 +34,12 @@ func removeExt(path string) string {
 }
 
 // dlcList reads in the given path and then converts it to a map of structs.
-func dlcList(path string) (map[string][]dlcListOutput, error) {
+func dlcList(path string) (map[string][]ListOutput, error) {
 	b, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	listOutput := make(map[string][]dlcListOutput)
+	listOutput := make(map[string][]ListOutput)
 	if err := json.Unmarshal(b, &listOutput); err != nil {
 		return nil, err
 	}
@@ -141,6 +144,18 @@ func verifyDlcContent(path, id string) error {
 	return nil
 }
 
+// listDlcs is a helper to call into dlcservice_util for `--list` option.
+func listDlcs(ctx context.Context, s *testing.State, path string) {
+	// Path already exists.
+	if _, err := os.Stat(path); err == nil {
+		s.Fatal("File already exists at: ", path)
+	}
+	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to list DLCs: ", err)
+	}
+}
+
 // DumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
 // via dlcservice_util command.
 func DumpAndVerifyInstalledDLCs(ctx context.Context, dumpPath, tag string, ids ...string) error {
@@ -157,6 +172,31 @@ func DumpAndVerifyInstalledDLCs(ctx context.Context, dumpPath, tag string, ids .
 		}
 	}
 	return nil
+}
+
+// GetInstalled calls the DBus methods to get installed DLCs.
+func GetInstalled(ctx context.Context, s *testing.State, path string) ([]ListOutput, error) {
+	s.Log("Getting installed DLCs")
+	listDlcs(ctx, s, path)
+	m, err := dlcList(path)
+	if err != nil {
+		return nil, err
+	}
+	installedIDs := make([]ListOutput, 0)
+	for id, l := range m {
+		for _, val := range l {
+			if id != val.ID {
+				s.Errorf("List has mismatching IDs: %s %s", id, val.ID)
+				continue
+			}
+			if val.Package == "" {
+				s.Errorf("Empty package for ID: %s", id)
+				continue
+			}
+			installedIDs = append(installedIDs, val)
+		}
+	}
+	return installedIDs, nil
 }
 
 // Install calls the DBus method to install a DLC.
