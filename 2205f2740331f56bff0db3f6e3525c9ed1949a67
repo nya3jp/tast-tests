@@ -93,6 +93,30 @@
       "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "937cd6b2_e31a930b",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T16:18:50Z",
+      "side": 1,
+      "message": "Actually it turned out to be too small to merit a new CL, so I munged\nit in this one.",
+      "parentUuid": "105e035e_b5926433",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "2205f2740331f56bff0db3f6e3525c9ed1949a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
