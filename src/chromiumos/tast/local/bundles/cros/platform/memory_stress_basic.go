@@ -16,7 +16,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -25,10 +24,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testCaseResult struct {
+	// jankyCount is the average janky count in 30 seconds histogram.
+	jankyCount *metrics.Histogram
+	// discardLatency is the discard latency histogram.
+	discardLatency *metrics.Histogram
+	// reloadCount is the tab reload count.
+	reloadCount int
+	// oomCount is the oom kill count.
+	oomCount uint64
+}
+
 const (
 	allocPageFilename  = "memory_stress.html"
 	javascriptFilename = "memory_stress.js"
-	compressRaio       = 0.67
 )
 
 func init() {
@@ -43,9 +52,8 @@ func init() {
 			allocPageFilename,
 			javascriptFilename,
 		},
-		Pre:          arc.Booted(),
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Vars:         []string{"platform.MemoryStressBasic.minFilelistKB"},
+		Vars:         []string{"platform.MemoryStressBasic.enableARC", "platform.MemoryStressBasic.minFilelistKB", "platform.MemoryStressBasic.seed"},
 	})
 
 }
@@ -53,108 +61,156 @@ func init() {
 func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	const (
 		mbPerTab    = 800
-		switchCount = 300
+		switchCount = 150
 	)
 
-	rand.Seed(time.Now().UTC().UnixNano())
-
-	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
-	defer cancel()
-	if err := cpu.WaitUntilIdle(waitCtx); err != nil {
-		s.Fatal("Failed to wait for idle CPU: ", err)
+	minFilelistKB := -1
+	if val, ok := s.Var("platform.MemoryStressBasic.minFilelistKB"); ok {
+		testing.ContextLog(ctx, "minFilelistKB: ", val)
+		val, err := strconv.Atoi(val)
+		if err != nil {
+			s.Fatal("Cannot parse argument platform.MemoryStressBasic.minFilelistKB: ", err)
+		}
+		minFilelistKB = val
 	}
 
-	perfValues := perf.NewValues()
+	// The memory pressure is higher when ARC is enabled (without launching Android apps).
+	// Checks the ARC enabled case by default.
+	enableARC := true
+	if val, ok := s.Var("platform.MemoryStressBasic.enableARC"); ok {
+		testing.ContextLog(ctx, "enableARC: ", val)
+		intVal, err := strconv.Atoi(val)
+		if err != nil {
+			s.Fatal("Cannot parse argument platform.MemoryStressBasic.enableARC: ", err)
+		}
+		if intVal == 0 {
+			enableARC = false
+		}
+	}
+
+	seed := time.Now().UTC().UnixNano()
+	if val, ok := s.Var("platform.MemoryStressBasic.seed"); ok {
+		intVal, err := strconv.ParseInt(val, 10, 64)
+		if err != nil {
+			s.Fatal("Cannot parse argument platform.MemoryStressBasic.seed: ", err)
+		}
+		seed = intVal
+	}
+	testing.ContextLog(ctx, "Seed: ", seed)
+	localRand := rand.New(rand.NewSource(seed))
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	// The memory pressure is higher when ARC is enabled (without launching Android apps).
-	// Checks if the memory policy works with ARC enabled.
-	cr := s.PreValue().(arc.PreData).Chrome
+	baseURL := server.URL + "/" + allocPageFilename
 
-	// Setup min_filelist_kbytes.
-	if val, ok := s.Var("platform.MemoryStressBasic.minFilelistKB"); ok {
-		testing.ContextLog(ctx, "minFilelistKB: ", val)
-		if _, err := strconv.Atoi(val); err != nil {
-			s.Fatal("Cannot parse argument platform.MemoryStressBasic.minFilelistKB: ", err)
-		}
-		if err := ioutil.WriteFile("/proc/sys/vm/min_filelist_kbytes", []byte(val), 0644); err != nil {
-			s.Fatal("Could not write to /proc/sys/vm/min_filelist_kbytes: ", err)
+	perfValues := perf.NewValues()
+
+	// Tests both the low compress ratio and high compress ratio cases.
+	// When there is more random data (67 percent random), the compress ratio is low,
+	// the low memory notification is triggered by low uncompressed anonymous memory.
+	// When there is less random data (33 percent random), the compress ratio is high,
+	// the low memory notification is triggered by low swap free.
+	label67 := "67_percent_random"
+	result67, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.67, baseURL, label67, enableARC)
+	if err != nil {
+		s.Fatal("67_percent_random test case failed: ", err)
+	}
+	label33 := "33_percent_random"
+	result33, err := stressTestCase(ctx, perfValues, localRand, mbPerTab, switchCount, minFilelistKB, 0.33, baseURL, label33, enableARC)
+	if err != nil {
+		s.Fatal("33_percent_random test case failed: ", err)
+	}
+
+	if err := reportTestCaseResult(ctx, perfValues, result67, label67); err != nil {
+		s.Fatal("Reporting 67_percent_random failed: ", err)
+	}
+	if err := reportTestCaseResult(ctx, perfValues, result33, label33); err != nil {
+		s.Fatal("Reporting 33_percent_random failed: ", err)
+	}
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Error("Cannot save perf data: ", err)
+	}
+}
+
+func stressTestCase(ctx context.Context, perfValues *perf.Values, localRand *rand.Rand, mbPerTab, switchCount, minFilelistKB int, compressRatio float64, baseURL, label string, enableARC bool) (testCaseResult, error) {
+	var opts []chrome.Option
+	if enableARC {
+		opts = append(opts, chrome.ARCEnabled())
+	}
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return testCaseResult{}, errors.Wrap(err, "cannot start chrome")
+	}
+
+	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	if err := cpu.WaitUntilIdle(waitCtx); err != nil {
+		return testCaseResult{}, errors.Wrap(err, "failed to wait for idle CPU")
+	}
+
+	// Setup min_filelist_kbytes after chrome start.
+	if minFilelistKB >= 0 {
+		if err := ioutil.WriteFile("/proc/sys/vm/min_filelist_kbytes", []byte(strconv.Itoa(minFilelistKB)), 0644); err != nil {
+			return testCaseResult{}, errors.Wrap(err, "could not write to /proc/sys/vm/min_filelist_kbytes")
 		}
 	}
 
 	vmstatsStart, err := kernelmeter.VMStats()
 	if err != nil {
-		s.Fatal("Failed to get vmstat: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to get vmstat")
 	}
 
 	createTabCount, err := openTabCount(mbPerTab)
 	if err != nil {
-		s.Fatal("Failed to get open tab count: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to get open tab count")
 	}
 	testing.ContextLog(ctx, "Tab count to create: ", createTabCount)
 
-	url := server.URL + "/" + allocPageFilename
-
-	if err := openTabs(ctx, cr, createTabCount, mbPerTab, url); err != nil {
-		s.Fatal("Failed to open tabs: ", err)
+	if err := openTabs(ctx, cr, createTabCount, mbPerTab, compressRatio, baseURL); err != nil {
+		return testCaseResult{}, errors.Wrap(err, "failed to open tabs")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to connect to test API")
 	}
 
 	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "Arc.LowMemoryKiller.FirstKillLatency"}
 	startHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
 	if err != nil {
-		s.Fatal("Failed to get histograms: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to get histograms")
 	}
 
-	reloadCount, err := switchTabs(ctx, s, cr, switchCount)
+	reloadCount, err := switchTabs(ctx, cr, switchCount, localRand)
 	if err != nil {
-		s.Fatal("Failed to switch tabs: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to switch tabs")
 	}
 
 	endHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
 	if err != nil {
-		s.Fatal("Failed to get histograms: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to get histograms")
 	}
 	histograms, err := metrics.DiffHistograms(startHistograms, endHistograms)
 	if err != nil {
-		s.Fatal("Failed to diff histograms: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to diff histograms")
 	}
-	err = reportMemoryStressHistograms(ctx, perfValues, histograms)
-	if err != nil {
-		s.Fatal("Failed to report histograms: ", err)
-	}
-
-	reloadTabMetric := perf.Metric{
-		Name:      "tast_reload_tab_count",
-		Unit:      "count",
-		Direction: perf.SmallerIsBetter,
-	}
-	perfValues.Set(reloadTabMetric, float64(reloadCount))
-	testing.ContextLog(ctx, "Reload tab count: ", reloadCount)
+	jankyCount := histograms[0]
+	discardLatency := histograms[1]
 
 	vmstatsEnd, err := kernelmeter.VMStats()
 	if err != nil {
-		s.Fatal("Failed to get vmstat: ", err)
+		return testCaseResult{}, errors.Wrap(err, "failed to get vmstat")
 	}
 	oomCount := vmstatsEnd["oom_kill"] - vmstatsStart["oom_kill"]
 
-	oomKillerMetric := perf.Metric{
-		Name:      "tast_oom_killer_count",
-		Unit:      "count",
-		Direction: perf.SmallerIsBetter,
-	}
-	perfValues.Set(oomKillerMetric, float64(oomCount))
-	testing.ContextLog(ctx, "OOM Kill count: ", oomCount)
-
-	if err = perfValues.Save(s.OutDir()); err != nil {
-		s.Error("Cannot save perf data: ", err)
-	}
+	return testCaseResult{
+		reloadCount:    reloadCount,
+		jankyCount:     jankyCount,
+		discardLatency: discardLatency,
+		oomCount:       oomCount,
+	}, nil
 }
 
 // waitAllocation waits for completion of JavaScript memory allocation.
@@ -211,9 +267,9 @@ func openTabCount(mbPerTab int) (int, error) {
 }
 
 // openTabs opens tabs to create memory pressure.
-func openTabs(ctx context.Context, cr *chrome.Chrome, createTabCount, mbPerTab int, baseURL string) error {
+func openTabs(ctx context.Context, cr *chrome.Chrome, createTabCount, mbPerTab int, compressRatio float64, baseURL string) error {
 	for i := 0; i < createTabCount; i++ {
-		url := fmt.Sprintf("%s?alloc=%d&ratio=%.3f&id=%d", baseURL, mbPerTab, compressRaio, i)
+		url := fmt.Sprintf("%s?alloc=%d&ratio=%.3f&id=%d", baseURL, mbPerTab, compressRatio, i)
 		if err := openAllocationPage(ctx, url, cr); err != nil {
 			return errors.Wrap(err, "cannot create tab")
 		}
@@ -304,8 +360,8 @@ func waitMoveCursor(ctx context.Context, mw *input.MouseEventWriter, d time.Dura
 	return nil
 }
 
-// switchTabs switches between tabs and reloads crashed tabs. Returns the reload cound.
-func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switchCount int) (int, error) {
+// switchTabs switches between tabs and reloads crashed tabs. Returns the reload count.
+func switchTabs(ctx context.Context, cr *chrome.Chrome, switchCount int, localRand *rand.Rand) (int, error) {
 	mouse, err := input.Mouse(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "cannot initialize mouse")
@@ -328,7 +384,7 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 		// +/- within 1000ms from the previous wait time to cluster long and short wait times.
 		// On some settings, it's easier to trigger OOM with clustered short wait times.
 		// On other settings, it's easier with clustered long wait times.
-		waitTime += time.Duration(rand.Intn(2001)-1000) * time.Millisecond
+		waitTime += time.Duration(localRand.Intn(2001)-1000) * time.Millisecond
 		if waitTime < time.Second {
 			waitTime = time.Second
 		} else if waitTime > 5*time.Second {
@@ -351,35 +407,49 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 	return reloadCount, nil
 }
 
-// reportMemoryStressHistograms sets the histogram averages to perfValues.
-func reportMemoryStressHistograms(ctx context.Context, perfValues *perf.Values, histograms []*metrics.Histogram) error {
-	if len(histograms) != 2 {
-		return errors.New("unexpected histogram count")
-	}
+// reportTestCaseResult writes the test case result to perfValues and prints the test case result.
+func reportTestCaseResult(ctx context.Context, perfValues *perf.Values, result testCaseResult, label string) error {
+	testing.ContextLog(ctx, "===== "+label+" test results =====")
 
-	jankMean, err := histograms[0].Mean()
+	jankMean, err := result.jankyCount.Mean()
 	if err != nil {
 		return errors.Wrap(err, "failed to get mean for tast_janky_count")
 	}
 	jankyMetric := perf.Metric{
-		Name:      "tast_janky_count",
+		Name:      "tast_janky_count_" + label,
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}
 	perfValues.Set(jankyMetric, jankMean)
 	testing.ContextLog(ctx, "Average janky count in 30s: ", jankMean)
 
-	killLatency, err := histograms[1].Mean()
+	killLatency, err := result.discardLatency.Mean()
 	if err != nil {
 		return errors.Wrap(err, "failed to get mean for tast_discard_latency")
 	}
 	killLatencyMetric := perf.Metric{
-		Name:      "tast_discard_latency",
+		Name:      "tast_discard_latency_" + label,
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}
 	perfValues.Set(killLatencyMetric, killLatency)
 	testing.ContextLog(ctx, "Average discard latency(ms): ", killLatency)
+
+	reloadTabMetric := perf.Metric{
+		Name:      "tast_reload_tab_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(reloadTabMetric, float64(result.reloadCount))
+	testing.ContextLog(ctx, "Reload tab count: ", result.reloadCount)
+
+	oomKillerMetric := perf.Metric{
+		Name:      "tast_oom_killer_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(oomKillerMetric, float64(result.oomCount))
+	testing.ContextLog(ctx, "OOM Kill count: ", result.oomCount)
 
 	return nil
 }
