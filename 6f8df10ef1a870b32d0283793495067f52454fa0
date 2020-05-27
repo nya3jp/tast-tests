@@ -22,6 +22,30 @@
       "revId": "6f8df10ef1a870b32d0283793495067f52454fa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac530b4_2acae349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-27T01:16:32Z",
+      "side": 1,
+      "message": "From the comment here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go;rcl\u003d992263dae68195656a64b457dc88af5641915a52;l\u003d134\nThe EvalPromise() is going to be deprecated and the Eval will await for the promise if the result is a promise.",
+      "parentUuid": "458b4150_a57c3b16",
+      "range": {
+        "startLine": 393,
+        "startChar": 18,
+        "endLine": 393,
+        "endChar": 22
+      },
+      "revId": "6f8df10ef1a870b32d0283793495067f52454fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
