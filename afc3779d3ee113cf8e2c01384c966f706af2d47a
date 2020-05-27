@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7786b17b_6a77a5a8",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T05:11:02Z",
+      "side": 1,
+      "message": "Yes, it is for trimming the trailing newline.",
+      "parentUuid": "d9738b68_35eb790e",
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32c91d7a_349f5e8e",
         "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "17babe7e_ced14c9a",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T05:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c91d7a_349f5e8e",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca77df85_7ea62bcf",
         "filename": "src/chromiumos/tast/remote/wificell/framesender/sender_test.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf402e5_e9d9f85a",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T05:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca77df85_7ea62bcf",
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6b3155_3124650e",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-27T05:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a06ab9_3af1e7b2",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "afc3779d3ee113cf8e2c01384c966f706af2d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
