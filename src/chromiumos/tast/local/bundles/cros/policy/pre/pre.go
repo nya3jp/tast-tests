@@ -44,7 +44,7 @@ func newPrecondition() *preImpl {
 var User = newPrecondition()
 
 func (p *preImpl) String() string         { return "user_policy" }
-func (p *preImpl) Timeout() time.Duration { return 60 * time.Second }
+func (p *preImpl) Timeout() time.Duration { return chrome.LoginTimeout + 15*time.Second }
 
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing the current state that can be used by the test.
