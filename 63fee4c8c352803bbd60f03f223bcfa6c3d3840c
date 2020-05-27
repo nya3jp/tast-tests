@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "578b3f83_dd3bc238",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T19:25:50Z",
+      "side": 1,
+      "message": "hmm, that\u0027s not really good at differentiating. For WPA{1,2}, that can just be \"psk\", without telling us  which version. But I guess this is no different than the existing Autotest stuff.",
+      "range": {
+        "startLine": 327,
+        "startChar": 66,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "63fee4c8c352803bbd60f03f223bcfa6c3d3840c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
