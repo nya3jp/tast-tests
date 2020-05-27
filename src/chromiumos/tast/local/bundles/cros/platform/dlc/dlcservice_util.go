@@ -20,29 +20,41 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type dlcListOutput struct {
+// ListOutput holds the output from running `dlcservice_util --list`.
+type ListOutput struct {
+	ID        string `json:"id"`
+	Package   string `json:"package"`
 	RootMount string `json:"root_mount"`
+}
+
+// readFile returns the bytes within the file at the given path.
+func readFile(s *testing.State, path string) []byte {
+	b, err := ioutil.ReadFile(path)
+	if err != nil {
+		s.Fatal("Failed to read file: ", err)
+	}
+	return b
+}
+
+// dlcList converts the file at path to a ListOutput.
+func dlcList(s *testing.State, path string) (listOutput map[string][]ListOutput) {
+	if err := json.Unmarshal(readFile(s, path), &listOutput); err != nil {
+		s.Fatal("Failed to read json: ", err)
+	}
+	return
 }
 
 // verifyDlcContent verifies that the contents of the DLC have valid file hashes and file permissions.
 func verifyDlcContent(s *testing.State, path, dlc string) {
-	readFile := func(path string) []byte {
-		b, err := ioutil.ReadFile(path)
-		if err != nil {
-			s.Fatal("Failed to read file: ", err)
-		}
-		return b
-	}
-
 	removeExt := func(path string) string {
 		return strings.TrimSuffix(path, filepath.Ext(path))
 	}
 
 	checkSHA2Sum := func(hash_path string) {
 		path := removeExt(hash_path)
-		actualSumBytes := sha256.Sum256(readFile(path))
+		actualSumBytes := sha256.Sum256(readFile(s, path))
 		actualSum := hex.EncodeToString(actualSumBytes[:])
-		expectedSum := strings.Fields(string(readFile(hash_path)))[0]
+		expectedSum := strings.Fields(string(readFile(s, hash_path)))[0]
 		if actualSum != expectedSum {
 			s.Fatalf("SHA2 checksum do not match for %s. Actual=%s Expected=%s",
 				path, actualSum, expectedSum)
@@ -56,22 +68,15 @@ func verifyDlcContent(s *testing.State, path, dlc string) {
 			s.Fatal("Failed to stat: ", err)
 		}
 		actualPerm := fmt.Sprintf("%#o", info.Mode().Perm())
-		expectedPerm := strings.TrimSpace(string(readFile(perms_path)))
+		expectedPerm := strings.TrimSpace(string(readFile(s, perms_path)))
 		if actualPerm != expectedPerm {
 			s.Fatalf("Permissions do not match for %s. Actual=%s Expected=%s",
 				path, actualPerm, expectedPerm)
 		}
 	}
 
-	dlcList := func(path string) (listOutput map[string][]dlcListOutput) {
-		if err := json.Unmarshal(readFile(path), &listOutput); err != nil {
-			s.Fatal("Failed to read json: ", err)
-		}
-		return
-	}
-
 	getRootMounts := func(path, dlc string) (rootMounts []string) {
-		if l, ok := dlcList(path)[dlc]; ok {
+		if l, ok := dlcList(s, path)[dlc]; ok {
 			for _, val := range l {
 				rootMounts = append(rootMounts, val.RootMount)
 			}
@@ -98,19 +103,50 @@ func verifyDlcContent(s *testing.State, path, dlc string) {
 	}
 }
 
+// listDlcs is a helper to call into dlcservice_util for `--list` option.
+func listDlcs(ctx context.Context, s *testing.State, path string) {
+	// Path already exists.
+	if _, err := os.Stat(path); err == nil {
+		s.Fatal("File already exists at: ", path)
+	}
+	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to list DLCs: ", err)
+	}
+}
+
 // DumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
 // via dlcservice_util command.
 func DumpAndVerifyInstalledDLCs(ctx context.Context, s *testing.State, tag string, dlcs ...string) {
 	s.Log("Asking dlcservice for installed DLC modules")
 	f := tag + ".log"
 	path := filepath.Join(s.OutDir(), f)
-	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to get installed DLC modules: ", err)
-	}
+	listDlcs(ctx, s, path)
 	for _, dlc := range dlcs {
 		verifyDlcContent(s, path, dlc)
 	}
+}
+
+// GetInstalled calls the DBus methods to get installed DLCs.
+func GetInstalled(ctx context.Context, s *testing.State, path string) []ListOutput {
+	s.Log("Getting installed DLCs")
+	listDlcs(ctx, s, path)
+	m := dlcList(s, path)
+	installedIDs := make([]ListOutput, 0)
+	for id, l := range m {
+		for _, val := range l {
+			if id != val.ID {
+				s.Errorf("List has mismatching IDs: %s %s", id, val.ID)
+				continue
+			}
+			if val.Package == "" {
+				s.Errorf("Empty package for ID: %s", id)
+				continue
+			}
+			installedIDs = append(installedIDs, val)
+		}
+	}
+	return installedIDs
 }
 
 // Install calls the DBus method to install a DLC.
