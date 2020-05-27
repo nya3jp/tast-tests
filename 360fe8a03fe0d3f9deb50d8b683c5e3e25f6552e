@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64cc1500_420c5753",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db873dc9_f5c78b03",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 77
+      },
+      "revId": "360fe8a03fe0d3f9deb50d8b683c5e3e25f6552e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "981cb621_9e8be97a",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0406ea33_e1f9951c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T21:11:53Z",
+      "side": 1,
+      "message": "Twice the complexity.",
+      "parentUuid": "981cb621_9e8be97a",
+      "range": {
+        "startLine": 151,
+        "startChar": 22,
+        "endLine": 151,
+        "endChar": 30
+      },
+      "revId": "360fe8a03fe0d3f9deb50d8b683c5e3e25f6552e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfd46742_fb558079",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "360fe8a03fe0d3f9deb50d8b683c5e3e25f6552e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c049a2_a602fb40",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-27T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd46742_fb558079",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "360fe8a03fe0d3f9deb50d8b683c5e3e25f6552e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
