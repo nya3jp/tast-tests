@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "59d6c5b0_53ee290a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-05-27T21:18:04Z",
+      "side": 1,
+      "message": "I mean, I agree with your choice!",
+      "parentUuid": "0406ea33_e1f9951c",
+      "range": {
+        "startLine": 151,
+        "startChar": 22,
+        "endLine": 151,
+        "endChar": 30
+      },
+      "revId": "360fe8a03fe0d3f9deb50d8b683c5e3e25f6552e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfd46742_fb558079",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 6
