@@ -34,7 +34,6 @@ func init() {
 						Version: 1,
 					},
 				},
-				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: trace.HwDepsStable,
 			},
 			{
