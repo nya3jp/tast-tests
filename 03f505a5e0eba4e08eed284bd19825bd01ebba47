@@ -22,6 +22,30 @@
       "revId": "03f505a5e0eba4e08eed284bd19825bd01ebba47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f57b56_f0212090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-27T07:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ce0ea3_26100ee8",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "03f505a5e0eba4e08eed284bd19825bd01ebba47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
