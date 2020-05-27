@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "972fc233_6e5aec08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-05-27T19:56:00Z",
+      "side": 1,
+      "message": "Sorry if I\u0027m misunderstanding something, but is this what you want?\n\nash.EnsureTabletModeEnabled(ctx, tconn, false)",
+      "revId": "527c8cba35d8c15a0074556893d063778c124e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

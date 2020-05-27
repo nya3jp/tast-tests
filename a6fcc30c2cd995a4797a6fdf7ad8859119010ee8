@@ -230,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "d30e3a8b_f949035a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-05-27T19:56:00Z",
+      "side": 1,
+      "message": "In that case, I\u0027d suggest to use P / R. VM itself doesn\u0027t mean any specific android version (assuming S will be on WM as well :-)",
+      "parentUuid": "aae2a0d7_98efabaa",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcce15b5_77fc3c95",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
