@@ -76,17 +76,14 @@ func getExpectedTree(filepath string) (*simpleAutomationNode, error) {
 // getDesktopTree returns the accessibility tree of the whole desktop.
 func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomationNode, error) {
 	var root simpleAutomationNode
-	const script = `
-		new Promise((resolve, reject) => {
-			chrome.automation.getDesktop((root) => {
-				const instance = LogStore.getInstance();
-				instance.clearLog();
-				instance.writeTreeLog(new TreeDumper(root));
-				const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
-				resolve(logTree[0].logTree_.rootNode);
-			});
-		})`
-	err := cvconn.EvalPromise(ctx, script, &root)
+	err := cvconn.Call(ctx, &root, `async() => {
+		  let root = await tast.promisify(chrome.automation.getDesktop)();
+		  const instance = LogStore.getInstance();
+		  instance.clearLog();
+		  instance.writeTreeLog(new TreeDumper(root));
+		  const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
+		  return logTree[0].logTree_.rootNode;
+		}`)
 	return &root, err
 }
 

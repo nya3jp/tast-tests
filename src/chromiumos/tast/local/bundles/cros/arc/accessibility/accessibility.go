@@ -114,6 +114,11 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, errors.Wrap(err, "ChromeVox unavailable")
 	}
 
+	if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
+		extConn.Close()
+		return nil, errors.Wrap(err, "failed to introduce tast library")
+	}
+
 	return extConn, nil
 }
 

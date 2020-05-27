@@ -133,20 +133,14 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 			events = append(events, currentEvent)
 		}
 	}
-	fn := `
-	(events) => {
-		new Promise((resolve, reject) => {
-			chrome.automation.getDesktop((desktop) => {
-				EventStreamLogger.instance = new EventStreamLogger(desktop);
-				EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
-				for (const event of events) {
-					EventStreamLogger.instance.notifyEventStreamFilterChanged(event, true);
-				}
-				resolve();
-			});
-		 })
-	}`
-	if err := cvconn.Call(ctx, nil, fn, events); err != nil {
+	if err := cvconn.Call(ctx, nil, `async (events) => {
+		  let desktop = await tast.promisify(chrome.automation.getDesktop)();
+		  EventStreamLogger.instance = new EventStreamLogger(desktop);
+		  EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
+		  for (const event of events) {
+		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, true);
+		  }
+		}`, events); err != nil {
 		return errors.Wrap(err, "enabling event stream logging failed")
 	}
 	return nil
