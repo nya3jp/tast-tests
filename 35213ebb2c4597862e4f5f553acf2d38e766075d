@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1543884_82162529",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-27T21:03:44Z",
+      "side": 1,
+      "message": "so, the original test just ignored failures due to conflict, and you\u0027re choosing to poll instead?\n\nSeems like we should tell Shill to stop managing the device instead. Otherwise, you really have no guarantee the your \u0027iw\u0027-based scan will ever succeed.\n\n(BTW, I don\u0027t like this pattern in general, of having both Shill and iw operating on the device. It\u0027s the source of all sorts of flake.)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 121
+      },
+      "revId": "35213ebb2c4597862e4f5f553acf2d38e766075d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efaccf96_921354d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 3
