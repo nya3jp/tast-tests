@@ -39,6 +39,24 @@
       "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f10a166_d4a0cfc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-27T01:25:27Z",
+      "side": 1,
+      "message": "We can remove this, if it\u0027s ok to either:\n\n- Drop explicit ScopeRegular. It is the default value.\n- Make proxySettingsTestCase slightly more complex, by adding ScopeRegular for each, or\n- Inline the function in runProxytest.\n\nI\u0027m happy to make the change as you like. Please let me know your preference.",
+      "parentUuid": "3afb09b9_3bec54be",
+      "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
