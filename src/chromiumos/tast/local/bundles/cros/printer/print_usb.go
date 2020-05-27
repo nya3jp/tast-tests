@@ -19,8 +19,8 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintUSB,
 		Desc:         "Tests that USB print job can be successfully sent",
-		Contacts:     []string{"valleau@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts:     []string{"skau@chromium.org"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Data: []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf",
 			"print_usb_golden.ps"},
