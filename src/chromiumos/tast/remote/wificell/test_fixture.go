@@ -393,6 +393,51 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) err
 	return nil
 }
 
+// PingFromServer tests the connectivity between DUT and router through currently connected WiFi service.
+func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.PingFromServer")
+	defer st.End()
+
+	if tf.curAP == nil {
+		return errors.New("not connected")
+	}
+
+	addr, err := tf.ClientIpv4Addrs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the IP address")
+	}
+
+	pr := remoteping.NewRunner(tf.routerHost)
+	res, err := pr.Ping(ctx, addr[0], opts...)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "ping statistics=%+v", res)
+	if res.Sent != res.Received {
+		return errors.New("some packets are lost in ping")
+	}
+	return nil
+}
+
+// ClientIpv4Addrs returns the IPv4 addresses for the network interface.
+func (tf *TestFixture) ClientIpv4Addrs(ctx context.Context) ([]string, error) {
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+	}
+
+	netIface := &network.GetIPv4AddrsRequest{
+		InterfaceName: iface,
+	}
+	addr, err := tf.WifiClient().GetIPv4Addrs(ctx, netIface)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the IPv4 addresses")
+	}
+
+	return addr.Ipv4, nil
+}
+
 // AssertNoDisconnect runs the given routine and verifies that no disconnection event
 // is captured in the same duration.
 func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {

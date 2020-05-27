@@ -182,6 +182,13 @@ func PMF(p PMFEnum) Option {
 	}
 }
 
+// DTIMPeriod returns an Option which sets the DTIM period in hostapd config.
+func DTIMPeriod(period int) Option {
+	return func(c *Config) {
+		c.DTIMPeriod = period
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -213,6 +220,7 @@ type Config struct {
 	Hidden           bool
 	SecurityConfig   security.Config
 	PMF              PMFEnum
+	DTIMPeriod       int
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -268,6 +276,10 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	if c.Hidden {
 		configure("ignore_broadcast_ssid", "1")
+	}
+
+	if c.DTIMPeriod != 0 {
+		configure("dtim_period", strconv.Itoa(c.DTIMPeriod))
 	}
 
 	securityConf, err := c.SecurityConfig.HostapdConfig()
@@ -348,6 +360,13 @@ func (c *Config) validate() error {
 	if err := c.validatePMF(); err != nil {
 		return err
 	}
+
+	if c.DTIMPeriod != 0 {
+		if c.DTIMPeriod > 255 || c.DTIMPeriod < 1 {
+			return errors.Errorf("invalid DTIM period: got %d, want [1..255]", c.DTIMPeriod)
+		}
+	}
+
 	return nil
 }
 
