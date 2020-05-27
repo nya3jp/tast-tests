@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04fa10d6_496641f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-27T21:13:59Z",
+      "side": 1,
+      "message": "nit: This doesn\u0027t have to be an internal function. You can declare outside.  Functions are local to the package (i.e. files in the same directory), and in this case, that is fine.\n\nPreviously internal function should be preferred since it is a part of a test case -- functions can be shared with other test cases in the same directory and conflicting names would bother test authors.  With new package, that wouldn\u0027t be the case.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "737e49f5f86c4786086d31c2fe8496520a8377b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
