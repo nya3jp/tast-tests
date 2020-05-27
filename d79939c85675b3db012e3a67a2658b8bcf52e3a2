@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03211f5e_08f0c01f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-27T02:58:40Z",
+      "side": 1,
+      "message": "It is needed in the upcoming CL:\nhttps://crrev.com/c/2203558/17/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+      "parentUuid": "04c45b16_bb8c2698",
+      "revId": "d79939c85675b3db012e3a67a2658b8bcf52e3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f982986_c9b9e434",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
