@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cba3abb4_7479f59b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-27T21:42:33Z",
+      "side": 1,
+      "message": "You can add:\n\nFixes: 2242eb3 (\"tast-tests: hwsec: Add VaultConfig to MountVault\")",
+      "revId": "aa0efe42da1960ae9e1fe9f6759882c7556a9c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
