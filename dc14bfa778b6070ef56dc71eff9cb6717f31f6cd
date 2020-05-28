@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5302b588_a6d89ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "why not infer the keys argument from the expectedValue argument by just splitting it into characters in that function? If we\u0027re not working with non-printing characters or other special characters like backspace (and since inputField isn\u0027t public or in a library, it doesn\u0027t look like we will), it might make this a bit cleaner.",
+      "range": {
+        "startLine": 66,
+        "startChar": 52,
+        "endLine": 66,
+        "endChar": 148
+      },
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38933913_fcd8b25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "can just use s.Error here, up to you",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd9ac98_923298a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "File a bug for this if it\u0027s unexpected behavior.",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd146094_5055b73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "file a bug for this and put it here instead of a name, so we don\u0027t lose track of it",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 16
+      },
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a566fc0_9540d368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "Does the viewport shrinking happen all at once, even if there is an animation for the keyboard coming up? (or maybe there isn\u0027t one, I don\u0027t remember well offhand...)",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "895d0dec_a6b30de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "You should probably use testing.PollBreak and fail immediately here if we hit this case.",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebfe0bff_0bac2d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:04:50Z",
+      "side": 1,
+      "message": "ditto re: testing.PollBreak",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
