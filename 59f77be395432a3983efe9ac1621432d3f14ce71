@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "d51cdfd1_015a040e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "Oh, I was going to ask about parsing this, but I see that\u0027s in the next CL.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07064e69_8912cb49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "this function, up to here, is basically shared with getSARTableFromASL(). Can we factor that out?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 62
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c214d107_ad8bb872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "should we just be up front about checking the length, and say we expect len(values) \u003d\u003d 19? Otherwise, we\u0027re going to panic when we can\u0027t access values[N].\n\nSimilar for getSARTableFromASL(), actually.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 22
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "578d78d9_92f95178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "hehe, I was gonna ask about unit tests. seems like we already have the TODO :)",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 39
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91771b1c_4c70f80e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 3
@@ -13,6 +105,116 @@
       "writtenOn": "2020-05-13T23:38:52Z",
       "side": 1,
       "message": "The logic in this loop could potentially be merged into the logic of the loop below, but to me it seemed that would actually just make the code messier. Thoughts?",
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7dcdb3_6c91a6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "separate is probably fine",
+      "parentUuid": "91771b1c_4c70f80e",
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c778e3e_5f0bc181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "is this actually specified somewhere? I\u0027m not sure I\u0027m following what we\u0027re doing here.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09c1dc6_21d71850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "Just use \u0027realSARValues\u0027? Then you don\u0027t need line 335.",
+      "range": {
+        "startLine": 322,
+        "startChar": 26,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd064359_b99ad352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "It took me a while to understand your if/else branches here. Maybe 2 things to help?\n\n1. a comment, describing the format -- approximately [0 \u003d 2G_A, 1-4 \u003d 5G_A, 5\u003d2G_B, 6-9\u003d5G_B]?\n2. put them in a sensible order, like:\n\n  index \u003d\u003d 0\n  index \u003c 5\n  index \u003d\u003d 5\n  index \u003e 5",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 19
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15720bb7_dd762d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:11Z",
+      "side": 1,
+      "message": "should you be capping this by geoTable.{2,5}max?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 55
+      },
       "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
