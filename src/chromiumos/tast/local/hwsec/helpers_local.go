@@ -10,8 +10,10 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -41,4 +43,15 @@ type HelperLocal struct {
 // implemented by CmdRunnerLocal.
 func NewHelper(ti hwsec.TPMInitializer) (*HelperLocal, error) {
 	return &HelperLocal{*hwsec.NewHelper(ti)}, nil
+}
+
+// EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.
+func (h *HelperLocal) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
+	if err := h.EnsureTPMIsReady(ctx, timeout); err != nil {
+		return errors.Wrap(err, "failed to ensure TPM readiness")
+	}
+	if err := BackupTPMManagerDataIfIntact(ctx); err != nil {
+		return errors.Wrap(err, "failed to backup tpm manager lacal data")
+	}
+	return nil
 }
