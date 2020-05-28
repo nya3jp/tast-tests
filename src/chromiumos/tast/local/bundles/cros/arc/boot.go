@@ -44,15 +44,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           5 * time.Minute,
 		}, {
-			// TODO(yusukes): Remove this once we abandon ARCVM P.
-			Name: "vm_p",
-			Val: bootConfig{
-				numTrials: 1,
-			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android_vm_p_deprecated"},
-			Timeout:           5 * time.Minute,
-		}, {
 			Name: "stress",
 			Val: bootConfig{
 				numTrials: 10,
