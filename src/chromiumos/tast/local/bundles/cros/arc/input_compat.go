@@ -155,7 +155,7 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get tablet mode: ", err)
 		}
 		if !tabletMode {
-			if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+			if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
 				s.Fatal("Failed to set the window state to maximized: ", err)
 			}
 		}
