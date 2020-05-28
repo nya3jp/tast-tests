@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/filesnapshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -18,20 +19,45 @@ const googleKeysDataPath = "/run/attestation/google_keys.data"
 
 // AttestationLocalInfra enables/disables the local server implementation on DUT.
 type AttestationLocalInfra struct {
-	dc *hwsec.DaemonController
+	dc        *hwsec.DaemonController
+	snapshot  *filesnapshot.Snapshot
+	dbStashed bool
 }
 
 // NewAttestationLocalInfra creates a new AttestationLocalInfra instance, with dc used to control the D-Bus service daemons.
 func NewAttestationLocalInfra(dc *hwsec.DaemonController) *AttestationLocalInfra {
-	return &AttestationLocalInfra{dc}
+	return &AttestationLocalInfra{dc, filesnapshot.NewSnapshot(), false}
 }
 
 // Enable enables the local test infra for attestation flow testing.
 func (ali *AttestationLocalInfra) Enable(ctx context.Context) (lastErr error) {
+	if err := ali.restoreTPMOwnerPasswordIfNeeded(ctx); err != nil {
+		return errors.Wrap(err, "failed to restore tpm owner password")
+	}
+	if _, err := os.Stat(hwsec.AttestationDBPath); err == nil {
+		// Note: we don't restart attestationd here because key injection that follows restarts attestationd already.
+		if err := ali.snapshot.Stash(hwsec.AttestationDBPath); err != nil {
+			return errors.Wrap(err, "failed to stash attestation database")
+		}
+		ali.dbStashed = true
+	} else if !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to check stat of attestation database")
+	}
+	// Pop the stored snapshot of attestation database and restart attestationd if other parts of this function fails.
+	defer func() {
+		if lastErr != nil && ali.dbStashed {
+			if err := ali.snapshot.Pop(hwsec.AttestationDBPath); err != nil {
+				testing.ContextLog(ctx, "Failed to pop attestation datase back: ", err)
+			}
+			if err := ali.dc.RestartAttestation(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to restart attestation service after popping attestation database: ", err)
+			}
+		}
+	}()
 	if err := ali.injectWellKnownGoogleKeys(ctx); err != nil {
 		return errors.Wrap(err, "failed to inject well-known keys")
 	}
-	// Revert the key injection if other parts of this function fail.
+	// Revert the key injection if other parts of this function fails.
 	defer func() {
 		if lastErr != nil {
 			if err := ali.injectNormalGoogleKeys(ctx); err != nil {
@@ -48,6 +74,12 @@ func (ali *AttestationLocalInfra) Enable(ctx context.Context) (lastErr error) {
 // Disable disables the local test infra for attestation flow testing.
 func (ali *AttestationLocalInfra) Disable(ctx context.Context) error {
 	var lastErr error
+	if ali.dbStashed {
+		if err := ali.snapshot.Pop(hwsec.AttestationDBPath); err != nil {
+			testing.ContextLog(ctx, "Failed to pop the snapshot of attestation database back: ", err)
+			lastErr = errors.Wrap(err, "failed to pop the snapshot of attestation database back")
+		}
+	}
 	if err := ali.injectNormalGoogleKeys(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to inject the normal key back: ", err)
 		lastErr = errors.Wrap(err, "failed to inject the normal key back")
@@ -57,6 +89,32 @@ func (ali *AttestationLocalInfra) Disable(ctx context.Context) error {
 		lastErr = errors.Wrap(err, "failed to disable fake pca agent")
 	}
 	return lastErr
+}
+
+// restoreTPMOwnerPasswordIfNeeded restores the owner password from the snapshot stored
+// at the beginning of the entire test program if the owner password gets wiped already.
+func (ali *AttestationLocalInfra) restoreTPMOwnerPasswordIfNeeded(ctx context.Context) error {
+	hasOwnerPassword, err := isTPMLocalDataIntact(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check owner password")
+	}
+	if hasOwnerPassword {
+		return nil
+	}
+	if err := RestoreTPMManagerData(ctx); err != nil {
+		return errors.Wrap(err, "failed to restore tpm manager local data")
+	}
+	if err := ali.dc.RestartTpmManager(ctx); err != nil {
+		return errors.Wrap(err, "failed to restart tpm manager")
+	}
+	hasOwnerPassword, err = isTPMLocalDataIntact(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check owner password")
+	}
+	if !hasOwnerPassword {
+		return errors.Wrap(err, "no owner password after restoration")
+	}
+	return nil
 }
 
 // injectWellKnownGoogleKeys creates the well-known Google keys file and restarts attestation service.
