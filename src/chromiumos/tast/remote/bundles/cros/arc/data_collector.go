@@ -42,6 +42,7 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
+		Attr: []string{"group:arc-data-collector"},
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
@@ -55,10 +56,8 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:arc-data-collector"},
 			Val:               false,
 		}, {
-			// TODO(b/157383101): enable for ARCVM PFQ
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               true,
