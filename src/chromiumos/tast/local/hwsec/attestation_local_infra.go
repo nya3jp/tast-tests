@@ -161,7 +161,10 @@ func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastE
 			}
 		}
 	}()
-	if err := ali.dc.StartFakePCAAgent(ctx); err != nil {
+	if ali.fpca == nil {
+		ali.fpca = FakePCAAgentContext(ctx)
+	}
+	if err := ali.fpca.Start(); err != nil {
 		return errors.Wrap(err, "failed to start fake pca agent")
 	}
 	return nil
@@ -170,9 +173,11 @@ func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastE
 // disableFakePCAAgent stops the fake pca agent and starts the normal one.
 func (ali *AttestationLocalInfra) disableFakePCAAgent(ctx context.Context) error {
 	var lastErr error
-	if err := ali.dc.StopFakePCAAgent(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to stop fake pca agent: ", err)
-		lastErr = errors.Wrap(err, "failed to stop fake pca agent")
+	if ali.fpca != nil {
+		if err := ali.fpca.Stop(); err != nil {
+			testing.ContextLog(ctx, "Failed to stop fake pca agent: ", err)
+			lastErr = errors.Wrap(err, "failed to stop fake pca agent")
+		}
 	}
 	if err := ali.dc.StartPCAAgent(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to start normal pca agent: ", err)
