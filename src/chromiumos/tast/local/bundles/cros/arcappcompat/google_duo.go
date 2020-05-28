@@ -10,12 +10,14 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -90,6 +92,16 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
 	defer d.Close()
+
+	// Grant camera and microphone permissions.
+	for _, permission := range []string{
+		"android.permission.CAMERA", "android.permission.RECORD_AUDIO",
+		"android.permission.READ_CONTACTS"} {
+		s.Logf("Granting permission %q to Android app %q", permission, appPkgName)
+		if err := a.Command(ctx, "pm", "grant", appPkgName, permission).Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal(errors.Wrapf(err, "failed to grant permission %q to %q", permission, appPkgName))
+		}
+	}
 
 	testSet := s.Param().(testutil.TestParams)
 	// Run the different test cases.
