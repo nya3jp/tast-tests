@@ -83,7 +83,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, act.PackageName(), arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
