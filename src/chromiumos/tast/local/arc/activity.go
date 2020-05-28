@@ -109,7 +109,7 @@ const (
 	// The hitbox size is harcoded to 48dp. See PipDragHandleController.isInDragHandleHitbox().
 	// http://cs/pi-arc-dev/frameworks/base/packages/SystemUI/src/com/android/systemui/pip/phone/PipDragHandleController.java
 	borderOffsetForPIP = -5
-	// delayToPreventGesture represents the delay used in swipe() to prevent triggering gestures like "minimize".
+	// delayToPreventGesture represents the delay used in Swipe() to prevent triggering gestures like "minimize".
 	delayToPreventGesture = 150 * time.Millisecond
 )
 
@@ -251,12 +251,12 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-
 	var from coords.Point
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
+
 	halfWidth := bounds.Width / 2
 	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
@@ -270,7 +270,7 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 		from.Y = bounds.Top + captionHeight/2
 		to.Y += captionHeight / 2
 	}
-	return ac.swipe(ctx, from, to, t)
+	return ac.Swipe(ctx, from, to, t)
 }
 
 // ResizeWindow resizes the activity's window.
@@ -325,7 +325,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	src.X = int(math.Max(0, math.Min(float64(ds.Width-1), float64(src.X))))
 	src.Y = int(math.Max(0, math.Min(float64(ds.Height-1), float64(src.Y))))
 
-	return ac.swipe(ctx, src, to, t)
+	return ac.Swipe(ctx, src, to, t)
 }
 
 // SetWindowState sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
@@ -417,10 +417,10 @@ func (ac *Activity) Resizable(ctx context.Context) (bool, error) {
 	return task.resizable, nil
 }
 
-// swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
+// Swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
-func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Duration) error {
+func (ac *Activity) Swipe(ctx context.Context, from, to coords.Point, t time.Duration) error {
 	if err := ac.initTouchscreenLazily(ctx); err != nil {
 		return errors.Wrap(err, "could not initialize touchscreen device")
 	}
@@ -455,7 +455,7 @@ func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Dur
 }
 
 // initTouchscreenLazily lazily initializes the touchscreen.
-// Touchscreen initialization is not needed, unless swipe() is called.
+// Touchscreen initialization is not needed, unless Swipe() is called.
 func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	if ac.tew != nil {
 		return nil
