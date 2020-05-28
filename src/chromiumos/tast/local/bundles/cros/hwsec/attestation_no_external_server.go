@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AttestationNoExternalServer,
 		Desc:         "Verifies attestation-related functionality with the locally PCA and VA response",
+		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
 		Timeout:      4 * time.Minute,
