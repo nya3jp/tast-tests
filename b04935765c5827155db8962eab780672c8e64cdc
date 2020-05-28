@@ -33,6 +33,29 @@
       "revId": "b04935765c5827155db8962eab780672c8e64cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae7ab983_7daeea13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_stress_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-05-28T01:02:55Z",
+      "side": 1,
+      "message": "Could you fix the todo beforehand?\nThe duplication seems to be too big to be acceptable...",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
