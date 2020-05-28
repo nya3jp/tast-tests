@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf16c010_30936a22",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-05-28T19:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47cd728_3951e72d",
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52f2f20f_2d52f99f",
         "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4197177e_d0595787",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-05-28T19:33:29Z",
+      "side": 1,
+      "message": "yep. very good point, though obsolete now that the function\u0027s been moved to ash package.",
+      "parentUuid": "52f2f20f_2d52f99f",
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ea43d8_9df1d0bb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-05-28T19:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6795947_abfb89d4",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
