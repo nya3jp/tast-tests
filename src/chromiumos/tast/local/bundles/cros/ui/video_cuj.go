@@ -34,8 +34,12 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
+		Vars: []string{
+			"ui.VideoCUJ.username",
+			"ui.VideoCUJ.password",
+			"ui.VideoCUJ.ytExperiments",
+		},
 		Params: []testing.Param{{
 			Name: "clamshell",
 			Val:  false,
@@ -48,7 +52,15 @@ func init() {
 }
 
 func VideoCUJ(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	username := s.RequiredVar("ui.VideoCUJ.username")
+	password := s.RequiredVar("ui.VideoCUJ.password")
+
+	cr, err := chrome.New(ctx, chrome.GAIALogin(),
+		chrome.Auth(username, password, "gaia-id"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -107,7 +119,8 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	s.Log("Open youtube Web")
 	ytConn, err := cr.NewConn(ctx,
-		"https://www.youtube.com/watch?v=EEIk7gwjgIM",
+		"https://www.youtube.com/watch?v=EEIk7gwjgIM&absolute_experiments="+
+			s.RequiredVar("ui.VideoCUJ.ytExperiments"),
 		cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open youtube: ", err)
@@ -251,6 +264,12 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 				s.Log("Failed to dismiss banner: ", err)
 			}
 
+			// Attempt to dismiss floating surveys that could  cover the bottom-right
+			// and ignore the errors since the survey could not be there..
+			if err := tapYtElem("button[aria-label='Dismiss']"); err != nil {
+				s.Log("Failed to dismiss survey: ", err)
+			}
+
 			// Tap the video to pause it to ensure the fullscreen button showing up.
 			if err := tapYtElem(`video`); err != nil {
 				return errors.Wrap(err, "failed to tap video to pause it")
@@ -287,6 +306,10 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
+	}
+
+	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide ash notification: ", err)
 	}
 
 	s.Log("Make video fullscreen")
