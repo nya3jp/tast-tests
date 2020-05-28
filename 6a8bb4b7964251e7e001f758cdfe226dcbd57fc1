@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f04d129f_7c7b9424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-28T18:04:31Z",
+      "side": 1,
+      "message": "Thanks for the reference. Although if you ask me that seems like a very dumb rule for golang 😂 . No column size restriction, but yeah, start the comment with the name!!!",
+      "parentUuid": "4cff62e8_f4ba1deb",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27405fbc_a04c73db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
