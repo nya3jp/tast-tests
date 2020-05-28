@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1266aba4_12f63ac4",
+        "filename": "src/chromiumos/tast/local/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T21:35:55Z",
+      "side": 1,
+      "message": "can we actually call this NewLocalRunner? All the overloaded NewRunner()s are a little confusing.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e56d02_e26c548d",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T21:35:55Z",
+      "side": 1,
+      "message": "use alias",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e04a20_058a4f80",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T21:35:55Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
