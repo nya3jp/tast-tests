@@ -227,7 +227,6 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 // androidDeps contains Android-related software features (see testing.Test.SoftwareDeps).
 // At least one of them must be declared to call New.
 var androidDeps = []string{
-	"android_vm_p_deprecated",
 	"android_vm",
 	"android_vm_r",
 	"android_p",
