@@ -127,7 +127,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for visible app")
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
 		return errors.Wrap(err, "failed to set window state to fullscreen")
 	}
 

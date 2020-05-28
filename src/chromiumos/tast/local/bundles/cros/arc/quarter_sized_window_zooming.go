@@ -73,7 +73,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set tablet mode enabled to false: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
 		s.Fatal("Failed to set window state to Fullscreen: ", err)
 	}
 
