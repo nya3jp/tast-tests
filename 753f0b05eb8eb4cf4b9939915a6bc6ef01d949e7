@@ -16,6 +16,24 @@
       "revId": "753f0b05eb8eb4cf4b9939915a6bc6ef01d949e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84782178_4e3a779d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-05-28T18:38:10Z",
+      "side": 1,
+      "message": "done, though I moved it to (newly created) chrome/ui/notifications, to avoid dependency from chrome/ash to chrome/ui. Let me know if there\u0027s a better place to put this",
+      "parentUuid": "17cc39e2_33dab9ee",
+      "revId": "753f0b05eb8eb4cf4b9939915a6bc6ef01d949e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
