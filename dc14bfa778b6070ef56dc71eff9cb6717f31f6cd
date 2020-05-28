@@ -255,6 +255,24 @@
     },
     {
       "key": {
+        "uuid": "d4149486_8e2edefb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-28T23:48:02Z",
+      "side": 1,
+      "message": "Once tap on the input field, it can milliseconds delay. Also it depends if device CPU is busy 😊 So I am afraid of flakiness if go check without polling.",
+      "parentUuid": "8505bfb0_98e0ffaf",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "895d0dec_a6b30de9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
         "patchSetId": 3
