@@ -22,6 +22,133 @@
       "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b40dd2d_47cc3486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "I think ioutil.TempDir() would be better; that way it is guaranteed to be empty, i.e.\n  dir, err :\u003d ioutil.TempDir(\"\", \"\")\n  ...\n  defer os.RemoveAll(dir)\n  path :\u003d filepath.Join(dir, \"get_installed\")",
+      "parentUuid": "7dcba235_932657ce",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 29
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d11b5ea3_186be4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "make([]ListOutput, 0, len(m)) would be slightly better (it ensures the capacity of the slice, avoiding reallocations).\n\nOr if you don\u0027t worry, it would be simply\n  var installedIDs []ListOutput",
+      "range": {
+        "startLine": 196,
+        "startChar": 17,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b953bd_39b343a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "Maybe it is nicer to have the reference to the scheme of this manifest, if there is some. That helps future developers who want to extend/fix this.\n\nPossibly https://chromium.googlesource.com/chromiumos/platform2.git/+/refs/heads/master/imageloader/manifest.md ?",
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fec014d_ca5a206b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "usually the style would be\n  if ...; err !\u003d nil {\n    return nil, errors.Wrap(...)\n  }\n  ...\n\nThis is slightly better in a way that you don\u0027t need extra indents for the core logic.",
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd858c41_c2d40498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "it would be nicer to report an error if this fails, i.e.\n  if err :\u003d dlc.RestartUpstartJob(...); err !\u003d nil {\n    s.Error(...)\n  }",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc414aec_207348f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:29:21Z",
+      "side": 1,
+      "message": "In case that the dummy is not yet mounted, this is going to fail -- isn\u0027t it?  It would provide extra errors unexpectedly.  That wouldn\u0027t be harmful by itself, though I guess it is slightly better to create a boolean flag of whether the image is loaded or not.",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 120
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
