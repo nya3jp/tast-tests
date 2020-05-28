@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1e4c93bb_1668b5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-28T17:56:07Z",
+      "side": 1,
+      "message": "So the golang style guide says the name of the function should be the first word in its documentation?!!! can you give me a reference to it? I\u0027m really interested to know about this.",
+      "parentUuid": "ff4daa36_9cbdc8c0",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27405fbc_a04c73db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
