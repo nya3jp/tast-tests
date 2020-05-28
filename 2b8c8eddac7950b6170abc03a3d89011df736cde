@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "93e5dbe6_7d04c50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "nit: looks like this should be ScanESCLIPP: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba6af42_9d8e3a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "nit: please add few more contacts, team ideally",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b873f08f_7da7dcad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "nit: rename to cleanupCtx",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4744e813_6c23db6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "nit: please don\u0027t bind context by reference, pass it by value only:\n\n\tdefer func(ctx context.Context) {\n\t\tif err :\u003d usbprinter.RemoveModules(ctx); err !\u003d nil {\n\t\t\ts.Error(\"Failed to remove kernel modules: \", err)\n\t\t}\n\t}(cleanupCtx)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be84704b_032158fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -18,6 +110,115 @@
         "startChar": 26,
         "endLine": 61,
         "endChar": 52
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c219eb1e_fbd4eb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "create a bug for this TODO: TODO(b/xxx) / TODO(crbug/xxx)",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20560a7_343bb125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "please use testutil.TempDir: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testutil/files.go;l\u003d18?q\u003dtestutil.TempDir",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39cd982d_59939130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba360dc_3d692173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "Usually it makes sens to add logs before long running operations, but connecting to the D-Bus is very fast\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bbe49d7_28acf053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T08:51:13Z",
+      "side": 1,
+      "message": "same: is it fast or long?\n\n\nmaybe put it before 117 line?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 43
       },
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
