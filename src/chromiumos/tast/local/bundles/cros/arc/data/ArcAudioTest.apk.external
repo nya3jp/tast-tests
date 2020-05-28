@@ -1,6 +1,6 @@
 {
   "url":
-  "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcAudioTest_201912101606.apk",
-  "size": 549421,
-  "sha256sum": "46b8cc971c2701f4b54ccc0502a77084d83ffa03a474bc9a84c425dd74f59e5b"
+  "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcAudioTest_20200526.apk",
+  "size": 545325,
+  "sha256sum": "0b419f2a24f03a1b9b40b4ab96e2907d352c11f1b79fb6169ac62e7d176038bf"
 }
