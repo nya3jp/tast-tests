@@ -152,6 +152,30 @@
     },
     {
       "key": {
+        "uuid": "4a71d5e5_a63af5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-28T20:20:47Z",
+      "side": 1,
+      "message": "Not sure if its part of the spec or if its another bad practice we let partners get away with, but some tables use a full table of 0xFF to indicate a \"no-op\" or unused table. This logic just makes sure we don\u0027t interpret that as 255 * 1/8 dBm, which would fail the test. Maybe we should be failing the tests in that situation?\n\nExample table:\nhttp://cs/chromeos_internal/src/private-overlays/overlay-nocturne-private/sys-boot/coreboot-private-files-nocturne/files/wifi_sar_defaults.hex",
+      "parentUuid": "2c778e3e_5f0bc181",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d09c1dc6_21d71850",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 3
@@ -209,6 +233,30 @@
       "writtenOn": "2020-05-28T01:19:11Z",
       "side": 1,
       "message": "should you be capping this by geoTable.{2,5}max?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 55
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d726e4aa_3307c151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-28T20:20:47Z",
+      "side": 1,
+      "message": "I wondered that myself. I guess it comes down to the Intel spec? I had figured that being able to have this value exceed the max value might be an option that was provided intentionally. For example, if the different 5g band\u0027s basic SAR values vary significantly, some of the SAR + GEO sums could exceed the max while others didn\u0027t. This could be done intentionally to apply different GEO increases to different bands, perhaps in order to get a larger increase on the bands which have lower basic SAR limits. (This is all assuming that the driver will default the limit to the max value when it exceeds the max, and not just fail or do something else weird.)",
+      "parentUuid": "15720bb7_dd762d68",
       "range": {
         "startLine": 337,
         "startChar": 0,
