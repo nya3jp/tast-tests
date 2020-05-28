@@ -16,6 +16,24 @@
       "revId": "4b3fce07579a7862fa2373195767d6ca87a9f1d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08559d89_fb9783bc",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-28T22:50:14Z",
+      "side": 1,
+      "message": "b/157686038 raised.",
+      "parentUuid": "aa163ba1_a037f739",
+      "revId": "4b3fce07579a7862fa2373195767d6ca87a9f1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
