@@ -64,5 +64,10 @@ func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, env
 	diffPath := filepath.Join(s.OutDir(), "diff.txt")
 	if err := document.CompareFileContents(ctx, string(output), string(goldenBytes), diffPath); err != nil {
 		s.Error("Printed file differs from golden file: ", err)
+		outPath := filepath.Join(s.OutDir(), "output.pdf")
+		testing.ContextLog(ctx, "Dumping output file to ", outPath)
+		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to dump output: ", err)
+		}
 	}
 }
