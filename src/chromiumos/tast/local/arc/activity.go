@@ -336,7 +336,30 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 
 // SetWindowState sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
-func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
+func (ac *Activity) SetWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, state WindowState) error {
+	sdkVer, err := SDKVersion()
+	if err != nil {
+		return errors.Wrap(err, "failed to get the SDK version")
+	}
+
+	switch sdkVer {
+	case SDKP:
+		if err := ac.SetWindowStateP(ctx, state); err != nil {
+			return err
+		}
+	case SDKR:
+		if err := setWindowStateR(ctx, tconn, pkgName, state); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("unsupported SDK version: %d", sdkVer)
+	}
+	return nil
+}
+
+// SetWindowStateP sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
+// Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
+func (ac *Activity) SetWindowStateP(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get task info")
@@ -352,6 +375,41 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
 	return nil
+}
+
+// setWindowStateR sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
+// Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
+func setWindowStateR(ctx context.Context, tconn *chrome.TestConn, pkgName string, state WindowState) error {
+	switch state {
+	case WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized:
+	default:
+		return errors.Errorf("unsupported window state %d", state)
+	}
+
+	wmEvent, err := windowStateToWMEvent(state)
+	if err != nil {
+		return errors.Wrap(err, "failed to get wm event")
+	}
+
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, wmEvent); err != nil {
+		return errors.Wrap(err, "failed to set window state")
+	}
+	return nil
+}
+
+func windowStateToWMEvent(state WindowState) (ash.WMEventType, error) {
+	switch state {
+	case WindowStateNormal:
+		return ash.WMEventNormal, nil
+	case WindowStateMaximized:
+		return ash.WMEventMaximize, nil
+	case WindowStateMinimized:
+		return ash.WMEventMinimize, nil
+	case WindowStateFullscreen:
+		return ash.WMEventFullscreen, nil
+	default:
+		return ash.WMEventNormal, errors.Errorf("unsupported window state %d", state)
+	}
 }
 
 // GetWindowState returns the window state.
