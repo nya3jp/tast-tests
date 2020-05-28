@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package crash
 
 import (
 	"context"
@@ -25,7 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrashReporterCrash,
+		Func: ReporterCrash,
 		Desc: "Verifies crash_reporter itself crashing is captured through anomaly detector",
 		Contacts: []string{
 			"joonbug@chromium.org",
@@ -70,7 +70,7 @@ func setCorePatternCrashTest(ctx context.Context, crashTest bool) error {
 	return nil
 }
 
-func CrashReporterCrash(ctx context.Context, s *testing.State) {
+func ReporterCrash(ctx context.Context, s *testing.State) {
 	opt := crash.WithMockConsent()
 	useConsent := s.Param().(crash.ConsentType)
 	if useConsent == crash.RealConsent {
