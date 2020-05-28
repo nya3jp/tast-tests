@@ -27,8 +27,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug.com/1056294): Make test critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
