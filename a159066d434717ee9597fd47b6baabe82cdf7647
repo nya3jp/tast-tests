@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d07c9c9f_3d12c942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "In general, it is recommended to avoid negated flag. How about \"ARC\", \"useARC\" etc?",
+      "range": {
+        "startLine": 56,
+        "startChar": 97,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79c69a6_561c0cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "style\n\nval, err :\u003d ...\nif err !\u003d nil {\n  s.Fatal(...)\n}\nminFileListKB \u003d val",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0351fb8_eef9d07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "How about recording the Seed in the log for reproducibility?",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4baf836f_534126f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "I think you can use composite literal instead. Could you find my comments below, too?",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c660124_14c5c268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "In case of error, I\u0027d recommend not to return the partially initialized result. Could you avoid it (i.e. return an zero-value-initialized struct, instead?)",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767719f1_c490f284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 1,
+      "message": "how about just passing by value?\nWe do not expect nil, nor overwriting the result?",
+      "range": {
+        "startLine": 398,
+        "startChar": 79,
+        "endLine": 398,
+        "endChar": 80
+      },
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
