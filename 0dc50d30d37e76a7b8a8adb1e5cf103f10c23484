@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3487582f_e7c00202",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-28T02:22:39Z",
+      "side": 1,
+      "message": "\u003e \"slighly\" is a possible misspelling of \"slightly\".\n\nPlease fix.",
+      "parentUuid": "eae8ab09_474cc256",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "0dc50d30d37e76a7b8a8adb1e5cf103f10c23484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
