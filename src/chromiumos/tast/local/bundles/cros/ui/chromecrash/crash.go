@@ -411,10 +411,17 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 // Return nil if the file is found.
 func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
 	ending := fmt.Sprintf(`.*\.%d\.meta`, pid)
-	_, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
+	results, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
 	if err != nil {
 		return errors.Wrap(err, "error waiting for .meta file")
 	}
+
+	// Investigating test flakes -- why do some parts of the test see the meta
+	// files and others don't? Dump exactly what WaitForCrashFiles saw.
+	// TODO(crbug.com/1080365): Remove this once flake is resolved; it's kinda
+	// spammy.
+	testing.ContextLog(ctx, "crash.WaitForCrashFiles returned ", results)
+
 	return nil
 }
 
