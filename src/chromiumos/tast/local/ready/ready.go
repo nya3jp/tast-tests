@@ -23,6 +23,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -110,6 +111,9 @@ func Wait(ctx context.Context) error {
 				testing.ContextLog(ctx, "TPM not available, not waiting for readiness")
 			}
 		}
+	}
+	if err := hwsec.BackupTPMManagerDataIfIntact(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to backup tpm manager local data")
 	}
 
 	return nil
