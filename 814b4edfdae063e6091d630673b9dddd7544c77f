@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e73904b0_9f42f44c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-28T18:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89084005_bb24511a",
+      "range": {
+        "startLine": 182,
+        "startChar": 61,
+        "endLine": 182,
+        "endChar": 64
+      },
+      "revId": "814b4edfdae063e6091d630673b9dddd7544c77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90697ad3_a85cd37f",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "814b4edfdae063e6091d630673b9dddd7544c77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3f98cd_957975fc",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-28T18:14:54Z",
+      "side": 1,
+      "message": "As far as I can tell, no. Servod reports the new direction immediately, but (based on what I read in Autotest\u0027s equivalent code) it doesn\u0027t actually mux immediately. I\u0027ve reflected this in a comment in the newest patch set.",
+      "parentUuid": "90697ad3_a85cd37f",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "814b4edfdae063e6091d630673b9dddd7544c77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
