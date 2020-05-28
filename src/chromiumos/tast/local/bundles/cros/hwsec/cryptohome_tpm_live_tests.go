@@ -53,7 +53,7 @@ func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 	}
 
 	// Waits for TPM to be owned.
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 

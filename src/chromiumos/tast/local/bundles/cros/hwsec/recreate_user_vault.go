@@ -57,7 +57,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 	if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
@@ -114,7 +114,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
