@@ -22,6 +22,30 @@
       "revId": "0ebbb26d4003e773d0fe4c73fe60e5494c56ad23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393aa90a_68aed65f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-28T01:19:23Z",
+      "side": 1,
+      "message": "\u003e What do you think of this discrepancy? Are tables with version 0x11 bad tables?\n\nYes, they\u0027re bad tables. ODMs were relying on the fact that Intel ignored tables with bad versions. We shouldn\u0027t let people keep doing that, even if that\u0027s now effectively an established practice that Intel will have to honor.",
+      "parentUuid": "a20e10c3_9c4e037d",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "0ebbb26d4003e773d0fe4c73fe60e5494c56ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
