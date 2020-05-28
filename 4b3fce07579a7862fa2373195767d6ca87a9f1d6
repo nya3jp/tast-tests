@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa163ba1_a037f739",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T05:39:06Z",
+      "side": 1,
+      "message": "sleeping is frowned upon without some way to verify that whatever you\u0027re waiting on.  Can you check that the language change has completed somehow?",
+      "revId": "4b3fce07579a7862fa2373195767d6ca87a9f1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
