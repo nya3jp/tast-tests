@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a30fdab_34f64d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e5dbe6_7d04c50d",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cba6af42_9d8e3a5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc253cf9_01a66058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Added team alias.",
+      "parentUuid": "cba6af42_9d8e3a5c",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a176c8e_78cfc562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b873f08f_7da7dcad",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4744e813_6c23db6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5027fc56_b260ce93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4744e813_6c23db6f",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bdc9d008_2e9b0bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be84704b_032158fb",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c219eb1e_fbd4eb83",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a5008c32_2bc09411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Good suggestion, but I won\u0027t be submitting this patch until these are fixed. The necessary change has been merged upstream, we\u0027re just waiting for it to propagate into the version in Chrome OS.\n\nI\u0027ve changed these from TODO to FIXME to indicate they\u0027re submit blocking.",
+      "parentUuid": "c219eb1e_fbd4eb83",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c20560a7_343bb125",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2020-05-28T08:51:13Z",
       "side": 1,
       "message": "please use testutil.TempDir: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testutil/files.go;l\u003d18?q\u003dtestutil.TempDir",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53024c35_d93428e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "I don\u0027t have a testing.T type since this isn\u0027t a go unit test, but a tast test. How can I use testutil.TempDir?",
+      "parentUuid": "c20560a7_343bb125",
       "range": {
         "startLine": 84,
         "startChar": 16,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "66375ba9_939ad9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "39cd982d_59939130",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba360dc_3d692173",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -200,6 +392,24 @@
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38af7c1c_2b0d0b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "Good to know, removed.",
+      "parentUuid": "3ba360dc_3d692173",
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +433,30 @@
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f506fecd_eb3c2c9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:34:53Z",
+      "side": 1,
+      "message": "It could theoretically be on the order of seconds, so I\u0027ll leave the log.",
+      "parentUuid": "6bbe49d7_28acf053",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 43
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
