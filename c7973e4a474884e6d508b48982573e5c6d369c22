@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6afa8942_94a66056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-28T23:08:40Z",
+      "side": 1,
+      "message": "Any alternative to using the keyboard to move around?",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "c7973e4a474884e6d508b48982573e5c6d369c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abee2dfc_883f5483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-28T23:08:40Z",
+      "side": 1,
+      "message": "should this be defered?",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 18
+      },
+      "revId": "c7973e4a474884e6d508b48982573e5c6d369c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
