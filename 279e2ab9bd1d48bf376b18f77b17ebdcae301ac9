@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "477a58bd_72e32576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-28T23:41:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9299fdca_3a18b9c7",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0946c70_fa5416cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35ac610_34905a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-28T23:41:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f0946c70_fa5416cb",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "Ah, I didn\u0027t see there is another CL on this topic. Now I understand why it should work.\n\nI didn\u0027t mean this test is useless. I thought that it can still test each translator in dual-translator mode, but it won\u0027t know which one is which.\n\nI didn\u0027t want to flip the default for the flag, since it\u0027s a bit harder to review. But okay I can probably do that to avoid touching this test again.",
       "parentUuid": "5eb90998_cb6b3c60",
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a708751a_e2687018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-28T23:41:19Z",
+      "side": 1,
+      "message": "Oh, I see. Sorry, I should have informed you of the other CL.\n\nAs for the chrome flag, it\u0027s possible to remove the dependency on the assumption about the flag-translator crrespondence from the tests (although currently I don\u0027t have a good idea to achieve it in a straightforward way and prefer the current design). So please feel free to modify it as you would like.\nWe can keep this CL in the current state of pre-Tast-Owners-review until the design around the flag is determined.",
+      "parentUuid": "c3db5471_eae0f99a",
       "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
