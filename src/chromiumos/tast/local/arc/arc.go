@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -283,14 +282,12 @@ func (a *ARC) setLogcatFile(p string) error {
 }
 
 // VMEnabled returns true if Chrome OS is running ARCVM.
-// This is done by checking "/run/chrome/is_arcvm" content equal to "1".
-// Reference: chrome/browser/chromeos/arc/arc_service_launcher.cc
 func VMEnabled() (bool, error) {
-	b, err := ioutil.ReadFile("/run/chrome/is_arcvm")
-	if err != nil {
-		return false, err
+	installType, ok := Type()
+	if !ok {
+		return false, errors.New("failed to get installation type")
 	}
-	return string(b) == "1", nil
+	return installType == VM, nil
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
