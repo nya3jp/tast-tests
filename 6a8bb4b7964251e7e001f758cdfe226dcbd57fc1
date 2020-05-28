@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "827ec294_9abb253c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T18:07:02Z",
+      "side": 1,
+      "message": "I purely follow the rules the formatter spits at me 😄",
+      "parentUuid": "f04d129f_7c7b9424",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27405fbc_a04c73db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
