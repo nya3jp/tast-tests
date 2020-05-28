@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082171da_7ce88db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:31:47Z",
+      "side": 1,
+      "message": "nit: put a space before this",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "38c3344da7e58c0eaee7a334fb122c4419bcf805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f93efe6_9703e5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:31:47Z",
+      "side": 1,
+      "message": "nit: put a space before this",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "38c3344da7e58c0eaee7a334fb122c4419bcf805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2f1c7c_c38795c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:31:47Z",
+      "side": 1,
+      "message": "maybe here we do actually want to say \"viewport is larger than the full screen size\" because the viewport *is* supposed to get larger during this step (but we are failing because it has become abnormally large). That\u0027s up to you, though.",
+      "range": {
+        "startLine": 173,
+        "startChar": 43,
+        "endLine": 173,
+        "endChar": 82
+      },
+      "revId": "38c3344da7e58c0eaee7a334fb122c4419bcf805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

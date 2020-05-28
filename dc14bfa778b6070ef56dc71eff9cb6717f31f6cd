@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bed18575_9bc354d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:31:47Z",
+      "side": 1,
+      "message": "ah, ok. Thanks for the insight.",
+      "parentUuid": "7a3a8d59_e98a1346",
+      "range": {
+        "startLine": 66,
+        "startChar": 52,
+        "endLine": 66,
+        "endChar": 148
+      },
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38933913_fcd8b25c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
         "patchSetId": 3
@@ -207,6 +231,24 @@
       "side": 1,
       "message": "There is an animation during showing virtual keyboard. As discussed with input team. There is no better way currently to verify vk shown (tconn is not available in OOBE). This is the trick suggested.",
       "parentUuid": "9a566fc0_9540d368",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8505bfb0_98e0ffaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:31:47Z",
+      "side": 1,
+      "message": "Oh, right, I just meant that we might return from this Poll call before the keyboard is totally up, if the viewport doesn\u0027t resize in one step. Is that an issue?",
+      "parentUuid": "30ad417b_df676639",
       "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
