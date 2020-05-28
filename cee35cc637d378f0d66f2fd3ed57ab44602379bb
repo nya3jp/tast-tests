@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52f2f20f_2d52f99f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T18:44:05Z",
+      "side": 1,
+      "message": "Very nitpicking, but this could be named as \"HideAll\", since this is \"notifications\" package, it is apparent that hiding means for notifications. cf. https://golang.org/doc/effective_go.html#names\n\u003e For instance, the buffered reader type in the bufio package is called Reader, not BufReader, because users see it as bufio.Reader, which is a clear, concise name.",
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
