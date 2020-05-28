@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bc7c111_a65b3694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "observation: If you needed more chrome instances of this type for other tests, it may be better to roll into a new precondition. E.g. VKEnabledNoLogin()",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4b96fe_21e8c2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "nit: IsGAIALoginPage perhaps?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffd0e00c_37062582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "It seems like could compute this from the value you pass as the next parameter, in the method. That way, the two could never get out of sync.",
+      "range": {
+        "startLine": 66,
+        "startChar": 59,
+        "endLine": 66,
+        "endChar": 137
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3e868e_ea0fd569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "Maybe a method name like: inputUsername(...) or inputFieldValue(...) would be clearer.\nAlso, this method appears to be doing quite a lot. Can we extract some of the different steps it is doing out into different methods? It\u0027s easy to lose track of all the different variables.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37bbef59_36de31c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "maybe extract this method out and pass the gaiaConn as a parameter",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cfd5a2c_2625e024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 126,
+        "startChar": 60,
+        "endLine": 126,
+        "endChar": 71
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d339e86_91157c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "could just inline method call and remove variable",
+      "range": {
+        "startLine": 126,
+        "startChar": 48,
+        "endLine": 126,
+        "endChar": 58
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2524bc1_2c65c951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "Can you investigate why this is? If you don\u0027t know, maybe file a bug and put in a TODO.",
+      "range": {
+        "startLine": 135,
+        "startChar": 75,
+        "endLine": 135,
+        "endChar": 122
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ec9cd1_195de29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "Seems like a lot of work to just tap a certain location on the screen. What do you think about wrapping this up in a nice abstraction that combines the TouchCoordConverter and the TouchWriter? and gives a simple interface for executing a tap based on screen coordinates?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35984e48_74bcb466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "I wonder if vkb.WaitUntilShown would be sufficient?\nIf not, can we extract some of this out into a separate method?",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f1d89f_ffc44983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "it seems this should reference the parameter to this method / this value does not appear to be the same as the value further up",
+      "range": {
+        "startLine": 162,
+        "startChar": 19,
+        "endLine": 162,
+        "endChar": 31
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc28dd3_4e81b3b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-28T07:08:50Z",
+      "side": 1,
+      "message": "Would vkb.WaitUntilHidden work?",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "68a75938bc5a0e4a70b908a75e6321fefa35dff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
