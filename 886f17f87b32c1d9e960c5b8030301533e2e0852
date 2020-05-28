@@ -204,6 +204,30 @@
     },
     {
       "key": {
+        "uuid": "179d5c28_000b4d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:41:35Z",
+      "side": 1,
+      "message": "ah, I missed this: since we immediately leave the function here, the defer is more or less a noop.",
+      "parentUuid": "4ee9b6db_00c2604d",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1933af16_857d788f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -261,6 +285,24 @@
       "writtenOn": "2020-05-28T04:59:46Z",
       "side": 1,
       "message": "Could you avoid naked return? I don\u0027t think you need named return value.",
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a36fe8_766eb71e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T18:41:35Z",
+      "side": 1,
+      "message": "+1, named return values make it hard to understand (especially since you return err explicitly in L95)",
+      "parentUuid": "40f5d413_b696001b",
       "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
