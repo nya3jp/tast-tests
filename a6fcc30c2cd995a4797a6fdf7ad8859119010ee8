@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "25f971e7_3e3daf08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-05-28T01:33:31Z",
+      "side": 1,
+      "message": "You are right, I missed these, just submitted a new patch to address these.",
+      "parentUuid": "c4791559_20526fad",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90f0b8b2_41726137",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5fc2bf63_437c6b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-05-28T01:33:31Z",
+      "side": 1,
+      "message": "This will be re-used by other tests, for now there is only one.",
+      "parentUuid": "90f0b8b2_41726137",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b450c9a_2d35531f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 2
@@ -86,6 +134,24 @@
       "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e13e090_42114224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-05-28T01:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b450c9a_2d35531f",
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
