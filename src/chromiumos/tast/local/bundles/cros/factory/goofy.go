@@ -26,7 +26,6 @@ func init() {
 		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
 		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
 		Attr:     []string{"group:mainline"},
-		Data:     []string{"factory_image.zip"},
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"factory_toolkit"},
@@ -76,7 +75,7 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 }
 
 func setupFactory(ctx context.Context, s *testing.State) {
-	ver, err := installFactoryToolKit(ctx, s.DataPath("factory_image.zip"))
+	ver, err := installFactoryToolKit(ctx, s)
 	if err != nil {
 		s.Fatal("Install fail: ", err)
 	}
@@ -100,15 +99,28 @@ func cleanup(ctx context.Context, s *testing.State) {
 	if err := stopGoofy(ctx); err != nil {
 		s.Fatal("Failed to stop goofy when cleanup: ", err)
 	}
-	s.Log("stopped Goofy")
+	s.Log("Stopped Goofy")
 
 	if err := uninstallFactoryToolKit(ctx); err != nil {
 		s.Fatal("Failed to uninstall factory toolkit when cleanup: ", err)
 	}
-	s.Log("uninstalled factory toolkit")
+	s.Log("Uninstalled factory toolkit")
 }
 
-func installFactoryToolKit(ctx context.Context, imagePath string) (version string, err error) {
+func installFactoryToolKit(ctx context.Context, s *testing.State) (version string, err error) {
+	// the path should be synced with factory-mini.ebuild
+	const toolkitInstallerPath = "/usr/local/factory-toolkit/install_factory_toolkit.run"
+
+	if _, err := os.Stat(toolkitInstallerPath); err != nil {
+		return "", errors.Wrapf(err, "failed to find factory toolkit installer: %s", toolkitInstallerPath)
+	}
+
+	// TODO(b/150189948): Support installing toolkit from artifacts
+	// factory_image.zip
+	return installFactoryToolKitFromToolkitInstaller(ctx, toolkitInstallerPath)
+}
+
+func installFactoryToolKitFromFactoryImage(ctx context.Context, imagePath string) (version string, err error) {
 	// Create an temp directory.
 	tempDir, err := ioutil.TempDir("", "")
 	if err != nil {
@@ -121,9 +133,12 @@ func installFactoryToolKit(ctx context.Context, imagePath string) (version strin
 		return "", errors.Wrap(err, "failed to unzip factory toolkit from factory_image.zip")
 	}
 
-	// Install factory toolkit.
-	toolkitPath := filepath.Join(tempDir, "toolkit/install_factory_toolkit.run")
-	if err := testexec.CommandContext(ctx, toolkitPath, "--", "--yes", "--no-enable").Run(testexec.DumpLogOnError); err != nil {
+	installerPath := filepath.Join(tempDir, "toolkit/install_factory_toolkit.run")
+	return installFactoryToolKitFromToolkitInstaller(ctx, installerPath)
+}
+
+func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPath string) (version string, err error) {
+	if err := testexec.CommandContext(ctx, installerPath, "--", "--yes", "--no-enable").Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to install factory toolkit")
 	}
 
