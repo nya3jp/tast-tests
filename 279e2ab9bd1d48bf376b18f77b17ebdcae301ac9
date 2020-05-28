@@ -39,6 +39,24 @@
       "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb90998_cb6b3c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-28T21:05:35Z",
+      "side": 1,
+      "message": "\u003e Names of the tests are confusing as if the board only has one of the translators enabled, then the other one would never be used.\n\nHmm, I\u0027m not sure whether they are so confusing. I\u0027m probably missing your point. Under the setting of this patch set, when looking at go/tastboard/test, boards with USE flag \"houdini\" will appear under arc.NativeBridge.houdini, and those with \"ndk_translation\" will appear under arc.NativeBridge.ndk_translation. When both translators are enabled (dual-translator build), the board will appear under both test names, like dual-build eve appeared under both arc.Boot and arc.Boot.vm. Is this scenario so problematic?\n\n\n\u003e Also you obviously cannot expect to observe the other non-existing translation library.\n\nYes, and this test doesn\u0027t expect any translators to exist if their USE flags are not set. They will be just skipped.\n\n\n\u003e Note also, that I\u0027m planning to flip the meaning of the flag, so if you can avoid relying on which flag value means which translator, that would be helpful.\n\nDoes this mean that you will change the translator to use when the flag is enabled on dual-translator boards (from NDK translation to Houdini)?\nI guess changing the default value of the flag (from FEATURE_ENABLED_BY_DEFAULT to FEATURE_DISABLED_BY_DEFAULT) will suffice and be easier, since it won\u0027t require any additional changes.\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/arc/arc_features.cc;l\u003d59;drc\u003d32fa3dbb8d90a751224f438d75972808ef9302dc?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\n\n\u003e I\u0027d suggest to call these tests like native_bridge_experiment_{enabled/disabled}[64], and don\u0027t specify what translators does this imply. Then allow ro.boot.native_bridge to be either of two as it was before this change.\n\nThe purpose of this CL is exactly to make the translator specifiable from the test name, and check whether both translators properly work on dual-translator boards. I thought it would be helpful, but seems like it\u0027s not the case?",
+      "parentUuid": "5c7074ca_cd0c2dc0",
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
