@@ -289,7 +289,7 @@ func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.
 }
 
 func (c *WilcoService) TestGetStatefulPartitionAvailableCapacity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	const allowedErrorMargin = int32(100) // 100MB
+	const allowedErrorMargin = int32(100) // 100 MiB
 
 	absDiff := func(a, b int32) int32 {
 		if a > b {
@@ -314,10 +314,10 @@ func (c *WilcoService) TestGetStatefulPartitionAvailableCapacity(ctx context.Con
 		return nil, errors.Wrap(err, "failed to get disk stats for the stateful partition")
 	}
 
-	realAvailableMb := int32(stat.Bavail * uint64(stat.Bsize) / uint64(1000) / uint64(1000))
+	realAvailableMb := int32(stat.Bavail * uint64(stat.Bsize) / uint64(1024) / uint64(1024))
 
 	if response.AvailableCapacityMb%int32(100) > 0 {
-		return nil, errors.Errorf("invalid available capacity (not rounded to 100MB): %v", response.AvailableCapacityMb)
+		return nil, errors.Errorf("invalid available capacity (not rounded to 100 MiB): %v", response.AvailableCapacityMb)
 	}
 
 	if absDiff(response.AvailableCapacityMb, realAvailableMb) > allowedErrorMargin {
