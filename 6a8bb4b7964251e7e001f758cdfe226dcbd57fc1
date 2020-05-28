@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0aa9aae8_4d7d7776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-28T17:36:49Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27405fbc_a04c73db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-28T17:36:49Z",
+      "side": 1,
+      "message": "why should it do that? why not just override it?",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 19
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7dcba235_932657ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
@@ -100,6 +146,29 @@
       "writtenOn": "2020-05-28T17:29:21Z",
       "side": 1,
       "message": "usually the style would be\n  if ...; err !\u003d nil {\n    return nil, errors.Wrap(...)\n  }\n  ...\n\nThis is slightly better in a way that you don\u0027t need extra indents for the core logic.",
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c66594_3a16a825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-28T17:36:49Z",
+      "side": 1,
+      "message": "remove me from here. this is already have you and core services.",
+      "range": {
+        "startLine": 21,
+        "startChar": 48,
+        "endLine": 21,
+        "endChar": 73
+      },
       "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
