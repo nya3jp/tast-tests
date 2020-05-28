@@ -68,7 +68,7 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 	}
 
 	// TakeOwnership.
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned when testing without reboot: ", err)
 	}
 
