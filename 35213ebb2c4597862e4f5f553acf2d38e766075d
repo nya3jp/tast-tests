@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "864ae022_9883a33c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T16:15:56Z",
+      "side": 1,
+      "message": "The Autotest version [1] uses self.context.client.timed_scan(). It uses poll_for_condition() [2]. You may refer to the iw_runner.timed_scan() [3], which just ignore device busy case.\n\nYes you are right, having potential failures of resource conflict is the source of test flakiness. However, what I don\u0027t quite know if how to measure \"background full scan\" if we ask shill to disable wifi technology temporary. Can you give me some hint?\n\n[1] https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/network_WiFi_ScanPerformance/network_WiFi_ScanPerformance.py;l\u003d48?q\u003dautotest%2Ffiles%2Fserver%20package:%5Echromeos_public$%20network_WiFi_ScanPerformance\n[2] https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/network/wifi_client.py;l\u003d536?q\u003dWiFiClient\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fthird_party%2Fautotest%2Ffiles%2F\n[3] https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/network/iw_runner.py;l\u003d869?q\u003dtimed_scan\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fthird_party%2Fautotest%2Ffiles%2Fclient%2F",
+      "parentUuid": "c1543884_82162529",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 121
+      },
+      "revId": "35213ebb2c4597862e4f5f553acf2d38e766075d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efaccf96_921354d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 3
