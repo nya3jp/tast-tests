@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "28bb03cd_eaa26cf0",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T16:57:16Z",
+      "side": 1,
+      "message": "I see. Let\u0027s use `[^:]+:\\s+(\\w+)` or maybe `:\\s+(\\w+)` is enough.",
+      "parentUuid": "ca924eb5_c592c018",
+      "range": {
+        "startLine": 325,
+        "startChar": 25,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "360db625_895e5455",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 2
