@@ -200,7 +200,7 @@ func WindowState(ctx context.Context, s *testing.State) {
 
 // setAndVerifyWindowState sets and verifies the desired window state transition.
 func setAndVerifyWindowState(ctx context.Context, act *arc.Activity, tconn *chrome.TestConn, arcWindowState arc.WindowState, expectedAshWindowState ash.WindowStateType, expectedArcWindowState arc.WindowState) error {
-	if err := act.SetWindowState(ctx, arcWindowState); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arcWindowState); err != nil {
 		return errors.Wrapf(err, "failed to set window state (%v)", arcWindowState)
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), expectedAshWindowState); err != nil {
