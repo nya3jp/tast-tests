@@ -40,6 +40,10 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		s.Fatal("Failed to ensure tpm readiness: ", err)
+	}
+
 	ali := hwseclocal.NewAttestationLocalInfra(hwsec.NewDaemonController(r))
 	if err := ali.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable local test infra feature: ", err)
@@ -50,9 +54,6 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
-		s.Fatal("Failed to ensure tpm readiness: ", err)
-	}
 	s.Log("TPM is ensured to be ready")
 	if err := helper.EnsureIsPreparedForEnrollment(ctx, hwsec.DefaultPreparationForEnrolmentTimeout); err != nil {
 		s.Fatal("Failed to prepare for enrollment: ", err)
