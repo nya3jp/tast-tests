@@ -183,6 +183,11 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 	}
 
 	if state == overviewIsVisible {
+		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
+		if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to hide all notifications")
+		}
+
 		// Enter overview mode.
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return nil, errors.Wrap(err, "failed to enter into the overview mode")
