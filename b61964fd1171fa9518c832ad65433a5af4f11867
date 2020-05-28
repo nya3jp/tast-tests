@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c38f8b84_e7ec4ee1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:05:47Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded CL:2220295 to add the team alias as well, and to update all of the tests at once.",
+      "parentUuid": "44ab5373_daaf6d4c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "b61964fd1171fa9518c832ad65433a5af4f11867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04b7d564_9c1500a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "b61964fd1171fa9518c832ad65433a5af4f11867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb639fdf_0bb1164a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-28T19:05:47Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded CL:2220295 to add the team alias as well, and to update all of the tests at once.",
+      "parentUuid": "04b7d564_9c1500a8",
+      "revId": "b61964fd1171fa9518c832ad65433a5af4f11867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
