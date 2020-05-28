@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"fmt"
-	"math"
 	"regexp"
 	"strconv"
 	"time"
@@ -251,16 +250,19 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-
-	var from coords.Point
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
+	return ac.MoveWindowDirectly(ctx, to, t, bounds, captionHeight, task.windowState)
+}
+
+func (ac *Activity) MoveWindowDirectly(ctx context.Context, to coords.Point, t time.Duration, bounds coords.Rect, captionHeight int, windowState WindowState) error {
+	var from coords.Point
 	halfWidth := bounds.Width / 2
 	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
-	if task.windowState == WindowStatePIP {
+	if windowState == WindowStatePIP {
 		// PiP windows are dragged from its center
 		halfHeight := bounds.Height / 2
 		from.Y = bounds.Top + halfHeight
@@ -296,12 +298,16 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
 	if task.windowState == WindowStatePIP {
 		borderOffset = borderOffsetForPIP
 	}
+	return ac.ResizeWindowDirectly(ctx, border, to, t, bounds, borderOffset)
+}
+
+func (ac *Activity) ResizeWindowDirectly(ctx context.Context, border BorderType, to coords.Point, t time.Duration, bounds coords.Rect, borderOffset int) error {
+	src := bounds.CenterPoint()
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
@@ -317,6 +323,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 		src.X = bounds.Left + bounds.Width + borderOffset
 	}
 
+	/*
 	// After updating src, clamp it to valid display bounds.
 	ds, err := ac.disp.Size(ctx)
 	if err != nil {
@@ -324,7 +331,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	}
 	src.X = int(math.Max(0, math.Min(float64(ds.Width-1), float64(src.X))))
 	src.Y = int(math.Max(0, math.Min(float64(ds.Height-1), float64(src.Y))))
-
+        */
 	return ac.swipe(ctx, src, to, t)
 }
 
