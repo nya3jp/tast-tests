@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c47cd728_3951e72d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-28T18:56:27Z",
+      "side": 1,
+      "message": "We have a notification.go under package ash already. We might want to keep notification related code in one place. And I have moved mouse code out of ash and we could use ui automation code in package ash now.\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/notification.go",
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52f2f20f_2d52f99f",
         "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
         "patchSetId": 4
@@ -13,6 +30,29 @@
       "writtenOn": "2020-05-28T18:44:05Z",
       "side": 1,
       "message": "Very nitpicking, but this could be named as \"HideAll\", since this is \"notifications\" package, it is apparent that hiding means for notifications. cf. https://golang.org/doc/effective_go.html#names\n\u003e For instance, the buffered reader type in the bufio package is called Reader, not BufReader, because users see it as bufio.Reader, which is a clear, concise name.",
+      "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6795947_abfb89d4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/notifications/notifications.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-28T18:56:27Z",
+      "side": 1,
+      "message": "I have moved the mouse code from package ash to its own package \"chrome/ui/mouse\". You would need to rebase to import that package and revise this to mouse.Click etc.",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 25
+      },
       "revId": "cee35cc637d378f0d66f2fd3ed57ab44602379bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
