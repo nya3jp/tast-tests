@@ -1,0 +1,555 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c37339_34818fd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "This seems like it should have \"stream\" in the name.  StreamInfo?  It would also work to not name the type at all and use map[string]string throughout.",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aaad580_9c70b733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "How predictable are the contents of this map?  If it\u0027s got a set of known fields you could use a struct type instead.  It might prevent you from returning malformed output.  If it\u0027s just a few params you can switch on the key and set the struct values one by one.  If it\u0027s a lot of params you could use json decoding.\n\nPicking map vs. struct definitely depends on what kind of usage you plan for this type in future tests.  I.e. if this test is the extent, a map is probably fine.  If you expect a number of future tests which use different parameters of this map, a struct would be more user friendly.",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bed7832_1518e73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "Please also describe the return values of this function for future users of this function.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916ddf4a_04d6d308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: parses",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e15670_42a4d541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "would be helpful to note either as a code comment or above in the function description what exactly you\u0027re looking for - maybe include snippets from an example output",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db317f98_ea8250d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "!\u003d 2? or also catch the \u003e2 case, since presumably something will have gone wrong if that happens",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13b912c_e6ec79c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: no stream_dump found",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 54
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f151043_1d611ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "if \"Audio Thread Event Log:\" is not found, Split will return a slice of length 1, not 0",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c422229a_79c3b672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "KeyValue",
+      "range": {
+        "startLine": 79,
+        "startChar": 17,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b3aa5a5_eb64d620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa7aea5_cb20b320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "Please also add contest on what f and timeout inputs",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519f2e9c_a6b81c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "Run01WithPollResultTest to also capitalize \"With\" (or Run01PollResultTest and omit \"with\" entirely)",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d57ea99_13a84dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "(maybe best left to another CL since it\u0027s not added here) ARC",
+      "range": {
+        "startLine": 126,
+        "startChar": 18,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1974237c_94f80bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: verify",
+      "range": {
+        "startLine": 137,
+        "startChar": 26,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbd9164_90cda6e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "end comments with .",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a621238_aceec068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: finishes",
+      "range": {
+        "startLine": 164,
+        "startChar": 26,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71fc87a4_3ebd8f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: ARC++ or ARC instead of arc or Arc (unless referring to the package name or using a lowercase variable)\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9482ce16_a412e119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "ARC",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f068404a_a26007e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "streamTimeout\nhttp://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2103c9_1af0afae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "Mention that this is a function intended for use inside a poll and under what criteria it will fail.  Reading just this comment makes it seem that the function will return active streams.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557aa4d5_1af95e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "activeAECStreams? hasAECStream?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdbd1a6_ff86b8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "how useful is this log?  (it\u0027s fine if it is! just double checking)",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d733db2f_39d2c62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "maybe make this a const called AEC?  Then it\u0027s very clear what this value represents.",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc4ca4c_4014a735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: ;",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85e7568_49b2eb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-28T06:51:47Z",
+      "side": 1,
+      "message": "nit: found",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
