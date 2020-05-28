@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "316ac55d_b05354fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T00:52:22Z",
+      "side": 1,
+      "message": "nit: I think error message should start with a lower-case letter.",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "fa2b772ea260a5f6bbe47728db4d29e9b77e5694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
