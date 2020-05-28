@@ -109,24 +109,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// actions on certain devices and causes test failures. Open and close the
 	// quick settings to dismiss those notification popups. See
 	// https://crbug.com/1084185.
-	openCloseQuickSettings := func() error {
-		trayButton, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
-		if err != nil {
-			return errors.Wrap(err, "system tray button not found")
-		}
-		defer trayButton.Release(ctx)
-		if err := pointer.Click(ctx, pc, trayButton.Location.CenterPoint()); err != nil {
-			return errors.Wrap(err, "failed to click the button")
-		}
-		if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
-			return errors.Wrap(err, "quick settings does not appear")
-		}
-		if err := pointer.Click(ctx, pc, trayButton.Location.CenterPoint()); err != nil {
-			return errors.Wrap(err, "failed to click the button")
-		}
-		return nil
-	}
-	if err := openCloseQuickSettings(); err != nil {
+	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to open/close the quick settings: ", err)
 	}
 
