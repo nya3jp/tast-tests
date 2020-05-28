@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71077159_3a7063cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T00:01:38Z",
+      "side": 1,
+      "message": "nit: I think you can simply say:\n  points :\u003d []coords.Point{\n    coords.NewPoint(...),\n    ...\n  }\n\nand then,\n\n  points \u003d append(points, points[0])\n\nto share the same point.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "f5cb8c46dfb5159f28469662aaf9a644a3b152f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2cc5190_9e3aec40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T00:01:38Z",
+      "side": 1,
+      "message": "I think this window is not always active/topmost?? (or is it??); without ensuring it, I am afraid that mouse event may fall into a wrong window?\n\n\nBy the way, this window is created at line 90, so the bounds is *before* maximized. Is that correct?",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "f5cb8c46dfb5159f28469662aaf9a644a3b152f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba60aea7_f768f494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T00:01:38Z",
+      "side": 1,
+      "message": "for _, point :\u003d range points {\n    if err :\u003d ash.MouseMove(ctx, tconn, point, dragTime); err !\u003d nil {\n       ...\n    }\n  }",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "f5cb8c46dfb5159f28469662aaf9a644a3b152f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
