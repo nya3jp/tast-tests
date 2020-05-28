@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bb97403_79394338",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T12:04:21Z",
+      "side": 1,
+      "message": "\u003e \"Aquire\" is a possible misspelling of \"Acquire\".\n\nPlease fix.",
+      "parentUuid": "a5082d8d_ae2d00ac",
+      "range": {
+        "startLine": 85,
+        "startChar": 157,
+        "endLine": 85,
+        "endChar": 163
+      },
+      "revId": "c4ae95a91987adb53b819d5a0b97d5a442bee739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
