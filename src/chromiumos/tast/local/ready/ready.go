@@ -23,6 +23,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/snapshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -111,8 +112,45 @@ func Wait(ctx context.Context) error {
 			}
 		}
 	}
+	storeTpmManagerLocalData(ctx)
 
 	return nil
+}
+
+//storeTpmManagerLocalData stores a snapshot of tpm_manager's local data; if the important secret doesn't exist, try to find the previous backup first.
+func storeTpmManagerLocalData(ctx context.Context) {
+	const (
+		dataPath   = "/var/lib/tpm_manager/local_tpm_data"
+		backupPath = "/tmp/tast-system-backup-loca_tpm_data"
+		initLabel  = "initial"
+	)
+	if ok, err := checkTpmLocalData(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to check tpm local data: ", err)
+		return
+	} else if !ok {
+		testing.ContextLog(ctx, "No owner password found; trying to restore from the backup")
+		if _, err := testexec.CommandContext(ctx, "cp", "-p", "--", backupPath, dataPath).Output(); err != nil {
+			testing.ContextLog(ctx, "Failed to restore tpm local data from backup: ", err)
+			// At this point, we don't have any other way to store the important secrets anymore.
+			return
+		}
+	}
+	// At this point, the tpm local data is confirmed to have important.
+	if _, err := testexec.CommandContext(ctx, "cp", "-p", "--", dataPath, backupPath).Output(); err != nil {
+		testing.ContextLog(ctx, "Failed to backup tpm local data: ", err)
+	}
+	if err := snapshot.SystemLevelManager().Store(ctx, dataPath, initLabel); err != nil {
+		testing.ContextLog(ctx, "Failed to store tpm manager local data: ", err)
+	}
+}
+
+// checkTpmLocalData uses tpm_manager_client to check if local data contains owner password.
+func checkTpmLocalData(ctx context.Context) (bool, error) {
+	out, err := testexec.CommandContext(ctx, "tpm_manager_client", "status").Output()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call tpm_manager_client")
+	}
+	return strings.Contains(string(out), "owner_password"), nil
 }
 
 // isAutotestd returns whether p is an autotestd process.
