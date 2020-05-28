@@ -40,7 +40,8 @@ func init() {
 // "hwid_component:<network type>/") from autotest_host_info_labels var which
 // is a json string of list of cros-labels.  After collecting network names,
 // this function will return a map of set containing them by network type.
-func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) {
+// Since we need the model name for component group, here we return it as well.
+func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, string, error) {
 	const modelPrefix = "model:"
 	mapping := make(map[string]map[string]struct{})
 	for _, networkType := range networkTypes {
@@ -49,7 +50,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 
 	var labels []string
 	if err := json.Unmarshal([]byte(jsonStr), &labels); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 	// Find the model name of this DUT.
 	var model string
@@ -60,7 +61,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 		}
 	}
 	if len(model) == 0 {
-		return nil, errors.New("no model found")
+		return nil, "", errors.New("no model found")
 	}
 
 	// Filter labels with prefix "hwid_component:<network type>/" and trim them.
@@ -75,7 +76,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 		}
 	}
 
-	return mapping, nil
+	return mapping, model, nil
 }
 
 // networkComponents uses D-Bus call to get network components from runtime_probe.
@@ -126,7 +127,7 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 		s.Fatal("No network labels")
 	}
 
-	mapping, err := networkNameMapping(labelsStr)
+	mapping, model, err := networkNameMapping(labelsStr)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
@@ -140,7 +141,7 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 		name := component.GetName()
 		if info := component.GetInformation(); info != nil {
 			if compGroup := info.GetCompGroup(); compGroup != "" {
-				name = compGroup
+				name = model + "_" + compGroup
 			}
 		}
 		values := component.GetValues()
