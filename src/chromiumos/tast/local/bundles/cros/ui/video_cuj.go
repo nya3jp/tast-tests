@@ -243,12 +243,23 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	tapFullscreenButton := func() error {
+		// Dismiss ash notifications if any.
+		if err := ash.DismissFloatingNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to dismiss ash notification")
+		}
+
 		if err := tapYtElem(`.ytp-fullscreen-button`); err != nil {
 			// The failure could be caused by promotion banner covering the button.
 			// It could happen in small screen devices. Attempt to dismiss the banner.
 			// Ignore the error since the banner might not be there.
 			if err := tapYtElem("ytd-button-renderer#dismiss-button"); err != nil {
 				s.Log("Failed to dismiss banner: ", err)
+			}
+
+			// Attempt to dismiss floating surveys that could  cover the bottom-right
+			// and ignore the errors since the survey could not be there..
+			if err := tapYtElem("button[aria-label='Dismiss']"); err != nil {
+				s.Log("Failed to dismiss survey: ", err)
 			}
 
 			// Tap the video to pause it to ensure the fullscreen button showing up.
