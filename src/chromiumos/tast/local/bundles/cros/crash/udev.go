@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package crash
 
 import (
 	"compress/gzip"
@@ -27,7 +27,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     UdevCrash,
+		Func:     Udev,
 		Desc:     "Verify udev triggered crash works as expected",
 		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline"},
@@ -86,7 +86,7 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 	return false, nil
 }
 
-func UdevCrash(ctx context.Context, s *testing.State) {
+func Udev(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
