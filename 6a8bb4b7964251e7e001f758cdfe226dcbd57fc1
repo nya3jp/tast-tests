@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff4daa36_9cbdc8c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "This is the golang syntax for documenting.",
+      "parentUuid": "0aa9aae8_4d7d7776",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27405fbc_a04c73db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-28T17:36:49Z",
       "side": 1,
       "message": "why should it do that? why not just override it?",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 19
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5377334_243629ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "Because I don\u0027t want to overwrite files that are already dumped and left to view after test runs.\nKeeps the dumps exclusive.",
+      "parentUuid": "27405fbc_a04c73db",
       "range": {
         "startLine": 148,
         "startChar": 43,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "be937aa8_94f8b066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "The max possible length is sum(len(val) in m)\nWill just use `var installedIDs []ListOutput`",
+      "parentUuid": "d11b5ea3_186be4be",
+      "range": {
+        "startLine": 196,
+        "startChar": 17,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b953bd_39b343a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
         "patchSetId": 3
@@ -129,6 +201,24 @@
       "writtenOn": "2020-05-28T17:29:21Z",
       "side": 1,
       "message": "Maybe it is nicer to have the reference to the scheme of this manifest, if there is some. That helps future developers who want to extend/fix this.\n\nPossibly https://chromium.googlesource.com/chromiumos/platform2.git/+/refs/heads/master/imageloader/manifest.md ?",
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acadab2c_ce8eece7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "Okay, will add",
+      "parentUuid": "e7b953bd_39b343a6",
       "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -152,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "e319db6d_8c3bc142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "I think we can leverage just reading ioutil.ReadFile() to simplify the logic instead of using os.Stat().\nWill do so in followup CL.",
+      "parentUuid": "2fec014d_ca5a206b",
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91c66594_3a16a825",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
         "patchSetId": 3
@@ -163,6 +271,30 @@
       "writtenOn": "2020-05-28T17:36:49Z",
       "side": 1,
       "message": "remove me from here. this is already have you and core services.",
+      "range": {
+        "startLine": 21,
+        "startChar": 48,
+        "endLine": 21,
+        "endChar": 73
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f507c41e_f64807b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "Okay, will do so in followup PS.",
+      "parentUuid": "91c66594_3a16a825",
       "range": {
         "startLine": 21,
         "startChar": 48,
@@ -209,6 +341,30 @@
       "writtenOn": "2020-05-28T17:29:21Z",
       "side": 1,
       "message": "In case that the dummy is not yet mounted, this is going to fail -- isn\u0027t it?  It would provide extra errors unexpectedly.  That wouldn\u0027t be harmful by itself, though I guess it is slightly better to create a boolean flag of whether the image is loaded or not.",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 120
+      },
+      "revId": "6a8bb4b7964251e7e001f758cdfe226dcbd57fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2513c0a0_2f160b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-28T17:51:44Z",
+      "side": 1,
+      "message": "unmounting an nonexistent mount point returns 0 for last execution.",
+      "parentUuid": "fc414aec_207348f3",
       "range": {
         "startLine": 45,
         "startChar": 12,
