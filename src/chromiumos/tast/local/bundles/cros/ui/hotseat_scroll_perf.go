@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
@@ -94,6 +96,28 @@ func (state uiState) String() string {
 	default:
 		return "unknown"
 	}
+}
+
+// hideAllNotifications clicks on the tray button to show and hide the system tray button, which should also hide any visible notification.
+func hideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
+	trayButton, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
+	if err != nil {
+		return errors.Wrap(err, "system tray button not found")
+	}
+	defer trayButton.Release(ctx)
+
+	if err := ash.MouseClick(ctx, tconn, trayButton.Location.CenterPoint(), ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click the tray button")
+	}
+
+	if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
+		return errors.Wrap(err, "quick settings does not appear")
+	}
+
+	if err := ash.MouseClick(ctx, tconn, trayButton.Location.CenterPoint(), ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click the tray button")
+	}
+	return nil
 }
 
 func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error {
@@ -183,6 +207,11 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 	}
 
 	if state == overviewIsVisible {
+		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
+		if err := hideAllNotifications(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to hide all notifications")
+		}
+
 		// Enter overview mode.
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return nil, errors.Wrap(err, "failed to enter into the overview mode")
