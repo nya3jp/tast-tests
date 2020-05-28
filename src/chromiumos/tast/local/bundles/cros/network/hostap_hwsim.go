@@ -44,7 +44,7 @@ func init() {
 				},
 				// Only target the 'sanity' list for mainline, as anything more can take a
 				// long time.
-				ExtraAttr: []string{"group:mainline", "informational"},
+				ExtraAttr: []string{"group:mainline"},
 			},
 			{
 				Name: "full",
