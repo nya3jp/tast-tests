@@ -33,7 +33,7 @@ import (
 const (
 	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
-	LoginTimeout = 60 * time.Second
+	LoginTimeout = 80 * time.Second
 
 	// gaiaLoginTimeout is the maximum amount of the time that Chrome is expected
 	// to take to perform actual gaia login. As far as I checked a few samples of
