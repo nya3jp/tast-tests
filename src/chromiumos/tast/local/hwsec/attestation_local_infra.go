@@ -24,13 +24,14 @@ const (
 // AttestationLocalInfra enables/disables the local server implementation on DUT.
 type AttestationLocalInfra struct {
 	dc        *hwsec.DaemonController
+	fpca      *FakePCAAgent
 	sm        *snapshot.Manager
 	dbStashed bool
 }
 
 // NewAttestationLocalInfra creates a new AttestationLocalInfra instance, with dc used to control the D-Bus service daemons.
 func NewAttestationLocalInfra(dc *hwsec.DaemonController) *AttestationLocalInfra {
-	return &AttestationLocalInfra{dc, snapshot.NewManager(), false}
+	return &AttestationLocalInfra{dc, nil, snapshot.NewManager(), false}
 }
 
 // Enable enables the local test infra for attestation flow testing.
@@ -173,7 +174,10 @@ func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastE
 			}
 		}
 	}()
-	if err := ali.dc.StartFakePCAAgent(ctx); err != nil {
+	if ali.fpca == nil {
+		ali.fpca = FakePCAAgentContext(ctx)
+	}
+	if err := ali.fpca.Start(); err != nil {
 		return errors.Wrap(err, "failed to start fake pca agent")
 	}
 	return nil
@@ -182,9 +186,11 @@ func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastE
 // disableFakePCAAgent stops the fake pca agent and starts the normal one.
 func (ali *AttestationLocalInfra) disableFakePCAAgent(ctx context.Context) error {
 	var lastErr error
-	if err := ali.dc.StopFakePCAAgent(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to stop fake pca agent: ", err)
-		lastErr = errors.Wrap(err, "failed to stop fake pca agent")
+	if ali.fpca != nil {
+		if err := ali.fpca.Stop(); err != nil {
+			testing.ContextLog(ctx, "Failed to stop fake pca agent: ", err)
+			lastErr = errors.Wrap(err, "failed to stop fake pca agent")
+		}
 	}
 	if err := ali.dc.StartPCAAgent(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to start normal pca agent: ", err)
