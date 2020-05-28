@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2237a1a2_370f4dd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-28T09:23:22Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/157208631\n\nThere are a lot of \"OOBE not dismissed\" flakes, not just for policy tests. And they are all failing with \"cdp.Target: GetTargets: context deadline exceeded\".\nhttps://dashboards.corp.google.com/_d80e1ea0_3762_4fe0_b0e5_ed4d4c35297c\n\nI\u0027m hoping that the reduced timeout will help us figure out which target was not yet dismissed. I had a chat with Roman (from the OOBE team) and he did not find anything odd in the Chrome logs of the existing failures.\n\nCan you also take a look at the issue? We might have missed something.",
+      "parentUuid": "c87accee_844fd5dd",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "8d74cfb3f8a569558aa242aa21ed8472b53fe5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b321bc0f_5f92a3a4",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
