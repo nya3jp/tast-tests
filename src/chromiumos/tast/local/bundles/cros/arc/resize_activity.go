@@ -98,7 +98,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// there is a freeform app still open. See: https://crbug.com/1002666
 	defer act.Stop(ctx, tconn)
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
@@ -124,7 +124,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// Make it as small as possible before the resizing, since maximum screen real-estate is needed for the test.
 	// And then place it on the left-top corner.
 	// Resizing from TopLeft corner, since BottomRight corner might trigger the shelf, even if it is hidden.
-	if err := act.ResizeWindow(ctx, arc.BorderTopLeft, coords.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height), 300*time.Millisecond); err != nil {
+	if err := act.ResizeWindow(ctx, tconn, arc.BorderTopLeft, coords.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height), 300*time.Millisecond); err != nil {
 		s.Fatal("Failed to resize window: ", err)
 	}
 
@@ -137,9 +137,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// When the window move too close to the top-left corner of the display, it will be maximized.
 	// So set up margin for the top-left cornner to prevent the window switching to maximized state.
 	const marginForDispTopLeft = 50
+	destBounds := coords.NewRect(marginForDispTopLeft, marginForDispTopLeft, bounds.Width, bounds.Height)
 	dispTopLeft := coords.NewPoint(marginForDispTopLeft, marginForDispTopLeft)
 	// Moving the window slowly (in one second) to prevent triggering any kind of gesture like "snap to border", or "maximize".
-	if err := act.MoveWindow(ctx, dispTopLeft, time.Second); err != nil {
+	if err := act.MoveWindow(ctx, tconn, time.Second, destBounds, bounds); err != nil {
 		s.Fatal("Failed to move window: ", err)
 	}
 
@@ -182,7 +183,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		{"bottom-right", arc.BorderBottomRight, coords.NewPoint(dispSize.Width-marginForTouch-restoreBounds.Left, dispSize.Height-marginForTouch-restoreBounds.Top), 100 * time.Millisecond},
 	} {
 		s.Logf("Resizing window from %s border to %+v", entry.desc, entry.dst)
-		if err := act.ResizeWindow(ctx, entry.border, entry.dst, entry.duration); err != nil {
+		if err := act.ResizeWindow(ctx, tconn, entry.border, entry.dst, entry.duration); err != nil {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
@@ -225,7 +226,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		}
 
 		// Restore the activity bounds.
-		if err := act.ResizeWindow(ctx, entry.border, coords.NewPoint(restoreBounds.Left, restoreBounds.Top), 500*time.Millisecond); err != nil {
+		if err := act.ResizeWindow(ctx, tconn, entry.border, coords.NewPoint(restoreBounds.Left, restoreBounds.Top), 500*time.Millisecond); err != nil {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
