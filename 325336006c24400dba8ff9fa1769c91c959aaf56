@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc7ddf80_fc667d58",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:05:42Z",
+      "side": 1,
+      "message": "nit: can we put Off first? Otherwise we are splitting the values for direction.",
+      "revId": "325336006c24400dba8ff9fa1769c91c959aaf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4d33ad_c35054f3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-28T23:05:42Z",
+      "side": 1,
+      "message": "for reference, is there no other way to tell when the USB mux has been switched? I did something similar in this situation in a janky one-off script I wrote years ago so I would understand if there isn\u0027t, but it is a little sad to have to stick a sleep in here.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 71
+      },
+      "revId": "325336006c24400dba8ff9fa1769c91c959aaf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
