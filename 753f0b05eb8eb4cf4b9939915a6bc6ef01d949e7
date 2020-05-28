@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17cc39e2_33dab9ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T17:54:45Z",
+      "side": 1,
+      "message": "I\u0027ve done the same thing on another test (ui.LauncherPageSwitchPerf) for the same reason...\nCould you move this function to chrome/ash package?",
+      "revId": "753f0b05eb8eb4cf4b9939915a6bc6ef01d949e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
