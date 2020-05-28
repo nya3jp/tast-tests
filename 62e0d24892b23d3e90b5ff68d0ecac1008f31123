@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9186efbd_bc12bc3f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:43:32Z",
+      "side": 1,
+      "message": "shouldn\u0027t we also check that we get an OK?",
+      "revId": "62e0d24892b23d3e90b5ff68d0ecac1008f31123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "180e9c45_86494b25",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:43:32Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "62e0d24892b23d3e90b5ff68d0ecac1008f31123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e55b5a2_ada3cd61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:43:32Z",
+      "side": 1,
+      "message": "was this intentional?",
+      "revId": "62e0d24892b23d3e90b5ff68d0ecac1008f31123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84118de_96979e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:43:32Z",
+      "side": 1,
+      "message": "wpa*",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "62e0d24892b23d3e90b5ff68d0ecac1008f31123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
