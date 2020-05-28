@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d770acf_ff90e80c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d5fe9fa_577a4f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2020-05-27T20:25:52Z",
       "side": 1,
       "message": "ArcTast is sort of a general name and this is an exported symbol. Also, I would hope that anything in here is related to Tast, so that seems redundant. Maybe ArcAudioContext?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c21f2f20_91d7f933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "Also, the responsibility of this struct is unclear.\nIs this something like fixture? Or, is there something you\u0027d like to abstract?",
+      "parentUuid": "2d5fe9fa_577a4f52",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -88,6 +135,29 @@
     },
     {
       "key": {
+        "uuid": "7fe48462_a6d6abfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "You should not ignore the error.\n\nBTW, we used to hit this pattern (creating ui.device before an activity) causes trouble.\nI\u0027d recommend to do it after starting the Activity.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa3ad3bc_209fe317",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -104,6 +174,29 @@
         "startChar": 2,
         "endLine": 87,
         "endChar": 7
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee9b6db_00c2604d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "no defer is required.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
       },
       "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -134,6 +227,46 @@
     },
     {
       "key": {
+        "uuid": "6c504a97_8533ece5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "return t.arc.Install(ctx, path)",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 7
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f5d413_b696001b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "Could you avoid naked return? I don\u0027t think you need named return value.",
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18069d61_f75df493",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -157,6 +290,40 @@
     },
     {
       "key": {
+        "uuid": "7391ddc7_019ac8a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "activity should be released and not returned from the function, in case of error.",
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80db72ff_c02c80ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "923aa755_d4a4391a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -173,6 +340,29 @@
         "startChar": 18,
         "endLine": 122,
         "endChar": 32
+      },
+      "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766c621d_05faf7d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T04:59:46Z",
+      "side": 1,
+      "message": "why do you need these three?\nerror can contain the detailed error message, so could you unify?",
+      "range": {
+        "startLine": 122,
+        "startChar": 54,
+        "endLine": 122,
+        "endChar": 89
       },
       "revId": "886f17f87b32c1d9e960c5b8030301533e2e0852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
