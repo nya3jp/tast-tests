@@ -24,7 +24,7 @@ func init() {
 			"cros-telemetry@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
