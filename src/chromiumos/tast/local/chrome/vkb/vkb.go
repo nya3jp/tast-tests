@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
 
@@ -17,6 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
+
+const imePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
@@ -31,21 +34,28 @@ func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 // SetCurrentInputMethod sets the current input method used by the virtual
 // keyboard.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMethod string) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`
-new Promise((resolve, reject) => {
-	chrome.autotestPrivate.setWhitelistedPref(
-		'settings.language.preload_engines', %[1]q, () => {
-			chrome.inputMethodPrivate.setCurrentInputMethod(%[1]q, () => {
-				if (chrome.runtime.lastError) {
-					reject(chrome.runtime.lastError.message);
-				} else {
-					resolve();
+	if err := tconn.EvalPromise(ctx, fmt.Sprintf(`
+		new Promise((resolve, reject) => {
+			chrome.autotestPrivate.setWhitelistedPref(
+				'settings.language.preload_engines', %[1]q, () => {
+					chrome.inputMethodPrivate.setCurrentInputMethod(%[1]q, () => {
+						if (chrome.runtime.lastError) {
+							reject(chrome.runtime.lastError.message);
+						} else {
+							resolve();
+						}
+					});
 				}
-			});
-		}
-	);
-})
-`, inputMethod), nil)
+			);
+		})
+		`, imePrefix+inputMethod), nil); err != nil {
+		return errors.Wrapf(err, "failed to set current input method: %q", inputMethod)
+	}
+
+	// Change language via tconn requiring a few seconds to install.
+	// TODO(b/157686038): Use API to identify completion of changing language
+	testing.Sleep(ctx, 3*time.Second)
+	return nil
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
@@ -159,6 +169,7 @@ func TapKeys(ctx context.Context, kconn *chrome.Conn, keys []string) error {
 		if err := TapKey(ctx, kconn, key); err != nil {
 			return err
 		}
+		testing.Sleep(ctx, 50*time.Millisecond)
 	}
 	return nil
 }
