@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "69a9757e_cd5c410b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T16:55:09Z",
+      "side": 1,
+      "message": "Then can you do that when there are more users?\nThink about YAGNI principle.",
+      "parentUuid": "5fc2bf63_437c6b33",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b450c9a_2d35531f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 2
