@@ -22,6 +22,30 @@
       "revId": "bd70779a86faf5431d75af6a9da030550f4deb5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5646364e_8889fa85",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T09:24:15Z",
+      "side": 1,
+      "message": "Ouch... I implemented it half way. Fixed by calling it in WifiService.InitDUT() gRPC call.",
+      "parentUuid": "f2ecf549_b31dc771",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "bd70779a86faf5431d75af6a9da030550f4deb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
