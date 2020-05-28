@@ -90,7 +90,7 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the selected display mode: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the window state to normal: ", err)
 	}
 
