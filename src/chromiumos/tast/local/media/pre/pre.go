@@ -45,8 +45,7 @@ func ChromeAlternateVideoDecoder() testing.Precondition {
 // user in, at least, the flag set used.
 func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGuestLoginPre }
 
-var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"), chrome.GuestLogin())
+var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs, chrome.GuestLogin())
 
 // ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
 // also enabling the HDR screen if present.
