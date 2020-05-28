@@ -25,7 +25,7 @@ func init() {
 		Func:     CrosConfig,
 		Desc:     "Check cros_config commands match the golden file built during image creation",
 		Contacts: []string{"nednguyen@chromium.org", "shapiroc@chromium.org"},
-		Attr:     []string{"group:mainline"},
+		Attr:     []string{"group:mainline", "group:labqual"},
 	})
 }
 
