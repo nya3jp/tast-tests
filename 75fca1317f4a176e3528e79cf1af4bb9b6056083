@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9b38a2_8692a132",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:29:49Z",
+      "side": 1,
+      "message": "There\u0027s a minor race here if we somehow disconnect before sending the channel switch frame.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d47bf2_f8ee7c91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-28T22:29:49Z",
+      "side": 1,
+      "message": "hmm, is this necessary? I know it\u0027s done in the original test, but it seems redundant. Also, if we\u0027re somehow disconnecting without getting a disconnect event, there\u0027s probably another problem that we\u0027re masking.\n\nDo you know how often we actually hit this?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
