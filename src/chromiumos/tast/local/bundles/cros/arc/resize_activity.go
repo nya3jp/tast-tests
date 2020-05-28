@@ -98,7 +98,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// there is a freeform app still open. See: https://crbug.com/1002666
 	defer act.Stop(ctx, tconn)
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, act.PackageName(), arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 

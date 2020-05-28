@@ -334,7 +334,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 			// Calling ash.SetARCAppWindowState() doesn't work in this subtest, using act.SetWindowState instead.
 			// Pre-N applications trigger a pop-up dialog  asking for confirmation. ash.SetARCAppWindowState() will
 			// "wait forever" for a window event to occur, but this event won't occur due to the pop-up dialog.
-			if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+			if err := act.SetWindowState(ctx, tconn, act.PackageName(), arc.WindowStateMaximized); err != nil {
 				return err
 			}
 
@@ -348,7 +348,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 				return err
 			}
 
-			if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+			if err := act.SetWindowState(ctx, tconn, act.PackageName(), arc.WindowStateNormal); err != nil {
 				return err
 			}
 
