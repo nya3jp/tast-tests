@@ -30,6 +30,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testType string
@@ -100,6 +101,7 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
