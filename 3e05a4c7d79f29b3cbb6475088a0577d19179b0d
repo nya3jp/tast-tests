@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "103e2ce6_6922a882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-28T22:50:49Z",
+      "side": 1,
+      "message": "Do you want to check for anything after clicking the login button to ensure the login was successful?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "3e05a4c7d79f29b3cbb6475088a0577d19179b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
