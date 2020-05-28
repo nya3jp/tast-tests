@@ -251,16 +251,20 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-
-	var from coords.Point
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
+	return ac.MoveWindowDirectly(ctx, to, t, bounds, captionHeight, task.windowState)
+}
+
+// MoveWindowDirectly moves the window by providing information directly instead of using information from Dumpsys.
+func (ac *Activity) MoveWindowDirectly(ctx context.Context, to coords.Point, t time.Duration, bounds coords.Rect, captionHeight int, windowState WindowState) error {
+	var from coords.Point
 	halfWidth := bounds.Width / 2
 	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
-	if task.windowState == WindowStatePIP {
+	if windowState == WindowStatePIP {
 		// PiP windows are dragged from its center
 		halfHeight := bounds.Height / 2
 		from.Y = bounds.Top + halfHeight
@@ -296,12 +300,21 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
 	if task.windowState == WindowStatePIP {
 		borderOffset = borderOffsetForPIP
 	}
+	ds, err := ac.disp.Size(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get display size")
+	}
+	return ac.ResizeWindowDirectly(ctx, border, to, t, bounds, borderOffset, ds)
+}
+
+// ResizeWindowDirectly resizes the window by providing information directly instead of using information from Dumpsys.
+func (ac *Activity) ResizeWindowDirectly(ctx context.Context, border BorderType, to coords.Point, t time.Duration, bounds coords.Rect, borderOffset int, displaySize coords.Size) error {
+	src := bounds.CenterPoint()
 
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
@@ -318,13 +331,8 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	}
 
 	// After updating src, clamp it to valid display bounds.
-	ds, err := ac.disp.Size(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get display size")
-	}
-	src.X = int(math.Max(0, math.Min(float64(ds.Width-1), float64(src.X))))
-	src.Y = int(math.Max(0, math.Min(float64(ds.Height-1), float64(src.Y))))
-
+	src.X = int(math.Max(0, math.Min(float64(displaySize.Width-1), float64(src.X))))
+	src.Y = int(math.Max(0, math.Min(float64(displaySize.Height-1), float64(src.Y))))
 	return ac.swipe(ctx, src, to, t)
 }
 
