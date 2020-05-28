@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48a39040_59e6bb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T08:48:42Z",
+      "side": 0,
+      "message": "Nice :-)",
+      "revId": "243554974bb959cffed422b9aa96c1fa28cdc128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
