@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "952fd0e6_8b2281b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T03:31:50Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "289b59f9_a63540a5",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3afb09b9_3bec54be",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 1
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "All the solutions looks good to me. I would prefer the first one, and we can explicitly set the value when we actually need it.\nThanks!",
       "parentUuid": "5f10a166_d4a0cfc7",
+      "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c73cec_e361954e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-28T03:31:50Z",
+      "side": 1,
+      "message": "Sure. Then let\u0027s drop scope.",
+      "parentUuid": "e1a8c742_5b3ee40c",
       "revId": "b661ca65d5fa6d7582d97ff235ca2328e7777cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
