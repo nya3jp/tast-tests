@@ -124,7 +124,7 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	case SDKQ:
 		return a.dumpsysActivityActivitiesQ(ctx)
 	case SDKR:
-		return a.dumpsysActivityActivitiesR(ctx)
+		return a.dumpsysActivityActivitiesQ(ctx)
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
 	}
