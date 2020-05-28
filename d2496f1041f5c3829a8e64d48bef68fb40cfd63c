@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f52e81_f82f0009",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T17:24:23Z",
+      "side": 1,
+      "message": "I see boilerplate setup/teardown code block for each WiFi test.  Maybe we can extract them? I\u0027ll take care of it.",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2822cb0f_f1330e1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T17:24:23Z",
+      "side": 1,
+      "message": "Maybe we can wrap it a a bit:\n\ngetBeaconInterval :\u003d func() (int, error) {\n  iwr :\u003d iw.NewRunner(s.DUT().Conn())\n  val, err :\u003d iwr.LinkValue(testCtx, iface, \"beacon int\")\n  if err !\u003d nil {\n    return 0, err\n  }\n  return strconv.Atoi(val)\n}\nbi, err :\u003d getBeaconInterval()\nif err !\u003d nil {\n  s.Fatal(\"Failed to get beacon interval: \", err)\n}",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9cdc9c_caec6806",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T17:24:23Z",
+      "side": 1,
+      "message": "beacon interval",
+      "range": {
+        "startLine": 93,
+        "startChar": 25,
+        "endLine": 93,
+        "endChar": 56
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e9191b_24c7957b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T17:24:23Z",
+      "side": 1,
+      "message": "Unexpected",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b044ea7d_59b8c686",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-28T17:24:23Z",
+      "side": 1,
+      "message": "Verified;",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
