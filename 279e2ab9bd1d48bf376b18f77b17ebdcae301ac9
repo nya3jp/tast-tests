@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9299fdca_3a18b9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125664
+      },
+      "writtenOn": "2020-05-28T19:10:50Z",
+      "side": 1,
+      "message": "binary",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7074ca_cd0c2dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125664
+      },
+      "writtenOn": "2020-05-28T19:10:50Z",
+      "side": 1,
+      "message": "Names of the tests are confusing as if the board only has one of the translators enabled, then the other one would never be used. Also you obviously cannot expect to observe the other non-existing translation library.\n\nNote also, that I\u0027m planning to flip the meaning of the flag, so if you can avoid relying on which flag value means which translator, that would be helpful.\n\nI\u0027d suggest to call these tests like native_bridge_experiment_{enabled/disabled}[64], and don\u0027t specify what translators does this imply. Then allow ro.boot.native_bridge to be either of two as it was before this change.",
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
