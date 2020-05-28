@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b27ee17c_1da7a512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T13:16:36Z",
+      "side": 1,
+      "message": "nit: maybe add space: 100 MiB?",
+      "range": {
+        "startLine": 292,
+        "startChar": 42,
+        "endLine": 292,
+        "endChar": 48
+      },
+      "revId": "d355b1d34f30a88ea01149dad130fc800b5de3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e04670_9a9260f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-28T13:16:36Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 320,
+        "startChar": 72,
+        "endLine": 320,
+        "endChar": 78
+      },
+      "revId": "d355b1d34f30a88ea01149dad130fc800b5de3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
