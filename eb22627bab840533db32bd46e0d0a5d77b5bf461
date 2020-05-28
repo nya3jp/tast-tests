@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "141cf5e3_f7775263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-28T00:49:11Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve overseen this; not all devices have the internal display and this may cause failures on such devices (ex: chromeboxes).\n\nGetPrimaryInfo() would be better.",
+      "range": {
+        "startLine": 56,
+        "startChar": 22,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "eb22627bab840533db32bd46e0d0a5d77b5bf461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
