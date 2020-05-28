@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
@@ -40,6 +41,9 @@ const (
 	ARCPath = "/opt/google/containers/android"
 	//ARCVMPath is the pather where the VM images are installed in the rootfs.
 	ARCVMPath = "/opt/google/vms/android"
+
+	// Path to the USE flags used by ChromiumCommandBuilder.
+	uiUseFlagsPath = "/etc/ui_use_flags.txt"
 )
 
 // InstallType is the type of ARC (Container or VM) available on the device.
@@ -282,15 +286,35 @@ func (a *ARC) setLogcatFile(p string) error {
 	return createErr
 }
 
-// VMEnabled returns true if Chrome OS is running ARCVM.
-// This is done by checking "/run/chrome/is_arcvm" content equal to "1".
-// Reference: chrome/browser/chromeos/arc/arc_service_launcher.cc
-func VMEnabled() (bool, error) {
-	b, err := ioutil.ReadFile("/run/chrome/is_arcvm")
+// parseUIUseFlags parses the configuration file located at path to get the UI
+// USE flags: empty lines and lines starting with # are ignored. No end-of-line
+// comments should be used. An empty non-nil map is returned if no flags are
+// parsed. This is roughly a port of get_ui_use_flags() defined in
+// autotest/files/client/bin/utils.py.
+func parseUIUseFlags(path string) (map[string]struct{}, error) {
+	b, err := ioutil.ReadFile(path)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	return string(b) == "1", nil
+	lines := strings.Split(string(b), "\n")
+	flags := make(map[string]struct{})
+	for _, l := range lines {
+		l = strings.TrimSpace(l)
+		if len(l) > 0 && l[0] != '#' {
+			flags[l] = struct{}{}
+		}
+	}
+	return flags, nil
+}
+
+// VMEnabled returns true if Chrome OS is built with USE=arcvm.
+func VMEnabled() (bool, error) {
+	f, err := parseUIUseFlags(uiUseFlagsPath)
+	if err != nil {
+		return false, errors.Wrap(err, "could not get UI USE flags")
+	}
+	_, isArcvm := f["arcvm"]
+	return isArcvm, nil
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
