@@ -23,6 +23,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/snapshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -110,6 +111,9 @@ func Wait(ctx context.Context) error {
 				testing.ContextLog(ctx, "TPM not available, not waiting for readiness")
 			}
 		}
+	}
+	if err := snapshot.SystemLevelManager().Store(ctx, "/var/lib/tpm_manager/local_tpm_data", "initial"); err != nil {
+		testing.ContextLog(ctx, "Failed to store tpm manager local data: ", err)
 	}
 
 	return nil
