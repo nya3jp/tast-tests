@@ -13,7 +13,7 @@ import (
 // Runner is an alias for common iw Runner but only for local execution.
 type Runner = iw.Runner
 
-// NewRunner creates an iw runner for local execution.
-func NewRunner() *Runner {
+// NewLocalRunner creates an iw runner for local execution.
+func NewLocalRunner() *Runner {
 	return iw.NewRunner(&cmd.LocalCmdRunner{})
 }

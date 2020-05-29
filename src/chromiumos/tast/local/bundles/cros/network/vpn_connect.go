@@ -147,7 +147,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed connecting to VPN server: ", err)
 	}
 
-	pr := localping.NewRunner()
+	pr := localping.NewLocalRunner()
 	if _, err := pr.Ping(ctx, vpn.Xl2tpdServerIPAddress, ping.User("chronos")); err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
 	}

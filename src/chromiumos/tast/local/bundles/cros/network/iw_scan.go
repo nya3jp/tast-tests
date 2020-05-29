@@ -51,13 +51,13 @@ func IWScan(ctx context.Context, s *testing.State) {
 	}()
 
 	// Bring up wireless device after it's released from shill.
-	ipr := ip.NewRunner()
+	ipr := ip.NewLocalRunner()
 	if err := ipr.SetLinkUp(ctx, iface); err != nil {
 		s.Fatalf("Could not bring up %s after shill released WiFi management", iface)
 	}
 
 	// Conduct scan
-	iwr := iw.NewRunner()
+	iwr := iw.NewLocalRunner()
 	if _, err = iwr.TimedScan(ctx, iface, nil, nil); err != nil {
 		s.Fatal("TimedScan failed: ", err)
 	}
