@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/ssh"
 )
 
-// NewRunner creates a ping Runner on the given dut for remote execution.
-func NewRunner(host *ssh.Conn) *ping.Runner {
+// NewRemoteRunner creates a ping Runner on the given dut for remote execution.
+func NewRemoteRunner(host *ssh.Conn) *ping.Runner {
 	return ping.NewRunner(&cmd.RemoteCmdRunner{Host: host})
 }

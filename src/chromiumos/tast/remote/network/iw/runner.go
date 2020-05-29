@@ -14,7 +14,7 @@ import (
 // Runner is an alias for common iw Runner but only for remote execution.
 type Runner = iw.Runner
 
-// NewRunner creates a iw runner for remote execution.
-func NewRunner(host *ssh.Conn) *Runner {
+// NewRemoteRunner creates a iw runner for remote execution.
+func NewRemoteRunner(host *ssh.Conn) *Runner {
 	return iw.NewRunner(&cmd.RemoteCmdRunner{Host: host})
 }

@@ -381,7 +381,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
 	defer st.End()
 
-	pr := remoteping.NewRunner(tf.dut.Conn())
+	pr := remoteping.NewRemoteRunner(tf.dut.Conn())
 	res, err := pr.Ping(ctx, targetIP, opts...)
 	if err != nil {
 		return err

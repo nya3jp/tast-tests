@@ -10,7 +10,7 @@ import (
 	"chromiumos/tast/local/network/cmd"
 )
 
-// NewRunner creates a ping Runner on the given dut for local execution.
-func NewRunner() *ping.Runner {
+// NewLocalRunner creates a ping Runner on the given dut for local execution.
+func NewLocalRunner() *ping.Runner {
 	return ping.NewRunner(&cmd.LocalCmdRunner{})
 }
