@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "04b32ca3_6ec25356",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T09:22:17Z",
+      "side": 1,
+      "message": "interface{} is \"any\" type, while struct{} is \"none\" type.\n\nAny Go value (e.g. 42, \"foo\") can be assigned to interface{}. The only valid value of struct{} is struct{}{}.\n\nIn this case, values on the channel have no meaning, so struct{} is the best choice.",
+      "parentUuid": "99fe7220_3f53de6b",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "a4636f028fade18fc12f2e1c7f906517883903e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "013e4aad_027aadba",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 9

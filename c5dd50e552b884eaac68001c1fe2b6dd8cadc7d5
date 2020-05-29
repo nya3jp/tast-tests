@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "d217b37e_300dd641",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T09:22:17Z",
+      "side": 1,
+      "message": "It\u0027s slightly better, but still we manage the clock in two fields.\n\nAlso another reason I recommend using mutex explicitly in fakeClock is to design it goroutine-safe (~\u003d thread-safe). The current implementation of Timeline would not call fakeClock\u0027s methods concurrently so fakeClock would work even if it\u0027s not goroutine-safe. But unit tests using fakeClock will be run for future changes to Timeline, and if they fail to meet the concurrency requirements, things would fail in mysterious way due to data races. For a trivial example, currently snapshots are taken sequentially, but if we decide to do it in parallel, tests will fail in a weird way. Building a reliable tool for faking the clock would be very helpful in such situation.\n\nI think my general comment is that I recommend designing fakeClock as a reusable component that does not make any assumption about how it is used. Unit tests using fakeClock will evolve later. If fakeClock has some implicit assumptions, engineers who will modify this component will have hard time updating unit tests.",
+      "parentUuid": "6001bac0_1100f5cd",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae1ab0ad_5132e30d",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 8
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "I am not sure what to return here and what to do with the return value. We advance the clock in the tests, so the tests determine the sleep time. I could check for the requested sleep duration...\n\nOne nice thing (even though not needed right now) is that this function (and the other WaitFor* functions) works properly even if called from multiple goroutines. If this function returns the time duration, it would have to be passed through a channel, making this property harder to ensure.",
       "parentUuid": "ae1ab0ad_5132e30d",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676001aa_22c15355",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T09:22:17Z",
+      "side": 1,
+      "message": "As long as we can test the new behavior (i.e. to reduce sleep duration by the time taken to snapshot) it is fine.\n\nI\u0027m not sure if it is useful to allow calling Wait* concurrently though. In any case Sleep cannot be called concurrently due to usage of weighted semaphore, so there is likely 1:1 mapping between the testee goroutine and tester goroutine.",
+      "parentUuid": "4308d7bf_1ca06d28",
       "range": {
         "startLine": 141,
         "startChar": 0,

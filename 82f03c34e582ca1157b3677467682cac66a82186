@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7871870_a2bd6498",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T09:22:17Z",
+      "side": 1,
+      "message": "Advance will panic if Sleep has not been called, and the reason is not clear without knowing the implementation detail of fakeClock.",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 27
+      },
+      "revId": "82f03c34e582ca1157b3677467682cac66a82186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcece517_324e7c94",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T09:22:17Z",
+      "side": 1,
+      "message": "If we end up using the weighted semaphore, please use nanoseconds instead of milliseconds. time.Duration is in nanoseconds so it will cause no precision loss for any valid time.Duration value (in fact time.Duration is int64).",
+      "range": {
+        "startLine": 130,
+        "startChar": 29,
+        "endLine": 130,
+        "endChar": 41
+      },
+      "revId": "82f03c34e582ca1157b3677467682cac66a82186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
