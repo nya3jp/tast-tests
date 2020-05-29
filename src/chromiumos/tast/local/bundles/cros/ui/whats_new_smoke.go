@@ -67,27 +67,62 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in the shelf: ", err)
 	}
 
-	// Find and click the "About Chrome OS" link in the sidebar,
-	// then find and click the "See what's new" link to launch the PWA
-	linkParams := []ui.FindParams{
-		{
-			Role: ui.RoleTypeLink,
-			Name: "About Chrome OS",
-		},
-		{
-			Role: ui.RoleTypeLink,
-			Name: "See what's new",
-		},
+	// Parameters of the UI elements we will click to launch What's New.
+	// menuBtnParams - hamburger icon to expand the sidebar. Only appears in tablet mode or when zoomed in.
+	// aboutParams - "About Chrome OS" link in the sidebar.
+	// whatsNewParams - "See what's new" link in the about page.
+	menuBtnParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Main menu"}
+	aboutParams := ui.FindParams{Role: ui.RoleTypeLink, Name: "About Chrome OS"}
+	whatsNewParams := ui.FindParams{Role: ui.RoleTypeLink, Name: "See what's new"}
+
+	// Look for both the menu button and the "About Chrome OS" link.
+	// If the menu button is found first, we'll have to click it to expand the sidebar.
+	// If the "About Chrome OS" button is found first, there's no need to click the menu button.
+	foundMenuButton := false
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		found, err := ui.Exists(ctx, tconn, menuBtnParams)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if found {
+			foundMenuButton = true
+			return nil
+		}
+
+		found, err = ui.Exists(ctx, tconn, aboutParams)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if found {
+			return nil
+		}
+
+		return errors.New("didn't find menu button or 'about chrome os' link")
+	}, nil); err != nil {
+		s.Fatal("Failed to find menu button or 'about chrome os' link in Settings app: ", err)
 	}
 
-	for _, param := range linkParams {
-		link, err := ui.FindWithTimeout(ctx, tconn, param, 10*time.Second)
-		if err != nil {
-			s.Fatalf("Waiting to find %v link failed: %v", param.Name, err)
-		}
-		defer link.Release(ctx)
+	var toClick []ui.FindParams
+	if foundMenuButton {
+		s.Log("Found sidebar menu button; DUT is in tablet mode or display is zoomed in")
+		toClick = append(toClick, menuBtnParams)
+	}
+	toClick = append(toClick, []ui.FindParams{aboutParams, whatsNewParams}...)
 
-		if err := link.LeftClick(ctx); err != nil {
+	for _, param := range toClick {
+		n, err := ui.FindWithTimeout(ctx, tconn, param, 10*time.Second)
+		if err != nil {
+			s.Fatalf("Waiting to find %v node failed: %v", param.Name, err)
+		}
+		defer n.Release(ctx)
+
+		// Use DoDefault instead of LeftClick, since the "See what's new" link
+		// will sometimes move in between finding it and clicking it on certain
+		// boards (banjo, guado, ultima, ...) where the "Powerwash for added security"
+		// link appears in the About Chrome OS page. The test will periodically fail
+		// in this case with LeftClick, since the click will go to the old location of
+		// "See what's new" and be received by the powerwash link which displaces it.
+		if err := n.DoDefault(ctx); err != nil {
 			s.Fatalf("Failed to click the %v link: %v", param.Name, err)
 		}
 	}
