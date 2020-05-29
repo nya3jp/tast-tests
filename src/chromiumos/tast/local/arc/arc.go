@@ -146,11 +146,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	vm, err := VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to determine if ARCVM is enabled")
-	}
-
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
 	if err := WaitAndroidInit(ctx); err != nil {
@@ -167,14 +162,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
 	arc.logcatCmd = logcatCmd
-
-	if !vm {
-		// Wait for internal networking to get ready. This gives better error messages
-		// when networking is broken, rather than obscure "failed connecting to ADB" error.
-		if err := waitNetworking(ctx); err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
-		}
-	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
@@ -358,19 +345,6 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 		return nil, err
 	}
 	return cmd, nil
-}
-
-// waitNetworking waits for the internal networking to get ready.
-func waitNetworking(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "wait_networking")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
-			return errors.Wrap(err, "ping 100.115.92.2 failed")
-		}
-		return nil
-	}, nil)
 }
 
 // timingMode describes whether timing information should be reported.
