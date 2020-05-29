@@ -164,6 +164,24 @@
       "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8af11d2b_7f67fe16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125664
+      },
+      "writtenOn": "2020-05-29T00:21:38Z",
+      "side": 1,
+      "message": "I\u0027m okay to submit it (you have my CR+2). We can always make more modifications later if needed.",
+      "parentUuid": "a708751a_e2687018",
+      "revId": "279e2ab9bd1d48bf376b18f77b17ebdcae301ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
