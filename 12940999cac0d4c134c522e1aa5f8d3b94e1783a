@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f62b0dab_a23ef2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "So this is a test case instance you designed.\nThen, I\u0027d recommend to make \"RunAppTest\" as a method of this, and in it\u0027s caller:\n\naudio.NewArcAudioTast(...).RunAppTest(ctx, ...)\n\nto make their responsibility clearer.",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46d53e5_955ac2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "nit: Could you swap these two lines to put log line closer to the code it is related to?",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928f14d8_132302d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "nit: :\u003d",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2cf5f9_ea37c9e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "could you release resources in activity by calling Close(), before returning?",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2510227f_094bb4c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "nit/style: could you move this one line above?\n\nd, err :\u003d ui.NewDevice(...)\nif err !\u003d nil {\n  ...\n}\ndefer d.Close()\n\nsince the close is tied to NewDevice, than the code below. So, it\u0027s nice to be put closer, I think.",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0524d581_b34b5c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "nit: could you include that the result value is not expected into the message, too?",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af8eed6_400a943a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-29T05:31:16Z",
+      "side": 1,
+      "message": "nit/style: could you follow the style guide?\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nresult, err :\u003d ...\nif err !\u003d nil {\n  return ...\n}\nif result !\u003d \"1\" {\n  ...\n  return errors.New(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
