@@ -176,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "c7288f6a_f647b05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-29T22:05:10Z",
+      "side": 1,
+      "message": "Hmm, not sure. It sounds like maybe that\u0027s a legal value, and Intel will just provide some other (lower) max limitation. Maybe this field just means \"no larger than X\" -- not that we necessarily expect a TX power of X?\n\nIn that case, none of these \"max\" checks would really make much sense at all...\n\nAlso, that table isn\u0027t entirely 0xff -- only 10 bytes (2 chains, for set 2; there are still 2 more sets, all zero...).",
+      "parentUuid": "4a71d5e5_a63af5ab",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d09c1dc6_21d71850",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 3
