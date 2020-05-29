@@ -41,11 +41,9 @@ func init() {
 		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 	})
 }
@@ -99,18 +97,16 @@ func CachePerf(ctx context.Context, s *testing.State) {
 // bootARCCachePerf performs Chrome login and boots ARC. It waits for Play Store is shown and
 // reports time elapsed from enabling ARC and Play Store is finally shown.
 func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (time.Duration, error) {
-	extraArgs := s.Param().([]string)
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
-	args = append(args, extraArgs...)
 
 	switch mode {
 	case cacheNormal:
 	case cacheSkipGMSCore:
-		extraArgs = append(extraArgs, "--arc-disable-gms-core-cache")
+		args = append(args, "--arc-disable-gms-core-cache")
 	case cacheSkipAll:
 		// Disabling package manager cache disables GMS Core cache as well.
-		extraArgs = append(extraArgs, "--arc-packages-cache-mode=skip-copy")
+		args = append(args, "--arc-packages-cache-mode=skip-copy")
 	default:
 		return 0, errors.New("invalid cache mode")
 	}
