@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0981a7a_2f6fa21a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-29T21:52:25Z",
+      "side": 1,
+      "message": "is there a clean way to put this into a function? It looks like there\u0027s a lot of repeated code here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 44
+      },
+      "revId": "f0a5c2ccc00a911dc5cb65a0809715f7698da495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263e9768_d8a92612",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-29T21:52:25Z",
+      "side": 1,
+      "message": "nit: to see",
+      "range": {
+        "startLine": 96,
+        "startChar": 41,
+        "endLine": 96,
+        "endChar": 45
+      },
+      "revId": "f0a5c2ccc00a911dc5cb65a0809715f7698da495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e674b09_2536aeee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-29T21:52:25Z",
+      "side": 1,
+      "message": "nit: combine",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "f0a5c2ccc00a911dc5cb65a0809715f7698da495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
