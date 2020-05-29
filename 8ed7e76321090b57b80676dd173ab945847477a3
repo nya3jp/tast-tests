@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9b01b18_eb37e32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-29T23:13:45Z",
+      "side": 1,
+      "message": "nit: this conn1 (and conn2) isn\u0027t actually used anywhere. In that case, you don\u0027t need defer -- conn1.Close() actually does not close the tab (it simply closes the connection to the tab).\n\nWith that, this can also be written as a for-loop:\n  for i :\u003d 0; i \u003c 2; i++ {\n    conn, err :\u003d cr.NewConn(ctx, ui.PerftestURL)\n    if err !\u003d nil {\n      s.Fatalf(\"Failed to open %d-th tab: %v\", i, err)\n    }\n    if err :\u003d conn.Close(); err !\u003d nil {\n      s.Fatalf(\"Failed to close the connection to %d-th tab: %v\", i, err)\n    }\n  }",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "8ed7e76321090b57b80676dd173ab945847477a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2410cbf9_e2c4470a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-29T23:13:45Z",
+      "side": 1,
+      "message": "nit: this might be a personal preference, but it would be nicer to start with a verb for a function -- how about checkWindowsNum()?",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "8ed7e76321090b57b80676dd173ab945847477a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
