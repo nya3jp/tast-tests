@@ -27,17 +27,17 @@ func init() {
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "h264",
+			Name:              "h264_hw",
 			Val:               "test-25fps.h264",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
-			Name:              "vp8",
+			Name:              "vp8_hw",
 			Val:               "test-25fps.vp8",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
-			Name:              "vp9",
+			Name:              "vp9_hw",
 			Val:               "test-25fps.vp9",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
