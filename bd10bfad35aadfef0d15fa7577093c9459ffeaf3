@@ -367,6 +367,24 @@
     },
     {
       "key": {
+        "uuid": "5d9ae7c0_d6411490",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-29T08:19:48Z",
+      "side": 1,
+      "message": "I think the original alias is used for client who import this package can also use iw.Runner to refer to Runner struct in common/network/iw.",
+      "parentUuid": "b845c796_376b72c4",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f7ad26c_edb3294a",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
