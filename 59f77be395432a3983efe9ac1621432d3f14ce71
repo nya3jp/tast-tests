@@ -224,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "e66f0a3b_829bac8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-29T22:29:42Z",
+      "side": 1,
+      "message": "Ah, that\u0027s what you sorta have at line 196 -- you\u0027re limiting yourself to looking at 10 bytes (\"set 2\")? so you ignore any 3rd or 4th table, because our dynamic SAR implementation only ever uses the first 2? That makes sense. BTW, I wonder if that\u0027s something that should be commented in here, instead of just implied.\n\nRegarding form factor / tablet mode: yeah, Nocturne is a tablet, but there was actually an attempt to do dynamic SAR based on \u003cstuff that might tell you it wasn\u0027t near the user\u0027s body\u003e. That didn\u0027t go anywhere though, so yes, it\u0027s only static SAR + Geo.\n\nThat\u0027s probably something to ponder for other systems though. Apparently there *is* such a thing as static SAR + Geo.",
+      "parentUuid": "22573b0e_6763656a",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d09c1dc6_21d71850",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 3
