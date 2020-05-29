@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "22573b0e_6763656a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-29T22:12:26Z",
+      "side": 1,
+      "message": "But aren\u0027t the additional sets still undefined? I.E. whatever values you placed in there would be meaningless and unused anyway? The second set is usually used for tablet mode, so it seems to me like this is being used as a hacky way to implement GEO SAR deltas on a static form-factor device.",
+      "parentUuid": "c7288f6a_f647b05a",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "59f77be395432a3983efe9ac1621432d3f14ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d09c1dc6_21d71850",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 3
