@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f400f4c8_39410157",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-29T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca77db1f_00ee128b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4717be36_3c68bc89",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0da034_7abe0346",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-29T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4717be36_3c68bc89",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b4355e_a48b49a7",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-29T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570b26a4_7610aff3",
+      "range": {
+        "startLine": 115,
+        "startChar": 62,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fa4f434_9853560a",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-29T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee0da4d_3dc372e0",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
