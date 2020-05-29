@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_lexmark_no_pin_golden_20200512.ps",
+  "size": 80328,
+  "sha256sum": "32a1c053962ea8a6738af2384db0ce0fa485871ee6041dd53be9fac8c53f10ee"
+}

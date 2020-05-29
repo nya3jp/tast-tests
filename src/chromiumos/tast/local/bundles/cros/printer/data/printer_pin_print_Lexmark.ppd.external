@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_Lexmark_20200629.ppd",
+  "size": 180872,
+  "sha256sum": "3188fe0f28b1c5b3087640640c61b8e54b8704a278946caa59cd81c6d2a0154a"
+}
