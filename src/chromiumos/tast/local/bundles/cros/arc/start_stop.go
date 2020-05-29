@@ -19,8 +19,6 @@ import (
 type testArgs struct {
 	// subtests represents the subtests to run.
 	subtests []startstop.Subtest
-	// chromeArgs represents Extra args to be passed to chrome.New.
-	chromeArgs []string
 }
 
 func init() {
@@ -59,7 +57,6 @@ func init() {
 					&startstop.TestMidis{},
 					&startstop.TestPID{},
 				},
-				chromeArgs: []string{"--enable-arcvm"},
 			},
 		}},
 	})
@@ -78,7 +75,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 
 	// Launch Chrome with enabling ARC.
 	func() {
-		cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args.chromeArgs...))
+		cr, err := chrome.New(ctx, chrome.ARCEnabled())
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
