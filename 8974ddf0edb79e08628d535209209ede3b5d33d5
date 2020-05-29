@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fd1905a_e4b820bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-29T23:46:44Z",
+      "side": 1,
+      "message": "nit: you can use nil -- nil is treated as an empty string in Go",
+      "range": {
+        "startLine": 47,
+        "startChar": 88,
+        "endLine": 47,
+        "endChar": 98
+      },
+      "revId": "8974ddf0edb79e08628d535209209ede3b5d33d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be296824_e7527151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-29T23:46:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 80,
+        "endLine": 59,
+        "endChar": 90
+      },
+      "revId": "8974ddf0edb79e08628d535209209ede3b5d33d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77974ee_9705dd95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-29T23:46:44Z",
+      "side": 1,
+      "message": "nit: you can use nil",
+      "range": {
+        "startLine": 48,
+        "startChar": 81,
+        "endLine": 48,
+        "endChar": 91
+      },
+      "revId": "8974ddf0edb79e08628d535209209ede3b5d33d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
