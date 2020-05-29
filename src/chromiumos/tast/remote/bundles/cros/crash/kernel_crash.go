@@ -7,6 +7,7 @@ package crash
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -148,9 +149,18 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find crash files: " + err.Error())
 	}
 
-	removeReq := &crash_service.RemoveAllFilesRequest{
-		Matches: res.Matches,
+	// Also remove the bios log if it was created.
+	biosLogMatches := &crash_service.RegexMatch{
+		Regex: base + `\.bios_log`,
+		Files: nil,
 	}
+	for _, f := range res.Matches[0].Files {
+		biosLogMatches.Files = append(biosLogMatches.Files, strings.ReplaceAll(f, filepath.Ext(f), ".bios_log"))
+	}
+	removeReq := &crash_service.RemoveAllFilesRequest{
+		Matches: append(res.Matches, biosLogMatches),
+	}
+
 	if _, err := fs.RemoveAllFiles(ctx, removeReq); err != nil {
 		s.Error("Error removing files: ", err)
 	}
