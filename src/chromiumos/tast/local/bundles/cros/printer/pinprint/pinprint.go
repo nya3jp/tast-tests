@@ -27,11 +27,11 @@ type Option string
 
 // Params struct used by all pin print tests for parameterized tests.
 type Params struct {
-	PpdFile    string
-	PrintFile  string
-	GoldenFile string
-	DiffFile   string
-	Options    []Option
+	PpdFile     string   // Name of the ppd used to print the job.
+	PrintFile   string   // PS file to print.
+	GoldenFile  string   // PS file output should be compared to.
+	OutDiffFile string   // Name of file errors should be written to.
+	Options     []Option // Options to be passed to the filter to change output.
 }
 
 // WithJobPassword properly formats a job-password option
@@ -137,17 +137,17 @@ func Run(ctx context.Context, s *testing.State, p *Params) {
 		s.Fatal("Unexpected diff output: ", err)
 	}
 	if diff != "" {
-		path := filepath.Join(s.OutDir(), p.DiffFile)
+		path := filepath.Join(s.OutDir(), p.OutDiffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
 		}
 
 		// Write out the complete output.
-		psPath := filepath.Join(s.OutDir(), strings.TrimSuffix(p.DiffFile, filepath.Ext(p.DiffFile))+".ps")
+		psPath := filepath.Join(s.OutDir(), strings.TrimSuffix(p.OutDiffFile, filepath.Ext(p.OutDiffFile))+".ps")
 		if err := ioutil.WriteFile(psPath, []byte(cleanPSContents(string(request))), 0644); err != nil {
 			s.Error("Failed to dump ps: ", err)
 		}
 
-		s.Errorf("Output diff from the golden file, diff at %s, output.ps at %s", p.DiffFile, psPath)
+		s.Errorf("Output diff from the golden file, diff at %s, output.ps at %s", p.OutDiffFile, psPath)
 	}
 }
