@@ -26,7 +26,7 @@ func init() {
 }
 
 func WifiCaps(ctx context.Context, s *testing.State) {
-	iwr := iw.NewRunner()
+	iwr := iw.NewLocalRunner()
 	// Get WiFi interface.
 	manager, err := shill.NewManager(ctx)
 	if err != nil {

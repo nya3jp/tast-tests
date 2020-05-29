@@ -24,7 +24,7 @@ func init() {
 }
 
 func WifiCaps80211ac(ctx context.Context, s *testing.State) {
-	iwr := iw.NewRunner()
+	iwr := iw.NewLocalRunner()
 	res, err := iwr.ListPhys(ctx)
 	if err != nil {
 		s.Fatal("ListPhys failed: ", err)

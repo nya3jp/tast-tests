@@ -13,7 +13,7 @@ import (
 // Runner is an alias for common ip Runner but only for local execution.
 type Runner = ip.Runner
 
-// NewRunner creates an ip runner for local execution.
-func NewRunner() *Runner {
+// NewLocalRunner creates an ip runner for local execution.
+func NewLocalRunner() *Runner {
 	return ip.NewRunner(&cmd.LocalCmdRunner{})
 }
