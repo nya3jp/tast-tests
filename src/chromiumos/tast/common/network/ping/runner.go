@@ -65,8 +65,9 @@ func NewRunner(c cmd.Runner) *Runner {
 
 // Ping performs a shell ping with parameters specified in Options.
 // If no Option is specified, default config (count=3, interval=0.5s) is used.
-// Notice that when no reply is received, this function will return error as
-// ping exits with code=1 in this case.
+// Notice that when no reply is received, this function will try to parse the
+// output and return a valid result instead of returning the error of non-zero
+// return code of ping.
 func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (*Result, error) {
 	cfg := &config{count: 3, interval: 0.5}
 	for _, opt := range options {
