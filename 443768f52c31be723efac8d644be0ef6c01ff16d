@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cefbe1f_93ed3b0b",
+        "filename": "android/ArcKeyboardTest/src/org/chromium/arc/testapp/keyboard/CaptureKeyPreImeView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-05-29T01:42:16Z",
+      "side": 1,
+      "message": "Do you have any future regression you imagine to test both key down and key up? If not, I\u0027m OK with just testing key down.",
+      "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19e8f9a_b194e86b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-05-29T01:42:16Z",
+      "side": 1,
+      "message": "I think we should also\n\n    d.Object(ui.ID(editTextID), ui.Text(Expected)).WaitForExists()",
+      "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d0532d_66dc2eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-05-29T01:42:16Z",
+      "side": 1,
+      "message": "I think these are the most important properties we should test:\n- onKeyPreIme is called before the text appears\n- When onKeyPreIme returns true, IC never receives the text \n- onKey is not called when IC is off and called when IC is on. When it\u0027s called, it should be called after onKeyPreIme.\n\nDo you have a plan to test them?",
+      "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
