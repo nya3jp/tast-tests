@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d71cb1ae_b115f31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-29T10:09:38Z",
+      "side": 1,
+      "message": "Oh I see. I think it\u0027s okay to keep this design; it won\u0027t be affected by the change in the default value of the Chrome flag, and which one is the default is probably not so important for the testing purpose.",
+      "parentUuid": "699f725b_24f7b750",
+      "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "245debe6_a4377459",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 2
