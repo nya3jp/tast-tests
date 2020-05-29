@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b59744de_22589e6c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:23:54Z",
+      "side": 1,
+      "message": "not sure sure about these *Directly functions. It will create some confusion.\n\n\nWould it be possible to fix the existing MoveWindow / ResizeWindow ? (and update the existing tests to use the new updated API) ?\n\n\nBrendan@ WDYT?",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 38
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a10890e_e5e48807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:23:54Z",
+      "side": 1,
+      "message": "huge nit, style: Ash",
+      "range": {
+        "startLine": 155,
+        "startChar": 78,
+        "endLine": 155,
+        "endChar": 81
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9437579_a6b32434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:23:54Z",
+      "side": 1,
+      "message": "use arc.SDKVersion() instead ?",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 1
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
