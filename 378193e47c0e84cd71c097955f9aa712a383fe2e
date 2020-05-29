@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be72bba5_5acf83a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-05-29T21:29:44Z",
+      "side": 1,
+      "message": "I have only seen tast failures with Intel7265 on Eve, but I\u0027m not sure if it would be appropriate for me to update the other Intel drivers now as well. Let me know what you think!",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "378193e47c0e84cd71c097955f9aa712a383fe2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
