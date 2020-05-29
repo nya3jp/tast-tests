@@ -33,11 +33,9 @@ func init() {
 		},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 	})
 }

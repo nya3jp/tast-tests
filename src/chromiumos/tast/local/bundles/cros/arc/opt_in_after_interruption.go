@@ -67,7 +67,7 @@ func init() {
 				username:   "arc.OptInAfterInterruption.unmanaged_username",
 				password:   "arc.OptInAfterInterruption.unmanaged_password",
 				delays:     getUnmangedDelays(),
-				chromeArgs: []string{"--enable-arcvm"},
+				chromeArgs: []string{},
 			},
 		}, {
 			Name:              "managed",
@@ -85,7 +85,7 @@ func init() {
 				username:   "arc.OptInAfterInterruption.managed_username",
 				password:   "arc.OptInAfterInterruption.managed_password",
 				delays:     getManagedDelays(),
-				chromeArgs: []string{"--arc-force-show-optin-ui", "--enable-arcvm"},
+				chromeArgs: []string{"--arc-force-show-optin-ui"},
 			},
 		}},
 		Vars: []string{
