@@ -197,6 +197,14 @@ func (n *Node) RightClick(ctx context.Context) error {
 	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.RightButton)
 }
 
+// DoDefault calls the doDefault() Javascript method of the AutomationNode.
+// LeftClick is generally preferred to DoDefault since it is closer to real
+// user interaction, but DoDefault can be a useful alternative if target node's
+// coordinates can change in an unpredictable way.
+func (n *Node) DoDefault(ctx context.Context) error {
+	return n.object.Call(ctx, nil, "function(){this.doDefault()}")
+}
+
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
 // This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
