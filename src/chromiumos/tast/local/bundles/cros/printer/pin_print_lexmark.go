@@ -14,15 +14,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PinPrintHP,
-		Desc: "Verifies that printers with HP Pin printing support add the appropriate options when given the job-password attribute",
+		Func: PinPrintLexmark,
+		Desc: "Verifies that printers with Lexmark Pin printing support add the appropriate options when given the job-password attribute",
 		Contacts: []string{
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data: []string{
-			"printer_pin_print_HP.ppd",
+			"printer_pin_print_Lexmark.ppd",
 			"to_print.pdf",
 		},
 		Attr: []string{"group:mainline"},
@@ -30,29 +30,29 @@ func init() {
 		Params: []testing.Param{{
 			Name: "no_pin",
 			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_HP.ppd",
+				PpdFile:      "printer_pin_print_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
-				ExpectedFile: "printer_pin_print_hp_no_pin_golden.ps",
+				ExpectedFile: "printer_pin_print_lexmark_no_pin_golden.ps",
 				OutDiffFile:  "no-pin_diff.txt",
 			},
-			ExtraData: []string{"printer_pin_print_hp_no_pin_golden.ps"},
+			ExtraData: []string{"printer_pin_print_lexmark_no_pin_golden.ps"},
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin",
 			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_HP.ppd",
+				PpdFile:      "printer_pin_print_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
-				ExpectedFile: "printer_pin_print_hp_pin_golden.ps",
+				ExpectedFile: "printer_pin_print_lexmark_pin_golden.ps",
 				OutDiffFile:  "pin_diff.txt",
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
-			ExtraData: []string{"printer_pin_print_hp_pin_golden.ps"},
+			ExtraData: []string{"printer_pin_print_lexmark_pin_golden.ps"},
 			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
 
-func PinPrintHP(ctx context.Context, s *testing.State) {
+func PinPrintLexmark(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(*pinprint.Params)
 
 	pinprint.Run(ctx, s, testOpt)
