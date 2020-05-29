@@ -39,14 +39,15 @@ func init() {
 //      address change (e.g. r8152 driver).
 //   2) DUT must not have connected USB Ethernet adapters that don't support MAC
 //      address change (e.g. asix driver).
-//   3) DUT must have both `ethernet_mac0` and `dock_mac` read only VPD fields
+//   3) DUT must have both `ethernet_mac0` and/or `dock_mac` read only VPD fields
 //      with MAC addresses.
 // TODO(crbug/1012367): Add these hardware dependencies when Tast will support them.
 func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 	readMACFromVPD := func(vpd string) string {
 		bytes, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/ro", vpd))
 		if err != nil {
-			s.Fatalf("Failed to read VPD field %s file: %v", vpd, err)
+			s.Logf("Failed to read VPD field %s file: %v", vpd, err)
+			return ""
 		}
 		return strings.ToLower(string(bytes))
 	}
@@ -170,6 +171,10 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		{"builtin_adapter_mac", ethMAC},
 		{"usb_adapter_mac", usbMAC},
 	} {
+		if len(tc.expectedMAC) == 0 {
+			s.Logf("MAC address for source %q is empty. DUT may not support such MAC address source. Continuing", tc.source)
+			continue
+		}
 		verify(ctx, tc.source, tc.expectedMAC)
 	}
 }
