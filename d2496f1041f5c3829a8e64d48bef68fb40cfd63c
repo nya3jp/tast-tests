@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "40f26fd1_b986442e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-29T07:18:29Z",
+      "side": 1,
+      "message": "Ah, yeah. Let\u0027s wait for your precondition solution. Please follow the progress of the precondition issue.",
+      "parentUuid": "cd31f3ea_3e317cb2",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2822cb0f_f1330e1b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I guess it can be even moved outside as it only needs *dut.DUT and iface.\nDone.",
       "parentUuid": "2822cb0f_f1330e1b",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "887ff985_b4e6357d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-29T07:18:29Z",
+      "side": 1,
+      "message": "That\u0027s great.",
+      "parentUuid": "ccd2dd79_76cf0179",
       "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
