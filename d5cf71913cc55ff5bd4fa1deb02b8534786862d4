@@ -16,6 +16,24 @@
       "revId": "d5cf71913cc55ff5bd4fa1deb02b8534786862d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeddbec8_051f382b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-29T21:34:18Z",
+      "side": 1,
+      "message": "Sorry, missed this question.\n\nI don\u0027t think it matter much, since the docs don\u0027t actually get published automatically. But if they were, then yes that\u0027d be fine I guess.",
+      "parentUuid": "a56e34e9_7f1fddcc",
+      "revId": "d5cf71913cc55ff5bd4fa1deb02b8534786862d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
