@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3a9b50d_99672d0b",
+        "filename": "android/ArcKeyboardTest/src/org/chromium/arc/testapp/keyboard/CaptureKeyPreImeView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-05-29T09:45:14Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "7cefbe1f_93ed3b0b",
+      "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c19e8f9a_b194e86b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2020-05-29T01:42:16Z",
       "side": 1,
       "message": "I think these are the most important properties we should test:\n- onKeyPreIme is called before the text appears\n- When onKeyPreIme returns true, IC never receives the text \n- onKey is not called when IC is off and called when IC is on. When it\u0027s called, it should be called after onKeyPreIme.\n\nDo you have a plan to test them?",
+      "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54d66fa_b3581336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-05-29T09:45:14Z",
+      "side": 1,
+      "message": "Yes, however, some of those tests should be added in physical_keyboard.go.\nEspecially (TYPE_TEXT, TYPE_NULL) x (View.onKeyDown, IME\u0027s onKeyDown) combinations should be tested in physical_keyboard.go.\nI can think of the following cases right now for physical_keyboard.go. There should be more cases:\n- On non TYPE_NULL text field, onKeyDown() is never called because IME consumes it\n- On TYPE_NULL text field, if View.onKeyDown() is overridden and not calling super.onKeyDown(), the text on the field is never changed. Also, we should test that View.onKeyDown() is called in this case.\n\nI\u0027m going to add the following cases in this test:\n- If View.onKeyPreIme() returns true, View.onKeyDown should not be called.\n- If View.onKeyPreIme() returns true on non TYPE_NULL text field, the text should not be changed because IME should not see it.",
+      "parentUuid": "67d0532d_66dc2eb2",
       "revId": "443768f52c31be723efac8d644be0ef6c01ff16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
