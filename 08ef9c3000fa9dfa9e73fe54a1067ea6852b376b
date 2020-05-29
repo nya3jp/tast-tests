@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be252e61_f1487691",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T06:40:42Z",
+      "side": 1,
+      "message": "Thanks for explaining the go\u0027s habit. The reason is that it is hard to iterate over the metrics values stored as struct members and we need to do that on reporting values and converting units from Joules to Watt in the later CL. Also, the RAPL values exposed by system can be different on different CPUs so I decided to change the way to store the values to using map. I add some lines here to describe that.",
+      "parentUuid": "c0e159c4_fbbd9233",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8603c72_eb5237dd",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2290bcd1_5ca58220",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T06:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8603c72_eb5237dd",
+      "range": {
+        "startLine": 56,
+        "startChar": 50,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4ba84a5_ddea9335",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cc18568_e2c31465",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T06:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ba84a5_ddea9335",
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b60565_92a6e296",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T06:40:42Z",
+      "side": 1,
+      "message": "It\u0027s my mistake. reverted. Thanks for pointing out!",
+      "parentUuid": "13406e34_4ed27b8d",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 14
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
