@@ -191,10 +191,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return errors.Wrap(err, "failed to find the window in the overview mode")
 				}
-				// Wait for the desk mini-view to finish animating before we get its
-				// bounds. The animation only takes 250 milliseconds, but we may need to
-				// wait a little longer because everything takes time.
-				testing.Sleep(ctx, 500*time.Millisecond)
 				deskMiniViews, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
 				if err != nil {
 					return errors.Wrap(err, "failed to get desk mini-views")
@@ -203,7 +199,26 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
 					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
 				}
-				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViews[1].Location.CenterPoint(), time.Second); err != nil {
+				ew, err := chromeui.NewWatcher(ctx, deskMiniViews[1], chromeui.EventTypeLocationChanged)
+				if err != nil {
+					return errors.Wrap(err, "failed to create event watcher")
+				}
+				defer ew.Release(ctx)
+				if err := testing.Poll(ctx, func(ctx context.Context) error { return ew.EnsureNoEvents(ctx, 100*time.Millisecond) }, &testing.PollOptions{Timeout: time.Second}); err != nil {
+					return errors.Wrap(err, "failed to wait for desk mini-view animation")
+				}
+				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+					return errors.Wrap(err, "failed to wait for location-change events to be propagated to the automation API")
+				}
+				deskMiniViewsAfterAnimation, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
+				if err != nil {
+					return errors.Wrap(err, "failed to get desk mini-views after animation")
+				}
+				defer deskMiniViewsAfterAnimation.Release(ctx)
+				if deskMiniViewCountAfterAnimation := len(deskMiniViewsAfterAnimation); deskMiniViewCountAfterAnimation != 2 {
+					return errors.Wrapf(err, "expected 2 desk mini-views after animation; found %v", deskMiniViewCountAfterAnimation)
+				}
+				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViewsAfterAnimation[1].Location.CenterPoint(), time.Second); err != nil {
 					return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 				}
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
