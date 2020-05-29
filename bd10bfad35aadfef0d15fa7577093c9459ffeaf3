@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "5cb2f1ff_827cbcff",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "I added the const string, so it\u0027s `Power save:\\s+(\\w+)",
+      "parentUuid": "28bb03cd_eaa26cf0",
+      "range": {
+        "startLine": 325,
+        "startChar": 25,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360db625_895e5455",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37abd543_4a022426",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360db625_895e5455",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 2
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "8a630bdc_1be99b78",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83789ba8_7b87f2b4",
+      "range": {
+        "startLine": 349,
+        "startChar": 28,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45a2d410_ebb99f47",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 2
@@ -166,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "5ce699ed_acd4886a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a2d410_ebb99f47",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f59cf770_f835af8b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 2
@@ -180,6 +276,24 @@
       "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df19acc_392a9a9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59cf770_f835af8b",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +314,24 @@
     },
     {
       "key": {
+        "uuid": "d9205327_9c708a40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "I wrapped line 77-90 inside an anonymous function and Disconnect is defered.",
+      "parentUuid": "7eb30d72_8489e1af",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a526d252_7c664feb",
         "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
         "patchSetId": 2
@@ -211,6 +343,24 @@
       "writtenOn": "2020-05-27T06:18:46Z",
       "side": 1,
       "message": "Do you remove the Runner type alias intentionally?",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b845c796_376b72c4",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Yes, it\u0027s not needed. we use this package for creating the remote runner only.",
+      "parentUuid": "a526d252_7c664feb",
       "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -231,6 +381,24 @@
       "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1906be6b_beacc2f8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T07:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7ad26c_edb3294a",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
