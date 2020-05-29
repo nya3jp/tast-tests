@@ -385,6 +385,24 @@
     },
     {
       "key": {
+        "uuid": "70a52f85_48d5dbb4",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-29T21:06:27Z",
+      "side": 1,
+      "message": "In the test_fixture.go we import the \"common/network/ping\" package to specifiy the options in the ping command and we use the package \"remoteping remote/network/ping\" for only creating the Runner. I thought this should be similar to that.",
+      "parentUuid": "5d9ae7c0_d6411490",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f7ad26c_edb3294a",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
