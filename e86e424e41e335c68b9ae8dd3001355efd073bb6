@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1aefe2_c793d632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T08:24:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it might be better to have a stricter \"res.Sent \u003d\u003d res.Received\".\n\nWDYT?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "e86e424e41e335c68b9ae8dd3001355efd073bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
