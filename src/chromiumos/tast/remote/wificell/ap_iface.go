@@ -151,7 +151,7 @@ func (h *APIface) stop(ctx context.Context) error {
 // configureIface configures the interface which we're providing services on.
 func (h *APIface) configureIface(ctx context.Context) error {
 	var retErr error
-	if err := remote_iw.NewRunner(h.host).SetTxPowerAuto(ctx, h.iface); err != nil {
+	if err := remote_iw.NewRemoteRunner(h.host).SetTxPowerAuto(ctx, h.iface); err != nil {
 		retErr = errors.Wrapf(retErr, "failed to set txpower to auto, err=%s", err)
 	}
 	if err := h.configureIP(ctx); err != nil {
@@ -163,7 +163,7 @@ func (h *APIface) configureIface(ctx context.Context) error {
 // tearDownIface tears down the interface which we provided services on.
 func (h *APIface) tearDownIface(ctx context.Context) error {
 	var firstErr error
-	ipr := remote_ip.NewRunner(h.host)
+	ipr := remote_ip.NewRemoteRunner(h.host)
 	if err := ipr.FlushIP(ctx, h.iface); err != nil {
 		collectFirstErr(ctx, &firstErr, err)
 	}
@@ -175,7 +175,7 @@ func (h *APIface) tearDownIface(ctx context.Context) error {
 
 // configureIP configures server IP and broadcast IP on h.iface.
 func (h *APIface) configureIP(ctx context.Context) error {
-	ipr := remote_ip.NewRunner(h.host)
+	ipr := remote_ip.NewRemoteRunner(h.host)
 	if err := ipr.FlushIP(ctx, h.iface); err != nil {
 		return err
 	}

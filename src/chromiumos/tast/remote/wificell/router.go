@@ -63,8 +63,8 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		busyPhy:       make(map[int]map[iw.IfType]bool),
 		availIfaces:   make(map[string]*iw.NetDev),
 		busyIfaces:    make(map[string]*iw.NetDev),
-		iwr:           remote_iw.NewRunner(host),
-		ipr:           remote_ip.NewRunner(host),
+		iwr:           remote_iw.NewRemoteRunner(host),
+		ipr:           remote_ip.NewRemoteRunner(host),
 		logCollectors: make(map[string]*log.Collector),
 	}
 

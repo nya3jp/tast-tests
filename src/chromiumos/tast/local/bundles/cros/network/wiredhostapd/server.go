@@ -193,7 +193,7 @@ func (s *Server) Start(ctx context.Context) (retErr error) {
 	}
 
 	// Bring up the hostapd link.
-	ipr := ip.NewRunner()
+	ipr := ip.NewLocalRunner()
 	if err := ipr.SetLinkUp(ctx, s.Iface); err != nil {
 		return errors.Wrap(err, "could not bring up hostapd veth")
 	}
