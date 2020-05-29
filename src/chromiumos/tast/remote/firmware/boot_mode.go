@@ -10,6 +10,7 @@ This file implements functions to check or switch the DUT's boot mode.
 
 import (
 	"context"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/testing"
 )
 
 // CheckBootMode forwards to the CheckBootMode RPC to check whether the DUT is in a specified boot mode.
@@ -51,4 +53,19 @@ func RebootToMode(ctx context.Context, d *dut.DUT, utils fwpb.UtilsServiceClient
 	default:
 		return errors.Errorf("unsupported firmware boot mode transition to %s", toMode)
 	}
+}
+
+// poweroff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
+func poweroff(ctx context.Context, d *dut.DUT) error {
+	testing.ContextLog(ctx, "Powering off DUT")
+	poweroffCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
+	d.Command("poweroff").Run(poweroffCtx) // ignore the error
+
+	offCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	defer cancel()
+	if err := d.WaitUnreachable(offCtx); err != nil {
+		return errors.Wrap(err, "waiting for dut to be unreachable after sending poweroff command")
+	}
+	return nil
 }
