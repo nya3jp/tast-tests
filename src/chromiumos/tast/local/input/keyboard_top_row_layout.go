@@ -23,6 +23,7 @@ type TopRowLayout struct {
 	BrowserRefresh string
 	ZoomToggle     string
 	SelectTask     string
+	Screenshot     string
 	BrightnessDown string
 	BrightnessUp   string
 	MediaPlayPause string
@@ -81,13 +82,35 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		MediaLaunchApp: "search+F12",
 	}
 
+	// This is the minimal set of required top row keys for custom top row
+	// layouts.
+	mappingCustom := TopRowLayout{
+		BrowserBack:    "back",
+		BrowserRefresh: "refresh",
+		ZoomToggle:     "fullscreen",
+		SelectTask:     "scale",
+		Screenshot:     "sysrq",
+		BrightnessDown: "brightnessdown",
+		BrightnessUp:   "brightnessup",
+		VolumeMute:     "mute",
+		VolumeDown:     "volumedown",
+		VolumeUp:       "volumeup",
+	}
+
 	props, err := uDevProperties(ctx, ew.Device())
+	if err != nil {
+		return nil, err
+	}
+	attrs, err := uDevAttributes(ctx, ew.Device())
 	if err != nil {
 		return nil, err
 	}
 
 	// Logic taken from here:
 	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
+	if _, ok := attrs["function_row_physmap"]; ok {
+		return &mappingCustom, nil
+	}
 	if val, ok := props["CROS_KEYBOARD_TOP_ROW_LAYOUT"]; ok {
 		switch val {
 		case "1":
@@ -105,6 +128,17 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	return &mapping1, nil
 }
 
+// uDevAttributes returns the attributes associated to a certain Linux udev device.
+func uDevAttributes(ctx context.Context, devicePath string) (map[string]string, error) {
+	cmd := testexec.CommandContext(ctx, "udevadm", "info", "--attribute-walk", "property", "--name", devicePath)
+	out, err := cmd.Output()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		return nil, errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
+	}
+	return parseUdev(out, `^ATTRS{([a-z0-9_]+)}=="(.*)"$`)
+}
+
 // uDevProperties returns the properties associated to a certain Linux udev device.
 func uDevProperties(ctx context.Context, devicePath string) (map[string]string, error) {
 	cmd := testexec.CommandContext(ctx, "udevadm", "info", "--query", "property", "--name", devicePath)
@@ -113,13 +147,13 @@ func uDevProperties(ctx context.Context, devicePath string) (map[string]string, 
 		cmd.DumpLog(ctx)
 		return nil, errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
-	return parseUdev(out)
+	return parseUdev(out, `^([A-Z0-9_]+)\s*=\s*(.*)$`)
 }
 
 // parseUdev parses the raw output from udevadm and converts it into a key-value map.
-func parseUdev(r []byte) (map[string]string, error) {
+func parseUdev(r []byte, matchPattern string) (map[string]string, error) {
 	// lineRe matches a key-value line.
-	var lineRe = regexp.MustCompile(`^([A-Z0-9_]+)\s*=\s*(.*)$`)
+	var lineRe = regexp.MustCompile(matchPattern)
 
 	kvs := make(map[string]string)
 	sc := bufio.NewScanner(bytes.NewReader(r))
