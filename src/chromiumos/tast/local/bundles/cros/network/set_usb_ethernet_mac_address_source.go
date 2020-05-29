@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -52,7 +53,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 	ethMAC := readMACFromVPD("ethernet_mac0")
 	dockMAC := readMACFromVPD("dock_mac")
 
-	eth, name := func() (*shill.Device, string) {
+	eth, name := func(ctx context.Context) (*shill.Device, string) {
 		manager, err := shill.NewManager(ctx)
 		if err != nil {
 			s.Fatal("Failed creating shill manager proxy: ", err)
@@ -83,7 +84,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		}
 		s.Fatal("DUT does not have USB Ethernet adapter")
 		return nil, ""
-	}()
+	}(ctx)
 
 	s.Log("DUT has USB Ethernet adapter: ", eth)
 
@@ -95,7 +96,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 	}
 	defer unlock()
 
-	setMACSource := func(source string) {
+	setMACSource := func(ctx context.Context, source string) {
 		s.Log("Setting USB Ethernet MAC address source to ", source)
 		if err := eth.SetUsbEthernetMacAddressSource(ctx, source); err != nil {
 			s.Fatal("Can not set USB Ethernet MAC address source: ", err)
@@ -121,7 +122,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	verify := func(source, expectedMAC string) {
+	verify := func(ctx context.Context, source, expectedMAC string) {
 		signalWatcher, err := eth.CreateWatcher(ctx)
 		if err != nil {
 			s.Fatal("Failed to observe the property changed being dismissed: ", err)
@@ -134,7 +135,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 
 		s.Log("Start changing MAC address source")
 
-		setMACSource(source)
+		setMACSource(ctx, source)
 
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 		defer cancel()
@@ -153,7 +154,11 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	defer setMACSource("usb_adapter_mac")
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
+
+	defer setMACSource(cleanupCtx, "usb_adapter_mac")
 
 	usbMAC := getMAC()
 
@@ -165,6 +170,6 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		{"builtin_adapter_mac", ethMAC},
 		{"usb_adapter_mac", usbMAC},
 	} {
-		verify(tc.source, tc.expectedMAC)
+		verify(ctx, tc.source, tc.expectedMAC)
 	}
 }
