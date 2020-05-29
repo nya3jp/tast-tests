@@ -46,6 +46,30 @@
       "revId": "e86e424e41e335c68b9ae8dd3001355efd073bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "358e2fa0_52181a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-29T15:15:10Z",
+      "side": 1,
+      "message": "I prefer to keep crrev.com/c/2211633 as it can distinguish between ping command error and packet loss error. However, the function comment didn\u0027t update. Please fix: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2211633/6/src/chromiumos/tast/common/network/ping/runner.go#68\n\nIn this case, I think as long as ping gets some response, it should be fine.",
+      "parentUuid": "4cef55cd_9aba68e0",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "e86e424e41e335c68b9ae8dd3001355efd073bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
