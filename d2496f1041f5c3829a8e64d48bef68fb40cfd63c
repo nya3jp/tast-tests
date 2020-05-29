@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd31f3ea_3e317cb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T03:20:30Z",
+      "side": 1,
+      "message": "Precondition should handle part of this but it is pending now. :-/\nDo you think we can wait for that? Or do you have something else in mind already?",
+      "parentUuid": "13f52e81_f82f0009",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2822cb0f_f1330e1b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd2dd79_76cf0179",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T03:20:30Z",
+      "side": 1,
+      "message": "I guess it can be even moved outside as it only needs *dut.DUT and iface.\nDone.",
+      "parentUuid": "2822cb0f_f1330e1b",
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f1da8e49_ba99aa36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T03:20:30Z",
+      "side": 1,
+      "message": "The error message of LinkValue seems to be verbose enough. Removed.",
+      "parentUuid": "4e9cdc9c_caec6806",
+      "range": {
+        "startLine": 93,
+        "startChar": 25,
+        "endLine": 93,
+        "endChar": 56
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e9191b_24c7957b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
         "patchSetId": 1
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5002cfef_aab6cbff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T03:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e9191b_24c7957b",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b044ea7d_59b8c686",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
         "patchSetId": 1
@@ -102,6 +186,30 @@
       "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72cf1350_d52c7ce3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T03:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b044ea7d_59b8c686",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "d2496f1041f5c3829a8e64d48bef68fb40cfd63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
