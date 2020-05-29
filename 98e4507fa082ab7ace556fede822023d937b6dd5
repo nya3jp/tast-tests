@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0262162_e1e0a7d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T09:05:25Z",
+      "side": 1,
+      "message": "(missed this one in previous review) Do you think we need to consider the order? e.g. [1, 2] !\u003d [2, 1]\n\nIn current shill, it uses std::set\u003cuint16_t\u003e and iterate from begin to end, so it will be sorted. (but not sure if it\u0027s guaranteed)",
+      "range": {
+        "startLine": 553,
+        "startChar": 5,
+        "endLine": 553,
+        "endChar": 46
+      },
+      "revId": "98e4507fa082ab7ace556fede822023d937b6dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
