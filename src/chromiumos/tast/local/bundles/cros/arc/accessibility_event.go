@@ -100,11 +100,17 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 		return err
 	}
 
-	// Initial action sometimes invokes additional events (like focusing the entire application).
-	// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
-	// TODO(b/142093176) Find the root cause.
-	if err := verifyLog(ctx, cvconn, test.Event, isFirstStep); err != nil {
-		return errors.Wrap(err, "failed to verify the log")
+	// Sometimes it takes a while for the updated speechLog to match the expected log.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Initial action sometimes invokes additional events (like focusing the entire application).
+		// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
+		// TODO(b/142093176) Find the root cause.
+		if err := verifyLog(ctx, cvconn, test.Event, isFirstStep); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out while verifying log")
 	}
 
 	return nil
