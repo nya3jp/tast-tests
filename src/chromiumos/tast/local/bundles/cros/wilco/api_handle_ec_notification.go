@@ -23,7 +23,7 @@ func init() {
 			"tbegin@chromium.org",       // Test author and Wilco DTC VM author.
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
