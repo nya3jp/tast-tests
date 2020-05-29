@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "03306ce0_989fca25",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-05-29T03:09:13Z",
+      "side": 1,
+      "message": "got it, thanks, removed the function.",
+      "parentUuid": "670c54cd_b46b0170",
+      "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcaea926_12e08219",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34ecdf3d_b4a31f17",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-05-29T03:09:13Z",
+      "side": 1,
+      "message": "If using USE flags is discouraged, yes, using such a marker file works too. If that is the case, I think it\u0027s good enough to use /opt/google/vms/android/system.raw.img as a marker. Done.",
+      "parentUuid": "e4377085_19284221",
+      "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
