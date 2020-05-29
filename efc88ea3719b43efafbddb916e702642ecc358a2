@@ -22,6 +22,30 @@
       "revId": "efc88ea3719b43efafbddb916e702642ecc358a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd255bb8_9ed47882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-05-29T23:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c15ce3d_d6e4cc4d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "efc88ea3719b43efafbddb916e702642ecc358a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
