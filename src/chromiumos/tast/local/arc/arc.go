@@ -40,6 +40,11 @@ const (
 	ARCPath = "/opt/google/containers/android"
 	//ARCVMPath is the pather where the VM images are installed in the rootfs.
 	ARCVMPath = "/opt/google/vms/android"
+
+	// Hard-coded IP addresses of Android.
+	// TODO(jasongustaman): Consolidate once b/133797849 is resolved.
+	containerHost = "100.115.92.2"
+	vmHost        = "100.115.92.6"
 )
 
 // InstallType is the type of ARC (Container or VM) available on the device.
@@ -168,12 +173,10 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 	arc.logcatCmd = logcatCmd
 
-	if !vm {
-		// Wait for internal networking to get ready. This gives better error messages
-		// when networking is broken, rather than obscure "failed connecting to ADB" error.
-		if err := waitNetworking(ctx); err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
-		}
+	// Wait for internal networking to get ready. This gives better error messages
+	// when networking is broken, rather than obscure "failed connecting to ADB" error.
+	if err := waitNetworking(ctx, vm); err != nil {
+		return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
 	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
@@ -361,13 +364,17 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 }
 
 // waitNetworking waits for the internal networking to get ready.
-func waitNetworking(ctx context.Context) error {
+func waitNetworking(ctx context.Context, vmEnabled bool) error {
 	ctx, st := timing.Start(ctx, "wait_networking")
 	defer st.End()
 
+	ipAddr := containerHost
+	if vmEnabled {
+		ipAddr = vmHost
+	}
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
-			return errors.Wrap(err, "ping 100.115.92.2 failed")
+		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", ipAddr).Run(); err != nil {
+			return errors.Wrapf(err, "ping %s failed", ipAddr)
 		}
 		return nil
 	}, nil)
