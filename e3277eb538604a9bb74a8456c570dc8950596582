@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c265d3a_f81a147f",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T08:22:58Z",
+      "side": 1,
+      "message": "Thank you for your suggestion. I rewrote it `duration time.Duration`.",
+      "parentUuid": "4c4ff77f_f8ab500d",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "e3277eb538604a9bb74a8456c570dc8950596582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52770028_95f06136",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-28T08:33:12Z",
       "side": 1,
       "message": "JFYI: Constants in Go are untyped so \"0\" is perfectly fine.",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "e3277eb538604a9bb74a8456c570dc8950596582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f964bad2_d3e496a9",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T08:22:58Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "52770028_95f06136",
       "range": {
         "startLine": 43,
         "startChar": 20,
