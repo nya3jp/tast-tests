@@ -9,6 +9,7 @@ import (
 	"encoding/hex"
 	"net"
 	"reflect"
+	"sort"
 	"strings"
 	"time"
 
@@ -506,4 +507,77 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 // Note: shill has the hex in upper case.
 func (s *WifiService) hexSSID(ssid []byte) string {
 	return strings.ToUpper(hex.EncodeToString(ssid))
+}
+
+// ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
+func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.ExpectWifiFrequenciesRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.ExpectWifiFrequencies")
+	defer st.End()
+	testing.ContextLog(ctx, "ExpectWifiFrequencies: ", req)
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	hexSSID := s.hexSSID(req.Ssid)
+	query := map[string]interface{}{
+		shill.ServicePropertyType:        "wifi",
+		shill.ServicePropertyWiFiHexSSID: hexSSID,
+	}
+
+	service, err := s.discoverService(ctx, m, query)
+	if err != nil {
+		return nil, err
+	}
+
+	// Spawn watcher for checking property change.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	shortCtx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
+	uint16sToSortedInts := func(s []uint16) []int {
+		ret := make([]int, len(s))
+		for i, v := range s {
+			ret[i] = int(v)
+		}
+		sort.Ints(ret)
+		return ret
+	}
+
+	uint32sToSortedInts := func(s []uint32) []int {
+		ret := make([]int, len(s))
+		for i, v := range s {
+			ret[i] = int(v)
+		}
+		sort.Ints(ret)
+		return ret
+	}
+
+	expectFreqs := uint32sToSortedInts(req.Frequencies)
+
+	for {
+		props, err := service.GetProperties(shortCtx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get service properties")
+		}
+		fs, err := props.GetUint16s(shill.ServicePropertyWiFiFrequencyList)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get property %s", shill.ServicePropertyWiFiFrequencyList)
+		}
+		freqs := uint16sToSortedInts(fs)
+		if reflect.DeepEqual(expectFreqs, freqs) {
+			break
+		}
+		testing.ContextLogf(shortCtx, "Got frequencies %v for service with SSID: %s; want %v; waiting for update", freqs, req.Ssid, req.Frequencies)
+		if _, err := pw.WaitAll(shortCtx, shill.ServicePropertyWiFiFrequencyList); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for the service property change")
+		}
+	}
+	return &empty.Empty{}, nil
 }
