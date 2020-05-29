@@ -191,10 +191,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return errors.Wrap(err, "failed to find the window in the overview mode")
 				}
-				// Wait for the desk mini-view to finish animating before we get its
-				// bounds. The animation only takes 250 milliseconds, but we may need to
-				// wait a little longer because everything takes time.
-				testing.Sleep(ctx, 500*time.Millisecond)
+				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+					return errors.Wrap(err, "failed to wait for location-change events to be propagated to the automation API")
+				}
 				deskMiniViews, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
 				if err != nil {
 					return errors.Wrap(err, "failed to get desk mini-views")
