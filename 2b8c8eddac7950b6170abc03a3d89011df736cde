@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "0a0e5284_5f26c06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-29T12:07:16Z",
+      "side": 1,
+      "message": "that\u0027s not a blocker, your test won\u0027t run in the CQ anyway. So, you test may fail until changes will be in image.\n\nSo, you can remove this comment and submit CL.",
+      "parentUuid": "a5008c32_2bc09411",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c20560a7_343bb125",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -328,6 +352,30 @@
       "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7bb0dba_23aacf44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-29T12:07:16Z",
+      "side": 1,
+      "message": "My fault, nevermind. I was thinking that it\u0027s a wrapper not only for unit tests.",
+      "parentUuid": "53024c35_d93428e9",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "2b8c8eddac7950b6170abc03a3d89011df736cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
