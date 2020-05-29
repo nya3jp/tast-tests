@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee953452_49d37fdb",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-29T15:11:40Z",
+      "side": 1,
+      "message": "This should be updated.",
+      "revId": "c5cfcaf2afd17a849f196a69177a18ad41494e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
