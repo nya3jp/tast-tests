@@ -68,6 +68,54 @@
       "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ed02a0_b050066d",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T06:02:28Z",
+      "side": 1,
+      "message": "I have another cl for the change as {iw,ping}.Runner also have the same pattern. PTAL at crrev.com/c/2220937",
+      "parentUuid": "43e04a20_058a4f80",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbbfccb_1672efef",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T06:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e56d02_e26c548d",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "431341d02dd65de57d94fea0d960c5e5597466ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
