@@ -291,6 +291,24 @@
     },
     {
       "key": {
+        "uuid": "ade7503f_b53a31c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-29T22:30:13Z",
+      "side": 1,
+      "message": "Yes. It makes sense. You are right but there is not a good way to wait for virtual keyboard in position. Btw, vkb.TapKeys using vk apis to trigger key tap event. So it does not cause any flakiness if vk is not fully in position. Thanks for raising this.",
+      "parentUuid": "eda9785d_af17c2ed",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "895d0dec_a6b30de9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
         "patchSetId": 3
