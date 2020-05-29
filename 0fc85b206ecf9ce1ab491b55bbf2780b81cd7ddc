@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eb1ddb1_6d4a898c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-29T22:56:29Z",
+      "side": 1,
+      "message": "nit: Since we renamed the test funcion, we should rename the file to drag_tab_in_clamshell_perf.go to match it.\n\n```A local test named ui.DoSomething should be defined in a file named src/chromiumos/tast/local/bundles/cros/ui/do_something.go (i.e. convert the test name to lowercase and insert underscores between words).```\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "0fc85b206ecf9ce1ab491b55bbf2780b81cd7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3bcf928_d8d99909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-29T22:56:29Z",
+      "side": 1,
+      "message": "WindowsNumCheck -\u003e windowsNumCheck\n\nStart with lower case to make it private.",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "0fc85b206ecf9ce1ab491b55bbf2780b81cd7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
