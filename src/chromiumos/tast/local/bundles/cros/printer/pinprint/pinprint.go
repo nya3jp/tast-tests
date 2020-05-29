@@ -32,13 +32,16 @@ func cleanPSContents(content string) string {
 			// time-specific values.
 			"|@PJL SET JOBATTR=\"JobAcct[45]=.*" +
 			"|@PJL DMINFO ASCIIHEX=\".*" +
-			// For Ricoh jobs, the SET TIME value is time-specific.
+			// For Ricoh jobs, the SET DATE/TIME values are time-specific.
+			"|@PJL SET DATE=\".*" +
 			"|@PJL SET TIME=\".*)[\r\n])" +
 			// For Ricoh jobs, the /ID tag is time-specific.
 			"|(\\/ID \\[<.*>\\])" +
 			// For Ricoh jobs, "usercode (\d+)" contains the date
 			// and time of the print job.
 			"|(usrcode \\(\\d+\\))" +
+			// For Ricoh PS jobs, the time is contained here.
+			"|(/Time \\(\\d+\\))" +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
 			"|(\\(\\d+\\)) lppswd")
