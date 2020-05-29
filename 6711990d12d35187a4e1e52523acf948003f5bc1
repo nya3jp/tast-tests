@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca77db1f_00ee128b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:15:05Z",
+      "side": 1,
+      "message": "did you run the test? if so, mention the tests that you run",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4717be36_3c68bc89",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:15:05Z",
+      "side": 1,
+      "message": "add comment to all non trivial funcs",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570b26a4_7610aff3",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:15:05Z",
+      "side": 1,
+      "message": "nit, optional: if the return type obvious, no need to assign it a name.",
+      "range": {
+        "startLine": 115,
+        "startChar": 62,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee0da4d_3dc372e0",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-29T02:15:05Z",
+      "side": 1,
+      "message": "ditto above: add doc to all non trivial funcs",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "6711990d12d35187a4e1e52523acf948003f5bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
