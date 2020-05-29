@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c51d3fc_1501478e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-29T09:32:50Z",
+      "side": 1,
+      "message": "When none of the flags is set, native bridge is not supported and tests should not be run (for example, non-x86 boards never support native bridge and should skip all the tests).\n\nThese four parameterized tests are exhaustive and each of them tells us which library is actually tested by its suffix. So I\u0027d prefer to keep this design (without any default one).",
+      "parentUuid": "c3ff4b7b_963c7b36",
+      "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "245debe6_a4377459",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-29T07:27:29Z",
       "side": 1,
       "message": "nit: increase the timeout to give Chrome+Arc time to start",
+      "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85967b8c_2cb598fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-29T09:32:50Z",
+      "side": 1,
+      "message": "Increased the timeout to 7 min.\n\nThis test is basically \"arc.Boot.vm + a little more chores\", and when locally run, it takes only ~5 sec to finish the part after arc.New() returns, while the whole test takes around 1 min.\nGiven that the timeout of arc.Boot.vm is set to 5 min [1], I think 7 min should be sufficient. (maybe too much?)\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go?l\u003d48\u0026rcl\u003d3ba375d9997db4e6a89bb25ad70378dc9b0b52b0\n\nWhat do you think?",
+      "parentUuid": "245debe6_a4377459",
       "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3ab71a5d_d4d3eca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-29T09:32:50Z",
+      "side": 1,
+      "message": "Put cfg :\u003d s.Param().(nativeBridgeConfig) at the beginning of the test function and rewritten the later part so as to always use cfg instead of s.Param()...",
+      "parentUuid": "9ec53ff1_67c154d0",
+      "range": {
+        "startLine": 90,
+        "startChar": 30,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f5e53b8_1d298920",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd9554e_cd05dfa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-05-29T09:32:50Z",
+      "side": 1,
+      "message": "Shortened the main context for 30 secs and rewritten the deferred function for Chrome shutdown to use the longer (original) context.",
+      "parentUuid": "1f5e53b8_1d298920",
+      "revId": "368112f41f5da687705e6873ab28d96bf82f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
