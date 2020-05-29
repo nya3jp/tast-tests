@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "670c54cd_b46b0170",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T01:16:17Z",
+      "side": 1,
+      "message": "No because parsing /etc/ui_use_flags.txt in tests is 100% wrong, as commented in the top of the file.\n\n $ head /etc/ui_use_flags.txt \n # This file is just for libchromeos\u0027s ChromiumCommandBuilder class.\n # Don\u0027t use it for anything else. Your code will break.",
+      "parentUuid": "d1183a67_11118d9e",
+      "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcaea926_12e08219",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-28T21:37:13Z",
       "side": 1,
       "message": "Also, I was wondering if there was a better way to obtain USE flags of the DUT. tast/ seems to do that already to handle SoftwareDeps?",
+      "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4377085_19284221",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-29T01:16:17Z",
+      "side": 1,
+      "message": "Conceptually it is impossible to directly check USE flags at runtime; USE flags are available only at build time. Currently Tast workarounds it in order to check software dependencies by installing USE flag settings to /usr/local/etc/tast_use_flags.txt, but it is likely we\u0027ll revisit this approach in the future, so tests should not depend on that file as well.\n\nMy recommendation is to install a marker file similar to /run/chrome/is_arcvm when USE\u003darcvm is available, and check existence of the file here. I hope it is okay from security team\u0027s request as long as the file is installed on the read-only partition.",
+      "parentUuid": "bcaea926_12e08219",
       "revId": "db02f6bf1dc87bca03b61ef46d166369d726011f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
