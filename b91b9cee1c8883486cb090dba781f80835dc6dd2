@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b00c129_b1df3be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/whats_new_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-29T04:50:05Z",
+      "side": 1,
+      "message": "Remember the autoupdate via Settings UI test you wrote? Is there a similar one line javascript command to call to launch this app instead of clicking through the UI?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 79
+      },
+      "revId": "b91b9cee1c8883486cb090dba781f80835dc6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
