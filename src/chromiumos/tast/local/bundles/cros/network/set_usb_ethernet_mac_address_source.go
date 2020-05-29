@@ -43,17 +43,6 @@ func init() {
 //      with MAC addresses.
 // TODO(crbug/1012367): Add these hardware dependencies when Tast will support them.
 func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
-	readMACFromVPD := func(vpd string) string {
-		bytes, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/ro", vpd))
-		if err != nil {
-			s.Logf("Failed to read VPD field %s file: %v", vpd, err)
-			return ""
-		}
-		return strings.ToLower(string(bytes))
-	}
-	ethMAC := readMACFromVPD("ethernet_mac0")
-	dockMAC := readMACFromVPD("dock_mac")
-
 	eth, name := func(ctx context.Context) (*shill.Device, string) {
 		manager, err := shill.NewManager(ctx)
 		if err != nil {
@@ -97,13 +86,13 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 	}
 	defer unlock()
 
-	setMACSource := func(ctx context.Context, source string) {
-		s.Log("Setting USB Ethernet MAC address source to ", source)
-		if err := eth.SetUsbEthernetMacAddressSource(ctx, source); err != nil {
-			s.Fatal("Can not set USB Ethernet MAC address source: ", err)
-		} else {
-			s.Log("Successfully set USB Ethernet MAC address source: ", source)
+	readMACFromVPD := func(vpd string) string {
+		bytes, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/ro", vpd))
+		if err != nil {
+			s.Logf("Failed to read VPD field %s file: %v", vpd, err)
+			return ""
 		}
+		return strings.ToLower(string(bytes))
 	}
 
 	getMAC := func() string {
@@ -117,13 +106,22 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		return strings.ToLower(ifi.HardwareAddr.String())
 	}
 
-	verifyProperty := func(prop string, actualValue interface{}, expectedValue string) {
-		if str, ok := actualValue.(string); !ok || str != expectedValue {
-			s.Fatalf("Property %s changed unexpectedly: got %v, want %v", prop, actualValue, expectedValue)
+	setMACSource := func(ctx context.Context, source string) {
+		s.Log("Setting USB Ethernet MAC address source to ", source)
+		if err := eth.SetUsbEthernetMacAddressSource(ctx, source); err != nil {
+			s.Fatal("Can not set USB Ethernet MAC address source: ", err)
+		} else {
+			s.Log("Successfully set USB Ethernet MAC address source: ", source)
 		}
 	}
 
 	verify := func(ctx context.Context, source, expectedMAC string) {
+		verifyProperty := func(prop string, actualValue interface{}, expectedValue string) {
+			if str, ok := actualValue.(string); !ok || str != expectedValue {
+				s.Fatalf("Property %s changed unexpectedly: got %v, want %v", prop, actualValue, expectedValue)
+			}
+		}
+
 		signalWatcher, err := eth.CreateWatcher(ctx)
 		if err != nil {
 			s.Fatal("Failed to observe the property changed being dismissed: ", err)
@@ -161,15 +159,13 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 
 	defer setMACSource(cleanupCtx, "usb_adapter_mac")
 
-	usbMAC := getMAC()
-
 	for _, tc := range []struct {
 		source      string
 		expectedMAC string
 	}{
-		{"designated_dock_mac", dockMAC},
-		{"builtin_adapter_mac", ethMAC},
-		{"usb_adapter_mac", usbMAC},
+		{"designated_dock_mac", readMACFromVPD("dock_mac")},
+		{"builtin_adapter_mac", readMACFromVPD("ethernet_mac0")},
+		{"usb_adapter_mac", getMAC()},
 	} {
 		if len(tc.expectedMAC) == 0 {
 			s.Logf("MAC address for source %q is empty. DUT may not support such MAC address source. Continuing", tc.source)
