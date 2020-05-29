@@ -22,6 +22,30 @@
       "revId": "e86e424e41e335c68b9ae8dd3001355efd073bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cef55cd_9aba68e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T08:27:15Z",
+      "side": 1,
+      "message": "(sorry for spamming) Or should I just revert crrev.com/c/2211633 as wifi.CSA does not depend on that behavior now?",
+      "parentUuid": "6d1aefe2_c793d632",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "e86e424e41e335c68b9ae8dd3001355efd073bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

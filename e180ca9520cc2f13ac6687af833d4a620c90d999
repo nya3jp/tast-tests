@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "999e84eb_2cd0458f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T08:27:15Z",
+      "side": 1,
+      "message": "\u003e \"reponse\" is a possible misspelling of \"response\".\n\nFixed.",
+      "parentUuid": "cbc9edfb_c251ed2b",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "e180ca9520cc2f13ac6687af833d4a620c90d999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
