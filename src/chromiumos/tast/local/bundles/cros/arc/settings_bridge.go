@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -105,7 +106,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return errors.New("accessibility is unexpectedly enabled on boot")
 	}
 
-	defer func() {
+	defer func() error {
 		for _, feature := range features {
 			if err := accessibility.SetFeatureEnabled(fullCtx, tconn, feature, false); err != nil {
 				if retErr == nil {
@@ -115,10 +116,24 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 				}
 			}
 		}
+
+		// Disabling switch access leaves a dialog open, which should be closed.
+		dialog, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeDialog}, 10*time.Second)
+		if err != nil {
+			return err
+		}
+		defer dialog.Release(ctx)
+		okButton, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Yes"}, 10*time.Second)
+		if err != nil {
+			return err
+		}
+		if err := okButton.LeftClick(ctx); err != nil {
+			return err
+		}
+		return nil
 	}()
 
 	for _, feature := range features {
-		testing.ContextLog(ctx, "Testing ", feature)
 		for _, enable := range []bool{true, false} {
 			if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, enable); err != nil {
 				return err
