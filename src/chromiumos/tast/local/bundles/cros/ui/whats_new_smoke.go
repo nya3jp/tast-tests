@@ -67,29 +67,22 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in the shelf: ", err)
 	}
 
-	// Find and click the "About Chrome OS" link in the sidebar,
-	// then find and click the "See what's new" link to launch the PWA
-	linkParams := []ui.FindParams{
-		{
-			Role: ui.RoleTypeLink,
-			Name: "About Chrome OS",
-		},
-		{
-			Role: ui.RoleTypeLink,
-			Name: "See what's new",
-		},
+	// Establish a Chrome connection to the Settings app and wait for it to finish loading
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
+	if err != nil {
+		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
+	}
+	defer settingsConn.Close()
+
+	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
 	}
 
-	for _, param := range linkParams {
-		link, err := ui.FindWithTimeout(ctx, tconn, param, 10*time.Second)
-		if err != nil {
-			s.Fatalf("Waiting to find %v link failed: %v", param.Name, err)
-		}
-		defer link.Release(ctx)
-
-		if err := link.LeftClick(ctx); err != nil {
-			s.Fatalf("Failed to click the %v link: %v", param.Name, err)
-		}
+	// Launch What's New using the Settings page JS functions. The same JS is tied to the UI link's on-click property.
+	if err := settingsConn.Eval(ctx,
+		"settings.AboutPageBrowserProxyImpl.getInstance().launchReleaseNotes()",
+		nil); err != nil {
+		s.Fatal("Failed to run Javascript to launch What's New: ", err)
 	}
 
 	// Wait for What's New to open by checking in the shelf, and looking for something via UI
