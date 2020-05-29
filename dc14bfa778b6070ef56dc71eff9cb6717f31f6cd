@@ -273,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "eda9785d_af17c2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-29T18:17:49Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not suggesting that we don\u0027t poll here -- I\u0027m just wondering if polling will return before the keyboard is actually up all the way, if there is an animation (since the viewport may shrink only partially while the keyboard is still rising.)\n\nDoes that make sense?",
+      "parentUuid": "d4149486_8e2edefb",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "895d0dec_a6b30de9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
         "patchSetId": 3
