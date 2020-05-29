@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdaea8c9_6eef316b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-29T09:11:59Z",
+      "side": 1,
+      "message": "This is a hack to avoid errors due to b/148642474. However, it looks like this is not enough.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "f660cced470a4257d46485f9b48bb4521602d73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
