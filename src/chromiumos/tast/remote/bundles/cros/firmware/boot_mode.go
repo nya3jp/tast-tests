@@ -18,8 +18,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        CheckBootMode,
-		Desc:        "Verifies that remote tests can check whether the DUT is in normal, dev, and recovery mode",
+		Func:        BootMode,
+		Desc:        "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
 		Contacts:    []string{"cros-fw-engprod@google.com"},
 		Data:        firmware.ConfigDatafiles(),
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func CheckBootMode(ctx context.Context, s *testing.State) {
+func BootMode(ctx context.Context, s *testing.State) {
 	// initialMode is the boot mode which we expect the DUT to start in.
 	const initialMode = fwCommon.BootModeNormal
 	// modes enumerates the order of BootModes into which this test will reboot the DUT (after initialMode).
@@ -51,7 +51,7 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 
 	// Check that DUT starts in initialMode.
 	if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Error during CheckBootMode at beginning of test: ", err)
+		s.Fatal("Error during CurrentBootMode at beginning of test: ", err)
 	} else if fwCommon.BootModeFromProto[r.BootMode] != initialMode {
 		s.Fatalf("DUT was in %s mode at beginning of test; expected %s", fwCommon.BootModeFromProto[r.BootMode], initialMode)
 	}
