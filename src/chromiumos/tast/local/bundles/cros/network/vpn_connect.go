@@ -148,8 +148,12 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 
 	pr := localping.NewRunner()
-	if _, err := pr.Ping(ctx, vpn.Xl2tpdServerIPAddress, ping.User("chronos")); err != nil {
+	res, err := pr.Ping(ctx, vpn.Xl2tpdServerIPAddress, ping.User("chronos"))
+	if err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
+	}
+	if res.Received == 0 {
+		s.Fatalf("Failed to ping %s: no response received", vpn.Xl2tpdServerIPAddress)
 	}
 
 	// IPv6 should be blackholed, so ping returns
