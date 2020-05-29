@@ -16,11 +16,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type rebootConfig struct {
-	// Extra args to be paseed to chrome.New.
-	chromeArgs []string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Reboot,
@@ -29,13 +24,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               rebootConfig{},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			Val: rebootConfig{
-				chromeArgs: []string{"--enable-arcvm"},
-			},
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 10 * time.Minute,
@@ -43,8 +34,7 @@ func init() {
 }
 
 func Reboot(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
-		chrome.ExtraArgs(s.Param().(rebootConfig).chromeArgs...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

@@ -16,8 +16,6 @@ import (
 type bootConfig struct {
 	// Run boot this many times
 	numTrials int
-	// Extra args to be paseed to chrome.New
-	chromeArgs []string
 }
 
 func init() {
@@ -40,18 +38,16 @@ func init() {
 		}, {
 			Name: "vm",
 			Val: bootConfig{
-				numTrials:  1,
-				chromeArgs: []string{"--enable-arcvm"},
+				numTrials: 1,
 			},
 			ExtraAttr:         []string{"group:mainline"},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm_r"},
 			Timeout:           5 * time.Minute,
 		}, {
 			// TODO(yusukes): Remove this once we abandon ARCVM P.
 			Name: "vm_p",
 			Val: bootConfig{
-				numTrials:  1,
-				chromeArgs: []string{"--enable-arcvm"},
+				numTrials: 1,
 			},
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm_p_deprecated"},
@@ -67,8 +63,7 @@ func init() {
 		}, {
 			Name: "vm_stress",
 			Val: bootConfig{
-				numTrials:  10,
-				chromeArgs: []string{"--enable-arcvm"},
+				numTrials: 10,
 			},
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -83,8 +78,7 @@ func init() {
 		}, {
 			Name: "vm_forever",
 			Val: bootConfig{
-				numTrials:  1000000,
-				chromeArgs: []string{"--enable-arcvm"},
+				numTrials: 1000000,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           365 * 24 * time.Hour,
@@ -103,8 +97,7 @@ func Boot(ctx context.Context, s *testing.State) {
 }
 
 func runBoot(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
-		chrome.ExtraArgs(s.Param().(bootConfig).chromeArgs...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

@@ -26,11 +26,9 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arc.PlayStore.username", "arc.PlayStore.password"},
@@ -46,9 +44,7 @@ func PlayStore(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arc.PlayStore.password")
 
 	// Setup Chrome.
-	extraArgs := s.Param().([]string)
 	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
-	args = append(args, extraArgs...)
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
 		chrome.ExtraArgs(args...))
 	if err != nil {

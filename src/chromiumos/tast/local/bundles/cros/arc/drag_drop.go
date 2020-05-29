@@ -32,11 +32,9 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 	})
 }
@@ -59,8 +57,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting browser instance")
-	args := s.Param().([]string)
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
