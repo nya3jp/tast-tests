@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39ff71c9_ff2a4640",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-29T18:31:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc7ddf80_fc667d58",
+      "revId": "325336006c24400dba8ff9fa1769c91c959aaf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee4d33ad_c35054f3",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "325336006c24400dba8ff9fa1769c91c959aaf56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5d9dc9_706cee50",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-29T18:31:47Z",
+      "side": 1,
+      "message": "After speaking with coconutruben@ (Servo expert), it seems that when the DUT is off there is no other way. However, it seems that when servo_v3 is deprecated (later this year or early next year), this will not be necessary. So, the latest patch set adds a cleanup bug, assigned to coconutruben@.",
+      "parentUuid": "ee4d33ad_c35054f3",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 71
+      },
+      "revId": "325336006c24400dba8ff9fa1769c91c959aaf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
