@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2c0d816f_eeb3f33c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-29T04:11:11Z",
+      "side": 1,
+      "message": "Fair enough, it doesn\u0027t seem like there\u0027s a great way to do this. I\u0027m okay with the changes you mentioned in the outside discussion.",
+      "parentUuid": "d4d5e9db_1844716d",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71d47bf2_f8ee7c91",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
         "patchSetId": 8
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I think the test hit this quite often (I sampled some logs of Autotest before).\n\nOne particular case I know is: on DUTs which do support channel switch, e.g. krane, it will switch to the new channel after 5 beacon intervals (5 is defined in the send_management_frame tool) and it will not disconnect until enough beacon loss (usually \u003e 3s that ping needs). Then it will more probable to pass with ping loss first.\n\nAnother one is the race between detection and disconnection. If the test misses the event but DUT disconnects right after, ping will have enough loss rate.",
       "parentUuid": "71d47bf2_f8ee7c91",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0c0c92_a4993108",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-29T04:11:11Z",
+      "side": 1,
+      "message": "Oh I see. In that case, I think it\u0027s cleaner to wait for the disconnect event with a timeout. WDYT? Not sure how much work it would be to implement it.",
+      "parentUuid": "854fe167_4718f4e7",
       "range": {
         "startLine": 135,
         "startChar": 0,
