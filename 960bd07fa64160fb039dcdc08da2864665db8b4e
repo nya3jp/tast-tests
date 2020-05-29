@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc5f8748_bfa39f39",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-29T08:21:37Z",
+      "side": 1,
+      "message": "Reverted and changed only values to keep the metrics reported by RAPLMetrics exactly same as before.",
+      "revId": "960bd07fa64160fb039dcdc08da2864665db8b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
