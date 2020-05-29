@@ -137,7 +137,6 @@ type preImpl struct {
 	cr  *chrome.Chrome
 	arc *ARC
 	// useARCVM is a flag to specify whether Android should run in ARC Container or ARCVM.
-	// When this flag is set, "--enable-arcvm" is added to extraArgs.
 	useARCVM bool
 
 	origInitPID       int32               // initial PID (outside container) of ARC init process
@@ -200,12 +199,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
-		var extraArgs []string
-		if p.useARCVM {
-			extraArgs = append(p.extraArgs, "--enable-arcvm")
-		} else {
-			extraArgs = p.extraArgs
-		}
+		extraArgs := p.extraArgs
 		var err error
 		if p.gaia != nil {
 			username := s.RequiredVar(p.gaia.UserVar)
