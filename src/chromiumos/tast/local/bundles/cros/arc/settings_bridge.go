@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -114,6 +115,21 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 					retErr = errors.Wrapf(err, "failed disabling %s while cleaning up; and the previous error is %v", feature, retErr)
 				}
 			}
+		}
+
+		// Disabling switch access leaves a dialog open, which should be closed.
+		dialog, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeDialog}, 10*time.Second)
+		defer dialog.Release(ctx)
+		if err == nil {
+			if okButton, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Yes"}, 10*time.Second); err == nil {
+				if err := okButton.LeftClick(ctx); err != nil {
+					retErr = errors.Wrapf(err, "failed clicking on dialog to close; and the previous error is %v", retErr)
+				}
+			} else {
+				retErr = errors.Wrapf(err, "failed finding ok button of dialog; and the previous error is %v", retErr)
+			}
+		} else {
+			retErr = errors.Wrapf(err, "failed finding dialog; and the previous error is %v", retErr)
 		}
 	}()
 
