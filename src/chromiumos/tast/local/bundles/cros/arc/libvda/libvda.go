@@ -25,8 +25,6 @@ const (
 func startChrome(ctx context.Context) (*chrome.Chrome, error) {
 	chromeArgs := []string{
 		logging.ChromeVmoduleFlag(),
-		// This flag enables LibvdaService D-Bus service in Chrome.
-		"--enable-arcvm",
 	}
 	// Login to Chrome so that LibvdaService is started.
 	return chrome.New(ctx, chrome.ExtraArgs(chromeArgs...), chrome.ARCEnabled())
