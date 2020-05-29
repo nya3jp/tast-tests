@@ -329,6 +329,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 var noChecksumTests = []string{
 	"compositing_no_fill",
 	"pixel_read",
+	"texture_rebind_rgba_teximage2d",
 	"texture_reuse_luminance_teximage2d",
 	"texture_reuse_luminance_texsubimage2d",
 	"texture_reuse_rgba_teximage2d",
