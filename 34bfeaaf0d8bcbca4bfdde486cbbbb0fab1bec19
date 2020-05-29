@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c155ef18_412fa59f",
+        "filename": "src/chromiumos/tast/common/network/eapcerts/eapcerts.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "In fact, this file should be removed since Brian has migrated before in http://crrev.com/c/2106937, however, the ClientCert is incorrect.\nI will remove it after John\u0027s CL is rebased, the CL that fix the cert has already been merged.",
+      "parentUuid": "482585b6_01e9f208",
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2806755_65291625",
         "filename": "src/chromiumos/tast/common/network/eapcerts/eapcerts.go",
         "patchSetId": 13
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-29T08:28:42Z",
       "side": 1,
       "message": "Just curious, is the field tag necessary as the field name are the same between struct and json?",
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b5ca5c_ad230d7f",
+        "filename": "src/chromiumos/tast/common/network/eapcerts/eapcerts.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "No, it is not necessary. I guess it would be more clear that we are building a json with \"Type\" and \"Value\" fields.",
+      "parentUuid": "d2806755_65291625",
       "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d9dea86c_53e7b116",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae832cdf_b4ad44da",
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02d63f57_c38caa5b",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 13
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "e0f1431f_3e19a792",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02d63f57_c38caa5b",
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956d9c18_71d3c20f",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 13
@@ -84,6 +156,24 @@
       "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7a6c5e_1e10d2a9",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956d9c18_71d3c20f",
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +197,30 @@
       "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c067d56_709cc3e2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-29T09:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86241121_f9ed8ef8",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "34bfeaaf0d8bcbca4bfdde486cbbbb0fab1bec19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
