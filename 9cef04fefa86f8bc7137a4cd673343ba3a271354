@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a41fa60_78584c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-05-29T21:36:32Z",
+      "side": 0,
+      "message": "I wasn\u0027t sure if the original code was correct. Below, only |args| is used, not |extraArgs|. Changed to |args|.",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 11
+      },
+      "revId": "9cef04fefa86f8bc7137a4cd673343ba3a271354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc1bc46_62105edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-05-29T21:36:32Z",
+      "side": 0,
+      "message": "same",
+      "revId": "9cef04fefa86f8bc7137a4cd673343ba3a271354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
