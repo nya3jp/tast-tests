@@ -24,7 +24,7 @@ type Pair struct {
 // NewPair sets up a new Pair object, with interface iface and peer interface peerIface.
 // It removes any existing links of the same name.
 func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
-	ipr := ip.NewRunner()
+	ipr := ip.NewLocalRunner()
 
 	// Delete any existing links.
 	for _, name := range []string{iface, peerIface} {
@@ -61,7 +61,7 @@ func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
 // Delete deletes the virtual link.
 func (v *Pair) Delete(ctx context.Context) error {
 	// Only need to delete one end of the pair.
-	ipr := ip.NewRunner()
+	ipr := ip.NewLocalRunner()
 	if err := ipr.DeleteLink(ctx, v.Iface.Name); err != nil {
 		return errors.Wrapf(err, "failed to delete veth iface %q", v.Iface.Name)
 	}

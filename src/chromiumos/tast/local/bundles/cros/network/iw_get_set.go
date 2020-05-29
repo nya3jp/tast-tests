@@ -21,7 +21,7 @@ func init() {
 }
 
 func IWGetSet(ctx context.Context, s *testing.State) {
-	iwr := iw.NewRunner()
+	iwr := iw.NewLocalRunner()
 	res, err := iwr.RegulatoryDomain(ctx)
 	if err != nil {
 		s.Fatal("GetRegulatoryDomain failed: ", err)

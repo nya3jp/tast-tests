@@ -14,7 +14,7 @@ import (
 // Runner is an alias for common ip Runner but only for remote execution.
 type Runner = ip.Runner
 
-// NewRunner creates a ip runner for remote execution.
-func NewRunner(host *ssh.Conn) *Runner {
+// NewRemoteRunner creates a ip runner for remote execution.
+func NewRemoteRunner(host *ssh.Conn) *Runner {
 	return ip.NewRunner(&cmd.RemoteCmdRunner{Host: host})
 }
