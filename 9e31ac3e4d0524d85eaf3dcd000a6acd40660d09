@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85e2660f_bc6a0c2d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2020-05-29T18:19:18Z",
+      "side": 1,
+      "message": "The existing MoveWindow/ResizeWindow works for P because it relies on Dumpsys and Dumpsys is working fine in P. They just aren\u0027t compatible with R - and for the time being still won\u0027t. PIP is just special since we have all the information we have already (we can query window via querying for WindowState \u003d\u003d PIP, and thus get all the info we need).\n\nNot sure how would fixing the existing methods look like without breaking P.",
+      "parentUuid": "b59744de_22589e6c",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 38
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a10890e_e5e48807",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
