@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "609c9ae2_d2ab6c37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T06:06:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c0d816f_eeb3f33c",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71d47bf2_f8ee7c91",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
         "patchSetId": 8
@@ -141,6 +165,30 @@
       "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fea8b3e_b27b2109",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-29T06:06:09Z",
+      "side": 1,
+      "message": "Not it polls for disconnect/chanswitch after sending the action frame. Also retry is half-ed to 5.",
+      "parentUuid": "ac0c0c92_a4993108",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "75fca1317f4a176e3528e79cf1af4bb9b6056083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
