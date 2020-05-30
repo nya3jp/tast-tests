@@ -22,6 +22,30 @@
       "revId": "b91b9cee1c8883486cb090dba781f80835dc6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7051e4bc_84a8ff9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/whats_new_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-30T00:21:09Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, I didn\u0027t see the connection there at first. There is a similar javascript command, so I\u0027ve replaced the UI clicking with just calling that directly. I confirmed that it\u0027s the same method that\u0027s used in the UI element\u0027s on-click property as well, so it should pretty much be equivalent.",
+      "parentUuid": "8b00c129_b1df3be5",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 79
+      },
+      "revId": "b91b9cee1c8883486cb090dba781f80835dc6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
