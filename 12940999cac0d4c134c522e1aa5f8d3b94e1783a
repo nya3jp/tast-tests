@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c5a93bc_d06255d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62b0dab_a23ef2d9",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f46d53e5_955ac2e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85aa812d_376005fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46d53e5_955ac2e3",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "440467fd_696264d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "928f14d8_132302d2",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd2cf5f9_ea37c9e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2020-05-29T05:31:16Z",
       "side": 1,
       "message": "could you release resources in activity by calling Close(), before returning?",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd89ad8_229203cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "I change the code to close the activity in this function. \nI have tested that the test can pass on my local, but please still help to ack that it\u0027s OK to creating ui.device after an activity is closed, thanks!",
+      "parentUuid": "fd2cf5f9_ea37c9e3",
       "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -90,6 +168,24 @@
       "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f8bccf_a3684ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2510227f_094bb4c8",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "28856cb9_7ea8e35b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0524d581_b34b5c9f",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af8eed6_400a943a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -136,6 +256,30 @@
       "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb2cd4f_cc02f4ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-05-30T06:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af8eed6_400a943a",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
