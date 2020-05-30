@@ -26,7 +26,9 @@ const (
 	Landscape
 )
 
-// Print clicks the print button in Chrome print preview.
+// Print sets focus on the print button in Chrome print preview and injects the
+// ENTER key to start printing. This is more reliable than clicking the print
+// button since notifications often block it from view.
 func Print(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Print",
@@ -37,8 +39,16 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to find print button")
 	}
 	defer printButton.Release(ctx)
-	if err := printButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click print button")
+	if err := printButton.FocusAndWait(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed focusing print button")
+	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the keyboard")
+	}
+	defer kb.Close()
+	if err := kb.Accel(ctx, "enter"); err != nil {
+		return errors.Wrap(err, "failed to type enter")
 	}
 	return nil
 }
