@@ -16,10 +16,12 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
@@ -85,6 +87,9 @@ type TestFixture struct {
 	apID           int
 	curServicePath string
 	capturers      map[*APIface]*pcap.Capturer
+
+	// netCertStore is set lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests needs it.
+	netCertStore *netcertstore.Store
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -95,6 +100,33 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
 	return ssh.New(ctx, &sopt)
+}
+
+// setupNetCertStore sets up the netcert store for EAP-related tests.
+func (tf *TestFixture) setupNetCertStore(ctx context.Context) error {
+	if tf.netCertStore != nil {
+		// Nothing to do if it was set up.
+		return nil
+	}
+
+	runner, err := hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return err
+	}
+	tf.netCertStore, err = netcertstore.CreateStore(ctx, runner)
+	return err
+}
+
+// resetNetCertStore resets netcert store.
+func (tf *TestFixture) resetNetCertStore(ctx context.Context) error {
+	if tf.netCertStore == nil {
+		// Nothing to do if it was not set up.
+		return nil
+	}
+
+	err := tf.netCertStore.Cleanup(ctx)
+	tf.netCertStore = nil
+	return err
 }
 
 // NewTestFixture creates a TestFixture.
@@ -216,6 +248,11 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	defer st.End()
 
 	var firstErr error
+
+	if err := tf.resetNetCertStore(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset netcert store"))
+	}
+
 	if tf.pcap != nil && tf.pcap != tf.router {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
@@ -285,6 +322,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 	}
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
+		return nil, err
+	}
+
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost, tf.router.workDir()); err != nil {
 		return nil, err
 	}
 
@@ -362,6 +403,17 @@ func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) (*network.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
+
+	// Setup netcert store only for EAP-related tests.
+	if secConf.NeedsNetCertStore() {
+		if err := tf.setupNetCertStore(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to set up netcert store")
+		}
+
+		if err := secConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
+			return nil, errors.Wrap(err, "failed to install client credentials")
+		}
+	}
 
 	props, err := secConf.ShillServiceProperties()
 	if err != nil {
