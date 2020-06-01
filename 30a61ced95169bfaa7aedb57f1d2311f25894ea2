@@ -68,6 +68,42 @@
       "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cee6db_78ae08d0",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-01T07:56:58Z",
+      "side": 1,
+      "message": "Ack. Got the answer in other comments.",
+      "parentUuid": "f902f883_f811da17",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5e4fa8_92f8248f",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-01T07:56:58Z",
+      "side": 1,
+      "message": "Thanks for the info. I think it would be helpful to include such context in the comments, as it actually diverges from the checks in Autotest.",
+      "parentUuid": "48034d49_102b4891",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
