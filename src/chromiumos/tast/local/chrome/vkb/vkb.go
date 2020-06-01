@@ -31,6 +31,14 @@ func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
 }
 
+// VirtualKeyboard returns a reference to chrome.automation API AutomationNode of virtual keyboard.
+func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+	params := ui.FindParams{
+		Role: ui.RoleTypeKeyboard,
+	}
+	return ui.FindWithTimeout(ctx, tconn, params, time.Second)
+}
+
 // SetCurrentInputMethod sets the current input method used by the virtual
 // keyboard.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMethod string) error {
@@ -135,9 +143,33 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	return c.NewConnForTarget(ctx, f)
 }
 
-// TapKey simulates a tap event on the middle of the specified key. The key can
+// TapKey simulates a tap event on the middle of the specified key via touch event. The key can
 // be any letter of the alphabet, "space" or "backspace".
-func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
+func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
+	vkNode, err := VirtualKeyboard(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find virtual keyboad automation node")
+	}
+
+	keyParams := ui.FindParams{
+		Role: ui.RoleTypeButton,
+		Name: keyName,
+	}
+
+	keyNode, err := vkNode.Descendant(ctx, keyParams)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find key with %v", keyParams)
+	}
+
+	if err := keyNode.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click key %s", keyName)
+	}
+	return nil
+}
+
+// TapKeyJS simulates a tap event on the middle of the specified key via javascript. The key can
+// be any letter of the alphabet, "space" or "backspace".
+func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 	return kconn.Eval(ctx, fmt.Sprintf(`
 	(() => {
 		// Multiple keys can have the same aria label but only one is visible.
@@ -163,15 +195,27 @@ func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 }
 
 // SwitchToFloatMode changes virtual keyboard to floating layout.
-func SwitchToFloatMode(ctx context.Context, kconn *chrome.Conn) error {
-	return TapKey(ctx, kconn, "make virtual keyboard movable")
+func SwitchToFloatMode(ctx context.Context, tconn *chrome.TestConn) error {
+	return TapKey(ctx, tconn, "make virtual keyboard movable")
 }
 
-// TapKeys simulates tap events on the middle of the specified sequence of keys.
+// TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.
 // Each keys can be any letter of the alphabet, "space" or "backspace".
-func TapKeys(ctx context.Context, kconn *chrome.Conn, keys []string) error {
+func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
 	for _, key := range keys {
-		if err := TapKey(ctx, kconn, key); err != nil {
+		if err := TapKey(ctx, tconn, key); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, 50*time.Millisecond)
+	}
+	return nil
+}
+
+// TapKeysJS simulates tap events on the middle of the specified sequence of keys via javascript.
+// Each keys can be any letter of the alphabet, "space" or "backspace".
+func TapKeysJS(ctx context.Context, kconn *chrome.Conn, keys []string) error {
+	for _, key := range keys {
+		if err := TapKeyJS(ctx, kconn, key); err != nil {
 			return err
 		}
 		testing.Sleep(ctx, 50*time.Millisecond)
@@ -190,4 +234,24 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 	})()
 `, &suggestions)
 	return suggestions, err
+}
+
+// InputWithVirtualKeyboard waits for virtual keyboard shown up, types given key series and hide keyboard after.
+func InputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
+	if err := WaitUntilShown(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for the virtual keyboard to show")
+	}
+
+	if err := WaitUntilButtonsRender(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for the virtual keyboard to render")
+	}
+
+	if err := TapKeys(ctx, tconn, keys); err != nil {
+		return errors.Wrapf(err, "failed to tap keys %v: %v", keys, err)
+	}
+
+	if err := HideVirtualKeyboard(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide the virtual keyboard")
+	}
+	return nil
 }
