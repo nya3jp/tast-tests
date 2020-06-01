@@ -76,66 +76,53 @@ func (f *FilesApp) Close(ctx context.Context) error {
 	return ui.WaitUntilGone(ctx, f.tconn, rootFindParams, time.Minute)
 }
 
-// OpenDownloads opens the Downloads folder in the Files App.
-// An error is returned if Downloads is not found or does not open.
-func (f *FilesApp) OpenDownloads(ctx context.Context) error {
-	// Select the Downloads subtree in the directory tree.
+// OpenDir opens one of the directories shown in the navigation tree.
+// An error is returned if dir is not found or does not open.
+func (f *FilesApp) OpenDir(ctx context.Context, dirName, expectedTitle string) error {
+	// Select dirName in the directory tree.
 	params := ui.FindParams{
-		Name: "Downloads",
+		Name: dirName,
 		Role: ui.RoleTypeTreeItem,
 	}
-	downloads, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	dir, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
 	if err != nil {
 		return err
 	}
-	defer downloads.Release(ctx)
+	defer dir.Release(ctx)
 
-	// Within the subtree, click the Downloads row to navigate to the Downloads location.
+	// Within the subtree, click the row to navigate to the location.
 	params = ui.FindParams{
-		Name: "Downloads",
+		Name: dirName,
 		Role: ui.RoleTypeStaticText,
 	}
 
-	downloadsRow, err := downloads.DescendantWithTimeout(ctx, params, uiTimeout)
+	dirRow, err := dir.DescendantWithTimeout(ctx, params, uiTimeout)
 	if err != nil {
 		return err
 	}
 
-	if err := downloadsRow.LeftClick(ctx); err != nil {
+	if err := dirRow.LeftClick(ctx); err != nil {
 		return err
 	}
 
-	// Ensure the Files App has switched to the Downloads folder.
+	// Ensure the Files App has switched to the folder.
 	params = ui.FindParams{
-		Name: "Files - Downloads",
+		Name: expectedTitle,
 		Role: ui.RoleTypeRootWebArea,
 	}
 	return f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout)
 }
 
+// OpenDownloads opens the Downloads folder in the Files App.
+// An error is returned if Downloads is not found or does not open.
+func (f *FilesApp) OpenDownloads(ctx context.Context) error {
+	return f.OpenDir(ctx, "Downloads", "Files - Downloads")
+}
+
 // OpenDrive opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
 func (f *FilesApp) OpenDrive(ctx context.Context) error {
-	// Click Google Drive to open the folder.
-	params := ui.FindParams{
-		Name: "Google Drive",
-		Role: ui.RoleTypeTreeItem,
-	}
-	drive, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
-	if err != nil {
-		return err
-	}
-	defer drive.Release(ctx)
-	if err := drive.LeftClick(ctx); err != nil {
-		return err
-	}
-
-	// Ensure the Files App has switched to the My Drive folder.
-	params = ui.FindParams{
-		Name: "Files - My Drive",
-		Role: ui.RoleTypeRootWebArea,
-	}
-	return f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout)
+	return f.OpenDir(ctx, "Google Drive", "Files - My Drive")
 }
 
 // file returns a ui.Node that references the specified file.
