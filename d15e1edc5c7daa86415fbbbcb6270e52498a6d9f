@@ -16,6 +16,24 @@
       "revId": "d15e1edc5c7daa86415fbbbcb6270e52498a6d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1590e3d3_e8963acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-01T10:24:54Z",
+      "side": 1,
+      "message": "Yes I think we should stabilize CPU usage just before collecting metrics data. Thanks for pointing out!",
+      "parentUuid": "86d4aada_5d81e6b4",
+      "revId": "d15e1edc5c7daa86415fbbbcb6270e52498a6d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
