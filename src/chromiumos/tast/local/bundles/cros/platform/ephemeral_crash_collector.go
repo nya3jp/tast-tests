@@ -33,7 +33,7 @@ func init() {
 			"sarthakkukreti@google.com",
 			"chromeos-storage@google.com",
 			"cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"encrypted_reboot_vault", "pstore"},
 		Params: []testing.Param{{
 			Name: "pre_oobe_collection",
@@ -50,6 +50,7 @@ func init() {
 				consentType:  crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "post_oobe_with_consent",
 			Val: ephemeralCollectionParams{
