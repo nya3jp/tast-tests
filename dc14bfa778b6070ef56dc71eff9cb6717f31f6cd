@@ -309,6 +309,24 @@
     },
     {
       "key": {
+        "uuid": "b2abab0b_b2590b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-01T23:11:40Z",
+      "side": 1,
+      "message": "OK, thanks for the explanation.",
+      "parentUuid": "ade7503f_b53a31c4",
+      "revId": "dc14bfa778b6070ef56dc71eff9cb6717f31f6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "895d0dec_a6b30de9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
         "patchSetId": 3
