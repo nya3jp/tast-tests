@@ -16,6 +16,24 @@
       "revId": "3b8919f18480f690823c0b1533ea0aec7e8e2b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587ee6e7_5d4d83ce",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T20:29:45Z",
+      "side": 1,
+      "message": "Done, but as function-level consts to avoid clutter. LMK if you think this is not right.",
+      "parentUuid": "3ee8b39c_4cba0077",
+      "revId": "3b8919f18480f690823c0b1533ea0aec7e8e2b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
