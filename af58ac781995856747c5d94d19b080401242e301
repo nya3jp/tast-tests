@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c91da8bb_f9946bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7035c5ff_4dc59cc3",
+      "range": {
+        "startLine": 50,
+        "startChar": 52,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "605ec05b_4fe15b69",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "af58ac781995856747c5d94d19b080401242e301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fc179d_6f85fc5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605ec05b_4fe15b69",
+      "range": {
+        "startLine": 53,
+        "startChar": 114,
+        "endLine": 53,
+        "endChar": 127
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "31be6926_1e739fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d9d157_64ecc14f",
+      "range": {
+        "startLine": 66,
+        "startChar": 116,
+        "endLine": 66,
+        "endChar": 127
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3f0b44d_1976e91f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "af58ac781995856747c5d94d19b080401242e301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11eeddfc_60afa7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "Hmm they\u0027re indeed redundant: VDA and VD represent hardware, whereas\n\"Software\" and LibGAV1 are both non-hardware; in principle we could use\njust a boolean... except for LibGAV1, which is a software flavour. Will\nsimplify here and leave a TODO.",
+      "parentUuid": "c3f0b44d_1976e91f",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 32
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "70b00c14_72c04557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "The idea was to invert the --enable/disable-features once \nhttps://crrev.com/c/2214764  lands indeed. This flagging business \nis supposed to happen very seldom, but otherwise 1) is correct and\nthe _alt is redundant where there\u0027s no \"alt\". This is less bad than\nit seems becaue the _alt are supposed to ran only every now and then\nto act as canaries in a goldmine and to support bisecting.",
+      "parentUuid": "c6dfb989_07197ea2",
+      "range": {
+        "startLine": 544,
+        "startChar": 22,
+        "endLine": 544,
+        "endChar": 55
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba310fdb_157b7619",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 8
@@ -137,6 +257,30 @@
       "revId": "af58ac781995856747c5d94d19b080401242e301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc21911_22b5de92",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-01T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba310fdb_157b7619",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
