@@ -80,12 +80,6 @@ func chromeVirtualKeyboardBasicEditingTest(
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
-	}
-	defer kconn.Close()
-
 	// Press a sequence of keys. Avoid using Space since it triggers autocomplete, which can
 	// cause flaky failures: http://b/122456478#comment4
 	keys := []string{
@@ -95,7 +89,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	expected := ""
 
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, kconn, key); err != nil {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
 
@@ -281,12 +275,6 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
-	}
-	defer kconn.Close()
-
 	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
 	keyUpLabel := d.Object(ui.ID(lastKeyUpLabelID))
 	for _, key := range []struct {
@@ -299,7 +287,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		{"backspace", 67}, // AKEYCODE_DEL
 		{"enter", 66},     // AKEYCODE_ENTER
 	} {
-		if err := vkb.TapKey(ctx, kconn, key.Key); err != nil {
+		if err := vkb.TapKey(ctx, tconn, key.Key); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key.Key, err)
 		}
 

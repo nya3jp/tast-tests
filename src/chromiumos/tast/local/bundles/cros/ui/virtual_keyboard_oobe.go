@@ -148,7 +148,7 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 	}
 
 	// Tap keys sequentially to input
-	vkb.TapKeys(ctx, kconn, keys)
+	vkb.TapKeysJS(ctx, kconn, keys)
 
 	// Wait for the text field to have the correct contents
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
@@ -157,7 +157,7 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 	}
 
 	// Tap key to hide vk
-	vkb.TapKey(ctx, kconn, "hide keyboard")
+	vkb.TapKeyJS(ctx, kconn, "hide keyboard")
 
 	// Wait for viewport reverted to full screen because of vk hidden.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
