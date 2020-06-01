@@ -151,6 +151,12 @@ func KeepState() Option {
 	return func(c *Chrome) { c.keepState = true }
 }
 
+// DeferLogin returns an option that instructs chrome.New to return before logging into a session.
+// After successful return of chrome.New, you can call ContinueLogin to continue login.
+func DeferLogin() Option {
+	return func(c *Chrome) { c.deferLogin = true }
+}
+
 // GAIALogin returns an Option that can be passed to New to perform a real GAIA-based login rather
 // than the default fake login.
 func GAIALogin() Option {
@@ -268,6 +274,7 @@ type Chrome struct {
 	normalizedUser         string // user with domain added, periods removed, etc.
 	parentUser, parentPass string // unicorn parent login credentials
 	keepState              bool
+	deferLogin             bool
 	loginMode              loginMode
 	skipOOBEAfterLogin     bool // skip OOBE post user login
 	region                 string
@@ -370,16 +377,14 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		c.normalizedUser = c.user
 	}
 
-	// Perform an early high-level check of cryptohomed to avoid
+	// checkCryptohome performs an early high-level check of cryptohomed to avoid
 	// less-descriptive errors later if it's broken.
-	if c.loginMode != noLogin {
-		if err := cryptohome.CheckService(ctx); err != nil {
-			// Log problems in cryptohomed's dependencies.
-			for _, e := range cryptohome.CheckDeps(ctx) {
-				testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
-			}
-			return nil, err
+	if err := cryptohome.CheckService(ctx); err != nil {
+		// Log problems in cryptohomed's dependencies.
+		for _, e := range cryptohome.CheckDeps(ctx) {
+			testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
 		}
+		return nil, err
 	}
 
 	if err := c.PrepareExtensions(ctx); err != nil {
@@ -400,14 +405,16 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	switch c.loginMode {
-	case fakeLogin, gaiaLogin:
-		if err := c.logIn(ctx); err != nil {
-			return nil, err
-		}
-	case guestLogin:
-		if err := c.logInAsGuest(ctx); err != nil {
-			return nil, err
+	if !c.deferLogin {
+		switch c.loginMode {
+		case fakeLogin, gaiaLogin:
+			if err := c.logIn(ctx); err != nil {
+				return nil, err
+			}
+		case guestLogin:
+			if err := c.logInAsGuest(ctx); err != nil {
+				return nil, err
+			}
 		}
 	}
 
@@ -1103,6 +1110,22 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContinueLogin continues login deferred by DeferLogin option. It is an error to call
+// this method when DeferLogin option was not passed to New.
+func (c *Chrome) ContinueLogin(ctx context.Context) error {
+	switch c.loginMode {
+	case fakeLogin, gaiaLogin:
+		if err := c.logIn(ctx); err != nil {
+			return err
+		}
+	case guestLogin:
+		if err := c.logInAsGuest(ctx); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
