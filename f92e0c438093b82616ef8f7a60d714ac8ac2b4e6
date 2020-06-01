@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc8bc50_ca965aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-01T18:22:50Z",
+      "side": 1,
+      "message": "IMO, you\u0027re still trying too hard here, and you end up hard-coding framework details in here. Who\u0027s to say that you only need the last element (Base()) of outDir?\n\nIt seems better to just log \"filename\" and leave it at that.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "f92e0c438093b82616ef8f7a60d714ac8ac2b4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
