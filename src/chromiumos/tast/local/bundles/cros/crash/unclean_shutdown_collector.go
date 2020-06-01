@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package crash
 
 import (
 	"context"
@@ -23,7 +23,7 @@ func init() {
 		Func:     UncleanShutdownCollector,
 		Desc:     "Verify unclean shutdown produces collection",
 		Contacts: []string{"joonbug@chromium.org", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
