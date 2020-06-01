@@ -22,6 +22,30 @@
       "revId": "98e4507fa082ab7ace556fede822023d937b6dd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b92dbea_a034d37f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-01T06:54:17Z",
+      "side": 1,
+      "message": "For this function, it should be order agnostic. Fixed.",
+      "parentUuid": "d0262162_e1e0a7d8",
+      "range": {
+        "startLine": 553,
+        "startChar": 5,
+        "endLine": 553,
+        "endChar": 46
+      },
+      "revId": "98e4507fa082ab7ace556fede822023d937b6dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
