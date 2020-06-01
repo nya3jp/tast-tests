@@ -9,8 +9,10 @@ import (
 	"fmt"
 	"strings"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
@@ -480,6 +482,23 @@ func init() {
 					// Mix of ASCII and Unicode characters as SSID.
 					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
+				// TODO: Current ping duration (3 packets with 0.5 second interval by default) may not
+				// cover a rekeying. Consider adding a ping option field in simpleConnectTestcase.
+				Name:      "8021xwep",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: dynamicwep.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							dynamicwep.ClientCACert(eapCert1.CACert),
+							dynamicwep.ClientCred(eapCert1.ClientCred),
+							dynamicwep.RekeyPeriod(20),
+						),
+					},
+				},
 			},
 		},
 	})
@@ -627,6 +646,9 @@ func wep104KeysHidden() []string {
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
 }
+
+// EAP certs/keys for EAP tests.
+var eapCert1 = certificate.TestCert1()
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.
