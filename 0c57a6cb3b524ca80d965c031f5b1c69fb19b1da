@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6172d270_4abdf564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-01T19:20:33Z",
+      "side": 1,
+      "message": "nit: nobody knows what this means. You probably want something like this:\n\n\"get the list of installed DLCs (in a json) file.\"\n\nor something similar",
+      "range": {
+        "startLine": 168,
+        "startChar": 27,
+        "endLine": 169,
+        "endChar": 43
+      },
+      "revId": "0c57a6cb3b524ca80d965c031f5b1c69fb19b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf9b093_0b60781c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-01T19:20:33Z",
+      "side": 1,
+      "message": "remove, irrelevant how its doing and confusing because here you\u0027re not calling into dbus. You\u0027re just subprocessing dlcservice_util.",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 42
+      },
+      "revId": "0c57a6cb3b524ca80d965c031f5b1c69fb19b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2cc7ab3_795eb505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-01T19:20:33Z",
+      "side": 1,
+      "message": "not used anywhere, remove.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "0c57a6cb3b524ca80d965c031f5b1c69fb19b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "819ea46b_e1ccc7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-01T19:20:33Z",
+      "side": 1,
+      "message": "nit: PreloadDlc?",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "0c57a6cb3b524ca80d965c031f5b1c69fb19b1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
