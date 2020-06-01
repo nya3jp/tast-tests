@@ -100,20 +100,14 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(err, "failed to wait for video element loading")
 	}
 
-	// Play a video repeatedly during measurement.
 	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
 		return errors.Wrap(err, "failed to set video loop")
 	}
 
-	// TODO(mcasas): Move measurement collection to after verifying that the decoder
-	// used is the intended one. It'll need to wait for video started.
-	p := perf.NewValues()
-	if err = measureCPUUsage(ctx, conn, p); err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage")
-	}
-
-	if err := measureDroppedFrames(ctx, conn, p); err != nil {
-		return errors.Wrap(err, "failed to get dropped frames and percentage")
+	// Wait until videoElement has advanced so that chrome:media-internals has
+	// time to fill in their fields.
+	if err := conn.WaitForExpr(ctx, videoElement+".currentTime > 1"); err != nil {
+		return errors.Wrap(err, "failed waiting for video to advance playback")
 	}
 
 	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
@@ -137,6 +131,15 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 	testing.ContextLog(ctx, "decoderName: ", decoderName)
 	if decoderType == LibGAV1 && decoderName != "Gav1VideoDecoder" {
 		return errors.Errorf("Expect Gav1VideoDecoder, but used Decoder is %s", decoderName)
+	}
+
+	p := perf.NewValues()
+	if err = measureCPUUsage(ctx, conn, p); err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage")
+	}
+
+	if err := measureDroppedFrames(ctx, conn, p); err != nil {
+		return errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
 
 	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
