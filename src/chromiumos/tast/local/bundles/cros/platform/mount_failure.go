@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MountFailure,
 		Desc:     "Verify mount and umount failures are logged as expected",
-		Contacts: []string{"sarthakkukreti@google.com", "cros-monitoring-forensics@chromium.org"},
+		Contacts: []string{"sarthakkukreti@google.com", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline"},
 	})
 }
