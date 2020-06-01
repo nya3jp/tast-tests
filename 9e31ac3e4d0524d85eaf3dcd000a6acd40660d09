@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ec97824f_af791875",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-01T21:08:41Z",
+      "side": 1,
+      "message": "I would probably make it specifically for PIP and not added it directly to the ARC library in that case. That being said, it might be good to wait on some of the dumpsys related decisions to see if there is a good general solution.\n\nI think in a perfect world, we want 1 simple interface in activity.go. If necessary, that interface can check the android version to filter to a specific implementation, but we want to be careful about duplicating similar apis.",
+      "parentUuid": "15092146_32746afc",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 38
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a10890e_e5e48807",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
