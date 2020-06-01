@@ -84,6 +84,29 @@
     },
     {
       "key": {
+        "uuid": "4eb4d158_7af48634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-06-01T22:04:19Z",
+      "side": 1,
+      "message": "nit: is it possible to share more code between the test cases? This file can get very big if we\u0027re testing more apps",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74d6e321_71df77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
