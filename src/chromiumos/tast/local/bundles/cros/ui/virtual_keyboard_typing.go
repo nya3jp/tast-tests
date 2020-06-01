@@ -6,11 +6,19 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -22,77 +30,165 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          chrome.VKEnabled(),
+		Timeout:      5 * time.Minute,
 	})
 }
 
+// typingKeys indicates a key series that tapped on virtual keyboard.
+var typingKeys = []string{"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
+
+const expectedTypingResult = "hello tast"
+
 func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// Show a page with a text field that autofocuses. Turn off autocorrect as it
-	// can interfere with the test.
-	const html = `<input type="text" id="text" autocorrect="off" autofocus/>`
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
-	conn, err := cr.NewConn(ctx, server.URL)
+	// Virtual keyboard is mostly used in tablet mode.
+	s.Log("Setting device to tablet mode")
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Failed to ensure tablet mode enabled: ", err)
 	}
-	defer conn.Close()
+	defer cleanup(ctx)
 
-	// Wait for the text field to focus.
-	if err := conn.WaitForExpr(ctx,
-		`document.getElementById('text') === document.activeElement`); err != nil {
-		s.Fatal("Failed to wait for text field to focus: ", err)
+	// Create a touch controller.
+	// Use pc tap event to trigger virtual keyboard instead of calling vkb.ShowVirtualKeyboard()
+	pc, err := pointer.NewTouchController(ctx, tconn)
+	if err != nil {
+		s.Error("Failed to create a touch controller")
 	}
-
-	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+	defer pc.Close()
 
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
+		s.Fatal("creating connection to virtual keyboard UI failed: ", err)
 	}
 	defer kconn.Close()
 
-	// Press a sequence of keys.
-	// TODO(https://crbug.com/934650): Test pressing "backspace" key as well
-	// without causing flaky failures.
-	keys := []string{
-		"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
+	testCases := []string{
+		"Chrome",
+		"Settings",
+	}
 
-	for _, key := range keys {
-		if err := vkb.TapKey(ctx, kconn, key); err != nil {
-			s.Fatalf("Failed to tap %q: %v", key, err)
+	for _, testCase := range testCases {
+		switch testCase {
+		case "Chrome":
+			s.Log("Start a local server to test chrome")
+			const identifier = "e14s-inputbox"
+			html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Add("Content-Type", "text/html")
+				io.WriteString(w, html)
+			}))
+			defer server.Close()
+
+			conn, err := cr.NewConn(ctx, server.URL)
+			if err != nil {
+				s.Error("Creating renderer for test page failed: ", err)
+				break
+			}
+			defer conn.Close()
+
+			element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
+			if err != nil {
+				s.Errorf("Failed to find input element %s: %v", identifier, err)
+				break
+			}
+
+			s.Log("Click input field to trigger virtual keyboard shown up")
+			if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
+				s.Error("Failed to click the input element: ", err)
+				break
+			}
+
+			s.Log("Input with virtual keyboard")
+			if err := inputWithVirtualKeyboard(ctx, tconn, kconn, typingKeys); err != nil {
+				s.Error("Failed to type on virtual keyboard: ", err)
+				break
+			}
+
+			if err := assertInputValue(ctx, element, expectedTypingResult); err != nil {
+				s.Error("Failed to assert input result: ", err)
+				break
+			}
+		case "Settings":
+			app := apps.Settings
+			s.Logf("Launching %s", app.Name)
+			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
+				s.Errorf("Failed to launch %s: %s", app.Name, err)
+				break
+			}
+			if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+				s.Errorf("%s did not appear in shelf after launch: %v", app.Name, err)
+				break
+			}
+
+			s.Log("Find searchbox input element")
+			params := ui.FindParams{
+				Role: ui.RoleTypeSearchBox,
+				Name: "Search settings",
+			}
+			element, err := ui.FindWithTimeout(ctx, tconn, params, 3*time.Second)
+			if err != nil {
+				s.Error("Failed to find searchbox input field in settings: ", err)
+				break
+			}
+
+			s.Log("Click searchbox to trigger virtual keyboard")
+			if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
+				s.Error("Failed to click the input element: ", err)
+				break
+			}
+
+			s.Log("Input with virtual keyboard")
+			if err := inputWithVirtualKeyboard(ctx, tconn, kconn, typingKeys); err != nil {
+				s.Error("Failed to type on virtual keyboard: ", err)
+				break
+			}
+
+			if err := assertInputValue(ctx, element, expectedTypingResult); err != nil {
+				s.Error("Failed to assert input result: ", err)
+				break
+			}
 		}
 	}
+}
 
-	s.Log("Waiting for the text field to have the correct contents")
-	if err := conn.WaitForExpr(ctx,
-		`document.getElementById('text').value === 'hello tast'`); err != nil {
-		s.Fatal("Failed to get the contents of the text field: ", err)
+func inputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, kconn *chrome.Conn, keys []string) error {
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for the virtual keyboard to show")
 	}
+
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for the virtual keyboard to render")
+	}
+
+	if err := vkb.TapKeys(ctx, kconn, keys); err != nil {
+		return errors.Wrapf(err, "failed to tap keys %v: %v", keys, err)
+	}
+
+	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide the virtual keyboard")
+	}
+	return nil
+}
+
+// assertInputValue provely works for Chrome and Settings search input. Not guaranteed for other input elements.
+func assertInputValue(ctx context.Context, element *ui.Node, expectedValue string) error {
+	inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find searchbox value element")
+	}
+
+	if inputValueElement.Name != expectedValue {
+		return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedValue)
+	}
+	return nil
 }
