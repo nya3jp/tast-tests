@@ -13,12 +13,15 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/pkcs11"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	remote_hwsec "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -74,6 +77,8 @@ type TestFixture struct {
 	apID           int
 	curServicePath string
 	capturers      map[*APIface]*pcap.Capturer
+
+	chaps *pkcs11.Chaps
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -84,6 +89,19 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
 	return ssh.New(ctx, &sopt)
+}
+
+// pkcs11Chaps returns chaps object for DUT cert/key importing.
+func (tf *TestFixture) pkcs11Chaps(ctx context.Context) (*pkcs11.Chaps, error) {
+	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return nil, err
+	}
+	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	if err != nil {
+		return nil, err
+	}
+	return pkcs11.NewChaps(ctx, runner, cryptohomeUtil)
 }
 
 // NewTestFixture creates a TestFixture.
@@ -182,6 +200,14 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 	}
 
+	tf.chaps, err = tf.pkcs11Chaps(fullCtx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create chaps object")
+	}
+
+	// Do chaps_client --load/unload here to reset the system slot state.
+	// It is not yet implemented, perhaps something like tf.chaps.Reset().
+
 	// TODO(crbug.com/1034875): set up attenuator.
 
 	// Seed the random as we have some randomization. e.g. default SSID.
@@ -200,6 +226,10 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	defer st.End()
 
 	var firstErr error
+
+	// Do chaps_client --load/unload here to reset the system slot state.
+	// It is not yet implemented, perhaps something like tf.chaps.Reset().
+
 	if tf.pcap != nil && tf.pcap != tf.router {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
@@ -263,6 +293,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		return nil, err
 	}
 
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost, tf.router.workDir()); err != nil {
+		return nil, err
+	}
+
 	ap, err := tf.router.StartAPIface(ctx, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
@@ -319,6 +353,10 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) (*network.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
+
+	if err := secConf.InstallClientCredentials(ctx, tf.chaps, tf.dut); err != nil {
+		return nil, errors.Wrap(err, "failed to install client credentials")
+	}
 
 	props, err := secConf.ShillServiceProperties()
 	if err != nil {
