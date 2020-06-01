@@ -23,7 +23,7 @@ func init() {
 		Func:     UncleanShutdownCollector,
 		Desc:     "Verify unclean shutdown produces collection",
 		Contacts: []string{"joonbug@chromium.org", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
