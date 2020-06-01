@@ -24,11 +24,15 @@ import (
 // Dlcservice related constants.
 const (
 	CacheDir    = "/var/cache/dlc"
-	JobName     = "dlcservice"
-	ServiceName = "org.chromium.DlcService"
+	DirPerm     = 0755
+	FilePerm    = 0644
 	ImageFile   = "dlc.img"
+	JobName     = "dlcservice"
 	LibDir      = "/var/lib/dlcservice/dlc"
 	PreloadDir  = "/mnt/stateful_partition/var_overlay/cache/dlc-images"
+	ServiceName = "org.chromium.DlcService"
+	SlotA       = "dlc_a"
+	SlotB       = "dlc_b"
 	TestDir     = "/usr/local/dlc"
 	TestID1     = "test1-dlc"
 	TestID2     = "test2-dlc"
