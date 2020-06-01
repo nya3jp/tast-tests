@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5559abf7_6d2d49e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/libvda/libvda.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-01T18:20:48Z",
+      "side": 1,
+      "message": "nit, optional: since there is only one argument passed as ExtraArgs, it can be \"inlined\".",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "913c71f91c93f8c6d4f8347d1eb1b47fe1af2424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
