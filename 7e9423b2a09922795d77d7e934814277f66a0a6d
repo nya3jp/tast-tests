@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e148bb98_a32d806d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-01T09:17:56Z",
+      "side": 1,
+      "message": "capitalize",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd63371_1063e986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-01T09:17:56Z",
+      "side": 1,
+      "message": "How about removing the for loop and switch-case?\ntestCase variable is not used except for labelling test case for readers, and there is no line shared among the two test cases.",
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d6e321_71df77ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-01T09:17:56Z",
+      "side": 1,
+      "message": "[optinoal]\nWhich should we verify here, element.Value or element.Name here?\nI am not familiar with UI automation and test practices, but IIUC\nhttps://developer.chrome.com/extensions/automation#type-AutomationNode\nhttps://www.w3.org/TR/wai-aria/#namecalculation\nThese docs say Name can be either aria label or the value of text element.\nSo I thought this could verify Value instead of Name, but also thought using Name would make sense if this is also testing accessibility behavior or something like that.",
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
