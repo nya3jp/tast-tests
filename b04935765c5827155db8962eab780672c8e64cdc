@@ -56,6 +56,30 @@
       "revId": "b04935765c5827155db8962eab780672c8e64cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c3f4eb_ef5bfe64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_stress_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-06-01T03:19:14Z",
+      "side": 1,
+      "message": "I don\u0027t know where this should go? It will be referenced from bundles/cros/platform/memoryuser and bundles/cros/arc/memory.",
+      "parentUuid": "ae7ab983_7daeea13",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
