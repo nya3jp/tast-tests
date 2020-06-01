@@ -104,6 +104,24 @@
       "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dcfb865_c84d3f90",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T08:25:03Z",
+      "side": 1,
+      "message": "+1 to comment about the diverge from autotest.\nBTW, the code is already diverged from autotest. In autotest, it is \"or\" of 1, Q, Space keys, while this is \"and\".\n\nQQ: does this problem happens in autotest, too?\nAlso, if event6 is the keyboard we\u0027d like to see, what is event2...?",
+      "parentUuid": "7a5e4fa8_92f8248f",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
