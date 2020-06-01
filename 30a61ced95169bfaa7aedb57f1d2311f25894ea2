@@ -33,6 +33,23 @@
       "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48034d49_102b4891",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-01T07:09:37Z",
+      "side": 1,
+      "message": "I validate this on krane by running:\n$ evtest\nThe 1, Q, and Space will match \"/dev/input/event2: cros_ec\" but the \"KEY_VOLUME*\" is not included.\nWhile \"/dev/input/event6: Google Inc. Hammer\" matches all keys.\nAnd follow the same evtest process on soraka.\nIt somehow explain why the test only failed on krane but not soraka and other board.",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
