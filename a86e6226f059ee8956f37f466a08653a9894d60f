@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3c078c_85f03619",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Tast code will be exposed to the public. Are this username+password OK to share broadly? Based on the value \"not_a_real_password\", I\u0027m guessing this isn\u0027t actual confidential information. If that is the case, it would be good to make explicit.",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc14244_095dd668",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Nit: \"removes\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65eabd0f_7601dbcd",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Nit: \"sets up\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c278aafa_da22008d",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "\u003e Only one SetupTPMStore can exist at a time.\n\nWhat does this mean? Do you mean that only one process may be running SetupTPMStore() at a time? Or that only one TPMStore, which would have bee created by SetupTPMStore, can exist at a time?\n\nIf the former (only one process can run SetupTPMStore() at a time), then I would recommend rephrasing this comment, since functions don\u0027t \"exist\" in the same way that variable instances do.\n\nIf the latter (only one TPMStore at a time), then I recommend rephrasing the comment to refer to a TPMStore, and moving that comment to the TPMStore struct definition. I also recommend enforcing this in some way, such as by having a package-level variable which either contains (or points to) the singleton TPMStore, or indicates whether a TPMStore currently exists.",
+      "range": {
+        "startLine": 68,
+        "startChar": 52,
+        "endLine": 68,
+        "endChar": 95
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2045c7d_a00a9e70",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "I think that NewTPMStore would be more idiomatic in Go.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f515dc31_d5f00e7a",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Nit: cleanupVault does not occur before SetupTPMStore; it occurs at the beginning of SetupTPMStore.",
+      "range": {
+        "startLine": 72,
+        "startChar": 56,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23afa03f_b7581a68",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Nit: This is a function, not a method. A method is a function with a receiver.\n\nhttps://golang.org/ref/spec#Method_declarations",
+      "range": {
+        "startLine": 80,
+        "startChar": 13,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf21d3d_e555cb44",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "optional: It might be cleaner to use unnamed value initializers:\n\n    return \u0026TPMStore{runner, slot, label, pin}, nil",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26be8df4_2743fa1a",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment: there was no TPMStore before SetupTPMStore() was called. Perhaps this resets the TPMStore to some default values?",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f602129b_3c88c218",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Usually Tast does not include getters. You could remove this code by changing slot, pin, and label into exported fields (Slot, Pin, Label).\n\nThat said, getters are not wrong in Go. If you do choose to keep these, it is typical to remove the \"Get\" from the getter name. That way, `s.Slot()` would be a method returning the field `s.slot`. https://golang.org/doc/effective_go.html#Getters",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4af62bb_d8610f03",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Please add a docstring for this method.",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e7aa0e_bc874e8b",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Is this ContextLogf necessary in addition to the error returned below?",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0334c0a5_f975b35c",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:01:49Z",
+      "side": 1,
+      "message": "Is this ContextLogf necessary in addition to the error returned below?",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
