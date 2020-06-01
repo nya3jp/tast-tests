@@ -34,6 +34,42 @@
       "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b68f9f7c_5f0a4288",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1145829
+      },
+      "writtenOn": "2020-06-01T23:11:48Z",
+      "side": 1,
+      "message": "But is there any harm in skipping unpack if out is not specified?  Where are the call sites that could programmatically call run with a zero len out?",
+      "parentUuid": "448d4b18_9edb9de0",
+      "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b505ea7_856aa8fb",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1145829
+      },
+      "writtenOn": "2020-06-01T23:11:48Z",
+      "side": 1,
+      "message": "But is there any harm in skipping unpack if out is not specified?  Where are the call sites that could programmatically call run with a zero len out?",
+      "parentUuid": "448d4b18_9edb9de0",
+      "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
