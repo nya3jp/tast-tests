@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee2e6796_311b3663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "The method is removed based on Mukai\u0027s suggestion.",
+      "parentUuid": "c0ae59ec_1f71c90c",
+      "range": {
+        "startLine": 385,
+        "startChar": 20,
+        "endLine": 385,
+        "endChar": 23
+      },
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef1c3369_9916b52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f4e194_50d71a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1c3369_9916b52f",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 22
+      },
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a1a8bcb7_c887df7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6312b3f0_d00d9256",
+      "range": {
+        "startLine": 396,
+        "startChar": 19,
+        "endLine": 396,
+        "endChar": 22
+      },
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cd7060f_69325e98",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1d62df_4e198bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd7060f_69325e98",
+      "range": {
+        "startLine": 399,
+        "startChar": 15,
+        "endLine": 399,
+        "endChar": 16
+      },
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "44c1c123_539d4a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "The method is removed.",
+      "parentUuid": "0c7e536a_c42d34fe",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34a15cfd_3197d112",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 6
@@ -154,6 +274,24 @@
       "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3084f4a_1f706e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a15cfd_3197d112",
+      "revId": "5531fa6e2e200e40d6da0cbf15b635adefbc372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

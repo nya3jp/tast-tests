@@ -464,6 +464,30 @@
     },
     {
       "key": {
+        "uuid": "8d368561_3cdb75e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-01T20:47:22Z",
+      "side": 1,
+      "message": "For now we should use android_vm because of a bug in UI flags which doesn\u0027t allow us to use \"android-vm-rvc\". To address that following bug is created:\nhttps://b.corp.google.com/issues/157767016",
+      "parentUuid": "ae343c0f_c68b34c5",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "a6fcc30c2cd995a4797a6fdf7ad8859119010ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcce15b5_77fc3c95",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
