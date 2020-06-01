@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ecbb11cc_a6cefe11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-01T12:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e148bb98_a32d806d",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd63371_1063e986",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2e81fb4f_9d735d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-01T12:54:00Z",
+      "side": 1,
+      "message": "Thanks for this comment. I am working to separate test cases. To make this happen, I would like to create some common methods first to refactor virtual keyboard input. I raised another cl https://crrev.com/c/2224942 and assigned to you directly for review. Hope you do not mind. Thanks a lot. I will hold this cl until that one merged.",
+      "parentUuid": "6bd63371_1063e986",
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74d6e321_71df77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2020-06-01T09:17:56Z",
       "side": 1,
       "message": "[optinoal]\nWhich should we verify here, element.Value or element.Name here?\nI am not familiar with UI automation and test practices, but IIUC\nhttps://developer.chrome.com/extensions/automation#type-AutomationNode\nhttps://www.w3.org/TR/wai-aria/#namecalculation\nThese docs say Name can be either aria label or the value of text element.\nSo I thought this could verify Value instead of Name, but also thought using Name would make sense if this is also testing accessibility behavior or something like that.",
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08606ada_b9d96a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-01T12:54:00Z",
+      "side": 1,
+      "message": "I tried with element.Value first, but it did not work. I could not find Value attribute of the inputbox. Instead, I saw a sub-node called \u0027StaticText\u0027, and value equals its name.",
+      "parentUuid": "74d6e321_71df77ae",
       "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
