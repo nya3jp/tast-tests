@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ee11b02_9cd364dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-01T18:53:42Z",
+      "side": 1,
+      "message": "I guess the problems that you mentioned can be solved also with the previous Struct, and perhaps some helper functions.\n\n\nnya@ do you have any take on this?",
+      "parentUuid": "be252e61_f1487691",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8603c72_eb5237dd",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
