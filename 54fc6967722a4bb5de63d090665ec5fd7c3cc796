@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1db57060_fdc046c1",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:21:16Z",
+      "side": 1,
+      "message": "optional: you can use testing.OutDir() to get outdir tied to the ctx.",
+      "range": {
+        "startLine": 33,
+        "startChar": 77,
+        "endLine": 33,
+        "endChar": 83
+      },
+      "revId": "54fc6967722a4bb5de63d090665ec5fd7c3cc796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd16a00f_43a3df63",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:21:16Z",
+      "side": 1,
+      "message": "nit:\n\n\"Could not find %s perf event file: %v\", perfCounter.filePath, err",
+      "revId": "54fc6967722a4bb5de63d090665ec5fd7c3cc796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876290b3_abff027e",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:21:16Z",
+      "side": 1,
+      "message": "nit/style: go prefers shorter name. How about just \"outFile\" ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "54fc6967722a4bb5de63d090665ec5fd7c3cc796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced5fc1f_813f8ac1",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:21:16Z",
+      "side": 1,
+      "message": "Could you handle the error?\n\nif err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n  testing.ContextLogf(ctx, \"Failed to dump perf output to %s: %v\", outFile, err)\n}",
+      "revId": "54fc6967722a4bb5de63d090665ec5fd7c3cc796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
