@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
@@ -67,6 +68,8 @@ func CrostiniFiles(ctx context.Context, s *testing.State) {
 	testShareFiles(ctx, s, ownerID, cr)
 	s.Log("Testing backup and restore")
 	testBackupRestore(ctx, s, tconn, ownerID)
+	s.Log("Testing filesapp watch")
+	testFilesAppWatch(ctx, s, tconn, ownerID)
 
 	s.Log("Uninstalling crostini")
 	if err = tconn.EvalPromise(ctx,
@@ -306,4 +309,35 @@ func testBackupRestore(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	verifyFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
+}
+
+func testFilesAppWatch(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ownerID string) {
+	const (
+		testFileName1   = "file1.txt"
+		testFileName2   = "file2.txt"
+		testFileContent = "content"
+	)
+
+	createFileInContainer(ctx, s, ownerID, testFileName1, testFileContent)
+
+	// Launch the files application
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Launching the Files App failed: ", err)
+	}
+	defer files.Root.Release(ctx)
+
+	// Validate file1.txt is shown in 'Linux files'.
+	if err := files.OpenDir(ctx, "Linux files", "Files - Linux files"); err != nil {
+		s.Fatal("Opening Linux files folder failed: ", err)
+	}
+	if err := files.WaitForFile(ctx, testFileName1, 10*time.Second); err != nil {
+		s.Fatal("Waiting for file1.txt failed: ", err)
+	}
+
+	// Create file2.txt in container and check that FilesApp refreshes.
+	createFileInContainer(ctx, s, ownerID, testFileName2, testFileContent)
+	if err := files.WaitForFile(ctx, testFileName2, 10*time.Second); err != nil {
+		s.Fatal("Waiting for file2.txt failed: ", err)
+	}
 }
