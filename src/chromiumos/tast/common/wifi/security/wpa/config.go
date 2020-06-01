@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
 )
 
@@ -55,6 +56,9 @@ const (
 
 // Config implements security.Config interface for WPA protected network.
 type Config struct {
+	// Embedded base config so we don't have to re-implement credential-related methods.
+	base.Config
+
 	psk            string
 	mode           ModeEnum
 	ciphers        []Cipher // ciphers used for WPA.
