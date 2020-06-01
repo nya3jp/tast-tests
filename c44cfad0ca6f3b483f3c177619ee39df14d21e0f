@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aae0980c_8b29bc89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T21:03:04Z",
+      "side": 1,
+      "message": "Please separate the contact change into a separate CL. That way, if this CL needs to be reverted for any reason, the contact change will be retained.",
+      "revId": "c44cfad0ca6f3b483f3c177619ee39df14d21e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
