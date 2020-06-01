@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "80dbd2a9_d94ab588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:26:21Z",
+      "side": 1,
+      "message": "I think, although, it is intended not to terminate the activiey with act.Close(), \nin common cases, we keep the activity instance alive until the end of a test.\nCould you follow the common practice?",
+      "parentUuid": "7dd89ad8_229203cb",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2510227f_094bb4c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
