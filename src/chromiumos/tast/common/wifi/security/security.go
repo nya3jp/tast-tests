@@ -9,16 +9,33 @@
 //   in testing.AddTest and Gen the Config object later in test body.
 package security
 
+import (
+	"context"
+
+	"chromiumos/tast/common/wifi"
+	"chromiumos/tast/ssh"
+)
+
 // Config defines methods to generate hostapd and shill config of protected network.
 type Config interface {
 	// Class returns the SecurityClass (defined in shill/service.go) of the WiFi service
 	// which is used for searching for WiFi service.
 	Class() string
 	// HostapdConfig returns the hostapd config of the WiFi service.
+	// Note that InstallRouterCredentials() may update the router config so that it should be
+	// called before HostapdConfig(). Also, the implementation shall perform sanity check.
 	HostapdConfig() (map[string]string, error)
 	// ShillServiceProperties returns the shill properties that the DUT should set in
 	// order to connect to the WiFi service configured by HostapdConfig.
+	// Note that InstallClientCredentials() may update the client config so that it should be
+	// called before ShillServiceProperties(). Also, the implementation shall perform sanity check.
 	ShillServiceProperties() (map[string]interface{}, error)
+	// NeedsTPMStore tells that the standard needs TPMStore or not.
+	NeedsTPMStore() bool
+	// InstallRouterCredentials installs the nacessary credentials onto router.
+	InstallRouterCredentials(ctx context.Context, host *ssh.Conn, workDir string) error
+	// InstallClientCredentials installs the nacessary credentials onto DUT.
+	InstallClientCredentials(context.Context, *wifi.TPMStore) error
 }
 
 // ConfigFactory defines a Gen() method to generate a Config instance.
