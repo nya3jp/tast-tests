@@ -26,14 +26,14 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"arc_camera3", "chrome", caps.HWEncodeJPEG},
-		Data:         []string{"bali_640x368_P420.yuv", "lake_4160x3120_P420.yuv"},
+		Data:         []string{"bali_640x368_P420.yuv", "lake_4096x3072_P420.yuv"},
 	})
 }
 
 func LibJEA(ctx context.Context, s *testing.State) {
 	const exec = "libjea_test"
 	inputArg1 := fmt.Sprintf("--yuv_filename1=%s:640x368", s.DataPath("bali_640x368_P420.yuv"))
-	inputArg2 := fmt.Sprintf("--yuv_filename2=%s:4160x3120", s.DataPath("lake_4160x3120_P420.yuv"))
+	inputArg2 := fmt.Sprintf("--yuv_filename2=%s:4096x3072", s.DataPath("lake_4096x3072_P420.yuv"))
 
 	if report, err := gtest.New(
 		exec,
