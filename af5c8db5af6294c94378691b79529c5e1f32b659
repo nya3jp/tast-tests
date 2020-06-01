@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f8ec4a3_c5077e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-01T23:51:41Z",
+      "side": 1,
+      "message": "@mukai, should tast test use 0777 as permission if external users depend on it? (e.g. a daemon which doesn\u0027t run as root?)",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
