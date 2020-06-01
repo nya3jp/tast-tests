@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ce51b7a_93a3975e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-01T23:37:31Z",
+      "side": 1,
+      "message": "nit: you should have a blank line above (otherwise, the copyright notice would be misunderstood as the package document :-)",
+      "revId": "1d0069f46871f3546e349233edef7ad9434a3db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
