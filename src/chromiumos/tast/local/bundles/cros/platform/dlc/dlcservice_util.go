@@ -30,6 +30,8 @@ const (
 	LibDir      = "/var/lib/dlcservice/dlc"
 	ManifestDir = "/opt/google/dlc"
 	PreloadDir  = "/mnt/stateful_partition/var_overlay/cache/dlc-images"
+	SlotA       = "dlc_a"
+	SlotB       = "dlc_b"
 	TestDir     = "/usr/local/dlc"
 	TestID1     = "test1-dlc"
 	TestID2     = "test2-dlc"
