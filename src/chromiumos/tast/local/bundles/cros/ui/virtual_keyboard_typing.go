@@ -72,12 +72,6 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
-	}
-	defer kconn.Close()
-
 	// Press a sequence of keys.
 	// TODO(https://crbug.com/934650): Test pressing "backspace" key as well
 	// without causing flaky failures.
@@ -85,7 +79,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
 
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, kconn, key); err != nil {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
 	}

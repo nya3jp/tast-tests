@@ -118,7 +118,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 			continue
 		}
 
-		if err := vkb.TapKeys(ctx, kconn, testCase.Keys); err != nil {
+		if err := vkb.TapKeys(ctx, tconn, testCase.Keys); err != nil {
 			s.Error("Failed to type: ", err)
 			continue
 		}
@@ -141,7 +141,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		}
 
 		// Tap enter to exit composition mode.
-		if err := vkb.TapKey(ctx, kconn, "enter"); err != nil {
+		if err := vkb.TapKey(ctx, tconn, "enter"); err != nil {
 			s.Error("Failed to tap enter: ", err)
 			continue
 		}

@@ -63,17 +63,11 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
-	}
-	defer kconn.Close()
-
 	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
 
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, kconn, key); err != nil {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
 			s.Errorf("Failed to tap %q: %v", key, err)
 		}
 	}
