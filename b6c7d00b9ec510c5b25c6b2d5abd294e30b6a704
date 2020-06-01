@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "489e3449_f32b69c4",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1145829
+      },
+      "writtenOn": "2020-06-01T22:24:41Z",
+      "side": 1,
+      "message": "Adding this field to call is not needed, you can just check if out is length zero and skip the unpack.",
+      "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
