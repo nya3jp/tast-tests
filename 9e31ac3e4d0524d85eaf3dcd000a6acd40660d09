@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "15092146_32746afc",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2020-06-01T19:28:14Z",
+      "side": 1,
+      "message": "Right, but we also don\u0027t know when will Dumpsys be fixed for R - that\u0027s still an on-going topic since we don\u0027t know do we want to move forward with using Dumpsys in R.\nWould it make more sense to make a PIP-specific methods as opposed to \"Directly\" methods then? I think the point is here that for PIP windows, we don\u0027t need anything from Dumpsys. The PIP.go test has all the information already. It would be easier to decouple so in the future we don\u0027t have to rely on Dumpsys (and that if it stops working, doesn\u0027t cause PIP tests to stop running).",
+      "parentUuid": "7f2ecb06_e4808be4",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 38
+      },
+      "revId": "9e31ac3e4d0524d85eaf3dcd000a6acd40660d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a10890e_e5e48807",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
