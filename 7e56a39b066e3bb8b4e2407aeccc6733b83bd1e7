@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b02b1760_34610884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-01T07:03:40Z",
+      "side": 1,
+      "message": "It\u0027s easy to do this by adding: \"ExtraHardwareDeps: hwdep.D(hwdep.DisableOnModel(cqWhitelist...)),\" to the non-CQ tests.\n\nBut for now let\u0027s avoid losing history for the 264 test on eve by renaming it.",
+      "revId": "7e56a39b066e3bb8b4e2407aeccc6733b83bd1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d820754_20679c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-01T07:03:40Z",
+      "side": 1,
+      "message": "Not a fan of duplicating all tests, but there is no way around this AFAIK.\n\nWe could alternatively introduce a \"_flaky\" variant of all tests on platforms that are know to cause issues. But at least at the start it seems better to work with a very short whitelist.",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "7e56a39b066e3bb8b4e2407aeccc6733b83bd1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
