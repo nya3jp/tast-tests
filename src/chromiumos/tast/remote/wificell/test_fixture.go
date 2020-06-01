@@ -93,6 +93,19 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	return ssh.New(ctx, &sopt)
 }
 
+// hwsecUtil returns remote command runner object and cryptohome util object.
+func (tf *TestFixture) hwsecUtil() (*remote_hwsec.CmdRunnerRemote, *hwsec.UtilityCryptohomeBinary, error) {
+	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return nil, nil, err
+	}
+	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	if err != nil {
+		return nil, nil, err
+	}
+	return runner, cryptohomeUtil, nil
+}
+
 // setupTPMStore sets up the TPMStore for EAP relating tests.
 func (tf *TestFixture) setupTPMStore(ctx context.Context) error {
 	if tf.tpm != nil {
@@ -100,14 +113,11 @@ func (tf *TestFixture) setupTPMStore(ctx context.Context) error {
 		return nil
 	}
 
-	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	runner, cryptohomeUtil, err := tf.hwsecUtil()
 	if err != nil {
 		return err
 	}
-	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
-	if err != nil {
-		return err
-	}
+
 	tf.tpm, err = wifi.SetupTPMStore(ctx, cryptohomeUtil, runner)
 	return err
 }
@@ -119,14 +129,11 @@ func (tf *TestFixture) resetTPMStore(ctx context.Context) error {
 		return nil
 	}
 
-	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	_, cryptohomeUtil, err := tf.hwsecUtil()
 	if err != nil {
 		return err
 	}
-	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
-	if err != nil {
-		return err
-	}
+
 	err = wifi.ResetTPMStore(ctx, tf.tpm, cryptohomeUtil)
 	tf.tpm = nil
 	return err
