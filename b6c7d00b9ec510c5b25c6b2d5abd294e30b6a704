@@ -16,6 +16,24 @@
       "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448d4b18_9edb9de0",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-01T22:33:22Z",
+      "side": 1,
+      "message": "That would lead to some inconsistent behavior. Currently, response.unpack throws an error if len(out) !\u003d len(r.Params); see L141-143. If we skipped unpacking if len(out) \u003d\u003d 0, then that function would not raise an error in all expected circumstances.",
+      "parentUuid": "489e3449_f32b69c4",
+      "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
