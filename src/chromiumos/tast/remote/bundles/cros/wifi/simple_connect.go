@@ -9,8 +9,11 @@ import (
 	"fmt"
 	"strings"
 
+	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
@@ -24,6 +27,7 @@ type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
 	secConfFac security.ConfigFactory
+	pingOps    []ping.Option
 }
 
 func init() {
@@ -509,6 +513,22 @@ func init() {
 					// Mix of ASCII and Unicode characters as SSID.
 					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
+				Name:      "8021xwep",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: dynamicwep.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							dynamicwep.ClientCACert(eapCert1.CACert),
+							dynamicwep.ClientCred(eapCert1.ClientCred),
+							dynamicwep.RekeyPeriod(10),
+						),
+						pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
+					},
+				},
 			},
 		},
 	})
@@ -546,7 +566,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForClose(fullCtx)
 	defer cancel()
 
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
+	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option) {
 		ap, err := tf.ConfigureAP(fullCtx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -596,7 +616,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			Direction: perf.SmallerIsBetter,
 		}, float64(resp.ConfigurationTime)/1e9)
 		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx, ap.ServerIP().String())
+			return tf.PingFromDUT(ctx, ap.ServerIP().String(), pingOps...)
 		}
 
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
@@ -622,7 +642,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
@@ -656,6 +676,9 @@ func wep104KeysHidden() []string {
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
 }
+
+// EAP certs/keys for EAP tests.
+var eapCert1 = certificate.TestCert1()
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.
