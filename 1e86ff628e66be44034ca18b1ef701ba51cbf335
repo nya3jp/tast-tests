@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d14a3e_b30d3f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:26:21Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#contexts\n\ncould you avoid holding context.Context in the member?",
+      "revId": "1e86ff628e66be44034ca18b1ef701ba51cbf335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042db046_2e62c821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:26:21Z",
+      "side": 1,
+      "message": "nit: how about to dump the result?",
+      "revId": "1e86ff628e66be44034ca18b1ef701ba51cbf335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f306387_f78e8f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:26:21Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "1e86ff628e66be44034ca18b1ef701ba51cbf335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205461a1_fa9d2d73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-01T18:26:21Z",
+      "side": 1,
+      "message": "nit/style: could you combine these lines?\n\nif err :\u003d atest.RunAppTest(...); err !\u003d nil {",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "1e86ff628e66be44034ca18b1ef701ba51cbf335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
