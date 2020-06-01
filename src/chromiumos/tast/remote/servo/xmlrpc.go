@@ -106,7 +106,7 @@ func newCall(method string, args ...interface{}) call {
 	return call{method, args}
 }
 
-// serializeMethodCall turns a method and args into a seralized XML-RPC method call.
+// serializeMethodCall turns a method and args into a serialized XML-RPC method call.
 func serializeMethodCall(cl call) ([]byte, error) {
 	params, err := newParams(cl.args)
 	if err != nil {
@@ -177,5 +177,10 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 		return err
 	}
 
-	return res.unpack(out)
+	// If outs are specified, unpack response params.
+	// Otherwise, return without unpacking.
+	if len(out) > 0 {
+		return res.unpack(out)
+	}
+	return nil
 }
