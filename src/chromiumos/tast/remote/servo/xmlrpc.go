@@ -18,8 +18,9 @@ import (
 
 // call represents a Servo call request.
 type call struct {
-	method string
-	args   []interface{}
+	method       string
+	args         []interface{}
+	ignoreOutput bool
 }
 
 // methodCall mirrors the structure of an XML-RPC method call.
@@ -103,10 +104,16 @@ func newParams(args []interface{}) ([]param, error) {
 }
 
 func newCall(method string, args ...interface{}) call {
-	return call{method, args}
+	return call{method: method, args: args}
 }
 
-// serializeMethodCall turns a method and args into a seralized XML-RPC method call.
+// withIgnoreOutput sets a call's ignoreOutput to true, then returns that call.
+func (c call) withIgnoreOutput() call {
+	c.ignoreOutput = true
+	return c
+}
+
+// serializeMethodCall turns a method and args into a serialized XML-RPC method call.
 func serializeMethodCall(cl call) ([]byte, error) {
 	params, err := newParams(cl.args)
 	if err != nil {
@@ -177,5 +184,8 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 		return err
 	}
 
+	if cl.ignoreOutput {
+		return nil
+	}
 	return res.unpack(out)
 }

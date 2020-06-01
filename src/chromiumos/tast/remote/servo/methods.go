@@ -78,12 +78,10 @@ func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 
 // SetActChgPort enables a charge port on fluffy.
 func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
-	// This is a little strange...  The run() method needs the arg(val) as the response contains whether the
-	// xml-rpc call succeeded or not.  Omitting this variable causes it to fail to unmarshall the xmlrpc
-	// response.  However it seems strange because if the call didn't succeed, I believe run() will return an
-	// error in err anyways so the variable seems useless.  This is why I'm ignoring val and only returning err.
-	var val bool
-	err := s.run(ctx, newCall("set", ActiveChgPort, port), &val)
+	// Servo's Set method returns a bool stating whether the call succeeded or not.
+	// This is redundant, because a failed call will return an error anyway.
+	// So, we can skip unpacking the output.
+	err := s.run(ctx, newCall("set", ActiveChgPort, port).withIgnoreOutput())
 	return err
 }
 
@@ -112,12 +110,10 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 
 // SetString sets a specified control to a specified value.
 func (s *Servo) SetString(ctx context.Context, control StringControl, value string) error {
-	// The run() method needs the arg(val), as the response contains whether the xml-rpc call
-	// succeeded or not. Omitting this variable causes it to fail to unmarshall the xmlrpc response.
-	// However, reading this value is unnecessary, because if the call fails
-	// then run() returns an error anyway.
-	var val bool
-	if err := s.run(ctx, newCall("set", string(control), value), &val); err != nil {
+	// Servo's Set method returns a bool stating whether the call succeeded or not.
+	// This is redundant, because a failed call will return an error anyway.
+	// So, we can skip unpacking the output.
+	if err := s.run(ctx, newCall("set", string(control), value).withIgnoreOutput()); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
 	}
 	return nil
