@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "756eebba_8fc9d793",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-01T18:28:33Z",
+      "side": 1,
+      "message": "sorry, missed this one:\nattachUsbipDevice -\u003e attachUSBIPDevice\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "3fd72d3d67ddb0570889eed167c0bcc3ccf1c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
