@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d12c10_dfd628de",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-01T06:36:16Z",
+      "side": 1,
+      "message": "nit: Update the comment as well",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f902f883_f811da17",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-01T06:36:16Z",
+      "side": 1,
+      "message": "Do we have any case that this would make difference?",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
