@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1bda5637_c6e2b8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-01T23:03:40Z",
+      "side": 1,
+      "message": "Yes. I will separate this to multiple test cases. I will do some refactoring work first, and then continue with this cl. Thanks for the comment.",
+      "parentUuid": "4eb4d158_7af48634",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "7e9423b2a09922795d77d7e934814277f66a0a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74d6e321_71df77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
