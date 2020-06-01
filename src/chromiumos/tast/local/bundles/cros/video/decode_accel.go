@@ -10,7 +10,16 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// cqWhitelist is the list of stable devices we want to enable CQ for.
+// Note: If this list grows large we might want to start using a blacklist.
+// Note: To avoid tests running twice we could restrict non-CQ tests to the
+//        inverse whitelist.
+var cqWhitelist = []string{
+	"eve",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -22,6 +31,14 @@ func init() {
 			Name:              "h264",
 			Val:               "test-25fps.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			// Run H264 video decode tests on CQ, limited to devices on the CQ white list.
+			Name:              "h264_cq",
+			Val:               "test-25fps.h264",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(cqWhitelist...)),
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
