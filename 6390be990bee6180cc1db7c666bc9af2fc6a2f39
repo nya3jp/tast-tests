@@ -22,6 +22,30 @@
       "revId": "6390be990bee6180cc1db7c666bc9af2fc6a2f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5841379c_1caaf483",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-01T19:17:46Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m mostly just using that as a cover bug for anything related to the test.",
+      "parentUuid": "2a53658a_747c4b13",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "6390be990bee6180cc1db7c666bc9af2fc6a2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
