@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/lake_4096x3072_P420_20200601.yuv",
+  "size": 18874368,
+  "sha256sum": "61c3dec0f92249c80afe92d0bbfdc53eaed487f3511f3bf7d9e42bd7cd5ac7d7"
+}
