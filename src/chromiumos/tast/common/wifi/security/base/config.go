@@ -6,8 +6,12 @@
 package base
 
 import (
+	"context"
+
+	"chromiumos/tast/common/wifi"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/ssh"
 )
 
 // Config implements security.Config interface for open network, i.e., no security.
@@ -45,4 +49,19 @@ func (*Config) HostapdConfig() (map[string]string, error) {
 // ShillServiceProperties returns shill properties of open network.
 func (*Config) ShillServiceProperties() (map[string]interface{}, error) {
 	return nil, nil
+}
+
+// NeedsTPMStore tells that TPMStore is not necessary for this configuration.
+func (*Config) NeedsTPMStore() bool {
+	return false
+}
+
+// InstallRouterCredentials installs the necessary credentials onto router.
+func (*Config) InstallRouterCredentials(context.Context, *ssh.Conn, string) error {
+	return nil
+}
+
+// InstallClientCredentials installs the necessary credentials onto DUT.
+func (*Config) InstallClientCredentials(context.Context, *wifi.TPMStore) error {
+	return nil
 }
