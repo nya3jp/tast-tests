@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d146f825_a8355f1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-01T20:45:11Z",
+      "side": 1,
+      "message": "Does this defeat the purpose of the test? Would it still catch the original regression that it was made to catch with this change?",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "a9a157e138dcfda96bc92fb4388bd730fe8e9b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
