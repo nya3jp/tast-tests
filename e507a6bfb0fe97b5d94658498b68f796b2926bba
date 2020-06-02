@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54d099d6_6564fce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T08:05:34Z",
+      "side": 1,
+      "message": "nit: now installAPK is just a proxy to arc.Install, which does not provide benefit.\nHow about just inlining here?\n\nif err :\u003d t.arc.Install(ctx, apkPath); err !\u003d nil {",
+      "revId": "e507a6bfb0fe97b5d94658498b68f796b2926bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2dbce68_bd0586d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T08:05:34Z",
+      "side": 1,
+      "message": "huge nit: unneeded white space.",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "e507a6bfb0fe97b5d94658498b68f796b2926bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09798c4e_470e0433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T08:05:34Z",
+      "side": 1,
+      "message": "Could you wrap the erro by errors.Wrap?\n\nerrors.Wrapf(err, \"failed to get failure reason for result %q\", result)",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "e507a6bfb0fe97b5d94658498b68f796b2926bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7eb8097_0301c31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T08:05:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 112,
+        "startChar": 66,
+        "endLine": 112,
+        "endChar": 67
+      },
+      "revId": "e507a6bfb0fe97b5d94658498b68f796b2926bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac6d5e2_cb85e465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T08:05:34Z",
+      "side": 1,
+      "message": "Could you follow the common style of got-want error message? E.g.\n\nerrors.Errorf(\"unexpected app result (with reason: %s): got %s, want 1\", reason, result)",
+      "range": {
+        "startLine": 114,
+        "startChar": 23,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "e507a6bfb0fe97b5d94658498b68f796b2926bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
