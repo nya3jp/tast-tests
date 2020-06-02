@@ -31,7 +31,7 @@ func init() {
 }
 
 func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.NoLogin())
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.NoLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -63,7 +63,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 	defer kconn.Close()
 
-	if err = inputField(ctx, kconn, gaiaConn, "input", []string{"t", "e", "s", "t", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"}, "test@gmail.com"); err != nil {
+	if err = inputField(ctx, kconn, gaiaConn, "#identifierId", []string{"t", "e", "s", "t", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"}, "test@gmail.com"); err != nil {
 		s.Error("Failed to input identifierId with vk in user login: ", err)
 	}
 }
@@ -76,7 +76,7 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 	}
 
 	// Get touch point on input field.
-	//TODO(b/157685907): Investigate why touching Math.round(b.top) + b.height / 2 does not trigger vk.
+	// Touch method works on screen coordinate rather than document related location. Element coordinate should be calculated with screen availHeight.
 	var inputFieldTouchPoint coords.Point
 	if err := gaiaConn.Eval(ctx, fmt.Sprintf(
 		`(function() {
@@ -86,7 +86,7 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 					var b = element.getBoundingClientRect();
 					return {
 						'x': Math.round(b.left + b.width / 2),
-						'y': Math.round(b.top),
+						'y': Math.round(b.top + b.height / 2) + (screen.height - screen.availHeight) / 2,
 					};
 				}
 			}
@@ -103,22 +103,29 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 	// Touchscreen bounds: The size of the touchscreen might not be the same
 	// as the display size. In fact, might be even up to 4x bigger.
 	// NewTouchCoordConverter is used for convert pixel to touch point.
-	fullScreenSize, err := getViewPortSize(ctx, gaiaConn)
+	screenSize, err := getScreenSize(ctx, gaiaConn)
+	testing.ContextLog(ctx, "Full screen size:", screenSize)
 	if err != nil {
 		return errors.Wrap(err, "failed to get viewport size")
 	}
 
-	tcc := tsw.NewTouchCoordConverter(fullScreenSize)
+	tcc := tsw.NewTouchCoordConverter(screenSize)
 	touchpointX, touchpointY := tcc.ConvertLocation(inputFieldTouchPoint)
 
-	testing.ContextLog(ctx, "touch window size: ", tsw.Width(), tsw.Height())
-	testing.ContextLog(ctx, "touch position: ", input.TouchCoord(touchpointX), input.TouchCoord(touchpointY))
+	testing.ContextLog(ctx, "Touch window size: ", tsw.Width(), tsw.Height())
+	testing.ContextLog(ctx, "Touch position: ", input.TouchCoord(touchpointX), input.TouchCoord(touchpointY))
 
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
 		return errors.Wrap(err, "could not get a new TouchEventWriter")
 	}
 	defer stw.Close()
+
+	// Original view port size without virtual keyboard
+	originalViewPortSize, err := getViewPortSize(ctx, gaiaConn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get viewport size")
+	}
 
 	//TODO(b/157685907): Investigate why single touch does not trigger virtual keyboard. It requires double touch to show virtual keyboard.
 	// In manual testing, single touch can trigger virtual keyboard shown.
@@ -136,11 +143,11 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 			return errors.Wrap(err, "failed to get viewport size")
 		}
 
-		if newViewPort.Height == fullScreenSize.Height {
+		if newViewPort.Height == originalViewPortSize.Height {
 			return errors.New("Viewport has not changed yet")
-		} else if newViewPort.Height > fullScreenSize.Height {
+		} else if newViewPort.Height > originalViewPortSize.Height {
 			// This should not happen in theory
-			return testing.PollBreak(errors.Errorf(`View port is getting larger during test; got %v; want %v`, newViewPort, fullScreenSize))
+			return testing.PollBreak(errors.Errorf(`View port is getting larger during test; got %v; want %v`, newViewPort, originalViewPortSize))
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
@@ -166,11 +173,11 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 			return errors.Wrap(err, "failed to get viewport size")
 		}
 
-		if newViewPort.Height < fullScreenSize.Height {
+		if newViewPort.Height < originalViewPortSize.Height {
 			return errors.New("Viewport has not reverted to full screen yet")
-		} else if newViewPort.Height > fullScreenSize.Height {
+		} else if newViewPort.Height > originalViewPortSize.Height {
 			// This should not happen in theory
-			return testing.PollBreak(errors.Errorf(`View port is getting larger during test; got %v; want %v`, newViewPort, fullScreenSize))
+			return testing.PollBreak(errors.Errorf(`View port is getting larger during test; got %v; want %v`, newViewPort, originalViewPortSize))
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
@@ -182,9 +189,19 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 func getViewPortSize(ctx context.Context, conn *chrome.Conn) (coords.Size, error) {
 	var vpSize coords.Size
 	if err := conn.Eval(ctx, `(function() {
-		  return {'height':window.innerHeight, 'width':window.innerWidth};
+		  return {'height': window.innerHeight, 'width': window.innerWidth};
 	  })()`, &vpSize); err != nil {
 		return vpSize, errors.Wrap(err, "failed to get viewport size")
 	}
 	return vpSize, nil
+}
+
+func getScreenSize(ctx context.Context, conn *chrome.Conn) (coords.Size, error) {
+	var screenSize coords.Size
+	if err := conn.Eval(ctx, `(function() {
+		  return {'height': screen.height, 'width': screen.width};
+	  })()`, &screenSize); err != nil {
+		return screenSize, errors.Wrap(err, "failed to get viewport size")
+	}
+	return screenSize, nil
 }
