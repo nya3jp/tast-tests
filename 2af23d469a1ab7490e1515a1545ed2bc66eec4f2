@@ -22,6 +22,30 @@
       "revId": "2af23d469a1ab7490e1515a1545ed2bc66eec4f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7098c957_84334b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup_in_signed_in_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-06-02T22:21:51Z",
+      "side": 1,
+      "message": "No there is no warning.\nAlso, notice this is not a variable I added, I simply used it.\nIt is currently already used here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/assistant/open_android_app.go;l\u003d27?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nThe test name is |assistant.StartupInSignedMode|, which is consistent with the other tast tests \n\n```\n(cr) (stable/(fe780ea...)) jeroendh@jeroendh ~/trunk/src/scripts $ tast -verbose run --buildbundle cros localhost:9222 \"assistant.*\"\n2020/06/02 14:58:42 Command line: tast -verbose run --buildbundle cros localhost:9222 assistant.*\n\u003csnip\u003e\n2020/06/02 14:59:40 Started test assistant.StartupInSignedInMode\n2020/06/02 14:59:40 [14:59:40.340] Restarting ui job\n2020/06/02 14:59:48 [14:59:48.285] Clearing device owner info\n2020/06/02 14:59:48 [14:59:48.517] Asking session_manager to enable Chrome testing\n2020/06/02 14:59:48 [14:59:48.657] Waiting for Chrome to write its debugging port to /home/chronos/DevToolsActivePort\n2020/06/02 14:59:49 [14:59:49.191] Connecting to browser at ws://127.0.0.1:33325/devtools/browser/dfaec6b6-8bf8-4d77-b28d-48fc923e481f\n2020/06/02 14:59:49 [14:59:49.209] Removing cryptohome for \u003csnip\u003e@gmail.com\n2020/06/02 14:59:52 [14:59:51.894] Finding OOBE DevTools target\n2020/06/02 14:59:52 [14:59:51.895] Connecting to Chrome target D770C24EE7363B389595003520A256D0\n2020/06/02 14:59:52 [14:59:51.898] Waiting for OOBE\n2020/06/02 14:59:52 [14:59:51.900] Logging in as user \"\u003csnip\u003e@gmail.com\"\n2020/06/02 14:59:52 [14:59:51.917] Waiting for GAIA webview\n2020/06/02 14:59:54 [14:59:54.208] Connecting to Chrome target E57BF7F9FD126E4D31DE6C9618510310\n2020/06/02 14:59:54 [14:59:54.481] Performing GAIA login\n2020/06/02 14:59:57 [14:59:56.969] Waiting for cryptohome for user \"\u003csnip\u003e@gmail.com\" with timeout 30s\n2020/06/02 15:00:16 [15:00:16.543] Waiting for OOBE to be dismissed\n2020/06/02 15:00:26 [15:00:25.850] Waiting for test API extension at chrome-extension://behllobkkfkfnphdnhnkndlbkcpglgmj/_generated_background_page.html\n2020/06/02 15:00:26 [15:00:25.949] Connecting to Chrome target 3789E21140FFD1289057B79361B5C0F4\n2020/06/02 15:00:26 [15:00:26.108] Test API extension is ready\n2020/06/02 15:00:27 Completed test assistant.StartupInSignedInMode in 47.289s with 0 error(s)\n\u003csnip\u003e\n2020/06/02 15:01:15 --------------------------------------------------------------------------------\n2020/06/02 15:01:15 assistant.OpenAndroidApp          [ PASS ]\n2020/06/02 15:01:15 assistant.StartupInSignedInMode   [ PASS ]\n2020/06/02 15:01:15 assistant.OpenSettings            [ PASS ]\n2020/06/02 15:01:15 assistant.StartupInSignedOutMode  [ PASS ]\n2020/06/02 15:01:15 --------------------------------------------------------------------------------\n\n```",
+      "parentUuid": "939627a6_cf0094be",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "2af23d469a1ab7490e1515a1545ed2bc66eec4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
