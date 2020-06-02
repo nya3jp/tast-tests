@@ -104,6 +104,24 @@
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00023b7_0a0f7e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T19:14:07Z",
+      "side": 1,
+      "message": "To me this block reads as a \"fast success\" because we don\u0027t check should_fail. Perhaps that was a mistake.\n\nHowever, if these are really two sets of test modes, I would say it would be more clear to factor out the script creation and do that once at the beginning of runTestCase for each path. Then, split this function into one that deals with exec paths and one that deals with noexec paths, since the body of this function would then be almost all inside that condition other than running the script and getting its output. Then the two test modes can be clearly separated, and we don\u0027t need to pass an unused should_fail value when is_exec_path \u003d\u003d true, which threw me off when first reading this test and is IMO a bigger clarity problem.",
+      "parentUuid": "addab269_5c009929",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
