@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95e31fef_c0f4aad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T18:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a438c8e2_373f5350",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cec7aa_a9374c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "233730da_40d7ae87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T18:33:29Z",
+      "side": 1,
+      "message": "Done, using |Info|, as using package dlc will be dlc.Info.\nAlso part of checks.",
+      "parentUuid": "26cec7aa_a9374c6f",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f443f10_fc8bd253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T18:33:29Z",
+      "side": 1,
+      "message": "In golang the return types are shown above, added extra comments.",
+      "parentUuid": "39896ce3_66e6fdf2",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6991f502_0556992e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
         "patchSetId": 8
@@ -85,6 +157,24 @@
       "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a564f33_f8c33168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T18:33:29Z",
+      "side": 1,
+      "message": "Updated Desc to tast",
+      "parentUuid": "6991f502_0556992e",
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
