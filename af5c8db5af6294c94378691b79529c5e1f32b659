@@ -22,6 +22,53 @@
       "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa1b893_e2f82888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-02T00:03:28Z",
+      "side": 1,
+      "message": "If another process needs to modify the contents of the directory, 0777 should be used surely. If the other process just reads it, 0755 should be fine. It is a bit hard for me to follow how those files are used.  Maybe, I guess, it might be better to put those mkdir logic into a utility function of dlc package.",
+      "parentUuid": "5f8ec4a3_c5077e1d",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff4f76b3_8ad31bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-02T00:03:28Z",
+      "side": 1,
+      "message": "Does other processes need the write access to the file?  Otherwise it would be better to be 0644.",
+      "range": {
+        "startLine": 62,
+        "startChar": 54,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
