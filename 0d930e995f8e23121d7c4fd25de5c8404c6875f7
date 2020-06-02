@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcb5ac25_56857f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T15:26:07Z",
+      "side": 1,
+      "message": "style: could you remove \"result\" here?\nInstead at return at the end of this function, you can return a composit literal.\n\nreturn \u0026testCaseResult{\n  reloadCount: reloadCount,\n  jankyCount: jankyCount,\n  ...\n}, nil\n\n# My explanation in the previous reply may not clear enough. Sorry for miscommunication.",
+      "revId": "0d930e995f8e23121d7c4fd25de5c8404c6875f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
