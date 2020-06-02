@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01dfd137_c87257ba",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T12:43:50Z",
+      "side": 1,
+      "message": "\u003e \"reutrns\" is a possible misspelling of \"returns\".\n\nFixed.",
+      "parentUuid": "cf40e7ca_99b0f0c7",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "48c4512d3fb506ec6484a530e8bde6c2b72ce885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
