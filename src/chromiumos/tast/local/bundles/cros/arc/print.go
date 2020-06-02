@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/printpreview"
 	"chromiumos/tast/local/printing/document"
@@ -23,17 +24,6 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
-
-func waitForNotificationHidden(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "USB printer connected",
-		Role: ui.RoleTypeStaticText,
-	}
-	if err := ui.WaitUntilGone(ctx, tconn, params, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for notification to be hidden")
-	}
-	return nil
-}
 
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
@@ -188,10 +178,9 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select pages: ", err)
 	}
 
-	// Wait for the printer notification to be hidden since it overlaps the
-	// print button and prevents the button from being clicked.
-	if err := waitForNotificationHidden(ctx, tconn); err != nil {
-		s.Fatal("Failed to close printer notification: ", err)
+	// Hide all notifications to prevent them from covering the print button.
+	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide all notifications: ", err)
 	}
 
 	// Click the print button to start the print job.
