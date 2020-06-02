@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82e4a5f1_acb4661e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T09:02:14Z",
+      "side": 1,
+      "message": "Could you add TODO to replace a new appraoch?",
+      "revId": "c3c8c076880beaa7e43e941cbc36617796bef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9020c264_2f3278fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T09:02:14Z",
+      "side": 1,
+      "message": "This could cause a panic, if dialog is nil.\n\nStepping back, this defer function is getting bigger now. I\u0027d recommend to introduce a utility function. For example:\n\nfunc disableA11yFeatures(ctx context.Context) error {\n  var failedFeatures []string\n  for _, feature :\u003d range features {\n    if err :\u003d accessibility.SetFeatureEnabled(..., false); err !\u003d nil {\n      failedFeatures \u003d append(failedFeatures, feature)\n      testing.ContextLogf(ctx, \"failed disabling %s: %v\", feature, err)\n    }\n  }\n  \n  err :\u003d func() error {\n    dialog, err :\u003d ui.FindWithTimeout(...)\n    if err !\u003d nil {\n      return err\n    }\n    defer dialog.Release(ctx)\n    \n    yesButton, err :\u003d dialog.DescendantWithTimeout(...)\n    if err !\u003d nil {\n      return err\n    }\n    if yesButton.LeftClick(...); err !\u003d nil {\n      return err\n    }\n  }()\n\n  // Prioritize failures of disabling features.\n  if len(failedFeature) \u003e 0 {\n    if err !\u003d nil {\n      testing.ContextLogf(ctx, \"Failed to close dialog: \", err)\n    }\n    return errors.Errorf(\"failed to disable following features: %v\", failedFeatures)\n  }\n  return err\n}\n\nThen at L109:\n\ndefer func() {\n  if err :\u003d disableA11yFeatures(...); err !\u003d nil {\n    if retErr \u003d\u003d nil {\n      retErr \u003d err\n    } else {\n      testing.ContextLog(ctx, \"failed to disable accessibliity features: \", err)\n    }\n  }\n}()\n\nWDYT?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "c3c8c076880beaa7e43e941cbc36617796bef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
