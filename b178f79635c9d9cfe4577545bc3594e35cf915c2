@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab5b595_646b90a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-02T19:09:54Z",
+      "side": 1,
+      "message": "not related: please put init before waitForPrintPreview in the following CL. it\u0027s much easier to understand that it\u0027s test file, not a library file.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "b178f79635c9d9cfe4577545bc3594e35cf915c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
