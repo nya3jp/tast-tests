@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39964159_0843f8b9",
+        "filename": "src/chromiumos/tast/local/hwsec/fake_pca_agent_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T09:57:44Z",
+      "side": 1,
+      "message": "style: Receiver names are usually very short like f.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "fb5cd2e8ebcef4e2fb4fe957e35df60bb2fb0aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
