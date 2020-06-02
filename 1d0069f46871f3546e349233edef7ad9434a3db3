@@ -16,6 +16,24 @@
       "revId": "1d0069f46871f3546e349233edef7ad9434a3db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3163570d_8f09f8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-02T04:08:17Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "2ce51b7a_93a3975e",
+      "revId": "1d0069f46871f3546e349233edef7ad9434a3db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
