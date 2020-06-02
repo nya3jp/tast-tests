@@ -34,6 +34,7 @@ template("android_apk") {
     forward_variables_from(invoker, [
       "manifest",
       "min_sdk_version",
+      "rename_manifest_package",
       "resource_dirs",
       "target_sdk_version",
     ])
