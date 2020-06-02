@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ba07d0ea_d40abc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T01:29:19Z",
+      "side": 1,
+      "message": "Great, I added a way to set change the owner instead so it can use the same permissions as dlcservice:\nhttps://source.corp.google.com/chromeos_public/src/platform2/dlcservice/utils.cc;l\u003d63\n\ne.g. Files created as root with correct permissions, and chown -R to dlcservice:dlcservice.",
+      "parentUuid": "4fa1b893_e2f82888",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff4f76b3_8ad31bc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
         "patchSetId": 6
@@ -69,6 +93,30 @@
       "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74afd0ce_d8cb1bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T01:29:19Z",
+      "side": 1,
+      "message": "0644 used (+ chown)",
+      "parentUuid": "ff4f76b3_8ad31bc7",
+      "range": {
+        "startLine": 62,
+        "startChar": 54,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "af5c8db5af6294c94378691b79529c5e1f32b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

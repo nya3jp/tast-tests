@@ -16,6 +16,24 @@
       "revId": "9d67816590392690180126d3ba1b4a47ac157e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88eee913_fa4a9480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-02T01:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd91ec31_661a54d4",
+      "revId": "9d67816590392690180126d3ba1b4a47ac157e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
