@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb581c94_5345eebb",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T22:18:51Z",
+      "side": 1,
+      "message": "Could we skip passing s into ResetTPMStore, since we can already find it at singletonTPMStore?",
+      "range": {
+        "startLine": 111,
+        "startChar": 40,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5613e2_482c5f65",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T22:18:51Z",
+      "side": 1,
+      "message": "Support packages should avoid calling panic when errors are encountered. When a test is running, panic has the same effect as State\u0027s Fatal and Fatalf methods: the test is aborted immediately. Returning an error gives tests the ability to choose how to respond.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7665ffa9_81d62424",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T22:18:51Z",
+      "side": 1,
+      "message": "You don\u0027t need to cast to a string here; %q will do that for you.",
+      "range": {
+        "startLine": 152,
+        "startChar": 71,
+        "endLine": 152,
+        "endChar": 78
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08a4099_b8dda28f",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T22:18:51Z",
+      "side": 1,
+      "message": "You don\u0027t need to cast to a string here; %q will do that for you.",
+      "range": {
+        "startLine": 158,
+        "startChar": 69,
+        "endLine": 158,
+        "endChar": 76
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
