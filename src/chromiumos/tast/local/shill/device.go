@@ -32,7 +32,10 @@ const (
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 
 	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod = "BgscanMethod"
+	DevicePropertyWiFiBgscanMethod       = "BgscanMethod"
+	DevicePropertyMACAddrRandomEnabled   = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported = "MACAddressRandomizationSupported"
+	DevicePropertyScanning               = "Scanning" // Also for cellular.
 )
 
 // Device wraps a Device D-Bus object in shill.
