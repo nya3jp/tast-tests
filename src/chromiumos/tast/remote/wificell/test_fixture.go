@@ -449,3 +449,37 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 	}
 	return netIf.Name, nil
 }
+
+// ClientIWLinkValue returns the client iw link value of given key.
+func (tf *TestFixture) ClientIWLinkValue(ctx context.Context, iface, linkKey string) (string, error) {
+	return iw.NewRunner(tf.dut.Conn()).LinkValue(ctx, iface, linkKey)
+}
+
+// ServerSubnet returns the subnet of the WiFi server in 192.168.xx.0/24 format.
+func (tf *TestFixture) ServerSubnet() string {
+	subnet := tf.curAP.ServerSubnet()
+	return subnet.String()
+}
+
+// ClientIPv4Subnets returns the subnet of the interface of the client in 192.168.xx.0/24 format.
+func (tf *TestFixture) ClientIPv4Subnets(ctx context.Context, iface string) ([]string, error) {
+	req := &network.GetIPv4SubnetsRequest{
+		InterfaceName: iface,
+	}
+	subnets, err := tf.WifiClient().GetIPv4Subnets(ctx, req)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get ipv4 subnets")
+	}
+	return subnets.Subnets, nil
+}
+
+// DisableEnable disables and then enables the WiFi interface. This is the main body of DisableEnable test.
+// It first disables the WiFi interface and waits for the idle state; then waits for the IsConnected property after enable.
+func (tf *TestFixture) DisableEnable(ctx context.Context, iface string) error {
+	req := &network.DisableEnableRequest{
+		InterfaceName: iface,
+		ServicePath:   tf.curServicePath,
+	}
+	_, err := tf.WifiClient().DisableEnable(ctx, req)
+	return err
+}

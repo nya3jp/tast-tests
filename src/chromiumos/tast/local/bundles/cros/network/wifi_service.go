@@ -500,10 +500,94 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	return &ret, nil
 }
 
+// GetIPv4Subnets returns the IPv4 subnets for the network interface.
+func (s *WifiService) GetIPv4Subnets(ctx context.Context, iface *network.GetIPv4SubnetsRequest) (*network.GetIPv4SubnetsResponse, error) {
+	ifaceObj, err := net.InterfaceByName(iface.InterfaceName)
+	if err != nil {
+		return nil, err
+	}
+
+	addrs, err := ifaceObj.Addrs()
+	if err != nil {
+		return nil, err
+	}
+
+	var ret network.GetIPv4SubnetsResponse
+
+	for _, a := range addrs {
+		if ipnet, ok := a.(*net.IPNet); ok && ipnet.IP.To4() != nil {
+			ipnet.IP = ipnet.IP.Mask(ipnet.Mask)
+			ret.Subnets = append(ret.Subnets, ipnet.String())
+		}
+	}
+
+	return &ret, nil
+}
+
 // hexSSID converts a SSID into the format of WiFi.HexSSID in shill.
 // As in our tests, the SSID might contain non-ASCII characters, use WiFi.HexSSID
 // field for better compatibility.
 // Note: shill has the hex in upper case.
 func (s *WifiService) hexSSID(ssid []byte) string {
 	return strings.ToUpper(hex.EncodeToString(ssid))
+}
+
+// DisableEnable disables and then enables the WiFi interface. This is the main body of DisableEnable test.
+// It first disables the WiFi interface and waits for the idle state; then waits for the IsConnected property after enable.
+func (s *WifiService) DisableEnable(ctx context.Context, request *network.DisableEnableRequest) (ret *empty.Empty, retErr error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	dev, err := m.DeviceByName(ctx, request.InterfaceName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for interface %s", request.InterfaceName)
+	}
+
+	// Spawn watcher before disabling and enabling.
+	service, err := shill.NewService(ctx, dbus.ObjectPath(request.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Disable WiFi interface.
+	testing.ContextLog(ctx, "Disabling WiFi interface: ", request.InterfaceName)
+	if err := dev.Disable(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to disable WiFi device")
+	}
+	defer func() {
+		// Re-enable WiFi interface.
+		testing.ContextLog(ctx, "Enabling WiFi interface: ", request.InterfaceName)
+		if err := dev.Enable(ctx); err != nil && retErr == nil {
+			retErr = errors.Wrap(err, "failed to enable WiFi device")
+		}
+
+		// If the test has failed so far, we don't need to wait for the connnectivity.
+		if retErr != nil {
+			return
+		}
+
+		// Wait for WiFi service become connected.
+		testing.ContextLog(ctx, "Waiting for IsConnected property")
+		timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+			retErr = errors.Wrap(err, "failed to wait for IsConnected property after enabling")
+		}
+	}()
+
+	// Wait for WiFi service become idle state.
+	testing.ContextLog(ctx, "Waiting for idle state")
+	timeoutCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for idle state after disabling")
+	}
+
+	return &empty.Empty{}, nil
 }
