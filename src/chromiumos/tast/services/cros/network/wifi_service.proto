@@ -50,6 +50,10 @@ service WifiService {
 
   // AssureDisconnect assures that the WiFi service has disconnected within timeout (nanoseconds).
   rpc AssureDisconnect(AssureDisconnectRequest) returns (google.protobuf.Empty) {}
+
+  // DisableEnableTest disables and then enables the WiFi interface.
+  // This is the main body of the DisableEnable test.
+  rpc DisableEnableTest(DisableEnableTestRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -150,4 +154,9 @@ message SetBgscanMethodRequest {
 message AssureDisconnectRequest {
   string service_path = 1;
   int64 timeout = 2;
+}
+
+message DisableEnableTestRequest {
+  string interfaceName = 1;
+  string servicePath = 2;
 }
