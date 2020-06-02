@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6567231e_41bff0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T01:38:06Z",
+      "side": 1,
+      "message": "Instead of this, it might be simpler to just sort each slice of uint16 and uint32 in-place using sort.Slice and then have one function that does the equality check in place of DeepEqual below.",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 52
+      },
+      "revId": "dcd102892fde16c25979251a072913956b7d8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c883091_cb501675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T01:38:06Z",
+      "side": 1,
+      "message": "nit: blank line before this one to separate out the bit where we are checking the values from when we are waiting for new ones",
+      "revId": "dcd102892fde16c25979251a072913956b7d8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e85722e_7ebb61c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T01:38:06Z",
+      "side": 1,
+      "message": "nit: can we move this to L575 or are we required to have a return here?",
+      "revId": "dcd102892fde16c25979251a072913956b7d8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
