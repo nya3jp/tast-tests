@@ -46,6 +46,30 @@
       "revId": "0b45a8589a9578107c3d132929875218fc28b3da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d863eb_138f7406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-06-02T04:07:10Z",
+      "side": 1,
+      "message": "Hmm, I guess force-tablet-mode just forces the UI to be tablet mode UI, not actually changing to tablet mode in the OS.",
+      "parentUuid": "aa8d31f9_d4b6e367",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 75
+      },
+      "revId": "0b45a8589a9578107c3d132929875218fc28b3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
