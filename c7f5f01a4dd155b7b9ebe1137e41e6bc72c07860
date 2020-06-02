@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "644066f8_d8903b59",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T07:43:34Z",
+      "side": 1,
+      "message": "How will this be used? Because this CL does not add its actual usage, we cannot capture any regressions at any time.\n\nCould you add a simple use case with poweroff?",
+      "revId": "c7f5f01a4dd155b7b9ebe1137e41e6bc72c07860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
