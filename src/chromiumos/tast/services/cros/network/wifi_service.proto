@@ -47,6 +47,19 @@ service WifiService {
 
   // SetBgscanMethod sets the device's WiFi module's bgscan method.
   rpc SetBgscanMethod(SetBgscanMethodRequest) returns (google.protobuf.Empty) {}
+
+  // RequestScans requests shill to trigger active scans on WiFi devices.
+  rpc RequestScans(RequestScansRequest) returns (google.protobuf.Empty) {}
+
+  // SetMACRandomize sets the MAC randomization setting on the WiFi device.
+  // The original setting is returned for ease of restoring.
+  rpc SetMACRandomize(SetMACRandomizeRequest) returns (SetMACRandomizeResponse) {}
+
+  // WaitScanIdle waits for not scanning state. If there's a running scan, it can
+  // wait for it to be done with timeout 10 seconds.
+  // This is useful when the test sets some parameters regarding scans and wants
+  // to avoid noices due to not yet ended scans.
+  rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -142,4 +155,16 @@ message GetBgscanMethodResponse {
 
 message SetBgscanMethodRequest {
   string method = 1;
+}
+
+message RequestScansRequest {
+  int32 count = 1;
+}
+
+message SetMACRandomizeRequest {
+  bool enable = 1;
+}
+
+message SetMACRandomizeResponse {
+  bool old_setting = 1;
 }
