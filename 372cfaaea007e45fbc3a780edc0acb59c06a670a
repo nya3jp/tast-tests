@@ -25,6 +25,80 @@
     },
     {
       "key": {
+        "uuid": "3e04859e_cb8894b3",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-02T06:22:49Z",
+      "side": 1,
+      "message": "Would be nice to give some comment about fileSuffix and identity.",
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ae41f6_65340da8",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-02T06:22:49Z",
+      "side": 1,
+      "message": "separate server* and client*.",
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faea3a6f_979f6087",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-02T06:22:49Z",
+      "side": 1,
+      "message": "the security",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a8a6f4_8314fd6d",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-02T06:22:49Z",
+      "side": 1,
+      "message": "Can you elaborate the relationship between c.Pin and c.ClientSlotID? I don\u0027t get the predicate.",
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a45da7b_d585c40c",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 1
@@ -57,6 +131,29 @@
       "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9985858e_73cb6815",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-02T06:22:49Z",
+      "side": 1,
+      "message": "Use backtick string literal and you don\u0027t need to escape \" here.\nhttps://golang.org/ref/spec#String_literals",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
