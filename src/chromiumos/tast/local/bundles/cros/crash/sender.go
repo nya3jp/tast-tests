@@ -28,12 +28,13 @@ func init() {
 			"cros-telemetry@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "mock_consent",
 			Val:  crash.MockConsent,
