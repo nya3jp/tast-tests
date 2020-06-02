@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8f565e0b_08c77bc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-02T19:06:13Z",
+      "side": 1,
+      "message": "\u003e The Autotest version [1] uses self.context.client.timed_scan(). It uses poll_for_condition() [2]. You may refer to the iw_runner.timed_scan() [3], which just ignore device busy case.\n\nAh, thanks for the pointer. Indeed, I missed the poll_for_condition() usage. My mistake.\n\n\u003e Yes you are right, having potential failures of resource conflict is the source of test flakiness. However, what I don\u0027t quite know if how to measure \"background full scan\" if we ask shill to disable wifi technology temporary. Can you give me some hint?\n\nGood point, sorry I missed that.\n\nOne could just use the D-Bus API to start scans (Manager.RequestScan(\"wifi\")) and watch for the Device.Scanning property to move false-\u003etrue-\u003efalse.\n\nOne could also monitor wpa_supplicant directly, with something similar to \u0027wpa_mon\u0027 that Matthew was implementing for Autotest:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2166762\n\nOr even watch wpa_supplicant on D-Bus, similar to what I just noted for DisconnectReason:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1041325#c4\n\n---\n\nI guess one thing I would *not* like: for this test to use too many different mechanisms for initiating and monitoring scans. So if there aren\u0027t good ways to cover all cases without using \u0027iw ... scan\u0027, then we might just be able to stick with \u0027iw\u0027 -- polling for a succeeding case has apparently worked well enough in the past...",
+      "parentUuid": "864ae022_9883a33c",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 121
+      },
+      "revId": "35213ebb2c4597862e4f5f553acf2d38e766075d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efaccf96_921354d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 3
