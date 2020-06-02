@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cb40fe_a9a5b63a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T17:46:18Z",
+      "side": 1,
+      "message": "To avoid confusion, could you keep err at the end? E.g.\n\n\"Failed file context check for %v (matched rule %v): %v\"",
+      "revId": "41ad01cde932cca22a6015ef3a064b445cb976d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b479003_d765eb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T17:46:18Z",
+      "side": 1,
+      "message": "could you comment why this is needed to launch chrome rather than using precondition?",
+      "revId": "41ad01cde932cca22a6015ef3a064b445cb976d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c3eacd_bc3a0c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-02T17:46:18Z",
+      "side": 1,
+      "message": "Do you want to wait for ARC to be started here?",
+      "revId": "41ad01cde932cca22a6015ef3a064b445cb976d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
