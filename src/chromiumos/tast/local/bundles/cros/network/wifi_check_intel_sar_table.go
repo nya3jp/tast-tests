@@ -87,12 +87,12 @@ func getWifiVendorID(ctx context.Context, netIf string) (string, error) {
 	return strings.TrimSpace(string(vendorID)), nil
 }
 
-// getRawSARValues returns the raw SAR values contained in data under the given
-// tableKey. If the table is not found, a nil table will be returned without an
-// error, since it is not necessarily an error for a table to be missing. If we
-// encounter an error while parsing the table, return a nil table alongside the
-// error itself.
-func getRawSARValues(data []byte, tableKey string) ([]int64, error) {
+// getRawSARValuesAndCheckVersion returns the raw SAR values contained in data
+// under the given tableKey. If the table is not found, a nil table will be returned
+// without an error, since it is not necessarily an error for a table to be missing.
+// If we encounter an error while parsing the table, or the version number is not valid,
+// return a nil table alongside the error itself.
+func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions []int64) ([]int64, error) {
 	dataString := string(data)
 	// Remove spaces and newlines from from data to make parsing easier.
 	dataString = strings.Replace(dataString, "\n", "", -1)
@@ -105,6 +105,20 @@ func getRawSARValues(data []byte, tableKey string) ([]int64, error) {
 	}
 
 	startIndex := strings.Index(dataString[keyIndex:], "{") + keyIndex + 1
+	sarVersion := dataString[startIndex : startIndex+strings.Index(dataString[startIndex:], ",")]
+	intVersion, err := strconv.ParseInt(sarVersion, 0, 64)
+	if err != nil {
+		return nil, err
+	}
+	validVersion := false
+	for _, version := range validVersions {
+		if intVersion == version {
+			validVersion = true
+		}
+	}
+	if !validVersion {
+		return nil, errors.Errorf("invalid SAR version number %x for table %s", intVersion, tableKey)
+	}
 	startIndex = strings.Index(dataString[startIndex:], "{") + startIndex + 1
 	endIndex := strings.Index(dataString[startIndex:], "}") + startIndex
 	values := strings.Split(dataString[startIndex:endIndex], ",")
@@ -154,7 +168,8 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	//                }
 	//            })
 	//
-	values, err := getRawSARValues(data, "WGDS")
+	validGeoSARVersions := []int64{0x00, 0x01}
+	values, err := getRawSARValuesAndCheckVersion(data, "WGDS", validGeoSARVersions)
 	if values == nil {
 		// If the GEO table was not found, err will be nil.
 		return nil, err
