@@ -40,5 +40,5 @@ func TestTimeout(t *gotesting.T) {
 }
 
 func TestSoftwareDeps(t *gotesting.T) {
-	testcheck.SoftwareDeps(t, testcheck.Glob(t, pattern), []string{"chrome", "android_vm_p_deprecated|android_vm|android_vm_r|android_p|arc"})
+	testcheck.SoftwareDeps(t, testcheck.Glob(t, pattern), []string{"chrome", "android_vm|android_vm_r|android_p|arc"})
 }

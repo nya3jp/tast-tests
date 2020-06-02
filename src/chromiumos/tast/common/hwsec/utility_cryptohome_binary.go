@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"
@@ -657,29 +658,61 @@ func parseTokenStatus(cmdOutput string) (returnedLabel, returnedPin string, retu
 	return params["Label"], params["Pin"], slot, nil
 }
 
-// GetTokenForUser retrieve the token slot for the user token if username is non-empty, or system token if username is empty.
-func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+// GetTokenInfoForUser retrieve the token label, pin and slot for the user token if username is non-empty, or system token if username is empty.
+func (u *UtilityCryptohomeBinary) GetTokenInfoForUser(ctx context.Context, username string) (returnedLabel, returnedPin string, returnedSlot int, returnedErr error) {
 	cmdOutput := ""
 	if username == "" {
 		// We want the system token.
 		out, err := u.binary.Pkcs11SystemTokenInfo(ctx)
 		cmdOutput = string(out)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to get system token info %q", cmdOutput)
+			return "", "", -1, errors.Wrapf(err, "failed to get system token info %q", cmdOutput)
 		}
 	} else {
 		// We want the user token.
 		out, err := u.binary.Pkcs11UserTokenInfo(ctx, username)
 		cmdOutput = string(out)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
+			return "", "", -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
 		}
 	}
-	_, _, slot, err := parseTokenStatus(cmdOutput)
+	label, pin, slot, err := parseTokenStatus(cmdOutput)
 	if err != nil {
-		return -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
+		return "", "", -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
 	}
-	return slot, nil
+	return label, pin, slot, nil
+}
+
+// GetTokenForUser retrieve the token slot for the user token if username is non-empty, or system token if username is empty.
+func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+	_, _, slot, err := u.GetTokenInfoForUser(ctx, username)
+	return slot, err
+}
+
+// WaitForUserToken wait until the user token for the specified user is ready. Otherwise, return an error if the token is still unavailable.
+func (u *UtilityCryptohomeBinary) WaitForUserToken(ctx context.Context, username string) error {
+	const waitForUserTokenTimeout = 15 * time.Second
+
+	if username == "" {
+		// This method is for user token, not system token.
+		// Note: For those who want to wait for system token, system token is always ready, no need to wait.
+		return errors.New("empty username in WaitForUserToken")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		slot, err := u.GetTokenForUser(ctx, username)
+		if err != nil {
+			// This is unexpected and shouldn't usually happen.
+			return testing.PollBreak(errors.Wrapf(err, "failed to get slot ID for username %q", username))
+		}
+		if slot <= 0 {
+			return errors.Wrapf(err, "invalid slot ID %d for username %q", slot, username)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: waitForUserTokenTimeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for user token")
+	}
+	return nil
 }
 
 // FWMPError is a custom error type that conveys the error as well as parsed

@@ -35,7 +35,11 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
-	defer app.RemoveCacheData(ctx, []string{"toggleTimer"})
+	defer (func() {
+		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
+			s.Error("Failed with javascript errors: ", err)
+		}
+	})()
 
 	testing.ContextLog(ctx, "Switch to video mode")
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {

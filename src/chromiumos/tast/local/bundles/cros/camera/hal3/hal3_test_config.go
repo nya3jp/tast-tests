@@ -6,7 +6,7 @@ package hal3
 
 // TestConfig is the config for HAL3 tests.
 type TestConfig struct {
-	// CameraHALs is an list of camera HALs to test, such as "usb".  If
+	// CameraHALs is a list of camera HALs to test, such as "usb".  If
 	// unspecified, all available camera HALs would be tested.
 	CameraHALs []string
 	// CameraFacing is the facing of the camera to test, such as "front" or
@@ -29,6 +29,11 @@ type TestConfig struct {
 	ForceJPEGHWDec bool
 	// OutDir is where the test result will be written into.
 	OutDir string
+	// ConnectToCameraService is the flag to connect to the cros-camera service,
+	// instead of loading camera HALs.
+	ConnectToCameraService bool
+	// PortraitModeTestData is the portrait mode test data to be downloaded.
+	PortraitModeTestData string
 }
 
 // DeviceTestConfig returns test config for running HAL3Device test.
@@ -115,5 +120,16 @@ func StreamTestConfig(outDir string) TestConfig {
 	return TestConfig{
 		GtestFilter: "Camera3StreamTest/*",
 		OutDir:      outDir,
+	}
+}
+
+// PortraitModeTestConfig returns test config for running HAL3PortraitMode test.
+func PortraitModeTestConfig(outDir string, generatePerfLog bool, portraitModeTestFile string) TestConfig {
+	return TestConfig{
+		GtestFilter:            "Camera3FrameTest/Camera3PortraitModeTest.*",
+		ConnectToCameraService: true,
+		GeneratePerfLog:        generatePerfLog,
+		PortraitModeTestData:   portraitModeTestFile,
+		OutDir:                 outDir,
 	}
 }

@@ -32,14 +32,16 @@ service WifiService {
 
   // QueryService queries shill service information.
   rpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}
+
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
 }
 
 message ConnectRequest {
-  string ssid = 1;
+  bytes ssid = 1;
   // hidden denotes that if the SSID is hidden.
   bool hidden = 2;
   // security is the SecurityClass (defined in shill/service.go) of the WiFi
@@ -66,7 +68,7 @@ message DisconnectRequest {
 }
 
 message DeleteEntriesForSSIDRequest {
-  string ssid = 1;
+  bytes ssid = 1;
 }
 
 message QueryServiceRequest {
@@ -74,7 +76,23 @@ message QueryServiceRequest {
 }
 
 message QueryServiceResponse {
-  bool hidden = 1;
+  message Wifi {
+    string bssid = 1;
+    bool ft_enabled = 2;
+    uint32 frequency = 3;
+    repeated uint32 frequency_list = 4;
+    string hex_ssid = 5;
+    bool hidden_ssid = 6;
+    uint32 phy_mode = 7;
+  }
+  string name = 1;
+  string device = 2;
+  string type = 3;
+  string mode = 4;
+  string state = 5;
+  bool visible = 6;
+  bool is_connected = 7;
+  Wifi wifi = 8;
 }
 
 message GetInterfaceResponse {

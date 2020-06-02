@@ -34,7 +34,7 @@ func init() {
 			"chromeos-storage@google.com",
 			"cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"pstore"},
+		SoftwareDeps: []string{"encrypted_reboot_vault", "pstore"},
 		Params: []testing.Param{{
 			Name: "pre_oobe_collection",
 			Val: ephemeralCollectionParams{
@@ -81,7 +81,7 @@ func createEphemeralCrashReport(ctx context.Context, crashDir, crashName string)
 
 // runEphemeralCollector runs the ephemeral crash collector.
 func runEphemeralCollector(ctx context.Context, preserveAcrossClobber bool) error {
-	args := []string{"/sbin/crash_reporter", "--ephemeral_collect", "--log_to_stderr"}
+	args := []string{"/sbin/crash_reporter", "--ephemeral_collect"}
 	if preserveAcrossClobber {
 		args = append(args, "--preserve_across_clobber")
 	}
@@ -105,7 +105,7 @@ func expectCrashReport(ctx context.Context, crashDir, crashName string, expectEx
 	exists := err == nil
 
 	if exists != expectExists {
-		return errors.Errorf("existence check for crash %s failed: Expected: (%v); Actual (%v)", crashPath, exists, !os.IsNotExist(err))
+		return errors.Errorf("existence check for crash %s failed: Expected: (%v); Actual (%v)", crashPath, expectExists, !os.IsNotExist(err))
 	}
 
 	// If the file should exist, check the contents.
@@ -176,7 +176,9 @@ func EphemeralCrashCollector(ctx context.Context, s *testing.State) {
 	// Set up chrome for testing ephemeral collection without consent.
 	if params.consentType == crash.RealConsent {
 		var opts []chrome.Option
-		if !params.oobeComplete {
+		if params.oobeComplete {
+			opts = append(opts, chrome.DontSkipOOBEAfterLogin())
+		} else {
 			opts = append(opts, chrome.NoLogin())
 		}
 

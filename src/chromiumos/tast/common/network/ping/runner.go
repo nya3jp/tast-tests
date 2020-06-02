@@ -86,12 +86,17 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 
 	output, err := r.cmd.Output(ctx, command, args...)
 
-	if err != nil {
-		return nil, errors.Wrap(err, "ping command failed")
-	} else if len(output) == 0 {
-		return nil, errors.New("ping returns empty stdout")
+	// ping will return non-zero value when no reply received. It would
+	// be convenient if the caller can distinguish the case from command
+	// error. Always try to parse the output here.
+	res, parseErr := parseOutput(string(output))
+	if parseErr != nil {
+		if err != nil {
+			return nil, err
+		}
+		return nil, parseErr
 	}
-	return parseOutput(string(output))
+	return res, nil
 }
 
 // BindAddress returns an Option that can be passed to Ping to disallow ping
@@ -180,6 +185,15 @@ func parseOutput(out string) (*Result, error) {
 	loss, err := strconv.ParseFloat(m[1], 64)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse loss=%q to float", m[1])
+	}
+
+	if recv == 0 {
+		// No received reply to have statistics, early return.
+		return &Result{
+			Sent:     sent,
+			Received: recv,
+			Loss:     loss,
+		}, nil
 	}
 
 	m = statRE.FindStringSubmatch(out)

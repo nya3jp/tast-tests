@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	screenshotCR "chromiumos/tast/local/screenshot"
@@ -1155,14 +1156,14 @@ func testMaximize(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity
 	middleCaptionLoc := coords.NewPoint(
 		int(float64(bounds.Top+5)/dispMode.DeviceScaleFactor),
 		int(float64(bounds.Left+bounds.Width/2)/dispMode.DeviceScaleFactor))
-	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+	if err := mouse.Click(ctx, tconn, middleCaptionLoc, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click window caption the first time")
 	}
 
 	if err := testing.Sleep(ctx, doubleClickGap); err != nil {
 		return errors.Wrap(err, "failed to wait for the gap between the double click")
 	}
-	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+	if err := mouse.Click(ctx, tconn, middleCaptionLoc, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click window caption the second time")
 	}
 

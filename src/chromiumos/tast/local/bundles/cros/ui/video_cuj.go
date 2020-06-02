@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -127,15 +128,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for <video> tag to show up.
-	if err := ytConn.WaitForExpr(ctx,
-		`(function() {
-			  var v = document.querySelector("video");
-				if (!v)
-				  return false;
-				var bounds = v.getBoundingClientRect();
-				return bounds.x >= 0 && bounds.y >= 0 &&
-				       bounds.width > 0 && bounds.height > 0;
-			})()`); err != nil {
+	if err := webutil.WaitForYoutubeVideo(ctx, ytConn, 0); err != nil {
 		s.Fatal("Failed to wait for video element: ", err)
 	}
 

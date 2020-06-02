@@ -54,17 +54,17 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("AP setup done")
 
-	if err := tf.ConnectWifi(ctx, ap); err != nil {
+	if err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 	defer func() {
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 		}
 	}()
 	s.Log("Connected")
 
-	if err := tf.PingFromDUT(ctx); err != nil {
+	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 

@@ -10,13 +10,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/godbus/dbus"
-
 	rppb "chromiumos/system_api/runtime_probe_proto"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +36,8 @@ func init() {
 // "hwid_component:<network type>/") from autotest_host_info_labels var which
 // is a json string of list of cros-labels.  After collecting network names,
 // this function will return a map of set containing them by network type.
-func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) {
+// Since we need the model name for component group, here we return it as well.
+func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, string, error) {
 	const modelPrefix = "model:"
 	mapping := make(map[string]map[string]struct{})
 	for _, networkType := range networkTypes {
@@ -49,7 +46,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 
 	var labels []string
 	if err := json.Unmarshal([]byte(jsonStr), &labels); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 	// Find the model name of this DUT.
 	var model string
@@ -60,7 +57,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 		}
 	}
 	if len(model) == 0 {
-		return nil, errors.New("no model found")
+		return nil, "", errors.New("no model found")
 	}
 
 	// Filter labels with prefix "hwid_component:<network type>/" and trim them.
@@ -75,47 +72,7 @@ func networkNameMapping(jsonStr string) (map[string]map[string]struct{}, error) 
 		}
 	}
 
-	return mapping, nil
-}
-
-// networkComponents uses D-Bus call to get network components from runtime_probe.
-// Currently only users |chronos| and |debugd| are allowed to call this D-Bus function.
-func networkComponents(ctx context.Context) ([]*rppb.Network, error) {
-	const (
-		// Define the D-Bus constants here.
-		// Note that this is for the reference only to demonstrate how
-		// to use dbusutil. For actual use, session_manager D-Bus call
-		// should be performed via
-		// chromiumos/tast/local/session_manager package.
-		jobName       = "runtime_probe"
-		dbusName      = "org.chromium.RuntimeProbe"
-		dbusPath      = "/org/chromium/RuntimeProbe"
-		dbusInterface = "org.chromium.RuntimeProbe"
-		dbusMethod    = dbusInterface + ".ProbeCategories"
-	)
-
-	if err := upstart.EnsureJobRunning(ctx, jobName); err != nil {
-		return nil, errors.Wrap(err, "runtime probe is not running")
-	}
-	defer upstart.StopJob(ctx, jobName)
-
-	conn, obj, err := dbusutil.ConnectPrivateWithAuth(ctx, sysutil.ChronosUID, dbusName, dbus.ObjectPath(dbusPath))
-	if err != nil {
-		return nil, err
-	}
-	defer conn.Close()
-
-	request := rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_network,
-		},
-	}
-	result := rppb.ProbeResult{}
-
-	if err := dbusutil.CallProtoMethod(ctx, obj, dbusMethod, &request, &result); err != nil {
-		return nil, errors.Wrapf(err, "failed to call method %s", dbusMethod)
-	}
-	return result.GetNetwork(), nil
+	return mapping, model, nil
 }
 
 // CrosRuntimeProbeNetwork checks if the network names in cros-label are
@@ -126,18 +83,29 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 		s.Fatal("No network labels")
 	}
 
-	mapping, err := networkNameMapping(labelsStr)
+	mapping, model, err := networkNameMapping(labelsStr)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
 
-	probedNetworkComponents, err := networkComponents(ctx)
+	request := &rppb.ProbeRequest{
+		Categories: []rppb.ProbeRequest_SupportCategory{
+			rppb.ProbeRequest_network,
+		},
+	}
+	result, err := runtimeprobe.Probe(ctx, request)
 	if err != nil {
 		s.Fatal("Cannot get network components: ", err)
 	}
+	probedNetworkComponents := result.GetNetwork()
 
 	for _, component := range probedNetworkComponents {
 		name := component.GetName()
+		if info := component.GetInformation(); info != nil {
+			if compGroup := info.GetCompGroup(); compGroup != "" {
+				name = model + "_" + compGroup
+			}
+		}
 		values := component.GetValues()
 		networkType := values.GetType()
 		if name == "generic" {

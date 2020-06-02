@@ -48,11 +48,19 @@ func init() {
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 10 * time.Minute,
-		// TODO(b/154164168): reenable for ARCVM
+		// Note that arc.DataCollector is not a simple test. It collects data used to
+		// produce test and release images. Not collecting this data leads to performance
+		// regression and failure of other tests. Please consider fixing the issue rather
+		// then disabling this in Android PFQ. At this time missing the data is allowed
+		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               false,
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               true,
 		}},
 		Vars: []string{
 			"arc.DataCollector.UreadaheadService_username",
@@ -123,6 +131,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		// Name of the pack in case of provisioned boot.
 		provisionedPack = "provisioned_pack"
+
+		// Name of gsutil
+		gsUtil = "gsutil"
 	)
 
 	d := s.DUT()
@@ -156,7 +167,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		gsURL := remoteURL(bucket, v)
-		if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
+		if err := exec.Command(gsUtil, "stat", gsURL).Run(); err != nil {
 			return true
 		}
 
@@ -170,11 +181,22 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		// Use gsutil command to upload the file to the server.
 		testing.ContextLogf(ctx, "Uploading %q to the server", gsURL)
-		if out, err := exec.Command("gsutil", "copy", src, gsURL).CombinedOutput(); err != nil {
+		if out, err := exec.Command(gsUtil, "copy", src, gsURL).CombinedOutput(); err != nil {
 			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
 		}
 
 		testing.ContextLogf(ctx, "Uploaded %q to the server", gsURL)
+
+		// AllUsers read access is considered safe for two reasons.
+		// First, this data is included into the image unmodified.
+		// Second, we already practice setting this permission for other Android build
+		// artifacts. For example from APPS bucket.
+		if out, err := exec.Command(gsUtil, "acl", "ch", "-u", "AllUsers:READ", gsURL).CombinedOutput(); err != nil {
+			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
+		}
+
+		testing.ContextLogf(ctx, "Set read permission for  %q", gsURL)
+
 		return nil
 	}
 

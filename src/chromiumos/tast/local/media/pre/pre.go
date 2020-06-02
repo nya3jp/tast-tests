@@ -7,31 +7,45 @@ package pre
 
 import (
 	"strings"
+	"sync"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 )
 
-// ChromeVideo returns a precondition that makes sure Chrome is started with
-// video tests-specific flags and is already logged in when a test is run. This
-// precondition must not be used for performance tests, as verbose logging might
-// affect the performance.
+// ChromeVideo returns a precondition with Chrome started and logging enabled.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled on
-// x% of devices depending on the branch, so we need to use both enable and
-// disable flags to garantuee correct behavior. Once the feature is always
-// enabled we can remove the "--enable-features" flag on chromeVDArgs.
-var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
+var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs)
+
+var alternateVideoDecoderPre testing.Precondition
+var alternateVideoDecoderOnce sync.Once
+
+// ChromeAlternateVideoDecoder returns a precondition with flags selecting the
+// alternate hardware accelerated video decoder implementation. Chrome has two
+// said implementations: a "legacy" one (VDA-based) and a "new" (VD-based) one.
+// Selecting one or the other depends on the hardware and is ultimately
+// determined by the overlays/ flags. Tests should be centered on what the users
+// see, hence most of the testing should use ChromeVideo(), with a few test
+// cases using this alternate precondition.
+func ChromeAlternateVideoDecoder() testing.Precondition {
+	alternateVideoDecoderOnce.Do(func() {
+		if graphics.IsNewVideoDecoderDisabled() {
+			alternateVideoDecoderPre = chrome.NewPrecondition("alternateVideo", chromeVModuleArgs, chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"))
+		} else {
+			alternateVideoDecoderPre = chrome.NewPrecondition("alternateVideo", chromeVModuleArgs, chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
+		}
+	})
+	return alternateVideoDecoderPre
+}
 
 // ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo but
 // forcing login as a guest, which is known to be different from a "normal"
 // user in, at least, the flag set used.
 func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGuestLoginPre }
 
-var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"), chrome.GuestLogin())
+var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs, chrome.GuestLogin())
 
 // ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
 // also enabling the HDR screen if present.
@@ -94,16 +108,6 @@ func ChromeWindowCapture() testing.Precondition { return chromeWindowCapturePre 
 
 var chromeWindowCapturePre = chrome.NewPrecondition("windowCapturePre",
 	chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`))
-
-// ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
-// In addition this precondition specifies that the new
-// media::VideoDecoder-based video decoders need to used (see go/vd-migration).
-// This precondition must not be used for performance tests, as verbose logging
-// might affect the performance.
-func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
-
-var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeVModuleArgs,
-	chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"))
 
 // ChromeVideoWithSWDecoding returns a precondition similar to ChromeVideo,
 // specified above, and making sure Chrome does not use any potential hardware

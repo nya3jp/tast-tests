@@ -12,8 +12,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/cryptohome/disk"
+	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -72,7 +73,7 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 			return "", errors.Wrap(err, "folder not created")
 		}
 
-		fillFile, err := disk.Fill(filepath.Join(userHome, hash, dir), size)
+		fillFile, err := cleanup.Fill(filepath.Join(userHome, hash, dir), size)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to fill space")
 		}
@@ -91,7 +92,7 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 	}
 
 	// Stay above trigger for cleanup
-	fillFile, err := disk.FillUntil(userHome, startingFreeSpace)
+	fillFile, err := cleanup.FillUntil(userHome, startingFreeSpace)
 	if err != nil {
 		s.Fatal("Failed to fill space: ", err)
 	}

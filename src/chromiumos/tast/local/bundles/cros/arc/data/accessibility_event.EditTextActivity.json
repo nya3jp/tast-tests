@@ -18,7 +18,11 @@
         {
             "ClassName": "android.widget.EditText",
             "Name": "contentDescription",
-            "Role": "textField"
+            "Role": "textField",
+            "Attributes":
+            {
+                "value": "a"
+            }
         },
         "Event": {
             "type_": "textChanged",

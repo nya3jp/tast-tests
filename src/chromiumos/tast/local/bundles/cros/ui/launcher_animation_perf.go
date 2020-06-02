@@ -11,13 +11,17 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	lacroslauncher "chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,8 +31,18 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          ash.LoggedInWith100DummyApps(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: lacros.ChromeTypeChromeOS,
+			Pre: ash.LoggedInWith100DummyApps(),
+		}, {
+			Name:      "lacros",
+			Val:       lacros.ChromeTypeLacros,
+			Pre:       lacroslauncher.StartedByDataWith100DummyApps(),
+			ExtraData: []string{lacroslauncher.DataArtifact},
+			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+		}},
 	})
 }
 
@@ -87,7 +101,12 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input
 }
 
 func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacrostest.CloseLacrosChrome(ctx, l)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -115,9 +134,27 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
-		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
+		// Call Setup again in case the previous test closed all Lacros windows.
+		cr, l, cs, err = lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
+		}
+		// Maximize all windows to ensure a consistent state.
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			_, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize)
+			return err
+		}); err != nil {
+			s.Fatal("Failed to maximize windows: ", err)
+		}
+
+		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+				s.Fatal("Failed to close about:blank: ", err)
+			}
 		}
 		if err := conns.Close(); err != nil {
 			s.Error("Failed to close the connection to chrome")

@@ -6,8 +6,9 @@ package ui
 
 import (
 	"context"
-	"regexp"
-	"strconv"
+	"io/ioutil"
+	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
@@ -49,29 +50,27 @@ func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
 
 func testAssistantSimpleMathQuery(ctx context.Context, s *testing.State, tconn *chrome.TestConn) {
 	s.Log("Sending math query to the Assistant")
-	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "13 + 52 =")
+	// As the query result will be parsed from the HTML string, a special number is needed to
+	// be distinguished from other numeric components contained in the HTML.
+	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "-214.5 - 785.4 =")
 	if err != nil {
 		s.Fatal("Failed to get Assistant math query response: ", err)
 	}
 
 	s.Log("Verifying the math query result")
-	fallback := queryStatus.QueryResponse.Fallback
-	if fallback == "" {
-		s.Fatal("No response sent back from Assistant")
+	html := queryStatus.QueryResponse.HTML
+	if html == "" {
+		s.Fatal("No HTML response sent back from Assistant")
 	}
 
-	// Parses the numeric components from the fallback string.
-	re := regexp.MustCompile(`(\d{2})`)
-	match := re.FindString(fallback)
-	if match == "" {
-		s.Fatalf("Fallback string (%v) didn't contain any two-digit numbers", fallback)
-	}
-	result, err := strconv.Atoi(match)
-	if err != nil {
-		s.Fatalf("Failed to convert %v to int type: %v", match, err)
-	}
-
-	if result != 65 {
-		s.Fatalf("Assistant gave the wrong answer: got %d; want 65", result)
+	// The HTML string should contain the answer of the math query.
+	if !strings.Contains(html, "-999.9") {
+		// Writes the HTML response to logName file for debugging if no matching results found.
+		const logName = "math_query_html_response.txt"
+		s.Log("No matching results found. Try to log the HTML response to ", logName)
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), logName), []byte(html), 0644); err != nil {
+			s.Logf("Failed to log response to %s: %v", logName, err)
+		}
+		s.Fatal("HTML response doesn't contain the answer of the math query")
 	}
 }

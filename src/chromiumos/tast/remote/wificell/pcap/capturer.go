@@ -152,10 +152,10 @@ func (c *Capturer) close(ctx context.Context) error {
 	// Wait for the bg routine to end before closing files.
 	c.wg.Wait()
 	if c.stderrFile != nil {
-		c.stdoutFile.Close()
+		c.stderrFile.Close()
 	}
 	if c.stdoutFile != nil {
-		c.stderrFile.Close()
+		c.stdoutFile.Close()
 	}
 	return err
 }

@@ -52,7 +52,6 @@ func init() {
 				username:     "arc.AuthPerf.unmanaged_username",
 				password:     "arc.AuthPerf.unmanaged_password",
 				resultSuffix: "",
-				chromeArgs:   []string{},
 			},
 		}, {
 			Name:              "unmanaged_vm",
@@ -61,7 +60,6 @@ func init() {
 				username:     "arc.AuthPerf.unmanaged_username",
 				password:     "arc.AuthPerf.unmanaged_password",
 				resultSuffix: "",
-				chromeArgs:   []string{"--enable-arcvm"},
 			},
 		}, {
 			Name:              "managed",
@@ -70,7 +68,6 @@ func init() {
 				username:     "arc.AuthPerf.managed_username",
 				password:     "arc.AuthPerf.managed_password",
 				resultSuffix: "_managed",
-				chromeArgs:   []string{},
 			},
 		}, {
 			Name:              "managed_vm",
@@ -79,7 +76,6 @@ func init() {
 				username:     "arc.AuthPerf.managed_username",
 				password:     "arc.AuthPerf.managed_password",
 				resultSuffix: "_managed",
-				chromeArgs:   []string{"--enable-arcvm"},
 			},
 		}},
 		Vars: []string{
@@ -117,9 +113,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar(param.username)
 	password := s.RequiredVar(param.password)
 
-	extraArgs := param.chromeArgs
 	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
-	args = append(args, extraArgs...)
 
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),

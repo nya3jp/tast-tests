@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -330,7 +331,7 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 	}
 
 	// Press the arrow button.
-	if err := MouseClick(ctx, tconn, buttonBounds.CenterPoint(), LeftButton); err != nil {
+	if err := mouse.Click(ctx, tconn, buttonBounds.CenterPoint(), mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to trigger the scroll animation by clicking at the arrow button")
 	}
 

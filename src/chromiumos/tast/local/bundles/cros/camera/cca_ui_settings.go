@@ -36,8 +36,11 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
-	defer app.RemoveCacheData(ctx,
-		[]string{"toggle3sec", "toggle10sec", "toggle3x3", "toggle4x4", "toggleGolden"})
+	defer (func() {
+		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
+			s.Error("Failed with javascript errors: ", err)
+		}
+	})()
 
 	if err := app.ClickWithSelector(ctx, "#open-settings"); err != nil {
 		s.Fatal("Failed to click settings button: ", err)

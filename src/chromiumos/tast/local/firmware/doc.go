@@ -3,4 +3,5 @@
 // found in the LICENSE file.
 
 // Package firmware contains local functions to support firmware tests.
+// Reviews for this package can be sent to tast-fw-library-reviewers@ (before tast-owners@ review).
 package firmware

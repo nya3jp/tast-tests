@@ -39,6 +39,17 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+
+	ali := hwseclocal.NewAttestationLocalInfra(hwsec.NewDaemonController(r))
+	if err := ali.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable local test infra feature: ", err)
+	}
+	defer func() {
+		if err := ali.Disable(ctx); err != nil {
+			s.Error("Failed to disable local test infra feature: ", err)
+		}
+	}()
+
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
 	}
@@ -47,7 +58,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestaionTest(utility, hwsec.DefaultPCA)
+	at := hwsec.NewAttestaionTestWith(utility, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
 	for _, param := range []struct {
 		name  string
 		async bool
@@ -123,8 +134,10 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to enroll device: ", err)
 			}
 
-			if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
-				s.Fatal("Failed to sign enterprise challenge: ", err)
+			if username != "" {
+				if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
+					s.Fatal("Failed to sign enterprise challenge: ", err)
+				}
 			}
 
 			if err := at.SignSimpleChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {

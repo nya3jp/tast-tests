@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_HP_20200512.ppd",
+  "size": 210346,
+  "sha256sum": "233e031100bf0085ea0dfd9f8c9af65904fab54f987ec87268a861f40c8b6d2c"
+}

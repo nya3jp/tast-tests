@@ -7,6 +7,7 @@ package wifi
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wep"
@@ -84,6 +85,13 @@ func init() {
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus)}},
 				},
 			}, {
+				// This test verifies that DUT can connect to an open 802.11n network on 5 GHz channel with short guard intervals enabled (both 20/40 Mhz).
+				Name: "80211nsgi",
+				Val: []simpleConnectTestcase{
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)}},
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)}},
+				},
+			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 60 with a channel width of 20MHz.
 				Name: "80211acvht20",
 				Val: []simpleConnectTestcase{
@@ -124,7 +132,7 @@ func init() {
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
-				// Verifies that DUT can connect to an hidden network on 2.4GHz and 5GHz channels.
+				// Verifies that DUT can connect to a hidden network on 2.4GHz and 5GHz channels.
 				Name: "hidden",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(6), ap.Hidden()}},
@@ -132,7 +140,7 @@ func init() {
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()}},
 				},
 			}, {
-				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 40-bit pre-shared keys.
+				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
 				Name: "wep40",
 				Val: []simpleConnectTestcase{
 					{
@@ -169,7 +177,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 104-bit pre-shared keys.
+				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
 				Name: "wep104",
 				Val: []simpleConnectTestcase{
 					{
@@ -206,7 +214,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
+				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
 				Name: "wephidden",
 				Val: []simpleConnectTestcase{
 					{
@@ -227,7 +235,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with TKIP.
 				Name: "wpatkip",
 				Val: []simpleConnectTestcase{
 					{
@@ -239,7 +247,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with AES based CCMP.
 				Name: "wpaccmp",
 				Val: []simpleConnectTestcase{
 					{
@@ -251,8 +259,8 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
-				Name: "wpamuti",
+				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpamulti",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -263,7 +271,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
 				Name: "wpa2tkip",
 				Val: []simpleConnectTestcase{
 					{
@@ -275,7 +283,20 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
+				// In addition, the client must also support 802.11w protected management frames.
+				Name: "wpa2pmf",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
 				Name: "wpa2",
 				Val: []simpleConnectTestcase{
 					{
@@ -287,7 +308,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				// Verifies that DUT can connect to a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
 				Name: "wpamixed",
 				Val: []simpleConnectTestcase{
 					{
@@ -300,7 +321,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
 				Name: "wpavht80",
 				Val: []simpleConnectTestcase{
 					{
@@ -316,7 +337,7 @@ func init() {
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
-				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
 				Name: "wpaoddpassphrase",
 				Val: []simpleConnectTestcase{
 					{
@@ -363,7 +384,7 @@ func init() {
 					},
 				},
 			}, {
-				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				// Verifies that DUT can connect to a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
 				Name: "wpahidden",
 				Val: []simpleConnectTestcase{
 					{
@@ -395,6 +416,55 @@ func init() {
 							wpa.Ciphers2(wpa.CipherCCMP),
 						),
 					},
+				},
+			}, {
+				// Verifies that DUT can connect to a WPA network using a raw PMK value instead of an ASCII passphrase.
+				Name: "raw_pmk",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							strings.Repeat("0123456789abcdef", 4), // length = 64.
+							wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an open network on a DFS channel.
+				// DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.
+				// See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels
+				Name: "dfs",
+				Val: []simpleConnectTestcase{
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)}},
+				},
+			}, {
+				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
+				Name: "ssid_limits",
+				Val: []simpleConnectTestcase{
+					{apOpts: wificell.CommonAPOptions(ap.SSID("a"))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
+				},
+			}, {
+				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
+				Name: "non_ascii_ssid",
+				Val: []simpleConnectTestcase{
+					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
+					// end to keep the coverage.
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(1, 31) + "\x00"))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(32, 63)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(64, 95)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(96, 127)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(128, 159)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(160, 191)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(192, 223)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(224, 255)))},
+					// Valid Unicode characters.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd"))},
+					// Single extended ASCII character (a-grave).
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe0"))},
+					// Mix of ASCII and Unicode characters as SSID.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
 				},
 			},
 		},
@@ -440,14 +510,14 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		if err := tf.ConnectWifiAP(ctx, ap); err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
 			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
@@ -455,7 +525,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		s.Log("Connected")
 
 		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx)
+			return tf.PingFromDUT(ctx, ap.ServerIP().String())
 		}
 
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
@@ -468,8 +538,8 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			s.Fatal("Failed to get the WiFi service information from DUT, err: ", err)
 		}
 
-		if serInfo.Hidden != ap.Config().Hidden {
-			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Hidden, ap.Config().Hidden)
+		if serInfo.Wifi.HiddenSsid != ap.Config().Hidden {
+			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, ap.Config().Hidden)
 		}
 
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
@@ -496,6 +566,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 func wep40Keys() []string {
 	return []string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}
 }
+
 func wep104Keys() []string {
 	return []string{
 		"0123456789abcdef0123456789", "mlk:ihgfedcba",
@@ -503,12 +574,29 @@ func wep104Keys() []string {
 		"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3",
 	}
 }
+
 func wep40KeysHidden() []string {
 	return []string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}
 }
+
 func wep104KeysHidden() []string {
 	return []string{
 		"0123456789abcdef0123456789", "89abcdef0123456789abcdef01",
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
+}
+
+// byteSequenceStr generates a string from the slice of bytes in [start, end].
+// Both start and end are included in the result string.
+// If start > end, empty string will be returned.
+func byteSequenceStr(start, end byte) string {
+	var ret []byte
+	if start > end {
+		return ""
+	}
+	for i := start; i < end; i++ {
+		ret = append(ret, i)
+	}
+	ret = append(ret, end)
+	return string(ret)
 }

@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:        Config,
 		Desc:        "Verifies that remote tests can load fw-testing-configs properly",
-		Contacts:    []string{"chromeos-engprod@google.com"},
+		Contacts:    []string{"cros-fw-engprod@google.com"},
 		Data:        firmware.ConfigDatafiles(),
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
 		Attr:        []string{"group:mainline", "informational"},
@@ -43,16 +43,16 @@ func Config(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error during Platform: ", err)
 	}
-	platform := strings.ToLower(platformResponse.Platform)
-	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), platform)
+	board := strings.ToLower(platformResponse.Board)
+	model := strings.ToLower(platformResponse.Model)
+	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), board, model)
 	if err != nil {
 		s.Fatal("Error during NewConfig: ", err)
 	}
 
-	// Verify that the resulting config's "platform" attribute matches the platform (or variant) returned by RPC.
-	platform = strings.Split(platform, "-")[0]
-	platform = strings.Split(platform, "_")[strings.Count(platform, "_")]
-	if cfg.Platform != platform {
-		s.Errorf("Unexpected Platform value; got %s, want %s", cfg.Platform, platform)
+	// Verify that the resulting config's "platform" attribute matches the board (or board variant) returned by RPC.
+	expectedPlatform := firmware.CfgPlatformFromLSBBoard(board)
+	if cfg.Platform != expectedPlatform {
+		s.Errorf("Unexpected Platform value; got %s, want %s", cfg.Platform, expectedPlatform)
 	}
 }

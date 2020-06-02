@@ -24,18 +24,15 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 		Timeout: 8 * time.Minute,
 	})
 }
 
 func CacheValidation(ctx context.Context, s *testing.State) {
-	extraArgs := s.Param().([]string)
 	withCacheDir := filepath.Join(s.OutDir(), "with_cache")
 	withoutCacheDir := filepath.Join(s.OutDir(), "without_cache")
 	if err := os.Mkdir(withCacheDir, 0755); err != nil {
@@ -47,7 +44,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 	// Boot ARC with and without caches enabled, and copy relevant files to output directory.
 	s.Log("Starting ARC, with packages cache disabled")
-	if cr, a, err := cache.OpenSession(ctx, cache.PackagesSkipCopy, cache.GMSCoreDisabled, extraArgs, withoutCacheDir); err != nil {
+	if cr, a, err := cache.OpenSession(ctx, cache.PackagesSkipCopy, cache.GMSCoreDisabled, nil, withoutCacheDir); err != nil {
 		s.Fatal("Booting ARC failed: ", err)
 	} else {
 		err := cache.CopyCaches(ctx, a, withoutCacheDir)
@@ -59,7 +56,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting ARC, with packages cache enabled")
-	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreEnabled, extraArgs, withCacheDir)
+	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreEnabled, nil, withCacheDir)
 	if err != nil {
 		s.Fatal("Booting ARC failed: ", err)
 	}

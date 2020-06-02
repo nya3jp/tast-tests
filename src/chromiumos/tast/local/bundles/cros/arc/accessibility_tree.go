@@ -76,17 +76,14 @@ func getExpectedTree(filepath string) (*simpleAutomationNode, error) {
 // getDesktopTree returns the accessibility tree of the whole desktop.
 func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomationNode, error) {
 	var root simpleAutomationNode
-	const script = `
-		new Promise((resolve, reject) => {
-			chrome.automation.getDesktop((root) => {
-				const instance = LogStore.getInstance();
-				instance.clearLog();
-				instance.writeTreeLog(new TreeDumper(root));
-				const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
-				resolve(logTree[0].logTree_.rootNode);
-			});
-		})`
-	err := cvconn.EvalPromise(ctx, script, &root)
+	err := cvconn.Call(ctx, &root, `async() => {
+		  let root = await tast.promisify(chrome.automation.getDesktop)();
+		  const instance = LogStore.getInstance();
+		  instance.clearLog();
+		  instance.writeTreeLog(new TreeDumper(root));
+		  const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
+		  return logTree[0].logTree_.rootNode;
+		}`)
 	return &root, err
 }
 
@@ -125,23 +122,31 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
 		}
 
-		// Extract accessibility tree.
-		root, err := getDesktopTree(ctx, cvconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
-		}
-
 		actualFileName := axTreeActualTreeFilePrefix + currentActivity.Name + ".json"
 		actualFilePath := filepath.Join(s.OutDir(), actualFileName)
 
+		var appRoot, root *simpleAutomationNode
 		// Find the root node of Android application.
-		appRoot, ok := findNode(root, expected.Name, expected.Role)
-		if appRoot == nil || !ok {
-			// When the root could not be found, dump the entire tree.
-			if err := dumpTree(root, actualFilePath); err != nil {
-				return errors.Wrap(err, "failed to get Android root from accessibility tree, and dumpTree failed")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Extract accessibility tree.
+			root, err = getDesktopTree(ctx, cvconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
 			}
-			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualFileName)
+
+			var ok bool
+			appRoot, ok = findNode(root, expected.Name, expected.Role)
+			if appRoot == nil || !ok {
+				return errors.New("failed to get Android root from accessibility tree")
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			// When the root could not be found, dump the entire tree.
+			if dumpTreeErr := dumpTree(root, actualFilePath); dumpTreeErr != nil {
+				return errors.Wrapf(dumpTreeErr, "timed out waiting for appRoot and the previous error is %v", err)
+			}
+			return errors.Wrapf(err, "timed out waiting for appRoot and wrote the entire tree to %q", actualFileName)
 		}
 
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {

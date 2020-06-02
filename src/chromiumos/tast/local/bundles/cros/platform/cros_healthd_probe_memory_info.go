@@ -6,14 +6,10 @@ package platform
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"reflect"
 	"strconv"
-	"strings"
 
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
 
@@ -31,47 +27,29 @@ func init() {
 }
 
 func CrosHealthdProbeMemoryInfo(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
-	}
-
-	b, err := testexec.CommandContext(ctx, "telem", "--category=memory").Output(testexec.DumpLogOnError)
+	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryMemory, s.OutDir())
 	if err != nil {
-		s.Fatal("Command failed: ", err)
+		s.Fatal("Failed to get memory telemetry info: ", err)
 	}
 
-	// Log output to file for debugging.
-	path := filepath.Join(s.OutDir(), "command_output.txt")
-	if err := ioutil.WriteFile(path, b, 0644); err != nil {
-		s.Errorf("Failed to write output to %s: %v", path, err)
-	}
-
-	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-	if len(lines) != 2 {
-		s.Fatalf("Wrong number of lines: got %v, want 2", len(lines))
+	if len(records) != 2 {
+		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
 	}
 
 	want := []string{"total_memory_kib", "free_memory_kib", "available_memory_kib",
 		"page_faults_since_last_boot"}
-	got := strings.Split(lines[0], ",")
+	got := records[0]
 	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v, want %v", got, want)
-	}
-
-	metrics := strings.Split(lines[1], ",")
-	if len(metrics) != len(want) {
-		s.Fatalf("Incorrect number of memory metrics: got %d; want %d", len(metrics), len(want))
+		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
 	}
 
 	// Each memory metric should be a positive integer. This assumes that all
 	// machines will always have at least 1 free KiB of memory, and all machines
 	// will have page faulted at least once between boot and the time this test
 	// finishes executing.
-	for i := 0; i < len(metrics); i++ {
-		s.Log("Checking value for ", want[i])
-		val, err := strconv.Atoi(metrics[i])
-		if err != nil {
-			s.Errorf("Failed to convert %q to integer: %v", metrics[i], err)
+	for i, metric := range records[1] {
+		if val, err := strconv.Atoi(metric); err != nil {
+			s.Errorf("Failed to convert %q to integer: %v", metric, err)
 		} else if val <= 0 {
 			s.Errorf("Invalid %s: %v", want[i], val)
 		}

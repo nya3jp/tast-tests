@@ -24,12 +24,12 @@ func init() {
 			"cros-telemetry@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
 func SenderKcrash(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes(crash.FilterInIgnoreAllCrashes), crash.WithMockConsent()); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)

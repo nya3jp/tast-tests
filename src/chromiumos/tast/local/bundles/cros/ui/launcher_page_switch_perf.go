@@ -104,6 +104,15 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Currently tast test may show a couple of notifications like "sign-in error"
+	// and they may overlap with UI components of launcher. This prevents intended
+	// actions on certain devices and causes test failures. Open and close the
+	// quick settings to dismiss those notification popups. See
+	// https://crbug.com/1084185.
+	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to open/close the quick settings: ", err)
+	}
+
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait: ", err)
 	}
@@ -131,6 +140,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// Wait for the launcher state change.
 	if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 		s.Fatal("Failed to wait: ", err)
+	}
+	// Wait for the location changes of launcher UI to be propagated.
+	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location changes to complete: ", err)
 	}
 
 	// Find the apps grid view bounds.

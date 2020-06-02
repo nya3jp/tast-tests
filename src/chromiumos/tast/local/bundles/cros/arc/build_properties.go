@@ -41,6 +41,8 @@ func init() {
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
+		propertyBootType      = "ro.vendor.arc_boot_type"
+		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
 		propertySDKVersion    = "ro.build.version.sdk"
@@ -62,6 +64,33 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
 		return value
+	}
+
+	// On each ARC boot, ARC detects its boot type (first boot, first boot after
+	// OTA, or regular boot) and sets the results as a property. Check that the
+	// property is actually set.
+	bootType := getProperty(propertyBootType)
+	// '3' is from the ArcBootType enum in platform2/arc/setup/arc_setup.h (ARC container) and
+	// device/google/bertha/arc-boot-type-detector/main.cc (ARCVM).
+	if bootTypeInt, err := strconv.Atoi(bootType); err != nil || bootTypeInt <= 0 || bootTypeInt > 3 {
+		s.Errorf("%v property is %q; should contain an ArcBootType enum number",
+			propertyBootType, bootType)
+	}
+
+	// On unibuild boards, system.raw.img's build.prop contains some template
+	// values such as ro.product.board="{metrics-tag}". This check makes sure
+	// that such variables are expanded at runtime.
+	board := getProperty(propertyBoard)
+	if strings.Contains(board, "{") {
+		s.Errorf("%v property is %q; should not contain unexpanded values",
+			propertyBoard, board)
+	}
+	// On R, we set a placeholder board name during Android build (ag/11322572).
+	// Also make sure the placeholder is not used as-is so we can detect issues
+	// like b/157193348#comment5.
+	if strings.HasPrefix(board, "bertha_") {
+		s.Errorf("%v property is %q; should not start with bertha_",
+			propertyBoard, board)
 	}
 
 	// Read ro.product.device, drop _cheets suffix, and drop more suffices

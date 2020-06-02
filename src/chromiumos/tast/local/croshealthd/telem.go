@@ -26,6 +26,7 @@ type TelemCategory string
 const (
 	TelemCategoryBacklight         TelemCategory = "backlight"
 	TelemCategoryBattery           TelemCategory = "battery"
+	TelemCategoryBluetooth         TelemCategory = "bluetooth"
 	TelemCategoryCachedVPD         TelemCategory = "cached_vpd"
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
@@ -37,7 +38,9 @@ const (
 
 // FetchTelemetry runs cros_healthd's telem command with the given category and
 // reads the CSV output into a two-dimensional array. It also dumps the output
-// of the telem command to a file for debugging.
+// of the telem command to a file for debugging. An error is returned if there
+// is a failure to obtain or parse telemetry info or if a line of output has an
+// unexpected number of fields.
 func FetchTelemetry(ctx context.Context, category TelemCategory, outDir string) ([][]string, error) {
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
 		return nil, errors.Wrap(err, "failed to start cros_healthd")

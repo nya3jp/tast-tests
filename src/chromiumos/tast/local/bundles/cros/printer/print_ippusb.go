@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintIPPUSB,
 		Desc:         "Tests ipp-over-usb printing",
-		Contacts:     []string{"valleau@chromium.org"},
+		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Data:         []string{"print_ippusb_to_print.pdf", "print_ippusb_golden.pdf"},

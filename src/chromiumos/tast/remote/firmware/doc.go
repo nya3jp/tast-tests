@@ -4,4 +4,5 @@
 
 // Package firmware implements the libraries and utilities which are used for
 // remote bundles with the same name 'firmware'.
+// Reviews for this package can be sent to tast-fw-library-reviewers@ (before tast-owners@ review).
 package firmware

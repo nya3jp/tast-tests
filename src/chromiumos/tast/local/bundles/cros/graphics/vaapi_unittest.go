@@ -50,7 +50,6 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeJPEG},
 			ExtraData:         vaImageTestFiles["jpeg"],
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "common",
 			Val: decoderConfig{

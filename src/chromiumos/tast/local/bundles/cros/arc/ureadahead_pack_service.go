@@ -97,10 +97,6 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		"--arc-play-store-auto-update=off",
 		"--arc-disable-ureadahead"}
 
-	if request.VmEnabled {
-		chromeArgs = append(args, "--enable-arcvm")
-	}
-
 	opts := []chrome.Option{
 		chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
 		chrome.Auth(request.Username, request.Password, ""),
