@@ -20,6 +20,8 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
+	localnet "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -574,6 +576,171 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	}
 
 	return &ret, nil
+}
+
+// RequestScans requests shill to trigger active scans on WiFi devices,
+// and waits until at least req.Count scans are done.
+func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScansRequest) (*empty.Empty, error) {
+	// Create watcher for ScanDone signal.
+	conn, err := dbusutil.SystemBus()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get system bus")
+	}
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Interface: localnet.DBusWPASupplicantInterface,
+		Member:    "ScanDone",
+	}
+	sw, err := dbusutil.NewSignalWatcher(ctx, conn, spec)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	// Start background routine to wait for ScanDone signals.
+	done := make(chan error, 1)
+	// Wait for bg routine to end.
+	defer func() { <-done }()
+	// Notify the bg routine to end if we return early.
+	bgCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	go func(ctx context.Context) {
+		defer close(done)
+		done <- func() error {
+			checkScanSig := func(sig *dbus.Signal) error {
+				// Checks if it's a successful ScanDone.
+				if len(sig.Body) != 1 {
+					return errors.Errorf("got body length=%d, want 1", len(sig.Body))
+				}
+				b, ok := sig.Body[0].(bool)
+				if !ok {
+					return errors.Errorf("got body %v, want boolean", sig.Body[0])
+				}
+				if !b {
+					return errors.New("scan failed")
+				}
+				return nil
+			}
+			count := int32(0)
+			for count < req.Count {
+				select {
+				case <-ctx.Done():
+					return ctx.Err()
+				case sig := <-sw.Signals:
+					if err := checkScanSig(sig); err != nil {
+						testing.ContextLogf(ctx, "Unexpected ScanDone signal %v: %v", sig, err)
+					} else {
+						count++
+					}
+				}
+			}
+			return nil
+		}()
+	}(bgCtx)
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, err
+	}
+	// Trigger request scan every 200ms if the expected number of ScanDone is
+	// not yet captured by the background routine and context deadline is not
+	// yet reached.
+	// It might be spammy, but shill handles it for us.
+	for {
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return nil, err
+		}
+		select {
+		case err := <-done:
+			if err != nil {
+				return nil, err
+			}
+			return &empty.Empty{}, nil
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		case <-time.After(200 * time.Millisecond):
+		}
+	}
+}
+
+// SetMACRandomize sets the MAC randomization setting on the WiFi device.
+// The original setting is returned for ease of restoring.
+func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRandomizeRequest) (*network.SetMACRandomizeResponse, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+
+	// Check if it is supported.
+	support, err := prop.GetBool(shill.DevicePropertyMACAddrRandomSupported)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
+			shill.DevicePropertyMACAddrRandomSupported)
+	}
+	if !support {
+		return nil, errors.New("MAC randomization not supported")
+	}
+	// Get old setting.
+	old, err := prop.GetBool(shill.DevicePropertyMACAddrRandomEnabled)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
+			shill.DevicePropertyMACAddrRandomEnabled)
+	}
+
+	// NOP if the setting is already as requested.
+	if req.Enable != old {
+		if err := dev.SetProperty(ctx, shill.DevicePropertyMACAddrRandomEnabled, req.Enable); err != nil {
+			return nil, errors.Wrapf(err, "failed to set WiFi device property %q",
+				shill.DevicePropertyMACAddrRandomEnabled)
+		}
+	}
+
+	return &network.SetMACRandomizeResponse{OldSetting: old}, nil
+}
+
+// WaitScanIdle waits for not scanning state. If there's a running scan, it
+// waits for the scan to be done with timeout 10 seconds.
+// This is useful when the test sets some parameters regarding scans and wants
+// to avoid noises due to in-progress scans.
+func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	pw, err := dev.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Check initial state.
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get properties of WiFi device")
+	}
+	scanning, err := prop.GetBool(shill.DevicePropertyScanning)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi scanning state")
+	}
+	if !scanning {
+		// Already in the expected state, return immediately.
+		return &empty.Empty{}, nil
+	}
+
+	// Wait scanning to become false.
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.DevicePropertyScanning, false); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for not scanning state")
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // hexSSID converts a SSID into the format of WiFi.HexSSID in shill.
