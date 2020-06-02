@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -382,6 +383,22 @@ func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, pass
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
+}
+
+// GetSanitizedUsername computes the sanitized username for the given user.
+// If useDBus is true, the sanitized username will be computed by cryptohome (through dbus). Otherwise, it'll be computed directly by libbrillo (without dbus).
+func (u *UtilityCryptohomeBinary) GetSanitizedUsername(ctx context.Context, username string, useDBus bool) (string, error) {
+	out, err := u.binary.GetSanitizedUsername(ctx, username, useDBus)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call CryptohomeBinary.GetSanitizedUsername")
+	}
+	outs := strings.TrimSpace(string(out))
+	exp := regexp.MustCompile("^[a-f0-9]{40}$")
+	// A proper sanitized username should be a hex string of length 40.
+	if !exp.MatchString(outs) {
+		return "", errors.Errorf("invalid sanitized username %q", outs)
+	}
+	return outs, nil
 }
 
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
