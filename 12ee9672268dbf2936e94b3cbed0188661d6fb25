@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da51ea91_12a62563",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T16:50:34Z",
+      "side": 1,
+      "message": "nit: I think the proper way to capitalize this would be \"udevAttributes\", but there\u0027s already inconsistency in this file (uDevProperties vs. parseUdev) so it can be fixed later.",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "12ee9672268dbf2936e94b3cbed0188661d6fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
