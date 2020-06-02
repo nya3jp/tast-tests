@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "2563eb0a_63ee403e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-02T21:15:23Z",
+      "side": 1,
+      "message": "Then you might want to fix this either in this CL or in a follow-up because that CL has landed and is in Chrome OS. Basically, I would expect the ChromeAlternateVideoDecoder() precondition to look like this:\n\nfunc ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternateVideoDecoderPre }\n\nvar chromeAlternateVideoDecoderPre \u003d chrome.NewPrecondition(\"alternateVideo\", chromeVModuleArgs, chrome.ExtraArgs(\"--disable-features\u003dChromeosVideoDecoder\"))\n\nThen, I would know that after that CL:\n\n1) The *_hw tests use the default implementation: either VD or VDA depending on the board.\n2) The *_hw_alt tests use the VDA implementation always.",
+      "parentUuid": "70b00c14_72c04557",
+      "range": {
+        "startLine": 544,
+        "startChar": 22,
+        "endLine": 544,
+        "endChar": 55
+      },
+      "revId": "af58ac781995856747c5d94d19b080401242e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba310fdb_157b7619",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 8

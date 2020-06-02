@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eb616de_ff33a093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-02T21:15:23Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "revId": "70b00c41d1633151721e6b84ddcb132804517429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e44d435_1ffbae29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-02T21:15:23Z",
+      "side": 1,
+      "message": "nit: I just noticed this is obsolete because PlaybackPerf only does one depending on the parameter.",
+      "range": {
+        "startLine": 525,
+        "startChar": 81,
+        "endLine": 525,
+        "endChar": 97
+      },
+      "revId": "70b00c41d1633151721e6b84ddcb132804517429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
