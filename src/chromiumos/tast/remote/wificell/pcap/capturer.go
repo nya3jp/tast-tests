@@ -197,14 +197,23 @@ func (c *Capturer) packetFilename() string {
 	return c.filename("pcap")
 }
 
-// downloadPacket downloads result pcap file from host to OutDir.
-func (c *Capturer) downloadPacket(ctx context.Context) error {
+// PacketPath returns the path of the result pcap file so that the tests can
+// verify the content of captured packets.
+func (c *Capturer) PacketPath(ctx context.Context) (string, error) {
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
-		return errors.New("failed to get OutDir")
+		return "", errors.New("failed to get OutDir")
+	}
+	return filepath.Join(outDir, c.packetFilename()), nil
+}
+
+// downloadPacket downloads result pcap file from host to OutDir.
+func (c *Capturer) downloadPacket(ctx context.Context) error {
+	dst, err := c.PacketPath(ctx)
+	if err != nil {
+		return err
 	}
 	src := c.packetPathOnRemote()
-	dst := filepath.Join(outDir, c.packetFilename())
 	if err := linuxssh.GetFile(ctx, c.host, src, dst); err != nil {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
