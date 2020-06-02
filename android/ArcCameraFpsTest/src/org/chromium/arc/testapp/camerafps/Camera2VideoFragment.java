@@ -98,6 +98,8 @@ public class Camera2VideoFragment extends Fragment {
     private long mCameraCloseTime;
     // Camera characteristics contain information about supported resolutions etc.
     private CameraCharacteristics mCameraCharacteristics;
+    // Contains supported configurations such as supported resolutions.
+    private StreamConfigurationMap mStreamConfigurationMap;
 
     // Select the largest resolution among all choices. If a specific target resolution was
     // requested, use that resolution instead if it is supported. If the requested resolution
@@ -235,10 +237,28 @@ public class Camera2VideoFragment extends Fragment {
         }
     }
 
+    public String getSnapshotResolutions() {
+        Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
+        Size[] hrSizes = mStreamConfigurationMap.getHighResolutionOutputSizes(ImageFormat.JPEG);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (Size size : sizes) {
+            sb.append(size.toString());
+            sb.append(", ");
+        }
+        if (hrSizes != null) {
+            for (Size size : hrSizes) {
+                sb.append(size.toString());
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     private <T> String getSupportedResolutions(Class<T> klass) {
-        Size[] sizes = mCameraCharacteristics
-                .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
-                .getOutputSizes(klass);
+        Size[] sizes = mStreamConfigurationMap.getOutputSizes(klass);
 
         StringBuilder sb = new StringBuilder();
         sb.append("[");
@@ -248,10 +268,6 @@ public class Camera2VideoFragment extends Fragment {
         }
         sb.append("]");
         return sb.toString();
-    }
-
-    public String getSnapshotResolutions() {
-        return getSupportedResolutions(ImageReader.class);
     }
 
     public String getRecordingResolutions() {
@@ -268,12 +284,19 @@ public class Camera2VideoFragment extends Fragment {
         final CountDownLatch latch = new CountDownLatch(1);
 
         try {
-            // TODO: Cache map instead.
-            mSnapshotSize =
-                    chooseResolution(
-                            mCameraCharacteristics
-                                    .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
-                                    .getOutputSizes(ImageReader.class));
+            Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
+            Size[] hrSizes =
+                    mStreamConfigurationMap.getHighResolutionOutputSizes(ImageFormat.JPEG);
+            Size[] allSizes;
+            if (hrSizes == null) {
+                allSizes = sizes;
+            } else {
+                allSizes = new Size[sizes.length + hrSizes.length];
+                System.arraycopy(sizes, 0, allSizes, 0, sizes.length);
+                System.arraycopy(hrSizes, 0, allSizes, sizes.length, hrSizes.length);
+            }
+            mSnapshotSize = chooseResolution(allSizes);
+
             Log.i(TAG, "Taking picture: " + mSnapshotSize);
             final ImageReader reader =
                     ImageReader.newInstance(
@@ -355,11 +378,13 @@ public class Camera2VideoFragment extends Fragment {
 
             // Choose the sizes for camera preview and video recording
             mCameraCharacteristics = manager.getCameraCharacteristics(cameraId);
-            StreamConfigurationMap map =
+            mStreamConfigurationMap =
                     mCameraCharacteristics.get(
                             CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-            mVideoSize = chooseResolution(map.getOutputSizes(MediaRecorder.class));
-            mPreviewSize = chooseResolution(map.getOutputSizes(SurfaceTexture.class));
+            mVideoSize = chooseResolution(
+                    mStreamConfigurationMap.getOutputSizes(MediaRecorder.class));
+            mPreviewSize = chooseResolution(
+                    mStreamConfigurationMap.getOutputSizes(SurfaceTexture.class));
 
             int orientation = getResources().getConfiguration().orientation;
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
