@@ -25,6 +25,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: Print,
+		Desc: "Check that ARC printing is working properly",
+		Contacts: []string{
+			"bmgordon@google.com",
+			"jschettler@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"android_p", "chrome", "cups", "virtual_usb_printer"},
+		Data:         []string{"arc_print_ippusb_golden.pdf"},
+		Pre:          arc.Booted(),
+	})
+}
+
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Loading preview",
@@ -52,21 +67,6 @@ func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.New("print preview failed")
 	}
 	return nil
-}
-
-func init() {
-	testing.AddTest(&testing.Test{
-		Func: Print,
-		Desc: "Check that ARC printing is working properly",
-		Contacts: []string{
-			"bmgordon@google.com",
-			"jschettler@google.com",
-		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome", "cups", "virtual_usb_printer"},
-		Data:         []string{"arc_print_ippusb_golden.pdf"},
-		Pre:          arc.Booted(),
-	})
 }
 
 func Print(ctx context.Context, s *testing.State) {
