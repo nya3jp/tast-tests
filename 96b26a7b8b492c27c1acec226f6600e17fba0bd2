@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a438c8e2_373f5350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-02T16:36:13Z",
+      "side": 1,
+      "message": "remove, not used anywhere.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26cec7aa_a9374c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-02T16:36:13Z",
+      "side": 1,
+      "message": "DlcInfo? \n\nWhat if another field like Foo is added. then we need to change the name to IDPackageFoo? :)",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39896ce3_66e6fdf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-02T16:36:13Z",
+      "side": 1,
+      "message": "Add function documentation what these return values are. I don\u0027t know what the nil is supposed to be. is it error? yeah, it seems like error.",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6991f502_0556992e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_preloading.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-02T16:36:13Z",
+      "side": 1,
+      "message": "please add some context what is this test and what is this supposed to do.",
+      "revId": "96b26a7b8b492c27c1acec226f6600e17fba0bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
