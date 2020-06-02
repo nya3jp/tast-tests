@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98391ef4_74b3f649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1343256
+      },
+      "writtenOn": "2020-06-02T07:50:56Z",
+      "side": 1,
+      "message": "Change:\nNote: The CQ runs a test pre-commit dozens/hundreds of times per post-commit release build. Adding tests to the CQ is therefore extremely expensive. Also tests in the CQ may prevent Chrome from upreving. Consider carefully which tests/devices to add to the CQ.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090f1169_fce4d02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1343256
+      },
+      "writtenOn": "2020-06-02T07:50:56Z",
+      "side": 1,
+      "message": "Is this a model or a board? Do we care about boards like kernelnext or arc-r? Do we have enough eve capacity? Unlike some other devices eve is AFAIK pretty oversubscribed.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abaf6bd7_5d3296ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1343256
+      },
+      "writtenOn": "2020-06-02T07:50:56Z",
+      "side": 1,
+      "message": "I do not understand why we need a new name. The test is the same, just attributes/suite are different.",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
