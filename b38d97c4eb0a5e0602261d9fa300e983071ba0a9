@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a39faa_7e829e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-02T21:40:11Z",
+      "side": 1,
+      "message": "virgl",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "b38d97c4eb0a5e0602261d9fa300e983071ba0a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

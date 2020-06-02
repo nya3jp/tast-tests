@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1084a8cd_c6d30458",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-02T21:40:11Z",
+      "side": 0,
+      "message": "I\u0027m afraid most of our trace test relies on this.",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "f3ad095da9747d79728ff15f31e46103331bc400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
