@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80429b77_b592bdad",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfa2646_15d97355",
+      "range": {
+        "startLine": 25,
+        "startChar": 52,
+        "endLine": 25,
+        "endChar": 63
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4615f1bf_5bf800e0",
         "filename": "src/chromiumos/tast/common/wifi/security/security.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3139e475_b86ff74b",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4615f1bf_5bf800e0",
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4d9a859d_065de012",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f17482_289885a1",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65addaa3_d3b652d5",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392256e7_210b694e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65addaa3_d3b652d5",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 49
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5ac2db25_c984fc93",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ffce2e9_60838cb5",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f8d7009_56c5d453",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -122,6 +236,30 @@
       "writtenOn": "2020-06-02T05:47:36Z",
       "side": 1,
       "message": "Duplicate this.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d20ca58_11e55369",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Do you mean that to add a field cryptohomeUtil to TestFixture, so don\u0027t need to construct twice?",
+      "parentUuid": "8f8d7009_56c5d453",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -148,6 +286,24 @@
       "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2689eebb_24949e38",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a654046_4545c299",
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
