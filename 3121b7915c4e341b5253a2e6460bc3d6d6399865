@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6214aff_4d921c42",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T10:12:19Z",
+      "side": 1,
+      "message": "I wonder what is a guarantee this snapshot gives to tests. Could you remind me when local_tpm_data is modified and when we have to rollback local_tpm_data?\n\nready.Wait is called on the beginning of a local bundle executable, but a local bundle executable may be executed multiple times to run local tests, e.g. when a local test crashed in the middle of execution. Thus having this code does not guarantee that the snapshot is taken before all local tests.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
