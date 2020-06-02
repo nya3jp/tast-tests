@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -382,6 +383,25 @@ func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, pass
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
+}
+
+// GetSanitizedUsername computes the sanitized username for the given user.
+func (u *UtilityCryptohomeBinary) GetSanitizedUsername(ctx context.Context, username string, useDBus bool) (string, error) {
+	binaryOutput, err := u.binary.GetSanitizedUsername(ctx, username, useDBus)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call GetSanitizedUsername")
+	}
+	output := string(binaryOutput)
+	output = strings.Trim(output, " \n")
+	matched, err := regexp.MatchString("[a-f0-9]{40}", output)
+	if err != nil {
+		// My regex is bad, shouldn't happen.
+		panic("bad regexp")
+	}
+	if !matched {
+		return "", errors.Errorf("invalid output %q", output)
+	}
+	return output, nil
 }
 
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
