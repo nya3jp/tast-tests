@@ -122,6 +122,24 @@
       "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33543b7_88406127",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-02T03:23:42Z",
+      "side": 1,
+      "message": "From the requirement of ChromeOS keyboard here:\nhttps://sites.google.com/a/google.com/chromeos-partners/pages/tech-docs/hardware/keyboard-specifications-and-requirements\nI think the volume key should be included in the test.\n\nWe don\u0027t have equivalent test in autotest and there\u0027s no any usage of volume key in autotest.\nSo I think the same problem will also occur on autotest if someone would like to use volume key in their test.",
+      "parentUuid": "8dcfb865_c84d3f90",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
