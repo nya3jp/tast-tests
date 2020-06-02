@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd38c711_ebc545e5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-02T02:39:45Z",
+      "side": 1,
+      "message": "Just a question; did you consider removing Sleep or replacing this with checking some state?\nIf this is needed, does it fail when there is a heavy CPU load by other processes?",
+      "revId": "e7093fa732444ecbb42c8e309cfd0b6df85008c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
