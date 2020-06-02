@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "02e83cf8_617e9d5b",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-02T03:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d217b37e_300dd641",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae1ab0ad_5132e30d",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 8
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "As long as we can test the new behavior (i.e. to reduce sleep duration by the time taken to snapshot) it is fine.\n\nI\u0027m not sure if it is useful to allow calling Wait* concurrently though. In any case Sleep cannot be called concurrently due to usage of weighted semaphore, so there is likely 1:1 mapping between the testee goroutine and tester goroutine.",
       "parentUuid": "4308d7bf_1ca06d28",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "c5dd50e552b884eaac68001c1fe2b6dd8cadc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39889dd0_cd78548e",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-02T03:24:51Z",
+      "side": 1,
+      "message": "Sleep can now be called concurrently.",
+      "parentUuid": "676001aa_22c15355",
       "range": {
         "startLine": 141,
         "startChar": 0,
