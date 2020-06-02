@@ -85,6 +85,12 @@ func init() {
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
+			Name:      "vp9_2_sw",
+			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
+		}, {
 			Name:              "h264_hw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -104,6 +110,13 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:              "vp9_2_hw",
+			Val:               playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.vp9.2.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "h264_hw_mse",
