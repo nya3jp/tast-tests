@@ -38,6 +38,18 @@ service WifiService {
 
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
+  // RequestScans requests shill to trigger active scans on WiFi devices.
+  rpc RequestScans(RequestScansRequest) returns (google.protobuf.Empty) {}
+
+  // SetMACRandomize sets the MAC randomization setting on the WiFi device.
+  // The original setting is returned for ease of retoring.
+  rpc SetMACRandomize(SetMACRandomizeRequest) returns (SetMACRandomizeResponse) {}
+
+  // WaitScanDone waits for current running active scan to be done if available with
+  // timeout 10 seconds. This is useful when the test sets some parameters regarding
+  // scans and wants to avoid noices due to not yet ended scans.
+  rpc WaitScanDone(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -111,4 +123,16 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message RequestScansRequest {
+  int32 count = 1;
+}
+
+message SetMACRandomizeRequest {
+  bool enable = 1;
+}
+
+message SetMACRandomizeResponse {
+  bool old_setting = 1;
 }
