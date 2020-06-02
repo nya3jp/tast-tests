@@ -46,6 +46,30 @@
       "revId": "2af23d469a1ab7490e1515a1545ed2bc66eec4f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ea2a71f_398bc7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup_in_signed_in_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-06-02T23:13:37Z",
+      "side": 1,
+      "message": "Got it. assistant.* means all assistant.* test can use it. sg.",
+      "parentUuid": "7098c957_84334b27",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "2af23d469a1ab7490e1515a1545ed2bc66eec4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
