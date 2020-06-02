@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "2780a709_514a8f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-02T03:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80dbd2a9_d94ab588",
+      "revId": "12940999cac0d4c134c522e1aa5f8d3b94e1783a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2510227f_094bb4c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
