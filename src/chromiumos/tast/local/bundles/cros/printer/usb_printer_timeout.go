@@ -71,7 +71,7 @@ func USBPrinterTimeout(ctx context.Context, s *testing.State) {
 		return re.MatchString(entry.Content)
 	})
 	if err != nil {
-		s.Fatal("Print job never completed")
+		s.Fatal("Print job never completed: ", err)
 	}
 
 	// It's expected that the usb backend exited with "stopped on status 1" indicating a timeout because the printer was unreachable.  Statuses containing "crashed" or any other status are considered failures.
