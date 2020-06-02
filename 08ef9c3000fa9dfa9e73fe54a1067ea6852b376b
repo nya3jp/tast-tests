@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9d6ab778_26766376",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T10:36:34Z",
+      "side": 1,
+      "message": "In general, when one deals with a fixed set of values in statically typed programming languages, it is good to avoid maps because they can catch typos and type mismatches in build time.\n\nBut IIUC in this case RAPL values are not a fixed set, and all values have the same type (uJ), so it sounds okay to me to use map.",
+      "parentUuid": "5ee11b02_9cd364dc",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "08ef9c3000fa9dfa9e73fe54a1067ea6852b376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8603c72_eb5237dd",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
