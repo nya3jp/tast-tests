@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "939627a6_cf0094be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup_in_signed_in_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-06-02T22:17:07Z",
+      "side": 1,
+      "message": "Is there an error when running at locally saying the naming is not standard?",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "2af23d469a1ab7490e1515a1545ed2bc66eec4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
