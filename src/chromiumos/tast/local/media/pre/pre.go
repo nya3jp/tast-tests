@@ -49,6 +49,7 @@ var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin",
 
 // ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
 // also enabling the HDR screen if present.
+// TODO(crbug.com/958166): Use simply ChromeVideo() when HDR is launched.
 func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDRScreenPre }
 
 var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen", chromeVModuleArgs,
@@ -126,6 +127,18 @@ func ChromeVideoWithSWDecodingAndLibGAV1() testing.Precondition {
 
 var chromeVideoWithSWDecodingAndLibGAV1 = chrome.NewPrecondition("videoWithSWDecodingAndLibGAV1", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"))
+
+// ChromeVideoWithSWDecodingAndHDRScreen returns a precondition similar to
+// ChromeVideoWithSWDecoding, specified above, and also enabling the HDR screen
+// if present.
+// TODO(crbug.com/958166): Use simply ChromeVideoWithSWDecoding() when HDR is
+// launched.
+func ChromeVideoWithSWDecodingAndHDRScreen() testing.Precondition {
+	return chromeVideoWithSWDecodingAndHDRScreen
+}
+
+var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWDecodingAndHDRScreen", chromeVModuleArgs,
+	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.ExtraArgs("--enable-use-hdr-transfer-function"))
 
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
