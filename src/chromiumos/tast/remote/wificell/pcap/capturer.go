@@ -47,6 +47,7 @@ type Capturer struct {
 	stdoutFile *os.File
 	stderrFile *os.File
 	wg         sync.WaitGroup
+	downloaded bool
 }
 
 const (
@@ -197,16 +198,35 @@ func (c *Capturer) packetFilename() string {
 	return c.filename("pcap")
 }
 
-// downloadPacket downloads result pcap file from host to OutDir.
-func (c *Capturer) downloadPacket(ctx context.Context) error {
+// packetPath returns the path of the result pcap file.
+func (c *Capturer) packetPath(ctx context.Context) (string, error) {
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
-		return errors.New("failed to get OutDir")
+		return "", errors.New("failed to get OutDir")
+	}
+	return filepath.Join(outDir, c.packetFilename()), nil
+}
+
+// PacketPath returns the path of the result pcap file so that the tests can
+// verify the content of captured packets. This function should be called
+// after Close (i.e. packet downloaded), otherwise it will return error.
+func (c *Capturer) PacketPath(ctx context.Context) (string, error) {
+	if !c.downloaded {
+		return "", errors.New("pcap not yet downloaded")
+	}
+	return c.packetPath(ctx)
+}
+
+// downloadPacket downloads result pcap file from host to OutDir.
+func (c *Capturer) downloadPacket(ctx context.Context) error {
+	dst, err := c.packetPath(ctx)
+	if err != nil {
+		return err
 	}
 	src := c.packetPathOnRemote()
-	dst := filepath.Join(outDir, c.packetFilename())
 	if err := linuxssh.GetFile(ctx, c.host, src, dst); err != nil {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
+	c.downloaded = true
 	return nil
 }
