@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f30f5f18_1f9787da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/memory_stress.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-02T01:21:56Z",
+      "side": 1,
+      "message": "See https://chromium.git.corp.google.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#sharing-data-files-between-test-packages",
+      "parentUuid": "3fc96c48_35c56b10",
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaaefd91_271f616c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b04935765c5827155db8962eab780672c8e64cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8832a133_7dfe0e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-02T01:21:56Z",
+      "side": 1,
+      "message": "Sorry I missed this comment before. As I answered it in another comment thread, please move them under tast/local/some_package/",
+      "parentUuid": "eaaefd91_271f616c",
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,30 @@
       "side": 1,
       "message": "I don\u0027t know where this should go? It will be referenced from bundles/cros/platform/memoryuser and bundles/cros/arc/memory.",
       "parentUuid": "ae7ab983_7daeea13",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a3dce9_4184d3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_stress_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-02T01:21:56Z",
+      "side": 1,
+      "message": "You can move the library to a package under tast/local, and use it from multiple bundles.\nHow about creating tast/local/memory and put the library there?\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/",
+      "parentUuid": "98c3f4eb_ef5bfe64",
       "range": {
         "startLine": 22,
         "startChar": 0,
