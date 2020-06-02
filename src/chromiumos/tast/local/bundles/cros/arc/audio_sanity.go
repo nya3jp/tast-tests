@@ -24,7 +24,7 @@ func init() {
 			"judyhsiao@chromium.org",         // Author
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcAudioTest.apk"},
+		Data:         []string{"ARCAudioTest.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
