@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c91ed255_d2e42b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-02T21:44:01Z",
+      "side": 1,
+      "message": "Maybe we should make ash.ShelfItems to return a \"Location\". Matching |items| with |icons| retrieved via automation could be challenging. When Ahmed\u0027s per-desk shelf comes to a reality, there could be ShelfItems not visible in Shelf when it represents a window in the non-active desk.",
+      "revId": "d38a8535a885414a58cac33f7d6d6fc38842afce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
