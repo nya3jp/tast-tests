@@ -53,13 +53,9 @@ func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
 	// Turn on the WiFi device.
-	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+	dev, err := s.wifiDevice(ctx, m)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get a WiFi device")
-	}
-	dev, err := m.DeviceByName(ctx, iface)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
+		return nil, err
 	}
 	if err := dev.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable WiFi device")
@@ -531,6 +527,183 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	}
 
 	return &ret, nil
+}
+
+// RequestScans requests shill to trigger active scans on WiFi devices,
+// and wait until at least req.Count scans are done.
+func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScansRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager object")
+	}
+	dev, err := s.wifiDevice(ctx, m)
+	if err != nil {
+		return nil, err
+	}
+	pw, err := dev.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Watch scan count in background.
+	done := make(chan error, 1)
+	// Wait for the routine to end when leaving.
+	defer func() {
+		<-done
+	}()
+	// Cancel context to ensure bg routine can end even when we early return.
+	bgCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	go func() {
+		defer close(done)
+		scanning := false
+		count := int32(0)
+		for {
+			// Assume starting with not scanning, and count scan done (true -> false).
+			v, err := pw.WaitAll(bgCtx, shill.DevicePropertyScanning)
+			if err != nil {
+				done <- errors.Wrap(err, "failed to wait scanning state change")
+				return
+			}
+			b, ok := v[0].(bool)
+			if !ok {
+				done <- errors.Errorf("unexpected scanning state %v", v)
+				return
+			}
+			if (scanning != b) && scanning {
+				count++
+			}
+			scanning = b
+			if count >= req.Count {
+				done <- nil
+				return
+			}
+		}
+	}()
+
+	// Trigger request scan if count not yet reached.
+	// It might be spammy, but shill handles it for us.
+	for {
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return nil, err
+		}
+		select {
+		case err := <-done:
+			if err != nil {
+				return nil, err
+			}
+			return &empty.Empty{}, nil
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		case <-time.After(200 * time.Millisecond):
+		}
+	}
+}
+
+// SetMACRandomize sets the MAC randomization setting on the WiFi device.
+// The original setting is returned for ease of restoring.
+func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRandomizeRequest) (*network.SetMACRandomizeResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager object")
+	}
+	dev, err := s.wifiDevice(ctx, m)
+	if err != nil {
+		return nil, err
+	}
+
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+
+	// Check if it is supported.
+	support, err := prop.GetBool(shill.DevicePropertyMACAddrRandomSupported)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
+			shill.DevicePropertyMACAddrRandomSupported)
+	}
+	if !support {
+		return nil, errors.New("MAC randomization not supported")
+	}
+	// Get old setting.
+	old, err := prop.GetBool(shill.DevicePropertyMACAddrRandomEnabled)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
+			shill.DevicePropertyMACAddrRandomEnabled)
+	}
+
+	// Save one set if the setting is already as requested.
+	if req.Enable != old {
+		err = dev.SetProperty(ctx, shill.DevicePropertyMACAddrRandomEnabled, req.Enable)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to set WiFi device property %q",
+				shill.DevicePropertyMACAddrRandomEnabled)
+		}
+	}
+
+	return &network.SetMACRandomizeResponse{OldSetting: old}, nil
+}
+
+// WaitScanDone waits for not scanning state. If there's a running scan, it can
+// wait for it to be done with timeout 10 seconds.
+// This is useful when the test sets some parameters regarding scans and wants
+// to avoid noices due to not yet ended scans.
+func (s *WifiService) WaitScanDone(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager object")
+	}
+
+	dev, err := s.wifiDevice(ctx, m)
+	if err != nil {
+		return nil, err
+	}
+
+	pw, err := dev.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Check initial state.
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get properties of WiFi device")
+	}
+	scanning, err := prop.GetBool(shill.DevicePropertyScanning)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi scanning state")
+	}
+	if !scanning {
+		// Already the expected state, return immediately.
+		return &empty.Empty{}, nil
+	}
+
+	// Wait scanning to become false.
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	err = pw.Expect(timeoutCtx, shill.DevicePropertyScanning, false)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to wait for not scanning state")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// wifiDevice returns the shill.Device object of WiFi device. If it is not yet
+// available, it will wait for it with 5 seconds timeout.
+func (s *WifiService) wifiDevice(ctx context.Context, m *shill.Manager) (*shill.Device, error) {
+	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi interface name")
+	}
+	dev, err := m.DeviceByName(ctx, iface)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
+	}
+	return dev, nil
 }
 
 // hexSSID converts a SSID into the format of WiFi.HexSSID in shill.
