@@ -31,7 +31,7 @@ func init() {
 }
 
 func SenderOld(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes(crash.FilterInIgnoreAllCrashes), crash.WithMockConsent()); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)

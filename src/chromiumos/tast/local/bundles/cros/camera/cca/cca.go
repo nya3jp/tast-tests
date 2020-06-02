@@ -20,6 +20,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -155,6 +156,20 @@ var (
 		"#videoresolutionsettings input", "#view-video-resolution-settings input"}}
 )
 
+type errorLevel string
+
+const (
+	errorLevelWarning errorLevel = "WARNING"
+	errorLevelError              = "ERROR"
+)
+
+type errorInfo struct {
+	ErrorType string     `json:"type"`
+	Level     errorLevel `json:"level"`
+	Stack     string     `json:"stack"`
+	Time      int64      `json:"time"`
+}
+
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
@@ -202,10 +217,26 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return nil, err
 	}
 
-	prepareCCA := fmt.Sprintf(`
-		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
-			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
-	if err := tconn.Exec(ctx, prepareCCA); err != nil {
+	if err := tconn.Call(ctx, nil, `
+		(id) => {
+		  let resolveConnect;
+		  const errors = [];
+		  window.CCATestConnection = {
+		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
+		    errors,
+		  };
+		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
+		  port.onMessage.addListener((msg) => {
+		    switch(msg.name) {
+		      case 'connect':
+		        resolveConnect(msg.windowUrl);
+		        return;
+		      case 'error':
+		        errors.push(msg.errorInfo);
+		        return;
+		    }
+		  });
+		}`, ID); err != nil {
 		return nil, err
 	}
 
@@ -214,7 +245,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	var windowURL string
-	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
+	if err := tconn.Eval(ctx, `window.CCATestConnection.connect`, &windowURL); err != nil {
 		return nil, err
 	}
 	// The expected windowURL is returned as:
@@ -300,11 +331,67 @@ func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
 }
 
+// CheckJSError checks javascript error emitted by CCA error callback.
+func (a *App) CheckJSError(ctx context.Context, logDir string) error {
+	var errorInfos []errorInfo
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	if err := tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
+		return err
+	}
+
+	jsErrors := make([]errorInfo, 0)
+	jsWarnings := make([]errorInfo, 0)
+	for _, err := range errorInfos {
+		if err.Level == errorLevelWarning {
+			jsWarnings = append(jsWarnings, err)
+		} else if err.Level == errorLevelError {
+			jsErrors = append(jsErrors, err)
+		} else {
+			return errors.Errorf("unknown error level: %v", err.Level)
+		}
+	}
+
+	writeLogFile := func(lv errorLevel, errs []errorInfo) error {
+		filename := fmt.Sprintf("CCA_JS_%v.log", lv)
+		logPath := filepath.Join(logDir, filename)
+		f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		for _, err := range errs {
+			t := time.Unix(0, err.Time*1e6).Format("2006/01/02 15:04:05 [15:04:05.000]")
+			f.WriteString(fmt.Sprintf("%v %v:\n", t, err.ErrorType))
+			f.WriteString(err.Stack + "\n")
+		}
+		return nil
+	}
+
+	if err := writeLogFile(errorLevelWarning, jsWarnings); err != nil {
+		return err
+	}
+	if err := writeLogFile(errorLevelError, jsErrors); err != nil {
+		return err
+	}
+	if len(jsErrors) > 0 {
+		return errors.Errorf("there are %d errors, first error: %v: %v",
+			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)
+	}
+	return nil
+}
+
 // Close closes the App and the associated connection.
 func (a *App) Close(ctx context.Context) error {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
+	}
+
+	if err := a.conn.Eval(ctx, "Tast.removeCacheData()", nil); err != nil {
+		return errors.Wrap(err, "failed to clear cached data in local storage")
 	}
 
 	// TODO(b/144747002): Some tests (e.g. CCUIIntent) might trigger auto closing of CCA before
@@ -983,25 +1070,6 @@ func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
 	return a.conn.Eval(ctx, code, nil)
 }
 
-// RemoveCacheData removes the cached key value pair in local storage.
-func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
-	keyArray := "["
-	for i, key := range keys {
-		if i == 0 {
-			keyArray += fmt.Sprintf("%q", key)
-		} else {
-			keyArray += fmt.Sprintf(", %q", key)
-		}
-	}
-	keyArray += "]"
-	code := fmt.Sprintf("Tast.removeCacheData(%v)", keyArray)
-	if err := a.conn.EvalPromise(ctx, code, nil); err != nil {
-		testing.ContextLogf(ctx, "Failed to remove cache (%q): %v", code, err)
-		return err
-	}
-	return nil
-}
-
 // RunThroughCameras runs function f in app after switching to each available camera.
 // The f is called with paramter of the switched camera facing.
 // The error returned by f is passed to caller of this function.
@@ -1097,4 +1165,47 @@ func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) er
 		return err
 	}
 	return a.conn.EvalPromise(ctx, "CCAConfigurationReady", nil)
+}
+
+// EnsureTabletModeEnabled makes sure that the tablet mode states of both
+// device and app are enabled, and returns a function which reverts back to the
+// original state.
+func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(ctx context.Context) error, error) {
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get test api connection")
+	}
+
+	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get tablet mode state")
+	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, enabled)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to ensure tablet mode enabled(%v)", enabled)
+	}
+
+	cleanupAll := func(ctx context.Context) error {
+		if err := cleanup(ctx); err != nil {
+			return errors.Wrap(err, "failed to clean up tablet mode state")
+		}
+		if err := a.WaitForState(ctx, "tablet", originallyEnabled); err != nil {
+			return errors.Wrapf(err, "failed to wait for original tablet mode enabled(%v)", originallyEnabled)
+		}
+		return nil
+	}
+
+	if err := a.WaitForState(ctx, "tablet", enabled); err != nil {
+		if err := cleanupAll(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to restore tablet mode state: ", err)
+		}
+		return nil, errors.Wrapf(err, "failed to wait for tablet mode enabled(%v)", enabled)
+	}
+	return cleanupAll, nil
+}
+
+// Focus sets focus on CCA App window.
+func (a *App) Focus(ctx context.Context) error {
+	return a.conn.Eval(ctx, "Tast.focusWindow()", nil)
 }

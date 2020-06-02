@@ -253,6 +253,11 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		return err
 	}
 	defer cleanup(ctx, a, app)
+	defer (func() {
+		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
+			s.Error("Failed with javascript errors: ", err)
+		}
+	})()
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -440,6 +445,11 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
 	defer cleanup(ctx, a, intentApp)
+	defer (func() {
+		if err := intentApp.CheckJSError(ctx, s.OutDir()); err != nil {
+			s.Error("Failed with javascript errors: ", err)
+		}
+	})()
 
 	// Check if the regular CCA is suspeneded.
 	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {

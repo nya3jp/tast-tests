@@ -6,5 +6,8 @@ android_apk("ArcMotionInputTest") {
   manifest = "AndroidManifest.xml"
   source_dirs = ["src"]
   resource_dirs = ["res"]
+
+  # The Android Pointer Capture API was added in API level 26.
+  min_sdk_version = "26"
   target_sdk_version = "28"
 }

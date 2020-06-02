@@ -30,11 +30,6 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// ServiceInfo contains the current service information.
-type ServiceInfo struct {
-	Hidden bool
-}
-
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
 
@@ -78,7 +73,6 @@ type TestFixture struct {
 
 	apID           int
 	curServicePath string
-	curAP          *APIface
 	capturers      map[*APIface]*pcap.Capturer
 }
 
@@ -321,12 +315,12 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	return firstErr
 }
 
-// ConnectWifi asks the DUT to connect to the given WiFi service.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+// ConnectWifi asks the DUT to connect to the specified WiFi.
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) error {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
-	props, err := h.Config().SecurityConfig.ShillServiceProperties()
+	props, err := secConf.ShillServiceProperties()
 	if err != nil {
 		return err
 	}
@@ -335,9 +329,9 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	request := &network.ConnectRequest{
-		Ssid:       h.Config().Ssid,
-		Hidden:     h.Config().Hidden,
-		Security:   h.Config().SecurityConfig.Class(),
+		Ssid:       []byte(ssid),
+		Hidden:     hidden,
+		Security:   secConf.Class(),
 		Shillprops: propsEnc,
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
@@ -345,8 +339,13 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	tf.curServicePath = response.ServicePath
-	tf.curAP = h
 	return nil
+}
+
+// ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) error {
+	conf := ap.Config()
+	return tf.ConnectWifi(ctx, conf.Ssid, conf.Hidden, conf.SecurityConfig)
 }
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
@@ -360,34 +359,30 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 		err = errors.Wrap(err2, "failed to disconnect")
 	}
 	tf.curServicePath = ""
-	tf.curAP = nil
 	return err
 }
 
 // QueryService queries shill service information.
-func (tf *TestFixture) QueryService(ctx context.Context) (*ServiceInfo, error) {
+func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
 	req := &network.QueryServiceRequest{
 		Path: tf.curServicePath,
 	}
 
-	serInfo, err := tf.wifiClient.QueryService(ctx, req)
+	resp, err := tf.wifiClient.QueryService(ctx, req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the service information")
 	}
 
-	return &ServiceInfo{Hidden: serInfo.Hidden}, nil
+	return resp, nil
 }
 
-// PingFromDUT tests the connectivity between DUT and router through currently connected WiFi service.
-func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) error {
+// PingFromDUT tests the connectivity between DUT and target IP.
+func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ...ping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
 	defer st.End()
 
-	if tf.curAP == nil {
-		return errors.New("not connected")
-	}
 	pr := remoteping.NewRunner(tf.dut.Conn())
-	res, err := pr.Ping(ctx, tf.curAP.ServerIP().String(), opts...)
+	res, err := pr.Ping(ctx, targetIP, opts...)
 	if err != nil {
 		return err
 	}

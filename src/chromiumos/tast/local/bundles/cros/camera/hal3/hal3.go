@@ -50,6 +50,25 @@ type mediaSettings struct {
 	}
 }
 
+// IsV1Legacy returns true if current device is used to run camera HAL v1 but
+// now run camera HAL v3 as external devices.
+func IsV1Legacy(ctx context.Context) bool {
+	// For unibuild, we can determine if a device is v1 legacy by checking
+	// 'legacy-usb' under path '/camera' in cros_config.
+	if out, err := testexec.CommandContext(ctx, "cros_config", "/camera", "legacy-usb").Output(); err == nil && string(out) == "true" {
+		return true
+	}
+
+	// For non-unibuild, we can check if 'v1device' presents in the config file
+	// '/etc/camera/camera_chracteristics.conf'.
+	if config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf"); err == nil {
+		if strings.Contains(string(config), "v1device") {
+			return true
+		}
+	}
+	return false
+}
+
 // getRecordingParams gets the recording parameters from the media profile in
 // ARC, which would be used as an argument of cros_camera_test.
 func getRecordingParams(ctx context.Context) (string, error) {
@@ -62,13 +81,18 @@ func getRecordingParams(ctx context.Context) (string, error) {
 	if err := xml.Unmarshal(out, &settings); err != nil {
 		return "", err
 	}
+
+	var supportConstantFrameRate int
+	if !IsV1Legacy(ctx) {
+		supportConstantFrameRate = 1
+	}
 	seen := make(map[string]struct{})
 	var params []string
 	for _, cprof := range settings.CamcorderProfiles {
 		for _, eprof := range cprof.EncoderProfile {
 			video := eprof.Video
-			param := fmt.Sprintf("%d:%d:%d:%d", cprof.CameraID,
-				video.Width, video.Height, video.FrameRate)
+			param := fmt.Sprintf("%d:%d:%d:%d:%d", cprof.CameraID,
+				video.Width, video.Height, video.FrameRate, supportConstantFrameRate)
 			if _, ok := seen[param]; !ok {
 				seen[param] = struct{}{}
 				params = append(params, param)
@@ -83,12 +107,13 @@ func getRecordingParams(ctx context.Context) (string, error) {
 // GetCmdLineTestCameraFacing() and InitializeTest() in [1] for more details.
 // [1] https://chromium.git.corp.google.com/chromiumos/platform2/+/363b9b16d6d16937743e619526d51ab59970caf6/camera/camera3_test/camera3_module_test.cc?pli=1#1239
 type crosCameraTestConfig struct {
-	cameraHALPath   string // path to the camera HAL to test
-	cameraFacing    string // facing of the camera to test, such as "front" or "back".
-	gtestFilter     string // filter for Google Test
-	recordingParams string // resolutions and fps to test in recording
-	perfLog         string // path to the performance log
-	outDir          string // directory where result will be written into.
+	cameraHALPath        string // path to the camera HAL to test
+	cameraFacing         string // facing of the camera to test, such as "front" or "back".
+	gtestFilter          string // filter for Google Test
+	recordingParams      string // resolutions and fps to test in recording
+	perfLog              string // path to the performance log
+	outDir               string // directory where result will be written into.
+	portraitModeTestData string // test data for portrait mode test.
 }
 
 // toArgs converts crosCameraTestConfig to a list of argument strings.
@@ -108,17 +133,15 @@ func (t *crosCameraTestConfig) toArgs() []string {
 		// TODO(shik): Change the test binary to use --perf_log.
 		args = append(args, "--output_log="+t.perfLog)
 	}
+	if t.portraitModeTestData != "" {
+		args = append(args, "--portrait_mode_test_data="+t.portraitModeTestData)
+	}
 	return args
 }
 
 // runCrosCameraTest runs cros_camera_test with the arguments generated from the
 // config.  The cros-camera service must be stopped before calling this function.
 func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
-	if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstart.StopGoal,
-		upstart.WaitingState, upstart.RejectWrongGoal, 0); err != nil {
-		return errors.Wrap(err, "the cros-camera service did not stop before calling runCrosCameraTest")
-	}
-
 	// The test is performance sensitive and frame drops might cause test failures.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for CPU to become idle")
@@ -254,20 +277,37 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	testing.ContextLog(ctx, "Stopping cros-camera")
-	if err := upstart.StopJob(shortCtx, "cros-camera"); err != nil {
-		return errors.Wrap(err, "failed to stop cros-camera")
-	}
-	defer func() {
-		testing.ContextLog(ctx, "Starting cros-camera")
-		if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
-			if retErr != nil {
-				testing.ContextLog(ctx, "Failed to start cros-camera: ", err)
-			} else {
-				retErr = errors.Wrap(err, "failed to start cros-camera")
+	if cfg.ConnectToCameraService {
+		if upstart.JobExists(ctx, "cros-camera") {
+			// Ensure that cros-camera service is running, because the service
+			// might stopped due to the errors from some previous tests, and failed
+			// to restart for some reasons.
+			if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
+				return errors.Wrap(err, "the cros-camera service is not running")
 			}
+		} else {
+			return errors.New("failed to find the cros-camera service")
 		}
-	}()
+	} else {
+		testing.ContextLog(ctx, "Stopping cros-camera")
+		if err := upstart.StopJob(shortCtx, "cros-camera"); err != nil {
+			return errors.Wrap(err, "failed to stop cros-camera")
+		}
+		defer func() {
+			testing.ContextLog(ctx, "Starting cros-camera")
+			if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
+				if retErr != nil {
+					testing.ContextLog(ctx, "Failed to start cros-camera: ", err)
+				} else {
+					retErr = errors.Wrap(err, "failed to start cros-camera")
+				}
+			}
+		}()
+		if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstart.StopGoal,
+			upstart.WaitingState, upstart.RejectWrongGoal, ctxutil.MaxTimeout); err != nil {
+			return errors.Wrap(err, "the cros-camera service did not stop before calling runCrosCameraTest")
+		}
+	}
 
 	jsonCfg, err := json.Marshal(map[string]bool{
 		"force_jpeg_hw_enc": cfg.ForceJPEGHWEnc,
@@ -294,6 +334,10 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 		}
 	}
 
+	if cfg.PortraitModeTestData != "" {
+		cameraCfg.portraitModeTestData = cfg.PortraitModeTestData
+	}
+
 	p := perf.NewValues()
 	updatePerfIfNeeded := func() error {
 		if cameraCfg.perfLog != "" {
@@ -303,7 +347,7 @@ func RunTest(ctx context.Context, cfg TestConfig) (retErr error) {
 		}
 		return nil
 	}
-	if len(cfg.CameraFacing) > 0 {
+	if len(cfg.CameraFacing) > 0 || cfg.ConnectToCameraService {
 		if cfg.GeneratePerfLog {
 			cameraCfg.perfLog = filepath.Join(cfg.OutDir, "perf.log")
 		}

@@ -68,14 +68,15 @@ func (mode uiMode) String() string {
 	}
 }
 
-type launcherState int
+type uiState int
 
 const (
-	launcherIsVisible launcherState = iota
+	launcherIsVisible uiState = iota
 	launcherIsHidden
+	overviewIsVisible
 )
 
-func (state launcherState) String() string {
+func (state uiState) String() string {
 	const (
 		launcherVisibleHistogram string = "LauncherVisible"
 		launcherHiddenHistogram  string = "LauncherHidden"
@@ -85,6 +86,10 @@ func (state launcherState) String() string {
 	case launcherIsVisible:
 		return launcherVisibleHistogram
 	case launcherIsHidden:
+		return launcherHiddenHistogram
+	case overviewIsVisible:
+		// When overview is visible, return histogram for launcher hidden, since
+		// no metric exists for overview mode.
 		return launcherHiddenHistogram
 	default:
 		return "unknown"
@@ -156,15 +161,15 @@ func runShelfScroll(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-func shelfAnimationHistogramName(mode uiMode, state launcherState) string {
+func shelfAnimationHistogramName(mode uiMode, state uiState) string {
 	const baseHistogramName = "Apps.ScrollableShelf.AnimationSmoothness"
 	comps := []string{baseHistogramName, mode.String(), state.String()}
 	return strings.Join(comps, ".")
 }
 
-func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, launcherVisbility launcherState) ([]*metrics.Histogram, error) {
+func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, state uiState) ([]*metrics.Histogram, error) {
 	isInTabletMode := mode == inTabletMode
-	isLauncherVisible := launcherVisbility == launcherIsVisible
+	isLauncherVisible := state == launcherIsVisible
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isInTabletMode)
 	if err != nil {
@@ -177,7 +182,20 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		launcherTargetState = ash.FullscreenAllApps
 	}
 
-	if isInTabletMode && !isLauncherVisible {
+	if state == overviewIsVisible {
+		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
+		if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to hide all notifications")
+		}
+
+		// Enter overview mode.
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return nil, errors.Wrap(err, "failed to enter into the overview mode")
+		}
+
+		// Close overview mode after animation smoothness data is collected for it.
+		defer ash.SetOverviewModeAndWait(ctx, tconn, false)
+	} else if isInTabletMode && !isLauncherVisible {
 		// Hide launcher by launching the file app.
 		files, err := filesapp.Launch(ctx, tconn)
 		if err != nil {
@@ -212,7 +230,7 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 			return errors.Wrap(err, "fail to run scroll animation")
 		}
 		return nil
-	}, shelfAnimationHistogramName(mode, launcherVisbility))
+	}, shelfAnimationHistogramName(mode, state))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run scroll animation or get histograms")
 	}
@@ -233,29 +251,37 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	type testSetting struct {
-		launcherVisibility launcherState
-		mode               uiMode
+		state uiState
+		mode  uiMode
 	}
 
 	settings := []testSetting{
 		{
-			launcherVisibility: launcherIsHidden,
-			mode:               inClamshellMode,
+			state: launcherIsHidden,
+			mode:  inClamshellMode,
 		},
 		{
-			launcherVisibility: launcherIsVisible,
-			mode:               inClamshellMode,
+			state: overviewIsVisible,
+			mode:  inClamshellMode,
+		},
+		{
+			state: launcherIsVisible,
+			mode:  inClamshellMode,
 		},
 	}
 
 	tabletSettings := []testSetting{
 		{
-			launcherVisibility: launcherIsHidden,
-			mode:               inTabletMode,
+			state: launcherIsHidden,
+			mode:  inTabletMode,
 		},
 		{
-			launcherVisibility: launcherIsVisible,
-			mode:               inTabletMode,
+			state: overviewIsVisible,
+			mode:  inTabletMode,
+		},
+		{
+			state: launcherIsVisible,
+			mode:  inTabletMode,
 		},
 	}
 
@@ -265,20 +291,31 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	}
 
 	for _, setting := range settings {
-		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility)
+		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.state)
 		if err != nil {
-			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
+			s.Fatalf("Failed to run animation with ui mode as %s, display state as %s: %v", setting.mode, setting.state, err)
 		}
 
-		if err := metrics.SaveHistogramsMeanValue(ctx, pv, histograms, perf.Metric{
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}); err != nil {
-			s.Fatal("Failed to save metrics data: ", err)
-		}
+		// Save metrics data for scrolling the shelf.
+		for _, h := range histograms {
+			mean, err := h.Mean()
+			if err != nil {
+				s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+			}
 
-		if err := pv.Save(s.OutDir()); err != nil {
-			s.Fatal("Failed to save performance data in file: ", err)
+			if setting.state == overviewIsVisible {
+				h.Name = h.Name + ".OverviewShown"
+			}
+
+			pv.Set(perf.Metric{
+				Name:      h.Name,
+				Unit:      "percent",
+				Direction: perf.BiggerIsBetter,
+			}, mean)
 		}
+	}
+
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save performance data in file: ", err)
 	}
 }

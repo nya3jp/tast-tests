@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lacros tests linux-chrome running on ChromeOS.
+// Package lacros tests lacros-chrome running on ChromeOS.
 package lacros
 
 import (
@@ -15,22 +15,25 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testType string
-type chromeType string
 
 const (
 	// Simple test of performance with a maximized window opening various web content.
@@ -52,32 +55,63 @@ const (
 	// dragMoveOffsetDP indicates the offset from the top-left of a Chrome window to drag to ensure we can drag move it.
 	dragMoveOffsetDP int = 5
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
-	// edges of the screen intefering with drag-move and drag-resize of windows.
+	// edges of the screen interfering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
 
-	// chromeTypeChromeOS indicates we are using the ChromeOS system's Chrome browser
-	chromeTypeChromeOS = "chromeos"
-	// chromeTypeLacros indicates we are using Linux Chrome
-	chromeTypeLacros = "lacros"
+	// youtubeVideoDx and youtubeVideoDy are found manually by checking where the Youtube video appears relative
+	// to the top left corner of the browser window. These coordinates let us click on the Youtube video area
+	// if the video does not appear. This makes sure the video plays.
+	// See crbug.com/1085355.
+	youtubeVideoDx = 200.0
+	youtubeVideoDy = 250.0
 )
 
+func ensureYoutubeVideo(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error {
+	if err := webutil.WaitForYoutubeVideo(ctx, conn, 10*time.Second); err != nil {
+		// TODO(crbug.com/1085355): Sometimes, lacros-chrome does not autoplay the Youtube video. Programmatic methods
+		// for forcing the video to load and play don't seem to work, so manually click on the video via Ash.
+		w, err := findFirstNonBlankWindow(ctx, ctconn)
+		if err != nil {
+			return err
+		}
+		loc := w.BoundsInRoot.TopLeft().Add(coords.NewPoint(youtubeVideoDx, youtubeVideoDy))
+		if err := mouse.Click(ctx, ctconn, loc, mouse.LeftButton); err != nil {
+			return err
+		}
+
+		return webutil.WaitForYoutubeVideo(ctx, conn, 100*time.Second)
+	}
+
+	return nil
+}
+
 type page struct {
-	name string
-	url  string // TODO: Replace this with WPR.
+	name     string
+	url      string
+	finalize func(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error
 }
 
 var pageSet = []page{
 	{
-		name: "aquarium", // WebGL Aquarium
+		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
 		url:  "https://webglsamples.org/aquarium/aquarium.html",
 	},
 	{
-		name: "poster", // Poster Circle
+		name: "poster", // Poster Circle. This page is for testing compositor performance.
 		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 	},
 	{
-		name: "maps", // Google Maps
+		name: "maps", // Google Maps. This page is for testing WebGL.
 		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	},
+	{
+		name:     "youtube", // YouTube. This page is for testing video playback.
+		url:      "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
+		finalize: ensureYoutubeVideo,
+	},
+	{
+		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
+		url:  "https://en.wikipedia.org/wiki/Cat",
 	},
 }
 
@@ -91,8 +125,10 @@ func init() {
 		Func:         GpuCUJ,
 		Desc:         "Lacros GPU performance CUJ tests",
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      60 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.Model("eve")),
+		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
 			Name: "maximized",
@@ -203,11 +239,11 @@ func init() {
 	})
 }
 
-// This test deals with both ChromeOS chrome and Linux chrome. In order to reduce confusion,
+// This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
 // we adopt the following naming convention for chrome.TestConn objects:
 //   ctconn: chrome.TestConn to ChromeOS chrome.
-//   ltconn: chrome.TestConn to Linux chrome.
-//   tconn: chrome.TestConn to either ChromeOS or Linux chrome, i.e. both are usable.
+//   ltconn: chrome.TestConn to lacros chrome.
+//   tconn: chrome.TestConn to either ChromeOS or lacros chrome, i.e. both are usable.
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
@@ -230,8 +266,8 @@ func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 		return err
 	}
 	// Compute the node coordinates in cros-chrome root window coordinate space by
-	// adding the top left coordinate of the linux-chrome window in cros-chrome root window coorindates.
-	return ash.MouseClick(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), ash.LeftButton)
+	// adding the top left coordinate of the lacros-chrome window in cros-chrome root window coorindates.
+	return mouse.Click(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), mouse.LeftButton)
 }
 
 func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
@@ -240,7 +276,7 @@ func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn fun
 		Role:      ui.RoleTypePopUpButton,
 		ClassName: "BrowserAppMenuButton",
 	}
-	menu, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	menu, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the three dot menu")
 	}
@@ -257,7 +293,7 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 	params := ui.FindParams{
 		ClassName: "ash/StatusAreaWidgetDelegate",
 	}
-	statusArea, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
 	}
@@ -272,7 +308,7 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 		Name:      name,
 		ClassName: "FeaturePodIconButton",
 	}
-	nbtn, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	nbtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find button")
 	}
@@ -349,17 +385,6 @@ func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	return nil
 }
 
-func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
-	targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
-	if err != nil {
-		return errors.Wrap(err, "failed to query for about:blank pages")
-	}
-	for _, info := range targets {
-		ds.CloseTarget(ctx, info.TargetID)
-	}
-	return nil
-}
-
 var metricMap = map[string]struct {
 	unit      string
 	direction perf.Direction
@@ -417,7 +442,7 @@ const (
 type statBucketKey struct {
 	metric string
 	stat   statType
-	crt    chromeType
+	crt    lacros.ChromeType
 }
 
 type metricsRecorder struct {
@@ -584,12 +609,12 @@ type testInvocation struct {
 	pv       *perf.Values
 	scenario testType
 	page     page
-	crt      chromeType
+	crt      lacros.ChromeType
 	metrics  *metricsRecorder
 }
 
-// runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and Linux chrome.
-// tconn is a test connection to the current browser being used (either ChromeOS or Linux chrome).
+// runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
+// tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
 func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
@@ -627,7 +652,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			// TODO(crbug.com/1067535): Subtract -1 to ensure drag-resize occurs for now.
 			start := coords.NewPoint(sb.Left+sb.Width-1, sb.Top+sb.Height-1)
 			end := coords.NewPoint(sb.Left+sb.Height, sb.Top+sb.Width)
-			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag resize")
 			}
 			return nil
@@ -647,22 +672,30 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			return errors.Wrap(err, "failed to restore blank window")
 		}
 
-		// Set content window to take up the left half of the screen.
-		sbl := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width/2, info.WorkArea.Height).WithInset(insetSlopDP, insetSlopDP)
+		// Set content window to take up the left half of the screen in landscape, or top half in portrait.
+		isp := info.WorkArea.Width < info.WorkArea.Height
+		sbl := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width/2, info.WorkArea.Height)
+		if isp {
+			sbl = coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width, info.WorkArea.Height/2)
+		}
+		sbl = sbl.WithInset(insetSlopDP, insetSlopDP)
 		if err := setWindowBounds(ctx, ctconn, w.ID, sbl); err != nil {
 			return errors.Wrap(err, "failed to set non-blank window initial bounds")
 		}
 
-		// Set the occluding window to take up the right side of the screen.
+		// Set the occluding window to take up the right side of the screen in landscape, or bottom half in portrait.
 		sbr := sbl.WithOffset(sbl.Width, 0)
+		if isp {
+			sbr = sbl.WithOffset(0, sbl.Height)
+		}
 		if err := setWindowBounds(ctx, ctconn, wb.ID, sbr); err != nil {
 			return errors.Wrap(err, "failed to set blank window initial bounds")
 		}
 		perfFn = func() error {
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
-			end := coords.NewPoint(sbl.Left, sbr.Top+1)
-			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
+			end := coords.NewPoint(sbl.Left+dragMoveOffsetDP, sbl.Top+dragMoveOffsetDP)
+			if err := mouse.Drag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag move")
 			}
 			return nil
@@ -675,10 +708,10 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	}
 
 	// Open the threedot menu if indicated.
-	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for linux chrome, which causes this code to fail.
+	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for lacros chrome, which causes this code to fail.
 	if invoc.scenario == testTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if invoc.crt == chromeTypeLacros {
+		if invoc.crt == lacros.ChromeTypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
@@ -691,10 +724,15 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 }
 
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
-	// Launch linux-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLinuxChrome(ctx, pd)
+	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to launch linux-chrome")
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+
+	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
+	l, err := launcher.LaunchLacrosChrome(ctx, pd)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch lacros-chrome")
 	}
 	defer l.Close(ctx)
 
@@ -716,8 +754,14 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	defer connURL.CloseTarget(ctx)
 
 	// Close the initial "about:blank" tab present at startup.
-	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
+	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
+	}
+
+	if invoc.page.finalize != nil {
+		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
+			return err
+		}
 	}
 
 	// Setup extra window for multi-window tests.
@@ -759,6 +803,12 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 	defer connURL.Close()
 	defer connURL.CloseTarget(ctx)
 
+	if invoc.page.finalize != nil {
+		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
+			return err
+		}
+	}
+
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
@@ -777,6 +827,11 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute audio: ", err)
+	}
+	defer audio.Unmute(ctx)
 
 	if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is off."); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)
@@ -818,7 +873,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeLacros,
+			crt:      lacros.ChromeTypeLacros,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run lacros test: ", err)
@@ -828,7 +883,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeChromeOS,
+			crt:      lacros.ChromeTypeChromeOS,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run cros test: ", err)

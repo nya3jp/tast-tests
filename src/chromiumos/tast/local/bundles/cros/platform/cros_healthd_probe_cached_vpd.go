@@ -6,11 +6,10 @@ package platform
 
 import (
 	"context"
-	"strings"
+	"reflect"
 
 	"chromiumos/tast/local/crosconfig"
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
 
@@ -29,25 +28,20 @@ func init() {
 }
 
 func CrosHealthdProbeCachedVpd(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
-	}
-
-	b, err := testexec.CommandContext(ctx, "telem", "--category=cached_vpd").Output(testexec.DumpLogOnError)
+	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryCachedVPD, s.OutDir())
 	if err != nil {
-		s.Fatal("Failed to run 'telem --category=cached_vpd': ", err)
+		s.Fatal("Failed to get cached VPD telemetry info: ", err)
 	}
 
-	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-	if len(lines) != 2 {
-		s.Fatalf("Wrong number of lines: got %v, want 2", len(lines))
+	if len(records) != 2 {
+		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
 	}
 
-	// Expect the keys to be just sku_number.
-	want := "sku_number"
-	got := lines[0]
-	if !(want == got) {
-		s.Fatalf("Header keys: got %v; want %v", got, want)
+	// Verify the headers.
+	want := []string{"sku_number"}
+	got := records[0]
+	if !reflect.DeepEqual(want, got) {
+		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
 	}
 
 	// Check if the device has a SKU number. If it does, the SKU number should
@@ -58,7 +52,7 @@ func CrosHealthdProbeCachedVpd(ctx context.Context, s *testing.State) {
 	}
 
 	hasSku := err == nil && val == "true"
-	sku := lines[1]
+	sku := records[1][0]
 	if hasSku && sku == "" {
 		s.Fatal("Empty SKU number")
 	}

@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -146,11 +145,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	vm, err := VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to determine if ARCVM is enabled")
-	}
-
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
 	if err := WaitAndroidInit(ctx); err != nil {
@@ -167,14 +161,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
 	arc.logcatCmd = logcatCmd
-
-	if !vm {
-		// Wait for internal networking to get ready. This gives better error messages
-		// when networking is broken, rather than obscure "failed connecting to ADB" error.
-		if err := waitNetworking(ctx); err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
-		}
-	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
@@ -227,7 +213,6 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 // androidDeps contains Android-related software features (see testing.Test.SoftwareDeps).
 // At least one of them must be declared to call New.
 var androidDeps = []string{
-	"android_vm_p_deprecated",
 	"android_vm",
 	"android_vm_r",
 	"android_p",
@@ -283,14 +268,12 @@ func (a *ARC) setLogcatFile(p string) error {
 }
 
 // VMEnabled returns true if Chrome OS is running ARCVM.
-// This is done by checking "/run/chrome/is_arcvm" content equal to "1".
-// Reference: chrome/browser/chromeos/arc/arc_service_launcher.cc
 func VMEnabled() (bool, error) {
-	b, err := ioutil.ReadFile("/run/chrome/is_arcvm")
-	if err != nil {
-		return false, err
+	installType, ok := Type()
+	if !ok {
+		return false, errors.New("failed to get installation type")
 	}
-	return string(b) == "1", nil
+	return installType == VM, nil
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
@@ -358,19 +341,6 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 		return nil, err
 	}
 	return cmd, nil
-}
-
-// waitNetworking waits for the internal networking to get ready.
-func waitNetworking(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "wait_networking")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
-			return errors.Wrap(err, "ping 100.115.92.2 failed")
-		}
-		return nil
-	}, nil)
 }
 
 // timingMode describes whether timing information should be reported.

@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddUSBPrinter,
 		Desc:         "Verifies setup of a basic USB printer",
-		Contacts:     []string{"valleau@chromium.org"},
+		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Pre:          chrome.LoggedIn(),

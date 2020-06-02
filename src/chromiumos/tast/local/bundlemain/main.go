@@ -17,12 +17,17 @@ import (
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/testing"
 )
 
 const varLogMessages = "/var/log/messages"
+const statefulPartition = "/mnt/stateful_partition"
+const mib = 1024 * 1024
+const lowSpaceThreshold = 100 * mib
+const spaceUsageThreshold = 10 * mib
 
 func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	dp := filepath.Join(outDir, "messages")
@@ -103,6 +108,16 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 		}
 	}
 
+	freeSpaceBefore, err := disk.FreeSpace(statefulPartition)
+	if err != nil {
+		s.Log("Failed to read the amount of free disk space: ", err)
+		freeSpaceBefore = 0
+	}
+
+	if freeSpaceBefore < lowSpaceThreshold {
+		s.Logf("Low disk space before starting test: %d MiB available", freeSpaceBefore/mib)
+	}
+
 	return func(ctx context.Context, s *testing.State) {
 		if s.HasError() {
 			faillog.Save(ctx)
@@ -110,7 +125,23 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 
 		if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
 			s.Log("Failed to copy logs: ", err)
-			return
+		}
+
+		freeSpaceAfter, err := disk.FreeSpace(statefulPartition)
+		if err != nil {
+			s.Log("Failed to read the amount of free disk space: ", err)
+			freeSpaceAfter = freeSpaceBefore
+		}
+
+		var spaceUsage uint64
+		if freeSpaceBefore < freeSpaceAfter {
+			spaceUsage = 0
+		} else {
+			spaceUsage = freeSpaceBefore - freeSpaceAfter
+		}
+
+		if spaceUsage > spaceUsageThreshold {
+			s.Logf("Stateful partition usage: %d MiB (%d MiB free -> %d MiB free)", spaceUsage/mib, freeSpaceBefore/mib, freeSpaceAfter/mib)
 		}
 	}
 }

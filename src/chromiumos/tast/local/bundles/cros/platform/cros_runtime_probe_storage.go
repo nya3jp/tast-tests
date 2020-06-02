@@ -10,13 +10,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/godbus/dbus"
-
 	rppb "chromiumos/system_api/runtime_probe_proto"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
 	"chromiumos/tast/testing"
 )
 
@@ -37,14 +33,15 @@ func init() {
 // storageNames will extract the model and storage names (prefixed with
 // "hwid_component:storage/") from autotest_host_info_labels var which is a json string of list of cros-labels.
 // After collecting storage names, this function will return a set containing them.
-func storageNames(jsonStr string) (map[string]struct{}, error) {
+// Since we need the model name for component group, here we return it as well.
+func storageNames(jsonStr string) (map[string]struct{}, string, error) {
 	const (
 		storagePrefix = "hwid_component:storage/"
 		modelPrefix   = "model:"
 	)
 	var labels []string
 	if err := json.Unmarshal([]byte(jsonStr), &labels); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 	// Filter labels with prefix "hwid_component:storage/" and trim them.
 	// Also find the model name of this DUT.
@@ -58,52 +55,16 @@ func storageNames(jsonStr string) (map[string]struct{}, error) {
 			model = strings.TrimPrefix(label, modelPrefix)
 		}
 	}
+	if len(model) == 0 {
+		return nil, "", errors.New("no model found")
+	}
+
 	set := make(map[string]struct{})
 	for _, label := range names {
 		set[model+"_"+label] = struct{}{}
 	}
 
-	return set, nil
-}
-
-// storageComponents uses D-Bus call to get storage components from runtime_probe.
-// Currently only users |chronos| and |debugd| are allowed to call this D-Bus function.
-func storageComponents(ctx context.Context) ([]*rppb.Storage, error) {
-	const (
-		// Define the D-Bus constants here.
-		// Note that this is for the reference only to demonstrate how
-		// to use dbusutil. For actual use, session_manager D-Bus call
-		// should be performed via
-		// chromiumos/tast/local/session_manager pacakge.
-		jobName       = "runtime_probe"
-		dbusName      = "org.chromium.RuntimeProbe"
-		dbusPath      = "/org/chromium/RuntimeProbe"
-		dbusInterface = "org.chromium.RuntimeProbe"
-		dbusMethod    = dbusInterface + ".ProbeCategories"
-	)
-
-	if err := upstart.EnsureJobRunning(ctx, jobName); err != nil {
-		return nil, errors.Wrap(err, "runtime probe is not running")
-	}
-	defer upstart.StopJob(ctx, jobName)
-
-	conn, obj, err := dbusutil.ConnectPrivateWithAuth(ctx, sysutil.ChronosUID, dbusName, dbus.ObjectPath(dbusPath))
-	if err != nil {
-		return nil, err
-	}
-	defer conn.Close()
-
-	request := rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_storage,
-		},
-	}
-	result := rppb.ProbeResult{}
-
-	if err := dbusutil.CallProtoMethod(ctx, obj, dbusMethod, &request, &result); err != nil {
-		return nil, errors.Wrapf(err, "failed to call method %s", dbusMethod)
-	}
-	return result.GetStorage(), nil
+	return set, model, nil
 }
 
 // CrosRuntimeProbeStorage checks if the storage names in cros-label are consistent with probed names from runtime_probe
@@ -113,7 +74,7 @@ func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("No storage labels")
 	}
 
-	set, err := storageNames(labelsStr)
+	set, model, err := storageNames(labelsStr)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
@@ -122,12 +83,24 @@ func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("No storage labels")
 	}
 
-	probedStorageComponents, err := storageComponents(ctx)
+	request := &rppb.ProbeRequest{
+		Categories: []rppb.ProbeRequest_SupportCategory{
+			rppb.ProbeRequest_storage,
+		},
+	}
+	result, err := runtimeprobe.Probe(ctx, request)
 	if err != nil {
 		s.Fatal("Cannot get storage components: ", err)
 	}
+	probedStorageComponents := result.GetStorage()
+
 	for _, component := range probedStorageComponents {
 		name := component.GetName()
+		if info := component.GetInformation(); info != nil {
+			if compGroup := info.GetCompGroup(); compGroup != "" {
+				name = model + "_" + compGroup
+			}
+		}
 		if name == "generic" {
 			s.Log("Skip known generic probe result")
 		} else {

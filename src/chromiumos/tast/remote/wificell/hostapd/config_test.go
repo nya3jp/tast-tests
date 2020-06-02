@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/wifi/security/base"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/errors"
 )
 
@@ -274,7 +275,7 @@ func TestConfigFormat(t *testing.T) {
 				SecurityConfig: &base.Config{},
 			},
 			verify: map[string]string{
-				"ssid":           "ssid000",
+				"ssid2":          `P"ssid000"`,
 				"hw_mode":        "b",
 				"channel":        "1",
 				"interface":      iface,
@@ -400,6 +401,67 @@ func TestConfigFormat(t *testing.T) {
 			},
 			verify: map[string]string{
 				"ignore_broadcast_ssid": "1",
+			},
+		},
+		// Check non-ASCII SSIDs.
+		{
+			conf: &Config{
+				Ssid:           "\a\b\f\n\r\t\v'\"\x1b", // Escaped characters.
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\x07\x08\x0c\n\r\t\x0b'\"\e"`,
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "\xe9\x89\xbb", // UTF-8
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\xe9\x89\xbb"`,
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "\xf2\xe3\x00\xd4\xc5\xb6", // Random binary
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\xf2\xe3\x00\xd4\xc5\xb6"`,
+			},
+		},
+		// Check PMF.
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				Hidden:         true,
+				SecurityConfig: &base.Config{},
+				PMF:            PMFRequired,
+			},
+			verify: map[string]string{
+				"ieee80211w": "2",
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				Hidden:         true,
+				SecurityConfig: &base.Config{},
+				PMF:            PMFOptional,
+			},
+			verify: map[string]string{
+				"ieee80211w": "1",
 			},
 		},
 	}
@@ -533,6 +595,110 @@ func TestFreqOptions(t *testing.T) {
 		}
 		if !equal(ops, tc.expect) {
 			t.Errorf("testcase #%d failed, got %v, want %v", i, ops, tc.expect)
+		}
+	}
+}
+
+func TestPerfDesc(t *testing.T) {
+	wpaConf, err := wpa.NewConfigFactory(
+		"chromeos",
+		wpa.Mode(wpa.ModePureWPA2),
+		wpa.Ciphers(wpa.CipherTKIP),
+	).Gen()
+	if err != nil {
+		t.Fatal("failed to prepare test wpa config")
+	}
+
+	testcases := []struct {
+		conf   *Config
+		expect string
+	}{
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch001_mode11b_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211nPure,
+				Channel:        3,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch003_modeHT20_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211nPure,
+				Channel:        1,
+				HTCaps:         HTCapHT40,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch001_modeHT40p_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211nMixed,
+				Channel:        5,
+				HTCaps:         HTCapHT40 | HTCapSGI40,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch005_modeHT40m_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211acMixed,
+				Channel:        157,
+				HTCaps:         HTCapHT40Plus,
+				VHTChWidth:     VHTChWidth20Or40,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch157_modeVHT40_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211acMixed,
+				Channel:        157,
+				HTCaps:         HTCapHT40Plus,
+				VHTChWidth:     VHTChWidth80,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch157_modeVHT80_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211acMixed,
+				Channel:        108,
+				HTCaps:         HTCapHT40Plus,
+				VHTChWidth:     VHTChWidth160,
+				SecurityConfig: &base.Config{},
+			},
+			expect: "ch108_modeVHT160_none",
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211nPure,
+				Channel:        3,
+				SecurityConfig: wpaConf,
+			},
+			expect: "ch003_modeHT20_psk",
+		},
+	}
+
+	for i, tc := range testcases {
+		desc := tc.conf.PerfDesc()
+		if desc != tc.expect {
+			t.Errorf("testcase #%d failed, got %s, want %s", i, desc, tc.expect)
 		}
 	}
 }

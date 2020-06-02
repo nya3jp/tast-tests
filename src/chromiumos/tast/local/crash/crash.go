@@ -64,6 +64,8 @@ const (
 	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
 	// in order to compare it with crash reporter log.
 	userCrashDirs = "/home/chronos/u-*/crash"
+	// FilterInPath is the path to the filter-in file.
+	FilterInPath = "/run/crash_reporter/filter-in"
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
@@ -92,6 +94,10 @@ const (
 
 	// ChromeVerboseConsentFlags provides the flags to enable verbose logging about consent.
 	ChromeVerboseConsentFlags = "--vmodule=stats_reporting_controller=1,autotest_private_api=1"
+
+	// FilterInIgnoreAllCrashes is a value to put in the filter-in file if
+	// you wish to ignore all crashes that happen during a test.
+	FilterInIgnoreAllCrashes = "none"
 )
 
 // DefaultDirs returns all standard directories to which crashes are written.

@@ -8,6 +8,7 @@ set noparent
 tast-owners@google.com
 
 bhansknecht@chromium.org
+pwang@chromium.org
 ejcaruso@chromium.org
 hidehiko@chromium.org
 kathrelkeld@chromium.org
@@ -16,4 +17,5 @@ mukai@chromium.org
 nya@chromium.org
 oka@chromium.org
 ricardoq@chromium.org
+vsavu@google.com
 yamaguchi@chromium.org

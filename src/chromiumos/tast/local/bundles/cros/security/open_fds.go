@@ -124,6 +124,9 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 		// but it would be nice to know what they're being used for.
 		mkExp(`/proc/(?P<pid>[0-9]+)/statm`, 0500),
 		mkExp(`/proc/(?P<pid>[0-9]+)/status`, 0500),
+
+		// TODO(crbug.com/1085277): Figure out why renderers have a FD for /proc.
+		mkExp(`/proc`, 0555),
 	}
 	eRenderer = append(ePlugin, eRenderer...)
 

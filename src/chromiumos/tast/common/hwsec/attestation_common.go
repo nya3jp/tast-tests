@@ -129,15 +129,77 @@ func certURL(pcaType PCAType) string {
 	return caServerURL(pcaType) + "/sign"
 }
 
+// VA declares a pair of functions that get and verify the VA challenge.
+type VA interface {
+	// GetDecodedVAChallenge returns a new VA challenge.
+	GetDecodedVAChallenge(ctx context.Context) ([]byte, error)
+	// VerifyEncodedVAChallenge verifies the signed VA challenge response.
+	VerifyEncodedVAChallenge(ctx context.Context, signedChallenge string) error
+}
+
+// RealVA implements the VA functionality by talking to the real VA servers used in production.
+type RealVA struct{}
+
+// NewRealVA creates a new instance of RealVA.
+func NewRealVA() *RealVA {
+	return &RealVA{}
+}
+
+// GetDecodedVAChallenge get the VA challenge from the default VA server and decoded it. In case of any of any error, retries for a certain small number of times.
+func (rc *RealVA) GetDecodedVAChallenge(ctx context.Context) ([]byte, error) {
+	const retryCount = 5
+	return getDecodedVAChallenge(ctx, retryCount)
+}
+
+// VerifyEncodedVAChallenge sends the signed challenge to the default VA server.
+func (rc *RealVA) VerifyEncodedVAChallenge(ctx context.Context, signedChallenge string) error {
+	urlForVerification := "https://test-dvproxy-server.sandbox.google.com/dvproxy/verifychallengeresponse?signeddata=" + url.QueryEscape(signedChallenge)
+	_, err := SendGetRequestTo(ctx, urlForVerification)
+	return err
+}
+
+// PCA declares functions that handle PCA requests by attestation.
+type PCA interface {
+	// GetDecodedPCAChallenge returns a new VA challenge.
+	HandleEnrollRequest(ctx context.Context, request string, pcaType PCAType) (string, error)
+	// VerifyEncodedPCAChallenge verifies the signed VA challenge response.
+	HandleCertificateRequest(ctx context.Context, request string, pcaType PCAType) (string, error)
+}
+
+// PCAGoLib implements the PCA functionality by talking to the real servers used in production. The underlying implementation sends the HTTP request using Go's built-in packages.
+type PCAGoLib struct{}
+
+// NewPCAGoLib creates a new instance of PCAGoLib.
+func NewPCAGoLib() *PCAGoLib {
+	return &PCAGoLib{}
+}
+
+// HandleEnrollRequest sends the request to the real PCA server in production directly.
+func (rp *PCAGoLib) HandleEnrollRequest(ctx context.Context, request string, pcaType PCAType) (string, error) {
+	return SendPostRequestTo(ctx, request, enrollURL(pcaType))
+}
+
+// HandleCertificateRequest sends the request to the real PCA server in production directly.
+func (rp *PCAGoLib) HandleCertificateRequest(ctx context.Context, request string, pcaType PCAType) (string, error) {
+	return SendPostRequestTo(ctx, request, certURL(pcaType))
+}
+
 // AttestationTest provides the complex operations in the attestaion flow along with validations
 type AttestationTest struct {
 	ac      attestationClient
 	pcaType PCAType
+	pca     PCA
+	va      VA
 }
 
-// NewAttestaionTest creates a new AttestationTest instance
+// NewAttestaionTestWith creates a new AttestationTest instance with the default PCA and VA instances that talk to the real servers used in production.
+func NewAttestaionTestWith(ac attestationClient, pcaType PCAType, pca PCA, va VA) *AttestationTest {
+	return &AttestationTest{ac, pcaType, pca, va}
+}
+
+// NewAttestaionTest creates a new AttestationTest instance with the default PCA and VA objects that talk to the real servers used in production.
 func NewAttestaionTest(ac attestationClient, pcaType PCAType) *AttestationTest {
-	return &AttestationTest{ac, pcaType}
+	return NewAttestaionTestWith(ac, pcaType, &PCAGoLib{}, &RealVA{})
 }
 
 // Enroll creates the enroll request, sends it to the corresponding PCA server, and finishes the request with the received response.
@@ -146,7 +208,7 @@ func (at *AttestationTest) Enroll(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create enroll request")
 	}
-	resp, err := SendPostRequestTo(ctx, req, enrollURL(at.pcaType))
+	resp, err := at.pca.HandleEnrollRequest(ctx, req, at.pcaType)
 	if err != nil {
 		return errors.Wrap(err, "failed to send request to CA")
 	}
@@ -169,7 +231,7 @@ func (at *AttestationTest) GetCertificate(ctx context.Context, username, label s
 	if err != nil {
 		return errors.Wrap(err, "failed to create certificate request")
 	}
-	resp, err := SendPostRequestTo(ctx, req, certURL(at.pcaType))
+	resp, err := at.pca.HandleCertificateRequest(ctx, req, at.pcaType)
 	if err != nil {
 		return errors.Wrap(err, "failed to send request to CA")
 	}
@@ -205,8 +267,7 @@ func getDecodedVAChallenge(ctx context.Context, retryCount int) ([]byte, error) 
 // SignEnterpriseChallenge gets the challenge from default VA server, perform SPKAC, and sends the signed challenge back to verify it
 func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username, label string) error {
 	// In case the request fails for any reason, retry for 5 times.
-	const RetryCount = 5
-	challenge, err := getDecodedVAChallenge(ctx, RetryCount)
+	challenge, err := at.va.GetDecodedVAChallenge(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to base64-decode challenge")
 	}
@@ -223,10 +284,8 @@ func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username
 		return errors.Wrap(err, "failed to sign VA challenge")
 	}
 	b64SignedChallenge := base64.StdEncoding.EncodeToString([]byte(signedChallenge))
-	urlForVerification := "https://test-dvproxy-server.sandbox.google.com/dvproxy/verifychallengeresponse?signeddata=" + url.QueryEscape(b64SignedChallenge)
-	_, err = SendGetRequestTo(ctx, urlForVerification)
-	if err != nil {
-		return errors.Wrap(err, "failed to verify challenge")
+	if err := at.va.VerifyEncodedVAChallenge(ctx, b64SignedChallenge); err != nil {
+		return errors.Wrap(err, "failed to verify VA challenge.")
 	}
 	return nil
 }

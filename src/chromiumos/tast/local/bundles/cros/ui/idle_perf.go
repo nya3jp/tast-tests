@@ -26,18 +26,15 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               []string{},
 		}, {
 			Name:              "arcvm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               []string{"--enable-arcvm"},
 		}},
 	})
 }
 
 func IdlePerf(ctx context.Context, s *testing.State) {
-	args := s.Param().([]string)
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

@@ -65,7 +65,7 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 		s.Fatal("Failed to get user test file path: ", err)
 	}
 
-	// Write a 64 MiB test file.
+	// Write a test file.
 	// Note that we want the file to be random so that transparent filesystem
 	// compression (if any is implemented) doesn't affect this test.
 	// OpenSSL is used instead of /dev/urandom because it's much faster.
@@ -83,7 +83,7 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 		s.Fatal("Failed to get the account disk usage after writing data: ", err)
 	}
 
-	// *1024*1024 because 1MiB is 1024*1024 bytes
+	// *1024*1024 because 1MiB is 1024*1024 bytes.
 	expectedAfter := usageBefore + testFileSize*1024*1024
 	expectedAfterUpperLimit := expectedAfter + testFileMargin*1024*1024
 	expectedAfterLowerLimit := expectedAfter - testFileMargin*1024*1024

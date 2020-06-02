@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -159,11 +160,11 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if err := ash.MouseMove(ctx, tconn, coords.Point{X: 0, Y: 0}, 0); err != nil {
+		if err := mouse.Move(ctx, tconn, coords.Point{X: 0, Y: 0}, 0); err != nil {
 			s.Fatal("Failed to move mouse: ", err)
 		}
 		center := info.Bounds.CenterPoint()
-		if err := ash.MouseMove(ctx, tconn, center, 200*time.Millisecond); err != nil {
+		if err := mouse.Move(ctx, tconn, center, 200*time.Millisecond); err != nil {
 			s.Fatal("Failed to move mouse: ", err)
 		}
 

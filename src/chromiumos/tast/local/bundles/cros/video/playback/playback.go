@@ -21,47 +21,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Identifier for a map of measured values with/without HW Acceleration stored during a test.
-type playbackType int
-
-const (
-	playbackWithHWAccel playbackType = iota
-	playbackWithoutHWAccel
-)
-
-type hwAccelState int
-
-const (
-	hwAccelDisabled hwAccelState = iota
-	hwAccelEnabled
-)
-
-// DefaultPerfState specifies whether to record perf metrics of default playback.
-type DefaultPerfState int
-
-const (
-	// DefaultPerfDisabled disables recording metrics of default playback.
-	DefaultPerfDisabled DefaultPerfState = iota
-	// DefaultPerfEnabled enables recording metrics of default playback.
-	DefaultPerfEnabled
-)
-
 // DecoderType represents the different video decoder types.
 type DecoderType int
 
 const (
-	// VDA is the video decoder type based on the VideoDecodeAccelerator
-	// interface. These are set to be deprecrated.
+	// VDA - legacy VideoDecodeAccelerator-based accelerated video decoder.
 	VDA DecoderType = iota
-	// VD is the video decoder type based on the VideoDecoder interface. These
-	// will eventually replace the current VDAs.
+	// VD - VideoDecoder-based accelerated video decoder.
 	VD
-	// LibGAV1 is the video decoder type to play AV1 video with Gav1VideoDecoder.
+	// Software - Any software-based video decoder (e.g. ffmpeg, libvpx).
+	Software
+	// LibGAV1 - an alternative software library used to play AV1 video.
 	LibGAV1
 )
-
-type metricDesc string
-type metricValue float64
 
 const (
 	// Time to sleep while collecting data.
@@ -70,39 +42,15 @@ const (
 	// The time to wait after CPU is stable so as to measure solid metric values.
 	measurementDuration = 25 * time.Second
 
-	// Description for measured values shown in dashboard.
-	// A video description (e.g. h264_1080p) is appended to them.
-	cpuUsageDesc            metricDesc = "video_cpu_usage"
-	powerConsumptionDesc    metricDesc = "video_power_consumption"
-	droppedFrameDesc        metricDesc = "video_dropped_frames"
-	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent"
-
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
 )
 
-type collectedPerfData map[playbackType]map[metricDesc]metricValue
-type metricDef struct {
-	desc metricDesc
-	unit string
-	dir  perf.Direction
-}
-
-// metricDefs is a list of metric measured in this test.
-var metricDefs = []metricDef{
-	{cpuUsageDesc, "percent", perf.SmallerIsBetter},
-	{powerConsumptionDesc, "watt", perf.SmallerIsBetter},
-	{droppedFrameDesc, "frames", perf.SmallerIsBetter},
-	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
-}
-
-// RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a
-// video with/without HW Acceleration. The measured values are reported to a dashboard. If dps is
-// DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback.
-// The default video playback stands for HW-accelerated one if available, otherwise software playback.
-// decoderType specifies whether to run the tests against the VDA or VD based video decoder
+// RunTest measures a number of performance metrics while playing a video with
+// or without HW Acceleration as per enableHWAccel. decoderType specifies
+// whether to run the tests against the VDA or VD based video decoder
 // implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName string, dps DefaultPerfState, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType, enableHWAccel bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -114,47 +62,19 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, dps Defaul
 	}
 	defer audio.Unmute(ctx)
 
-	perfData := collectedPerfData{}
-	s.Log("Measuring performance")
-	if err := measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, perfData, decoderType); err != nil {
+	testing.ContextLog(ctx, "Measuring performance")
+	if err = measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, enableHWAccel, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
-	s.Log("Measured CPU usage, number of frames dropped and dropped frame percentage: ", perfData)
-
-	if err := savePerfResults(ctx, perfData, s.OutDir(), dps); err != nil {
-		s.Fatal("Failed to save perf data: ", err)
-	}
 }
 
-// measurePerformance collects video playback performance playing a video with SW decoder and
-// also with HW decoder if available.
-// utilsJSPath is a path of chrome_media_internals_utils.js
+// measurePerformance collects video playback performance playing a video with
+// either SW or HW decoder. utilsJSPath is a path of
+// chrome_media_internals_utils.js
 func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	perfData collectedPerfData, decoderType DecoderType) error {
-	// Try Software playback.
-	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelDisabled, decoderType); err != nil {
-		return err
-	}
-
-	if decoderType == LibGAV1 {
-		// GAV1 decoder's performance has been measured, no need to measure HW decoder's performance.
-		return nil
-	}
-
-	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
-	// have a capability to play the video with HW acceleration.
-	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
-		return err
-	}
-	return nil
-}
-
-// measureWithConfig plays video one time and measures performance values.
-// The measured values are recorded in perfData.
-func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	perfData collectedPerfData, hwState hwAccelState, decoderType DecoderType) error {
+	decoderType DecoderType, enableHWAccel bool, outDir string) error {
 	var chromeArgs []string
-	if hwState == hwAccelDisabled {
+	if !enableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
 
@@ -208,25 +128,32 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 
 	// Play a video repeatedly during measurement.
 	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
-		return errors.Wrap(err, "failed to settle video looping")
+		return errors.Wrap(err, "failed to set video loop")
 	}
 
-	vs, err := MeasureUsage(ctx, conn)
-	if err != nil {
+	// TODO(mcasas): Move measurement collection to after verifying that the decoder
+	// used is the intended one. It'll need to wait for video started.
+	p := perf.NewValues()
+	if err = measureCPUUsage(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to measure CPU usage")
 	}
 
-	vsFrameCount, err := getDroppedFrameCount(ctx, conn)
-	if err != nil {
+	if err := measureDroppedFrames(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
-	}
-	for k, v := range vsFrameCount {
-		vs[k] = v
 	}
 
 	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+	}
+	if enableHWAccel {
+		if !usesPlatformVideoDecoder {
+			return errors.New("hardware decoding accelerator was expected but wasn't used")
+		}
+	} else {
+		if usesPlatformVideoDecoder {
+			return errors.New("software decoding was expected but wasn't used")
+		}
 	}
 
 	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, url)
@@ -238,111 +165,53 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 		return errors.Errorf("Expect Gav1VideoDecoder, but used Decoder is %s", decoderName)
 	}
 
-	// Stop video.
 	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
 		return errors.Wrap(err, "failed to stop video")
 	}
 
-	return recordMetrics(ctx, vs, perfData, cr, usesPlatformVideoDecoder, hwState)
+	p.Save(outDir)
+	return nil
 }
 
-// recordMetrics records the measured performance values in perfData.
-func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData collectedPerfData, cr *chrome.Chrome, usesPlatformVideoDecoder bool, hwState hwAccelState) error {
-	if usesPlatformVideoDecoder && hwState == hwAccelDisabled {
-		return errors.New("hardware acceleration used despite being disabled")
+// measureCPUUsage obtains CPU usage and power consumption if supported.
+func measureCPUUsage(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
+	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration)
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return err
 	}
-	if !usesPlatformVideoDecoder && hwState == hwAccelEnabled {
-		// Software playback performance is not recorded, unless HW Acceleration is disabled.
-		return nil
-	}
-
-	pType := playbackWithoutHWAccel
-	if usesPlatformVideoDecoder {
-		pType = playbackWithHWAccel
+	testing.ContextLog(ctx, "Measuring CPU usage for ", measurementDuration)
+	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage and power consumption")
 	}
 
-	if perfData[pType] == nil {
-		perfData[pType] = map[metricDesc]metricValue{}
-	}
-	for desc, value := range vs {
-		perfData[pType][desc] = value
+	cpuUsage := measurements["cpu"]
+	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
+	p.Set(perf.Metric{
+		Name:      "cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsage)
+
+	if power, ok := measurements["power"]; ok {
+		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
+		p.Set(perf.Metric{
+			Name:      "pkg_power_usage",
+			Unit:      "W",
+			Direction: perf.SmallerIsBetter,
+		}, power)
 	}
 	return nil
 }
 
-// savePerfResults saves performance results in outDir.
-func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir string, dps DefaultPerfState) error {
-	p := perf.NewValues()
-	defaultPerfRecorded := false
-	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
-		keyval, found := perfData[pType]
-		if !found {
-			if pType == playbackWithHWAccel {
-				testing.ContextLog(ctx, "No HW playback performance result")
-				continue
-			} else {
-				// SW playback performance results should be collected in any cases.
-				return errors.Errorf("no SW playback performance result: %v", perfData)
-			}
-		}
-		var perfPrefixes []string
-		if pType == playbackWithHWAccel {
-			perfPrefixes = append(perfPrefixes, "hw_")
-		} else {
-			perfPrefixes = append(perfPrefixes, "sw_")
-		}
-
-		// Default metrics represent perf in default playback, which will be hardware-accelerated playback if it is
-		// available on the device; otherwise fallback to software playback.
-		if dps == DefaultPerfEnabled && !defaultPerfRecorded {
-			perfPrefixes = append(perfPrefixes, "default_")
-			defaultPerfRecorded = true
-		}
-		for _, m := range metricDefs {
-			val, found := keyval[m.desc]
-			for _, pp := range perfPrefixes {
-				perfName := pp + string(m.desc)
-				if !found && m.desc != powerConsumptionDesc {
-					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
-				}
-				p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
-			}
-		}
-	}
-	return p.Save(outDir)
-}
-
-// MeasureUsage obtains CPU usage percentage and power consumption if supported.
-func MeasureUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
-	}
-
-	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage while playing video", measurementDuration.Round(time.Second))
-	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to measure CPU usage and power consumption")
-	}
-
-	// Create metrics map, power is only measured on Intel platforms.
-	metrics := map[metricDesc]metricValue{
-		cpuUsageDesc: metricValue(measurements["cpu"]),
-	}
-	if _, ok := measurements["power"]; ok {
-		metrics[powerConsumptionDesc] = metricValue(measurements["power"])
-	}
-	return metrics, nil
-}
-
-// getDroppedFrameCount obtains the number of decoded frames and dropped frames pecentage.
-func getDroppedFrameCount(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
+// measureDroppedFrames obtains the number of decoded and dropped frames.
+func measureDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
 	var decodedFrameCount, droppedFrameCount int64
 	if err := conn.Eval(ctx, videoElement+".webkitDecodedFrameCount", &decodedFrameCount); err != nil {
-		return nil, errors.Wrap(err, "failed to get number of decoded frames")
+		return errors.Wrap(err, "failed to get number of decoded frames")
 	}
 	if err := conn.Eval(ctx, videoElement+".webkitDroppedFrameCount", &droppedFrameCount); err != nil {
-		return nil, errors.Wrap(err, "failed to get number of dropped frames")
+		return errors.Wrap(err, "failed to get number of dropped frames")
 	}
 
 	var droppedFramePercent float64
@@ -352,8 +221,17 @@ func getDroppedFrameCount(ctx context.Context, conn *chrome.Conn) (map[metricDes
 		testing.ContextLog(ctx, "No decoded frames; setting dropped percent to 100")
 		droppedFramePercent = 100.0
 	}
-	return map[metricDesc]metricValue{
-		droppedFrameDesc:        metricValue(droppedFrameCount),
-		droppedFramePercentDesc: metricValue(droppedFramePercent),
-	}, nil
+
+	p.Set(perf.Metric{
+		Name:      "dropped_frames",
+		Unit:      "frames",
+		Direction: perf.SmallerIsBetter,
+	}, float64(droppedFrameCount))
+	p.Set(perf.Metric{
+		Name:      "dropped_frames_percent",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, droppedFramePercent)
+
+	return nil
 }

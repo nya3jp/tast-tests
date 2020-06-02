@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -35,13 +36,15 @@ type HTCap int
 
 // HTCap enums, use bitmask for ease of checking existence.
 const (
-	HTCapHT20       HTCap = 1 << iota // HTCaps string "" means HT20.
-	HTCapHT40                         // auto-detect supported "[HT40-]" or "[HT40+]"
-	HTCapHT40Minus                    // "[HT40-]"
-	HTCapHT40Plus                     // "[HT40+]"
-	HTCapSGI20                        // "[SHORT-GI-20]"
-	HTCapSGI40                        // "[SHORT-GI-40]"
-	HTCapGreenfield                   // "[GF]"
+	HTCapHT20      HTCap = 1 << iota // HTCaps string "" means HT20.
+	HTCapHT40                        // auto-detect supported "[HT40-]" or "[HT40+]"
+	HTCapHT40Minus                   // "[HT40-]"
+	HTCapHT40Plus                    // "[HT40+]"
+	HTCapSGI20                       // "[SHORT-GI-20]"
+	HTCapSGI40                       // "[SHORT-GI-40]"
+	// The test APs don't support Greenfield now. Comment out the option to avoid usage.
+	// (The capability can be shown with `iw phy`)
+	// HTCapGreenfield                   // "[GF]"
 )
 
 // VHTCap is the type for specifying VHT capabilities in hostapd config (vht_capab=).
@@ -91,6 +94,16 @@ const (
 	VHTChWidth80
 	VHTChWidth160
 	VHTChWidth80Plus80
+)
+
+// PMFEnum is the type for specifying the setting of "Protected Management Frames" (IEEE802.11w).
+type PMFEnum int
+
+// PMF enums.
+const (
+	PMFDisabled PMFEnum = iota
+	PMFOptional
+	PMFRequired
 )
 
 // Option is the function signature used to specify options of Config.
@@ -161,6 +174,14 @@ func SecurityConfig(conf security.Config) Option {
 	}
 }
 
+// PMF returns an Options which sets whether protected management frame
+// is enabled or required.
+func PMF(p PMFEnum) Option {
+	return func(c *Config) {
+		c.PMF = p
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -191,6 +212,7 @@ type Config struct {
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
 	SecurityConfig   security.Config
+	PMF              PMFEnum
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -211,7 +233,8 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	// Configurable.
 	configure("ctrl_interface", ctrlPath)
-	configure("ssid", c.Ssid)
+	// ssid2 for printf-escaped string, cf. https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf
+	configure("ssid2", encodeSSID(c.Ssid))
 	configure("interface", iface)
 	configure("channel", strconv.Itoa(c.Channel))
 
@@ -223,22 +246,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.is80211n() || c.is80211ac() {
 		configure("ieee80211n", "1")
-		htCaps, err := c.htCapsString()
-		if err != nil {
-			return "", err
-		}
-		configure("ht_capab", htCaps)
+		configure("ht_capab", c.htCapsString())
 		if c.Mode == Mode80211nPure {
 			configure("require_ht", "1")
 		}
 	}
 	if c.is80211ac() {
 		configure("ieee80211ac", "1")
-		chw, err := c.vhtOperChWidthString()
-		if err != nil {
-			return "", err
-		}
-		configure("vht_oper_chwidth", chw)
+		configure("vht_oper_chwidth", strconv.Itoa(int(c.VHTChWidth)))
 		// If not set, ignore this field and use hostapd's default value.
 		if c.VHTCenterChannel != 0 {
 			configure("vht_oper_centr_freq_seg0_idx", strconv.Itoa(c.VHTCenterChannel))
@@ -262,6 +277,8 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	for k, v := range securityConf {
 		configure(k, v)
 	}
+
+	configure("ieee80211w", strconv.Itoa(int(c.PMF)))
 
 	return builder.String(), nil
 }
@@ -295,6 +312,38 @@ func (c *Config) PcapFreqOptions() ([]iw.SetFreqOption, error) {
 	return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)}, nil
 }
 
+// PerfDesc returns the description of this config.
+// Useful for reporting perf metrics.
+func (c *Config) PerfDesc() string {
+	var mode, width string
+	if c.is80211ac() {
+		mode = "VHT"
+		switch c.VHTChWidth {
+		case VHTChWidth80:
+			width = "80"
+		case VHTChWidth160:
+			width = "160"
+		case VHTChWidth80Plus80:
+			width = "80+80"
+		default:
+			width = "40"
+		}
+	} else if c.is80211n() {
+		mode = "HT"
+		switch c.htMode() {
+		case HTCapHT40Minus:
+			width = "40m"
+		case HTCapHT40Plus:
+			width = "40p"
+		default:
+			width = "20"
+		}
+	} else {
+		mode = "11" + string(c.Mode)
+	}
+	return fmt.Sprintf("ch%03d_mode%s%s_%s", c.Channel, mode, width, c.SecurityConfig.Class())
+}
+
 // validate validates the Config, c.
 func (c *Config) validate() error {
 	if c.Ssid == "" || len(c.Ssid) > 32 {
@@ -319,15 +368,17 @@ func (c *Config) validate() error {
 		if c.VHTChWidth != VHTChWidth20Or40 {
 			return errors.Errorf("VHTChWidth is not supported by mode %s", c.Mode)
 		}
-	}
-	if (c.HTCaps & HTCapGreenfield) > 0 {
-		return errors.New("HTCapGreenfield is not yet supported")
+	} else if err := c.validateVHTChWidth(); err != nil {
+		return err
 	}
 	if err := c.validateChannel(); err != nil {
 		return err
 	}
 	if c.SecurityConfig == nil {
 		return errors.New("no SecurityConfig set")
+	}
+	if err := c.validatePMF(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -427,7 +478,7 @@ func (c *Config) htMode() HTCap {
 	return 0
 }
 
-func (c *Config) htCapsString() (string, error) {
+func (c *Config) htCapsString() string {
 	var caps []string
 	htMode := c.htMode()
 	switch htMode {
@@ -444,10 +495,7 @@ func (c *Config) htCapsString() (string, error) {
 	if c.HTCaps&HTCapSGI40 > 0 {
 		caps = append(caps, "[SHORT-GI-40]")
 	}
-	if c.HTCaps&HTCapGreenfield > 0 {
-		caps = append(caps, "[GF]")
-	}
-	return strings.Join(caps, ""), nil
+	return strings.Join(caps, "")
 }
 
 func (c *Config) vhtCapsString() string {
@@ -458,19 +506,63 @@ func (c *Config) vhtCapsString() string {
 	return strings.Join(caps, "")
 }
 
-func (c *Config) vhtOperChWidthString() (string, error) {
+func (c *Config) validateVHTChWidth() error {
 	switch c.VHTChWidth {
-	case VHTChWidth20Or40:
-		return "0", nil
-	case VHTChWidth80:
-		return "1", nil
-	case VHTChWidth160:
-		return "2", nil
-	case VHTChWidth80Plus80:
-		return "3", nil
+	case VHTChWidth20Or40, VHTChWidth80, VHTChWidth160, VHTChWidth80Plus80:
+		return nil
 	default:
-		return "", errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
+		return errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
 	}
+}
+
+func (c *Config) validatePMF() error {
+	switch c.PMF {
+	case PMFDisabled:
+		return nil
+	case PMFOptional, PMFRequired:
+		secClass := c.SecurityConfig.Class()
+		if secClass == shill.SecurityNone || secClass == shill.SecurityWEP {
+			return errors.Errorf("class %s does not support PMF", secClass)
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid PMFEnum %d", int(c.PMF))
+	}
+}
+
+// encodeSSID encodes ssid into the format that hostapd can read.
+// The "%q" format in golang does not work for the case as it contains more
+// escape sequence than what printf_decode in hostapd can understand.
+// Duplicate the logic of printf_encode in hostapd here.
+func encodeSSID(s string) string {
+	var builder strings.Builder
+
+	// Always start with 'P"' prefix as printf-encoded format in hostapd.
+	builder.WriteString("P\"")
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '\\', '"':
+			builder.WriteByte('\\')
+			builder.WriteByte(s[i])
+		case '\033':
+			builder.WriteString("\\e")
+		case '\n':
+			builder.WriteString("\\n")
+		case '\r':
+			builder.WriteString("\\r")
+		case '\t':
+			builder.WriteString("\\t")
+		default:
+			if s[i] >= 32 && s[i] <= 126 {
+				builder.WriteByte(s[i])
+			} else {
+				builder.WriteString(fmt.Sprintf("\\x%02x", s[i]))
+			}
+		}
+	}
+	// Close the format string.
+	builder.WriteByte('"')
+	return builder.String()
 }
 
 // RandomSSID returns a random SSID of length 30 and given prefix.
