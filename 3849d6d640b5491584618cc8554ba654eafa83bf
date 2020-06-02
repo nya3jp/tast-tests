@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd981b61_783e7ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T16:53:41Z",
+      "side": 1,
+      "message": "did we need to move this? Seems fine since we\u0027re narrowing its scope but it also seems unrelated.",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 2
+      },
+      "revId": "3849d6d640b5491584618cc8554ba654eafa83bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "361b2b58_a46a6f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T16:53:41Z",
+      "side": 1,
+      "message": "just \"b\" right?",
+      "range": {
+        "startLine": 512,
+        "startChar": 45,
+        "endLine": 512,
+        "endChar": 52
+      },
+      "revId": "3849d6d640b5491584618cc8554ba654eafa83bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636540e2_32a11ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T16:53:41Z",
+      "side": 1,
+      "message": "little unfortunate that the compiler can\u0027t figure out we don\u0027t need this, but oh well...",
+      "revId": "3849d6d640b5491584618cc8554ba654eafa83bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
