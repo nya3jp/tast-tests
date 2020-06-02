@@ -22,6 +22,30 @@
       "revId": "12ee9672268dbf2936e94b3cbed0188661d6fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f116e96_f41f6de7",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-06-02T16:58:21Z",
+      "side": 1,
+      "message": "Good catch, I\u0027ll make a followup CL.",
+      "parentUuid": "da51ea91_12a62563",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "12ee9672268dbf2936e94b3cbed0188661d6fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
