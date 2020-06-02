@@ -140,6 +140,30 @@
       "revId": "b04935765c5827155db8962eab780672c8e64cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca70be45_40c95632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_stress_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-02T01:23:50Z",
+      "side": 1,
+      "message": "You can split the change into 1. library move, and 2. test addition.",
+      "parentUuid": "72a3dce9_4184d3a2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
