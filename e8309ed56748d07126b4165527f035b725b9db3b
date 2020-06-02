@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a168317_13cf2d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-06-02T18:50:57Z",
+      "side": 1,
+      "message": "i tried that before, but then i get an error due to the dst handling in the same/previous line\n\ni\u0027m not an expert in Go at all, so maybe there\u0027s a way to declare |dst| without the :\u003d messing it up",
+      "parentUuid": "dbade301_63c2219e",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8b14106_9cb88863",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "324ce19d_c977fa8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-06-02T18:50:57Z",
+      "side": 1,
+      "message": "for the errors i\u0027m testing, i don\u0027t think this problem applies.  the output is line-by-line (so it should get flushed), and we\u0027re specifically emitting only one or two lines total.\n\ni could decouple them, but it would require adding more boilerplate tests, and combining them simplifies the test logic below.",
+      "parentUuid": "f8b14106_9cb88863",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc691bc_c9cf2621",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2020-06-02T18:42:59Z",
       "side": 1,
       "message": "just return after this and unindent the lines below (and you can also remove the return on L82 after that)",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "addab269_5c009929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-06-02T18:50:57Z",
+      "side": 1,
+      "message": "i see what you\u0027re going for, but i\u0027m not sure that the result is better.  it seems like it\u0027s optimizing for the wrong thing (indentation over clarity).\n\nis_exec_path basically selects between two sets of test modes rather than a short-circuit for larger logic.",
+      "parentUuid": "fbc691bc_c9cf2621",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
