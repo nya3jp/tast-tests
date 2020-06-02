@@ -27,6 +27,8 @@ func init() {
 }
 
 func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
+	// This is not a functional change, I just want to trigger the CQ and see
+	// how often it fails.
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
