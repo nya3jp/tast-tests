@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e072a36_8debbf02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T19:35:18Z",
+      "side": 1,
+      "message": "I think it is more Go-ic to return an error here rather than raising Fatals from directly within the internal function. This would make it easy to describe which test case threw the error.",
+      "range": {
+        "startLine": 53,
+        "startChar": 76,
+        "endLine": 53,
+        "endChar": 77
+      },
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbade301_63c2219e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
         "patchSetId": 2
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "i tried that before, but then i get an error due to the dst handling in the same/previous line\n\ni\u0027m not an expert in Go at all, so maybe there\u0027s a way to declare |dst| without the :\u003d messing it up",
       "parentUuid": "dbade301_63c2219e",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd14086f_c03cc08f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T19:35:18Z",
+      "side": 1,
+      "message": "I think the convention here is to not use an if-initialization in L62:\n\n    dst, err :\u003d os.Create(script)\n    if err !\u003d nil {\n        s.Fatalf(\"Failed to create %v: %v\", script, err)\n    }\n\nThen you can delete both L57 and L61.\n\nThe if-initialization is typically used when you\u0027re declaring variables for the local scope. https://golang.org/doc/effective_go.html#if",
+      "parentUuid": "1a168317_13cf2d25",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -119,6 +160,40 @@
       "side": 1,
       "message": "To me this block reads as a \"fast success\" because we don\u0027t check should_fail. Perhaps that was a mistake.\n\nHowever, if these are really two sets of test modes, I would say it would be more clear to factor out the script creation and do that once at the beginning of runTestCase for each path. Then, split this function into one that deals with exec paths and one that deals with noexec paths, since the body of this function would then be almost all inside that condition other than running the script and getting its output. Then the two test modes can be clearly separated, and we don\u0027t need to pass an unused should_fail value when is_exec_path \u003d\u003d true, which threw me off when first reading this test and is IMO a bigger clarity problem.",
       "parentUuid": "addab269_5c009929",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b41fc16c_0e887d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T19:35:18Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s necessary here, but if you think it would be helpful to see independent results for sh/dash/bash, then you might consider structuring this as a parameterized test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ede534_5e91d65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T19:35:18Z",
+      "side": 1,
+      "message": "Might be overkill, but you can combine this block and the L123-134 block with the table-driven test pattern.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
