@@ -68,6 +68,13 @@ func (h *APIface) Interface() string {
 	return h.iface
 }
 
+// ServerSubnet returns the subnet whose ip has been masked.
+func (h *APIface) ServerSubnet() *net.IPNet {
+	mask := h.mask()
+	ip := h.ServerIP().Mask(mask)
+	return &net.IPNet{IP: ip, Mask: mask}
+}
+
 // start starts the service. Make this private as one should start this from Router.
 // After start(), the caller should call h.stop() at the end, and use the shortened ctx
 // (provided b h.reserveForStop()) before h.stop() to reserve time for h.stop() to run.

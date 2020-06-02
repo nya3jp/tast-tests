@@ -13,6 +13,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	ciw "chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
@@ -489,4 +490,53 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to get the WiFi interface name")
 	}
 	return netIf.Name, nil
+}
+
+// VerifyConnection verifies that the AP is reachable by pinging, and we have the same frequency and subnet as AP's.
+func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error {
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get interface from the DUT: ")
+	}
+
+	// Check frequency.
+	clientFreq, err := iw.NewRemoteRunner(tf.dut.Conn()).LinkValue(ctx, iface, ciw.LinkKeyFrequency)
+	if err != nil {
+		return errors.Wrap(err, "failed to get client frequency: ")
+	}
+	serverFreq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
+	if err != nil {
+		return errors.Wrap(err, "failed to get server frequency: ")
+	}
+	if clientFreq != strconv.Itoa(serverFreq) {
+		return errors.Errorf("frequency does not match, got %s want %d", clientFreq, serverFreq)
+	}
+
+	// Check subnet.
+	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &network.GetIPv4AddrsRequest{InterfaceName: iface})
+	if err != nil {
+		return errors.Wrap(err, "failed to get client ipv4 addresses: ")
+	}
+	serverSubnet := ap.ServerSubnet().String()
+	foundSubnet := false
+	for _, a := range addrs.Ipv4 {
+		_, ipnet, err := net.ParseCIDR(a)
+		if err != nil {
+			return errors.Wrapf(err, "failed to parse IP address %s:", a)
+		}
+		if ipnet.String() == serverSubnet {
+			foundSubnet = true
+			break
+		}
+	}
+	if !foundSubnet {
+		return errors.Errorf("subnet does not match, got addrs %v want %s", addrs.Ipv4, serverSubnet)
+	}
+
+	// Perform ping.
+	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
+		return errors.Wrap(err, "failed to ping from the DUT: ")
+	}
+
+	return nil
 }
