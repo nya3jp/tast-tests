@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3216bec4_2d1d3738",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-02T02:11:40Z",
+      "side": 1,
+      "message": "I think this is ported from Autotest, but just curious: if there are some reasons to start with this instead of something like 0?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a45da7b_d585c40c",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-02T02:11:40Z",
+      "side": 1,
+      "message": "Maybe also one for asserting Config implements security.Config?",
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
