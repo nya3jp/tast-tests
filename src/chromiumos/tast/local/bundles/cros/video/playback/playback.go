@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
@@ -140,6 +141,10 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 
 	if err := measureDroppedFrames(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
+	}
+
+	if err := graphics.MeasureGPUCounters(ctx, measurementDuration, p); err != nil {
+		return errors.Wrap(err, "error measuring GPU usage")
 	}
 
 	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
