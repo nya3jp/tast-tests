@@ -44,6 +44,21 @@ const (
 	IfTypeMonitor IfType = "monitor"
 )
 
+// The iw link keys.
+const (
+	LinkKeyBeaconInterval = "beacon int"
+	LinkKeyDtimPeriod     = "dtim period"
+	LinkKeyFrequency      = "freq"
+	LinkKeySignal         = "signal"
+	LinkKeyRxBitrate      = "rx bitrate"
+	LinkKeyRxDrops        = "rx drop misc"
+	LinkKeyRxPackets      = "rx packets"
+	LinkKeyTxBitrate      = "tx bitrate"
+	LinkKeyTxFailures     = "tx failed"
+	LinkKeyTxPackets      = "tx packets"
+	LinkKeyTxRetries      = "tx retries"
+)
+
 // Band contains supported wireless band attributes.
 type Band struct {
 	Num            int
