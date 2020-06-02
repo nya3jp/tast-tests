@@ -30,6 +30,11 @@ const (
 	DevicePropertyEthernetMACSource = "Ethernet.UsbEthernetMacAddressSource"
 	DevicePropertyEapDetected       = "EapAuthenticatorDetected"
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
+
+	// WiFi device property names.
+	DevicePropertyMACAddrRandomEnabled   = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported = "MACAddressRandomizationSupported"
+	DevicePropertyScanning               = "Scanning" // Also for cellular.
 )
 
 // Device wraps a Device D-Bus object in shill.
