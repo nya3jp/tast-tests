@@ -66,6 +66,15 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
 			Pre:               pre.ChromeVideoWithHDRScreen(),
 		}, {
+			Name:      "vp9_hw_hdr",
+			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, kohaku will do.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
+			Pre:               pre.ChromeVideoWithHDRScreen(),
+		}, {
 			Name:              "h264_sw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
