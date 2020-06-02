@@ -107,7 +107,7 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 				if os.IsNotExist(err) {
 					continue
 				}
-				s.Errorf("Failed file context check for %v: %v", path, err)
+				s.Errorf("Failed file context check for %v (rule %v): %v", path, testCase.path, err)
 			}
 			break
 		}
