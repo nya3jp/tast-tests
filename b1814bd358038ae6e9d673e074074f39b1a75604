@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94f4886_2a68734f",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T10:01:55Z",
+      "side": 1,
+      "message": "This may call Start multiple times for the same FakePCAAgent instance. How about:\n\n if ali.fpca \u003d\u003d nil {\n   ali.fpca \u003d ...\n   if err :\u003d ali.fpca.Start(); err !\u003d nil {\n     ...\n   }\n }",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "b1814bd358038ae6e9d673e074074f39b1a75604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e19814c_1f1f797a",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T10:01:55Z",
+      "side": 1,
+      "message": "I recommend reporting the first error instead of the last error because the first error is usually the most interesting error we want to see on debugging.\n\nFor example, when we fail both starting a fake server and connecting to it, it is likely we want to know the first failure.",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 10
+      },
+      "revId": "b1814bd358038ae6e9d673e074074f39b1a75604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe4e250_0f3c029a",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-02T10:01:55Z",
+      "side": 1,
+      "message": "And clear ali.fpca \u003d nil ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "b1814bd358038ae6e9d673e074074f39b1a75604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
