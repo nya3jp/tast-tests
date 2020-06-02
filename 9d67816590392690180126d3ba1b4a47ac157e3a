@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd91ec31_661a54d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlc/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-02T00:03:28Z",
+      "side": 1,
+      "message": "This function does restarting and waiting for the dbus service. Can you rename to RestartUpstartJobAndWait?  Also please describe the waiting part in the doc-comment too.",
+      "revId": "9d67816590392690180126d3ba1b4a47ac157e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
