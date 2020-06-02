@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4fea9690_620a2eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Changed the flag to enableARC",
+      "parentUuid": "d07c9c9f_3d12c942",
+      "range": {
+        "startLine": 56,
+        "startChar": 97,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b79c69a6_561c0cbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dafdde_478fcd74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b79c69a6_561c0cbb",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "88a277b1_1de822c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Done, added flag seed to set the random seed.",
+      "parentUuid": "f0351fb8_eef9d07e",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4baf836f_534126f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "9927394c_70d1e75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4baf836f_534126f9",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c660124_14c5c268",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -90,6 +168,24 @@
       "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40f95b3_73899e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c660124_14c5c268",
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +209,30 @@
       "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7b0386_bd0c2562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-06-02T09:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767719f1_c490f284",
+      "range": {
+        "startLine": 398,
+        "startChar": 79,
+        "endLine": 398,
+        "endChar": 80
+      },
+      "revId": "a159066d434717ee9597fd47b6baabe82cdf7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
