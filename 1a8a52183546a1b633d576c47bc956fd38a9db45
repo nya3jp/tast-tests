@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1098ffc7_0c50547b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "Why round here?\nI mean, seconds_kernel_to_login and seconds_power_on_to_kernel are not rounded but seconds_power_on_to_login is.",
+      "range": {
+        "startLine": 304,
+        "startChar": 48,
+        "endLine": 304,
+        "endChar": 53
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a5be91_60e14d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "why round here instead of line 322 (or even 409-411)?\nI feel rounding at the final step makes more sense.",
+      "range": {
+        "startLine": 320,
+        "startChar": 16,
+        "endLine": 320,
+        "endChar": 21
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f245f0e5_1ab5905c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "I\u0027m curious, what is the average duration of 10 iterations after converted to tast?\nI hope we can enlarge the iteration count in order to have more stable benchmark.",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931766aa_1ee0790e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "Have you often observed it wait? If so, sleeping few seconds before Dial may be a good idea (to reduce benchmark noise)",
+      "range": {
+        "startLine": 73,
+        "startChar": 78,
+        "endLine": 73,
+        "endChar": 83
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab65f0f_55ce12ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "\"arc\" ? Does it work if the DUT doesn\u0027t have arc container?",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b5f887_bb62ef31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "Why wait cpu cool down here instead of beginning? I mean, the first boot is not cooled down?",
+      "range": {
+        "startLine": 109,
+        "startChar": 32,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8105fc_2ec73f4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "IIRC, old boot perf test will bypass OOBE. You may want to do that as well.",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae1b74c_923ca568",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-02T13:32:51Z",
+      "side": 1,
+      "message": "feature request: make it a tast variable, so users can change it runtime.\n  $ tast run -var iteration\u003d100",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
