@@ -16,6 +16,24 @@
       "revId": "e7093fa732444ecbb42c8e309cfd0b6df85008c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c29deca0_af47b5c4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-02T03:40:15Z",
+      "side": 1,
+      "message": "Yes. Good question. Currently tast virtual keyboard tests still run in a hybird way. Some with apis for example. We are still working on increase test coverage at the moment. And later to turn most tests to purely blackbox.",
+      "parentUuid": "bd38c711_ebc545e5",
+      "revId": "e7093fa732444ecbb42c8e309cfd0b6df85008c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
