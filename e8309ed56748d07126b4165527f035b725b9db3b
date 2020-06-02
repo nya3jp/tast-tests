@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbade301_63c2219e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T18:42:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this? L62 can just be :\u003d right?",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b14106_9cb88863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T18:42:59Z",
+      "side": 1,
+      "message": "Using CombinedOutput as on L79 might not work well[1]. Any reason not to look in stdout and stderr separately?\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc691bc_c9cf2621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-02T18:42:59Z",
+      "side": 1,
+      "message": "just return after this and unindent the lines below (and you can also remove the return on L82 after that)",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
