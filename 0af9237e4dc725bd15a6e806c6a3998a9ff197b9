@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2598e4_40dab3cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-02T02:31:54Z",
+      "side": 1,
+      "message": "\u003e \"inferface\" is a possible misspelling of \"interface\".\n\nFixed.",
+      "parentUuid": "b7f47264_ac9426f3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "0af9237e4dc725bd15a6e806c6a3998a9ff197b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

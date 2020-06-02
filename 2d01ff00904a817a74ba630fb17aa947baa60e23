@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31f17482_289885a1",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-02T02:31:54Z",
+      "side": 1,
+      "message": "Not sure why you choose to embed pointer, but as we always pass the Config-s with pointer, I think it also works to embed with value which will save the space of one pointer?\n\nAlso, with the current code, it is weird that someone will call functions of *base.Config with receiver \u003d nil (i.e. you do not construct the pointer).",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "2d01ff00904a817a74ba630fb17aa947baa60e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
