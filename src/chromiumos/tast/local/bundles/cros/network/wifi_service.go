@@ -569,7 +569,7 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 
 	for _, a := range addrs {
 		if ipnet, ok := a.(*net.IPNet); ok && ipnet.IP.To4() != nil {
-			ret.Ipv4 = append(ret.Ipv4, ipnet.IP.String())
+			ret.Ipv4 = append(ret.Ipv4, ipnet.String())
 		}
 	}
 
@@ -704,5 +704,75 @@ func (s *WifiService) SetBgscanMethod(ctx context.Context, method *network.SetBg
 	if err := dev.SetProperty(ctx, shill.DevicePropertyWiFiBgscanMethod, method.Method); err != nil {
 		return nil, errors.Wrapf(err, "failed to set the WiFi device property %s with value %s", shill.DevicePropertyWiFiBgscanMethod, method.Method)
 	}
+	return &empty.Empty{}, nil
+}
+
+// DisableEnableTest disables and then enables the WiFi interface. This is the main body of the DisableEnable test.
+// It first disables the WiFi interface and waits for the idle state; then waits for the IsConnected property after enable.
+// The reason we place most of the logic here is that, we need to spawn a shill properties watcher before disabling/enabling
+// the WiFi interface, so we won't lose the state change events between the gRPC commands of disabling/enabling interface
+// and checking state.
+func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.DisableEnableTestRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	dev, err := m.DeviceByName(ctx, request.InterfaceName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for interface %s", request.InterfaceName)
+	}
+
+	// Spawn watcher before disabling and enabling.
+	service, err := shill.NewService(ctx, dbus.ObjectPath(request.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Form a closure here so we can ensure that interface will be re-enabled even if something failed.
+	if err := func() (retErr error) {
+		// Disable WiFi interface.
+		testing.ContextLog(ctx, "Disabling WiFi interface: ", request.InterfaceName)
+		if err := dev.Disable(ctx); err != nil {
+			return errors.Wrap(err, "failed to disable WiFi device")
+		}
+
+		defer func() {
+			// Re-enable WiFi interface.
+			testing.ContextLog(ctx, "Enabling WiFi interface: ", request.InterfaceName)
+			if err := dev.Enable(ctx); err != nil {
+				if retErr == nil {
+					retErr = errors.Wrap(err, "failed to enable WiFi device")
+				} else {
+					testing.ContextLog(ctx, "Failed to enable WiFi device and the test is already failed: ", err)
+				}
+			}
+		}()
+
+		// Wait for WiFi service becomes idle state.
+		testing.ContextLog(ctx, "Waiting for idle state")
+		timeoutCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+			return errors.Wrap(err, "failed to wait for idle state after disabling")
+		}
+		return nil
+	}(); err != nil {
+		return nil, err
+	}
+
+	// The interface has been re-enabled as a defer statement in the anonymous function above,
+	// now just need to wait for WiFi service becomes connected.
+	testing.ContextLog(ctx, "Waiting for IsConnected property")
+	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for IsConnected property after enabling")
+	}
+
 	return &empty.Empty{}, nil
 }
