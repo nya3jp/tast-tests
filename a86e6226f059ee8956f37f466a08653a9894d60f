@@ -256,6 +256,29 @@
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22d180f_74dfa3bc",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-02T18:10:18Z",
+      "side": 1,
+      "message": "It seems that using the same identifier in these two steps does not work. please fix it.\n\nBTW, you said that you can use the pkcs11 library if key and cert are bundled together, but you are not using that here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 45,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
