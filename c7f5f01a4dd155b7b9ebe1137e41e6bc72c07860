@@ -16,6 +16,24 @@
       "revId": "c7f5f01a4dd155b7b9ebe1137e41e6bc72c07860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83f75d7_303af7ad",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-02T14:01:07Z",
+      "side": 1,
+      "message": "\u003e How will this be used?\n\nThe file chromiumos/tast/remote/firmware/boot_mode.go will be used to reboot the DUT into the different firmware boot-modes. This is not like just sending a simple \"reboot\" command: to boot into Recovery mode, you have to reboot the DUT, and then use a Servo to set the special \"power_state\" control to \"rec\". Switching from recovery mode back to normal mode is similar: you have to poweroff the DUT, and set \"power_state\" to \"on\".\n\nSo, this function is intended to safely poweroff the DUT so that we can then boot into those modes.\n\n\u003e Could you add a simple use case with poweroff?\n\nThat\u0027s a little tricky, because I haven\u0027t yet written the code to set power_state. So any test that I add this to would leave the DUT in a powered-off state, which I think is not preferred.\n\nMy current plan is to add the power_state options setting in the next CL after this one. Then we could test the two together: poweroff the DUT, and then set the power state to \"on\". Hopefully there will be no regressions in that short time.\n\nUnit testing is an alternative. But that is tricky, because this code is reliant on the actual DUT hardware. I\u0027m not sure how we could meaningfully test d.Command().Run(), nor d.WaitUnreachable().\n\nOne other note -- according to go/tast-reviews, I am not supposed to add new mainline tests until my existing tests are promoted to critical. But, my existing tests (firmware.BlockingSync, firmware.CheckBootMode, firmware.Config) are all flaky, so I have not promoted them. I think this means I am not supposed to add a new test for this function until I fix those issues.",
+      "parentUuid": "644066f8_d8903b59",
+      "revId": "c7f5f01a4dd155b7b9ebe1137e41e6bc72c07860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
