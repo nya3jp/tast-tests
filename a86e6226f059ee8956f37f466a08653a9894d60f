@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cab65da_3dfa3d88",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c3c078c_85f03619",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdc14244_095dd668",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b65ce0_cf598032",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc14244_095dd668",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,54 @@
     },
     {
       "key": {
+        "uuid": "dad08795_b06af9b0",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "It\u0027s the latter. Comment moved to struct. Global singleton variable added.",
+      "parentUuid": "c278aafa_da22008d",
+      "range": {
+        "startLine": 68,
+        "startChar": 52,
+        "endLine": 68,
+        "endChar": 95
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0677a20a_3d5e18cc",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65eabd0f_7601dbcd",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2045c7d_a00a9e70",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -108,6 +198,30 @@
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0c21d0_663f9e09",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2045c7d_a00a9e70",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "ff055cdb_f8d59d73",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f515dc31_d5f00e7a",
+      "range": {
+        "startLine": 72,
+        "startChar": 56,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23afa03f_b7581a68",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "ae92d03d_c7521cd5",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23afa03f_b7581a68",
+      "range": {
+        "startLine": 80,
+        "startChar": 13,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abf21d3d_e555cb44",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -174,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "95e32ea6_8c101588",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf21d3d_e555cb44",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26be8df4_2743fa1a",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -185,6 +365,24 @@
       "writtenOn": "2020-06-01T21:01:49Z",
       "side": 1,
       "message": "I don\u0027t understand this comment: there was no TPMStore before SetupTPMStore() was called. Perhaps this resets the TPMStore to some default values?",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6355674_6b5f8cb6",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Comment updated.",
+      "parentUuid": "26be8df4_2743fa1a",
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -208,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "084bb6dc_b748408f",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "I\u0027ll prefer using Getters because I want these to be const and not be modified by external users.",
+      "parentUuid": "f602129b_3c88c218",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4af62bb_d8610f03",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -222,6 +438,24 @@
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2e595c_c5399c16",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4af62bb_d8610f03",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +493,24 @@
     },
     {
       "key": {
+        "uuid": "c40394f7_394b25d5",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Log message from p11_replay is usually too long to be wrapped in the error, so it is logged here.",
+      "parentUuid": "0334c0a5_f975b35c",
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a22d180f_74dfa3bc",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 8
@@ -270,6 +522,30 @@
       "writtenOn": "2020-06-02T18:10:18Z",
       "side": 1,
       "message": "It seems that using the same identifier in these two steps does not work. please fix it.\n\nBTW, you said that you can use the pkcs11 library if key and cert are bundled together, but you are not using that here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 45,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836ad9b8_a0a0cb57",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-02T20:59:38Z",
+      "side": 1,
+      "message": "Could you elaborate on the error you\u0027re seeing?\n\nAs for using pkcs11 library, I haven\u0027t add the import method there. I\u0027m fusing this method here so when I add the method in pkcs11 library, changing the code here won\u0027t involve method signature change.",
+      "parentUuid": "a22d180f_74dfa3bc",
       "range": {
         "startLine": 151,
         "startChar": 45,
