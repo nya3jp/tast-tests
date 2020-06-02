@@ -24,6 +24,7 @@ template("process_resources") {
       "deps",
       "manifest",
       "min_sdk_version",
+      "rename_manifest_package",
       "resource_apk",
       "resource_files",
       "rjava_dir",
@@ -63,6 +64,9 @@ template("process_resources") {
     }
     if (defined(min_sdk_version)) {
       args += ["--min-sdk-version", min_sdk_version]
+    }
+    if (defined(rename_manifest_package)) {
+      args += ["--rename-manifest-package", rename_manifest_package]
     }
     args += ["--"]
     args += rebase_path(resource_files)

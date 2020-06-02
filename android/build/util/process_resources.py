@@ -36,8 +36,8 @@ def compile_resources(output_dir, resources, android_sdk_build_tools):
 
 
 def link_resources(files, output_apk, rjava_dir, android_sdk_platform, manifest,
-                   target_sdk_version, min_sdk_version,
-                   android_sdk_build_tools):
+                   target_sdk_version, min_sdk_version, android_sdk_build_tools,
+                   rename_manifest_package):
   """Runs aapt2 link and create R.java and APK.
 
   Args:
@@ -50,6 +50,7 @@ def link_resources(files, output_apk, rjava_dir, android_sdk_platform, manifest,
       AndroidManifest.xml.
     min_sdk_version: Default minimum SDK version to use for AndroidManifest.xml.
     android_sdk_build_tools: Path to the Android SDK build tools.
+    rename_manifest_package: Rename the package in AndroidManifest.xml.
   """
   cmd = [
       android_sdk_build_tools/'aapt2',
@@ -69,6 +70,8 @@ def link_resources(files, output_apk, rjava_dir, android_sdk_platform, manifest,
     cmd += ['--target-sdk-version', target_sdk_version]
   if min_sdk_version:
     cmd += ['--min-sdk-version', min_sdk_version]
+  if rename_manifest_package:
+    cmd += ['--rename-manifest-package', rename_manifest_package]
   cmd += files
   subprocess.run(cmd, check=True)
 
@@ -101,6 +104,8 @@ def get_parser():
   parser.add_argument('--manifest', help='Path to the AndroidManifest.xml.',
                       type=pathlib.Path,
                       required=True)
+  parser.add_argument('--rename-manifest-package',
+                      help='Rename the package in AndroidManifest.xml')
   parser.add_argument('--Rjava-dir',
                       help='Directory in which to generate R.java.',
                       type=pathlib.Path,
@@ -135,7 +140,8 @@ def main():
                  manifest=options.manifest,
                  target_sdk_version=options.target_sdk_version,
                  min_sdk_version=options.min_sdk_version,
-                 android_sdk_build_tools=options.android_sdk_build_tools)
+                 android_sdk_build_tools=options.android_sdk_build_tools,
+                 rename_manifest_package=options.rename_manifest_package)
   move_rjava(options.Rjava_dir)
 
 
