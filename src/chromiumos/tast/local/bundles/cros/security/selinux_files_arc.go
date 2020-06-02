@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/testing"
 )
@@ -21,8 +21,7 @@ func init() {
 		Func:         SELinuxFilesARC,
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		SoftwareDeps: []string{"android_p", "selinux", "chrome"},
-		Pre:          arc.Booted(),
+		SoftwareDeps: []string{"android_p", "selinux", "chrome_login"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
@@ -37,6 +36,12 @@ type arcFileTestCase struct {
 }
 
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
 	if err != nil {
 		s.Fatal("Failed to find container.pid file: ", err)
@@ -100,7 +105,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/mnt/stateful_partition/unencrypted/apkcache", context: "apkcache_file"},
 		{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
 		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
-		{path: "/run/arc/adbd", context: "device"},
+		{path: "/run/arc/adbd", context: "(tmpfs|device)"},
 		{path: "/run/arc/bugreport", context: "debug_bugreport"},
 		{path: "/run/arc/bugreport/pipe", context: "debug_bugreport"},
 		{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
@@ -110,10 +115,10 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/run/arc/fake_mmap_rnd_compat_bits", context: "proc_security"},
 		{path: "/run/arc/media", context: "tmpfs"},
 		{path: "/run/arc/obb", context: "tmpfs"},
-		{path: "/run/arc/oem/etc", context: "oemfs", recursive: true},
+		{path: "/run/arc/oem/etc", context: "(tmpfs|oemfs)", recursive: true},
 		{path: "/run/arc/host_generated/build.prop", context: "system_file"}, // Android labels, bind-mount into ARC
 		{path: "/run/arc/host_generated/default.prop", context: "rootfs"},    // Android labels, bind-mount into ARC
-		{path: "/run/arc/sdcard", context: "storage_file"},
+		{path: "/run/arc/sdcard", context: "(tmpfs|storage_file)"},
 		{path: "/run/arc/shared_mounts", context: "tmpfs"},
 		{path: "/run/camera", context: "(camera_dir|camera_socket)"}, // N or below is camera_socket
 		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
