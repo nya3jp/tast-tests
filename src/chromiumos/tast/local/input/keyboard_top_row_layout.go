@@ -97,11 +97,11 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		VolumeUp:       "volumeup",
 	}
 
-	props, err := uDevProperties(ctx, ew.Device())
+	props, err := udevProperties(ctx, ew.Device())
 	if err != nil {
 		return nil, err
 	}
-	attrs, err := uDevAttributes(ctx, ew.Device())
+	attrs, err := udevAttributes(ctx, ew.Device())
 	if err != nil {
 		return nil, err
 	}
@@ -128,8 +128,8 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	return &mapping1, nil
 }
 
-// uDevAttributes returns the attributes associated to a certain Linux udev device.
-func uDevAttributes(ctx context.Context, devicePath string) (map[string]string, error) {
+// udevAttributes returns the attributes associated to a certain Linux udev device.
+func udevAttributes(ctx context.Context, devicePath string) (map[string]string, error) {
 	cmd := testexec.CommandContext(ctx, "udevadm", "info", "--attribute-walk", "property", "--name", devicePath)
 	out, err := cmd.Output()
 	if err != nil {
@@ -139,8 +139,8 @@ func uDevAttributes(ctx context.Context, devicePath string) (map[string]string, 
 	return parseUdev(out, `^ATTRS{([a-z0-9_]+)}=="(.*)"$`)
 }
 
-// uDevProperties returns the properties associated to a certain Linux udev device.
-func uDevProperties(ctx context.Context, devicePath string) (map[string]string, error) {
+// udevProperties returns the properties associated to a certain Linux udev device.
+func udevProperties(ctx context.Context, devicePath string) (map[string]string, error) {
 	cmd := testexec.CommandContext(ctx, "udevadm", "info", "--query", "property", "--name", devicePath)
 	out, err := cmd.Output()
 	if err != nil {
