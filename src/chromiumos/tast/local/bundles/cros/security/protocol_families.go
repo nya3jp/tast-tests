@@ -43,6 +43,7 @@ func ProtocolFamilies(ctx context.Context, s *testing.State) {
 		unix.AF_BLUETOOTH,
 		unix.AF_ALG,
 		unix.AF_VSOCK, // may be present after vm tests load the vhost-vsock module
+		unix.AF_QIPCRTR,
 	} {
 		allowedFamilies[f] = struct{}{}
 	}
