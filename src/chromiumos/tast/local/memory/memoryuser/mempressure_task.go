@@ -7,7 +7,7 @@ package memoryuser
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/platform/mempressure"
+	"chromiumos/tast/local/memory/mempressure"
 )
 
 // MemPressureTask implements MemoryTask to create memory pressure by opening Chrome tabs.
