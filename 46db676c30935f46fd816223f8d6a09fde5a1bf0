@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "e16cfc04_00eb3765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:46:26Z",
+      "side": 1,
+      "message": "NVM, I see now that this is what the salt is all about.",
+      "parentUuid": "04fd3838_4cb37303",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9af8573a_265c3028",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
         "patchSetId": 2
