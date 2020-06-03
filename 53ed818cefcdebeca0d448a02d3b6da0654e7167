@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00a3188b_7e7e82a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-03T00:21:37Z",
+      "side": 1,
+      "message": "It is in targetDir. generatedPackagesCache variable has the full filepath and filepath.Base gets its filename base, which is the path relative to targetDir.",
+      "parentUuid": "ecab7678_ded986ab",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 66
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02a874bb_16732c3f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 8
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "2f7c5322_df758101",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-03T00:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b8adce_9459f0e1",
+      "range": {
+        "startLine": 124,
+        "startChar": 19,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef06908c_b3874841",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 8
@@ -91,6 +139,30 @@
       "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28be820_763a1167",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-03T00:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef06908c_b3874841",
+      "range": {
+        "startLine": 153,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +209,30 @@
       "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f137cc5b_38074d3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-03T00:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84bc1068_4e0a3026",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 30
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
