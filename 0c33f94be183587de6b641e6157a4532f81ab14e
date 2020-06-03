@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb0fb24_24a13398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-03T03:18:27Z",
+      "side": 1,
+      "message": "I think declaring err in line 110 is more readable because err is not used in the block line 110-109.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "0c33f94be183587de6b641e6157a4532f81ab14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ce4516_54884382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-03T03:18:27Z",
+      "side": 1,
+      "message": "Event if retErr !\u003d nil, I think we should log the err.",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "0c33f94be183587de6b641e6157a4532f81ab14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
