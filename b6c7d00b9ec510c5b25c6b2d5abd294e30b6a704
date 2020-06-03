@@ -70,6 +70,24 @@
       "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d067d437_70348739",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T17:21:40Z",
+      "side": 1,
+      "message": "You\u0027ve convinced me, I think this is safe to do. Not specifying outs feels like an OK way to express that you don\u0027t want outs.\n\nI\u0027m not aware of any call sites that programmaticaly determine outs.",
+      "parentUuid": "b68f9f7c_5f0a4288",
+      "revId": "b6c7d00b9ec510c5b25c6b2d5abd294e30b6a704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
