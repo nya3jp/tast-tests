@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -37,7 +37,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
 	params := ui.FindParams{
