@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d61ea778_2145e501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-03T02:59:15Z",
+      "side": 1,
+      "message": "Question: if we have this, why do we need vp9_hdr? Is it because vp9_hdr verifies that something plays even if the video might degrade to 8bpc?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
