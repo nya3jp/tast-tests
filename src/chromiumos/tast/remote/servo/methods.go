@@ -22,6 +22,7 @@ const (
 	FWWPState            StringControl = "fw_wp_state"
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
+	PowerState           StringControl = "power_state"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -50,6 +51,20 @@ const (
 	DurTab       KeypressDuration = "tab"
 	DurPress     KeypressDuration = "press"
 	DurLongPress KeypressDuration = "long_press"
+)
+
+// A PowerStateValue is a string accepted by the PowerState control.
+type PowerStateValue string
+
+// These are the string values that can be passed to the PowerState control.
+const (
+	PowerStateCR50Reset   PowerStateValue = "cr50_reset"
+	PowerStateOff         PowerStateValue = "off"
+	PowerStateOn          PowerStateValue = "on"
+	PowerStateRec         PowerStateValue = "rec"
+	PowerStateRecForceMRC PowerStateValue = "rec_force_mrc"
+	PowerStateReset       PowerStateValue = "reset"
+	PowerStateWarmReset   PowerStateValue = "warm_reset"
 )
 
 // A USBMuxState indicates whether the servo's USB mux is on, and if so, which direction it is powering.
@@ -187,4 +202,19 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 		}
 	}
 	return nil
+}
+
+// SetPowerState sets the PowerState control.
+// Because this is particularly disruptive, it is always logged.
+func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error {
+	testing.ContextLogf(ctx, "Setting %q to %q", PowerState, value)
+	if value == PowerStateOff {
+		// HTTP request is expected to time out while awaiting headers. So we expect an error.
+		// So to reduce wait time, call SetString with a short timeout, and ignore the error.
+		shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		s.SetString(shortCtx, PowerState, string(value))
+		return nil
+	}
+	return s.SetString(ctx, PowerState, string(value))
 }
