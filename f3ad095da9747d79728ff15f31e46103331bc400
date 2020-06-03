@@ -22,6 +22,30 @@
       "revId": "f3ad095da9747d79728ff15f31e46103331bc400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3d14ad_206874ec",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-03T00:39:59Z",
+      "side": 0,
+      "message": "Matthew, do you mind keeping the 16GB for the graphics tracing use case?",
+      "parentUuid": "1084a8cd_c6d30458",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "f3ad095da9747d79728ff15f31e46103331bc400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
