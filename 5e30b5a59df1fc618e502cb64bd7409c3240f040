@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ea7d0a_a744124b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-03T20:29:53Z",
+      "side": 1,
+      "message": "To make sure this doesn\u0027t get submitted before the credentials, can you add:\n\nCq-Depend: chrome-internal:2994340",
+      "revId": "5e30b5a59df1fc618e502cb64bd7409c3240f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
