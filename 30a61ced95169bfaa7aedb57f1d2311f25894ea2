@@ -140,6 +140,24 @@
       "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae15dce_8fe56849",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-03T02:23:04Z",
+      "side": 1,
+      "message": "IMO, since the original logic is already diverged from autotest, the old comment also is not suitable here. Also I can\u0027t see any special reason to choose these keys. As the offline discussion with EC eng, they also think the \"Google Hammer\" should be the correct keyboard. How about we just change the comment to choose keys from keyboardspec.html for partners?",
+      "parentUuid": "a33543b7_88406127",
+      "revId": "30a61ced95169bfaa7aedb57f1d2311f25894ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
