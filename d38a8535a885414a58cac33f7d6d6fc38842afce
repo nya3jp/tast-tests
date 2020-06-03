@@ -16,6 +16,24 @@
       "revId": "d38a8535a885414a58cac33f7d6d6fc38842afce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665b3207_fb43ab53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-03T01:34:19Z",
+      "side": 1,
+      "message": "It turns out that ScrollableShelfInfo (from ShelfUIInfo) has the icon bounds. Also the current implementation of ShelfItem (ash/public/cpp/shelf_item.h) is a model and does not fit well with having bounds.\nSo I changed to use ScrollableShelfInfo -- it still needs matching items of two arrays, but I think this is better. wdyt?",
+      "parentUuid": "c91ed255_d2e42b82",
+      "revId": "d38a8535a885414a58cac33f7d6d6fc38842afce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
