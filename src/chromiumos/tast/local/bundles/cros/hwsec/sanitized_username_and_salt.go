@@ -6,6 +6,8 @@ package hwsec
 
 import (
 	"context"
+	"crypto/sha1"
+	"encoding/hex"
 	"strings"
 
 	"chromiumos/tast/common/hwsec"
@@ -47,6 +49,46 @@ func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.U
 	return fromBrillo, nil
 }
 
+// getSystemSaltAndCompare retrieves the system salt through various methods (dbus and libbrillo), compare them to check that they match, and return the hex encoded system salt if everything is alright.
+func getSystemSaltAndCompare(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) (string, error) {
+	fromBrillo, err := cryptohomeUtil.GetSystemSalt(ctx, false)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get system salt from libbrillo")
+	}
+	fromDBus, err := cryptohomeUtil.GetSystemSalt(ctx, true)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get system salt from dbus")
+	}
+
+	if fromBrillo != fromDBus {
+		return "", errors.Errorf("system salt differs between libbrillo (%q) and dbus (%q)", fromBrillo, fromDBus)
+	}
+
+	return fromBrillo, nil
+}
+
+// computeSanitizedUsername compute the sanitized username for username, with the hex encoded system salt hexSalt.
+func computeSanitizedUsername(hexSalt, username string) (string, error) {
+	binarySalt, err := hex.DecodeString(hexSalt)
+	if err != nil {
+		return "", errors.New("failed to decode system salt")
+	}
+
+	// Username should be lower case.
+	username = strings.ToLower(username)
+
+	// Compute the sanitized username with SHA1
+	h := sha1.New()
+	h.Write(binarySalt)
+	h.Write([]byte(username))
+	output := h.Sum(nil)
+
+	sanitizedUsername := hex.EncodeToString(output)
+	sanitizedUsername = strings.ToLower(sanitizedUsername)
+
+	return sanitizedUsername, nil
+}
+
 func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
@@ -79,5 +121,20 @@ func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 
 	if !strings.Contains(firstHomedir, firstSanitized) {
 		s.Fatal("Home path doesn't contain sanitized username")
+	}
+
+	// Check the system salt.
+	systemSalt, err := getSystemSaltAndCompare(ctx, cryptohomeUtil)
+	if err != nil {
+		s.Fatal("Failed to get system salt: ", err)
+	}
+
+	// Compute the sanitized username and see if they match.
+	computedFirstSanitized, err := computeSanitizedUsername(systemSalt, util.FirstUsername)
+	if err != nil {
+		s.Fatal("Failed to compute sanitizedUsername for first user: ", err)
+	}
+	if computedFirstSanitized != firstSanitized {
+		s.Fatalf("Sanitized username mismatch for %q, libbrillo/dbus got %q, local computation got %q", util.FirstUsername, firstSanitized, computedFirstSanitized)
 	}
 }
