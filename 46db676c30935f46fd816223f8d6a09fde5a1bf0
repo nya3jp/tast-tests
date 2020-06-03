@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7269251e_48e7aa54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:29:26Z",
+      "side": 1,
+      "message": "nit: \"compares\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 143,
+        "endLine": 32,
+        "endChar": 144
+      },
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f90946_518aee47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:29:26Z",
+      "side": 1,
+      "message": "nit: \"returns\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 185,
+        "endLine": 32,
+        "endChar": 186
+      },
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04fd3838_4cb37303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:29:26Z",
+      "side": 1,
+      "message": "Currently this test checks whether the two methods return the same sanitized username. That will catch most errors, but will not catch if the two return the same wrong result. Is there any way to provide an expected value, too?",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4121609d_bf85b869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:29:26Z",
+      "side": 1,
+      "message": "Do you need to run this check for both users?",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
