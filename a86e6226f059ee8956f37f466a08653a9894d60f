@@ -573,6 +573,30 @@
       "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7af4c89_1a98880c",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-03T05:49:17Z",
+      "side": 1,
+      "message": "Ah, sorry, I made some mistakes. Never mind about the identifier problem.",
+      "parentUuid": "836ad9b8_a0a0cb57",
+      "range": {
+        "startLine": 151,
+        "startChar": 45,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "a86e6226f059ee8956f37f466a08653a9894d60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
