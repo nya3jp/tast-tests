@@ -18,10 +18,10 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
