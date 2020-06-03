@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5459b29_294ef530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-03T14:37:33Z",
+      "side": 1,
+      "message": "if not public, the first letter should be in lowercase\ntabletMode, oobe",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "395b38a4b5e8bf69a62d0439cb3b188cb84c5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67602f0_f4084734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-03T14:37:33Z",
+      "side": 1,
+      "message": "nit:\nto avoid repeating the chrome.New(....) you can do:\n\n  extraArgs :\u003d \"\"\n  if tabletModet {\n    extraArgs \u003d \"--force..\"\n  } else {\n    extraArgs \u003d \"--force...\"\n  }\n\n  cr, err :\u003d chrome.New(..., chrome.ExtraArgs(extraArgs)...)",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "395b38a4b5e8bf69a62d0439cb3b188cb84c5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edac2e9_b2161724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-03T14:37:33Z",
+      "side": 1,
+      "message": "add docstring for all non-trivial funcs",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 26
+      },
+      "revId": "395b38a4b5e8bf69a62d0439cb3b188cb84c5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb04bea_eb68c43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-03T14:37:33Z",
+      "side": 1,
+      "message": "nit, style. When there more than one const, you can do:\n\n  const (\n    logFileName \u003d \"...\"\n    helpAppURL \u003d \"...\"\n  )",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 58
+      },
+      "revId": "395b38a4b5e8bf69a62d0439cb3b188cb84c5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2bf6af_ca9e3a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-03T14:37:33Z",
+      "side": 1,
+      "message": "don\u0027t ignore errors",
+      "range": {
+        "startLine": 185,
+        "startChar": 11,
+        "endLine": 185,
+        "endChar": 12
+      },
+      "revId": "395b38a4b5e8bf69a62d0439cb3b188cb84c5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
