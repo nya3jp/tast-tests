@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "eee1fce4_070e28c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-03T20:59:24Z",
+      "side": 1,
+      "message": "Using UiAutomatorviewer, couldn\u0027t get Ui Hierarchy for email and password page, getting error like this \"Error obtaining Ui Hierarchy\".",
+      "parentUuid": "6afa8942_94a66056",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "c7973e4a474884e6d508b48982573e5c6d369c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abee2dfc_883f5483",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "c7973e4a474884e6d508b48982573e5c6d369c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4876eafd_95e5f7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-03T20:59:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abee2dfc_883f5483",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 18
+      },
+      "revId": "c7973e4a474884e6d508b48982573e5c6d369c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
