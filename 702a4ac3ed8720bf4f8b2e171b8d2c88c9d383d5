@@ -70,6 +70,30 @@
       "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50d19c9_bbf2f368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-03T23:17:33Z",
+      "side": 1,
+      "message": "Ok, what about just making vp9*hdr first class citizens and having\nvp9_hdr, vp9_sw_hdr and vp9_hw_hdr? The first two run everywhere, the\nvp9_hw_hdr restricted to KBL+ models (temporarily to kohaku only).\nWill modify CL and commit description with this idea.",
+      "parentUuid": "7fe0ee45_565a6455",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
