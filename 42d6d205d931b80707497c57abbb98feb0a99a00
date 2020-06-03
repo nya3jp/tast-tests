@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea65af86_fa1229bc",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:44:23Z",
+      "side": 1,
+      "message": "nit: Because there are two methods named GetSystemSalt with different receivers, I recommend updating this to be more specific, such as CryptohomeBinary.GetSystemSalt or u.binary.GetSystemSalt.",
+      "range": {
+        "startLine": 414,
+        "startChar": 46,
+        "endLine": 414,
+        "endChar": 59
+      },
+      "revId": "42d6d205d931b80707497c57abbb98feb0a99a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ccac7dd_ce65a896",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:44:23Z",
+      "side": 1,
+      "message": "As with your previous CL, I recommend using strings.TrimSpace instead here.",
+      "revId": "42d6d205d931b80707497c57abbb98feb0a99a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79247bd_3e6810b0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:44:23Z",
+      "side": 1,
+      "message": "As with your previous CL, this is only checking whether output _contains_ a non-empty hex string. You should wrap it in ^$:\n\n    \"^[a-f0-9]+$\"",
+      "revId": "42d6d205d931b80707497c57abbb98feb0a99a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56bf2d1_07576e73",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:44:23Z",
+      "side": 1,
+      "message": "As with your previous CL, I recommend removing this line, as it is redundant with the error.",
+      "revId": "42d6d205d931b80707497c57abbb98feb0a99a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28c4086_d6af1bc0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:44:23Z",
+      "side": 1,
+      "message": "As with your previous CL, I recommend returning an error instead of panicking, per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Support-packages",
+      "revId": "42d6d205d931b80707497c57abbb98feb0a99a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
