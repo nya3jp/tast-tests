@@ -39,10 +39,23 @@ func init() {
 //      address change (e.g. r8152 driver).
 //   2) DUT must not have connected USB Ethernet adapters that don't support MAC
 //      address change (e.g. asix driver).
-//   3) DUT must have both `ethernet_mac0` and/or `dock_mac` read only VPD fields
-//      with MAC addresses.
+//   3) DUT must have the`dock_mac` read only VPD field containing a MAC address.
+//      The `ethernet_mac0` read only VPD field containing a MAC address is optional.
 // TODO(crbug/1012367): Add these hardware dependencies when Tast will support them.
 func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
+	readMACFromVPD := func(vpd string) string {
+		bytes, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/ro", vpd))
+		if err != nil {
+			s.Logf("Failed to read VPD field %s file: %v", vpd, err)
+			return ""
+		}
+		return strings.ToLower(string(bytes))
+	}
+
+	if readMACFromVPD("dock_mac") == "" {
+		s.Fatal("dock_mac VPD field is empty")
+	}
+
 	eth, name := func(ctx context.Context) (*shill.Device, string) {
 		manager, err := shill.NewManager(ctx)
 		if err != nil {
@@ -85,15 +98,6 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to lock the check network hook: ", err)
 	}
 	defer unlock()
-
-	readMACFromVPD := func(vpd string) string {
-		bytes, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/ro", vpd))
-		if err != nil {
-			s.Logf("Failed to read VPD field %s file: %v", vpd, err)
-			return ""
-		}
-		return strings.ToLower(string(bytes))
-	}
 
 	getMAC := func() string {
 		ifi, err := net.InterfaceByName(name)
@@ -159,18 +163,23 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 
 	defer setMACSource(cleanupCtx, "usb_adapter_mac")
 
-	for _, tc := range []struct {
+	type testCase struct {
 		source      string
 		expectedMAC string
-	}{
+	}
+
+	tcs := []testCase{
 		{"designated_dock_mac", readMACFromVPD("dock_mac")},
-		{"builtin_adapter_mac", readMACFromVPD("ethernet_mac0")},
 		{"usb_adapter_mac", getMAC()},
-	} {
-		if len(tc.expectedMAC) == 0 {
-			s.Logf("MAC address for source %q is empty. DUT may not support such MAC address source. Continuing", tc.source)
-			continue
-		}
+	}
+
+	if ethernetMAC := readMACFromVPD("ethernet_mac0"); ethernetMAC == "" {
+		s.Log("ethernet_mac0 VPD field is empty. DUT may not support such MAC address source")
+	} else {
+		tcs = append(tcs, testCase{"builtin_adapter_mac", ethernetMAC})
+	}
+
+	for _, tc := range tcs {
 		verify(ctx, tc.source, tc.expectedMAC)
 	}
 }
