@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92f7ef0_a612ce54",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "nit: also check for explicit off and return error if it\u0027s something unexpected",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87419f15_5618d8f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "Use Error. Fail the test if shutdown is unsuccessful, otherwise nobody will check.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6cf7fb_a772fb3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "nit: remove\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614086fa_6cdd224b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "Create another cleanup context to make sure this has a chance to run in case of timeout",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e15bc59_a5c47e88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485a5d1f_9d584faf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab627b44_cefe4639",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "Does it make sense to check that powersave can be set to true after connecting? Do we want to check that the connection still works after changing powersave? Maybe just add a TODO (with a bug to track) since this is a port from autotest.",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3edc11_d7ad6b00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": ";",
+      "range": {
+        "startLine": 136,
+        "startChar": 57,
+        "endLine": 136,
+        "endChar": 58
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28b2bc2_658bab34",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": ";",
+      "range": {
+        "startLine": 412,
+        "startChar": 52,
+        "endLine": 412,
+        "endChar": 53
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0879d6b5_1a902972",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T19:01:01Z",
+      "side": 1,
+      "message": "minor nit: does it make sense to use net.IPv4?",
+      "range": {
+        "startLine": 420,
+        "startChar": 61,
+        "endLine": 420,
+        "endChar": 69
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
