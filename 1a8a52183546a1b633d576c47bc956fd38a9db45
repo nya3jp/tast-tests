@@ -2,6 +2,224 @@
   "comments": [
     {
       "key": {
+        "uuid": "396a5cdd_4d42cfb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "This file is large. I recommend introducing a subpackage and calling into it. By introducing a subpackage, you can split the code into multiple files easily.",
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed2285a_f15c488a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "context.Context is an interface, it should be almost always passed as value.",
+      "range": {
+        "startLine": 106,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13442522_703bc8cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "You can use upstart.JobStatus to check upstart job statuses.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2905510a_d452c83e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "It sounds a bit odd to ignore lines on errors. Do we have a reason? Otherwise how about returning an error if we see any?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c4c80f_5ad068d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "nil (to help readers)",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d56bbe_ddd5e7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "huge nit: mind removing this blank line?",
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77af0fe6_b551c3e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "same here: pass context.Context by value.",
+      "range": {
+        "startLine": 209,
+        "startChar": 23,
+        "endLine": 209,
+        "endChar": 43
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ef463aa_5b1a3213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "Optional: Do you want to log the error in case it\u0027s interesting on debugging?",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 54
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65e64d5_591eaa2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 55
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38981e9d_d2ce1256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "nit: This can be done once after the loop.",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 71
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1098ffc7_0c50547b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
         "patchSetId": 2
@@ -48,6 +266,190 @@
     },
     {
       "key": {
+        "uuid": "01e835b7_b3ea719d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "nit: Strings can be compared: s \u003e m\nhttps://golang.org/ref/spec#Comparison_operators",
+      "range": {
+        "startLine": 345,
+        "startChar": 6,
+        "endLine": 345,
+        "endChar": 33
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2201651b_11d95b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "This branch contains the success case (err \u003d\u003d nil) and other error cases (e.g. err \u003d\u003d errno.EIO). I guess we want to handle those cases separately.",
+      "range": {
+        "startLine": 362,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 9
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148d3c32_fab9ed12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "filepath.Base\n\nSame for other occurrences.",
+      "range": {
+        "startLine": 443,
+        "startChar": 7,
+        "endLine": 443,
+        "endChar": 11
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f14687_6c490e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "I recommend using testexec instead of os/exec consistently.",
+      "range": {
+        "startLine": 469,
+        "startChar": 13,
+        "endLine": 469,
+        "endChar": 17
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144a5993_5a75fa43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "These commands may take long, so they should be run with context.Context to honor test timeout. I mean, use testexec.Command instead.",
+      "range": {
+        "startLine": 495,
+        "startChar": 7,
+        "endLine": 495,
+        "endChar": 19
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8d6b89_68bbc4ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "nit: It\u0027s better to initialize fields at once.\n\n out :\u003d platform.GetBootPerfMetricsResponse{\n   Metrics: make(...),\n }",
+      "range": {
+        "startLine": 586,
+        "startChar": 1,
+        "endLine": 587,
+        "endChar": 39
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f08acf_ece7df1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "style: Please begin log messages with a capital letter.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 590,
+        "startChar": 25,
+        "endLine": 590,
+        "endChar": 34
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aebe0ed8_755bda4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "In this case we can construct the response at once in the end of the function.\n\n return \u0026platform.GetBootperfRawDataResponse{RawData: raw}, nil",
+      "range": {
+        "startLine": 626,
+        "startChar": 1,
+        "endLine": 626,
+        "endChar": 48
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f245f0e5_1ab5905c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
         "patchSetId": 2
@@ -64,6 +466,75 @@
         "startChar": 14,
         "endLine": 26,
         "endChar": 16
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52bb30ad_735d68ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "Since this is a perf test, this test should belong to group:crosbolt.",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81c5944_de07e69d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "string.Contains",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37176b8_76ff88de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "Namespace is shared among tests in the same package, so \"runOnce\" sounds a bit concerning for name conflicts.\n\nHow about bootPerfOnce or similar?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 12
       },
       "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -163,6 +634,29 @@
     },
     {
       "key": {
+        "uuid": "f82e7ce8_d4279ba3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "cl.Close should be called before the DUT is rebooted in runOnce. You can use an anonymous function to force this.\n\n func() {\n   cl, err :\u003d rpc.Dial(...)\n   if err !\u003d nil { ... }\n   defer cl.Close(ctx)\n\n   bootPerfService :\u003d ...\n   _, err \u003d bootPerfService.EnableBootchart(...)\n   if err !\u003d nil { ... }\n }()",
+      "range": {
+        "startLine": 129,
+        "startChar": 7,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bae1b74c_923ca568",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
         "patchSetId": 2
@@ -179,6 +673,53 @@
         "startChar": 17,
         "endLine": 140,
         "endChar": 27
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed944de1_3affbd7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "Sounds nice.",
+      "parentUuid": "bae1b74c_923ca568",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf536a56_46d6a506",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:45:39Z",
+      "side": 1,
+      "message": "These cleanup should be run even if runOnce aborts by s.Fatal.\n\nSo, please call it with a defer just after enabling bootperfservice. That is:\n\n func() {\n   cl, err :\u003d rpc.Dial(...)\n   if err !\u003d nil { ... }\n   defer cl.Close(ctx)\n\n   bootPerfService :\u003d ...\n   _, err \u003d bootPerfService.EnableBootchart(...)\n   if err !\u003d nil { ... }\n }()\n defer func() {\n   cl, err :\u003d rpc.Dial(...)\n   if err !\u003d nil { ... }\n   defer cl.Close(ctx)\n\n   bootPerfService :\u003d ...\n   _, err \u003d bootPerfService.DisableBootchart(...)\n   if err !\u003d nil { ... }\n }()",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
       },
       "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
