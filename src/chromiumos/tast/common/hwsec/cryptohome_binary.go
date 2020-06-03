@@ -425,6 +425,15 @@ func (c *CryptohomeBinary) GetSanitizedUsername(ctx context.Context, username st
 	return c.call(ctx, args...)
 }
 
+// GetSystemSalt calls "cryptohome --action=get_system_salt".
+func (c *CryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus bool) ([]byte, error) {
+	args := []string{"--action=get_system_salt"}
+	if useDBus {
+		args = append(args, "--use_dbus")
+	}
+	return c.call(ctx, args...)
+}
+
 // CheckKeyEx calls "cryptohome --action=check_key_ex".
 func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username, password, label string) ([]byte, error) {
 	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
