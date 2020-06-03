@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/memory"
+	"chromiumos/tast/local/memory/pressure"
 	"chromiumos/tast/testing"
 )
 
@@ -43,7 +44,7 @@ func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 
 	a := memory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
 
-	margin, err := memory.ChromeOSCriticalMargin()
+	margin, err := pressure.CriticalMargin()
 	if err != nil {
 		s.Fatal("Failed to read critical margin: ", err)
 	}

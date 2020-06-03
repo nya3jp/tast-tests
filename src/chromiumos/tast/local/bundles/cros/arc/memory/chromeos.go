@@ -19,24 +19,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/memory/pressure"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
-
-// readFirstUint reads the first unsigned integer from a file.
-func readFirstUint(f string) (uint, error) {
-	// Files will always just be a single line, so it's OK to read everything.
-	data, err := ioutil.ReadFile(f)
-	if err != nil {
-		return 0, err
-	}
-	firstString := strings.Split(strings.TrimSpace(string(data)), " ")[0]
-	firstUint, err := strconv.ParseUint(firstString, 10, 64)
-	if err != nil {
-		return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
-	}
-	return uint(firstUint), nil
-}
 
 // ChromeOSAllocator helps test code allocate memory on ChromeOS.
 type ChromeOSAllocator struct {
@@ -51,20 +37,6 @@ func NewChromeOSAllocator() *ChromeOSAllocator {
 		allocated: list.New(),
 		size:      0,
 	}
-}
-
-// ChromeOSAvailable reads available memory from sysfs.
-// Returns available memory in MB.
-func ChromeOSAvailable() (uint, error) {
-	const availableMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/available"
-	return readFirstUint(availableMemorySysFile)
-}
-
-// ChromeOSCriticalMargin reads the critical margin from sysfs.
-// Returns margin in MB.
-func ChromeOSCriticalMargin() (uint, error) {
-	const marginMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/margin"
-	return readFirstUint(marginMemorySysFile)
 }
 
 // Size returns the size of all allocated memory
@@ -241,7 +213,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 
 	allocated := make([]uint, attempts)
 	for attempt := 0; attempt < attempts; {
-		available, err := ChromeOSAvailable()
+		available, err := pressure.Available()
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to read available")
 		}
