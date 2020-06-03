@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
