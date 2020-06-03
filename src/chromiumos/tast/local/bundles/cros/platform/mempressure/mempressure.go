@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -157,30 +158,8 @@ func (t *tab) close() error {
 // waitForQuiescence waits for the tab gets quiescence by timeout.
 // This does not return an error even if timed out.
 func (t *tab) waitForQuiescence(ctx context.Context, timeout time.Duration) error {
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
 	start := time.Now()
-	// Each resourceTimings element contains the load start time and load end time
-	// for a resource.  If a load has not completed yet, the end time is set to
-	// the current time.  Then we can tell that a load has completed by detecting
-	// that the end time diverges from the current time.
-	//
-	// resourceTimings is sorted by event start time, so we need to look through
-	// the entire array to find the latest activity.
-	if err := t.conn.WaitForExprFailOnErr(ctx, `(() => {
-	  if (document.readyState !== 'complete') {
-	    return false;
-	  }
-
-	  const QUIESCENCE_TIMEOUT_MS = 2000;
-	  let lastEventTime = performance.timing.loadEventEnd -
-	      performance.timing.navigationStart;
-	  const resourceTimings = performance.getEntriesByType('resource');
-	  lastEventTime = resourceTimings.reduce(
-	      (current, timing) => Math.max(current, timing.responseEnd),
-	      lastEventTime);
-	  return performance.now() >= lastEventTime + QUIESCENCE_TIMEOUT_MS;
-	})()`); err != nil {
+	if err := webutil.WaitForQuiescence(ctx, t.conn, timeout); err != nil {
 		if ctx.Err() != context.DeadlineExceeded {
 			return errors.Wrap(err, "failed to wait for tab quiesce")
 		}
