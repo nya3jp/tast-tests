@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bfc81fa_4f39c243",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:08:20Z",
+      "side": 1,
+      "message": "style: lock prevents ...",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "771c2f9d65278f176ac11dcc356938102c6f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6516921_158e8794",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:08:20Z",
+      "side": 1,
+      "message": "clock must be also protected by lock to prepare for concurrent call of Now and Advance.",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "771c2f9d65278f176ac11dcc356938102c6f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7c4073_66f0a4e1",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:08:20Z",
+      "side": 1,
+      "message": "c.lock must be held on accessing c.clock.",
+      "range": {
+        "startLine": 140,
+        "startChar": 10,
+        "endLine": 140,
+        "endChar": 15
+      },
+      "revId": "771c2f9d65278f176ac11dcc356938102c6f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843d95aa_37590071",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:08:20Z",
+      "side": 1,
+      "message": "d \u003c\u003d 0\n\nAnother option is to fail if d \u003c 0. But time.Sleep allows negative duration.\nhttps://godoc.org/time#Sleep",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "771c2f9d65278f176ac11dcc356938102c6f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb1c8830_4a9b8378",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T09:08:20Z",
+      "side": 1,
+      "message": "style: var newSleepers []*sleeper\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "771c2f9d65278f176ac11dcc356938102c6f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
