@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40c4d361_d7ee3aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-03T00:18:12Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "98391ef4_74b3f649",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "090f1169_fce4d02f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cd807a1b_a7848e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-03T00:18:12Z",
+      "side": 1,
+      "message": "There are two types of selection functions provided: Platform and Model.\nI tested this on Hana, and when using Model the device showed up as \"n23conv\", when using Platform the device showed up as \"hana\".\n\nSo I guess if we use platform and select \"eve\" here, we will also test all variants of eve? It might be better to select with a single model?\n\nAny suggestion on which model (or platform) to use here? Preferably a good all-round stable device.",
+      "parentUuid": "090f1169_fce4d02f",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abaf6bd7_5d3296ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-02T07:50:56Z",
       "side": 1,
       "message": "I do not understand why we need a new name. The test is the same, just attributes/suite are different.",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "da70dba9a2bbfa2d644e4c3d0e75fb5ada70dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75677d7_d9cddf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-03T00:18:12Z",
+      "side": 1,
+      "message": "Tests can\u0027t have the same name or Tast wouldn\u0027t know which one to run when we execute \"tast run video.DecodeAccel.h264\":\ndecode_accel.go:25: duplicate param name is found: h264\n\nI don\u0027t think we can overwrite parameters for the same tests under specific conditions unfortunately.",
+      "parentUuid": "abaf6bd7_5d3296ab",
       "range": {
         "startLine": 38,
         "startChar": 23,
