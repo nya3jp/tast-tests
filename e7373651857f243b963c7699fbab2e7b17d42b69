@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bde732e_a95b5e61",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:20:46Z",
+      "side": 1,
+      "message": "nit: Since there are two different methods called GetSanitizedUsername with different receivers, I recommend clarifying here that you\u0027re talking about CryptohomeBinary.GetSanitizedUsername (or u.binary.GetSanitizedUsername).",
+      "range": {
+        "startLine": 393,
+        "startChar": 46,
+        "endLine": 393,
+        "endChar": 66
+      },
+      "revId": "e7373651857f243b963c7699fbab2e7b17d42b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec472326_374dff4f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:20:46Z",
+      "side": 1,
+      "message": "If you use strings.TrimSpace instead, then you never run the risk of being tricked by other types of whitespace (such as \\r).",
+      "revId": "e7373651857f243b963c7699fbab2e7b17d42b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985d2a5e_00944d17",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:20:46Z",
+      "side": 1,
+      "message": "It looks like you\u0027re only checking whether `output` _contains_ a hex string of length 40, when I think you want to see whether `output` is _exactly_ a hex string of length 40.\n\nYou can fix this by enclosing the regexp in ^ (start-of-regexp) and $ (end-of-regexp):\n\n    \"^[a-f0-9]{40}$\"",
+      "revId": "e7373651857f243b963c7699fbab2e7b17d42b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c940bdd_43867308",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:20:46Z",
+      "side": 1,
+      "message": "nit: This comment is redundant with the error message, and thus can be removed.",
+      "revId": "e7373651857f243b963c7699fbab2e7b17d42b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8071ba7e_cd199b92",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:20:46Z",
+      "side": 1,
+      "message": "From https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Support-packages:\n\n\u003e [S]upport packages should avoid calling panic when errors are encountered. When a test is running, panic has the same effect as State\u0027s Fatal and Fatalf methods: the test is aborted immediately. Returning an error gives tests the ability to choose how to respond.\n\nSo, I recommend changing this to return err.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 21
+      },
+      "revId": "e7373651857f243b963c7699fbab2e7b17d42b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
