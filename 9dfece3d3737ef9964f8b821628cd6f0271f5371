@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87557769_1fe9c314",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92f7ef0_a612ce54",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87419f15_5618d8f4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "91978072_c9607b24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87419f15_5618d8f4",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf6cf7fb_a772fb3e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "17a04012_b90d41e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6cf7fb_a772fb3e",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614086fa_6cdd224b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
@@ -73,6 +133,24 @@
       "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc18881_d219b0e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614086fa_6cdd224b",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "3d2ab756_fc782ea4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e15bc59_a5c47e88",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "485a5d1f_9d584faf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "8ecaf6a8_6c7fbc8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "485a5d1f_9d584faf",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab627b44_cefe4639",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
@@ -127,6 +247,24 @@
       "writtenOn": "2020-06-03T19:01:01Z",
       "side": 1,
       "message": "Does it make sense to check that powersave can be set to true after connecting? Do we want to check that the connection still works after changing powersave? Maybe just add a TODO (with a bug to track) since this is a port from autotest.",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c88082_81d7ff0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "I think it make sense to have one case which is turnning the powersave mode on after connection. \n\ndeanliao@, yenlinlai@ WDYT?",
+      "parentUuid": "ab627b44_cefe4639",
       "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "2d90cdf8_6b867a05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc3edc11_d7ad6b00",
+      "range": {
+        "startLine": 136,
+        "startChar": 57,
+        "endLine": 136,
+        "endChar": 58
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b28b2bc2_658bab34",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 9
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "aac40787_1c43d00c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28b2bc2_658bab34",
+      "range": {
+        "startLine": 412,
+        "startChar": 52,
+        "endLine": 412,
+        "endChar": 53
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0879d6b5_1a902972",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
@@ -190,6 +376,30 @@
       "writtenOn": "2020-06-03T19:01:01Z",
       "side": 1,
       "message": "minor nit: does it make sense to use net.IPv4?",
+      "range": {
+        "startLine": 420,
+        "startChar": 61,
+        "endLine": 420,
+        "endChar": 69
+      },
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9daa22_6447717e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-03T22:46:50Z",
+      "side": 1,
+      "message": "this function returns the result of the grpc call (GetIPv4Addrs) that runs on the remote DUT. The net package is used in the remote DUT to get the IPv4 addrs. The grpc call cannnot use a variable type IP (it uses protocol buffers), so all the IP addrs are converted to strings and saved in a slice.",
+      "parentUuid": "0879d6b5_1a902972",
       "range": {
         "startLine": 420,
         "startChar": 61,
