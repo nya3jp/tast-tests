@@ -8,10 +8,10 @@ import (
 	"context"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +35,7 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// At login, we should have just Chrome in the Shelf.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
