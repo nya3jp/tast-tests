@@ -16,6 +16,24 @@
       "revId": "304dd8f15fcccfe154310925010916a353de8d14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee834680_4363f244",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-03T02:31:14Z",
+      "side": 1,
+      "message": "Now I think it is acceptable for tests to have closures considering that making a helper function as a package-wide function is polluting the namespace.\nSo I think this patch is OK as-is.\nPing me if you decide to make further change.",
+      "parentUuid": "af654f24_8ab2139d",
+      "revId": "304dd8f15fcccfe154310925010916a353de8d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
