@@ -22,6 +22,30 @@
       "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90300082_b6a79d7d",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-03T01:23:47Z",
+      "side": 1,
+      "message": "The tpm local data can be modified if someone ask tpm manager to wipe the TPM owner password. W/o Chrome I don\u0027t see any other soncumers but worth validating with the real testcase running in informational. Yet, it doesn\u0027t mean we don\u0027t need snapshot for \"*-system\" testsuite. Even if we don\u0027t have any caller to tell tpm_manager to wipe the owner password -- 1. at least the test item in the near future that test against wiping owner password would do that, and 2. One day tpm manager might be able to just wipe the owner password by itself.\n\n\n1. At the client side, there would be error handling. At least, we can have a clear message that tells us we are missing important TPM secrets as pre-condition.\n2. If in-memory solution doesn\u0027t work, we can change the implementation of the snapshot to storing the file copy on DUT in stateful partition, Yet, if I am not mistaken in 3., there should be alright?\n3. When a local test crashed in the middle of execution, with clear_tpm\u003dFalse passed into tast.py again, the ownership gets cleared. In this case, we always take ownership in ready.go, no? that\u0027 what I imagined of the current status, pls correct me if i was wrong.",
+      "parentUuid": "a6214aff_4d921c42",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
