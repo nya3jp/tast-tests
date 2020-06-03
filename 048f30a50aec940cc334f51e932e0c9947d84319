@@ -22,6 +22,30 @@
       "revId": "048f30a50aec940cc334f51e932e0c9947d84319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b312acec_c01f93d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-03T17:17:55Z",
+      "side": 1,
+      "message": "It is up to you. If there are no other conditions, I personally prefer unnamed, since we can keep the continuity of the data points (i.e. graph in crosbolt and testmon analysis).",
+      "parentUuid": "1373e3d6_23732a28",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "048f30a50aec940cc334f51e932e0c9947d84319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
