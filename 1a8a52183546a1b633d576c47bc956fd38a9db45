@@ -521,6 +521,30 @@
     },
     {
       "key": {
+        "uuid": "a69f7e59_6f5458b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-03T13:41:30Z",
+      "side": 1,
+      "message": "The existing autotest version of boot test on helios take about 20 minutes.\n\nHow about increase the default iteration count to 30? So it is not slower than existing test and become more stable.",
+      "parentUuid": "4a6cc74b_afa384ea",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52bb30ad_735d68ce",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
         "patchSetId": 2
@@ -625,6 +649,30 @@
       "side": 1,
       "message": "Yes, and func waitUntilBootComplete() in boot_perf_service.go does that (1-sec interval polls to make sure boot is complete) and I\u0027ve observed it polling several times before boot complete.\n\nThe polling should be of low-overhead, but I need to check bootchart to see that. If the overhead is not negligible, we can add a sleep here.",
       "parentUuid": "931766aa_1ee0790e",
+      "range": {
+        "startLine": 73,
+        "startChar": 78,
+        "endLine": 73,
+        "endChar": 83
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e1e2f2_f3347e65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-03T13:41:30Z",
+      "side": 1,
+      "message": "Dial will trigger sshd fork, the login process, and launch the (big?) tast RPC executable. So if it will wait several seconds here, I\u0027d prefer to sleep before Dial. In other words, push the noise due to Dial to later boot stage.\n\nWDYT?",
+      "parentUuid": "56ef8584_71b15272",
       "range": {
         "startLine": 73,
         "startChar": 78,
@@ -817,6 +865,29 @@
         "startChar": 17,
         "endLine": 140,
         "endChar": 27
+      },
+      "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9ed9de_6dc228cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-03T13:41:30Z",
+      "side": 1,
+      "message": "Is it safe (harmless to later tests) to skip this Reboot?",
+      "range": {
+        "startLine": 161,
+        "startChar": 13,
+        "endLine": 161,
+        "endChar": 19
       },
       "revId": "1a8a52183546a1b633d576c47bc956fd38a9db45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
