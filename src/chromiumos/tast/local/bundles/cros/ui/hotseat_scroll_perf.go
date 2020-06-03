@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -34,6 +33,16 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          ash.LoggedInWith100DummyApps(),
+		Params: []testing.Param{
+			{
+				Name: "clamshell_mode",
+				Val:  false,
+			},
+			{
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Val:               true,
+			},
+		},
 	})
 }
 
@@ -257,6 +266,14 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
+	var mode uiMode
+
+	if s.Param().(bool) {
+		mode = inTabletMode
+	} else {
+		mode = inClamshellMode
+	}
+
 	type testSetting struct {
 		state uiState
 		mode  uiMode
@@ -265,36 +282,16 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	settings := []testSetting{
 		{
 			state: launcherIsHidden,
-			mode:  inClamshellMode,
+			mode:  mode,
 		},
 		{
 			state: overviewIsVisible,
-			mode:  inClamshellMode,
+			mode:  mode,
 		},
 		{
 			state: launcherIsVisible,
-			mode:  inClamshellMode,
+			mode:  mode,
 		},
-	}
-
-	tabletSettings := []testSetting{
-		{
-			state: launcherIsHidden,
-			mode:  inTabletMode,
-		},
-		{
-			state: overviewIsVisible,
-			mode:  inTabletMode,
-		},
-		{
-			state: launcherIsVisible,
-			mode:  inTabletMode,
-		},
-	}
-
-	// Fetch hotseat scroll animation metrics in tablet mode only when having an internal display.
-	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
-		settings = append(settings, tabletSettings...)
 	}
 
 	for _, setting := range settings {
