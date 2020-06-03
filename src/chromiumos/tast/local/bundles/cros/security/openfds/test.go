@@ -83,7 +83,7 @@ func findExpectation(path string, es []Expectation) (*Expectation, error) {
 			return &e, nil
 		}
 	}
-	return nil, errors.Errorf("mode expectation is not found: %s", path)
+	return nil, errors.Errorf("no mode expectation found for path: %s", path)
 }
 
 // expectMode checks if the given lmode is contained in expectModes.
@@ -200,7 +200,7 @@ func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process
 				s.Errorf("PID in path %v does not match expected PID: got %d; want %d", f.path, n, p.Pid)
 			}
 		} else if !expectMode(f.lmode, e.Modes) {
-			s.Errorf("Unexpected file mode %v for %v", f, p)
+			s.Errorf("Unexpected mode for process %v, file %q: got %o; want one of %o", p, f.path, f.lmode, e.Modes)
 		}
 	}
 }
