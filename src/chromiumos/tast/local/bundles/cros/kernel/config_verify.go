@@ -265,8 +265,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		"ACPI_CUSTOM_METHOD",
 		// Dangerous; disables brk(2) ASLR.
 		"COMPAT_BRK",
-		// Dangerous; disables VDSO ASLR.
-		"COMPAT_VDSO",
 		// Dangerous; allows direct kernel memory writing.
 		"DEVKMEM",
 		// Dangerous; allows replacement of running kernel.
@@ -385,6 +383,8 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		if ver.isOrLater(3, 18) {
 			builtin = append(builtin, "RETPOLINE")
 		}
+		// Dangerous; disables VDSO ASLR.
+		missing = append(missing, "COMPAT_VDSO")
 	}
 
 	return &kernelConfigCheck{
