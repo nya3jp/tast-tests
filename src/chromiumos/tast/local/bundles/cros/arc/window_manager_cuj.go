@@ -108,7 +108,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	defer d.Close()
 
 	for _, apk := range []string{wm.APKNameArcWMTestApp23, wm.APKNameArcWMTestApp24, wm.APKNameArcPipSimpleTastTest} {
-		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
 	}
