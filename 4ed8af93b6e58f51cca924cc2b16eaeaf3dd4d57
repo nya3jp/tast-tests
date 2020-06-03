@@ -16,6 +16,47 @@
       "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877d839e_5e6c2570",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-03T12:17:54Z",
+      "side": 1,
+      "message": "Hi Kuo,\n\nThis done intentionaly. Test params should be declarative, it\u0027s easier to visually check what tests we have, turn on/off some specific tests, etc. Also, once you change a bit your generator function, you may lose your tests running history.",
+      "parentUuid": "eb9d9d63_dc6ba190",
+      "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b678f86d_9fc43eeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-03T12:17:54Z",
+      "side": 1,
+      "message": "can it be nil if you call it only when hal3Client.RunTest was successful?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
