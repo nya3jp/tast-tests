@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b428ba97_ae6a454e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-03T02:36:57Z",
+      "side": 1,
+      "message": "s/i//.",
+      "range": {
+        "startLine": 526,
+        "startChar": 26,
+        "endLine": 526,
+        "endChar": 27
+      },
+      "revId": "e042a5f9f7670981bbdf0f27dc5c235c36750111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
