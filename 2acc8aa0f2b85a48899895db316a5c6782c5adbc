@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2027da36_112dd756",
+        "filename": "src/chromiumos/tast/local/memory/pressure/pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-03T09:52:02Z",
+      "side": 1,
+      "message": "How about putting this file directly under the memory packge?\nmemory.Available() may read more naturally than pressure.Available().\nNote that you can specify a different name for a package in import statement if needed.\nhttps://golang.org/ref/spec#Import_declarations",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 79
+      },
+      "revId": "2acc8aa0f2b85a48899895db316a5c6782c5adbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
