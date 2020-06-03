@@ -26,7 +26,6 @@ func init() {
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
-		Data:         []string{wm.APKNameArcWMTestApp24},
 		Pre:          arc.VMBooted(),
 		Timeout:      8 * time.Minute,
 	})
@@ -40,7 +39,7 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
 
-	if err := a.Install(ctx, s.DataPath(wm.APKNameArcWMTestApp24)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
@@ -66,6 +65,7 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 		fn   testFunc
 	}{
 		{"NC01_launch", wmNC01}, // non-resizable/clamshell: default launch behavior
+		{"NC04_launch", wmNC04}, // non-resizable/clamshell: user immerse portrait app (pillarbox)
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -108,4 +108,43 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		}
 	}
 	return nil
+}
+
+// wmNC04 covers non-resizable/clamshell: user immerse portrait app (pillarbox) behavior.
+// Expected behavior is defined in: go/arc-wm-r NC04: non-resizable/clamshell: user immerse portrait app (pillarbox).
+func wmNC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizablePortraitActivity)
+	if err != nil {
+		return err
+	}
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	windowInfoMaximized, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
+		return err
+	}
+
+	windowInfoFullscreen, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	return wm.CheckMaximizeToFullscreenTogglePortrait(windowInfoMaximized.BoundsInRoot, windowInfoFullscreen.BoundsInRoot)
 }

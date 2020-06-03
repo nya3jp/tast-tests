@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -120,6 +121,18 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 	}
 	if o != wanted {
 		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
+	}
+
+	return nil
+}
+
+// CheckMaximizeToFullscreenTogglePortrait checks window's bounds transisionning from max to fullscreen in portrait mode.
+func CheckMaximizeToFullscreenTogglePortrait(maxWindowCoords, fullscreenWindowCoords coords.Rect) error {
+	if maxWindowCoords.Left != fullscreenWindowCoords.Left ||
+		maxWindowCoords.Top != fullscreenWindowCoords.Top ||
+		maxWindowCoords.Width != fullscreenWindowCoords.Width ||
+		maxWindowCoords.Height >= fullscreenWindowCoords.Height {
+		return errors.Errorf("invalid window bounds, maximized window bounds: %s. fullscreen window bounds: %s", maxWindowCoords, fullscreenWindowCoords)
 	}
 
 	return nil
