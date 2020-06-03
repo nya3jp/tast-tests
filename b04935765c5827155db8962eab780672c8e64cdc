@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d3506920_8c80406f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/memory_stress.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-06-03T07:31:16Z",
+      "side": 1,
+      "message": "Still working on this. Deciding if I should factor stuff out of memory_stress_basic.go into the memory package, or if it\u0027s enough to just move the html and js files, and symlink.",
+      "parentUuid": "f30f5f18_1f9787da",
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaaefd91_271f616c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
         "patchSetId": 1
@@ -164,6 +182,30 @@
       "revId": "b04935765c5827155db8962eab780672c8e64cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14810f78_575dfe2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_stress_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-06-03T07:31:16Z",
+      "side": 1,
+      "message": "See commits below. It\u0027s two commits, because getting rid of the testing.State references is not trivial.",
+      "parentUuid": "ca70be45_40c95632",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "b04935765c5827155db8962eab780672c8e64cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
