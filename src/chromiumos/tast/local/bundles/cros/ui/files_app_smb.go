@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
@@ -48,7 +48,7 @@ func FilesAppSMB(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	const smbConfigFile = "smb.conf"
 	if err := cont.PushFile(ctx, s.DataPath(smbConfigFile), "/tmp/smb.conf"); err != nil {
