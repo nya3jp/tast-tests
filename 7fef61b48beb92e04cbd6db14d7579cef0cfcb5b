@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4ec9044_e68bfe14",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T05:54:46Z",
+      "side": 1,
+      "message": "Maybe PowersaveMode? so that the getter and setter name are matched.",
+      "range": {
+        "startLine": 319,
+        "startChar": 17,
+        "endLine": 319,
+        "endChar": 28
+      },
+      "revId": "7fef61b48beb92e04cbd6db14d7579cef0cfcb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
