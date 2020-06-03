@@ -22,6 +22,30 @@
       "revId": "3e05a4c7d79f29b3cbb6475088a0577d19179b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2cf3e94_6c4ad89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-03T18:34:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "103e2ce6_6922a882",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "3e05a4c7d79f29b3cbb6475088a0577d19179b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
