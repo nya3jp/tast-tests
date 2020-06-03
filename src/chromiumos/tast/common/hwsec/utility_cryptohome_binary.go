@@ -430,6 +430,22 @@ func (u *UtilityCryptohomeBinary) GetSanitizedUsername(ctx context.Context, user
 	return outs, nil
 }
 
+// GetSystemSalt retrieves the system salt and return the hex encoded version of it.
+// If useDBus is true, the system salt will be retrieved from cryptohome (through dbus). Otherwise, it'll be loaded directly by libbrillo (without dbus).
+func (u *UtilityCryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus bool) (string, error) {
+	out, err := u.binary.GetSystemSalt(ctx, useDBus)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call CryptohomeBinary.GetSystemSalt")
+	}
+	outs := strings.TrimSpace(string(out))
+	exp := regexp.MustCompile("^[a-f0-9]+$")
+	// System salt should be a non-empty hex string.
+	if !exp.MatchString(outs) {
+		return "", errors.Errorf("invalid system salt %q", outs)
+	}
+	return outs, nil
+}
+
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
 func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username, password, label string) (bool, error) {
 	_, err := u.binary.CheckKeyEx(ctx, username, password, label)
