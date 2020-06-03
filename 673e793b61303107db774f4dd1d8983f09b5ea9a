@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b570834_d0942f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T11:36:26Z",
+      "side": 1,
+      "message": "DUT must have the`dock_mac` read only VPD field containing a MAC address.",
+      "revId": "673e793b61303107db774f4dd1d8983f09b5ea9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1864f494_95824ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T11:36:26Z",
+      "side": 1,
+      "message": "The `ethernet_mac0` read only VPD field containing a MAC address is optional.",
+      "revId": "673e793b61303107db774f4dd1d8983f09b5ea9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fac586ca_f56b9ba1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
