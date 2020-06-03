@@ -8,9 +8,9 @@ import (
 	"context"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/testing"
 )
@@ -35,7 +35,7 @@ func LauncherSearchNativeApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	if err := launcher.SearchAndLaunch(ctx, tconn, apps.Settings.Name); err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
