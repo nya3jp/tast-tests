@@ -403,6 +403,24 @@
     },
     {
       "key": {
+        "uuid": "fa99830d_35ac5e9e",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T02:49:13Z",
+      "side": 1,
+      "message": "I think the alias is also available in the local one and maybe other runner package. (e.g. ip runner package is just added) It might be better to have this change together with change in other packages in another cl?\n\nAnd, btw, I think the alias might be for the case like:\n\n  type A struct {\n    conn *ssh.Conn\n    iwr  *iw.Runner\n  }\n  func NewA(host *ssh.Conn) *A {\n    return A{host, iw.NewRunner(host)\n  }\n  func Do(ctx context.Context) error {\n    // Some iw.Runner operation without accessing the Options in\n    // common/network/iw.\n    ...\n  }\n\nWith the alias, it can import only one iw package without ambiguity which is a little more friendly for auto import, but I don\u0027t have strong opinion.",
+      "parentUuid": "70a52f85_48d5dbb4",
+      "revId": "bd10bfad35aadfef0d15fa7577093c9459ffeaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f7ad26c_edb3294a",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2

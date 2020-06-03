@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fcd543e_a22204f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T02:49:13Z",
+      "side": 1,
+      "message": "This is same as the Autotest version, but I\u0027m not quite sure why this is tried after disconnection. It is included in the first version of the file in crrev.com/c/50087, but I don\u0027t see the disconnect in its previous version (007CheckPS).\n\nI guess maybe it\u0027s OK to keep the behavior here for now and consider refining this later?",
+      "revId": "0134b8d78240a1555a911a61d90c705528794e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10100b5_ab71c74c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T02:49:13Z",
+      "side": 1,
+      "message": "maybe IP? https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 424,
+        "startChar": 29,
+        "endLine": 424,
+        "endChar": 31
+      },
+      "revId": "0134b8d78240a1555a911a61d90c705528794e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
