@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb9d9d63_dc6ba190",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-03T10:38:07Z",
+      "side": 1,
+      "message": "Hi tast-reviewers,\nI hit the presubmit error here with message:\n\n src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go:28:17: Test Params should be an array literal of Param struct literals\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-test-registration\n\nI would like to avoid boilerplating code manually here. Is there any better idea to do this?",
+      "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
