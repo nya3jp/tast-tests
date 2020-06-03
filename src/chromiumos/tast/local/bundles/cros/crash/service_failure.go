@@ -87,7 +87,8 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 	if useConsent == crash.RealConsent {
 		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
 	}
-	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
+	// Allow --arc_service_failure and --service_failure, but nothing else.
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes("service_failure="), opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
