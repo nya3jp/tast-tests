@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "adbf762b_1b83aef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-03T02:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e4a5f1_acb4661e",
+      "revId": "c3c8c076880beaa7e43e941cbc36617796bef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9020c264_2f3278fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "c3c8c076880beaa7e43e941cbc36617796bef99a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1608654f_22eb3845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-03T02:38:12Z",
+      "side": 1,
+      "message": "sgtm!\nAlso the dialog is only shown when switchAccess is enabled (otherwise it would cause settingsBridge to fail, as there is no dialog), so that\u0027s why I\u0027ve added the extra boolean.",
+      "parentUuid": "9020c264_2f3278fe",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "c3c8c076880beaa7e43e941cbc36617796bef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
