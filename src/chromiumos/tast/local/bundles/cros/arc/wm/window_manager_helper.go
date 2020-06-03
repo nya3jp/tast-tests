@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -120,6 +121,31 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 	}
 	if o != wanted {
 		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
+	}
+
+	return nil
+}
+
+// CheckMaximizeToFullscreenTogglePortrait checks window's bounds transisionning from max to fullscreen in portrait mode.
+func CheckMaximizeToFullscreenTogglePortrait(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords, fullscreenWindowCoords coords.Rect) error {
+	if maxWindowCoords.Left != fullscreenWindowCoords.Left ||
+		maxWindowCoords.Top != fullscreenWindowCoords.Top ||
+		maxWindowCoords.Width != fullscreenWindowCoords.Width ||
+		maxWindowCoords.Height >= fullscreenWindowCoords.Height {
+		return errors.Errorf("invalid fullscreen window bounds compared to maximize window bounds, got: %s, want bigger than: %s", fullscreenWindowCoords, maxWindowCoords)
+	}
+
+	displayInfo, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return errors.New("failed to get display info")
+	}
+	if len(displayInfo) == 0 {
+		return errors.New("no connected display found")
+	}
+
+	if displayInfo[0].Bounds.Top != fullscreenWindowCoords.Top ||
+		displayInfo[0].Bounds.Height != fullscreenWindowCoords.Height {
+		return errors.Errorf("invalid fullscreen window bounds compared to display bounds, got: Top=%d, Height=%d, want: Top=%d, Height=%d", fullscreenWindowCoords.Top, fullscreenWindowCoords.Height, displayInfo[0].Bounds.Top, displayInfo[0].Bounds.Height)
 	}
 
 	return nil
