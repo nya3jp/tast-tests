@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "338f72b8_6fc92dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-03T09:32:54Z",
+      "side": 1,
+      "message": "\u003e \"becaus\" is a possible misspelling of \"because\".\n\nPlease fix.",
+      "parentUuid": "6a4721b4_9a76fdf4",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 10
+      },
+      "revId": "031da874c4ea818a9b58c2f7cec1104af9f88a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
