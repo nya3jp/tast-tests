@@ -46,6 +46,30 @@
       "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe0ee45_565a6455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-03T18:01:47Z",
+      "side": 1,
+      "message": "The naming is fine with me.\n\nIt just seems that as it is, vp9_hw_hdr would give us all the information we need: both vp9_hw_hdr and vp9_hdr are restricted to kohaku (for now) and both play the same video. So if vp9_hw_hdr fails, that\u0027s all we need to know that something needs to be fixed, and if it falls back to software, vp9_hw_hdr would also tell us this. I could see vp9_hdr being useful if it wasn\u0027t restricted to a model, i.e., to verify that something is played on all boards regardless of HW decoder support or compositor capabilities.",
+      "parentUuid": "4e383401_bad1b6bb",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
