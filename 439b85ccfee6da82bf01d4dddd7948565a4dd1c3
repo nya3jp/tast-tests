@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0df1acec_1c84451e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-03T15:38:00Z",
+      "side": 1,
+      "message": "I will be scheduled in newly added suite in the CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/infra/suite_scheduler/+/2224657",
+      "parentUuid": "80da087a_fb29f64f",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4845b331_f8894c4f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e1ef872e_521f82d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-03T15:38:00Z",
+      "side": 1,
+      "message": "Added new attribute in CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2226245\nThe new \"camerabox_facing_front\" and \"camerabox_facing_back\" attribute make different front/back test route to correct DUT with front/back camera dependency.",
+      "parentUuid": "4845b331_f8894c4f",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a39aaca2_584f5682",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15d350cc_afb6c990",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-03T15:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39aaca2_584f5682",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
