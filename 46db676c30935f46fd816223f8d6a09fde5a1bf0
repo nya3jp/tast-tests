@@ -65,6 +65,40 @@
     },
     {
       "key": {
+        "uuid": "9af8573a_265c3028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:39:42Z",
+      "side": 1,
+      "message": "This error does not necessarily indicate a failure to get the sanitized username. It could be that libbrillo and dbus return different sanitized usernames.\n\nIt\u0027s a little tricky to come up with an alternative error message, because getSanitizedUsernameAndCompare does two different things things (get and compare). So far I have two ideas to address this:\n\n1. Change the message to something more general: \"Failed to get/compare the sanitized username for the first user:\", or perhaps \"Error with the first sanitized username:\"\n-or-\n2. Just s.Fatal(err) here; and in the errors at L36 and L40, clarify which username threw the error\n\nDitto for L68.",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52569e8_24c7d7ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:39:42Z",
+      "side": 1,
+      "message": "I recommend adding to this error the wrong value:\n\n    s.Fatalf(\"Sanitized username %q is the same for two different users\", firstSanitized)",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4121609d_bf85b869",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
         "patchSetId": 2
@@ -76,6 +110,23 @@
       "writtenOn": "2020-06-03T22:29:26Z",
       "side": 1,
       "message": "Do you need to run this check for both users?",
+      "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593fc152_328cfc2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:39:42Z",
+      "side": 1,
+      "message": "I recommend adding to this error the value of firstHomedir and firstSanitized:\n\n    s.Fatalf(\"Home path %q doesn\u0027t contain sanitized username %q\", firstHomedir, firstSanitized)",
       "revId": "46db676c30935f46fd816223f8d6a09fde5a1bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
