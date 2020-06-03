@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -33,6 +32,16 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          ash.LoggedInWith100DummyApps(),
+		Params: []testing.Param{
+			{
+				Name: "clamshell_mode",
+				Val:  false,
+			},
+			{
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Val:               true,
+			},
+		},
 	})
 }
 
@@ -285,8 +294,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	// Fetch hotseat scroll animation metrics in tablet mode only when having an internal display.
-	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
+	if s.Param().(bool) {
 		settings = append(settings, tabletSettings...)
 	}
 
