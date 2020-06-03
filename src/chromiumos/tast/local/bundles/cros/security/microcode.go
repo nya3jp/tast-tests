@@ -33,6 +33,13 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		// TODO(crbug.com/1092389): This test only knows how to check Intel platforms
+		// right now. Ideally it would be restricted with a HardwareDep to Intel SoCs
+		// only. The respective HardwareDep requires some preparation work though, see
+		// crbug.com/1092389 and crbug.com/1094802. For the time being, restrict the test
+		// to "amd64" (which incorrectly includes AMD platforms as well, on which the
+		// test will trivially pass).
+		SoftwareDeps: []string{"microcode", "amd64"},
 	})
 }
 
