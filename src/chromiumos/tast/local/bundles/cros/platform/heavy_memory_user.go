@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/memoryuser"
+	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/testing"
 )
 

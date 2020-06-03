@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/memory"
 	"chromiumos/tast/local/chrome"
+	memoryPressure "chromiumos/tast/local/memory"
 	"chromiumos/tast/testing"
 )
 
@@ -44,7 +45,7 @@ func init() {
 func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
-	margin, err := memory.ChromeOSCriticalMargin()
+	margin, err := memoryPressure.CriticalMargin()
 	if err != nil {
 		s.Fatal("Failed to read critical margin: ", err)
 	}

@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
-	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/memory/kernelmeter"
+	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
