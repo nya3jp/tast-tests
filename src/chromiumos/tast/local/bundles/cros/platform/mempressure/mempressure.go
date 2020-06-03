@@ -298,31 +298,30 @@ func getValidTabIDs(ctx context.Context, tconn *chrome.TestConn) ([]int, error) 
 
 // logAndResetStats logs the VM stats from meter, identifying them with
 // label.  Then it resets meter.
-func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) {
+func logAndResetStats(ctx context.Context, meter *kernelmeter.Meter, label string) {
 	defer meter.Reset()
 	stats, err := meter.VMStats()
 	if err != nil {
 		// The only possible error from VMStats is that we
 		// called it too soon and we prefer to just log it rather than
 		// failing the test.
-		s.Logf("Metrics: could not log page fault stats for %s: %s", label, err)
+		testing.ContextLogf(ctx, "Metrics: could not log page fault stats for %s: %s", label, err)
 		return
 	}
-	s.Logf("Metrics: %s: total page fault count %d", label, stats.PageFault.Count)
-	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
-	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
+	testing.ContextLogf(ctx, "Metrics: %s: total page fault count %d", label, stats.PageFault.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
+	testing.ContextLogf(ctx, "Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
 
-	logPSIStats(s)
+	logPSIStats(ctx)
 }
 
 // recordAndResetStats records the VM stats from meter, identifying them with
 // label.  Then it resets meter.
-func recordAndResetStats(s *testing.State, meter *kernelmeter.Meter, values *perf.Values, label string) {
+func recordAndResetStats(ctx context.Context, meter *kernelmeter.Meter, values *perf.Values, label string) error {
 	defer meter.Reset()
 	stats, err := meter.VMStats()
 	if err != nil {
-		s.Errorf("Cannot compute page fault stats (%s): %v", label, err)
-		return
+		return errors.Wrapf(err, "cannot compute page fault stats (%s)", label)
 	}
 	totalPageFaultCountMetric := perf.Metric{
 		Name:      "tast_total_page_fault_count_" + label,
@@ -342,25 +341,26 @@ func recordAndResetStats(s *testing.State, meter *kernelmeter.Meter, values *per
 	values.Set(totalPageFaultCountMetric, float64(stats.PageFault.Count))
 	values.Set(averagePageFaultRateMetric, stats.PageFault.AverageRate)
 	values.Set(maxPageFaultRateMetric, stats.PageFault.MaxRate)
-	s.Logf("Metrics: %s: total page fault count %v", label, stats.PageFault.Count)
-	s.Logf("Metrics: %s: oom count %v", label, stats.OOM.Count)
-	s.Logf("Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
-	s.Logf("Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
+	testing.ContextLogf(ctx, "Metrics: %s: total page fault count %v", label, stats.PageFault.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: oom count %v", label, stats.OOM.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
+	testing.ContextLogf(ctx, "Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
+	return nil
 }
 
 // logPSIStats logs the content of /proc/pressure/memory.  If that file is not
 // present, this function does nothing.  Other errors are logged.
-func logPSIStats(s *testing.State) {
+func logPSIStats(ctx context.Context) {
 	psi, err := kernelmeter.PSIMemoryLines()
 	if err != nil {
 		// Here we also don't want to fail the test, just log any error.
-		s.Log("Cannot get PSI info: ", err)
+		testing.ContextLog(ctx, "Cannot get PSI info: ", err)
 	}
 	if psi == nil {
 		return
 	}
 	for _, l := range psi {
-		s.Log("Metrics: PSI memory: ", l)
+		testing.ContextLog(ctx, "Metrics: PSI memory: ", l)
 	}
 }
 
@@ -475,13 +475,14 @@ func runTabSwitches(ctx context.Context, tabs []*tab, outDir, label string, repe
 
 // runAndLogSwapStats runs f and outputs swap stats that correspond to its
 // execution.
-func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter) {
+func runAndLogSwapStats(ctx context.Context, f func() error, meter *kernelmeter.Meter) error {
 	meter.Reset()
-	f()
+	if err := f(); err != nil {
+		return err
+	}
 	stats, err := meter.VMStats()
 	if err != nil {
-		testing.ContextLog(ctx, "Cannot log tab switch stats: ", err)
-		return
+		return errors.Wrap(err, "cannot log tab switch stats")
 	}
 	testing.ContextLogf(ctx, "Metrics: tab switch swap-in average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
 		stats.SwapIn.AverageRate, stats.SwapIn.RecentRate, stats.SwapIn.Count)
@@ -496,15 +497,16 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 	if m, err := kernelmeter.MemInfo(); err == nil {
 		testing.ContextLogf(ctx, "Metrics: free %v MiB, anon %v MiB, file %v MiB", m.Free, m.Anon, m.File)
 	}
+	return nil
 }
 
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
 // into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
-func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) (
-	pinnedTabs, workTabs []*tab) {
+func runPhase1(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) (
+	pinnedTabs, workTabs []*tab, errRet error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Cannot get TestConn: ", err)
+		return nil, nil, errors.Wrap(err, "cannot get TetsConn")
 	}
 
 	// Create and start the performance meters.  partialMeter takes
@@ -518,7 +520,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// Figure out how many tabs already exist (typically 1).
 	validTabIDs, err := getValidTabIDs(ctx, tconn)
 	if err != nil {
-		s.Fatal("Cannot get tab list: ", err)
+		return nil, nil, errors.Wrap(err, "cannot get tab list")
 	}
 	initialTabCount := len(validTabIDs)
 
@@ -526,14 +528,18 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	defer func() {
 		for _, t := range tabs {
 			if err := t.close(); err != nil {
-				s.Errorf("Failed to close a tab %d: %v", t.id, err)
+				testing.ContextLogf(ctx, "Failed to close a tab %d: %v", t.id, err)
+				// If we aren't already returning an error, return this error.
+				if errRet == nil {
+					errRet = errors.Wrapf(err, "failed to close a tab %d", t.id)
+				}
 			}
 		}
 	}()
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
-	s.Logf("Opening %d initial tabs", initialTabSetSize)
+	testing.ContextLogf(ctx, "Opening %d initial tabs", initialTabSetSize)
 	tabLoadTimeout := 20 * time.Second
 	if p.Mode == wpr.Record {
 		tabLoadTimeout = 50 * time.Second
@@ -543,14 +549,14 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
-			s.Fatal("Cannot add initial tab from list: ", err)
+			return nil, nil, errors.Wrap(err, "cannot add initial tab from list")
 		}
 		tabs = append(tabs, t)
 		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
-			s.Fatal("Failed to wait for quiescence: ", err)
+			return nil, nil, errors.Wrap(err, "failed to wait for quiescence")
 		}
 		if err := t.wiggle(ctx); err != nil {
-			s.Error("Cannot wiggle initial tab: ", err)
+			return nil, nil, errors.Wrap(err, "cannot wiggle initial tab")
 		}
 	}
 
@@ -562,10 +568,10 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	pinnedTabs = tabs[:]
 
 	// Collect and log tab-switching times in the absence of memory pressure.
-	if err := runTabSwitches(ctx, tabs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
-		s.Error("Cannot run tab switches with light load: ", err)
+	if err := runTabSwitches(ctx, tabs, outDir, "light", tabSwitchRepeatCount); err != nil {
+		return nil, nil, errors.Wrap(err, "cannot run tab switches with light load")
 	}
-	logAndResetStats(s, partialMeter, "initial")
+	logAndResetStats(ctx, partialMeter, "initial")
 	loggedMissingZramStats := false
 	var allTabSwitchTimes []time.Duration
 	// Allocate memory by opening more tabs and cycling through recently
@@ -577,15 +583,15 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		}
 		validTabIDs, err = getValidTabIDs(ctx, tconn)
 		if err != nil {
-			s.Fatal("Cannot get tab list: ", err)
+			return nil, nil, errors.Wrap(err, "cannot get tab list")
 		}
-		s.Logf("Cycling tabs (opened %d, present %d, initial %d)", len(tabs), len(validTabIDs), initialTabCount)
+		testing.ContextLogf(ctx, "Cycling tabs (opened %d, present %d, initial %d)", len(tabs), len(validTabIDs), initialTabCount)
 		if len(tabs)+initialTabCount > len(validTabIDs) {
-			s.Log("Ending allocation because one or more targets (tabs) have gone")
+			testing.ContextLog(ctx, "Ending allocation because one or more targets (tabs) have gone")
 			break
 		}
 		if p.MaxTabCount != 0 && len(tabs) >= p.MaxTabCount {
-			s.Log("MaxTabCount reached. Tab count: ", len(tabs))
+			testing.ContextLog(ctx, "MaxTabCount reached. Tab count: ", len(tabs))
 			break
 		}
 		// Switch among recently loaded tabs to encourage loading.
@@ -594,35 +600,38 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		recentTabs := tabs[len(tabs)-recentTabSetSize:]
 		times, err := cycleTabs(ctx, recentTabs, time.Second, true)
 		if err != nil {
-			s.Fatal("Tab cycling error: ", err)
+			return nil, nil, errors.Wrap(err, "tab cycling error")
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
 		// Quickly switch among initial set of tabs to collect
 		// measurements and position the tabs high in the LRU list.
-		s.Log("Refreshing LRU order of initial tab set")
-		runAndLogSwapStats(ctx, func() {
+		testing.ContextLog(ctx, "Refreshing LRU order of initial tab set")
+		if err := runAndLogSwapStats(ctx, func() error {
 			if _, err := cycleTabs(ctx, pinnedTabs, 0, false); err != nil {
-				s.Fatal("Tab LRU refresh error: ", err)
+				return errors.Wrap(err, "tab LRU refresh error")
 			}
-		}, switchMeter)
-		logPSIStats(s)
+			return nil
+		}, switchMeter); err != nil {
+			return nil, nil, err
+		}
+		logPSIStats(ctx)
 		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
-			s.Fatal("Cannot add tab from list: ", err)
+			return nil, nil, errors.Wrap(err, "cannot add tab from list")
 		}
 		tabs = append(tabs, t)
 		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
-			s.Fatal("Failed to wait for quiescence: ", err)
+			return nil, nil, errors.Wrap(err, "failed to wait for quiescence")
 		}
-		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", t.id))
+		logAndResetStats(ctx, partialMeter, fmt.Sprintf("tab %d", t.id))
 		if z, err := kernelmeter.ZramStats(ctx); err != nil {
 			if !loggedMissingZramStats {
-				s.Log("Cannot read zram stats")
+				testing.ContextLog(ctx, "Cannot read zram stats")
 				loggedMissingZramStats = true
 			}
 		} else {
-			s.Logf("Metrics: tab %d: swap used %.3f MiB, effective compression %0.3f, utilization %0.3f",
+			testing.ContextLogf(ctx, "Metrics: tab %d: swap used %.3f MiB, effective compression %0.3f, utilization %0.3f",
 				len(tabs), float64(z.Original)/(1024*1024),
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
@@ -631,17 +640,17 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 			// When recording, add extra time in case the quiesce
 			// test had a false positive.
 			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-				s.Fatal("Timed out: ", err)
+				return nil, nil, errors.Wrap(err, "timed out")
 			}
 		}
 	}
 	// Wait a bit so we will notice any additional tab discards.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		s.Fatal("Timed out: ", err)
+		return nil, nil, errors.Wrap(err, "timed out")
 	}
 	validTabIDs, err = getValidTabIDs(ctx, tconn)
 	if err != nil {
-		s.Fatal("Cannot get tab list: ", err)
+		return nil, nil, errors.Wrap(err, "cannot get tab list")
 	}
 
 	// Output metrics.
@@ -658,47 +667,54 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	perfValues.Set(openedTabsMetric, float64(len(tabs)))
 	lostTabs := len(tabs) + initialTabCount - len(validTabIDs)
 	perfValues.Set(lostTabsMetric, float64(lostTabs))
-	s.Log("Metrics: Phase 1: opened tab count ", len(tabs))
-	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
+	testing.ContextLog(ctx, "Metrics: Phase 1: opened tab count ", len(tabs))
+	testing.ContextLog(ctx, "Metrics: Phase 1: lost tab count ", lostTabs)
 
 	times := allTabSwitchTimes
-	logTabSwitchTimesToFile(ctx, times, s.OutDir(), "phase1")
-	s.Logf("Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
-	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
+	logTabSwitchTimesToFile(ctx, times, outDir, "phase1")
+	testing.ContextLogf(ctx, "Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
+	testing.ContextLogf(ctx, "Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
-	recordAndResetStats(s, fullMeter, perfValues, "phase_1")
+	if err := recordAndResetStats(ctx, fullMeter, perfValues, "phase_1"); err != nil {
+		return nil, nil, errors.Wrap(err, "failure in Phase 1")
+	}
 	rtabs := tabs[len(pinnedTabs):]
 	tabs = nil // Do not close tabs and let a caller do.
-	return pinnedTabs, rtabs
+	return pinnedTabs, rtabs, nil
 }
 
 // runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
-func runPhase2(ctx context.Context, s *testing.State, workTabs []*tab, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+func runPhase2(ctx context.Context, outDir string, workTabs []*tab, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) error {
 	if coldTabSetSize > len(workTabs) {
 		coldTabSetSize = len(workTabs)
 	}
 	coldTabs := workTabs[:coldTabSetSize]
 	times, err := cycleTabs(ctx, coldTabs, 0, false)
 	if err != nil {
-		s.Fatal("Cannot switch to cold tabs: ", err)
+		return errors.Wrap(err, "cannot switch to cold tabs")
 	}
-	logTabSwitchTimes(ctx, times, len(coldTabs), s.OutDir(), "coldswitch")
+	logTabSwitchTimes(ctx, times, len(coldTabs), outDir, "coldswitch")
 
-	recordAndResetStats(s, fullMeter, perfValues, "coldswitch")
-
+	if err := recordAndResetStats(ctx, fullMeter, perfValues, "coldswitch"); err != nil {
+		return errors.Wrap(err, "failure in Phase 2")
+	}
+	return nil
 }
 
 // runPhase3 runs the third phase of the test, quiesce.
-func runPhase3(ctx context.Context, s *testing.State, pinnedTabs []*tab, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+func runPhase3(ctx context.Context, outDir string, pinnedTabs []*tab, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) error {
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		s.Fatal("Timed out: ", err)
+		return errors.Wrap(err, "timed out")
 	}
 	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, pinnedTabs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
-		s.Error("Cannot run tab switches with heavy load: ", err)
+	if err := runTabSwitches(ctx, pinnedTabs, outDir, "heavy", tabSwitchRepeatCount); err != nil {
+		return errors.Wrap(err, "cannot run tab switches with heavy load")
 	}
-	recordAndResetStats(s, fullMeter, perfValues, "phase_3")
+	if err := recordAndResetStats(ctx, fullMeter, perfValues, "phase_3"); err != nil {
+		return errors.Wrap(err, "failure in Phase 3")
+	}
+	return nil
 }
 
 // RunParameters contains the configurable parameters for Run.
@@ -718,7 +734,7 @@ type RunParameters struct {
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters) {
+func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters) (errRet error) {
 	const (
 		initialTabSetSize    = 5
 		recentTabSetSize     = 5
@@ -729,14 +745,14 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 
 	memInfo, err := kernelmeter.MemInfo()
 	if err != nil {
-		s.Fatal("Cannot obtain memory info: ", err)
+		return errors.Wrap(err, "cannot obtain memory info")
 	}
 
 	if p.Mode == wpr.Record {
 		// Don't attempt to record the pageset on a 2GB device.
 		minimumRAM := kernelmeter.NewMemSizeMiB(3 * 1024)
 		if memInfo.Total < minimumRAM {
-			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
+			return errors.Wrapf(err, "Not enough RAM to record page set: have %v, want %v or more",
 				memInfo.Total, minimumRAM)
 		}
 	}
@@ -751,44 +767,57 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// Log various system measurements, to help understand the memory
 	// manager behavior.
 	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
-		s.Fatal("Cannot log memory parameters: ", err)
+		return errors.Wrap(err, "cannot log memory parameters")
 	}
 
 	// Log display size.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Cannot get TestConn: ", err)
+		return errors.Wrap(err, "cannot get TestConn")
 	}
 	if info, err := display.GetInternalInfo(ctx, tconn); err != nil {
-		s.Fatal("Cannot get screen dimensions: ", err)
-	} else {
-		s.Logf("Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
+		return errors.Wrap(err, "cannot get screen dimensions")
 	}
+	testing.ContextLogf(ctx, "Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 
 	// -----------------
 	// Phase 1: Open several pinned tabs, and then continue to open more tabs until a tab is discarded.
 	// -----------------
-	pinnedTabs, workTabs := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
+	pinnedTabs, workTabs, err := runPhase1(ctx, outDir, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
+
 	defer func() {
 		tabs := append(pinnedTabs, workTabs...)
 		for _, t := range tabs {
 			if err := t.close(); err != nil {
-				s.Errorf("Failed to close tab %d: %v", t.id, err)
+				testing.ContextLogf(ctx, "Failed to close a tab %d: %v", t.id, err)
+				// If we aren't already returning an error, return this error.
+				if errRet == nil {
+					errRet = errors.Wrapf(err, "failed to close a tab %d", t.id)
+				}
 			}
 		}
 	}()
 
+	if err != nil {
+		return err
+	}
+
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
-	runPhase2(ctx, s, workTabs, coldTabSetSize, fullMeter, perfValues)
+	if err = runPhase2(ctx, outDir, workTabs, coldTabSetSize, fullMeter, perfValues); err != nil {
+		return err
+	}
 
 	// -----------------
 	// Phase 3: quiesce.
 	// -----------------
-	runPhase3(ctx, s, pinnedTabs, tabSwitchRepeatCount, fullMeter, perfValues)
-
-	if err = perfValues.Save(s.OutDir()); err != nil {
-		s.Error("Cannot save perf data: ", err)
+	if err = runPhase3(ctx, outDir, pinnedTabs, tabSwitchRepeatCount, fullMeter, perfValues); err != nil {
+		return err
 	}
+
+	if err = perfValues.Save(outDir); err != nil {
+		return errors.Wrap(err, "cannot save perf data")
+	}
+	return nil
 }
