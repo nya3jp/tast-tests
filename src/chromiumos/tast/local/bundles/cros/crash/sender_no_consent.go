@@ -27,6 +27,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Pre:          crash.ChromePreWithVerboseConsent(),
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"crash_sender_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"crash_sender_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
