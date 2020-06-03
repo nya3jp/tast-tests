@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73d8afd1_8c779347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:54:54Z",
+      "side": 1,
+      "message": "nit: \"compares\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 104,
+        "endLine": 52,
+        "endChar": 106
+      },
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5636b7_5db93d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:54:54Z",
+      "side": 1,
+      "message": "nit: \"returns\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 147,
+        "endLine": 52,
+        "endChar": 148
+      },
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a325f351_afaf5814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:54:54Z",
+      "side": 1,
+      "message": "This should wrap err:\n\n    return \"\", errors.Wrap(err, \"failed to decode system salt\")\n\nYou also might consider including hexSalt in the error message:\n\n    return \"\", errors.Wrapf(err, \"failed to decode system salt %q\", hexSalt)",
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7c795c_90d6e50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-03T22:54:54Z",
+      "side": 1,
+      "message": "This is redundant, as hex.EncodeToString already encodes to lowercase. See the const hextable at L15 here: https://golang.org/src/encoding/hex/hex.go",
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
