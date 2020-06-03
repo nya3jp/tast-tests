@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0cdcd7_f54b1d50",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T12:31:07Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21faac79_4697f55b",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T12:31:07Z",
+      "side": 1,
+      "message": "Fields\nand the ending period.",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a1e32a_93ae1f20",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T12:31:07Z",
+      "side": 1,
+      "message": "Fields\nand the ending period.",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d541b32d_c78412ed",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T12:31:07Z",
+      "side": 1,
+      "message": "c.ClientSlotID \u003d\u003d 0 implies InstallClientCredentials() is not called or has some problem, right? What does \"we can treat 0 as an acceptable zero value\" mean? Isn\u0027t it rejected to generate shill service properties?",
+      "range": {
+        "startLine": 86,
+        "startChar": 63,
+        "endLine": 86,
+        "endChar": 109
+      },
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402373c2_0da23c01",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T12:31:07Z",
+      "side": 1,
+      "message": "In Autotest version, it has the ability to assign different clientCertID and clientKeyID. Now you merge them. Does it affect any test?\n\nhttp://cs/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/network/xmlrpc_security_types.py?l\u003d390\u0026rcl\u003dc81638b846ba2b6b180a43fb4de28fa7f685d37e",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
