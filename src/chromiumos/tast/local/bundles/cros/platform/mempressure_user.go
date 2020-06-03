@@ -107,5 +107,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
 		UseARC:         true,
 	}
-	memoryuser.RunTest(ctx, s, memTasks, rp)
+	if err := memoryuser.RunTest(ctx, s.OutDir(), memTasks, rp); err != nil {
+		s.Fatal("RunTest failed: ", err)
+	}
 }

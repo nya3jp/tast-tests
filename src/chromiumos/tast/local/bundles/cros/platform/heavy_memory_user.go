@@ -51,5 +51,7 @@ func HeavyMemoryUser(ctx context.Context, s *testing.State) {
 		ParallelTasks: true,
 	}
 	memTasks := []memoryuser.MemoryTask{&cTask, &vmTask}
-	memoryuser.RunTest(ctx, s, memTasks, rp)
+	if err := memoryuser.RunTest(ctx, s.OutDir(), memTasks, rp); err != nil {
+		s.Fatal("RunTest failed: ", err)
+	}
 }
