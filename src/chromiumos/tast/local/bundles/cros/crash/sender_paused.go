@@ -25,6 +25,13 @@ func init() {
 			"nya@chromium.org", // ported to Tast
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"crash_sender_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"crash_sender_unstable"},
+		}},
 	})
 }
 
