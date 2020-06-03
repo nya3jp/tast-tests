@@ -88,7 +88,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		// Enable speech logging.
-		if err := cvconn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
+		if err := cvconn.Eval(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`, nil); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
 		}
 		ew, err := input.Keyboard(ctx)
@@ -103,7 +103,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		for _, axSpeechTestStep := range axSpeechTestSteps {
 			// Ensure that ChromeVox log is cleared before proceeding.
-			if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+			if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
 			if err := ew.Accel(ctx, axSpeechTestStep.Key); err != nil {

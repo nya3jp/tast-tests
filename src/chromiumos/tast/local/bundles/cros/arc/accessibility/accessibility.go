@@ -8,7 +8,6 @@ package accessibility
 
 import (
 	"context"
-	"fmt"
 	"path/filepath"
 	"strings"
 	"time"
@@ -124,11 +123,9 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
 func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
-	script := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.accessibilityFeatures.%s.set({value: %t}, resolve);
-		})`, feature, enable)
-	if err := tconn.EvalPromise(ctx, script, nil); err != nil {
+	if err := tconn.Call(ctx, nil, `(feature, enable) => {
+		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
+		}`, feature, enable); err != nil {
 		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
 	}
 	return nil
@@ -239,7 +236,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			// It takes some time for ArcServiceManager to be ready, so make the timeout longer.
 			// TODO(b/150734712): Move this out of each subtest once bug has been addressed.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
+				if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)", true); err != nil {
 					return err
 				}
 				return nil

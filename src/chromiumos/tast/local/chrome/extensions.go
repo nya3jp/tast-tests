@@ -28,6 +28,18 @@ const (
 	//     the result value.
 	//   - API error is reported via chrome.runtime.lastError.
 	//   Returned value is an async function to call the API.
+	// tast.bind:
+	//   It takes two arguments: an object, and the name of its method,
+	//   then returns a closure that is bound to the given object.
+	//   Background: Some Chrome APIs are tied to a JavaScript object, but they
+	//   may not be bound to the object. Thus, e.g.
+	//
+	//     tast.promisify(chrome.accessibilityFeatures.spokenFeedback.set)
+	//
+	//   returns a Promise instance, which do not call the function on the
+	//   expected context. tast.bind can help the situation:
+	//
+	//     tast.promisify(tast.bind(chrome.accessibilityFeatures.spokenFeedback, "set"))
 	tastLibrary = `
 tast = {};
 tast.promisify = function(f) {
@@ -40,6 +52,9 @@ tast.promisify = function(f) {
       resolve(val);
     });
   });
+};
+tast.bind = function(obj, name) {
+  return obj[name].bind(obj);
 };
 `
 )

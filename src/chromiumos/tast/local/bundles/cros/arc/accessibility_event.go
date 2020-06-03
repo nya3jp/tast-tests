@@ -86,7 +86,7 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog,
 
 func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+	if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
 	}
 
