@@ -22,6 +22,30 @@
       "revId": "5ba86dc87c9610c57314d505118c07becc305383",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf1e9d0_70024377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_cros_deploy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-03T23:19:47Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "75b3bbd2_cce702f3",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "5ba86dc87c9610c57314d505118c07becc305383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
