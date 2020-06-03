@@ -32,7 +32,8 @@ func init() {
 			"mnissler@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"microcode"},
 	})
 }
 
