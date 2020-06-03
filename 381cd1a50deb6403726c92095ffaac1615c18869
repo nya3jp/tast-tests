@@ -16,6 +16,24 @@
       "revId": "381cd1a50deb6403726c92095ffaac1615c18869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf37beec_10442abc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-03T10:44:01Z",
+      "side": 1,
+      "message": "Good catch, thanks!\nLet me make dock_mac required in the following CL.",
+      "parentUuid": "e110f708_99e3f646",
+      "revId": "381cd1a50deb6403726c92095ffaac1615c18869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
