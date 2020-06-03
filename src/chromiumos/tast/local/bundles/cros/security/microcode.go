@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,7 +33,9 @@ func init() {
 			"mnissler@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"microcode"},
+		HardwareDeps: hwdep.D(hwdep.SocVendor("Intel")),
 	})
 }
 
