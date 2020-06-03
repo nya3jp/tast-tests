@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1373e3d6_23732a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-06-03T16:57:31Z",
+      "side": 1,
+      "message": "Would it be better to leave this one unnamed (maybe it might be easier to track historical results for tablet mode if the test name remains stable?)",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "048f30a50aec940cc334f51e932e0c9947d84319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
