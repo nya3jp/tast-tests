@@ -37,5 +37,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		PageFileCompressionRatio: 0.40,
 	}
 
-	mempressure.Run(ctx, s, s.PreValue().(*chrome.Chrome), p)
+	if err := mempressure.Run(ctx, s.OutDir(), s.PreValue().(*chrome.Chrome), p); err != nil {
+		s.Fatal("Run failed: ", err)
+	}
 }

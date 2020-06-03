@@ -29,7 +29,7 @@ type AndroidTask struct {
 }
 
 // Run installs the app APK and runs the test function defined in the AndroidTask in the existing ARC instance.
-func (at *AndroidTask) Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error {
+func (at *AndroidTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	testing.ContextLog(ctx, "Starting app ", at.APK)
 	startTime := time.Now()
 	if err := testEnv.arc.Install(ctx, at.APKPath); err != nil {
