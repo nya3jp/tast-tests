@@ -58,6 +58,14 @@ func init() {
 			// with a periodic pattern. The model list is handcrafted to cover various platforms.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas", "careena", "dru", "eve", "kohaku",
 				"krane", "nocturne")),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre: arc.NewPrecondition("remote_desktop_vmbooted", true,
+				&arc.GaiaVars{
+					UserVar: "user",
+					PassVar: "pass",
+				}),
 		}},
 	})
 }
@@ -274,30 +282,38 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	// TODO(shik): The button names only work in English locale, and adding
 	// "lang=en-US" for Chrome does not work.
 
+	var cr *chrome.Chrome
 	vars := getVars(s)
-	var opts []chrome.Option
 
-	chromeARCOpt := chrome.ARCDisabled()
-	if arc.Supported() {
-		chromeARCOpt = chrome.ARCSupported()
-	}
-	opts = append(opts, chromeARCOpt)
-	opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
-	opts = append(opts, chrome.GAIALogin())
+	preVal := s.PreValue()
+	if preVal != nil {
+		// cr provided by test precondition (vm subtest).
+		cr = s.PreValue().(arc.PreData).Chrome
+	} else {
+		var opts []chrome.Option
+		chromeARCOpt := chrome.ARCDisabled()
+		if arc.Supported() {
+			chromeARCOpt = chrome.ARCSupported()
+		}
+		opts = append(opts, chromeARCOpt)
+		opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
+		opts = append(opts, chrome.GAIALogin())
 
-	if !vars.reset {
-		opts = append(opts, chrome.KeepState())
-	}
+		if !vars.reset {
+			opts = append(opts, chrome.KeepState())
+		}
 
-	if len(vars.extraArgs) > 0 {
-		opts = append(opts, chrome.ExtraArgs(vars.extraArgs...))
-	}
+		if len(vars.extraArgs) > 0 {
+			opts = append(opts, chrome.ExtraArgs(vars.extraArgs...))
+		}
 
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		var err error
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+		defer cr.Close(ctx)
 	}
-	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
