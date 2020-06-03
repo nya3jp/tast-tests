@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75d11eb9_dd8fb85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-03T04:22:58Z",
+      "side": 1,
+      "message": "I don\u0027t know what this is doing.",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 39
+      },
+      "revId": "b7e84ae1cc29228b1af05218305a3a8498734e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
