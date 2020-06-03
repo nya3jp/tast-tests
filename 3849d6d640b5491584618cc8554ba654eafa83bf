@@ -128,6 +128,24 @@
       "revId": "3849d6d640b5491584618cc8554ba654eafa83bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af95ce5b_07b2396c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-03T07:08:04Z",
+      "side": 1,
+      "message": "Actually it would cause go vet error. Removed.",
+      "parentUuid": "f28ee075_068e0921",
+      "revId": "3849d6d640b5491584618cc8554ba654eafa83bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
