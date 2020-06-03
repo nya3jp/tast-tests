@@ -31,12 +31,22 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
-			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent", "crash_sender_stable"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
 		}, {
-			Name: "mock_consent",
-			Val:  crash.MockConsent,
+			Name:              "real_consent_unstable",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent", "crash_sender_unstable"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               crash.RealConsent,
+		}, {
+			Name:              "mock_consent",
+			Val:               crash.MockConsent,
+			ExtraSoftwareDeps: []string{"crash_sender_stable"},
+		}, {
+			Name:              "mock_consent_unstable",
+			Val:               crash.MockConsent,
+			ExtraSoftwareDeps: []string{"crash_sender_unstable"},
 		}},
 	})
 }
