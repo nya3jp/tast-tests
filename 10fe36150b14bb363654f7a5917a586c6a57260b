@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d1a52d5_5ab2806b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-03T19:42:40Z",
+      "side": 1,
+      "message": "Just interested, What is the essential-inputs group used for? Like what extra scheduling does it add past mainline?",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "10fe36150b14bb363654f7a5917a586c6a57260b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
