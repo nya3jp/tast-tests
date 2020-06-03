@@ -22,6 +22,30 @@
       "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e383401_bad1b6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-03T14:29:20Z",
+      "side": 1,
+      "message": "\"vp9_hdr\" is like \"av1\", \"h264\" etc, meaning it just tests playback regardless\nof the video decoder being used (sw, hw or hw-then-falling-back-to-sw), whereas\nthis one verifies hw use. Perhaps it should be called \"vp9_hw_hdr\" so the\ntaxonomy is clearer?\n\nPegging it on kohaku is so that the Compositor changes between AB24/AB30 FB,\nbut in principle we should extend it to all KBL+ devices eventually.",
+      "parentUuid": "d61ea778_2145e501",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
