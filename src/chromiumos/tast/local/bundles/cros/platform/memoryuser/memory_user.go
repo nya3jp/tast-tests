@@ -31,11 +31,12 @@ import (
 
 // TestEnv is a struct containing the data to be used across the test.
 type TestEnv struct {
-	wpr   *wpr.WPR
-	cr    *chrome.Chrome
-	arc   *arc.ARC
-	tconn *chrome.TestConn
-	vm    bool
+	wpr    *wpr.WPR
+	cr     *chrome.Chrome
+	arc    *arc.ARC
+	tconn  *chrome.TestConn
+	vm     bool
+	outDir string
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -43,7 +44,7 @@ type TestEnv struct {
 // using the same setup and run in parallel.
 type MemoryTask interface {
 	// Run performs the memory-related task.
-	Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error
+	Run(ctx context.Context, testEnv *TestEnv) error
 	// Close closes any initialized data and connections for the memory-related task.
 	Close(ctx context.Context, testEnv *TestEnv)
 	// String returns a string describing the memory-related task.
@@ -144,11 +145,10 @@ func resetAndLogStats(ctx context.Context, meter *kernelmeter.Meter, label strin
 }
 
 // setPerfValues sets values for perf metrics from kernelmeter data
-func setPerfValues(s *testing.State, meter *kernelmeter.Meter, values *perf.Values, label string) {
+func setPerfValues(meter *kernelmeter.Meter, values *perf.Values, label string) error {
 	stats, err := meter.VMStats()
 	if err != nil {
-		s.Errorf("Cannot compute page fault stats (%s): %v", label, err)
-		return
+		return errors.Wrapf(err, "cannot compute page fault stats (%s)", label)
 	}
 	totalPageFaultCountMetric := perf.Metric{
 		Name:      "tast_total_page_fault_count_" + label,
@@ -210,6 +210,7 @@ func setPerfValues(s *testing.State, meter *kernelmeter.Meter, values *perf.Valu
 	values.Set(averageSwapOutRateMetric, stats.SwapOut.AverageRate)
 	values.Set(maxSwapOutRateMetric, stats.SwapOut.MaxRate)
 	values.Set(totalOOMCountMetric, float64(stats.OOM.Count))
+	return nil
 }
 
 // initChrome starts the Chrome browser.
@@ -242,7 +243,8 @@ func initChrome(ctx context.Context, p *RunParameters, te *TestEnv) error {
 // and VM instances to use.
 func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv, error) {
 	te := &TestEnv{
-		vm: false,
+		vm:     false,
+		outDir: outDir,
 	}
 
 	// Schedule closure of partially-initialized struct.
@@ -308,7 +310,7 @@ func (te *TestEnv) Close(ctx context.Context) {
 }
 
 // runTask runs a MemoryTask.
-func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te *TestEnv) error {
+func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
 	taskMeter := kernelmeter.New(ctx)
 	defer taskMeter.Close(ctx)
 	if task.NeedVM() {
@@ -316,7 +318,7 @@ func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te
 			return errors.Wrap(err, "failed to start VM")
 		}
 	}
-	if err := task.Run(taskCtx, s, te); err != nil {
+	if err := task.Run(taskCtx, te); err != nil {
 		return errors.Wrapf(err, "failed to run memory task %s", task.String())
 	}
 	resetAndLogStats(ctx, taskMeter, task.String())
@@ -341,21 +343,21 @@ type RunParameters struct {
 // It also logs memory and cpu usage throughout the test, and copies output from /var/log/memd and /var/log/vmlog
 // when finished.
 // All passed-in tasks will be closed automatically.
-func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
+func RunTest(ctx context.Context, outDir string, tasks []MemoryTask, p *RunParameters) (errRet error) {
 	if p == nil {
 		p = &RunParameters{}
 	}
-	testEnv, err := newTestEnv(ctx, s.OutDir(), p)
+	testEnv, err := newTestEnv(ctx, outDir, p)
 	if err != nil {
-		s.Fatal("Failed creating the test environment: ", err)
+		return errors.Wrap(err, "failed creating the test environment")
 	}
 	defer testEnv.Close(ctx)
 
 	if err = prepareMemdLogging(ctx); err != nil {
-		s.Error("Failed to prepare memd logging: ", err)
+		return errors.Wrap(err, "failed to prepare memd logging")
 	}
-	go logCmd(ctx, filepath.Join(s.OutDir(), "memory_use.txt"), "cat", "/proc/meminfo")
-	go logCmd(ctx, filepath.Join(s.OutDir(), "cpu_use.txt"), "iostat", "-c")
+	go logCmd(ctx, filepath.Join(outDir, "memory_use.txt"), "cat", "/proc/meminfo")
+	go logCmd(ctx, filepath.Join(outDir, "cpu_use.txt"), "iostat", "-c")
 
 	testMeter := kernelmeter.New(ctx)
 	defer testMeter.Close(ctx)
@@ -373,39 +375,46 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 					task.Close(ctx, testEnv)
 					ch <- struct{}{}
 				}()
-				err = runTask(ctx, taskCtx, s, task, testEnv)
+				err = runTask(ctx, taskCtx, task, testEnv)
 				if err != nil {
-					s.Error("Failed to run task: ", err)
+					testing.ContextLog(ctx, "Failed to run task: ", err)
+					if errRet == nil {
+						errRet = errors.Wrap(err, "failed to run task")
+					}
 				}
 			}(task)
 		}
 		for i := 0; i < len(tasks); i++ {
 			select {
 			case <-ctx.Done():
-				s.Error("Tasks didn't complete: ", ctx.Err())
+				return errors.Wrap(ctx.Err(), "tasks didn't complete")
 			case <-ch:
 			}
 		}
 	} else {
 		for _, task := range tasks {
-			err = runTask(ctx, taskCtx, s, task, testEnv)
+			err = runTask(ctx, taskCtx, task, testEnv)
 			if err != nil {
-				s.Error("Failed to run task: ", err)
+				return errors.Wrap(err, "failed to run task: ")
 			}
 		}
 	}
 
 	const vmlog = "/var/log/vmlog/vmlog.LATEST"
-	if err := fsutil.CopyFile(vmlog, filepath.Join(s.OutDir(), filepath.Base(vmlog))); err != nil {
-		s.Errorf("Failed to copy %v: %v", vmlog, err)
+	if err := fsutil.CopyFile(vmlog, filepath.Join(outDir, filepath.Base(vmlog))); err != nil {
+		return errors.Wrapf(err, "failed to copy %v", vmlog)
 	}
-	if err = copyMemdLogs(s.OutDir()); err != nil {
-		s.Error("Failed to get memd files: ", err)
+	if err = copyMemdLogs(outDir); err != nil {
+		return errors.Wrap(err, "failed to get memd files")
 	}
 
-	setPerfValues(s, testMeter, perfValues, "full_test")
+	setPerfValues(testMeter, perfValues, "full_test")
 	resetAndLogStats(ctx, testMeter, "full test")
-	if err = perfValues.Save(s.OutDir()); err != nil {
-		s.Error("Cannot save perf data: ", err)
+	if err = perfValues.Save(outDir); err != nil {
+		return errors.Wrap(err, "cannot save perf data")
 	}
+	// NB: errRet can be set by goroutines above, so don't override it if they
+	// had an error. Those errors are also logged, so if we have an early return
+	// because of another error, they should still be diagnosable.
+	return errRet
 }
