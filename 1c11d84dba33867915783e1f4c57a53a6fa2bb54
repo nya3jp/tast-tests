@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c69b11b9_f3e3708a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-03T09:00:06Z",
+      "side": 1,
+      "message": "i\u0027d like to keep s.Log as long as we use s.Fatal inside such function. is there some difference?",
+      "parentUuid": "f80512b9_300dfeff",
+      "revId": "1c11d84dba33867915783e1f4c57a53a6fa2bb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26d4a52a_503b55b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "1c11d84dba33867915783e1f4c57a53a6fa2bb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3382f7_febd7684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-03T09:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d4a52a_503b55b0",
+      "range": {
+        "startLine": 158,
+        "startChar": 37,
+        "endLine": 158,
+        "endChar": 38
+      },
+      "revId": "1c11d84dba33867915783e1f4c57a53a6fa2bb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
