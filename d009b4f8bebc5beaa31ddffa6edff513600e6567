@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abd1d0cd_97768377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T03:10:54Z",
+      "side": 1,
+      "message": "\u003e \"retoring\" is a possible misspelling of \"restoring\".\n\nFixed.",
+      "parentUuid": "4a2d75a4_d2550a1c",
+      "range": {
+        "startLine": 605,
+        "startChar": 48,
+        "endLine": 605,
+        "endChar": 56
+      },
+      "revId": "d009b4f8bebc5beaa31ddffa6edff513600e6567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce103588_8887352f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T03:10:54Z",
+      "side": 1,
+      "message": "\u003e \"inital\" is a possible misspelling of \"initial\".\n\nFixed.",
+      "parentUuid": "30c98d17_b5c001e0",
+      "range": {
+        "startLine": 669,
+        "startChar": 10,
+        "endLine": 669,
+        "endChar": 16
+      },
+      "revId": "d009b4f8bebc5beaa31ddffa6edff513600e6567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7192f47f_f4c2e1f5",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T03:10:54Z",
+      "side": 1,
+      "message": "\u003e \"retoring\" is a possible misspelling of \"restoring\".\n\nFixed.",
+      "parentUuid": "a6ca10c5_8595d22e",
+      "range": {
+        "startLine": 895,
+        "startChar": 49,
+        "endLine": 895,
+        "endChar": 57
+      },
+      "revId": "d009b4f8bebc5beaa31ddffa6edff513600e6567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31534353_2f20cc01",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T03:10:54Z",
+      "side": 1,
+      "message": "\u003e \"retoring\" is a possible misspelling of \"restoring\".\n\nFixed.",
+      "parentUuid": "9de85767_16ab020b",
+      "range": {
+        "startLine": 1042,
+        "startChar": 49,
+        "endLine": 1042,
+        "endChar": 57
+      },
+      "revId": "d009b4f8bebc5beaa31ddffa6edff513600e6567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb726465_0e893fbc",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-03T03:10:54Z",
+      "side": 1,
+      "message": "\u003e \"retoring\" is a possible misspelling of \"restoring\".\n\nFixed",
+      "parentUuid": "e204408f_bc36c81f",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "d009b4f8bebc5beaa31ddffa6edff513600e6567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
