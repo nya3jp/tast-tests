@@ -34,6 +34,24 @@
       "revId": "d38a8535a885414a58cac33f7d6d6fc38842afce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0acf4e_c312be98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-03T15:59:38Z",
+      "side": 1,
+      "message": "Yep, that works better.",
+      "parentUuid": "665b3207_fb43ab53",
+      "revId": "d38a8535a885414a58cac33f7d6d6fc38842afce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
