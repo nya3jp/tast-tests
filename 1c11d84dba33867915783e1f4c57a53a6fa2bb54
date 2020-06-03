@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8056c045_d8a3f820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-03T09:41:46Z",
+      "side": 1,
+      "message": "Ack. No difference.",
+      "parentUuid": "c69b11b9_f3e3708a",
+      "revId": "1c11d84dba33867915783e1f4c57a53a6fa2bb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26d4a52a_503b55b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 2
