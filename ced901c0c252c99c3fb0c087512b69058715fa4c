@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9037bf2a_ce092505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-03T16:37:24Z",
+      "side": 1,
+      "message": "I\u0027m fine with separating clamshell mode and tablet mode. But the current code exclude tabletSettings from clamshell-only devices while doing both on tablet-available devices.  Since \u0027clamshell_mode\u0027 subtest is applied to both form factors, that would be redundant -- clamshell-mode subtest will run twice.\n\nThus it would be a bit better to limit tablet-only patterns on tablet-mode, i.e.\n\nvar settings []testSettings\nif s.Param().(bool) {\n  settings \u003d []testSettings{\n    {\n      state: launcherIsHidden,\n      mode:  inClamshellMode,\n    },\n    ...\n  }\n} else {\n  settings \u003d []testSettings{\n    {\n      state: launcherIsHidden,\n      mode:  inTabletMode,\n    },\n    ...\n  }\n}",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "ced901c0c252c99c3fb0c087512b69058715fa4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
