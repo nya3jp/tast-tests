@@ -46,6 +46,30 @@
       "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e032659_d0438b76",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-03T02:12:36Z",
+      "side": 1,
+      "message": "I see, so we want to be prepared so that any test can clear the TPM owner password without affecting other tests.\n\nWhen a local test crashes, retries are attempted by the tast command, not by its Autotest wrapper. tpm_utils.ClearTPMOwnerRequest is not called before retries.\n\nSo I think we have to store the snapshot to disk, not on memory.",
+      "parentUuid": "90300082_b6a79d7d",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
