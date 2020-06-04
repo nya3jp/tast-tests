@@ -307,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "89a79959_3a81160a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-04T20:36:51Z",
+      "side": 1,
+      "message": "I moved switching the powersave mode ON after connecting to the AP and it works fine. I also added two TODOs for switching the powersave mode before connecting to the AP and checking that there is no background service toggling the powersave mode during the test.",
+      "parentUuid": "270bb2cf_787feb3a",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc3edc11_d7ad6b00",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
