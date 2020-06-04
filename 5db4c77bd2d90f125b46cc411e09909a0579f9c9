@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "947149e2_cf9649c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:33:03Z",
+      "side": 1,
+      "message": "here and below:\n\nadd docstrings for all non-trivial funcs\n\n(No need to do it for PulseAudioSanity since \"Desc\" describes what it does)",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ca2ecc_c05ba58b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:33:03Z",
+      "side": 1,
+      "message": "nit:\n\nuseful to dump-log-on-error when invoking Output(). e.g:\n\n  Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 55,
+        "startChar": 76,
+        "endLine": 55,
+        "endChar": 77
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ca369a_23c8f57c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:33:03Z",
+      "side": 1,
+      "message": "huge nit, style (here and below):\n\nend comments with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 64,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe7d81d_6ec9b263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:33:03Z",
+      "side": 1,
+      "message": "1. describe why the sleep is needed. sleeps are highly discouraged because they introduce potential flakyness. 3 seconds might be good for one board, but not enough for another one.\nIt is preferred to have a \"callback / signal\", whenever applicable, that let\u0027s you know that you can use the, in this cause, the audio device again.\n\n2. don\u0027t ignore errors. Sleep might fail if the context expires.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
