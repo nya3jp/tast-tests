@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c9a4d32_cd110778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-04T17:07:59Z",
+      "side": 1,
+      "message": "Actually there\u0027s a utility: if err :\u003d pointer.Click(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint()); err !\u003d nil { ... } will be fine.",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 5
+      },
+      "revId": "6de8e4a7e9a941a8080e3208579e6715025f5f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0728c4d_8c28477c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-04T17:07:59Z",
+      "side": 1,
+      "message": "Similarly, pointer.Drag can be used.",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 219,
+        "endChar": 5
+      },
+      "revId": "6de8e4a7e9a941a8080e3208579e6715025f5f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
