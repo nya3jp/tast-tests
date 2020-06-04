@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d7fce7_80fd057d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-04T19:32:22Z",
+      "side": 1,
+      "message": "Nit: This open-parens needs to be closed.",
+      "range": {
+        "startLine": 72,
+        "startChar": 70,
+        "endLine": 72,
+        "endChar": 71
+      },
+      "revId": "d802f29be592c2582ed292cfa7695dcc3be3f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c1a61c_fd186db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-04T19:32:22Z",
+      "side": 1,
+      "message": "optional: Currently L75-81 and L83-89 are duplicated code. You could simplify this with a loop.",
+      "revId": "d802f29be592c2582ed292cfa7695dcc3be3f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
