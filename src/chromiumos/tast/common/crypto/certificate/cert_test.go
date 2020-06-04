@@ -9,6 +9,7 @@ import (
 	"encoding/pem"
 	"reflect"
 	"testing"
+	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -60,53 +61,93 @@ func validatePrivateKey(privateKey string, cert *x509.Certificate) error {
 	return nil
 }
 
+func TestCADifference(t *testing.T) {
+	// Check that GetTestCertificate and GetTestExpiredCertificate are using the same CA.
+	if GetTestCertificate().CACert != GetTestExpiredCertificate().CACert {
+		t.Error("GetTestCertificate and GetTestExpiredCertificate are using different CAs")
+	}
+
+	// Check that GetTestCertificate and GetTestCertificate2 are using different CAs.
+	if GetTestCertificate().CACert == GetTestCertificate2().CACert {
+		t.Error("GetTestCertificate and GetTestCertificate2 are using the same CA")
+	}
+}
+
 func TestCertificate(t *testing.T) {
-	c := GetTestCertificate()
+	now := time.Now()
+	isExpired := func(cert *x509.Certificate) bool {
+		return now.Before(cert.NotBefore) || now.After(cert.NotAfter)
+	}
 
-	// Parse certificates. They should all be X-509 certificates in PEM format.
-	var cert, caCert, clientCert *x509.Certificate
-	for i, it := range []struct {
-		pem string
-		out **x509.Certificate
+	// The client cert/key fields are omitted since we have no test using them so far.
+	// Copying server cert/key (which is also expired) to them to prevent testing an empty string.
+	expiredCertificate := GetTestExpiredCertificate()
+	if expiredCertificate.ClientCert != "" {
+		t.Fatal("ClientCert of GetExpiredCertificate is not empty")
+	}
+	expiredCertificate.ClientCert = expiredCertificate.Cert
+	if expiredCertificate.ClientPrivateKey != "" {
+		t.Fatal("ClientPrivateKey of GetExpiredCertificate is not empty")
+	}
+	expiredCertificate.ClientPrivateKey = expiredCertificate.PrivateKey
+
+	for testi, testcase := range []struct {
+		cert    Certificate
+		expired bool
 	}{
-		{
-			c.Cert, &cert,
-		},
-		{
-			c.CACert, &caCert,
-		},
-		{
-			c.ClientCert, &clientCert,
-		},
+		{GetTestCertificate(), false},
+		{expiredCertificate, true},
+		{GetTestCertificate2(), false},
 	} {
-		pem, err := pemDecode(it.pem)
-		if err != nil {
-			t.Fatalf("Failed to decode PEM %d: %v", i, err)
+		c := testcase.cert
+
+		// Parse certificates. They should all be X-509 certificates in PEM format.
+		var cert, caCert, clientCert *x509.Certificate
+		for i, it := range []struct {
+			pem string
+			out **x509.Certificate
+		}{
+			{c.Cert, &cert},
+			{c.CACert, &caCert},
+			{c.ClientCert, &clientCert},
+		} {
+			pem, err := pemDecode(it.pem)
+			if err != nil {
+				t.Fatalf("Test %d: failed to decode PEM %d: %v", testi, i, err)
+			}
+			*it.out, err = x509.ParseCertificate(pem)
+			if err != nil {
+				t.Fatalf("Test %d: failed to parse certificate %d: %v", testi, i, err)
+			}
 		}
-		*it.out, err = x509.ParseCertificate(pem)
-		if err != nil {
-			t.Fatalf("Failed to parse certificate %d: %v", i, err)
+
+		// Verify expiry.
+		if expired := isExpired(cert); expired != testcase.expired {
+			t.Errorf("Test %d: failed cert expiry check: got %t, want %t", testi, expired, testcase.expired)
 		}
-	}
+		if expired := isExpired(clientCert); expired != testcase.expired {
+			t.Errorf("Test %d: failed client cert expiry check: got %t, want %t", testi, expired, testcase.expired)
+		}
 
-	// Validate private keys.
-	if err := validatePrivateKey(c.PrivateKey, cert); err != nil {
-		t.Fatal("Failed private key check: ", err)
-	}
-	if err := validatePrivateKey(c.ClientPrivateKey, clientCert); err != nil {
-		t.Fatal("Failed client private key check: ", err)
-	}
+		// Validate private keys.
+		if err := validatePrivateKey(c.PrivateKey, cert); err != nil {
+			t.Fatalf("Test %d: failed private key check: %v", testi, err)
+		}
+		if err := validatePrivateKey(c.ClientPrivateKey, clientCert); err != nil {
+			t.Fatalf("Test %d: failed client private key check: %v", testi, err)
+		}
 
-	// Check cert signatures.
-	if err := validateCertSignature(cert, caCert); err != nil {
-		t.Error("Failed CA cert check: ", err)
-	}
-	// Check clientCert signatures.
-	if err := validateCertSignature(clientCert, caCert); err != nil {
-		t.Error("Failed client CA cert check: ", err)
-	}
+		// Check cert signatures.
+		if err := validateCertSignature(cert, caCert); err != nil {
+			t.Errorf("Test %d: failed CA cert check: %v", testi, err)
+		}
+		// Check clientCert signatures.
+		if err := validateCertSignature(clientCert, caCert); err != nil {
+			t.Errorf("Test %d: failed client CA cert check: %v", testi, err)
+		}
 
-	if err := validateCertSignature(caCert, caCert); err != nil {
-		t.Error("Unexpeted: CA cert isn't self-signed")
+		if err := validateCertSignature(caCert, caCert); err != nil {
+			t.Errorf("Test %d: unexpeted: CA cert isn't self-signed", testi)
+		}
 	}
 }
