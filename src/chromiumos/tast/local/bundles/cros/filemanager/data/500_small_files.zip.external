@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/filemanager/500_small_files_20200605.zip",
+  "size": 65912,
+  "sha256sum": "a41f3911949c5a42aee380ed7d6a136398d8cbd3a3a66eb7cc317d2e5191e5a4"
+}
