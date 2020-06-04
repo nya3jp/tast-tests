@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e8218e7_fd6b65f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T11:52:44Z",
+      "side": 1,
+      "message": "req.Facing can be unknown, so cfg.CameraFacing can be empty in some cases, looks like we should fail here\n\nmaybe it\u0027s better to use switch here",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f2812b_01b83a1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T11:52:44Z",
+      "side": 1,
+      "message": "btw, did you consider table driven tests instead parametrized? or maybe you can have some fix with table driven and parametrized? it\u0027ll speedup your tests:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529e06cd_01f7d537",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T11:52:44Z",
+      "side": 1,
+      "message": "Error won\u0027t stop your test, so then you\u0027ll run extractOutdir with nil response, please use Fatal instead",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53ebeab_731038f8",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/common.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T11:52:44Z",
+      "side": 1,
+      "message": "nit: UNSET ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484837dd_7f18553b",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T11:52:44Z",
+      "side": 1,
+      "message": "Please try to use ContextOutDir, so Tast will copy all files after test:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/context.go;l\u003d55?q\u003dContextOutDir\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
