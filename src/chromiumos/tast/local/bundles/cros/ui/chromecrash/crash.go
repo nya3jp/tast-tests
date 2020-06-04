@@ -193,7 +193,7 @@ type CrashTester struct {
 // ptype indicates the type of process the KillAndGetCrashFiles will kill. For
 // some process types, we wait for the crash file to appear. In these cases,
 // waitFor indicates the type of file we are waiting for.
-func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, error) {
+func NewCrashTester(ctx context.Context, ptype ProcessType, waitFor CrashFileType) (*CrashTester, error) {
 	if ptype < Browser || ptype > Broker {
 		return nil, errors.Errorf("ptype out of range: %v", ptype)
 	}
@@ -210,7 +210,7 @@ func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, err
 		// broker processes by looking for a process with "--type=broker", we find
 		// it by scanning the Chrome log looking for a line that indicates the
 		// broker's PID.
-		logReader, err = syslog.NewChromeReader(syslog.ChromeLogFile)
+		logReader, err = syslog.NewChromeReader(ctx, syslog.ChromeLogFile)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not get Chrome log reader")
 		}

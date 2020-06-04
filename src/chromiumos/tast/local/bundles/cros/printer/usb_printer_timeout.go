@@ -52,7 +52,7 @@ func USBPrinterTimeout(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	logReader, readerErr := syslog.NewReader(syslog.Program("cupsd"))
+	logReader, readerErr := syslog.NewReader(ctx, syslog.Program("cupsd"))
 	if readerErr != nil {
 		s.Fatal("Failed to start log reader: ", readerErr)
 	}

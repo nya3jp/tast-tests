@@ -121,7 +121,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashReporterMetricsParams)
 	// Crash GPUProcess. Do not crash Browser process. Crashing the Browser
 	// process will disconnect our cr object.
-	ct, err := chromecrash.NewCrashTester(chromecrash.GPUProcess, params.crashFileType)
+	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.GPUProcess, params.crashFileType)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}

@@ -72,14 +72,14 @@ func init() {
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashLoopParams)
-	r, err := syslog.NewReader(syslog.Program("crash_sender"))
+	r, err := syslog.NewReader(ctx, syslog.Program("crash_sender"))
 	if err != nil {
 		s.Fatal("Could not start watching system message file: ", err)
 	}
 	defer r.Close()
 
 	// Only Browser processes cause logouts and thus invoke the crash loop handler.
-	ct, err := chromecrash.NewCrashTester(chromecrash.Browser, chromecrash.MetaFile)
+	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, chromecrash.MetaFile)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}

@@ -153,7 +153,7 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart cryptohomed: ", err)
 	}
 
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		s.Fatal("Failed to start log reader: ", err)
 	}
