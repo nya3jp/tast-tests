@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41385386_97853b5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-04T23:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a575d17_ab1e351f",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eebbc60_327ccfc8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 11
@@ -68,6 +92,54 @@
       "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa3ccf1_5e74fe2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-04T23:57:48Z",
+      "side": 1,
+      "message": "you\u0027re right, not needed. Also removed another create for jar file.",
+      "parentUuid": "0bf44d05_556d4063",
+      "range": {
+        "startLine": 164,
+        "startChar": 16,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3bf8d84_b7f7fb6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-06-04T23:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eebbc60_327ccfc8",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 7
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
