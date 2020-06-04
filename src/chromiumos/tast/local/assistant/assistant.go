@@ -8,11 +8,9 @@ package assistant
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // QueryResponse contains a subset of the results returned from the Assistant server
@@ -48,16 +46,6 @@ func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (Q
 	var status QueryStatus
 	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 10*1000 /* timeout_ms */)
 	return status, err
-}
-
-// WaitForServiceReady checks the Assistant service readiness after enabled by waiting
-// for a simple query interaction being completed successfully. Before b/129896357 gets
-// resolved, it should be used to verify the service status before the real test starts.
-func WaitForServiceReady(ctx context.Context, tconn *chrome.TestConn) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := SendTextQuery(ctx, tconn, "1+1=")
-		return err
-	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.

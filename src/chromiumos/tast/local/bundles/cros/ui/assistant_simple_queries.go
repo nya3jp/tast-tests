@@ -33,16 +33,9 @@ func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// Starts Assistant service.
-	if err := assistant.Enable(ctx, tconn); err != nil {
+	// Enable the Assistant and wait for the ready signal.
+	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
-	}
-
-	// TODO(b/129896357): Replace the waiting logic once Libassistant has a reliable signal for
-	// its readiness to watch for in the signed out mode.
-	s.Log("Waiting for Assistant to be ready to answer queries")
-	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Libassistant to become ready: ", err)
 	}
 
 	testAssistantSimpleMathQuery(ctx, s, tconn)
