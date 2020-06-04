@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "011e16d9_4b4a9158",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T10:04:17Z",
+      "side": 1,
+      "message": "b:158052781\nto show the correct hyperlink in gerrit.",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "620c206b95790e5dec6691e1bfe7808cae622053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93423993_d749557c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 14
