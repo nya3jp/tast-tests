@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "965d25a5_70fecfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-04T22:24:13Z",
+      "side": 1,
+      "message": "Would it make sense to move this above the dropped frames as the number of dropped frames won\u0027t change, but the GPU usage might increase a little during the call into js?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "f23da352ef5a4e3e481a11882efeebb06beea40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
