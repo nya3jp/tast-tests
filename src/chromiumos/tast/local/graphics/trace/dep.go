@@ -9,7 +9,7 @@ import (
 )
 
 // modelWhitelist is a list of model that is targeted to be able to reliably work in the lab for testing.
-var modelWhitelist = []string{"atlas", "eve", "drallion"}
+var modelWhitelist = []string{"atlas", "coral", "drallion", "eve", "fizz", "kalista", "kefka", "kevin", "lulu", "nautilus", "pyro", "samus", "sand", "sarien", "scarlet", "setzer", "snappy", "soraka", "terra", "ultima", "wizpig"}
 
 // HwDepsStable is hardwareDeps condition that stable to run trace tests.
 var HwDepsStable = hwdep.D(hwdep.Model(modelWhitelist...))
