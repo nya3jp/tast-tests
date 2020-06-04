@@ -34,6 +34,24 @@
       "revId": "c7f5f01a4dd155b7b9ebe1137e41e6bc72c07860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f0ab8a_dc5d2108",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-04T16:44:56Z",
+      "side": 1,
+      "message": "Thanks for explanation.\nIn the case, let\u0027s give it a try to exercise with another following CL.\n\nNote that I\u0027d appreciate if you think running the code you write always.\nIf it does not, it can be broken at any time. Keeping unused code is the complexity we\u0027d like to avoid in general :-).",
+      "parentUuid": "a83f75d7_303af7ad",
+      "revId": "c7f5f01a4dd155b7b9ebe1137e41e6bc72c07860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
