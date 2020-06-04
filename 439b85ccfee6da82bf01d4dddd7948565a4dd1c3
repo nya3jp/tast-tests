@@ -150,6 +150,24 @@
       "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea15c358_4fe52bce",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-04T07:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7e8263_f5105531",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
