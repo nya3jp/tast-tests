@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/bundles/cros/arc/chromeproxy"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -93,47 +92,17 @@ func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) err
 // disableAccessibilityFeatures disables the features specified in features.
 func disableAccessibilityFeatures(ctx context.Context, tconn *chrome.TestConn, features []accessibility.Feature) error {
 	var failedFeatures []string
-	disableSwitchAccess := false
 	for _, feature := range features {
-		if feature == accessibility.SwitchAccess {
-			disableSwitchAccess = true
-		}
 		if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, false); err != nil {
 			failedFeatures = append(failedFeatures, string(feature))
 			testing.ContextLogf(ctx, "Failed disabling %s: %v", feature, err)
 		}
 	}
 
-	var err error
-	if disableSwitchAccess {
-		err = func() error {
-			// Disabling switch access leaves a dialog open, which should be closed.
-			// TODO (sarakato): Use autotest private API to ensure that dialog does not get shown.
-			dialog, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeDialog}, 10*time.Second)
-			if err != nil {
-				return err
-			}
-			defer dialog.Release(ctx)
-
-			yesButton, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Yes"}, 10*time.Second)
-			if err != nil {
-				return err
-			}
-			if err := yesButton.LeftClick(ctx); err != nil {
-				return err
-			}
-			return nil
-		}()
-	}
-
-	// Prioritize failures of disabling features.
 	if len(failedFeatures) > 0 {
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to close dialog: ", err)
-		}
 		return errors.Errorf("failed to disable following features: %v", failedFeatures)
 	}
-	return err
+	return nil
 }
 
 // testAccessibilitySync runs the test to ensure spoken feedback settings
@@ -161,6 +130,15 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 
 	for _, feature := range features {
 		testing.ContextLog(ctx, "Testing ", feature)
+		if feature == accessibility.SwitchAccess {
+			// Ensure that disable switch access confirmation dialog does not get shown.
+			// If there is an err here, switch access will not be enabled, meaning that switch access
+			// will not be disabled in the above disableA11yFeatures(). In this situation, the "switch access
+			// disable dialog" will not be shown.
+			if err := tconn.Eval(ctx, `chrome.autotestPrivate.disableSwitchAccessDialog();`, nil); err != nil {
+				return err
+			}
+		}
 		for _, enable := range []bool{true, false} {
 			if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, enable); err != nil {
 				return err
