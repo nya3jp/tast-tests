@@ -35,13 +35,9 @@ func BrightnessQueries(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// Starts Assistant service.
-	if err := assistant.Enable(ctx, tconn); err != nil {
+	// Enable the Assistant and wait for the ready signal.
+	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	s.Log("Waiting for Assistant to be ready to answer queries")
-	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Libassistant to become ready: ", err)
 	}
 
 	// Set initial brightness with the Assistant. Initial value is set to zero percent to provide a
