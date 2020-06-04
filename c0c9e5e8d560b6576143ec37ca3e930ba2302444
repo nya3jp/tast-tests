@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1616fa5c_45bc5dfb",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "The two lines is not that trivial. How about adding the comment:\n\n// conf\u0027s type is dynamicwep.Config, which embeds a eap.Config that is obtained above.\n// The reason why we stores a partially initialized object, blueprint, in ConfigFactory is that we can use it to carry fields that don\u0027t raise error when being assigned. For those fields may raise error during initalization, postpone it to here.",
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc889cf_6e19497d",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "Is it equalivent?\n\nconf :\u003d tf.blueprint\nconf.Config \u003d eapConf.(*eap.Config)\nreturn conf, nil",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac539b9_b8062ed0",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "Please also verify the default factory\u0027s Gen() result.",
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c38075_6192603f",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "Let\u0027s break the test into four parts:\n1. TestNewConfigFactory(): \nUsed to verify that NewConfigFactory() compiles an expected ConfigFactory.\n2. TestGen():\nUsed to verify that the above factory generates expected Config.\n3. TestHostapdConfig():\nUsed to verify that it generated the expected hostapd config.\n4. TestShillServiceProperties():\nUsed to verify that it generated the expected shill props.",
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb94844_d90c8d57",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "For those magic values/strings in both input and expected output, let\u0027s use const to hold them.",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75329371_1a491ba4",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "How the two different struct be compared?",
+      "revId": "c0c9e5e8d560b6576143ec37ca3e930ba2302444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

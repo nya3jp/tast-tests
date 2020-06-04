@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5f5e87a_f81c3a9a",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T08:54:23Z",
+      "side": 1,
+      "message": "in seconds\nhttps://english.stackexchange.com/questions/61167/in-second-or-in-seconds-when-talking-about-time",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "5eaaacd7675a60ab1a281c1b64023a58a26ebc5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
