@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package filemanager
 
 import (
 	"context"
@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FilesAppSMB,
+		Func: SMB,
 		Desc: "Mount and check a file on Samba SMB share",
 		Contacts: []string{
 			"benreich@chromium.org",
@@ -44,7 +44,7 @@ func init() {
 	})
 }
 
-func FilesAppSMB(ctx context.Context, s *testing.State) {
+func SMB(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := pre.Container
