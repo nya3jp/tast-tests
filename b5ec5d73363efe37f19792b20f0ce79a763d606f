@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd1fa9d6_5dfac580",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpaeap/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T09:49:53Z",
+      "side": 1,
+      "message": "Curious, why not just use wpa.ModeEnum so you don\u0027t have to wrap it here?\n\nSame fore FTModeEnum.",
+      "revId": "b5ec5d73363efe37f19792b20f0ce79a763d606f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f625f2_2bde5d6d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpaeap/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T09:49:53Z",
+      "side": 1,
+      "message": "Like https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2224753/3/src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go\n, it would be easier to read to split the test into several functional blocks.",
+      "revId": "b5ec5d73363efe37f19792b20f0ce79a763d606f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
