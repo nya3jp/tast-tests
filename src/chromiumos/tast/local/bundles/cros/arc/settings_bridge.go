@@ -92,6 +92,22 @@ func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) err
 	return nil
 }
 
+// disableAccessibilityFeatures disables the features specified in features.
+func disableAccessibilityFeatures(ctx context.Context, tconn *chrome.TestConn, features []accessibility.Feature) error {
+	var failedFeatures []string
+	for _, feature := range features {
+		if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, false); err != nil {
+			failedFeatures = append(failedFeatures, string(feature))
+			testing.ContextLogf(ctx, "Failed disabling %s: %v", feature, err)
+		}
+	}
+
+	if len(failedFeatures) > 0 {
+		return errors.Errorf("failed to disable following features: %v", failedFeatures)
+	}
+	return nil
+}
+
 // testAccessibilitySync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
 func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, features []accessibility.Feature) (retErr error) {
@@ -106,19 +122,26 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	}
 
 	defer func() {
-		for _, feature := range features {
-			if err := accessibility.SetFeatureEnabled(fullCtx, tconn, feature, false); err != nil {
-				if retErr == nil {
-					retErr = errors.Wrapf(err, "failed disabling %s", feature)
-				} else {
-					retErr = errors.Wrapf(err, "failed disabling %s while cleaning up; and the previous error is %v", feature, retErr)
-				}
+		if err := disableAccessibilityFeatures(ctx, tconn, features); err != nil {
+			if retErr == nil {
+				retErr = err
+			} else {
+				testing.ContextLog(ctx, "Failed to disable accessibliity features: ", err)
 			}
 		}
 	}()
 
 	for _, feature := range features {
 		testing.ContextLog(ctx, "Testing ", feature)
+		if feature == accessibility.SwitchAccess {
+			// Ensure that disable switch access confirmation dialog does not get shown.
+			// If there is an err here, switch access will not be enabled, meaning that switch access
+			// will not be disabled in the above disableA11yFeatures(). In this situation, the "switch access
+			// disable dialog" will not be shown.
+			if err := tconn.Eval(ctx, `chrome.autotestPrivate.disableSwitchAccessDialog();`, nil); err != nil {
+				return err
+			}
+		}
 		for _, enable := range []bool{true, false} {
 			if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, enable); err != nil {
 				return err
