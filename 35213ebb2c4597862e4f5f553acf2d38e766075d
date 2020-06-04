@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "470a3d27_51644568",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T02:56:08Z",
+      "side": 1,
+      "message": "Thanks for the detailed comment. We can use shill to stop background scan and use iw CLI to perform scan as it can specify a signal channel scan.\n\nPTAL.",
+      "parentUuid": "8f565e0b_08c77bc7",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 121
+      },
+      "revId": "35213ebb2c4597862e4f5f553acf2d38e766075d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efaccf96_921354d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 3
