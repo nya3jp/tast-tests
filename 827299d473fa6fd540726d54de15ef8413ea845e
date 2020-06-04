@@ -46,6 +46,30 @@
       "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614ba3b4_932cebe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-06-04T22:21:45Z",
+      "side": 1,
+      "message": "Yes, this is the underlying transport for configuration of Qualcomm integrated modems. It\u0027s used by the rmtfs daemon, qmicli/mmcli, and modemmanager, which all play a role in setting up the modem and wifi. Eric also knows a lot about the qrtr \"bus\", I can add him to fill in any more detailed questions.\n\nPhilip, feel free to copy/morph this into a comment to add to the code.",
+      "parentUuid": "9fa3288e_430f91a0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
