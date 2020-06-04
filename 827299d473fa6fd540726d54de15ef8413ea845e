@@ -22,6 +22,30 @@
       "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa3288e_430f91a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-06-04T22:16:23Z",
+      "side": 1,
+      "message": "This might be used to communicate with modem...?\nI think Evan probably knows more about it.\n\nMy goal is just to pass this test.",
+      "parentUuid": "c8c294de_ce8e69e3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
