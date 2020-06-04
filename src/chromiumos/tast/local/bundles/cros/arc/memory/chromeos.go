@@ -233,7 +233,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	// Create a reader to scan for OOMs, we can't use syslog.Program tofilter to
 	// a specific process name because ARCVM includes the PID in the process
 	// name field.
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open syslog reader")
 	}

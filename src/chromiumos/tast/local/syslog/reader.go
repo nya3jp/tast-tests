@@ -29,8 +29,15 @@ type lineReader struct {
 
 // newLineReader starts a new Reader that reports log messages
 // written after it is started. close must be called after use.
-func newLineReader(path string) (r *lineReader, retErr error) {
-	f, err := os.Open(path)
+func newLineReader(ctx context.Context, path string) (r *lineReader, retErr error) {
+	var f *os.File
+	// Avoid race conditions around log rotation. If the file doesn't exist at
+	// the moment we try to open it, retry until it does.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		f, err = os.Open(path)
+		return err
+	}, nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "error opening log file")
 	}
@@ -223,7 +230,7 @@ type ParseError struct {
 
 // NewReader starts a new Reader that reports syslog messages
 // written after it is started. Close must be called after use.
-func NewReader(opts ...Option) (r *Reader, retErr error) {
+func NewReader(ctx context.Context, opts ...Option) (r *Reader, retErr error) {
 	o := options{
 		path: MessageFile,
 	}
@@ -231,7 +238,7 @@ func NewReader(opts ...Option) (r *Reader, retErr error) {
 		opt(&o)
 	}
 
-	lineReader, err := newLineReader(o.path)
+	lineReader, err := newLineReader(ctx, o.path)
 	if err != nil {
 		return nil, err
 	}
@@ -370,8 +377,8 @@ type ChromeEntry struct {
 
 // NewChromeReader starts a new ChromeReader that reports Chrome log messages
 // written after it is started. Close must be called after use.
-func NewChromeReader(path string) (r *ChromeReader, retErr error) {
-	lineReader, err := newLineReader(path)
+func NewChromeReader(ctx context.Context, path string) (r *ChromeReader, retErr error) {
+	lineReader, err := newLineReader(ctx, path)
 	if err != nil {
 		return nil, err
 	}

@@ -240,7 +240,7 @@ func setUp(ctx context.Context) (_ *syslog.Reader, retErr error) {
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		return nil, err
 	}
-	sr, err := syslog.NewReader()
+	sr, err := syslog.NewReader(ctx)
 	if err != nil {
 		// Note: leave "ui" job stopped. A following test should handle
 		// such a situation properly, if necessary.

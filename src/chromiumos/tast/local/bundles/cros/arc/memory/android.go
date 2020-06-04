@@ -194,7 +194,7 @@ func (a *AndroidAllocator) AllocateUntil(
 	attempts int,
 	margin uint,
 ) ([]uint, error) {
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open syslog reader")
 	}

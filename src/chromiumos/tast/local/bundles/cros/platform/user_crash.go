@@ -254,7 +254,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 	}
 	defer unstashLeaveCore(fullCtx)
 
-	reader, err := syslog.NewReader(syslog.Program("crash_reporter"))
+	reader, err := syslog.NewReader(ctx, syslog.Program("crash_reporter"))
 	if err != nil {
 		s.Fatal("Failed to create log reader: ", err)
 	}
@@ -394,7 +394,7 @@ func testRootCrasherNoConsent(ctx context.Context, cr *chrome.Chrome, s *testing
 
 // checkFilterCrasher runs crasher and verifies that crash_reporter receives or ignores the crash.
 func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		return err
 	}
@@ -480,7 +480,7 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 			testing.ContextLog(ctx, "Failed to restore core pattern file: ", err)
 		}
 	}()
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create log reader")
 	}
@@ -631,7 +631,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 		maxCrashDirectorySize = 32
 		username              = "root"
 	)
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	defer reader.Close()
 	if err != nil {
 		s.Fatal("Failed to create watcher: ", err)

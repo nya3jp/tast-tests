@@ -160,7 +160,7 @@ func TestReaderRead(t *testing.T) {
 			tf.WriteString(tc.init)
 
 			opts := append([]Option{SourcePath(tf.Name())}, tc.opts...)
-			r, err := NewReader(opts...)
+			r, err := NewReader(context.Background(), opts...)
 			if err != nil {
 				t.Fatal("NewReader failed: ", err)
 			}
@@ -201,7 +201,7 @@ func TestReaderParseFailure(t *testing.T) {
 	}
 	defer tf.Close()
 
-	r, err := NewReader(SourcePath(tf.Name()))
+	r, err := NewReader(context.Background(), SourcePath(tf.Name()))
 	if err != nil {
 		t.Fatal("NewReader failed: ", err)
 	}
@@ -248,7 +248,7 @@ func TestReaderReadLogRotation(t *testing.T) {
 		t.Fatal("Failed to create an empty syslog: ", err)
 	}
 
-	r, err := NewReader(SourcePath(path))
+	r, err := NewReader(context.Background(), SourcePath(path))
 	if err != nil {
 		t.Fatal("NewReader failed: ", err)
 	}
@@ -281,7 +281,7 @@ func TestReaderReadLogRotationRace(t *testing.T) {
 		t.Fatal("Failed to create an empty syslog: ", err)
 	}
 
-	r, err := NewReader(SourcePath(path))
+	r, err := NewReader(context.Background(), SourcePath(path))
 	if err != nil {
 		t.Fatal("NewReader failed: ", err)
 	}
@@ -374,7 +374,7 @@ func TestReaderWait(t *testing.T) {
 			defer tf.Close()
 
 			opts := append([]Option{SourcePath(tf.Name())}, tc.opts...)
-			r, err := NewReader(opts...)
+			r, err := NewReader(context.Background(), opts...)
 			if err != nil {
 				t.Fatal("NewReader failed: ", err)
 			}
@@ -465,7 +465,7 @@ func TestChromeReaderRead(t *testing.T) {
 
 			tf.WriteString(tc.init)
 
-			r, err := NewChromeReader(tf.Name())
+			r, err := NewChromeReader(context.Background(), tf.Name())
 			if err != nil {
 				t.Fatal("NewChromeReader failed: ", err)
 			}
@@ -530,7 +530,7 @@ func TestChromeReaderReadLogRotation(t *testing.T) {
 		t.Fatalf("Failed to symlink %s -> %s: %v", symlinkPath, realPath, err)
 	}
 
-	r, err := NewChromeReader(symlinkPath)
+	r, err := NewChromeReader(context.Background(), symlinkPath)
 	if err != nil {
 		t.Fatal("NewChromeReader failed: ", err)
 	}
@@ -574,7 +574,7 @@ func TestChromeReaderReadLogRotationRace(t *testing.T) {
 		t.Fatalf("Failed to symlink %s -> %s: %v", symlinkPath, realPath, err)
 	}
 
-	r, err := NewChromeReader(symlinkPath)
+	r, err := NewChromeReader(context.Background(), symlinkPath)
 	if err != nil {
 		t.Fatal("NewChromeReader failed: ", err)
 	}

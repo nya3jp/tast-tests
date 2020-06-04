@@ -124,7 +124,7 @@ func RunSenderNoIgnorePauseFile(ctx context.Context) ([]*SendResult, error) {
 }
 
 func runSenderWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
-	sr, err := syslog.NewReader(syslog.Program("crash_sender"))
+	sr, err := syslog.NewReader(ctx, syslog.Program("crash_sender"))
 	if err != nil {
 		return nil, err
 	}

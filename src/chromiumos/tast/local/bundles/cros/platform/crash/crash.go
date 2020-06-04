@@ -215,7 +215,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
-	reader, err := syslog.NewReader()
+	reader, err := syslog.NewReader(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare syslog reader in RunCrasherProcess")
 	}

@@ -47,7 +47,7 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	ct, err := chromecrash.NewCrashTester(chromecrash.Browser, chromecrash.BreakpadDmp)
+	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, chromecrash.BreakpadDmp)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}

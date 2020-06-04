@@ -118,7 +118,7 @@ func init() {
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashLoggedInParams)
-	ct, err := chromecrash.NewCrashTester(params.ptype, chromecrash.MetaFile)
+	ct, err := chromecrash.NewCrashTester(ctx, params.ptype, chromecrash.MetaFile)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}
