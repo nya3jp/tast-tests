@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93423993_d749557c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-04T05:51:06Z",
+      "side": 1,
+      "message": "nit: use ctxutil.Shorten directly in the test.",
+      "revId": "620c206b95790e5dec6691e1bfe7808cae622053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
