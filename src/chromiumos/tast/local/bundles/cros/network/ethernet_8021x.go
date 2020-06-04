@@ -65,7 +65,7 @@ const (
 
 type testContext struct {
 	param       *testParameters
-	certs       *certificate.Certificate
+	certs       *certificate.CertSet
 	manager     *shill.Manager
 	device      *shill.Device
 	profilePath dbus.ObjectPath
