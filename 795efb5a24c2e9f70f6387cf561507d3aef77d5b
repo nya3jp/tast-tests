@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ea08b71_55910988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/files_app_test.png.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-06-04T04:23:57Z",
+      "side": 1,
+      "message": "Just as a note, I added a copy of files_app_test.png in the appropriate gs bucket, files_app_test_20200603.png",
+      "revId": "795efb5a24c2e9f70f6387cf561507d3aef77d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
