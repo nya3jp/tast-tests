@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e5e6c1c_6b0d1f23",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T20:03:57Z",
+      "side": 1,
+      "message": "huge nit:\nprefer short variable names, specially for local vars that are used close to where they are defined.\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nperhaps: \u0027out\u0027 ?",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 13
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8fe018_ed8941e3",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T20:03:57Z",
+      "side": 1,
+      "message": "nit, optional:\n\n  str :\u003d strings.TrimSpace(strings(out))\n\n\nsee below regarding how to skip the TrimSpace call",
+      "range": {
+        "startLine": 395,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 35
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c32dcd34_915b7d50",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T20:03:57Z",
+      "side": 1,
+      "message": "nit:\nif you control the regexp and you know it must not fail, you can use MustCompile:\nhttps://golang.org/pkg/regexp/#MustCompile\n\n  exp :\u003d regexp.MustCompile(...)\n\nand you can omit the TrimSpace() from above if you use whitespaces in your regexp. Something like:\n\n  exp :\u003d regexp.MustCompile(\"^\\s*([a-f0-9]{40})\\s*$\")",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 61
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
