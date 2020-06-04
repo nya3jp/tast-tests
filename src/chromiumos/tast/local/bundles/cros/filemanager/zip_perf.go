@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package filemanager
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FilesAppZipPerf,
+		Func: ZipPerf,
 		Desc: "Measures performance for ZIP file operations",
 		Contacts: []string{
 			"jboulic@google.com",
@@ -35,13 +35,13 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"100000_files_in_one_folder.zip", "misc_zip_files.zip", "many_small_files.zip"},
+		Data:         []string{"100000_files_in_one_folder.zip", "500_small_files.zip", "various_documents.zip"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 	})
 }
 
-func FilesAppZipPerf(ctx context.Context, s *testing.State) {
+func ZipPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Open the test API.
@@ -74,13 +74,16 @@ func FilesAppZipPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	for _, zipBaseName := range []string{"100000_files_in_one_folder", "misc_zip_files", "many_small_files"} {
+	for _, zipBaseName := range []string{"100000_files_in_one_folder", "500_small_files", "various_documents"} {
 		zipFile := zipBaseName + ".zip"
 		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
 		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
 			s.Fatalf("Failed to copy zip file to %s: %s", zipFileLocation, err)
 		}
+
+		// Remove zip files and extraction folders when the test finishes.
 		defer os.Remove(zipFileLocation)
+		defer os.RemoveAll(filepath.Join(filesapp.DownloadPath, zipBaseName))
 
 		// Add reading permission (-rw-r--r--).
 		os.Chmod(zipFileLocation, 0644)
@@ -210,10 +213,10 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	// Define the number of files that we expect to select for extraction and zipping operations.
 	var selectionLabel string
 	switch zipBaseName {
-	case "misc_zip_files":
+	case "various_documents":
 		selectionLabel = "102 items selected"
-	case "many_small_files":
-		selectionLabel = "1000 files selected"
+	case "500_small_files":
+		selectionLabel = "500 files selected"
 	default:
 		s.Fatal("Unexpected test zip file")
 	}
