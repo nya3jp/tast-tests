@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01200397_cfa451a3",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-04T19:42:38Z",
+      "side": 1,
+      "message": "this needs a better explanation than just \"we\u0027re doing what Autotest did.\" Are we starting at a high number because some other entity owns lower numbers? What\u0027s the contract here? Is someone else clearing out object IDs before we get to the WiFi tests? If not, what happens if I run 2 tests in a row in separate \u0027tast\u0027 invocations? They\u0027ll both use 8800 -- is that good or bad?\n\nI see there\u0027s a previous comment thread about what the legal values are. Those aren\u0027t documented anywhere, AFAICT.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "992e8b3005dbd50c1ac4c73a8c827c019ea5cca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
