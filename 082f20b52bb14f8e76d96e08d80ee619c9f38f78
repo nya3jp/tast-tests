@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a575d17_ab1e351f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-04T00:04:16Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eebbc60_327ccfc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-04T00:04:16Z",
+      "side": 1,
+      "message": "nit: this does not look temp, may be localFile? Please also update comment.",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 7
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bf44d05_556d4063",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-04T00:04:16Z",
+      "side": 1,
+      "message": "nit: could you please check if os.Create is needed?\nYou operate with temp.Name()",
+      "range": {
+        "startLine": 164,
+        "startChar": 16,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "082f20b52bb14f8e76d96e08d80ee619c9f38f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

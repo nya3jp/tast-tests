@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4b024341_65a477de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-04T00:04:16Z",
+      "side": 1,
+      "message": "I see, I think it is not required to over-complicate.\nCould we just add  cache.GeneratedPackagesCacheXML and us it here.\nWe can guaranty that it would not overlap with PackagesCacheXML",
+      "parentUuid": "00a3188b_7e7e82a3",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 66
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02a874bb_16732c3f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 8
