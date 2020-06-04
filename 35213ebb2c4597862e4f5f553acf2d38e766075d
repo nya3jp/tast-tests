@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "76174481_f1d14084",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-04T20:00:31Z",
+      "side": 1,
+      "message": "Stopping background scans is not necessarily enough (there may be other sources of scans), but it\u0027s probably the best we can do for now. Anyway, the polling is hopefully enough.\n\nYour change seems good in concept, even if not quite in implementation.",
+      "parentUuid": "470a3d27_51644568",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 121
+      },
+      "revId": "35213ebb2c4597862e4f5f553acf2d38e766075d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efaccf96_921354d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 3
