@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10db2f03_1ff728b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T10:40:43Z",
+      "side": 1,
+      "message": "so, is it video or photo recording?",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2264b17_64567231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-04T10:40:43Z",
+      "side": 1,
+      "message": "why do we need all these checks if we even don\u0027t report error/failure?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
