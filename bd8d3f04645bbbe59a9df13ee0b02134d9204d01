@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "536a466a_eab5f573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:22:12Z",
+      "side": 1,
+      "message": "Close() should be moved to L120 I guess. If act.Start() fails, you still want to call Close()",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59823bba_9da3acc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-04T17:22:12Z",
+      "side": 1,
+      "message": "I think there is a possibility that these functions might fail on some boards/scenarios.\n\nIt might be possible that you call wm.ToggleFullscreen() (IIRC is an async operation), and when you call ash.GetARCAppWindowInfo() it might not be yet in fullscreen mode.\n\nIt is better to all the verification/validation functions inside a Poll(). \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\nSomething like this:\n\n\n  if err :\u003d testing.Poll(ctx, func (ctx context.Context) error {\n    windowInfoFullscreen, err :\u003d ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)\n\tif err !\u003d nil {\n\t\treturn testing.PollBreak(err)\n\t}\n\treturn wm.CheckMaximizeToFullscreenTogglePortrait(windowInfoMaximized.BoundsInRoot, windowInfoFullscreen.BoundsInRoot)\n  }, \u0026testing.PollOptions{Timeout: 10 * time.Second}); err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to...\")\n  }\n  return nil",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 119
+      },
+      "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
