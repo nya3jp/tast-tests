@@ -66,7 +66,7 @@ const (
 
 type testContext struct {
 	param       *testParameters
-	certs       *certificate.Certificate
+	certs       *certificate.CertStore
 	manager     *shill.Manager
 	device      *shill.Device
 	profilePath dbus.ObjectPath
@@ -219,7 +219,7 @@ func initializeTest(ctx context.Context, s *testing.State) (tc *testContext, err
 	)
 
 	param := s.Param().(testParameters)
-	cert := certificate.TestCertificate()
+	cert := certificate.TestCert1()
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {

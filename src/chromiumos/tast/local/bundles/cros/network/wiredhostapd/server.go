@@ -37,7 +37,7 @@ type EAPConf struct {
 	Password  string
 
 	// Cert holds certificate information for hostapd's EAP server.
-	Cert *certificate.Certificate
+	Cert *certificate.CertStore
 }
 
 // Server holds information about a started hostapd server, primarily for the 'driver=wired' variant.
@@ -159,8 +159,8 @@ eapol_version=2
 		contents string
 	}{
 		{confPath, confContents},
-		{serverCertPath, s.EAP.Cert.Cert},
-		{privateKeyPath, s.EAP.Cert.PrivateKey},
+		{serverCertPath, s.EAP.Cert.ServerCred.Cert},
+		{privateKeyPath, s.EAP.Cert.ServerCred.PrivateKey},
 		{eapUserFilePath, eapUser},
 		{caCertPath, s.EAP.Cert.CACert},
 	} {
