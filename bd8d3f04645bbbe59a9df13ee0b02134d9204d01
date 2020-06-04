@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "835d6850_d38f9810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-04T17:25:40Z",
+      "side": 1,
+      "message": "I think it was raised by Ricardo in the previous CL, but this looks even more alarming.\n\nI am afraid that those \"NC01\" or \"NC04\" are not very helpful. Why not being more descriptive?\nAt least the messaging should be more descriptive, like \"default_launch\" / \"user_immerse_portrait_app\" (or \"default_launch_behavior\" / \"pillarbox\") rather than puzzling \"NC01_launch\" or \"NC04_launch\".",
+      "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "536a466a_eab5f573",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -25,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "3baceee5_33d3aa56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-04T17:25:40Z",
+      "side": 1,
+      "message": "It seems that wm.ToggleFullscreen is just hitting a shortcut key, I am afraid that there could be a timing issue -- I guess you should have a waiting logic here (maybe ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateFullscreen))",
+      "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59823bba_9da3acc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -42,6 +76,23 @@
         "endLine": 149,
         "endChar": 119
       },
+      "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab395ca2_e16e68da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-04T17:25:40Z",
+      "side": 1,
+      "message": "why not checking with display size?\ndisplay.GetPrimaryInfo provides the workarea bounds (\u003d\u003d maximized bounds) and the display bounds (\u003d\u003d fullscreen bounds).\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/display#Info",
       "revId": "bd8d3f04645bbbe59a9df13ee0b02134d9204d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
