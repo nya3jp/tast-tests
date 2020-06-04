@@ -33,6 +33,7 @@ const (
 
 	intentHelperTimeout = 20 * time.Second
 
+	pstoreName = "vm_pstore.txt"
 	logcatName = "logcat.txt"
 
 	//ARCPath is the path where the container images are installed in the rootfs.
@@ -84,6 +85,12 @@ func Type() (t InstallType, ok bool) {
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
+	closeCtx context.Context // context to be used in Close
+
+	pstoreCmd    *testexec.Cmd // process saving pstore logs
+	pstoreWriter dynamicWriter // writes output from pstoreCmd to pstoreFile
+	pstoreFile   *os.File      // file currently being written to
+
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
@@ -95,16 +102,37 @@ func (a *ARC) Close() error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
 	}
-	var err error
+
+	var logcatErr error
 	if a.logcatCmd != nil {
 		a.logcatCmd.Kill()
 		a.logcatCmd.Wait()
 	}
 	if a.logcatFile != nil {
 		a.logcatWriter.setDest(nil)
-		err = a.logcatFile.Close()
+		logcatErr = a.logcatFile.Close()
+		if logcatErr != nil {
+			testing.ContextLogf(a.closeCtx, "Failed to save logcat logfile: %w", logcatErr)
+		}
 	}
-	return err
+
+	var pstoreErr error
+	if a.pstoreCmd != nil {
+		a.pstoreCmd.Kill()
+		a.pstoreCmd.Wait()
+	}
+	if a.pstoreFile != nil {
+		a.pstoreWriter.setDest(nil)
+		pstoreErr = a.pstoreFile.Close()
+		if pstoreErr != nil {
+			testing.ContextLogf(a.closeCtx, "Failed to save pstore logfile: %w", pstoreErr)
+		}
+	}
+
+	if logcatErr != nil || pstoreErr != nil {
+		return errors.New("failed to save logfiles")
+	}
+	return nil
 }
 
 // New waits for Android to finish booting.
@@ -138,6 +166,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	arc := &ARC{}
+	arc.closeCtx = ctx
 	toClose := arc
 	defer func() {
 		if toClose != nil {
@@ -145,8 +174,24 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	testing.ContextLog(ctx, "Waiting for Android boot")
+	// Start logging the console output of ARCVM kernel before initialized.
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return nil, err
+	}
+	if isVMEnabled {
+		pstorePath := filepath.Join(outDir, pstoreName)
+		if err := arc.setPstoreFile(pstorePath); err != nil {
+			return nil, errors.Wrap(err, "failed to create vm_pstore_dump output file")
+		}
+		pstoreCmd, err := startPstore(ctx, &arc.pstoreWriter)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start vm_pstore_dump")
+		}
+		arc.pstoreCmd = pstoreCmd
+	}
 
+	testing.ContextLog(ctx, "Waiting for Android boot")
 	if err := WaitAndroidInit(ctx); err != nil {
 		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 	}
@@ -237,34 +282,43 @@ func checkSoftwareDeps(ctx context.Context) error {
 	return errors.Errorf("test must declare at least one of Android software dependencies %v", androidDeps)
 }
 
-// setLogcatFile creates a new logcat output file at p and opens it as a.logcatFile.
-// a.logcatWriter is updated to write to the new file, and explanatory messages are
+// createNewARCLogFile creates a new output file at path, opens it, and returns it.
+// writer is updated to write to the new file, and explanatory messages are
 // written to both the new file and old file (if there was a previous file).
-func (a *ARC) setLogcatFile(p string) error {
-	oldFile := a.logcatFile
-
-	var createErr error
-	a.logcatFile, createErr = os.Create(p)
+func createNewARCLogFile(path string, oldFile *os.File, writer *dynamicWriter) (*os.File, error) {
+	newFile, createErr := os.Create(path)
 	if createErr == nil && oldFile != nil {
 		// Make the new file start with a line pointing at the old file.
-		if rel, err := filepath.Rel(filepath.Dir(a.logcatFile.Name()), oldFile.Name()); err == nil {
-			fmt.Fprintf(a.logcatFile, "[output continued from %v]\n", rel)
+		if rel, err := filepath.Rel(filepath.Dir(newFile.Name()), oldFile.Name()); err == nil {
+			fmt.Fprintf(newFile, "[output continued from %v]\n", rel)
 		}
 	}
 	// If the create failed, we'll just drop the new logs.
-	a.logcatWriter.setDest(a.logcatFile)
+	writer.setDest(newFile)
 
 	if oldFile != nil {
-		if a.logcatFile != nil {
+		if newFile != nil {
 			// Make the old file end with a line pointing at the new file.
-			if rel, err := filepath.Rel(filepath.Dir(oldFile.Name()), a.logcatFile.Name()); err == nil {
+			if rel, err := filepath.Rel(filepath.Dir(oldFile.Name()), newFile.Name()); err == nil {
 				fmt.Fprintf(oldFile, "[output continued in %v]\n", rel)
 			}
 		}
 		oldFile.Close()
 	}
 
-	return createErr
+	return newFile, createErr
+}
+
+func (a *ARC) setLogcatFile(p string) error {
+	var err error
+	a.logcatFile, err = createNewARCLogFile(p, a.logcatFile, &a.logcatWriter)
+	return err
+}
+
+func (a *ARC) setPstoreFile(p string) error {
+	var err error
+	a.pstoreFile, err = createNewARCLogFile(p, a.pstoreFile, &a.pstoreWriter)
+	return err
 }
 
 // VMEnabled returns true if Chrome OS is running ARCVM.
@@ -336,6 +390,25 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 	// The logcat process may need to span multiple tests if we're being used by a precondition,
 	// so use context.Background instead of ctx to make sure it isn't killed prematurely.
 	cmd = BootstrapCommand(context.Background(), "/system/bin/logcat") // NOLINT: process may need to persist across multiple tests
+	cmd.Stdout = w
+	if err := cmd.Start(); err != nil {
+		return nil, err
+	}
+	return cmd, nil
+}
+
+// startPstore starts a vm_pstore_dump process with its stdout redirected to w.
+func startPstore(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
+	// Wait for crosvm to make the .pstore file by polling vm_pstore_dump command.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testexec.CommandContext(ctx, "vm_pstore_dump").Run()
+	}, nil); err != nil {
+		return nil, err
+	}
+
+	// The vm_pstore_dump process may need to span multiple tests if we're being used by a precondition,
+	// so use context.Background instead of ctx to make sure it isn't killed prematurely.
+	cmd := testexec.CommandContext(context.Background(), "vm_pstore_dump", "--follow") // NOLINT: process may need to persist across multiple tests
 	cmd.Stdout = w
 	if err := cmd.Start(); err != nil {
 		return nil, err
