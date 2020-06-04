@@ -28,7 +28,7 @@ func init() {
 func Sanity(ctx context.Context, s *testing.State) {
 	l, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
 	if err != nil {
-		s.Fatal("Failed to launch lacros-chrome")
+		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
 	defer l.Close(ctx)
 
