@@ -156,6 +156,10 @@ func ChapsPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create private key: ", err)
 	}
 
+	if err := utility.WaitForUserToken(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to wait for user token: ", err)
+	}
+
 	// Get the slot ID for the user vault.
 	slot, err := utility.GetTokenForUser(ctx, util.FirstUsername)
 	if err != nil {
