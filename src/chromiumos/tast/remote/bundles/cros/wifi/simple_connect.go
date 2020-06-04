@@ -489,10 +489,10 @@ func init() {
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 						secConfFac: dynamicwep.NewConfigFactory(
-							eapcert.CACert, eapcert.Cert, eapcert.PrivateKey,
+							eapcert.CACert, eapcert.ServerCred.Cert, eapcert.ServerCred.PrivateKey,
 							dynamicwep.ClientCACert(eapcert.CACert),
-							dynamicwep.ClientCert(eapcert.ClientCert),
-							dynamicwep.ClientKey(eapcert.ClientPrivateKey),
+							dynamicwep.ClientCert(eapcert.ClientCred.Cert),
+							dynamicwep.ClientKey(eapcert.ClientCred.PrivateKey),
 							dynamicwep.RekeyPeriod(20),
 						),
 					},
@@ -646,7 +646,7 @@ func wep104KeysHidden() []string {
 }
 
 // EAP certs/keys for EAP tests.
-var eapcert = certificate.TestCertificate()
+var eapcert = certificate.TestCert1()
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.
