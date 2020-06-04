@@ -9,6 +9,7 @@ import (
 	"encoding/pem"
 	"reflect"
 	"testing"
+	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -22,6 +23,19 @@ func pemDecode(s string) ([]byte, error) {
 		return nil, errors.Errorf("Found trailing data in cert: %q", string(rest))
 	}
 	return block.Bytes, nil
+}
+
+func x509ParseCert(certStr string) (*x509.Certificate, error) {
+	// Parse certificate. It should be X-509 certificates in PEM format.
+	pem, err := pemDecode(certStr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to decode PEM")
+	}
+	cert, err := x509.ParseCertificate(pem)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse certificate")
+	}
+	return cert, err
 }
 
 // validateCertSignature checks that cert is signed by its parent. Note that we allow MD5-based signatures for now
@@ -60,53 +74,61 @@ func validatePrivateKey(privateKey string, cert *x509.Certificate) error {
 	return nil
 }
 
-func TestCertificates(t *testing.T) {
-	c := TestCertificate()
+func TestCertificate(t *testing.T) {
+	now := time.Now()
+	isExpired := func(cert *x509.Certificate) bool {
+		return now.Before(cert.NotBefore) || now.After(cert.NotAfter)
+	}
 
-	// Parse certificates. They should all be X-509 certificates in PEM format.
-	var cert, caCert, clientCert *x509.Certificate
-	for i, it := range []struct {
-		pem string
-		out **x509.Certificate
-	}{
-		{
-			c.Cert, &cert,
-		},
-		{
-			c.CACert, &caCert,
-		},
-		{
-			c.ClientCert, &clientCert,
-		},
-	} {
-		pem, err := pemDecode(it.pem)
+	for testi, testcase := range []CertStore{TestCert1(), TestCert2()} {
+		caCert, err := x509ParseCert(testcase.CACert)
 		if err != nil {
-			t.Fatalf("Failed to decode PEM %d: %v", i, err)
+			t.Fatalf("Test %d: CACert: %v", testi, err)
 		}
-		*it.out, err = x509.ParseCertificate(pem)
-		if err != nil {
-			t.Fatalf("Failed to parse certificate %d: %v", i, err)
+
+		if err := validateCertSignature(caCert, caCert); err != nil {
+			t.Errorf("Test %d: unexpeted: CA cert isn't self-signed", testi)
+		}
+
+		testCred := func(cred Credential, expectedExpired bool) error {
+			cert, err := x509ParseCert(cred.Cert)
+			if err != nil {
+				return err
+			}
+
+			// Verify expiry.
+			if expired := isExpired(cert); expired != expectedExpired {
+				return errors.Errorf("failed cert expiry check got %t, want %t", expired, expectedExpired)
+			}
+			// Validate private keys.
+			if err := validatePrivateKey(cred.PrivateKey, cert); err != nil {
+				return errors.Errorf("failed private key check: %v", err)
+			}
+			// Check cert signatures.
+			if err := validateCertSignature(cert, caCert); err != nil {
+				return errors.Errorf("failed CA cert check: %v", err)
+			}
+			return nil
+		}
+
+		if err := testCred(testcase.ServerCred, false); err != nil {
+			t.Errorf("Test %d: ServerCred: %v", testi, err)
+		}
+		if err := testCred(testcase.ClientCred, false); err != nil {
+			t.Errorf("Test %d: ClientCred: %v", testi, err)
+		}
+		// TODO: Generate expired certificate for each CertStore and remove this condition.
+		if testcase.ExpiredServerCred.Cert != "" {
+			if err := testCred(testcase.ExpiredServerCred, true); err != nil {
+				t.Errorf("Test %d: ExpiredServerCred: %v", testi, err)
+			}
 		}
 	}
+}
 
-	// Validate private keys.
-	if err := validatePrivateKey(c.PrivateKey, cert); err != nil {
-		t.Fatal("Failed private key check: ", err)
-	}
-	if err := validatePrivateKey(c.ClientPrivateKey, clientCert); err != nil {
-		t.Fatal("Failed client private key check: ", err)
-	}
-
-	// Check cert signatures.
-	if err := validateCertSignature(cert, caCert); err != nil {
-		t.Error("Failed CA cert check: ", err)
-	}
-	// Check clientCert signatures.
-	if err := validateCertSignature(clientCert, caCert); err != nil {
-		t.Error("Failed client CA cert check: ", err)
-	}
-
-	if err := validateCertSignature(caCert, caCert); err != nil {
-		t.Error("Unexpeted: CA cert isn't self-signed")
+func TestCADifference(t *testing.T) {
+	// Check that TestCert1 and TestCert2 are using different CAs.
+	if TestCert1().CACert == TestCert2().CACert {
+		t.Error("TestCert1 and TestCert2 are using the same CA")
 	}
 }
