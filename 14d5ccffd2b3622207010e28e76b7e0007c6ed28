@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f501163_186524ba",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-04T10:21:06Z",
+      "side": 1,
+      "message": "huge nit: We can revert this line to \"Perform an early...\"",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 29
+      },
+      "revId": "14d5ccffd2b3622207010e28e76b7e0007c6ed28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65abb3a4_7a801035",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-04T10:21:06Z",
+      "side": 1,
+      "message": "Let us consolidate this with ContinueLogin.\n\nCould you:\n\n- rename logIn to loginUser,\n- extract this switch to a method named logIn,\n- call logIn from here and ContinueLogin?",
+      "range": {
+        "startLine": 409,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 3
+      },
+      "revId": "14d5ccffd2b3622207010e28e76b7e0007c6ed28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9386ba53_1993eaac",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-04T10:21:06Z",
+      "side": 1,
+      "message": "After introducing the logIn method I mentioned in the above comment, in this method I want you to:\n\n1. ensure c.deferLogin is true. If not, return an error.\n2. set c.deferLogin to false (to prevent calling this method twice).\n3. call c.logIn.",
+      "range": {
+        "startLine": 1119,
+        "startChar": 1,
+        "endLine": 1119,
+        "endChar": 21
+      },
+      "revId": "14d5ccffd2b3622207010e28e76b7e0007c6ed28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
