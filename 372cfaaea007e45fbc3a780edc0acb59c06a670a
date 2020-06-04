@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "93df22b6_66a9026d",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-04T07:28:15Z",
+      "side": 1,
+      "message": "Hmm..., then reserveTPMID will not generate valid IDs after 1200 calls. We probably don\u0027t take that much IDs but I guess it still worth to be fixed?\n\nA simple fix might be like:\n\n  var lastTPMID \u003d uint64(8800)\n  // reserveTPMID returns a session unique hexadecimal string to be TPM identifier.\n  func reserveTPMID() string {\n    b :\u003d make([]byte, binary.Size(lastTPMID))\n    binary.LittleEndian.PutUint64(b, lastTPMID)\n    lastTPMID++\n    return hex.EncodeToString(b)\n  }\n\nWDYT? (If you don\u0027t like the endianness or the zeros, you can do more processing)",
+      "parentUuid": "d1a8af7b_e3f5da57",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e04859e_cb8894b3",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 1
