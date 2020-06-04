@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d1a8af7b_e3f5da57",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "FYI, I trace the source of p11_replay for a little bit and it should be a hex string able to be converted to byte. That is, string only contains [a-fA-F0-9] with even length.",
+      "parentUuid": "687cf6ac_a05d5d67",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e04859e_cb8894b3",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 1

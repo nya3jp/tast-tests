@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "679c1c2d_fcc25968",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0cdcd7_f54b1d50",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21faac79_4697f55b",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e800a04c_f9edc346",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21faac79_4697f55b",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53a1e32a_93ae1f20",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544bf85d_a5ef8bbb",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53a1e32a_93ae1f20",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ae3d9202_fd0320e0",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "It seems that the word \"acceptable\" makes this sentence confusing. I guess removing the marked part should be clear enough.",
+      "parentUuid": "d541b32d_c78412ed",
+      "range": {
+        "startLine": 86,
+        "startChar": 63,
+        "endLine": 86,
+        "endChar": 109
+      },
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "402373c2_0da23c01",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 6
@@ -96,6 +180,24 @@
       "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c82db0_7dfe3e95",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-04T06:52:29Z",
+      "side": 1,
+      "message": "I guess it\u0027s ok since there is not any test assigning client_cert_id or client_key_id in Autotest. Also it still works fine when I assign the same id to them in the tests network_WiFi_SimpleConnect.wifi_check1x_*.",
+      "parentUuid": "402373c2_0da23c01",
+      "revId": "fe336f391877c7ffb8f158b856b728f98f70b97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
