@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5032846_767fafc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-04T19:33:34Z",
+      "side": 1,
+      "message": "nit: \"produces\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 36
+      },
+      "revId": "3703d168afdfae61f5c205794f4c6e4e3723fef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
