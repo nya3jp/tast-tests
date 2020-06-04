@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c39dc7a4_44f8e60c",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-04T19:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb581c94_5345eebb",
+      "range": {
+        "startLine": 111,
+        "startChar": 40,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5613e2_482c5f65",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fda28f_c98013cf",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-04T19:12:50Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "8c5613e2_482c5f65",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "56407ad4_cfcc473f",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-04T19:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7665ffa9_81d62424",
+      "range": {
+        "startLine": 152,
+        "startChar": 71,
+        "endLine": 152,
+        "endChar": 78
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e08a4099_b8dda28f",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "236e9daf_83a581cb",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-04T19:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08a4099_b8dda28f",
+      "range": {
+        "startLine": 158,
+        "startChar": 69,
+        "endLine": 158,
+        "endChar": 76
+      },
+      "revId": "4bb18b39d45a458f9cb47bfbf21032942767251c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
