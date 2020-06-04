@@ -289,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "270bb2cf_787feb3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-04T06:21:43Z",
+      "side": 1,
+      "message": "I\u0027m curious which component in CrOS toggles wifi powersave feature. I didn\u0027t see a code in shill. If we want to test powersave toggle, we have to make sure there\u0027s no background service also toggles that. (Learned from background scan).\n\nFor checking connections, I think we can improve it in upcoming CL.",
+      "parentUuid": "40b4f100_d7e49140",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc3edc11_d7ad6b00",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
