@@ -1,8 +1,8 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package filemanager
 
 import (
 	"context"
@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FilesAppImageQuickView,
+		Func: ImageQuickView,
 		Desc: "Tests image QuickView within the Files app",
 		Contacts: []string{
 			"bhansknecht@chromium.org",
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-func FilesAppImageQuickView(ctx context.Context, s *testing.State) {
+func ImageQuickView(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Setup the test image.
