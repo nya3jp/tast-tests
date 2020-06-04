@@ -239,7 +239,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	file := filepath.Join(outDir, glxInfoFile)
 	testing.ContextLog(ctx, "Logging container graphics environment to ", glxInfoFile)
 	if err := logContainerInfo(ctx, cont, file); err != nil {
-		testing.ContextLog(ctx, "Warning: Unable to log container information: ", err)
+		return errors.Wrap(err, "failed to log container information")
 	}
 
 	if err := getSystemInfo(&group.Host); err != nil {
