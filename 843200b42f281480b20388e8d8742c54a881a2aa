@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7f6bee4_1a51481c",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-04T19:35:39Z",
+      "side": 1,
+      "message": "are any of the below constants supposed to be used externally? If not, they should be private (lower-case), right?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "115850fc_b873ca40",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 10
