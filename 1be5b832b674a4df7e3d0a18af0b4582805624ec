@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47993286_665d7ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-04T06:32:01Z",
+      "side": 1,
+      "message": "nit: Chrome?",
+      "range": {
+        "startLine": 28,
+        "startChar": 59,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "1be5b832b674a4df7e3d0a18af0b4582805624ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49319034_f6ac2e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-04T06:32:01Z",
+      "side": 1,
+      "message": "I am not sure if \"provely\" is a common word. Does it mean like \"provably\"?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "1be5b832b674a4df7e3d0a18af0b4582805624ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "871c0424_315f18ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-04T06:32:01Z",
+      "side": 1,
+      "message": "What is the reason for having this a closure?\n\n- it looks as if it is unneessary code duplication between the two tests.\n- However the function is not assured to work with (future) tests using other UI windows\n- Therefore exposing it as a package-private function is suboptimal.\n- lines 83--91 does similar amount of things without quoting out as a function. So it would be understandable that this is asserting input value from the UI node even without this function name.\n\nConsidering these balance, I thought of inlining these functions and call s.Fatal and s.Error directly, but I might be overlooking something.",
+      "revId": "1be5b832b674a4df7e3d0a18af0b4582805624ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4ffc26_8dba6d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-04T06:32:01Z",
+      "side": 1,
+      "message": "optional: s.Error(err) might be suffice if assertInputValue were to be invoked only once and/or the inner error already have enough information to describe the context.",
+      "revId": "1be5b832b674a4df7e3d0a18af0b4582805624ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
