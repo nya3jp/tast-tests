@@ -48,6 +48,40 @@
     },
     {
       "key": {
+        "uuid": "fa8ac56f_42706138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T02:40:35Z",
+      "side": 1,
+      "message": "Who is using cryptohome\u0027s getting system salt now? If not, it makes more sense to just remove it rather than using it for whitebox testing.",
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed930e55_eb389ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T02:40:35Z",
+      "side": 1,
+      "message": "as the previous comment by myself, please revisit the necessity of this part.",
+      "revId": "e42b57a452386cccf2034018b8ef1b941569ce57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a325f351_afaf5814",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
         "patchSetId": 1
