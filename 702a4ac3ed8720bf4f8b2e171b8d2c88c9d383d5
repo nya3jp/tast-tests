@@ -94,6 +94,30 @@
       "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c55135e_fab718ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-04T02:28:56Z",
+      "side": 1,
+      "message": "That\u0027s reasonable. Thanks!",
+      "parentUuid": "d50d19c9_bbf2f368",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "702a4ac3ed8720bf4f8b2e171b8d2c88c9d383d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
