@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "115850fc_b873ca40",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-04T19:23:20Z",
+      "side": 1,
+      "message": "no, it\u0027s passed to p11_replay",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 108
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437895f7_8253b889",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-04T19:23:20Z",
+      "side": 1,
+      "message": "p11_replay, not openssl",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 104
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
