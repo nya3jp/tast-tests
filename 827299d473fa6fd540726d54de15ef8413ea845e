@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8c294de_ce8e69e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-06-04T00:25:38Z",
+      "side": 1,
+      "message": "Can you explain what this is used for? That way if we ever need to revisit this decision, we know why we got it in.\n\nIs this ever used from userspace? The bug mentions \"Qualcomm drivers\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
