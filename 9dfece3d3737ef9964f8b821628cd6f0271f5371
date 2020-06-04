@@ -271,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "40b4f100_d7e49140",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-04T02:45:56Z",
+      "side": 1,
+      "message": "It looks good to me, but I\u0027m more interested in the \"check that the connection still works after changing powersave\" case. (I had a related comment in PS7) Maybe both worth to be added, and I\u0027m also OK with leaving TODOs for now if it is going to be a large change.",
+      "parentUuid": "e2c88082_81d7ff0b",
+      "revId": "9dfece3d3737ef9964f8b821628cd6f0271f5371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc3edc11_d7ad6b00",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 9
