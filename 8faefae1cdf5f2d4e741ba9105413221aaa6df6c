@@ -22,6 +22,30 @@
       "revId": "8faefae1cdf5f2d4e741ba9105413221aaa6df6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552fe820_8c6eea83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-04T18:01:34Z",
+      "side": 1,
+      "message": "Sure, good point. Done",
+      "parentUuid": "f3ce6933_d7b70bf5",
+      "range": {
+        "startLine": 158,
+        "startChar": 54,
+        "endLine": 158,
+        "endChar": 105
+      },
+      "revId": "8faefae1cdf5f2d4e741ba9105413221aaa6df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
