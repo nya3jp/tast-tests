@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac6da54_25d44724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "I\u0027m not seeing this flake on log issues on nyan_kitty",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a56c5d_488adf6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "I don\u0027t see this flaking on log issues on nyan_kitty. In fact, I think it can be promoted to critical right now",
+      "range": {
+        "startLine": 43,
+        "startChar": 23,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "979f4653_777ebf1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_kcrash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "I don\u0027t see this one flaking on nyan_kitty (or at all)",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba50d94_ed49af0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_lock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "Again, not seeing flakes on this test",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9365091_6f0cf5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_no_consent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "All the recent flakes here are on buddy and rikku not nyan_kitty",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa6a512_f3957e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_rate_limit.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-04T01:09:16Z",
+      "side": 1,
+      "message": "I don\u0027t think this test has had any recent flakes",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "afe769020949864c3baa53872835567e44adf109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
