@@ -70,6 +70,30 @@
       "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54b95be_b6b7354a",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T16:28:47Z",
+      "side": 1,
+      "message": "after implementing the on-disk snapshot solution, I found we lost too many benefits of using in-memory solution. For example, we didn\u0027t have to maintain the connection between snapshot maneger and the content because the snapshot is naturally isolated inside a manager, w/o being visible from other manager (or any other application); now we have to be careful not overriding other managers\u0027 snapshots. When any unexpected errors occur we also don\u0027t have to be worried about leaving side effect to DUT (i.e., the snapshot file leaving on the disk).\nSo, I decided to keep the in-memory solution, but make the system-level snapshot having a on-disk copy as well. I think this is the most robust way w/ least side effect.\n\nPTAL :)",
+      "parentUuid": "6e032659_d0438b76",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "3121b7915c4e341b5253a2e6460bc3d6d6399865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
