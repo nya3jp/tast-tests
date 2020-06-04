@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4b4cb51_76d79880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-04T17:02:17Z",
+      "side": 1,
+      "message": "In case of error, outputFile should not be used below.",
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10db2f03_1ff728b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
         "patchSetId": 4
@@ -41,6 +58,29 @@
         "startChar": 0,
         "endLine": 160,
         "endChar": 0
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78574cd5_c4835f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-04T17:02:17Z",
+      "side": 1,
+      "message": "style: as you\u0027re here, could you restyle?\n\no, err :\u003d a.BroadcastIntentGetData(...)\nif err !\u003d nil {\n  s.Fatal(...)\n}\nsnapshotTime, err :\u003d strconv.Atoi(o)\nif err !\u003d nil {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 4
       },
       "revId": "75b035489d086021a5869fd535d868c003cc00d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
