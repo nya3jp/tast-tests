@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package filemanager
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FilesAppZipPerf,
+		Func: ZipPerf,
 		Desc: "Measures performance for ZIP file operations",
 		Contacts: []string{
 			"jboulic@google.com",
@@ -41,7 +41,7 @@ func init() {
 	})
 }
 
-func FilesAppZipPerf(ctx context.Context, s *testing.State) {
+func ZipPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Open the test API.
@@ -80,7 +80,10 @@ func FilesAppZipPerf(ctx context.Context, s *testing.State) {
 		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
 			s.Fatalf("Failed to copy zip file to %s: %s", zipFileLocation, err)
 		}
+
+		// Remove zip files and extraction folders when the test finishes.
 		defer os.Remove(zipFileLocation)
+		defer os.RemoveAll(filepath.Join(filesapp.DownloadPath, zipBaseName))
 
 		// Add reading permission (-rw-r--r--).
 		os.Chmod(zipFileLocation, 0644)
