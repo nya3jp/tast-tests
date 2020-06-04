@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ce6933_d7b70bf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-04T16:52:50Z",
+      "side": 1,
+      "message": "I guess your intention is replacing the last extension, rather than replacing all the occurrences in it. If so\n\nstrings.TrimSuffix(f, filepath.Ext(f)) + \".bios_log\"\n\nis what you\u0027d need?",
+      "range": {
+        "startLine": 158,
+        "startChar": 54,
+        "endLine": 158,
+        "endChar": 105
+      },
+      "revId": "8faefae1cdf5f2d4e741ba9105413221aaa6df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
