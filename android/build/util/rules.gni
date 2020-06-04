@@ -84,8 +84,8 @@ template("process_resources") {
 #     unsigned_apk: A path ot output unsigned APK.
 
 template("compile_sources") {
-  javac_output_dir = "${target_gen_dir}/bin"
-  dex_dir = "${target_gen_dir}/dex"
+  javac_output_dir = "${target_gen_dir}/${target_name}_bin"
+  dex_dir = "${target_gen_dir}/${target_name}_dex"
 
   action(target_name) {
     forward_variables_from(invoker, [
