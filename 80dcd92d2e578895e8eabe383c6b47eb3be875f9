@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a953c82_f65ad532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-04T20:37:48Z",
+      "side": 1,
+      "message": "I failed to find other useful metrics.\n\nWe do have unlock animations around [1]. But we don\u0027t have any UMA for them. Do you want to add smoothness metrics to these animations and measure them here?\n\nOr what else should we capture?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:ash/wm/lock_state_controller.cc;l\u003d371?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F",
+      "revId": "80dcd92d2e578895e8eabe383c6b47eb3be875f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
