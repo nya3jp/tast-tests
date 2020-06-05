@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f051e210_da48fc5d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T15:13:32Z",
+      "side": 1,
+      "message": "nit:\n\nfor concistency, either use `ac.pkgName` or `ac.PackageName()` in both",
+      "range": {
+        "startLine": 179,
+        "startChar": 52,
+        "endLine": 179,
+        "endChar": 59
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c7025f_a482ed94",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T15:13:32Z",
+      "side": 1,
+      "message": "this could have an unwanted side-effect:\n\nStart:\nStart() activity starts an activity.\nAnd then waits until at least ONE window with the PackageName is visible.\nIf you launch a second activity (that belongs to that PackageName), WaitForVisible() will return true regardless of whether that window is visible (assuming the first activity is still visible).\n\nStop:\nIf you only have one activity, and you stop it, this CL will work Ok.\nHowever if you have two activities that belong to the same package, and you only want to stop one, Stop() will fail.\n\nThis is because the ash.Windows don\u0027t know about activities names, they only know about package names.\n(this is a long standing bug that we should fix).\n\n\nAFAIK, our tests are simple, and we are not launching more than one activity from the same package. But we shouldn\u0027t limit that. Or at least the API should be clear regarding what it does.\n\n\nOne possible solution is:\n\n  func Stop(...) error {\n     count \u003d numberOfWindowsWithPackageName(ac.PackageName())\n     Command(\"am force-stop\", ac.PackageName())\n     wait_until( numberOfWindowsWithPackageName()  \u003c count )\n  }",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363c36ce_a1275d7f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T15:13:32Z",
+      "side": 1,
+      "message": "nit:\n\"there is still a visible window\"  perhaps?",
+      "range": {
+        "startLine": 291,
+        "startChar": 46,
+        "endLine": 291,
+        "endChar": 56
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
