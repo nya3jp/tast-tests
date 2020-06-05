@@ -10,10 +10,11 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +25,7 @@ func init() {
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"android_p", "selinux", "chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
