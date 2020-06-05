@@ -16,6 +16,24 @@
       "revId": "795efb5a24c2e9f70f6387cf561507d3aef77d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2edb7c_2070a418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/files_app_test.png.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-06-05T02:37:43Z",
+      "side": 1,
+      "message": "Moved test files location on GCP.",
+      "parentUuid": "7ea08b71_55910988",
+      "revId": "795efb5a24c2e9f70f6387cf561507d3aef77d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
