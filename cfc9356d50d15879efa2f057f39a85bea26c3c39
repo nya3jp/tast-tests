@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "848c1197_b7a8f754",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b2fb337_12c5e59c",
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f50ce5fa_26a4b481",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
         "patchSetId": 2
@@ -166,6 +184,30 @@
       "side": 1,
       "message": "According to the standard: \"A SSID field of length 0 is used within Probe Request frames to indicate the wildcard SSID.\" So we\u0027re filtering wildcard or SSID of the AP, although we usually only see the former as the network is not configured as hidden.",
       "parentUuid": "f50ce5fa_26a4b481",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1109c612_50c04163",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:38:49Z",
+      "side": 1,
+      "message": "Thanks for explanation. Please move the explanation to a comment.",
+      "parentUuid": "3824684a_0f2055ef",
       "range": {
         "startLine": 123,
         "startChar": 8,
