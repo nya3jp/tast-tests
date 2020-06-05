@@ -144,6 +144,30 @@
       "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee332da7_c01c709a",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-05T10:02:53Z",
+      "side": 1,
+      "message": "I have tried ContextOutDir it before. It will return |!ok| on remote side.\nHave a quick dig into its cause, I found the test server will pass its |ctx| to remote here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/services/cros/network/wifi_service.pb.go;rcl\u003db08d318f117f7b2d81850d67f5c287152b2e6bbe;l\u003d777\n\nAnd the ctx will try retrieve the OutDir here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/context.go;rcl\u003ded6458d0726a1905ce26e6192714b34485da1e96;l\u003d40\n\nAnd the line |tc, ok :\u003d ctx.Value(testContextKey).(*TestContext)| failed I guess it\u0027s because the grpc pass the pointer to test server\u0027s memory space in ctx\u0027s Value to remote side which is meanless in remote side\u0027s memory space.\n\nSo I doubt the |ContextOutDir| is not fully implemented in remote test.",
+      "parentUuid": "484837dd_7f18553b",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
