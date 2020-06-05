@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed3ac53c_a719a5a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b80527_8c58dedf",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 499,
+        "endChar": 2
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "885874a8_96f7faaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "14e3cf6f_1aef3a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "885874a8_96f7faaf",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 38
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04312f26_115fbe56",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab5821b_99906d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04312f26_115fbe56",
+      "range": {
+        "startLine": 682,
+        "startChar": 57,
+        "endLine": 682,
+        "endChar": 61
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -114,6 +186,54 @@
       "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fc5c87_944f7ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b140a0_ae79c527",
+      "range": {
+        "startLine": 683,
+        "startChar": 3,
+        "endLine": 683,
+        "endChar": 12
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f84014b_b23ede56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e9b59f_8d76f059",
+      "range": {
+        "startLine": 683,
+        "startChar": 13,
+        "endLine": 683,
+        "endChar": 36
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
