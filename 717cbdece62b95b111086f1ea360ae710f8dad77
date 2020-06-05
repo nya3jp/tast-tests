@@ -22,6 +22,30 @@
       "revId": "717cbdece62b95b111086f1ea360ae710f8dad77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2182e6d_e8275932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:22:48Z",
+      "side": 1,
+      "message": "Thank you for pointing it out. How about disabling bgscan before establishing a connection?",
+      "parentUuid": "b0960a17_81f011bd",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 113
+      },
+      "revId": "717cbdece62b95b111086f1ea360ae710f8dad77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
