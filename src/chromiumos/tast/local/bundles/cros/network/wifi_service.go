@@ -297,6 +297,49 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	return &empty.Empty{}, nil
 }
 
+// AssureDisconnect assures that the WiFi service has disconnected within request.Timeout.
+// It waits for the service state to be idle.
+// This is the implementation of network.Wifi/AssureDisconnect gRPC.
+func (s *WifiService) AssureDisconnect(ctx context.Context, request *network.AssureDisconnectRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.AssureDisconnect")
+	defer st.End()
+
+	service, err := shill.NewService(ctx, dbus.ObjectPath(request.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+
+	// Spawn watcher before disconnect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	state, err := props.GetString(shill.ServicePropertyState)
+	if err != nil {
+		return nil, err
+	}
+
+	if state != shill.ServiceStateIdle {
+		testing.ContextLog(ctx, "Wait for the service to be idle")
+		timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(request.Timeout))
+		defer cancel()
+
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+			return nil, err
+		}
+	}
+
+	testing.ContextLog(ctx, "Disconnected")
+	return &empty.Empty{}, nil
+}
+
 // uint16sToUint32s converts []uint16 to []uint32.
 func uint16sToUint32s(s []uint16) []uint32 {
 	ret := make([]uint32, len(s))
