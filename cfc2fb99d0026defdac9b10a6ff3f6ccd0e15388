@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ab187a_435b35f0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-05T01:38:49Z",
+      "side": 1,
+      "message": "If c.deferLogin is false, it should return an error because ContinueLogin does not make sense. Actually the document of the method already says so :)",
+      "range": {
+        "startLine": 1112,
+        "startChar": 1,
+        "endLine": 1112,
+        "endChar": 18
+      },
+      "revId": "cfc2fb99d0026defdac9b10a6ff3f6ccd0e15388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
