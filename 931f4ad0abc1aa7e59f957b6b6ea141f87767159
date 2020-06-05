@@ -281,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "4d877df6_5379be9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-05T21:21:33Z",
+      "side": 1,
+      "message": "TargetBounds and BoundsInRoot may or may not be the same and that\u0027s expected. What\u0027s the reason why you want to check BoundsInRoot, not just TargetBounds?",
+      "parentUuid": "9c9ea6b1_900aa6d2",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
