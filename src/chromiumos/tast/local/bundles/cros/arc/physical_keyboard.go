@@ -75,7 +75,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		if err := act.Start(ctx, tconn); err != nil {
 			return errors.Wrapf(err, "failed to start the activity %q", activityName)
 		}
-		defer act.Stop(ctx)
+		defer act.Stop(ctx, tconn)
 
 		const (
 			fieldID  = "org.chromium.arc.testapp.keyboard:id/text"
