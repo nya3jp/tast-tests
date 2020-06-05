@@ -350,6 +350,9 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
 func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
+	if tf.curServicePath == "" {
+		return errors.New("the current WiFi service path is empty")
+	}
 	ctx, st := timing.Start(ctx, "tf.DisconnectWifi")
 	defer st.End()
 
@@ -360,6 +363,19 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	}
 	tf.curServicePath = ""
 	return err
+}
+
+// AssureDisconnect assures that the WiFi service has disconnected within timeout.
+func (tf *TestFixture) AssureDisconnect(ctx context.Context, timeout time.Duration) error {
+	req := &network.AssureDisconnectRequest{
+		ServicePath: tf.curServicePath,
+		Timeout:     timeout.Nanoseconds(),
+	}
+	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
+		return err
+	}
+	tf.curServicePath = ""
+	return nil
 }
 
 // QueryService queries shill service information.
