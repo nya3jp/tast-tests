@@ -141,6 +141,20 @@ func TestGen(t *testing.T) {
 				ftMode:  FTModeNone,
 			},
 			shouldFail: false,
+		}, {
+			// WPA3 is similar to WPA2.
+			factory: NewConfigFactory(
+				"chromeos",
+				Mode(ModePureWPA3),
+				Ciphers(CipherTKIP),
+			),
+			expected: &Config{
+				psk:     "chromeos",
+				mode:    ModePureWPA3,
+				ciphers: []Cipher{CipherTKIP},
+				ftMode:  FTModeNone,
+			},
+			shouldFail: false,
 		},
 	} {
 		conf, err := tc.factory.Gen()
@@ -185,6 +199,31 @@ func TestGet(t *testing.T) {
 				"wpa_pairwise":     "TKIP CCMP",
 				"rsn_pairwise":     "CCMP",
 				"wpa_key_mgmt":     "WPA-PSK",
+				"wpa_gmk_rekey":    "86400",
+				"wpa_group_rekey":  "86400",
+				"wpa_ptk_rekey":    "600",
+				"wpa_strict_rekey": "1",
+			},
+			verifyShill: map[string]interface{}{
+				"Passphrase": "chromeos",
+			},
+		}, {
+			// WPA3 mixed.
+			conf: &Config{
+				psk:            "chromeos",
+				mode:           ModeMixedWPA3,
+				ciphers:        []Cipher{CipherCCMP},
+				ftMode:         FTModeNone,
+				gmkRekeyPeriod: 86400,
+				gtkRekeyPeriod: 86400,
+				ptkRekeyPeriod: 600,
+				useStrictRekey: true,
+			},
+			verifyHostapd: map[string]string{
+				"wpa_passphrase":   "chromeos",
+				"wpa":              "2", // WPA3 is still RSN.
+				"wpa_pairwise":     "CCMP",
+				"wpa_key_mgmt":     "WPA-PSK SAE",
 				"wpa_gmk_rekey":    "86400",
 				"wpa_group_rekey":  "86400",
 				"wpa_ptk_rekey":    "600",
