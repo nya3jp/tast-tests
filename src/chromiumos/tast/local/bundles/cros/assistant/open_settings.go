@@ -39,6 +39,7 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
+	defer assistant.Disable(ctx, tconn)
 	s.Log("Waiting for Assistant to be ready to answer queries")
 	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for Libassistant to become ready: ", err)

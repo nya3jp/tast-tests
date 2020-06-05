@@ -36,6 +36,7 @@ func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
+	defer assistant.Disable(ctx, tconn)
 
 	// TODO(b/129896357): Replace the waiting logic once Libassistant has a reliable signal for
 	// its readiness to watch for in the signed out mode.
