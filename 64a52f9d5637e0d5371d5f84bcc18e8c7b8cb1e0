@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3946a8c_387f347e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T06:31:10Z",
+      "side": 0,
+      "message": "Are those change related to the CL subject?",
+      "revId": "64a52f9d5637e0d5371d5f84bcc18e8c7b8cb1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
