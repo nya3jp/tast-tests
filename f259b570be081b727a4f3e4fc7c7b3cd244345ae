@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "d3723b4f_33c20b8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-05T08:52:09Z",
+      "side": 1,
+      "message": "Right, then ignore my message.",
+      "parentUuid": "fb61fd31_40ac8364",
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "529e06cd_01f7d537",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 3
