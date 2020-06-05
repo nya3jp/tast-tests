@@ -72,15 +72,18 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {
 			s.Fatal("Failed to drag to the end point: ", err)
 		}
+		if err := cpu.WaitUntilIdle(ctx); err != nil {
+			s.Fatal("Failed waiting for CPU to become idle: ", err)
+		}
 		// Expecting 2 windows.
 		if err := checkWindowsNum(ctx, tconn, 2); err != nil {
 			s.Fatal("Wrong number of windows: ", err)
 		}
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
-		}
 		if err := mouse.Drag(ctx, tconn, end, start, time.Second); err != nil {
 			s.Fatal(err, "Failed to drag back to the start point: ", err)
+		}
+		if err := cpu.WaitUntilIdle(ctx); err != nil {
+			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 		// Expecting 1 window.
 		if err := checkWindowsNum(ctx, tconn, 1); err != nil {
