@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7dc244ea_987b0175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-05T01:17:28Z",
+      "side": 1,
+      "message": "My bad, this should be an error.",
+      "parentUuid": "a4b4cb51_76d79880",
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10db2f03_1ff728b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "75b035489d086021a5869fd535d868c003cc00d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da2b558_a1a90e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-05T01:17:28Z",
+      "side": 1,
+      "message": "My bad, this should be photo.",
+      "parentUuid": "10db2f03_1ff728b2",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c31dc196_ab58bf2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-05T01:17:28Z",
+      "side": 1,
+      "message": "It should be an error.",
+      "parentUuid": "c2264b17_64567231",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78574cd5_c4835f7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "75b035489d086021a5869fd535d868c003cc00d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e1aa76_8e8c2ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-05T01:17:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78574cd5_c4835f7e",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 4
+      },
+      "revId": "75b035489d086021a5869fd535d868c003cc00d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
