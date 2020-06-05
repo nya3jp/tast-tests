@@ -184,7 +184,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		if err := act.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed start app: ", err)
 		}
-		defer act.Stop(ctx)
+		defer act.Stop(ctx, tconn)
 		checkForResizable, err := act.Resizable(ctx)
 		if err != nil {
 			s.Fatal("Failed get the resizable info: ", err)

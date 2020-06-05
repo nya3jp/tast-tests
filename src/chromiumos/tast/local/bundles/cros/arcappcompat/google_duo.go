@@ -110,7 +110,7 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 			}
 			s.Log("App relaunched successfully")
 
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			// Take screenshot on failure.
 			defer func() {

@@ -109,7 +109,7 @@ func Roblox(ctx context.Context, s *testing.State) {
 			}
 			s.Log("App launched successfully")
 
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			defer func() {
 				if s.HasError() {
