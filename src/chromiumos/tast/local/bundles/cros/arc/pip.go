@@ -490,32 +490,13 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 // testPIPAutoPIPNewChromeWindow verifies that creating a new Chrome window that occludes an auto-PIP window will trigger PIP.
 func testPIPAutoPIPNewChromeWindow(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// Open a maximized Chrome window and close at the end of the test.
-	if err := tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-  chrome.windows.create({state: "maximized"}, () => {
-		if (chrome.runtime.lastError) {
-		  reject(new Error(chrome.runtime.lastError));
-		} else {
-		  resolve();
-		}
-	});
-});
-`, nil); err != nil {
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.windows.create)({state: "maximized"})`, nil); err != nil {
 		return errors.Wrap(err, "could not open maximized Chrome window")
 	}
-	defer tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-  chrome.windows.getLastFocused({}, (window) => {
-    chrome.windows.remove(window.id, () => {
-			if (chrome.runtime.lastError) {
-			  reject(new Error(chrome.runtime.lastError));
-			} else {
-			  resolve();
-			}
-		});
-	});
-});
-`, nil)
+	defer tconn.Call(ctx, nil, `async () => {
+	  let window = await tast.promisify(chrome.windows.getLastFocused)({});
+	  await tast.promisify(chrome.windows.remove)(window.id);
+	}`)
 
 	// Wait for MainActivity to enter PIP.
 	// TODO(edcourtney): Until we can identify multiple Android windows from the same package, just wait for

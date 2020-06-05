@@ -92,7 +92,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	defer tconn.Close()
 
 	var arcStartTimeMS float64
-	if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.getArcStartTime)()", &arcStartTimeMS); err != nil {
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.getArcStartTime)()", &arcStartTimeMS); err != nil {
 		return nil, errors.Wrap(err, "failed to run getArcStartTime()")
 	}
 

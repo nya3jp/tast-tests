@@ -1462,14 +1462,11 @@ func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage
 
 // setWallpaper setting given URL as ChromeOS wallpaper.
 func setWallpaper(ctx context.Context, tconn *chrome.TestConn, wallpaperURL string) error {
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.wallpaper.setWallpaper)({
-			url: '%s',
-			layout: 'STRETCH',
-			filename: 'test_wallpaper'
+	return tconn.Call(ctx, nil, `(url) => tast.promisify(chrome.wallpaper.setWallpaper)({
+		  url: url,
+		  layout: 'STRETCH',
+		  filename: 'test_wallpaper'
 		})`, wallpaperURL)
-	err := tconn.EvalPromise(ctx, expr, nil)
-	return err
 }
 
 // getWindowCaptionScreenshot returns a screenshot image of window caption bar.
