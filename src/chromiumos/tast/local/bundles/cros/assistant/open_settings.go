@@ -39,10 +39,14 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
+<<<<<<< HEAD   (725c64 tast-tests: return model name in parsing function)
 	s.Log("Waiting for Assistant to be ready to answer queries")
 	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for Libassistant to become ready: ", err)
 	}
+=======
+	defer assistant.Disable(ctx, tconn)
+>>>>>>> CHANGE (e4488d Tast: Stop Assistant after assistant tests)
 
 	// Run query to open the Settings window.
 	// assistant.SendTextQuery returns an error even when Settings launches successfully,
