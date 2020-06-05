@@ -121,7 +121,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 	if err := act.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to start the activity")
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	if err := ash.WaitForVisible(ctx, tconn, packageName); err != nil {
 		return errors.Wrap(err, "failed to wait for visible app")

@@ -67,7 +67,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the QuarterSizedWindowZooming activity: ", err)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to set tablet mode enabled to false: ", err)

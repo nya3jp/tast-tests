@@ -208,9 +208,9 @@ func PIP(ctx context.Context, s *testing.State) {
 					s.Errorf("%s test with tablet mode(%t) failed: %v", test.name, tabletMode, err)
 				}
 
-				must(pipAct.Stop(ctx))
+				must(pipAct.Stop(ctx, tconn))
 				if multiActivityPIP {
-					must(maPIPBaseAct.Stop(ctx))
+					must(maPIPBaseAct.Stop(ctx, tconn))
 				}
 			}
 		}
@@ -455,7 +455,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 	if err := settingAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
-	defer settingAct.Stop(ctx)
+	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the window will have an initial maximized state.
 	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
@@ -466,7 +466,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrap(err, "did not maximize")
 	}
 
-	if err := settingAct.Stop(ctx); err != nil {
+	if err := settingAct.Stop(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not stop Settings Activity while setting initial window state")
 	}
 

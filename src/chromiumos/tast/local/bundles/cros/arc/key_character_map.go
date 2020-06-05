@@ -62,7 +62,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start an activity: ", err)
 	}
-	defer act.Stop(cleanupCtx)
+	defer act.Stop(cleanupCtx, tconn)
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {

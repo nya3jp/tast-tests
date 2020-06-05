@@ -114,7 +114,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{"--ef", "DEVICE_SCALE_FACTOR", deviceScaleRatio.String()}); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	srcPoint := coords.Point{X: 450, Y: 150}
 	dstPoint := coords.Point{X: 150, Y: 150}
