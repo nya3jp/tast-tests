@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4061d74_23638f83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T04:33:12Z",
+      "side": 1,
+      "message": "restore",
+      "range": {
+        "startLine": 91,
+        "startChar": 24,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e163cdc1_1f3b9b94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T04:33:12Z",
+      "side": 1,
+      "message": "back to",
+      "range": {
+        "startLine": 91,
+        "startChar": 58,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56f3fab_0f1da34d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T04:33:12Z",
+      "side": 1,
+      "message": "I think if it is better we stop the background scan before the connection as Brian suggested in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2214851. WDYT?",
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50ce5fa_26a4b481",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T04:33:12Z",
+      "side": 1,
+      "message": "What\u0027s the case that the packete\u0027s SSID is empty? Why we want the packet?",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "cfc9356d50d15879efa2f057f39a85bea26c3c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
