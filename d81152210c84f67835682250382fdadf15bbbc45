@@ -16,6 +16,24 @@
       "revId": "d81152210c84f67835682250382fdadf15bbbc45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3ef615_cf734486",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-06-05T00:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b88f34f_4c1ede38",
+      "revId": "d81152210c84f67835682250382fdadf15bbbc45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
