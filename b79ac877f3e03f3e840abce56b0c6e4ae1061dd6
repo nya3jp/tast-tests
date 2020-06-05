@@ -22,6 +22,23 @@
       "revId": "b79ac877f3e03f3e840abce56b0c6e4ae1061dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700c81a9_fdb187ee",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T06:48:32Z",
+      "side": 1,
+      "message": "Also skip c.loginMode \u003d\u003d noLogin case\n\nAh, you skip noLogin case in c.logIn(). However, it is not that trivial. Either explicitly exclude the case here or at least adding a comment // c.logIn() is a no-op for c.loginMode \u003d\u003d noLogin case.",
+      "revId": "b79ac877f3e03f3e840abce56b0c6e4ae1061dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
