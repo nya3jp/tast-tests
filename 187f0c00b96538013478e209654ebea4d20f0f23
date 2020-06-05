@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5d3f48d2_4c48264c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-05T20:42:52Z",
+      "side": 1,
+      "message": "nit: \"wifi.PowerSave\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "478c801a_ee8f200e",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 18
