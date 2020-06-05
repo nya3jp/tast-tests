@@ -15,12 +15,16 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Servo holds the servod connection information.
 type Servo struct {
 	host string
 	port int
+
+	// If initialV4Role is set, then upon Servo.Close(), the V4Role control will be set to initialV4Role.
+	initialV4Role V4RoleValue
 }
 
 const (
@@ -40,7 +44,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 	if err != nil {
 		return nil, err
 	}
-	s := &Servo{host, port}
+	s := &Servo{host: host, port: port}
 
 	// Ensure Servo is set up properly before returning.
 	return s, s.verifyConnectivity(ctx)
@@ -91,4 +95,15 @@ func parseConnSpec(c string) (host string, port int, err error) {
 	}
 
 	return "", 0, errors.Errorf("got invalid connection spec %q", c)
+}
+
+// Close performs Servo cleanup.
+func (s *Servo) Close(ctx context.Context) error {
+	if s.initialV4Role != "" {
+		testing.ContextLogf(ctx, "Restoring %q to %q", V4Role, s.initialV4Role)
+		if err := s.SetV4Role(ctx, s.initialV4Role); err != nil {
+			return errors.Wrapf(err, "restoring servo control %q to %q", V4Role, s.initialV4Role)
+		}
+	}
+	return nil
 }

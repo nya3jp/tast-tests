@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -23,6 +24,7 @@ const (
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
+	V4Role               StringControl = "servo_v4_role"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -75,6 +77,15 @@ const (
 	USBMuxOff  USBMuxState = "off"
 	USBMuxDUT  USBMuxState = "dut_sees_usbkey"
 	USBMuxHost USBMuxState = "servo_sees_usbkey"
+)
+
+// A V4RoleValue is a string that would be accepted by the V4Role control.
+type V4RoleValue string
+
+// These are the string values that can be passed to V4Role.
+const (
+	V4RoleSnk V4RoleValue = "snk"
+	V4RoleSrc V4RoleValue = "src"
 )
 
 // Echo calls the Servo echo method.
@@ -219,4 +230,29 @@ func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error 
 		return nil
 	}
 	return s.SetString(ctx, PowerState, string(value))
+}
+
+// SetV4Role sets the V4Role control for a servo v4.
+// On a Servo version other than v4, this does nothing.
+func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
+	version, err := s.GetServoVersion(ctx)
+	if err != nil {
+		return errors.Wrap(err, "getting servo version")
+	}
+	if !strings.HasPrefix(version, "servo_v4") {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q on servo with version %q", V4Role, value, version)
+		return nil
+	}
+	curr, err := s.GetString(ctx, V4Role)
+	if err != nil {
+		return err
+	}
+	if s.initialV4Role == "" {
+		s.initialV4Role = V4RoleValue(curr)
+	}
+	if curr == string(value) {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q, because that is the current value", V4Role, value)
+		return nil
+	}
+	return s.SetString(ctx, V4Role, string(value))
 }
