@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "14bf1bf7_c654bbdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-05T01:39:59Z",
+      "side": 1,
+      "message": "Animation itself shouldn\u0027t affect the window state, as long as you use the target bounds when checking. Is there other reasons why we want to wait for animation?\n\nIt can affect the desktop mode (clamshell \u003c\u003e tablet) though, but I believe that\u0027s not the case.",
+      "parentUuid": "7f3d24c9_d40381ea",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
