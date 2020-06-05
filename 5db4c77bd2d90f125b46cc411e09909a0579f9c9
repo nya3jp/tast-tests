@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e14298e8_abefba3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-05T18:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "947149e2_cf9649c6",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45ca2ecc_c05ba58b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8def54_0f3a2dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-05T18:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ca2ecc_c05ba58b",
+      "range": {
+        "startLine": 55,
+        "startChar": 76,
+        "endLine": 55,
+        "endChar": 77
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d742b639_d64c6e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-05T18:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ca369a_23c8f57c",
+      "range": {
+        "startLine": 64,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbe7d81d_6ec9b263",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12ede4a_89c1f060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-05T18:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe7d81d_6ec9b263",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "5db4c77bd2d90f125b46cc411e09909a0579f9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
