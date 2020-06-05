@@ -22,6 +22,30 @@
       "revId": "f23da352ef5a4e3e481a11882efeebb06beea40c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07945b8b_adf9bf61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-05T00:42:15Z",
+      "side": 1,
+      "message": "Sure do.",
+      "parentUuid": "965d25a5_70fecfad",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "f23da352ef5a4e3e481a11882efeebb06beea40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
