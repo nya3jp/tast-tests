@@ -370,6 +370,24 @@ func init() {
 					},
 				},
 			}, {
+				// Verifies that DUT can connect to an AP in WPA3-SAE ("pure") mode. WiFi alliance requires PMF in this mode.
+				Name:      "wpa3",
+				ExtraAttr: []string{"wificell_unstable"},
+				// TODO(crbug.com/1070299): not all WiFi chips support SAE. Implement hwdep to skip pure-WPA3 tests on such devices.
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{
+							ap.Mode(ap.Mode80211acMixed), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
+							ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
+							ap.PMF(ap.PMFRequired),
+						},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA3),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
 				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
 				Name: "wpavht80",
 				Val: []simpleConnectTestcase{
