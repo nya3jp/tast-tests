@@ -16,6 +16,24 @@
       "revId": "64a52f9d5637e0d5371d5f84bcc18e8c7b8cb1e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03bb552a_f8854f89",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T07:27:03Z",
+      "side": 0,
+      "message": "This is added back. it was deleted by mistake. Thanks for pointing out this.",
+      "parentUuid": "c3946a8c_387f347e",
+      "revId": "64a52f9d5637e0d5371d5f84bcc18e8c7b8cb1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
