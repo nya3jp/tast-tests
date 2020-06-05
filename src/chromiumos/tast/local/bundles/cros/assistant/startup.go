@@ -33,4 +33,5 @@ func Startup(ctx context.Context, s *testing.State) {
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
+	defer assistant.Disable(ctx, tconn)
 }
