@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3278e69b_ce41421e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T02:16:49Z",
+      "side": 1,
+      "message": "s.Error() does not terminate the test, so the current code still accesses outputFile on err.\n\nClar: do you need to continue the following procedure even if this failed?\n\nIf not, you can just use s.Fatal(), so the test will be immediately terminated in case of err.\n\nIf so, you\u0027d need some structure to skip the code at least L149-L159, in case of this err. (ditto for not accessing fileSize at L157, if L152 returns err).\nThere\u0027s several ways, I think. Trying to use nested if statements, or you may want to introduce an anonymous function to wrap, so that it can use return to exist from the scope.",
+      "revId": "6b6e1dc34e52a27fe57ebe1eab5ab2d34075999a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
