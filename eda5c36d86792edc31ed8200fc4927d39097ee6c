@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5d8cfc40_8be32de3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T17:59:06Z",
+      "side": 1,
+      "message": "Any my proposal might fail with race conditions (what if you decide to stop or start two activities at the same time (?)",
+      "parentUuid": "8dd44e9a_bb5d2580",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "363c36ce_a1275d7f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
