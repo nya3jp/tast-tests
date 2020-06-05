@@ -86,7 +86,10 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 
 // Close closes the proxy's SSH connection if present.
 func (p *Proxy) Close(ctx context.Context) {
-	p.svo = nil
+	if p.svo != nil {
+		p.svo.Close(ctx)
+		p.svo = nil
+	}
 	if p.fwd != nil {
 		p.fwd.Close()
 		p.fwd = nil
