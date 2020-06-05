@@ -43,6 +43,7 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for Libassistant to become ready: ", err)
 	}
+	defer assistant.Disable(ctx, tconn)
 
 	// Run query to open the Settings window.
 	// assistant.SendTextQuery returns an error even when Settings launches successfully,
