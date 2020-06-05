@@ -70,6 +70,30 @@
       "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b10aee_dd0155ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-06-05T14:36:41Z",
+      "side": 1,
+      "message": "I understand the goal is to \"just\" pass the test, but that\u0027s not the way we try to do things in Chrome OS. Documentation is important, and documenting these things is important. If, in the future, we discover a security bug in this protocol, we want to know why we added it.\n\nAnd please add the explanation to the code, not the CL comment, so that folks don\u0027t need to git blame the file to find the explanation.",
+      "parentUuid": "614ba3b4_932cebe7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
