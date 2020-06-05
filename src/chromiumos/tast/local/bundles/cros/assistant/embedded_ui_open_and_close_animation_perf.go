@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package assistant
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AssistantEmbeddedUIOpenAndCloseAnimationPerf,
+		Func:         EmbeddedUIOpenAndCloseAnimationPerf,
 		Desc:         "Measures the smoothness of the embedded UI open and close animation",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -56,7 +56,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-func AssistantEmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
+func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -66,6 +66,7 @@ func AssistantEmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testin
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
+	defer assistant.Disable(ctx, tconn)
 
 	// Ensures the test only run under the clamshell mode.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package assistant
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AssistantVolumeQueries,
+		Func:         VolumeQueries,
 		Desc:         "Tests setting and increasing volume actions via Assistant",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -28,24 +28,18 @@ func init() {
 	})
 }
 
-func AssistantVolumeQueries(ctx context.Context, s *testing.State) {
+func VolumeQueries(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// Starts Assistant service.
-	if err := assistant.Enable(ctx, tconn); err != nil {
+	// Enable the Assistant and wait for the ready signal.
+	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-
-	// TODO(b/129896357): Replace the waiting logic once Libassistant has a reliable signal for
-	// its readiness to watch for in the signed out mode.
-	s.Log("Waiting for Assistant to be ready to answer queries")
-	if err := assistant.WaitForServiceReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Libassistant to become ready: ", err)
-	}
+	defer assistant.Disable(ctx, tconn)
 
 	// Verifies the output stream nodes exist and are active before testing the volume queries.
 	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {

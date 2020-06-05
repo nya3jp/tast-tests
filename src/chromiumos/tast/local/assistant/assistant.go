@@ -8,11 +8,9 @@ package assistant
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // QueryResponse contains a subset of the results returned from the Assistant server
@@ -37,6 +35,11 @@ func Enable(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, true, 10*1000 /* timeout_ms */)
 }
 
+// Disable stops the Google Assistant service and returns any errors.
+func Disable(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, false, 10*1000 /* timeout_ms */)
+}
+
 // EnableAndWaitForReady brings up Google Assistant service, waits for
 // NEW_READY signal and returns any errors.
 func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
@@ -48,16 +51,6 @@ func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (Q
 	var status QueryStatus
 	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 10*1000 /* timeout_ms */)
 	return status, err
-}
-
-// WaitForServiceReady checks the Assistant service readiness after enabled by waiting
-// for a simple query interaction being completed successfully. Before b/129896357 gets
-// resolved, it should be used to verify the service status before the real test starts.
-func WaitForServiceReady(ctx context.Context, tconn *chrome.TestConn) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := SendTextQuery(ctx, tconn, "1+1=")
-		return err
-	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
