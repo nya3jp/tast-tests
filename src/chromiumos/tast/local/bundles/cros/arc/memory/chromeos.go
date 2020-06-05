@@ -11,9 +11,6 @@ package memory
 import (
 	"container/list"
 	"context"
-	"io/ioutil"
-	"regexp"
-	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -116,62 +113,6 @@ func min(x, y int) int {
 	return y
 }
 
-var zoneinfoRE = regexp.MustCompile(`(?m)^Node +\d+, +zone +[^ ]+
-(?:(?: +pages free +(\d+)
- +min +(\d+)
- +low +(\d+)
-)|(?: +.*
-))*`)
-
-// readMinDistanceToZoneMin reads the smallest distance between a zone's free
-// count and its min watermark. Small or empty zones are ignored.
-// returns the distance in MiB.
-func readMinDistanceToZoneMin() (int, error) {
-	const zoneInfoFile = "/proc/zoneinfo"
-	data, err := ioutil.ReadFile(zoneInfoFile)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to open zoneinfo")
-	}
-
-	matches := zoneinfoRE.FindAllStringSubmatch(string(data), -1)
-	if matches == nil {
-		return 0, errors.Wrap(err, "failed to parse zoneinfo")
-	}
-
-	distance := 0
-	found := false
-	for _, match := range matches {
-		free, err := strconv.ParseUint(match[1], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone free")
-		}
-		minWatermark, err := strconv.ParseUint(match[2], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone min")
-		}
-		lowWatermark, err := strconv.ParseUint(match[3], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone low")
-		}
-		// Ignore small or empty zones, we don't want to throttle allocations
-		// based on a small distance from a small or empty zone.
-		const smallZoneLimit = 1000
-		if lowWatermark > smallZoneLimit {
-			if !found {
-				distance = int(free - minWatermark)
-				found = true
-			} else {
-				distance = min(distance, int(free-minWatermark))
-			}
-		}
-	}
-	if !found {
-		return 0, errors.Wrap(err, "no non-empty zones found")
-	}
-	const pagesPerMiB = (1024 * 1024) / 4096
-	return distance / pagesPerMiB, nil
-}
-
 const (
 	oomKillMessage   = "Out of memory: Kill process"
 	oomSyslogTimeout = 10 * time.Second
@@ -217,7 +158,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to read available")
 		}
-		aboveMin, err := readMinDistanceToZoneMin()
+		aboveMin, err := memory.ReadMinDistanceToZoneMin()
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to read distance above zone min threshold")
 		}
@@ -228,11 +169,12 @@ func (c *ChromeOSAllocator) AllocateUntil(
 		// try to allocate at once.
 		const allocAvailableDivisor = 10
 		const bytesInMiB = 1024 * 1024
-		if available >= margin && aboveMin/aboveMinDivisor > 0 {
+		aboveMinMB := aboveMin / bytesInMiB
+		if available >= margin && aboveMinMB/aboveMinDivisor > 0 {
 			// Limit buffer size to be a fraction of available memory, and also
 			// a fraction of the free memory in the most depleted zone.
 			bufferSize := max(int(available-margin)/allocAvailableDivisor, 1)
-			bufferSize = min(bufferSize, int(aboveMin/aboveMinDivisor))
+			bufferSize = min(bufferSize, int(aboveMinMB/aboveMinDivisor))
 			err = c.Allocate(bufferSize * bytesInMiB)
 			if err != nil {
 				return nil, errors.Wrap(err, "unable to allocate")

@@ -29,9 +29,10 @@ type MemoryStressTask struct {
 	conn *chrome.Conn
 }
 
-var errStillCritical = errors.New("memory still critical")
+var errMemoryStillLow = errors.New("memory still critical")
 
-func memoryNotCritical(_ctx context.Context) error {
+func memoryNotLow(ctx context.Context) error {
+	// First, check that ChromeOS available memory is above the critical margin.
 	margin, err := memory.CriticalMargin()
 	if err != nil {
 		return err
@@ -41,7 +42,16 @@ func memoryNotCritical(_ctx context.Context) error {
 		return err
 	}
 	if available < margin {
-		return errStillCritical
+		return errMemoryStillLow
+	}
+
+	// Next, check that all memory zones are above the low watermark.
+	anyLow, err := memory.AnyZoneLow()
+	if err != nil {
+		return err
+	}
+	if anyLow {
+		return errMemoryStillLow
 	}
 	return nil
 }
@@ -63,8 +73,8 @@ func (st *MemoryStressTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	}
 
 	// Wait until memory is not critical.
-	if err := testing.Poll(ctx, memoryNotCritical, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
-		if errors.Is(err, errStillCritical) {
+	if err := testing.Poll(ctx, memoryNotLow, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+		if errors.Is(err, errMemoryStillLow) {
 			testing.ContextLogf(ctx, "Memory still critical after memory stress task %q", st.url)
 			return nil
 		}
