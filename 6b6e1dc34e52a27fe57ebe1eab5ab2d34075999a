@@ -16,6 +16,24 @@
       "revId": "6b6e1dc34e52a27fe57ebe1eab5ab2d34075999a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e98ff2_433e859c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-05T02:42:39Z",
+      "side": 1,
+      "message": "Done\n\nThe `s.Error()` was on purpose here.\n\nThere is currently a bug in either ARCVM or the camera app, where the first snapshot always fails. It would be useful to nevertheless keep the test running, so that I can at least take a look at the logs manually if necessary, to see if the other snapshots succeeded.",
+      "parentUuid": "3278e69b_ce41421e",
+      "revId": "6b6e1dc34e52a27fe57ebe1eab5ab2d34075999a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
