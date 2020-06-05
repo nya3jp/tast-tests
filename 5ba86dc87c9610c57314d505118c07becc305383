@@ -46,6 +46,29 @@
       "revId": "5ba86dc87c9610c57314d505118c07becc305383",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02254487_4ab5d40d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_cros_deploy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-06-05T00:54:17Z",
+      "side": 1,
+      "message": "define these as constant somewhere. also the one for files.",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "5ba86dc87c9610c57314d505118c07becc305383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
