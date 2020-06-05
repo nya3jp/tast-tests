@@ -17,6 +17,7 @@ import (
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/servo"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -40,7 +41,7 @@ func CheckBootMode(ctx context.Context, utils fwpb.UtilsServiceClient, bootMode 
 
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client from the DUT's RPC server.
-func RebootToMode(ctx context.Context, d *dut.DUT, utils fwpb.UtilsServiceClient, toMode fwCommon.BootMode) error {
+func RebootToMode(ctx context.Context, d *dut.DUT, svo *servo.Servo, utils fwpb.UtilsServiceClient, toMode fwCommon.BootMode) error {
 	res, err := utils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "calling CurrentBootMode rpc")
@@ -58,6 +59,11 @@ func RebootToMode(ctx context.Context, d *dut.DUT, utils fwpb.UtilsServiceClient
 		default:
 			return errors.Errorf("unsupported firmware boot mode transition %s>%s", fromMode, toMode)
 		}
+	case fwCommon.BootModeRecovery:
+		if err := svo.SetV4RoleToSnkDeferSetback(ctx); err != nil {
+			return err
+		}
+		return errors.Errorf("unsupported firmware boot mode transition to %s", toMode)
 	default:
 		return errors.Errorf("unsupported firmware boot mode transition to %s", toMode)
 	}

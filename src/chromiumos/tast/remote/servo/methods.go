@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -22,6 +23,7 @@ const (
 	FWWPState            StringControl = "fw_wp_state"
 	ImageUSBKeyDirection StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
+	V4Role               StringControl = "servo_v4_role"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -60,6 +62,15 @@ const (
 	USBMuxOff  USBMuxState = "off"
 	USBMuxDUT  USBMuxState = "dut_sees_usbkey"
 	USBMuxHost USBMuxState = "servo_sees_usbkey"
+)
+
+// A V4RoleValue is a string that would be accepted by the V4Role control.
+type V4RoleValue string
+
+// These are the string values that can be passed to V4Role.
+const (
+	V4RoleSnk V4RoleValue = "snk"
+	V4RoleSrc V4RoleValue = "src"
 )
 
 // Echo calls the Servo echo method.
@@ -132,6 +143,11 @@ func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, va
 	return nil
 }
 
+// DeferSetString defers setting a string control until Servo.Close().
+func (s *Servo) DeferSetString(control StringControl, value string) {
+	s.Defer(newCall("set", string(control), value))
+}
+
 // KeypressWithDuration sets a KeypressControl to a KeypressDuration value.
 func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {
 	return s.SetString(ctx, StringControl(control), string(value))
@@ -187,4 +203,25 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 		}
 	}
 	return nil
+}
+
+// SetV4Role sets the V4Role control for a servo v4.
+// On a Servo version other than v4, this does nothing.
+func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
+	version, err := s.GetServoVersion(ctx)
+	if err != nil {
+		return errors.Wrap(err, "getting servo version")
+	}
+	if !strings.HasPrefix(version, "servo_v4") {
+		testing.ContextLogf(ctx, "Skipping setting %q to %q on servo with version %q", V4Role, value, version)
+		return nil
+	}
+	return s.SetStringAndCheck(ctx, V4Role, string(value))
+}
+
+// SetV4RoleToSnkDeferSetback sets the V4Role to Snk, and defers until s.Close() a call to set the V4Role to Src.
+func (s *Servo) SetV4RoleToSnkDeferSetback(ctx context.Context) error {
+	err := s.SetV4Role(ctx, V4RoleSnk)
+	s.Defer(newCall("set", string(V4Role), string(V4RoleSrc)))
+	return err
 }
