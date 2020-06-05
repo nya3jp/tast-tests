@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b80527_8c58dedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:36:06Z",
+      "side": 1,
+      "message": "Can use \n_, _, netIf, err :\u003d s.wifiIfaceDev(ctx)",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 499,
+        "endChar": 2
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "885874a8_96f7faaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:36:06Z",
+      "side": 1,
+      "message": "Can be merged:\nm, dev, _, err :\u003d s.wifiIfaceDev(ctx)",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 38
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04312f26_115fbe56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:36:06Z",
+      "side": 1,
+      "message": "a WiFi",
+      "range": {
+        "startLine": 682,
+        "startChar": 57,
+        "endLine": 682,
+        "endChar": 61
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e9b59f_8d76f059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:36:06Z",
+      "side": 1,
+      "message": "within 5 seconds.",
+      "range": {
+        "startLine": 683,
+        "startChar": 13,
+        "endLine": 683,
+        "endChar": 36
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b140a0_ae79c527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T07:36:06Z",
+      "side": 1,
+      "message": "\"to be available\" can be omitted.",
+      "range": {
+        "startLine": 683,
+        "startChar": 3,
+        "endLine": 683,
+        "endChar": 12
+      },
+      "revId": "1f8c91bbb72794e7bb61b6d3251d38a497493b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
