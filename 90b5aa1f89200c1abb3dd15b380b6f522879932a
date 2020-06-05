@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "143cd9b6_74c79986",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "The packet should be dropped if it returns false.",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c434302f_51cc629b",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "check() is given.",
+      "range": {
+        "startLine": 26,
+        "startChar": 61,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c02e41f_11bc155b",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "The design of TypeFulter is great!",
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55fe7109_891229a1",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "What does it mean? I don\u0027t see the packets are written to a pcap file.",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 69
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e810b0e_151c37bf",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "Maybe we can have a Passfilters() so that it can be:\nif PassFilters(p, filters) {\n  ret \u003d append(ret, p)\n}",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73817893_448ada68",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T03:15:25Z",
+      "side": 1,
+      "message": "packet index",
+      "range": {
+        "startLine": 83,
+        "startChar": 53,
+        "endLine": 83,
+        "endChar": 55
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
