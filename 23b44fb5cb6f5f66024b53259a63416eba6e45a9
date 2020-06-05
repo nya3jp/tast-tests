@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "219e1ef8_a5b9eb2b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-05T04:49:10Z",
+      "side": 1,
+      "message": "nit: It might be more friendly to users to describe the error in public API language rather than internal state.\n\ne.g. \"ContinueLogin can be called just once when DeferLogin option is used\"",
+      "range": {
+        "startLine": 1113,
+        "startChar": 9,
+        "endLine": 1113,
+        "endChar": 86
+      },
+      "revId": "23b44fb5cb6f5f66024b53259a63416eba6e45a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
