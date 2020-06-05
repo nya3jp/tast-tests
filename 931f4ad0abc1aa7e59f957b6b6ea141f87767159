@@ -185,6 +185,24 @@
     },
     {
       "key": {
+        "uuid": "403d60ee_67fcf454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T02:34:48Z",
+      "side": 1,
+      "message": "oshima: that was the only reason.\n\nboth approaches SGTM:\n\n- jun\u0027s idea of checking for w.IsAnimating as well\n- or oshima\u0027s: checking for TargetBounds",
+      "parentUuid": "14bf1bf7_c654bbdb",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
