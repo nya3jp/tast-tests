@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4666e7e9_17dab540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aaad580_9c70b733",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa6a7b8_f71d197d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c37339_34818fd6",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bed7832_1518e73c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "dbaff6c0_1e0f9051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bed7832_1518e73c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afd127f3_f8440748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916ddf4a_04d6d308",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "395439c2_8d83f609",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6ca4916b_647b14ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395439c2_8d83f609",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8688f_5f59dbbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -131,6 +251,24 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f22db99_ca562ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8688f_5f59dbbf",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,48 @@
     },
     {
       "key": {
+        "uuid": "0dd87b1e_55ac5f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9bb51a6_ddf3479d",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161d1dc1_c052b8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e15670_42a4d541",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db317f98_ea8250d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -194,6 +374,30 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfa95a9_6857a946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db317f98_ea8250d9",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "f383edb0_3105bb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13b912c_e6ec79c1",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 54
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f151043_1d611ec1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "5bfec22a_048187d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f151043_1d611ec1",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab3c575_59148117",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -257,6 +509,24 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eab5a5c_e8dce739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab3c575_59148117",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "3548f934_92760501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c422229a_79c3b672",
+      "range": {
+        "startLine": 79,
+        "startChar": 17,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae6fe5af_595ff397",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -297,6 +591,24 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ddcb3f_c91dfd66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Explain the value format in comment.",
+      "parentUuid": "ae6fe5af_595ff397",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -317,6 +629,24 @@
     },
     {
       "key": {
+        "uuid": "d9457086_bb75cffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e46f186a_5224eb34",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b3aa5a5_eb64d620",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -334,6 +664,24 @@
     },
     {
       "key": {
+        "uuid": "4c6bf77f_bd8a46a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b3aa5a5_eb64d620",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfa7aea5_cb20b320",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -348,6 +696,24 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cb7754_66be086f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Change to a simpler function signature.",
+      "parentUuid": "dfa7aea5_cb20b320",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +740,30 @@
     },
     {
       "key": {
+        "uuid": "f31d4949_ad13a4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519f2e9c_a6b81c91",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d57ea99_13a84dd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -397,6 +787,30 @@
     },
     {
       "key": {
+        "uuid": "d7173751_5f14238b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d57ea99_13a84dd8",
+      "range": {
+        "startLine": 126,
+        "startChar": 18,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1974237c_94f80bd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -417,6 +831,30 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392c5969_8e7ab421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1974237c_94f80bd9",
+      "range": {
+        "startLine": 137,
+        "startChar": 26,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -460,6 +898,30 @@
     },
     {
       "key": {
+        "uuid": "7554d254_567d64b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Yes, we need to verify the stream is created during the App performs recording.\nTested that if we move it to L164, the stream can not be detected.",
+      "parentUuid": "088c9e83_d9c30ae0",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 4
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a621238_aceec068",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 4
@@ -480,6 +942,30 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1018bbb_6bcdfd85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a621238_aceec068",
+      "range": {
+        "startLine": 164,
+        "startChar": 26,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -530,6 +1016,30 @@
     },
     {
       "key": {
+        "uuid": "37a031a4_b2364575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4e5fd3_b7d5ea18",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9482ce16_a412e119",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
         "patchSetId": 4
@@ -553,6 +1063,54 @@
     },
     {
       "key": {
+        "uuid": "dfdefeef_78f6ac46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9482ce16_a412e119",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709bd560_aefe27d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9482ce16_a412e119",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fb081d6_205e94de",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
         "patchSetId": 4
@@ -567,6 +1125,42 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba643009_6a6978c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb081d6_205e94de",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5be889c5_5509b881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb081d6_205e94de",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -617,6 +1211,54 @@
     },
     {
       "key": {
+        "uuid": "9820b206_c2f7b4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe24c79_c1ec96a0",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34aa67e4_9da4dcba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe24c79_c1ec96a0",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f2103c9_1af0afae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
         "patchSetId": 4
@@ -637,6 +1279,30 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b53d53_a3ee69fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Fixed comment and moved it to audio/audio.go",
+      "parentUuid": "1f2103c9_1af0afae",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -663,6 +1329,30 @@
     },
     {
       "key": {
+        "uuid": "101563b5_a4cbb061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Fixed name and moved it to audio/audio.go",
+      "parentUuid": "557aa4d5_1af95e07",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e35afcd8_76d406e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
         "patchSetId": 4
@@ -677,6 +1367,24 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fcb21e5_7df30c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e35afcd8_76d406e9",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -697,6 +1405,42 @@
     },
     {
       "key": {
+        "uuid": "f71e4bea_3b0cb1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a521d918_6becce48",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf6214ba_55840e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a521d918_6becce48",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffdbd1a6_ff86b8d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
         "patchSetId": 4
@@ -711,6 +1455,42 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7525d93_7cc09d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdbd1a6_ff86b8d8",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37987e03_2481f0a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdbd1a6_ff86b8d8",
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -734,6 +1514,54 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab15a7b1_a13c1bbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d733db2f_39d2c62f",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6114232d_bb32e005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d733db2f_39d2c62f",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -780,6 +1608,54 @@
       "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1000d35_c6204937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc4ca4c_4014a735",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "551e1fbc_4a5b154a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-06-05T04:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85e7568_49b2eb2d",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "4c971fe51c5278070d90fc90656a6591f46b7a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
