@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6cab599a_767d75dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T01:27:43Z",
+      "side": 1,
+      "message": "This is a little tricky, this assertion is not based on expecting for some values and receiving something else. It compares two rectangles to make sure the height in fullscreen is greater than maximize and other values are not changed. got/want style is more for cases that something is expected but we got something else, so I am not sure how to show that. Please advice.",
+      "parentUuid": "56d51113_ee4205f6",
+      "range": {
+        "startLine": 135,
+        "startChar": 47,
+        "endLine": 135,
+        "endChar": 100
+      },
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "005aa1d6_4aafb567",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
