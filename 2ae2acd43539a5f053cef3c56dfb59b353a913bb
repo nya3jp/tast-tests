@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60c98344_da7ad210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-05T17:44:24Z",
+      "side": 1,
+      "message": "any reason for the change from 1000 to 500 small files?",
+      "range": {
+        "startLine": 218,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 39
+      },
+      "revId": "2ae2acd43539a5f053cef3c56dfb59b353a913bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
