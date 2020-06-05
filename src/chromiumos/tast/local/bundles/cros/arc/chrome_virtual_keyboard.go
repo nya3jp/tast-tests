@@ -55,7 +55,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -134,7 +134,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	// Make sure that the virtual keyboard is hidden now. It is the precondition of this test.
 	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
@@ -250,7 +250,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	editText := d.Object(ui.ID(editTextID))
 	if err := editText.WaitForExists(ctx, 30*time.Second); err != nil {

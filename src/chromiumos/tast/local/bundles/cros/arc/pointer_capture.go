@@ -69,7 +69,7 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 		if err := act.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start an activity: ", err)
 		}
-		defer act.Stop(ctx)
+		defer act.Stop(ctx, tconn)
 
 		if err := ash.WaitForVisible(ctx, tconn, motioninput.Package); err != nil {
 			s.Fatal("Failed to wait for activity to be visible: ", err)

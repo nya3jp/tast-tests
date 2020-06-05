@@ -157,7 +157,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			}
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
-		if err := act.Stop(ctx); err != nil {
+		if err := act.Stop(ctx, tconn); err != nil {
 			s.Fatal("Failed to stop activity: ", err)
 		}
 	}
@@ -188,7 +188,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 	}
-	if err := act.Stop(ctx); err != nil {
+	if err := act.Stop(ctx, tconn); err != nil {
 		s.Fatal("Failed to stop context: ", err)
 	}
 
@@ -211,7 +211,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		}
 		s.Error("Window shadow test failed: ", err)
 	}
-	if err := shadowAct.Stop(ctx); err != nil {
+	if err := shadowAct.Stop(ctx, tconn); err != nil {
 		s.Fatal("Could not stop resize activity: ", err)
 	}
 
@@ -224,7 +224,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
 	defer func() {
-		if err := resizeAct.Stop(ctx); err != nil {
+		if err := resizeAct.Stop(ctx, tconn); err != nil {
 			s.Fatal("Could not stop resize activity: ", err)
 		}
 	}()
@@ -948,7 +948,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	if err := settingAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
-	defer settingAct.Stop(ctx)
+	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the setting window will have an initial maximized state.
 	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {

@@ -115,7 +115,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := firstAct.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start the activity: ", err)
 		}
-		defer firstAct.Stop(ctx)
+		defer firstAct.Stop(ctx, tconn)
 
 		const pkg = "org.chromium.arc.testapp.softinputmode"
 		secondAct, err := arc.NewActivity(a, pkg, activityName)
@@ -127,7 +127,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := secondAct.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start the activity: ", err)
 		}
-		defer secondAct.Stop(ctx)
+		defer secondAct.Stop(ctx, tconn)
 
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, secondAct.PackageName(), ash.WMEventSnapRight); err != nil {
 			s.Fatal("Failed to snap app in split view: ", err)

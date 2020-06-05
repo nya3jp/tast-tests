@@ -174,9 +174,15 @@ func (ac *Activity) startHelper(ctx context.Context, tconn *chrome.TestConn, cmd
 // Stop stops the activity by invoking "am force-stop" with the package name.
 // If there are multiple activities that belong to the same package name, all of
 // them will be stopped.
-func (ac *Activity) Stop(ctx context.Context) error {
+func (ac *Activity) Stop(ctx context.Context, tconn *chrome.TestConn) error {
 	// "adb shell am force-stop" has no output. So the error from Run() is returned.
-	return ac.a.Command(ctx, "am", "force-stop", ac.pkgName).Run()
+	if err := ac.a.Command(ctx, "am", "force-stop", ac.pkgName).Run(); err != nil {
+		return errors.Wrap(err, "failed to stop activity")
+	}
+	if err := ash.WaitForHidden(ctx, tconn, ac.PackageName()); err != nil {
+		return errors.Wrap(err, "failed to wait for the activity to be dismissed")
+	}
+	return nil
 }
 
 // WindowBounds returns the window bounding box of the activity in pixels.
