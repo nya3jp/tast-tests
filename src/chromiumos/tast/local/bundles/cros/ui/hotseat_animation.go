@@ -209,9 +209,9 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		// Enter home launcher from overview by gesture tap.
-		pressX := tsw.Width() * 5 / 6
-		pressY := tsw.Height() / 2
-		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
+		pressX := tsw.Width() / 20
+		pressY := tsw.Height() / 20
+		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY+5, 200*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to tap")
 		}
 		if err := stw.End(); err != nil {
