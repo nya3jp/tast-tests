@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5b19c80_585c41ed",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143cd9b6_74c79986",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c434302f_51cc629b",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f7c197_7332733d",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c434302f_51cc629b",
+      "range": {
+        "startLine": 26,
+        "startChar": 61,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "6e258c26_6df131f4",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:23:23Z",
+      "side": 1,
+      "message": "Oops, it should be \"io.Reader of a pcap file\".",
+      "parentUuid": "55fe7109_891229a1",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 69
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e810b0e_151c37bf",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "6f97a2cd_c0f8ce79",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:23:23Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. As the function is not expected to be used elsewhere, declare it in the function. (Also apply the pattern in the unit test to reduce the label.)",
+      "parentUuid": "3e810b0e_151c37bf",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73817893_448ada68",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
         "patchSetId": 2
@@ -131,6 +227,30 @@
       "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd502258_21dc37fd",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T07:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73817893_448ada68",
+      "range": {
+        "startLine": 83,
+        "startChar": 53,
+        "endLine": 83,
+        "endChar": 55
+      },
+      "revId": "90b5aa1f89200c1abb3dd15b380b6f522879932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
