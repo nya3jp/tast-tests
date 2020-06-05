@@ -58,7 +58,21 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
-	bounds := ws[0].BoundsInRoot
+	id0 := ws[0].ID
+	if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+		s.Fatal("Failed to set the window state to normal: ", err)
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {
+		s.Fatal("Failed to wait for top window animation: ", err)
+	}
+	w0, err := ash.GetWindow(ctx, tconn, id0)
+	if err != nil {
+		s.Error("Failed to get the window: ", err)
+	}
+	if w0.State != ash.WindowStateNormal {
+		s.Fatalf("Wrong window state: expected Normal, got %s.", w0.State)
+	}
+	bounds := w0.BoundsInRoot
 	// Use a heuristic offset (30, 30) from the window origin for the first tab.
 	start := coords.NewPoint(bounds.Left+30, bounds.Top+30)
 	end := bounds.CenterPoint()
@@ -69,22 +83,30 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func() error {
-		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {
+		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
 			s.Fatal("Failed to drag to the end point: ", err)
 		}
-		// Expecting 2 windows.
-		if err := checkWindowsNum(ctx, tconn, 2); err != nil {
-			s.Fatal("Wrong number of windows: ", err)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Expecting 2 windows.
+			return checkWindowsNum(ctx, tconn, 2)
+		}, &testing.PollOptions{Interval: time.Second}); err != nil {
+			s.Fatal("Failed to get expected windows: ", err)
 		}
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
+
+		// Sleep to ensure post drag finishes so that the window is ready 
+		// for the next drag.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
-		if err := mouse.Drag(ctx, tconn, end, start, time.Second); err != nil {
+
+		if err := mouse.Drag(ctx, tconn, end, start, 2*time.Second); err != nil {
 			s.Fatal(err, "Failed to drag back to the start point: ", err)
 		}
-		// Expecting 1 window.
-		if err := checkWindowsNum(ctx, tconn, 1); err != nil {
-			s.Fatal("Wrong number of windows: ", err)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Expecting 1 windows.
+			return checkWindowsNum(ctx, tconn, 1)
+		}, &testing.PollOptions{Interval: time.Second}); err != nil {
+			s.Fatal("Failed to get expected windows: ", err)
 		}
 		return nil
 	},
