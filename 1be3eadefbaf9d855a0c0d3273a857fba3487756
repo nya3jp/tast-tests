@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5b4d4fb_791673c8",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-05T21:59:58Z",
+      "side": 1,
+      "message": "These two comments(l18 \u0026 l20) are a little confusing to me.\n\nHow about\n// If set, PackagesCopy is requested. Otherwise, requests PackageSkipCopy.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "1be3eadefbaf9d855a0c0d3273a857fba3487756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
