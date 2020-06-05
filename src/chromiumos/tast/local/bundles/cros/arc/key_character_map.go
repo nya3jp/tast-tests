@@ -6,12 +6,12 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -91,27 +91,22 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	const imePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 
 	switchInputMethod := func(ctx context.Context, language, layout string) {
-		if err := tconn.Eval(ctx,
-			fmt.Sprintf(`chrome.languageSettingsPrivate.enableLanguage(%q);`, language), nil); err != nil {
+		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
 			s.Fatalf("Failed to enable the language %q: %v", language, err)
 		}
-		if err := tconn.Eval(ctx,
-			fmt.Sprintf(`chrome.languageSettingsPrivate.addInputMethod(%q);`, imePrefix+layout), nil); err != nil {
+		if err := ime.AddInputMethod(ctx, tconn, imePrefix+layout); err != nil {
 			s.Fatalf("Failed to enable the IME %q: %v", layout, err)
 		}
-		if err := tconn.Eval(ctx,
-			fmt.Sprintf(`chrome.inputMethodPrivate.setCurrentInputMethod(%q);`, imePrefix+layout), nil); err != nil {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, imePrefix+layout); err != nil {
 			s.Fatalf("Failed to activate the IME %q: %v", layout, err)
 		}
 	}
 
 	removeInputMethod := func(ctx context.Context, language, layout string) {
-		if err := tconn.Eval(ctx,
-			fmt.Sprintf(`chrome.languageSettingsPrivate.removeInputMethod(%q);`, imePrefix+layout), nil); err != nil {
+		if err := ime.RemoveInputMethod(ctx, tconn, imePrefix+layout); err != nil {
 			s.Errorf("Failed to enable the IME %q: %v", layout, err)
 		}
-		if err := tconn.Eval(ctx,
-			fmt.Sprintf(`chrome.languageSettingsPrivate.disableLanguage(%q);`, language), nil); err != nil {
+		if err := ime.DisableLanguage(ctx, tconn, language); err != nil {
 			s.Errorf("Failed to enable the language %q: %v", language, err)
 		}
 	}

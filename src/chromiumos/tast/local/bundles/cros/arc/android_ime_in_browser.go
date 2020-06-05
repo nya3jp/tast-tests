@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -16,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/ime"
 	"chromiumos/tast/local/chrome"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
@@ -40,18 +40,11 @@ func init() {
 }
 
 func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg string) (string, error) {
-	var lst []struct {
-		ID string `json:"id"`
-	}
-	if err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.languageSettingsPrivate.getInputMethodLists(function(imeLists) {
-		    resolve(imeLists.thirdPartyExtensionImes);
-		  });
-		})`, &lst); err != nil {
+	imes, err := ime.GetInputMethodLists(ctx, tconn)
+	if err != nil {
 		return "", err
 	}
-	for _, im := range lst {
+	for _, im := range imes.ThirdPartyExtensionIMEs {
 		if strings.Contains(im.ID, pkg) {
 			return im.ID, nil
 		}
@@ -116,8 +109,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Enabling ARC Test IME")
-	if err := tconn.Eval(ctx,
-		fmt.Sprintf(`chrome.languageSettingsPrivate.addInputMethod(%q);`, id), nil); err != nil {
+	if err := ime.AddInputMethod(ctx, tconn, id); err != nil {
 		s.Fatal("Failed to enable ARC Test IME: ", err)
 	}
 
@@ -137,20 +129,14 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Activating ARC Test IME")
-	if err := tconn.Eval(ctx,
-		fmt.Sprintf(`chrome.inputMethodPrivate.setCurrentInputMethod(%q);`, id), nil); err != nil {
+	if err := ime.SetCurrentInputMethod(ctx, tconn, id); err != nil {
 		s.Fatal("Failed to activate ARC Test IME: ", err)
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var actualID string
-		if err := tconn.EvalPromise(ctx,
-			`new Promise(function(resolve, reject) {
-			  chrome.inputMethodPrivate.getCurrentInputMethod(function(id) {
-			    resolve(id);
-			  });
-			})`, &actualID); err != nil {
-			return err
+		actualID, err := ime.GetCurrentInputMethod(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
 		}
 		if actualID != id {
 			return errors.Errorf("got input method ID %q while expecting %q", actualID, id)
@@ -191,7 +177,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		// Repeatedly call showVirtualKeyboardIfEnabled until isKeyboardShown returns true.
 		// Usually it requires only one call of showVirtualKeyboardIfEnabled, but on rare occasions it requires
 		// multiple ones e.g. the function was called right in the middle of IME switch.
-		if err := tconn.Eval(ctx, `chrome.autotestPrivate.showVirtualKeyboardIfEnabled();`, nil); err != nil {
+		if err := tconn.Eval(ctx, `chrome.autotestPrivate.showVirtualKeyboardIfEnabled()`, nil); err != nil {
 			return testing.PollBreak(err)
 		}
 		return errors.New("virtual keyboard still not shown")
@@ -222,9 +208,8 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for the text field to have the correct contents")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		const expr = `document.getElementById('text').value`
 		var actual string
-		if err := conn.Eval(ctx, expr, &actual); err != nil {
+		if err := conn.Eval(ctx, `document.getElementById('text').value`, &actual); err != nil {
 			return err
 		}
 		if actual != expected {

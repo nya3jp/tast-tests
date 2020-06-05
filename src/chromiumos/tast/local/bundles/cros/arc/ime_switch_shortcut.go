@@ -6,12 +6,11 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -93,30 +92,16 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Enabling US International keyboard")
-	if err := tconn.Eval(ctx,
-		fmt.Sprintf(`chrome.languageSettingsPrivate.addInputMethod(%q);`, intlIMEID), nil); err != nil {
+	if err := ime.AddInputMethod(ctx, tconn, intlIMEID); err != nil {
 		s.Fatal("Failed to enable US International keyboard: ", err)
 	}
 
 	s.Log("Activating US keyboard")
-	if err := tconn.Eval(ctx,
-		fmt.Sprintf(`chrome.inputMethodPrivate.setCurrentInputMethod(%q);`, usIMEID), nil); err != nil {
+	if err := ime.SetCurrentInputMethod(ctx, tconn, usIMEID); err != nil {
 		s.Fatal("Failed to activate US keyboard: ", err)
 	}
 
-	getCurrentInputMethod := func() (string, error) {
-		var ret string
-		if err := tconn.EvalPromise(ctx,
-			`new Promise(function(resolve, reject) {
-	                  chrome.inputMethodPrivate.getCurrentInputMethod(function(id) {
-                            resolve(id);
-		          });
-		        })`, &ret); err != nil {
-			return "", errors.Wrap(err, "failed to get current ime")
-		}
-		return ret, nil
-	}
-	if imeID, err := getCurrentInputMethod(); err != nil {
+	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != usIMEID {
 		s.Fatal("Failed to activate US keyboard: ", err)
@@ -133,7 +118,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Ctrl-Space: ", err)
 	}
 
-	if imeID, err := getCurrentInputMethod(); err != nil {
+	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != intlIMEID {
 		s.Fatal("Failed to switch international keyboard: ", err)
