@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ac16e740_19c79a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-05T02:21:41Z",
+      "side": 1,
+      "message": "what about this?\n\n\"invalid fullscreen window bounds, got: %s, want bigger than: %s\",\n\nthe message in the CL is not clear what are the expected bounds, and why the actual bounds failed.",
+      "parentUuid": "6cab599a_767d75dd",
+      "range": {
+        "startLine": 135,
+        "startChar": 47,
+        "endLine": 135,
+        "endChar": 100
+      },
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "005aa1d6_4aafb567",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
