@@ -41,6 +41,11 @@ func Enable(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, true, 10*1000 /* timeout_ms */)
 }
 
+// Disable stops the Google Assistant service and returns any errors.
+func Disable(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, false, 10*1000 /* timeout_ms */)
+}
+
 // EnableAndWaitForReady brings up Google Assistant service, waits for
 // NEW_READY signal and returns any errors.
 func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
