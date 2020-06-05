@@ -16,6 +16,24 @@
       "revId": "80dcd92d2e578895e8eabe383c6b47eb3be875f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ab3b0d_41de601c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-05T01:50:05Z",
+      "side": 1,
+      "message": "I think this is fine. Absolutely I think it\u0027s better to have a stat for locking / unlocking animation, but that wouldn\u0027t be a blocking task. Maybe adding a TODO comment for the stat makes sense (but maybe not...)",
+      "parentUuid": "1a953c82_f65ad532",
+      "revId": "80dcd92d2e578895e8eabe383c6b47eb3be875f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
