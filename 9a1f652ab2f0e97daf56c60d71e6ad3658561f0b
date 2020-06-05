@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "472b1faf_8005317a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T15:33:43Z",
+      "side": 1,
+      "message": "Note: arc.PIP is recently failing continuously. The local result failed, too, but looks not the regression.",
+      "revId": "9a1f652ab2f0e97daf56c60d71e6ad3658561f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
