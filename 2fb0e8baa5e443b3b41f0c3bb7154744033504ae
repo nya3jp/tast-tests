@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4de9324f_b9f85b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_system_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-05T07:15:07Z",
+      "side": 1,
+      "message": "[just a comment] Log messages are more useful for interactive debugging if it is output right before starting a task that may take long time (e.g. FindWithTimeout in this case, maybe, but not needed much neither).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#when-to-log\n\nHowever I think this is fine considering this would not clutter the log significantly, and considering consistency with other tests.",
+      "revId": "2fb0e8baa5e443b3b41f0c3bb7154744033504ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
