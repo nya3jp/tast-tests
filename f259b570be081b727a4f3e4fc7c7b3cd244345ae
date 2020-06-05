@@ -168,6 +168,30 @@
       "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7095cc_55f40724",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-05T14:28:53Z",
+      "side": 1,
+      "message": "Let\u0027s keep open this comment, maybe Victor can help here.\n\nFor now, let\u0027s move with your approach and maybe will back to ContextOutDir",
+      "parentUuid": "ee332da7_c01c709a",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
