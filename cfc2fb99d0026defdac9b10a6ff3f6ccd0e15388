@@ -22,6 +22,30 @@
       "revId": "cfc2fb99d0026defdac9b10a6ff3f6ccd0e15388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1270f9_4e21f77f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T04:34:29Z",
+      "side": 1,
+      "message": "Sorry, I missed that.",
+      "parentUuid": "53ab187a_435b35f0",
+      "range": {
+        "startLine": 1112,
+        "startChar": 1,
+        "endLine": 1112,
+        "endChar": 18
+      },
+      "revId": "cfc2fb99d0026defdac9b10a6ff3f6ccd0e15388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
