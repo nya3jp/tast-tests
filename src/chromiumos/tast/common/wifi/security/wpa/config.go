@@ -147,7 +147,7 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 
 // validate validates the Config.
 func (c *Config) validate() error {
-	if c.mode&(^(ModeMixed|ModeMixeWPA3)) > 0 || c.mode == 0 {
+	if c.mode&(^(ModeMixed|ModeMixedWPA3)) > 0 || c.mode == 0 {
 		return errors.Errorf("invalid mode %d", c.mode)
 	}
 	if c.mode&ModePureWPA > 0 && len(c.ciphers) == 0 {
