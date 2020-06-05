@@ -433,6 +433,14 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 	return err
 }
 
+// SetAPIfaceDown brings down the hostapd interface.
+func (r *Router) SetAPIfaceDown(ctx context.Context, h *APIface) error {
+	if err := h.tearDownIface(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
 // StartCapture starts a packet capturer.
 // After getting a Capturer instance, c, the caller should call r.StopCapture(ctx, c) at the end,
 // and use the shortened ctx (provided by r.ReserveForStopCapture(ctx, c)) before r.StopCapture()

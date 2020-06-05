@@ -315,6 +315,14 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	return firstErr
 }
 
+// SetAPInterfaceDown brings down the hostapd interface.
+func (tf *TestFixture) SetAPInterfaceDown(ctx context.Context, ap *APIface) error {
+	if err := tf.router.SetAPIfaceDown(ctx, ap); err != nil {
+		return err
+	}
+	return nil
+}
+
 // ConnectWifi asks the DUT to connect to the specified WiFi.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) (*network.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
@@ -360,6 +368,16 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	}
 	tf.curServicePath = ""
 	return err
+}
+
+// AssureDisconnectSSID assures that the WiFi service with the SSID has disconnected.
+func (tf *TestFixture) AssureDisconnectSSID(ctx context.Context, ssid string) error {
+	req := &network.AssureDisconnectRequest{Ssid: []byte(ssid)}
+	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // QueryService queries shill service information.

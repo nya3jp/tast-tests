@@ -305,6 +305,46 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	return &empty.Empty{}, nil
 }
 
+// AssureDisconnect assures that the WiFi service with the SSID has disconnected.
+// This is the implementation of network.Wifi/AssureDisconnect gRPC.
+func (s *WifiService) AssureDisconnect(ctx context.Context, request *network.AssureDisconnectRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.AssureDisconnect")
+	defer st.End()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	hexSSID := s.hexSSID(request.Ssid)
+
+	props := map[string]interface{}{
+		shill.ServicePropertyType:        shill.TypeWifi,
+		shill.ServicePropertyWiFiHexSSID: hexSSID,
+	}
+
+	service, err := s.discoverService(ctx, m, props)
+	if err != nil {
+		return nil, err
+	}
+
+	// Spawn watcher before disconnect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	testing.ContextLog(ctx, "Wait for the service to be idle")
+	timeoutCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+		return nil, err
+	}
+	testing.ContextLog(ctx, "Disconnected")
+	return &empty.Empty{}, nil
+}
+
 // uint16sToUint32s converts []uint16 to []uint32.
 func uint16sToUint32s(s []uint16) []uint32 {
 	ret := make([]uint32, len(s))
