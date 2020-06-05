@@ -59,7 +59,7 @@ func init() {
 		Func:         CrosHardwareVerifier,
 		Desc:         "Test Hardware Verifier functionality",
 		Contacts:     []string{"ckclark@chromium.org", "chromeos-runtime-probe@google.com"},
-		SoftwareDeps: []string{"reboot"},
+		SoftwareDeps: []string{"reboot", "wilco"},
 		Attr:         []string{"group:runtime_probe"},
 	})
 }
