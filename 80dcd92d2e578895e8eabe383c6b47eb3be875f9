@@ -34,6 +34,24 @@
       "revId": "80dcd92d2e578895e8eabe383c6b47eb3be875f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815fa3d6_802f93c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-05T15:08:41Z",
+      "side": 1,
+      "message": "I am not sure either. The smoothness on the unlocking animations should be included as part of the display smoothness. We only need them when we want to specifically checking out the unlocking smoothness, not quite relevant with this test. So I leave the CL as-is for now.",
+      "parentUuid": "c3ab3b0d_41de601c",
+      "revId": "80dcd92d2e578895e8eabe383c6b47eb3be875f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
