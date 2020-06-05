@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e483f42d_4c4afd5e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T06:31:10Z",
+      "side": 1,
+      "message": "For implementation comments, unlike function comments, verbs should be imperative.\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Comments",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 12
+      },
+      "revId": "b79ac877f3e03f3e840abce56b0c6e4ae1061dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
