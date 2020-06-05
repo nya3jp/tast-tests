@@ -9,6 +9,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -135,15 +136,27 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 	}
 
 	p := perf.NewValues()
-	if err = measureCPUUsage(ctx, conn, p); err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage")
+
+	var gpuErr, cpuErr error
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
+	}()
+	go func() {
+		defer wg.Done()
+		cpuErr = measureCPUUsage(ctx, p)
+	}()
+	wg.Wait()
+	if gpuErr != nil {
+		return errors.Wrap(gpuErr, "failed to measure GPU counters")
+	}
+	if cpuErr != nil {
+		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 	}
 
-	if err := graphics.MeasureGPUCounters(ctx, measurementDuration, p); err != nil {
-		return errors.Wrap(err, "error measuring GPU usage")
-	}
-
-	if err := measureDroppedFrames(ctx, conn, p); err != nil {
+	if err := sampleDroppedFrames(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
 
@@ -156,7 +169,7 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 }
 
 // measureCPUUsage obtains CPU usage and power consumption if supported.
-func measureCPUUsage(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
+func measureCPUUsage(ctx context.Context, p *perf.Values) error {
 	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration)
 	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 		return err
@@ -186,8 +199,8 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 	return nil
 }
 
-// measureDroppedFrames obtains the number of decoded and dropped frames.
-func measureDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
+// sampleDroppedFrames obtains the number of decoded and dropped frames.
+func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
 	var decodedFrameCount, droppedFrameCount int64
 	if err := conn.Eval(ctx, videoElement+".webkitDecodedFrameCount", &decodedFrameCount); err != nil {
 		return errors.Wrap(err, "failed to get number of decoded frames")

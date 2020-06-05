@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -68,7 +69,7 @@ type rxMeas struct {
 }
 
 // measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
-func measureCPU(ctx context.Context, cr *chrome.Chrome, p *perf.Values) error {
+func measureCPU(ctx context.Context, p *perf.Values) error {
 	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", cpuStabilization)
 	if err := testing.Sleep(ctx, cpuStabilization); err != nil {
 		return err
@@ -286,11 +287,24 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	if err := measureRTCStats(shortCtx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
-	if err := measureCPU(shortCtx, cr, p); err != nil {
-		return errors.Wrap(err, "failed to measure")
+
+	var gpuErr, cpuErr error
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		gpuErr = graphics.MeasureGPUCounters(ctx, gpuMeasuring, p)
+	}()
+	go func() {
+		defer wg.Done()
+		cpuErr = measureCPU(ctx, p)
+	}()
+	wg.Wait()
+	if gpuErr != nil {
+		return errors.Wrap(gpuErr, "failed to measure GPU counters")
 	}
-	if err := graphics.MeasureGPUCounters(shortCtx, gpuMeasuring, p); err != nil {
-		return errors.Wrap(err, "failed to measure")
+	if cpuErr != nil {
+		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 	}
 
 	testing.ContextLogf(ctx, "Metric: %+v", p)
