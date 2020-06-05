@@ -11,6 +11,7 @@ import (
 
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -25,6 +26,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"servo"},
 	})
 }
 
@@ -50,6 +52,14 @@ func BootMode(ctx context.Context, s *testing.State) {
 	}()
 	utils := fwpb.NewUtilsServiceClient(cl.Conn)
 
+	// Setup servo.
+	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+	if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer pxy.Close(ctx)
+	svo := pxy.Servo()
+
 	// Check that DUT starts in initialMode.
 	if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error during CurrentBootMode at beginning of test: ", err)
@@ -61,7 +71,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 	fromMode := initialMode
 	for _, toMode := range modes {
 		testing.ContextLogf(ctx, "Transitioning from %s to %s", fromMode, toMode)
-		if err := firmware.RebootToMode(ctx, d, utils, toMode); err != nil {
+		if err := firmware.RebootToMode(ctx, d, svo, utils, toMode); err != nil {
 			s.Fatalf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
 		}
 		// Reestablish RPC connection after reboot.
