@@ -53,16 +53,15 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Define the list of tabs to load.
-	const (
-		NumTabs   = 20
-		BytesInMB = 1024 * 1024
-	)
+	const BytesInMB = 1024 * 1024
 	var tasks []memoryuser.MemoryTask
-	tabAlloc := (int)((info.Total * 2) / (BytesInMB * NumTabs))
+	tabAlloc := 150
+	numTabs := int(2 * uint64(info.Total) / uint64(tabAlloc*BytesInMB))
 	server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
-	for i := 0; i < NumTabs; i++ {
+	for i := 0; i < numTabs; i++ {
 		tasks = append(tasks, server.NewMemoryStressTask(tabAlloc, 0.67))
 	}
+	s.Logf("Created tasks to open %d tabs of %d MB", numTabs, tabAlloc)
 
 	// Define a metric for the number of those tabs killed.
 	var extraPerfMetrics = func(ctx context.Context, testEnv *memoryuser.TestEnv, p *perf.Values, label string) {
