@@ -335,6 +335,33 @@ func init() {
 					},
 				},
 			}, {
+				// Verifies that we can connect to an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode.
+				Name: "wpa3mixed",
+				// TODO(crbug.com/1005443): older AP images don't support WPA3-SAE, so this will fail to start hostapd.
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixedWPA3),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that we can connect to an AP in WPA2/WPA3 mixed mode. WiFi alliance requires PMF in this mode.
+				Name: "wpa3",
+				// TODO(crbug.com/1005443): older AP images don't support WPA3-SAE, so this will fail to start hostapd.
+				// TODO(crbug.com/1070299): not all WiFi chips support SAE. Implement hwdep to skip pure-WPA3 tests on such devices.
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA3),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
 				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
 				Name: "wpavht80",
 				Val: []simpleConnectTestcase{
