@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "fb61fd31_40ac8364",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-05T03:20:37Z",
+      "side": 1,
+      "message": "Just like existing \"camera.HAL3*\" client side test. We would like to have individual entry on tastboard. From my understanding, table driven will fix all sub-tests into one test entry on tastboard?",
+      "parentUuid": "50f2812b_01b83a1c",
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "529e06cd_01f7d537",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 3
