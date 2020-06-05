@@ -263,6 +263,24 @@
     },
     {
       "key": {
+        "uuid": "9c9ea6b1_900aa6d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T20:14:57Z",
+      "side": 1,
+      "message": "If I toggle fullscreen quickly, even with ash.WaitForARCAppWindowState(), both TargetBounds and BoundsInRoot are giving same values and both are not reliable, I mean when I am expecting to see maximize bounds, both have fullscreen window bounds. \nI added a Sleep() and then it worked fine, this proves that WaitForARCAppWindowState is not doing what it is expected and I should wait for animation to be done.\n\nBut Poll() function just worked fine without any flaky results in all cases that I tried. It looks straightforward and suggested solution in Tast docs.\n \nHere is a link to the doc that I created for this experiment:\nhttps://docs.google.com/document/d/1Mr6C43Bepz-1AkpEtQNx6VVH9SOqPlB8jCIuhxncmeY/edit?usp\u003dsharing",
+      "parentUuid": "fa010f05_e40c8463",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
