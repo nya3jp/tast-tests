@@ -249,7 +249,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 
 	service, err := s.discoverService(ctx, m, props)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to discover service")
 	}
 	discoveryTime := time.Since(start)
 
