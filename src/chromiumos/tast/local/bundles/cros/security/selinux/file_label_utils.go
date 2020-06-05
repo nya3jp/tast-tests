@@ -276,6 +276,8 @@ func IIOSensorFilter(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResul
 	sensorFiles := map[string]bool{
 		"flush":                               true,
 		"frequency":                           true,
+		"hwfifo_flush":                        true,
+		"hwfifo_timeout":                      true,
 		"sampling_frequency":                  true,
 		"in_activity_still_change_falling_en": true,
 	}
