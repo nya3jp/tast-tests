@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5e291bbb_80382449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T03:39:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac16e740_19c79a27",
+      "range": {
+        "startLine": 135,
+        "startChar": 47,
+        "endLine": 135,
+        "endChar": 100
+      },
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "005aa1d6_4aafb567",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
@@ -203,6 +227,24 @@
     },
     {
       "key": {
+        "uuid": "ef870a44_0b4dcbe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T03:39:52Z",
+      "side": 1,
+      "message": "After I tried all of these, I decided to go with Poll() function approach.",
+      "parentUuid": "403d60ee_67fcf454",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
@@ -223,6 +265,30 @@
       "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19c95b9_38dc56f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T03:39:52Z",
+      "side": 1,
+      "message": "This method removed.",
+      "parentUuid": "606d409e_d9ec912a",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 3
+      },
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
