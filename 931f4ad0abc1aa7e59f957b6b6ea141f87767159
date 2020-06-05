@@ -39,6 +39,24 @@
       "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667cff2b_b13a7fc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-05T01:11:38Z",
+      "side": 1,
+      "message": "Ricardo and I had a quick talk about that, he thinks there might be some animation that can cause flaky results, For example WaitForARCAppWindowState may return while animation is not done yet and GetARCAppWindowInfo may get maximize window info instead of fullscreen. \nIf you know that this is not the case then I can remove Poll(). Please advise.",
+      "parentUuid": "005aa1d6_4aafb567",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
