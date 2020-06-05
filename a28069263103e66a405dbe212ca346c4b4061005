@@ -114,6 +114,30 @@
       "revId": "a28069263103e66a405dbe212ca346c4b4061005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84da4c63_59db07e2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-05T12:28:38Z",
+      "side": 1,
+      "message": "How about ReenableWifi as it disables and then enables the WiFi device?\n\nAnd comment can be written as\n// ReenableWifi disables and then enables the WiFi device.\n// The reason to aggregate disable and enable operation together is that we want to make sure the Wifi service is in idle state after disabling it. Then it enables the service again.\n\nWell, To make it generic, how about:\n// ToggleWifi toggles the specified WiFi device to on/off.\n// To toggle on, it waits until the device is connected.\n// To toggle off, it waits until the device is idle.\nToggleWifi(ToggleWifiRequest) returns (google.protobuf.Empty) {}",
+      "parentUuid": "93db1fd8_b68b8572",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "a28069263103e66a405dbe212ca346c4b4061005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
