@@ -1,0 +1,255 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e06cd340_7f714164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "nit/style: could you use :\u003d instead?\n\n... :\u003d regexp.MustCompile(...)\n\nAlso, maybe nice to move this to a package scope to avoid compiling it per invocation.",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f3b531_0b4be684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "nit/style: you can inline.\n\nfor _, k ;\u003d range []string{...} {",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f24c6061_40b98537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "could you wrap err?\nerrors.Wrapf(err, \"failed to parse StreamInfo::frame_rate (value: %q)\", ...)",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d743b394_266879f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3a3611_e349a96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "Could you use errors.E here?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/tast/errors/errors.go#7",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab9f533_393e09a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "Could you use nil?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices\n\n\u003d\u003d quote \u003d\u003d\nWhen designing interfaces, avoid making a distinction between a nil slice and a non-nil, zero-length slice, as this can lead to subtle programming errors.\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 166,
+        "startChar": 9,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1eed76_a91be5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "nit/style: you can merge these two lines.\n\nfor _, chunk :\u003d range strings.Split(str, \"\\n\\n\") {",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 39
+      },
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082f8dc7_c2941f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "I\u0027d recommend either:\n- inlining the function. E.g.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n- Encapsulate the polling, too.\n\nDitto for hasStreams.",
+      "range": {
+        "startLine": 221,
+        "startChar": 11,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbeb96d4_d0c9b284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "Could you use chan error instead, which looks more directly representing what you do here.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6cb82d8_06456f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "act needs to be closed iff not err.",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d323c9f7_0d1626f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "can be inlined?",
+      "range": {
+        "startLine": 251,
+        "startChar": 25,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f68916a_98f59b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "Could you add the reference where this constant comes from?",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5f421a_52665a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ARCAudioTest.apk.external",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-05T18:18:06Z",
+      "side": 1,
+      "message": "(off topic): you may be interested in to move the APK source to Tast repository, so that the change can be made atomically easier.",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
