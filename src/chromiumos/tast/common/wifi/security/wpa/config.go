@@ -29,7 +29,9 @@ type ModeEnum int
 const (
 	ModePureWPA ModeEnum = 1 << iota
 	ModePureWPA2
-	ModeMixed = ModePureWPA | ModePureWPA2
+	ModePureWPA3
+	ModeMixed     = ModePureWPA | ModePureWPA2
+	ModeMixedWPA3 = ModePureWPA2 | ModePureWPA3
 )
 
 // Cipher is the type for specifying WPA cipher algorithms.
@@ -71,18 +73,36 @@ func (c *Config) Class() string {
 
 // HostapdConfig returns hostapd config of WPA network.
 func (c *Config) HostapdConfig() (map[string]string, error) {
-	ret := map[string]string{"wpa": strconv.Itoa(int(c.mode))}
+	var ret = make(map[string]string)
 
-	switch c.ftMode {
-	case FTModeNone:
-		ret["wpa_key_mgmt"] = "WPA-PSK"
-	case FTModePure:
-		ret["wpa_key_mgmt"] = "FT-PSK"
-	case FTModeMixed:
-		ret["wpa_key_mgmt"] = "WPA-PSK FT-PSK"
-	default:
-		return nil, errors.Errorf("invalid ftMode %d", c.ftMode)
+	var mode int
+	// WPA2 and WPA3 are both RSN, and share the same bit in wpa=.
+	if c.mode&(ModePureWPA2|ModePureWPA3) > 0 {
+		mode |= int(ModePureWPA2)
 	}
+	if c.mode&ModePureWPA > 0 {
+		mode |= int(ModePureWPA)
+	}
+	ret["wpa"] = strconv.Itoa(mode)
+
+	var keyMgmt []string
+	if c.ftMode&FTModeNone > 0 {
+		if c.mode&ModeMixed > 0 {
+			keyMgmt = append(keyMgmt, "WPA-PSK")
+		}
+		if c.mode&ModePureWPA3 > 0 {
+			keyMgmt = append(keyMgmt, "SAE")
+		}
+	}
+	if c.ftMode&FTModePure > 0 {
+		if c.mode&ModeMixed > 0 {
+			keyMgmt = append(keyMgmt, "FT-PSK")
+		}
+		if c.mode&ModePureWPA3 > 0 {
+			keyMgmt = append(keyMgmt, "FT-SAE")
+		}
+	}
+	ret["wpa_key_mgmt"] = strings.Join(keyMgmt, " ")
 
 	if len(c.psk) == RawPSKLen {
 		ret["wpa_psk"] = c.psk
@@ -127,14 +147,14 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 
 // validate validates the Config.
 func (c *Config) validate() error {
-	if c.mode&(^ModeMixed) > 0 || c.mode == 0 {
+	if c.mode&(^(ModeMixed|ModeMixeWPA3)) > 0 || c.mode == 0 {
 		return errors.Errorf("invalid mode %d", c.mode)
 	}
 	if c.mode&ModePureWPA > 0 && len(c.ciphers) == 0 {
 		return errors.New("cannot configure WPA unless we have some ciphers")
 	}
-	if c.mode&ModePureWPA2 > 0 && len(c.ciphers) == 0 && len(c.ciphers2) == 0 {
-		return errors.New("cannot configure WPA2 unless we have some ciphers")
+	if c.mode&ModeMixedWPA3 > 0 && len(c.ciphers) == 0 && len(c.ciphers2) == 0 {
+		return errors.New("cannot configure RSN (WPA2/WPA3) unless we have some ciphers")
 	}
 	if c.mode&ModePureWPA > 0 && c.mode&ModePureWPA2 == 0 && len(c.ciphers2) > 0 {
 		return errors.New("ciphers2 is not supported by pure WPA")
