@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33497c0a_152bb355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-05T15:30:46Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 chars like code.",
+      "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6904d97_97881c67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-05T15:30:46Z",
+      "side": 1,
+      "message": "BUG\u003dchromium:XXX\nTEST\u003dtast run IP ui.DragTabInClamshellPerf",
+      "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd7ef48_813087db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-05T15:30:46Z",
+      "side": 1,
+      "message": "Suggest to wrap checkWindowsNum into a testing.Poll for 5 seconds. cpu.WaitUntilIdle() is like another way of sleep and could still fail if cpu is really idle.",
+      "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
