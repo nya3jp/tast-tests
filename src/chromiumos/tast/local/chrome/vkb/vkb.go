@@ -66,6 +66,21 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMet
 	return nil
 }
 
+// GetCurrentInputMethod returns the current input method id used by the virtual
+// keyboard.
+func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	var inputMethodID string
+	if err := tconn.Eval(ctx, `new Promise(function(resolve, reject) {
+		chrome.inputMethodPrivate.getCurrentInputMethod(function(id) {
+			  resolve(id);
+	});
+  })`, &inputMethodID); err != nil {
+		return inputMethodID, errors.Wrap(err, "failed to get current input method")
+	}
+
+	return strings.TrimPrefix(inputMethodID, imePrefix+":"), nil
+}
+
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
 func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error) {
