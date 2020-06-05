@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c66af2_8ea30f27",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-05T05:28:01Z",
+      "side": 1,
+      "message": "Oops, sorry that my cl crrev.com/c/2220937 renames the function and has a silent conflict with this one. Please rebase and resolve this.",
+      "range": {
+        "startLine": 406,
+        "startChar": 18,
+        "endLine": 406,
+        "endChar": 27
+      },
+      "revId": "3c1a60864cb690fb8ac6e41a54b2dce11943f1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
