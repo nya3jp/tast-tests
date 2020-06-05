@@ -22,6 +22,23 @@
       "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "005aa1d6_4aafb567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-05T00:44:47Z",
+      "side": 1,
+      "message": "With WaitForARCAppWindowState, I believe you don\u0027t need testing.Poll. Basically my comment and Ricardo\u0027s were pointing the same thing -- wm.ToggleFullscreen() doesn\u0027t wait for the window to be fullscreen -- but proposed different solutions.\n\nMy one suggests ash.WaitForARCAppWindowState, which internally invokes testing.Poll to make sure that the window is in fullscreen state.  After that, |windowInfoFullscreen| must be in fullscreen state.\n\nWhile Ricardo\u0027s suggestion looks like using testing.Poll explicitly to make the verification repeatedly, so it doesn\u0027t have to have WaitFor... logic.\n\nI believe either works well, but please don\u0027t do both. Sorry that we didn\u0027t see comments each other.",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
