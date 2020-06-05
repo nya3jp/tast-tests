@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3110c685_9cb92719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-05T18:42:50Z",
+      "side": 1,
+      "message": "nit. Do you mind split it into \nsrc :\u003d filepath.Join(\"/system/etc\", cache.PackagesCacheXML)\ndst :\u003d filepath.Join(targetDir, cache.GeneratedPackagesCacheXML)\nif err :\u003d a.PullFile(ctx, src, dst); err !\u003d nil{",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 138
+      },
+      "revId": "4a1da880d94617c0f663c91490a46cb323159fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5211b0_b4de13b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-05T18:42:50Z",
+      "side": 1,
+      "message": "you can use ` to specify multiline string. However, I would recommend only wrapping the failure and leaving the conjecture in the log.\n\nif err :\u003d ...; err !\u003d nil{\n    testing.ContextLog(ctx, \"Could not pull..., this may ...\")\n    return nil, errors.Wrapf(err, \"failed to pull %s from Android\", cache.GeneratedPackagesCacheXML)\n}",
+      "revId": "4a1da880d94617c0f663c91490a46cb323159fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ff74ea7_8751bd8e",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-05T18:42:50Z",
+      "side": 1,
+      "message": "nit. this can be fit into one line.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "4a1da880d94617c0f663c91490a46cb323159fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f53ed48_688fb811",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-05T18:42:50Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "4a1da880d94617c0f663c91490a46cb323159fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
