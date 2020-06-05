@@ -79,7 +79,7 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the settings activity: ", err)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the window state to normal: ", err)

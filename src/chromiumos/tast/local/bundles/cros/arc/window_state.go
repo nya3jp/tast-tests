@@ -180,7 +180,7 @@ func WindowState(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to start the Settings activity")
 			}
 			// Stop the activity for each test case
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			// Set the activity to the initial WindowState.
 			if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {

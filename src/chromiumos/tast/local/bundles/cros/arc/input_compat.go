@@ -148,7 +148,7 @@ func InputCompat(ctx context.Context, s *testing.State) {
 		if err := act.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start an activity: ", err)
 		}
-		defer act.Stop(ctx)
+		defer act.Stop(ctx, tconn)
 
 		tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 		if err != nil {

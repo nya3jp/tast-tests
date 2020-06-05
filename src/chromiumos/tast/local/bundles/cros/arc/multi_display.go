@@ -178,7 +178,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 			if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, test.actName, firstExternalDisplayID); err != nil {
 				return err
 			}
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
 		}(); err != nil {
@@ -205,7 +205,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
-	defer settingsAct.Stop(ctx)
+	defer settingsAct.Stop(ctx, tconn)
 
 	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, ash.WindowStateNormal); err != nil {
 		return err
@@ -221,7 +221,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
-	defer wmAct.Stop(ctx)
+	defer wmAct.Stop(ctx, tconn)
 
 	// Get external display ID.
 	infos, err := display.GetInfo(ctx, tconn)
@@ -319,7 +319,7 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
-	defer settingsAct.Stop(ctx)
+	defer settingsAct.Stop(ctx, tconn)
 	if err := ash.WaitForVisible(ctx, tconn, settingsPkgMD); err != nil {
 		return err
 	}
@@ -334,7 +334,7 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
-	defer wmAct.Stop(ctx)
+	defer wmAct.Stop(ctx, tconn)
 	if err := ash.WaitForVisible(ctx, tconn, wmPkgMD); err != nil {
 		return err
 	}
@@ -433,7 +433,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
-	defer settingsAct.Stop(ctx)
+	defer settingsAct.Stop(ctx, tconn)
 	if err := ensureActivityReady(ctx, tconn, settingsAct); err != nil {
 		return err
 	}
@@ -448,7 +448,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
-	defer wmAct.Stop(ctx)
+	defer wmAct.Stop(ctx, tconn)
 	if err := ensureActivityReady(ctx, tconn, wmAct); err != nil {
 		return err
 	}

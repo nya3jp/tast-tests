@@ -95,7 +95,7 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err

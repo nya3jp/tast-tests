@@ -109,7 +109,7 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 		}
 
 		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)
-		return activity.Stop(ctx)
+		return activity.Stop(ctx, tconn)
 	}, nil
 }
 

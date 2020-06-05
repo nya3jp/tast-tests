@@ -110,7 +110,7 @@ func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 			}
 			s.Log("App launched successfully")
 
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			// Take screenshot on failure.
 			defer func() {

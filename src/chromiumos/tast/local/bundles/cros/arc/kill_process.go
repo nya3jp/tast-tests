@@ -53,7 +53,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
-	defer act.Stop(ctx)
+	defer act.Stop(ctx, tconn)
 
 	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
 	if err != nil {

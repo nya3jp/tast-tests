@@ -272,6 +272,28 @@ func WaitForVisible(ctx context.Context, tconn *chrome.TestConn, pkgName string)
 	}, defaultPollOptions)
 }
 
+// WaitForHidden waits for a window to be dismissed on the Chrome side. Visibility is defined to be the corresponding
+// Aura window's visibility.
+func WaitForHidden(ctx context.Context, tconn *chrome.TestConn, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+		}
+		found := false
+		for _, window := range ws {
+			if window.ARCPackageName == pkgName && window.IsVisible {
+				found = true
+				break
+			}
+		}
+		if found {
+			return errors.New("there is still a visible window")
+		}
+		return nil
+	}, defaultPollOptions)
+}
+
 // WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
 func WaitWindowFinishAnimating(ctx context.Context, tconn *chrome.TestConn, windowID int) error {
 	return WaitForCondition(ctx, tconn, func(window *Window) bool {

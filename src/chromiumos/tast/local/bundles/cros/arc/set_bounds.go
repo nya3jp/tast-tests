@@ -97,7 +97,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed start the activity: ", err)
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
-			defer act.Stop(ctx)
+			defer act.Stop(ctx, tconn)
 
 			// Validate initial window size.
 			actBounds, err := act.SurfaceBounds(ctx)
