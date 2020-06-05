@@ -19,7 +19,7 @@ func init() {
 			"puthik@chromium.org",                // test author
 			"chromeos-platform-power@google.com", // CrOS platform power developers
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"dptf", "cros_config"},
 	})
 }
