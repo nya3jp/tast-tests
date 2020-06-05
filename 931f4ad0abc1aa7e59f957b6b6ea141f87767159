@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7f3d24c9_d40381ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-05T01:21:10Z",
+      "side": 1,
+      "message": "Oh, interesting. I am really not sure, but yeah potentially that is possible.\n\nIn that case, you can use ash.WaitForCondition to wait for both window state and animation as:\n\n  if err :\u003d ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {\n    return w.ARCPackageName \u003d\u003d wm.Pkg24 \u0026\u0026 !w.IsAnimating \u0026\u0026 w.State \u003d\u003d ash.WindowStateFullscreen\n  }, \u0026testing.PollOption{Timeout: 10*time.Second}); err !\u003d { ... }\n\n\nBut I\u0027m fine with testing.Poll as Ricardo\u0027s suggestion. My point is, if you use testing.Poll, you really don\u0027t need to have waiting.",
+      "parentUuid": "658e660e_bd448e9b",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
