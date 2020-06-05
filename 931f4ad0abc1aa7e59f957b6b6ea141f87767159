@@ -245,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "fa010f05_e40c8463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-05T19:02:59Z",
+      "side": 1,
+      "message": "Please explain why in the comment. (it\u0027d also be better if you explained it here and you can avoid extra round trip)",
+      "parentUuid": "ef870a44_0b4dcbe8",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
