@@ -317,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "827b6df4_d3f8f81f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-05T22:01:50Z",
+      "side": 1,
+      "message": "ok, so latest patch uses TargetBounds. Do you still need to poll, or you can just wait for window state change? That\u0027s my question.\nThere may be something that I\u0027m not aware of, so there is a reason, I\u0027m fine with polling.",
+      "parentUuid": "bd73d2fc_19539160",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
