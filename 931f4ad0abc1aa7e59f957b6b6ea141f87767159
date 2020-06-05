@@ -353,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "f3e9b698_b746b8fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-05T23:11:15Z",
+      "side": 1,
+      "message": "Can you eanble comment? I couldn\u0027t leave my comment.\n\nAs I mentioned, these two bounds can be different and that\u0027s *expected*. I understand that may be different from what you originally expetected, but TargetBounds and BoundsInRoot can be different during animation and that\u0027s why Info has both. There still could be something that is broken or I\u0027m missing something, but I want to make sure that the code is written with good intent, not just to make it pass.",
+      "parentUuid": "f2591cd1_de175ec9",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
