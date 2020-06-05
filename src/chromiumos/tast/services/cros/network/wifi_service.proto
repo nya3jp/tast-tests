@@ -41,6 +41,9 @@ service WifiService {
 
   // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
   rpc ExpectWifiFrequencies(ExpectWifiFrequenciesRequest) returns (google.protobuf.Empty) {}
+
+  // AssureDisconnect assures that the WiFi service has disconnected within timeout (in seconds).
+  rpc AssureDisconnect(AssureDisconnectRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -121,4 +124,9 @@ message ExpectWifiFrequenciesRequest {
   bytes ssid = 1;
   // Expected list of frequencies for the SSID.
   repeated uint32 frequencies = 2;
+}
+
+message AssureDisconnectRequest {
+  string service_path = 1;
+  int64 timeout = 2;
 }
