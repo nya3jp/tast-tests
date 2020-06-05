@@ -734,6 +734,14 @@ func (r *Router) CollectLogs(ctx context.Context) error {
 	return r.collectLogs(ctx, "")
 }
 
+// SetAPIfaceDown brings down the interface that the APIface uses.
+func (r *Router) SetAPIfaceDown(ctx context.Context, iface string) error {
+	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
+		return errors.Wrapf(err, "failed to set %s down", iface)
+	}
+	return nil
+}
+
 // hostBoard returns the board information on a chromeos host.
 // NOTICE: This function is only intended for handling some corner condition
 // for router setup. If you're trying to identify specific board of DUT, maybe
