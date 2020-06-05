@@ -15,12 +15,14 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Servo holds the servod connection information.
 type Servo struct {
-	host string
-	port int
+	host     string
+	port     int
+	deferred []call
 }
 
 const (
@@ -40,7 +42,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 	if err != nil {
 		return nil, err
 	}
-	s := &Servo{host, port}
+	s := &Servo{host: host, port: port}
 
 	// Ensure Servo is set up properly before returning.
 	return s, s.verifyConnectivity(ctx)
@@ -91,4 +93,27 @@ func parseConnSpec(c string) (host string, port int, err error) {
 	}
 
 	return "", 0, errors.Errorf("got invalid connection spec %q", c)
+}
+
+// Defer sends a call to wait until the servo's Close().
+func (s *Servo) Defer(c call) {
+	s.deferred = append(s.deferred, c)
+}
+
+// Close runs and clears the Servo's deferred calls, without unpacking return values.
+// Like the defer keyword, it operates like a stack: last in, first out.
+func (s *Servo) Close(ctx context.Context) error {
+	var errs []error
+	for len(s.deferred) > 0 {
+		c := s.deferred[len(s.deferred)-1]
+		testing.ContextLog(ctx, "Sending deferred Servo call: ", c)
+		if err := s.run(ctx, c); err != nil {
+			errs = append(errs, errors.Wrapf(err, "running deferred %+v", c))
+		}
+		s.deferred = s.deferred[:len(s.deferred)-1]
+	}
+	if len(errs) > 0 {
+		return errors.Errorf("running deferred servo calls: %v", errs)
+	}
+	return nil
 }
