@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62344efc_fc6d2561",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3f48d2_4c48264c",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "478c801a_ee8f200e",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-05T20:12:54Z",
       "side": 1,
       "message": "Other than LinkKeyDtimPeriod, aren\u0027t these unused?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df0fb38_7b2b843d",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "In my test only LinkKeyDtimPeriod is used. But they were in the autotest iw runner, so I added all of them. \n\n\nThe following are used by the function get_station_dump in the autotest iw runner:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/network/iw_runner.py?q\u003diw_runner.py\u0026sq\u003dpackage:chromeos_public+OR+package:chromeos_internal\u0026dr\nLinkKeySignal         \u003d \"signal\"\n\tLinkKeyRxBitrate      \u003d \"rx bitrate\"\n\tLinkKeyRxDrops        \u003d \"rx drop misc\"\n\tLinkKeyRxPackets      \u003d \"rx packets\"\n\tLinkKeyTxBitrate      \u003d \"tx bitrate\"\n\tLinkKeyTxFailures     \u003d \"tx failed\"\n\tLinkKeyTxPackets      \u003d \"tx packets\"\n\tLinkKeyTxRetries      \u003d \"tx retries\"\n\nThe others are used in other tests such as network_WiFi_BeaconInterval.py",
+      "parentUuid": "478c801a_ee8f200e",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "019f7036_988d3221",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f4eeeb_e6ee2da4",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a223ee6_b0e0714d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 18
@@ -85,6 +157,24 @@
       "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c194500a_3634b953",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a223ee6_b0e0714d",
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "3edc8e5e_6dca8935",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "That\u0027s true I changed it to Fatal",
+      "parentUuid": "8c8333cd_a891dd31",
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6c52e9d_0f1efe32",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 18
@@ -116,6 +224,30 @@
       "writtenOn": "2020-06-05T20:12:54Z",
       "side": 1,
       "message": "We are about to set powersave back to psMode because of the function deferred on L76. Is there any reason to do this?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25ccd30_ebfd8bc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "I added this part to test that we can turn off powersave mode. I moved it before disconnection and I added pings after that to make sure the connection is still good.",
+      "parentUuid": "a6c52e9d_0f1efe32",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -148,6 +280,30 @@
       "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0246b28_4d2e47ad",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-05T22:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fcc35b9_0a4a0845",
+      "range": {
+        "startLine": 429,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 5
+      },
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
