@@ -94,6 +94,30 @@
       "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539ccbf1_94832f07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-06-05T17:17:26Z",
+      "side": 1,
+      "message": "Sure...I added a one-line description to the new protocol. Please let me know it\u0027s clear enough for you.",
+      "parentUuid": "33b10aee_dd0155ab",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "827299d473fa6fd540726d54de15ef8413ea845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
