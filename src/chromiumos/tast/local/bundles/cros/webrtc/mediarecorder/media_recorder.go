@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"sync"
 	"time"
 
 	"github.com/pixelbender/go-matroska/matroska"
@@ -117,11 +118,23 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 		return errors.Wrapf(err, "failed to evaluate startRecording(%s)", codec)
 	}
 
-	if err := measureCPU(ctx, stabilizationDuration, measurementDuration, p); err != nil {
-		return errors.Wrap(err, "error measuring CPU usage/power consumption")
+	var gpuErr, cpuErr error
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
+	}()
+	go func() {
+		defer wg.Done()
+		cpuErr = measureCPU(ctx, stabilizationDuration, measurementDuration, p)
+	}()
+	wg.Wait()
+	if gpuErr != nil {
+		return errors.Wrap(gpuErr, "failed to measure GPU counters")
 	}
-	if err := graphics.MeasureGPUCounters(ctx, measurementDuration, p); err != nil {
-		return errors.Wrap(err, "error measuring GPU usage")
+	if cpuErr != nil {
+		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 	}
 
 	// Recorded video will be saved in videoBuffer in base64 format.
