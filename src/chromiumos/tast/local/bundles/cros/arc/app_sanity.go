@@ -20,7 +20,6 @@ func init() {
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"app_sanity_hello_world.apk"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -35,15 +34,14 @@ func init() {
 
 func AppSanity(ctx context.Context, s *testing.State) {
 	const (
-		// This is a plain hello world app:
-		// https://googleplex-android.googlesource.com/platform/vendor/google_arc/+/refs/heads/pi-arc/packages/development/ArcAppSanityTastTest
-		apk = "app_sanity_hello_world.apk"
+		// This is a plain hello world app.
+		apk = "ArcAppSanityTastTest.apk"
 		pkg = "org.chromium.arc.testapp.appsanitytast"
 		cls = ".MainActivity"
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
