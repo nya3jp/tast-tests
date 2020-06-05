@@ -22,6 +22,30 @@
       "revId": "992e8b3005dbd50c1ac4c73a8c827c019ea5cca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a858e55_447119b8",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-05T09:22:27Z",
+      "side": 1,
+      "message": "I ask zuan@ (the author of base CL) about this and he said, every call to NewTPMStore will create a blank keystore and all ids are available -- so \u00278800\u0027 is probably someone\u0027s lucky number.\n\nFor the last question, I guess it\u0027s fine to use the same id in the consequent \u0027tast\u0027, since ResetTPMStore do remove the vault, and NewTPMStore even remove it again before it create a new one.",
+      "parentUuid": "01200397_cfa451a3",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "992e8b3005dbd50c1ac4c73a8c827c019ea5cca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

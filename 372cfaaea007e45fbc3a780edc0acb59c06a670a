@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "0fb583ab_aa362261",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-05T09:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93df22b6_66a9026d",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "372cfaaea007e45fbc3a780edc0acb59c06a670a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e04859e_cb8894b3",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 1
