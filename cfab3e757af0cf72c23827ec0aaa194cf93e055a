@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaea239b_b76d536f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-06T01:43:06Z",
+      "side": 1,
+      "message": "Based on other discussions, tests like this probably eventually should move to a \u0027perf\u0027 suite, as they\u0027re not really testing functionality, exactly.",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "cfab3e757af0cf72c23827ec0aaa194cf93e055a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
