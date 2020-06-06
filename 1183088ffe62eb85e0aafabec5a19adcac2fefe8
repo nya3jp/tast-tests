@@ -93,6 +93,30 @@
       "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c564c7e_6115ebf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-06T02:00:14Z",
+      "side": 1,
+      "message": "SGTM (since it seems that cros-pulse-config v0.2.0 is about to land).",
+      "parentUuid": "db6dca18_33dfd6bd",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
