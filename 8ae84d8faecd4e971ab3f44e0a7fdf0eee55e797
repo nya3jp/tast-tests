@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de157930_f26ffc0d",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-06T01:55:39Z",
+      "side": 1,
+      "message": "these can all be private, no?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97a613dd_d3b09262",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-06T01:55:39Z",
+      "side": 1,
+      "message": "I wasn\u0027t super happy with the parent CL\u0027s implementation of this, but at least the usage here seems OK.",
+      "range": {
+        "startLine": 161,
+        "startChar": 73,
+        "endLine": 161,
+        "endChar": 81
+      },
+      "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afe0a4cc_de19d2ca",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-06T01:55:39Z",
+      "side": 1,
+      "message": "\u0027r\u0027 for private",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
