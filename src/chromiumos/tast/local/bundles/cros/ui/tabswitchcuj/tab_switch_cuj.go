@@ -159,6 +159,7 @@ func Run(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer recorder.Stop()
 
 	for _, data := range []struct {
 		name     string

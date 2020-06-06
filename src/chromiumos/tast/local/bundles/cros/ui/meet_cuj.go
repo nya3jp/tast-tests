@@ -157,6 +157,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+	defer recorder.Stop()
 	if err := recorder.Run(ctx, tconn, func() error {
 		if err := joinNow.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
@@ -188,6 +189,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
 
+	if err := recorder.Stop(); err != nil {
+		s.Fatal("Failed to stop the recorder: ", err)
+	}
 	pv := perf.NewValues()
 	if err := recorder.Record(pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
