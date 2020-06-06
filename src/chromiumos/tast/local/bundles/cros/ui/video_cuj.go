@@ -333,6 +333,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer recorder.Stop()
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
@@ -415,6 +416,10 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed: ", err)
 	}
 
+	if err := recorder.Stop(); err != nil {
+		s.Fatal("Failed to stop the recorder: ", err)
+	}
+
 	// Calculate display smoothness.
 	s.Log("Get display smoothness")
 	var ds float64
@@ -458,7 +463,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	if err = recorder.Record(pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
-
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
