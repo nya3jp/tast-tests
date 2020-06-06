@@ -100,5 +100,11 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 			s.Error("Failed to dump diff: ", err)
 		}
 		s.Errorf("Read request has diff from the golden file, dumped at %s", diffFile)
+		outPath := filepath.Join(s.OutDir(), "output.file")
+		testing.ContextLog(ctx, "Diff from golden file: ", goldenFile)
+		testing.ContextLog(ctx, "Dumping output file to: ", outPath)
+		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to dump output: ", err)
+		}
 	}
 }
