@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "198952ff_c9ba089e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-06T01:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "424966e8_f78589a7",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe1c5a8_94d2f5ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6dca18_33dfd6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-06-06T01:51:54Z",
+      "side": 1,
+      "message": "Let me add more context here:\n\nIf the service take more then 3 sec to startup, pulseaudio will load only null-audio-sink for playback.\nThen all audio playback might not come out (users will hear no audio from Crostini).\nAnd\n- Waiting for the service to finish is not ideal, since we\u0027re going to deprecate it in v0.2.0\n- And open the device in pulseaudio is not blocking since pulseaudio always have a device to playback\n\nThen main goal for the test is to check if this can\n- catch failures on boards\n- and see if this can be fixed by v0.2.0 in CL:2230391\n\nLet me remove the sleep directly and\n- cros-pulse-config v0.1.3 will be flaky in this case (the one with .service)\n- cros-pulse-config v0.2.0 should pass it\n\nsg?",
+      "parentUuid": "dfe1c5a8_94d2f5ae",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
