@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "424966e8_f78589a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-06T00:56:49Z",
+      "side": 1,
+      "message": "huge nit, style: ALSA ? (here and in the rest of the comments)",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe1c5a8_94d2f5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-06T00:56:49Z",
+      "side": 1,
+      "message": "what happens if it takes more than 3 seconds (for whatever reason)?\n\nin this case, it seems that the reliable way to do it is to wait until cros-pulse.config is up.\nis there another way to check that it is up? (don\u0027t know the answer)\n - perhaps a dbus message ?\n - or perhaps trying to open the device inside a testing.Poll() ?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "1183088ffe62eb85e0aafabec5a19adcac2fefe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
