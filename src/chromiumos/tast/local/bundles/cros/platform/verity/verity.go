@@ -35,9 +35,16 @@ const (
 func releaseDevice(ctx context.Context, c []string, device string) error {
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		return testexec.CommandContext(ctx, c[0], c[1:]...).Run()
-	}, &testing.PollOptions{Timeout: time.Second})
+	}, &testing.PollOptions{Timeout: time.Second * 2})
 	if err == nil {
 		// Succeeded.
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Failed release command ", c[0],
+		" for device ", device, " : ", err)
+	if _, err := os.Stat(device); os.IsNotExist(err) {
+		// File was removed during timeout.
 		return nil
 	}
 
@@ -52,7 +59,7 @@ func releaseDevice(ctx context.Context, c []string, device string) error {
 
 	cmd = testexec.CommandContext(ctx, "lsblk", device)
 	lsblk, lerr := cmd.Output()
-	if err != nil {
+	if lerr != nil {
 		// lsblk is just for logging purpose, so ignore an error.
 		testing.ContextLog(ctx, "Failed to call lsblk: ", lerr)
 		cmd.DumpLog(ctx)
