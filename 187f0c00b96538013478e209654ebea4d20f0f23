@@ -237,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "c578c0c3_2334a49f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-06T00:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3edc8e5e_6dca8935",
+      "revId": "187f0c00b96538013478e209654ebea4d20f0f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6c52e9d_0f1efe32",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/power_save.go",
         "patchSetId": 18
