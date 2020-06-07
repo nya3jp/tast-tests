@@ -22,6 +22,30 @@
       "revId": "2ae2acd43539a5f053cef3c56dfb59b353a913bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916b1e75_86ce5c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-06-07T05:16:44Z",
+      "side": 1,
+      "message": "This particular task is very slow, especially on some devices. It ranges from 13 to 150 seconds... for the devices on which the test doesn\u0027t timeout.\nFor a given device, this duration is consistent, however I don\u0027t know why the performances are so inconsistent between the different devices on which the tests are ran.\n\nExtraction duration doesn\u0027t seem linear with the number of files to extract, so reducing from 1000 to 500  should easily solve the issue.\nBut all this is way too slow anyway... With the new implementation, extracting the same files should take a few milliseconds, hopefully.",
+      "parentUuid": "60c98344_da7ad210",
+      "range": {
+        "startLine": 218,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 39
+      },
+      "revId": "2ae2acd43539a5f053cef3c56dfb59b353a913bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
