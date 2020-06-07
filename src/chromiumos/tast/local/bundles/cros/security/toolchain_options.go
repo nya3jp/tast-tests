@@ -107,7 +107,6 @@ var libgccAllowlist = []string{
 	// Prebuilt hdcp driver binary from Intel.
 	"/usr/sbin/hdcpd",
 	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
-	"/usr/lib64/libia_ltm.so",
 	"/usr/lib64/libSkyCamAIC.so",
 	"/usr/lib64/libSkyCamAICKBL.so",
 
@@ -132,8 +131,6 @@ var libstdcAllowlist = []string{
 	// Prebuilt hdcp driver binary from Intel.
 	"/usr/sbin/hdcpd",
 	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
-	"/usr/lib64/libbroxton_ia_pal.so",
-	"/usr/lib64/libia_ltm.so",
 	"/usr/lib64/libSkyCamAIC.so",
 	"/usr/lib64/libSkyCamAICKBL.so",
 	// Part of prebuilt driver binary used in Tegra boards.
