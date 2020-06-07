@@ -185,13 +185,15 @@ func (c *fakeClock) Sleep(ctx context.Context, d time.Duration) error {
 
 // WaitForSleep waits until a goroutine starts fake-sleeping.
 func (c *fakeClock) WaitForSleep() {
+	c.lock.Lock()
+
 	if len(c.sleepers) > 0 {
 		// At least one goroutine is already sleeping.
+		c.lock.Unlock()
 		return
 	}
 
 	done := make(chan struct{})
-	c.lock.Lock()
 	c.waiters = append(c.waiters, done)
 	c.lock.Unlock()
 
