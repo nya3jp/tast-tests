@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4520db81_0739e5c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-08T20:44:34Z",
+      "side": 1,
+      "message": "will 20 seconds always be enough on slow DUTs? For tests that need to wait for the boot_collector to run, we\u0027ve occasionally seen times (at least) in excess of 15s before it ran. See https://crrev.com/c/2124817 for the relevant change.\n\nTo be fair, the crash reporter initialization will happen significantly before boot_collector runs, but boot can still be quite slow on some devices.",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "79b2e8c9022147b22bae26a62498148fe81777de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
