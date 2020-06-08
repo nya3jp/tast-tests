@@ -122,6 +122,24 @@
       "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549994ba_4cdeafb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-08T19:03:27Z",
+      "side": 1,
+      "message": "testing.Sleep for 1s with testing.Poll works on my DUT :)",
+      "parentUuid": "87716a4a_9c65f132",
+      "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

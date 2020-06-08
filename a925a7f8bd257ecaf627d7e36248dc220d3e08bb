@@ -16,6 +16,24 @@
       "revId": "a925a7f8bd257ecaf627d7e36248dc220d3e08bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd5b525_e5aa6f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-08T19:03:27Z",
+      "side": 1,
+      "message": "Yes we can change its state to ash.WMNormal.",
+      "parentUuid": "9bc80445_7d38aaac",
+      "revId": "a925a7f8bd257ecaf627d7e36248dc220d3e08bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
