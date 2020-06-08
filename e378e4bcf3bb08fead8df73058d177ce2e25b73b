@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "31861844_285e5539",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-08T08:20:54Z",
+      "side": 1,
+      "message": "How about using java.nio.Path instead of the concatenation?\ni.e. Paths.get(context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath(), filename).toString();",
+      "range": {
+        "startLine": 576,
+        "startChar": 15,
+        "endLine": 577,
+        "endChar": 32
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc5b0c72_a02b9788",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 2
