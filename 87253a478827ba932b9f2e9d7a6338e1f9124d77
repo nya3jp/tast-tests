@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75658ee9_820713a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-08T19:20:34Z",
+      "side": 1,
+      "message": "Think ash.GetAllWindows returns a snapshot rather than something live. So we need to get the window bounds again after the state change.\n\nWe need to ash.WaitWindowFinishAnimating before we do ash.GetWindow again to get the bounds because the state change might be animated.\n\nIt is also good to sanity check that window state is actually normal out of ash.GetWindow()\u0027s return. The state change could fail if we are in wrong state (e.g. somehow we failed to get into clamshell mode), and we want to fail earlier in such case.",
+      "revId": "87253a478827ba932b9f2e9d7a6338e1f9124d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196b55a5_e99dc344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-08T19:20:34Z",
+      "side": 1,
+      "message": "Move this after the testing.Poll and add a comment, something like\n\n  // Sleep to ensure post drag finishes so that the window is\n  // ready for the next drag.",
+      "revId": "87253a478827ba932b9f2e9d7a6338e1f9124d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
