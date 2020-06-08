@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c82e7a4e_46617cf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-08T08:43:36Z",
+      "side": 1,
+      "message": "Yes, we don\u0027t have control file running test with wificell_cq \u0026\u0026 wificell_unstable. We only have control file running test with wificell_func \u0026\u0026 wificell_unstable.\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.wificell-cq",
+      "parentUuid": "0295cba3_35b5ad16",
+      "range": {
+        "startLine": 25,
+        "startChar": 52,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "a28069263103e66a405dbe212ca346c4b4061005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614a517a_5f83a5a1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
         "patchSetId": 3
@@ -234,6 +258,30 @@
       "revId": "a28069263103e66a405dbe212ca346c4b4061005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4180373_546c9077",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-08T08:43:36Z",
+      "side": 1,
+      "message": "Per offline discussion, let\u0027s use DisableEnableTest until we found another test that needs Disable or Enable.",
+      "parentUuid": "84da4c63_59db07e2",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "a28069263103e66a405dbe212ca346c4b4061005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
