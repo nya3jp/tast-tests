@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26bc4620_e8543683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-08T18:36:37Z",
+      "side": 1,
+      "message": "FYI - this file has moved to cros/crash/selinux_violation.go. Change still LGTM, but you\u0027ll need to modify that file to deal with the merge conflict correctly.",
+      "revId": "ad0a5a7450ac980c5ada601a050690ca27d58bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
