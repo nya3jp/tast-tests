@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "df71ad7a_72666705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-08T22:08:32Z",
+      "side": 1,
+      "message": "nit, optional:\nyou can also use coords.NewPoint(initBounds.Width....)",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 24
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73917f14_be8a8a0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
         "patchSetId": 1
@@ -154,6 +177,30 @@
       "writtenOn": "2020-06-08T21:59:20Z",
       "side": 1,
       "message": "Shouldn\u0027t we release mouse even if there was failure after Press and before this moment?\nCannot understand from ui/mouse documentation.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 24
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc8c560_270a392a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-08T22:08:32Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1ea06cc3_d14d144b",
       "range": {
         "startLine": 149,
         "startChar": 11,
