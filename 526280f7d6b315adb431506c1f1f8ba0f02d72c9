@@ -22,6 +22,30 @@
       "revId": "526280f7d6b315adb431506c1f1f8ba0f02d72c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a90bb7dd_79d2c7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T22:42:42Z",
+      "side": 1,
+      "message": "Oops, I\u0027ve overseen that.\n\nI am afraid that \"internal\" could be problematic, since some devices (e.g. Chromeboxes) don\u0027t have internal displays.\n\nI guess, for now, using primary display is fine (display.GetPrimaryInfo() or check isPrimary flag).\n\nAlso, ash.Window struct has \"DisplayID\", so theoretically you can match it with display.Info\u0027s ID.  cf.\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ash#Window.DisplayID\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/display#Info.ID",
+      "parentUuid": "423c775a_a2cef7cf",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 121
+      },
+      "revId": "526280f7d6b315adb431506c1f1f8ba0f02d72c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
