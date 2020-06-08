@@ -101,32 +101,37 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	// always have been written out much further back in time than our
 	// current boot time.
 	fs := dutfs.NewClient(cl.Conn)
-	flagInfo, err := fs.Stat(ctx, commoncrash.CrashReporterEnabledPath)
-	if err != nil {
-		s.Error("Failed to open crash reporter enabled file flag: ", err)
-	} else if !flagInfo.Mode().IsRegular() {
-		s.Error("Crash reporter enabled file flag is not a regular file: ", commoncrash.CrashReporterEnabledPath)
-	}
-	flagTime := flagInfo.ModTime()
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		flagInfo, err := fs.Stat(ctx, commoncrash.CrashReporterEnabledPath)
+		if err != nil {
+			return errors.Wrap(err, "failed to open crash reporter enabled file flag")
+		} else if !flagInfo.Mode().IsRegular() {
+			return errors.Errorf("crash reporter enabled file flag is not a regular file: %s", commoncrash.CrashReporterEnabledPath)
+		}
+		flagTime := flagInfo.ModTime()
 
-	current := time.Now()
-	ut, err := uptime(ctx, fileSystem)
-	if err != nil {
-		s.Fatal("Failed to get uptime: ", err)
-	}
-	// This bootTime can be slightly older than actual. It can theoretically
-	// result in a false negative (overlook wrong condition) with very limited
-	// timing. However it would be OK practically because boot would take more
-	// than a second. Additionally, if bootTime were newer than actual, it may
-	// falsely fail when flagTime is right after the actual boot time.
-	bootTime := current.Add(time.Duration(-ut * float64(time.Second)))
+		current := time.Now()
+		ut, err := uptime(ctx, fileSystem)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get uptime"))
+		}
+		// This bootTime can be slightly older than actual. It can theoretically
+		// result in a false negative (overlook wrong condition) with very limited
+		// timing. However it would be OK practically because boot would take more
+		// than a second. Additionally, if bootTime were newer than actual, it may
+		// falsely fail when flagTime is right after the actual boot time.
+		bootTime := current.Add(time.Duration(-ut * float64(time.Second)))
 
-	// This test depends on the accuracy of the system clock. The clock may be
-	// adjusted between system boot and reporter startup, which may make the
-	// clock fluctuate by small amount. Make it pass if the difference is
-	// small enough compared to the one that happen between reboots.
-	if flagTime.Before(bootTime.Add(-2 * time.Second)) {
-		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
-			flagTime.Format(time.RFC3339Nano), bootTime.Format(time.RFC3339Nano))
+		// This test depends on the accuracy of the system clock. The clock may be
+		// adjusted between system boot and reporter startup, which may make the
+		// clock fluctuate by small amount. Make it pass if the difference is
+		// small enough compared to the one that happen between reboots.
+		if flagTime.Before(bootTime.Add(-2 * time.Second)) {
+			return errors.Errorf("user space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
+				flagTime.Format(time.RFC3339Nano), bootTime.Format(time.RFC3339Nano))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		s.Errorf("crash_reporter did not start correctly: %s", err)
 	}
 }
