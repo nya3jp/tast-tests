@@ -37,6 +37,11 @@ func (p Point) Add(p2 Point) Point {
 	return Point{p.X + p2.X, p.Y + p2.Y}
 }
 
+// Sub returns the subtraction of two Points.
+func (p Point) Sub(p2 Point) Point {
+	return Point{p.X - p2.X, p.Y - p2.Y}
+}
+
 // Size represents a size of a region.
 type Size struct {
 	Width  int `json:"width"`
@@ -75,6 +80,21 @@ func (r Rect) String() string {
 // TopLeft returns the location of the top left of the rectangle.
 func (r Rect) TopLeft() Point {
 	return Point{X: r.Left, Y: r.Top}
+}
+
+// TopRight returns the location of the top right of the rectangle.
+func (r Rect) TopRight() Point {
+	return Point{X: r.Left + r.Width, Y: r.Top}
+}
+
+// BottomLeft returns the location of the bottom left of the rectangle.
+func (r Rect) BottomLeft() Point {
+	return Point{X: r.Left, Y: r.Top + r.Height}
+}
+
+// BottomRight returns the location of the bottom right of the rectangle.
+func (r Rect) BottomRight() Point {
+	return Point{X: r.Left + r.Width, Y: r.Top + r.Height}
 }
 
 // CenterPoint returns the location of the center of the rectangle.
