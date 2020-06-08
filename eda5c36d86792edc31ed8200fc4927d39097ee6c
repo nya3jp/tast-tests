@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "7a1be6be_2d35160c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-08T22:19:44Z",
+      "side": 1,
+      "message": "disregard my comment about Stop(). Brendan I correct.\nSince we are calling \"am force-stop package-name\", we don\u0027t need the activity name.\n\nMy comment about Start() is still valid, but it should not be addressed in this CL. Couldn\u0027t find the bug I was mentioning, I\u0027ll file a new one.",
+      "parentUuid": "d62e6aaf_05cabe53",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "363c36ce_a1275d7f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
