@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type memCheckParams struct {
@@ -31,6 +32,7 @@ func init() {
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
+		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		SoftwareDeps: []string{"chrome", "graphics_debugfs"},
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
