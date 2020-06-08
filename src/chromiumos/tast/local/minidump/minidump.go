@@ -117,16 +117,14 @@ func saveWithoutCrash(ctx context.Context, pid int32, path string) {
 	}
 	defer os.RemoveAll(tmp)
 
-	cmd := testexec.CommandContext(context.Background(), // NOLINT: test might have timed out
-		"gcore", "-o", filepath.Join(tmp, "core"), fmt.Sprint(pid))
+	cmd := testexec.CommandContext(ctx, "gcore", "-o", filepath.Join(tmp, "core"), fmt.Sprint(pid))
 	if err := cmd.Run(); err != nil {
 		testing.ContextLog(ctx, "Failed to save core: ", err)
 		cmd.DumpLog(ctx)
 		return
 	}
 
-	cmd = testexec.CommandContext(context.Background(), // NOLINT: test might have timed out
-		"core2md", filepath.Join(tmp, fmt.Sprintf("core.%d", pid)), fmt.Sprintf("/proc/%d", pid), path)
+	cmd = testexec.CommandContext(ctx, "core2md", filepath.Join(tmp, fmt.Sprintf("core.%d", pid)), fmt.Sprintf("/proc/%d", pid), path)
 	if err := cmd.Run(); err != nil {
 		testing.ContextLog(ctx, "Failed to convert to minidump: ", err)
 		cmd.DumpLog(ctx)

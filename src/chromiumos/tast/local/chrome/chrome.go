@@ -41,6 +41,14 @@ const (
 	// 40*3=120 seconds for the safety.
 	gaiaLoginTimeout = 120 * time.Second
 
+	// uiRestartTimeout is the maximum amount of time that it takes to restart
+	// the ui upstart job.
+	// ui-post-stop can sometimes block for an extended period of time
+	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
+	uiRestartTimeout = 60 * time.Second
+)
+
+const (
 	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
 	DefaultUser = "testuser@gmail.com"
 
@@ -49,10 +57,6 @@ const (
 	defaultGaiaID = "gaia-id"
 
 	oobePrefix = "chrome://oobe"
-
-	// ui-post-stop can sometimes block for an extended period of time
-	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
-	uiRestartTimeout = 90 * time.Second
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
