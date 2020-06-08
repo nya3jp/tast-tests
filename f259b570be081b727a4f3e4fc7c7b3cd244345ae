@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "195530d3_76652872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-08T04:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8218e7_fd6b65f6",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f2812b_01b83a1c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 3
@@ -101,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "190ea37c_07dc5922",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-08T04:06:12Z",
+      "side": 1,
+      "message": "The |testErr| may comes from |retErr :\u003d hal3.RunTest(ctx, cfg)| in hal3_service.go.\nAnd the |hal3.RunTest(ctx, cfg)| will return error from gtest while all gtest detailed logs are saved inside compressed file in Response. So I think we still need to try decompress the gtest logs for having more debug information.\n\nI do encounter some mysterious case that the |response| may be nil. Or we should also have a flag in |pb.RunTestResponse| indicating whether the remote expect the format of compressed OutDir is complete and decompressable even if the gtest is failed?",
+      "parentUuid": "529e06cd_01f7d537",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f53ebeab_731038f8",
         "filename": "src/chromiumos/tast/services/cros/camerabox/common.proto",
         "patchSetId": 3
@@ -121,6 +169,30 @@
       "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d22d18_61798d4e",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/common.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-08T04:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f53ebeab_731038f8",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
