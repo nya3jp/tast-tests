@@ -46,6 +46,30 @@
       "revId": "74506238b070f5379244c384fcc48758921157aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "950bac51_84585467",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-08T22:18:05Z",
+      "side": 1,
+      "message": "Cool. Maybe add that bug here :)",
+      "parentUuid": "903fe76b_e8f0588c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "74506238b070f5379244c384fcc48758921157aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
