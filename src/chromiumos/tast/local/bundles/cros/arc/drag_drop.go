@@ -127,11 +127,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		expected = `ClipData { text/plain "" {T:Data text} }`
 	)
 
-	if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx, 30*time.Second); err != nil {
-		actual, terr := d.Object(ui.ID(fieldID)).GetText(ctx)
-		if terr != nil {
-			s.Fatal("Failed to get the text: ", terr)
-		}
-		s.Fatalf("Unexpected drag and drop result: %v: got %q; want %q", err, actual, expected)
+	if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expected, 30*time.Second); err != nil {
+		s.Fatal("Failed to wait for the drag and drop result: ", expected)
 	}
 }
