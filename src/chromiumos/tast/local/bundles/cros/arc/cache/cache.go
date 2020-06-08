@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -119,14 +118,11 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
 
-	// Cryptohome dir for the current user. (OpenSession signs in as chrome.DefaultUser.)
-	rootCryptDir, err := cryptohome.SystemPath(chrome.DefaultUser)
+	// OpenSession signs in as chrome.DefaultUser.
+	androidDataDir, err := arc.AndroidDataDir(chrome.DefaultUser)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the cryptohome directory for the user")
+		return errors.Wrap(err, "failed to get android-data path")
 	}
-
-	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
-	androidDataDir := filepath.Join(rootCryptDir, "android-data")
 
 	gmsRootUnderHome := filepath.Join(androidDataDir, gmsRoot)
 	chimeraPath := filepath.Join(gmsRootUnderHome, appChimera)

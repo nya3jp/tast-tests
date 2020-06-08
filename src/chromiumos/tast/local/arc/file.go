@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -65,6 +66,33 @@ func (a *ARC) PushTestBinaryToTmpDir(ctx context.Context, execName string) ([]st
 	return execs, nil
 }
 
+// AndroidDataDir returns the ChromeOS path from which /data/ can be accessed (/home/root/${USER_HASH}/android-data).
+func AndroidDataDir(user string) (string, error) {
+	// Cryptohome dir for the current user.
+	rootCryptDir, err := cryptohome.SystemPath(user)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get the cryptohome directory for user: %s", user)
+	}
+
+	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
+	return filepath.Join(rootCryptDir, "android-data"), nil
+}
+
+// PkgDataDir returns the ChromeOS path of the directory that contains user files of a given Android package (/home/root/${USER_HASH}/android-data/data/media/0/Android/data/${PKG}).
+func PkgDataDir(user, pkg string) (string, error) {
+	andrDataDir, err := AndroidDataDir(user)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get android-data path")
+	}
+
+	dataDir := filepath.Join(andrDataDir, "data/media/0/Android/data")
+	if _, err := os.Stat(dataDir); err != nil {
+		return "", errors.Wrapf(err, "cannot access Android data directory: %s", dataDir)
+	}
+
+	return filepath.Join(dataDir, pkg), nil
+}
+
 // ReadFile reads a file in Android file system with adb pull.
 func (a *ARC) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	f, err := ioutil.TempFile("", "adb")
@@ -107,6 +135,7 @@ func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error
 }
 
 // FileSize returns the size of the specified file in bytes. Returns an error if the file does not exist.
+// Note: In contrast to PkgFileSize, FileSize accesses files via adb commands.
 func (a *ARC) FileSize(ctx context.Context, filename string) (int64, error) {
 	// `stat -c %s` measures the size of a file in bytes.
 	statOutput, err := a.Command(ctx, "stat", "-c", "%s", filename).Output()
@@ -120,6 +149,21 @@ func (a *ARC) FileSize(ctx context.Context, filename string) (int64, error) {
 	}
 
 	return fileSize, nil
+}
+
+// PkgFileSize returns the size of a specified file that belongs to a specified Android package in bytes. Returns an error if the file does not exist.
+func PkgFileSize(ctx context.Context, user, pkg, filename string) (int64, error) {
+	pkgDir, err := PkgDataDir(user, pkg)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to get package directory for %s", pkg)
+	}
+
+	fullPath := filepath.Join(pkgDir, filename)
+	info, err := os.Stat(fullPath)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to access file: %s", fullPath)
+	}
+	return info.Size(), nil
 }
 
 // TempDir creates a temporary directory under ARCTmpDirPath in Android,
