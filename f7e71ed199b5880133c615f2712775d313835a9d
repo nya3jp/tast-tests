@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2b084fc6_1e8cb488",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:46:23Z",
+      "side": 1,
+      "message": "Correction: local/hwsec package.",
+      "parentUuid": "0127ba25_1aec008c",
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6da0ad4_a6fbff22",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
