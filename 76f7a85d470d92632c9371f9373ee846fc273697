@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e643ec29_ab468856",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "nit: This line looks a bit long, mind inserting newlines?",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e21bbdf_8aa7cf50",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "\"snapshot\" sounds a bit generic --- one might wonder if it can be used to take a snapshot of memory for example. How about naming is \"filesnapshot\"?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6e53e2_203a1cb2",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "As I commented in crrev.com/c/2220928, I think we can save/restore local_tpm_data in a different way and remove this system-level manager.\n\nIf we still want to keep this manager, I really want this to be named differently from the ambiguous \"system-level\". IMO snapshots should be named after when it is saved. See the next comment as well.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a483156b_a44676aa",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "IIUC the point of labels is to allow taking multiple snapshots of the same file in different timings. But since labels are arbitrary strings they suffer from typos.\n\nRather callers can instantiate multiple Managers if they want to take multiple snapshots, like:\n\n beforeTest :\u003d snapshot.NewManager()\n afterTest :\u003d snapshot.NewManager()\n\nThen we can catch typos at build time statically.",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df13cd62_e757ea8b",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "typo: defines",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb03c15_5e92159f",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "uid, gid (to unexport)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa9a3ea_d30543c5",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "This is an internal detail of the struct not suitable for public API documentation.",
+      "range": {
+        "startLine": 41,
+        "startChar": 42,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e0cd49_84fc9050",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "Maybe \"Snapshot\"? \"Manager\" is known to be too generic name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a2f9cf_74dc5ba0",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "No need to pass ctx? Same for other methods.",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f50c7a_c9d647fc",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "Do we want to error if a conflicting file is already in the snapshot?",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022e04c4_92a5fdd8",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:53:18Z",
+      "side": 1,
+      "message": "These methods look asymmetric...\n\nHow about something like:\n\n // Save adds a file to the snapshot.\n func (s *Snapshot) Save(filename string) error\n // Restore restores a file from the snapshot. A file in the snapshot is not removed.\n func (s *Snapshot) Restore(filename string) error\n // Remove removes a file from the snapshot.\n func (s *Snapshot) Remove(filename string) error",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
