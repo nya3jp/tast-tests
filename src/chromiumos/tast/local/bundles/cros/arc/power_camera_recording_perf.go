@@ -140,7 +140,8 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not send intent: ", err)
 	}
-	s.Log("Recording to file: ", outputFile)
+	filePath := "files/DCIM/" + outputFile
+	s.Log("Recording to file: ", filePath)
 
 	s.Log("Warmup: Waiting a bit before starting the measurement")
 	if err := testing.Sleep(ctx, cameraWarmupDuration); err != nil {
@@ -202,7 +203,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if video file was generated.
-	fileSize, err := a.FileSize(ctx, outputFile)
+	fileSize, err := arc.PkgFileSize(ctx, cr.User(), cameraAppPackage, filePath)
 	if err != nil {
 		s.Fatal("Could not determine size of video recording: ", err)
 	}
