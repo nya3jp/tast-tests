@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a7bdf4_25118434",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "I wonder if we still need the snapshot package given that we\u0027re taking the on-disk approach.\n\nCan this be as simple as providing two functions somewhere (likely the common/hwsec package?):\n\n // SaveTPMLocalData copies the local_tpm_data file to a different directory if it contains\n // an owner password. The saved local_tpm_data can be restored by calling RestoreTPMLocalData.\n // This function is called before Tast tests are run; tests don\u0027t need to call it usually.\n func SaveTPMLocalData() error\n\n // RestoreTPMLocalData overwrites the local_tpm_data with a file saved by SaveTPMLocalData.\n // This function can be called by tests requiring an owner password.\n func RestoreTPMLocalData() error\n\nThen we can modify ready.Wait to call SaveTPMLocalData, and tests to call RestoreTPMLocalData at the beginning (if necessary).",
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6da0ad4_a6fbff22",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "style: mind inserting a space after // ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be552a0_8f9590d7",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "style: storeTPMManagerLocalData",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c31419_ff0b951d",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "s/loca/local/",
+      "range": {
+        "startLine": 124,
+        "startChar": 40,
+        "endLine": 124,
+        "endChar": 53
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd22142_ae82cab2",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "style: since the above block returns early, \"else\" is not needed here.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 8
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee5fd7a_0c18c599",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "use fsutil.CopyFile.",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 90
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10f8182_ce75b42d",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "nit: can we avoid this when we restored the local tpm data from backup?",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5dd298_0d9300e8",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:15:46Z",
+      "side": 1,
+      "message": "Let us name the function more clearly to describe what it does (checking if the owner password is available).",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
