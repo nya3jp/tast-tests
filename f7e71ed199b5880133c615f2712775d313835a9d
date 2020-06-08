@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0127ba25_1aec008c",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T09:19:47Z",
+      "side": 1,
+      "message": "Ah, crrev.com/c/2220929 uses the snapshot package for different files.\n\nBut I still think we can use the above approach for saving/restoring local_tpm_data.",
+      "parentUuid": "a1a7bdf4_25118434",
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6da0ad4_a6fbff22",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
