@@ -389,6 +389,24 @@
     },
     {
       "key": {
+        "uuid": "e9de729f_881fb348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-08T19:30:52Z",
+      "side": 1,
+      "message": "That\u0027s just how it\u0027s implemented currently. Please use API that is necessary and narrower, unless again there is a good reason to do so.",
+      "parentUuid": "cc7541ab_fc3201fb",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
