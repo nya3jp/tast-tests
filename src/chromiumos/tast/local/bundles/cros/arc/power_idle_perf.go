@@ -50,8 +50,8 @@ func init() {
 
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	const (
-		iterationCount    = 30
-		iterationDuration = 10 * time.Second
+		iterationCount    = 3
+		iterationDuration = 1 * time.Second
 	)
 
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
@@ -81,7 +81,8 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Setup failed: ", err)
 	}
 
-	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
+	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(),
+		perf.Interval(iterationDuration), perf.Count(iterationCount))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -99,11 +100,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start recording: ", err)
 	}
 
-	if err := testing.Sleep(ctx, iterationCount*iterationDuration); err != nil {
-		s.Fatal("Failed to sleep: ", err)
-	}
-
-	p, err := metrics.StopRecording()
+	p, err := metrics.WaitForRecordingEnds(ctx)
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}

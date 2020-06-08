@@ -85,12 +85,14 @@ func (t defaultClock) Now() time.Time {
 
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
-	sources         []TimelineDatasource
-	interval        time.Duration
-	cancelRecording context.CancelFunc
-	recordingValues *Values
-	recordingStatus chan error
-	clock           Clock
+	sources            []TimelineDatasource
+	interval           time.Duration
+	count              int
+	cancelRecording    context.CancelFunc
+	recordingValues    *Values
+	recordingStatus    chan error
+	recordingCompleted chan error
+	clock              Clock
 }
 
 // NewTimelineOptions holds all optional parameters of NewTimeline.
@@ -99,6 +101,7 @@ type NewTimelineOptions struct {
 	Prefix string
 	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
 	Interval time.Duration
+	Count    int
 	// A different Clock implementation is used in Timeline unit tests to avoid sleeping in test code.
 	Clock Clock
 }
@@ -110,6 +113,14 @@ type NewTimelineOption func(*NewTimelineOptions)
 func Interval(interval time.Duration) NewTimelineOption {
 	return func(args *NewTimelineOptions) {
 		args.Interval = interval
+	}
+}
+
+// Count sets the number of snapshots to be taken.
+// If this option is not specified, the snapshots are taken until StopRecording() is called.
+func Count(count int) NewTimelineOption {
+	return func(args *NewTimelineOptions) {
+		args.Count = count
 	}
 }
 
@@ -140,7 +151,7 @@ func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...N
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss, interval: args.Interval, clock: args.Clock}, nil
+	return &Timeline{sources: ss, interval: args.Interval, count: args.Count, clock: args.Clock}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -174,6 +185,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 	t.recordingStatus = make(chan error, 1)
 
 	go func() {
+		count := 0
 		for nextTime := t.clock.Now().Add(t.interval); ; nextTime = nextTime.Add(t.interval) {
 			sleepTime := nextTime.Sub(t.clock.Now())
 
@@ -183,18 +195,47 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 			}
 
 			if err := t.clock.Sleep(ctx, sleepTime); err != nil {
-				t.recordingStatus <- nil
-				return
+				break
 			}
 
 			if err := t.snapshot(ctx, t.recordingValues); err != nil {
 				t.recordingStatus <- err
 				return
 			}
+			count++
+			if count == t.count {
+				break
+			}
 		}
+		t.recordingStatus <- nil
+		close(t.recordingStatus)
 	}()
-
 	return nil
+}
+
+// WaitForRecordingEnds waits for ending the count based snapshot and returns the captured metrics.
+func (t *Timeline) WaitForRecordingEnds(ctx context.Context) (*Values, error) {
+	if t.recordingStatus == nil {
+		return nil, errors.New("not recording yet")
+	}
+	if t.count == 0 {
+		return nil, errors.New("This Timeline takes infinite number of snapshots until StopRecording() is called")
+	}
+	for {
+		select {
+		case err, ok := <-t.recordingStatus:
+			if ok && err != nil {
+				return nil, err
+			}
+			result := t.recordingValues
+			t.recordingValues = nil
+			t.recordingStatus = nil
+			return result, nil
+		default:
+			testing.ContextLog(ctx, "waiting")
+			time.Sleep(t.interval)
+		}
+	}
 }
 
 // StopRecording stops capturing metrics and returns the captured metrics.
