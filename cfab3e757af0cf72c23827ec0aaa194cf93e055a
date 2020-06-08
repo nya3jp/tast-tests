@@ -22,6 +22,30 @@
       "revId": "cfab3e757af0cf72c23827ec0aaa194cf93e055a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a212d97_da36b17b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-08T06:21:46Z",
+      "side": 1,
+      "message": "Yes I agree. TODO added.",
+      "parentUuid": "eaea239b_b76d536f",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "cfab3e757af0cf72c23827ec0aaa194cf93e055a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
