@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d87feea3_3319384e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-06-08T02:35:54Z",
+      "side": 1,
+      "message": "I think the comment does not match what it is doing.\n\nHere, I am guessing we want to wait for creation of the pstore file by crosvm.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 147
+      },
+      "revId": "9a6b1cf28e2616bc1a2e184f33898d7d5fdad5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
