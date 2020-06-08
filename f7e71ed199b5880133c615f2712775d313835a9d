@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e6816535_5f7b38eb",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b084fc6_1e8cb488",
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6da0ad4_a6fbff22",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -75,6 +93,30 @@
       "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdf6f39_d7613b65",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "N/A now",
+      "parentUuid": "a6da0ad4_a6fbff22",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "191ccd3f_91c97606",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Done in refactored result.",
+      "parentUuid": "6be552a0_8f9590d7",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96c31419_ff0b951d",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -121,6 +187,30 @@
       "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd54c9a8_ee710577",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Done in refactored result.",
+      "parentUuid": "96c31419_ff0b951d",
+      "range": {
+        "startLine": 124,
+        "startChar": 40,
+        "endLine": 124,
+        "endChar": 53
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "eef6cf6b_3ebfbd5f",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd22142_ae82cab2",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 8
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ee5fd7a_0c18c599",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -170,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "884d1947_dda44fe0",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "That\u0027s handy!",
+      "parentUuid": "3ee5fd7a_0c18c599",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 90
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c10f8182_ce75b42d",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -181,6 +319,30 @@
       "writtenOn": "2020-06-08T09:15:46Z",
       "side": 1,
       "message": "nit: can we avoid this when we restored the local tpm data from backup?",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75f422b_62c4eb5f",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Probably N/A now, but actually I am not sure I understand your comment here?",
+      "parentUuid": "c10f8182_ce75b42d",
       "range": {
         "startLine": 139,
         "startChar": 23,
@@ -213,6 +375,30 @@
       "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46c99e4_34fb1871",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:18:33Z",
+      "side": 1,
+      "message": "Done. And refatored into local/hwsec.",
+      "parentUuid": "3b5dd298_0d9300e8",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "f7e71ed199b5880133c615f2712775d313835a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
