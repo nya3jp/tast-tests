@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e235d3_98619dbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-08T15:44:51Z",
+      "side": 1,
+      "message": "\u003e \"stoped\" is a possible misspelling of \"stopped\".\n\nPlease fix.",
+      "parentUuid": "baae52f0_e5bfe35f",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "0f5f77151f41dabe57671a0460a074577252799d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
