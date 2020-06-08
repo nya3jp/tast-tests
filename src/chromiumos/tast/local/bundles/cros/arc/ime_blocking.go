@@ -108,11 +108,7 @@ func IMEBlocking(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to type %q: %v", "world", err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes1+keystrokes2)).WaitForExists(ctx, 2*time.Minute); err != nil {
-		if actual, err := field.GetText(ctx); err != nil {
-			s.Fatal("Failed to get text: ", err)
-		} else {
-			s.Fatalf("Got input %q from field after typing %q", actual, keystrokes1+keystrokes2)
-		}
+	if err := field.WaitForText(ctx, keystrokes1+keystrokes2, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for text: ", err)
 	}
 }

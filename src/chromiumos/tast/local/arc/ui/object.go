@@ -77,6 +77,21 @@ func (o *Object) WaitForExists(ctx context.Context, timeout time.Duration) error
 	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
 }
 
+// WaitForText waits for a text view matching the selector to have the expected text.
+func (o *Object) WaitForText(ctx context.Context, expected string, timeout time.Duration) error {
+	s := *o.s
+	s.Text = expected
+	s.Mask |= maskText
+	terr := o.callSimple(ctx, "waitForExists", &s, timeout/time.Millisecond)
+	if terr != nil {
+		if actual, err := o.GetText(ctx); err == nil {
+			return errors.Errorf("text does not match: got %q; want %q", actual, expected)
+		}
+		return terr
+	}
+	return nil
+}
+
 // WaitUntilGone waits for a view matching the selector to disappear.
 //
 // This method corresponds to UiObject.waitUntilGone().

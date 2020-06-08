@@ -102,12 +102,8 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "failed to type %q", keystrokes)
 		}
 
-		if err := d.Object(ui.ID(fieldID), ui.Text(expectedResult)).WaitForExists(ctx, 30*time.Second); err != nil {
-			actual, terr := field.GetText(ctx)
-			if terr != nil {
-				return errors.Wrap(err, "failed to wait for input text to appear")
-			}
-			return errors.Errorf("got input %q from field after typing %q", actual, keystrokes)
+		if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expectedResult, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for text")
 		}
 
 		return nil
