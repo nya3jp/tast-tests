@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a4ba95c_621fca1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T21:07:43Z",
+      "side": 1,
+      "message": "Please set the Timeout -- otherwise, it will wait until the entire test timeouts. If something goes wrong on this logic, that will waste some time. I don\u0027t know what amount of timeout is better here, but I guess it would be 5 seconds or 10 seconds.",
+      "range": {
+        "startLine": 92,
+        "startChar": 26,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "86c8ae057c1f604a1708d27c167174e26e9f01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c767398_d03824ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T21:07:43Z",
+      "side": 1,
+      "message": "I guess \"1 window\" is fine",
+      "range": {
+        "startLine": 106,
+        "startChar": 24,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "86c8ae057c1f604a1708d27c167174e26e9f01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a5221b1_79aef21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T21:07:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "86c8ae057c1f604a1708d27c167174e26e9f01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
