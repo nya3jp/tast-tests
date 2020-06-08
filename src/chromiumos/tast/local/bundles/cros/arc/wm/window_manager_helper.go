@@ -63,6 +63,9 @@ const (
 	Portrait = "portrait"
 )
 
+// TestFunc represents a function that tests if the window is in a certain state.
+type TestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
+
 // CheckMaximizeResizable checks that the window is both maximized and resizable.
 func CheckMaximizeResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
@@ -146,6 +149,26 @@ func CheckMaximizeToFullscreenTogglePortrait(ctx context.Context, tconn *chrome.
 	if displayInfo[0].Bounds.Top != fullscreenWindowCoords.Top ||
 		displayInfo[0].Bounds.Height != fullscreenWindowCoords.Height {
 		return errors.Errorf("invalid fullscreen window bounds compared to display bounds, got: Top=%d, Height=%d, want: Top=%d, Height=%d", fullscreenWindowCoords.Top, fullscreenWindowCoords.Height, displayInfo[0].Bounds.Top, displayInfo[0].Bounds.Height)
+	}
+
+	return nil
+}
+
+// CheckLandscapeMaximizeWindowInTabletMode checks
+func CheckLandscapeMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, fullscreenWindowCoords coords.Rect) error {
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.New("failed to get display info")
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("no primary display info found")
+	}
+
+	if primaryDisplayInfo.WorkArea.Left != fullscreenWindowCoords.Left ||
+		primaryDisplayInfo.WorkArea.Top != fullscreenWindowCoords.Top ||
+		primaryDisplayInfo.WorkArea.Width != fullscreenWindowCoords.Width ||
+		primaryDisplayInfo.WorkArea.Height != fullscreenWindowCoords.Height {
+		return errors.Errorf("invalid fullscreen window bounds compared to display work area, got: %s, want: %s", fullscreenWindowCoords, primaryDisplayInfo.WorkArea)
 	}
 
 	return nil
