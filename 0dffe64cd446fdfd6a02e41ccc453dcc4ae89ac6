@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "298ec9fb_5508e6a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-06-08T08:41:43Z",
+      "side": 1,
+      "message": "Can this run with SELinux enforced?",
+      "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd30e2b_ea752037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-06-08T08:41:43Z",
+      "side": 1,
+      "message": "Please describe why you put \"1 $i\" and \"2 $i\" before the string.",
+      "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f049f7_57b50255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-06-08T08:41:43Z",
+      "side": 1,
+      "message": "This test is parameterized, but it\u0027s actually two different tests.\nCould you do either:\n- Make the test code less duplicated.\n- Make these two separate tests.",
+      "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
