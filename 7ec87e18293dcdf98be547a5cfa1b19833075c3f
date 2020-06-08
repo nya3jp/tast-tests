@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6693a1f_2c061c24",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:01:33Z",
+      "side": 1,
+      "message": "Is terr the right error to wrap here? The logs will not contain information from err, is that OK?",
+      "range": {
+        "startLine": 89,
+        "startChar": 22,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "7ec87e18293dcdf98be547a5cfa1b19833075c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130336d1_1f990f37",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:01:33Z",
+      "side": 1,
+      "message": "It seems like you\u0027re commonly wrapping the error returned by WaitForText with:\n\n    s.Fatalf(\"Failed to wait for text: \", err)\n\nWith that in mind, do you need to wrap terr? I\u0027m thinking it might be sufficient to just return terr. Or, is there a different wrap message that would convey the idea, such as \"failed to get text\"?",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "7ec87e18293dcdf98be547a5cfa1b19833075c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
