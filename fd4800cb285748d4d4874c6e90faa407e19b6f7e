@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad972ed6_b1e4730a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2020-06-08T06:30:33Z",
+      "side": 1,
+      "message": "One idea is to return (logcat Err, pstoreErr). However I\u0027m not sure if it follows Go customs.\n\nSecond ideas is to handle each errors here without propagating themselves.\nif logcatErr !\u003d nil || pstoreErr !\u003d nil {\n  return errors.New(\"failed to save logfiles\") // Use Errorf if you want to include error info.\n} else {\n  return nil\n}",
+      "revId": "fd4800cb285748d4d4874c6e90faa407e19b6f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
