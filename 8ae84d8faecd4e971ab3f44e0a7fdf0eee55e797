@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a00460b_5e9b4927",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-08T04:06:30Z",
+      "side": 1,
+      "message": "HostapdConfig and ShillServiceProperties whould check these fields, so we need to assign them manually in unitest. But in the unitests of the classes that were derived from eap.Config, we are not able to assign these fields manually if they are private. That is, currently these fields are public only because of the unitests of other packages.",
+      "parentUuid": "de157930_f26ffc0d",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97a613dd_d3b09262",
         "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
         "patchSetId": 9
@@ -68,6 +92,30 @@
       "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ea9287_bbd9d72d",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-08T04:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe0a4cc_de19d2ca",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "8ae84d8faecd4e971ab3f44e0a7fdf0eee55e797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
