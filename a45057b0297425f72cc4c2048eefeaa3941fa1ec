@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7909d8f4_7138fba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T22:12:26Z",
+      "side": 1,
+      "message": "If ew doesn\u0027t work, I am afraid that 100msecs interval of EnsureNoEvents might be too short, so that it quits earlier than expected.\n\nI am not requesting to debug any further unless you\u0027re interested in. If WaitForLocationChangeCompleted works and you\u0027re okay with that, let\u0027s just use that.",
+      "parentUuid": "a4c4a35d_14ae572b",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 5
+      },
+      "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b9c61e7_5f4778c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
