@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1deb471a_b3796320",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e643ec29_ab468856",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e21bbdf_8aa7cf50",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afb138b_90537f8f",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e21bbdf_8aa7cf50",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a627a14c_16c2b3dd",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Let\u0027s remove this manager :)",
+      "parentUuid": "8a6e53e2_203a1cb2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a483156b_a44676aa",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657430a9_1b11cb3f",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "You are right, let\u0027s remove the label. And this over-design is probably not gonna be effective anyway.\nIn turn, we don\u0027t need this struct anymore, just use string.",
+      "parentUuid": "a483156b_a44676aa",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "02677548_6d77e29d",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df13cd62_e757ea8b",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1eb03c15_5e92159f",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff97333e_950dd296",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1eb03c15_5e92159f",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3d5657e2_a96145bd",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa9a3ea_d30543c5",
+      "range": {
+        "startLine": 41,
+        "startChar": 42,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0e0cd49_84fc9050",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a633433d_b5f84cc9",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e0cd49_84fc9050",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "60261daa_5e56cb68",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a2f9cf_74dc5ba0",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79f50c7a_c9d647fc",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "4364d80c_30e10a4d",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "it is WAI to override the old one. \nBTW, it is just an arbitrary design choice, not driven by any usecase. Either way works for me, but if you think it is better to change it, please let me know. For now I\u0027d just add document.",
+      "parentUuid": "79f50c7a_c9d647fc",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "022e04c4_92a5fdd8",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -243,6 +483,30 @@
       "writtenOn": "2020-06-08T09:53:18Z",
       "side": 1,
       "message": "These methods look asymmetric...\n\nHow about something like:\n\n // Save adds a file to the snapshot.\n func (s *Snapshot) Save(filename string) error\n // Restore restores a file from the snapshot. A file in the snapshot is not removed.\n func (s *Snapshot) Restore(filename string) error\n // Remove removes a file from the snapshot.\n func (s *Snapshot) Remove(filename string) error",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bf08b4_e14fdea2",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-08T17:22:01Z",
+      "side": 1,
+      "message": "your counter-proposal is not functionally equivalent. \"Stash\" is designed to perform \"Store\" then \"Delete file\". \n\nI see your point, though. The symmetry is a bit awkward. How about we remove \"shallDelete\" from the argument and move the entry removal to Pop? This way, Save/Restore and Stash/Pop can be 2 pairs of symmetric functions. We can even unexport Save and Restore at this point becasue we don\u0027t actually have any use-case as of today. One day if we really need the stand-alone \"Remove\" we can add it then.\n\nPTAL at the updated patchset. WDYT?",
+      "parentUuid": "022e04c4_92a5fdd8",
       "range": {
         "startLine": 73,
         "startChar": 0,
