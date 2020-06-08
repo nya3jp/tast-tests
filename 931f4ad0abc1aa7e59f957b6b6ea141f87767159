@@ -371,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "cc7541ab_fc3201fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-08T18:56:19Z",
+      "side": 1,
+      "message": "WaitForARCAppWindowState also uses Poll() internally, so in fact there is not a big difference between explicitly calling Poll() or implicitly (via WaitForARCAppWindowState). \nFollowing Tast test documentation (below link) and Ricardo\u0027s recommendation, I decided to use Poll(), if there are concerns, please let me know.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "parentUuid": "f3e9b698_b746b8fa",
+      "revId": "931f4ad0abc1aa7e59f957b6b6ea141f87767159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "606d409e_d9ec912a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 3
