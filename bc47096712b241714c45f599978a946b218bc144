@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e09a76_0b173d57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:18:01Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure whether this applies to custom import names, but I think remoteIW would be more consistent with Go\u0027s naming.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "bc47096712b241714c45f599978a946b218bc144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4217336_8cf274f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:18:01Z",
+      "side": 1,
+      "message": "nit: You may want to consider this an Error.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "bc47096712b241714c45f599978a946b218bc144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275c2c36_d663a062",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:18:01Z",
+      "side": 1,
+      "message": "This may be out-of-scope for this change, but acronyms should be either kept as all-uppercase or all-lowercase; in this case, SSID.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "bc47096712b241714c45f599978a946b218bc144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48751b5d_16d23acb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:18:01Z",
+      "side": 1,
+      "message": "As above, I would consider changing this to s.Error.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "bc47096712b241714c45f599978a946b218bc144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c96f7e_16c0d551",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-08T22:18:01Z",
+      "side": 1,
+      "message": "I think you want %v here",
+      "range": {
+        "startLine": 154,
+        "startChar": 62,
+        "endLine": 154,
+        "endChar": 64
+      },
+      "revId": "bc47096712b241714c45f599978a946b218bc144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
