@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -61,6 +62,9 @@ const (
 	// Portrait used by the subtests.
 	Portrait = "portrait"
 )
+
+// TestFunc represents a function that tests if the window is in a certain state.
+type TestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
 
 // CheckMaximizeResizable checks that the window is both maximized and resizable.
 func CheckMaximizeResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
@@ -120,6 +124,26 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 	}
 	if o != wanted {
 		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
+	}
+
+	return nil
+}
+
+// CheckLandscapeFullscreenWindow checks fullscreen window bounds in landscape mode.
+func CheckLandscapeFullscreenWindow(ctx context.Context, tconn *chrome.TestConn, fullscreenWindowCoords coords.Rect) error {
+	displayInfo, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return errors.New("failed to get display info")
+	}
+	if len(displayInfo) == 0 {
+		return errors.New("no connected display found")
+	}
+
+	if displayInfo[0].WorkArea.Left != fullscreenWindowCoords.Left ||
+		displayInfo[0].WorkArea.Top != fullscreenWindowCoords.Top ||
+		displayInfo[0].WorkArea.Width != fullscreenWindowCoords.Width ||
+		displayInfo[0].WorkArea.Height != fullscreenWindowCoords.Height {
+		return errors.Errorf("invalid fullscreen window bounds compared to display work area, got: %s, want: %s", fullscreenWindowCoords, displayInfo[0].WorkArea)
 	}
 
 	return nil
