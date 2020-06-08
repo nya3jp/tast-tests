@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29630943_b2becbce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/facebook.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-08T22:22:48Z",
+      "side": 1,
+      "message": "nit make this a constant",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 17
+      },
+      "revId": "074c074dc6dfbd4bfc2f6c05c335ab2e125e6353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fc6518_af1b8d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/facebook.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-08T22:22:48Z",
+      "side": 1,
+      "message": "nit make this a constant",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 17
+      },
+      "revId": "074c074dc6dfbd4bfc2f6c05c335ab2e125e6353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
