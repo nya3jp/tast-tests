@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e6b981f_39e780a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-08T22:14:01Z",
+      "side": 1,
+      "message": "I assume this is the cause behind https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1056928 ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "74506238b070f5379244c384fcc48758921157aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
