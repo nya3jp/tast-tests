@@ -46,6 +46,30 @@
       "revId": "f886d708b80fd3ee2575f65f37d75eb9c54c99dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc01caf9_18b3abfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-08T18:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251c1e29_b0649be3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "f886d708b80fd3ee2575f65f37d75eb9c54c99dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
