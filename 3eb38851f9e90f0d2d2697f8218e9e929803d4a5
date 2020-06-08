@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36aeb3d6_41244b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-08T22:20:01Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need to create a second keyboard",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328187d6_f36142fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-08T22:20:01Z",
+      "side": 1,
+      "message": "I think you actually want stop here. Also, since this isn\u0027t a defer, you should handle the error it returns.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
