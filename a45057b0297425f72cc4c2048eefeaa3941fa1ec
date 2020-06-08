@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb26116d_319ce43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T21:20:32Z",
+      "side": 1,
+      "message": "If ew is used, this WaitForLocationChangeCompleted wouldn\u0027t be necessary. Or vice-versa -- because both are doing same thing.\n\nPlease keep either one.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 5
+      },
+      "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9c61e7_5f4778c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-08T21:20:32Z",
+      "side": 1,
+      "message": "nit: it is up to you but I think you can overwrite deskMiniViews, i.e.\n  deskMiniViews, err \u003d chromeui.FindAll(...)",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 40
+      },
+      "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
