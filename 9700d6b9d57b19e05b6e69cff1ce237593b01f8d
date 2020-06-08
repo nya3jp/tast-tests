@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9590740f_53ce3b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-08T07:11:34Z",
+      "side": 1,
+      "message": "For some reason, Autotest also let \"unknown\" state pass and has a comment stating that the case is more common. However, I didn\u0027t see somewhere assigning the result to \"unknown\" so this one here LGTM.",
+      "range": {
+        "startLine": 591,
+        "startChar": 62,
+        "endLine": 591,
+        "endChar": 84
+      },
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
