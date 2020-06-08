@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5b0c72_a02b9788",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-06-08T06:38:50Z",
+      "side": 1,
+      "message": "How about\n\n... from which /data/ can be accessed (/home/root/${USER_HASH}/android-data).\n\n?",
+      "range": {
+        "startLine": 69,
+        "startChar": 44,
+        "endLine": 69,
+        "endChar": 84
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee592016_3f7be606",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-06-08T06:38:50Z",
+      "side": 1,
+      "message": "This comment should be moved back to the calling line in cache.go",
+      "range": {
+        "startLine": 71,
+        "startChar": 41,
+        "endLine": 71,
+        "endChar": 86
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ab8d39_f2d757a1",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-06-08T06:38:50Z",
+      "side": 1,
+      "message": "ditto\n\n... of a given Android package (/home/root/${USER_HASH}/android-data/data/media/0/Android/data/${PKG})\n\n?",
+      "range": {
+        "startLine": 81,
+        "startChar": 93,
+        "endLine": 81,
+        "endChar": 109
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
