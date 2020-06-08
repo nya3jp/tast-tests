@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "423c775a_a2cef7cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-08T22:26:47Z",
+      "side": 1,
+      "message": "nit (sorry, missed it): you can address this in a future CL.\nMention that you are using the first display that is found.\nThis is important because the test might fail on multi-display environments.\n\nOr, if you only care about internal displays, you can iterate in displayInfo and use the one that says \"isInternal\", and return an error if you cannot find one.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 121
+      },
+      "revId": "526280f7d6b315adb431506c1f1f8ba0f02d72c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
