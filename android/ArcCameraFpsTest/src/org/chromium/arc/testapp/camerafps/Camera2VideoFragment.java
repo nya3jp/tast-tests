@@ -47,6 +47,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -285,8 +286,9 @@ public class Camera2VideoFragment extends Fragment {
             long startTime = SystemClock.elapsedRealtime();
             final CountDownLatch latch = new CountDownLatch(1);
 
-            final String filename = getPhotoFilePath(getActivity());
-            Log.i(TAG, "Saving picture in file: " + filename);
+            final String filename = getPhotoFileName();
+            final String fullFilePath = getFullPath(getActivity(), filename);
+            Log.i(TAG, "Saving picture in file: " + fullFilePath);
 
             Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
             Size[] hrSizes =
@@ -321,7 +323,7 @@ public class Camera2VideoFragment extends Fragment {
                             ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                             byte[] bytes = new byte[buffer.remaining()];
                             buffer.get(bytes);
-                            File file = new File(filename);
+                            File file = new File(fullFilePath);
                             FileOutputStream output = null;
                             try {
                                 output = new FileOutputStream(file);
@@ -563,26 +565,28 @@ public class Camera2VideoFragment extends Fragment {
         mMediaRecorder.prepare();
     }
 
-    private String getVideoFilePath(Context context) {
-        return context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath()
-                + "/"
-                + System.currentTimeMillis()
-                + ".mp4";
+    private String getVideoFileName() {
+        return System.currentTimeMillis() + ".mp4";
     }
 
-    private String getPhotoFilePath(Context context) {
-        return context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath()
-                + "/"
-                + System.currentTimeMillis()
-                + ".jpeg";
+    private String getPhotoFileName() {
+        return System.currentTimeMillis() + ".jpeg";
+    }
+
+    private String getFullPath(Context context, String filename) {
+        return Paths.get(
+            context.getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath(),
+            filename).toString();
     }
 
     public String startRecordingVideo() {
         try {
             closePreviewSession();
 
-            String filename = getVideoFilePath(getActivity());
-            setUpMediaRecorder(filename);
+            String filename = getVideoFileName();
+            String fullFilePath = getFullPath(getActivity(), filename);
+
+            setUpMediaRecorder(fullFilePath);
 
             SurfaceTexture texture = mTextureView.getSurfaceTexture();
             assert texture != null;

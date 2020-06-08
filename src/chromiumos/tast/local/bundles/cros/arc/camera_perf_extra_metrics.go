@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -143,9 +144,10 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 		if outputFile, err := a.BroadcastIntentGetData(ctx, intentTakePhoto); err != nil {
 			s.Error("Could not send intent: ", err)
 		} else {
-			s.Log("Output file: ", outputFile)
+			filePath := filepath.Join("files/DCIM", outputFile)
+			s.Log("Output file: ", filePath)
 			// Check if photo file was generated.
-			if fileSize, err := a.FileSize(ctx, outputFile); err != nil {
+			if fileSize, err := arc.PkgFileSize(ctx, cr.User(), cameraAppPackage, filePath); err != nil {
 				s.Error("Could not determine size of photo file: ", err)
 			} else if fileSize < minExpectedFileSize {
 				s.Errorf("Photo file is smaller than expected: got %d, want >= %d", fileSize, minExpectedFileSize)
