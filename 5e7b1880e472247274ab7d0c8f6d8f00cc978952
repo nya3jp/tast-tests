@@ -104,6 +104,24 @@
       "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87716a4a_9c65f132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-08T15:31:24Z",
+      "side": 1,
+      "message": "Sleep is a not a good way to synchronize. There are still chances to fail. Even it works locally, things might be different on bots and on devices in the lab. If we have a signal, it should be used instead of sleep. Sleep is the last resort and usually to make it work everywhere, we have to make the sleep duration longer than necessary.\n\nFor the observed problem, I am not sure what goes wrong. We had cpu.WaitUntilIdle() between the two drags before the CL, which works like Sleep. We probably should keep Sleep some time (e.g. 1s) between the two drags in addition to testing.Poll + checkWindowsNum.",
+      "parentUuid": "ee1345c9_66c2186b",
+      "revId": "5e7b1880e472247274ab7d0c8f6d8f00cc978952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

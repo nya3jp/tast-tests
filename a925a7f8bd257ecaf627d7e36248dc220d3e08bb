@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bc80445_7d38aaac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-08T15:31:24Z",
+      "side": 1,
+      "message": "Did we have code to change window state to normal? Maybe we should do that before dragging.\n\nI did a quick look at the failures, most of the screenshots show maximized browser windows. That seems like to be the cause of the failed 2nd drag. W We are not dragging the tabs but selecting the text.\n\nThe strange failure is \"nocturne\". Window frame does not have the usual min/max/close buttons, which might imply that we are not in a clamshell mode that we expect (not sure what that mode is). Maybe ash.EnsureTabletModeEnabled does not work as expected with latest chrome. We could fix that separately if it persists.",
+      "revId": "a925a7f8bd257ecaf627d7e36248dc220d3e08bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
