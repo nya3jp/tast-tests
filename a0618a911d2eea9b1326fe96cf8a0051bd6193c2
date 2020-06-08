@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8429eb92_07a132dd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T11:07:01Z",
+      "side": 1,
+      "message": "A typical way is to report a first error in the following way:\n\n var firstErr error\n\n if err :\u003d f(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n\n if err :\u003d g(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n\n return firstErr",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e2fce13_136a5e80",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -18,6 +41,75 @@
         "startChar": 3,
         "endLine": 168,
         "endChar": 18
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b18aa3_ca97aae6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T11:07:01Z",
+      "side": 1,
+      "message": "style: Add a period to the end of the sentence.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 172,
+        "startChar": 60,
+        "endLine": 172,
+        "endChar": 71
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ae5713_2ad7cb5a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T11:07:01Z",
+      "side": 1,
+      "message": "style: createNewARCLogFile\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 24
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f59984_450188f9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-08T11:07:01Z",
+      "side": 1,
+      "message": "Since this is done in Chrome OS (rather than Android as for startLogcat), let us do the polling in Go code, not in shell code.\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   return testexec.CommandContext(ctx, \"vm_pstore_dump\").Run()\n }, nil); err !\u003d nil {\n   return err\n }",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 2
       },
       "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
