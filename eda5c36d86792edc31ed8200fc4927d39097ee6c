@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d62e6aaf_05cabe53",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-08T18:18:19Z",
+      "side": 1,
+      "message": "If this is meant to close all activities of a package(which I would say should be expected behavior given the use of package name), then maybe we should simply add \"am force-stop\" into the polling. Basically, poll that no windows are open for this package and if any are open, keep sending \"am force-stop\". I think this is a simple solution with a clear effect.\n\nIf we need to be able to close a single activity, maybe that would be best dealt with in a different method when the bug Ricardo mentioned is fixed?\n\nOtherwise, for Ricardo\u0027s solution, we need to also modify start to check the number of windows and ensure that the count goes up. That would make things always wait for synchronous state before moving on(note: that solution would still have race conditions if someone is using goroutines to start or stop multiple activities, but I have never seen this done in any test. If someone decides to do that, they can deal with the race condition in the specific goroutines.)",
+      "parentUuid": "5d8cfc40_8be32de3",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "eda5c36d86792edc31ed8200fc4927d39097ee6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "363c36ce_a1275d7f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
