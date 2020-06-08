@@ -28,7 +28,9 @@ func init() {
 }
 
 func SecChange(fullCtx context.Context, s *testing.State) {
-	var tfOps []wificell.TFOption
+	tfOps := []wificell.TFOption{
+		wificell.TFCapture(true),
+	}
 	if router, _ := s.Var("router"); router != "" {
 		tfOps = append(tfOps, wificell.TFRouter(router))
 	}
