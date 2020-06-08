@@ -101,12 +101,8 @@ func chromeVirtualKeyboardBasicEditingTest(
 
 		// Check the input field after each keystroke to avoid flakiness. https://crbug.com/945729
 		// In order to use GetText() after timeout, we should have shorter timeout than ctx.
-		if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx, 30*time.Second); err != nil {
-			if actual, err := field.GetText(ctx); err != nil {
-				s.Fatal("Failed to get text: ", err)
-			} else {
-				s.Fatalf("Got input %q from field after typing %q", actual, expected)
-			}
+		if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expected, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for text: ", err)
 		}
 	}
 }
@@ -293,20 +289,12 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 
 		// Check the input field after each keystroke.
 		expectedText := fmt.Sprintf("key down: keyCode=%d", key.Expected)
-		if err := d.Object(ui.ID(lastKeyDownLabelID), ui.Text(expectedText)).WaitForExists(ctx, 30*time.Second); err != nil {
-			if actual, err := keyDownLabel.GetText(ctx); err != nil {
-				s.Fatal("Failed to get text: ", err)
-			} else {
-				s.Fatalf("Got input %q from field. Expected %q", actual, expectedText)
-			}
+		if err := keyDownLabel.WaitForText(ctx, expectedText, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for text: ", err)
 		}
 		expectedText = fmt.Sprintf("key up: keyCode=%d", key.Expected)
-		if err := d.Object(ui.ID(lastKeyUpLabelID), ui.Text(expectedText)).WaitForExists(ctx, 30*time.Second); err != nil {
-			if actual, err := keyUpLabel.GetText(ctx); err != nil {
-				s.Fatal("Failed to get text: ", err)
-			} else {
-				s.Fatalf("Got input %q from field. Expected %q", actual, expectedText)
-			}
+		if err := keyUpLabel.WaitForText(ctx, expectedText, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for text: ", err)
 		}
 	}
 }
