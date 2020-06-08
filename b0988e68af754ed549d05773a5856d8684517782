@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49d812f5_752086da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "Please delete outDir in a defer:\n\ndefer os.RemoveAll(outDir)",
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfecb31_1c91cdff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db37b45f_ae1ebfb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c87b589_f666d8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caacca3d_713455cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55212943_95f0c342",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-08T07:10:13Z",
+      "side": 1,
+      "message": "nit: maybe choose a different name: out_dir_contents?\n\nPerhaps it would be easier to simply send the path to the temporary directory and use linuxssh.GetFile to copy the files over to the OutDir of the remote test? There would be no need to use tar to serialize the directory. Don\u0027t forget to delete the temporary directory when done.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/ssh/linuxssh/fileutil.go;l\u003d33\n\nYou can use DUT.Conn:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/dut/dut.go;l\u003d62",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "b0988e68af754ed549d05773a5856d8684517782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
