@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bfc3fc4c_f92eeb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-08T21:59:20Z",
+      "side": 1,
+      "message": "Documentation from ash.SetWindowBounds:\n\n// It returns the actual bounds and display set, which may be different to the requested bounds and display.\n\nshould we ignore return values?",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73917f14_be8a8a0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
         "patchSetId": 1
@@ -117,6 +140,52 @@
       "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ea06cc3_d14d144b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-08T21:59:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we release mouse even if there was failure after Press and before this moment?\nCannot understand from ui/mouse documentation.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 24
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c12e9f_08b715a0",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-08T21:59:20Z",
+      "side": 1,
+      "message": "nit: \n\nfor _, info :\u003d range info {\n\tif predicate(\u0026info) {\n\t\treturn \u0026info, nil\n\t}\n}",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
