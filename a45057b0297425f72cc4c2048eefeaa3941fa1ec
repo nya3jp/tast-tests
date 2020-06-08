@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4c4a35d_14ae572b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-08T21:51:54Z",
+      "side": 1,
+      "message": "On the contrary, my testing shows that testing.Poll by itself does not work. If it should work, maybe something is wrong. However, chromeui.WaitForLocationChangeCompleted by itself does work, and so I have updated the CL that way.\n\nWhile my new patchset is probably fine, please consider that if you would expect ew by itself to be sufficient, then there may be something wrong outside of the present CL.",
+      "parentUuid": "eb26116d_319ce43e",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 5
+      },
+      "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b9c61e7_5f4778c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d88d0113_75338b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-08T21:51:54Z",
+      "side": 1,
+      "message": "This suggestion does not apply to my new patchset.",
+      "parentUuid": "5b9c61e7_5f4778c7",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 40
+      },
+      "revId": "a45057b0297425f72cc4c2048eefeaa3941fa1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
