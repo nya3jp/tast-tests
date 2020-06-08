@@ -100,33 +100,33 @@ func GetInfo(ctx context.Context, tconn *chrome.TestConn) ([]Info, error) {
 	return infos, nil
 }
 
-// GetInternalInfo returns information about the internal display.
-// An error is returned if no internal display is present.
-func GetInternalInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
+// FindInfo returns information about the display that satisfies the given predicate.
+func FindInfo(ctx context.Context, tconn *chrome.TestConn, predicate func(info *Info) bool) (*Info, error) {
 	infos, err := GetInfo(ctx, tconn)
 	if err != nil {
 		return nil, err
 	}
 	for i := range infos {
-		if infos[i].IsInternal {
+		if predicate(&infos[i]) {
 			return &infos[i], nil
 		}
 	}
-	return nil, errors.New("no internal display")
+	return nil, errors.New("failed to find a display satisfying the condition")
+}
+
+// GetInternalInfo returns information about the internal display.
+// An error is returned if no internal display is present.
+func GetInternalInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
+	return FindInfo(ctx, tconn, func(info *Info) bool {
+		return info.IsInternal
+	})
 }
 
 // GetPrimaryInfo returns information about the primary display.
 func GetPrimaryInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
-	infos, err := GetInfo(ctx, tconn)
-	if err != nil {
-		return nil, err
-	}
-	for i := range infos {
-		if infos[i].IsPrimary {
-			return &infos[i], nil
-		}
-	}
-	return nil, errors.New("no primary display")
+	return FindInfo(ctx, tconn, func(info *Info) bool {
+		return info.IsPrimary
+	})
 }
 
 // DisplayProperties holds properties to change and is passed to SetDisplayProperties.
