@@ -11,6 +11,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -51,23 +54,10 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
-	if err != nil {
-		s.Fatal("Could not create a new Display: ", err)
-	}
-	defer disp.Close()
-	sz, err := disp.Size(ctx)
-	if err != nil {
-		s.Fatal("Failed to get the display size: ", err)
-	}
-
-	w, h := sz.Width, sz.Height
-
 	const (
 		pkg          = "com.android.settings"
 		activityName = ".Settings"
-		swipeDur     = time.Second
-		marginPX     = 2
+		dragDur      = time.Second
 	)
 
 	act, err := arc.NewActivity(a, pkg, activityName)
@@ -79,65 +69,83 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the settings activity: ", err)
 	}
-	defer act.Stop(ctx)
+
+	window, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
+		return window.ARCPackageName == pkg
+	})
+	if err != nil {
+		s.Fatal("Failed to find the ARC window: ", err)
+	}
+	info, err := display.FindInfo(ctx, tconn, func(info *display.Info) bool {
+		return info.ID == window.DisplayID
+	})
+	if err != nil {
+		s.Fatal("Failed to find the display: ", err)
+	}
+
+	dispMode, err := info.GetSelectedMode()
+	if err != nil {
+		s.Fatal("Failed to get the selected display mode: ", err)
+	}
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the window state to normal: ", err)
 	}
 
-	// ResizeWindow and MoveWindow are implemented with touchscreen event injection.
-	// Due to its floating point precision, results of these operations are not strictly accurate.
-	nearlyEqual := func(a, b int) bool {
-		diff := a - b
-		if diff < 0 {
-			diff = -diff
-		}
-		return diff <= marginPX
+	if err := ash.WaitForCondition(ctx, tconn, func(cur *ash.Window) bool {
+		return cur.ID == window.ID && cur.State == ash.WindowStateNormal && !cur.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for the window to finish animating: ", err)
 	}
 
+	// Waits for the window bounds to be updated on the Android side.
 	waitForWindowBounds := func(ctx context.Context, expected coords.Rect) error {
+		expected = coords.ConvertBoundsFromDpToPx(expected, dispMode.DeviceScaleFactor)
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			actual, err := act.WindowBounds(ctx)
 			if err != nil {
 				return testing.PollBreak(err)
 			}
-
-			if !nearlyEqual(expected.Left, actual.Left) ||
-				!nearlyEqual(expected.Top, actual.Top) ||
-				!nearlyEqual(expected.Width, actual.Width) ||
-				!nearlyEqual(expected.Height, actual.Height) {
+			if actual != expected {
 				return errors.Errorf("window bounds doesn't match: got %v, want %v", actual, expected)
 			}
-
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 
-	if err := act.MoveWindow(ctx, coords.Point{X: 0, Y: 0}, swipeDur); err != nil {
-		s.Fatal("Failed to move the activity: ", err)
+	initBounds := info.WorkArea
+	initBounds.Width /= 2
+	initBounds.Height /= 2
+	if actualBounds, _, err := ash.SetWindowBounds(ctx, tconn, window.ID, initBounds, window.DisplayID); err != nil {
+		s.Fatal("Failed to set window bounds: ", err)
+	} else if actualBounds != initBounds {
+		s.Fatalf("Failed to resize the activity: got %v; want %v", actualBounds, initBounds)
 	}
 
-	if err := act.ResizeWindow(ctx, arc.BorderBottomRight, coords.Point{X: w / 2, Y: h / 2}, swipeDur); err != nil {
-		s.Fatal("Failed to resize the activity: ", err)
+	// Grab the center of the window caption bar.
+	initDst := coords.NewPoint(initBounds.Width/2, window.CaptionHeight/2)
+	if err := mouse.Move(ctx, tconn, initDst, 0); err != nil {
+		s.Fatal("Failed to move the mouse: ", err)
 	}
-
-	if err := waitForWindowBounds(ctx, coords.Rect{Left: 0, Top: 0, Width: w / 2, Height: h / 2}); err != nil {
-		s.Fatal("Failed to wait for the activity to resize: ", err)
+	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		s.Fatal("Failed to press the mouse button: ", err)
 	}
+	defer func() {
+		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			s.Fatal("Failed to release the mouse button: ", err)
+		}
+	}()
 
-	outset := w / 8
-
-	left := -outset
-	top := 0
-	right := w/2 + outset
-	bottom := h/2 + outset
-
-	for _, origin := range []coords.Point{{X: left, Y: top}, {X: right, Y: top}, {X: right, Y: bottom}, {X: left, Y: bottom}} {
-		if err := act.MoveWindow(ctx, origin, swipeDur); err != nil {
-			s.Fatal("Failed to move the activity: ", err)
+	// Drag the window to the four corners of the work area minus the inset.
+	r := info.WorkArea.WithInset(window.CaptionHeight/2, window.CaptionHeight/2)
+	for _, dst := range []coords.Point{r.TopLeft(), r.TopRight(), r.BottomRight(), r.BottomLeft()} {
+		if err := mouse.Move(ctx, tconn, dst, dragDur); err != nil {
+			s.Fatal("Failed to move the mouse: ", err)
 		}
 
-		if err := waitForWindowBounds(ctx, coords.Rect{Left: origin.X, Top: origin.Y, Width: w / 2, Height: h / 2}); err != nil {
+		offset := dst.Sub(initDst)
+		expectedBounds := initBounds.WithOffset(offset.X, offset.Y)
+		if err := waitForWindowBounds(ctx, expectedBounds); err != nil {
 			s.Fatal("Failed to wait for the activity to move: ", err)
 		}
 	}
