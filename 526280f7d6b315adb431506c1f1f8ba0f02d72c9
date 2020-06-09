@@ -46,6 +46,30 @@
       "revId": "526280f7d6b315adb431506c1f1f8ba0f02d72c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e228d1d_5fd245d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-09T00:28:17Z",
+      "side": 1,
+      "message": "I am working on next CL and will address this.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2236621",
+      "parentUuid": "a90bb7dd_79d2c7f1",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 121
+      },
+      "revId": "526280f7d6b315adb431506c1f1f8ba0f02d72c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
