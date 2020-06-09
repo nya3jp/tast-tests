@@ -16,6 +16,24 @@
       "revId": "2c7f0d48e2472e5669cba73a2c58589adac73df3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4892ad2_1ef482b5",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-09T20:55:37Z",
+      "side": 1,
+      "message": "I think this is good -- or maybe waiting within Run() might be good, since most of the cases users of Run() wants to wait for the histograms (I think some tests don\u0027t want to wait for all though).",
+      "parentUuid": "2442735c_ac19d35b",
+      "revId": "2c7f0d48e2472e5669cba73a2c58589adac73df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
