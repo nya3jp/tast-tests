@@ -211,7 +211,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// Kernel hardening.
 		// Settings that are commented out need to be enabled in the kernel first.
 		// TODO(crbug.com/1061514): Start enabling these.
-		"HARDENED_USERCOPY",
 
 		// CONFIG_UNMAP_KERNEL_AT_EL0=y (aarch64)
 
@@ -302,6 +301,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 
 	if ver.isOrLater(3, 14) {
 		builtin = append(builtin, "BINFMT_SCRIPT", "BINFMT_MISC")
+		builtin = append(builtin, "HARDENED_USERCOPY")
 		module = append(module, "TEST_ASYNC_DRIVER_PROBE", "NFS_FS")
 	} else {
 		// Assists heap memory attacks; best to keep interface disabled.
