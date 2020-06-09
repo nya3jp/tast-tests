@@ -20,27 +20,97 @@ import (
 )
 
 func init() {
-	testing.AddTest(&testing.Test{
-		Func: Drivefs,
-		Desc: "Verifies that drivefs mounts on sign in",
-		Contacts: []string{
-			"dats@chromium.org",
-			"austinct@chromium.org",
-		},
-		SoftwareDeps: []string{
-			"chrome",
-			"chrome_internal",
-			"drivefs",
-		},
-		Attr: []string{
-			"group:mainline",
-			"informational",
-		},
-		Vars: []string{
-			"platform.Drivefs.user",     // GAIA username.
-			"platform.Drivefs.password", // GAIA password.
-		},
-	})
+        testing.AddTest(&testing.Test{
+                Func: Drivefs,
+                Desc: "Verifies that drivefs mounts on sign in",
+                Contacts: []string{
+                        "dats@chromium.org",
+                        "austinct@chromium.org",
+                },
+                SoftwareDeps: []string{
+                        "chrome",
+                        "chrome_internal",
+                        "drivefs",
+                },
+                Attr: []string{
+                        "group:mainline",
+                        "informational",
+                },
+                Vars: []string{
+                        "platform.Drivefs.user",     // GAIA username.
+                        "platform.Drivefs.password", // GAIA password.
+                },
+        })
+}
+
+func SetupDrivefs(ctx context.Context, s *testing.State, cr *chrome.Chrome) string {
+        const (
+                mountPointTimeout = 15 * time.Second
+                fuseIoTimeout     = 40 * time.Second
+        )
+
+        normUser, err := session.NormalizeEmail(cr.User(), true)
+        if err != nil {
+                s.Fatal("Failed to normalize user name: ", err)
+        }
+        s.Log("Logged in as ", normUser)
+
+        // Check that cache folder was created by cryptohome.
+        homePath, err := cryptohome.UserPath(ctx, normUser)
+        if err != nil {
+                s.Fatal("Failed to get home path: ", err)
+        }
+        cachePath := path.Join(homePath, "GCache", "v2")
+        if dir, err := os.Stat(cachePath); !dir.IsDir() {
+                s.Fatal("Cache dir ", cachePath, " is missing: ", err)
+        }
+
+        // It takes some time for request to mount Drive to be handled by CrosDisks
+        // that creates the mount point. Poll for a mount point until timeout.
+        if err := waitForMatchingMount(ctx, mountPointTimeout, isDriveFs); err != nil {
+                s.Fatal("Timeout while waiting for mountpoint creation: ", err)
+        }
+        mounts, err := findMatchingMount(isDriveFs)
+        if err != nil {
+                s.Fatal("Could not obtain mounts: ", err)
+        }
+        if len(mounts) != 1 {
+                s.Fatal("Expected only one drivefs mount but found ", len(mounts), ". Found mounts ", mounts)
+        }
+        mountPath := mounts[0].MountPath
+        s.Log("drivefs is mounted into ", mountPath)
+
+        // We expect to find at least this folder in the mount point.
+        drivefsRoot := path.Join(mountPath, "root")
+
+        // As drivefs may not be fully initialized yet all access to the mount point
+        // may fail inside FUSE driver until the daemon is ready.
+        // Poll for stat to succeed in case the drivefs daemon is never ready due to
+        // some bug.
+        if err := waitForMountConnected(ctx, fuseIoTimeout, drivefsRoot); err != nil {
+                s.Fatal("Failed while waiting for stat: ", err)
+        }
+        dir, err := os.Stat(drivefsRoot)
+        if err != nil {
+                s.Fatal("Could not stat ", drivefsRoot, ": ", err)
+        }
+        if !dir.IsDir() {
+                s.Fatal("Could not find root folder inside ", mountPath, ": ", err)
+        }
+        s.Log("drivefs fully started")
+
+        // Now we are relatively confident that drivefs started correctly.
+        // Check for team_drives.
+        drivefsTeamDrives := path.Join(mountPath, "team_drives")
+        dir, err = os.Stat(drivefsTeamDrives)
+        if err != nil {
+                s.Fatal("Could not stat ", drivefsTeamDrives, ": ", err)
+        }
+        if !dir.IsDir() {
+                s.Fatal("Could not find team_drives folder inside ", mountPath, ": ", err)
+        }
+
+        return drivefsRoot
 }
 
 func findMatchingMount(matcher func(sysutil.MountInfo) bool) (matches []sysutil.MountInfo, err error) {
@@ -84,87 +154,26 @@ func waitForMountConnected(ctx context.Context, timeout time.Duration, path stri
 
 func Drivefs(ctx context.Context, s *testing.State) {
 	const (
-		mountPointTimeout = 15 * time.Second
-		fuseIoTimeout     = 40 * time.Second
 		filesAppUITimeout = 15 * time.Second
 		testFileName      = "drivefs"
 	)
 
 	user := s.RequiredVar("platform.Drivefs.user")
-	password := s.RequiredVar("platform.Drivefs.password")
+        password := s.RequiredVar("platform.Drivefs.password")
 
-	// Sign in a real user.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ARCDisabled(),
-		chrome.Auth(user, password, ""),
-		chrome.GAIALogin(),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+        // Sign in a real user.
+        cr, err := chrome.New(
+                ctx,
+                chrome.ARCDisabled(),
+                chrome.Auth(user, password, ""),
+                chrome.GAIALogin(),
+        )
+        if err != nil {
+                s.Fatal("Failed to start Chrome: ", err)
+        }
+        defer cr.Close(ctx)
 
-	normUser, err := session.NormalizeEmail(cr.User(), true)
-	if err != nil {
-		s.Fatal("Failed to normalize user name: ", err)
-	}
-	s.Log("Logged in as ", normUser)
-
-	// Check that cache folder was created by cryptohome.
-	homePath, err := cryptohome.UserPath(ctx, normUser)
-	if err != nil {
-		s.Fatal("Failed to get home path: ", err)
-	}
-	cachePath := path.Join(homePath, "GCache", "v2")
-	if dir, err := os.Stat(cachePath); !dir.IsDir() {
-		s.Fatal("Cache dir ", cachePath, " is missing: ", err)
-	}
-
-	// It takes some time for request to mount Drive to be handled by CrosDisks
-	// that creates the mount point. Poll for a mount point until timeout.
-	if err := waitForMatchingMount(ctx, mountPointTimeout, isDriveFs); err != nil {
-		s.Fatal("Timeout while waiting for mountpoint creation: ", err)
-	}
-	mounts, err := findMatchingMount(isDriveFs)
-	if err != nil {
-		s.Fatal("Could not obtain mounts: ", err)
-	}
-	if len(mounts) != 1 {
-		s.Fatal("Expected only one drivefs mount but found ", len(mounts), ". Found mounts ", mounts)
-	}
-	mountPath := mounts[0].MountPath
-	s.Log("drivefs is mounted into ", mountPath)
-
-	// We expect to find at least this folder in the mount point.
-	drivefsRoot := path.Join(mountPath, "root")
-
-	// As drivefs may not be fully initialized yet all access to the mount point
-	// may fail inside FUSE driver until the daemon is ready.
-	// Poll for stat to succeed in case the drivefs daemon is never ready due to
-	// some bug.
-	if err := waitForMountConnected(ctx, fuseIoTimeout, drivefsRoot); err != nil {
-		s.Fatal("Failed while waiting for stat: ", err)
-	}
-	dir, err := os.Stat(drivefsRoot)
-	if err != nil {
-		s.Fatal("Could not stat ", drivefsRoot, ": ", err)
-	}
-	if !dir.IsDir() {
-		s.Fatal("Could not find root folder inside ", mountPath, ": ", err)
-	}
-	s.Log("drivefs fully started")
-
-	// Now we are relatively confident that drivefs started correctly.
-	// Check for team_drives.
-	drivefsTeamDrives := path.Join(mountPath, "team_drives")
-	dir, err = os.Stat(drivefsTeamDrives)
-	if err != nil {
-		s.Fatal("Could not stat ", drivefsTeamDrives, ": ", err)
-	}
-	if !dir.IsDir() {
-		s.Fatal("Could not find team_drives folder inside ", mountPath, ": ", err)
-	}
+	drivefsRoot := SetupDrivefs(ctx, s, cr)
 
 	// Create a test file inside Drive.
 	testFile, err := os.Create(path.Join(drivefsRoot, testFileName))
