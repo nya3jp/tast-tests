@@ -212,6 +212,9 @@ type Entry struct {
 	Program string
 	// PID is the PID found in TAG. It is 0 if missing.
 	PID int
+	// ThreadID is the Thread ID found in TAG. It is 0 if missing (which is normal
+	// except for chrome syslog format logs).
+	ThreadID int
 	// Content is the CONTENT part of the message.
 	Content string
 
@@ -321,16 +324,21 @@ func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (
 }
 
 var (
-	linePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
-	tagPattern  = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+)\]$`)
+	syslogLinePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
+	tagPattern        = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+):?(?P<threadid>\d+)?\]$`)
 )
 
 // parseSyslogLine parses a line in a syslog messages file.
 func parseSyslogLine(line string) (*Entry, error) {
-	ms := linePattern.FindStringSubmatch(line)
+	ms := syslogLinePattern.FindStringSubmatch(line)
 	if ms == nil {
 		return nil, errors.Errorf("corrupted syslog line: %q", line)
 	}
+	return parseSyslogLineMatches(line, ms)
+}
+
+// parseSyslogLineMatches parses matches from line in a syslog messages file.
+func parseSyslogLineMatches(line string, ms []string) (*Entry, error) {
 	ts, err := time.Parse(time.RFC3339Nano, ms[1])
 	if err != nil {
 		return nil, errors.Wrap(err, "corrupted syslog stamp")
@@ -338,11 +346,18 @@ func parseSyslogLine(line string) (*Entry, error) {
 	tag := ms[3]
 	program := tag
 	pid := 0
+	threadid := 0
 	if tms := tagPattern.FindStringSubmatch(tag); tms != nil {
 		program = tms[1]
 		pid, err = strconv.Atoi(tms[2])
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse PID")
+		}
+		if len(tms) > 3 && tms[3] != "" {
+			threadid, err = strconv.Atoi(tms[3])
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to parse ThreadID")
+			}
 		}
 	}
 	return &Entry{
@@ -351,6 +366,7 @@ func parseSyslogLine(line string) (*Entry, error) {
 		Tag:       tag,
 		Program:   program,
 		PID:       pid,
+		ThreadID:  threadid,
 		Content:   ms[4],
 		Line:      line,
 	}, nil
@@ -370,9 +386,15 @@ type ChromeEntry struct {
 	Severity string
 	// PID is the process ID of the Chrome process that wrote the message.
 	PID int
+	// ThreadID is the thread ID of the Chrome thread that wrote the message.
+	ThreadID int
 	// Content is the CONTENT part of the message. For multi-line messages, only
 	// the first line is included.
 	Content string
+	// Filename contains the filename, extracted from the CONTENT section in syslog chrome logs only.
+	Filename string
+	// Linenumber contains the line number, extracted from the CONTENT section in syslog chrome logs only.
+	Linenumber int
 }
 
 // NewChromeReader starts a new ChromeReader that reports Chrome log messages
@@ -412,7 +434,8 @@ func (r *ChromeReader) Read() (*ChromeEntry, error) {
 }
 
 var (
-	chromeLinePattern = regexp.MustCompile(`^\[(?P<pid>\d+):\d+:\d{4}/\d{6}.\d{6}:(?P<severity>[^:]+):[^\]]+\] (?P<content>.*)\n$`)
+	chromeLinePattern          = regexp.MustCompile(`^\[(?P<pid>\d+):\d+:\d{4}/\d{6}.\d{6}:(?P<severity>[^:]+):[^\]]+\] (?P<content>.*)\n$`)
+	syslogChromeContentPattern = regexp.MustCompile(`^\[(?P<filename>[^\(\)]*)\((?P<linenumber>\d+)\)\] (?P<content>.*)$`)
 )
 
 // parseChromeLine parses a line in a Chrome-style messages file. Unlike
@@ -420,8 +443,37 @@ var (
 // ChromeEntry. Since Chrome log entries may have newlines in them, we expect that
 // some lines will be unparseable, and don't stop the file reading if we find
 // such lines.
+// In M85, Chrome will switch from a linux style timestamp and format to a
+// syslog compatible fomrat. This looks for a syslog match first, then tries
+// the older Chrome format.
 func parseChromeLine(line string) (*ChromeEntry, bool) {
-	ms := chromeLinePattern.FindStringSubmatch(line)
+	ms := syslogLinePattern.FindStringSubmatch(line)
+	if ms != nil {
+		entry, err := parseSyslogLineMatches(line, ms)
+		if err != nil {
+			return nil, false
+		}
+		contents := syslogChromeContentPattern.FindStringSubmatch(entry.Content)
+		var content, filename string
+		linenumber := 0
+		if contents != nil {
+			filename = contents[1]
+			linenumber, _ = strconv.Atoi(contents[2])
+			content = contents[3]
+		} else {
+			content = entry.Content
+		}
+		return &ChromeEntry{
+			Severity:   entry.Severity,
+			PID:        entry.PID,
+			ThreadID:   entry.ThreadID,
+			Content:    content,
+			Filename:   filename,
+			Linenumber: linenumber,
+		}, true
+	}
+
+	ms = chromeLinePattern.FindStringSubmatch(line)
 	if ms == nil {
 		return nil, false
 	}
