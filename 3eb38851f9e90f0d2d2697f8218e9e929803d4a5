@@ -93,6 +93,29 @@
       "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d900f78d_e01f37c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-09T17:51:09Z",
+      "side": 1,
+      "message": "So I was thinking about this and I think I mixed some things up. If your goal is to simply close and reopen the app it should be:\n\nact, err :\u003d arc.NewActivity(a, appPkgName, appActivity)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to create new app activity: \", err)\n}\ndefer act.Close()\n\n// Stop the current running activity\nif err :\u003d act.Stop(ctx); err !\u003d nil {\n\ts.Fatal(\"Failed to stop app: \", err)\n}\n\n// Restart the activity\nif err :\u003d act.Start(ctx, tconn); err !\u003d nil {\n\ts.Fatal(\"Failed to restart app: \", err)\n}",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
