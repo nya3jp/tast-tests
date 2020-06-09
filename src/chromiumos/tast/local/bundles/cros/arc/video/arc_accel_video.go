@@ -111,7 +111,8 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 	}
 
 	s.Log("Installing APK ", apkName)
-	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	//	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	if err := a.Install(ctx, "/tmp/C2E2ETest.apk"); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
@@ -277,9 +278,9 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		s.Fatal("Failed to report fps/dropped frames: ", err)
 	}
 	s.Logf("FPS = %.2f", fps)
-	s.Logf("Dropped frames = %d", df)
+	s.Logf("Dropped frames per 1000 frame = %.2f", df*1000)
 	perfMap["fps"] = fps
-	perfMap["df"] = float64(df)
+	perfMap["df"] = df * 1000
 	return perfMap
 }
 
@@ -306,7 +307,7 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 }
 
 // reportFrameStats parses FPS and dropped frame info from log file
-func reportFrameStats(logPath string) (float64, int64, error) {
+func reportFrameStats(logPath string) (float64, float64, error) {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to read file")
@@ -323,13 +324,13 @@ func reportFrameStats(logPath string) (float64, int64, error) {
 		return 0, 0, errors.Wrapf(err, "failed to parse FPS value %q", matches[0][1])
 	}
 
-	regExpDroppedFrames := regexp.MustCompile(`(?m)^\[LOG\] Dropped frames: ([+\-]?[0-9.]+)$`)
+	regExpDroppedFrames := regexp.MustCompile(`(?m)^\[LOG\] Dropped frames rate: ([+\-]?[0-9.]+)$`)
 	matches = regExpDroppedFrames.FindAllStringSubmatch(string(b), -1)
 	if len(matches) != 1 {
 		return 0, 0, errors.Errorf("wrong number of dropped frame matches in %v (got %d, want 1)", filepath.Base(logPath), len(matches))
 	}
 
-	df, err := strconv.ParseInt(matches[0][1], 10, 64)
+	df, err := strconv.ParseFloat(matches[0][1], 64)
 	if err != nil {
 		return 0, 0, errors.Wrapf(err, "failed to parse dropped frame value %q", matches[0][1])
 	}
