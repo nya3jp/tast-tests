@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6edb758c_1ca1d7dd",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T11:43:49Z",
+      "side": 1,
+      "message": "err might be context.Canceled or context. DeadlineExceeded, depending on how it is canceled.\n\nRather than comparing to specific values, I recommend checking (ctx.Err() !\u003d nil) to see if the context has been canceled on completion of snapshot.",
+      "range": {
+        "startLine": 192,
+        "startChar": 17,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "1f861e419a6e2e27cf3e928f3bc962ab3dde76ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
