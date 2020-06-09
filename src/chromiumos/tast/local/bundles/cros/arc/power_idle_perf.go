@@ -99,7 +99,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start recording: ", err)
 	}
 
-	if err := testing.Sleep(ctx, iterationCount*iterationDuration); err != nil {
+	if err := testing.Sleep(ctx, (iterationCount+0.25)*iterationDuration); err != nil {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
