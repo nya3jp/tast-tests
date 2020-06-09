@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "18454dcc_ce8b0599",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T06:45:18Z",
+      "side": 1,
+      "message": "Currently, it looks OK to me, but I might prefer generating a set of expired client cert here, if not too hard, so that we don\u0027t have to work around in unit test. I\u0027ll see it this can be done.\n\nAnd one alternative we might consider is refactoring the struct and separate client and server cert, which should fits the real usage more. (e.g. for wiredhostapd, it takes the whole Certificate object but should only need the Server and CA ones.) However, when both server and client side are used, the design makes it hard to tell if their CACert is matched. (Let TestCertificate return multiple values can partly solve it, e.g. \"return ca, server, client\", but I\u0027m not yet sure if it\u0027s good enough)",
+      "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c000bbdb_9b972c6b",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 2
