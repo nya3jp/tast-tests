@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71d52ee9_a03019a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-09T18:19:16Z",
+      "side": 1,
+      "message": "You can save a teensy bit of memory with:\n\n    cmd :\u003d testexec.CommandContext(ctx, \"cros-health-tool\", \"diag\", diag_args...)\n\nI\u0027m not sure which is more readable, WDYT?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3f4c42_5ff3960f",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-09T18:19:16Z",
+      "side": 1,
+      "message": "nit: I recommend using fmt.Sprintf(\"--category\u003d%s\", category) here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
