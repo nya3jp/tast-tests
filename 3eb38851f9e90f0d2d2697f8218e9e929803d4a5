@@ -116,6 +116,30 @@
       "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc5a6af8_42b2d472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-09T19:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d900f78d_e01f37c6",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
