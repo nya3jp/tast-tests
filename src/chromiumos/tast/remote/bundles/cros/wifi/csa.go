@@ -81,9 +81,9 @@ func CSA(ctx context.Context, s *testing.State) {
 			// inactive at this point.
 			s.Log("Failed to disconnect WiFi: ", err)
 		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
+		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(dCtx, req); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
+			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
 	}(ctx)
 	s.Log("Connected")

@@ -112,7 +112,7 @@ type Option func(*Config)
 // SSID returns an Option which sets ssid in hostapd config.
 func SSID(ssid string) Option {
 	return func(c *Config) {
-		c.Ssid = ssid
+		c.SSID = ssid
 	}
 }
 
@@ -201,7 +201,7 @@ func DTIMPeriod(period int) Option {
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
-		Ssid:           RandomSSID("TAST_TEST_"),
+		SSID:           RandomSSID("TAST_TEST_"),
 		SecurityConfig: &base.Config{},
 	}
 	for _, op := range ops {
@@ -217,7 +217,7 @@ func NewConfig(ops ...Option) (*Config, error) {
 
 // Config is the configuration to start hostapd on a router.
 type Config struct {
-	Ssid               string
+	SSID               string
 	Mode               ModeEnum
 	Channel            int
 	HTCaps             HTCap
@@ -250,7 +250,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	// Configurable.
 	configure("ctrl_interface", ctrlPath)
 	// ssid2 for printf-escaped string, cf. https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf
-	configure("ssid2", encodeSSID(c.Ssid))
+	configure("ssid2", encodeSSID(c.SSID))
 	configure("interface", iface)
 	configure("channel", strconv.Itoa(c.Channel))
 
@@ -372,7 +372,7 @@ func (c *Config) PerfDesc() string {
 
 // validate validates the Config, c.
 func (c *Config) validate() error {
-	if c.Ssid == "" || len(c.Ssid) > 32 {
+	if c.SSID == "" || len(c.SSID) > 32 {
 		return errors.New("invalid SSID")
 	}
 	if c.Mode == "" {
