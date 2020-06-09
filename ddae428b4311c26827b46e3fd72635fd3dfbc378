@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bbaddfb_f1572a22",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-09T06:10:54Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 94,
+        "startChar": 51,
+        "endLine": 94,
+        "endChar": 52
+      },
+      "revId": "ddae428b4311c26827b46e3fd72635fd3dfbc378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80cf62c9_b81a48e1",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-09T06:10:54Z",
+      "side": 1,
+      "message": "Not sure if it is better:\nit stores blueprint, a partially initialized object, ...",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 71
+      },
+      "revId": "ddae428b4311c26827b46e3fd72635fd3dfbc378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53efa6cf_d27a4bda",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-09T06:10:54Z",
+      "side": 1,
+      "message": "we store\nor\nit stores",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 28
+      },
+      "revId": "ddae428b4311c26827b46e3fd72635fd3dfbc378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5f2897_58d60715",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-09T06:10:54Z",
+      "side": 1,
+      "message": "their assignment to here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 69,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "ddae428b4311c26827b46e3fd72635fd3dfbc378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
