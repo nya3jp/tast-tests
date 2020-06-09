@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be3f5bef_6bb246fa",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T10:42:18Z",
+      "side": 1,
+      "message": "This method may block if a snapshot is underway. This is concerning because this function may ignore the test timeout carried by context.Context. And if it happens, Tast framework can forcibly stop the test by crashing the process.\n\nIn general, functions that does not finish soon should always take context.Context as an argument, and honor its timeout/cancellation.\n\nSo one way to resolve the issue is to pass context.Context to this function. This is going to be a bit involved change because we can\u0027t use sync.Mutex with context.Context.\n\nAnother way is to design Timeline to drop an in-flight snapshot on StopRecording. This is actually what I recommend --- then we don\u0027t need to pass context.Context to StopRecording because it should finish soon. Note that we can use Values.Merge in Timeline.snapshot to prevent incomplete perf values to be added to recordingValues.",
+      "range": {
+        "startLine": 210,
+        "startChar": 19,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "b299e62db3596319d35bdc83b458e4646ff0d60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
