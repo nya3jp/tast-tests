@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3df06445_35ea23f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-06-09T19:28:01Z",
+      "side": 1,
+      "message": "nit: should this be something like \"invocation\" now? cros-health-tool itself is the utility, cros-health-tool diag is a specific invocation of the utility.",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6414fbf_e2a1c4cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-06-09T19:28:01Z",
+      "side": 1,
+      "message": "Same comment here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71d52ee9_a03019a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
         "patchSetId": 2
@@ -13,6 +59,30 @@
       "writtenOn": "2020-06-09T18:19:16Z",
       "side": 1,
       "message": "You can save a teensy bit of memory with:\n\n    cmd :\u003d testexec.CommandContext(ctx, \"cros-health-tool\", \"diag\", diag_args...)\n\nI\u0027m not sure which is more readable, WDYT?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03aa065e_52042338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-06-09T19:28:01Z",
+      "side": 1,
+      "message": "I like this suggestion for readability as well.",
+      "parentUuid": "71d52ee9_a03019a2",
       "range": {
         "startLine": 46,
         "startChar": 2,
