@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a49d0d3e_24d8af13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T03:49:57Z",
+      "side": 1,
+      "message": "Could you add \"Cq-Depend: chromium:2235930\" here, to ensure the order of submitting?",
+      "revId": "1e57d11a2fe2b4692b0ad96370344381163af498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
