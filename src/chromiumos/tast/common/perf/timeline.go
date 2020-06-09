@@ -6,6 +6,7 @@ package perf
 
 import (
 	"context"
+	"sync"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -87,6 +88,7 @@ func (t defaultClock) Now() time.Time {
 type Timeline struct {
 	sources         []TimelineDatasource
 	interval        time.Duration
+	cancelLock      sync.Mutex
 	cancelRecording context.CancelFunc
 	recordingValues *Values
 	recordingStatus chan error
@@ -183,14 +185,21 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 			}
 
 			if err := t.clock.Sleep(ctx, sleepTime); err != nil {
+				// StopRecording cancels ctx and Sleep returns an error.
 				t.recordingStatus <- nil
 				return
 			}
 
-			if err := t.snapshot(ctx, t.recordingValues); err != nil {
-				t.recordingStatus <- err
-				return
+			t.cancelLock.Lock()
+			if ctx.Err() == nil {
+				// Start another snapshot only if ctx is not done yet.
+				if err := t.snapshot(ctx, t.recordingValues); err != nil {
+					t.cancelLock.Unlock()
+					t.recordingStatus <- err
+					return
+				}
 			}
+			t.cancelLock.Unlock()
 		}
 	}()
 
@@ -203,7 +212,10 @@ func (t *Timeline) StopRecording() (*Values, error) {
 		return nil, errors.New("not recording yet")
 	}
 
+	t.cancelLock.Lock()
 	t.cancelRecording()
+	t.cancelLock.Unlock()
+
 	err := <-t.recordingStatus
 	if err != nil {
 		return nil, err
