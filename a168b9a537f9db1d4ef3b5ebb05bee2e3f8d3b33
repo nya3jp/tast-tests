@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c6f0da3_caeaa994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-09T21:13:06Z",
+      "side": 1,
+      "message": "yes, I need to reopen on both places. The purpose of close and relaunch the app is required here to skip save password dialog box. Whereas \"reOpenWindowForSpotifyAndSignOutOfApp\" method performs \"Clamshell: Reopen app\" test case and sign out of an app.",
+      "parentUuid": "76df4c13_4674b955",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "a168b9a537f9db1d4ef3b5ebb05bee2e3f8d3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f18afde1_972b1c15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a168b9a537f9db1d4ef3b5ebb05bee2e3f8d3b33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010f72f5_04a65d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-09T21:13:06Z",
+      "side": 1,
+      "message": "As arc.NewActivity(a, appPkgName, appActivity),defer act.Close(), act.Start(ctx, tconn)and  \ndefer act.Stop(ctx) were already performed before reOpenWindowForSpotifyAndSignOutOfApp method (performs \"Clamshell: Reopen app\"test case and sign out of an app). From my understanding for \"Clamshell: Reopen app\"test case only close and reopen is required. So no need to move arc.NewActivity again here. Only need to close the app here.",
+      "parentUuid": "f18afde1_972b1c15",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "a168b9a537f9db1d4ef3b5ebb05bee2e3f8d3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
