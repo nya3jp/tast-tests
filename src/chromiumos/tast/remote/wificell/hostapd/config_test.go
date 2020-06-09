@@ -145,7 +145,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(5),
 			},
 			expected: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211a,
 				Channel:        36,
 				HTCaps:         0,
@@ -162,7 +162,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(254),
 			},
 			expected: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211g,
 				Channel:        1,
 				HTCaps:         0,
@@ -180,7 +180,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(1),
 			},
 			expected: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nMixed,
 				Channel:        1,
 				HTCaps:         HTCapHT20,
@@ -199,7 +199,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(100),
 			},
 			expected: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20,
@@ -220,7 +220,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(50),
 			},
 			expected: &Config{
-				Ssid:             "ssid",
+				SSID:             "ssid",
 				Mode:             Mode80211acPure,
 				Channel:          157,
 				HTCaps:           HTCapHT40Plus,
@@ -241,7 +241,7 @@ func TestNewConfig(t *testing.T) {
 				DTIMPeriod(200),
 			},
 			expected: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211a,
 				Channel:        36,
 				HTCaps:         0,
@@ -299,7 +299,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check basic fields.
 		{
 			conf: &Config{
-				Ssid:           "ssid000",
+				SSID:           "ssid000",
 				Mode:           Mode80211b,
 				Channel:        1,
 				SecurityConfig: &base.Config{},
@@ -317,7 +317,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check 802.11n pure.
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        3,
 				SecurityConfig: &base.Config{},
@@ -334,7 +334,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check ht_capab.
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        40,
 				HTCaps:         HTCapHT20,
@@ -350,7 +350,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nMixed,
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20 | HTCapSGI40,
@@ -366,7 +366,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nMixed,
 				Channel:        5,
 				HTCaps:         HTCapHT40 | HTCapSGI40,
@@ -382,7 +382,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check vht_capab.
 		{
 			conf: &Config{
-				Ssid:             "ssid",
+				SSID:             "ssid",
 				Mode:             Mode80211acPure,
 				Channel:          157,
 				HTCaps:           HTCapHT40Plus,
@@ -405,7 +405,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:             "ssid",
+				SSID:             "ssid",
 				Mode:             Mode80211acMixed,
 				Channel:          36,
 				HTCaps:           HTCapHT40Plus,
@@ -427,7 +427,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check hidden.
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211b,
 				Channel:        1,
 				Hidden:         true,
@@ -440,7 +440,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check non-ASCII SSIDs.
 		{
 			conf: &Config{
-				Ssid:           "\a\b\f\n\r\t\v'\"\x1b", // Escaped characters.
+				SSID:           "\a\b\f\n\r\t\v'\"\x1b", // Escaped characters.
 				Mode:           Mode80211b,
 				Channel:        1,
 				SecurityConfig: &base.Config{},
@@ -451,7 +451,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "\xe9\x89\xbb", // UTF-8
+				SSID:           "\xe9\x89\xbb", // UTF-8
 				Mode:           Mode80211b,
 				Channel:        1,
 				SecurityConfig: &base.Config{},
@@ -462,7 +462,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "\xf2\xe3\x00\xd4\xc5\xb6", // Random binary
+				SSID:           "\xf2\xe3\x00\xd4\xc5\xb6", // Random binary
 				Mode:           Mode80211b,
 				Channel:        1,
 				SecurityConfig: &base.Config{},
@@ -474,7 +474,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check PMF.
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211b,
 				Channel:        1,
 				Hidden:         true,
@@ -487,7 +487,7 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211b,
 				Channel:        1,
 				Hidden:         true,
@@ -501,7 +501,7 @@ func TestConfigFormat(t *testing.T) {
 		// Check spectrum management.
 		{
 			conf: &Config{
-				Ssid:               "ssid",
+				SSID:               "ssid",
 				Mode:               Mode80211b,
 				Channel:            1,
 				SpectrumManagement: true,
@@ -544,7 +544,7 @@ func TestFreqOptions(t *testing.T) {
 	}{
 		{
 			conf: &Config{
-				Ssid:    "ssid000",
+				SSID:    "ssid000",
 				Mode:    Mode80211b,
 				Channel: 1,
 			},
@@ -552,7 +552,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:    "ssid",
+				SSID:    "ssid",
 				Mode:    Mode80211nPure,
 				Channel: 3,
 			},
@@ -560,7 +560,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:    "ssid",
+				SSID:    "ssid",
 				Mode:    Mode80211nPure,
 				Channel: 1,
 				HTCaps:  HTCapHT40,
@@ -569,7 +569,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:    "ssid",
+				SSID:    "ssid",
 				Mode:    Mode80211nMixed,
 				Channel: 5,
 				HTCaps:  HTCapHT40 | HTCapSGI40,
@@ -578,7 +578,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:       "ssid",
+				SSID:       "ssid",
 				Mode:       Mode80211acMixed,
 				Channel:    157,
 				HTCaps:     HTCapHT40Plus,
@@ -588,7 +588,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:       "ssid",
+				SSID:       "ssid",
 				Mode:       Mode80211acMixed,
 				Channel:    157,
 				HTCaps:     HTCapHT40Plus,
@@ -598,7 +598,7 @@ func TestFreqOptions(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:       "ssid",
+				SSID:       "ssid",
 				Mode:       Mode80211acMixed,
 				Channel:    108,
 				HTCaps:     HTCapHT40Plus,
@@ -609,7 +609,7 @@ func TestFreqOptions(t *testing.T) {
 		{
 			// 80+80 not yet supported.
 			conf: &Config{
-				Ssid:       "ssid",
+				SSID:       "ssid",
 				Mode:       Mode80211acMixed,
 				Channel:    157,
 				HTCaps:     HTCapHT40Plus,
@@ -665,7 +665,7 @@ func TestPerfDesc(t *testing.T) {
 	}{
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211b,
 				Channel:        1,
 				SecurityConfig: &base.Config{},
@@ -674,7 +674,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        3,
 				SecurityConfig: &base.Config{},
@@ -683,7 +683,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        1,
 				HTCaps:         HTCapHT40,
@@ -693,7 +693,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nMixed,
 				Channel:        5,
 				HTCaps:         HTCapHT40 | HTCapSGI40,
@@ -703,7 +703,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211acMixed,
 				Channel:        157,
 				HTCaps:         HTCapHT40Plus,
@@ -714,7 +714,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211acMixed,
 				Channel:        157,
 				HTCaps:         HTCapHT40Plus,
@@ -725,7 +725,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211acMixed,
 				Channel:        108,
 				HTCaps:         HTCapHT40Plus,
@@ -736,7 +736,7 @@ func TestPerfDesc(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:           "ssid",
+				SSID:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        3,
 				SecurityConfig: wpaConf,

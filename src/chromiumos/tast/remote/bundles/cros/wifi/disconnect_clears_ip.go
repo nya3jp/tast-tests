@@ -58,8 +58,8 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 	defer func() {
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
+			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
 	}()
 	s.Log("Connected")

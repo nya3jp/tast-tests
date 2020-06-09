@@ -345,7 +345,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network.ConnectResponse, error) {
 	conf := ap.Config()
-	return tf.ConnectWifi(ctx, conf.Ssid, conf.Hidden, conf.SecurityConfig)
+	return tf.ConnectWifi(ctx, conf.SSID, conf.Hidden, conf.SecurityConfig)
 }
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.

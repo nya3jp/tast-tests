@@ -98,8 +98,8 @@ func PowerSave(fullCtx context.Context, s *testing.State) {
 		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Fatal("DUT: failed to disconnect WiFi: ", err)
 		}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
+			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
 	}()
 
