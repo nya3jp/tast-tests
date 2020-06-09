@@ -149,10 +149,10 @@ func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) 
 
 // Expect tests the file types and file modes of the opened files for the
 // given Chrome process p.
-// asan should be true if the image is built with enabling ASan.
+// allowDirs should be true if open directories are allowed.
 // es is a list of expected file modes. Please see also the comment of
 // Expectation for details.
-func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process, es []Expectation) {
+func Expect(ctx context.Context, s *testing.State, allowDirs bool, p *process.Process, es []Expectation) {
 	// Create Regex object if necessary.
 	for i := range es {
 		if es[i].pathRegex != nil {
@@ -170,8 +170,8 @@ func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process
 
 	// Check for each opened file.
 	for _, f := range files {
-		// Skip file type check iff ASan is enabled.
-		if !asan && !expectType(f.mode) {
+		// Skip file type check iff allowDirs is true.
+		if !allowDirs && !expectType(f.mode) {
 			s.Errorf("Unexpected file type %v for %v", f, p)
 		}
 
