@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -227,6 +228,18 @@ func findDynTagValue(ef *elf.File, tag elf.DynTag) (uint64, error) {
 	return 0, errors.Errorf("%s not found in Dynamic Section", tag)
 }
 
+func loadPitaDLC(ctx context.Context) error {
+	const pitaDLCMetadataPath = "/opt/google/dlc/pita"
+	// Load the pita DLC if metadata exists for it as pita is preloadable on test images.
+	if _, err := os.Stat(pitaDLCMetadataPath); err == nil {
+		if err := testexec.CommandContext(ctx, "dlcservice_util", "--install", "--id=pita", "--omaha_url=").Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed in loading pita DLC")
+		}
+		testing.ContextLog(ctx, "Successfully loaded pita DLC")
+	}
+	return nil
+}
+
 func ToolchainOptions(ctx context.Context, s *testing.State) {
 	mode := s.Param().(checkMode)
 
@@ -340,6 +353,12 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 	// Condition: Verify all binaries are not linked with libstdc++.so.
 	libstdcVerify := verifyNotLinked("libstdc++.so*")
 	conds = append(conds, newELFCondition(libstdcVerify, libstdcAllowlist))
+
+	// TODO(crbug.com/1077056): Remove once DLC provisioning is in place for F20.
+	// Also make this generic to any DLCs to be checked against, without exhausting the loopback devices.
+	if err := loadPitaDLC(ctx); err != nil {
+		s.Error("Loading pita DLC failed: ", err)
+	}
 
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
 		if os.IsNotExist(err) {
