@@ -386,20 +386,20 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		Direction: perf.SmallerIsBetter,
 	}, stats["df"])
 
-	s.Log("Running no_render test")
-	stats = runARCVideoPerfTest(ctx, s, arcTestConfig{
-		testVideo:  testVideo,
-		metadata:   md,
-		testFilter: "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
-		logPrefix:  "no_render_",
-		isPerf:     true,
-	})
-
-	p.Set(perf.Metric{
-		Name:      "max_fps",
-		Unit:      "fps",
-		Direction: perf.BiggerIsBetter,
-	}, stats["fps"])
+	//	s.Log("Running no_render test")
+	//	stats = runARCVideoPerfTest(ctx, s, arcTestConfig{
+	//		testVideo:  testVideo,
+	//		metadata:   md,
+	//		testFilter: "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
+	//		logPrefix:  "no_render_",
+	//		isPerf:     true,
+	//	})
+	//
+	//	p.Set(perf.Metric{
+	//		Name:      "max_fps",
+	//		Unit:      "fps",
+	//		Direction: perf.BiggerIsBetter,
+	//	}, stats["fps"])
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save performance metrics: ", err)
