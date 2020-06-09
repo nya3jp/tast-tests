@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dce92f5b_1705a7f5",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T09:55:49Z",
+      "side": 1,
+      "message": "/tmp is tmpfs and cleared on reboot. To be reboot-proof, I recommend a different directory on the stateful partition.",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "709f293389eca2f1fab45ffe7f2666894a97910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
