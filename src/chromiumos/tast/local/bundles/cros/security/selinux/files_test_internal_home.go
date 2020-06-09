@@ -105,7 +105,10 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 			}
 			if err := checkFileContext(ctx, path, contextRegexp, false); err != nil {
 				if os.IsNotExist(err) {
-					continue
+					// We don't want to continue search for match rules if IsNotExist.
+					// Since current rule has already matched as first priority,
+					// the following rule will have wrong expected label.
+					break
 				}
 				s.Errorf("Failed file context check for %v (rule %v): %v", path, testCase.path, err)
 			}
