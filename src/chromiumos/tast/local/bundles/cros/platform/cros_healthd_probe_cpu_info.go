@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"
@@ -13,6 +14,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -159,7 +161,8 @@ func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start cros_healthd: ", err)
 	}
 
-	b, err := testexec.CommandContext(ctx, "telem", "--category=cpu").Output(testexec.DumpLogOnError)
+	args := []string{"telem", fmt.Sprintf("--category=%s", croshealthd.TelemCategoryCPU)}
+	b, err := testexec.CommandContext(ctx, "cros-health-tool", args...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to run 'telem --category=cpu': ", err)
 	}
