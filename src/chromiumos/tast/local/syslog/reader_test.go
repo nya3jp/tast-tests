@@ -20,12 +20,20 @@ import (
 )
 
 const (
-	fakeLine1       = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
-	fakeLine2       = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
-	fakeLine3       = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	fakeLine1 = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
+	fakeLine2 = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
+	fakeLine3 = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	// Note: kernel logs do not include a PID. The [x.y] entry is treated as part of the content.
+	fakeLineKernel = "2019-12-10T11:17:30.123456+09:00 DEBUG kernel: [1234.5678]: initialized\n"
+
 	chromeFakeLine1 = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
 	chromeFakeLine2 = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
 	chromeFakeLine3 = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
+
+	// In M85 Chrome will be modified to output syslog format lines. ChromeReader supports both.
+	chromeSyslogFakeLine1 = "2019-12-12T16:03:19.316821+09:00 VERBOSE1 chrome[9346:9346]: [tablet_mode_controller.cc(536)] lid\n"
+	chromeSyslogFakeLine2 = "2019-12-12T16:03:19.355476+09:00 VERBOSE1 chrome[9419:1]: [breakpad_linux.cc(2079)] enabled\n"
+	chromeSyslogFakeLine3 = "2019-12-13T16:29:38.602368+09:00 ERROR chrome[24195:24208]: [drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
 )
 
 var (
@@ -58,6 +66,14 @@ var (
 		Content:   "world",
 		Line:      fakeLine3,
 	}
+	fakeEntryKernel = &Entry{
+		Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, jst),
+		Severity:  "DEBUG",
+		Tag:       "kernel",
+		Program:   "kernel",
+		Content:   "[1234.5678]: initialized",
+		Line:      fakeLineKernel,
+	}
 	chromeFakeEntry1 = &ChromeEntry{
 		Severity: "VERBOSE1",
 		PID:      9346,
@@ -72,6 +88,30 @@ var (
 		Severity: "ERROR",
 		PID:      24195,
 		Content:  "ID 21692109949126656",
+	}
+	chromeSyslogFakeEntry1 = &ChromeEntry{
+		Severity:   "VERBOSE1",
+		PID:        9346,
+		ThreadID:   9346,
+		Content:    "lid",
+		Filename:   "tablet_mode_controller.cc",
+		Linenumber: 536,
+	}
+	chromeSyslogFakeEntry2 = &ChromeEntry{
+		Severity:   "VERBOSE1",
+		PID:        9419,
+		ThreadID:   1,
+		Content:    "enabled",
+		Filename:   "breakpad_linux.cc",
+		Linenumber: 2079,
+	}
+	chromeSyslogFakeEntry3 = &ChromeEntry{
+		Severity:   "ERROR",
+		PID:        24195,
+		ThreadID:   24208,
+		Content:    "ID 21692109949126656",
+		Filename:   "drm_gpu_display_manager.cc",
+		Linenumber: 211,
 	}
 )
 
@@ -116,6 +156,12 @@ func TestReaderRead(t *testing.T) {
 			name:   "WriteIncomplete",
 			writes: []string{fakeLine1 + fakeLine2 + fakeLine3[:len(fakeLine3)-1]}, // drop the last newline
 			want:   []*Entry{fakeEntry1, fakeEntry2},
+		},
+		// Unusual format tests:
+		{
+			name:   "kernel",
+			writes: []string{fakeLineKernel},
+			want:   []*Entry{fakeEntryKernel},
 		},
 		// Parsing tests:
 		{
@@ -408,13 +454,57 @@ func TestReaderWait(t *testing.T) {
 		})
 	}
 }
+
+type chromeLogExpectations struct {
+	name   string
+	init   string
+	writes []string
+	want   []*ChromeEntry
+}
+
+func compareChromeLogResults(t *testing.T, tc chromeLogExpectations) {
+	tf, err := ioutil.TempFile("", "")
+	if err != nil {
+		t.Fatal("TempFile failed: ", err)
+	}
+	defer tf.Close()
+
+	tf.WriteString(tc.init)
+
+	r, err := NewChromeReader(context.Background(), tf.Name())
+	if err != nil {
+		t.Fatal("NewChromeReader failed: ", err)
+	}
+	defer r.Close()
+
+	var got []*ChromeEntry
+
+	readAll := func() {
+		for {
+			e, err := r.Read()
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				t.Fatal("Read failed: ", err)
+			}
+			got = append(got, e)
+		}
+	}
+
+	readAll()
+	for _, s := range tc.writes {
+		tf.WriteString(s)
+		readAll()
+	}
+
+	if diff := cmp.Diff(got, tc.want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+}
+
 func TestChromeReaderRead(t *testing.T) {
-	for _, tc := range []struct {
-		name   string
-		init   string
-		writes []string
-		want   []*ChromeEntry
-	}{
+	for _, tc := range []chromeLogExpectations{
 		// Initial content handling tests:
 		{
 			name:   "InitEmpty",
@@ -457,44 +547,56 @@ func TestChromeReaderRead(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			tf, err := ioutil.TempFile("", "")
-			if err != nil {
-				t.Fatal("TempFile failed: ", err)
-			}
-			defer tf.Close()
+			compareChromeLogResults(t, tc)
+		})
+	}
+}
 
-			tf.WriteString(tc.init)
-
-			r, err := NewChromeReader(context.Background(), tf.Name())
-			if err != nil {
-				t.Fatal("NewChromeReader failed: ", err)
-			}
-			defer r.Close()
-
-			var got []*ChromeEntry
-
-			readAll := func() {
-				for {
-					e, err := r.Read()
-					if err == io.EOF {
-						break
-					}
-					if err != nil {
-						t.Fatal("Read failed: ", err)
-					}
-					got = append(got, e)
-				}
-			}
-
-			readAll()
-			for _, s := range tc.writes {
-				tf.WriteString(s)
-				readAll()
-			}
-
-			if diff := cmp.Diff(got, tc.want); diff != "" {
-				t.Errorf("Result unmatched (-got +want):\n%s", diff)
-			}
+func TestChromeReaderReadSyslogFormat(t *testing.T) {
+	for _, tc := range []chromeLogExpectations{
+		// Initial content handling tests:
+		{
+			name:   "InitEmpty",
+			writes: []string{chromeSyslogFakeLine1 + chromeSyslogFakeLine2 + chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+		{
+			name:   "InitFullLine",
+			init:   "this is the last log message\n",
+			writes: []string{chromeSyslogFakeLine1 + chromeSyslogFakeLine2 + chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+		{
+			name:   "InitMiddleLine",
+			init:   "this is ",
+			writes: []string{"the last log message\n" + chromeSyslogFakeLine1 + chromeSyslogFakeLine2 + chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+		// Write handling tests:
+		{
+			name:   "WriteAligned",
+			writes: []string{chromeSyslogFakeLine1, chromeSyslogFakeLine2, chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+		{
+			name:   "WriteUnaligned",
+			writes: []string{chromeSyslogFakeLine1[:10], chromeSyslogFakeLine1[10:] + chromeSyslogFakeLine2 + chromeSyslogFakeLine3[:20], chromeSyslogFakeLine3[20:]},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+		{
+			name:   "WriteIncomplete",
+			writes: []string{chromeSyslogFakeLine1 + chromeSyslogFakeLine2 + chromeSyslogFakeLine3[:len(chromeSyslogFakeLine3)-1]}, // drop the last newline
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2},
+		},
+		// Parsing tests:
+		{
+			name:   "ChromeParseWithExtraJunk",
+			writes: []string{chromeSyslogFakeLine1 + "Extra Line\n" + chromeSyslogFakeLine2 + "  Another\n" + chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			compareChromeLogResults(t, tc)
 		})
 	}
 }
