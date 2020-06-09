@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437d2546_b68a1d60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T10:20:30Z",
+      "side": 1,
+      "message": "No action required in this CL: This logic essentially compares a timestamp on host (current) and a timestamp on DUT (flagTime). I\u0027m afraid that it can be a cause of flakiness.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "9e6d0aeb8a67f4f11ffbb43d017475acd2040c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c453d4c_40899d17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T10:20:30Z",
+      "side": 1,
+      "message": "nit: %v is recommended for formatting errors. It supports stack traces for example.",
+      "range": {
+        "startLine": 135,
+        "startChar": 52,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "9e6d0aeb8a67f4f11ffbb43d017475acd2040c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
