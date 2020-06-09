@@ -22,6 +22,30 @@
       "revId": "246ea068d563e01bfe1f094e0f88174c2cc57d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5e080f_500e3061",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-09T15:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b1528d_8e40b91b",
+      "range": {
+        "startLine": 116,
+        "startChar": 66,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "246ea068d563e01bfe1f094e0f88174c2cc57d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
