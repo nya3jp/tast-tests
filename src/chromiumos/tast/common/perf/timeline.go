@@ -183,14 +183,22 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 			}
 
 			if err := t.clock.Sleep(ctx, sleepTime); err != nil {
+				// StopRecording cancels ctx and Sleep returns an error.
 				t.recordingStatus <- nil
 				return
 			}
 
-			if err := t.snapshot(ctx, t.recordingValues); err != nil {
-				t.recordingStatus <- err
+			val := NewValues()
+			if err := t.snapshot(ctx, val); err != nil {
+				if errors.Is(err, context.Canceled) {
+					t.recordingStatus <- nil
+				} else {
+					// Actual error during snapshotting.
+					t.recordingStatus <- err
+				}
 				return
 			}
+			t.recordingValues.Merge(val)
 		}
 	}()
 
@@ -204,6 +212,7 @@ func (t *Timeline) StopRecording() (*Values, error) {
 	}
 
 	t.cancelRecording()
+
 	err := <-t.recordingStatus
 	if err != nil {
 		return nil, err
