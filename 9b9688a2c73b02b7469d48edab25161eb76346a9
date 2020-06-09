@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "148d3763_3b9b6994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "nit: I rarely see Rex as a suffix. How about Re, Regex or Regexp to be more consistent with others?",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0e3eed_5fd9ea32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "recommendation: rename to \"waitForStreams\" to be consistent with other wait-ing functions in Tast.",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 38
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642b0a17_5dc1d47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "optional/style: ditto for inlining testing.Poll\u0027s body function.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 87
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38cfcef5_11c3702e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "ditto: maybe \"waitForNoStream\"?",
+      "range": {
+        "startLine": 129,
+        "startChar": 23,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70bd58d_207c717d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "optional/style: to be consistent with other tests,\n\nreturn testing.Poll(ctx, func(ctx context.Context) error {\n    testing.ContextLog(...)\n    streams, err :\u003d ...\n    ...\n    return nil\n},  \u0026testing.PollOptions{Timeout: ...})",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 85
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac15325c_595ce03a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "because these channel is conceptually representing one result, could you unify them by introducing a thin struct?\n\nAlso, this is simple enough, so I think you can just inline this (so that the struct definition can also be encapsulated).",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 29
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489af8dd_7d80bb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "nit: nil (on error).",
+      "range": {
+        "startLine": 274,
+        "startChar": 9,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd586d00_c6ace64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_aec.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "vetting is failed here, so build is red.\n\nsrc/chromiumos/tast/local/bundles/cros/arc/audio_aec.go:66:3: Fatalf format %s has arg streams[0].Effects of wrong type uint64",
+      "revId": "9b9688a2c73b02b7469d48edab25161eb76346a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
