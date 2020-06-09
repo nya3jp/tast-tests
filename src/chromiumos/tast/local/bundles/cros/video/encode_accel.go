@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "johnylin@chromium.org", "hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug.com/979497): Reduce to appropriate timeout after checking the exact execution time of h264_2160p_i420.
-		Timeout: 10 * time.Minute,
+		Timeout: 15 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_180p_i420",
 			Val: encoding.TestOptions{
@@ -106,6 +106,48 @@ func init() {
 			// Chrome OS supports DMABUF-backed video frame on all boards.
 			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+		}, {
+			Name: "h264_360p_nv12_dmabuf",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      encode.Tulip360P,
+				PixelFormat: videotype.NV12,
+				InputMode:   encoding.DMABuf},
+			// Although the ability to android is unrelated to this test ability,
+			// we would like to run this test on ARC++ enabled boards.
+			// TODO(hiroh): Remove "arc" deps once Chrome VEAs and
+			// Chrome OS supports DMABUF-backed video frame on all boards.
+			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeH264},
+			ExtraData:         []string{encode.Tulip360P.Name},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+		}, {
+			Name: "h264_720p_nv12_dmabuf",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      encode.Tulip720P,
+				PixelFormat: videotype.NV12,
+				InputMode:   encoding.DMABuf},
+			// Although the ability to android is unrelated to this test ability,
+			// we would like to run this test on ARC++ enabled boards.
+			// TODO(hiroh): Remove "arc" deps once Chrome VEAs and
+			// Chrome OS supports DMABUF-backed video frame on all boards.
+			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeH264},
+			ExtraData:         []string{encode.Tulip720P.Name},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+		}, {
+			Name: "h264_1080p_nv12_dmabuf",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      encode.Crowd1080P,
+				PixelFormat: videotype.NV12,
+				InputMode:   encoding.DMABuf},
+			// Although the ability to android is unrelated to this test ability,
+			// we would like to run this test on ARC++ enabled boards.
+			// TODO(hiroh): Remove "arc" deps once Chrome VEAs and
+			// Chrome OS supports DMABUF-backed video frame on all boards.
+			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeH264},
+			ExtraData:         []string{encode.Crowd1080P.Name},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		}, {
 			Name: "vp8_180p_i420",
