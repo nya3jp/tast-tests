@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -31,17 +32,38 @@ func init() {
 			"mute",
 			"ui.MeetCUJ.username",
 			"ui.MeetCUJ.password",
-			"ui.MeetCUJ.meet_code",
+			"ui.MeetCUJ.bond_credentials",
 		},
 	})
 }
 
 func MeetCUJ(ctx context.Context, s *testing.State) {
-	const timeout = 10 * time.Second
+	const (
+		timeout     = 10 * time.Second
+		numBots     = 4
+		botDuration = 2 * time.Minute
+	)
 
 	username := s.RequiredVar("ui.MeetCUJ.username")
 	password := s.RequiredVar("ui.MeetCUJ.password")
-	code := s.RequiredVar("ui.MeetCUJ.meet_code")
+
+	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
+	bc, err := bond.NewClient(ctx, bond.WithCredsJSON([]byte(creds)))
+	if err != nil {
+		s.Fatal("Failed to create a bond client: ", err)
+	}
+	defer bc.Close()
+
+	var meetingCode string
+	func() {
+		sctx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		meetingCode, err = bc.CreateConference(sctx)
+		if err != nil {
+			s.Fatal("Failed to create a conference room: ", err)
+		}
+	}()
+	s.Log("Created a room with the code ", meetingCode)
 
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"))
 	if err != nil {
@@ -98,7 +120,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kw.Close()
-	if err := kw.Type(ctx, code); err != nil {
+
+	if err := kw.Type(ctx, meetingCode); err != nil {
 		s.Fatal("Failed to type the meeting code: ", err)
 	}
 	if err := kw.Accel(ctx, "Enter"); err != nil {
@@ -139,11 +162,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to skip the permission requests: ", err)
 	}
 
-	joinNow, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Join now"}, timeout)
+	askToJoin, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Ask to join"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find join-now button: ", err)
 	}
-	defer joinNow.Release(ctx)
+	defer askToJoin.Release(ctx)
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
@@ -159,7 +182,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Stop()
 	if err := recorder.Run(ctx, tconn, func() error {
-		if err := joinNow.LeftClick(ctx); err != nil {
+		if err := askToJoin.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
 		}
 		shareMessage := "Share this info with people you want in the meeting"
@@ -177,6 +200,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "popup does not disappear")
 			}
 		}
+
+		sctx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		if _, err := bc.AddBots(sctx, meetingCode, numBots, botDuration); err != nil {
+			return errors.Wrap(err, "failed to create bots")
+		}
+
+		s.Log("Waiting for 30 seconds")
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
 		}
