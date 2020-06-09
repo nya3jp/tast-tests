@@ -10,6 +10,7 @@ group("all") {
     "ArcClipboardTest:ArcClipboardTest",
     "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcDragDropTest:ArcDragDropTest",
+    "ArcFileReaderTest:ArcFileReaderTest",
     "ArcGamepadTest:ArcGamepadTest",
     "ArcImeBlockingTest:ArcImeBlockingTest",
     "ArcInputCompatTest:ArcInputCompatDisabledTest",
