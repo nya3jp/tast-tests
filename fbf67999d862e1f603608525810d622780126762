@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f86e4f86_c30eda86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-09T21:15:58Z",
+      "side": 1,
+      "message": "nit: Let\u0027s add a \n\n  Timeout:      3 * time.Minute,\n\nhere to use a smaller timeout for the test in case something goes wrong.",
+      "revId": "fbf67999d862e1f603608525810d622780126762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
