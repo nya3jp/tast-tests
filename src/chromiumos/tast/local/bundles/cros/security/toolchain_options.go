@@ -12,7 +12,9 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/toolchain"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +36,11 @@ func init() {
 			{
 				Name:      "allowlist",
 				Val:       toolchain.CheckAllowlist,
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:      "dlc",
+				Val:       toolchain.CheckNormalWithDLCs,
 				ExtraAttr: []string{"informational"},
 			},
 		},
@@ -129,8 +136,30 @@ var libstdcAllowlist = []string{
 	"/opt/google/rta/rtanalytics_main",
 }
 
+func loadDLCs(ctx context.Context) error {
+	criticalDLCs := []string{"pita"}
+	for _, dlc := range criticalDLCs {
+		metadataPath := filepath.Join("/opt/google/dlc", dlc)
+		// Load the DLC if metadata exists for it as it should be preloadable on test images.
+		if _, err := os.Stat(metadataPath); err == nil {
+			if err := testexec.CommandContext(ctx, "dlcservice_util", "--install", "--id="+dlc, "--omaha_url=").Run(testexec.DumpLogOnError); err != nil {
+				return errors.Wrapf(err, "failed in loading %s DLC", dlc)
+			}
+			testing.ContextLog(ctx, "Successfully loaded DLC: ", dlc)
+		}
+	}
+	return nil
+}
+
 func ToolchainOptions(ctx context.Context, s *testing.State) {
 	mode := s.Param().(toolchain.CheckMode)
+	if mode == toolchain.CheckNormalWithDLCs {
+		// TODO(crbug.com/1077056): Remove once DLC provisioning is in place for F20.
+		// Also make this generic to any DLCs to be checked against, without exhausting the loopback devices.
+		if err := loadDLCs(ctx); err != nil {
+			s.Error("Loading DLC failed: ", err)
+		}
+	}
 
 	var conds []*toolchain.ELFCondition
 

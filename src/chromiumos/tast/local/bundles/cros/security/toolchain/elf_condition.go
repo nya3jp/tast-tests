@@ -20,6 +20,8 @@ const (
 	CheckNormal CheckMode = iota
 	// CheckAllowlist tests that files in allowlists fail checks.
 	CheckAllowlist
+	// CheckNormalWithDLCs tests with critical DLCs installed.
+	CheckNormalWithDLCs
 )
 
 // ELFCondition is a specific condition which is verified against all
@@ -51,7 +53,7 @@ func (ec *ELFCondition) CheckAndFilter(path string, ef *elf.File, mode CheckMode
 	}
 
 	switch mode {
-	case CheckNormal:
+	case CheckNormal, CheckNormalWithDLCs:
 		if allowed {
 			return nil
 		}
