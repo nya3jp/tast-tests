@@ -17,10 +17,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DLCServiceCrosDeploy,
-		Desc:         "Verifies that DLC cros deploying works by mimicing the cros deploy flow",
+		Desc:         "Verifies that DLC cros deploying works by mimicking the cros deploy flow",
 		Contacts:     []string{"kimjae@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
