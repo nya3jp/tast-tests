@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "e89501c2_004c6f12",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T10:13:20Z",
+      "side": 1,
+      "message": "Thanks, I agree that it\u0027s a valid design choice.",
+      "parentUuid": "4364d80c_30e10a4d",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "022e04c4_92a5fdd8",
         "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
         "patchSetId": 2
@@ -507,6 +531,30 @@
       "side": 1,
       "message": "your counter-proposal is not functionally equivalent. \"Stash\" is designed to perform \"Store\" then \"Delete file\". \n\nI see your point, though. The symmetry is a bit awkward. How about we remove \"shallDelete\" from the argument and move the entry removal to Pop? This way, Save/Restore and Stash/Pop can be 2 pairs of symmetric functions. We can even unexport Save and Restore at this point becasue we don\u0027t actually have any use-case as of today. One day if we really need the stand-alone \"Remove\" we can add it then.\n\nPTAL at the updated patchset. WDYT?",
       "parentUuid": "022e04c4_92a5fdd8",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b69912_d4ea94ef",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-09T10:13:20Z",
+      "side": 1,
+      "message": "Yes, I know my proposed API is not equivalent to your original API. But what we can do with the original API are still possible with my proposed API --- Stash can be done by calling Save and os.Remove.\n\nI suggested Save/Restore/Remove because it makes the filesnapshot package usable for two (IMHO) popular use cases:\n\n1. callers don\u0027t want to remove files on taking snapshots or remove entries on restoring snapshots\n2. callers want to remove files on taking snapshots or remove entries on restoring snapshots\n\nWith the current API, use case (2) is trivial, but use case (1) is very difficult. Since calling Stash removes the file, the caller has to restore the file by itself; to make things worse it can\u0027t use Pop for this because it removes the snapshot entry.\n\nIf we design API to not remove the file/entry, we can use the filesnapshot package for both use cases. Use case (1) is trivial, callers can use Save and Restore. For use case (2), callers and combine Save and os.Remove for stashing, Restore and Remove for popping.",
+      "parentUuid": "92bf08b4_e14fdea2",
       "range": {
         "startLine": 73,
         "startChar": 0,
