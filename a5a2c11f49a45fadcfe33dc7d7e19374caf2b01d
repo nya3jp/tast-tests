@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab3d57d6_08963918",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-09T06:21:46Z",
+      "side": 1,
+      "message": "maybe: defer the Unlock (create local function)",
+      "revId": "a5a2c11f49a45fadcfe33dc7d7e19374caf2b01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
