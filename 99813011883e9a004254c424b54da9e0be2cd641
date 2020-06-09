@@ -514,6 +514,24 @@
       "revId": "99813011883e9a004254c424b54da9e0be2cd641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "592c6332_dfab01d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ARCAudioTest.apk.external",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:44:47Z",
+      "side": 1,
+      "message": "Yes. Now you can find some APKs under platform/tast-tests/Android/...",
+      "parentUuid": "380a9f74_690e20c5",
+      "revId": "99813011883e9a004254c424b54da9e0be2cd641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
