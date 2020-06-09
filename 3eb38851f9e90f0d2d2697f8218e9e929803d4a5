@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4476421_3ba1269e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-09T14:10:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36aeb3d6_41244b4c",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "328187d6_f36142fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7637538_163addc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-09T14:10:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "328187d6_f36142fa",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "3eb38851f9e90f0d2d2697f8218e9e929803d4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
