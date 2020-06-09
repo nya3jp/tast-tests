@@ -22,6 +22,30 @@
       "revId": "709f293389eca2f1fab45ffe7f2666894a97910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4e3b31_1dcf56b1",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-09T13:46:13Z",
+      "side": 1,
+      "message": "hmmmmmmmmmmmmmmmmmmmmmmmmmmmmm............\nI thought about that before; there is a very tiny chance for the following situation, though -- \n1. the tpm ownership got cleared and reboot, and there is stale backup stored in the stateful partition; \n2. then, we take the ownership and \"somehow\" we fail to back up the correct data after taking ownership. \n3. then, in a test item we recover the wrong data, and we have a wrong owner password, and \"somehow\" because of trial with wrong owner passwords TPM got locked out.\n\nVery unlikely, but once it happens debugging could be difficult, e.g., locked out device running chrome-critical testsuite.\n\nLet\u0027s see if we have any problem w/o reboot-proof first in the informational test suite first. If it doesn\u0027t work, let\u0027s move it to stateful partition.",
+      "parentUuid": "dce92f5b_1705a7f5",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "709f293389eca2f1fab45ffe7f2666894a97910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
