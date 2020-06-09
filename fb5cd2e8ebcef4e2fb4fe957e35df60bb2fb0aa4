@@ -22,6 +22,30 @@
       "revId": "fb5cd2e8ebcef4e2fb4fe957e35df60bb2fb0aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5738b4c_e262a0ea",
+        "filename": "src/chromiumos/tast/local/hwsec/fake_pca_agent_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-09T15:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39964159_0843f8b9",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "fb5cd2e8ebcef4e2fb4fe957e35df60bb2fb0aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
