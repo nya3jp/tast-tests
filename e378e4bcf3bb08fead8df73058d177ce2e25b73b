@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "393e98e8_6eaf120c",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-09T07:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31861844_285e5539",
+      "range": {
+        "startLine": 576,
+        "startChar": 15,
+        "endLine": 577,
+        "endChar": 32
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc5b0c72_a02b9788",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99771eac_59c8debd",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-09T07:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc5b0c72_a02b9788",
+      "range": {
+        "startLine": 69,
+        "startChar": 44,
+        "endLine": 69,
+        "endChar": 84
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "068b25fe_eab5da8a",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-09T07:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee592016_3f7be606",
+      "range": {
+        "startLine": 71,
+        "startChar": 41,
+        "endLine": 71,
+        "endChar": 86
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89ab8d39_f2d757a1",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67c085b_386bfd5f",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-09T07:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ab8d39_f2d757a1",
+      "range": {
+        "startLine": 81,
+        "startChar": 93,
+        "endLine": 81,
+        "endChar": 109
+      },
+      "revId": "e378e4bcf3bb08fead8df73058d177ce2e25b73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
