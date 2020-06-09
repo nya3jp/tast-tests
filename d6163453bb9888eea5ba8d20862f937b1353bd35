@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08b55ad5_c5030fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-06-09T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df06445_35ea23f0",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6414fbf_e2a1c4cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186958d0_687e8dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-06-09T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6414fbf_e2a1c4cd",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f599d948_881e89a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-06-09T20:26:35Z",
+      "side": 1,
+      "message": "Unfortunately, I tried this initially, but the compiler didn\u0027t like it. I think you can\u0027t use a combination of individual and variadic parameters.",
+      "parentUuid": "03aa065e_52042338",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d3f4c42_5ff3960f",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9d76c85_862154de",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-06-09T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3f4c42_5ff3960f",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "d6163453bb9888eea5ba8d20862f937b1353bd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
