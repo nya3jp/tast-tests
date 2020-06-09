@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Diagnostics,
-		Desc: "Tests 'diag' command line utility",
+		Desc: "Tests 'cros-health-tool diag' command line utility",
 		Contacts: []string{
 			"pmoy@chromium.org", // diag tool author
 		},
@@ -28,10 +28,11 @@ func init() {
 	})
 }
 
-// Diagnostics runs and verifies that the 'diag' command-line utility can get a
-// list of supported routines from cros_healthd, and run the urandom routine,
-// which should be supported on every platform that cros_healthd runs on. Other
-// routines are not tested, because they could flake.
+// Diagnostics runs and verifies that the 'cros-health-tool diag' command-line
+// utility can get a list of supported routines from cros_healthd, and run the
+// urandom routine, which should be supported on every platform that
+// cros_healthd runs on. Other routines are not tested, because they could
+// flake.
 //
 // The diag command has two actions it can run. 'get_routines' returns a list of
 // all routines that diag supports and 'run_routine' starts running a routine
@@ -41,8 +42,9 @@ func init() {
 // then runs the "urandom" routine and checks that it passes.
 func Diagnostics(ctx context.Context, s *testing.State) {
 	// Run the diag command with arguments
-	runDiag := func(args ...string) string {
-		cmd := testexec.CommandContext(ctx, "diag", args...)
+	runDiag := func(diag_args ...string) string {
+		args := append([]string{"diag"}, diag_args...)
+		cmd := testexec.CommandContext(ctx, "cros-health-tool", args...)
 		s.Logf("Running %q", shutil.EscapeSlice(cmd.Args))
 		out, err := cmd.Output()
 		if err != nil {
