@@ -71,7 +71,7 @@ func ScanPerf(fullCtx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("AP setup done")
 
-	ssid := ap.Config().Ssid
+	ssid := ap.Config().SSID
 	freq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
 	if err != nil {
 		s.Fatalf("Failed to convert channel %d to frequency: %v", ap.Config().Channel, err)
@@ -168,7 +168,7 @@ func ScanPerf(fullCtx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().Ssid, err)
+			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
 	}()
 	s.Log("Connected")
