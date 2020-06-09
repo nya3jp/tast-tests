@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c000bbdb_9b972c6b",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-09T06:16:31Z",
+      "side": 1,
+      "message": "Ouch, Get is a stop word in Golang. Please rename it to TestCert2().\n\nFor the GetTestCertificate() rename, please do it in another CL. Order does not matter. Perhaps before the CL is better.",
+      "range": {
+        "startLine": 287,
+        "startChar": 5,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
