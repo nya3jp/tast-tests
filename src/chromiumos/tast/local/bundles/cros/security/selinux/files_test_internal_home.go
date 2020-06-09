@@ -67,6 +67,18 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home/\.shadow/low_entropy_creds(/.*)?`, `cros_home_shadow_low_entropy_creds`},
 		// Other unhandled files in .shadow should be cros_home_shadow.
 		{`/home/\.shadow/[^/]*`, `cros_home_shadow`},
+
+		// Addition Starts from here
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor/wifi/hostapd(/.*)?`, `hostapd_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor/wifi/wpa(/.*)?`, `wpa_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor/mediadrm(/.*)?`, `mediadrm_vendor_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor/tombstones/wifi(/.*)?`, `tombstone_wifi_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor_de/[0-9]+/fpdata(/.*)?`, `fingerprint_vendor_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor_de(/.*)?`, `vendor_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor_ce(/.*)?`, `vendor_data_file`},
+		{`/home/\.shadow/[1-9a-f]*/mount/root/android-data/data/vendor(/.*)?`, `vendor_data_file`},
+		// Addition ends here
+
 		{`/home/\.shadow/[0-9a-f]*/mount/root/android-data(/.*)?`, skipTest},
 		{`/home/\.shadow/[0-9a-f]*/mount/root/authpolicyd(/.*)?`, `cros_home_shadow_uid_root_authpolicyd`},
 		{`/home/\.shadow/[0-9a-f]*/mount/root/chaps(/.*)?`, `cros_home_shadow_uid_root_chaps`},
