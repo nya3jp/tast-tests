@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86f756b0_2f18647c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "Hmm..., this is kind of awkward..., the caller somehow expects the disconnection \u003c 20s but it is much less here.\n\nOne way to handle this is passing the timeout in seconds in the gRPC request. Or, obey the ctx timeout here and let the caller set it",
+      "range": {
+        "startLine": 339,
+        "startChar": 48,
+        "endLine": 339,
+        "endChar": 61
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae30dc7_1ff7132b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "One pitfall of Expect is that it only waits for the value from PropertyChange, so if it is already in idle state, it will wait until timeout. So you have to check with GetProperty before this.",
+      "range": {
+        "startLine": 341,
+        "startChar": 14,
+        "endLine": 341,
+        "endChar": 20
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c2e797_7f6a1f69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "It is possible that this Deconfig is not run if any Fatal between line58~line71 is trigger. The comment of making a function in line81 should also fix the problem.",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14fef7e3_7cff01a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "Looks like the flow below and above are quite similar, maybe wrap them into a function? (and have some flags for branching the difference.)",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b61538e_f0c45017",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "When we fail here, we might still want to call tf.DisconnectWifi. Maybe still have it in defer  and only log on error? (One similar pattern can be found in wifi.CSA test.) Also you might need to add some handling in DisconnectWifi as AssureDisconnectSSID will clean the curService.",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c5c9e5_ed399066",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "This might have some problem as shill will trigger background scan and this might fail due to device busy (that\u0027s why there\u0027s a polling in client.scan in Autotest). Not sure if it might be better to also disable background scan as in crrev.com/c/2214851.\n\nDean@, Do you have some suggestion on this? (ping as you wrote crrev.com/c/2214851 ;))",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731765fb_11a5b564",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "nit: time.Since(start) might be better?",
+      "range": {
+        "startLine": 139,
+        "startChar": 12,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714d08b8_5791de75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "This one should be maxDisconnectTimeSeconds?",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed44b03_ed672ec2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "For the usage of the test, I\u0027m thinking if we can just: \n\n  SetIfaceDown(ctx, iface) { ipr.SetLinkDown(ctx, iface) }\n\nAs I\u0027m not sure if dnsmasq might do something when IP is flushed, directly shutting down the interface is more straight forward for the test maybe?",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c944fc9_af216477",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "I guess the wrapping might not be necessary as the test body can access Router with tf.Router().",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e10a78_c3879c4c",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-09T07:48:06Z",
+      "side": 1,
+      "message": "maybe it can use service path instead, so it won\u0027t need to FindMatchingService?",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 12
+      },
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
