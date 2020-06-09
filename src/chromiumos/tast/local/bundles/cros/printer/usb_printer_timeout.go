@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/lp"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/syslog"
@@ -23,8 +24,9 @@ func init() {
 		Desc:         "Tests that USB print jobs timeout if the device does not exist",
 		Contacts:     []string{"skau@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"cups", "chrome"},
 		Data:         []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
