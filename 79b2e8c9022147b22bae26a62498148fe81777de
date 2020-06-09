@@ -22,6 +22,30 @@
       "revId": "79b2e8c9022147b22bae26a62498148fe81777de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3066a49_0788c3e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-09T05:25:03Z",
+      "side": 1,
+      "message": "I don\u0027t have failure case data, thus not sure if 20 seconds is enough.\nChanged following crrev.com/c/2124817.",
+      "parentUuid": "4520db81_0739e5c6",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "79b2e8c9022147b22bae26a62498148fe81777de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
