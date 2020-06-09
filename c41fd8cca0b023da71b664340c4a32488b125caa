@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6658a067_c24abb5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/faillog/ui_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-06-09T03:46:33Z",
+      "side": 1,
+      "message": "Small nit: Add space",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "c41fd8cca0b023da71b664340c4a32488b125caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ddbbdf_8f1e3d90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-06-09T03:46:33Z",
+      "side": 1,
+      "message": "Previously, not having loadTimeData will make `assertHelpAppLaunched` return an error. This in turns calls `s.Fatal(\"...\")`.\n\nNow, it only calls `testing.ContextLog()` within `logRuntimeData()`.\n\nIs this fine?",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 28
+      },
+      "revId": "c41fd8cca0b023da71b664340c4a32488b125caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
