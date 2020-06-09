@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34652a8b_d09bdbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-09T14:47:40Z",
+      "side": 1,
+      "message": "can we avoid sleeping for the fixed duration?",
+      "revId": "f4ba2c84dbb5c9139a177b53ec9e3f05ef41a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
