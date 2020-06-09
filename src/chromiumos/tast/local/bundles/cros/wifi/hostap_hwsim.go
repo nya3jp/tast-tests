@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -101,6 +102,28 @@ func init() {
 	})
 }
 
+func getProhibited(ctx context.Context, m *shill.Manager) ([]string, error) {
+	props, err := m.GetShillProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get properties")
+	}
+	prohibited, err := props.GetString(shillconst.ManagerPropertyProhibitedTechnologies)
+	if err != nil {
+		return nil, err
+	}
+	// NB: "Split" produces a slice of length 1 for empty strings, rather than an empty slice. Callers do not expect
+	// that.
+	if prohibited == "" {
+		return nil, nil
+	}
+	return strings.Split(prohibited, ","), nil
+}
+
+func setProhibited(ctx context.Context, m *shill.Manager, technologies []string) error {
+	str := strings.Join(technologies, ",")
+	return m.SetProperty(ctx, shillconst.ManagerPropertyProhibitedTechnologies, str)
+}
+
 func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	// Save a few seconds for cleanup.
 	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second*5)
@@ -139,27 +162,27 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to shill Manager: ", err)
 	}
-	props, err := m.GetShillProperties(ctx)
-	if err != nil {
-		s.Fatal("Failed to get properties: ", err)
-	}
-	origProhibited, err := props.GetString(shillconst.ManagerPropertyProhibitedTechnologies)
+	origProhibited, err := getProhibited(ctx, m)
 	if err != nil {
 		s.Fatal("Failed to get ProhibitedTechnologies: ", err)
 	}
+	var alreadyProhibited bool
 	// We don't want shill to manage any WiFi devices created by this test.
-	var prohibited string
-	if origProhibited != "" {
-		prohibited = origProhibited + "," + string(shill.TechnologyWifi)
-	} else {
-		prohibited = string(shill.TechnologyWifi)
+	for _, t := range origProhibited {
+		if t == string(shill.TechnologyWifi) {
+			alreadyProhibited = true
+		}
 	}
-	if err := m.SetProperty(ctx, shillconst.ManagerPropertyProhibitedTechnologies, prohibited); err != nil {
+	prohibited := origProhibited
+	if !alreadyProhibited {
+		prohibited = append(prohibited, string(shill.TechnologyWifi))
+	}
+	if err := setProhibited(ctx, m, prohibited); err != nil {
 		s.Fatal("Could not prohibit WiFi from shill: ", err)
 	}
 	defer func() {
 		// Reset to original prohibition list.
-		if err := m.SetProperty(fullCtx, shillconst.ManagerPropertyProhibitedTechnologies, origProhibited); err != nil {
+		if err := setProhibited(fullCtx, m, origProhibited); err != nil {
 			s.Error("Could not reset shill prohibited technologies: ", err)
 		}
 	}()
