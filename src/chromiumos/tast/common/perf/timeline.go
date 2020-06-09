@@ -187,10 +187,17 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 
-			if err := t.snapshot(ctx, t.recordingValues); err != nil {
-				t.recordingStatus <- err
+			val := NewValues()
+			if err := t.snapshot(ctx, val); err != nil {
+				if errors.Is(err, context.Canceled) {
+					t.recordingStatus <- nil
+				} else {
+					// Actual error during snapshotting.
+					t.recordingStatus <- err
+				}
 				return
 			}
+			t.recordingValues.Merge(val)
 		}
 	}()
 
