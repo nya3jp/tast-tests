@@ -8,6 +8,9 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
+	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -48,26 +51,18 @@ func Attestation(ctx context.Context, s *testing.State) {
 	}
 
 	at := hwsec.NewAttestaionTest(utility, hwsec.DefaultPCA)
-	for _, param := range []struct {
-		name  string
-		async bool
-	}{
-		{
-			name:  "async_enroll",
-			async: true,
-		}, {
-			name:  "sync_enroll",
-			async: false,
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
-			}
-			if err := at.Enroll(ctx); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
-			}
-		})
+
+	ac, err := hwseclocal.NewAttestationClient(ctx)
+	if err != nil {
+		s.Fatal("Failed to create attestation client: ", err)
+	}
+
+	enrollReply, err := ac.Enroll(ctx, &apb.EnrollRequest{Forced: proto.Bool(true)})
+	if err != nil {
+		s.Fatal("Failed to call Enroll D-Bus API: ", err)
+	}
+	if *enrollReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+		s.Fatal("Faild to enroll: ", enrollReply.Status.String())
 	}
 
 	const username = "test@crashwsec.bigr.name"
@@ -96,31 +91,25 @@ func Attestation(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name     string
-		async    bool
 		username string
 	}{
 		{
-			name:     "async_system_cert",
-			async:    true,
+			name:     "system_cert",
 			username: "",
 		},
 		{
-			name:     "async_user_cert",
-			async:    true,
-			username: username,
-		}, {
-			name:     "sync_user_cert",
-			async:    false,
+			name:     "user_cert",
 			username: username,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
-			}
 			username := param.username
-			if err := at.GetCertificate(ctx, username, hwsec.DefaultCertLabel); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
+			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel)})
+			if err != nil {
+				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
+			}
+			if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+				s.Fatal("Faild to get certificate: ", enrollReply.Status.String())
 			}
 
 			if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
@@ -166,8 +155,12 @@ func Attestation(ctx context.Context, s *testing.State) {
 
 			s.Log("Verifying deletion of keys by prefix")
 			for _, label := range []string{"label1", "label2", "label3"} {
-				if err := at.GetCertificate(ctx, username, label); err != nil {
+				certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(label)})
+				if err != nil {
 					s.Fatalf("Failed to create certificate request for label %q: %v", label, err)
+				}
+				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+					s.Fatalf("Faild to get certificate for label %q: %v", label, enrollReply.Status.String())
 				}
 				_, err = utility.GetPublicKey(ctx, username, label)
 				if err != nil {
