@@ -16,6 +16,24 @@
       "revId": "1e57d11a2fe2b4692b0ad96370344381163af498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e3d5c3f_a6ba5af2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-09T15:26:41Z",
+      "side": 1,
+      "message": "Uh I thought Cq-Depend: didn\u0027t work across repos. Will add.",
+      "parentUuid": "a49d0d3e_24d8af13",
+      "revId": "1e57d11a2fe2b4692b0ad96370344381163af498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
