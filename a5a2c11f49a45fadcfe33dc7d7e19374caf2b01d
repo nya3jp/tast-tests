@@ -16,6 +16,24 @@
       "revId": "a5a2c11f49a45fadcfe33dc7d7e19374caf2b01d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24eae315_c301850a",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-09T07:34:21Z",
+      "side": 1,
+      "message": "I had a local function here before, but then it is difficult to call `return` because it would only return from the local function and not the outer one.",
+      "parentUuid": "ab3d57d6_08963918",
+      "revId": "a5a2c11f49a45fadcfe33dc7d7e19374caf2b01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
