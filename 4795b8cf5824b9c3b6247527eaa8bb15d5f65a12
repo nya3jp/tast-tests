@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c761b7ca_45cab0a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-09T14:48:44Z",
+      "side": 1,
+      "message": "Could you comment the reason of the \"break\" here?",
+      "revId": "4795b8cf5824b9c3b6247527eaa8bb15d5f65a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
