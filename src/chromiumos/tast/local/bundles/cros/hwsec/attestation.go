@@ -8,6 +8,9 @@ import (
 	"context"
 	"time"
 
+	"github.com/godbus/dbus"
+
+	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -23,6 +26,12 @@ func init() {
 		Timeout:      4 * time.Minute,
 	})
 }
+
+const (
+	attestationName      = "org.chromium.Attestation"
+	attestationPath      = dbus.ObjectPath("/org/chromium/Attestation")
+	attestationInterface = "org.chromium.Attestation"
+)
 
 // Attestation runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality.
@@ -48,26 +57,19 @@ func Attestation(ctx context.Context, s *testing.State) {
 	}
 
 	at := hwsec.NewAttestaionTest(utility, hwsec.DefaultPCA)
-	for _, param := range []struct {
-		name  string
-		async bool
-	}{
-		{
-			name:  "async_enroll",
-			async: true,
-		}, {
-			name:  "sync_enroll",
-			async: false,
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
-			}
-			if err := at.Enroll(ctx); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
-			}
-		})
+
+	ac, err := hwseclocal.NewAttestationClient(ctx)
+	if err != nil {
+		s.Fatal("Failed to create attestation client: ", err)
+	}
+
+	forced := true
+	enrollReply, err := ac.Enroll(ctx, &apb.EnrollRequest{Forced: &forced})
+	if err != nil {
+		s.Fatal("Failed to call Enroll D-Bus API: ", err)
+	}
+	if *enrollReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+		s.Fatal("Faild to enroll: ", enrollReply.Status.String())
 	}
 
 	const username = "test@crashwsec.bigr.name"
