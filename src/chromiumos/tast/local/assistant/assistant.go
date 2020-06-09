@@ -87,11 +87,15 @@ func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, 
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
 }
 
-// VerboseLogging is a helper function passed into chrome.New which will
-// enable VLOG traces in the assistant code.
+// VerboseLogging is a helper function passed into chrome.New which will:
+//     - Enable VLOG traces in the assistant code.
+//     - Use LibAssistant beta backend which will cause LibAssistant to print
+//       more detailed logs.
 func VerboseLogging() chrome.Option {
 	return chrome.ExtraArgs(
-		"--vmodule=*assistant*=3,chromeos/services/assistant/service=3")
+		"--vmodule=*assistant*=3,chromeos/services/assistant/service=3",
+		"--enable-features=LibAssistantBetaBackend",
+	)
 }
 
 // VerboseLoggingEnabled creates a new precondition which can be shared by
