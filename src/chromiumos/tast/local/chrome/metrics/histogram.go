@@ -351,6 +351,23 @@ func Run(ctx context.Context, tconn *chrome.TestConn, f func() error, names ...s
 	return r.Histogram(ctx, tconn)
 }
 
+// RunAndWaitAll is a helper to calculate histogram diffs before and after
+// running a given function and waits for all histograms change before return.
+func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
+	timeout time.Duration,
+	f func() error, names ...string) ([]*Histogram, error) {
+	r, err := StartRecorder(ctx, tconn, names...)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := f(); err != nil {
+		return nil, err
+	}
+
+	return r.WaitAll(ctx, tconn, timeout)
+}
+
 // ClearHistogramTransferFile clears the histogramTransferFile. The
 // histogramTransferFile is how Histograms get from ChromeOS services into Chrome --
 // ChromeOS services write their updates to the file, and periodicially,

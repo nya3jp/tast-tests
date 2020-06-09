@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -34,7 +35,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
+	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create a new desk")
