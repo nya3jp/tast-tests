@@ -34,7 +34,7 @@ func OpenAndroidApp(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.ARCEnabled(),
 		chrome.Auth(s.RequiredVar("assistant.username"), s.RequiredVar("assistant.password"), ""),
-		chrome.ExtraArgs("--enable-features=AssistantAppSupport", "--arc-disable-app-sync", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"),
+		chrome.ExtraArgs("--enable-features=AssistantAppSupport,LibAssistantBetaBackend", "--arc-disable-app-sync", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"),
 		chrome.GAIALogin(),
 	)
 	if err != nil {
