@@ -49,12 +49,6 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		s.Fatal("Preview is inactive after switch to video mode: ", err)
 	}
 
-	toggleTimer := func(timerState cca.TimerState) func(context.Context, *cca.App) error {
-		return func(ctx context.Context, app *cca.App) error {
-			return app.SetTimerOption(ctx, timerState)
-		}
-	}
-
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		s.Fatal("Failed to get CCA default saved path: ", err)
@@ -67,21 +61,23 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	}
 
 	if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
-		for _, action := range []struct {
-			name string
-			run  func(context.Context, *cca.App) error
+		for _, tst := range []struct {
+			name  string
+			run   func(context.Context, *cca.App) error
+			timer cca.TimerState
 		}{
-			{"testRecordVideo", testRecordVideo()},
-			{"toggleTimer(cca.TimerOn)", toggleTimer(cca.TimerOn)},
-			{"testRecordVideoWithTimer", testRecordVideoWithTimer},
-			{"testRecordCancelTimer", testRecordCancelTimer},
-			{"toggleTimer(cca.TimerOff)", toggleTimer(cca.TimerOff)},
+			{"testRecordVideo", testRecordVideo(), cca.TimerOff},
+			{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
+			{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
 		} {
-			testing.ContextLog(ctx, "Start ", action.name)
-			if err := action.run(ctx, app); err != nil {
-				return errors.Wrapf(err, "failed in %v()", action.name)
-			}
-			testing.ContextLog(ctx, "Finish ", action.name)
+			s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+				if err := app.SetTimerOption(ctx, tst.timer); err != nil {
+					s.Fatalf("Failed to set timer option %v: %v", tst.timer, err)
+				}
+				if err := tst.run(ctx, app); err != nil {
+					s.Error("Test failed: ", err)
+				}
+			})
 		}
 		return nil
 	}); err != nil {
