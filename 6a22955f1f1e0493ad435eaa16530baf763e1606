@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ad5b34_ac43d657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/faillog/ui_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-06-10T15:36:14Z",
+      "side": 1,
+      "message": "should this be part of chrome/ui instead?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "6a22955f1f1e0493ad435eaa16530baf763e1606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2692c4da_92fa2d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/faillog/ui_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-06-10T15:36:14Z",
+      "side": 1,
+      "message": "I think it\u0027s a bad idea to pass around testing.State like this.  Instead, have this function take in a directory (or even a filename so you could store multiple logs in the case of non-fatal failures?) and check s.HasError on the caller side.\n\ne.g.\ndefer func() {\n    if s.HasError() {\n        DumpUITree(ctx,tconn, s.OutDir())\n    }\n}\n\nIt would be longer for the caller.  But this way you keep testing.State hidden from outside the test and it\u0027s very clear to the caller under what conditions the logs will be created.",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "6a22955f1f1e0493ad435eaa16530baf763e1606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f256d2af_8a6f7311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-06-10T15:36:14Z",
+      "side": 1,
+      "message": "add a note here that any errors seen while doing so are logged but ignored.\n\nYou could also consider having this function continue to return an error which you then log when called instead of failing the test - if you\u0027re planning to ever make these errors block again (once it\u0027s more stable) that might be cleaner.",
+      "revId": "6a22955f1f1e0493ad435eaa16530baf763e1606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
