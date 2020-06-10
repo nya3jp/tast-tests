@@ -123,6 +123,8 @@ var (
 	SwitchDeviceButton = UIComponent{"switch device button", []string{"#switch-device"}}
 	// VideoSnapshotButton is button for taking video snapshot during recording.
 	VideoSnapshotButton = UIComponent{"video snapshot button", []string{"#video-snapshot"}}
+	// VideoPauseResumeButton is button for pausing or resuming video recording.
+	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
 
 	// SettingsBackButton is back button for closing master setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
