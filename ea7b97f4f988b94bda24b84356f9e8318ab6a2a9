@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eaa5f1f_008501de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "nit: move this right before its usage?",
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1009a3_29baf61d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "Still need a check here for (time taken in AssureDisconnect) \u003c maxDisconnectTimeSeconds?",
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25eb25c_6e4b20af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "minor nit: can use s.Run to run the two testOnce as two sub-tests so that if some error is set in defer, the test can exit early. (example usage in simple_connect.go)",
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee2dbd7_b0595444",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "maybe: \"the interface that the APIface uses\"? (as the interface is also used by the dhcp server in APIface)",
+      "range": {
+        "startLine": 318,
+        "startChar": 34,
+        "endLine": 318,
+        "endChar": 55
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd00e3f_acfa5bfc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "maybe have this a method of Router instead of TestFixture? so that you don\u0027t need to access the private fields of Router and the caller can still call it with tf.Router().SetAPInterfaceDown().",
+      "range": {
+        "startLine": 320,
+        "startChar": 23,
+        "endLine": 320,
+        "endChar": 26
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ae1ce0_56a6b6f5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "nit: error here?",
+      "range": {
+        "startLine": 362,
+        "startChar": 9,
+        "endLine": 362,
+        "endChar": 12
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac129979_47d2d664",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "nit: maybe add \"within timeout (in seconds)\"?",
+      "range": {
+        "startLine": 376,
+        "startChar": 66,
+        "endLine": 376,
+        "endChar": 67
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff55920a_5e5f99f4",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "nit: are these some spaces in the empty line?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b10814_24346239",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:49:20Z",
+      "side": 1,
+      "message": "nit: add \"within timeout (in seconds)\" ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 68,
+        "endLine": 45,
+        "endChar": 69
+      },
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
