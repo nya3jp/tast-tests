@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55bf6c56_89940c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-10T06:50:08Z",
+      "side": 1,
+      "message": "Yes, these section will group all UIs appearing in setting menu.",
+      "parentUuid": "61cafd10_786112f5",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 83
+      },
+      "revId": "38593ad188921661605c9c8606fbfce2bd9db203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4163f333_0b2b5b02",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-10T06:24:16Z",
       "side": 1,
       "message": "Should we wait for state changed (e.g. taking or recording) after stopping recording?",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "38593ad188921661605c9c8606fbfce2bd9db203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7005242e_71794ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-10T06:50:08Z",
+      "side": 1,
+      "message": "For |taking| state, it\u0027s already be waited in that function: \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go;rcl\u003d0c0a115a2158776c25a1f3f487e49a3280031a86;l\u003d711",
+      "parentUuid": "4163f333_0b2b5b02",
       "range": {
         "startLine": 171,
         "startChar": 1,
