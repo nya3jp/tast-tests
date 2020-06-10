@@ -56,6 +56,23 @@
       "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a111f54d_f7640828",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-10T15:24:08Z",
+      "side": 1,
+      "message": "Why are we returning mountPath instead of drivefsRoot?\nIn the previous version, it seems to return drivefsRoot and we can use it directly in the test.",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
