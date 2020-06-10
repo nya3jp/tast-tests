@@ -144,6 +144,10 @@ func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
 	}, nil); err != nil {
 		return errors.Wrap(err, "failed to wait for virtual keyboad buttons to render")
 	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
 	return nil
 }
 
