@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9a4b403_304ad80d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-10T01:16:07Z",
+      "side": 1,
+      "message": "for passedCount \u003c successBootCount",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "673b5ffc6ca119a6681fbe12f6e0cf0f5921bfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e27f06de_57a65db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-10T01:16:07Z",
+      "side": 1,
+      "message": "style: Let us handle the error first and unindent the normal flow.\n\n if err !\u003d nil {\n   s.Log(...)\n   ...\n   continue\n }\n passedCount++\n ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "673b5ffc6ca119a6681fbe12f6e0cf0f5921bfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22611667_7cb26ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-10T01:16:07Z",
+      "side": 1,
+      "message": "Can you give names to these result values to document difference of the same-type values?\n\n (normalTime, skipAllTime time.Duration, normalEnergy, skipAllEnergy float64, err error)",
+      "range": {
+        "startLine": 143,
+        "startChar": 62,
+        "endLine": 143,
+        "endChar": 118
+      },
+      "revId": "673b5ffc6ca119a6681fbe12f6e0cf0f5921bfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d24c327_349cec25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-10T01:16:07Z",
+      "side": 1,
+      "message": "Do we want to continue in this case? IIUC perf values are not collected when a test fails, so there\u0027s little point on continuing after reporting an error.",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 58
+      },
+      "revId": "673b5ffc6ca119a6681fbe12f6e0cf0f5921bfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
