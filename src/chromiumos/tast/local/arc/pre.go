@@ -83,8 +83,7 @@ var bootedWithVideoLoggingPre = &preImpl{
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
-// TODO(yusukes): Remove useARCVM
-func NewPrecondition(name string, useARCVM bool, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
+func NewPrecondition(name string, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
 	pre := &preImpl{
 		name:      name,
 		timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
