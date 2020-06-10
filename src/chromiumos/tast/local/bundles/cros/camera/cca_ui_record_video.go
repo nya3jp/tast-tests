@@ -48,6 +48,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		{"testRecordVideo", testRecordVideo(), cca.TimerOff},
 		{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
 		{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
+		{"testVideSnapshot", testVideSnapshot, cca.TimerOff},
 	} {
 		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
 			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
@@ -141,6 +142,34 @@ func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
 		return err
 	} else if taking {
 		return errors.New("shutter is not cancelled after clicking cancel shutter")
+	}
+	return nil
+}
+
+func testVideSnapshot(ctx context.Context, app *cca.App) error {
+	// Start recording.
+	startTime := time.Now()
+	if err := app.ClickShutter(ctx); err != nil {
+		return err
+	}
+	if err := app.WaitForState(ctx, "recording", true); err != nil {
+		return errors.Wrap(err, "recording is not started")
+	}
+
+	// Take a video snapshot.
+	if err := app.Click(ctx, cca.VideoSnapshotButton); err != nil {
+		return err
+	}
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get saved directory")
+	}
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, startTime); err != nil {
+		return errors.Wrap(err, "failed find saved video snapshot file")
+	}
+
+	if _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
+		return errors.Wrap(err, "failed to stop recording")
 	}
 	return nil
 }
