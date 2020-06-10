@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bed069a0_85c40f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-10T05:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc3fc4c_f92eeb9a",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df71ad7a_72666705",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2feb321_5360f165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-10T05:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df71ad7a_72666705",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 24
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +258,30 @@
       "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefcd589_97f2fa87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-10T05:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fc8c560_270a392a",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 24
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
