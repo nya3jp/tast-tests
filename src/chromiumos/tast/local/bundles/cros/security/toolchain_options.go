@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/security/toolchain"
 	"chromiumos/tast/testing"
 )
 
@@ -29,26 +29,16 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
-				Val: checkNormal,
+				Val: toolchain.CheckNormal,
 			},
 			{
 				Name:      "allowlist",
-				Val:       checkAllowlist,
+				Val:       toolchain.CheckAllowlist,
 				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
 }
-
-// checkMode specifies what to check for security.ToolchainOptions.
-type checkMode int
-
-const (
-	// checkNormal tests that files not in allowlists pass checks.
-	checkNormal checkMode = iota
-	// checkAllowlist tests that files in allowlists fail checks.
-	checkAllowlist
-)
 
 // Paths that will be pruned/ignored when searching for ELF files.
 var prunePaths = []string{
@@ -142,204 +132,36 @@ var libstdcAllowlist = []string{
 	"/opt/google/rta/rtanalytics_main",
 }
 
-// elfCondition is a specific condition which is verified against all
-// not-skipped ELF files.
-type elfCondition struct {
-	verify    func(ef *elf.File) error
-	allowlist []string // list of path patterns to be skipped
-}
-
-// newELFCondition takes a verification function and a list of literal paths
-// to allowlist for that condition and returns a new elfCondition.
-func newELFCondition(verify func(ef *elf.File) error, w []string) *elfCondition {
-	return &elfCondition{verify, w}
-}
-
-// checkAndFilter takes in a file and checks it against an elfCondition,
-// returning an error if the file is not allowed.
-func (ec *elfCondition) checkAndFilter(path string, ef *elf.File, mode checkMode) error {
-	allowed := false
-	for _, pp := range ec.allowlist {
-		matched, err := filepath.Match(pp, path)
-		if err != nil {
-			return err
-		}
-		if matched {
-			allowed = true
-			break
-		}
-	}
-
-	switch mode {
-	case checkNormal:
-		if allowed {
-			return nil
-		}
-		if err := ec.verify(ef); err != nil {
-			return errors.Wrap(err, path)
-		}
-		return nil
-	case checkAllowlist:
-		if !allowed {
-			return nil
-		}
-		if err := ec.verify(ef); err == nil {
-			return errors.Wrap(errors.New("allowlist file passed check unexpectedly"), path)
-		}
-		return nil
-	}
-	return errors.Errorf("unknown mode %v", mode)
-}
-
-// elfIsStatic returns whether the ELF file is statically linked.
-func elfIsStatic(ef *elf.File) bool {
-	return ef.FileHeader.Type != elf.ET_DYN
-}
-
-// findDynTagValue returns value of the given elf.DynTag in the ELF file's
-// dynamic section, or an error if no such tag is found.
-func findDynTagValue(ef *elf.File, tag elf.DynTag) (uint64, error) {
-	ds := ef.SectionByType(elf.SHT_DYNAMIC)
-	if ds == nil {
-		return 0, errors.New("no Dynamic Section found")
-	}
-	d, err := ds.Data()
-	if err != nil {
-		return 0, errors.New("no Data read from Dynamic Section")
-	}
-	for len(d) > 0 {
-		var t elf.DynTag
-		var v uint64
-		switch ef.Class {
-		case elf.ELFCLASS32:
-			t = elf.DynTag(ef.ByteOrder.Uint32(d[0:4]))
-			v = uint64(ef.ByteOrder.Uint32(d[4:8]))
-			d = d[8:]
-		case elf.ELFCLASS64:
-			t = elf.DynTag(ef.ByteOrder.Uint64(d[0:8]))
-			v = ef.ByteOrder.Uint64(d[8:16])
-			d = d[16:]
-		}
-		if t == tag {
-			return v, nil
-		}
-	}
-	return 0, errors.Errorf("%s not found in Dynamic Section", tag)
-}
-
 func ToolchainOptions(ctx context.Context, s *testing.State) {
-	mode := s.Param().(checkMode)
+	mode := s.Param().(toolchain.CheckMode)
 
-	var conds []*elfCondition
+	var conds []*toolchain.ELFCondition
 
 	// Condition: Verify non-static binaries have BIND_NOW in dynamic section.
-	nowVerify := func(ef *elf.File) error {
-		if elfIsStatic(ef) {
-			return nil
-		}
-		dtFlags, err := findDynTagValue(ef, elf.DT_FLAGS)
-		if err == nil && elf.DynFlag(dtFlags)&elf.DF_BIND_NOW == elf.DF_BIND_NOW {
-			return nil
-		}
-		_, err = findDynTagValue(ef, elf.DT_BIND_NOW)
-		return err
-	}
-	conds = append(conds, newELFCondition(nowVerify, nowAllowlist))
+	conds = append(conds, toolchain.NewELFCondition(toolchain.NowVerify, nowAllowlist))
 
 	// Condition: Verify non-static binaries have RELRO program header.
-	const progTypeGnuRelro = elf.ProgType(0x6474e552)
-	relroVerify := func(ef *elf.File) error {
-		if elfIsStatic(ef) {
-			return nil
-		}
-		for _, p := range ef.Progs {
-			if p.Type == progTypeGnuRelro {
-				return nil
-			}
-		}
-		return errors.New("no GNU_RELRO program header found")
-	}
-	conds = append(conds, newELFCondition(relroVerify, relroAllowlist))
+	conds = append(conds, toolchain.NewELFCondition(toolchain.RelroVerify, relroAllowlist))
 
 	// Condition: Verify non-static binaries are dynamic (built PIE).
-	pieVerify := func(ef *elf.File) error {
-		if elfIsStatic(ef) {
-			return nil
-		}
-		for _, p := range ef.Progs {
-			if p.Type == elf.PT_DYNAMIC {
-				return nil
-			}
-		}
-		return errors.New("non-static file did not have PT_DYNAMIC tag")
-	}
-	conds = append(conds, newELFCondition(pieVerify, pieAllowlist))
+	conds = append(conds, toolchain.NewELFCondition(toolchain.PieVerify, pieAllowlist))
 
 	// Condition: Verify dynamic ELFs don't include TEXTRELs.
-	textrelVerify := func(ef *elf.File) error {
-		if elfIsStatic(ef) {
-			return nil
-		}
-		dtFlags, err := findDynTagValue(ef, elf.DT_FLAGS)
-		if err != nil && elf.DynFlag(dtFlags)&elf.DF_TEXTREL == elf.DF_TEXTREL {
-			return errors.New("TEXTREL flag found")
-		}
-		return nil
-	}
-	conds = append(conds, newELFCondition(textrelVerify, textrelAllowlist))
+	conds = append(conds, toolchain.NewELFCondition(toolchain.TextrelVerify, textrelAllowlist))
 
 	// Condition: Verify all binaries have non-exec STACK program header.
-	const progTypeGnuStack = elf.ProgType(0x6474e551)
-	stackVerify := func(ef *elf.File) error {
-		for _, p := range ef.Progs {
-			if p.Type == progTypeGnuStack {
-				if p.Flags&elf.PF_X == elf.PF_X {
-					return errors.New("exec GNU_STACK program header found")
-				}
-				return nil
-			}
-		}
-		return nil // Ignore if GNU_STACK is not found.
-	}
-	conds = append(conds, newELFCondition(stackVerify, stackAllowlist))
+	conds = append(conds, toolchain.NewELFCondition(toolchain.StackVerify, stackAllowlist))
 
 	// Condition: Verify no binaries have W+X LOAD program headers.
-	loadwxVerify := func(ef *elf.File) error {
-		const progFlagWX = elf.PF_X | elf.PF_W
-		for _, p := range ef.Progs {
-			if p.Type == elf.PT_LOAD {
-				if p.Flags&progFlagWX == progFlagWX {
-					return errors.New("LOAD was both writable and executable")
-				}
-				return nil
-			}
-		}
-		return nil // Ignore if LOAD is not found.
-	}
-	conds = append(conds, newELFCondition(loadwxVerify, loadwxAllowlist))
-
-	verifyNotLinked := func(pattern string) func(ef *elf.File) error {
-		return func(ef *elf.File) error {
-			strs, err := ef.DynString(elf.DT_NEEDED)
-			if err != nil {
-				return nil
-			}
-			for _, str := range strs {
-				if m, _ := filepath.Match(pattern, str); m {
-					return errors.Errorf("file linked with %s", str)
-				}
-			}
-			return nil
-		}
-	}
+	conds = append(conds, toolchain.NewELFCondition(toolchain.LoadwxVerify, loadwxAllowlist))
 
 	// Condition: Verify all binaries are not linked with libgcc_s.so.
-	libgccVerify := verifyNotLinked("libgcc_s.so*")
-	conds = append(conds, newELFCondition(libgccVerify, libgccAllowlist))
+	libgccVerify := toolchain.CreateNotLinkedVerify("libgcc_s.so*")
+	conds = append(conds, toolchain.NewELFCondition(libgccVerify, libgccAllowlist))
 
 	// Condition: Verify all binaries are not linked with libstdc++.so.
-	libstdcVerify := verifyNotLinked("libstdc++.so*")
-	conds = append(conds, newELFCondition(libstdcVerify, libstdcAllowlist))
+	libstdcVerify := toolchain.CreateNotLinkedVerify("libstdc++.so*")
+	conds = append(conds, toolchain.NewELFCondition(libstdcVerify, libstdcAllowlist))
 
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
 		if os.IsNotExist(err) {
@@ -386,7 +208,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 
 		// Run all defined condition checks on this ELF file.
 		for _, c := range conds {
-			if err := c.checkAndFilter(path, ef, mode); err != nil {
+			if err := c.CheckAndFilter(path, ef, mode); err != nil {
 				s.Error("Condition failure: ", err)
 
 				// Print details of the offending file for debugging.
