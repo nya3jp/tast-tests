@@ -145,10 +145,16 @@ var chromeFakeWebcamArgs = chrome.ExtraArgs(
 // performance. This precondition should be used only for performance tests.
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
-var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf",
-	chrome.ExtraArgs(
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream"))
+var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassMediaStreamPermissionsArgs)
+
+// ChromeCameraPerfWithVP9VaapiEncoder returns a precondition equal to
+// ChromeCameraPerf and with VA-API VP9 hardware encoder enabled.
+// TODO(crbug.com/811912): remove when this is enabled by default.
+func ChromeCameraPerfWithVP9VaapiEncoder() testing.Precondition {
+	return chromeCameraPerfWithVP9VaapiEncoder
+}
+
+var chromeCameraPerfWithVP9VaapiEncoder = chrome.NewPrecondition("cameraPerfWithVP9VaapiEncoder", chromeVModuleArgs, chromeBypassMediaStreamPermissionsArgs, chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
 
 // ChromeFakeCameraPerf returns a precondition for Chrome to be started using
 // the fake video/audio capture device (a.k.a. "fake webcam", see
@@ -157,9 +163,8 @@ var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf",
 // used only used for performance tests.
 func ChromeFakeCameraPerf() testing.Precondition { return chromeFakeCameraPerfPre }
 
-var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf",
-	chrome.ExtraArgs(
-		// Use a fake video/audio capture device instead of webcam(s)/microphone(s).
-		"--use-fake-device-for-media-stream",
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream"))
+var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf", chromeFakeWebcamArgs)
+
+var chromeBypassMediaStreamPermissionsArgs = chrome.ExtraArgs(
+	// Avoid the need to grant camera/microphone permissions.
+	"--use-fake-ui-for-media-stream")
