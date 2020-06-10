@@ -18,6 +18,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testArgsForPowerIdlePerf struct {
+	forceDischarge bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PowerIdlePerf,
@@ -27,22 +31,60 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
 			Name:              "noarc",
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: true,
+			},
+			Pre: chrome.LoggedIn(),
 		}, {
 			Name:              "",
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: true,
+			},
+			Pre: arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: true,
+			},
+			Pre: arc.VMBooted(),
+		}, {
+			Name:              "noarc_nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: false,
+			},
+			Pre: chrome.LoggedIn(),
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: false,
+			},
+			Pre: arc.Booted(),
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				forceDischarge: false,
+			},
+			Pre: arc.VMBooted(),
 		}},
 		Timeout: 15 * time.Minute,
 	})
@@ -53,6 +95,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		iterationCount    = 30
 		iterationDuration = 10 * time.Second
 	)
+	args := s.Param().(testArgsForPowerIdlePerf)
 
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
@@ -76,7 +119,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, true))
+	sup.Add(setup.PowerTest(ctx, tconn, args.forceDischarge))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
