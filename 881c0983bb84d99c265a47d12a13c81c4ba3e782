@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9dc9ef9_e6a48d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-10T11:16:38Z",
+      "side": 0,
+      "message": "Is it safe to remove this code?",
+      "revId": "881c0983bb84d99c265a47d12a13c81c4ba3e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
