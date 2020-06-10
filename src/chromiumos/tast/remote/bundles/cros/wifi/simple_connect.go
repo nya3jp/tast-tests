@@ -646,7 +646,7 @@ func wep104KeysHidden() []string {
 }
 
 // EAP certs/keys for EAP tests.
-var eapcert = certificate.GetTestCertificate()
+var eapcert = certificate.TestCertificate()
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.

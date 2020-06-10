@@ -117,9 +117,9 @@ iiWhSc9MaRwxDbYKxVoRhdqLhfGsufNVcPyTnF9nfdxRnQ==
 `,
 }
 
-// GetTestCertificate retrieves a well-known set of certificates, for use by tests that want to establish an
+// TestCertificate retrieves a well-known set of certificates, for use by tests that want to establish an
 // authenticator and client (e.g., for network EAP tests). This certificate does not provide any real security or
 // privacy guarantees, as the certificate and private key are well-known (i.e., published in public repositories).
-func GetTestCertificate() Certificate {
+func TestCertificate() Certificate {
 	return testCert
 }
