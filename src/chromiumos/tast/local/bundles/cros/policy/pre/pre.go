@@ -28,7 +28,7 @@ type PreData struct { // NOLINT
 	Chrome *chrome.Chrome
 }
 
-// preImpl implements both testing.Precondition and testing.preconditionImpl.
+// preImpl implements testing.Precondition.
 type preImpl struct {
 	fdms          *fakedms.FakeDMS
 	cr            *chrome.Chrome

@@ -16,11 +16,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type preconditionImpl interface {
-	Prepare(ctx context.Context, s *testing.PreState) interface{}
-	Close(ctx context.Context, s *testing.PreState)
-}
-
 type preImpl struct {
 	crPre      testing.Precondition
 	numApps    int
@@ -64,11 +59,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 		p.prepared = true
 	}
-	return p.crPre.(preconditionImpl).Prepare(ctx, s)
+	return p.crPre.Prepare(ctx, s)
 }
 
 func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
-	p.crPre.(preconditionImpl).Close(ctx, s)
+	p.crPre.Close(ctx, s)
 	if err := os.RemoveAll(p.extDirBase); err != nil {
 		s.Fatal("Failed to cleanup ", p.extDirBase, " ", err)
 	}

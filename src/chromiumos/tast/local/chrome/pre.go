@@ -50,10 +50,10 @@ var loggedInPre = NewPrecondition("logged_in")
 
 var vkEnabledPre = NewPrecondition("virtual_keyboard_enabled", ExtraArgs("--enable-virtual-keyboard"))
 
-// preImpl implements both testing.Precondition and testing.preconditionImpl.
+// preImpl implements testing.Precondition.
 type preImpl struct {
-	name    string        // testing.PreconditionImpl.String
-	timeout time.Duration // testing.PreconditionImpl.Timeout
+	name    string        // testing.Precondition.String
+	timeout time.Duration // testing.Precondition.Timeout
 	cr      *Chrome       // underlying Chrome instance
 	opts    []Option      // Options that should be passed to New
 }

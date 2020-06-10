@@ -102,10 +102,10 @@ type GaiaVars struct {
 	PassVar string // the secret variable for the GAIA password
 }
 
-// preImpl implements both testing.Precondition and testing.preconditionImpl.
+// preImpl implements testing.Precondition.
 type preImpl struct {
-	name    string        // testing.PreconditionImpl.String
-	timeout time.Duration // testing.PreconditionImpl.Timeout
+	name    string        // testing.Precondition.String
+	timeout time.Duration // testing.Precondition.Timeout
 
 	extraArgs []string  // passed to Chrome on initialization
 	gaia      *GaiaVars // a struct containing GAIA secret variables

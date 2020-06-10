@@ -23,7 +23,7 @@ type SystemState struct {
 	VMConfig wilco.VMConfig
 }
 
-// preImpl implements both testing.Precondition and testing.preconditionImpl.
+// preImpl implements testing.Precondition.
 type preImpl struct {
 	name                string
 	state               SystemState

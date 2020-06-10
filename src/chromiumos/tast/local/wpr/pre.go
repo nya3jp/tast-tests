@@ -88,7 +88,7 @@ func RecordMode(archive string) testing.Precondition {
 	return getOrCreatePrecondition(getCallerPackage(), archive, Record)
 }
 
-// preImpl implements both testing.Precondition and testing.preconditionImpl.
+// preImpl implements testing.Precondition.
 type preImpl struct {
 	// Data for testing.Precondition.
 	name    string
