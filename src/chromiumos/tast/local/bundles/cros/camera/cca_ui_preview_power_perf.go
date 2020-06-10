@@ -73,7 +73,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
 
 	const (
 		iterationCount          = 30
