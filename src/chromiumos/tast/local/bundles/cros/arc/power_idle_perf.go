@@ -28,21 +28,18 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Params: []testing.Param{{
 			Name:              "noarc",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
 			Pre:               chrome.LoggedIn(),
 		}, {
-			Name:              "",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
+			Pre:               arc.Booted(),
 		}},
 		Timeout: 15 * time.Minute,
 	})

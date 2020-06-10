@@ -25,17 +25,14 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         []string{"GoogleCameraArc.apk"},
 		Params: []testing.Param{{
-			Name:              "",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 		Timeout: 45 * time.Minute,
 	})
