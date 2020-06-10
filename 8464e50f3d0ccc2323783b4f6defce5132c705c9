@@ -22,6 +22,30 @@
       "revId": "8464e50f3d0ccc2323783b4f6defce5132c705c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd37e9d_6e1ab8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-06-10T19:43:04Z",
+      "side": 1,
+      "message": "Well, the variable in openfds.Expect is called allowDirs.\n\nThe logic should be:\n\n\"We allow directory FDs if ASan is enabled, or if we need it to stabilize the test, which we do\"\n\nSo, in code:\n\nallowDirs :\u003d onASan || true\n\nbut something || true is true, so why not just write that?\n\nI added the TODO to remember to turn\n\nallowDirs :\u003d true\n\nback into\n\nallowDirs :\u003d onASan\n\nwhen we figure out the breakage.\n\nIt doesn\u0027t make sense to pass allowDirs || onASan on a variable called \"allowDirs\".",
+      "parentUuid": "becaa868_860e86b8",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 34
+      },
+      "revId": "8464e50f3d0ccc2323783b4f6defce5132c705c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
