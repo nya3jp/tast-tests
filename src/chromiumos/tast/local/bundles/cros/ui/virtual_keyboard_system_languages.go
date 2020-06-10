@@ -6,13 +6,8 @@ package ui
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
@@ -88,37 +83,18 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to verify default input method in country %s. got %s; want %s", regionCode, currentInputMethodID, defaultInputMethodID)
 	}
 
-	// Verify virtual keyboard layout
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
-	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
-	}
-	defer conn.Close()
-
-	// Create a touch controller.
-	// Use pc tap event to trigger virtual keyboard instead of calling vkb.ShowVirtualKeyboard()
-	pc, err := pointer.NewTouchController(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create a touch controller")
-	}
-	defer pc.Close()
-
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
+	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
+		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	s.Log("Click input field to trigger virtual keyboard shown up")
-	if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	s.Log("Waiting for the virtual keyboard to show")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+
+	s.Log("Waiting for the virtual keyboard to render buttons")
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	keyboard, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeKeyboard}, 3*time.Second)
