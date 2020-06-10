@@ -16,6 +16,8 @@ import (
 	"strings"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"github.com/golang/protobuf/proto"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
@@ -1461,4 +1463,30 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 		return false, errors.Wrap(err, "failed to get targets")
 	}
 	return len(targets) != 0, nil
+}
+
+// StartTracing starts trace events collection for the selected categories. Android
+// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+// gfx category, use "disabled-by-default-android gfx", including the space.
+func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
+	return c.devsess.StartTracing(ctx, categories)
+}
+
+// StopTracing stops trace collection and returns the collected trace events.
+func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+	return c.devsess.StopTracing(ctx)
+}
+
+// SaveTraceToFile marshals the given trace into a binary protobuf and saves it
+// at the specified path.
+func SaveTraceToFile(trace *trace.Trace, path string) error {
+	data, err := proto.Marshal(trace)
+	if err != nil {
+		return errors.Wrap(err, "could not marshal trace to binary")
+	}
+
+	if err := ioutil.WriteFile(path, data, 0666); err != nil {
+		return errors.Wrap(err, "could not save trace to file")
+	}
+	return nil
 }
