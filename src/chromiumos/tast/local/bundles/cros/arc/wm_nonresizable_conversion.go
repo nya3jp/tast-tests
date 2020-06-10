@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -15,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -32,46 +30,14 @@ func init() {
 }
 
 func WMNonresizableConversion(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	wm.SetupAndRunTestCases(ctx, s, []wm.TestCase{
+		wm.TestCase{
+			// non-resizable/conversion: landscape
+			Name: "NV_conversion_landscape",
+			Func: wmNV19,
+		},
+	})
 
-	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
-		s.Fatal("Failed to install app: ", err)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close()
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure if tablet mode is disabled: ", err)
-	}
-	defer cleanup(ctx)
-
-	for _, test := range []struct {
-		name string
-		fn   wm.TestFunc
-	}{
-		{"NV_conversion_landscape", wmNV19}, // non-resizable/conversion: landscape
-	} {
-		s.Logf("Running test %q", test.name)
-
-		if err := test.fn(ctx, tconn, a, d); err != nil {
-			path := fmt.Sprintf("%s/screenshot-cuj-failed-test-%s.png", s.OutDir(), test.name)
-			if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-				s.Log("Failed to capture screenshot: ", err)
-			}
-			s.Errorf("%s test failed: %v", test.name, err)
-		}
-	}
 }
 
 // wmNV19 covers non-resizable/conversion behavior in landscape mode.
