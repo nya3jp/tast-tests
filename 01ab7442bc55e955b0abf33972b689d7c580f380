@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1fe289d_d11ecce4",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T02:13:47Z",
+      "side": 1,
+      "message": "Sorry for the delay. I can\u0027t find the private key for the test CACerts so it might not be possible to generate an expired client cert with the same CACert in TestCertificate (or we\u0027ll have to update all the keys/certs).\n\nAs to the second part, I\u0027m wondering if we can somehow better identify the certs/keys with the same CACert in addition to the assumption in function commentary. Do you think something like the structure below might help?\n\n  type Credential {\n    Cert       string\n    PrivateKey string\n  }\n  type CertSet {\n    CACert            string\n    ServerCred        Credential\n    ClientCred        Credential\n\n    // Optional parameters, access with “comma ok” getter (or pointer is an alternative).\n    expiredServerCred Credential\n    // ... maybe more to go in the future\n  }\n  func (cs CertSet) ExpiredServerCred() (Credential, bool){\n    if cs.expiredServerCred.PrivateKey \u003d\u003d \"\" {\n      return Credential{}, false\n    }\n    return cs.expiredServerCred, true\n  }\n  func TestCertificateSet() CertSet {\n    return CertSet{...}\n  }",
+      "parentUuid": "18454dcc_ce8b0599",
+      "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c000bbdb_9b972c6b",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 2
