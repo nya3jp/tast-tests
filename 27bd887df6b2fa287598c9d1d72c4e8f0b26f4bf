@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d0a9d00_08b62d7d",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-10T22:56:31Z",
+      "side": 1,
+      "message": "style nit: better to be grouped:\n  const (\n    package0 \u003d \"package-0\"\n    core     \u003d \"core\"\n    ...\n  )",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "27bd887df6b2fa287598c9d1d72c4e8f0b26f4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
