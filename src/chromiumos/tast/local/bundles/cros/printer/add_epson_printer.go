@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/printer/addtest"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/compupdater"
 	"chromiumos/tast/testing"
 )
 
@@ -46,25 +45,12 @@ const (
 
 func AddEpsonPrinter(ctx context.Context, s *testing.State) {
 	const (
-		// Component name to be loaded before the exercising.
-		componentName = "epson-inkjet-printer-escpr"
-
 		// diffFile is the name of the file containing the diff between
 		// the golden data and actual request in case of failure.
 		diffFile           = "printer_add_epson_printer_diff.txt"
 		colorDiffFile      = "color.diff"
 		monochromeDiffFile = "monochrome.diff"
 	)
-
-	updater, err := compupdater.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to ComponentUpdaterService: ", err)
-	}
-	_, err = updater.LoadComponent(ctx, componentName, compupdater.Mount)
-	if err != nil {
-		s.Fatalf("Failed to load %s: %v", componentName, err)
-	}
-	defer updater.UnloadComponent(ctx, componentName)
 
 	// Tests printing with the old Ink PPDs.
 	addtest.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile, diffFile)
