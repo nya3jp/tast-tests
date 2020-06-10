@@ -14,6 +14,10 @@ const (
 	SecondPassword = "FakePasswordForFakeUser2"
 	SecondPin      = "654321"
 
+	ThirdUsername = "fakeuser3@example.com"
+	ThirdPassword = "FakePasswordForFakeUser3"
+	ThirdPin      = "987654"
+
 	PasswordLabel = "PasswordLabel"
 	PinLabel      = "PinLabel"
 

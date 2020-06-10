@@ -107,6 +107,18 @@ func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label s
 	return nil
 }
 
+// setUpEcryptfsVaultAndUser will setup the vault and user of the specified username, password and label, with the vault backed by ecryptfs.
+// Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
+func setUpEcryptfsVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+	config := hwsec.NewVaultConfig()
+	config.Ecryptfs = true
+	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
+		return errors.Wrap(err, "failed to create user vault for testing")
+	}
+
+	return nil
+}
+
 // createSparseFile creates a sparse file of the given size in bytes at location path.
 func createSparseFile(path string, size int64) error {
 	// Create the file. Note that if the file exist, it'll be truncated to 0 bytes.
@@ -211,6 +223,9 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	if _, err := utility.RemoveVault(ctx, util.SecondUsername); err != nil {
 		s.Log("Fails to remove vault before test starts: ", err)
 	}
+	if _, err := utility.RemoveVault(ctx, util.ThirdUsername); err != nil {
+		s.Log("Fails to remove vault before test starts: ", err)
+	}
 
 	// Set up the first user as the owner and test the dircrypto mount.
 	err = setUpVaultAndUserAsOwner(ctx, s.DataPath("testcert.p12"), util.FirstUsername, util.FirstPassword, util.PasswordLabel, utility)
@@ -247,4 +262,21 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	}
 
 	testAccountUsage(ctx, s, cmdRunner, util.SecondUsername, utility)
+
+	// Set up the third user as a user with ecryptfs backed vault and test it.
+	err = setUpEcryptfsVaultAndUser(ctx, util.ThirdUsername, util.ThirdPassword, util.PasswordLabel, utility)
+	defer func() {
+		// Remember to log out and delete vault.
+		if err := utility.UnmountAll(ctx); err != nil {
+			s.Fatal("Failed to logout during cleanup: ", err)
+		}
+		if _, err := utility.RemoveVault(ctx, util.ThirdUsername); err != nil {
+			s.Error("Failed to cleanup third user after the test: ", err)
+		}
+	}()
+	if err != nil {
+		s.Fatal("Failed to setup vault and user for third user: ", err)
+	}
+
+	testAccountUsage(ctx, s, cmdRunner, util.ThirdUsername, utility)
 }
