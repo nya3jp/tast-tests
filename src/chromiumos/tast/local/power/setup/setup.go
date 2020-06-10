@@ -108,9 +108,21 @@ func (s *Setup) Check(ctx context.Context) error {
 	return nil
 }
 
+// BatteryDischargeMode what setup is needed for a test
+type BatteryDischargeMode int
+
+const (
+	// NoBatteryDischarge option requests setup not to try
+	// forcing discharge of battery
+	NoBatteryDischarge BatteryDischargeMode = iota
+	// ForceBatteryDischarge option requests setup to force
+	// discharging battery during a test
+	ForceBatteryDischarge
+)
+
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-func PowerTest(ctx context.Context, c *chrome.TestConn) (CleanupCallback, error) {
+func PowerTest(ctx context.Context, c *chrome.TestConn, option BatteryDischargeMode) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
@@ -120,7 +132,9 @@ func PowerTest(ctx context.Context, c *chrome.TestConn) (CleanupCallback, error)
 		s.Add(SetKeyboardBrightness(ctx, 24))
 		s.Add(MuteAudio(ctx))
 		s.Add(DisableWiFiInterfaces(ctx))
-		s.Add(SetBatteryDischarge(ctx, 2.0))
+		if option == ForceBatteryDischarge {
+			s.Add(SetBatteryDischarge(ctx, 2.0))
+		}
 		s.Add(DisableBluetooth(ctx))
 		s.Add(TurnOffNightLight(ctx, c))
 		return nil
