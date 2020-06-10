@@ -67,7 +67,7 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 
 // Total returns the sum of joules at the top level.
 func (rapl *RAPLValues) Total() float64 {
-	return rapl.joules["package0"] + rapl.joules["psys"]
+	return rapl.joules["package-0"] + rapl.joules["psys"]
 }
 
 // Uncore returns the joules from the GPU.
