@@ -32,10 +32,6 @@ func init() {
 }
 
 func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
-
-	// testFunc represents a function that tests if the window is in a certain state.
-	type testFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
-
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -62,7 +58,7 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 
 	for _, test := range []struct {
 		name string
-		fn   testFunc
+		fn   wm.TestFunc
 	}{
 		{"NC_default_launch_behavior", wmNC01}, // non-resizable/clamshell: default launch behavior
 		{"NC_user_immerse_portrait", wmNC04},   // non-resizable/clamshell: user immerse portrait app (pillarbox)
