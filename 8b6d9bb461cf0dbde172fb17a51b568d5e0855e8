@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61cf515a_a775274d",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-10T11:16:38Z",
+      "side": 1,
+      "message": "Could you just pass the result of cr.User() here?",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e3fc06_eeef8511",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-10T11:16:38Z",
+      "side": 1,
+      "message": "Is this helpful?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7610445_108cae99",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-10T11:16:38Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
