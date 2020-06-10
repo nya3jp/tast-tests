@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f602ceb4_8294cdf8",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-10T09:33:26Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "a1fe289d_d11ecce4",
+      "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c000bbdb_9b972c6b",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 2
@@ -57,6 +75,30 @@
       "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b42069b_81df2424",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-10T09:33:26Z",
+      "side": 1,
+      "message": "Done: http://crrev.com/c/2239689",
+      "parentUuid": "c000bbdb_9b972c6b",
+      "range": {
+        "startLine": 287,
+        "startChar": 5,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "01ab7442bc55e955b0abf33972b689d7c580f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
