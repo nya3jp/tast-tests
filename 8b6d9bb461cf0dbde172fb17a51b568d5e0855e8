@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37b99edf_b323bd38",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-10T23:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61cf515a_a775274d",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4e3fc06_eeef8511",
         "filename": "src/chromiumos/tast/local/drivefs/wait.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31248c6d_f4305584",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-10T23:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e3fc06_eeef8511",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "37201e20_8cc64b11",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-10T23:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7610445_108cae99",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a111f54d_f7640828",
         "filename": "src/chromiumos/tast/local/drivefs/wait.go",
         "patchSetId": 8
@@ -73,6 +133,24 @@
       "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1f85d9_bcd561e2",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-10T23:50:56Z",
+      "side": 1,
+      "message": "This is because the mountPath can be used to create both the drivefsRoot (mountPath + root) and the team drives (mountPath + team_drives) path, wanted to make sure the test has the option of choosing which one they care about.",
+      "parentUuid": "a111f54d_f7640828",
+      "revId": "8b6d9bb461cf0dbde172fb17a51b568d5e0855e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
