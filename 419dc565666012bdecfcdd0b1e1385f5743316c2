@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "debe0eb0_92220f99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T21:16:00Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6252bb58_a90797d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T21:16:00Z",
+      "side": 1,
+      "message": "This whole thing is a little hacky. I\u0027d much prefer waiting for a scan finished event. If that\u0027s too much work, I\u0027m okay leaving a TODO here.",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 7
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d91c97da_62fcd89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T21:16:00Z",
+      "side": 1,
+      "message": "can we do \u0027scanning \u0026\u0026 !b\u0027 instead? This is slightly confusing.",
+      "range": {
+        "startLine": 562,
+        "startChar": 6,
+        "endLine": 562,
+        "endChar": 33
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e3095f5_40dabb88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T21:16:00Z",
+      "side": 1,
+      "message": "same as above regarding scan done event. Also is it possible to combine some code here? We pretty much do exactly this in the code above.",
+      "range": {
+        "startLine": 637,
+        "startChar": 22,
+        "endLine": 637,
+        "endChar": 34
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
