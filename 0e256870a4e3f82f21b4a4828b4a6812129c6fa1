@@ -305,6 +305,30 @@
       "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c4f804_56fa2131",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T11:43:02Z",
+      "side": 1,
+      "message": "friendly ping here",
+      "parentUuid": "41c12e9f_08b715a0",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "0e256870a4e3f82f21b4a4828b4a6812129c6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
