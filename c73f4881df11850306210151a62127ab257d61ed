@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7600fc3_a609e058",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T12:25:01Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 80
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52de60a6_8241cede",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T12:25:01Z",
+      "side": 1,
+      "message": "Is CertSet a good name? It is not the \"set\" we often refer to. How about CSCert or CertStore or CertTuple?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9062d6e_82fde5f7",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T12:25:01Z",
+      "side": 1,
+      "message": "How about TestCert1 and TestCert2?",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 18
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc98fee_d557b01f",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T12:25:01Z",
+      "side": 1,
+      "message": "How about certSet1?",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 15
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da92566_12ce0759",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T12:25:01Z",
+      "side": 1,
+      "message": "a CA different from the one used for generating TestCertificate.",
+      "range": {
+        "startLine": 289,
+        "startChar": 54,
+        "endLine": 289,
+        "endChar": 68
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
