@@ -113,8 +113,6 @@ var (
 	CancelResultButton = UIComponent{"cancel result button", []string{"#cancel-result"}}
 	// ConfirmResultButton is button for confirming intent review result.
 	ConfirmResultButton = UIComponent{"confirm result button", []string{"#confirm-result"}}
-	// ExpertModeButton is button used for opening expert mode setting menu.
-	ExpertModeButton = UIComponent{"expert mode button", []string{"#settings-expert"}}
 	// MirrorButton is button used for toggling preview mirroring option.
 	MirrorButton = UIComponent{"mirror button", []string{"#toggle-mirror"}}
 	// ModeSelector is selection bar for different capture modes.
@@ -123,6 +121,8 @@ var (
 	SettingsButton = UIComponent{"settings", []string{"#open-settings"}}
 	// SwitchDeviceButton is button for switching camera device.
 	SwitchDeviceButton = UIComponent{"switch device button", []string{"#switch-device"}}
+	// VideoSnapshotButton is button for taking video snapshot during recording.
+	VideoSnapshotButton = UIComponent{"video snapshot button", []string{"#video-snapshot"}}
 
 	// SettingsBackButton is back button for closing master setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
@@ -136,6 +136,8 @@ var (
 	// ResolutionSettingBackButton is back button for closing resolution setting menu.
 	ResolutionSettingBackButton = UIComponent{"resolution setting back button", []string{
 		"#view-resolution-settings .menu-header button"}}
+	// ExpertModeButton is button used for opening expert mode setting menu.
+	ExpertModeButton = UIComponent{"expert mode button", []string{"#settings-expert"}}
 	// PhotoResolutionSettingBackButton is back button for closing photo resolution setting menu.
 	PhotoResolutionSettingBackButton = UIComponent{"photo resolution setting back button",
 		[]string{"#view-photo-resolution-settings .menu-header button"}}
