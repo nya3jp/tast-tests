@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
@@ -55,6 +57,17 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	// Workaround for potential failures with mouse cursor. When combined with
+	// another test, they may use the mouse and the mouse cursor may fall into a
+	// location which pops up the status bubble of the browser window. The
+	// overview animation is actually cancelled when the status bubble is visible,
+	// thus moving the mouse cursor to a safe location to make sure that no status
+	// bubbles appear. See: https://crbug.com/1091547.
+	// TODO(mukai): remove this workaround when the fix in chromium is merged.
+	if err := mouse.Move(ctx, tconn, coords.NewPoint(0, 0), 0); err != nil {
+		s.Fatal("Failed to move the mouse: ", err)
 	}
 
 	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
