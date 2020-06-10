@@ -8,6 +8,7 @@ package wm
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -65,6 +67,12 @@ const (
 
 // TestFunc represents a function that tests if the window is in a certain state.
 type TestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
+
+// TestCase represents a struct for test names and their func.
+type TestCase struct {
+	Name string
+	Func TestFunc
+}
 
 // CheckMaximizeResizable checks that the window is both maximized and resizable.
 func CheckMaximizeResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
@@ -421,4 +429,43 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID
 		return errors.Wrap(err, "failed to set zoom factor")
 	}
 	return nil
+}
+
+// SetupAndRunTestCases sets up the environment for tests and runs testcases.
+func SetupAndRunTestCases(ctx context.Context, s *testing.State, testCases []TestCase) {
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
+	if err := a.Install(ctx, arc.APKPath(APKNameArcWMTestApp24)); err != nil {
+		s.Fatal("Failed to install APK: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close()
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure if tablet mode is disabled: ", err)
+	}
+	defer cleanup(ctx)
+
+	for _, test := range testCases {
+		s.Logf("Running test %q", test.Name)
+
+		if err := test.Func(ctx, tconn, a, d); err != nil {
+			path := fmt.Sprintf("%s/screenshot-cuj-failed-test-%s.png", s.OutDir(), test.Name)
+			if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+				s.Log("Failed to capture screenshot: ", err)
+			}
+			s.Errorf("%s test failed: %v", test.Name, err)
+		}
+	}
 }
