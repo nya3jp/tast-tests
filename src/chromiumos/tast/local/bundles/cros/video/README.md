@@ -1,4 +1,4 @@
-# Video Test Overview
+# Video Test Overview ([tinyurl.com/cros-gfx-video](https://tinyurl.com/cros-gfx-video))
 
 The Tast video tests are used to validate various video related functionality. A
 wide range of test scenarios are available to validate both correctness and
@@ -11,12 +11,15 @@ To get a list of all available video tests run:
 
 All video tests can be found in the [tast video folder].
 
+Some tests use Chrome while others do not; a hypothetical user would not see any
+action in a DUT when running the latter.
+
 [TOC]
 
 ## Capabilities and Capability Test
 
 Tast can prevent running tests on SoCs without a particular functionality (see
-[Test Dependencies], and the Video tests make extensive use of this for gating
+[Test Dependencies], and the video tests make extensive use of this for gating
 tests on hardware capabilities e.g. presence of video decoding for a given
 codec. These capabilities are specified per-chipset (potentially with per-board
 and per-device overlays) in files like e.g. [15-chipset-cml-capabilities.yaml].
@@ -46,14 +49,14 @@ run by executing:
 New boards being brought up will need to add capabilities files in the
 appropriate locations for the Video Tast tests to run properly.
 
-## Video decoder test
+## Video decoder integration tests (`video.DecodeAccel`)
 
 These tests validate video decoding functionality by running the
 [video_decode_accelerator_tests]. They are implemented directly on top of the
-video decoder implementations. Various behaviors are tested such as flushing and
-resetting the decoder. Decoded frames are validated by comparing their checksums
-against expected values. For more information about these tests check the
-[video decoder tests usage documentation].
+video decoder implementations, not using Chrome. Various behaviors are tested
+such as flushing and resetting the decoder. Decoded frames are validated by
+comparing their checksums against expected values. For more information about
+these tests check the [video decoder tests usage documentation].
 
 Tests are available for various codecs such as H.264, VP8 and VP9. In addition
 there are tests using videos that change resolution during plaback. To run all
@@ -67,7 +70,7 @@ the current ones. To run all VD video decoder tests run:
 
     tast run $HOST video.DecodeAccelVD.*
 
-## Video decoder performance tests
+### Video decoder performance tests (`video.DecodeAccelPerf`)
 
 These tests measure video decode performance by running the
 [video_decode_accelerator_perf_tests]. These tests are implemented directly on
@@ -87,7 +90,7 @@ the current ones. To run all VD video decoder performance tests run:
 
     tast run $HOST video.DecodeAccelVDPerf.*
 
-## Video decoder sanity checks
+### Video decoder sanity checks
 
 These tests use the [video_decode_accelerator_tests] to decode a video stream
 with unsupported features. This is done by playing VP9 profile1-3 videos while
@@ -97,18 +100,18 @@ use:
 
     tast run $HOST video.DecodeAccelSanity.*
 
-## Video encoder tests
+## Video encoder integration tests (`video.EncodeAccel`)
 
 These tests run the [video_encode_accelerator_unittest] to test encoding raw
 video frames. They are implemented directly on top of the video encoder
-implementations. Tests are available that test encoding H.264, VP8 and VP9
-videos using various resolutions.
+implementations, not using Chrome. Tests are available that test encoding H.264,
+VP8 and VP9 videos using various resolutions.
 
 To run all video encode tests use:
 
     tast run $HOST video.EncodeAccel.*
 
-## Video encoder performance tests
+### Video encoder performance tests (`video.EncodeAccelPerf`)
 
 These tests measure video encode performance by running the
 [video_encode_accelerator_unittest]. They are implemented directly on top of the
@@ -160,9 +163,8 @@ The video playback performance tests measure video decoder performance by
 playing a video in the Chrome browser. These tests exercise the full Chrome
 stack, as opposed to others that might only measure the performance of the
 actual video decoder implementations. Both software and hardware video decoder
-performance is measured. If hardware decoding is not supported for the video
-stream only software performance will be reported. Various metrics are collected
-such as CPU usage and the number of dropped frames.
+performance is measured. Various metrics are collected such as GPU usage, power
+consumption and the number of dropped frames.
 
 Tests are available for various codecs and resolutions, both in 30 and 60fps
 variants. To run all tests use:
