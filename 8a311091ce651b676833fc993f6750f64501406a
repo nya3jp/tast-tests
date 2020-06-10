@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f9c0d45_766daf0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-06-10T06:05:32Z",
+      "side": 1,
+      "message": "nit: Not directly related to this CL. But can we use |testRecordVideo| instead and get the saved dir in |testRecordVideoWithWindowChanged()| so that it can be more consistent to other subtests?",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "8a311091ce651b676833fc993f6750f64501406a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
