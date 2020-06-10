@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6463454c_9e08ab3b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-10T16:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5e6c1c_6b0d1f23",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 13
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc8fe018_ed8941e3",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "67251a91_742a4fe1",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-10T16:52:23Z",
+      "side": 1,
+      "message": "I still need to trim it because the output is returned.",
+      "parentUuid": "bc8fe018_ed8941e3",
+      "range": {
+        "startLine": 395,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 35
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c32dcd34_915b7d50",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2437d5e_79f96ee7",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-10T16:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c32dcd34_915b7d50",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 61
+      },
+      "revId": "c890f898d894a086df62aae6a801e9a496ba9b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
