@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153d0e9a_e14754d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pinprint/pinprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-10T17:23:10Z",
+      "side": 1,
+      "message": "nit: \"values\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 44,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "e15a1c379e3596258115ebf75fdbf72bec552201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
