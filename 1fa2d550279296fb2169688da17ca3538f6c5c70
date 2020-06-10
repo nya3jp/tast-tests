@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b16d76bd_6c8b6835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T09:00:30Z",
+      "side": 1,
+      "message": "\"tc\" used more often, which means \"test case\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "1fa2d550279296fb2169688da17ca3538f6c5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60e0b64_5a3ccdfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T09:00:30Z",
+      "side": 1,
+      "message": "nit: you can omit \"(\" before func and \")\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "1fa2d550279296fb2169688da17ca3538f6c5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e161c2f_8ab45b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T09:00:30Z",
+      "side": 1,
+      "message": "please use cleanup context:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second * 5) // \u003c--- Choose correct timeout\n                              // for you that will be more than enough to close app.\ndefer cancel()\n\napp, err :\u003d cca.New(ctx, cr, []string{s.DataPath(\"cca_ui.js\")}, s.OutDir())\nif err !\u003d nil {\n\ts.Fatal(\"Failed to open CCA: \", err)\n}\ndefer app.Close(cleanupCtx)\ndefer func(ctx context.Context) {\n\tif err :\u003d app.CheckJSError(ctx, s.OutDir()); err !\u003d nil {\n\t\ts.Error(\"Failed with javascript errors: \", err)\n\t}\n}(cleanupCtx)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "1fa2d550279296fb2169688da17ca3538f6c5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0792a652_bf052f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T09:00:30Z",
+      "side": 1,
+      "message": "since we pass this function to app.RunThroughCameras and this function returns error, we should return error and don\u0027t use s.Error and s.Fatal",
+      "range": {
+        "startLine": 62,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 4
+      },
+      "revId": "1fa2d550279296fb2169688da17ca3538f6c5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
