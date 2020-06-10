@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a7c360_693a3a05",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-10T17:17:33Z",
+      "side": 1,
+      "message": "I think this block would be a little clearer if you inverted the condition:\n\n    if actual, err :\u003d o.GetText(ctx); err \u003d\u003d nil {\n        return errors.Errorf(\"text does not match: got %q; want %q\", actual, expected)\n    }\n    return terr\n\nThis avoids the confusing \"if err !\u003d nil { return terr }\".",
+      "revId": "6015fa0b790b30c112252a03267e86e1b7ef9a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
