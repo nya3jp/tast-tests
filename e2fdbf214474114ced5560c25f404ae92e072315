@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "8f189f3e_cda7d3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T09:20:47Z",
+      "side": 1,
+      "message": "request.Timeout\u0027s type is int64. Yes we shall use\nrequest.Timeout * time.Nanosecond \nto convert request.Timeout to time.Duration type.",
+      "parentUuid": "1f33cbab_a37df567",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b649efd_76de7320",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 9
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I got some review comments preferring the order of \"got %s, want %s\", maybe also follow it here?\nref: https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
       "parentUuid": "cbd199bc_f562c19a",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab08304a_f50a77e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T09:20:47Z",
+      "side": 1,
+      "message": "Sure. My fault. (Autotest prefer the order: expect, actual).",
+      "parentUuid": "7c90f40b_ffed72ac",
       "range": {
         "startLine": 118,
         "startChar": 12,
