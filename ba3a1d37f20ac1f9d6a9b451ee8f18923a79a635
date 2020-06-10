@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c727d480_3866b31d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T05:02:15Z",
+      "side": 1,
+      "message": "nit: maybe some comments for the values if wrapping the parameter into a struct with only one field is too excessive? (so that at least one can know that the \"scan\" case is triggering a scan right before taking down the interface without reading the test body)",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "ba3a1d37f20ac1f9d6a9b451ee8f18923a79a635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

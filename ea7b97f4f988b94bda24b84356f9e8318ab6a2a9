@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "e7e0b340_af2fcda8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-10T05:02:15Z",
+      "side": 1,
+      "message": "Also LGTM :)",
+      "parentUuid": "14688b27_52277be6",
+      "revId": "ea7b97f4f988b94bda24b84356f9e8318ab6a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee2dbd7_b0595444",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 7
