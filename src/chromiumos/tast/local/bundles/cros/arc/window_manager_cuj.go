@@ -70,27 +70,24 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Data:         []string{"ArcPipSimpleTastTest.apk"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableCUJTests,
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "unstable",
 			Val:               unstableCUJTests,
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			Val:               stableCUJTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}, {
 			Name:              "vm_unstable",
 			Val:               unstableCUJTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }

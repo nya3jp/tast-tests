@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Pre:          arc.VMBooted(),
+		Pre:          arc.Booted(),
 	})
 }
 

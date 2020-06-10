@@ -31,7 +31,7 @@ func TestTimeout(t *gotesting.T) {
 		}
 		// If the test has an ARC precondition, like arc.Booted(), it is not necessary to extend
 		// the timeout, so skip them.
-		if t.Pre == arc.Booted() || t.Pre == arc.BootedInTabletMode() || t.Pre == arc.VMBooted() || t.Pre == arc.VMBootedInTabletMode() {
+		if t.Pre == arc.Booted() || t.Pre == arc.BootedInTabletMode() {
 			return false
 		}
 		return true

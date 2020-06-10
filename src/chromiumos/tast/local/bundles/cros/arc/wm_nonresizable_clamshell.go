@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Data:         []string{wm.APKNameArcWMTestApp24},
-		Pre:          arc.VMBooted(),
+		Pre:          arc.Booted(),
 		Timeout:      8 * time.Minute,
 	})
 }

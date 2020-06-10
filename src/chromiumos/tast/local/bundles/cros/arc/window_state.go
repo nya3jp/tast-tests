@@ -60,6 +60,7 @@ func init() {
 		Contacts:     []string{"phshah@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "clamshell",
@@ -69,7 +70,6 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name: "clamshell_vm",
 			Val: windowStateParams{
@@ -78,7 +78,6 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}, {
 			Name: "clamshell_stress",
 			Val: windowStateParams{
@@ -87,7 +86,6 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name: "clamshell_stress_vm",
 			Val: windowStateParams{
@@ -96,7 +94,6 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}, {
 			Name: "tablet",
 			Val: windowStateParams{
@@ -105,7 +102,6 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name: "tablet_vm",
 			Val: windowStateParams{
@@ -114,7 +110,6 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}, {
 			Name: "tablet_stress",
 			Val: windowStateParams{
@@ -123,7 +118,6 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name: "tablet_stress_vm",
 			Val: windowStateParams{
@@ -132,7 +126,6 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }

@@ -35,7 +35,7 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
+			Pre:               arc.Booted(),
 		}},
 		Timeout: 10 * time.Minute,
 	})

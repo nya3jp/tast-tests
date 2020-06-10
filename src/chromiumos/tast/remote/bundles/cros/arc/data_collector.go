@@ -54,7 +54,6 @@ func init() {
 		// then disabling this in Android PFQ. At this time missing the data is allowed
 		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
-			Name:              "",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               false,
 		}, {

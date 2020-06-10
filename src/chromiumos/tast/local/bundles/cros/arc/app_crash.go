@@ -25,20 +25,18 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Name:              "mock_consent",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 			Val:               crash.MockConsent,
 		}, {
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"android_p", "metrics_consent"},
-			Pre:               arc.Booted(),
 			Val:               crash.RealConsent,
 		}, {
 			Name:              "vm_mock_consent",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 			Val:               crash.MockConsent,
 		}},
 	})

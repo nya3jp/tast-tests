@@ -25,6 +25,7 @@ func init() {
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -35,12 +36,10 @@ func init() {
 				"VtsHalKeymasterV3_0TargetTest_x86",
 				"VtsHalKeymasterV3_0TargetTest_x86_64",
 			},
-			Pre: arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData:         []string{"VtsHalKeymasterV3_0TargetTest_rvc_bertha_x86_64"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }
