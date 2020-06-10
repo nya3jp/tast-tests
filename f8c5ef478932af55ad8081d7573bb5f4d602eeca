@@ -230,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "f15033d4_dda31baf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Based on the review comment in crrev.com/c/2214851 please stop background scan before ConnectWifiAP:\nhttps://crrev.com/c/2214851/9/src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go#150\n\nThe CL is about to merge, you can rebase your working tree after it is merged. It has GetBgscanMethod and SetBgscanMethod gRPC for you to get/set bgscan mode of the DUT.",
+      "parentUuid": "52c5c9e5_ed399066",
+      "revId": "f8c5ef478932af55ad8081d7573bb5f4d602eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "731765fb_11a5b564",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 5

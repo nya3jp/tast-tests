@@ -1,0 +1,354 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c43b1a_f5a267b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Per suggestion in wifi_service.proto, it becomes\n\ntime.Duration(request.Timeout)",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9cb9dc_72e44da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "This can be moved just before it is used, say line 341.",
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b649efd_76de7320",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "remoteiw\n\nrefer to the discussion in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2214851/7..9/src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go#b16",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c230139f_6fe7d33b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Let\u0027s have a comment here:\n// Two subtests: \n// 1. MissingBeacons does not perform a scan before taking down the AP. \n// 2. MissingBeacons.scan performs a scan before taking down the AP.\n\nAnd the comment below for \"Val: true\" can be omitted.\n\nHowever, we should figure out why it performs scan before drop AP. As it drops AP after scan is done, the DUT should behave the same with and without scan.",
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61598121_0ddd9e06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "maxDisconnectTimeSeconds",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74f2ba7_3ff8e928",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "you can pass nil",
+      "range": {
+        "startLine": 93,
+        "startChar": 79,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c475046_05f4eb9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Let\u0027s use time.Duration to represent duration (and the unit can be omitted):\n\nconst maxDisconnectTime \u003d 20 * time.Second",
+      "range": {
+        "startLine": 105,
+        "startChar": 34,
+        "endLine": 105,
+        "endChar": 36
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd06be5_17a7f2ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "+ 10 * time.Second",
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d383e49_71ee1ddc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "%s",
+      "range": {
+        "startLine": 109,
+        "startChar": 35,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91128486_0ee3b3ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Since we all use time.Duration type, it becomes:\n\nif elapsed \u003e maxDisconnectTime",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 57
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd199bc_f562c19a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "\"time exceeded disconnecting from the SSID: want %s, got %s\", maxDisconnectTime, elapsed",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf89a24c_b6914af0",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "How about just pass ap.iface in?",
+      "range": {
+        "startLine": 738,
+        "startChar": 57,
+        "endLine": 738,
+        "endChar": 68
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6233bd70_91a7beb6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "Let\u0027s use time.Duration.",
+      "range": {
+        "startLine": 368,
+        "startChar": 82,
+        "endLine": 368,
+        "endChar": 94
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24884b90_b4d93311",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "time.Duration",
+      "range": {
+        "startLine": 369,
+        "startChar": 69,
+        "endLine": 369,
+        "endChar": 72
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ab300d_e368f912",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "timeout.Nanoseconds()",
+      "range": {
+        "startLine": 372,
+        "startChar": 15,
+        "endLine": 372,
+        "endChar": 29
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c754282d_e4c211f2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T08:59:12Z",
+      "side": 1,
+      "message": "I would recommend using nanosecond unit to align with golang\u0027s time.Duration definition.",
+      "range": {
+        "startLine": 45,
+        "startChar": 85,
+        "endLine": 45,
+        "endChar": 95
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
