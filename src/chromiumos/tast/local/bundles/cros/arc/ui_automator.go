@@ -20,16 +20,15 @@ func init() {
 		Desc:         "Sample test to manipulate an app with UI automator",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Data:         []string{"todo-mvp.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraAttr:         []string{"informational"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }

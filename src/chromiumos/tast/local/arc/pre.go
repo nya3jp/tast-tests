@@ -56,11 +56,6 @@ var bootedPre = &preImpl{
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
-// VMBooted returns a precondition similar to Booted(). The only difference from Booted() is
-// that ARC VM, and not the ARC Container, is enabled in this precondition.
-// TODO(yusukes): Remove this.
-func VMBooted() testing.Precondition { return bootedPre }
-
 // BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
 // that Chrome is launched in tablet mode in this precondition.
 func BootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
@@ -71,11 +66,6 @@ var bootedInTabletModePre = &preImpl{
 	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
 	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
 }
-
-// VMBootedInTabletMode returns a precondition similar to BootedInTabletMode().
-// The only difference from BootedInTabletMode() is that Chrome is launched in tablet mode in this precondition.
-// TODO(yusukes): Remove this.
-func VMBootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
 
 // BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
 func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }

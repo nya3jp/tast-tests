@@ -48,26 +48,23 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			Val:               stableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}, {
 			Name:              "vm_unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }

@@ -24,6 +24,7 @@ func init() {
 			"judyhsiao@chromium.org",         // Author
 		},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Data:         []string{"ArcAudioTest.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
@@ -34,7 +35,6 @@ func init() {
 					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               arc.Booted(),
 			},
 			{
 				Name: "playback_vm",
@@ -42,7 +42,6 @@ func init() {
 					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Pre:               arc.VMBooted(),
 			},
 			{
 				Name: "record",
@@ -51,7 +50,6 @@ func init() {
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               arc.Booted(),
 			},
 			{
 				Name: "record_vm",
@@ -60,7 +58,6 @@ func init() {
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Pre:               arc.VMBooted(),
 			},
 		},
 	})

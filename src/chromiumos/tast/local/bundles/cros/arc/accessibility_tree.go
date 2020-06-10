@@ -47,15 +47,14 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Data:         []string{"accessibility_tree_expected.MainActivity.json", "accessibility_tree_expected.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }

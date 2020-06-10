@@ -20,16 +20,15 @@ func init() {
 		Desc:         "Checks Downloads integration is working",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		Data:         []string{"capybara.jpg"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraAttr:         []string{"informational"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }
