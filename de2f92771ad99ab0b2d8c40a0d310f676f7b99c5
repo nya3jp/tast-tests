@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69255e26_acef9caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T08:45:16Z",
+      "side": 1,
+      "message": "We cannot use Fatal in defer statement, because other defer method won\u0027t be able to run. Please use s.Error instead.",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "de2f92771ad99ab0b2d8c40a0d310f676f7b99c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e011de64_6ea0049c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-10T08:45:16Z",
+      "side": 1,
+      "message": "Let\u0027s also introduce cleanup context for release, because in the worst case you won\u0027t have time to release mouse:\n\n\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second * 5)\ndefer cancel()\n\nif err :\u003d mouse.Press(ctx, tconn, mouse.LeftButton); err !\u003d nil {\n\ts.Fatal(\"Failed to press the mouse button: \", err)\n}\ndefer func(ctx context.Context) {\n\tif err :\u003d mouse.Release(ctx, tconn, mouse.LeftButton); err !\u003d nil {\n\t\ts.Fatal(\"Failed to release the mouse button: \", err)\n\t}\n}(cleanupCtx)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "de2f92771ad99ab0b2d8c40a0d310f676f7b99c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
