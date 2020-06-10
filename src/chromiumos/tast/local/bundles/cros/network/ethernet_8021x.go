@@ -218,7 +218,7 @@ func initializeTest(ctx context.Context, s *testing.State) (tc *testContext, err
 	)
 
 	param := s.Param().(testParameters)
-	cert := certificate.GetTestCertificate()
+	cert := certificate.TestCertificate()
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {
