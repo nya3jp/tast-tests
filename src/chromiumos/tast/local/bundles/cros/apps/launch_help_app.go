@@ -6,13 +6,13 @@ package apps
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -96,6 +96,8 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+
 	// Verify HelpApp (aka Explore) launched in Clamshell mode only.
 	if err := assertHelpAppLaunched(ctx, s, tconn, cr, !isTabletMode); err != nil {
 		s.Fatalf("Failed to verify help app launching during oobe in tablet mode enabled(%v): %v", isTabletMode, err)
@@ -110,6 +112,8 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	s.Logf("Ensure tablet mode enabled(%v)", isTabletMode)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
@@ -135,22 +139,25 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 // assertHelpAppLaunched asserts help app to be launched or not
 func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, isLaunched bool) error {
 	if isLaunched {
-		helpAppNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: apps.Help.Name}, 20*time.Second)
+		params := ui.FindParams{
+			Name: apps.Help.Name,
+			Role: ui.RoleTypeRootWebArea,
+		}
+
+		helpAppRootNode, err := ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to launch help app")
 		}
 
 		// Collect loadTimeData once launched.
-		if err := logRuntimeData(ctx, s, cr); err != nil {
-			return errors.Wrap(err, "failed to collect loadTimeData")
-		}
+		logRuntimeData(ctx, s, cr)
 
 		// Find Overview tab to verify app rendering.
-		params := ui.FindParams{
+		params = ui.FindParams{
 			Name: "Overview",
 			Role: ui.RoleTypeTab,
 		}
-		if _, err := helpAppNode.DescendantWithTimeout(ctx, params, 20*time.Second); err != nil {
+		if _, err := helpAppRootNode.DescendantWithTimeout(ctx, params, 20*time.Second); err != nil {
 			return errors.Wrap(err, "failed to render help app")
 		}
 	} else {
@@ -167,30 +174,45 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 }
 
 // logRuntimeData logs the window.loadTimeData() info to a file.
-func logRuntimeData(ctx context.Context, s *testing.State, cr *chrome.Chrome) error {
+func logRuntimeData(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
 	const (
 		logFileName = "loadTimeData.json"
 		helpAppURL  = "chrome-untrusted://help-app/app.html"
 	)
 	helpConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(helpAppURL))
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to help app")
+		testing.ContextLog(ctx, "Failed to connect to help app: ", err)
+		return
 	}
 
-	var loadTimeData interface{}
-	if err := helpConn.Eval(ctx, "window.loadTimeData", &loadTimeData); err != nil {
-		return err
+	if err := helpConn.WaitForExprFailOnErrWithTimeout(ctx, "window.loadTimeData", 10*time.Second); err != nil {
+		testing.ContextLog(ctx, "Failed to wait for loadTimeData: ", err)
+		return
+	}
+
+	var loadTimeData string
+	if err := helpConn.Eval(ctx, `
+		(function(){
+			try{
+				var loadTimeData = window.loadTimeData;
+				if(loadTimeData){
+					return JSON.stringify(loadTimeData)
+				}
+				return "error: loadTimeData is undefined."
+			}catch(e){
+				return e.message
+			}})()`, &loadTimeData); err != nil {
+		testing.ContextLog(ctx, "Failed to get loadTimeData: ", err)
+		return
 	}
 
 	file := filepath.Join(s.OutDir(), logFileName)
 	testing.ContextLogf(ctx, "Write loadTimeData into file: %s", file)
 
-	bContent, err := json.Marshal(loadTimeData)
-	if err != nil {
-		return err
+	if err := ioutil.WriteFile(file, []byte(loadTimeData), 0644); err != nil {
+		testing.ContextLogf(ctx, "Failed to write loadTimeData into file %s: %v", file, err)
+		return
 	}
-
-	return ioutil.WriteFile(file, bContent, 0644)
 }
 
 // shouldLaunchHelp returns a result to launch help app or not.
