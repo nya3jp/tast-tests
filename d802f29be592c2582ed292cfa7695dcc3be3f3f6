@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fcaf60b1_4722fd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-10T16:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2d7fce7_80fd057d",
+      "range": {
+        "startLine": 72,
+        "startChar": 70,
+        "endLine": 72,
+        "endChar": 71
+      },
+      "revId": "d802f29be592c2582ed292cfa7695dcc3be3f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38c1a61c_fd186db4",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "d802f29be592c2582ed292cfa7695dcc3be3f3f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59e049f_b84473f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-10T16:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c1a61c_fd186db4",
+      "revId": "d802f29be592c2582ed292cfa7695dcc3be3f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
