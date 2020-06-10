@@ -564,6 +564,30 @@
       "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46473dd_c9219dc4",
+        "filename": "src/chromiumos/tast/local/snapshot/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-10T02:27:16Z",
+      "side": 1,
+      "message": "I do wanna keep Stash and Pop, though; That said, we can have 5 APIs -- Save/Store, Restore, Remove, Stash, Pop.\n\nWDTY?",
+      "parentUuid": "e0b69912_d4ea94ef",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "76f7a85d470d92632c9371f9373ee846fc273697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
