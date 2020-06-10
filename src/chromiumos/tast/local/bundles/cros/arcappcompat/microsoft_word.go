@@ -66,7 +66,7 @@ func init() {
 				Tests:      clamshellTestsForMicrosoftWord,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               pre.AppCompatVMBooted,
+			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
@@ -74,7 +74,7 @@ func init() {
 				Tests:      touchviewTestsForMicrosoftWord,
 			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
-			Pre:               pre.AppCompatVMBootedInTabletMode,
+			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
 		Vars: []string{"arcappcompat.username", "arcappcompat.password",
