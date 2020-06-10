@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -120,6 +121,26 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 	}
 	if o != wanted {
 		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
+	}
+
+	return nil
+}
+
+// CheckMaximizeWindowInTabletMode checks
+func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, maximizeWindowCoords coords.Rect) error {
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.New("failed to get display info")
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("no primary display info found")
+	}
+
+	if primaryDisplayInfo.WorkArea.Left != maximizeWindowCoords.Left ||
+		primaryDisplayInfo.WorkArea.Top != maximizeWindowCoords.Top ||
+		primaryDisplayInfo.WorkArea.Width != maximizeWindowCoords.Width ||
+		primaryDisplayInfo.WorkArea.Height != maximizeWindowCoords.Height {
+		return errors.Errorf("invalid maximize window bounds compared to display work area, got: %s, want: %s", maximizeWindowCoords, primaryDisplayInfo.WorkArea)
 	}
 
 	return nil
