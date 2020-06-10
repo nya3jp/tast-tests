@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "746b79f6_cf07ef02",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-10T11:43:43Z",
+      "side": 1,
+      "message": "Shall we have\n\nfunc DisableFailOnError(ctx context.Context, s *testing.State, tconn...) {\n  err :\u003d Disable(ctx, tconn)\n  if err !\u003d nil {\n    s.Error(\"Failed to disable Assistant: \", err)\n  }\n}\n\nso that it can fail the test for the caller when it fails to disable Assistant?",
+      "revId": "f3a0de64ebc9c4c4cc12e781370c57247bcc3a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
