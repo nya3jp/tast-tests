@@ -56,17 +56,16 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
 		// Sunflower.apk taken from: https://github.com/googlesamples/android-sunflower
 		// Commit hash: ce82cffeed8150cf97789065898f08f29a2a1c9b
 		Data:    []string{"Sunflower.apk"},
 		Timeout: 8 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBooted(),
 		}},
 	})
 }
