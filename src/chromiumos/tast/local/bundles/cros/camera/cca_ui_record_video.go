@@ -30,66 +30,55 @@ func init() {
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
-		}
-	})()
-
-	testing.ContextLog(ctx, "Switch to video mode")
-	if err := app.SwitchMode(ctx, cca.Video); err != nil {
-		s.Fatal("Failed to switch to video mode: ", err)
-	}
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after switch to video mode: ", err)
-	}
-
-	toggleTimer := func(timerState cca.TimerState) func(context.Context, *cca.App) error {
-		return func(ctx context.Context, app *cca.App) error {
-			return app.SetTimerOption(ctx, timerState)
-		}
-	}
-
-	dir, err := app.SavedDir(ctx)
-	if err != nil {
-		s.Fatal("Failed to get CCA default saved path: ", err)
-	}
-
-	testRecordVideo := func() func(context.Context, *cca.App) error {
-		return func(ctx context.Context, app *cca.App) error {
-			return testRecordVideoWithWindowChanged(ctx, app, dir)
-		}
-	}
-
-	if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
-		for _, action := range []struct {
-			name string
-			run  func(context.Context, *cca.App) error
-		}{
-			{"testRecordVideo", testRecordVideo()},
-			{"toggleTimer(cca.TimerOn)", toggleTimer(cca.TimerOn)},
-			{"testRecordVideoWithTimer", testRecordVideoWithTimer},
-			{"testRecordCancelTimer", testRecordCancelTimer},
-			{"toggleTimer(cca.TimerOff)", toggleTimer(cca.TimerOff)},
-		} {
-			testing.ContextLog(ctx, "Start ", action.name)
-			if err := action.run(ctx, app); err != nil {
-				return errors.Wrapf(err, "failed in %v()", action.name)
+	for _, tst := range []struct {
+		name  string
+		run   func(context.Context, *cca.App) error
+		timer cca.TimerState
+	}{
+		{"testRecordVideoWithWindowChanged", testRecordVideoWithWindowChanged, cca.TimerOff},
+		{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
+		{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
+	} {
+		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+			if err != nil {
+				s.Fatal("Failed to open CCA: ", err)
 			}
-			testing.ContextLog(ctx, "Finish ", action.name)
-		}
-		return nil
-	}); err != nil {
-		s.Fatal("Failed to run tests through all cameras: ", err)
+			defer app.Close(ctx)
+			defer (func() {
+				if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
+					s.Error("Failed with javascript errors: ", err)
+				}
+			})()
+
+			testing.ContextLog(ctx, "Switch to video mode")
+			if err := app.SwitchMode(ctx, cca.Video); err != nil {
+				s.Fatal("Failed to switch to video mode: ", err)
+			}
+			if err := app.WaitForVideoActive(ctx); err != nil {
+				s.Fatal("Preview is inactive after switch to video mode: ", err)
+			}
+
+			if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
+				if err := app.SetTimerOption(ctx, tst.timer); err != nil {
+					s.Fatalf("Failed to set timer option %v: %v", tst.timer, err)
+				}
+				if err := tst.run(ctx, app); err != nil {
+					s.Error("Test failed: ", err)
+				}
+				return nil
+			}); err != nil {
+				s.Fatal("Failed to run tests through all cameras: ", err)
+			}
+		})
 	}
 }
 
-func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App, dir string) error {
+func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get CCA default saved path")
+	}
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
