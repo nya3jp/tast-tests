@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a020182_a13ceccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/sanitized_username_and_salt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-10T16:53:39Z",
+      "side": 1,
+      "message": "nit: is obvious what \"true\" / \"false\" mean\n\nperhaps appending \"/* dont use DBUS */\",  \"/* use DBUS */\" after false/true ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 71,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "c06ad5d7401edbc650cb1451b7bfaabc6debaccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
