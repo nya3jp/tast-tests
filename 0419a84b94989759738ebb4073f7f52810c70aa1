@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7a6bc53_9fd76c5f",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/data/c2_e2e_test_x86.apk.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-10T09:12:34Z",
+      "side": 1,
+      "message": "Sorry, this file name is actually a little misleading. It should be the x86_64 APK, not the x86 APK.",
+      "revId": "0419a84b94989759738ebb4073f7f52810c70aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83625d0e_64a5d3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-10T09:12:34Z",
+      "side": 1,
+      "message": "Would it be worthwhile to rename this, so we don\u0027t see any discontinuity in the dashboards due to the changed units?",
+      "range": {
+        "startLine": 383,
+        "startChar": 14,
+        "endLine": 383,
+        "endChar": 28
+      },
+      "revId": "0419a84b94989759738ebb4073f7f52810c70aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
