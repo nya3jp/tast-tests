@@ -63,7 +63,7 @@ func init() {
 				Tests:      clamshellTestsForHearthstone,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               pre.AppCompatVMBootedForHearthstone,
+			Pre:               pre.AppCompatBootedForHearthstone,
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
@@ -71,7 +71,7 @@ func init() {
 				Tests:      touchviewTestsForHearthstone,
 			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
-			Pre:               pre.AppCompatVMBootedInTabletModeForHearthstone,
+			Pre:               pre.AppCompatBootedInTabletModeForHearthstone,
 		}},
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arcappcompat.Hearthstone.username", "arcappcompat.Hearthstone.password"},
