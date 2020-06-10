@@ -12,9 +12,12 @@ import (
 	"strings"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"github.com/golang/protobuf/proto"
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/devtool"
 	"github.com/mafredri/cdp/protocol/target"
+	"github.com/mafredri/cdp/protocol/tracing"
 	"github.com/mafredri/cdp/rpcc"
 	"github.com/mafredri/cdp/session"
 
@@ -232,4 +235,74 @@ func (s *Session) FindTargets(ctx context.Context, tm TargetMatcher) ([]*target.
 		}
 	}
 	return matches, nil
+}
+
+// StartTracing starts trace events collection for the selected categories. Android
+// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+// gfx category, use "disabled-by-default-android gfx", including the space.
+func (s *Session) StartTracing(ctx context.Context, categories []string) error {
+	dc := tracing.NewClient(s.wsConn)
+	args := tracing.NewStartArgs()
+	cfg := tracing.TraceConfig{
+		RecordMode:         proto.String("recordUntilFull"),
+		EnableSystrace:     proto.Bool(true),
+		IncludedCategories: categories,
+		ExcludedCategories: []string{},
+	}
+	args.SetTraceConfig(cfg)
+	args.SetTransferMode("ReturnAsStream")
+	args.SetStreamFormat(tracing.StreamFormatProto)
+	testing.ContextLog(ctx, "Starting tracing")
+	if err := dc.Start(ctx, args); err != nil {
+		return errors.Wrap(err, "failed to start tracing")
+	}
+
+	return nil
+}
+
+// StopTracing stops trace collection and returns the collected trace events.
+func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
+	dc := tracing.NewClient(s.wsConn)
+	testing.ContextLog(ctx, "Ending tracing")
+
+	cc, err := dc.TracingComplete(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create CompleteClient")
+	}
+
+	if err := dc.End(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to end tracing")
+	}
+
+	select {
+	case <-cc.Ready():
+		testing.ContextLog(ctx, "Received tracingComplete event")
+	case <-ctx.Done():
+		return nil, errors.Wrap(ctx.Err(), "failed to receive tracingComplete event")
+	}
+
+	cr, err := cc.Recv()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to receive tracingComplete event")
+	}
+	if cr.DataLossOccurred {
+		testing.ContextLog(ctx, "Trace data loss occurred")
+	}
+	if cr.Stream == nil {
+		return nil, errors.New("trace data missing from tracingComplete event")
+	}
+
+	r := s.client.NewIOStreamReader(ctx, *cr.Stream)
+	defer r.Close()
+	buf, err := ioutil.ReadAll(r)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to read tracing data stream")
+	}
+
+	tr := &trace.Trace{}
+	if err := proto.Unmarshal(buf, tr); err != nil {
+		return nil, errors.Wrap(err, "unable to unmarshal tracing data")
+	}
+
+	return tr, nil
 }
