@@ -58,14 +58,8 @@ var bootedPre = &preImpl{
 
 // VMBooted returns a precondition similar to Booted(). The only difference from Booted() is
 // that ARC VM, and not the ARC Container, is enabled in this precondition.
-func VMBooted() testing.Precondition { return vmBootedPre }
-
-// vmBootedPre is returned by VMBooted.
-var vmBootedPre = &preImpl{
-	name:     "arcvm_booted",
-	timeout:  resetTimeout + chrome.LoginTimeout + BootTimeout,
-	useARCVM: true,
-}
+// TODO(yusukes): Remove this.
+func VMBooted() testing.Precondition { return bootedPre }
 
 // BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -80,15 +74,8 @@ var bootedInTabletModePre = &preImpl{
 
 // VMBootedInTabletMode returns a precondition similar to BootedInTabletMode().
 // The only difference from BootedInTabletMode() is that Chrome is launched in tablet mode in this precondition.
-func VMBootedInTabletMode() testing.Precondition { return vmBootedInTabletModePre }
-
-// vmBootedInTabletModePre is returned by VMBootedInTabletMode.
-var vmBootedInTabletModePre = &preImpl{
-	name:      "arcvm_booted_in_tablet_mode",
-	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
-	useARCVM:  true,
-}
+// TODO(yusukes): Remove this.
+func VMBootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
 
 // BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
 func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }
@@ -106,13 +93,13 @@ var bootedWithVideoLoggingPre = &preImpl{
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
+// TODO(yusukes): Remove useARCVM
 func NewPrecondition(name string, useARCVM bool, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
 	pre := &preImpl{
 		name:      name,
 		timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
 		gaia:      gaia,
 		extraArgs: extraArgs,
-		useARCVM:  useARCVM,
 	}
 	if pre.gaia != nil {
 		pre.timeout += optin.OptinTimeout
@@ -136,8 +123,6 @@ type preImpl struct {
 
 	cr  *chrome.Chrome
 	arc *ARC
-	// useARCVM is a flag to specify whether Android should run in ARC Container or ARCVM.
-	useARCVM bool
 
 	origInitPID       int32               // initial PID (outside container) of ARC init process
 	origInstalledPkgs map[string]struct{} // initially-installed packages
@@ -212,18 +197,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 	}()
-
-	// Check whether ARCVM status is consistent with the flag useARCVM.
-	vm, err := VMEnabled()
-	if err != nil {
-		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
-	}
-	if vm && !p.useARCVM {
-		s.Fatal("ARCVM is enabled, but the precondition specifies to use ARC Container")
-	}
-	if !vm && p.useARCVM {
-		s.Fatal("ARCVM is not enabled, but the precondition specifies to use ARCVM")
-	}
 
 	// Opt-in if performing a GAIA login.
 	if p.gaia != nil {
