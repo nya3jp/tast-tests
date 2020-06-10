@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6e6955e_f219deee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T22:52:56Z",
+      "side": 1,
+      "message": "Why is the test body implemented here (in wifi_service)? It looks like there was some offline discussion that happened. Would be great if you could include a comment explaining this.",
+      "range": {
+        "startLine": 546,
+        "startChar": 22,
+        "endLine": 546,
+        "endChar": 39
+      },
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9590740f_53ce3b55",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -22,6 +45,46 @@
       "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17a29d1e_49d76fa8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T22:52:56Z",
+      "side": 1,
+      "message": "Seems like all of the below is a part of wait_for_connection (in autotest). Can we package this neatly so that other tests can use it too?",
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c969d2b8_ef52b0b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-10T22:52:56Z",
+      "side": 1,
+      "message": "does",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
