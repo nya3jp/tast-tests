@@ -60,8 +60,8 @@ func validatePrivateKey(privateKey string, cert *x509.Certificate) error {
 	return nil
 }
 
-func TestCertificate(t *testing.T) {
-	c := GetTestCertificate()
+func TestCertificates(t *testing.T) {
+	c := TestCertificate()
 
 	// Parse certificates. They should all be X-509 certificates in PEM format.
 	var cert, caCert, clientCert *x509.Certificate
