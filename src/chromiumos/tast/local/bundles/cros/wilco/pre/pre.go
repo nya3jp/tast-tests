@@ -58,7 +58,7 @@ func (p *preImpl) Timeout() time.Duration { return 15 * time.Second }
 
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing the current state that can be used by the test.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	// We assume that tests do not interfere with the Wilco DTC VM and Daemon.
 	if p.setUp {
 		if p.state.WilcoDTCDaemonRunning {
@@ -143,7 +143,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	if !p.setUp {
 		return
 	}

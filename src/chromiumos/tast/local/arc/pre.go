@@ -134,7 +134,7 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing objects that can be used by the test.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -247,7 +247,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
@@ -339,7 +339,7 @@ func (p *preImpl) resetState(ctx context.Context, installed, running map[string]
 }
 
 // closeInternal closes and resets p.arc and p.cr if non-nil.
-func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
+func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
 	if p.arc != nil {
 		if err := p.arc.Close(); err != nil {
 			s.Log("Failed to close ARC connection: ", err)

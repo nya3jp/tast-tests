@@ -296,7 +296,7 @@ func checkDaemonsRunning(ctx context.Context) error {
 // Called by tast before each test is run. We use this method to initialize
 // the precondition data, or return early if the precondition is already
 // active.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -420,7 +420,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 // Close is called after all tests involving this precondition have been run,
 // (or failed to be run if the precondition itself fails). Unlocks Chrome's and
 // the container's constructors.
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
@@ -431,7 +431,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
-func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
+func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	if p.keyboard != nil {
 		if err := p.keyboard.Close(); err != nil {
 			s.Log("Failure closing keyboard: ", err)
@@ -465,7 +465,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 
 // buildPreData is a helper method that resets the machine state in
 // advance of building the precondition data for the actual tests.
-func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
+func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}

@@ -17,8 +17,8 @@ import (
 )
 
 type preconditionImpl interface {
-	Prepare(ctx context.Context, s *testing.State) interface{}
-	Close(ctx context.Context, s *testing.State)
+	Prepare(ctx context.Context, s *testing.PreState) interface{}
+	Close(ctx context.Context, s *testing.PreState)
 }
 
 type preImpl struct {
@@ -56,7 +56,7 @@ func LoggedInWith100DummyApps() testing.Precondition {
 func (p *preImpl) String() string         { return p.crPre.String() }
 func (p *preImpl) Timeout() time.Duration { return p.crPre.Timeout() }
 
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if !p.prepared {
 		_, err := PrepareDummyApps(p.extDirBase, p.numApps)
 		if err != nil {
@@ -67,7 +67,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	return p.crPre.(preconditionImpl).Prepare(ctx, s)
 }
 
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	p.crPre.(preconditionImpl).Close(ctx, s)
 	if err := os.RemoveAll(p.extDirBase); err != nil {
 		s.Fatal("Failed to cleanup ", p.extDirBase, " ", err)

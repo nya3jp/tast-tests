@@ -48,7 +48,7 @@ func (p *preImpl) Timeout() time.Duration { return chrome.LoginTimeout + 15*time
 
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing the current state that can be used by the test.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if p.fdms != nil && p.cr != nil {
 		if err := policyutil.ResetChrome(ctx, p.fdms, p.cr); err == nil {
 			return &PreData{p.fdms, p.cr}
@@ -105,7 +105,7 @@ func (p *preImpl) copyFakeDMSLog(ctx context.Context, testDir string) error {
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, "user_policy_precondition_close")
 	defer st.End()
 
