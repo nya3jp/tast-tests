@@ -17,17 +17,23 @@ import (
 	"chromiumos/tast/errors"
 )
 
+const package0 = "package-0"
+const core = "core"
+const uncore = "uncore"
+const dram = "dram"
+const psys = "psys"
+
 var isZoneExpected = map[string]bool{
 	// core reports the the joules from the CPU. It belongs to package-0.
-	"core": true,
+	core: true,
 	// dram reports the joules from memory. It belongs to package-0.
-	"dram": true,
+	dram: true,
 	// package-0 reports the joules from Zone 0 in RAPL, which is about the sum of subzones core, uncore and dram.
-	"package-0": true,
+	package0: true,
 	// psys reports the joules from Zone 1 in RAPL.
-	"psys": true,
+	psys: true,
 	// uncore reports the joules from the GPU. It belongs to package-0.
-	"uncore": true,
+	uncore: true,
 }
 
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.
@@ -50,11 +56,11 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 		name  string
 		value float64
 	}{
-		{"Package0", rapl.joules["package-0"]},
-		{"Core", rapl.joules["core"]},
-		{"Uncore", rapl.joules["uncore"]},
-		{"DRAM", rapl.joules["dram"]},
-		{"Psys", rapl.joules["psys"]},
+		{"Package0", rapl.joules[package0]},
+		{"Core", rapl.joules[core]},
+		{"Uncore", rapl.joules[uncore]},
+		{"DRAM", rapl.joules[dram]},
+		{"Psys", rapl.joules[psys]},
 	} {
 		perfValues.Append(perf.Metric{
 			Name:      prefix + e.name,
@@ -67,12 +73,12 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 
 // Total returns the sum of joules at the top level.
 func (rapl *RAPLValues) Total() float64 {
-	return rapl.joules["package0"] + rapl.joules["psys"]
+	return rapl.joules[package0] + rapl.joules[psys]
 }
 
 // Uncore returns the joules from the GPU.
 func (rapl *RAPLValues) Uncore() float64 {
-	return rapl.joules["uncore"]
+	return rapl.joules[uncore]
 }
 
 // RAPLSnapshot represents a snapshot of the RAPL values.
