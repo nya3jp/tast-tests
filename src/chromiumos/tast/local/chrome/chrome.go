@@ -16,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
@@ -1446,4 +1447,16 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 		return false, errors.Wrap(err, "failed to get targets")
 	}
 	return len(targets) != 0, nil
+}
+
+// StartTracing starts trace events collection for the selected categories. Android
+// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+// gfx category, use "disabled-by-default-android gfx", including the space.
+func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
+	return c.devsess.StartTracing(ctx, categories)
+}
+
+// StopTracing stops trace collection and returns the collected trace events.
+func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+	return c.devsess.StopTracing(ctx)
 }
