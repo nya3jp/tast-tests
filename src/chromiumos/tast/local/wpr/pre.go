@@ -88,11 +88,6 @@ func RecordMode(archive string) testing.Precondition {
 	return getOrCreatePrecondition(getCallerPackage(), archive, Record)
 }
 
-type preconditionImpl interface {
-	Prepare(ctx context.Context, s *testing.State) interface{}
-	Close(ctx context.Context, s *testing.State)
-}
-
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
 	// Data for testing.Precondition.
@@ -114,7 +109,7 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -172,7 +167,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	return p.cr
 }
 
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	if p.cr != nil {
 		chrome.Unlock()
 		if err := p.cr.Close(ctx); err != nil {
