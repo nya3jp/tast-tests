@@ -80,7 +80,6 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	}
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
-	// TODO(hiroh): Think about using libyuv by cgo to reduce the effort if we need to support more formats conversion.
 	if pixelFormat == videotype.NV12 {
 		cf, err := publicTempFile(yuvName)
 		if err != nil {
@@ -98,7 +97,6 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		if err := convertI420ToNV12(cf, tf, size); err != nil {
 			return "", errors.Wrap(err, "failed to convert I420 to NV12")
 		}
-
 		// Make tf point to the converted file.
 		tf, cf = cf, tf
 	}
@@ -125,27 +123,42 @@ func publicTempFile(prefix string) (*os.File, error) {
 func convertI420ToNV12(w io.Writer, r io.Reader, size coords.Size) error {
 	yLen := size.Width * size.Height
 	uvLen := size.Width * size.Height / 2
+	planeLen := yLen + uvLen
+	const maxBufferSize = 1048576 * 256 // 256MB
+	bufSize := maxBufferSize / planeLen * planeLen
+	buf := make([]byte, bufSize)
 	uvBuf := make([]byte, uvLen)
 	for {
-		// Write Y Plane as-is.
-		if sz, err := io.CopyN(w, r, int64(yLen)); err != nil {
-			if sz == 0 && err == io.EOF {
-				break
-			}
+		last := false
+		readSize, err := r.Read(buf)
+		if err == io.EOF {
+			last = true
+		} else if err != nil {
 			return err
 		}
-		if _, err := io.ReadFull(r, uvBuf); err != nil {
-			return err
+
+		numPlanes := readSize / planeLen
+		for i := 0; i < numPlanes; i++ {
+			uLen := uvLen / 2
+			uOffset := i*planeLen + yLen
+			vOffset := uOffset + uLen
+			for j := 0; j < uLen; j++ {
+				uvBuf[2*j] = buf[uOffset+j]
+				uvBuf[2*j+1] = buf[vOffset+j]
+			}
+			copy(buf[uOffset:uOffset+uvLen], uvBuf)
 		}
-		// U and V Planes are interleaved.
-		vOffset := uvLen / 2
-		for j := 0; j < uvLen/2; j++ {
-			if _, err := w.Write(uvBuf[j : j+1]); err != nil {
-				return err
-			}
-			if _, err := w.Write(uvBuf[vOffset+j : vOffset+j+1]); err != nil {
-				return err
-			}
+
+		writeSize, err := w.Write(buf[:readSize])
+		if err != nil {
+			return nil
+		} else if writeSize != readSize {
+			return errors.Errorf("writing size is smaller than expected, expected=%v but actual=%v",
+				readSize, writeSize)
+		}
+
+		if last {
+			break
 		}
 	}
 	return nil
