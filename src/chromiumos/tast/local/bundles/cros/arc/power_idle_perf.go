@@ -18,6 +18,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testArgsForPowerIdlePerf struct {
+	setupOption setup.BatteryDischargeMode
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PowerIdlePerf,
@@ -27,19 +31,54 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Params: []testing.Param{{
 			Name:              "noarc",
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
+			Pre: chrome.LoggedIn(),
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
+			Pre: arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
+			Pre: arc.Booted(),
+		}, {
+			Name:              "noarc_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
+			Pre: chrome.LoggedIn(),
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
+			Pre: arc.Booted(),
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForPowerIdlePerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
+			Pre: arc.Booted(),
 		}},
 		Timeout: 15 * time.Minute,
 	})
@@ -50,6 +89,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		iterationCount    = 30
 		iterationDuration = 10 * time.Second
 	)
+	args := s.Param().(testArgsForPowerIdlePerf)
 
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
@@ -73,7 +113,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	sup.Add(setup.PowerTest(ctx, tconn, args.setupOption))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
