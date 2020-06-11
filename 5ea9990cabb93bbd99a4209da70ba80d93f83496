@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2b0907a_6421281f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-11T18:47:43Z",
+      "side": 1,
+      "message": "STYLUS",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781ce941_612f81d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-11T18:47:43Z",
+      "side": 1,
+      "message": "TOUCHPAD, also please add touchscreen.",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3785fc4_c22cfcfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-11T18:47:43Z",
+      "side": 1,
+      "message": "Need Cq-Depend: chromium:2235488 for runtime_probe.proto changes.\n\nAlso put the CL in CQ after these cros_labels are added into manufacturing configs (if you don\u0027t have the CL for Cq-Depend yet).",
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8fc15e7_231ef153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_input_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-11T18:47:43Z",
+      "side": 1,
+      "message": "Could you also patch the compGroup check like CL:2212064 for consistency?",
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a24d2c_9ab72782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_input_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-11T18:47:43Z",
+      "side": 1,
+      "message": "This line and the following block should be outside the for loop.",
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
