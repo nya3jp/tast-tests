@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1932e993_025d558d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-11T04:34:56Z",
+      "side": 1,
+      "message": "It\u0027s not a dead code. It is unspecified when a new goroutine starts, so we have to wait for panic to happen (by waiting indefinitely).",
+      "parentUuid": "ab660ccb_f4f23d05",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "cfb9494790b7c754bcdebf502e69fe1b5666563a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb44561b_00bb188a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/remote_crash.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "cfb9494790b7c754bcdebf502e69fe1b5666563a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eadb1281_ffebc167",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/remote_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-11T04:34:56Z",
+      "side": 1,
+      "message": "Same here...",
+      "parentUuid": "eb44561b_00bb188a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "cfb9494790b7c754bcdebf502e69fe1b5666563a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
