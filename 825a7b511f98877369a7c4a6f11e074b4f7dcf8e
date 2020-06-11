@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f9fc27b_26323da1",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-06-11T02:58:07Z",
+      "side": 1,
+      "message": "Did you mean \u0027user\u0027 here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "825a7b511f98877369a7c4a6f11e074b4f7dcf8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
