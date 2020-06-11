@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e16d0db_d1773072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-11T22:22:38Z",
+      "side": 1,
+      "message": "Do you intend to change hotseat_drag.go instead of this one?",
+      "revId": "88b3269156427c4cd3066a6f4f9e2a957a27aa94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
