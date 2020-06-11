@@ -156,6 +156,30 @@
     },
     {
       "key": {
+        "uuid": "220b305f_ed426f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:26:35Z",
+      "side": 1,
+      "message": "Tried in playground, golang does not allow int64 * time.Duration. (10*time.Second is OK because constant is type-less in golang) So I guess either way is fine to me. Sorry for my misleading comment.",
+      "parentUuid": "474ae0ce_dd835348",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b649efd_76de7320",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 9
