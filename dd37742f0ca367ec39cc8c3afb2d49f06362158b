@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be666ef9_f5de4d40",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-06-11T02:14:26Z",
+      "side": 1,
+      "message": "I don\u0027t understand this TODO, aren\u0027t you removing useARCVM here already? What is the todo for?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "dd37742f0ca367ec39cc8c3afb2d49f06362158b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
