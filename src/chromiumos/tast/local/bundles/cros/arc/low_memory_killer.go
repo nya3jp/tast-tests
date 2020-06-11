@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -19,7 +18,6 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
@@ -35,32 +33,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_p"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
-		Data:    []string{"low_memory_killer_manifest.json", "low_memory_killer_background.js"},
 	})
 }
 
 func LowMemoryKiller(ctx context.Context, s *testing.State) {
-	s.Log("Copying extension to temp directory")
-	extDir, err := ioutil.TempDir("", "tast.arc.LowMemoryKillerExtension")
-	if err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
-	}
-	defer os.RemoveAll(extDir)
-	if err := fsutil.CopyFile(s.DataPath("low_memory_killer_manifest.json"), filepath.Join(extDir, "manifest.json")); err != nil {
-		s.Fatal("Failed to copy extension manifest: ", err)
-	}
-	if err := fsutil.CopyFile(s.DataPath("low_memory_killer_background.js"), filepath.Join(extDir, "background.js")); err != nil {
-		s.Fatal("Failed to copy extension background.js: ", err)
-	}
-	extID, err := chrome.ComputeExtensionID(extDir)
-	if err != nil {
-		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
-	}
-
 	s.Log("Starting browser instance")
 	cr, err := chrome.New(ctx,
 		chrome.ExtraArgs("--vmodule=memory_kills_monitor=2"),
-		chrome.UnpackedExtension(extDir),
 		chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -73,49 +52,29 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Opening tabs")
-	tabsConn := make([]*chrome.Conn, 3)
-	for i := range tabsConn {
-		tabsConn[i], err = cr.NewConn(ctx, "")
+	for i := 0; i < 3; i++ {
+		conn, err := cr.NewConn(ctx, "")
 		if err != nil {
 			s.Fatal("Opening tab failed: ", err)
 		}
-		defer tabsConn[i].Close()
-	}
-
-	s.Log("Connecting to extension background page")
-	bgURL := chrome.ExtensionBackgroundPageURL(extID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-	if err != nil {
-		s.Fatalf("Could not connect to extension at %v: %v", bgURL, err)
-	}
-	defer conn.Close()
-
-	s.Log("Waiting for chrome.processes and chrome.tabs API to become available")
-	if err := conn.WaitForExpr(ctx, "chrome.processes"); err != nil {
-		s.Fatal("chrome.processes API unavailable: ", err)
-	}
-	if err := conn.WaitForExpr(ctx, "chrome.tabs"); err != nil {
-		s.Fatal("chrome.tabs API unavailable: ", err)
-	}
-	if err := conn.WaitForExpr(ctx, "TabPids"); err != nil {
-		s.Fatal("TabPids object unavailable in extension background page: ", err)
+		defer conn.Close()
 	}
 
 	// Tabs may switch processes soon after loading, so start ARC and example
 	// app before checking tab pids, to allow time for any switches.
 	s.Log("Starting ARC")
-	arcConn, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Could not start ARC: ", err)
 	}
-	defer arcConn.Close()
+	defer a.Close()
 
 	const (
 		exampleApp      = "com.android.vending"
 		exampleActivity = "com.android.vending.AssetBrowserActivity"
 	)
 	s.Log("Launching ", exampleApp)
-	act, err := arc.NewActivity(arcConn, exampleApp, exampleActivity)
+	act, err := arc.NewActivity(a, exampleApp, exampleActivity)
 	if err != nil {
 		s.Fatalf("Could not launch %v: %v", exampleApp, err)
 	}
@@ -132,15 +91,17 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	s.Logf("PID of %v: %v", exampleApp, actPID)
 
 	s.Log("Retrieving PIDs of open tabs")
-	var tabs []int
-	if err := conn.EvalPromise(ctx, "TabPids()", &tabs); err != nil {
+
+	pids, err := tabPIDs(ctx, tconn)
+	if err != nil {
 		s.Fatal("Retrieving tab pids failed: ", err)
 	}
-	s.Log("PIDs of Chrome tabs: ", tabs)
+	s.Log("PIDs of Chrome tabs: ", pids)
 
 	s.Log("Checking OOM scores of app and tabs")
+	pids = append(pids, actPID)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		for _, pid := range append(tabs, actPID) {
+		for _, pid := range pids {
 			if set, err := checkOOMScoreSet(pid); err != nil {
 				return testing.PollBreak(err)
 			} else if !set {
@@ -180,22 +141,24 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		chromeLogFile                = "/var/log/chrome/chrome"
 		kernelOOMKill                = "OOM_KILL"
 	)
-	var bgJobs []*testexec.Cmd
-	defer func() {
-		for _, cmd := range bgJobs {
-			cmd.Kill()
-			cmd.Wait()
-		}
-	}()
 
 	// Set on-device minimum memory margin before eating memory. This way
 	// we are sure to consume below the margin and trigger low memory kills.
 	margin := fmt.Sprintf("%d %d", deviceCriticalMemoryMarginMB, deviceModerateMemoryMarginMB)
-	if err = ioutil.WriteFile(deviceMarginSysFile, []byte(margin), 0644); err != nil {
+	if err := ioutil.WriteFile(deviceMarginSysFile, []byte(margin), 0644); err != nil {
 		s.Fatalf("Unable to set low-memory margin to %q in file %s: %v", margin, deviceMarginSysFile, err)
 	}
 
 	s.Log("Monitoring for low memory kill logs in ", chromeLogFile)
+	var bgJobs []*testexec.Cmd
+	defer func() {
+		for _, cmd := range bgJobs {
+			cmd.Kill()
+		}
+		for _, cmd := range bgJobs {
+			cmd.Wait()
+		}
+	}()
 	for {
 		available, err := estimatedFreeMemoryMB()
 		if err != nil {
@@ -329,4 +292,20 @@ func estimatedFreeMemoryMB() (int, error) {
 		return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
 	}
 	return int(available), nil
+}
+
+// tabPIDs returns PIDs for all tabs.
+func tabPIDs(ctx context.Context, tconn *chrome.TestConn) ([]int, error) {
+	var pids []int
+	if err := tconn.Eval(ctx, `(async () => {
+	  let tabs = await tast.promisify(chrome.tabs.query)({});
+	  tabs = tabs.filter(tab => tab.id);
+	  const procIds = await Promise.all(
+	      tabs.map(tab => tast.promisify(chrome.processes.getProcessIdForTab)(tab.id)));
+	  const procs = await tast.promisify(chrome.processes.getProcessInfo)(procIds, false);
+	  return Object.values(procs).map(p => p.osProcessId);
+	})()`, &pids); err != nil {
+		return nil, errors.Wrap(err, "failed to obtain PIDs for tabs")
+	}
+	return pids, nil
 }
