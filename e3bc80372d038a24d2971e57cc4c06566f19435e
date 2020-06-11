@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9635cefe_e6552485",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "not so sure about making this public as it is.\n(see my comments below).",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 25
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16a19cd_7dba9f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "for this, I suggest using the Params in the test. You enumerate the tests that are available on P, and the ones available on R.\n\n\nExample:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go;l\u003d45?q\u003dwindowmanagercuj\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac4e8ae_703eda44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "add docstring to all non-trivial functions.",
+      "range": {
+        "startLine": 276,
+        "startChar": 5,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01829b1f_4991e295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "huge nit, style.\n\nend comments with a period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 282,
+        "startChar": 42,
+        "endLine": 282,
+        "endChar": 43
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7daeea8_8fe02a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "if what you really need, is to perform a swipe gesture by injecting touch events at the kernel level, then call this function.\n\nOtherwise, I recommend using more reliable approaches like:\n\n- UIAutomator Device.swipe: The swipe is actually performed in Android, bypassing Chrome.\nhttps://developer.android.com/reference/androidx/test/uiautomator/UiDevice#swipe(int,%20int,%20int,%20int,%20int)\n\n- UIAutomator Object.dragTop: https://developer.android.com/reference/androidx/test/uiautomator/UiObject#dragto_1\n\n- Mouse API: You manipulate the mouse from Ash\nhttps://g3doc.corp.google.com/chrome_platform/arc/g3doc/tast_tests.md?cl\u003dhead#mouse-api\n\n\nThe UIAutomator options are not wrapped in Tast. So you have to create the wrappers here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/ui/\n\n\n[ probably we should deprecate activity.Swipe() or re-implement it using more reliable approaches]",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 38
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06487f5_7ad96147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "nit:\n\n  displaySize :\u003d coords.NewSize(dispMode.Width, dispMode.Height)",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 37
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8749309f_400256af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "ditto above: add doctring",
+      "range": {
+        "startLine": 345,
+        "startChar": 5,
+        "endLine": 345,
+        "endChar": 20
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64e8419_680f4b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "why is this function needed? is it possible to inline it?",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 1
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f93e3d7c_e974b65e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T13:37:18Z",
+      "side": 1,
+      "message": "don\u0027t ignore errors.",
+      "range": {
+        "startLine": 796,
+        "startChar": 9,
+        "endLine": 796,
+        "endChar": 10
+      },
+      "revId": "e3bc80372d038a24d2971e57cc4c06566f19435e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
