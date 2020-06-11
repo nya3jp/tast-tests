@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -26,8 +27,9 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac security.ConfigFactory
-	pingOps    []ping.Option
+	secConfFac      security.ConfigFactory
+	pingOps         []ping.Option
+	expectedFailure bool
 }
 
 func init() {
@@ -529,6 +531,68 @@ func init() {
 						pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
 					},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
+				Name:      "8021xwpa",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+					},
+					{
+						// Failure due to lack of CACert on client.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to unmatched CACert.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert2.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Should succeed if we specify that we have no CACert.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCred(eapCert1.ClientCred),
+							wpaeap.NotUseSystemCAs(),
+						),
+					},
+					{
+						// Failure due to wrong certificate chain on client.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert2.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to expired cert on server.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ExpiredServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+				},
 			},
 		},
 	})
@@ -566,7 +630,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForClose(fullCtx)
 	defer cancel()
 
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option) {
+	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
 		ap, err := tf.ConfigureAP(fullCtx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -580,19 +644,31 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
+		// Some tests may fail as expected at following ConnectWifiAP(). In that case entries should still be deleted properly.
+		defer func() {
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
+			}
+		}()
+
 		resp, err := tf.ConnectWifiAP(ctx, ap)
 		if err != nil {
+			if expectedFailure {
+				s.Log("Failed to connect to WiFi as expected")
+				// If we expect to fail, then this test is already done.
+				return
+			}
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
-				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
-			}
 		}()
+		if expectedFailure {
+			s.Fatal("Expected to fail to connect to WiFi, but it was successful")
+		}
 		s.Log("Connected")
 
 		desc := ap.Config().PerfDesc()
@@ -642,7 +718,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
@@ -678,7 +754,10 @@ func wep104KeysHidden() []string {
 }
 
 // EAP certs/keys for EAP tests.
-var eapCert1 = certificate.TestCert1()
+var (
+	eapCert1 = certificate.TestCert1()
+	eapCert2 = certificate.TestCert2()
+)
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.
