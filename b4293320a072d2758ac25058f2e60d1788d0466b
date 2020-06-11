@@ -22,6 +22,30 @@
       "revId": "b4293320a072d2758ac25058f2e60d1788d0466b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25f048f_3107122b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-11T06:44:46Z",
+      "side": 1,
+      "message": "Because faillog is enabled only for local tests. I also forgot this until I wrote this test...\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundlemain/main.go?l\u003d123",
+      "parentUuid": "68875333_0565268e",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "b4293320a072d2758ac25058f2e60d1788d0466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
