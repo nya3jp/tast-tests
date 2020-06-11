@@ -33,6 +33,24 @@
       "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd8e776_55b9c776",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2020-06-11T16:57:09Z",
+      "side": 1,
+      "message": "The way now looks good to me.",
+      "parentUuid": "4fcfd283_072f01e6",
+      "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

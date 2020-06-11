@@ -16,6 +16,24 @@
       "revId": "45877bbb37e47c9dc85ab10cb2fe46a56009833a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9685710b_41d0234c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2020-06-11T16:57:09Z",
+      "side": 0,
+      "message": "Looks much cleaner! Thanks for the work",
+      "parentUuid": "a53b4485_1e69ccbc",
+      "revId": "45877bbb37e47c9dc85ab10cb2fe46a56009833a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
