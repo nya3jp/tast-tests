@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "093ddca4_6305acfc",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T02:35:12Z",
+      "side": 1,
+      "message": "How about introducing a new type and introduce constants, so that the caller can be more readable? E.g.\n\nsetup.PowerTest(ctx, c, setup.ForceBatteryDischarge)",
+      "range": {
+        "startLine": 113,
+        "startChar": 55,
+        "endLine": 113,
+        "endChar": 82
+      },
+      "revId": "6363d01f3ca30dfa6ebd93a8618bf98b50501531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
