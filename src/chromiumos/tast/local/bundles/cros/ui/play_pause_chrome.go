@@ -41,11 +41,15 @@ func PlayPauseChrome(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	s.Log("Launching media playback in Chrome")
-	conn, err := mediasession.LoadTestPageAndStartPlaying(ctx, cr, server.URL+"/media_session_test.html")
+	conn, err := mediasession.LoadTestPage(ctx, cr, server.URL+"/media_session_test.html")
 	if err != nil {
 		s.Fatal("Failed to start playback: ", err)
 	}
 	defer conn.Close()
+
+	if err := conn.Play(ctx); err != nil {
+		s.Fatal("Failed to start playing: ", err)
+	}
 
 	// We use a virtual keyboard here to make sure the play/pause events are always sent.
 	s.Log("Creating virtual keyboard event writer")
@@ -63,22 +67,22 @@ func PlayPauseChrome(ctx context.Context, s *testing.State) {
 	defer conn2.Close()
 
 	s.Log("Sending play/pause key")
-	if err = k.Accel(ctx, "playpause"); err != nil {
+	if err := k.Accel(ctx, "playpause"); err != nil {
 		s.Fatal("Failed to send play/pause key: ", err)
 	}
 
 	s.Log("Checking that Chrome is paused")
-	if err = conn.WaitForExpr(ctx, mediasession.CheckChromeIsPaused); err != nil {
+	if err := conn.WaitForState(ctx, mediasession.StatePaused); err != nil {
 		s.Fatal("Failed to check Chrome is paused: ", err)
 	}
 
 	s.Log("Sending play/pause key")
-	if err = k.Accel(ctx, "playpause"); err != nil {
+	if err := k.Accel(ctx, "playpause"); err != nil {
 		s.Fatal("Failed to send play/pause key: ", err)
 	}
 
 	s.Log("Checking that Chrome is playing")
-	if err = conn.WaitForExpr(ctx, mediasession.CheckChromeIsPlaying); err != nil {
+	if err := conn.WaitForState(ctx, mediasession.StatePlaying); err != nil {
 		s.Fatal("Failed to check Chrome is playing: ", err)
 	}
 }

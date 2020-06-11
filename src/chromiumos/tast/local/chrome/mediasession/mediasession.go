@@ -11,33 +11,59 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
-const (
-	// CheckChromeIsPlaying is a JS expression that can be evaluated in the connection returned by LoadTestPageAndStartPlaying to check if the audio element on the test page is playing.
-	CheckChromeIsPlaying = "!audio.paused"
+// State represents the current state of the audio playing.
+type State string
 
-	// CheckChromeIsPaused is a JS expression that can be evaluated in the connection returned by LoadTestPageAndStartPlaying to check if the audio element on the test page is paused.
-	CheckChromeIsPaused = "audio.paused"
+const (
+	// StatePaused represents that the audio is paused.
+	StatePaused State = "paused"
+
+	// StatePlaying represents that the audio is playing.
+	StatePlaying State = "playing"
 )
 
-// LoadTestPageAndStartPlaying opens the media session test page in Chrome and checks that it
-// has successfully started playing. The caller is responsible for closing the returned chrome.Conn.
+// Conn is the connection to the test page.
+type Conn struct {
+	*chrome.Conn
+}
+
+// LoadTestPage opens the media session test page in Chrome. The caller is responsible for closing the returned Conn.
 // Tests should symlink data/media_session_test.html into their own data directory and pass the URL
 // at which is available via the url argument.
-func LoadTestPageAndStartPlaying(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
+func LoadTestPage(ctx context.Context, cr *chrome.Chrome, url string) (*Conn, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, err
 	}
+	return &Conn{Conn: conn}, nil
+}
 
-	if err := conn.Exec(ctx, "audio.play()"); err != nil {
-		conn.Close()
-		return nil, err
+// Play starts to play the audio and checks that it has successfully started playing.
+func (c *Conn) Play(ctx context.Context) error {
+	if err := c.Conn.Exec(ctx, "audio.play()"); err != nil {
+		return err
 	}
 
-	if err := conn.WaitForExpr(ctx, "audio.currentTime > 0"); err != nil {
-		conn.Close()
-		return nil, err
-	}
+	return c.Conn.WaitForExpr(ctx, "audio.currentTime > 0")
+}
 
-	return conn, nil
+// State returns the current audio state which is whether it is playing or paused.
+func (c *Conn) State(ctx context.Context) (State, error) {
+	var paused bool
+	if err := c.Conn.Eval(ctx, "audio.paused", &paused); err != nil {
+		return StatePaused, err
+	}
+	if paused {
+		return StatePaused, nil
+	}
+	return StatePlaying, nil
+}
+
+// WaitForState waits for the audio state becoming the given one.
+func (c *Conn) WaitForState(ctx context.Context, state State) error {
+	expr := "audio.paused"
+	if state == StatePlaying {
+		expr = "!" + expr
+	}
+	return c.Conn.WaitForExpr(ctx, expr)
 }
