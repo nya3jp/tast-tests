@@ -22,6 +22,30 @@
       "revId": "b9275ee37846ab90882d1b46a0b7286b76da5a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8bf780_6ecd9ab5",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-06-11T03:06:09Z",
+      "side": 1,
+      "message": "I selected 32MB. The conversion is still done in a few seconds.\n\nI would keep const this here as this value is used only here.",
+      "parentUuid": "4422ffc0_6650dfe7",
+      "range": {
+        "startLine": 129,
+        "startChar": 40,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "b9275ee37846ab90882d1b46a0b7286b76da5a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
