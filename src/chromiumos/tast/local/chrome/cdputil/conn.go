@@ -333,7 +333,7 @@ func (c *Conn) StartProfiling(ctx context.Context) error {
 		CallCount: &callCount,
 		Detailed:  &detailed,
 	}
-	if err := c.cl.Profiler.StartPreciseCoverage(ctx, &args); err != nil {
+	if _, err := c.cl.Profiler.StartPreciseCoverage(ctx, &args); err != nil {
 		return err
 	}
 
