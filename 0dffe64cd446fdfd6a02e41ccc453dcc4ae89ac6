@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "27aa1967_11c870f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-06-11T01:04:28Z",
+      "side": 1,
+      "message": "On a -user image, with selinux enforced (any prebuild) this happens:\n\nlocalhost ~ # android-sh                                                                                                                                                                                               \n:/ # \n:/ # echo hello \u003e /dev/kmsg\n/system/bin/sh: can\u0027t create /dev/kmsg: Permission denied\n\n\nyou\u0027ll need a different approach.",
+      "parentUuid": "5a712fb3_7031e014",
+      "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dd30e2b_ea752037",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
         "patchSetId": 4
