@@ -70,6 +70,30 @@
       "revId": "8464e50f3d0ccc2323783b4f6defce5132c705c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f919f1_b110cc06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-06-11T01:40:16Z",
+      "side": 1,
+      "message": "I\u0027m happy with that. That was my preferred choice, if folks think it\u0027s not too overly verbose then we\u0027re good.",
+      "parentUuid": "229e6acc_486eaea6",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 34
+      },
+      "revId": "8464e50f3d0ccc2323783b4f6defce5132c705c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
