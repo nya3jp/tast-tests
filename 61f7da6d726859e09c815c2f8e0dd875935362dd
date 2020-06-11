@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0663b88a_2a1791f5",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c67c1cda_ea4390d6",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "61f7da6d726859e09c815c2f8e0dd875935362dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91ca8da_220c0f4f",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "658c7804_957b69ae",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:33:32Z",
+      "side": 1,
+      "message": "This is only used in ReadPackets now. Make it private.",
+      "parentUuid": "f91ca8da_220c0f4f",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "61f7da6d726859e09c815c2f8e0dd875935362dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b987296_56d4291b",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "61f7da6d726859e09c815c2f8e0dd875935362dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e0c744_73c4b72b",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b987296_56d4291b",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "61f7da6d726859e09c815c2f8e0dd875935362dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
