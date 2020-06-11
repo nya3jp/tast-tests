@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -70,7 +72,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the window: ", err)
 	}
 	if w0.State != ash.WindowStateNormal {
-		s.Fatalf("Wrong window state: expected Normal, got %s.", w0.State)
+		s.Fatalf("Wrong window state: expected Normal, got %s", w0.State)
 	}
 	bounds := w0.BoundsInRoot
 	// Use a heuristic offset (30, 30) from the window origin for the first tab.
@@ -83,7 +85,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func() error {
-		if err := mouse.Drag(ctx, tconn, start, end, 2 * time.Second); err != nil {
+		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
 			s.Fatal("Failed to drag to the end point: ", err)
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -98,7 +100,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		if err := mouse.Drag(ctx, tconn, end, start, 2 * time.Second); err != nil {
+		if err := mouse.Drag(ctx, tconn, end, start, 2*time.Second); err != nil {
 			s.Fatal(err, "Failed to drag back to the start point: ", err)
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -135,7 +137,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 func checkWindowsNum(ctx context.Context, tconn *chrome.TestConn, num int) error {
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "failed to obtain the window list")
+		return errors.Wrap(err, "failed to obtain the window list")
 	}
 	if num != len(ws) {
 		return errors.Wrapf(err, "expected %v windows, got %v windows", num, len(ws))

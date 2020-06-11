@@ -31,6 +31,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,

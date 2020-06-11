@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 	})
 }

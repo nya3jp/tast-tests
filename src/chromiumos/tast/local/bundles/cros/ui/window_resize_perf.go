@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,6 +31,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 		Timeout:      3 * time.Minute,
 	})
@@ -41,13 +43,6 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
-		s.Fatal("Failed to check if a physical display is connected or not: ", err)
-	} else if !connected {
-		s.Log("There are no physical displays and no data can be collected for this test")
-		return
 	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
