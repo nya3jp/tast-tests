@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "70f382f1_aba1e4cc",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-11T16:10:03Z",
+      "side": 1,
+      "message": "This change appears to be unrelated to the rest of the CL, is it here intentionally?",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63b406b_981e43d5",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-11T16:10:03Z",
+      "side": 1,
+      "message": "Does the upstream trace service validate category names? If not, you might want to validate categories here. You might do this with simple regex matching; or if there are only a few valid categories, by creating a custom type TraceCategory with predefined constants (e.g. const TraceGFX TraceCategory \u003d \"disabled-by-default-android gfx\"), and changing this function signature to (ctx context.Context, categories []TraceCategory).",
+      "range": {
+        "startLine": 240,
+        "startChar": 76,
+        "endLine": 242,
+        "endChar": 76
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e6ee460_1f20d26a",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
