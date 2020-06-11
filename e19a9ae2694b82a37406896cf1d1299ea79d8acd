@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3140e468_92f500ac",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-06-11T02:41:12Z",
+      "side": 1,
+      "message": "Change this comment now that this just takes the username.",
+      "revId": "e19a9ae2694b82a37406896cf1d1299ea79d8acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
