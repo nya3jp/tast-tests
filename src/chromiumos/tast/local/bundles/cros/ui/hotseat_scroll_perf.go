@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,6 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          ash.LoggedInWith100DummyApps(),
 		Params: []testing.Param{
 			{
