@@ -30,12 +30,20 @@ type testResult struct {
 type runTestsParam struct {
 	tests       []string
 	wantResults []testResult
-	wantFiles   map[string]string
+	wantFiles   map[string]string // special value exists/notExists is allowed
 }
 
 const (
 	localVarValue  = "a_local_var"
 	remoteVarValue = "a_remote_var"
+
+	// exists can be set to runTestsParam.Files to indicate the file should exist
+	// without specifying its exact content.
+	exists = "*exists*"
+
+	// notexists can be set to runTestsParam.Files to indicate the file should
+	// not exist.
+	notExists = "*notexists*"
 )
 
 func init() {
@@ -43,8 +51,30 @@ func init() {
 		Func:     RunTests,
 		Desc:     "Verifies that Tast can run tests",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "group:meta"},
 		Params: []testing.Param{{
+			Name: "faillog",
+			Val: runTestsParam{
+				tests: []string{
+					"meta.LocalFail",
+					"meta.LocalPass",
+					"meta.RemoteFail",
+					"meta.RemotePass",
+				},
+				wantResults: []testResult{
+					{Name: "meta.LocalFail", Errors: []testError{{Reason: "Failed"}}},
+					{Name: "meta.LocalPass"},
+					{Name: "meta.RemoteFail", Errors: []testError{{Reason: "Failed"}}},
+					{Name: "meta.RemotePass"},
+				},
+				wantFiles: map[string]string{
+					"meta.LocalFail/faillog/ps.txt":  exists,
+					"meta.LocalPass/faillog/ps.txt":  notExists,
+					"meta.RemoteFail/faillog/ps.txt": notExists,
+					"meta.RemotePass/faillog/ps.txt": notExists,
+				},
+			},
+			ExtraAttr: []string{"group:mainline", "informational"},
+		}, {
 			Name: "files",
 			Val: runTestsParam{
 				tests: []string{
@@ -61,6 +91,7 @@ func init() {
 					"meta.RemoteFiles/remote_files_data.txt":   "This is a data file for a remote test.\n",
 				},
 			},
+			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
@@ -71,6 +102,7 @@ func init() {
 					{Name: "meta.LocalPanic", Errors: []testError{{"Panic: intentionally panicking"}}},
 				},
 			},
+			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}, {
 			Name: "vars",
 			Val: runTestsParam{
@@ -87,6 +119,7 @@ func init() {
 					"meta.RemoteVars/var.txt": remoteVarValue,
 				},
 			},
+			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}},
 	})
 }
@@ -127,9 +160,23 @@ func RunTests(ctx context.Context, s *testing.State) {
 	// These filenames and corresponding contents are hardcoded in the tests.
 	for p, v := range param.wantFiles {
 		p = filepath.Join(resultsDir, "tests", p)
-		if b, err := ioutil.ReadFile(p); err != nil {
+		b, err := ioutil.ReadFile(p)
+		if v == notExists {
+			if err == nil {
+				s.Errorf("Output file %v exists unexpectedly", p)
+			} else if !os.IsNotExist(err) {
+				s.Errorf("Failed to read output file %v: %v", p, err)
+			}
+			continue
+		}
+		if err != nil {
 			s.Errorf("Failed to read output file %v: %v", p, err)
-		} else if string(b) != v {
+			continue
+		}
+		if v == exists {
+			continue
+		}
+		if string(b) != v {
 			s.Errorf("Output file %v contains %q instead of %q", p, string(b), v)
 		}
 	}
