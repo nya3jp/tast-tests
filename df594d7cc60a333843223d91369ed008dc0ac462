@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0651f19e_17bb7caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:26:14Z",
+      "side": 1,
+      "message": "How about tabAllocMB",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519c7138_23a1240f",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:26:14Z",
+      "side": 1,
+      "message": "nit: Could you assert that it implements MemoryTask for documenting purpose?\n\nvar _ MemoryTast \u003d (*MemoryStressTask)(nil)",
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e96d8bb_46402de1",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:26:14Z",
+      "side": 1,
+      "message": "qq: is it intentinoal to return early without error when memory is still critical?\nI didn\u0027t understand well the intention of this logic. Adding a comment might help.",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa32e123_1394ad00",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:26:14Z",
+      "side": 1,
+      "message": "Could you document that Close should be called after use?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 76
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0bf26dc_6a6bb8af",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:26:14Z",
+      "side": 1,
+      "message": "Could you document the meaning of parameters?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 54
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
