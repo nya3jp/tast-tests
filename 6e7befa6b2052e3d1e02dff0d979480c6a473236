@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "855492c6_30668ae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527caba7_94e33796",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70f382f1_aba1e4cc",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "211117ec_4d14eb3f",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Yes, it\u0027s kind of related: In this CL https://crrev.com/c/2240164 I uprev dev-go/cdp to 0.28.0 to introduce a new API for this CL (StreamReader). But the API for Profiler.StartPreciseCoverage has changed to return a StartPreciseCoverageReply object, so I capture that object here to prevent a compiler error.",
+      "parentUuid": "70f382f1_aba1e4cc",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c63b406b_981e43d5",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2020-06-11T16:10:03Z",
       "side": 1,
       "message": "Does the upstream trace service validate category names? If not, you might want to validate categories here. You might do this with simple regex matching; or if there are only a few valid categories, by creating a custom type TraceCategory with predefined constants (e.g. const TraceGFX TraceCategory \u003d \"disabled-by-default-android gfx\"), and changing this function signature to (ctx context.Context, categories []TraceCategory).",
+      "range": {
+        "startLine": 240,
+        "startChar": 76,
+        "endLine": 242,
+        "endChar": 76
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ac415b_ce2e3abd",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "IIUC, Chrome/perfetto doesn\u0027t do any central validation of the category names. It sends categories in a config to all of the producers/tracing agents, who then match them against their own available categories. While the Android categories are static and fewer in number (https://android.googlesource.com/platform/system/core/+/master/libcutils/include/cutils/trace.h), AFAICT Chrome categories are allowed to be anything that fits in a static string, and looking into chrome://tracing on CrOS I can see 100+ categories. I also tried StartTracing with a non-existent category, and there were no errors thrown, and the trace was returned with events from the default categories.\nGiven this, I\u0027m not sure it\u0027s possible to have any meaningful validation of the categories here. New categories are added to Chrome pretty frequently, so a predefined list would quickly become stale. Category names don\u0027t seem to follow a specific format either (besides \"disabled-by-default-android \" categories), so a regex might end up matching too narrowly. Let me know what you think.",
+      "parentUuid": "c63b406b_981e43d5",
       "range": {
         "startLine": 240,
         "startChar": 76,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "8a63e1c1_2ebaea2b",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "I tried, but the type of the client is not exported (tracing.domainClient) so we can\u0027t create a Session struct member of that type here. But we don\u0027t need to, since it\u0027s essentially just a thin wrapper around rpcc.Conn (https://github.com/mafredri/cdp/blob/master/protocol/tracing/domain.go#L17), which we keep around as s.wsConn.",
+      "parentUuid": "6e6ee460_1f20d26a",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "844aa2f2_dcd937ea",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -96,6 +174,30 @@
       "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fced7a7e_01e82350",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844aa2f2_dcd937ea",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "d5292cdf_9a7a1bb8",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aece2439_6df1d049",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f907972c_d6573645",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "7baed65c_78b45003",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f907972c_d6573645",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 16
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7e655db_f066ebdf",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -159,6 +309,24 @@
       "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0aafb0f_68015c6b",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T20:15:21Z",
+      "side": 1,
+      "message": "Moved creation of CompleteClient before End()",
+      "parentUuid": "c7e655db_f066ebdf",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
