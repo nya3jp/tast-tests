@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a53b4485_1e69ccbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T14:53:10Z",
+      "side": 0,
+      "message": "Note: this was a bug.\nExec returns error if the evaluation \"fails\". I.e., even if the expression is evaluated to \"false\" successfully, it will not return an error.\n\nIntroduced mediasession.Conn.State to wrap its implementation details. WDYT?",
+      "revId": "45877bbb37e47c9dc85ab10cb2fe46a56009833a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
