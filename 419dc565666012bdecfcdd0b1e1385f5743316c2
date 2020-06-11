@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26724daa_5874cc8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debe0eb0_92220f99",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6252bb58_a90797d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-10T21:16:00Z",
       "side": 1,
       "message": "This whole thing is a little hacky. I\u0027d much prefer waiting for a scan finished event. If that\u0027s too much work, I\u0027m okay leaving a TODO here.",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 7
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c06160_d94c8b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:37:35Z",
+      "side": 1,
+      "message": "I didn\u0027t see shill emitting similar signal except PropertyChange. Do you mean the ScanDone signal from wpa_supplicant? If so, I can take a look if it is easy to add. The existing dbus signal watcher should be enough, I guess.",
+      "parentUuid": "6252bb58_a90797d9",
       "range": {
         "startLine": 550,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0deecf1f_ca4d8cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:37:35Z",
+      "side": 1,
+      "message": "I found that the logic here can be much simplified. This no longer exists.",
+      "parentUuid": "d91c97da_62fcd89d",
+      "range": {
+        "startLine": 562,
+        "startChar": 6,
+        "endLine": 562,
+        "endChar": 33
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e3095f5_40dabb88",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-10T21:16:00Z",
       "side": 1,
       "message": "same as above regarding scan done event. Also is it possible to combine some code here? We pretty much do exactly this in the code above.",
+      "range": {
+        "startLine": 637,
+        "startChar": 22,
+        "endLine": 637,
+        "endChar": 34
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640756be_963f10e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-11T03:37:35Z",
+      "side": 1,
+      "message": "The name is not quite accurate. Rename it to WaitScanIdle. (i.e. if there\u0027s a running scan, wait until it\u0027s done, otherwise return immediately)\n\nAs there might not be a running scan, I guess waiting for ScanDone is less suitable here?",
+      "parentUuid": "0e3095f5_40dabb88",
       "range": {
         "startLine": 637,
         "startChar": 22,
