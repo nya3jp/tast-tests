@@ -45,36 +45,49 @@ func MediaSessionGainTransientDuck(ctx context.Context, s *testing.State) {
 		buttonStartID = "org.chromium.arc.testapp.media_session:id/button_start_test_duck"
 	)
 
-	must := func(err error) {
-		if err != nil {
-			s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-		}
-	}
-
 	arcmedia.RunTest(ctx, s, func(a *arc.ARC, d *ui.Device, sr *httptest.Server, cr *chrome.Chrome) {
 		s.Log("Launching media playback in Chrome")
-		conn, err := mediasession.LoadTestPageAndStartPlaying(ctx, cr, sr.URL+"/media_session_test.html")
+		conn, err := mediasession.LoadTestPage(ctx, cr, sr.URL+"/media_session_test.html")
 		if err != nil {
 			s.Fatal("Failed to start playback: ", err)
 		}
 		defer conn.Close()
 
+		if err := conn.Play(ctx); err != nil {
+			s.Fatal("Failed to start playing: ", err)
+		}
+
 		s.Log("Switching to the test app")
-		must(arcmedia.SwitchToTestApp(ctx, a))
+		if err := arcmedia.SwitchToTestApp(ctx, a); err != nil {
+			s.Fatal("Failed to switch to the test app: ", err)
+		}
 
 		s.Log("Clicking the start test button")
-		must(d.Object(ui.ID(buttonStartID)).Click(ctx))
+		if err := d.Object(ui.ID(buttonStartID)).Click(ctx); err != nil {
+			s.Fatal("Failed to click the start button: ", err)
+		}
 
 		s.Log("Waiting for the entries to show that we have acquired audio focus")
-		must(arcmedia.WaitForAndroidAudioFocusGain(ctx, d, arcmedia.AudioFocusGainTransientMayDuck))
+		if err := arcmedia.WaitForAndroidAudioFocusGain(ctx, d, arcmedia.AudioFocusGainTransientMayDuck); err != nil {
+			s.Fatal("Failed to gain transient focus: ", err)
+		}
 
 		s.Log("Checking that Chrome has not lost audio focus")
-		must(conn.Exec(ctx, mediasession.CheckChromeIsPlaying))
+		if state, err := conn.State(ctx); err != nil {
+			s.Fatal("Failed to get audio state: ", err)
+		} else if state != mediasession.StatePlaying {
+			s.Fatalf("Unexpected audio state: got %s; want %s", state, mediasession.StatePlaying)
+		}
 
 		s.Log("Clicking the abandon focus button")
-		must(arcmedia.AbandonAudioFocusInAndroid(ctx, d))
+		if err := arcmedia.AbandonAudioFocusInAndroid(ctx, d); err != nil {
+			s.Fatal("Failed to abandon audio focus in android: ", err)
+		}
 
-		s.Log("Checking that Chrome is still playing")
-		must(conn.Exec(ctx, mediasession.CheckChromeIsPlaying))
+		if state, err := conn.State(ctx); err != nil {
+			s.Fatal("Failed to get audio state: ", err)
+		} else if state != mediasession.StatePlaying {
+			s.Fatalf("Unexpected audio state: got %s; want %s", state, mediasession.StatePlaying)
+		}
 	})
 }
