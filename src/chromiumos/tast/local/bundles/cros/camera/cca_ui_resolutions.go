@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/alfg/mp4"
+	"github.com/abema/go-mp4"
 	"github.com/pixelbender/go-matroska/matroska"
 
 	"chromiumos/tast/errors"
@@ -163,7 +163,7 @@ func videoTrackResolution(path string) (*cca.Resolution, error) {
 	if strings.HasSuffix(path, ".mkv") {
 		doc, err := matroska.Decode(path)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to decode video file at %v", path)
+			return nil, errors.Wrapf(err, "failed to decode video file %v", path)
 		}
 		for _, track := range doc.Segment.Tracks {
 			for _, ent := range track.Entries {
@@ -173,16 +173,23 @@ func videoTrackResolution(path string) (*cca.Resolution, error) {
 			}
 		}
 	} else if strings.HasSuffix(path, ".mp4") {
-		file, err := mp4.Open(path)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to open video file at %v", path)
-		}
+		file, err := os.Open(path)
 		defer file.Close()
-		for _, track := range file.Moov.Traks {
-			width := track.Tkhd.GetWidth()
-			height := track.Tkhd.GetHeight()
-			if width > 0 && height > 0 {
-				return &cca.Resolution{Width: int(width), Height: int(height)}, nil
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to open video file %v", path)
+		}
+		boxes, err := mp4.ExtractBoxWithPayload(
+			file, nil, mp4.BoxPath{mp4.BoxTypeMoov(), mp4.BoxTypeTrak(), mp4.BoxTypeTkhd()})
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to find track boxes in video file %v", path)
+		}
+		for _, b := range boxes {
+			thkd := b.Payload.(*mp4.Tkhd)
+			if thkd.Width > 0 && thkd.Height > 0 {
+				// Ignore the 16 low bits of fractional part.
+				intW := int(thkd.Width >> 16)
+				intH := int(thkd.Height >> 16)
+				return &cca.Resolution{Width: intW, Height: intH}, nil
 			}
 		}
 	}
