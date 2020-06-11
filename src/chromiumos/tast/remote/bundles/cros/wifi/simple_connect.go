@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -25,7 +26,8 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac security.ConfigFactory
+	secConfFac      security.ConfigFactory
+	expectedFailure bool
 }
 
 func init() {
@@ -489,12 +491,74 @@ func init() {
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 						secConfFac: dynamicwep.NewConfigFactory(
-							eapcert.CACert, eapcert.ServerCred.Cert, eapcert.ServerCred.PrivateKey,
-							dynamicwep.ClientCACert(eapcert.CACert),
-							dynamicwep.ClientCert(eapcert.ClientCred.Cert),
-							dynamicwep.ClientKey(eapcert.ClientCred.PrivateKey),
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							dynamicwep.ClientCACert(eapcert1.CACert),
+							dynamicwep.ClientCert(eapcert1.ClientCred.Cert),
+							dynamicwep.ClientKey(eapcert1.ClientCred.PrivateKey),
 							dynamicwep.RekeyPeriod(20),
 						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
+				Name: "8021xwpa",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							wpaeap.ClientCACert(eapcert1.CACert),
+							wpaeap.ClientCert(eapcert1.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert1.ClientCred.PrivateKey),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							wpaeap.ClientCert(eapcert1.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert1.ClientCred.PrivateKey),
+						),
+						expectedFailure: true,
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							wpaeap.ClientCACert(eapcert2.CACert),
+							wpaeap.ClientCert(eapcert1.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert1.ClientCred.PrivateKey),
+						),
+						expectedFailure: true,
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							wpaeap.ClientCert(eapcert1.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert1.ClientCred.PrivateKey),
+							wpaeap.NotUseSystemCAs(),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ServerCred.Cert, eapcert1.ServerCred.PrivateKey,
+							wpaeap.ClientCACert(eapcert1.CACert),
+							wpaeap.ClientCert(eapcert2.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert2.ClientCred.PrivateKey),
+						),
+						expectedFailure: true,
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapcert1.CACert, eapcert1.ExpiredServerCred.Cert, eapcert1.ExpiredServerCred.PrivateKey,
+							wpaeap.ClientCACert(eapcert1.CACert),
+							wpaeap.ClientCert(eapcert1.ClientCred.Cert),
+							wpaeap.ClientKey(eapcert1.ClientCred.PrivateKey),
+						),
+						expectedFailure: true,
 					},
 				},
 			},
@@ -534,7 +598,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForClose(fullCtx)
 	defer cancel()
 
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
+	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, expectedFailure bool) {
 		ap, err := tf.ConfigureAP(fullCtx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -548,17 +612,29 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
+		// Some tests may fail as expected at following ConnectWifi(). In that case entries should still be deleted properly.
+		defer func() {
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
+			}
+		}()
+
 		resp, err := tf.ConnectWifiAP(ctx, ap)
 		if err != nil {
+			if expectedFailure {
+				s.Log("Failed to connect to WiFi as expected")
+				// If we expect to fail, then this test is already done.
+				return
+			}
 			s.Fatal("Failed to connect to WiFi, err: ", err)
+		}
+		if expectedFailure {
+			s.Fatal("Expected to fail to connect to WiFi, but it was successful")
 		}
 		defer func() {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
-			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
-				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 			}
 		}()
 		s.Log("Connected")
@@ -610,7 +686,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.expectedFailure)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
@@ -646,7 +722,10 @@ func wep104KeysHidden() []string {
 }
 
 // EAP certs/keys for EAP tests.
-var eapcert = certificate.TestCert1()
+var (
+	eapcert1 = certificate.TestCert1()
+	eapcert2 = certificate.TestCert2()
+)
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.
