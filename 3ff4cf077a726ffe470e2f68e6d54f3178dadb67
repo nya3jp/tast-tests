@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc3e9f13_4b107d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-11T01:28:30Z",
+      "side": 1,
+      "message": "This is off-topic fix. Please split it in another CL.",
+      "revId": "3ff4cf077a726ffe470e2f68e6d54f3178dadb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d140542_59c11c67",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-11T01:28:30Z",
+      "side": 1,
+      "message": "Would it be easier to comprehend to name it as \"chromeGrantMediaStreamArgs\"?\n\nFakeUI does not tell what kind of UI is faked.",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 20
+      },
+      "revId": "3ff4cf077a726ffe470e2f68e6d54f3178dadb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
