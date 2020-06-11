@@ -16,6 +16,24 @@
       "revId": "a5d67c6b8a4ab6ea8b85ce3f5520c2035b86d291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05be466f_f3977aa7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-11T22:25:43Z",
+      "side": 1,
+      "message": "Updated in the latest patch set, because I had it slightly wrong. When setting to OFF, the servod request yields a timeout error. Turning on appears to be fine. So in the latest PS, we run it synchronously, but we discard the error when setting to OFF.",
+      "parentUuid": "6ef2aed7_5cc17445",
+      "revId": "a5d67c6b8a4ab6ea8b85ce3f5520c2035b86d291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
