@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6181b7bb_8433668e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: platforms",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce9bb94_95cdf50d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: Seems like the line breaks are off by one word here",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8edb47_562053b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: Depending on whether this ...",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b5fc50_66fae32d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: parameterizes",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcdd0013_a153ed3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: decide whether",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a774c64_d7c3d160",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: prevents",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de74033_c15aed7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: devices that do not ...",
+      "range": {
+        "startLine": 13,
+        "startChar": 64,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5d1159_964df95f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "Add line: \"Example for device that does not support force discharge:\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf8672c_9ca2184d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: Not sure of the commit message is the best place for this. Maybe this should go into a comment at the beginning of the file.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb9fff9_a721a571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "nit: Did this pass the linter? Seems like `chrome.LoggedIn()` and `testArgsForPowerIdlePerf` should be indented.",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8e8b14_bc34f165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m wrong but I think we are still gathering battery metrics. We are just not setting the battery to \"force discharge\". If that\u0027s the case the name \"nobatterymetrics\" is a bit misleading.",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6aec59_c8e14e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-11T03:03:58Z",
+      "side": 1,
+      "message": "So we basically have two variations of each test: One that sets the battery to discharge and one that does not do that (\"nobatterymetrics\" variant).\n\nI think is a common pattern: We also want that for the camera power tests, maybe for some other tests as well.\n\nI am wondering if we should add a helper function that, given an array of testing.Params, generates a new array of double the size which contains the original array and \"nobatterymetrics\" versions. Then we would not have to duplicate so much code. (The only difference is \"forceDischarge \u003d false\" and the ExtraHardwareDeps.\n\nNot sure what the Tast/Golang style guide says though. Could the tast-owners comment on this?",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
