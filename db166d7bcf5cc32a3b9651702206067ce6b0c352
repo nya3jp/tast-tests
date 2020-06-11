@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49a002b1_207d8a1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-11T14:56:10Z",
+      "side": 1,
+      "message": "Either should be fine. Let\u0027s unexport them.",
+      "parentUuid": "f586afbc_1991f169",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "db166d7bcf5cc32a3b9651702206067ce6b0c352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3288ff8e_16c25c11",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "db166d7bcf5cc32a3b9651702206067ce6b0c352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f06a64_457227c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-11T14:56:10Z",
+      "side": 1,
+      "message": "Sounds nice, done.",
+      "parentUuid": "3288ff8e_16c25c11",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "db166d7bcf5cc32a3b9651702206067ce6b0c352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
