@@ -9,15 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/pipresize"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -63,16 +59,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
-
-	displayMode, err := info.GetSelectedMode()
-	if err != nil {
-		s.Fatal("Failed to get the selected display mode of the primary display: ", err)
-	}
-
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
@@ -98,67 +84,8 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to minimize app: ", err)
 	}
 
-	var pipWindow *ash.Window
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		pipWindow, err = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
-		if err != nil {
-			return errors.Wrap(err, "The PIP window hasn't been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
-	}
-
-	if s.Param().(bool) { // Branch for arc.PIPEnergyAndPower.big.
-		if err := mouse.Move(ctx, tconn, pipWindow.TargetBounds.CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to PIP window: ", err)
-		}
-
-		// The PIP resize handle is an ImageView with no android:contentDescription.
-		// Here we use the regex (?!.+) to match the empty content description. See:
-		// frameworks/base/packages/SystemUI/res/layout/pip_menu_activity.xml
-		resizeHandleBounds, err := d.Object(
-			ui.ClassName("android.widget.ImageView"),
-			ui.DescriptionMatches("(?!.+)"),
-			ui.PackageName("com.android.systemui"),
-		).GetBounds(ctx)
-		if err != nil {
-			s.Fatal("Failed to get bounds of PIP resize handle: ", err)
-		}
-
-		if err := mouse.Move(ctx, tconn, coords.ConvertBoundsFromPXToDP(resizeHandleBounds, displayMode.DeviceScaleFactor).CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to PIP resize handle: ", err)
-		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to press left mouse button: ", err)
-		}
-		if err := mouse.Move(ctx, tconn, info.WorkArea.TopLeft(), time.Second); err != nil {
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-				s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
-			}
-			s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
-		}
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to release left mouse button: ", err)
-		}
-
-		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
-		}
-
-		pipWindow, err = ash.GetWindow(ctx, tconn, pipWindow.ID)
-		if err != nil {
-			s.Fatal("PIP window gone after resize: ", err)
-		}
-
-		if 5*pipWindow.TargetBounds.Width <= 2*info.WorkArea.Width && 5*pipWindow.TargetBounds.Height <= 2*info.WorkArea.Height {
-			s.Fatalf("Expected big PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
-		}
-	} else { // Branch for arc.PIPEnergyAndPower.small.
-		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
-			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
-		}
+	if err := pipresize.WaitForPIPAndSetSize(ctx, tconn, d, s.Param().(bool)); err != nil {
+		s.Fatal("Failed to wait for PIP window and set size: ", err)
 	}
 
 	conn, err := cr.NewConn(ctx, "chrome://settings")
