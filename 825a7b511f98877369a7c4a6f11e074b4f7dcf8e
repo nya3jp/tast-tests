@@ -22,6 +22,30 @@
       "revId": "825a7b511f98877369a7c4a6f11e074b4f7dcf8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c64b835_00282e18",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-11T03:07:44Z",
+      "side": 1,
+      "message": "Ooops. Yes. Fixed",
+      "parentUuid": "9f9fc27b_26323da1",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "825a7b511f98877369a7c4a6f11e074b4f7dcf8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
