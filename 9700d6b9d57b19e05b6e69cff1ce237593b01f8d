@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef03d084_c95c063b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T10:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e6955e_f219deee",
+      "range": {
+        "startLine": 546,
+        "startChar": 22,
+        "endLine": 546,
+        "endChar": 39
+      },
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9590740f_53ce3b55",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b78b0251_487b526c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T10:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a29d1e_49d76fa8",
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c969d2b8_ef52b0b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
         "patchSetId": 5
@@ -85,6 +127,30 @@
       "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6821837a_fa1951d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T10:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c969d2b8_ef52b0b2",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "9700d6b9d57b19e05b6e69cff1ce237593b01f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
