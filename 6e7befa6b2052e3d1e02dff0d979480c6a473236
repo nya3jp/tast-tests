@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "dc406ce6_77fe6736",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T22:23:58Z",
+      "side": 1,
+      "message": "Yeah, I think you\u0027re right. Will go ahead and add the change as a parent to this one.",
+      "parentUuid": "dba6f5fb_2ec6121c",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c63b406b_981e43d5",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -158,6 +176,30 @@
       "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b11676e_ab847855",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-11T22:23:58Z",
+      "side": 1,
+      "message": "Yeah, this will be used to trace both Chrome and Android categories so we can\u0027t check the prefix.",
+      "parentUuid": "2e4f0503_31c614b9",
+      "range": {
+        "startLine": 240,
+        "startChar": 76,
+        "endLine": 242,
+        "endChar": 76
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
