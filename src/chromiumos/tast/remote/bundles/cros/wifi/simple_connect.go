@@ -24,7 +24,8 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac security.ConfigFactory
+	secConfFac      security.ConfigFactory
+	expectedFailure bool
 }
 
 func init() {
@@ -513,7 +514,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForClose(fullCtx)
 	defer cancel()
 
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
+	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, expectedFailure bool) {
 		ap, err := tf.ConfigureAP(fullCtx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -527,16 +528,27 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		err = tf.ConnectWifi(ctx, ap)
+		defer func() {
+			// Placed here so the entries will still be deleted even if it failed as expected.
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
+			}
+		}()
+		if err != nil {
+			if expectedFailure {
+				s.Log("Failed to connect to WiFi as expected")
+				// If we expect to fail, then this test is already done.
+				return
+			}
 			s.Fatal("Failed to connect to WiFi, err: ", err)
+		} else if expectedFailure {
+			s.Fatal("Expected to fail to connect to WiFi, but it was successful")
 		}
 		defer func() {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
-			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
-				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
 		}()
 		s.Log("Connected")
@@ -568,7 +580,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.expectedFailure)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
