@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "474ae0ce_dd835348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-11T03:06:13Z",
+      "side": 1,
+      "message": "Sorry that after second look,\n\ntime.Duration(request.Timeout)*time.Nanosecond \nthe *time.Nanosecond is redundant as time.Duration(request.Timeout) implies the unit of request.Timeout is nanosecond.\n\nSo I would say just use\nrequrest.Timeout * time.Nanosecond\n, just like the golang idiom of specifying duration: \nduration :\u003d 10*time.Second",
+      "parentUuid": "230dbac9_813f3f41",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b649efd_76de7320",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 9
