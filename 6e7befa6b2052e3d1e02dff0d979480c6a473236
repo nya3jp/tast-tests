@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "527caba7_94e33796",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "Could you add Cq-Depend? AFAIK, topic doesn\u0027t work in Chrome OS.",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6ee460_1f20d26a",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "don\u0027t we need to keep the client?",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844aa2f2_dcd937ea",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "Could you use proto.Bool/proto.String for simplicity?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aece2439_6df1d049",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "nit/style: Could you merge these lines?\n\nif err :\u003d dc.Start(...); err !\u003d nil {",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f907972c_d6573645",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "nit/style: ditto for merging lines.",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 16
+      },
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e655db_f066ebdf",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-11T05:10:01Z",
+      "side": 1,
+      "message": "To avoid race condition, is it necessary to start watching this even before calling End?",
+      "revId": "6e7befa6b2052e3d1e02dff0d979480c6a473236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
