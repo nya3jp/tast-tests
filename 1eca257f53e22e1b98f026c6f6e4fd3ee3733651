@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7405a3b3_09ebe7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-11T00:19:26Z",
+      "side": 1,
+      "message": "Why don\u0027t we just report the dropped frames percentage? This would be similar to our video decode tests. Let\u0027s try to line up the metrics reported by our Chrome and ARC++ tests!",
+      "revId": "1eca257f53e22e1b98f026c6f6e4fd3ee3733651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
