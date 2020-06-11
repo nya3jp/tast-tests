@@ -22,6 +22,30 @@
       "revId": "69ad6309c2c35d5a58dbf3da566dc602f7fede8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a23cb7_797a6f16",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-06-11T18:15:49Z",
+      "side": 1,
+      "message": "The %s of fmt automatically converts it to a string.",
+      "parentUuid": "4a75b5e4_8726a3d7",
+      "range": {
+        "startLine": 50,
+        "startChar": 56,
+        "endLine": 50,
+        "endChar": 64
+      },
+      "revId": "69ad6309c2c35d5a58dbf3da566dc602f7fede8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
