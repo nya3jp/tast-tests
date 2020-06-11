@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab660ccb_f4f23d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:37:45Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "cfb9494790b7c754bcdebf502e69fe1b5666563a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb44561b_00bb188a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/remote_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-11T03:37:45Z",
+      "side": 1,
+      "message": "daed code?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "cfb9494790b7c754bcdebf502e69fe1b5666563a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
