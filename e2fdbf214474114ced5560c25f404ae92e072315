@@ -180,6 +180,30 @@
     },
     {
       "key": {
+        "uuid": "9d74155e_c47cece9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-11T05:22:09Z",
+      "side": 1,
+      "message": "I changed it to just time.Duration(request.Timeout), because as Yen-lin I cant\u0027t just use int64*time.Duration.",
+      "parentUuid": "220b305f_ed426f9c",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 90
+      },
+      "revId": "e2fdbf214474114ced5560c25f404ae92e072315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b649efd_76de7320",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 9
