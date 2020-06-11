@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75fb6894_651a214a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-11T05:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd9baf9_79131ee6",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "60ece70e74c96b2459c734218fdb9297e1df263a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6e9196_823caab5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "46607b0f_b8c9d688",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-11T05:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6e9196_823caab5",
+      "range": {
+        "startLine": 141,
+        "startChar": 68,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "60ece70e74c96b2459c734218fdb9297e1df263a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7902c806_0c836420",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "60ece70e74c96b2459c734218fdb9297e1df263a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5850d62e_4c18254f",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-11T05:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7902c806_0c836420",
+      "range": {
+        "startLine": 51,
+        "startChar": 88,
+        "endLine": 51,
+        "endChar": 98
+      },
+      "revId": "60ece70e74c96b2459c734218fdb9297e1df263a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
