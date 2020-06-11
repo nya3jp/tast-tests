@@ -100,7 +100,7 @@ func init() {
 		}, {
 			Name:              "h264_enc_cam",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeCameraPerf(),
 		}},
 	})
