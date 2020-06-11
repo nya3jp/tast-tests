@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6ffd91b_49adaf9a",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-11T22:25:01Z",
+      "side": 1,
+      "message": "very nitpicking, but the code snippet looks like both spaces and tabs are used. Better to use only of either.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5cd078_00701d07",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-11T22:25:01Z",
+      "side": 1,
+      "message": "I guess you can just write like:\n  return \u0026Action{\n    Do: func(...) {\n      ...\n    },\n    String: func() string { ... },\n  }\n\n\nSimilarly on other functions.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cc7361_9498a417",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-11T22:25:01Z",
+      "side": 1,
+      "message": "I wonder if Do rather accepts a variable args of actions, i.e. Do(ctx context.Context, tconn *chrome.TestConn, graph... *Action) error.\n\nDo will build Steps when multiple actions are specified or just invoke the single action if only one action is there.",
+      "range": {
+        "startLine": 328,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 67
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
