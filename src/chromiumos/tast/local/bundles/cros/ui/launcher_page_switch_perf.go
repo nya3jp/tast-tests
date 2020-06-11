@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -22,6 +21,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +31,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "andrewxu@chromium.org", "cros-launcher-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          ash.LoggedInWith100DummyApps(),
 		Params: []testing.Param{
 			{
@@ -55,11 +56,6 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	connected, err := display.PhysicalDisplayConnected(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check physical display existence: ", err)
-	}
 
 	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
 
@@ -222,75 +218,71 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// launcher itself), and because the first page might be in a special
 	// arrangement of the default apps with blank area at the bottom which
 	// prevents the drag-up gesture, switches to the second page before starting
-	// this scenario. Currently, the drag operations are not conducted unless
-	// there's a physical display because the metrics rely on the presentation
-	// callback from the display.
-	if connected {
-		s.Log("Starting the scroll by drags")
-		if err := clickPageButtonAndWait(ctx, pageButtons[1]); err != nil {
-			s.Fatal("Failed to switch to the second page: ", err)
-		}
-		// Reset back to the first page at the end of the test; apps-grid page
-		// selection may stay in the last page, and that causes troubles on another
-		// test. See https://crbug.com/1081285.
-		defer pointer.Click(ctx, pc, pageButtons[0].Location.CenterPoint())
-		appsGridLocation := appsGridView.Location
-		// drag-up gesture positions; starting at a bottom part of the apps-grid (at
-		// 4/5 height), and moves the height of the apps-grid. The starting height
-		// shouldn't be very bottom of the apps-grid, since it may fall into the
-		// hotseat (the gesture won't cause page-switch in such case).
-		// The X position should not be the center of the width since it would fall
-		// into an app icon. For now, it just sets 2/5 width position to avoid app
-		// icons.
-		dragUpStart := coords.NewPoint(
-			appsGridLocation.Left+appsGridLocation.Width*2/5,
-			appsGridLocation.Top+appsGridLocation.Height*4/5)
-		dragUpEnd := coords.NewPoint(dragUpStart.X, dragUpStart.Y-appsGridLocation.Height)
+	// this scenario.
+	s.Log("Starting the scroll by drags")
+	if err := clickPageButtonAndWait(ctx, pageButtons[1]); err != nil {
+		s.Fatal("Failed to switch to the second page: ", err)
+	}
+	// Reset back to the first page at the end of the test; apps-grid page
+	// selection may stay in the last page, and that causes troubles on another
+	// test. See https://crbug.com/1081285.
+	defer pointer.Click(ctx, pc, pageButtons[0].Location.CenterPoint())
+	appsGridLocation := appsGridView.Location
+	// drag-up gesture positions; starting at a bottom part of the apps-grid (at
+	// 4/5 height), and moves the height of the apps-grid. The starting height
+	// shouldn't be very bottom of the apps-grid, since it may fall into the
+	// hotseat (the gesture won't cause page-switch in such case).
+	// The X position should not be the center of the width since it would fall
+	// into an app icon. For now, it just sets 2/5 width position to avoid app
+	// icons.
+	dragUpStart := coords.NewPoint(
+		appsGridLocation.Left+appsGridLocation.Width*2/5,
+		appsGridLocation.Top+appsGridLocation.Height*4/5)
+	dragUpEnd := coords.NewPoint(dragUpStart.X, dragUpStart.Y-appsGridLocation.Height)
 
-		// drag-down gesture positions; starting at the top of the apps-grid (but
-		// not at the edge), and moves to the bottom edge of the apps-grid. Same
-		// X position as the drag-up gesture.
-		dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
-		dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
+	// drag-down gesture positions; starting at the top of the apps-grid (but
+	// not at the edge), and moves to the bottom edge of the apps-grid. Same
+	// X position as the drag-up gesture.
+	dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
+	dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
-		hists, err = metrics.Run(ctx, tconn, func() error {
-			ew, err := chromeui.NewWatcher(ctx, pageButtons[2], chromeui.EventTypeAlert)
-			if err != nil {
-				return errors.Wrap(err, "failed to create an event watcher")
-			}
-			defer ew.Release(ctx)
-			// First drag-up operation.
-			if err := pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration); err != nil {
-				return errors.Wrap(err, "failed to drag from the bottom to the top")
-			}
-			if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
-				// It is actually fine if the drag doesn't cause scrolling to the next
-				// page. The required metrics for dragging should be made and enough
-				// waiting time should have passed for the next dragging session.
-				s.Log("Failed to wait for the page switch; maybe the dragging does not cause the page scroll")
-			}
-			// drag-down operation.
-			if err := pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration); err != nil {
-				return errors.Wrap(err, "failed to drag from the top to the bottom")
-			}
-			return nil
-		},
-			"Apps.PaginationTransition.DragScroll.PresentationTime."+suffix,
-			"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix)
+	hists, err = metrics.Run(ctx, tconn, func() error {
+		ew, err := chromeui.NewWatcher(ctx, pageButtons[2], chromeui.EventTypeAlert)
 		if err != nil {
-			s.Fatal("Failed to run the test scenario: ", err)
+			return errors.Wrap(err, "failed to create an event watcher")
 		}
-		for _, hist := range hists {
-			mean, err := hist.Mean()
-			if err != nil {
-				s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
-			}
-			pv.Set(perf.Metric{
-				Name:      hist.Name,
-				Unit:      "ms",
-				Direction: perf.SmallerIsBetter,
-			}, mean)
+		defer ew.Release(ctx)
+		// First drag-up operation.
+		if err := pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration); err != nil {
+			return errors.Wrap(err, "failed to drag from the bottom to the top")
 		}
+		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
+			// It is actually fine if the drag doesn't cause scrolling to the next
+			// page. The required metrics for dragging should be made and enough
+			// waiting time should have passed for the next dragging session.
+			s.Log("Failed to wait for the page switch; maybe the dragging does not cause the page scroll")
+		}
+		// drag-down operation.
+		if err := pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration); err != nil {
+			return errors.Wrap(err, "failed to drag from the top to the bottom")
+		}
+		return nil
+	},
+		"Apps.PaginationTransition.DragScroll.PresentationTime."+suffix,
+		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix)
+	if err != nil {
+		s.Fatal("Failed to run the test scenario: ", err)
+	}
+	for _, hist := range hists {
+		mean, err := hist.Mean()
+		if err != nil {
+			s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
+		}
+		pv.Set(perf.Metric{
+			Name:      hist.Name,
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, mean)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {

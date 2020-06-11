@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,6 +35,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"android_p", "chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      10 * time.Minute,
 		Vars: []string{
 			"mute",
