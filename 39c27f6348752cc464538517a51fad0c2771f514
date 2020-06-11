@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bf2ce4a_699fa9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-06-11T19:04:27Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think the mock_consent / real_consent is related to  https://crbug.com/1072306. \n\nThe old TODO was about b/155009503 and removing \"crash_selinux_stable\" from mock_consent, not about removing mock_consent completely. This makes it sound like we remove mock_consent completely when https://crbug.com/1072306 is resolved.\n\nAlso, it removes mention of b/155009503 completely...",
+      "range": {
+        "startLine": 29,
+        "startChar": 69,
+        "endLine": 29,
+        "endChar": 82
+      },
+      "revId": "39c27f6348752cc464538517a51fad0c2771f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
