@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb4aafbb_d7921437",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T07:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7600fc3_a609e058",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 80
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52de60a6_8241cede",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "c73f4881df11850306210151a62127ab257d61ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f754ea5_867512a6",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T07:32:38Z",
+      "side": 1,
+      "message": "Chose CertStore.",
+      "parentUuid": "52de60a6_8241cede",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "547253bd_0c6a5c3c",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T07:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9062d6e_82fde5f7",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 18
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdc98fee_d557b01f",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "24f82c2a_df441611",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T07:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc98fee_d557b01f",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 15
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da92566_12ce0759",
         "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "c73f4881df11850306210151a62127ab257d61ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f4ed9e_3e6d4a9c",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-11T07:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da92566_12ce0759",
+      "range": {
+        "startLine": 289,
+        "startChar": 54,
+        "endLine": 289,
+        "endChar": 68
+      },
+      "revId": "c73f4881df11850306210151a62127ab257d61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
