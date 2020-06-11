@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf212ea6_f2b4c9ad",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T23:32:35Z",
+      "side": 1,
+      "message": "nit, style:\n\ngolang docs doesn\u0027t support \"rich\" strings. Just use a plain \u0027r\u0027.",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "afbf23170d298c0a70653134c413b1d0f725bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e970ee3_1415cf61",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-11T23:32:35Z",
+      "side": 1,
+      "message": "nit, style.  use \"got;want\" format instead. something like:\n\n  \"invalid writing size: got\u003d%d, want\u003d%v\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 64,
+        "endLine": 158,
+        "endChar": 89
+      },
+      "revId": "afbf23170d298c0a70653134c413b1d0f725bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
