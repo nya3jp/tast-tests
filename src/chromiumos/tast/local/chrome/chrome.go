@@ -72,6 +72,7 @@ var locked = false
 var prePackages = []string{
 	"chromiumos/tast/local/arc",
 	"chromiumos/tast/local/bundles/cros/policy/pre",
+	"chromiumos/tast/local/bundles/cros/ui/cuj",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
