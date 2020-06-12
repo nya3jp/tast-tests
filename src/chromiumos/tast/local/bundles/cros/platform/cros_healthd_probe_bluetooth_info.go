@@ -34,7 +34,7 @@ type bluetoothAdapter struct {
 }
 
 func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryBluetooth, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryBluetooth, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}

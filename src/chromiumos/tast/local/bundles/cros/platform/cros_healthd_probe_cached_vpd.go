@@ -28,7 +28,7 @@ func init() {
 }
 
 func CrosHealthdProbeCachedVpd(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryCachedVPD, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryCachedVPD, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get cached VPD telemetry info: ", err)
 	}

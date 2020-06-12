@@ -28,7 +28,7 @@ func init() {
 }
 
 func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryBattery, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryBattery, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get battery telemetry info: ", err)
 	}

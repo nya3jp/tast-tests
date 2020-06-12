@@ -52,7 +52,7 @@ func getNumFans(ctx context.Context) (int, error) {
 }
 
 func CrosHealthdProbeFanInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryFan, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryFan, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get fan telemetry info: ", err)
 	}
