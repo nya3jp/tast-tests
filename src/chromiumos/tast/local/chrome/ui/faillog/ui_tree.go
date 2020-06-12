@@ -35,7 +35,7 @@ func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool,
 	}
 
 	fileName := filepath.Join(dir, uiTreeFileName)
-	testing.ContextLog(ctx, "Test failed. Dumping the automation node tree into ", fileName)
+	testing.ContextLog(ctx, "Test failed. Dumping the automation node tree into ", uiTreeFileName)
 	if err := ui.LogRootDebugInfo(ctx, tconn, fileName); err != nil {
 		testing.ContextLog(ctx, "Failed to dump: ", err)
 	}

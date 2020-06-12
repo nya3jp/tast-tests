@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -253,6 +254,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
+			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 			if err := func() error {
 				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
