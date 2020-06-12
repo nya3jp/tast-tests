@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d5bf07d_761a4eb0",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-12T22:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f6bee4_1a51481c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "115850fc_b873ca40",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e8d34298_30fcef91",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-12T22:04:18Z",
+      "side": 1,
+      "message": "Constant removed due to installObject being moved out of this file.",
+      "parentUuid": "115850fc_b873ca40",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 108
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437895f7_8253b889",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ff9ae2_7c299c8e",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-06-12T22:04:18Z",
+      "side": 1,
+      "message": "Constant removed due to installObject being moved out of this file.",
+      "parentUuid": "437895f7_8253b889",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 104
+      },
+      "revId": "843200b42f281480b20388e8d8742c54a881a2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
