@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888cb02a_94496201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "Feel free to add this to a new section of the README.md\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;l\u003d172\nit can be small, just so that it\u0027s easy to remember the ffmpeg\narcane commands.",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abfe2cb6_aba5926d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "nit: \"drawn once on\" ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 70,
+        "endLine": 11,
+        "endChar": 78
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86621734_b7e4c022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "nit: you can also use () \u003d\u003e",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e3de8f_9336cb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "micro-nit: only if it makes sense, this pattern is repeated 4x times, \nwould it be/look better if it was refactored to a function?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6931d8c8_af09d60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "Maybe so, but I recall emircan@ having issues with the tolerance as can be seen\nin [1] and settling for a magic number 2 :- )\n\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/modules/mediacapturefromelement/canvas_capture_handler_unittest.cc;l\u003d115;drc\u003d1502cb3740a3a8c5d1edc9d72cb50461ac84b6f7;bpv\u003d0;bpt\u003d1",
+      "range": {
+        "startLine": 61,
+        "startChar": 34,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a1f814_a0e55e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "nit: consider using string literals [1]:\n  `(R \u003d ${color[0]}, G \u003d ${color[1]}, B \u003d ${color[2]}, A \u003d ${color[3]})` \n\nPerhaps in other JS parts like e.g. l27 for clarity.\n\n[1] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 29
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddf0eab_3baf5342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "s/Checks/Verifies/",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1652c869_e4ee082e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "We usually use\n  ExtraAttr: []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},\nunless there\u0027s a plan to add it to the CQ ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 66
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdefb5dc_9d26c58c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-12T16:09:03Z",
+      "side": 1,
+      "message": "Question: should we run this test only on devices with h264 hw decoder?\nI think the sw decoder video-to-canvas is verified by the browser_tests,\nincluding on CrOs, as part of Chromium infra.\n(https://source.chromium.org/search?q\u003dvideo\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc:third_party%2Fblink%2Fweb_tests%2Ffast%2Fcanvas%2F)",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
