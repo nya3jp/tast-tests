@@ -5,11 +5,18 @@
 package crash
 
 import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"math/rand"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"reflect"
 	"sort"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/testutil"
 )
@@ -58,5 +65,123 @@ func TestGetCrashes(t *testing.T) {
 	sort.Strings(files)
 	if exp := []string{barDmp.abs, fooBIOSLog.abs, fooCore.abs, fooDmp.abs, fooGPU.abs, fooInfo.abs, fooKCrash.abs, fooLog.abs, fooCompressedLog.abs, fooMeta.abs, fooProclog.abs, fooCompressedTxt.abs}; !reflect.DeepEqual(files, exp) {
 		t.Errorf("GetCrashes(%v) = %v; want %v", dirs, files, exp)
+	}
+}
+
+func TestProcessRunning(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	// procName must be <=14 characters long so that gopsutil doesn't look at
+	// /proc/$$/cmdline.
+	procName := fmt.Sprintf("t_%d", rand.Int31())
+	if err := ioutil.WriteFile(filepath.Join(td, procName), []byte("#!/bin/sh\nsleep 10\n"), 0777); err != nil {
+		t.Fatal("Failed to write a script: ", err)
+	}
+
+	cmd := exec.Command(filepath.Join(td, procName))
+	if err := cmd.Start(); err != nil {
+		t.Fatal("Failed to start a script: ", err)
+	}
+	func() {
+		defer cmd.Wait()
+		defer cmd.Process.Kill()
+
+		running, err := processRunning(procName)
+		if err != nil {
+			t.Fatal("processRunning: ", err)
+		}
+		if !running {
+			t.Fatal("processRunning = false; want true")
+		}
+	}()
+
+	running, err := processRunning(procName)
+	if err != nil {
+		t.Fatal("processRunning: ", err)
+	}
+	if running {
+		t.Fatal("processRunning = true; want false")
+	}
+}
+
+func TestDeleteCoreDumps(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	dir1 := filepath.Join(td, "dir1") // dir1 is missing
+	dir2 := filepath.Join(td, "dir2")
+	if err := os.Mkdir(dir2, 0777); err != nil {
+		t.Fatal("Failed to create dir: ", err)
+	}
+
+	initFiles := []string{"a.core", "a.txt", "b.core", "b.dmp", "b.jpg"}
+	for _, fn := range initFiles {
+		if err := ioutil.WriteFile(filepath.Join(dir2, fn), nil, 0666); err != nil {
+			t.Fatal("Failed to touch file: ", err)
+		}
+	}
+
+	// filesIn returns a list of files under dir.
+	filesIn := func(dir string) []string {
+		fis, err := ioutil.ReadDir(dir)
+		if err != nil {
+			t.Fatal("ReadDir failed: ", err)
+		}
+		var files []string
+		for _, fi := range fis {
+			files = append(files, fi.Name())
+		}
+		sort.Strings(files)
+		return files
+	}
+
+	// First, test the behavior when crash_reporter is running.
+	func() {
+		ctx, cancel := context.WithCancel(context.Background())
+		defer cancel()
+
+		reporterRunning := func() (bool, error) {
+			// Cancel the context so that deleteCoreDumps returns after observing exactly once that
+			// crash_reporter is running.
+			cancel()
+			return true, nil
+		}
+
+		if err := deleteCoreDumps(ctx, []string{dir1, dir2}, reporterRunning); err == nil {
+			t.Error("deleteCoreDumps succeeded unexpectedly while crash_reporter is running")
+		}
+
+		got := filesIn(dir2)
+		if diff := cmp.Diff(got, initFiles); diff != "" {
+			t.Error("Files mismatch after failed deleteCoreDumps (-got +want):\n", diff)
+		}
+	}()
+
+	// Second, test the behavior when crash_reporter is not running.
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	reporterRunning := func() (bool, error) {
+		// Create a new core file. This should not be deleted.
+		for _, fn := range []string{"c.core", "c.dmp"} {
+			if err := ioutil.WriteFile(filepath.Join(dir2, fn), nil, 0666); err != nil {
+				t.Fatal("Failed to touch file: ", err)
+			}
+		}
+		return false, nil
+	}
+
+	if err := deleteCoreDumps(ctx, []string{dir1, dir2}, reporterRunning); err != nil {
+		t.Error("deleteCoreDumps failed when crash_reporter is not running: ", err)
+	}
+
+	// a.core: Not deleted because a.dmp does not exist.
+	// b.core: Deleted.
+	// c.core: Not deleted because it was created after waiting for crash_reporter.
+	got := filesIn(dir2)
+	want := []string{"a.core", "a.txt", "b.dmp", "b.jpg", "c.core", "c.dmp"}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Error("Files mismatch after successful deleteCoreDumps (-got +want):\n", diff)
 	}
 }
