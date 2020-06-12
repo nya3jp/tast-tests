@@ -33,6 +33,32 @@ type FindParams struct {
 	State      map[StateType]bool
 }
 
+// ToString returns string representation of params.
+// Attributes in ToString match order of FindParams definition.
+// Output format matches the string output of ToString on ui.Node object.
+func (params FindParams) String() string {
+	var attributes string
+	for k, v := range params.Attributes {
+		attributes += fmt.Sprintf("%q: %s, ", k, v)
+	}
+	if len(attributes) > 2 {
+		attributes = attributes[:len(attributes)-2]
+	}
+
+	var state string
+	for k, v := range params.State {
+		state += fmt.Sprintf("%s: %s, ", k, v)
+	}
+	if len(state) > 2 {
+		state = state[:len(state)-2]
+	}
+
+	// Use %q to print string properties, for readability when attribute is empty.
+	var outputString = fmt.Sprintf("Role=%s Name=%q ClassName=%q Attributes={%s} State={%s}", params.Role, params.Name, params.ClassName, attributes, state)
+
+	return outputString
+}
+
 // rawAttributes creates a byte array of the attributes field.
 // It adds the quick attributes(Name and ClassName) to it as well.
 // If any attribute is defined twice, an error is returned.
@@ -255,12 +281,14 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) (NodeSlice, e
 
 	var nodes NodeSlice
 	for i := 0; i < len; i++ {
-		obj := &chrome.JSObject{}
-		if err := nodeList.Call(ctx, obj, "function(i){return this[i]}", i); err != nil {
-			nodes.Release(ctx)
-			return nil, err
-		}
-		node, err := NewNode(ctx, n.tconn, obj)
+		node, err := func() (*Node, error) {
+			obj := &chrome.JSObject{}
+			if err := nodeList.Call(ctx, obj, "function(i){return this[i]}", i); err != nil {
+				nodes.Release(ctx)
+				return nil, err
+			}
+			return NewNode(ctx, n.tconn, obj)
+		}()
 		if err != nil {
 			nodes.Release(ctx)
 			return nil, err
@@ -346,6 +374,48 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 		return nil, err
 	}
 	return out, nil
+}
+
+// Children returns the children of the node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) Children(ctx context.Context) (NodeSlice, error) {
+	childrenList := &chrome.JSObject{}
+	if err := n.object.Call(ctx, childrenList, "function(){return this.children}"); err != nil {
+		return nil, errors.Wrap(err, "failed to call children() on the specified node")
+	}
+	defer childrenList.Release(ctx)
+
+	var numChildren int
+	if err := childrenList.Call(ctx, &numChildren, "function(){return this.length}"); err != nil {
+		return nil, err
+	}
+
+	var children NodeSlice
+	for i := 0; i < numChildren; i++ {
+		node, err := func() (*Node, error) {
+			currChild := &chrome.JSObject{}
+			if err := childrenList.Call(ctx, currChild, "function(i){return this[i]}", i); err != nil {
+				return nil, err
+			}
+			return NewNode(ctx, n.tconn, currChild)
+		}()
+		if err != nil {
+			children.Release(ctx)
+			return nil, err
+		}
+		children = append(children, node)
+	}
+	return children, nil
+}
+
+// ToString returns string representation of node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) ToString(ctx context.Context) (string, error) {
+	var nodeString string
+	if err := n.object.Call(ctx, &nodeString, "function() {return this.toString()}"); err != nil {
+		return "", err
+	}
+	return nodeString, nil
 }
 
 // Root returns the chrome.automation root as a Node.
