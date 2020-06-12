@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e025dc0f_b9cd312a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-12T06:20:13Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Now it waits for ScanDone signal from wpa_supplicant. PTAL.",
+      "parentUuid": "93efa81e_a1ed6302",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 7
+      },
+      "revId": "419dc565666012bdecfcdd0b1e1385f5743316c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d91c97da_62fcd89d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 6
