@@ -73,7 +73,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	numExistingWindows := 0
 
 	pv := perf.NewValues()
-	for _, numWindows := range []int{2, 8} {
+	for _, numWindows := range []int{2} {
 		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
@@ -90,6 +90,11 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 		if err = cpu.WaitUntilIdle(ctx); err != nil {
 			s.Fatal("Failed waiting for CPU to become idle: ", err)
+		}
+
+		// ####
+		if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.startTracing)({})`, nil); err != nil {
+			s.Fatal("Failed startTracing: ", err)
 		}
 
 		hists, err := metrics.Run(ctx, tconn, func() error {
@@ -124,12 +129,23 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to cycle windows or get the histograms: ", err)
 		}
+
+		// ####
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Fatal("Failed sleep: ", err)
+		}
+		if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.stopTracing)()`, nil); err != nil {
+			s.Fatal("Failed startTracing: ", err)
+		}
+
 		for _, h := range hists {
 			mean, err := h.Mean()
 			if err != nil {
 				s.Logf("Failed to get mean for histogram %s: %v", h.Name, err)
 				continue
 			}
+			s.Log("#### ", fmt.Sprintf("%s.%dwindows", h.Name, numExistingWindows),
+				"= ", mean)
 
 			pv.Set(perf.Metric{
 				Name:      fmt.Sprintf("%s.%dwindows", h.Name, numExistingWindows),
