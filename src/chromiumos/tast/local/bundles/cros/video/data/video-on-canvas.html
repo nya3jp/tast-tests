@@ -1,0 +1,76 @@
+<html>
+<body>
+  <h1>Video</h1>
+  <video id="video" height="180" autoplay muted style="border: 1px solid;">
+  </video>
+  <h1>Canvas</h1>
+  <canvas id="canvas" width="320" height="180" style="border: 1px solid;">
+  </canvas>
+</body>
+<script type="text/javascript">
+// Starts playing videoSourcePath. Once playback starts, the video is drawn on
+// the canvas and the resulting image is obtained. The colors of the four
+// corners of this image are checked against hard-coded values.
+function playAndDrawOnCanvas(videoSourcePath) {
+  const video = document.getElementById('video');
+  video.src = videoSourcePath;
+  return video.play().then(function() {
+    const canvas = document.getElementById('canvas');
+    const cWidth = canvas.width;
+    const cHeight = canvas.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, cWidth, cHeight);
+ 
+    const topLeftImageData = ctx.getImageData(0, 0, 1, 1);
+    const expectedTopLeftColor = [39, 52, 195, 255];
+    if (!expectColor(topLeftImageData.data, expectedTopLeftColor)) {
+      throw new Error("At top-left, expected " +
+          colorToString(expectedTopLeftColor) +
+          "; got " + colorToString(topLeftImageData.data));
+    }
+
+    const topRightImageData = ctx.getImageData(cWidth - 1, 0, 1, 1);
+    const expectedTopRightColor = [220, 223, 51, 255];
+    if (!expectColor(topRightImageData.data, expectedTopRightColor)) {
+      throw new Error("At top-right, expected " +
+          colorToString(expectedTopRightColor) +
+          "; got " + colorToString(topRightImageData.data));
+    }
+
+    const bottomRightData = ctx.getImageData(cWidth - 1, cHeight - 1, 1, 1);
+    const expectedBottomRightColor = [255, 156, 67, 255];
+    if (!expectColor(bottomRightData.data, expectedBottomRightColor)) {
+      throw new Error("At bottom-right, expected " +
+          colorToString(expectedBottomRightColor) +
+          "; got " + colorToString(bottomRightData.data));
+    }
+
+    const bottomLeftData = ctx.getImageData(0, cHeight - 1, 1, 1);
+    const expectedBottomLeftColor = [212, 50, 209, 255];
+    if (!expectColor(bottomLeftData.data, expectedBottomLeftColor)) {
+      throw new Error("At bottom-left, expected " +
+          colorToString(expectedBottomLeftColor) +
+          "; got " + colorToString(bottomLeftData.data));
+    }
+  });
+}
+
+// Returns true if actualColor is approximately equal to expectedColor. Both
+// arguments are arrays of four elements in RGBA order.
+function expectColor(actualColor, expectedColor) {
+  const tolerance = 2;  // Picked arbitrarily.
+  for (i = 0; i < 4; i++) {
+    if (Math.abs(actualColor[i] - expectedColor[i]) > tolerance)
+      return false;
+  }
+  return true;
+}
+
+function colorToString(color) {
+  return "(R = " + color[0] +
+         ", G = " + color[1] +
+         ", B = " + color[2] +
+         ", A = " + color[3] + ")";
+}
+</script>
+</html>
