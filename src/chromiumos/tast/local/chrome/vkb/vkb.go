@@ -243,6 +243,18 @@ func SwitchToFloatMode(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// SwitchToDockMode changes virtual keyboard to dock layout.
+func SwitchToDockMode(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := TapKey(ctx, tconn, "dock virtual keyboard"); err != nil {
+		return err
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return err
+	}
+	return nil
+}
+
 // TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.
 // Each keys can be any letter of the alphabet, "space" or "backspace".
 func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
