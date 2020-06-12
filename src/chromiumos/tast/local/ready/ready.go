@@ -22,6 +22,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/testexec"
@@ -57,6 +58,11 @@ func Wait(ctx context.Context) error {
 	// We never resume the job so as to make it easier for users to inspect system logs later.
 	if err := disableLogCleanup(); err != nil {
 		return err
+	}
+
+	// Delete all core dumps to free up spaces.
+	if err := crash.DeleteCoreDumps(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to delete core dumps: ", err)
 	}
 
 	// If system-services doesn't enter "start/running", everything's probably broken, so give up.
