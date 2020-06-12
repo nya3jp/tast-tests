@@ -31,6 +31,8 @@ type FindParams struct {
 	ClassName  string
 	Attributes map[string]interface{}
 	State      map[StateType]bool
+	Children   []Node
+	Value      string
 }
 
 // rawAttributes creates a byte array of the attributes field.
@@ -121,6 +123,7 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 type Node struct {
 	object    *chrome.JSObject
 	tconn     *chrome.TestConn
+	Children  []Node             `json:"children,omitempty"`
 	ClassName string             `json:"className,omitempty"`
 	Location  coords.Rect        `json:"location,omitempty"`
 	Name      string             `json:"name,omitempty"`
