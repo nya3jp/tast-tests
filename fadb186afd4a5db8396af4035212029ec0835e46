@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6b4cab5_b78435b8",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:05:48Z",
+      "side": 1,
+      "message": "does this need to be public?",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "fadb186afd4a5db8396af4035212029ec0835e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52d7c38_77d480e9",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:05:48Z",
+      "side": 1,
+      "message": "can you carry the comments, saying what this means?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "fadb186afd4a5db8396af4035212029ec0835e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a3c599_28742632",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:05:48Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "fadb186afd4a5db8396af4035212029ec0835e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975b6316_49e71573",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/config_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:05:48Z",
+      "side": 1,
+      "message": "failed",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "fadb186afd4a5db8396af4035212029ec0835e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e24fc0_852520ac",
+        "filename": "src/chromiumos/tast/common/wifi/security/dynamicwep/options.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:05:48Z",
+      "side": 1,
+      "message": "can you explain what this means?",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "fadb186afd4a5db8396af4035212029ec0835e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
