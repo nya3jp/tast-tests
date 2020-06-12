@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "282529e9_33173b36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-12T17:29:22Z",
+      "side": 1,
+      "message": "(It seems that ArcWMTest APK is now being compiled by Tast now,  so no need do it. \nhttps://crrev.com/c/2196690\n)",
+      "parentUuid": "a02f8983_35fd4bd1",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a106fee_d17bc1e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2020-06-12T02:08:34Z",
       "side": 1,
       "message": "I see recardoq mentioned about the cleanup in another code review -- defer act.Close() should be here.",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e54a048_d1fb2c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-12T17:29:22Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "31b746b8_ac45fa0c",
       "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
