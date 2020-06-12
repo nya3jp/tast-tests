@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a02f8983_35fd4bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T02:08:34Z",
+      "side": 1,
+      "message": "I guess you need Data: section? Otherwise, the data may not be copied.\nsee: https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go#29",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a106fee_d17bc1e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
@@ -16,6 +33,41 @@
       "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be31f08_4f7d51d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T02:08:34Z",
+      "side": 1,
+      "message": "Tast follows Go\u0027s coding standard, where no limitations on number of characters in a line. Lines can be as long as you\u0027re comfortable with.\n\ncf. https://golang.org/doc/effective_go.html#formatting:\n\u003e Go has no line length limit. Don\u0027t worry about overflowing a punched card. If a line feels too long, wrap it and indent with an extra tab.",
+      "parentUuid": "4a106fee_d17bc1e9",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31b746b8_ac45fa0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T02:08:34Z",
+      "side": 1,
+      "message": "I see recardoq mentioned about the cleanup in another code review -- defer act.Close() should be here.",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
