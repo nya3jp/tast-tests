@@ -301,7 +301,7 @@ func (p *Chaps) ImportPEMPrivateKeyAndCertBySlot(ctx context.Context, scratchpad
 	return result, nil
 }
 
-// generateAttrListForCopyObject is a simple helper function that converts a map from string to string to a string that can be passed to p11_reply --copy_object as --attr_list parameter.
+// generateAttrListForCopyObject is a simple helper function that converts a map from string to string to a string that can be passed to p11_replay --copy_object as --attr_list parameter.
 func generateAttrListForCopyObject(attributes *map[string]string) string {
 	attributesList := make([]string, 0, len(*attributes))
 	for k, v := range *attributes {
