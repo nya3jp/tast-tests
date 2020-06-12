@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31c1c547_4517b743",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-12T16:55:26Z",
+      "side": 1,
+      "message": "It\u0027s probably not a huge issue, but there\u0027s a bit of a TOCTOU here -- crash reporter could start running between the time when we check and the time when we delete all cores.\n\nWhy do we need to verify that it\u0027s not running? What happens if we delete a core file while it is running?\n\nIf we want to avoid deleting a core file while the crash reporter is writing to it, it might be safer to record a time at which we know crash reporter isn\u0027t running and only delete core files that are older than that? Or, even easier, record a list of extant .core files when we know crash_reporter isn\u0027t running and then only delete that list.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 7
+      },
+      "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597e363f_4b429383",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-12T16:55:26Z",
+      "side": 1,
+      "message": "nit: in non-test code this is only used with DefaultDirs right now. the only place the dirs parameter is used is for tests. Can we instead make a public/private pair, like what we have for SetUpCrashTest? Something like the following:\n\nfunc DeleteAllCores(ctx context.Context) error {\n  return deleteAllCores(ctx, DefaultDirs());\n}\n\nfunc deleteAllCores(ctx context.Context, dirs []string) error {\n  // ...\n}",
+      "range": {
+        "startLine": 311,
+        "startChar": 41,
+        "endLine": 311,
+        "endChar": 54
+      },
+      "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
