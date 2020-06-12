@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6bd9e20_73983a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:38:40Z",
+      "side": 1,
+      "message": "It seems Stop now requires tconn too as of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2230748.\n\nPlease sync, rebase, and fix the compile errors. Otherwise this will never build.",
+      "revId": "875124dbfd83d1bc11f5421182f69fd76c1a85dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
