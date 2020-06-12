@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "32111032_8357f6c5",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T06:10:45Z",
+      "side": 1,
+      "message": "typo: audio",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b2786d_232ef668",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T06:10:45Z",
+      "side": 1,
+      "message": "Explicit type State is needed here (otherwise it\u0027s a string; note that we can\u0027t omit types when assigning values explicitly without iota)",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fcfd283_072f01e6",
         "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
         "patchSetId": 1
