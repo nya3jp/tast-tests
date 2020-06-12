@@ -58,7 +58,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		// CCA should open back camera as default if the device is under tablet
 		// mode and open front camera as default for clamshell mode.
 		var isTabletMode bool
-		if err := tconn.EvalPromise(ctx,
+		if err := tconn.Eval(ctx,
 			`tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`,
 			&isTabletMode); err != nil {
 			s.Fatal("Failed to recognize device mode: ", err)

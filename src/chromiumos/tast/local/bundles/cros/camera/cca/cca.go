@@ -270,18 +270,13 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	// initializing, especially on low-end devices and when the system is busy.
 	// Fail the test early if it's timed out to make it easier to figure out
 	// the real reason of a test failure.
-	const waitIdle = `
-		new Promise((resolve, reject) => {
-		  const idleCallback = ({didTimeout}) => {
-		    if (didTimeout) {
-		      reject(new Error('Timed out initializing CCA'));
-		    } else {
-		      resolve();
-		    }
-		  };
-		  requestIdleCallback(idleCallback, {timeout: 30000});
-		});`
-	if err := conn.EvalPromise(ctx, waitIdle, nil); err != nil {
+	if err := conn.Eval(ctx, `(async () => {
+		  const deadline = await new Promise(
+		      (resolve) => requestIdleCallback(resolve, {timeout: 30000}));
+		  if (deadline.didTimeout) {
+		    throw new Error('Timed out initializing CCA');
+		  }
+		})()`, nil); err != nil {
 		return nil, err
 	}
 
@@ -290,7 +285,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		if err != nil {
 			return nil, err
 		}
-		if err := conn.EvalPromise(ctx, string(script), nil); err != nil {
+		if err := conn.Eval(ctx, string(script), nil); err != nil {
 			return nil, err
 		}
 	}
@@ -316,11 +311,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 // returned App instance must be closed when the test is finished.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*App, error) {
 	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.TestConn) error {
-		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
-		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
-			return err
-		}
-		return nil
+		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
 	})
 }
 
@@ -502,35 +493,35 @@ func (a *App) CheckVideoInactive(ctx context.Context) error {
 
 // RestoreWindow restores the window, exiting a maximized, minimized, or fullscreen state.
 func (a *App) RestoreWindow(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "Tast.restoreWindow()", nil)
+	return a.conn.Eval(ctx, "Tast.restoreWindow()", nil)
 }
 
 // MinimizeWindow minimizes the window.
 func (a *App) MinimizeWindow(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "Tast.minimizeWindow()", nil)
+	return a.conn.Eval(ctx, "Tast.minimizeWindow()", nil)
 }
 
 // MaximizeWindow maximizes the window.
 func (a *App) MaximizeWindow(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "Tast.maximizeWindow()", nil)
+	return a.conn.Eval(ctx, "Tast.maximizeWindow()", nil)
 }
 
 // FullscreenWindow fullscreens the window.
 func (a *App) FullscreenWindow(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "Tast.fullscreenWindow()", nil)
+	return a.conn.Eval(ctx, "Tast.fullscreenWindow()", nil)
 }
 
 // GetNumOfCameras returns number of camera devices.
 func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
 	var numCameras int
-	err := a.conn.EvalPromise(ctx, "Tast.getNumOfCameras()", &numCameras)
+	err := a.conn.Eval(ctx, "Tast.getNumOfCameras()", &numCameras)
 	return numCameras, err
 }
 
 // GetFacing returns the active camera facing.
 func (a *App) GetFacing(ctx context.Context) (Facing, error) {
 	var facing Facing
-	if err := a.conn.EvalPromise(ctx, "Tast.getFacing()", &facing); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getFacing()", &facing); err != nil {
 		return "", err
 	}
 	return facing, nil
@@ -539,7 +530,7 @@ func (a *App) GetFacing(ctx context.Context) (Facing, error) {
 // GetPreviewResolution returns resolution of preview video.
 func (a *App) GetPreviewResolution(ctx context.Context) (Resolution, error) {
 	r := Resolution{-1, -1}
-	if err := a.conn.EvalPromise(ctx, "Tast.getPreviewResolution()", &r); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getPreviewResolution()", &r); err != nil {
 		return r, errors.Wrap(err, "failed to get preview resolution")
 	}
 	return r, nil
@@ -557,7 +548,7 @@ func (a *App) GetScreenOrientation(ctx context.Context) (Orientation, error) {
 // GetPhotoResolutions returns available photo resolutions of active camera on HALv3 device.
 func (a *App) GetPhotoResolutions(ctx context.Context) ([]Resolution, error) {
 	var rs []Resolution
-	if err := a.conn.EvalPromise(ctx, "Tast.getPhotoResolutions()", &rs); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getPhotoResolutions()", &rs); err != nil {
 		return nil, errors.Wrap(err, "failed to get photo resolution")
 	}
 	return rs, nil
@@ -566,7 +557,7 @@ func (a *App) GetPhotoResolutions(ctx context.Context) ([]Resolution, error) {
 // GetVideoResolutions returns available video resolutions of active camera on HALv3 device.
 func (a *App) GetVideoResolutions(ctx context.Context) ([]Resolution, error) {
 	var rs []Resolution
-	if err := a.conn.EvalPromise(ctx, "Tast.getVideoResolutions()", &rs); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getVideoResolutions()", &rs); err != nil {
 		return nil, errors.Wrap(err, "failed to get video resolution")
 	}
 	return rs, nil
@@ -575,7 +566,7 @@ func (a *App) GetVideoResolutions(ctx context.Context) ([]Resolution, error) {
 // GetDeviceID returns the active camera device id.
 func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 	var id DeviceID
-	if err := a.conn.EvalPromise(ctx, "Tast.getDeviceId()", &id); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getDeviceId()", &id); err != nil {
 		return "", err
 	}
 	return id, nil
@@ -584,7 +575,7 @@ func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 // GetState returns whether a state is active in CCA.
 func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	var result bool
-	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.getState(%q)", state), &result); err != nil {
+	if err := a.conn.Call(ctx, &result, "Tast.getState", state); err != nil {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
 	return result, nil
@@ -593,7 +584,7 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
 func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
 	var result bool
-	if err := a.conn.EvalPromise(ctx, "Tast.isPortraitModeSupported()", &result); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.isPortraitModeSupported()", &result); err != nil {
 		return false, err
 	}
 	return result, nil
@@ -757,8 +748,7 @@ func (a *App) SavedDir(ctx context.Context) (string, error) {
 
 // CheckFacing returns an error if the active camera facing is not expected.
 func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
-	checkFacing := fmt.Sprintf("Tast.checkFacing(%q)", expected)
-	return a.conn.EvalPromise(ctx, checkFacing, nil)
+	return a.conn.Call(ctx, nil, "Tast.checkFacing", expected)
 }
 
 // Mirrored returns whether mirroring is on.
@@ -769,9 +759,8 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 }
 
 func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) {
-	code := fmt.Sprintf("Tast.isExist(%q)", selector)
 	var exist bool
-	err := a.conn.Eval(ctx, code, &exist)
+	err := a.conn.Call(ctx, &exist, "Tast.isExist", selector)
 	return exist, err
 }
 
@@ -797,8 +786,7 @@ func (a *App) Visible(ctx context.Context, ui UIComponent) (bool, error) {
 		return false, wrapError(err)
 	}
 	var visible bool
-	code := fmt.Sprintf("Tast.isVisible(%q)", selector)
-	if err := a.conn.Eval(ctx, code, &visible); err != nil {
+	if err := a.conn.Call(ctx, &visible, "Tast.isVisible", selector); err != nil {
 		return false, wrapError(err)
 	}
 	return visible, nil
@@ -825,7 +813,7 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 		return errors.Errorf("unrecognized mode: %s", mode)
 	}
 	var visible bool
-	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.isVisible(%q)", reviewElementID), &visible); err != nil {
+	if err := a.conn.Call(ctx, &visible, "Tast.isVisible", reviewElementID); err != nil {
 		return err
 	} else if !visible {
 		return errors.New("review result is not shown")
@@ -863,7 +851,7 @@ func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) er
 	} else {
 		expr = "Tast.click('#cancel-result')"
 	}
-	if err := a.conn.Exec(ctx, expr); err != nil {
+	if err := a.conn.Eval(ctx, expr, nil); err != nil {
 		return errors.Wrap(err, "failed to click confirm/cancel button")
 	}
 	return nil
@@ -959,7 +947,7 @@ func (a *App) ClickShutter(ctx context.Context) error {
 
 // SwitchCamera switches to next camera device.
 func (a *App) SwitchCamera(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "Tast.switchCamera()", nil)
+	return a.conn.Eval(ctx, "Tast.switchCamera()", nil)
 }
 
 // SwitchMode switches to specified capture mode.
@@ -969,8 +957,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 	} else if active {
 		return nil
 	}
-	code := fmt.Sprintf("Tast.switchMode(%q)", mode)
-	if err := a.conn.Eval(ctx, code, nil); err != nil {
+	if err := a.conn.Call(ctx, nil, "Tast.switchMode", mode); err != nil {
 		return errors.Wrapf(err, "failed to switch to mode %s", mode)
 	}
 	if err := a.WaitForState(ctx, "mode-switching", false); err != nil {
@@ -1010,10 +997,10 @@ func (a *App) WaitForMinimized(ctx context.Context, minimized bool) error {
 // CheckGridOption checks whether grid option enable state is as expected.
 func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 	var actual bool
-	err := a.conn.Eval(ctx, "Tast.getState('grid')", &actual)
-	if err != nil {
+	if err := a.conn.Eval(ctx, "Tast.getState('grid')", &actual); err != nil {
 		return err
-	} else if actual != expected {
+	}
+	if actual != expected {
 		return errors.Errorf("unexpected grid option enablement: got %v, want %v", actual, expected)
 	}
 	return nil
@@ -1028,8 +1015,7 @@ func (a *App) Click(ctx context.Context, ui UIComponent) error {
 	if err != nil {
 		return wrapError(err)
 	}
-	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
-	if err := a.conn.Eval(ctx, code, nil); err != nil {
+	if err := a.ClickWithSelector(ctx, selector); err != nil {
 		return wrapError(err)
 	}
 	return nil
@@ -1041,8 +1027,7 @@ func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) err
 	if err != nil {
 		return err
 	}
-	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].click()", selector, index)
-	if err := a.conn.Eval(ctx, code, nil); err != nil {
+	if err := a.conn.Call(ctx, nil, `(selector, index) => document.querySelectorAll(selector)[index].click()`, selector, index); err != nil {
 		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
 	}
 	return nil
@@ -1054,9 +1039,8 @@ func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int)
 	if err != nil {
 		return false, err
 	}
-	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].checked", selector, index)
 	var checked bool
-	if err := a.conn.Eval(ctx, code, &checked); err != nil {
+	if err := a.conn.Call(ctx, &checked, `(selector, index) => document.querySelectorAll(selector)[index].checked`, selector, index); err != nil {
 		return false, errors.Wrapf(err, "failed to get checked state on %v(th) %v", index, ui.Name)
 	}
 	return checked, nil
@@ -1064,8 +1048,7 @@ func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int)
 
 // ClickWithSelector clicks an element with given selector.
 func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
-	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
-	return a.conn.Eval(ctx, code, nil)
+	return a.conn.Call(ctx, nil, `(selector) => document.querySelector(selector).click()`, selector)
 }
 
 // RunThroughCameras runs function f in app after switching to each available camera.
@@ -1114,8 +1097,7 @@ func (a *App) RunThroughCameras(ctx context.Context, f func(Facing) error) error
 
 // CheckMojoConnection checks if mojo connection works.
 func (a *App) CheckMojoConnection(ctx context.Context) error {
-	code := fmt.Sprintf("Tast.checkMojoConnection(%v)", upstart.JobExists(ctx, "cros-camera"))
-	return a.conn.EvalPromise(ctx, code, nil)
+	return a.conn.Call(ctx, nil, "Tast.checkMojoConnection", upstart.JobExists(ctx, "cros-camera"))
 }
 
 // OutputCodeCoverage stops the profiling and output the code coverage information to the output
@@ -1156,13 +1138,20 @@ func (a *App) OutputCodeCoverage(ctx context.Context) error {
 
 // TriggerConfiguration triggers configuration by calling trigger() and waits for camera configuration finishing.
 func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) error {
-	if err := a.conn.Exec(ctx, "CCAConfigurationReady = Tast.waitNextConfiguration()"); err != nil {
-		return err
+	// waitNextConfiguration() returns a Promise instance, so Eval waits for its settled state.
+	// For its workaround, wrap by a closuer.
+	var waiting chrome.JSObject
+	if err := a.conn.Eval(ctx, `(p => () => p)(Tast.waitNextConfiguration())`, &waiting); err != nil {
+		return errors.Wrap(err, "failed to start watching congiruation update")
 	}
 	if err := trigger(); err != nil {
 		return err
 	}
-	return a.conn.EvalPromise(ctx, "CCAConfigurationReady", nil)
+	// And then unwrap the promise to wait its settled state.
+	if err := a.conn.Call(ctx, nil, `(p) => p()`, &waiting); err != nil {
+		return errors.Wrap(err, "failed to waiting for the completion configuration update")
+	}
+	return nil
 }
 
 // EnsureTabletModeEnabled makes sure that the tablet mode states of both
