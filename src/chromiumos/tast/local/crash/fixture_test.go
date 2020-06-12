@@ -6,13 +6,9 @@ package crash
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"os"
-	"os/exec"
 	"path/filepath"
-	"strings"
 	"syscall"
 	"testing"
 
@@ -91,13 +87,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	// Start a fake crash_sender process.
-	// Process name length must be up to TASK_COMM_LEN (16).
-	procName := fmt.Sprintf("test_%d", rand.Int31())
-	shell := fmt.Sprintf("echo -n %s > /proc/self/comm; sleep 5", procName)
-	cmd := exec.Command("sh", "-c", shell)
-	if err := cmd.Start(); err != nil {
-		t.Fatalf("Failed to start fake crash_sender process: %v", err)
-	}
+	cmd, procName := startFakeProcess(t)
 
 	// Start a goroutine to reap the subprocess. This must be done concurrently
 	// with pkill because pkill waits for signaled processes to exit.
@@ -110,23 +100,6 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		}
 	}()
 	defer func() { <-done }()
-
-	// Wait for the process name change to take effect.
-	for {
-		// We don't use gopsutil to get the process name here because it somehow
-		// caches the process name until it exits.
-		b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", cmd.Process.Pid))
-		if err != nil {
-			// In a race condition comm might not exist yet.
-			// We do not check os.IsNotExist here because reading /proc files
-			// might return random error code other than ENOENT (crbug.com/1042000#c9).
-			continue
-		}
-		name := strings.TrimRight(string(b), "\n")
-		if name == procName {
-			break
-		}
-	}
 
 	sp := setUpParams{
 		inProgDir: runDir,

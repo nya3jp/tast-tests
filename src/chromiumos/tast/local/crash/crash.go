@@ -281,3 +281,42 @@ func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 	}
 	return firstErr
 }
+
+// ReporterRunning returns if a crash_reporter process is running.
+func ReporterRunning() (bool, error) {
+	return processRunning("crash_reporter")
+}
+
+// DeleteAllCores deletes all core dumps under dirs. Typically DefaultDirs()
+// should be passed as dirs. Delete core dumps are logged via ctx.
+func DeleteAllCores(ctx context.Context, dirs []string) error {
+	// Continue on errors to remove cores as many as possible.
+	var firstErr error
+	for _, dir := range dirs {
+		fis, err := ioutil.ReadDir(dir)
+		if os.IsNotExist(err) {
+			continue
+		}
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to read dir: ", err)
+			if firstErr == nil {
+				firstErr = err
+			}
+			continue
+		}
+		for _, fi := range fis {
+			if !strings.HasSuffix(fi.Name(), ".core") {
+				continue
+			}
+			fp := filepath.Join(dir, fi.Name())
+			testing.ContextLogf(ctx, "Deleting %s (%d bytes)", fp, fi.Size())
+			if err := os.Remove(fp); err != nil {
+				testing.ContextLog(ctx, "Failed to delete a core dump: ", err)
+				if firstErr == nil {
+					firstErr = err
+				}
+			}
+		}
+	}
+	return firstErr
+}
