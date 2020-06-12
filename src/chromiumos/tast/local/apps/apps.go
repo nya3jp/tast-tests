@@ -7,7 +7,6 @@ package apps
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -87,12 +86,10 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	}, nil); err != nil {
 		return err
 	}
-	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
-	return tconn.EvalPromise(ctx, query, nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID)
 }
 
 // Close closes an app specified by appID.
 func Close(ctx context.Context, tconn *chrome.TestConn, appID string) error {
-	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.closeApp)(%q)", appID)
-	return tconn.EvalPromise(ctx, query, nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, appID)
 }
