@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8276fced_7c2c2789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-12T16:41:36Z",
+      "side": 1,
+      "message": "We might want to clarify this. My understanding is that 95th percentile is the sample that 95% of the samples are below it, not the average of 95% samples.\n\nThat is, assuming we have samples\n  1, 2, 3, 4, ..., 19, 20\n\n95% percentile number is 19. Not the average \"sum(1, 2, ... 19) / 19\".",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 38
+      },
+      "revId": "9fb9a848bd6b67aab423b6d9dfbc332a38156b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1762e4f0_83f47b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-12T16:41:36Z",
+      "side": 1,
+      "message": "Drop \"lr.\" since |sum| is from |records|, no longer |lr.records| ?",
+      "range": {
+        "startLine": 305,
+        "startChar": 32,
+        "endLine": 305,
+        "endChar": 35
+      },
+      "revId": "9fb9a848bd6b67aab423b6d9dfbc332a38156b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58aecc7f_09fd86fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-12T16:41:36Z",
+      "side": 1,
+      "message": "ditto, drop \"lr.\" ?",
+      "range": {
+        "startLine": 317,
+        "startChar": 44,
+        "endLine": 317,
+        "endChar": 47
+      },
+      "revId": "9fb9a848bd6b67aab423b6d9dfbc332a38156b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
