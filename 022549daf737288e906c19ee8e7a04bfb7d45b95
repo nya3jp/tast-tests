@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42d3e4b3_86eb8486",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T07:15:05Z",
+      "side": 1,
+      "message": "This code seems to have mixed spaces/tabs.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742d068d_9eae6351",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T07:15:05Z",
+      "side": 1,
+      "message": "It is not desirable that users of this library have write access to these fields.\n\n- If we\u0027re going to restrict Action definitions within this package, we can just unexport all fields.\n- If we\u0027re going to allow other packages to define Action, then I\u0027d recommend making this an interface.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61534ea5_d4a0b18e",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T07:15:05Z",
+      "side": 1,
+      "message": "I believe this string should be decidable on the construction time of the graph, so it can be a mere string instead of a function returning a string.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9783a466_3da67a0a",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T07:15:05Z",
+      "side": 1,
+      "message": "By convention, functions taking format strings have \"f\" as a suffix. So maybe WithNamef?",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "79eb7e0e_0ca0a0ef",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T07:15:05Z",
+      "side": 1,
+      "message": "They refer to out for out.String, right? Given that String can be computed at graph construction time, we can do:\n\n name :\u003d fmt.Sprintf(format, params...)\n return \u0026Action{\n   Do: ...\n   String: name,\n }",
+      "parentUuid": "fd1c8aba_5d76fb92",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82cc7361_9498a417",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 2
