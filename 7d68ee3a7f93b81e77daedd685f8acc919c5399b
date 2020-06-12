@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ca2805b_2248ccba",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-12T09:35:50Z",
+      "side": 1,
+      "message": "This may be out of the scope of this change, but just for my curiousity:\nIf the path were valid only after the download is actually done, would it be better to return error when this function were called before it?",
+      "revId": "7d68ee3a7f93b81e77daedd685f8acc919c5399b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20582293_ad2ada01",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-12T09:35:50Z",
+      "side": 1,
+      "message": "Did you mean \"is the function type\"?\nI could not find the definition of \"function prototype\" in Go language terminology.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "7d68ee3a7f93b81e77daedd685f8acc919c5399b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0f18f7_12731b7e",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-12T09:35:50Z",
+      "side": 1,
+      "message": "Did you mean \"failed to read packets\"?",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "7d68ee3a7f93b81e77daedd685f8acc919c5399b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
