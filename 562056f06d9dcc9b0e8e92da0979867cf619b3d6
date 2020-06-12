@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9c39d7bc_f4957dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:43:42Z",
+      "side": 1,
+      "message": "That makes sense, as long as chrome.New() is clearing the users\u0027s cryptohome state. Is it?",
+      "parentUuid": "3a879a5c_78286e57",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffe2d459_d788212c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
         "patchSetId": 7
