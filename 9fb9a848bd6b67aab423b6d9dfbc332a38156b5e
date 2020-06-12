@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2a0f2a98_3f6b8e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-12T22:39:40Z",
+      "side": 1,
+      "message": "Thanks.\n\nDo you mind waiting for Mike to confirm before submitting?",
+      "parentUuid": "2fb622ec_67f672e7",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 38
+      },
+      "revId": "9fb9a848bd6b67aab423b6d9dfbc332a38156b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1762e4f0_83f47b9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
