@@ -70,17 +70,11 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, get
 	// Close the tab to stop loopback after test.
 	defer conn.CloseTarget(ctx)
 
-	const getUserMediaCode = `new Promise((resolve, reject) => {
-			const constraints = { audio: false, video: true };
-
-			navigator.mediaDevices.getUserMedia(constraints)
-			.then(stream => {
-                            document.getElementById('localVideo').srcObject = stream;
-                            resolve();
-                        })
-			.catch(reject);
-		});`
-	if err := conn.EvalPromise(ctx, getUserMediaCode, nil); err != nil {
+	if err := conn.Eval(ctx, `(async() => {
+		  const constraints = {audio: false, video: true};
+		  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+		  document.getElementById('localVideo').srcObject = stream;
+		})()`, nil); err != nil {
 		return errors.Wrap(err, "getUserMedia() establishment failed")
 	}
 
