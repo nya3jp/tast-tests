@@ -47,7 +47,7 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		s.Fatal("Timed out waiting for video device to be available: ", err)
 	}
 
-	if err := conn.Exec(ctx, entryPoint); err != nil {
+	if err := conn.Eval(ctx, entryPoint, nil); err != nil {
 		s.Fatal("Failed to start test: ", err)
 	}
 

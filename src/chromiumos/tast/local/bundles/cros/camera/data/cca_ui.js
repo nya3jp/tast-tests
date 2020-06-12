@@ -384,26 +384,29 @@ window.Tast = class {
       throw new Error('Already in configuring state');
     }
 
-    let resolve = null;
-    let reject = null;
     let activated = false;
-    return new Promise((resolve, reject) => {
-      const pulseObserver = (value) => {
+    const promise = new Promise((resolve, reject) => {
+      const observer = (value) => {
         if (activated === value) {
-          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
+          state.removeObserver(CAMERA_CONFIGURING, observer);
           reject(new Error(
               `State ${CAMERA_CONFIGURING} assertion failed,` +
               `expecting ${!activated} got ${value}`));
+          return;
         }
         if (value) {
           activated = true;
-        } else {
-          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
-          resolve();
+          return;
         }
-      };
-      state.addObserver(CAMERA_CONFIGURING, pulseObserver);
+        state.removeObserver(CAMERA_CONFIGURING, observer);
+        resolve();
+      }
+      state.addObserver(CAMERA_CONFIGURING, observer);
     });
+
+    // Returning the promise instance directly would cause to wait on Eval.
+    // Wrap it by a function.
+    return () => promise;
   }
 };
 })();
