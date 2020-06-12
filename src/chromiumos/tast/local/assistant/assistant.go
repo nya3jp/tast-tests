@@ -7,7 +7,6 @@ package assistant
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -66,20 +65,16 @@ func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
 func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
-	const accelerator = "{keyCode: 'assistant', shift: false, control: false, alt: false, search: false, pressed: true}"
-	expr := fmt.Sprintf(
-		`(async () => {
-		   var accel = %s;
-		   // Triggers the hotkey pressed event.
-		   await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accel);
-		   // Releases the key for cleanup. This release event will not be handled as it is
-		   // not a registered accelerator, so we ignore the result and don't wait for this
-		   // async call returned.
-		   accel.pressed = false;
-		   chrome.autotestPrivate.activateAccelerator(accel, () => {});
-		 })()`, accelerator)
-
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	if err := tconn.Call(ctx, nil, `async () => {
+		  let accel = {keyCode: 'assistant', shift: false, control: false, alt: false, search: false, pressed: true};
+		  // Triggers the hotkey pressed event.
+		  await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accel);
+		  // Releases the key for cleanup. This release event will not be handled as it is
+		  // not a registered accelerator, so we ignore the result and don't wait for this
+		  // async call returned.
+		  accel.pressed = false;
+		  chrome.autotestPrivate.activateAccelerator(accel, () => {});
+		}`); err != nil {
 		return errors.Wrap(err, "failed to execute accelerator")
 	}
 

@@ -73,7 +73,7 @@ func OpenAndroidApp(ctx context.Context, s *testing.State) {
 func waitForArcPackageListInitialRefreshed(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var refreshed bool
-		if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isArcPackageListInitialRefreshed)()`, &refreshed); err != nil {
+		if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.isArcPackageListInitialRefreshed)()`, &refreshed); err != nil {
 			return testing.PollBreak(err)
 		}
 		if !refreshed {
