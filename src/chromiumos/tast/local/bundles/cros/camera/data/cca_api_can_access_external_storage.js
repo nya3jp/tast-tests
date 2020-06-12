@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// The content here will be fed into Conn.EvalPromise().
+// The content here will be fed into Conn.Eval().
 (function() {
   // Returns a promise containing all the entries of a given directory.
   const readDir = (dir) => {

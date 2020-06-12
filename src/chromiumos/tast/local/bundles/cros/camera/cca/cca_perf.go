@@ -63,12 +63,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		if err := setupPerfListener(ctx, tconn, perfEvents, options.IsColdStart); err != nil {
 			return err
 		}
-
-		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
-		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
-			return err
-		}
-		return nil
+		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
 	})
 
 	if err != nil {

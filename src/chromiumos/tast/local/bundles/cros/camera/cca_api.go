@@ -64,7 +64,7 @@ func testCanAccessExternalStorage(ctx context.Context, s *testing.State, conn *c
 		s.Error("Failed to read JS file: ", err)
 		return
 	}
-	if err := conn.EvalPromise(ctx, string(content), nil); err != nil {
+	if err := conn.Eval(ctx, string(content), nil); err != nil {
 		s.Error("Failed to evaluate promise: ", err)
 	}
 }
