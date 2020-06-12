@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6f015f3_2d658395",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-12T05:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6ffd91b_49adaf9a",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5cd078_00701d07",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-11T22:25:01Z",
       "side": 1,
       "message": "I guess you can just write like:\n  return \u0026Action{\n    Do: func(...) {\n      ...\n    },\n    String: func() string { ... },\n  }\n\n\nSimilarly on other functions.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1c8aba_5d76fb92",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-12T05:27:20Z",
+      "side": 1,
+      "message": "Most of the functions (eg. LeftClick) actually refer to out, meaning it can\u0027t be done this way.  I kept the others the same to maintain consistency, should I change the ones that can be changed?",
+      "parentUuid": "fd5cd078_00701d07",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -68,6 +116,30 @@
       "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab319a06_b34be521",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-12T05:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82cc7361_9498a417",
+      "range": {
+        "startLine": 328,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 67
+      },
+      "revId": "b103dd9d0e6fdbcc8ef36a5d1ca314fbfcb1609a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
