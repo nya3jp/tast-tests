@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67656146_32e1175d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-12T18:21:19Z",
+      "side": 1,
+      "message": "nit: above, you use filepath.Join for this sort of operation. Any reason not to be consistent here?",
+      "revId": "787bcc9bf27237abd985d059a0393734692b9591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
