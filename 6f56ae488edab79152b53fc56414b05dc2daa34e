@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6acdd530_db3a6efc",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "\"configuration\"?",
+      "range": {
+        "startLine": 54,
+        "startChar": 63,
+        "endLine": 54,
+        "endChar": 67
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728bed35_607253b3",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "necessary",
+      "range": {
+        "startLine": 59,
+        "startChar": 41,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d886857_437a9ef1",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "necessary",
+      "range": {
+        "startLine": 64,
+        "startChar": 41,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccea057_6df15474",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "\"credential-related\"\n\nSame elsewhere",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 78
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fc5b8a_436fa9c9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "yikes! is this something we could eventually move into the precondition though? (I think Yen-lin was blocked on some framework issues w.r.t. Context and logging, so maybe that\u0027s not happening soon.) And is it 7 seconds for each test, or is there any way to optimize it if there are several tests in a row?",
+      "range": {
+        "startLine": 82,
+        "startChar": 59,
+        "endLine": 82,
+        "endChar": 93
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed087fb_c5280be8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "this API looks very weird to me. Why do we have 2 different objects to keep track of?",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 97
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c16c446_7e2ecadc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "EAP-related",
+      "range": {
+        "startLine": 109,
+        "startChar": 42,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb5a1545_010a40d5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:23:45Z",
+      "side": 1,
+      "message": "EAP-related",
+      "range": {
+        "startLine": 386,
+        "startChar": 23,
+        "endLine": 386,
+        "endChar": 35
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
