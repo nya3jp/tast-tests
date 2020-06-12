@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
@@ -125,6 +126,10 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 
 		if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
 			s.Log("Failed to copy logs: ", err)
+		}
+
+		if err := crash.DeleteAllCores(ctx); err != nil {
+			s.Log("Failed to delete core dumps: ", err)
 		}
 
 		freeSpaceAfter, err := disk.FreeSpace(statefulPartition)

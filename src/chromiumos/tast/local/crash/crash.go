@@ -13,8 +13,11 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
+
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -280,4 +283,91 @@ func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 		}
 	}
 	return firstErr
+}
+
+// DeleteAllCores deletes all core dumps. It waits for crash-reporter to finish
+// if it is running, in order to avoid deleting intermediate core dumps used to
+// generate minidumps. Deleted core dumps are logged via ctx.
+func DeleteAllCores(ctx context.Context) error {
+	reporterRunning := func() (bool, error) {
+		return processRunning("crash_reporter")
+	}
+	return deleteAllCores(ctx, DefaultDirs(), reporterRunning)
+}
+
+func deleteAllCores(ctx context.Context, dirs []string, reporterRunning func() (bool, error)) error {
+	// First, find all core dumps.
+	paths, size := findAllCores(dirs)
+	if len(paths) == 0 {
+		return nil
+	}
+
+	testing.ContextLogf(ctx, "Found %d core dumps (%d bytes)", len(paths), size)
+
+	// Wait for crash_reporter to finish if it is running, in order to avoid
+	// deleting intermediate core dumps used to generate minidumps.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		running, err := reporterRunning()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if running {
+			return errors.New("crash_reporter is still running")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for crash_reporter to finish")
+	}
+
+	// Finally delete core dumps. Note that it is important to use a list of
+	// core dumps computed before waiting crash_reporter to avoid TOCTOU issues.
+	var firstErr error
+	for _, path := range paths {
+		if err := os.Remove(path); err != nil {
+			testing.ContextLogf(ctx, "Failed to delete %s: %v", path, err)
+			if firstErr == nil {
+				firstErr = err
+			}
+			continue
+		}
+		testing.ContextLog(ctx, "Deleted ", path)
+	}
+	return firstErr
+}
+
+// findAllCores returns a list of paths of core dumps and the sum of their sizes.
+func findAllCores(dirs []string) (paths []string, size int64) {
+	for _, dir := range dirs {
+		fis, err := ioutil.ReadDir(dir)
+		if err != nil {
+			continue
+		}
+		for _, fi := range fis {
+			if !strings.HasSuffix(fi.Name(), ".core") {
+				continue
+			}
+			paths = append(paths, filepath.Join(dir, fi.Name()))
+			size += fi.Size()
+		}
+	}
+	sort.Strings(paths)
+	return paths, size
+}
+
+// processRunning checks if a process named procName is running.
+func processRunning(procName string) (bool, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return false, err
+	}
+	for _, p := range ps {
+		n, err := p.Name()
+		if err != nil {
+			continue
+		}
+		if n == procName {
+			return true, nil
+		}
+	}
+	return false, nil
 }
