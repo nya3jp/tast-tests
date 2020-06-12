@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "67ff9b97_92a14af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-12T17:57:49Z",
+      "side": 1,
+      "message": "As Ricardo said I don\u0027t need it. crrev.com/c/2196690 changed it.\n\nArmen is changing the other file in crrev.com/c/2229443.",
+      "parentUuid": "282529e9_33173b36",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a106fee_d17bc1e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
@@ -104,6 +122,24 @@
       "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774a16c0_12418002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-12T17:57:49Z",
+      "side": 1,
+      "message": "Ah... I copied over existing unresizable version and didn\u0027t pay attention whatever happened in crrev.com/c/2229443.\n\nDone.",
+      "parentUuid": "9e54a048_d1fb2c11",
+      "revId": "8a10f0e90f53d44d740317c393ac2141da9fdabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
