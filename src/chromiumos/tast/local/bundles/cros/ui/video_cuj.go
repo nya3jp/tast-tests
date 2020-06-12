@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -34,12 +33,13 @@ func init() {
 		Desc:         "Measures the smoothess of switch between full screen video and a tab/app",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
+		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
-			"ui.VideoCUJ.username",
-			"ui.VideoCUJ.password",
+			"ui.cuj_username",
+			"ui.cuj_password",
 			"ui.VideoCUJ.ytExperiments",
 		},
 		Params: []testing.Param{{
@@ -54,15 +54,7 @@ func init() {
 }
 
 func VideoCUJ(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("ui.VideoCUJ.username")
-	password := s.RequiredVar("ui.VideoCUJ.password")
-
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(username, password, "gaia-id"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(cuj.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
