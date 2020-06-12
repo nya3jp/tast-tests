@@ -5,11 +5,18 @@
 package crash
 
 import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"math/rand"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"reflect"
 	"sort"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/testutil"
 )
@@ -58,5 +65,78 @@ func TestGetCrashes(t *testing.T) {
 	sort.Strings(files)
 	if exp := []string{barDmp.abs, fooBIOSLog.abs, fooCore.abs, fooDmp.abs, fooGPU.abs, fooInfo.abs, fooKCrash.abs, fooLog.abs, fooCompressedLog.abs, fooMeta.abs, fooProclog.abs, fooCompressedTxt.abs}; !reflect.DeepEqual(files, exp) {
 		t.Errorf("GetCrashes(%v) = %v; want %v", dirs, files, exp)
+	}
+}
+
+func TestProcessRunning(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	// procName must be <=14 characters long so that gopsutil doesn't look at
+	// /proc/$$/cmdline.
+	procName := fmt.Sprintf("t_%d", rand.Int31())
+	if err := ioutil.WriteFile(filepath.Join(td, procName), []byte("#!/bin/sh\nsleep 10\n"), 0777); err != nil {
+		t.Fatal("Failed to write a script: ", err)
+	}
+
+	cmd := exec.Command(filepath.Join(td, procName))
+	if err := cmd.Start(); err != nil {
+		t.Fatal("Failed to start a script: ", err)
+	}
+	func() {
+		defer cmd.Wait()
+		defer cmd.Process.Kill()
+
+		running, err := processRunning(procName)
+		if err != nil {
+			t.Fatal("processRunning: ", err)
+		}
+		if !running {
+			t.Fatal("processRunning = false; want true")
+		}
+	}()
+
+	running, err := processRunning(procName)
+	if err != nil {
+		t.Fatal("processRunning: ", err)
+	}
+	if running {
+		t.Fatal("processRunning = true; want false")
+	}
+}
+
+func TestDeleteAllCores(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	dir1 := filepath.Join(td, "dir1") // dir1 is missing
+	dir2 := filepath.Join(td, "dir2")
+	if err := os.Mkdir(dir2, 0777); err != nil {
+		t.Fatal("Failed to create dir: ", err)
+	}
+
+	for _, fn := range []string{"a.core", "a.dmp", "a.txt", "b.core", "b.dmp", "b.jpg"} {
+		if err := ioutil.WriteFile(filepath.Join(dir2, fn), nil, 0666); err != nil {
+			t.Fatal("Failed to touch file: ", err)
+		}
+	}
+
+	if err := DeleteAllCores(context.Background(), []string{dir1, dir2}); err != nil {
+		t.Error("DeleteAllCores failed: ", err)
+	}
+
+	fis, err := ioutil.ReadDir(dir2)
+	if err != nil {
+		t.Fatal("ReadDir failed: ", err)
+	}
+
+	var got []string
+	for _, fi := range fis {
+		got = append(got, fi.Name())
+	}
+	sort.Strings(got)
+	want := []string{"a.dmp", "a.txt", "b.dmp", "b.jpg"}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Error("Files mismatch after DeleteAllCores (-got +want):\n", diff)
 	}
 }

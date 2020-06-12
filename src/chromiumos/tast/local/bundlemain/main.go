@@ -14,9 +14,11 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
@@ -125,6 +127,30 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 
 		if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
 			s.Log("Failed to copy logs: ", err)
+		}
+
+		// Delete core dumps after making sure no crash_reporter process is running.
+		// This is to prevent the stateful partition from being filled up with
+		// large core dumps produced by program crashes during tests.
+		if running, err := crash.ReporterRunning(); err != nil {
+			s.Log("Failed to determine if crash_reporter is running: ", err)
+		} else if running {
+			s.Log("Detected that crash_reporter is running; waiting for it to finish")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				running, err := crash.ReporterRunning()
+				if err != nil {
+					return testing.PollBreak(err)
+				}
+				if running {
+					return errors.New("crash_reporter is still running")
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				s.Log("Failed to wait for crash_reporter to finish: ", err)
+			}
+		}
+		if err := crash.DeleteAllCores(ctx, crash.DefaultDirs()); err != nil {
+			s.Log("Failed to delete core dumps: ", err)
 		}
 
 		freeSpaceAfter, err := disk.FreeSpace(statefulPartition)

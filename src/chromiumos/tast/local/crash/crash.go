@@ -16,6 +16,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/session"
@@ -276,6 +278,62 @@ func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 					firstErr = errors.Wrapf(err, "couldn't clean up %s", f)
 				}
 				testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
+			}
+		}
+	}
+	return firstErr
+}
+
+// ReporterRunning returns if a crash_reporter process is running.
+func ReporterRunning() (bool, error) {
+	return processRunning("crash_reporter")
+}
+
+func processRunning(procName string) (bool, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return false, err
+	}
+	for _, p := range ps {
+		n, err := p.Name()
+		if err != nil {
+			continue
+		}
+		if n == procName {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// DeleteAllCores deletes all core dumps under dirs. Typically DefaultDirs()
+// should be passed as dirs. Delete core dumps are logged via ctx.
+func DeleteAllCores(ctx context.Context, dirs []string) error {
+	// Continue on errors to remove cores as many as possible.
+	var firstErr error
+	for _, dir := range dirs {
+		fis, err := ioutil.ReadDir(dir)
+		if os.IsNotExist(err) {
+			continue
+		}
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to read dir: ", err)
+			if firstErr == nil {
+				firstErr = err
+			}
+			continue
+		}
+		for _, fi := range fis {
+			if !strings.HasSuffix(fi.Name(), ".core") {
+				continue
+			}
+			fp := filepath.Join(dir, fi.Name())
+			testing.ContextLogf(ctx, "Deleting %s (%d bytes)", fp, fi.Size())
+			if err := os.Remove(fp); err != nil {
+				testing.ContextLog(ctx, "Failed to delete a core dump: ", err)
+				if firstErr == nil {
+					firstErr = err
+				}
 			}
 		}
 	}
