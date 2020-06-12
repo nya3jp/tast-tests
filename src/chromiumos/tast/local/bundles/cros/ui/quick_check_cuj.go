@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -25,12 +25,13 @@ func init() {
 		Desc:         "Measures the smoothess of screen unlock and open an gmail thread",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
+		Pre:          cuj.LoggedInToCUJUser(),
+		Timeout:      4 * time.Minute,
 		Vars: []string{
-			"ui.QuickCheckCUJ.username",
-			"ui.QuickCheckCUJ.password",
+			"ui.cuj_username",
+			"ui.cuj_password",
 		},
 	})
 }
@@ -42,16 +43,8 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		gmailTimeout    = 30 * time.Second
 	)
 
-	username := s.RequiredVar("ui.QuickCheckCUJ.username")
-	password := s.RequiredVar("ui.QuickCheckCUJ.password")
-
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(username, password, "gaia-id"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(cuj.PreData).Chrome
+	password := s.RequiredVar("ui.cuj_password")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
