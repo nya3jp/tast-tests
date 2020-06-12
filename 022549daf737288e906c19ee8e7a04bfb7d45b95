@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c1910869_2bb2784b",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:20:15Z",
+      "side": 1,
+      "message": "I\u0027m afraid that interface isn\u0027t working well here, since we want to have methods (like LeftClick) on top of this.\n\n+1 to using unexpected fields, and maybe introducing a constructor function like NewAction(do func(....), name string) *Action for allowing custom actions.",
+      "parentUuid": "742d068d_9eae6351",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61534ea5_d4a0b18e",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 4
