@@ -70,6 +70,30 @@
       "revId": "dd37742f0ca367ec39cc8c3afb2d49f06362158b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4cf3ec_248693fc",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-06-12T06:04:01Z",
+      "side": 1,
+      "message": "We could, but the API change requires lots of changes (see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2240396/1 ) and a different reviewer. AFAIK tast team\u0027s preference at least is a smaller CL.",
+      "parentUuid": "1398f0fa_3e733881",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "dd37742f0ca367ec39cc8c3afb2d49f06362158b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
