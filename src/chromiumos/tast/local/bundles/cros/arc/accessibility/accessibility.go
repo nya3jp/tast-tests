@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -233,6 +234,8 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 	for _, activity := range activities {
 		s.Run(ctx, activity.Name, func(ctx context.Context, s *testing.State) {
+
+			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 			// It takes some time for ArcServiceManager to be ready, so make the timeout longer.
 			// TODO(b/150734712): Move this out of each subtest once bug has been addressed.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
