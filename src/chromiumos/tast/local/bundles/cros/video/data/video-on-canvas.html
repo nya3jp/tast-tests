@@ -1,0 +1,69 @@
+<html>
+<body>
+  <h1>Video</h1>
+  <video id="video" height="180" autoplay muted style="border: 1px solid;">
+  </video>
+  <h1>Canvas</h1>
+  <canvas id="canvas" width="320" height="180" style="border: 1px solid;">
+  </canvas>
+</body>
+<script type="text/javascript">
+// Starts playing videoSourcePath. Once playback starts, the video is drawn once
+// on the canvas and the resulting image is obtained. The colors of the four
+// corners of this image are checked against hard-coded values.
+async function playAndDrawOnCanvas(videoSourcePath) {
+  const video = document.getElementById('video');
+  video.src = videoSourcePath;
+  await video.play();
+
+  const canvas = document.getElementById('canvas');
+  const cWidth = canvas.width;
+  const cHeight = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, cWidth, cHeight);
+
+  const expectedRGBAColors = {
+    'top-left': {
+      pos: {x: 0, y: 0},
+      color: [39, 52, 195, 255]
+    },
+    'top-right': {
+      pos: {x: cWidth - 1, y: 0},
+      color: [220, 223, 51, 255]
+    },
+    'bottom-right': {
+      pos: {x: cWidth - 1, y: cHeight - 1},
+      color: [255, 156, 67, 255]
+    },
+    'bottom-left': {
+      pos: {x: 0, y: cHeight - 1},
+      color: [212, 50, 209, 255]
+    }
+  };
+  for (const c in expectedRGBAColors) {
+    const pos = expectedRGBAColors[c].pos;
+    const expectedColor = expectedRGBAColors[c].color;
+    const imageData = ctx.getImageData(pos.x, pos.y, 1, 1);
+    if (!expectColor(imageData.data, expectedColor)) {
+      throw new Error(`At ${c}: expected ${colorToString(expectedColor)}; ` +
+        `got ${colorToString(imageData.data)}`);
+    }
+  }
+}
+
+// Returns true if actualColor is approximately equal to expectedColor. Both
+// arguments are arrays of four elements in RGBA order.
+function expectColor(actualColor, expectedColor) {
+  const tolerance = 2;  // Picked arbitrarily.
+  for (let i = 0; i < 4; i++) {
+    if (Math.abs(actualColor[i] - expectedColor[i]) > tolerance)
+      return false;
+  }
+  return true;
+}
+
+function colorToString(color) {
+  return `RGBA = (${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`;
+}
+</script>
+</html>

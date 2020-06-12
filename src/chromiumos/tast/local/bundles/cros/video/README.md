@@ -229,6 +229,29 @@ which is then used for `ffmpeg`, for example for the MPEG-4 output:
 
 The line for VP8 and VP9 is similar, without the `-bsf:v`.
 
+## Canvas Tests (`video.DrawOnCanvas`)
+
+This group of tests verifies that a video (presumably decoded using hardware
+acceleration) can be drawn onto a 2D canvas. These tests exercise the full
+Chrome stack. This path is important because it's used to display video
+thumbnails is the Camera Capture App (CCA).
+
+The tests are mostly driven by [video-on-canvas.html] which loads a video,
+starts playing it, draws it once onto a 2D canvas, and finally reads the color
+of the four corners of the canvas to assert a specific value on them (within
+some tolerance).
+
+To avoid worrying about when exactly the video is drawn to the canvas, the test
+videos must be generated from a single still image. For example, to generate the
+360p H.264 test video, a PNG image was saved from GIMP and the following command
+adapted from the [ffmpeg Slideshow docs] was used:
+
+    ffmpeg -loop 1 -i rect-640x360.png -c:v libx264 -pix_fmt yuv420p -t 1 -profile:v baseline still-colors-360p.h264.mp4
+
+To run these tests use:
+
+    tast run $HOST video.DrawOnCanvas.*
+
 
 [15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
 [15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
@@ -243,3 +266,5 @@ The line for VP8 and VP9 is similar, without the `-bsf:v`.
 [`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
 [`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
 [Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
+[video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
+[ffmpeg Slideshow docs]: https://trac.ffmpeg.org/wiki/Slideshow
