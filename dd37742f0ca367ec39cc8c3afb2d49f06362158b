@@ -46,6 +46,30 @@
       "revId": "dd37742f0ca367ec39cc8c3afb2d49f06362158b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1398f0fa_3e733881",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-06-12T05:01:13Z",
+      "side": 1,
+      "message": "You\u0027re right, I didn\u0027t notice it. I assume the reason we can\u0027t remove it now is because it would break API from other parts of the codebase? Can we not do this in a single CL?",
+      "parentUuid": "e94f0eb2_31d4acf0",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "dd37742f0ca367ec39cc8c3afb2d49f06362158b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
