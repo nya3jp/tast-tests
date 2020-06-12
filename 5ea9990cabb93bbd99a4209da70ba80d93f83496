@@ -82,6 +82,29 @@
     },
     {
       "key": {
+        "uuid": "bf1dab5a_256b50a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_input_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T06:17:25Z",
+      "side": 1,
+      "message": "huge nit: insert a space after a colon.",
+      "range": {
+        "startLine": 124,
+        "startChar": 30,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "5ea9990cabb93bbd99a4209da70ba80d93f83496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95a24d2c_9ab72782",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_input_device.go",
         "patchSetId": 1
