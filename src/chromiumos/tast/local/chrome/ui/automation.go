@@ -348,6 +348,48 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 	return out, nil
 }
 
+// Children returns the children of the node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) Children(ctx context.Context) (NodeSlice, error) {
+	childrenList := &chrome.JSObject{}
+	if err := n.object.Call(ctx, childrenList, "function(){return this.children}"); err != nil {
+		return nil, errors.Wrap(err, "failed to call children() on the specified node")
+	}
+	defer childrenList.Release(ctx)
+
+	var numChildren int
+	if err := childrenList.Call(ctx, &numChildren, "function(){return this.length}"); err != nil {
+		return nil, err
+	}
+
+	var children NodeSlice
+	for i := 0; i < numChildren; i++ {
+		node, err := func() (*Node, error) {
+			currChild := &chrome.JSObject{}
+			if err := childrenList.Call(ctx, currChild, "function(i){return this[i]}", i); err != nil {
+				return nil, err
+			}
+			return NewNode(ctx, n.tconn, currChild)
+		}()
+		if err != nil {
+			children.Release(ctx)
+			return nil, err
+		}
+		children = append(children, node)
+	}
+	return children, nil
+}
+
+// ToString returns string representation of node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) ToString(ctx context.Context) (string, error) {
+	var nodeString string
+	if err := n.object.Call(ctx, &nodeString, "function() {return this.toString()}"); err != nil {
+		return "", err
+	}
+	return nodeString, nil
+}
+
 // Root returns the chrome.automation root as a Node.
 // If the JavaScript fails to execute, an error is returned.
 func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
