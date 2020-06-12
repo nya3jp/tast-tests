@@ -102,6 +102,12 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for window state to become Normal: ", err)
 	}
 
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		s.Fatal("Failed to get the window info of the ARC app: ", err)
+	}
+	windowName := window.Name
+
 	s.Log("Test setup complete. Beginning to verify desk window hierarchy")
 
 	// The settings window should exist on the second desk, while the browser window
@@ -113,7 +119,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	}{
 		{
 			desk:   "Desk_Container_B",
-			window: "ExoShellSurface",
+			window: windowName,
 			want:   true,
 		},
 		{
@@ -123,7 +129,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 		},
 		{
 			desk:   "Desk_Container_A",
-			window: "ExoShellSurface",
+			window: windowName,
 			want:   false,
 		},
 	} {
