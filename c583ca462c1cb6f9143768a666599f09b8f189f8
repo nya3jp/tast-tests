@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "15594d4d_6f219a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-12T23:35:07Z",
+      "side": 1,
+      "message": "nit: not obvious what \"NV\" is... could you \"expand\" it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2831f839_1d816c36",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 75,
         "endChar": 1
+      },
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f54efc1_8a128df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-12T23:35:07Z",
+      "side": 1,
+      "message": "usually this should be called in a \"defer cleanup(ctx)\".\n\nfor example, if the next statement fails, the device will be in tablet mode.\nyou can have a \"cancel state\" where you don\u0027t do the cleanup if needed.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 8
       },
       "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -53,6 +99,29 @@
       "writtenOn": "2020-06-12T23:34:14Z",
       "side": 1,
       "message": "FYI but cleanup(ctx) may fail, it\u0027s nicer to check the return value:\n  if err :\u003d cleanup(ctx); err !\u003d nil {\n    return err\n  }",
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f1e925_2e7f095a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-12T23:35:07Z",
+      "side": 1,
+      "message": "although tecnically correct, it looks weird. it calls the attention that you are doing a \"cleanup\" in the middle of the test.\n\nI\u0027d prefer that you call EnsureTAbletModeEnabled(false).",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 13
+      },
       "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
