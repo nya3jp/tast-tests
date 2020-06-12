@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <!--
+        This view fill the layout and put the EditText at the bottom.
+        Also this view is set to focusable to take the focus at startup.
+    -->
+    <TextView android:layout_width="match_parent"
+              android:layout_height="0dip"
+              android:layout_weight="1"
+              android:focusable="true"
+              android:focusableInTouchMode="true" />
+    <EditText android:id="@+id/text"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:inputType="text"
+              android:text="" />
+</LinearLayout>
