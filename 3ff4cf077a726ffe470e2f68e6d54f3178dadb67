@@ -81,6 +81,30 @@
       "revId": "3ff4cf077a726ffe470e2f68e6d54f3178dadb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff9f7f96_387f2ed3",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-12T04:13:44Z",
+      "side": 1,
+      "message": "Though it is very long in terms of golang variable length, it is self explanatory and I don\u0027t come out a shorter equivalent version. LGTM. Thanks.",
+      "parentUuid": "7f8cabcf_aec1304a",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 20
+      },
+      "revId": "3ff4cf077a726ffe470e2f68e6d54f3178dadb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
