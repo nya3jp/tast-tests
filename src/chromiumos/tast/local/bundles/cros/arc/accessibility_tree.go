@@ -6,38 +6,27 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
+	"fmt"
 	"os"
 	"path/filepath"
 	"time"
-
-	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
 const (
-	axTreeExpectedTreeFilePrefix = "accessibility_tree_expected"
-	axTreeActualTreeFilePrefix   = "accessibility_tree_actual"
-	axTreeDiffFilePrefix         = "accessibility_tree_diff"
+	axTreeGotTreeFilePrefix = "accessibility_tree_got"
+	axTreeWantFilePrefix    = "accessibility_tree_want"
 )
 
-// simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
-// Defined in https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/tree_dumper.js
-// TODO(sarakato): Consider using ui.Node here, as number of tests increase.
-type simpleAutomationNode struct {
-	Name     string                  `json:"name,omitempty"`
-	Role     string                  `json:"role,omitempty"`
-	Value    string                  `json:"value,omitempty"`
-	Children []*simpleAutomationNode `json:"children,omitempty"`
-	// There are other variables (url, location and logStr).
-	// They will not be used in the test and thus not included here.
+type arcAXNodeParams struct {
+	params   ui.FindParams
+	children []arcAXNodeParams
 }
 
 func init() {
@@ -47,7 +36,6 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"accessibility_tree_expected.MainActivity.json", "accessibility_tree_expected.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -60,106 +48,221 @@ func init() {
 	})
 }
 
-// getExpectedTree returns the accessibility tree read from the specified file.
-func getExpectedTree(filepath string) (*simpleAutomationNode, error) {
-	f, err := os.Open(filepath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	var root simpleAutomationNode
-	err = json.NewDecoder(f).Decode(&root)
-	return &root, err
-}
-
-// getDesktopTree returns the accessibility tree of the whole desktop.
-func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomationNode, error) {
-	var root simpleAutomationNode
-	err := cvconn.Call(ctx, &root, `async() => {
-		  let root = await tast.promisify(chrome.automation.getDesktop)();
-		  const instance = LogStore.getInstance();
-		  instance.clearLog();
-		  instance.writeTreeLog(new TreeDumper(root));
-		  const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
-		  return logTree[0].logTree_.rootNode;
-		}`)
-	return &root, err
-}
-
-// findNode recursively finds the node with specified name and role.
-func findNode(node *simpleAutomationNode, name, role string) (*simpleAutomationNode, bool) {
-	if node.Name == name && node.Role == role {
-		return node, true
-	}
-	for _, ch := range node.Children {
-		if ret, found := findNode(ch, name, role); found {
-			return ret, true
-		}
-	}
-	return nil, false
-}
-
 // dumpTree writes the given accessibility tree to the file specified by filepath.
-func dumpTree(tree *simpleAutomationNode, filepath string) error {
+func dumpTree(ctx context.Context, tree *ui.Node, filepath string) error {
 	f, err := os.Create(filepath)
 	if err != nil {
 		return err
 	}
 	defer f.Close()
 
-	enc := json.NewEncoder(f)
-	enc.SetIndent("", "  ")
-	err = enc.Encode(&tree)
-	return err
+	treeString, err := tree.ToString(ctx)
+	if err != nil {
+		return err
+	}
+	_, err = f.WriteString(treeString)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func dumpOriginalTree(ctx context.Context, tree arcAXNodeParams, filepath string) error {
+	f, err := os.Create(filepath)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_, err = f.WriteString(fmt.Sprintf("%s", tree))
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func matchTree(ctx context.Context, gotRoot *ui.Node, actualRoot arcAXNodeParams) (bool, error) {
+	// First, do node.matches() to check the root node
+	if found, err := gotRoot.Matches(ctx, actualRoot.params); err != nil {
+		return false, err
+	} else if !found {
+		return false, errors.Errorf("could not find node %q", actualRoot.params)
+	}
+	// Maybe add params.toString()?
+	gotChildren, err := gotRoot.Children(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get children of current root")
+	}
+	// Then, check size of children.
+	if len(gotChildren) != len(actualRoot.children) {
+		return false, errors.Errorf("number of children is incorrect, got %d; want %d", len(gotChildren), len(actualRoot.children))
+	}
+	// Then iterate for-loop for children and recursively call matchTree()
+	for i, child := range actualRoot.children {
+		if found, err := matchTree(ctx, gotChildren[i], child); err != nil {
+			return false, err
+		} else if !found {
+			return false, errors.New("did not find node")
+		}
+	}
+	return true, nil
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
+	MainActivityTree := arcAXNodeParams{
+		params: ui.FindParams{
+			Name: "Main Activity",
+			Role: ui.RoleTypeApplication,
+		},
+		children: []arcAXNodeParams{
+			arcAXNodeParams{
+				params: ui.FindParams{
+					Role: ui.RoleTypeGenericContainer,
+				},
+				children: []arcAXNodeParams{
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "Main Activity",
+							Role: ui.RoleTypeStaticText,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "OFF",
+							Role: ui.RoleTypeToggleButton,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "CheckBox",
+							Role: ui.RoleTypeCheckBox,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "seekBar",
+							Role: ui.RoleTypeSlider,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Role: ui.RoleTypeSlider,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "ANNOUNCE",
+							Role: ui.RoleTypeButton,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "CLICK TO SHOW TOAST",
+							Role: ui.RoleTypeButton,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Role: ui.RoleTypeGenericContainer,
+						},
+					},
+				},
+			},
+		},
+	}
+	EditTextActivityTree := arcAXNodeParams{
+		params: ui.FindParams{
+			Name: "Edit Text Activity",
+			Role: ui.RoleTypeApplication,
+		},
+		children: []arcAXNodeParams{
+			arcAXNodeParams{
+				params: ui.FindParams{
+					Role: ui.RoleTypeGenericContainer,
+				},
+				children: []arcAXNodeParams{
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "Edit Text Activity",
+							Role: ui.RoleTypeStaticText,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "contentDescription",
+							Role: ui.RoleTypeTextField,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Name: "hint",
+							Role: ui.RoleTypeTextField,
+						},
+					},
+					arcAXNodeParams{
+						params: ui.FindParams{
+							Role:       ui.RoleTypeTextField,
+							Attributes: map[string]interface{}{"value": "text"},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	activities := make(map[string]arcAXNodeParams)
+	activities[accessibility.MainActivity.Name] = MainActivityTree
+	activities[accessibility.EditTextActivity.Name] = EditTextActivityTree
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
+
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		expected, err := getExpectedTree(s.DataPath(axTreeExpectedTreeFilePrefix + currentActivity.Name + ".json"))
-		if err != nil {
-			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
-		}
+		gotFileName := axTreeGotTreeFilePrefix + currentActivity.Name + ".txt"
+		gotFilePath := filepath.Join(s.OutDir(), gotFileName)
 
-		actualFileName := axTreeActualTreeFilePrefix + currentActivity.Name + ".json"
-		actualFilePath := filepath.Join(s.OutDir(), actualFileName)
-
-		var appRoot, root *simpleAutomationNode
+		var appRoot *ui.Node
 		// Find the root node of Android application.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// Extract accessibility tree.
-			root, err = getDesktopTree(ctx, cvconn)
-			if err != nil {
-				return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
-			}
-
-			var ok bool
-			appRoot, ok = findNode(root, expected.Name, expected.Role)
-			if appRoot == nil || !ok {
-				return errors.New("failed to get Android root from accessibility tree")
+			var err error
+			if appRoot, err = ui.Find(ctx, tconn, ui.FindParams{Name: currentActivity.Title, Role: ui.RoleTypeApplication}); err != nil {
+				return errors.Wrap(err, "failed to get Android root from accessibility tree")
 			}
 
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			// When the root could not be found, dump the entire tree.
-			if dumpTreeErr := dumpTree(root, actualFilePath); dumpTreeErr != nil {
-				return errors.Wrapf(dumpTreeErr, "timed out waiting for appRoot and the previous error is %v", err)
+			nestedErr := func() error {
+				if err := dumpTree(ctx, appRoot, gotFilePath); err != nil {
+					return errors.Wrapf(err, "failed to write tree to %q", gotFileName)
+				}
+				return nil
+			}()
+
+			if nestedErr != nil {
+				s.Error("Timed out waiting for appRoot: ", nestedErr)
 			}
-			return errors.Wrapf(err, "timed out waiting for appRoot and wrote the entire tree to %q", actualFileName)
+
+			return errors.Wrap(err, "timed out waiting for appRoot")
 		}
 
-		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
-			diffFileName := axTreeDiffFilePrefix + currentActivity.Name + ".txt"
-			diffFilePath := filepath.Join(s.OutDir(), diffFileName)
-			// When the accessibility tree is different, dump the diff and the obtained tree.
-			if err := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); err != nil {
-				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
+		currentActivityTree := activities[currentActivity.Name]
+
+		matchFound, err := matchTree(ctx, appRoot, currentActivityTree)
+		if err != nil || !matchFound {
+			nestedErr := func() error {
+				wantFileName := axTreeWantFilePrefix + currentActivity.Name + ".txt"
+				wantFilePath := filepath.Join(s.OutDir(), wantFileName)
+				if err := dumpTree(ctx, appRoot, gotFilePath); err != nil {
+					return errors.Wrap(err, "failed to dump the actual tree")
+				}
+				if err := dumpOriginalTree(ctx, currentActivityTree, wantFilePath); err != nil {
+					return errors.Wrap(err, "failed to dump the expected tree")
+				}
+				return errors.Errorf("(see want:%s, got:%s)", wantFileName, gotFileName)
+			}()
+			if nestedErr != nil {
+				s.Error(nestedErr)
 			}
-			if err := dumpTree(appRoot, actualFilePath); err != nil {
-				return errors.Wrap(err, "accessibility tree did not match; failed to dump the actual tree")
-			}
-			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFileName, actualFileName)
+			return errors.Wrap(err, "accessibility tree did not match")
 		}
 		return nil
 	}
