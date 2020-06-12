@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "889f1dfb_da34b00f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Oh nice. For some reason I was unaware of the existence of that README. Done.",
+      "parentUuid": "888cb02a_94496201",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abfe2cb6_aba5926d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69a6806_aba3c8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfe2cb6_aba5926d",
+      "range": {
+        "startLine": 11,
+        "startChar": 70,
+        "endLine": 11,
+        "endChar": 78
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "87cb5030_8a358cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86621734_b7e4c022",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32e3de8f_9336cb44",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9e6e05_3953106a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Maybe not a function, but I refactored this into a single for loop that iterates over an object that describes the expectations.",
+      "parentUuid": "32e3de8f_9336cb44",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "740a811e_f870c3ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Ah! Our minds are in sync. IIRC, the largest deviation I saw in my tests was 1, but 2 sounds good to me.",
+      "parentUuid": "6931d8c8_af09d60a",
+      "range": {
+        "startLine": 61,
+        "startChar": 34,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8a1f814_a0e55e2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a14d076_519f0daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Nice. I didn\u0027t know about this. Done.",
+      "parentUuid": "e8a1f814_a0e55e2e",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 29
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e067e9d5_a20830a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ddf0eab_3baf5342",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1652c869_e4ee082e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
         "patchSetId": 5
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "296c50e5_123b838e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1652c869_e4ee082e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 66
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdefb5dc_9d26c58c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
         "patchSetId": 5
@@ -206,6 +398,30 @@
       "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d3edcef_bac69606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T19:34:00Z",
+      "side": 1,
+      "message": "Sounds reasonable. Done.",
+      "parentUuid": "bdefb5dc_9d26c58c",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "924e58b19f71d55d009bc3deb51a8b9c892d7d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
