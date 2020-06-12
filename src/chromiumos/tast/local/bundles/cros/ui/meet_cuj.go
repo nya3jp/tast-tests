@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -26,13 +25,14 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      3 * time.Minute,
+		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
-			"ui.MeetCUJ.username",
-			"ui.MeetCUJ.password",
 			"ui.MeetCUJ.bond_credentials",
+			"ui.cuj_username",
+			"ui.cuj_password",
 		},
 	})
 }
@@ -43,9 +43,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		numBots     = 4
 		botDuration = 2 * time.Minute
 	)
-
-	username := s.RequiredVar("ui.MeetCUJ.username")
-	password := s.RequiredVar("ui.MeetCUJ.password")
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
 	bc, err := bond.NewClient(ctx, bond.WithCredsJSON([]byte(creds)))
@@ -65,11 +62,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}()
 	s.Log("Created a room with the code ", meetingCode)
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(cuj.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

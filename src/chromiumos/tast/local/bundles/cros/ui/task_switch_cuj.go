@@ -11,13 +11,10 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -36,12 +33,15 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      10 * time.Minute,
+		Timeout:      8 * time.Minute,
 		Vars: []string{
 			"mute",
 			"ui.TaskSwitchCUJ.username",
 			"ui.TaskSwitchCUJ.password",
+			"ui.cuj_username",
+			"ui.cuj_password",
 		},
+		Pre: cuj.LoggedInToCUJUser(),
 		Params: []testing.Param{
 			{Val: false},
 			{
@@ -61,19 +61,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		timeout              = 10 * time.Second
 	)
 
-	username := s.RequiredVar("ui.TaskSwitchCUJ.username")
-	password := s.RequiredVar("ui.TaskSwitchCUJ.password")
-
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(username, password, "gaia-id"),
-		chrome.ARCSupported(), chrome.ExtraArgs("--arc-disable-app-sync",
-			"--arc-disable-play-auto-install", "--arc-disable-locale-sync",
-			"--arc-play-store-auto-update=off"),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(cuj.PreData).Chrome
+	a := s.PreValue().(cuj.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -93,36 +82,10 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	a, d, err := func() (*arc.ARC, *ui.Device, error) {
-		arcSetupCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
-		defer cancel()
-		// Optin to Play Store.
-		s.Log("Opting into Play Store")
-		if err := optin.Perform(arcSetupCtx, cr, tconn); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to optin to Play Store")
-		}
-		s.Log("Waiting for Playstore shown")
-		if err := ash.WaitForVisible(arcSetupCtx, tconn, playStorePackageName); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to wait for the playstore")
-		}
-
-		a, err := arc.New(arcSetupCtx, s.OutDir())
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to start ARC")
-		}
-		// ui.NewDevice's context should be the one for the full test; otherwise
-		// context expiry loses the connection to the UI Automator.
-		d, err := ui.NewDevice(ctx, a)
-		if err != nil {
-			a.Close()
-			return nil, nil, errors.Wrap(err, "failed to initialize UI Automator")
-		}
-		return a, d, nil
-	}()
+	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to setup ARC and Play Store: ", err)
 	}
-	defer a.Close()
 	defer d.Close()
 
 	// Install android apps for the everyday works: Gmail.
@@ -367,6 +330,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		packageName string
 		skipSplash  func(ctx context.Context) error
 	}{
+		{"play store", playStorePackageName, func(ctx context.Context) error {
+			return nil
+		}},
 		{"gmail", gmailPackageName, func(ctx context.Context) error {
 			const (
 				dialogID            = "com.google.android.gm:id/customPanel"
@@ -375,7 +341,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			)
 			gotIt := d.Object(ui.TextMatches("GOT IT"))
 			if err := gotIt.WaitForExists(ctx, timeout); err != nil {
-				return errors.Wrap(err, `failed to find "GOT IT" button`)
+				s.Log(`Failed to find "GOT IT" button, believing splash screen has been dismissed already`)
+				return nil
 			}
 			if err := gotIt.Click(ctx); err != nil {
 				return errors.Wrap(err, `failed to click "GOT IT" button`)
@@ -428,6 +395,10 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		if err = recorder.Run(ctx, tconn, func() error {
 			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 			defer cancel()
+			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, app.packageName); err == nil {
+				testing.ContextLogf(ctx, "Package %s is already visible, skipping", app.packageName)
+				return nil
+			}
 			if err := openAppList(launchCtx); err != nil {
 				return errors.Wrap(err, "failed to open the app-list")
 			}
