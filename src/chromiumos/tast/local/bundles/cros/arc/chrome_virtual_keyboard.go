@@ -9,10 +9,12 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -33,6 +35,7 @@ var stableVkTests = []vkTestParams{
 var unstableVkTests = []vkTestParams{
 	// TODO(b/157432003) Stabilize this test.
 	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
+	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -325,6 +328,115 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		if err := keyUpLabel.WaitForText(ctx, expectedText, 30*time.Second); err != nil {
 			s.Fatal("Failed to wait for text: ", err)
 		}
+	}
+}
+
+func chromeVirtualKeyboardFloatingTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".OverscrollTestActivity"
+		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+
+	initialBounds, err := field.GetBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the bounds of the field: ", err)
+	}
+	s.Logf("The initial bounds of the field is %q", initialBounds)
+
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+
+	s.Log("Waiting for the virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	// Showing the normal virtual keyboard should push up the view.
+	boundsWithVK, err := field.GetBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the bounds of the field: ", err)
+	}
+	if initialBounds.CenterPoint().Y <= boundsWithVK.CenterPoint().Y {
+		s.Fatalf("VK doesn't push up the focused view: %q -> %q", initialBounds, boundsWithVK)
+	}
+	s.Logf("The bounds with the normal VK is %q", boundsWithVK)
+
+	waitForRelayout := func(expected coords.Rect) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			bounds, err := field.GetBounds(ctx)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if expected != bounds {
+				return errors.Errorf("The field doesn't move: %q != %q", expected, bounds)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+
+	// The virtual keyboard state after switching mode is unstable.
+	// We may need to retry if the suggestion shows up just after tapping "show access points" button.
+	switchToFloatingMode := func() error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			vkb.TapKey(ctx, tconn, "Show access points")
+			if err := vkb.SwitchToFloatMode(ctx, tconn); err != nil {
+				return errors.New("failed to switch to floating mode")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+	switchToDockMode := func() error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			vkb.TapKey(ctx, tconn, "Show access points")
+			if err := vkb.SwitchToDockMode(ctx, tconn); err != nil {
+				return errors.New("failed to switch to dock mode")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+
+	// Switching the VK to floating mode.
+	if err := switchToFloatingMode(); err != nil {
+		s.Fatal("Failed to switch to floating mode: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+	if err := waitForRelayout(initialBounds); err != nil {
+		s.Fatal("Failed to move back the field by switching to floating mode: ", err)
+	}
+
+	// Switching back to the normal mode
+	if err := switchToDockMode(); err != nil {
+		s.Fatal("Failed to switch to dock mode: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+	if err := waitForRelayout(boundsWithVK); err != nil {
+		s.Fatal("Failed to move up the field by switching to normal mode: ", err)
 	}
 }
 
