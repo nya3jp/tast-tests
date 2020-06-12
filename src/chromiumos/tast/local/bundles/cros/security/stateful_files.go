@@ -68,6 +68,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 	patterns := []*chk.Pattern{
 		chk.NewPattern(chk.Path("dev_image"), chk.SkipChildren()),     // only exists for dev images
 		chk.NewPattern(chk.Path("dev_image_old"), chk.SkipChildren()), // only exists for dev images
+		chk.NewPattern(chk.Path("dev_image_new"), chk.SkipChildren()), // only exists for dev images
 
 		chk.NewPattern(chk.Path("encrypted/chronos"), users("chronos"), groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 
