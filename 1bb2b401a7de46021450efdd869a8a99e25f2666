@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0880298_af0a23df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T21:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8581989_e160b933",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "1bb2b401a7de46021450efdd869a8a99e25f2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c986e7a_0ed8422a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "1bb2b401a7de46021450efdd869a8a99e25f2666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0365ca_d738d497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-12T21:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c986e7a_0ed8422a",
+      "revId": "1bb2b401a7de46021450efdd869a8a99e25f2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
