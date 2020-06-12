@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a224ae73_8c135c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-12T17:27:08Z",
+      "side": 1,
+      "message": "Can you use a testing.Poll(), so that you don\u0027t have to wait 10s if cryptohome is restarted earlier.",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118685e7_2a0979ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-12T17:27:08Z",
+      "side": 1,
+      "message": "Isn\u0027t it more robust to look for filesystem free space? (logger may lose content).",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9633bb8_04061895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-12T17:27:08Z",
+      "side": 1,
+      "message": "Name is misleading: SetAutomaticCleanupAboveCurrentFreeSpace?",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa5fd9b_cec692f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-12T17:27:08Z",
+      "side": 1,
+      "message": "Is this comment still valid?",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d37dec8_b8d12b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-12T17:27:08Z",
+      "side": 1,
+      "message": "Given ForceAutomaticCleanup set the new threshold just above current free space, why will any cleanup be performed?",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
