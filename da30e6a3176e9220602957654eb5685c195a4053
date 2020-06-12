@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "49fbdb01_6c2f14e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-12T23:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdd5d4f_d39e6d69",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "120477c6_26d83a4e",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 11
