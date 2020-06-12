@@ -73,7 +73,10 @@ class LegacyVCDError extends Error {
  */
 var Resolution;
 
-window.Tast = class {
+// Note: use a named class declaration and refer the class instance via the
+// name here, instead of using anonymous class and referring it via "this",
+// in order to make it simpler to call methods via Chrome Devtools Protocol.
+window.Tast = class Tast {
   static get previewVideo() {
     return document.querySelector('#preview-video');
   }
@@ -83,7 +86,7 @@ window.Tast = class {
   }
 
   static isVideoActive() {
-    const video = this.previewVideo;
+    const video = Tast.previewVideo;
     return video && video.srcObject && video.srcObject.active;
   }
 
@@ -177,7 +180,7 @@ window.Tast = class {
    * @throws {Error} Throws error if there is no button found for given |mode|.
    */
   static switchMode(mode) {
-    this.click(`.mode-item>input[data-mode="${mode}"]`);
+    Tast.click(`.mode-item>input[data-mode="${mode}"]`);
   }
 
   /**
@@ -223,7 +226,7 @@ window.Tast = class {
    * @return {Promise} The promise resolves successfully if the check passes.
    */
   static async checkFacing(expected) {
-    const actual = await this.getFacing();
+    const actual = await Tast.getFacing();
     if (actual === expected || actual === 'unknown') {
       return;
     }
@@ -235,7 +238,7 @@ window.Tast = class {
    * @return {Promise} resolves after preview is active again.
    */
   static switchCamera() {
-    this.click('#switch-device');
+    Tast.click('#switch-device');
     return new Promise((resolve, reject) => {
       const interval = setInterval(() => {
         if (state.get(state.State.STREAMING)) {
@@ -253,7 +256,7 @@ window.Tast = class {
    *     configurations.
    */
   static async getFacing() {
-    const track = this.previewVideo.srcObject.getVideoTracks()[0];
+    const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
     const deviceOperator = await DeviceOperator.getInstance();
     if (!deviceOperator) {
       // This might be a HALv1 device.
@@ -278,7 +281,7 @@ window.Tast = class {
    * @throws {Error} Failed to get device id from video stream.
    */
   static getDeviceId() {
-    const video = this.previewVideo;
+    const video = Tast.previewVideo;
     if (!video) {
       throw new Error('Cannot find video element.');
     }
@@ -338,7 +341,7 @@ window.Tast = class {
    * @return {!Promise<!Array<Resolution>>}
    */
   static getPreviewResolution() {
-    const video = this.previewVideo;
+    const video = Tast.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
   }
 
@@ -348,8 +351,8 @@ window.Tast = class {
    * @return {!Promise<!Array<Resolution>>}
    */
   static async getPhotoResolutions() {
-    const deviceOperator = await this.getDeviceOperator();
-    const deviceId = this.getDeviceId();
+    const deviceOperator = await Tast.getDeviceOperator();
+    const deviceId = Tast.getDeviceId();
     return await deviceOperator.getPhotoResolutions(deviceId);
   }
 
@@ -359,8 +362,8 @@ window.Tast = class {
    * @return {!Promise<!Array<Resolution>>}
    */
   static async getVideoResolutions() {
-    const deviceOperator = await this.getDeviceOperator();
-    const deviceId = this.getDeviceId();
+    const deviceOperator = await Tast.getDeviceOperator();
+    const deviceId = Tast.getDeviceId();
     return (await deviceOperator.getVideoConfigs(deviceId))
         .filter(({maxFps}) => maxFps >= 24)
         .map(({width, height}) => ({width, height}));
@@ -384,25 +387,24 @@ window.Tast = class {
       throw new Error('Already in configuring state');
     }
 
-    let resolve = null;
-    let reject = null;
-    let activated = false;
     return new Promise((resolve, reject) => {
-      const pulseObserver = (value) => {
+      let activated = false;
+      const observer = (value) => {
         if (activated === value) {
-          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
+          state.removeObserver(CAMERA_CONFIGURING, observer);
           reject(new Error(
               `State ${CAMERA_CONFIGURING} assertion failed,` +
               `expecting ${!activated} got ${value}`));
+          return;
         }
         if (value) {
           activated = true;
-        } else {
-          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
-          resolve();
+          return;
         }
-      };
-      state.addObserver(CAMERA_CONFIGURING, pulseObserver);
+        state.removeObserver(CAMERA_CONFIGURING, observer);
+        resolve();
+      }
+      state.addObserver(CAMERA_CONFIGURING, observer);
     });
   }
 };
