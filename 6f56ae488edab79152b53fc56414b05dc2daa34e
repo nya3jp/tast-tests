@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15dc2c29_94c46744",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acdd530_db3a6efc",
+      "range": {
+        "startLine": 54,
+        "startChar": 63,
+        "endLine": 54,
+        "endChar": 67
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "728bed35_607253b3",
         "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545796f3_996a5635",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "728bed35_607253b3",
+      "range": {
+        "startLine": 59,
+        "startChar": 41,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0cecdef2_9a69ee45",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d886857_437a9ef1",
+      "range": {
+        "startLine": 64,
+        "startChar": 41,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ccea057_6df15474",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "24541613_08e82659",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccea057_6df15474",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 78
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3fc5b8a_436fa9c9",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-12T01:23:45Z",
       "side": 1,
       "message": "yikes! is this something we could eventually move into the precondition though? (I think Yen-lin was blocked on some framework issues w.r.t. Context and logging, so maybe that\u0027s not happening soon.) And is it 7 seconds for each test, or is there any way to optimize it if there are several tests in a row?",
+      "range": {
+        "startLine": 82,
+        "startChar": 59,
+        "endLine": 82,
+        "endChar": 93
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74a38cc_6063a4be",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "The 7 seconds time spent is caused by SetupTPMStore. Installing credentials seems not that heavy.\n\nCurrently it is 7 seconds for each test, i.e., if you execute `tast run dut wifi.SimpleConnect.\\*`, then wifi.SimpleConnect.1xwep and wifi.SimpleConnect.1xwpa both spend 7 seconds to setup TPM. On the other hand, TPMStore is shared between the subtests, thus though there are several subtests in 1xwpa, SetupTPMStore is called only once in the whole 1xwpa test.\n\nAnd about precondition, it may become a problem if we keep not uninstalling the credentials on DUT during the whole wifi tests. Some possible solutions may be:\n1. Add uninstall method to TPMStore so we can uninstall them at somewhere like DeconfigAP. But currently I am not sure how to implement it.\n2. Simply set up a counter and reset the TPMStore in Prepare() if there are already too many credentials got installed. Not sure if it could impact the performance or not.\n3. Hash the installed key sets and don\u0027t install again if the set is already installed before. It might break if we have tests dynamically generating cert/key in the future.\n\nExcept the problem above, I guess it\u0027s not that hard to move into precondition.",
+      "parentUuid": "e3fc5b8a_436fa9c9",
       "range": {
         "startLine": 82,
         "startChar": 59,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "668d67da_8fd137ec",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Divided to two util function.",
+      "parentUuid": "3ed087fb_c5280be8",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 97
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c16c446_7e2ecadc",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "12b55215_ff6000dd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c16c446_7e2ecadc",
+      "range": {
+        "startLine": 109,
+        "startChar": 42,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5a1545_010a40d5",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c475dad_45dbc90c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-12T08:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5a1545_010a40d5",
+      "range": {
+        "startLine": 386,
+        "startChar": 23,
+        "endLine": 386,
+        "endChar": 35
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
