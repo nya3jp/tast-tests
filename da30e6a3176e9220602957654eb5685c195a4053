@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1a5e846_54da6fb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "did you run only one, or both?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c21467_4c01386b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "Can you be more specific? This gives me no more information than the function name. In particular, it\u0027s not clear to me whether this actually requests a disconnect or if it simply waits for a certain service state.",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 67
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "405844ce_191fa2d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "why do we do this bgscan disabling? If there\u0027s only one AP, we won\u0027t enable bgscan in the first place (https://source.corp.google.com/chromeos_public/src/platform2/shill/wifi/wifi.cc;l\u003d611?q\u003dbgscan\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform2%2Fshill%2Fwifi%2F)",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5750dd2_ee9d2047",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "nit: an",
+      "range": {
+        "startLine": 75,
+        "startChar": 66,
+        "endLine": 75,
+        "endChar": 67
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ba92c7_197b3429",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "can we make this a constant somewhere?",
+      "range": {
+        "startLine": 82,
+        "startChar": 92,
+        "endLine": 82,
+        "endChar": 98
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e63a4a40_3ca8290c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "Dean asked this but I couldn\u0027t find a response. What\u0027s the point of performing this scan? Is there some scenario in which scanning causes the DUT to not disconnect as we would expect it to?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120477c6_26d83a4e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "nit: can we just do SetAPIfaceDown instead",
+      "range": {
+        "startLine": 738,
+        "startChar": 17,
+        "endLine": 738,
+        "endChar": 35
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cdab658_f02d508a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T00:13:37Z",
+      "side": 1,
+      "message": "seems like there\u0027ll be an issue here as well. I think the bigger issue is that curServicePath isn\u0027t necessarily consistent with the actual current service. I\u0027m not sure how much of a problem that is since it\u0027s only used in a couple places, but something to keep in mind.",
+      "range": {
+        "startLine": 384,
+        "startChar": 8,
+        "endLine": 384,
+        "endChar": 25
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
