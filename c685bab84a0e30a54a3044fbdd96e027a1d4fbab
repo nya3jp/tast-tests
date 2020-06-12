@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73610a45_6f5eca86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:43:42Z",
+      "side": 1,
+      "message": "is there really no way to do a normal logout? Seems a little odd to me. Probably not your fault, but odd.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "c685bab84a0e30a54a3044fbdd96e027a1d4fbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af47343b_8e32ae64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_start_loggedin.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-12T01:43:42Z",
+      "side": 1,
+      "message": "what exactly is this testing for? It\u0027s doing some actions, but it\u0027s not actually checking for any particular end state. And in fact, I think this case would be pretty broken -- if shill is stopped while we log in, we\u0027ll fail to push the user profile, and the resulting state will be a borked login, where the user\u0027s profile data is not available.\n\nYou didn\u0027t cause that in this CL, but after you delete all the artificial setup and replace it with a real Chrome login, that becomes even clearer.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "c685bab84a0e30a54a3044fbdd96e027a1d4fbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
