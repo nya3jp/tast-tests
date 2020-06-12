@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "24cc01e2_b28dd00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain/elf_condition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-12T06:06:41Z",
+      "side": 1,
+      "message": "nit: How about CheckNormalWithDLCs? It\u0027s similar to CheckNormal, but it downloads DLCs in advance to the test.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "98b555a6394a2c9bde4913e9a04cf0560d600880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6dd56c9_a50e2bb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
         "patchSetId": 2
