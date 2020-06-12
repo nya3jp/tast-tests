@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8581989_e160b933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-12T19:52:19Z",
+      "side": 1,
+      "message": "Can you make this comment more specific about which codecs are needed? That way it will be clear when we are able to remove this TODO.",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "1bb2b401a7de46021450efdd869a8a99e25f2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c986e7a_0ed8422a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-12T19:52:19Z",
+      "side": 1,
+      "message": "nit: I think that path.Join(server.URL, \"video-on-canvas.html\") is safer, in case a future version of the httptest package allows a trailing slash.",
+      "revId": "1bb2b401a7de46021450efdd869a8a99e25f2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
