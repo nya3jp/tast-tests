@@ -16,6 +16,24 @@
       "revId": "f4ba2c84dbb5c9139a177b53ec9e3f05ef41a15b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e367bac_c5cb2919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-12T14:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34652a8b_d09bdbdd",
+      "revId": "f4ba2c84dbb5c9139a177b53ec9e3f05ef41a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
