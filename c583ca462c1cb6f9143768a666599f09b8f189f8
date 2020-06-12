@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2831f839_1d816c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:34:14Z",
+      "side": 1,
+      "message": "This is like 3rd time of having mostly identical test code.  Maybe it is great to bring this shared code into something like src/chromiumos/tast/local/bundles/cros/arc/wm.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ca9db6_55106e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:34:14Z",
+      "side": 1,
+      "message": "Sometimes cleanup may not be called, on return of line 108, 114, or 119. Putting \u0027cleanup(ctx)\u0027 right before return, or making conditional cleanup().\n  needsCleanup :\u003d false\n  defer func() {\n    if needsCleanup {\n      cleanup(ctx)\n    }\n  }()\n  ...\n  // Disable tablet mode.\n  needsCleanup \u003d false\n  cleanup(ctx)",
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4bd341_fba43f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:34:14Z",
+      "side": 1,
+      "message": "FYI but cleanup(ctx) may fail, it\u0027s nicer to check the return value:\n  if err :\u003d cleanup(ctx); err !\u003d nil {\n    return err\n  }",
+      "revId": "c583ca462c1cb6f9143768a666599f09b8f189f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
