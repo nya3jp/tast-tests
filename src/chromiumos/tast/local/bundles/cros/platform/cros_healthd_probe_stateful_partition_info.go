@@ -35,7 +35,7 @@ func absDiff(a, b uint64) uint64 {
 }
 
 func CrosHealthdProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryStatefulPartition, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryStatefulPartition, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get stateful partition telemetry info: ", err)
 	}

@@ -6,17 +6,12 @@ package platform
 
 import (
 	"context"
-	"fmt"
-	"io/ioutil"
-	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -157,18 +152,9 @@ func verifyCStates(lines []string) error {
 }
 
 func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
-	}
-
-	args := []string{"telem", fmt.Sprintf("--category=%s", croshealthd.TelemCategoryCPU)}
-	b, err := testexec.CommandContext(ctx, "cros-health-tool", args...).Output(testexec.DumpLogOnError)
+	b, err := croshealthd.RunTelem(ctx, croshealthd.TelemCategoryCPU, s.OutDir())
 	if err != nil {
-		s.Fatal("Failed to run 'telem --category=cpu': ", err)
-	}
-
-	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "command_output.txt"), b, 0644); err != nil {
-		s.Errorf("Failed to write output to %s: %v", filepath.Join(s.OutDir(), "command_output.txt"), err)
+		s.Fatal("Failed to run telem command: ", err)
 	}
 
 	// Every board should have at least one physical CPU, which contains at

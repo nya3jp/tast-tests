@@ -28,7 +28,7 @@ func init() {
 }
 
 func CrosHealthdProbeBacklightInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryBacklight, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryBacklight, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get backlight telemetry info: ", err)
 	}

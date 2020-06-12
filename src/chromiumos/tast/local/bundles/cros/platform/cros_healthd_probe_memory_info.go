@@ -27,7 +27,7 @@ func init() {
 }
 
 func CrosHealthdProbeMemoryInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryMemory, s.OutDir())
+	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryMemory, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get memory telemetry info: ", err)
 	}
