@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a6bfbdd_d9d5f1bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-12T23:39:50Z",
+      "side": 1,
+      "message": "Stop now requires tconn, please sync/rebase and verify the behavior.",
+      "revId": "f7b08810ea015119a5005fded05853d522e75d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
