@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "69ca0905_d5546227",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T21:09:53Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "886fd71e_d6a26967",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5750dd2_ee9d2047",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 11
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "IIUC, according to the comment in line 7 (https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/177212/2/server/site_tests/network_WiFiRoaming/006BeaconLoss), the client might automatically scans before marking the connection lost. \n\nThe original bug for the test: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d199083\n\nAlso, I discussed the impact of scanning before taking down the AP interface with Neeraj and he thinks that it might delay the disconnection by ~0.2 sec.\nI ran the test 3 times with and without a scan:\nwith scan ave elapsed time \u003d 1.302 sec.\nwithout a scan ave elapsed time \u003d 1.226 sec.\n\nI am actually confused if I should keep it or not. WDYT?",
       "parentUuid": "e63a4a40_3ca8290c",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "da30e6a3176e9220602957654eb5685c195a4053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afdd5d4f_d39e6d69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-12T21:09:53Z",
+      "side": 1,
+      "message": "So the purpose of the scan is to emulate an automatic scan because that\u0027s something that might delay the disconnect significantly? I\u0027m still skeptical, but I don\u0027t know enough about this test to confidently say that we should kill this. Can you leave a TODO here so we can give it another look in the future?",
+      "parentUuid": "f0aeb0d7_ae82a852",
       "range": {
         "startLine": 112,
         "startChar": 0,
