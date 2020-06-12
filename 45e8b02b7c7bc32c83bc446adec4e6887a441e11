@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bcaf4e8_bf91146b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-12T08:45:12Z",
+      "side": 1,
+      "message": "You\u0027ll also need \"Cq-Depend: chromium:2241747\" in the commit message of crrev.com/c/2240164, so that they are atomically submitted (or rejected if error found)",
+      "revId": "45e8b02b7c7bc32c83bc446adec4e6887a441e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
