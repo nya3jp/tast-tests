@@ -22,6 +22,30 @@
       "revId": "865f63ae3eb24e470d8c42ef1797db2acb6e8e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65b90bc_cecd7e5e",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-13T13:32:50Z",
+      "side": 1,
+      "message": "It would but since this is bound to go away during M85 together with\nhaving to set the flag (will be enabled by default), I don\u0027t think it\u0027s\nworth it.",
+      "parentUuid": "87b2bf12_b6d42ec8",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 111
+      },
+      "revId": "865f63ae3eb24e470d8c42ef1797db2acb6e8e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
