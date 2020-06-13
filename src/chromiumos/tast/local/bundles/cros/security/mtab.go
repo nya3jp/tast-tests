@@ -131,6 +131,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/sys/kernel/security":               {nil, "securityfs", defaultRW},
 		"/tmp":                               {nil, "tmpfs", defaultRW},
 		"/usr/share/chromeos-assets/quickoffice/_platform_specific": {loopDev, "squashfs", defaultRO},
+		"/usr/share/chromeos-assets/speech_synthesis/patts":         {loopDev, "squashfs", defaultRO},
 		"/usr/share/oem": {nil, "ext4", defaultRO},
 		"/var":           {nil, "ext4", defaultRW},
 		"/var/lock":      {nil, "tmpfs", defaultRW},               // duplicate of /run/lock
