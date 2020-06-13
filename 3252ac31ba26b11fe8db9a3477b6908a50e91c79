@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5ae6d8d_9c475d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-13T02:37:52Z",
+      "side": 1,
+      "message": "Let\u0027s use the urgent state only (0x3), as we want to use this test to weed out device about to fail in the very near future.",
+      "revId": "3252ac31ba26b11fe8db9a3477b6908a50e91c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
