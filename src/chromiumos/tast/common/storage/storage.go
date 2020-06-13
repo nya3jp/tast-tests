@@ -119,14 +119,12 @@ var (
 	// Example eMMC CSD text, "  Extended CSD rev 1.8 (MMC 5.1)".
 	emmcVersion = regexp.MustCompile(`\s*Extended CSD rev.*MMC (?P<version>\d+.\d+)`)
 	// emmcFailing detects if eMMC device is failing using a regex.
-	// Example CSD text containing life time registers. 0x0a means 90-100% band,
-	// 0x0b means over 100% band. Find none digits.
-	//   "Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
-	//     i.e. 0% - 10% device life time used
-	//    Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]"
-	// If the last value is not a digit, it means we found 0x0a or 0x0b, indicating
-	// over 90% life, our failure case.
-	emmcFailing = regexp.MustCompile(`.*(?P<param>DEVICE_LIFE_TIME_EST_TYP_.)]?: 0x0\D`)
+	// Example CSD text containing Pre EOL information. 0x03 means Urgent.
+	//   "Pre EOL information [PRE_EOL_INFO: 0x03]"
+	//     i.e. Urgent
+	// We want to detect 0x03 for the Urgent case.
+	// That indicates that the eMMC is near the end of life.
+	emmcFailing = regexp.MustCompile(`.*(?P<param>PRE_EOL_INFO]?: 0x03)`)
 	// nvmeFailing detects if nvme is failing using a regex.
 	// Example NVMe usage text: "	Percentage Used:                        0%"
 	nvmeFailing = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
@@ -203,7 +201,7 @@ func parseDeviceNameSATA(outLines []string) string {
 
 // parseDeviceHealtheMMC analyzes eMMC for indications of failure. For additional information,
 // refer to JEDEC standard 84-B50 which describes the extended CSD register. In this case,
-// we focus on DEVICE_LIFE_TIME_EST_TYPE_B and TYPE_A registers.
+// we focus on the PRE_EOL_INFO register.
 func parseDeviceHealtheMMC(outLines []string) (LifeStatus, error) {
 	// Device life estimates were introduced in version 5.0
 	const emmcMinimumVersion = 5.0
