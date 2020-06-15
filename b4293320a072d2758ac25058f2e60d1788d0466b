@@ -46,6 +46,30 @@
       "revId": "b4293320a072d2758ac25058f2e60d1788d0466b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95dd7b72_a523f768",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-15T02:31:48Z",
+      "side": 1,
+      "message": "Hmm. I wonder if it is intentional. Could you file a bug if it\u0027s unintentional?",
+      "parentUuid": "e25f048f_3107122b",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "b4293320a072d2758ac25058f2e60d1788d0466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
