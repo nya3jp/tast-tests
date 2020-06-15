@@ -177,6 +177,12 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 		testing.ContextLogf(ctx, "Measurement: %+v", rxMeasurement)
 		rxMeasurements = append(rxMeasurements, rxMeasurement)
 
+		if rxMeasurement.FramesDecoded == 0 {
+			// Wait until the first frame is decoded before analyzind its contents.
+			// Slow devices might take a substantial amount of time: b/158848650.
+			continue
+		}
+
 		var isBlackFrame bool
 		isBlackVideoFrameJS := fmt.Sprintf("isBlackVideoFrame(%d,%d)", streamWidth/8, streamHeight/8)
 		if err := conn.Eval(ctx, isBlackVideoFrameJS, &isBlackFrame); err != nil {
