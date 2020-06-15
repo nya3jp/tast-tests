@@ -234,6 +234,15 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 		p.Append(decodeTime, averageDecodeTime)
 	}
 
+	framesEncoded := txMeasurements[len(txMeasurements)-1].FramesEncoded
+	droppedFrames := 100 * (framesEncoded - rxMeasurements[len(rxMeasurements)-1].FramesDecoded) / framesEncoded
+	testing.ContextLogf(ctx, "Dropped frames: %f%%", droppedFrames)
+	p.Set(perf.Metric{
+		Name:      "dropped_frames",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, droppedFrames)
+
 	return nil
 }
 
