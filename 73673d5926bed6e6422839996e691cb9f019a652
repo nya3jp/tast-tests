@@ -39,6 +39,24 @@
       "revId": "73673d5926bed6e6422839996e691cb9f019a652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf298bd3_645573f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-15T20:29:32Z",
+      "side": 1,
+      "message": "AFAICT, the only reason to perform the scan is that it slightly delays the disconnect event, and we want to make sure it doesn\u0027t delay it too much. As I mentioned, I\u0027m not too convinced that we need it, but a) I\u0027m not confident in saying that it\u0027s definitely okay to kill, and b) it seems like it\u0027s not a big deal to keep around anyway. If you feel strongly that we should get rid of it, I\u0027m totally okay with that too.\n\nRe bgscan: note that bgscan isn\u0027t set when there\u0027s one AP on the SSID we\u0027re connecting to (not one AP in all of the scan results). We only configure one AP, so it definitely won\u0027t be set.",
+      "parentUuid": "3b2b2332_195409b5",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
