@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83c1272b_cd63c4c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-15T00:36:18Z",
+      "side": 1,
+      "message": "nice thanks!",
+      "parentUuid": "343ab042_dcef3854",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "71596961281e6ff1c1c67c8eedbefa13c9c72363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ea9cb4_a4988bef",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "71596961281e6ff1c1c67c8eedbefa13c9c72363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6912cb71_db82ed47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-15T00:36:18Z",
+      "side": 1,
+      "message": "oh true. thanks.",
+      "parentUuid": "53ea9cb4_a4988bef",
+      "revId": "71596961281e6ff1c1c67c8eedbefa13c9c72363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
