@@ -99,6 +99,24 @@
       "revId": "73673d5926bed6e6422839996e691cb9f019a652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430fc7c6_10a7e53a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-15T22:17:27Z",
+      "side": 1,
+      "message": "I asked the test owner Paul Stewart about the reason for the scan and he said that \"We\u0027re trying to make sure that the system as a whole doesn\u0027t some sort of dependency on the scan interval for it to detect that the AP is gone.  You do one manually to try to push whatever scan interval is programmed into supplicant / client to successfully see the AP to give ourselves the \"worst case scenario\" for a system that may possibly depend on the scan interval to notice the AP going away.\n\nAnything that behaved differently based on the scan would be horribly broken, but hopefully you\u0027ve noticed by now that some really interesting stuff can happen with WiFi driviers / code.\"",
+      "parentUuid": "f3b716bd_de98657f",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
