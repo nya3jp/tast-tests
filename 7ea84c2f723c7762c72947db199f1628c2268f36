@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b54afb18_d3e642de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-15T09:15:15Z",
+      "side": 1,
+      "message": "Sound reasonable to me. But to pass error as part of Response via protobuf, we need to define our own Error type. And the error type and error format emitted from |RunTest| here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go;rcl\u003d04f18489c080c1ecf43bbdd23e5caef641815c91;l\u003d271\nare quite complex.\nIt may need a quite large mount of work to define those error and error information explicitly.",
+      "parentUuid": "8b18b196_c3e82b98",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5bcf5c_f8bb44b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
