@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f28e3cef_29ec31a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2020-06-15T13:49:59Z",
+      "side": 1,
+      "message": "this is renamed to SSID in crosreview.com/2237017",
+      "range": {
+        "startLine": 80,
+        "startChar": 119,
+        "endLine": 80,
+        "endChar": 123
+      },
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b2b2332_195409b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 15
