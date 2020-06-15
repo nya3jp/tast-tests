@@ -16,6 +16,24 @@
       "revId": "0db68be3aa1ed0ec1d50fdf9a86e89b821ae7df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d9153e_fa551d39",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpaeap/config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-15T04:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fbe9d51_5c1e2b61",
+      "revId": "0db68be3aa1ed0ec1d50fdf9a86e89b821ae7df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
