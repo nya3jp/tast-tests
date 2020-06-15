@@ -1,8 +1,8 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
@@ -30,7 +30,7 @@ func init() {
 }
 
 func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

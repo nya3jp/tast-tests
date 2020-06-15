@@ -1,8 +1,8 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
@@ -12,11 +12,10 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/faillog"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -28,7 +27,6 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          chrome.VKEnabled(),
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -39,30 +37,18 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 
 	const expectedTypingResult = "hello tast"
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Virtual keyboard is mostly used in tablet mode.
-	s.Log("Setting device to tablet mode")
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-	if err != nil {
-		s.Fatal("Failed to ensure tablet mode enabled: ", err)
-	}
-	defer cleanup(ctx)
-
-	// Create a touch controller.
-	// Use pc tap event to trigger virtual keyboard instead of calling vkb.ShowVirtualKeyboard()
-	pc, err := pointer.NewTouchController(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create a touch controller")
-	}
-	defer pc.Close()
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	s.Log("Start a local server to test chrome")
 	const identifier = "e14s-inputbox"
@@ -84,8 +70,8 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to find input element %s: %v", identifier, err)
 	}
 
-	s.Log("Click input field to trigger virtual keyboard shown up")
-	if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
+	s.Log("Click searchbox to trigger virtual keyboard")
+	if err := element.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
@@ -94,12 +80,17 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to type on virtual keyboard: ", err)
 	}
 
-	inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
-	if err != nil {
-		s.Fatal("Failed to find searchbox value element: ", err)
-	}
-
-	if inputValueElement.Name != expectedTypingResult {
-		s.Fatalf("Failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+	// Value change can be a bit delayed after input.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
+		if err != nil {
+			return err
+		}
+		if inputValueElement.Name != expectedTypingResult {
+			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		s.Error("Failed to input with virtual keyboard: ", err)
 	}
 }
