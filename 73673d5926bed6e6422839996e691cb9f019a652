@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4c070da_c57d939a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-15T21:15:43Z",
+      "side": 1,
+      "message": "Thanks :)",
+      "parentUuid": "f28e3cef_29ec31a9",
+      "range": {
+        "startLine": 80,
+        "startChar": 119,
+        "endLine": 80,
+        "endChar": 123
+      },
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b2b2332_195409b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 15
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "AFAICT, the only reason to perform the scan is that it slightly delays the disconnect event, and we want to make sure it doesn\u0027t delay it too much. As I mentioned, I\u0027m not too convinced that we need it, but a) I\u0027m not confident in saying that it\u0027s definitely okay to kill, and b) it seems like it\u0027s not a big deal to keep around anyway. If you feel strongly that we should get rid of it, I\u0027m totally okay with that too.\n\nRe bgscan: note that bgscan isn\u0027t set when there\u0027s one AP on the SSID we\u0027re connecting to (not one AP in all of the scan results). We only configure one AP, so it definitely won\u0027t be set.",
       "parentUuid": "3b2b2332_195409b5",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b716bd_de98657f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-15T21:15:43Z",
+      "side": 1,
+      "message": "Looking at the history of the test, (From https://bugs.chromium.org/p/chromium/issues/detail?id\u003d199083 and https://chromium-review.googlesource.com/c/chromiumos/third_party/hostap/+/7437/) the reason to do a scan is that a scan result\u0027s could keep the status of the AP as \"ready\" instead of \"idle\", if the AP has disappered.\n\nAlso, I agree with Matthew a scan would delay the disconnection time but not significanlty, because the test waits for 20 sec. \n\nI am okay with removing the scan or keeping it with a TODO.",
+      "parentUuid": "cf298bd3_645573f6",
       "revId": "73673d5926bed6e6422839996e691cb9f019a652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
