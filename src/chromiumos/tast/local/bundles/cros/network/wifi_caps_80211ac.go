@@ -14,11 +14,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiCaps80211ac,
-		Desc:         "Verifies DUT supports required 802.11ac capabilities",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi"},
+		Func:     WifiCaps80211ac,
+		Desc:     "Verifies DUT supports required 802.11ac capabilities",
+		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// TODO(b/158726023): remove no_kefka_kernelnext once the issue is solved.
+		SoftwareDeps: []string{"wifi", "no_kefka_kernelnext"},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 	})
 }

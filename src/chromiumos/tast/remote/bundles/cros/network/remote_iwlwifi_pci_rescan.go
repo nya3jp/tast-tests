@@ -16,11 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RemoteIwlwifiPCIRescan,
-		Desc:         "Verifies that the WiFi interface will recover if removed when the device has iwlwifi_rescan",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"iwlwifi_rescan"},
+		Func:     RemoteIwlwifiPCIRescan,
+		Desc:     "Verifies that the WiFi interface will recover if removed when the device has iwlwifi_rescan",
+		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// TODO(b/158726023): remove no_kefka_kernelnext once the issue is solved.
+		SoftwareDeps: []string{"iwlwifi_rescan", "no_kefka_kernelnext"},
 		ServiceDeps:  []string{"tast.cros.network.IwlwifiPCIRescan"},
 	})
 }

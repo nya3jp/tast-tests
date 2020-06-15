@@ -27,8 +27,9 @@ func init() {
 			"oka@chromium.org",                // Tast port author
 		},
 		// Run on both Tast CQ and suite:wifi_matfunc.
-		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		Attr: []string{"group:mainline", "group:wificell", "wificell_func"},
+		// TODO(b/158726023): remove no_kefka_kernelnext once the issue is solved.
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_kefka_kernelnext"},
 	})
 }
 

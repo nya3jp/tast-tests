@@ -19,11 +19,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WPASanity,
-		Desc:         "Verifies wpa_supplicant is up and running",
-		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		Func:     WPASanity,
+		Desc:     "Verifies wpa_supplicant is up and running",
+		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:     []string{"group:mainline"},
+		// TODO(b/158726023): remove no_kefka_kernelnext once the issue is solved.
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_kefka_kernelnext"},
 	})
 }
 

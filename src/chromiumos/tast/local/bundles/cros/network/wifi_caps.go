@@ -20,8 +20,9 @@ func init() {
 		Desc:     "Verifies DUT supports a minimum set of required protocols",
 		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		// TODO(crbug/1073579): move it back to CQ once we identify whether kip should have 11ac capabilities.
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		Attr: []string{"group:mainline", "informational"},
+		// TODO(b/158726023): remove no_kefka_kernelnext once the issue is solved.
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_kefka_kernelnext"},
 	})
 }
 
