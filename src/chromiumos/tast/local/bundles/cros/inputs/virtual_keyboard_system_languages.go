@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
@@ -12,7 +12,6 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
@@ -103,21 +102,13 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// Create a touch controller.
-	// Use pc tap event to trigger virtual keyboard instead of calling vkb.ShowVirtualKeyboard()
-	pc, err := pointer.NewTouchController(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create a touch controller")
-	}
-	defer pc.Close()
-
 	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
 	if err != nil {
 		s.Fatalf("Failed to find input element %s: %v", identifier, err)
 	}
 
-	s.Log("Click input field to trigger virtual keyboard shown up")
-	if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
+	s.Log("Click input to trigger virtual keyboard")
+	if err := element.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 

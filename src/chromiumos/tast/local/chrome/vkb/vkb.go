@@ -108,6 +108,10 @@ func waitUntil(ctx context.Context, tconn *chrome.TestConn, expected bool) error
 	}, nil); err != nil {
 		return errors.Wrapf(err, "failed to wait for virtual keyboard to be %q", expectedState)
 	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
 	return nil
 }
 
@@ -211,7 +215,14 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 
 // SwitchToFloatMode changes virtual keyboard to floating layout.
 func SwitchToFloatMode(ctx context.Context, tconn *chrome.TestConn) error {
-	return TapKey(ctx, tconn, "make virtual keyboard movable")
+	if err := TapKey(ctx, tconn, "make virtual keyboard movable"); err != nil {
+		return err
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return err
+	}
+	return nil
 }
 
 // TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.

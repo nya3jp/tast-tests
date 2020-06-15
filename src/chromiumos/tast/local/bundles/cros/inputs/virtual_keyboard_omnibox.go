@@ -1,15 +1,15 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
+	"chromiumos/tast/local/bundles/cros/inputs/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOmnibox,
 		Desc:         "Checks that the virtual keyboard appears when clicking on the omnibox",
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})

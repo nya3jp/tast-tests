@@ -1,8 +1,9 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+// Package inputs contains local Tast tests that exercise Chrome OS essential inputs.
+package inputs
 
 import (
 	"context"
@@ -17,7 +18,7 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})
 }
