@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3fa0aaf_2ab59514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-15T05:51:47Z",
+      "side": 1,
+      "message": "This should be APKPath? (if you use DataPath it doesn\u0027t use the APK from tast-tests/android)",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 37
+      },
+      "revId": "67f73ff2569989abfebac886523ddab95ef91c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
