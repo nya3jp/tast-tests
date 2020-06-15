@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "81228bd6_be62e396",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-15T06:54:47Z",
+      "side": 1,
+      "message": "Done. Left internal to the package for now.",
+      "parentUuid": "c1910869_2bb2784b",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61534ea5_d4a0b18e",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 4
@@ -92,6 +116,30 @@
       "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b546e7bf_8dc28d8c",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-15T06:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61534ea5_d4a0b18e",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "022549daf737288e906c19ee8e7a04bfb7d45b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
