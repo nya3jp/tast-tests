@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa717d8_f4a5ae37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-15T19:20:54Z",
+      "side": 1,
+      "message": "Couyld you please add a direct link to the spec? If you can add more description about what this tests/verifys, that\u0027d be much better. I understand that it\u0027s described in the go/arc-wm-r, but having a description here makes it a lot easier for reviewer.",
+      "revId": "384f6f8de7dd28be09c1a1eabf43146967afeeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4edffa9_b3838e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-15T19:20:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t we also check if the frame is hidden?",
+      "revId": "384f6f8de7dd28be09c1a1eabf43146967afeeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
