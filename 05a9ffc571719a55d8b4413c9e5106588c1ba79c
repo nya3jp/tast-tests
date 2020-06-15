@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18468475_07ce82d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T07:59:45Z",
+      "side": 1,
+      "message": "Optional: You can use proto.Bool to avoid a temporary variable.\nhttps://pkg.go.dev/google.golang.org/protobuf/proto?tab\u003ddoc#Bool",
+      "range": {
+        "startLine": 67,
+        "startChar": 63,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "05a9ffc571719a55d8b4413c9e5106588c1ba79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99461f50_4ded820f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T07:59:45Z",
+      "side": 1,
+      "message": "Optional: proto.String as well.\nhttps://pkg.go.dev/google.golang.org/protobuf/proto?tab\u003ddoc#String",
+      "range": {
+        "startLine": 118,
+        "startChar": 103,
+        "endLine": 118,
+        "endChar": 108
+      },
+      "revId": "05a9ffc571719a55d8b4413c9e5106588c1ba79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
