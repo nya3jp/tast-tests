@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d877e135_8d8e57ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T07:49:54Z",
+      "side": 1,
+      "message": "reader.Wait already stops early if the message is found. 10 seconds is the maximum time it will wait.",
+      "parentUuid": "a224ae73_8c135c93",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118685e7_2a0979ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
         "patchSetId": 18
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-12T17:27:08Z",
       "side": 1,
       "message": "Isn\u0027t it more robust to look for filesystem free space? (logger may lose content).",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bf07fc_d08c4fce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T07:49:54Z",
+      "side": 1,
+      "message": "No. There is no way to determine when cleanup has finished. It\u0027s also unreliable as other services write to the disk and use up space.",
+      "parentUuid": "118685e7_2a0979ae",
       "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "56856b88_c1bbc856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T07:49:54Z",
+      "side": 1,
+      "message": "This does actually perform cleanup (it\u0027s performed on cryptohomed restart) by setting the thresholds higher than the current free space. SetAutomaticCleanupAboveCurrentFreeSpace is also misleading and a bit too long. WDYT about TriggerAutomaticCleanup.",
+      "parentUuid": "c9633bb8_04061895",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fa5fd9b_cec692f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
         "patchSetId": 18
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "9d4fc5a5_fb6b1eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T07:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa5fd9b_cec692f8",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d37dec8_b8d12b1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
         "patchSetId": 18
@@ -84,6 +156,24 @@
       "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc0562e_83c0ffb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T07:49:54Z",
+      "side": 1,
+      "message": "Because the  amount of free space is less than the threshold.",
+      "parentUuid": "2d37dec8_b8d12b1c",
+      "revId": "954e1c4a1d549dcced6fb1426f564f2e7bf7bf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
