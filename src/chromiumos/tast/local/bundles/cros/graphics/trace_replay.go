@@ -35,6 +35,7 @@ func init() {
 					},
 				},
 				ExtraHardwareDeps: trace.HwDepsStable,
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "glxgears_unstable",
