@@ -10,6 +10,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -129,9 +130,17 @@ const (
 	InstallOptionEphemeralInstall      InstallOption = "--instant"
 )
 
+var showAPKPathWarningOnce sync.Once
+
 // Install installs an APK file to the Android system.
 // By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
 func (a *ARC) Install(ctx context.Context, path string, installOptions ...InstallOption) error {
+	if strings.HasPrefix(path, apkPathPrefix) {
+		showAPKPathWarningOnce.Do(func() {
+			testing.ContextLog(ctx, "WARNING: When files under tast-tests/android are modified, APKs on the DUT should be pushed manually. See tast-tests/android/README.md")
+		})
+	}
+
 	if err := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
 	}
