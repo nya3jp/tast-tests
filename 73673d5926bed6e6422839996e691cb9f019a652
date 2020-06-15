@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2b2332_195409b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-15T09:51:51Z",
+      "side": 1,
+      "message": "I think my question is not answered yet. (Please correct me if I missed something) My question was: what\u0027s the reason to perform a scan (and wait the scan finished) before kicking out the AP to perform the missing beacon test? \nFrom the issue https://crbug.com/199083, did it mean the previous scan result\u0027s cache may make wpa_supplicant think the disconnect AP is still there? Doesn\u0027t ConnectWifiAP also perform a scan to see the service in shill? What\u0027s the benefit of testing missing beacon with and without an  active scan after connect?\n\nAlso, you removed SetBgscan to none because of Matthew\u0027s comment. We have to make sure that the assumption, only one AP is scanned, holds when running the test. Otherwise, background scan could be set and the following TimedScan() could fail because of resource busy.",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
