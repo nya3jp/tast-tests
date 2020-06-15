@@ -95,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "9cb571e7_f23d3111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-15T11:55:51Z",
+      "side": 1,
+      "message": "Sending both an error and a response seems to be incorrect: https://github.com/grpc/grpc/issues/12824\n\nIs it not sufficient to forward the error string?",
+      "parentUuid": "b54afb18_d3e642de",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5bcf5c_f8bb44b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
