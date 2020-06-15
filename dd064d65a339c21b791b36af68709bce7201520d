@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de576d26_02881541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-15T16:20:00Z",
+      "side": 1,
+      "message": "style/nit: You can shorten this to \"params\" without loss of readability",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "dd064d65a339c21b791b36af68709bce7201520d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775b88ab_c672273c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-15T16:20:00Z",
+      "side": 1,
+      "message": "nit: Might be cleaner to move \"group:mainline\" into the base test\u0027s Attr. However, I think that \"informational\" should be kept in the ExtraAttr in case we want to promote some scenarios and not others.",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "dd064d65a339c21b791b36af68709bce7201520d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003f3df3_9d044a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-15T16:20:00Z",
+      "side": 1,
+      "message": "nit: If you don\u0027t expect any scenario to have unique preconditions, then you can move this field into the base test.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "dd064d65a339c21b791b36af68709bce7201520d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
