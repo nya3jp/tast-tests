@@ -170,6 +170,29 @@
       "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95610e2_2359df2e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-06-15T22:45:05Z",
+      "side": 1,
+      "message": "nit: FindKeyNode?",
+      "range": {
+        "startLine": 187,
+        "startChar": 5,
+        "endLine": 187,
+        "endChar": 12
+      },
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
