@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1e394bbd_c5574a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-15T08:54:11Z",
+      "side": 1,
+      "message": "Hi reviewers,\nNeed some advice on how to generate output directory similar to |s.OutDir()| here.\nThe current OutDir generated from |ioutil.TempDir()| may hit permission denied problem because of our gtest binary use \"arc-camera\" uid here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go;rcl\u003d04f18489c080c1ecf43bbdd23e5caef641815c91;l\u003d159\n\nI would like to follow the same logic generating |OutDir| for client side test,\nbut failed to find out where that generation logic is.\nOr we can just chown directory to arc-camera, or any better suggestion?",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b18b196_c3e82b98",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
         "patchSetId": 5
