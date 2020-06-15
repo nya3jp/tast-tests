@@ -66,7 +66,6 @@ func init() {
 		// TODO(ruanc): There is no hardware dependency for multi-display. Move back to the mainline group once it is supported.
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Data:         []string{"ArcWMTestApp_24.apk"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -91,7 +90,7 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		s.Fatalf("Not enough connected displays: got %d; want 2", len(displayInfos))
 	}
 
-	if err := a.Install(ctx, s.DataPath(wmApkMD)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wmApkMD)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
