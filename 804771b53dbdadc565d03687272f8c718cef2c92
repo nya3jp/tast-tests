@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e845a3_11d429a8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-15T11:37:34Z",
+      "side": 1,
+      "message": "We don\u0027t need \": \" for errors.Wrap\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n\nSame below.",
+      "range": {
+        "startLine": 499,
+        "startChar": 63,
+        "endLine": 499,
+        "endChar": 65
+      },
+      "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ff6258_bd425fec",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-15T11:37:34Z",
+      "side": 1,
+      "message": "You may consider using tf.QueryService() to get the service\u0027s operating frequency:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go;l\u003d130",
+      "range": {
+        "startLine": 503,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 2
+      },
+      "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
