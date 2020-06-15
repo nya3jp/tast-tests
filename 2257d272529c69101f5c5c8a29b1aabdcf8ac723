@@ -22,6 +22,29 @@
       "revId": "2257d272529c69101f5c5c8a29b1aabdcf8ac723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64fca9a7_9476aaf7",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:11:46Z",
+      "side": 1,
+      "message": "*ARC is mostly goroutine-safe so it would be good to keep it...\n\nHow about using sync.Once? Then it is trivial to keep it goroutine-safe.\n\n var showAPKPathWarningOnce sync.Once\n\n showAPKPathWarningOnce.Do(func() {\n   testing.ContextLog(...)\n })",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "2257d272529c69101f5c5c8a29b1aabdcf8ac723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
