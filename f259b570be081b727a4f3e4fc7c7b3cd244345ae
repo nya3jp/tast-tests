@@ -149,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "0ad70373_153f332c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-15T08:28:49Z",
+      "side": 1,
+      "message": "Return nil in case of any remote error.",
+      "parentUuid": "190ea37c_07dc5922",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f53ebeab_731038f8",
         "filename": "src/chromiumos/tast/services/cros/camerabox/common.proto",
         "patchSetId": 3
@@ -288,6 +312,30 @@
       "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69033fd_649e9a5c",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-15T08:28:49Z",
+      "side": 1,
+      "message": "Change to return output directory path and GetFile from remote.",
+      "parentUuid": "643c0db9_137f635d",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f259b570be081b727a4f3e4fc7c7b3cd244345ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

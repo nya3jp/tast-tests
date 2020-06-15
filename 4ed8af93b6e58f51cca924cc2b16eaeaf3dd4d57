@@ -75,6 +75,30 @@
       "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118245d7_afc86d53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-15T08:28:49Z",
+      "side": 1,
+      "message": "Return nil response in case of any remote error.",
+      "parentUuid": "b678f86d_9fc43eeb",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "4ed8af93b6e58f51cca924cc2b16eaeaf3dd4d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
