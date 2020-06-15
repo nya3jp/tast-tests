@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a4b5510_3a111c3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "Rolling back to old state where we compared dumped ax tree also achieves this goal.\n\nI think that this is because we want to keep control of which property value is checked in tast and which shouldn\u0027t.\n\nCould you also mention that?",
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01bedbca_8a5257f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "are we still using this?",
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d46de8_c6812cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "Does this dump entire tree as we expect? (TBH actually, I don\u0027t think so because ui.Node doesn\u0027t have children information for now)\n\nI think the easiest solution here is dump entire tree as a string you did previously.",
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8af5fe_b66b8bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "I understand this works, but I feel doing dfs with args is unusual. How about receiving the root nodes instead of node and children? (or, would you add a comment explaining why it is?)\n\nI would make:\nfunc matchTree(ctx, expected_root, actual_root) bool, error {\n// First, do node.matches() to check the root node\n// Then, check size of children\n// Then iterate for-loop for children and recursively call matchTree()\n}",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 79
+      },
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2567d1b_e7b935dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "Descendant calls AutomationNode.find(). So the returned node is not limited to its direct children.\nI think we should use children() instead.",
+      "range": {
+        "startLine": 85,
+        "startChar": 29,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e78c046_2682a648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "I would define a struct like\n\ntype ArcAccessibilityNodeParam struct {\nparams ui.FindParams,\nchildren ArcAccessibilityNodeParam[]\n}\n\nso that we can use the param directly in the recursive check.\n\n(Maybe ArcAccessibilityTreeNodeParam is too long, but you can alias it to shorter name in defining the expected tree, so we won\u0027t suffer from its length, I guess.)\n\nwhat do you think?",
+      "range": {
+        "startLine": 102,
+        "startChar": 20,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd7c9a8_db646286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "similar to what we did in other tests, how about rewriting these error handling?\n\nThe most important error we want to be reported is, whether tree matched or not.\nSo, we can do s.Error to report an error, and return the error from checkTreeRecursive.\n\n(ditto above polling)",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 108
+      },
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1c2443_a7466ab3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "Reading the comment above, \"ame and ClassName allow quick access because they are common attributes.\"\nSo I think we should use Attributes instead.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01395de1_3d8c52f1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-15T02:31:07Z",
+      "side": 1,
+      "message": "I guess the reason why we didn\u0027t have children here is, if we add it, we have to populate this property in (n *Node) Update() function in this file, but recursively call it is not expected.\n\nI would suggest remove this and add a function (n *Node) Children(ctx context.Context) which returns an array of node instead.",
+      "revId": "b3816990ce65b65a7b61984516fef00b8a9ab0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
