@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626b93bd_55d5156b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:05:07Z",
+      "side": 1,
+      "message": "nit/style: could you drop \"is\" prefix as stop word?\n\napkPathWarningShown",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 6
+      },
+      "revId": "2257d272529c69101f5c5c8a29b1aabdcf8ac723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
