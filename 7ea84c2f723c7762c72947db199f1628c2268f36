@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "36fe488b_b83f7261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-15T09:52:03Z",
+      "side": 1,
+      "message": "i guess it\u0027s better to manually chown directory to arc-camera and don\u0027t create your own TempDir function",
+      "parentUuid": "1e394bbd_c5574a40",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff0de70_74454cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-15T09:52:03Z",
+      "side": 1,
+      "message": "nit: hal3_outdir_*",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 42
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b18b196_c3e82b98",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
         "patchSetId": 5
