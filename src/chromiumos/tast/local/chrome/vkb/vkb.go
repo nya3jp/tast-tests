@@ -63,6 +63,9 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMet
 	// Change language via tconn requiring a few seconds to install.
 	// TODO(b/157686038): Use API to identify completion of changing language
 	testing.Sleep(ctx, 3*time.Second)
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
 	return nil
 }
 
@@ -107,6 +110,10 @@ func waitUntil(ctx context.Context, tconn *chrome.TestConn, expected bool) error
 		return nil
 	}, nil); err != nil {
 		return errors.Wrapf(err, "failed to wait for virtual keyboard to be %q", expectedState)
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 	return nil
 }
@@ -165,9 +172,22 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 // TapKey simulates a tap event on the middle of the specified key via touch event. The key can
 // be any letter of the alphabet, "space" or "backspace".
 func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
-	vkNode, err := VirtualKeyboard(ctx, tconn)
+	key, err := FindKeyNode(ctx, tconn, keyName)
 	if err != nil {
-		return errors.Wrap(err, "failed to find virtual keyboad automation node")
+		return errors.Wrapf(err, "failed to find key: %s", keyName)
+	}
+
+	if err := key.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click key %s", keyName)
+	}
+	return nil
+}
+
+// FindKeyNode returns the ui node of the specified key.
+func FindKeyNode(ctx context.Context, tconn *chrome.TestConn, keyName string) (*ui.Node, error) {
+	vk, err := VirtualKeyboard(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find virtual keyboad automation node")
 	}
 
 	keyParams := ui.FindParams{
@@ -175,15 +195,11 @@ func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
 		Name: keyName,
 	}
 
-	keyNode, err := vkNode.Descendant(ctx, keyParams)
+	key, err := vk.Descendant(ctx, keyParams)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find key with %v", keyParams)
+		return nil, errors.Wrapf(err, "failed to find key with %v", keyParams)
 	}
-
-	if err := keyNode.LeftClick(ctx); err != nil {
-		return errors.Wrapf(err, "failed to click key %s", keyName)
-	}
-	return nil
+	return key, nil
 }
 
 // TapKeyJS simulates a tap event on the middle of the specified key via javascript. The key can
@@ -215,7 +231,14 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 
 // SwitchToFloatMode changes virtual keyboard to floating layout.
 func SwitchToFloatMode(ctx context.Context, tconn *chrome.TestConn) error {
-	return TapKey(ctx, tconn, "make virtual keyboard movable")
+	if err := TapKey(ctx, tconn, "make virtual keyboard movable"); err != nil {
+		return err
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return err
+	}
+	return nil
 }
 
 // TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.
