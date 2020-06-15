@@ -2,18 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
+	"chromiumos/tast/local/bundles/cros/inputs/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +25,6 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          chrome.VKEnabled(),
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -36,30 +35,18 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 
 	const expectedTypingResult = "hello tast"
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Virtual keyboard is mostly used in tablet mode.
-	s.Log("Setting device to tablet mode")
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-	if err != nil {
-		s.Fatal("Failed to ensure tablet mode enabled: ", err)
-	}
-	defer cleanup(ctx)
-
-	// Create a touch controller.
-	// Use pc tap event to trigger virtual keyboard instead of calling vkb.ShowVirtualKeyboard()
-	pc, err := pointer.NewTouchController(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create a touch controller")
-	}
-	defer pc.Close()
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	app := apps.Settings
 	s.Logf("Launching %s", app.Name)
@@ -70,18 +57,22 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("%s did not appear in shelf after launch: %v", app.Name, err)
 	}
 
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for animation finished: ", err)
+	}
+
 	s.Log("Find searchbox input element")
 	params := ui.FindParams{
 		Role: ui.RoleTypeSearchBox,
 		Name: "Search settings",
 	}
-	element, err := ui.FindWithTimeout(ctx, tconn, params, 3*time.Second)
+	element, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find searchbox input field in settings: ", err)
 	}
 
 	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := pointer.Click(ctx, pc, element.Location.CenterPoint()); err != nil {
+	if err := element.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
@@ -90,12 +81,17 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to type on virtual keyboard: ", err)
 	}
 
-	inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
-	if err != nil {
-		s.Fatal("Failed to find searchbox value element: ", err)
-	}
-
-	if inputValueElement.Name != expectedTypingResult {
-		s.Fatalf("Failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+	// Value change can be a bit delayed after input.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
+		if err != nil {
+			return err
+		}
+		if inputValueElement.Name != expectedTypingResult {
+			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		s.Error("Failed to input with virtual keyboard: ", err)
 	}
 }

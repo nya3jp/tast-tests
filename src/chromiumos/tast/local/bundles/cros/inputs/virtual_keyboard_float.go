@@ -2,18 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
+	"chromiumos/tast/local/bundles/cros/inputs/faillog"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -26,19 +25,22 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          chrome.VKEnabled(),
 	})
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
@@ -59,22 +61,6 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Switch to floating layout failed: ", err)
 	}
 
-	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get current ui mode: ", err)
-	}
-
-	var pc pointer.Controller
-	if tabletEnabled {
-		var err error
-		if pc, err = pointer.NewTouchController(ctx, tconn); err != nil {
-			s.Fatal("Failed to create a touch controller")
-		}
-	} else {
-		pc = pointer.NewMouseController(tconn)
-	}
-	defer pc.Close()
-
 	params := ui.FindParams{
 		Role: ui.RoleTypeButton,
 		Name: "move keyboard, double tap then drag to reposition the keyboard",
@@ -88,7 +74,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	// Drag float vk to new position.
 	destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
-	if err := pointer.Drag(ctx, pc, dragPoint, destinationPoint, time.Second); err != nil {
+	if err := mouse.Drag(ctx, tconn, dragPoint, destinationPoint, time.Second); err != nil {
 		s.Fatal("Failed to drag float window: ", err)
 	}
 
@@ -116,7 +102,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	// Drag top left to resize layout.
 	resizeToPoint := coords.NewPoint(resizeTopLeftHandler.X-100, resizeTopLeftHandler.Y-100)
-	if err := pointer.Drag(ctx, pc, resizeTopLeftHandler, resizeToPoint, time.Second); err != nil {
+	if err := mouse.Drag(ctx, tconn, resizeTopLeftHandler, resizeToPoint, time.Second); err != nil {
 		s.Fatal("Failed to resize vk: ", err)
 	}
 
