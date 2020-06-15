@@ -34,6 +34,24 @@
       "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5f2b7d_2ca2a871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-15T10:49:29Z",
+      "side": 1,
+      "message": "I would suggest we call\n  \ndisableDialogErr \u003d tconn.Eval(ctx, `disableSwitchAccessDialog..`)\n\nhere, and in defer:\nif disableDialogErr !\u003d nil {\n  // Shall we fail the test as API is not working (and restart ui to reset Chrome to default)?\n  // Finding dialog UI seems more error prone than using the API.\n}",
+      "parentUuid": "589f78b7_cf2d702e",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
