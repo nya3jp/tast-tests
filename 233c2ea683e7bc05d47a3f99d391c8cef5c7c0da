@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9e1fa168_c9de9eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-15T16:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c25e3f_0e6bd98d",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "233c2ea683e7bc05d47a3f99d391c8cef5c7c0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa98e06b_05424730",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "60b3aee7_4bf5fff1",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-15T16:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa98e06b_05424730",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "233c2ea683e7bc05d47a3f99d391c8cef5c7c0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d134e18f_e1f7b385",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "233c2ea683e7bc05d47a3f99d391c8cef5c7c0da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c2eb75_daa0c676",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-15T16:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d134e18f_e1f7b385",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "233c2ea683e7bc05d47a3f99d391c8cef5c7c0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
