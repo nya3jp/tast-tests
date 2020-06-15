@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bae4553_42d79d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-15T04:12:28Z",
+      "side": 1,
+      "message": "defer close?",
+      "revId": "063f9cc7a94c3fe44706df428040c4291e66e8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d30632_9a99137c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-15T04:12:28Z",
+      "side": 1,
+      "message": "nit: add some comment about why we need to shift 16 bits here",
+      "revId": "063f9cc7a94c3fe44706df428040c4291e66e8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
