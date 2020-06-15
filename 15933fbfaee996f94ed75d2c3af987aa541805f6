@@ -1,0 +1,608 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9689ae50_e6d88479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "s, unless I\u0027m missing the reason why this is capitalized.",
+      "range": {
+        "startLine": 8,
+        "startChar": 62,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc2d0e6_c9cef28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "specification",
+      "range": {
+        "startLine": 16,
+        "startChar": 76,
+        "endLine": 16,
+        "endChar": 80
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6890b160_008e7981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "specification",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92708b5a_75da9611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "real-time",
+      "range": {
+        "startLine": 24,
+        "startChar": 45,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8b566e_9faf0c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "real-time",
+      "range": {
+        "startLine": 37,
+        "startChar": 40,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953ba10e_ec0afe74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 40,
+        "startChar": 78,
+        "endLine": 40,
+        "endChar": 80
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8ca5ac_87781b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 45,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03c8958_a2eb3707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "Unit",
+      "range": {
+        "startLine": 47,
+        "startChar": 66,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f383b7_4a153bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "SFU",
+      "range": {
+        "startLine": 47,
+        "startChar": 73,
+        "endLine": 47,
+        "endChar": 77
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77fdde3_a3ec6380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 56,
+        "startChar": 75,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a91da3_cdd555b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c494e3f_689c0d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "duplicate link with ln. 59.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd72cf5_0c7d7cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 55
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2eea1b0_26446ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "p",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3aa466_b1f315d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4c5be96_80bebfc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 108,
+        "startChar": 66,
+        "endLine": 108,
+        "endChar": 68
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2587ce23_594aeda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "\u003e \"necesary\" is a possible misspelling of \"necessary\".\n\nPlease fix.",
+      "parentUuid": "d4d742d3_0df2b9be",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdabb17_b74194b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "insert space after",
+      "range": {
+        "startLine": 133,
+        "startChar": 25,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58504c0_d754d1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "Remove hyphen.\n\nAlso, does this actually work? The header is\n\nRTC PeerConnection tests (`webrtc.RTCPeerConnection`)\n\nnot just\n\nRTC PeerConnection tests",
+      "range": {
+        "startLine": 136,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3dbbbe_5ddc368d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 138,
+        "startChar": 66,
+        "endLine": 138,
+        "endChar": 68
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde07406_fb5b9e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "Remove space.",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2f6d62_cb5da5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 159,
+        "startChar": 6,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05380a67_fb401441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "This link is not working.",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 149
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fff5b2_528a99d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "remove blank line.",
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31def6a_d526f4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 25
+      },
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31aa543_ec241b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "remove blank line.",
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be80d3e0_d57c0c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:55:57Z",
+      "side": 1,
+      "message": "remove blank line.",
+      "revId": "15933fbfaee996f94ed75d2c3af987aa541805f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
