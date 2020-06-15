@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ee0e808_c99eae6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-15T05:48:33Z",
+      "side": 1,
+      "message": "What if this API call fails and disableAccessiblilityFeatures() calls in deferred func()? Would it leave a dialog API open?",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
