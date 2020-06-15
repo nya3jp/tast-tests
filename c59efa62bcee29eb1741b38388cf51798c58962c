@@ -1,0 +1,249 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17ef717f_02d39963",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "nit/style: could you merge into one line?",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142a54ca_cf9edd59",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "Could you close at the end of its use?\ntry-with-resource is the common pattern, and it should be suitable here, too.",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6c4765_f30c1982",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "nit: 4 space indent.",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76a7fc7_16f06278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "optional: how about adding a team alias here? e.g. arc-storage@?",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0968a50c_8533f9c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "precondition is designed to be shared across tests for performance.\nAny plans to share it? if so could you move out from this file, because other files is prohibited to access here.\n\nIf not, could you just launch chorme/arc via chrome.New(), arc.New() ?",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a86d8b_eea78d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88105645_ad83ad06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "nit/style: arcui (package name should be all lowercase letters).",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab09971b_42988871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "2 * uiTimeout is used in some cases, so this comment looks like slightly conflicting with the implementation.\nCould you rephrase to match with your design...? (Sorry, the concept of this variable itself is not very clear to me, so I couldn\u0027t suggest a good alternative at the moment. Why some are uiTimeout and others are 2 * uiTimeout ...?)",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3e8690_8ce611be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "Because this contains ExpectedValue, it looks more than \"label\" of the app.\nMaybe\n\ntype Expectation struct {\n  labelID string\n  value string\n}\n\nor something...?",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4825b63_3fb2395d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "Is it ok to assume the directory exists? If so, it is the interface of this function, so could you document it?\n\nIf not, I think you need to create the directory before writing the file.",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebb91ed_1ac2dea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "This won\u0027t run if test failed (s.Fatal() immediately exits from this function).\nCould you call this in defer statement at L72?",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a8784a_6609c6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "nit: looks like uiObj or something rather than the content...?",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f675be8c_4caa675b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-15T08:24:11Z",
+      "side": 1,
+      "message": "nit/style: go prefers shorter name in general by using the surrounding context.\nHow about just \"actual\" or \"val\" ?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 12
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
