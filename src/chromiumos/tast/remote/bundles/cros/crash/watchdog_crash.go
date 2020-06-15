@@ -28,8 +28,10 @@ func init() {
 		SoftwareDeps: []string{"pstore", "reboot", "watchdog"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		// TODO(https://crbug.com/1045821): Remove this once samus issue is resolved.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("samus")),
-		Timeout:      10 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("samus"),
+			// See https://crbug.com/1069618 for discussion of bob, scarlet, kevin issues.
+			hwdep.SkipOnPlatform("bob"), hwdep.SkipOnPlatform("scarlet"), hwdep.SkipOnPlatform("kevin")),
+		Timeout: 10 * time.Minute,
 	})
 }
 
