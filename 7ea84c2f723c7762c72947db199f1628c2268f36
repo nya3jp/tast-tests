@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "2b5bcf5c_f8bb44b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-15T08:43:21Z",
+      "side": 1,
+      "message": "nit #1: 5 * time.Second\n\nnit #2: 5 seconds probably too short, what about 20? How long it usually takes to copy file?",
+      "range": {
+        "startLine": 152,
+        "startChar": 37,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a55083f_e719bfb7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
@@ -30,6 +53,52 @@
       "writtenOn": "2020-06-15T08:43:08Z",
       "side": 1,
       "message": "See proposal in service",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec422771_566dea6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-15T08:43:21Z",
+      "side": 1,
+      "message": "nit: s.Log",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93bda7f8_a979bfed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-15T08:43:21Z",
+      "side": 1,
+      "message": "nit: let\u0027s simplify this block:\n\nif response \u003d\u003d nil {\n    s.Log(ctx, \"Remote call RunTest() on DUT return nil response\")\n    return\n}\n\nif ....",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 0
+      },
       "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
