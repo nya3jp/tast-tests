@@ -19,7 +19,8 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
-		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
+		// TODO(b/158726023): remove the skip-on "kefka-kernelnext" filter once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.Wifi80211ac(), hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,6 +25,8 @@ func init() {
 		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		// TODO(b/158726023): remove the filter once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"iwlwifi_rescan"},
 		ServiceDeps:  []string{"tast.cros.network.IwlwifiPCIRescan"},
+		// TODO(b/158726023): remove the filter once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 

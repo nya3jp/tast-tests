@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,6 +30,8 @@ func init() {
 		// Run on both Tast CQ and suite:wifi_matfunc.
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		// TODO(b/158726023): remove the filter once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 

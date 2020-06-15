@@ -32,8 +32,9 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		// TODO(b/149247291): remove the blacklist once elm/hana upreved kernel to 4.19 or above.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
+		// TODO(b/149247291): remove the deps elm/hana upreved kernel to 4.19 or above.
+		// TODO(b/158726023): remove the deps once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana"), hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 

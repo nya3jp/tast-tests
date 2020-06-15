@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,8 @@ func init() {
 		// TODO(crbug/1073579): move it back to CQ once we identify whether kip should have 11ac capabilities.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		// TODO(b/158726023): remove the filter once the WiFi modules works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kefka-kernelnext")),
 	})
 }
 
