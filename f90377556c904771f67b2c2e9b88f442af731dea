@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b78a1e_cc41fa4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:07:09Z",
+      "side": 1,
+      "message": "Optional: We might want to convert this to an async function.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43928282_dca4d2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:07:09Z",
+      "side": 1,
+      "message": "const expectedRGBAColors \u003d ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef5e454_05a86ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:07:09Z",
+      "side": 1,
+      "message": "const c in ...",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323ce568_b4369aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:07:09Z",
+      "side": 1,
+      "message": "let i \u003d 0; ...",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06cda85a_6b5db2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-15T08:07:09Z",
+      "side": 1,
+      "message": "EvalPromise is deprecated; you can simply replace it with Eval.\n\ncrbug.com/1042550",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
