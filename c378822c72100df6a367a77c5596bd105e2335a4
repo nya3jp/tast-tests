@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6de46c01_07355163",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-15T16:39:37Z",
+      "side": 1,
+      "message": "nit: although Go doesn\u0027t specify the length of the line, is says that it should be \"natural\".\nThis is a ~400 char length line and seems that it could be split in 3 or 4 lines to make it easier to read.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "range": {
+        "startLine": 248,
+        "startChar": 133,
+        "endLine": 248,
+        "endChar": 393
+      },
+      "revId": "c378822c72100df6a367a77c5596bd105e2335a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e208512a_f0154c28",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-15T16:39:37Z",
+      "side": 1,
+      "message": "huge nit, style: create -\u003e creates.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 248,
+        "startChar": 36,
+        "endLine": 248,
+        "endChar": 42
+      },
+      "revId": "c378822c72100df6a367a77c5596bd105e2335a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91afbd9_da7485e5",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-15T16:39:37Z",
+      "side": 1,
+      "message": "nit, style: (here and below).\n\nUse the correct case for the name sin the logs:\n\npem -\u003e PEM\nder -\u003e DER",
+      "range": {
+        "startLine": 269,
+        "startChar": 59,
+        "endLine": 269,
+        "endChar": 62
+      },
+      "revId": "c378822c72100df6a367a77c5596bd105e2335a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328ebfe0_52c2b4af",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-15T16:39:37Z",
+      "side": 1,
+      "message": "huge nit, style: end sentences with period (.)",
+      "range": {
+        "startLine": 292,
+        "startChar": 37,
+        "endLine": 292,
+        "endChar": 38
+      },
+      "revId": "c378822c72100df6a367a77c5596bd105e2335a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
