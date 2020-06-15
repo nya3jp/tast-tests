@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "3cb3f5ba_430b400e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-15T22:35:59Z",
+      "side": 1,
+      "message": "chrome.New is clearing the users\u0027s cryptohome state before login:\nif c.loginMode !\u003d noLogin \u0026\u0026 !c.keepState {\n        if err :\u003d cryptohome.RemoveUserDir(ctx, c.normalizedUser); err !\u003d nil {\n\t\treturn nil, err\n\t}\n}",
+      "parentUuid": "9c39d7bc_f4957dfb",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "562056f06d9dcc9b0e8e92da0979867cf619b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffe2d459_d788212c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_guest_script.go",
         "patchSetId": 7
