@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac75e35a_44e198fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T17:59:04Z",
+      "side": 1,
+      "message": "g",
+      "range": {
+        "startLine": 181,
+        "startChar": 59,
+        "endLine": 181,
+        "endChar": 60
+      },
+      "revId": "9d1f6701a291b9885363b6a62ebfc39f532a5fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
