@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57e5d77c_e464642c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T20:34:34Z",
+      "side": 1,
+      "message": "nit: Make this a link like \"Video Test Overview\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 25,
+        "endLine": 1,
+        "endChar": 52
+      },
+      "revId": "f21c6eb540c42bbb96a817a543c89a4726c38104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8581fa1b_05e7bbba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T20:34:34Z",
+      "side": 1,
+      "message": "Remove \"articles\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 47,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "f21c6eb540c42bbb96a817a543c89a4726c38104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845dbc80_ca2ae71e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T20:34:34Z",
+      "side": 1,
+      "message": "End with period.",
+      "revId": "f21c6eb540c42bbb96a817a543c89a4726c38104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
