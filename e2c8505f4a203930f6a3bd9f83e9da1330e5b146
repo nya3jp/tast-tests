@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d37c2ed_b36e77f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-15T09:04:57Z",
+      "side": 1,
+      "message": "Sorry, it is a mistake to have this sleep here. Also I refactored the way to turn the device to tablet mode here.",
+      "parentUuid": "41b12a6f_3b02563c",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5505adac_b328bc03",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-15T08:28:48Z",
       "side": 1,
       "message": "I recommend using testing.State.Run() to run subtests for each test cases. This is because of two reasons:\n\n1. We use defer statements in the loop, but they\u0027re run after the whole loop is finished, not when an iteration is finished. By making an anonymous function here, defer statements will run at the end of subtests.\n\n2. We can use s.Fatal instead of s.Error \u0026 return. Note that s.Fatal in subtests doesn\u0027t skip the next subtest.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f387ed4_815099bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-15T09:04:57Z",
+      "side": 1,
+      "message": "Good suggestion. Really appreicate the detailed clarification. Since we currently only have one test case here. I just simply removed the loop at the moment. I will definitely follow suggested approach when more testcases added with loop.",
+      "parentUuid": "5505adac_b328bc03",
       "range": {
         "startLine": 112,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6ad8edc8_c260117f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-15T09:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace60fe9_a848662c",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "661f83fd_5dc06333",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc7eb63_d216c070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-15T09:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "661f83fd_5dc06333",
+      "range": {
+        "startLine": 176,
+        "startChar": 30,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
