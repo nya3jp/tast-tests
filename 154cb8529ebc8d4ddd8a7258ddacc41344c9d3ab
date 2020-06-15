@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7814fca2_4ab4216a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-15T15:03:13Z",
+      "side": 1,
+      "message": "SGTM. Now I\u0027ve got that I was wrong. This doesn\u0027t affect pass/fail status as you said.",
+      "parentUuid": "9a456fc5_e6cc0905",
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1486c6e_7e8b38c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
         "patchSetId": 3
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "Yes. This is wait for virtual keyboard in place. There is still not good enough to assess a new input method is installed. The workflow is show vk -\u003e install vk -\u003e layout change.",
       "parentUuid": "8131d298_da5333cf",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee152bc_22e200db",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-15T15:03:13Z",
+      "side": 1,
+      "message": "Thanks, now I got that the called function has some polling but it is just checking for \"unchanged\", thus won\u0027t be able to wait the aforementioned thing here.",
+      "parentUuid": "6b643536_6efdc05b",
       "range": {
         "startLine": 65,
         "startChar": 0,
