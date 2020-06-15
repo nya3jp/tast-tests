@@ -117,6 +117,24 @@
       "revId": "73673d5926bed6e6422839996e691cb9f019a652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc112f1_1077875f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-15T22:41:11Z",
+      "side": 1,
+      "message": "I just came to the same conclusion, but you beat me to the punch 😊. More specifically, stale scan results can cause wpa_supplicant to attempt to fast-reconnect to an AP even if it is no longer available. The purpose of the scan is to ensure that the AP is definitely in the scan results before the disconnect and subsequent fast-reconnect happens. When the next scan is triggered (because the client is attempting to connect), we expect the AP, which is no longer up and thus should no longer be in the scan results, to be purged from the results. The functionality to purge all scan results older than the most recent scan request time for fast-reconnect was added in this patch: https://chromium-review.googlesource.com/c/chromiumos/third_party/hostap/+/7437/.\n\nIn this case, I think there is value to continue verifying this behavior, with a couple additions/modifications:\n1. Clearly, it\u0027s not obvious why the scan happens, so there needs to be a comment explaining it.\n2. We should be parsing the result of the iw scan and verifying that the AP does indeed appear in the results.",
+      "parentUuid": "430fc7c6_10a7e53a",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
