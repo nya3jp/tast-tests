@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13cc2633_fa1ce8cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b78a1e_cc41fa4a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43928282_dca4d2e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96574b3a_94a4fb4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43928282_dca4d2e3",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8a31febf_dc0734b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef5e454_05a86ae9",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "323ce568_b4369aa3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "548a77ea_dd7cc110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323ce568_b4369aa3",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06cda85a_6b5db2ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2402fd6f_3c562d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-15T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06cda85a_6b5db2ce",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "f90377556c904771f67b2c2e9b88f442af731dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
