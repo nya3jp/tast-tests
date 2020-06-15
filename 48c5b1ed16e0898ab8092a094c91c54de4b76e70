@@ -16,6 +16,24 @@
       "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589f78b7_cf2d702e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-15T08:59:07Z",
+      "side": 1,
+      "message": "yes you\u0027re right, in this scenario I would imagine that a dialog would be left open.\nOne solution that comes to mind:\ndisableDialogErr \u003d tconn.Eval(ctx, `disableSwitchAccessDialog..`)\n\nThen in defer:\nif disableDialogErr !\u003d nil {\n // Do previous solution, of manually finding the dialog.\n}\n\nTo further restrict it, we could only call this API when switchaccess is being enabled. \n\nI\u0027m also open to other solutions you have.",
+      "parentUuid": "8ee0e808_c99eae6e",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
