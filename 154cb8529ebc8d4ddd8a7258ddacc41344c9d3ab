@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8428bed_714d66eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-15T09:15:57Z",
+      "side": 1,
+      "message": "I thought this path should be reported as test failure because this indicates anormality on DUT, potentially affecting other tests run after this.\nHowever I would like to ask nya@ for the second opinion.",
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1486c6e_7e8b38c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-15T09:15:57Z",
+      "side": 1,
+      "message": "I think we should keep the year in which the file was created.\nhttps://chromium.googlesource.com/chromium/src/+/master/styleguide/c++/c++.md#file-headers\n(However I only found an announcement sent in 2012. Let me know if there is newer announcement than this.)",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8131d298_da5333cf",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-15T09:15:57Z",
+      "side": 1,
+      "message": "Does this still require Sleep()?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
