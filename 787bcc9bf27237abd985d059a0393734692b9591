@@ -16,6 +16,24 @@
       "revId": "787bcc9bf27237abd985d059a0393734692b9591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d444a0_c5796656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-16T01:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67656146_32e1175d",
+      "revId": "787bcc9bf27237abd985d059a0393734692b9591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
