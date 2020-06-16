@@ -60,6 +60,48 @@
     },
     {
       "key": {
+        "uuid": "0f56b5f9_f2d3afaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36fe488b_b83f7261",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fcf6061_44affd4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff0de70_74454cac",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 42
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b18b196_c3e82b98",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
         "patchSetId": 5
@@ -113,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "53803c81_93f3f94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cb571e7_f23d3111",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b5bcf5c_f8bb44b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
@@ -124,6 +184,30 @@
       "writtenOn": "2020-06-15T08:43:21Z",
       "side": 1,
       "message": "nit #1: 5 * time.Second\n\nnit #2: 5 seconds probably too short, what about 20? How long it usually takes to copy file?",
+      "range": {
+        "startLine": 152,
+        "startChar": 37,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1adb5812_90c48b02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Other tests collect /var/log/message use 5 seconds like here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go;rcl\u003d771f90fdc7b37235c2b2529298850ec5dc7644a5;l\u003d116\n\nCurrently, we only collect gtest xml logs and perf logs. The size should be smaller than /var/log/message.",
+      "parentUuid": "2b5bcf5c_f8bb44b2",
       "range": {
         "startLine": 152,
         "startChar": 37,
@@ -153,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "fb20fc0f_b7d8a8e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a55083f_e719bfb7",
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec422771_566dea6a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
@@ -173,6 +275,30 @@
       "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8999167_4d0c881e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec422771_566dea6a",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -199,6 +325,30 @@
     },
     {
       "key": {
+        "uuid": "a02c92ee_bbbecc29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93bda7f8_a979bfed",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09d4eabf_bc6d51fb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 5
@@ -219,6 +369,30 @@
       "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5b9914_15c50955",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d4eabf_bc6d51fb",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "7ea84c2f723c7762c72947db199f1628c2268f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
