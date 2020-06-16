@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2316cd4a_c549ddfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-06-16T04:11:26Z",
+      "side": 1,
+      "message": "Maybe we can make these lines a function and reuse it in testPauseResume()",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 2
+      },
+      "revId": "6dbaeea481d63c94c2055f1cfb280a1915b89d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
