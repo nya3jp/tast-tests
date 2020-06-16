@@ -198,6 +198,30 @@
       "revId": "e2ec85857beb6a1ded4746180c61e80d44f3cdea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "609a806e_55ea3a90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-16T13:50:54Z",
+      "side": 1,
+      "message": "Then it looks like it makes sense to put\n\nif err :\u003d d.Conn().Command(\"rm\", \"-r\", response.OutPath).Start(cleanupCtx); err !\u003d nil {\n\ts.Errorf(\"Failed to cleanup remote output directory %q from DUT: %v\", response.OutPath, err)\n}\n\ninto defer statement just before linuxssh.GetFile to have a guarantee that file will be removed.",
+      "parentUuid": "a0997f85_ba05dc50",
+      "range": {
+        "startLine": 177,
+        "startChar": 28,
+        "endLine": 177,
+        "endChar": 38
+      },
+      "revId": "e2ec85857beb6a1ded4746180c61e80d44f3cdea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
