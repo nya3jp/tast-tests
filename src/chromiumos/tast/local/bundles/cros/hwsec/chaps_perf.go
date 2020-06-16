@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ChapsPerf,
 		Desc: "Chaps performance test that includes key import, key sign operation performance measure",
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts: []string{
 			"zuan@chromium.org",
 			"cros-hwsec@chromium.org",
