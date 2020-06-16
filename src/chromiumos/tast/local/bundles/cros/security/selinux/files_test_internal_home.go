@@ -76,7 +76,8 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home/\.shadow/[0-9a-f]*/mount/root/usb_bouncer(/.*)?`, `cros_home_shadow_uid_root_usb_bouncer`},
 		{`/home/\.shadow/[0-9a-f]*/mount/root(/.*)?`, `cros_home_shadow_uid_root`},
 		{`/home/\.shadow/[0-9a-f]*/mount/user/(Downloads|MyFiles)(/.*)?`, mediaRWFileContextPattern},
-		{`/home/\.shadow/[0-9a-f]*/mount/user(/.*)?`, `cros_home_shadow_uid_user`},
+		// We cannot distinguish Downloads or MyFiles for users not logged in but created by other tests.
+		{`/home/\.shadow/[0-9a-f]*/mount/user(/.*)?`, `cros_home_shadow_uid_user|media_rw_data_file|cros_downloads_file`},
 		// Not logged in users are not decrypted. Skip it.
 		{`/home/\.shadow/[0-9a-f]*/mount/.*`, skipTest},
 	}
