@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d918376_e0ce290a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-16T22:05:32Z",
+      "side": 1,
+      "message": "Please see if it is good enough.",
+      "parentUuid": "eaa717d8_f4a5ae37",
+      "revId": "384f6f8de7dd28be09c1a1eabf43146967afeeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4edffa9_b3838e97",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 5
