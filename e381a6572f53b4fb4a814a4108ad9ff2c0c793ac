@@ -16,6 +16,24 @@
       "revId": "e381a6572f53b4fb4a814a4108ad9ff2c0c793ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32fee29f_007f803b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T23:15:52Z",
+      "side": 1,
+      "message": "I wrapped it in a short timeout context. But I couldn\u0027t find a way to determine whether the function returned due to the expected short timeout vs. due to the HTTP timeout. Maybe you or the to-be-assigned Tast-reviewer has a concrete idea of how to do this.",
+      "parentUuid": "e29d40e6_e17502ce",
+      "revId": "e381a6572f53b4fb4a814a4108ad9ff2c0c793ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
