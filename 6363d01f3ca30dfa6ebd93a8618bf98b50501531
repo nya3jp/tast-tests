@@ -22,6 +22,30 @@
       "revId": "6363d01f3ca30dfa6ebd93a8618bf98b50501531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0390d4fe_92033226",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T08:31:20Z",
+      "side": 1,
+      "message": "Thanks for the advice! I added PowerTestOption and corresponding enums for the options.",
+      "parentUuid": "093ddca4_6305acfc",
+      "range": {
+        "startLine": 113,
+        "startChar": 55,
+        "endLine": 113,
+        "endChar": 82
+      },
+      "revId": "6363d01f3ca30dfa6ebd93a8618bf98b50501531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
