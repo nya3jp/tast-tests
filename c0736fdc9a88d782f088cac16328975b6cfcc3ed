@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d72b2f1b_3fc67cc1",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-16T19:01:22Z",
+      "side": 1,
+      "message": "Ah yes, great point. This looks great now.",
+      "parentUuid": "12f5113a_9ca7f561",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 7
+      },
+      "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597e363f_4b429383",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
