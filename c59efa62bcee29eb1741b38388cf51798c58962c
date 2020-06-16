@@ -271,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "a153ef8c_fed281fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T14:52:20Z",
+      "side": 1,
+      "message": "FYI: while it is technically doable, if it is know that the test fails and it\u0027d take to fix, I\u0027d recommend to postpone to add the test to avoid unnecessary resource consumption.",
+      "parentUuid": "dfcbfd23_499cb1d1",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0968a50c_8533f9c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
         "patchSetId": 3
@@ -300,6 +318,24 @@
       "side": 1,
       "message": "I\u0027m using arc.Booted as precondition. It doesn\u0027t allow launching chrome/arc via chrome.New(), arc.New(). Otherwise, it will throw an error.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go?q\u003d%22pre.go%22\u0026dr\u0026l\u003d49\n\nI\u0027m following arcappcompat as an example:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go?q\u003darc.NewPrecondition\u0026dr\u003dC\u0026l\u003d24\n\nShould I share it? But it\u0027s tied to the drive fs credential.",
       "parentUuid": "0968a50c_8533f9c8",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6930333_c7774b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T14:52:20Z",
+      "side": 1,
+      "message": "I meant to get rid of precondition. It does not make sense to use precondition unless it is shared.",
+      "parentUuid": "a3c0db18_96680f9e",
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -417,6 +453,24 @@
       "side": 1,
       "message": "I\u0027m having some UI flakiness in the test.\nNot sure if it\u0027s due to Tast UI or nondeterministic start up time of ARCVM components.\nI\u0027m still investigating. Do you know who can help on this? Thanks.",
       "parentUuid": "ab09971b_42988871",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e806fb7e_624d694c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T14:52:20Z",
+      "side": 1,
+      "message": "If it is UI flakiness, there\u0027re many experts in our office, so you can call help in the offline chat?",
+      "parentUuid": "5f2e25db_0f9ddac0",
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
