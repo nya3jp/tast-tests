@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03ba2cc0_d73e51a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:24:51Z",
+      "side": 1,
+      "message": "Hmm. I have read requestIdleCallback explanation, but it looked ambiguous.\nAnyways, done.",
+      "parentUuid": "8609d769_0c144285",
+      "range": {
+        "startLine": 272,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 21
+      },
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5783404_33565243",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b5fe815d_309f1158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:24:51Z",
+      "side": 1,
+      "message": "To access \"this\". Added the comment.",
+      "parentUuid": "b5783404_33565243",
+      "range": {
+        "startLine": 956,
+        "startChar": 34,
+        "endLine": 956,
+        "endChar": 44
+      },
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d298504f_84e4f9cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -59,6 +107,41 @@
       "writtenOn": "2020-06-15T17:15:15Z",
       "side": 1,
       "message": "Can we store the promise within a chrome.JSObject? Is it possible with the new Eval API?\n\nIf it\u0027s not possible, maybe we should store a function that will return that promise here, and call that function later after trigger(). WDYT?",
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3a509a_04acd7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:24:51Z",
+      "side": 1,
+      "message": "Promise is awaited on Eval().\nAdded a wrapper function.",
+      "parentUuid": "d298504f_84e4f9cc",
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a5352f_40b7730c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:24:51Z",
+      "side": 1,
+      "message": "nit: unused.",
       "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -85,6 +168,30 @@
       "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f5d068_05a03da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/getusermedia/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e21ffa54_9a4cc4eb",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
