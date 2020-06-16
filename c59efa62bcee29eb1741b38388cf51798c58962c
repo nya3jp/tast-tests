@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42958a1b_0f82109f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd17b0ae_c5edef09",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17ef717f_02d39963",
         "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "bcea5a4f_922faee5",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ef717f_02d39963",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "142a54ca_cf9edd59",
         "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b41381b_3a48afa1",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142a54ca_cf9edd59",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "0a3d0daf_62fcc604",
+        "filename": "android/ArcFileReaderTest/src/org/chromium/arc/testapp/filereader/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6c4765_f30c1982",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c76a7fc7_16f06278",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
         "patchSetId": 3
@@ -90,6 +168,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101c9eb6_506f8223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c76a7fc7_16f06278",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "655ad03a_a2a0280c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Sure. Removed the vm test and added a TODO.",
+      "parentUuid": "48d3da3b_e3552b5f",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bac63ae8_dfe4c95e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
         "patchSetId": 3
@@ -130,6 +250,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfcbfd23_499cb1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Sure. Removed the vm test and added a TODO.",
+      "parentUuid": "bac63ae8_dfe4c95e",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "a3c0db18_96680f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "I\u0027m using arc.Booted as precondition. It doesn\u0027t allow launching chrome/arc via chrome.New(), arc.New(). Otherwise, it will throw an error.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go?q\u003d%22pre.go%22\u0026dr\u0026l\u003d49\n\nI\u0027m following arcappcompat as an example:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go?q\u003darc.NewPrecondition\u0026dr\u003dC\u0026l\u003d24\n\nShould I share it? But it\u0027s tied to the drive fs credential.",
+      "parentUuid": "0968a50c_8533f9c8",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5a86d8b_eea78d31",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
         "patchSetId": 3
@@ -164,6 +320,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd25219_395c4ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a86d8b_eea78d31",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "231bf5d0_32a047a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88105645_ad83ad06",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab09971b_42988871",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 3
@@ -201,6 +399,24 @@
       "writtenOn": "2020-06-15T08:24:11Z",
       "side": 1,
       "message": "2 * uiTimeout is used in some cases, so this comment looks like slightly conflicting with the implementation.\nCould you rephrase to match with your design...? (Sorry, the concept of this variable itself is not very clear to me, so I couldn\u0027t suggest a good alternative at the moment. Why some are uiTimeout and others are 2 * uiTimeout ...?)",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2e25db_0f9ddac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "I\u0027m having some UI flakiness in the test.\nNot sure if it\u0027s due to Tast UI or nondeterministic start up time of ARCVM components.\nI\u0027m still investigating. Do you know who can help on this? Thanks.",
+      "parentUuid": "ab09971b_42988871",
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -224,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "4bfb0f40_4635c6e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3e8690_8ce611be",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4825b63_3fb2395d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 3
@@ -241,6 +475,24 @@
     },
     {
       "key": {
+        "uuid": "fc8d8406_8c1b8768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "If we accept any arbitrary directory, it will complicate the folder navigation part later.\nFilesApp API can\u0027t navigate to an arbitrary path: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go?sq\u003dpackage:piper+file://depot/google3+-file:google3/experimental\u0026type\u003dcs\u0026q\u003dfilesapp.go\u0026g\u003d0\u0026l\u003d81\n\nLet me add a comment to restrict |dir| to top level folder in FilesApp, e.g. Google Drive, Downloads. It\u0027ll be good enough for the purpose of this test. Thanks for raising this concern.",
+      "parentUuid": "b4825b63_3fb2395d",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ebb91ed_1ac2dea3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 3
@@ -255,6 +507,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c50020e_895d0842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ebb91ed_1ac2dea3",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +551,30 @@
     },
     {
       "key": {
+        "uuid": "0c0a3f15_aea6baa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a8784a_6609c6c5",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f675be8c_4caa675b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 3
@@ -301,6 +595,30 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae00c0d0_35fcab33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-16T14:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f675be8c_4caa675b",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 12
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
