@@ -66,21 +66,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 	defer unlock()
 
-	func() {
-		// Stop shill temporarily and remove the default profile.
-		if err := upstart.StopJob(ctx, "shill"); err != nil {
-			s.Fatal("Failed stopping shill: ", err)
-		}
-		defer func() {
-			if err := upstart.RestartJob(ctx, "shill"); err != nil {
-				s.Fatal("Failed starting shill: ", err)
-			}
-		}()
-
-		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
-			s.Fatal("Failed removing default profile: ", err)
-		}
-	}()
+	if err := removeDefaultProfile(ctx); err != nil {
+		s.Fatal("Failed to remove the default profile: ", err)
+	}
 
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
@@ -97,9 +85,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		manager.PopProfile(ctx, testDefaultProfileName)
 		manager.RemoveProfile(ctx, testDefaultProfileName)
 
-		upstart.StopJob(ctx, "shill")
-		os.Remove(shill.DefaultProfilePath)
-		upstart.RestartJob(ctx, "shill")
+		if err := removeDefaultProfile(ctx); err != nil {
+			s.Log("Failed to remove the default profile: ", err)
+		}
 	}()
 
 	// Pop user profiles and push a temporary default profile on top.
@@ -112,6 +100,20 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 	if _, err = manager.PushProfile(ctx, testDefaultProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
+	}
+
+	// Wait for the Ethernet service to be online before running the test.
+	// It is because the previous profile cleanup step restarts shill and
+	// the Ethernet service the test depends on might not be ready yet.
+	// Also, a change in the default physical Ethernet during the test,
+	// could cause the L2TP VPN connection to fail (b:157677857).
+	props := map[string]interface{}{
+		shill.ServicePropertyType:  shill.TypeEthernet,
+		shill.ServicePropertyState: shill.ServiceStateOnline,
+	}
+
+	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
+		s.Fatal("Service not found: ", err)
 	}
 
 	// Prepare virtual ethernet link.
@@ -171,54 +173,81 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 }
 
+// removeDefaultProfile stops shill temporarily and remove the default profile.
+func removeDefaultProfile(ctx context.Context) error {
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
+		return errors.Wrap(err, "failed stopping shill")
+	}
+
+	defer func() error {
+		if err := upstart.RestartJob(ctx, "shill"); err != nil {
+			return errors.Wrap(err, "failed starting shill")
+		}
+		return nil
+	}()
+
+	if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed removing default profile")
+	}
+
+	return nil
+}
+
 // configureStaticIP configures the Static IP parameters for the Ethernet interface |interface_name| and applies
 // those parameters to the interface by forcing a re-connect.
 func configureStaticIP(ctx context.Context, interfaceName, address string, manager *shill.Manager) error {
-	// Wait for static IP to be configured.
 	testing.ContextLog(ctx, "Wait for static IP to be configured")
 	ctx, st := timing.Start(ctx, "waitConfigureStaticIP")
 	defer st.End()
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		device, err := manager.WaitForDeviceByName(ctx, interfaceName, 5*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
-		}
 
-		deviceProp, err := device.GetProperties(ctx)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get properties of device %v", device)
-		}
+	device, err := manager.WaitForDeviceByName(ctx, interfaceName, 5*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
+	}
 
-		servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
-		}
+	deviceProp, err := device.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get properties of device %v", device)
+	}
 
-		service, err := shill.NewService(ctx, servicePath)
-		if err != nil {
-			return errors.Wrap(err, "failed creating shill service proxy")
-		}
+	servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
+	}
 
-		if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
-			return errors.Wrap(err, "failed to configure the static IP address")
-		}
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return errors.Wrap(err, "failed creating shill service proxy")
+	}
 
-		// Device::OnIPConfigUpdated doesn't cause an Online Service to change state,
-		// as this would lead to fluctuations of what the default Service is every time
-		// a DHCP lease is renewed. So in this case we need to wait for routing to be
-		// re-established, but don't have a good D-Bus property to poll. Because of that,
-		// we need to disconnect/connect the service to make sure the routing rules are re-stablished.
-		if err = service.Disconnect(ctx); err != nil {
-			return errors.Wrapf(err, "failed to dis-connect the service %v", service)
-		}
+	if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
+		return errors.Wrap(err, "failed to configure the static IP address")
+	}
 
-		if err = service.Connect(ctx); err != nil {
-			return errors.Wrap(err, "failed to re-connect after configuring the static IP")
-		}
+	// Device::OnIPConfigUpdated doesn't cause an Online Service to change state,
+	// as this would lead to fluctuations of what the default Service is every time
+	// a DHCP lease is renewed. So in this case we need to wait for routing to be
+	// re-established, but don't have a good D-Bus property to poll. Because of that,
+	// we need to disconnect/connect the service to make sure the routing rules are re-stablished.
+	if err = service.Disconnect(ctx); err != nil {
+		return errors.Wrapf(err, "failed to dis-connect the service %v", service)
+	}
 
-		return nil
-	}, &testing.PollOptions{Timeout: 100 * time.Second, Interval: 1 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for static IP to be configured")
+	// Spawn a watcher before connect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err = service.Connect(ctx); err != nil {
+		return errors.Wrap(err, "failed to re-connect after configuring the static IP")
+	}
+
+	timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+		return err
 	}
 
 	return nil
