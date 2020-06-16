@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e9f773_b62100d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "I think we no longer need to output expected tree.",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c58f2b62_78e2ff59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "How about using embedding in Golang for ui.FindParams? so that we can reduce nesting when defining the expected nesting and we can directly pass params.\n(I should have noticed this in the previous round. Sorry!)",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87161202_bd5956a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "How about making clear difference between returning bool and error?\n- |error| is an internal error like failure on connecting to chrome or invoking js.\n- |bool| represents tree matched or not. Detailed difference is logged via context, and don\u0027t return error.",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce86cefd_aa5153d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "nit: I think |trees| is better because value (of key-value store) is tree.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757e5c22_ae8b79a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "can we omit declaring err and do  `if appRoot, err :\u003d ui.Find(...)`?",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 27
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa41967_6de87573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "I guess we don\u0027t need to nest here",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 12
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28075a8_ab4b0ce1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-16T09:44:59Z",
+      "side": 1,
+      "message": "Can we have an anonymous function here? e.g.\n\nnode, err :\u003d func() (*Node, error) {\n\tif err :\u003d childrenList.Call(ctx, currChild, \"function(i){return this[i]}\", i); err !\u003d nil {\n\t\treturn nil, err\n\t}\n\treturn NewNode(ctx, n.tconn, currChild)\n}()\nif err !\u003d nil {\n\tchildren.Release(ctx)\n}",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 3
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
