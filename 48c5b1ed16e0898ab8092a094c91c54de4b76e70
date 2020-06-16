@@ -52,6 +52,24 @@
       "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63022452_05762278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-16T01:01:34Z",
+      "side": 1,
+      "message": "Shuo-Peng, actually re-thinking my previous comment, a dialog wouldn\u0027t be shown if this statement fails.\n\nThe \"disableSwitchAccessDialog\" function from autotest private, is actually setting the value of no_switch_access_disable_confirmation_dialog_for_testing_, which is being used from here (https://source.chromium.org/chromium/chromium/src/+/master:ash/accessibility/accessibility_controller_impl.cc;l\u003d1949).\nSo if \"disableSwitchAccessDialog\" fails, then switchAccess would not have been enabled, which means that the dialog for disabling switch access will not be shown.",
+      "parentUuid": "4c5f2b7d_2ca2a871",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
