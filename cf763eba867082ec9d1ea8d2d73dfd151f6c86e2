@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a2c93bf_c678eddd",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-16T17:16:29Z",
+      "side": 1,
+      "message": "I\u0027ve overseen this; this could be named as just \"ui\", since it is clear about the relationship with crostini, as it is under crostini directory.\n\nFor the naming conflict with other \"ui\" package (like chrome/ui), the caller can name them as cui or whatever they like, but it can be up to the test author; for example, the following has conflict between \"arc/ui\" and \"chrome/ui\", so naming the latter as \"chromeui\":\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go#20\n\nI am fine with cui but keep that in your mind.",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "cf763eba867082ec9d1ea8d2d73dfd151f6c86e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59718f41_8bb3e675",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-16T17:16:29Z",
+      "side": 1,
+      "message": "I can\u0027t find the definition of WithNamef. Maybe uig.WithNamef()?",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "cf763eba867082ec9d1ea8d2d73dfd151f6c86e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
