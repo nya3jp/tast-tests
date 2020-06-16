@@ -20,7 +20,7 @@ func init() {
 		Func:        DisconnectClearsIP,
 		Desc:        "Check that the DUT removes the IP after disconnecting from a WiFi network",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 	})
