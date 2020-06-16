@@ -141,6 +141,30 @@
       "revId": "c685bab84a0e30a54a3044fbdd96e027a1d4fbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec818ff8_78697fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_start_loggedin.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-16T05:18:21Z",
+      "side": 1,
+      "message": "That make sense, because we are not checking for the status of shill after running the upstart \"start\" command. I will submitted a CL for deleting it after getting this one merged.",
+      "parentUuid": "8073b8df_4b2e9125",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "c685bab84a0e30a54a3044fbdd96e027a1d4fbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
