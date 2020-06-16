@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8db26f2c_db6b5914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "nit: \"waits\"",
+      "range": {
+        "startLine": 539,
+        "startChar": 7,
+        "endLine": 539,
+        "endChar": 11
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b55cf2_b9dc8f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "Currently, dbusutil.NewSignalWatcher only ever returns either a non-nil sw or a non-nil err, so this is fine. But if dbusutil.NewSignalWatcher is ever updated to return both sw and error, then this code will leave sw unclosed. You can prevent this issue by deferring sw.Close(ctx) before returning an error.\n\n    sw, err :\u003d dbusutil.NewSignalWatcher(ctx, conn, spec)\n    if sw !\u003d nil {\n         defer sw.Close(ctx)\n    }\n    if err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to create signal watcher\")\n    }",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6adcca_bf05e2f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "This is fine, but I don\u0027t think you need to specify int32. The following options are slightly more common in Go, AFAICT:\n\n    var count int // initializes to 0\n\nor\n\n    count :\u003d 0",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c58498a7_6f88047d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "This select block, and perhaps the surrounding for block, are complicated enough that an explanatory comment would be helpful.",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62e06b6_85ddf70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "nit/style: combine onto one line:\n\n    if err :\u003d dev.SetProperty(ctx, shill.DevicePropertyMACAddrRandomEnabled, req.Enable); err !\u003d nil {\n        ...\n    }",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b082303e_835b7638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "As with above, I recommend deferring the close before returning, in order to defend against future updates to CreateWatcher.\n\n    pw, err :\u003d dev.CreateWatcher(ctx)\n    if pw !\u003d nil {\n         defer pw.Close(ctx)\n    }\n    if err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to create watcher\")\n    }",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d43cb3_3a79d762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "This may be out-of-scope for this change, but I think it would make sense to move this \"check initial state\" logic into pw.ExpectIn. If I\u0027m reading correctly, pw.Expect (via pw.WaitAll) only returns when a PropertyChanged signal is sent, so will not return if the initial state is expected, which I find strange based on the docstring for Expect/ExpectIn.",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7f2b8f_8cf85cf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "Combine onto one line:\n\n    if err \u003d pw.Expect(timeoutCtx, shill.DevicePropertyScanning, false); err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to wait for not scanning state\")\n    }",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7535f19_f03534ed",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-16T18:33:50Z",
+      "side": 1,
+      "message": "nit: \"notices\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
