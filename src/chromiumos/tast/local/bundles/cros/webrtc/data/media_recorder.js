@@ -319,8 +319,11 @@ async function testAddingTrackToMediaStreamFiresErrorEvent() {
     recorder.onerror = (event) => {
       resolve();
     };
-    // Add a new track, copy of an existing one for simplicity.
-    recorder.stream.addTrack(recorder.stream.getTracks()[1].clone());
+    // We'll only get an error if the MediaStream track set changes after start.
+    recorder.onstart = (event) => {
+      // Add a new track, copy of an existing one for simplicity.
+      recorder.stream.addTrack(recorder.stream.getTracks()[1].clone());
+    }
   });
 }
 
@@ -335,7 +338,10 @@ async function testRemovingTrackFromMediaStreamFiresErrorEvent() {
     recorder.onerror = (event) => {
       resolve();
     };
-    recorder.stream.removeTrack(recorder.stream.getTracks()[1]);
+    // We'll only get an error if the MediaStream track set changes after start.
+    recorder.onstart = (event) => {
+      recorder.stream.removeTrack(recorder.stream.getTracks()[1]);
+    }
   });
 }
 
