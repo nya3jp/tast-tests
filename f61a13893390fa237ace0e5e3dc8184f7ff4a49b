@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a847e968_10d82bf0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-16T21:52:38Z",
+      "side": 1,
+      "message": "nit: hwdep.SkipOnPlatform can accept multiple parameters, so you could write like:\n  hwdep.SkipOnPlatform(\n    // TODO(https://crbug.com/1045821): ...\n    \"samus\",\n    // See https://crbug.com/1069618 ...\n    \"bob\",\n    \"scarlet\",\n    \"kevin\")\n\ncf. https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing/hwdep#SkipOnPlatform",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 94
+      },
+      "revId": "f61a13893390fa237ace0e5e3dc8184f7ff4a49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
