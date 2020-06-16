@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3924bed_dfe35078",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "Could you define who is responsible for releasing \"parent\"?\n\nIn this review I assume it is the caller\u0027s responsibility --- otherwise it\u0027s difficult to define the case with nil *nodeRef.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 134
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a483f8_dc5a4e13",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "IIUC parent is always nil except when actions are nested under Action.Steps. So it\u0027s something different from what we imagine by \"parent\".\n\nI would call this a \"contextual root\". The default contextual root is the real desktop root, but it can be overridden by Actions.Steps.",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e41c44f_bc9bf2a4",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "nit\u0026optional: This looks like an usual constructor. Go\u0027s constructor is usually named \"new\" or \"newFoo\". Maybe newNodeRef?",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb8198d_fdca843a",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "nit: This method does not actually creates a copy; how about \"acquire\" to be paired with \"release\"?",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8706b788_20d9ac36",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "It might be good to set r.node \u003d nil as well to make sure further operations should fail.",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5ac5ca_e9c382e2",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "Assuming that it is the caller\u0027s responsibility to release parent, we don\u0027t need node.copy() here.",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "795139aa_db08bd94",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "ParentOrRoot?",
+      "range": {
+        "startLine": 147,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b11d602_fcc05423",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "This example looks outdated (.Do does not exist)",
+      "range": {
+        "startLine": 161,
+        "startChar": 122,
+        "endLine": 161,
+        "endChar": 129
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61218f2_d06b05f6",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "IIUC, with this function, we can \"escape\" the contextual root, e.g.\n\n uig.Find(...).Steps(\n   uig.Find(...).LeftClick(...),\n   uig.Root().Find(...).LeftClick(...), // escape!\n )\n\nThis sounds unfortunate to me because the tree structure of Go code does not correspond to the UI tree structure.\n\nThe same argument applies to FromNode.\n\nSo how about deleting Root/FromNode and providing ParentOrRoot only? We might want to rename ParentOrRoot as well, e.g. ContextRoot.\n\nAs an alternative of FromNode, we can add a parameter to Do to set the initial contextual root, e.g.\n\n // If root is nil, the desktop root is used.\n // If root is not nil, it is the caller\u0027s responsibility to release root.\n Do(ctx context.Context, tconn *chrome.TestConn, root *ui.Root, graphs ...*Action) error",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 9
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9058db54_c5f9a05b",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T07:48:23Z",
+      "side": 1,
+      "message": "Assuming that it is the caller\u0027s responsibility to release parent, we should acquire parent here.",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 22
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
