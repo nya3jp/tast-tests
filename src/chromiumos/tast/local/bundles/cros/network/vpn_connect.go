@@ -114,6 +114,16 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push profile: ", err)
 	}
 
+	// Wait for the ethernet service to be online before starting the test.
+	props := map[string]interface{}{
+		shill.ServicePropertyType:  shill.TypeEthernet,
+		shill.ServicePropertyState: shill.ServiceStateOnline,
+	}
+
+	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
+		s.Fatal("Service not found: ", err)
+	}
+
 	// Prepare virtual ethernet link.
 	if _, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName); err != nil {
 		s.Fatal("Failed to setup veth: ", err)
@@ -212,8 +222,21 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 			return errors.Wrapf(err, "failed to dis-connect the service %v", service)
 		}
 
+		// Spawn watcher before connect.
+		pw, err := service.CreateWatcher(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create watcher")
+		}
+		defer pw.Close(ctx)
+
 		if err = service.Connect(ctx); err != nil {
 			return errors.Wrap(err, "failed to re-connect after configuring the static IP")
+		}
+
+		timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+			return err
 		}
 
 		return nil
