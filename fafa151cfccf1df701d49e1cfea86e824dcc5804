@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ae006ed_5f813083",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-16T20:39:22Z",
+      "side": 1,
+      "message": "I was going to check the returned err message to know what caused the DisconnectWiFiAP() to fail but that would fail if someone change that message.\nI also thought of checking tf.currServicePath, but I have to export it or write I getter func for it. \n \nI updated the log messgae:\ns.Log(\"Failed to disconnect WiFi (The service might have been already idle, as the test is triggering some disconnection): \", err)\n\nWDYT?",
+      "parentUuid": "b3bc5c98_6db820ea",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3c37b4d_b613f897",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 16
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-16T18:46:17Z",
       "side": 1,
       "message": "just a question: if we fail to disconnect in 20 seconds, do we usually get there in 30? If not, should we extend the grace period?",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4de4da6_ee3f0208",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-16T20:39:22Z",
+      "side": 1,
+      "message": "The disconnection takes far less than 20 sec. \nRan the tests 3 times and recorded the disconnection time:\nThe wifi.MissedBeacons.scan: Ave elapsed time \u003d 1.302 sec.\nThe wifi.MissedBeacons: Ave elapsed time \u003d 1.226 sec.",
+      "parentUuid": "b3c37b4d_b613f897",
       "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
