@@ -76,6 +76,36 @@ var WhatsNew = App{
 	Name: "What's New",
 }
 
+// Duo has details about the Duo app.
+var Duo = App{
+	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
+	Name: "Duo",
+}
+
+// PlayMusic has details about the Play Music app.
+var PlayMusic = App{
+	ID:   "ophbaopahelaolbjliokocojjbgfadfn",
+	Name: "Play Music",
+}
+
+// PlayBooks has details about the Play Books app.
+var PlayBooks = App{
+	ID:   "cafegjnmmjpfibnlddppihpnkbkgicbg",
+	Name: "Play Books",
+}
+
+// PlayGames has details about the Play Games app.
+var PlayGames = App{
+	ID:   "nplnnjkbeijcggmpdcecpabgbjgeiedc",
+	Name: "Play Games",
+}
+
+// PlayMovies has details about the Play Movies & TV app.
+var PlayMovies = App{
+	ID:   "dbbihmicnlldbflflckpafphlekmjfnm",
+	Name: "Play Movies & TV",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
