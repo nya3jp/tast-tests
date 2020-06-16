@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ea72375_e7bd2de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6181b7bb_8433668e",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ce9bb94_95cdf50d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -68,6 +92,54 @@
       "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5084feac_c07bfb7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8edb47_562053b6",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdad303f_97b669a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce9bb94_95cdf50d",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "f1bf207f_3486ccbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdd0013_a153ed3b",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cb9d9bb_198ab1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b5fc50_66fae32d",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a774c64_d7c3d160",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "fcbd9356_ae01dd1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a774c64_d7c3d160",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e3efc2c_8365fc3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de74033_c15aed7d",
+      "range": {
+        "startLine": 13,
+        "startChar": 64,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb5d1159_964df95f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511ca8f3_fc1465ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5d1159_964df95f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "2dfff4a3_d228253a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "This result is referred in TEST section below, so I decided to keep this here.",
+      "parentUuid": "4bf8672c_9ca2184d",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eb9fff9_a721a571",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee3009d_64e85ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Yes, it passed the linter. I\u0027m not sure why they are not indented...",
+      "parentUuid": "3eb9fff9_a721a571",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "1f13681c_6031d444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "I\u0027m going to pass the setupOption to power.TestMetrics() in later CL to decide battery metrics should be collected or not. (This is to ensure the test do/don\u0027t collect battery metrics based on ForceDischarge capability.) So I added the suffix named \"nobatterymetrics\".",
+      "parentUuid": "aa8e8b14_bc34f165",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a6aec59_c8e14e32",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 3
@@ -266,6 +530,30 @@
       "writtenOn": "2020-06-11T03:03:58Z",
       "side": 1,
       "message": "So we basically have two variations of each test: One that sets the battery to discharge and one that does not do that (\"nobatterymetrics\" variant).\n\nI think is a common pattern: We also want that for the camera power tests, maybe for some other tests as well.\n\nI am wondering if we should add a helper function that, given an array of testing.Params, generates a new array of double the size which contains the original array and \"nobatterymetrics\" versions. Then we would not have to duplicate so much code. (The only difference is \"forceDischarge \u003d false\" and the ExtraHardwareDeps.\n\nNot sure what the Tast/Golang style guide says though. Could the tast-owners comment on this?",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0473bd_ee27172f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-16T09:28:38Z",
+      "side": 1,
+      "message": "Yes. The goal of this CL is make power tests runnable on all boards regardless they have batteries or not.\n\nI tried implementing helper function like `Parameterize(srcParams []testing.Param) []testing.Param` but the presubmit check says that \"Test Params should be an array literal of Param struct literals\", so I gave up to add the helper function...",
+      "parentUuid": "3a6aec59_c8e14e32",
       "range": {
         "startLine": 61,
         "startChar": 5,
