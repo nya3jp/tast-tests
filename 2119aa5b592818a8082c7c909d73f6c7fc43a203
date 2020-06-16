@@ -22,6 +22,30 @@
       "revId": "2119aa5b592818a8082c7c909d73f6c7fc43a203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6574bd4_58124c93",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-16T04:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b256c57_9330400f",
+      "range": {
+        "startLine": 101,
+        "startChar": 50,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "2119aa5b592818a8082c7c909d73f6c7fc43a203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
