@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f8479b7_01d4ac9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-16T06:41:17Z",
+      "side": 1,
+      "message": "How about handling error of this call?\nAlso, is the singleton TPM store initialized at this point?",
+      "revId": "7b2cb1bbab927a3dccb1c2351b3cfe02f8311be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
