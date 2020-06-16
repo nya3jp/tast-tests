@@ -6,13 +6,14 @@ package ui
 
 import (
 	"context"
-	"time"
+	"strings"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
@@ -85,18 +86,23 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run Javascript to launch What's New: ", err)
 	}
 
-	// Wait for What's New to open by checking in the shelf, and looking for something via UI
+	// Wait for What's New to open by checking in the shelf, and by establishing a
+	// Chrome connection and waiting for the page to finish loading.
 	if err := ash.WaitForApp(ctx, tconn, apps.WhatsNew.ID); err != nil {
 		s.Fatal("What's New did not appear in the shelf: ", err)
 	}
 
-	// The large text at the top of the page seems like a natural choice since it's easily
-	// recognizable and unlikely to change frequently. It would be better to have a
-	// successful launch indicator that didn't rely on a string, though.
-	// Particularly in this case, the apostrophe in What’s is not actually the normal
-	// apostrophe character, but instead the "right single quotation mark" character (&rsquo;).
-	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What’s new with your Chromebook?"}
-	if err := ui.WaitUntilExists(ctx, tconn, titleParams, 10*time.Second); err != nil {
-		s.Fatal("Failed to find What's New PWA's title text in the UI: ", err)
+	f := func(t *target.Info) bool {
+		return strings.Contains(t.URL, "www.google.com/chromebook/whatsnew/embedded") && strings.Contains(t.URL, "version")
+	}
+
+	whatsNewConn, err := cr.NewConnForTarget(ctx, f)
+	if err != nil {
+		s.Fatal("Failed to get Chrome connection to What's New app: ", err)
+	}
+	defer whatsNewConn.Close()
+
+	if err := whatsNewConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		s.Fatal("Failed waiting for What's New app document state to be ready: ", err)
 	}
 }
