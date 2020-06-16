@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "93e41e44_a8e64263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T06:29:06Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "7d37c2ed_b36e77f7",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5505adac_b328bc03",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caeed902_e1e2e99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T06:29:06Z",
+      "side": 1,
+      "message": "SGTM!",
+      "parentUuid": "4f387ed4_815099bb",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "e2c8505f4a203930f6a3bd9f83e9da1330e5b146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
