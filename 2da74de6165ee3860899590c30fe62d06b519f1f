@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "583b1e05_dc3b8766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-16T17:43:00Z",
+      "side": 1,
+      "message": "Will this always be non-zero? If not (maybe an encoding error) you may want to handle this gracefully.",
+      "range": {
+        "startLine": 238,
+        "startChar": 96,
+        "endLine": 238,
+        "endChar": 109
+      },
+      "revId": "2da74de6165ee3860899590c30fe62d06b519f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "678dd691_26e4ff4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 2
