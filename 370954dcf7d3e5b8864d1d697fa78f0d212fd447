@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c394201_2de38c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "for?",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3ec217_81a3bc48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "represents",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3c5a19_5ea62490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "huge nit: end sentences with period (.)",
+      "range": {
+        "startLine": 434,
+        "startChar": 75,
+        "endLine": 434,
+        "endChar": 76
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac23800_adb480e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "nit:  perhaps resetRotation? or since Go prefers shorter var names, what about \"resetRot\" ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869432b8_df284e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "add docstring for all non-trivial funcs",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b414e11_be5b1234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "I think you can inline this function, since it is a one-liner func, and only called from one place. (See my comment below)",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5dc830_efe46ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-16T15:32:05Z",
+      "side": 1,
+      "message": "if you are not returning a custom error message you can just do:\n\n  return display.SetDisplayRotationSync(....)",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "370954dcf7d3e5b8864d1d697fa78f0d212fd447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
