@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "328b64d9_250c1a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T04:48:25Z",
+      "side": 1,
+      "message": "+1, either way sounds fine to me in this case (s.Log vs. s.Error)",
+      "parentUuid": "7814fca2_4ab4216a",
+      "revId": "154cb8529ebc8d4ddd8a7258ddacc41344c9d3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1486c6e_7e8b38c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
         "patchSetId": 3
