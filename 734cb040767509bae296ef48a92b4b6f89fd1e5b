@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db9afd6c_2cfdb92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-06-16T04:26:31Z",
+      "side": 0,
+      "message": "Would be nice to keep this log line - helps to identify stage at which a problem occurs",
+      "revId": "734cb040767509bae296ef48a92b4b6f89fd1e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
