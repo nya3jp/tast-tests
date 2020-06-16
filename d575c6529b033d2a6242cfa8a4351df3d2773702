@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bfde581_010f2388",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-06-16T05:19:41Z",
+      "side": 1,
+      "message": "How about treating this as an error, because failure during the teardown indicates something wrong happening with the test?",
+      "revId": "d575c6529b033d2a6242cfa8a4351df3d2773702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
