@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3bc5c98_6db820ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-16T18:46:17Z",
+      "side": 1,
+      "message": "mini nit: maybe we should only log if this isn\u0027t an error we expect? For example, it might still lead people reading the logs astray if they see this because the service was already idle.",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c37b4d_b613f897",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-16T18:46:17Z",
+      "side": 1,
+      "message": "just a question: if we fail to disconnect in 20 seconds, do we usually get there in 30? If not, should we extend the grace period?",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
