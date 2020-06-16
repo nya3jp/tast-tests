@@ -16,6 +16,24 @@
       "revId": "d575c6529b033d2a6242cfa8a4351df3d2773702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1278b9_275990d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-16T05:32:48Z",
+      "side": 1,
+      "message": "Sure, thanks for the suggestion.",
+      "parentUuid": "4bfde581_010f2388",
+      "revId": "d575c6529b033d2a6242cfa8a4351df3d2773702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
