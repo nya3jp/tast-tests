@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aec3977d_8570d4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-16T06:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90945f26_4bf0e618",
+      "range": {
+        "startLine": 669,
+        "startChar": 3,
+        "endLine": 669,
+        "endChar": 53
+      },
+      "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61e845a3_11d429a8",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30b93322_56f5100b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-16T06:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e845a3_11d429a8",
+      "range": {
+        "startLine": 499,
+        "startChar": 63,
+        "endLine": 499,
+        "endChar": 65
+      },
+      "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26ff6258_bd425fec",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7114d6a9_41c07771",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-16T06:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ff6258_bd425fec",
+      "range": {
+        "startLine": 503,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 2
+      },
+      "revId": "804771b53dbdadc565d03687272f8c718cef2c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
