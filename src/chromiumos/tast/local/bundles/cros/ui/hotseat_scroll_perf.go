@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -243,7 +244,7 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		return nil, err
 	}
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
+	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		if err := runShelfScroll(ctx, tconn); err != nil {
 			return errors.Wrap(err, "fail to run scroll animation")
 		}
@@ -312,6 +313,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			if setting.state == overviewIsVisible {
 				h.Name = h.Name + ".OverviewShown"
 			}
+			s.Log(h.Name, "= ", mean)
 
 			pv.Set(perf.Metric{
 				Name:      h.Name,
