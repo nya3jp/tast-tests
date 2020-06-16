@@ -15,6 +15,7 @@ group("all") {
     "ArcInputCompatTest:ArcInputCompatDisabledTest",
     "ArcInputCompatTest:ArcInputCompatGameTest",
     "ArcInputCompatTest:ArcInputCompatMTest",
+    "ArcInputLatencyTest:ArcInputLatencyTest",
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
