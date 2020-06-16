@@ -22,6 +22,30 @@
       "revId": "060257f05eeb8050283cdff528332cc7f08232b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c16148a_d9cdf2b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-16T02:11:20Z",
+      "side": 1,
+      "message": "So did I, but tastboard shows that kevin has been more stable, and the decision to mark it WONTFIX was only based on the relatively small number of scarlet/bob users, not kevin. I\u0027m following up on the bug to clarify, but for now since the last several runs on tastboard show it as stable (https://tastboard.corp.google.com/test/crash.WatchdogCrash) we can keep running it on kevin.",
+      "parentUuid": "c0eb90ae_30106dc5",
+      "range": {
+        "startLine": 32,
+        "startChar": 55,
+        "endLine": 32,
+        "endChar": 114
+      },
+      "revId": "060257f05eeb8050283cdff528332cc7f08232b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
