@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "43e52369_67246b3e",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-16T06:18:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e0c6c6b_3b803a66",
+      "revId": "b9a93e768ea134eda09ab9a31ffaffcde0a0715f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df282408_233222ce",
         "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
         "patchSetId": 12
