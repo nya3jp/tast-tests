@@ -114,6 +114,61 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push profile: ", err)
 	}
 
+	// Wait for the ethernet service to be online before starting the test.
+	ethProps := map[string]interface{}{
+		shill.ServicePropertyType: shill.TypeEthernet,
+	}
+
+	ctx, st := timing.Start(ctx, "discoverService")
+	defer st.End()
+	s.Log("Discovering a WiFi service with properties: ", ethProps)
+
+	var service *shill.Service
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		service, err = manager.FindMatchingService(ctx, ethProps)
+		if err == nil {
+			return nil
+		}
+		// Scan WiFi AP again if the expected AP is not found.
+		if err2 := manager.RequestScan(ctx, shill.TechnologyWifi); err2 != nil {
+			return testing.PollBreak(errors.Wrap(err2, "failed to request active scan"))
+		}
+		return err
+	}, &testing.PollOptions{
+		Timeout:  15 * time.Second,
+		Interval: 200 * time.Millisecond, // RequestScan is spammy, but shill handles that for us.
+	}); err != nil {
+		s.Fatal("Failed to find the physical ethernet service")
+	}
+
+	// Spawn watcher for checking property change.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		s.Fatal("Failed to create watcher: ", err)
+	}
+	defer pw.Close(ctx)
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		s.Fatal("Failed to get service properties: ", err)
+	}
+
+	state, err := props.GetString(shill.ServicePropertyState)
+	if err != nil {
+		s.Fatal("Failed to get the string of the shill.ServicePropertyState: ", err)
+	}
+
+	if state != shill.ServiceStateOnline {
+		s.Log("Wait for the ethernet service to be online")
+		timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateOnline); err != nil {
+			s.Fatal("Failed waiting to setup the physical ethernet service online after restarting shill: ", err)
+		}
+	}
+
 	// Prepare virtual ethernet link.
 	if _, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName); err != nil {
 		s.Fatal("Failed to setup veth: ", err)
@@ -212,8 +267,21 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 			return errors.Wrapf(err, "failed to dis-connect the service %v", service)
 		}
 
+		// Spawn watcher before connect.
+		pw, err := service.CreateWatcher(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create watcher")
+		}
+		defer pw.Close(ctx)
+
 		if err = service.Connect(ctx); err != nil {
 			return errors.Wrap(err, "failed to re-connect after configuring the static IP")
+		}
+
+		timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+		if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+			return err
 		}
 
 		return nil
