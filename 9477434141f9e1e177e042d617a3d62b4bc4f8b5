@@ -16,6 +16,24 @@
       "revId": "9477434141f9e1e177e042d617a3d62b4bc4f8b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b264e0b7_dd17ceb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-16T20:39:12Z",
+      "side": 1,
+      "message": "On one of my previous CLs I had a similar case that was added to window_manager_helper, but then it was suggested to move it to local since there was no other consumers, the argument was if in future other consumers needed that, then you can move it to window_manager_helper. \nFollowing that mentality I made it private.\nNow I am not sure if I should make it utility function or keep it private? Please advise.",
+      "parentUuid": "8e19fb33_c5e5617b",
+      "revId": "9477434141f9e1e177e042d617a3d62b4bc4f8b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
