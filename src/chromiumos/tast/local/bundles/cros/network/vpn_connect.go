@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/timing"
 )
 
 type vpnServer struct {
@@ -114,6 +113,19 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push profile: ", err)
 	}
 
+	// Wait for the ethernet service to be online before starting the test.
+	// We need to make sure that the default physical ethernet is stable during
+	// the test, because a change in the default physical ethernet could cause the
+	// L2TP VPN connection to fail (b:157677857).
+	props := map[string]interface{}{
+		shill.ServicePropertyType:  shill.TypeEthernet,
+		shill.ServicePropertyState: shill.ServiceStateOnline,
+	}
+
+	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
+		s.Fatal("Service not found: ", err)
+	}
+
 	// Prepare virtual ethernet link.
 	if _, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName); err != nil {
 		s.Fatal("Failed to setup veth: ", err)
@@ -174,51 +186,54 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 // configureStaticIP configures the Static IP parameters for the Ethernet interface |interface_name| and applies
 // those parameters to the interface by forcing a re-connect.
 func configureStaticIP(ctx context.Context, interfaceName, address string, manager *shill.Manager) error {
-	// Wait for static IP to be configured.
-	testing.ContextLog(ctx, "Wait for static IP to be configured")
-	ctx, st := timing.Start(ctx, "waitConfigureStaticIP")
-	defer st.End()
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		device, err := manager.WaitForDeviceByName(ctx, interfaceName, 5*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
-		}
+	device, err := manager.WaitForDeviceByName(ctx, interfaceName, 5*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
+	}
 
-		deviceProp, err := device.GetProperties(ctx)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get properties of device %v", device)
-		}
+	deviceProp, err := device.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get properties of device %v", device)
+	}
 
-		servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
-		}
+	servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
+	}
 
-		service, err := shill.NewService(ctx, servicePath)
-		if err != nil {
-			return errors.Wrap(err, "failed creating shill service proxy")
-		}
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return errors.Wrap(err, "failed creating shill service proxy")
+	}
 
-		if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
-			return errors.Wrap(err, "failed to configure the static IP address")
-		}
+	if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
+		return errors.Wrap(err, "failed to configure the static IP address")
+	}
 
-		// Device::OnIPConfigUpdated doesn't cause an Online Service to change state,
-		// as this would lead to fluctuations of what the default Service is every time
-		// a DHCP lease is renewed. So in this case we need to wait for routing to be
-		// re-established, but don't have a good D-Bus property to poll. Because of that,
-		// we need to disconnect/connect the service to make sure the routing rules are re-stablished.
-		if err = service.Disconnect(ctx); err != nil {
-			return errors.Wrapf(err, "failed to dis-connect the service %v", service)
-		}
+	// Device::OnIPConfigUpdated doesn't cause an Online Service to change state,
+	// as this would lead to fluctuations of what the default Service is every time
+	// a DHCP lease is renewed. So in this case we need to wait for routing to be
+	// re-established, but don't have a good D-Bus property to poll. Because of that,
+	// we need to disconnect/connect the service to make sure the routing rules are re-stablished.
+	if err = service.Disconnect(ctx); err != nil {
+		return errors.Wrapf(err, "failed to dis-connect the service %v", service)
+	}
 
-		if err = service.Connect(ctx); err != nil {
-			return errors.Wrap(err, "failed to re-connect after configuring the static IP")
-		}
+	// Spawn watcher before connect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
 
-		return nil
-	}, &testing.PollOptions{Timeout: 100 * time.Second, Interval: 1 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for static IP to be configured")
+	if err = service.Connect(ctx); err != nil {
+		return errors.Wrap(err, "failed to re-connect after configuring the static IP")
+	}
+
+	timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+		return err
 	}
 
 	return nil
