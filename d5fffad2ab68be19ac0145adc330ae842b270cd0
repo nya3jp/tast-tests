@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "14e358f3_9b5463a7",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32111032_8357f6c5",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97b2786d_232ef668",
         "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdaac83_d7f3050a",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T03:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b2786d_232ef668",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "d5fffad2ab68be19ac0145adc330ae842b270cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
