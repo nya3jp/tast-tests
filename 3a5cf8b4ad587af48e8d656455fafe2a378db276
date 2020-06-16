@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d73a852d_90eb8f42",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-16T14:42:17Z",
+      "side": 1,
+      "message": "(optional): I\u0027d recommend to rename the type to re-scope. E.g. BatterDischargeMode.\nPowerTestOption sounds like wider scope. However, this is enum so if another kind of option (not another variation of enum value) is being introduced, the type cannot be used simply.",
+      "revId": "3a5cf8b4ad587af48e8d656455fafe2a378db276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
