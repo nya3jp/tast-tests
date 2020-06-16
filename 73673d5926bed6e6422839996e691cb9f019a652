@@ -135,6 +135,24 @@
       "revId": "73673d5926bed6e6422839996e691cb9f019a652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d9dac5_66b712b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-16T06:11:44Z",
+      "side": 1,
+      "message": "Thanks Arowa and Matthew to explain the reason to add the active scan. Arowa, please update the comment to summarize the review comment thread.\n\nAlso, please address why we don\u0027t need to stop bgscan: because bgscan isn\u0027t set when there\u0027s one AP on the SSID we\u0027re connecting to.",
+      "parentUuid": "edc112f1_1077875f",
+      "revId": "73673d5926bed6e6422839996e691cb9f019a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
