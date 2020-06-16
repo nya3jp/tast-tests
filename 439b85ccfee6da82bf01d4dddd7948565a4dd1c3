@@ -136,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "9b531b15_f1768488",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_perf_front.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-16T03:46:40Z",
+      "side": 1,
+      "message": "Yes, the OutDir from DUT will be collect and copy to server\u0027s OurDir.",
+      "parentUuid": "32570048_0fa1f30e",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c7e8263_f5105531",
         "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
         "patchSetId": 1
