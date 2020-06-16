@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "722283fa_a699c47f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-16T05:48:40Z",
+      "side": 1,
+      "message": "maybe worth leaving a TODO for this in the leading comment? in case we forget this issue.",
+      "parentUuid": "8d37a70d_d79e7bf5",
+      "range": {
+        "startLine": 412,
+        "startChar": 30,
+        "endLine": 412,
+        "endChar": 32
+      },
+      "revId": "fa7171a772c79cfb17e8915e8aee357a08477748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a509e5a4_bbb56290",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
