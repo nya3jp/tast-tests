@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12f5113a_9ca7f561",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T04:11:07Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m wrong, but my understanding is that crash-reporter first saves a core dump, converts it to a minidump and then removes the core dump. So I thought we should not remove a core dump while crash-reporter is running because it may make minidump conversion fail.\n\nMy naive assumption was that crashes occur only during a test, but you\u0027re right, it might happen after a test, so this check is not correct.\n\nYour second suggested way sounds easy and safe. Let me implement that.",
+      "parentUuid": "31c1c547_4517b743",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 7
+      },
+      "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597e363f_4b429383",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c21bf5b6_0a297142",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-16T04:11:07Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "597e363f_4b429383",
+      "range": {
+        "startLine": 311,
+        "startChar": 41,
+        "endLine": 311,
+        "endChar": 54
+      },
+      "revId": "c0736fdc9a88d782f088cac16328975b6cfcc3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
