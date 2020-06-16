@@ -74,7 +74,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	numExistingWindows := 0
 
 	pv := perf.NewValues()
-	for _, numWindows := range []int{2, 8} {
+	for i, numWindows := range []int{2, 2, 8} {
 		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
@@ -132,8 +132,18 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 				continue
 			}
 
+			var metricName string
+			if i == 0 {
+				// Track first time metrics separately because it include one-time gpu
+				// initialization time for the animation, such as compiling shader.
+				metricName = fmt.Sprintf("%s.Initial", h.Name)
+			} else {
+				metricName = fmt.Sprintf("%s.%dwindows", h.Name, numExistingWindows)
+			}
+			s.Log(metricName, "= ", mean)
+
 			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%dwindows", h.Name, numExistingWindows),
+				Name:      metricName,
 				Unit:      "percent",
 				Direction: perf.BiggerIsBetter,
 			}, mean)
