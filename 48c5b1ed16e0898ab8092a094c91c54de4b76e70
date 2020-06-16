@@ -70,6 +70,24 @@
       "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac30e28b_54d7a660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-16T16:15:06Z",
+      "side": 1,
+      "message": "Awesome. Please give a comment why err here does not affect disableAccessibilityFeatures() in defer func.",
+      "parentUuid": "63022452_05762278",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
