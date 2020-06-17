@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "7e39da8a_baeef2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-06-17T22:36:10Z",
+      "side": 1,
+      "message": "Either const or vars seem fine (ask Tast owners if needed).\n\n\n\u003e Keeping this structure will make it easier to extend\n\nBut your val for container and vm look exactly the same. If we\u0027ll have to use a different Val for vm, the current code is fine.",
+      "parentUuid": "984c5d48_ed4023f1",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bac63ae8_dfe4c95e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
         "patchSetId": 3
