@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3cf41e80_97f67a83",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12b71234_7e61e3a5",
+      "range": {
+        "startLine": 71,
+        "startChar": 45,
+        "endLine": 71,
+        "endChar": 69
+      },
+      "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80e66401_0c7b05bf",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 3
@@ -92,6 +116,24 @@
       "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378492da_bce1cd1e",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22661b55_9a3cc9fb",
+      "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
