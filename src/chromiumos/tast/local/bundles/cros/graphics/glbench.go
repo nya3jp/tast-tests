@@ -63,14 +63,14 @@ func init() {
 				Timeout:   5 * time.Minute,
 			}, {
 				Name:              "crostini",
-				Pre:               crostini.StartedGPUEnabledBuster(),
+				Pre:               crostini.StartedGPUEnabled(),
 				Val:               glbenchConfig{environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 				Timeout:           60 * time.Minute,
 			}, {
 				Name:              "crostini_hasty",
-				Pre:               crostini.StartedGPUEnabledBuster(),
+				Pre:               crostini.StartedGPUEnabled(),
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
@@ -78,7 +78,7 @@ func init() {
 				Timeout:           5 * time.Minute,
 			}, {
 				Name:              "crostini_hasty_unstable",
-				Pre:               crostini.StartedGPUEnabledBuster(),
+				Pre:               crostini.StartedGPUEnabled(),
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
