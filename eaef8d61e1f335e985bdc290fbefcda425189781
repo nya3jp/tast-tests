@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9254cf4d_0deddd31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db26f2c_db6b5914",
+      "range": {
+        "startLine": 539,
+        "startChar": 7,
+        "endLine": 539,
+        "endChar": 11
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b55cf2_b9dc8f79",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "4b75ed71_28dbeed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Thank nya@ for the explanation. As NewSignalWatcher obeys the common contract now, I guess one should change the callers correspondingly if it becomes an exception in the future. Ack.",
+      "parentUuid": "da01a7b6_be79a213",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf7c0789_281db28a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "fc96660f_1a5f68ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7c0789_281db28a",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 15
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "652a49e8_b2f702ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -94,6 +160,30 @@
       "writtenOn": "2020-06-17T03:19:32Z",
       "side": 1,
       "message": "nit: use of done is slightly tricky because nothing is sent to done on success but an error is sent on failure.\n\nFor consistency can we send to the channel on successful case as well? A typical way is:\n\n go func(ctx context.Context) {\n   done \u003c- func() error {\n     ...\n   }()\n }()",
+      "range": {
+        "startLine": 567,
+        "startChar": 2,
+        "endLine": 567,
+        "endChar": 19
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4a7a54_6daa96d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Updated.\n\nHowever, this close is still needed as we might or might not consume the data in the RequestScan loop below. (e.g. if we get some problem in RequestScan) It is easier to handle the wait in defer with the contract that bg routine will send exactly 1 message + close channel on leaving. (Which is more obvious with the suggested code structure)",
+      "parentUuid": "652a49e8_b2f702ae",
       "range": {
         "startLine": 567,
         "startChar": 2,
@@ -141,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "bdaa6560_b2e01752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Yes, the reason for this is for the comparison, and protobuf do not have int type.\n\nOr is \"var count int32\" preferred here?",
+      "parentUuid": "24c063bf_3e2fec1b",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c58498a7_6f88047d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -155,6 +263,24 @@
       "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc224aa_fa6d9c28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "More explanation added.",
+      "parentUuid": "c58498a7_6f88047d",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "dbacb1c9_a642f7d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62e06b6_85ddf70c",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b082303e_835b7638",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -189,6 +333,24 @@
       "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab86363_45ef09e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Ack (please see the one above)",
+      "parentUuid": "b082303e_835b7638",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "f25fe1c1_cff54ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Yes, it\u0027s true that Expect/ExpectIn might not return if the state is already reached. I can see if we can make the interface more intuitive in another cl/bug.\n\nThe partial reason of current design is that we cannot tell the time ordering of PropertyChanged from signal and the property map from GetProperties and will have some problems when Expect-ing multiple signals.\n\nFor example, if one wants to detect a B-\u003eC transition, and the change event order is A-\u003eC-\u003eB, it is possible that it already reaches B when you GetProperties and early return. Then next Expect call might wrongly consume the old C signal and pass the check.\n\nSo the current design expects the caller to spawn watcher before trigger the change and all the expected signal should be in the watcher.\n\nHowever, it is hard to do so in the case that this gRPC wants to handle. e.g. If some service triggered an active scan before the test begins, it might be still running when the test apply its setting.",
+      "parentUuid": "47d43cb3_3a79d762",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d7f2b8f_8cf85cf0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -223,6 +403,24 @@
       "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f71bc97_78aee532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7f2b8f_8cf85cf0",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
