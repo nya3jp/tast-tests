@@ -36,8 +36,8 @@ func init() {
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "download",
-			Pre:       crostini.StartedByDownload(),
+			Name:      "download_stretch",
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			ExtraAttr: []string{"informational"},
 		}, {
@@ -47,7 +47,8 @@ func init() {
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "gpu",
-			Pre:               crostini.StartedGPUEnabledBuster(),
+			Pre:               crostini.StartedGPUEnabled(),
+			ExtraData:         []string{crostini.ImageArtifact},
 			ExtraSoftwareDeps: []string{"crosvm_gpu"},
 			Timeout:           10 * time.Minute,
 			ExtraAttr:         []string{"informational"},
