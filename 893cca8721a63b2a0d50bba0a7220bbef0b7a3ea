@@ -16,6 +16,24 @@
       "revId": "893cca8721a63b2a0d50bba0a7220bbef0b7a3ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f5addd_bc59ade0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-17T17:00:41Z",
+      "side": 1,
+      "message": "Done. What\u0027s wrong to add both the description and the link?",
+      "parentUuid": "da589fed_bc0ad560",
+      "revId": "893cca8721a63b2a0d50bba0a7220bbef0b7a3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
