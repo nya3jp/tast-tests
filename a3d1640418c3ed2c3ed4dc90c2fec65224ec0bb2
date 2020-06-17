@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b9ada80_b2d29f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T18:20:27Z",
+      "side": 1,
+      "message": "[this related to my comment in the other CL].\n\nIIUC, the latency that is being measured is the one that happens only on the Android side.\nWe need that info. It is useful to know how fast/slow Android is.\nBut I think we also need the \"Total latency\". E.g:\n\n\n - measure time in host\n - inject event in host\n - read event from guest\n - measure time in guest\n\nAnd we can log the 3 values:\n\n- Total latency\n- Android latency (that the code currently does)\n- Chrome latency (also useful):  Total - Android.\n\nWDYT?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 80
+      },
+      "revId": "a3d1640418c3ed2c3ed4dc90c2fec65224ec0bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
