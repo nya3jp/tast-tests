@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "62402943_075a69ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-06-17T23:22:31Z",
+      "side": 1,
+      "message": "Need to add drivefs as a SoftwareDeps\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffba481d_9e10e90b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
         "patchSetId": 5
