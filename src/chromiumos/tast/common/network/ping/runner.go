@@ -15,7 +15,11 @@ import (
 	"chromiumos/tast/shutil"
 )
 
-const pingCmd = "ping"
+const (
+	pingCmd = "ping"
+	// DefaultLossThreshold is the allowed packets loss percentage for the ping command.
+	DefaultLossThreshold float64 = 20
+)
 
 // QOSType is a enum type for ping QOS option.
 type QOSType int
@@ -64,12 +68,12 @@ func NewRunner(c cmd.Runner) *Runner {
 }
 
 // Ping performs a shell ping with parameters specified in Options.
-// If no Option is specified, default config (count=3, interval=0.5s) is used.
-// Notice that when no reply is received, this function will try to parse the
+// If no Option is specified, default config (count=3, interval=0.5s)
+// is used. Notice that when no reply is received, this function will try to parse the
 // output and return a valid result instead of returning the error of non-zero
 // return code of ping.
 func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (*Result, error) {
-	cfg := &config{count: 3, interval: 0.5}
+	cfg := &config{count: 10, interval: 0.5}
 	for _, opt := range options {
 		opt(cfg)
 	}
@@ -97,6 +101,7 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 		}
 		return nil, parseErr
 	}
+
 	return res, nil
 }
 

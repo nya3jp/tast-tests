@@ -387,9 +387,11 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 		return err
 	}
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
+
+	if res.Loss > ping.DefaultLossThreshold {
+		return errors.Errorf("unexpectd packet loss percentage: got %g%%, want < %g%%", res.Loss, ping.DefaultLossThreshold)
 	}
+
 	return nil
 }
 
@@ -408,11 +410,12 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	if err != nil {
 		return err
 	}
-
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
+
+	if res.Loss > ping.DefaultLossThreshold {
+		return errors.Errorf("unexpectd packet loss percentage: got %g%%, want < %g%%", res.Loss, ping.DefaultLossThreshold)
 	}
+
 	return nil
 }
 
