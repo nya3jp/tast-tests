@@ -129,10 +129,10 @@ func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
 // gsutil URL.
 func ArchitectureAlias(t ContainerArchType) string {
 	switch t {
-	case DebianBuster:
-		return "debian/buster/test"
-	default:
+	case DebianStretch:
 		return "debian/stretch/test"
+	default:
+		return "debian/buster/test"
 	}
 }
 

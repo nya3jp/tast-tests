@@ -51,7 +51,7 @@ func init() {
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 		}, {
 			Name:    "download",
-			Pre:     crostini.StartedByDownload(),
+			Pre:     crostini.StartedByDownloadStretch(),
 			Timeout: 10 * time.Minute,
 		}, {
 			Name:    "download_buster",
