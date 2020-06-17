@@ -42,6 +42,70 @@
     },
     {
       "key": {
+        "uuid": "da01a7b6_be79a213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T03:19:32Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure if we want to do this. IMO it is a popular contract for a function returning an object with ownership that:\n\n- In a successful case, an object is returned to the caller, and the caller is responsible for releasing the object.\n- In an error case, an object is never returned to the caller, and the *callee* is responsible for releasing an intermediate object if any.\n\nIn Go\u0027s standard libraries I\u0027m not aware of any notable exception to this contract. It may be possible that a function wants to choose to return an object with an error, but it\u0027s relatively rare and nice to be documented explicitly.",
+      "parentUuid": "67b55cf2_b9dc8f79",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7c0789_281db28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T03:19:32Z",
+      "side": 1,
+      "message": "huge nit: Can you move \"defer cancel()\" to next to context.WithCancel so that it is obvious that cancel is paired with its constructor?\n\n done :\u003d make(chan error, 1)\n defer func() { \u003c-done }\n bgCtx, cancel :\u003d context.WithCancel(ctx)\n defer cancel()",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 15
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652a49e8_b2f702ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T03:19:32Z",
+      "side": 1,
+      "message": "nit: use of done is slightly tricky because nothing is sent to done on success but an error is sent on failure.\n\nFor consistency can we send to the channel on successful case as well? A typical way is:\n\n go func(ctx context.Context) {\n   done \u003c- func() error {\n     ...\n   }()\n }()",
+      "range": {
+        "startLine": 567,
+        "startChar": 2,
+        "endLine": 567,
+        "endChar": 19
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d6adcca_bf05e2f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
