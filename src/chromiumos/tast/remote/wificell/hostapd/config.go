@@ -204,6 +204,13 @@ func BeaconInterval(bi int) Option {
 	}
 }
 
+// BSSID returns an Option which sets bssid in hostapd config.
+func BSSID(bssid string) Option {
+	return func(c *Config) {
+		c.BSSID = bssid
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -238,6 +245,7 @@ type Config struct {
 	SecurityConfig     security.Config
 	PMF                PMFEnum
 	DTIMPeriod         int
+	BSSID              string
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -306,6 +314,10 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.DTIMPeriod != 0 {
 		configure("dtim_period", strconv.Itoa(c.DTIMPeriod))
+	}
+
+	if c.BSSID != "" {
+		configure("bssid", c.BSSID)
 	}
 
 	securityConf, err := c.SecurityConfig.HostapdConfig()
@@ -386,6 +398,9 @@ func (c *Config) PerfDesc() string {
 func (c *Config) validate() error {
 	if c.SSID == "" || len(c.SSID) > 32 {
 		return errors.New("invalid SSID")
+	}
+	if c.BSSID != "" && len(c.BSSID) != 17 {
+		return errors.New("invalid BSSID")
 	}
 	if c.Mode == "" {
 		return errors.New("invalid mode")
