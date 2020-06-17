@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2c96f4eb_b567e30b",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T02:34:59Z",
+      "side": 1,
+      "message": "OK. Now that root is never nil, it also make sense to pass the ownership to the callee.",
+      "parentUuid": "5ce90b55_18dfef37",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 134
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a483f8_dc5a4e13",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "Done, but named it Root as I think ContextRoot is longer and may be confused with context.Context somehow.",
       "parentUuid": "c61218f2_d06b05f6",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 9
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b77add14_1fea911c",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T02:34:59Z",
+      "side": 1,
+      "message": "Yes, it sounds fine to name it Root.",
+      "parentUuid": "b9336644_c932d076",
       "range": {
         "startLine": 361,
         "startChar": 5,
