@@ -18,12 +18,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        BootMode,
-		Desc:        "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
-		Contacts:    []string{"cros-fw-engprod@google.com"},
-		Data:        firmware.ConfigDatafiles(),
-		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
-		Attr:        []string{"group:mainline", "informational"},
+		Func:         BootMode,
+		Desc:         "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
+		Contacts:     []string{"cros-fw-engprod@google.com"},
+		Data:         firmware.ConfigDatafiles(),
+		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
+		SoftwareDeps: []string{"crossystem"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
