@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da589fed_bc0ad560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-17T16:52:21Z",
+      "side": 1,
+      "message": "would you mind adding more description about that this test will verify? It\u0027d be nice if the infomation is self contained, but if not, please add a direct link to the spec (although it needs to be permanent, hence I recommend to put the descrpition here)",
+      "revId": "893cca8721a63b2a0d50bba0a7220bbef0b7a3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
