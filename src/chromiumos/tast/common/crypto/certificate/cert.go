@@ -266,6 +266,84 @@ fvnf1pvhiHBjmbJLYOPR9hslU4pg0HzRMaDaG10Sp9047A==
 `,
 	},
 }
+var certSet3AltSubjectMatch = []string{
+	`{"Type":"DNS","Value":"www.example.com"}`,
+	`{"Type":"DNS","Value":"mail.example.com"}`,
+	`{"Type":"EMAIL","Value":"example@domain.com"}`,
+}
+var certSet3 = CertStore{
+	CACert: `-----BEGIN CERTIFICATE-----
+MIIDHzCCAgegAwIBAgIUeYwGG61G9eZgnOYgfX83nWTw30AwDQYJKoZIhvcNAQEL
+BQAwFzEVMBMGA1UEAwwMcm9vdF9jYV9jZXJ0MB4XDTE5MTIxMjE0MzM1OFoXDTI5
+MTIwOTE0MzM1OFowFzEVMBMGA1UEAwwMcm9vdF9jYV9jZXJ0MIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3YMN/y90E3rMVbtFhaJ1NEpXC8uqUnzHNDFj
++IYaffyRMTOnbChexln+cVimdO8kivW4Z9v0SSwkpyJ2KZzf77QzrixepbIBwm3w
+MTu7sbyOv8FBsx3/s/Ltg/G0cnl0yUSkXdLUpwRlq9rtLcWpJXQjg0okSDiCSK0C
+OHgwYp2iohctm3DneKI7izWrdaPOHTlXgsp1ylbBLXNgkxxJLyr/Aude2eeDT171
+EsibRWz5IYEApDYg3fR+DouDAUkKnQP0bGKBAW0214j4qdm4JcCtTBZi/jhRUqBC
+r3EExETOAbEhLLIdugn9ct0JcodrIWxVyT8leFhA2FS4kYm6GwIDAQABo2MwYTAP
+BgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTucw3kJa+svUcoHQApEKr2viDiADAf
+BgNVHSMEGDAWgBTucw3kJa+svUcoHQApEKr2viDiADAOBgNVHQ8BAf8EBAMCAQYw
+DQYJKoZIhvcNAQELBQADggEBANUZNNdSMwXmIyD/SiZntYn1fiA7NkTcvuMZc+zl
+m+PINg2qksJR65TzVK/8bQisVuCkbXLwHaPDvky09nCaylmNEEJ7/2Qg/mEhb4r9
+7akiCOeIAxTzVWgIDAgV4tq7YmeJqGYqIJzZFCDU69D2vTDDAvNLo2vaeRroehxZ
+74KMXLT2wWyxF/+3GAxbS5UZOZXDyW1YJclrajGiAlnpeOcv5fvac8JSimmXPc90
+uuIJdjTkHKNcMtb3MpIc+gz83R9BlwjRBeGzBz8/iR87MFG4IYh25+C1QEytjBBi
+xuFgXLz9+gpOUPKh8KV9tFsVcPeZmdhrLT/HchTIn63eKIQ=
+-----END CERTIFICATE-----
+`,
+	ServerCred: Credential{
+		Cert: `-----BEGIN CERTIFICATE-----
+MIIDWTCCAkGgAwIBAgIBATANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxyb290
+X2NhX2NlcnQwHhcNMTkxMjEyMTQzMzU4WhcNMjkxMjA5MTQzMzU4WjAUMRIwEAYD
+VQQDDAkxMjcuMC4wLjEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDM
+JnQHF7EVPIrXALHTmsVTb5REGMB08cgasEopKghimCYfYUDVYREIYVHPZQVWLcFc
+G+XZXPKUD3NdESvDbAzUr3XiSk4XlcuKQwlvtrGuybUMOTELIb/N+XdxdrGwW/M4
+7Jqw/FO0sz3kinEYxSsS3zfNPLcfn2WZqjX4pJtqFpbZNk8YJjhpV7jgGai5ES4E
+6mu4iP9Z/HnBIcV48rNziVPEh5nvD/rtrpFCWv8sRoGx2ywW8/1hmEjbPQChXKcU
+Abxl1gDv4p2AMpO/XmIx2segK1OYqh1nHOUXMRxvSS8VQ6eqZ9usfnfdnSlv1sei
+9CKKRtK4UhpaZX5npM9xAgMBAAGjgbIwga8wDAYDVR0TAQH/BAIwADAdBgNVHQ4E
+FgQUijvi87fc8UZvEPMO59uScIfp3iowHwYDVR0jBBgwFoAU7nMN5CWvrL1HKB0A
+KRCq9r4g4gAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMEAGA1UdEQQ5
+MDeCD3d3dy5leGFtcGxlLmNvbYIQbWFpbC5leGFtcGxlLmNvbYESZXhhbXBsZUBk
+b21haW4uY29tMA0GCSqGSIb3DQEBCwUAA4IBAQBGqCZm9MR6XV/pu5VIG6Zz1aHe
+O52znWCSn6gwWT6E1EWai7MqZGpo7ToLeSNFLGmER4NrCR7FLC/Y13RXtQSeNvUR
+WuqC7DotSaulHPQPzpgI/xsXRU05jWPIYnu4cdKhaIawqp+ZZsTWcatmLwBWsXKK
+k0wxBfEqqPtew/SEQqa1tpP7dVz5lmeD/xMRpnDB+OJNVhbZNBdRzfplYLUx3H8P
+Dohyj0kefoXcAaoTYTN6a+La9IpyaNSFencdWY1eqY2kxKYbDqVrLJpx9T3bbuqn
+swL6SmbH778JGVkaDsD9eK94jvgiGCbkYuQw+71p3DWpV5TGph4eEWoG3M5g
+-----END CERTIFICATE-----
+`,
+		PrivateKey: `-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAzCZ0BxexFTyK1wCx05rFU2+URBjAdPHIGrBKKSoIYpgmH2FA
+1WERCGFRz2UFVi3BXBvl2VzylA9zXRErw2wM1K914kpOF5XLikMJb7axrsm1DDkx
+CyG/zfl3cXaxsFvzOOyasPxTtLM95IpxGMUrEt83zTy3H59lmao1+KSbahaW2TZP
+GCY4aVe44BmouREuBOpruIj/Wfx5wSHFePKzc4lTxIeZ7w/67a6RQlr/LEaBsdss
+FvP9YZhI2z0AoVynFAG8ZdYA7+KdgDKTv15iMdrHoCtTmKodZxzlFzEcb0kvFUOn
+qmfbrH533Z0pb9bHovQiikbSuFIaWmV+Z6TPcQIDAQABAoIBACe1Fv5GKmhSBUM6
+XFwnD1hiLHluQwi7+krOnS4Sgd0DcO7LkLuwDIsPusTXBkmzzpcmyfcUMA6CTtL8
+QwHYo0o+8nPYNgY6WYOD9HLpGvg/PVqqSRK8Nr1OV2AXUQpXaCBbTN89xN4xuskX
+8FV8DBu4lPbzZz7cVvujcqnxAlWIxB9fNayE3FlrgoseFMqEVtYb56rose6wR+ZE
+oM5s1GLWduJWwybgp43EYrGqeOZVAh+rXLxr0Wq17DT1z/l5h3Hkq2W+9cKX6JVm
+Py8A/y82z4pbDNjZ/63q8ZGmcuSq7vN7n+9PqmCBHZZVboZnSb9AVhgt86kdjTpI
+fc+QY9ECgYEA9GO1uw2ykgQUk1yBPQ9b+BxHgm/tvaJFJ5SON5XZD2nC23kx22Xh
+Muz0G75BsMJV9F4+lyQI9BEVl200Qccyj7CVLIRin3xqUM4IXy0X0Dj5evL6zf+L
+Co7GYg59VN62gz6xW3M9+s+cqQIACDDxNapf9xaLTUpMNkIa875DxE0CgYEA1dlZ
+Wt6ZeB5KjtZtBc8pCwrStrKoiOzAXd8gCNCmqyJcLOLPKD2iQDErjuFIB0iAx7b+
+UYOWBxMcB5bDLcQFzX50JcsH3Yik67pxSbvniG2vDm97crOspjJl/HcEyLorK5lO
+aIORZKpIXvIL2eS/SebdH/lnsoPehWf3ec+NmbUCgYBeBC3Zc/+KZL91oVSmpM4A
+uQBZka2oElEAVQoRIDiM0WcA/7LKcHseGEIgmiSzV0+x3r+9bUN0gU4JHx3HYFZ3
+KLt6kMNQD5Dm3RwjYTmUBRcU0Xzi2rgmq55uApz8lWEpRGj+gWsKnevqqLZScGGa
+/5xDdgzJAxgml2++7Scs0QKBgCuWZ54b7RAMrIm8rvAWL3lutVBDzhJKn1MC3Zau
+YKpVEJCdkjfTiDSpUQWIaZQCdS0/4UpgFb5PaNErK5EyeTRPaAEkBvBin6rkj57F
+zAWExb+dfX39nV0qvJre73yyZYY3c0HeP05TXvjrQPsiotK/WabgwQAj3ME4Vbrg
+US5ZAoGASM5u5pwqkCDvsTgS7LvZZu53nEagGJaoNX47I2WnivpLx7MgyJzUpywI
+2h6sB+gyJGNdU3QeNjkNHIq9BTdkzw0ol7ncSgm8cFAq8o9LFaNewSsiu1zhEeL7
+IksFS0XbEYjXN2w18BoGzewRemCXE3M1j5PaaU9agnu/A6Wa3C4=
+-----END RSA PRIVATE KEY-----
+`,
+	},
+}
 
 // TestCert1 retrieves a well-known set of certificates, for use by tests that want to establish an
 // authenticator and client (e.g., for network EAP tests). This certificate does not provide any real security or
@@ -279,4 +357,16 @@ func TestCert1() CertStore {
 // Both the private key and the Common Name of the CA are different.
 func TestCert2() CertStore {
 	return certSet2
+}
+
+// TestCert3 provides only CACert and ServerCred, where the server cert contains the same alternative subject
+// name entries as TestCert3AltSubjectMatch.
+func TestCert3() CertStore {
+	return certSet3
+}
+
+// TestCert3AltSubjectMatch provides the alternative subject name entries contained in TestCert3().ServerCred.Cert,
+// in encoded json format.
+func TestCert3AltSubjectMatch() []string {
+	return append([]string(nil), certSet3AltSubjectMatch...)
 }
