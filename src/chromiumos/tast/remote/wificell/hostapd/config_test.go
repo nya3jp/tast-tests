@@ -155,6 +155,26 @@ func TestNewConfig(t *testing.T) {
 			expected:   nil,
 			shouldFail: true, // BeaconInterval should be in 15...65535.
 		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				DTIMPeriod(5),
+				BSSID("00:11:22:33:44:55:00"),
+			},
+			expected:   nil,
+			shouldFail: true, // should not set the BSSID if its length is over 17.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				DTIMPeriod(5),
+				BSSID("00:11:22:33:44"),
+			},
+			expected:   nil,
+			shouldFail: true, // should not set the BSSID if its length is under 17.
+		},
 		// Good cases.
 		{
 			ops: []Option{
@@ -162,6 +182,7 @@ func TestNewConfig(t *testing.T) {
 				Mode(Mode80211a),
 				Channel(36),
 				DTIMPeriod(5),
+				BSSID("00:11:22:33:44:55"),
 			},
 			expected: &Config{
 				SSID:           "ssid",
@@ -170,6 +191,7 @@ func TestNewConfig(t *testing.T) {
 				HTCaps:         0,
 				SecurityConfig: &base.Config{},
 				DTIMPeriod:     5,
+				BSSID:          "00:11:22:33:44:55",
 			},
 			shouldFail: false,
 		},
@@ -323,6 +345,7 @@ func TestConfigFormat(t *testing.T) {
 				Channel:        1,
 				SecurityConfig: &base.Config{},
 				DTIMPeriod:     200,
+				BSSID:          "00:11:22:33:44:55",
 			},
 			verify: map[string]string{
 				"ssid2":          `P"ssid000"`,
@@ -331,6 +354,7 @@ func TestConfigFormat(t *testing.T) {
 				"interface":      iface,
 				"ctrl_interface": ctrl,
 				"dtim_period":    "200",
+				"bssid":          "00:11:22:33:44:55",
 			},
 		},
 		// Check 802.11n pure.
