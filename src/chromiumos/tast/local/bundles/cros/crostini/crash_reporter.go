@@ -55,7 +55,7 @@ func init() {
 			Timeout: 10 * time.Minute,
 		}, {
 			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
+			Pre:     crostini.StartedByDownloadStretch(),
 			Timeout: 10 * time.Minute,
 		}},
 	})

@@ -39,7 +39,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "wayland_download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val:       crostini.WaylandDemoConfig(),
 			ExtraAttr: []string{"informational"},
@@ -60,7 +60,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "x11_download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val:       crostini.X11DemoConfig(),
 			ExtraAttr: []string{"informational"},

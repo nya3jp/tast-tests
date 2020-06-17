@@ -39,7 +39,7 @@ func init() {
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			ExtraAttr: []string{"informational"},
 		}},

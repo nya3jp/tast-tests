@@ -59,15 +59,16 @@ func init() {
 			},
 			{
 				Name:      "download_buster_sw",
-				Pre:       crostini.StartedByDownloadBuster(),
+				Pre:       crostini.StartedByDownloadStretch(),
 				Timeout:   10 * time.Minute,
 				Val:       "llvmpipe",
 				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:      "download_buster_gpu",
-				Pre:       crostini.StartedGPUEnabledBuster(),
+				Pre:       crostini.StartedGPUEnabled(),
 				Timeout:   10 * time.Minute,
+				ExtraData: []string{crostini.ImageArtifact},
 				Val:       "virgl",
 				ExtraAttr: []string{"informational"},
 			},

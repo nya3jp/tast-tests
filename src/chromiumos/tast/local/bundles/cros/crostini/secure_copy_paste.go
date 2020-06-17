@@ -182,7 +182,7 @@ func init() {
 		}, {
 			Name:      "copy_wayland_download_buster",
 			ExtraData: []string{"secure_copy.py"},
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "wayland",
@@ -193,7 +193,7 @@ func init() {
 		}, {
 			Name:      "copy_x11_download_buster",
 			ExtraData: []string{"secure_copy.py"},
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "x11",
@@ -204,7 +204,7 @@ func init() {
 		}, {
 			Name:      "paste_wayland_download_buster",
 			ExtraData: []string{"secure_paste.py"},
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "wayland",
@@ -215,7 +215,7 @@ func init() {
 		}, {
 			Name:      "paste_x11_download_buster",
 			ExtraData: []string{"secure_paste.py"},
-			Pre:       crostini.StartedByDownloadBuster(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "x11",
