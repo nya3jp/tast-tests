@@ -16,6 +16,24 @@
       "revId": "049e4c10225b9c1cdc3ae0b12ddfb00a99712c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6708f6e9_e4d29412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-17T17:53:58Z",
+      "side": 1,
+      "message": "To keep the consistency with other Tast-tests, lets will keep this as it is for now, if you don\u0027t mind. I will check s.Run() and will change all tests to s.Run() in a separate CL.",
+      "parentUuid": "7a020f01_c983f77f",
+      "revId": "049e4c10225b9c1cdc3ae0b12ddfb00a99712c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
