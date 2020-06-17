@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "982f7744_91dfb10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-17T11:08:26Z",
+      "side": 1,
+      "message": "JDA and JEA tests only work on USB HAL. Is it safe to override it here? Could you help test it on Nautilus, which has both built-in USB and MIPI cameras?",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f25e52_6068edfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-17T11:08:26Z",
+      "side": 1,
+      "message": "Hmm is there any case we would have (err !\u003d nil) !\u003d (response \u003d\u003d nil)? Could we merge them?",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafa0262_3626e37a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-17T11:08:26Z",
+      "side": 1,
+      "message": "dumb question: What\u0027s the difference between s.Fatal() and s.Error() + return? Should we use Fatal() here?",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
