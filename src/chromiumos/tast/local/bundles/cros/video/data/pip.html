@@ -1,0 +1,23 @@
+<html>
+  <body>
+    <video id="testvideo" muted loop></video>
+    <br>
+    <button id="pipbutton" type="button" onclick="document.getElementById('testvideo').requestPictureInPicture();">PIP</button>
+  </body>
+  <script type="text/javascript">
+    async function startVideo(videoSourcePath) {
+        const video = document.getElementById("testvideo");
+        video.src = videoSourcePath;
+        await video.play();
+    }
+
+    function getPIPButtonCenter() {
+	const bounds = document.getElementById("pipbutton").getBoundingClientRect();
+	const left = Math.max(0, Math.min(bounds.x, bounds.x + bounds.width));
+	const right = Math.min(window.innerWidth, Math.max(bounds.x, bounds.x + bounds.width));
+	const top = Math.max(0, Math.min(bounds.y, bounds.y + bounds.height));
+	const bottom = Math.min(window.innerHeight, Math.max(bounds.y, bounds.y + bounds.height));
+	return Math.round(left + 0.5 * (right - left)) + "," + Math.round(top + 0.5 * (bottom - top));
+    }
+  </script>
+</html>
