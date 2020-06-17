@@ -1,5 +1,5 @@
 <html>
-<body>
+<body id='body'>
   <video id='video' name='media' controls autoplay muted>
   </video>
 </body>
@@ -54,6 +54,11 @@ function randomSeek() {
     video.currentTime = random() * video.duration;
   });
 }
+
+window.addEventListener("keydown", function(event) {
+  if (event.key == 'f')
+    document.getElementById('video').requestFullscreen();
+});
 
 </script>
 </html>
