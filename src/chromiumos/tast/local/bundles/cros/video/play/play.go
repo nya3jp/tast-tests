@@ -8,14 +8,23 @@ package play
 import (
 	"context"
 	"fmt"
+	"image"
+	"image/color"
+	"image/png"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path"
+	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -44,6 +53,11 @@ const (
 	// using a hardware accelerator, i.e. it's using software decoding.
 	VerifyNoHWAcceleratorUsed
 )
+
+// This is how long we need to wait before taking a screenshot in the
+// TestPlayAndScreenshot case. This is necessary to ensure the video is on the screen
+// and to let the "Press Esc to exit full screen" message disappear.
+const delayToScreenshot = 7 * time.Second
 
 // MSEDataFiles returns a list of required files that tests that play MSE videos.
 func MSEDataFiles() []string {
@@ -159,6 +173,26 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
+// compareColors returns true iff the absolute difference between each component of a and b
+// is not greater than 2. Both a and b are assumed to be RGBA colors.
+func compareColors(a, b color.Color) bool {
+	aR, aG, aB, aA := a.RGBA()
+	bR, bG, bB, bA := b.RGBA()
+	abs := func(a int) int {
+		if a < 0 {
+			return -a
+		}
+		return a
+	}
+	// Note that the components must be shifted to the right by 8 so that they are in
+	// the [0, 255] range.
+	const tolerance = 2
+	return abs(int(aR>>8)-int(bR>>8)) <= tolerance &&
+		abs(int(aG>>8)-int(bG>>8)) <= tolerance &&
+		abs(int(aB>>8)-int(bB>>8)) <= tolerance &&
+		abs(int(aA>>8)-int(bA>>8)) <= tolerance
+}
+
 // TestPlay checks that the video file named filename can be played using Chrome.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
@@ -237,6 +271,112 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 
 	if err := playSeekVideo(ctx, cr, filename, server.URL, numSeeks); err != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, server.URL, err)
+	}
+	return nil
+}
+
+// TestPlayAndScreenshot plays the filename video, switches it to full
+// screen mode, takes a screenshot and analyzes the resulting image to
+// sample the colors of the four cornersof the video and compare them
+// against expectations.
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) error {
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := path.Join(server.URL, "video.html")
+	conn, err := cr.NewConn(ctx, url)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open %v", url)
+	}
+
+	// Make the video go to full screen mode by pressing 'f'. It is necessary to inject a key press event
+	// so that requestFullscreen() doesn't fail.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to initialize the keyboard writer")
+	}
+	if err := ew.Type(ctx, "f"); err != nil {
+		return errors.Wrap(err, "failed to inject the 'f' key")
+	}
+
+	// Start playing the video indefinitely.
+	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", s.Param().(string)), nil); err != nil {
+		return errors.Wrapf(err, "failed to play %v", filename)
+	}
+
+	// We need to wait a bit prior to taking the screenshot to make sure the video is on the screen and to
+	// let the "Press Esc to exit full screen" message disappear.
+	if err := testing.Sleep(ctx, delayToScreenshot); err != nil {
+		return errors.Wrap(err, "failed to sleep prior to taking screenshot")
+	}
+	sshotPath := filepath.Join(s.OutDir(), "screenshot.png")
+	if err := screenshot.Capture(ctx, sshotPath); err != nil {
+		return errors.Wrap(err, "failed to capture screen")
+	}
+
+	// Decode the screenshot and rotate it if necessary to make later steps easier.
+	f, err := os.Open(sshotPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open %v", sshotPath)
+	}
+	img, _, err := image.Decode(f)
+	if err != nil {
+		return errors.Wrapf(err, "could not decode %v", sshotPath)
+	}
+	if err := f.Close(); err != nil {
+		return errors.Wrapf(err, "failed to close %v", sshotPath)
+	}
+	if img.Bounds().Dx() < img.Bounds().Dy() {
+		s.Log("The screen is rotated; rotating the screenshot")
+		rotImg := image.NewRGBA(image.Rectangle{image.Point{}, image.Point{img.Bounds().Max.Y, img.Bounds().Max.X}})
+		for dstY := 0; dstY < rotImg.Bounds().Dy(); dstY++ {
+			for dstX := 0; dstX < rotImg.Bounds().Dx(); dstX++ {
+				srcColor := img.At(dstY, img.Bounds().Dy()-1-dstX)
+				rotImg.Set(dstX, dstY, srcColor)
+			}
+		}
+		f, err := os.Create(sshotPath)
+		if err != nil {
+			return errors.Wrapf(err, "could not create the rotated screenshot (%v)", sshotPath)
+		}
+		defer f.Close()
+		if err := png.Encode(f, rotImg); err != nil {
+			return errors.Wrapf(err, "could not encode the rotated screenshot (%v)", sshotPath)
+		}
+		img = rotImg
+	}
+
+	// Find the top and bottom of the video, i.e., exclude the black strips on top and bottom. Note
+	// the video colors are chosen such that none of the RGB components are 0. We assume symmetry, so the
+	// bottom is calculated based on the value of the top instead of using a loop (this is because the
+	// bottom of the video can acceptably bleed into the bottom black strip and we want to ignore that).
+	// No black strips are expected on the left or right.
+	top := 0
+	for top = 0; top < img.Bounds().Dy(); top++ {
+		if r, _, _, _ := img.At(0, top).RGBA(); r != 0 {
+			break
+		}
+	}
+	if top >= img.Bounds().Dy() {
+		return errors.New("could not find the top of the video")
+	}
+	bottom := img.Bounds().Dy() - 1 - top
+	left := 0
+	right := img.Bounds().Dx() - 1
+
+	// Check the color of the four corners the video.
+	colors := map[string]struct {
+		X, Y  int
+		Color color.Color
+	}{
+		"top-left":     {left, top, color.RGBA{39, 52, 195, 255}},
+		"top-right":    {right, top, color.RGBA{219, 223, 51, 254}},
+		"bottom-right": {right, bottom, color.RGBA{255, 156, 67, 255}},
+		"bottom-left":  {left, bottom, color.RGBA{212, 50, 209, 255}},
+	}
+	for k, v := range colors {
+		if !compareColors(img.At(v.X, v.Y), v.Color) {
+			return errors.Errorf("at %s (%d, %d): expected RGBA = %v; got RGBA = %v", k, v.X, v.Y, v.Color, img.At(v.X, v.Y))
+		}
 	}
 	return nil
 }
