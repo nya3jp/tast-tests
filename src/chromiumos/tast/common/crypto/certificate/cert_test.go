@@ -6,6 +6,7 @@ package certificate
 
 import (
 	"crypto/x509"
+	"encoding/json"
 	"encoding/pem"
 	"reflect"
 	"testing"
@@ -80,7 +81,7 @@ func TestCertificate(t *testing.T) {
 		return now.Before(cert.NotBefore) || now.After(cert.NotAfter)
 	}
 
-	for testi, testcase := range []CertStore{TestCert1(), TestCert2()} {
+	for testi, testcase := range []CertStore{TestCert1(), TestCert2(), TestCert3()} {
 		caCert, err := x509ParseCert(testcase.CACert)
 		if err != nil {
 			t.Fatalf("Test %d: CACert: %v", testi, err)
@@ -114,8 +115,11 @@ func TestCertificate(t *testing.T) {
 		if err := testCred(testcase.ServerCred, false); err != nil {
 			t.Errorf("Test %d: ServerCred: %v", testi, err)
 		}
-		if err := testCred(testcase.ClientCred, false); err != nil {
-			t.Errorf("Test %d: ClientCred: %v", testi, err)
+		// TODO: Generate client certificate for TestCert3 and remove this condition.
+		if testcase.ClientCred.Cert != "" {
+			if err := testCred(testcase.ClientCred, false); err != nil {
+				t.Errorf("Test %d: ClientCred: %v", testi, err)
+			}
 		}
 		// TODO: Generate expired certificate for each CertStore and remove this condition.
 		if testcase.ExpiredServerCred.Cert != "" {
@@ -123,6 +127,51 @@ func TestCertificate(t *testing.T) {
 				t.Errorf("Test %d: ExpiredServerCred: %v", testi, err)
 			}
 		}
+	}
+}
+
+// TestAltSubjectMatch test that the entries in TestCert3AltSubjectMatch are exactly what TestCert3 contains.
+func TestAltSubjectMatch(t *testing.T) {
+	// Get the entries in TestCert3AltSubjectMatch().
+	expectedDNSNames := make(map[string]bool)
+	expectedEmailAddresses := make(map[string]bool)
+	for _, altStr := range TestCert3AltSubjectMatch() {
+		var alt struct {
+			Type  string
+			Value string
+		}
+		if err := json.Unmarshal([]byte(altStr), &alt); err != nil {
+			t.Fatalf("failed to unmarshal altsubject match string: %s", altStr)
+		}
+		switch alt.Type {
+		case "DNS":
+			expectedDNSNames[alt.Value] = true
+		case "EMAIL":
+			expectedEmailAddresses[alt.Value] = true
+		default:
+			t.Errorf("unexpected Type in altsubject match: %s", alt.Type)
+		}
+	}
+
+	// Get the entries in TestCert3().ServerCred.Cert.
+	cert, err := x509ParseCert(TestCert3().ServerCred.Cert)
+	if err != nil {
+		t.Fatal(err)
+	}
+	dnsNames := make(map[string]bool)
+	for _, d := range cert.DNSNames {
+		dnsNames[d] = true
+	}
+	emailAddresses := make(map[string]bool)
+	for _, e := range cert.EmailAddresses {
+		emailAddresses[e] = true
+	}
+
+	if !reflect.DeepEqual(dnsNames, expectedDNSNames) {
+		t.Errorf("DNS names not match, got %v, want %v", dnsNames, expectedDNSNames)
+	}
+	if !reflect.DeepEqual(emailAddresses, expectedEmailAddresses) {
+		t.Errorf("email addresses not match, got %v, want %v", emailAddresses, expectedEmailAddresses)
 	}
 }
 
