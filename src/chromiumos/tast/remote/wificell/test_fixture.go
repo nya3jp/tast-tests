@@ -387,9 +387,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 		return err
 	}
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
-	}
+
 	return nil
 }
 
@@ -410,9 +408,7 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	}
 
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
-	}
+
 	return nil
 }
 

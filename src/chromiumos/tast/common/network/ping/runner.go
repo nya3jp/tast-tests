@@ -15,7 +15,10 @@ import (
 	"chromiumos/tast/shutil"
 )
 
-const pingCmd = "ping"
+const (
+	pingCmd                          = "ping"
+	defaultPingLossThreshold float64 = 20 // A percentage.
+)
 
 // QOSType is a enum type for ping QOS option.
 type QOSType int
@@ -30,13 +33,14 @@ const (
 
 // config is a struct that contains the ping command parameters.
 type config struct {
-	bindAddress bool
-	count       int
-	size        int
-	interval    float64
-	qos         QOSType
-	sourceIface string
-	user        string
+	bindAddress   bool
+	count         int
+	size          int
+	interval      float64
+	qos           QOSType
+	sourceIface   string
+	user          string
+	lossThreshold float64
 }
 
 // Option is a function used to configure ping command.
@@ -69,7 +73,7 @@ func NewRunner(c cmd.Runner) *Runner {
 // output and return a valid result instead of returning the error of non-zero
 // return code of ping.
 func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (*Result, error) {
-	cfg := &config{count: 3, interval: 0.5}
+	cfg := &config{count: 10, interval: 0.5, lossThreshold: defaultPingLossThreshold}
 	for _, opt := range options {
 		opt(cfg)
 	}
@@ -97,6 +101,15 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 		}
 		return nil, parseErr
 	}
+
+	if cfg.lossThreshold > 100 || cfg.lossThreshold < 0 {
+		return nil, errors.Errorf("unexpectd packet loss threshold: got %g%%, want [0%% - 100%%]", cfg.lossThreshold)
+	}
+
+	if res.Loss > cfg.lossThreshold {
+		return nil, errors.Errorf("unexpectd packet loss percentage: got %g%%, want < %g%%", res.Loss, cfg.lossThreshold)
+	}
+
 	return res, nil
 }
 
@@ -134,6 +147,11 @@ func SourceIface(iface string) Option {
 // User returns an Option that can be passed to Ping to set user.
 func User(user string) Option {
 	return func(c *config) { c.user = user }
+}
+
+// LossThreshold returns an Option that can be passed to Ping to set the packet loss threshold.
+func LossThreshold(threshold float64) Option {
+	return func(c *config) { c.lossThreshold = threshold }
 }
 
 // cmdArgs converts a config into a string of arguments for the ping command.
