@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e0adbd1_30321710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-17T06:33:13Z",
+      "side": 1,
+      "message": "Instead of adding IgnoreResult, how about let user set threshold as an option? Say threshold \u003d 100 means allow all packet loss.",
+      "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
