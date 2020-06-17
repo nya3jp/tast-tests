@@ -22,6 +22,30 @@
       "revId": "37bc76c8e8d89f5300d7236ba52afb75c11d20b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035895a5_b513af49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-06-17T05:58:14Z",
+      "side": 1,
+      "message": "I have found that the suggestions are not always initialized after changing input methods, unless the VK is shown again. I added a comment to the code, PTAL.",
+      "parentUuid": "fcde074c_546d524f",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "37bc76c8e8d89f5300d7236ba52afb75c11d20b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
