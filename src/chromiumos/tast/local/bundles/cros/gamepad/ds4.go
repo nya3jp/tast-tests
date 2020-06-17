@@ -22,7 +22,7 @@ func init() {
 		Func:         DS4,
 		Desc:         "Checks that the DS4 mappings are what we expect",
 		Contacts:     []string{"jtguitar@google.com", "chromeos-tango@google.com", "hcutts@chromium.org", "ricardoq@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ds4.hid", "replay.html"},
 		Timeout:      5 * time.Minute,
