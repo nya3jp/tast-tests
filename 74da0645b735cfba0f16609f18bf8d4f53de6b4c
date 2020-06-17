@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a8ccb2b_eff2e90e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-17T19:15:02Z",
+      "side": 1,
+      "message": "I think you can delete these lines. You should be able to use the same act that is already created.",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 18
+      },
+      "revId": "74da0645b735cfba0f16609f18bf8d4f53de6b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
