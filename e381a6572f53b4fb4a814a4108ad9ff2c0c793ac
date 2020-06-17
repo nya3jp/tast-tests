@@ -34,6 +34,24 @@
       "revId": "e381a6572f53b4fb4a814a4108ad9ff2c0c793ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd20fea_e4ab6eb5",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-17T21:46:30Z",
+      "side": 1,
+      "message": "By wrapping with the 3 second timeout, it actually just reduces the http timeout to 3 seconds from the default 10 seconds of rpc timeout, so that should be ok.  But you should check the return value of s.SetString though, since now you want to return error if the error is nil, and vice-versa.  +2 assuming you\u0027ll take care of this.",
+      "parentUuid": "32fee29f_007f803b",
+      "revId": "e381a6572f53b4fb4a814a4108ad9ff2c0c793ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
