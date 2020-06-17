@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cc3b89b_59e2acd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T08:12:59Z",
+      "side": 1,
+      "message": "Hmm, can\u0027t we do this by only one call of ForceAutomaticCleanup by setting targetThreshold to +inf?",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "a6368e8650146f02f79b753c1d858f071ded77aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c0c2449_32675f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T08:12:59Z",
+      "side": 1,
+      "message": "style: can you unnest this block?\n\n if err \u003d\u003d io.EOF {\n   ...\n } else if err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "a6368e8650146f02f79b753c1d858f071ded77aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
