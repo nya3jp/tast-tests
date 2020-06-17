@@ -17,3 +17,27 @@ android_apk("ArcWMTestApp_24") {
   target_sdk_version = "24"
   rename_manifest_package = "org.chromium.arc.testapp.windowmanager24"
 }
+
+android_apk("ArcWMTestApp_24_Maximized") {
+  manifest = "sdk24/AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res", "sdk24/res"]
+  target_sdk_version = "24"
+  rename_manifest_package = "org.chromium.arc.testapp.windowmanager24.maximized"
+}
+
+android_apk("ArcWMTestApp_24_PhoneSize") {
+  manifest = "sdk24/AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res", "sdk24/res"]
+  target_sdk_version = "24"
+  rename_manifest_package = "org.chromium.arc.testapp.windowmanager24.phonesize"
+}
+
+android_apk("ArcWMTestApp_24_TabletSize") {
+  manifest = "sdk24/AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res", "sdk24/res"]
+  target_sdk_version = "24"
+  rename_manifest_package = "org.chromium.arc.testapp.windowmanager24.tabletsize"
+}

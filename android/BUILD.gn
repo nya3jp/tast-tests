@@ -30,5 +30,8 @@ group("all") {
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
     "ArcWMTestApp:ArcWMTestApp_23",
     "ArcWMTestApp:ArcWMTestApp_24",
+    "ArcWMTestApp:ArcWMTestApp_24_Maximized",
+    "ArcWMTestApp:ArcWMTestApp_24_PhoneSize",
+    "ArcWMTestApp:ArcWMTestApp_24_TabletSize",
   ]
 }
