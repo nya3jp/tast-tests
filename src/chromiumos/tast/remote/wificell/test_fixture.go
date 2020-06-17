@@ -30,6 +30,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// The allowed packets loss percentage for the ping command.
+const pingLossThreshold float64 = 20
+
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
 
@@ -403,9 +406,11 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 		return err
 	}
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
+
+	if res.Loss > pingLossThreshold {
+		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
 	}
+
 	return nil
 }
 
@@ -424,11 +429,12 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	if err != nil {
 		return err
 	}
-
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
-	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
+
+	if res.Loss > pingLossThreshold {
+		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
 	}
+
 	return nil
 }
 
