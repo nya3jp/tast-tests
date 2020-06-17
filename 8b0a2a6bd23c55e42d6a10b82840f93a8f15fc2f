@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "396e548c_f949b85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-17T18:16:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you pass ctx and check for an error? (similar to ln. 52).",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "8b0a2a6bd23c55e42d6a10b82840f93a8f15fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
