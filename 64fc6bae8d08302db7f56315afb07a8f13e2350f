@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc72c799_d71ed457",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5907e5f8_29dc05d1",
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ffcf7fc_54e5832f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e75fafa_802f0659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ffcf7fc_54e5832f",
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "189a32a7_1ab30a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a3e8d7_94e7ecd8",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 40
+      },
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eb5ffa3_c805470e",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 7
@@ -79,6 +139,30 @@
       "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c918f6_79b13826",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb5ffa3_c805470e",
+      "range": {
+        "startLine": 391,
+        "startChar": 15,
+        "endLine": 391,
+        "endChar": 40
+      },
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
