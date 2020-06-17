@@ -51,8 +51,7 @@ func init() {
 			Name:              "h264_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
-			// TODO(b/145961243): Use ChromeVideoWithFakeWebcam when the H264 encoder is enabled by default on AMD.
-			Pre: pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp8_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP8"},

@@ -32,9 +32,7 @@ func init() {
 			Val:  videotype.H264,
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
-			// TODO(b/145961243): Remove this option when VA-API H264 encoder is
-			// enabled on grunt by default.
-			Pre: pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp8",
 			Val:               videotype.VP8,
