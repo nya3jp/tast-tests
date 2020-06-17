@@ -101,7 +101,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		shill.ServicePropertyName: ssid,
 	}
 
-	if _, err := manager.WaitForAnyServiceProperties(ctx, expectProp, 5*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProp, 5*time.Second); err != nil {
 		s.Error("Network not found after restart: ", err)
 	}
 }
