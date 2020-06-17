@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "24c063bf_3e2fec1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-17T03:05:34Z",
+      "side": 1,
+      "message": "But req.Count\u0027s type is int32. Golang cannot perform int and int32 comparison just below.",
+      "parentUuid": "3d6adcca_bf05e2f5",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c58498a7_6f88047d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
