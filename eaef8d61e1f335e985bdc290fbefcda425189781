@@ -249,6 +249,24 @@
     },
     {
       "key": {
+        "uuid": "6f8f06a7_e2921d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-17T15:07:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I think at this point it\u0027s personal preference: I tend toward `var count int32`, but what you have is fine.",
+      "parentUuid": "bdaa6560_b2e01752",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c58498a7_6f88047d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
@@ -386,6 +404,24 @@
       "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c161612f_8cb683cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-17T15:07:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f25fe1c1_cff54ee9",
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
