@@ -312,7 +312,7 @@ func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) 
 	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
 
-	logPSIStats(s)
+	logPSIStats(s, label)
 }
 
 // recordAndResetStats records the VM stats from meter, identifying them with
@@ -346,11 +346,13 @@ func recordAndResetStats(s *testing.State, meter *kernelmeter.Meter, values *per
 	s.Logf("Metrics: %s: oom count %v", label, stats.OOM.Count)
 	s.Logf("Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
+
+	logPSIStats(s, label)
 }
 
 // logPSIStats logs the content of /proc/pressure/memory.  If that file is not
 // present, this function does nothing.  Other errors are logged.
-func logPSIStats(s *testing.State) {
+func logPSIStats(s *testing.State, label string) {
 	psi, err := kernelmeter.PSIMemoryLines()
 	if err != nil {
 		// Here we also don't want to fail the test, just log any error.
@@ -360,7 +362,7 @@ func logPSIStats(s *testing.State) {
 		return
 	}
 	for _, l := range psi {
-		s.Log("Metrics: PSI memory: ", l)
+		s.Logf("Metrics: PSI memory %s: %s", label, l)
 	}
 }
 
@@ -605,7 +607,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 				s.Fatal("Tab LRU refresh error: ", err)
 			}
 		}, switchMeter)
-		logPSIStats(s)
+		logPSIStats(s, "phase_1")
 		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
