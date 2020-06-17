@@ -127,8 +127,13 @@ func PowerSave(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
-	if err := tf.PingFromServer(ctx); err != nil {
+	res, err := tf.PingFromServer(ctx)
+	if err != nil {
 		s.Fatal("Failed to ping from the Server: ", err)
+	}
+
+	if res.Received == 0 {
+		s.Fatal("Failed to ping the DUT: no response received")
 	}
 
 	if err := setPowersaveMode(ctx, iwr, iface, false); err != nil {
@@ -139,8 +144,13 @@ func PowerSave(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
-	if err := tf.PingFromServer(ctx); err != nil {
+	res2, err := tf.PingFromServer(ctx)
+	if err != nil {
 		s.Fatal("Failed to ping from the Server: ", err)
+	}
+
+	if res2.Received == 0 {
+		s.Fatal("Failed to ping the DUT: no response received")
 	}
 
 }

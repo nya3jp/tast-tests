@@ -394,26 +394,26 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 }
 
 // PingFromServer tests the connectivity between DUT and router through currently connected WiFi service.
-func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) error {
+func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) (*ping.Result, error) {
 	ctx, st := timing.Start(ctx, "tf.PingFromServer")
 	defer st.End()
 
 	addr, err := tf.ClientIPv4Addrs(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the IP address")
+		return nil, errors.Wrap(err, "failed to get the IP address")
 	}
 
 	pr := remoteping.NewRemoteRunner(tf.routerHost)
 	res, err := pr.Ping(ctx, addr[0], opts...)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
 	if res.Sent != res.Received {
-		return errors.New("some packets are lost in ping")
+		return nil, errors.New("some packets are lost in ping")
 	}
-	return nil
+	return res, nil
 }
 
 // ClientIPv4Addrs returns the IPv4 addresses for the network interface.
