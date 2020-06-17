@@ -55,5 +55,10 @@ function randomSeek() {
   });
 }
 
+window.addEventListener("keydown", function(event) {
+  if (event.key == 'f')
+    document.getElementById('video').requestFullscreen();
+});
+
 </script>
 </html>
