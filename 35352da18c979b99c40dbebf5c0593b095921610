@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b01dfd7d_50307d3b",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-17T00:31:53Z",
+      "side": 1,
+      "message": "null check for svo. (and probably add one for d too)",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9574c3e_3630591a",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-17T00:31:53Z",
+      "side": 1,
+      "message": "Add a todo here to implement the rec boot and can just fallthrough instead of return.",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab43da8_af6fbd5b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-17T00:31:53Z",
+      "side": 1,
+      "message": "The autotest version skips the set if it\u0027s already in the right role.",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6e4382_73e978a8",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-17T00:31:53Z",
+      "side": 1,
+      "message": "It\u0027d be more direct if just added a member to store the starting v4 role and restore it back during close if it\u0027s not the same.  Defer isn\u0027t quite the best way to do this.",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
