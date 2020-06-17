@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8ef5c97_46d40fa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-06-17T19:32:19Z",
+      "side": 1,
+      "message": "Please add. \n\nTEST\u003d\nBUG\u003d \n\nPlease run upload pre-condition check.",
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
