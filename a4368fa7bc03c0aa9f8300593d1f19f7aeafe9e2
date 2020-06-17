@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7304204d_d9ad3b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T15:48:39Z",
+      "side": 1,
+      "message": "ditto below: move it to L66?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0241c028_c0befe56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T15:48:39Z",
+      "side": 1,
+      "message": "nit: it seems that this const is used only in one func.\nwhen that\u0027s the case, it is better to move it closer to where it is used.\ne.g: you can move it to L76",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1536f97_eb1facaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T15:48:39Z",
+      "side": 1,
+      "message": "nit, style:\nUnfortunately golang doesn\u0027t support rich docstrings. Just remove the \"|\" from the docstring.",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c968add_2bf7a95b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T15:48:39Z",
+      "side": 1,
+      "message": "a)\nit is not clear why this sleep is needed.\n\nWaiting for a fixed. amount of time has:\n - could be flaky: what if more time is needed?\n - if it is waiting unneeded time it wastes lab resources.\n\nIn this case, it seems that doing a Poll + os.stat might work?\n\nIn some cases, using a sleep is a valid case.\n\n\nb)\ndon\u0027t ignore the errors. testing.Sleep() might fail if the context runs out of time.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143ade0f_53dbbc75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T15:48:39Z",
+      "side": 1,
+      "message": "nit, style:\n\nwhenever possible try to return errors in a single sentence. and usually we use the \"got ; want\" instead of \"actual, expected\".\n\ne.g:\n\"unexpected label: got %s, want %s\" (or something like that)",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 81
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
