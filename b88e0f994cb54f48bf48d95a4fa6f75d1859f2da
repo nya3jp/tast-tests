@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc3cead2_4224ef18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-17T00:35:07Z",
+      "side": 1,
+      "message": "You\u0027re polling this, and then doing another Expect below? That seems redundant. Can you just use manager.WaitForServiceProperties(), and include \"shill.ServicePropertyState: shill.ServiceStateOnline\" in the props map? That should save you 50+ lines.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 59
+      },
+      "revId": "b88e0f994cb54f48bf48d95a4fa6f75d1859f2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b99e2b_54853fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-17T00:35:07Z",
+      "side": 1,
+      "message": "What?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "b88e0f994cb54f48bf48d95a4fa6f75d1859f2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
