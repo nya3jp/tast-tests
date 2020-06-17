@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd56be85_38649319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e9f773_b62100d9",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c58f2b62_78e2ff59",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0ce273b9_4c9dfbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58f2b62_78e2ff59",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87161202_bd5956a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 7
@@ -50,6 +86,24 @@
       "revId": "171a95a532004568fa1206303619daa423afc7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d586f270_5a1bcd6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87161202_bd5956a0",
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "8ee7252a_8e267d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce86cefd_aa5153d3",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "757e5c22_ae8b79a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 7
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4bc9d730_488537df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "oh this is because we need to use appRoot below, in call to matchTree.",
+      "parentUuid": "757e5c22_ae8b79a5",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 27
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aa41967_6de87573",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 7
@@ -110,6 +212,30 @@
       "writtenOn": "2020-06-16T09:44:59Z",
       "side": 1,
       "message": "I guess we don\u0027t need to nest here",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 12
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe2cd07_89a23ac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "should I return it to the original state?",
+      "parentUuid": "8aa41967_6de87573",
       "range": {
         "startLine": 238,
         "startChar": 3,
@@ -142,6 +268,30 @@
       "revId": "171a95a532004568fa1206303619daa423afc7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931e896c_78de2a73",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T01:51:08Z",
+      "side": 1,
+      "message": "nice thanks.",
+      "parentUuid": "e28075a8_ab4b0ce1",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 3
+      },
+      "revId": "171a95a532004568fa1206303619daa423afc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
