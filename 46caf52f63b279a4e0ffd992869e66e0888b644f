@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca1038e6_819c6bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-06-17T10:58:35Z",
+      "side": 1,
+      "message": "fyi, this struct name is shared throughout the package - consider a more specific name",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "46caf52f63b279a4e0ffd992869e66e0888b644f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df971a0_95a468ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-06-17T10:58:35Z",
+      "side": 1,
+      "message": "Since these attributes are the way to differentiate these tests, consider formatting the struct members on separate lines.  It would make this way easier to read and edit in the future.",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "46caf52f63b279a4e0ffd992869e66e0888b644f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
