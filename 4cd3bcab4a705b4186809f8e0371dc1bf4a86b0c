@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36379664_afb61e5b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T03:34:56Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "25f01a3d_6e8e9ead",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 26
+      },
+      "revId": "4cd3bcab4a705b4186809f8e0371dc1bf4a86b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24256f54_2240ac61",
         "filename": "src/chromiumos/tast/local/crash/crash_test.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4cd3bcab4a705b4186809f8e0371dc1bf4a86b0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c9b49e_eae06b0a",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T03:34:56Z",
+      "side": 1,
+      "message": "Indeed, thanks for catching this!",
+      "parentUuid": "24256f54_2240ac61",
+      "range": {
+        "startLine": 167,
+        "startChar": 29,
+        "endLine": 167,
+        "endChar": 56
+      },
+      "revId": "4cd3bcab4a705b4186809f8e0371dc1bf4a86b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
