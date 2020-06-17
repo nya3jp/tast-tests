@@ -34,8 +34,8 @@ func init() {
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "download",
-			Pre:       crostini.StartedByDownload(),
+			Name:      "download_stretch",
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			ExtraAttr: []string{"informational"},
 		}, {

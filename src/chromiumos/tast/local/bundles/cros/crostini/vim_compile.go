@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:      15 * time.Minute,
-		Pre:          crostini.StartedByDownload(),
+		Pre:          crostini.StartedByDownloadBuster(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
