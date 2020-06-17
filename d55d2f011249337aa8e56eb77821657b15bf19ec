@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e688a37_cc9838ee",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-17T18:15:14Z",
+      "side": 1,
+      "message": "this is good, we need this info.\nBut my understanding is that info comes from Android and doesn\u0027t take into account the Chrome latency.\n\nIf what I said is correct, then I\u0027d add a comment saying that.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
