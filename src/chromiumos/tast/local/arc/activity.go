@@ -491,3 +491,28 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 	}
 	return TaskInfo{}, errors.Wrapf(errNoTaskInfo, "could not find task info for %s/%s", ac.pkgName, ac.activityName)
 }
+
+// PackageResizable returns the window resizability of an app package name.
+func (ac *Activity) PackageResizable(ctx context.Context) (bool, error) {
+	task, err := ac.getPackageTaskInfo(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "could not get task info")
+	}
+	return task.resizable, nil
+}
+
+// getPackageTaskInfo returns the task record associated for an app package name.
+func (ac *Activity) getPackageTaskInfo(ctx context.Context) (TaskInfo, error) {
+	tasks, err := ac.a.DumpsysActivityActivities(ctx)
+	if err != nil {
+		return TaskInfo{}, errors.Wrap(err, "could not get task info")
+	}
+	for _, task := range tasks {
+		for _, activity := range task.ActivityInfos {
+			if activity.PackageName == ac.pkgName {
+				return task, nil
+			}
+		}
+	}
+	return TaskInfo{}, errors.Wrapf(errNoTaskInfo, "could not find task info for %s", ac.pkgName)
+}
