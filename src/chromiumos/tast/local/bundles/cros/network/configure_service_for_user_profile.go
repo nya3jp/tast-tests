@@ -44,7 +44,7 @@ func init() {
 
 // removeMatchingService helps clear out any similar pre-existing service.
 func removeMatchingService(ctx context.Context, m *shill.Manager, props map[string]interface{}) error {
-	service, err := m.FindAnyMatchingService(ctx, props)
+	service, err := m.FindMatchingService(ctx, props)
 	if err != nil {
 		// No match is not a problem.
 		return nil
@@ -94,7 +94,7 @@ func ConfigureServiceForUserProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to configure service: ", err)
 	}
 
-	if _, err := m.FindAnyMatchingService(ctx, expectProps); err != nil {
+	if _, err := m.FindMatchingService(ctx, expectProps); err != nil {
 		s.Fatal("Configured network not found: ", err)
 	}
 
@@ -119,7 +119,7 @@ func ConfigureServiceForUserProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	if _, err := m.WaitForAnyServiceProperties(ctx, expectProps, 5*time.Second); err != nil {
+	if _, err := m.WaitForServiceProperties(ctx, expectProps, 5*time.Second); err != nil {
 		s.Error("Network not found after restart: ", err)
 	}
 }
