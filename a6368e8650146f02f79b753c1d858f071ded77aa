@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54e82f62_09e0968b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-17T14:29:56Z",
+      "side": 1,
+      "message": "Increased target to 20 GiB to run cleanup less, but I\u0027d like to keep the repeated cleanup to make sure the system is in a known good state before starting the actual test.\n\nRunOnExistingUsers will be replaced once the new preconditions land and all users can be removed from the system safely by clearing ownership.",
+      "parentUuid": "7cc3b89b_59e2acd8",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "a6368e8650146f02f79b753c1d858f071ded77aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c0c2449_32675f2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "a6368e8650146f02f79b753c1d858f071ded77aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeafdb00_91cbb97f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/cleanup/cleanup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-17T14:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c0c2449_32675f2e",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "a6368e8650146f02f79b753c1d858f071ded77aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
