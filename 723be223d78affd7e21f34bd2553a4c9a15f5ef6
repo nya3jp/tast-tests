@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e4db114_9331d595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-06-17T18:55:26Z",
+      "side": 1,
+      "message": "Add the URL where we can see the collected performance metrics.",
+      "revId": "723be223d78affd7e21f34bd2553a4c9a15f5ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
