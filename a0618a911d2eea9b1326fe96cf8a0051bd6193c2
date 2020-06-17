@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d22fcce_37c577dd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-06-17T02:53:55Z",
+      "side": 1,
+      "message": "Thank you for many suggestions.\nTo combine two errors, I used testing.ContextLogf + making a new error, suggested by Kansho-san.  The reason is that the return value of arc.Close() is currently ignored.",
+      "parentUuid": "8429eb92_07a132dd",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e2fce13_136a5e80",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-08T07:49:14Z",
       "side": 1,
       "message": "BTW, it seems that error of Close() is just ignored.\nHow about using testing.ContextLogf?",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91affdde_e113e767",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-06-17T02:53:55Z",
+      "side": 1,
+      "message": "I added closeCtx field to the ARC struct and used testing.ContextLogf.\n\nA context object was not passed to Close(). Close() is public and used at many places, so I avoid passing it as an argument of Close(). Is this okay?",
+      "parentUuid": "9e2fce13_136a5e80",
       "range": {
         "startLine": 168,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9f63267a_a3b61968",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-06-17T02:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b18aa3_ca97aae6",
+      "range": {
+        "startLine": 172,
+        "startChar": 60,
+        "endLine": 172,
+        "endChar": 71
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ae5713_2ad7cb5a",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43455d13_8f7c1782",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-06-17T02:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ae5713_2ad7cb5a",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 24
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +258,30 @@
       "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25ed95a_f4007c31",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-06-17T02:53:55Z",
+      "side": 1,
+      "message": "I used testing.Poll for this.\nUsing os.Stat seems better way to poll files than trying running a command, but I want to hide the detailed path of .pstore file from code of Tast, so I chose testing.Poll.",
+      "parentUuid": "8c281cae_d0b8385e",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 2
+      },
+      "revId": "a0618a911d2eea9b1326fe96cf8a0051bd6193c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
