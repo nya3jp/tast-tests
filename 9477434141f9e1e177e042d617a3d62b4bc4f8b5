@@ -34,6 +34,24 @@
       "revId": "9477434141f9e1e177e042d617a3d62b4bc4f8b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1007db1_066c901b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-17T16:02:56Z",
+      "side": 1,
+      "message": "Okay, then you can leave it. I have my use case for this (crbug.com/1070307) but I\u0027ll move it.",
+      "parentUuid": "b264e0b7_dd17ceb2",
+      "revId": "9477434141f9e1e177e042d617a3d62b4bc4f8b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
