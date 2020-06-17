@@ -25,7 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"ArcAudioTest.apk"},
+		Data:         []string{"ARCAudioTest.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
@@ -68,9 +68,9 @@ func AudioSanity(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	param := s.Param().(audio.TestParameters)
-	atast, err := audio.NewArcAudioTast(ctx, a, cr)
+	atast, err := audio.NewARCAudioTast(ctx, a, cr)
 	if err != nil {
-		s.Fatal("Failed to NewArcAudioTast: ", err)
+		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}
 	if err := atast.RunAppTest(ctx, s.DataPath(audio.Apk), param); err != nil {
 		s.Error("Test failed: ", err)
