@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2ef7e05_ceac4f53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T00:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3cead2_4224ef18",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 59
+      },
+      "revId": "b88e0f994cb54f48bf48d95a4fa6f75d1859f2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8b99e2b_54853fbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b88e0f994cb54f48bf48d95a4fa6f75d1859f2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050a2e18_119a6a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T00:58:53Z",
+      "side": 1,
+      "message": "That should not be here.",
+      "parentUuid": "d8b99e2b_54853fbc",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "b88e0f994cb54f48bf48d95a4fa6f75d1859f2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
