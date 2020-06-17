@@ -34,6 +34,24 @@
       "revId": "893cca8721a63b2a0d50bba0a7220bbef0b7a3ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "516dd035_b0a2031a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-06-17T18:47:10Z",
+      "side": 1,
+      "message": "You can have both, but link can become stale/obsolete, and that\u0027s why I prefer to have a description. The descirption is useful when you want to understand the original intent and go back the change history.",
+      "parentUuid": "20f5addd_bc59ade0",
+      "revId": "893cca8721a63b2a0d50bba0a7220bbef0b7a3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
