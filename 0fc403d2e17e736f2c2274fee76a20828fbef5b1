@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aff6fbb1_eac15c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/media_recorder.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T02:48:21Z",
+      "side": 1,
+      "message": "style: semicolon after the brace",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 326,
+        "endChar": 5
+      },
+      "revId": "0fc403d2e17e736f2c2274fee76a20828fbef5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c40d63_85fcf07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/media_recorder.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-17T02:48:21Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 344,
+        "startChar": 4,
+        "endLine": 344,
+        "endChar": 5
+      },
+      "revId": "0fc403d2e17e736f2c2274fee76a20828fbef5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
