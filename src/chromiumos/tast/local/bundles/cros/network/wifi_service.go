@@ -132,10 +132,16 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	defer st.End()
 	testing.ContextLog(ctx, "Discovering a WiFi service with properties: ", props)
 
+	visibleProps := make(map[string]interface{})
+	for k, v := range props {
+		visibleProps[k] = v
+	}
+	visibleProps[shill.ServicePropertyVisible] = true
+
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		service, err = m.FindMatchingService(ctx, props)
+		service, err = m.FindMatchingService(ctx, visibleProps)
 		if err == nil {
 			return nil
 		}
