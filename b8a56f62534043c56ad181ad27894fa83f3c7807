@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f150668_bc27272c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-17T07:00:33Z",
+      "side": 1,
+      "message": "I found that this comment does not really make sense because TPM is a client stuff and does not always relate to router. For example in tunneled1x, we do need to install credentials on router, but actually nothing to do with DUT.",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 141
+      },
+      "revId": "b8a56f62534043c56ad181ad27894fa83f3c7807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
