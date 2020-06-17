@@ -1,0 +1,6 @@
+{
+  "url":
+  "gs://chromiumos-test-assets-public/tast/cros/arcapp/ARCAudioTest_20200526.apk",
+  "size": 545325,
+  "sha256sum": "0b419f2a24f03a1b9b40b4ab96e2907d352c11f1b79fb6169ac62e7d176038bf"
+}
