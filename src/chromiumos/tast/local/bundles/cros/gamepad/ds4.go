@@ -19,10 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DS4,
-		Desc:         "Checks that the DS4 mappings are what we expect",
-		Contacts:     []string{"jtguitar@google.com", "chromeos-tango@google.com", "hcutts@chromium.org", "ricardoq@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     DS4,
+		Desc:     "Checks that the DS4 mappings are what we expect",
+		Contacts: []string{"jtguitar@google.com", "chromeos-tango@google.com", "hcutts@chromium.org", "ricardoq@chromium.org"},
+		// TODO(crbug.com/1085423): Renable test once crash gets fixed.
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ds4.hid", "replay.html"},
 		Timeout:      5 * time.Minute,
