@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3381086_65451928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-17T01:17:52Z",
+      "side": 1,
+      "message": "You should probably figure out why (and document it here in the comments) you need to do this.\n\nI expressed that I don\u0027t really know why in chat, but I still expect that you should figure that out.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 72
+      },
+      "revId": "f4ddf82237b22a4288845fbe572386e6f1f82ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
