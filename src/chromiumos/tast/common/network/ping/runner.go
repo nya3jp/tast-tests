@@ -15,7 +15,10 @@ import (
 	"chromiumos/tast/shutil"
 )
 
-const pingCmd = "ping"
+const (
+	pingCmd                   = "ping"
+	pingLossThreshold float64 = 20 // A percentage.
+)
 
 // QOSType is a enum type for ping QOS option.
 type QOSType int
@@ -30,13 +33,14 @@ const (
 
 // config is a struct that contains the ping command parameters.
 type config struct {
-	bindAddress bool
-	count       int
-	size        int
-	interval    float64
-	qos         QOSType
-	sourceIface string
-	user        string
+	bindAddress  bool
+	count        int
+	size         int
+	interval     float64
+	qos          QOSType
+	sourceIface  string
+	user         string
+	ignoreResult bool
 }
 
 // Option is a function used to configure ping command.
@@ -69,7 +73,7 @@ func NewRunner(c cmd.Runner) *Runner {
 // output and return a valid result instead of returning the error of non-zero
 // return code of ping.
 func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (*Result, error) {
-	cfg := &config{count: 3, interval: 0.5}
+	cfg := &config{count: 10, interval: 0.5}
 	for _, opt := range options {
 		opt(cfg)
 	}
@@ -97,6 +101,11 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 		}
 		return nil, parseErr
 	}
+
+	if res.Loss > pingLossThreshold && !cfg.ignoreResult {
+		return nil, errors.Errorf("unexpectd packet loss percentage: got %g%%, want < %g%%", res.Loss, pingLossThreshold)
+	}
+
 	return res, nil
 }
 
@@ -134,6 +143,11 @@ func SourceIface(iface string) Option {
 // User returns an Option that can be passed to Ping to set user.
 func User(user string) Option {
 	return func(c *config) { c.user = user }
+}
+
+// IgnoreResult returns an Option that can be passed to Ping to ignore the result.
+func IgnoreResult(ignore bool) Option {
+	return func(c *config) { c.ignoreResult = ignore }
 }
 
 // cmdArgs converts a config into a string of arguments for the ping command.
