@@ -61,15 +61,6 @@ func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFa
 
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeVModuleArgs, chromeFakeWebcamArgs)
 
-// ChromeVideoWithFakeWebcamAndH264AMDEncoder returns a precondition equal to
-// ChromeVideoWithFakeWebcam and with AMD H264 hardware encoder enabled.
-// TODO(b/145961243): remove when this is enabled by default.
-func ChromeVideoWithFakeWebcamAndH264AMDEncoder() testing.Precondition {
-	return chromeVideoWithFakeWebcamAndH264AMDEncoder
-}
-
-var chromeVideoWithFakeWebcamAndH264AMDEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndH264AMDEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--enable-features=VaapiH264AMDEncoder"))
-
 // ChromeVideoWithFakeWebcamAndVP9VaapiEncoder returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with VA-API VP9 hardware encoder enabled.
 // TODO(crbug.com/811912): remove when this is enabled by default.
