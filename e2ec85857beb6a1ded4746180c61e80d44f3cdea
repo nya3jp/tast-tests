@@ -222,6 +222,30 @@
       "revId": "e2ec85857beb6a1ded4746180c61e80d44f3cdea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17a0955_227dd597",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-17T02:23:43Z",
+      "side": 1,
+      "message": "Thanks for the advise. Defer it right after |RunTest()| returned.",
+      "parentUuid": "609a806e_55ea3a90",
+      "range": {
+        "startLine": 177,
+        "startChar": 28,
+        "endLine": 177,
+        "endChar": 38
+      },
+      "revId": "e2ec85857beb6a1ded4746180c61e80d44f3cdea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
