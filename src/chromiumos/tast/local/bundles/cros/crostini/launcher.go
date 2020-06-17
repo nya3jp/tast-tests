@@ -145,7 +145,7 @@ func init() {
 		}, {
 			Name:      "local_wayland_download",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
-			Pre:       crostini.StartedByDownload(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: launcherTestConfig{
 				desktopFile: "wayland_demo_fixed_size.desktop",
@@ -157,7 +157,7 @@ func init() {
 		}, {
 			Name:      "local_x11_download",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
-			Pre:       crostini.StartedByDownload(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: launcherTestConfig{
 				desktopFile: "x11_demo_fixed_size.desktop",
@@ -169,7 +169,7 @@ func init() {
 		}, {
 			Name:      "system_wayland_download",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
-			Pre:       crostini.StartedByDownload(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: launcherTestConfig{
 				desktopFile: "wayland_demo_fixed_size.desktop",
@@ -181,7 +181,7 @@ func init() {
 		}, {
 			Name:      "system_x11_download",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
-			Pre:       crostini.StartedByDownload(),
+			Pre:       crostini.StartedByDownloadStretch(),
 			Timeout:   10 * time.Minute,
 			Val: launcherTestConfig{
 				desktopFile: "x11_demo_fixed_size.desktop",
