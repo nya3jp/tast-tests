@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90e1cba7_c9aedc98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-17T07:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0adbd1_30321710",
+      "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12b71234_7e61e3a5",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 3
