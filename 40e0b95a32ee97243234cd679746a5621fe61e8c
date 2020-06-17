@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac3f9a2b_b4fdc0a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-17T20:50:03Z",
+      "side": 1,
+      "message": "Do we need s.Log?  Please remove this if this is for debugging.",
+      "revId": "40e0b95a32ee97243234cd679746a5621fe61e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
