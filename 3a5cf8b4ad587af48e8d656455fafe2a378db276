@@ -16,6 +16,24 @@
       "revId": "3a5cf8b4ad587af48e8d656455fafe2a378db276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fb4ef2_37baeda4",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-17T07:06:48Z",
+      "side": 1,
+      "message": "Renamed to BatteryDischargeMode. Thanks for the advice!",
+      "parentUuid": "d73a852d_90eb8f42",
+      "revId": "3a5cf8b4ad587af48e8d656455fafe2a378db276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
