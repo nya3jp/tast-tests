@@ -33,7 +33,7 @@ func CheckCrossystemValues(ctx context.Context, values map[string]string) bool {
 		cmdArgs[i] = fmt.Sprintf("%s?%s", k, v)
 		i++
 	}
-	return testexec.CommandContext(ctx, "crossystem", cmdArgs...).Run(testexec.DumpLogOnError) == nil
+	return testexec.CommandContext(ctx, "crossystem", cmdArgs...).Run() == nil
 }
 
 // RootDevice finds the name of the root device, strips off the partition number, and returns it.
