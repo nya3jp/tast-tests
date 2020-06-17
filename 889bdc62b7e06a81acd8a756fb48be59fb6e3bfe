@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd7353f_6c80f1c6",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-17T13:44:41Z",
+      "side": 1,
+      "message": "Do you mind remove the newline so that it is clear that WithNamef is a member function of an Action?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890560fd_230b65bc",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-17T13:44:41Z",
+      "side": 1,
+      "message": "Question. What is the maximum size the slider would provide? Should we check if the size is actually increased after each Keyboard instruction?",
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0405280c_df876615",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-17T13:44:41Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 176,
+        "startChar": 103,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
