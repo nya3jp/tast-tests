@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1057accf_b12ced43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-17T01:30:29Z",
+      "side": 1,
+      "message": "nit: replace this with crrev.com/c/7437 or something shorter.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 96
+      },
+      "revId": "83933aaeacd972d575118dcb74f5c0fd4fbb361b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

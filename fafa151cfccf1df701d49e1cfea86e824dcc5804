@@ -69,6 +69,24 @@
       "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972b23b4_d7bb10d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-17T01:30:29Z",
+      "side": 1,
+      "message": "I feel like there\u0027s not much value in waiting the extra 10 seconds for a disconnect that hasn\u0027t happened in the first 20. It makes more sense to me to just timeout after 20 seconds and say that it\u0027s taking too long.",
+      "parentUuid": "c4de4da6_ee3f0208",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
