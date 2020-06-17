@@ -195,14 +195,15 @@ func (kw *KeyboardEventWriter) accel(ctx context.Context, s string, eventType ke
 	if eventType&keyPress != 0 {
 		for i := 0; i < len(keys); i++ {
 			kw.sendKey(keys[i], 1, &firstErr)
+			kw.sleepAfterType(ctx, &firstErr)
 		}
 	}
 	if eventType&keyRelease != 0 {
 		for i := len(keys) - 1; i >= 0; i-- {
 			kw.sendKey(keys[i], 0, &firstErr)
+			kw.sleepAfterType(ctx, &firstErr)
 		}
 	}
-	kw.sleepAfterType(ctx, &firstErr)
 	return firstErr
 }
 
