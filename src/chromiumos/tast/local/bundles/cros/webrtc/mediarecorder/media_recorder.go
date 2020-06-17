@@ -298,6 +298,12 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Ch
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
+	// Hardware encoding is not available right after login on some devices (e.g.
+	// krane) so the encoding capabilities are enumerated asynchronously, see
+	// b/147404923. Sadly, MediaRecorder doesn't know about this and this code is
+	// racy. Insert a sleep() temporarily until Blink code is fixed: b/158858449.
+	testing.Sleep(2)
+
 	startRecordJS := fmt.Sprintf("startRecordingForResult(%q)", codec)
 	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
 		return errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
