@@ -22,6 +22,30 @@
       "revId": "4f4343166ddc1ef37c4c26981b9819f58da70eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9558bde7_b3edb615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-17T11:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f7ad6f_599a3fff",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "4f4343166ddc1ef37c4c26981b9819f58da70eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

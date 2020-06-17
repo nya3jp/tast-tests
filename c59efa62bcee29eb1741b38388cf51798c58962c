@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "984c5d48_ed4023f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-17T11:42:26Z",
+      "side": 1,
+      "message": "Val is an attribute inside testing.Param. Should I move it to Vars? or const?\nKeeping this structure will make it easier to extend it in a few months time for b/147620213.",
+      "parentUuid": "b3d3e308_6155a737",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bac63ae8_dfe4c95e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
         "patchSetId": 3
@@ -363,6 +387,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f283a72_8f005be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-17T11:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6930333_c7774b23",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -498,6 +540,24 @@
       "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba1355c_542f9b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-17T11:42:26Z",
+      "side": 1,
+      "message": "The flakiness is actually due to delay in google drive file sync.\nAdding a wait after file creation solves the issue.",
+      "parentUuid": "e806fb7e_624d694c",
+      "revId": "c59efa62bcee29eb1741b38388cf51798c58962c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
