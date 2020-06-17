@@ -56,6 +56,24 @@
       "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22661b55_9a3cc9fb",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-17T07:14:54Z",
+      "side": 1,
+      "message": "Yenlin\u0027s suggestion makes sense. I second that we shall move the threshold check to TestFixture.",
+      "parentUuid": "80e66401_0c7b05bf",
+      "revId": "9ac1b2dd38c9f21496709c5ee7feaa6362ab06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
