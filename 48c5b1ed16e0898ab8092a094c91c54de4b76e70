@@ -88,6 +88,24 @@
       "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64db4d18_02f1a3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-17T00:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac30e28b_54d7a660",
+      "revId": "48c5b1ed16e0898ab8092a094c91c54de4b76e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
