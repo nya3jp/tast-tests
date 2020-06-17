@@ -141,6 +141,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/chapsd", "cros_chapsd", zeroProcs, ""},
 				{exe, "/usr/sbin/conntrackd", "cros_conntrackd", zeroProcs, ""},
 				{exe, "/usr/sbin/cryptohomed", "cros_cryptohomed", zeroProcs, ""},
+				{exe, "/usr/sbin/cryptohome-proxy", "cros_cryptohome_proxy", zeroProcs, ""},
 				{exe, "/usr/sbin/daisydog", "cros_daisydog", zeroProcs, ""},
 				{exe, "/usr/sbin/dlcservice", "cros_dlcservice", zeroProcs, ""},
 				{exe, "/usr/sbin/huddly-monitor", "cros_huddly_monitor", zeroProcs, ""},
