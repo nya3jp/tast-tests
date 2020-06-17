@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ce90b55_18dfef37",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Ownership is actually passed into the function, but root is never released explicitly as it is returned from Root() (formerly ParentOrRoot).  This is necessary because in the code:\n\nuig.Root().Find(...) the Find function needs to release the root node, hence it cannot be released by the caller.\n\nbtw, as a result of some of the other comments, root can now never be nil.",
+      "parentUuid": "d3924bed_dfe35078",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 134
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a483f8_dc5a4e13",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d69ab9_76aff8fe",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Agreed.  I changed it to never be nil, and the contextual root must always be supplied.  I have referred to it as contextual root in some of the comments, but I have just used root in the code as it is shorter and cannot be confused with the ctx argument.",
+      "parentUuid": "d7a483f8_dc5a4e13",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1680d198_f6c45aff",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e41c44f_bc9bf2a4",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fb8198d_fdca843a",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e808186_56ddce82",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fb8198d_fdca843a",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2677cd22_611374b8",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8706b788_20d9ac36",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb5ac5ca_e9c382e2",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -137,6 +257,30 @@
       "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8111e04_dd226688",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "It is the callees responsibility as explained in another comment.",
+      "parentUuid": "eb5ac5ca_e9c382e2",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "053816b3_f8ebd33f",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "ParentOrRoot has gone away now, there is only Root.",
+      "parentUuid": "795139aa_db08bd94",
+      "range": {
+        "startLine": 147,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b11d602_fcc05423",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -183,6 +351,30 @@
       "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1659e07_45dba15d",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Removed this function as per another comment.  With the contextual root in Steps the use case for this is no longer present.",
+      "parentUuid": "9b11d602_fcc05423",
+      "range": {
+        "startLine": 161,
+        "startChar": 122,
+        "endLine": 161,
+        "endChar": 129
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "b9336644_c932d076",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "Done, but named it Root as I think ContextRoot is longer and may be confused with context.Context somehow.",
+      "parentUuid": "c61218f2_d06b05f6",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 9
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9058db54_c5f9a05b",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 8
@@ -229,6 +445,30 @@
       "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8b5409_02968c78",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-17T00:29:01Z",
+      "side": 1,
+      "message": "it is the callees responsibility, and this function no longer has to handle a nil case and has been renamed to Root.",
+      "parentUuid": "9058db54_c5f9a05b",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 22
+      },
+      "revId": "8a314e53efedfa16f4b79e85d3cbbd5fccab7e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
