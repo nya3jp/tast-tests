@@ -43,7 +43,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 
 	// Show a page with a text field that autofocuses. Turn off autocorrect as it
 	// can interfere with the test.
-	const html = `<input type="text" id="target" autocorrect="off" autofocus/>`
+	const html = `<input type="text" id="target" autocorrect="off" autofocus aria-label="e14s-inputbox"/>`
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		io.WriteString(w, html)
@@ -66,16 +66,6 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
-
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
@@ -92,7 +82,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		LanguageLabel      string
 	}{
 		{"xkb:us::eng", []string{"a"}, "a", "US"},
-		{"nacl_mozc_us", []string{"n", "i", "h", "o", "n", "g", "o"}, "日本語", "あ"},
+		{"nacl_mozc_us", []string{"o"}, "お", "あ"},
 	}
 
 	for _, testCase := range testCases {
@@ -118,6 +108,29 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 			continue
 		}
 
+		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+			s.Fatal("Failed to show the virtual keyboard: ", err)
+		}
+
+		element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "e14s-inputbox"}, 5*time.Second)
+		if err != nil {
+			s.Fatal("Failed to find input element: ", err)
+		}
+		s.Log("Click input field to trigger virtual keyboard shown up")
+		if err := element.LeftClick(ctx); err != nil {
+			s.Fatal("Failed to click the input element: ", err)
+		}
+
+		s.Log("Waiting for the virtual keyboard to show")
+		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+		}
+
+		s.Log("Waiting for the virtual keyboard to render buttons")
+		if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+		}
+
 		if err := vkb.TapKeys(ctx, tconn, testCase.Keys); err != nil {
 			s.Error("Failed to type: ", err)
 			continue
@@ -126,6 +139,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Log("Waiting for the decoder to provide suggestions")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			suggestions, err := vkb.GetSuggestions(ctx, kconn)
+			s.Log("Suggestions: ", suggestions)
 			if err != nil {
 				return err
 			}
@@ -135,14 +149,8 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 				}
 			}
 			return errors.Errorf("%q not found in suggestions", testCase.ExpectedSuggestion)
-		}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			s.Error("Failed to wait for suggestions to appear: ", err)
-			continue
-		}
-
-		// Tap enter to exit composition mode.
-		if err := vkb.TapKey(ctx, tconn, "enter"); err != nil {
-			s.Error("Failed to tap enter: ", err)
 			continue
 		}
 	}
