@@ -1,0 +1,214 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"math"
+	"regexp"
+	"sort"
+	"strconv"
+	"strings"
+	"time"
+
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/testing"
+)
+
+type inputEvent struct {
+	Type         string // Usually either "KeyEvent" or "MotionEvent"
+	EventTime    int64  // time (in ms) that the event was sent by the kernel
+	RTCEventTime int64  // rtc time that the event was sent by the kernel
+	RecvTime     int64  // time (in ms) that the event was received by the app
+	RTCRecvTime  int64  // rtc time that the event was received by the app
+	Latency      int64  // difference between EventTime and RecvTime
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         KeyboardPerf,
+		Desc:         "Test ARC keyboard system performance",
+		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Pre:          arc.Booted(),
+		Timeout:      2 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               false,
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               true,
+		}},
+	})
+}
+
+func KeyboardPerf(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Could not open Test API connection: ", err)
+	}
+	a := s.PreValue().(arc.PreData).ARC
+
+	s.Log("Creating virtual keyboard")
+	kbd, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Unable to create virtual keyboard: ", err)
+	}
+	defer kbd.Close()
+
+	const (
+		apkName      = "ArcInputLatencyTest.apk"
+		appName      = "org.chromium.arc.testapp.inputlatency"
+		activityName = ".MainActivity"
+	)
+	s.Log("Installing " + apkName)
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	s.Logf("Launching %s/%s", appName, activityName)
+	act, err := arc.NewActivity(a, appName, activityName)
+	if err != nil {
+		s.Fatalf("Unable to create new activity %s/%s: %v", appName, activityName, err)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Unable to launch %s/%s: %v", appName, activityName, err)
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait until CPU idle: ", err)
+	}
+
+	s.Log("Injecting key events")
+	const numEvents = 50
+	eventTimes := make([]int64, 0, numEvents)
+	for i := 0; i < numEvents/2; i++ {
+		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
+		if err := kbd.AccelPress(ctx, "a"); err != nil {
+			s.Fatal("Unable to inject key events: ", err)
+		}
+
+		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
+		if err := kbd.AccelRelease(ctx, "a"); err != nil {
+			s.Fatal("Unable to inject key events: ", err)
+		}
+	}
+
+	s.Log("Collecting results")
+	out, err := a.Command(ctx, "logcat", "-d", "-s", "InputLatencyTest:I").Output()
+	if err != nil {
+		s.Fatal("Unable to collect results: ", err)
+	}
+
+	events := parseEvents(eventTimes, string(out), s)
+	if events == nil || len(events) == 0 {
+		s.Fatal("Could not find any events in log")
+	}
+
+	mean, median, stdDev, max, min := calculateMetrics(events, func(i int) float64 {
+		return float64(events[i].Latency)
+	})
+	s.Logf("Keyboard latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
+
+	rmean, rmedian, rstdDev, rmax, rmin := calculateMetrics(events, func(i int) float64 {
+		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
+	})
+	s.Logf("Keyboard RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
+
+	meanMetric := mean
+	vmEnabled := s.Param().(bool)
+	if vmEnabled {
+		meanMetric = rmean
+	}
+	pv := perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "avgKeyboardLatency",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter,
+	}, meanMetric)
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed saving perf data: ", err)
+	}
+}
+
+// calculateMetrics calculates mean, median, std dev, max and min for the given
+// input events. The function getValue should return the value of the element
+// corresponding to the given index.
+func calculateMetrics(events []inputEvent, getValue func(int) float64) (mean, median, stdDev, max, min float64) {
+	n := len(events)
+	sort.Slice(events, func(i, j int) bool { return getValue(i) < getValue(j) })
+	min = getValue(0)
+	max = getValue(n - 1)
+	median = getValue(n / 2)
+	sum := float64(0)
+	for i := range events {
+		sum += getValue(i)
+	}
+	mean = sum / float64(n)
+	stdSum := float64(0)
+	for i := range events {
+		stdSum += math.Pow(getValue(i)-mean, 2)
+	}
+	stdDev = math.Sqrt(stdSum / float64(n-1))
+	return
+}
+
+// parseEvents parses output in log for input events logged by the helper app.
+func parseEvents(eventTimes []int64, log string, s *testing.State) []inputEvent {
+	re := regexp.MustCompile(`((Key|Motion|Input)Event)\:(\d+)\:(\d+)\:(\d+)\:(\d+)`)
+	lines := strings.Split(log, "\n")
+	events := make([]inputEvent, 0, len(lines))
+	for _, line := range lines {
+		match := re.FindStringSubmatch(line)
+		if match == nil || len(match) == 0 {
+			continue
+		}
+		et, err := strconv.ParseInt(match[3], 10, 64)
+		if err != nil {
+			s.Logf("%s could not be parsed as an int", match[3])
+			continue
+		}
+		rt, err := strconv.ParseInt(match[4], 10, 64)
+		if err != nil {
+			s.Logf("%s could not be parsed as an int", match[4])
+			continue
+		}
+		rtc, err := strconv.ParseInt(match[5], 10, 64)
+		if err != nil {
+			s.Logf("%s could not be parsed as an int", match[5])
+			continue
+		}
+		lt, err := strconv.ParseInt(match[6], 10, 64)
+		if err != nil {
+			s.Logf("%s could not be parsed as an int", match[6])
+			continue
+		}
+		events = append(events, inputEvent{
+			Type:        match[1],
+			EventTime:   et,
+			RecvTime:    rt,
+			RTCRecvTime: rtc,
+			Latency:     lt,
+		})
+	}
+	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
+	// is the same as eventTimes.
+	if len(events) != len(eventTimes) {
+		s.Fatal("There are more timestamps than events in the log")
+		return nil
+	}
+	for i := range events {
+		events[i].RTCEventTime = eventTimes[i]
+	}
+	return events
+}
