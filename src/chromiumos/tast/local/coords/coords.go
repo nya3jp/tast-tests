@@ -53,6 +53,11 @@ func NewSize(w, h int) Size {
 	return Size{Width: w, Height: h}
 }
 
+// String returns the string representation of Size.
+func (s Size) String() string {
+	return fmt.Sprintf("(%d x %d)", s.Width, s.Height)
+}
+
 // Rect represents a rectangular region.
 type Rect struct {
 	Left   int `json:"left"`
