@@ -152,8 +152,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
 	}
-	if res.Received == 0 {
-		s.Fatalf("Failed to ping %s: no response received", vpn.Xl2tpdServerIPAddress)
+	if res.Loss > ping.DefaultLossThreshold {
+		s.Fatalf("Failed to ping %s: unexpectd packet loss percentage: got %g%%, want < %g%%", vpn.Xl2tpdServerIPAddress, res.Loss, ping.DefaultLossThreshold)
 	}
 
 	// IPv6 should be blackholed, so ping returns
