@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "68a3e2a9_495492f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-17T01:02:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f13681c_6031d444",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6aec59_c8e14e32",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 3
@@ -563,6 +587,30 @@
       "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e696c22_98392e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-17T01:02:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be0473bd_ee27172f",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "4b0cdea174aaccd816fdb636b3c4cee7dcc46f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
