@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5907e5f8_29dc05d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:50:34Z",
+      "side": 1,
+      "message": "Please also note that we also sync the ping count\u003d10 in Autotest.",
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffcf7fc_54e5832f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:50:34Z",
+      "side": 1,
+      "message": "Probably add ping.Count(3) option to keep the old behavior?",
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a3e8d7_94e7ecd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:50:34Z",
+      "side": 1,
+      "message": "I\u0027m not so sure if we should use this here. In the Autotest version, it uses utils.ping which just return the ping command return code, so the old \"Received \u003d\u003d 0\" probably fits more.",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 40
+      },
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb5ffa3_c805470e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-17T08:50:34Z",
+      "side": 1,
+      "message": "I guess test fixture can define its own tolerance? (And with another comment, we might not need the ping.DefaultLossThreshold anymore).",
+      "range": {
+        "startLine": 391,
+        "startChar": 15,
+        "endLine": 391,
+        "endChar": 40
+      },
+      "revId": "64fc6bae8d08302db7f56315afb07a8f13e2350f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
