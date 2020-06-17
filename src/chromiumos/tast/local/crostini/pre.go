@@ -132,27 +132,24 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByArtifact is similar to StartedByDownload, but will
+// StartedByArtifact is similar to StartedByDownloadBuster, but will
 // use a pre-built image as a data-dependency rather than downloading one. To
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 
-// StartedByDownload is a precondition that ensures a tast test will
-// begin after crostini has been started by downloading an image.
-func StartedByDownload() testing.Precondition { return startedByDownloadPre }
-
-// StartedByDownloadBuster is a precondition that ensures a tast test
+// StartedByDownloadStretch is a precondition that ensures a tast test
 // will begin after crostini has been started by downloading an image
-// running debian buster.
+// running Debian Stretch.
+func StartedByDownloadStretch() testing.Precondition { return startedByDownloadStretchPre }
+
+// StartedByDownloadBuster is a precondition that ensures a tast test will
+// begin after crostini has been started by downloading an image
+// running Debian Buster.
 func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
 // StartedGPUEnabled is similar to StartedByArtifact, but will
 // use pass enable-gpu to vm instance to allow gpu being used.
 func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
-
-// StartedGPUEnabledBuster is similar to StartedGPUEnabled, but will be
-// started by downloading an image running Debian Buster.
-func StartedGPUEnabledBuster() testing.Precondition { return startedGPUEnabledBusterPre }
 
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
@@ -183,18 +180,19 @@ var startedByArtifactPre = &preImpl{
 	diskSize: vm.DefaultDiskSize,
 }
 
-var startedByDownloadPre = &preImpl{
-	name:     "crostini_started_by_download_stretch",
-	timeout:  chrome.LoginTimeout + 10*time.Minute,
-	mode:     download,
-	diskSize: vm.DefaultDiskSize,
-}
-
 var startedByDownloadBusterPre = &preImpl{
 	name:     "crostini_started_by_download_buster",
 	timeout:  chrome.LoginTimeout + 10*time.Minute,
 	mode:     download,
 	arch:     vm.DebianBuster,
+	diskSize: vm.DefaultDiskSize,
+}
+
+var startedByDownloadStretchPre = &preImpl{
+	name:     "crostini_started_by_download_stretch",
+	timeout:  chrome.LoginTimeout + 10*time.Minute,
+	mode:     download,
+	arch:     vm.DebianStretch,
 	diskSize: vm.DefaultDiskSize,
 }
 
@@ -206,20 +204,10 @@ var startedGPUEnabledPre = &preImpl{
 	diskSize:   vm.DefaultDiskSize,
 }
 
-var startedGPUEnabledBusterPre = &preImpl{
-	name:       "crostini_started_gpu_enabled_buster",
-	timeout:    chrome.LoginTimeout + 10*time.Minute,
-	arch:       vm.DebianBuster,
-	mode:       download,
-	gpuEnabled: true,
-	diskSize:   vm.DefaultDiskSize,
-}
-
 var startedTraceVMPre = &preImpl{
 	name:       "crostini_started_trace_vm",
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
-	arch:       vm.DebianBuster,
-	mode:       download,
+	mode:       artifact,
 	gpuEnabled: true,
 	diskSize:   16 * 1024 * 1024 * 1024, // graphics.TraceReplay relies on at least 16GB size.
 }
