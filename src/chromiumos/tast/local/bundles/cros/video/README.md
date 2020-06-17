@@ -248,10 +248,39 @@ adapted from the [ffmpeg Slideshow docs] was used:
 
     ffmpeg -loop 1 -i rect-640x360.png -c:v libx264 -pix_fmt yuv420p -t 1 -profile:v baseline still-colors-360p.h264.mp4
 
+The still image consists of four solid color rectangles (one in each quadrant of
+the image). The colors were chosen arbitrarily under the assumption that those
+colors are unlikely to correspond to artifacts (for example, a common artifact
+is a green line).
+
 To run these tests use:
 
     tast run $HOST video.DrawOnCanvas.*
 
+## Contents Tests (`video.Contents`)
+
+This group of tests verifies that a video (presumably decoded using hardware
+acceleration) is displayed correctly in full screen mode.
+
+The tests start playing a video, switch it to full screen mode, take a
+screenshot (using the CLI tool) and analyze  the captured image to check the
+color of a few interesting pixels. The test videos are re-used from the
+[Canvas tests](#canvas-tests).
+
+The pixels we check are the centers of each of the four rectangles of the test
+video and the four corners of the video (plus some padding to ignore some
+artifacts which are acceptable).
+
+If the color check at the centers fails, video playback is broken in a very
+visible (read major) way.
+
+If the color check at the centers succeeds, but the check at the corners fails,
+the likely culprit is an incorrect rectangle or size in the Chrome compositing
+pipeline.
+
+To run these tests use:
+
+    tast run $HOST video.Contents.*
 
 [15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
 [15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
