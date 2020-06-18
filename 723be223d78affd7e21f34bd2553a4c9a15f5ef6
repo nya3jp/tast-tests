@@ -16,6 +16,24 @@
       "revId": "723be223d78affd7e21f34bd2553a4c9a15f5ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426c8c75_404bec93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-18T12:19:44Z",
+      "side": 1,
+      "message": "go/crosbolt for monitoring\nThe actual metric is not there until this is submitted.",
+      "parentUuid": "5e4db114_9331d595",
+      "revId": "723be223d78affd7e21f34bd2553a4c9a15f5ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
