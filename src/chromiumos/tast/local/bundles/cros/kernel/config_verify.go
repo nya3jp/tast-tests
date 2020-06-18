@@ -367,6 +367,14 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 			same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
 		}
 
+		// Ensure no 32-bit userspaces.
+		// 64-bit options are set.
+		builtin = append(builtin, "64BIT")
+		builtin = append(builtin, "X86_64")
+		// 32-bit compat options are *not* set.
+		missing = append(missing, "IA32_EMULATION")
+		missing = append(missing, "COMPAT")
+
 		// Security; make sure NX page table bits are usable.
 		if arch == "x86_64" {
 			builtin = append(builtin, "X86_64")
