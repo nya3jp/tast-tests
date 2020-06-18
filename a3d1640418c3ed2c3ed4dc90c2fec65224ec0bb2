@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6b9efa83_665d2b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-18T17:17:31Z",
+      "side": 1,
+      "message": "so, based on the previous discussion, should we enable this test in ARCVM?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "a3d1640418c3ed2c3ed4dc90c2fec65224ec0bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b9ada80_b2d29f9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 2
