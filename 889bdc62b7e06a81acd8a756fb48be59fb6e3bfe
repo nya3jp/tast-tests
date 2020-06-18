@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c25796d_1f26afd1",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-18T04:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd7353f_6c80f1c6",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "890560fd_230b65bc",
         "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
         "patchSetId": 18
@@ -39,6 +63,24 @@
       "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1d929c_2edee69d",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-18T04:24:54Z",
+      "side": 1,
+      "message": "it does check already, see line 155/158.\n\nThe max size is whatever space the user has left on their disk, so it cannot be predicted in advance.  On at least 5 models we know there is not enough space to run the tests, so I expect the max size reached code to be executed.",
+      "parentUuid": "890560fd_230b65bc",
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aecaa1a5_822bf1a0",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-18T04:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0405280c_df876615",
+      "range": {
+        "startLine": 176,
+        "startChar": 103,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "889bdc62b7e06a81acd8a756fb48be59fb6e3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

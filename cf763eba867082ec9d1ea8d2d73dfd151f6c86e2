@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d805487_894e86c4",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-18T04:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2c93bf_c678eddd",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "cf763eba867082ec9d1ea8d2d73dfd151f6c86e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59718f41_8bb3e675",
         "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "cf763eba867082ec9d1ea8d2d73dfd151f6c86e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a607602_6f449968",
+        "filename": "src/chromiumos/tast/local/crostini/cui/installer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-18T04:24:54Z",
+      "side": 1,
+      "message": "It is chained on the uig.Steps return value, ie Action.WithNamef",
+      "parentUuid": "59718f41_8bb3e675",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "cf763eba867082ec9d1ea8d2d73dfd151f6c86e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
