@@ -169,6 +169,24 @@
     },
     {
       "key": {
+        "uuid": "84bf1f82_7b339f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-18T06:50:55Z",
+      "side": 1,
+      "message": "The file is there and os.stat returns success, too.\nBut open with app button doesn\u0027t show up.",
+      "parentUuid": "ac1f345a_5d5fbb47",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ade0f_53dbbc75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
