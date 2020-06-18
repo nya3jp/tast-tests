@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "160dc843_7c9a1a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-18T19:24:32Z",
+      "side": 1,
+      "message": "Who is the Arthur who added WMResizableClamshell?\n\nIs there need to specify which APK to install in the parameters?",
+      "parentUuid": "2af23804_02dac072",
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8118a6d_bfd2c757",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
