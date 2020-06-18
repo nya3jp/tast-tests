@@ -22,6 +22,30 @@
       "revId": "a3d1640418c3ed2c3ed4dc90c2fec65224ec0bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee56433_8a5415aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-18T17:15:31Z",
+      "side": 1,
+      "message": "update: for keyboard, not changes are needed. the logic of this test work ok.\n\nThe gamepad test, if it is based on this one, will need to get updated since the timestamp is not the \"kernel\" one, but the \"wayland-server\" one.",
+      "parentUuid": "6b9ada80_b2d29f9c",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 80
+      },
+      "revId": "a3d1640418c3ed2c3ed4dc90c2fec65224ec0bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
