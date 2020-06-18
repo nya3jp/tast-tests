@@ -128,6 +128,47 @@
       "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "557e471e_2d4e10fe",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T18:12:51Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a currently way to do this in Tast, but it should be very trivial to create an autotestPrivate method that just gets returns the list of currently pressed mouse buttons. We should probably at least create a bug and a todo around this, unless you want to add the autotest private method before submitting this.\n\nIf there is already a way to check this state in tast, mukai@ would probably know.",
+      "parentUuid": "03ab6dad_052ee290",
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e797840d_0322afa1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T18:12:51Z",
+      "side": 1,
+      "message": "This should probably be a for loop over left, middle, and right button that uses tconn.Call()",
+      "range": {
+        "startLine": 584,
+        "startChar": 11,
+        "endLine": 584,
+        "endChar": 117
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
