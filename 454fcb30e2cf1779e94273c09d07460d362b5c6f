@@ -16,6 +16,24 @@
       "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c054ca4e_6e6caa9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-18T09:46:16Z",
+      "side": 1,
+      "message": "+1, please read:\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Upload-changes",
+      "parentUuid": "f8ef5c97_46d40fa7",
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
