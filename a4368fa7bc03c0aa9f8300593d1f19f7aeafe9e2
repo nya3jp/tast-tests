@@ -223,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "2f0e32ae_90a6054b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-06-18T21:24:17Z",
+      "side": 1,
+      "message": "Do you see the intent_helper.mojom method call on the Android side? The query happens when the file is selected in Files.app, so it might take some time for the button to appear because the method call is async.",
+      "parentUuid": "00a7a28a_5344ec50",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ade0f_53dbbc75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
