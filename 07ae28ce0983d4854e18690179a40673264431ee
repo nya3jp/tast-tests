@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68961731_008b5868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "Nit: Per https://chris.beams.io/posts/git-commit/ (linked from the Chromium OS Developer Guide), please wrap the commit message body at 72 characters. This line is 73, which makes it look odd in Gerrit.",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f15933f_afab5056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "Please use Cq-Depend to make this CL dependent on the manifest key. https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#CQ-DEPEND",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572df06f_e4c7fcdc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "nit: \"loads a\"",
+      "range": {
+        "startLine": 272,
+        "startChar": 30,
+        "endLine": 272,
+        "endChar": 35
+      },
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f52b64c_f553b5c4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "You can combine this branch with L614-622 by writing the built-in test extension (and thus defining c.extDirs) before writing the test extension key:\n\n    func (c *Chrome) PrepareExtensions(ctx, context.Context) error {\n        ctx, st :\u003d timing.Start(ctx, \"prepare_extensions\")\n        defer st.End()\n        \n        // Write the built-in test extension.\n        // L623-631\n        dirsToChown :\u003d c.extDirs // L636\n\n        // Write the test extension key.\n        if len(c.testSigninProfileExtKey) \u003e 0 {\n            // L615-621\n            dirsToChown \u003d append(dirsToChown, c.testSigninProfileExtDir) // L638\n        }\n        \n        // Chown dirs\n        // L640-648\n        \n        return nil\n    }\n\nThis won\u0027t work if you need the test extension key in order to write the built-in test extension, which is beyond my subject-matter knowledge.",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d78750_ee350a12",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "In case other functions get added in between TestAPIConn and TestSigninProfileAPIConn, please refer explicitly to the name of the other function:\n\n    // TestSigninProfileAPIConn is the same as TestAPIConn, but for signin profile test extension.",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988338e5_1a12b5b3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "nit: \"builds a test API connection\"",
+      "range": {
+        "startLine": 910,
+        "startChar": 20,
+        "endLine": 910,
+        "endChar": 46
+      },
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03385174_7192aede",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "Is this random text or is it from a particular data-source? If it\u0027s random text, it might be safer and clearer to randomly generate a text string. That, or to directly indicate somewhere in the string what the ID indicates (i.e. \"signinprofiletestextensionidasdfghjkl\"). Alternatively, if this string *is* used outside of this test, please document the source. Ditto for TestExtensionID.",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a185c6_9fc2ee98",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "I think that this is less clear than defining manifest directly. Since we\u0027re not reusing manifestFmt, I recommend changing to a `var manifest`:\n\n    var manifest \u003d fmt.Sprintf(`{\n        ...\n    }`, key)",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20063120_76c70839",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-18T16:39:57Z",
+      "side": 1,
+      "message": "Is this change relevant to this CL?",
+      "revId": "07ae28ce0983d4854e18690179a40673264431ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
