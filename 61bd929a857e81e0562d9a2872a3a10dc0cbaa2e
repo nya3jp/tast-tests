@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2f32d29f_d09964d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-18T03:59:12Z",
+      "side": 1,
+      "message": "All \"camera.HAL3Remote.j*a_*\" passed on nautilus without any suspicious message.\nSo, it seem somehow still run normally on nautilus.\nIdeally we should skip the test on mismatched camera to save some time.\nI think we can pass both |CameraHALs| and |CameraFacing| to |cros_camera_test| for checking if the require HAL have target facing camera. And dummy pass(tast seems don\u0027t support toggling skip state from test) if they\u0027re mismatched.\nWill do it in another CL.",
+      "parentUuid": "982f7744_91dfb10f",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5f25e52_6068edfa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 13
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "61f91853_6db2f0a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-18T03:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5f25e52_6068edfa",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aafa0262_3626e37a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
         "patchSetId": 13
@@ -50,6 +86,24 @@
       "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ccf64b_6299ceee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-18T03:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aafa0262_3626e37a",
+      "revId": "61bd929a857e81e0562d9a2872a3a10dc0cbaa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
