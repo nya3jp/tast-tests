@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d14a1fad_2cca5fe3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T18:47:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae006ed_5f813083",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3c37b4d_b613f897",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
         "patchSetId": 16
@@ -105,6 +123,24 @@
       "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9e5f26_ae4f670f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T18:47:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e30792_762c4cf3",
+      "revId": "fafa151cfccf1df701d49e1cfea86e824dcc5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
