@@ -44,6 +44,14 @@ const (
 	TextView = "android.widget.TextView"
 	// ToggleButton class name.
 	ToggleButton = "android.widget.ToggleButton"
+
+	// Common keys used when interacting with ChromeVox.
+	// Definition of keys can be found at chromevox/background/keymaps/default_keymap.json.
+
+	// ChromeVoxNextKey for navigating to the next object in Chromevox.
+	ChromeVoxNextKey = "Search+Right"
+	// ChromeVoxActivateKey to activate the element.
+	ChromeVoxActivateKey = "Search+Space"
 )
 
 // TestActivity represents an activity that will be used as a test case.
