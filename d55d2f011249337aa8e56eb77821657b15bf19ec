@@ -204,6 +204,30 @@
     },
     {
       "key": {
+        "uuid": "cce50778_aca76d5a",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-18T17:12:21Z",
+      "side": 1,
+      "message": "Thanks Willie.\n\nYou are right about the keyboard and touches. Wayland-server passes the kernel-timestamp all the way to ARC++, and then ARC++ injects that event with the passed timestamp.\n\nBut in the case of gamepad, the timestamp is created in Wayland-server (Search for NowInMillis):\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/exo/wayland/zcr_gaming_input.cc;l\u003d71\n\nThis is a bug. We shouldn\u0027t pass a \"fake\" timestamp. We should pass the kernel one as in Touch and Keyboard. Although I don\u0027t know how much plumbing is needed.\n\nSo, until the gamepad timestamp is fixed, we need to get the timestamp in the test, when we inject the event.\n\n\nSo, for the test that you created, it works Ok.\n\nBut if we want to make it more generic so that it supports gamepad events as well, we should get the timestamp just before we inject the event in the kernel.",
+      "parentUuid": "41a45a98_a2520fd4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a10e1b_488a5053",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
