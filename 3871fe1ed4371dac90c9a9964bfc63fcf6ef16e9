@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07b82315_ee6a2fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-18T17:29:11Z",
+      "side": 1,
+      "message": "This doesn\u0027t use the loss threshold (it\u0027s not using the test fixture ping)",
+      "parentUuid": "42a306ec_934af64b",
+      "range": {
+        "startLine": 151,
+        "startChar": 64,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20abcfe2_c1eb6b9c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 8
@@ -48,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "38f400d8_4d77c962",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-18T17:29:11Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 395,
+        "startChar": 24,
+        "endLine": 395,
+        "endChar": 33
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1713cf1_eb74a270",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 8
@@ -64,6 +111,29 @@
         "startChar": 73,
         "endLine": 419,
         "endChar": 74
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf83b65_647f3837",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-18T17:29:11Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 419,
+        "startChar": 24,
+        "endLine": 419,
+        "endChar": 33
       },
       "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
