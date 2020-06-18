@@ -260,7 +260,7 @@ void ExpectBo(gbm_bo* bo) {
 
   const uint32_t format = gbm_bo_get_format(bo);
 
-  EXPECT_TRUE(base::ContainsValue(kFormatList, format)) << format;
+  EXPECT_TRUE(base::Contains(kFormatList, format)) << format;
 
   const size_t num_planes = gbm_bo_get_plane_count(bo);
   switch (format) {
