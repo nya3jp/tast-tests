@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25a0a231_13fdb5cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9b21a7_a29edfde",
+      "range": {
+        "startLine": 28,
+        "startChar": 19,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a8bbfa_7a87c093",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "94ac74adeca366bee170570b624892da0ba1480e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd5e9bc_0ef55096",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a8bbfa_7a87c093",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4d0bc8a1_158f30b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "I think this is a better implemenation.",
+      "parentUuid": "14bd0626_ae627974",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc2e0ef_82c8eb7f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-18T07:04:09Z",
       "side": 1,
       "message": "Is it possible to get EBUSY here? (i.e. do we need polling like Autotest? or ask shill for scanning and results instead?)",
+      "range": {
+        "startLine": 101,
+        "startChar": 54,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea8584b_caca7ee9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "The Autotest version is not doing polling, it returns \"None\" if the device is busy, so the test is passing if the device is busy:\ncommand \u003d IW_TIME_COMMAND_FORMAT % iw_command\nscan \u003d self._run(command, ignore_status\u003dTrue)\nif scan.exit_status !\u003d 0:\n   # The device was busy\n   logging.debug(\u0027scan exit_status: %d\u0027, scan.exit_status)\n   return None\n\nNote: We are not connecting to an AP here, so bgscan is not activated.\n\nI think adding a polling is a good idea here.",
+      "parentUuid": "dcc2e0ef_82c8eb7f",
       "range": {
         "startLine": 101,
         "startChar": 54,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "27094dfb_49127140",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3926106b_f8002fdb",
+      "range": {
+        "startLine": 207,
+        "startChar": 38,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b7ff3b8_cf0602d2",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "94ac74adeca366bee170570b624892da0ba1480e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c8f1d0_e49c24e9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-18T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7ff3b8_cf0602d2",
+      "range": {
+        "startLine": 402,
+        "startChar": 4,
+        "endLine": 402,
+        "endChar": 21
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
