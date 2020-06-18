@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f5e5617_52c729da",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-18T23:43:28Z",
+      "side": 1,
+      "message": "nit:\n\nto avoid confusion I\u0027d rename them as:\n\n  ArcWMTestApp:ARcWMTestApp_24_AllowlistMaximized\n  \n  org.chromium.arc.testapp.windowmanager24.allowlist_maximized\n\n\n(or something like that).\n\nThis is to prevent the \"Oh, I need a fullscreen\"... I\u0027ll just create a new APK... since there is one for \"maximized\", I\u0027ll add a new one for \"fullscreen\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
