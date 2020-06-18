@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bb6a367_e8879da3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-18T09:42:01Z",
+      "side": 1,
+      "message": "It is discouraged to storage context.Context in structs because context.Context is usually passed around call stacks.\nhttps://godoc.org/context\n\nIn this case it is used only for logging. You can use testing.ContextLogger to extract a logger from a context.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "38635896a1b7fda9e538429406e6857aab64b160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0fff9b_dd266db4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-18T09:42:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure %w is supported here... can you check?",
+      "range": {
+        "startLine": 115,
+        "startChar": 67,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "38635896a1b7fda9e538429406e6857aab64b160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
