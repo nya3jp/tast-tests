@@ -6,8 +6,6 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
-	"os"
 	"reflect"
 	"time"
 
@@ -24,6 +22,7 @@ const axEventFilePrefix = "accessibility_event"
 
 // axEventLog represents a log of accessibility event.
 // Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/log_types.js
+// TODO(b/159413215): Use automationEvent instread of axEventLog.
 type axEventLog struct {
 	EventType  string `json:"type_"`
 	TargetName string `json:"targetName_"`
@@ -45,7 +44,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"accessibility_event.MainActivity.json", "accessibility_event.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -109,19 +107,6 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-// getEventTestSteps returns a slice of axEventTestStep, which is read from the specific file.
-func getEventTestSteps(filepath string) ([]axEventTestStep, error) {
-	f, err := os.Open(filepath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	var steps []axEventTestStep
-	err = json.NewDecoder(f).Decode(&steps)
-	return steps, err
-}
-
 func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) error {
 	eventsSeen := make(map[string]bool)
 	var events []string
@@ -146,8 +131,161 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 }
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
+	MainActivityTestSteps := []axEventTestStep{
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
+				ClassName: accessibility.ToggleButton,
+				Name:      "OFF",
+				Role:      ui.RoleTypeToggleButton,
+				Attributes: map[string]interface{}{
+					"checked": "false",
+					"tooltip": "button tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "OFF",
+			},
+		},
+		axEventTestStep{
+			Key: "Search+Space",
+			Params: ui.FindParams{
+				ClassName: accessibility.ToggleButton,
+				Name:      "ON",
+				Role:      ui.RoleTypeToggleButton,
+				Attributes: map[string]interface{}{
+					"checked": "true",
+					"tooltip": "button tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "checkedStateChanged",
+				TargetName: "ON",
+			},
+		},
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
+				ClassName: accessibility.CheckBox,
+				Name:      "CheckBox",
+				Role:      ui.RoleTypeCheckBox,
+				Attributes: map[string]interface{}{
+					"checked": "false",
+					"tooltip": "checkbox tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "CheckBox",
+			},
+		},
+		axEventTestStep{
+			Key: "Search+Space",
+			Params: ui.FindParams{
+				ClassName: accessibility.CheckBox,
+				Name:      "CheckBox",
+				Role:      ui.RoleTypeCheckBox,
+				Attributes: map[string]interface{}{
+					"checked": "true",
+					"tooltip": "checkbox tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "checkedStateChanged",
+				TargetName: "CheckBox",
+			},
+		},
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
+				ClassName: accessibility.SeekBar,
+				Name:      "seekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 25,
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "seekBar",
+			},
+		},
+		axEventTestStep{
+			Key: "=",
+			Params: ui.FindParams{
+				ClassName: accessibility.SeekBar,
+				Name:      "seekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 26,
+				},
+			},
+			Event: axEventLog{
+				EventType:  "valueChanged",
+				TargetName: "seekBar",
+			},
+		},
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
+				ClassName: accessibility.SeekBar,
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 3,
+				},
+			},
+			Event: axEventLog{
+				EventType: "focus",
+			},
+		},
+		axEventTestStep{
+			Key: "-",
+			Params: ui.FindParams{
+				ClassName: accessibility.SeekBar,
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 2,
+				},
+			},
+			Event: axEventLog{
+				EventType: "valueChanged",
+			},
+		},
+	}
+	EditTextActivityTestSteps := []axEventTestStep{
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
+				ClassName: accessibility.EditText,
+				Name:      "contentDescription",
+				Role:      ui.RoleTypeTextField,
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "contentDescription",
+			},
+		},
+		axEventTestStep{
+			Key: "a",
+			Params: ui.FindParams{
+				ClassName: accessibility.EditText,
+				Name:      "contentDescription",
+				Role:      ui.RoleTypeTextField,
+				Attributes: map[string]interface{}{
+					"value": "a",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "textChanged",
+				TargetName: "contentDescription",
+			},
+		},
+	}
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
-
+	events := make(map[string][]axEventTestStep)
+	events[accessibility.MainActivity.Name] = MainActivityTestSteps
+	events[accessibility.EditTextActivity.Name] = EditTextActivityTestSteps
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
@@ -155,10 +293,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		testSteps, err := getEventTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
-		if err != nil {
-			return errors.Wrap(err, "error reading from JSON")
-		}
+		testSteps := events[currentActivity.Name]
 		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps); err != nil {
 			return err
 		}
