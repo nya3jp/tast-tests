@@ -8,11 +8,13 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/dynamicwep"
+	"chromiumos/tast/common/wifi/security/tunneled1x"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
@@ -563,6 +565,20 @@ func init() {
 						expectedFailure: true,
 					},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MSCHAPV2, MD5, and GTC.
+				Name:      "8021xpeap",
+				ExtraAttr: []string{"wificell_unstable"},
+				// This test contains 19 subtests and may take up to 8 minutes on some machines in labs.
+				Timeout: 10 * time.Minute,
+				Val:     peapTestParam(),
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MSCHAPV2, MD5, GTC, TTLSMSCHAPV2, TTLSMSCHAP, and TTLSPAP.
+				Name:      "8021xttls",
+				ExtraAttr: []string{"wificell_unstable"},
+				// This test contains 34 subtests and may take up to 13 minutes on some machines in labs.
+				Timeout: 16 * time.Minute,
+				Val:     ttlsTestParam(),
 			},
 		},
 	})
@@ -578,9 +594,11 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	if pcap, _ := s.Var("pcap"); pcap != "" {
 		ops = append(ops, wificell.TFPcap(pcap))
 	}
-	// As we are not in precondition, we have fullCtx as both method context and
-	// daemon context.
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), ops...)
+	// The PEAP and TTLS tests may take 10 minutes or more.
+	// Shorten the timeout of newing TestFixture save time in the case of something hangs in it.
+	tfCtx, tfCancel := context.WithTimeout(fullCtx, 2*time.Minute)
+	defer tfCancel()
+	tf, err := wificell.NewTestFixture(tfCtx, fullCtx, s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
@@ -690,7 +708,9 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.expectedFailure)
 		}
-		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
+		subtestCtx, subtestCancel := context.WithTimeout(ctx, 2*time.Minute)
+		defer subtestCancel()
+		if !s.Run(subtestCtx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
 			return
 		}
@@ -725,8 +745,10 @@ func wep104KeysHidden() []string {
 
 // EAP certs/keys for EAP tests.
 var (
-	eapCert1 = certificate.TestCert1()
-	eapCert2 = certificate.TestCert2()
+	eapCert1       = certificate.TestCert1()
+	eapCert2       = certificate.TestCert2()
+	eapCert3       = certificate.TestCert3()
+	eapCert3AltSub = certificate.TestCert3AltSubjectMatch()
 )
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
@@ -742,4 +764,122 @@ func byteSequenceStr(start, end byte) string {
 	}
 	ret = append(ret, end)
 	return string(ret)
+}
+
+// peapTestParam generates the tests of 8021xpeap. 4 bad tests and 3*5 good tests so totally 19 test cases.
+func peapTestParam() []simpleConnectTestcase {
+	// Expected failure cases. We do these tests for only one inner authentication protocol because
+	// we presume that supplicant reuses this code between inner authentication types.
+	ret := tunneled1xBadTests(tunneled1x.Layer1TypePEAP, tunneled1x.Layer2TypeMSCHAPV2)
+
+	for _, inner := range []string{
+		tunneled1x.Layer2TypeMSCHAPV2, tunneled1x.Layer2TypeMD5, tunneled1x.Layer2TypeGTC,
+	} {
+		ret = append(ret, tunneled1xGoodTests(tunneled1x.Layer1TypePEAP, inner)...)
+	}
+
+	return ret
+}
+
+// ttlsTestParam generates the tests of 8021xttls. 4 bad tests and 6*5 good tests so totally 34 test cases.
+func ttlsTestParam() []simpleConnectTestcase {
+	// Expected failure cases. We do these tests for only one inner authentication protocol because
+	// we presume that supplicant reuses this code between inner authentication types.
+	ret := tunneled1xBadTests(tunneled1x.Layer1TypeTTLS, tunneled1x.Layer2TypeMD5)
+
+	for _, inner := range []string{
+		tunneled1x.Layer2TypeMSCHAPV2, tunneled1x.Layer2TypeMD5, tunneled1x.Layer2TypeGTC,
+		tunneled1x.Layer2TypeTTLSMSCHAPV2, tunneled1x.Layer2TypeTTLSMSCHAP, tunneled1x.Layer2TypeTTLSPAP,
+	} {
+		ret = append(ret, tunneled1xGoodTests(tunneled1x.Layer1TypeTTLS, inner)...)
+	}
+
+	return ret
+}
+
+// Helper functions for the tunneled1x tests.
+
+func tunneled1xBadTests(outer, inner string) []simpleConnectTestcase {
+	return []simpleConnectTestcase{
+		{
+			// Failure due to bad password.
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+				tunneled1x.ClientPassword("wrongpassword"),
+			),
+			expectedFailure: true,
+		},
+		{
+			// Failure due to wrong client CA.
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+			),
+			expectedFailure: true,
+		},
+		{
+			// Failure due to expired server cred.
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+			),
+			expectedFailure: true,
+		},
+		{
+			// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+				tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+			),
+			expectedFailure: true,
+		},
+	}
+}
+
+func tunneled1xGoodTests(outer, inner string) []simpleConnectTestcase {
+	ret := []simpleConnectTestcase{
+		{
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+			),
+		},
+		{
+			// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+			// For more information about how wpa_supplicant uses altsubject_match field:
+			// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+				tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+			),
+		},
+	}
+	// Test each SANs separately.
+	for _, san := range eapCert3AltSub {
+		ret = append(ret, simpleConnectTestcase{
+			apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+			secConfFac: tunneled1x.NewConfigFactory(
+				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(outer),
+				tunneled1x.InnerProtocol(inner),
+				tunneled1x.AltSubjectMatch([]string{san}),
+			),
+		})
+	}
+	return ret
 }
