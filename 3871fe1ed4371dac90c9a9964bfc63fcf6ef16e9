@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42a306ec_934af64b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-18T08:33:26Z",
+      "side": 1,
+      "message": "20% of 3 is 0. Does it make sense than to have count less than 5?",
+      "range": {
+        "startLine": 151,
+        "startChar": 64,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20abcfe2_c1eb6b9c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-18T08:33:26Z",
+      "side": 1,
+      "message": "nit: \u003c\u003d to be precise",
+      "range": {
+        "startLine": 395,
+        "startChar": 73,
+        "endLine": 395,
+        "endChar": 74
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1713cf1_eb74a270",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-18T08:33:26Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 419,
+        "startChar": 73,
+        "endLine": 419,
+        "endChar": 74
+      },
+      "revId": "3871fe1ed4371dac90c9a9964bfc63fcf6ef16e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
