@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "070da30f_ed89a228",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "\"automation API\" is more accurate, I guess?",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7eaff8f_7a91b0c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "Can you update this as well?\n(The previous one is not a custom struct, IIUC)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd1bc6a_608ac974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "How about rephrasing like below:\n\"Instead of rolling back to the previous state where we compared strings of dumped accessibility trees, using ui.FindParams allows us to control which property are checked and which are not.\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 70
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8dd44b7_37d16c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "nit: I think adding \"when we write an expected tree\" makes the comment more clear.",
+      "range": {
+        "startLine": 23,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 60
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6fdc44_baa44263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "just curious, does ui.findParam gives us human readable output? If not, could you add String method?",
+      "range": {
+        "startLine": 88,
+        "startChar": 82,
+        "endLine": 88,
+        "endChar": 91
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd3e11a_9ee8a63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "similar to the comment I did in the previous round, but how about logging what is the current root? (gotRoot.ToString might produces an error, I think it\u0027s okay to output wantRoot)",
+      "range": {
+        "startLine": 94,
+        "startChar": 60,
+        "endLine": 94,
+        "endChar": 72
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

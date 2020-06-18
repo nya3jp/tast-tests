@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b4f2df4c_f8da8f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T08:53:55Z",
+      "side": 1,
+      "message": "I think it\u0027s okay not to have a variable.",
+      "parentUuid": "e4bc3d41_8e678a5d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42463b19_d1f3b73b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 12
