@@ -149,7 +149,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			hiddenHomeButtonHistogram,
 			hiddenWidgetHistogram)
 	}
-	histogramGroup, err := metrics.Run(ctx, tconn, func() error {
+	histogramGroup, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		const numWindows = 1
 		conns, err := ash.CreateWindows(ctx, tconn, cr, "", numWindows)
 		if err != nil {
@@ -176,8 +176,11 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
 		}
 
+		metricName := h.Name + ".WindowCreation"
+		s.Log(metricName, "= ", mean)
+
 		pv.Set(perf.Metric{
-			Name:      h.Name + ".WindowCreation",
+			Name:      metricName,
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
 		}, mean)
@@ -198,7 +201,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			extendedWidgetHistogram,
 			shownWidgetHistogram)
 	}
-	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
+	histogramGroup, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		// Add a new tab.
 		conn, err := cr.NewConn(ctx, ui.PerftestURL)
 		if err != nil {
@@ -276,6 +279,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
 		}
+		s.Log(h.Name, "= ", mean)
 
 		pv.Set(perf.Metric{
 			Name:      h.Name,
@@ -292,7 +296,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			hiddenHomeButtonHistogram,
 			hiddenWidgetHistogram)
 	}
-	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
+	histogramGroup, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		// Verify the initial hotseat state before hiding.
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return err
@@ -344,6 +348,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
 		}
+		s.Log(h.Name, "= ", mean)
 
 		pv.Set(perf.Metric{
 			Name:      h.Name + ".WindowActivation",
