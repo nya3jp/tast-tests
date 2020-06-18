@@ -104,12 +104,14 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 						Role: ui.RoleTypeStaticText,
 					},
 					&axTreeNode{
-						Name: "OFF",
-						Role: ui.RoleTypeToggleButton,
+						Name:       "OFF",
+						Role:       ui.RoleTypeToggleButton,
+						Attributes: map[string]interface{}{"tooltip": "button tooltip"},
 					},
 					&axTreeNode{
-						Name: "CheckBox",
-						Role: ui.RoleTypeCheckBox,
+						Name:       "CheckBox",
+						Role:       ui.RoleTypeCheckBox,
+						Attributes: map[string]interface{}{"tooltip": "checkbox tooltip"},
 					},
 					&axTreeNode{
 						Name: "seekBar",
