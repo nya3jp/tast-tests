@@ -229,6 +229,52 @@
       "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae734165_6f92bda3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:38:25Z",
+      "side": 1,
+      "message": "I think it would make sense to increase this to 5-ish minutes.",
+      "range": {
+        "startLine": 175,
+        "startChar": 87,
+        "endLine": 175,
+        "endChar": 88
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c02cd19a_b42b2ea7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:38:25Z",
+      "side": 1,
+      "message": "Can you call reportDiskUsage either here or in pre.go again?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
