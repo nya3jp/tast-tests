@@ -112,7 +112,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// occlusion changes. Finally, drag back to the top to maximize the window again.
 	points := []coords.Point{
 		// Caption center.
-		coords.NewPoint(maximizedWindow.BoundsInRoot.Width/2, 10),
+		coords.NewPoint(maximizedWindow.BoundsInRoot.Width/2, 5),
 		// Points in some select parts of the display (diamond shape).
 		coords.NewPoint(10, height/2),
 		coords.NewPoint(width/2, height-10),
@@ -159,7 +159,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	},
-		"Ash.Window.AnimationSmoothness.CrossFade")
+		"Ash.Window.AnimationSmoothness.CrossFade.DragMaximize", "Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize")
 	if err != nil {
 		s.Fatal("Failed to drag or get the histogram: ", err)
 	}
