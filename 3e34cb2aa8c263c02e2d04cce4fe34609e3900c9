@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f368836c_7e426377",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-18T16:46:58Z",
+      "side": 1,
+      "message": "huge nit: you can use `` instead of \"\", in order to avoid escaping \"\" inside the literal.",
+      "range": {
+        "startLine": 584,
+        "startChar": 34,
+        "endLine": 584,
+        "endChar": 35
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbe5cef_b059825a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-18T16:46:58Z",
+      "side": 1,
+      "message": "nit: EvalPromise is deprecated. Could you use Eval() ?",
+      "range": {
+        "startLine": 584,
+        "startChar": 17,
+        "endLine": 584,
+        "endChar": 28
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2060ef4_f0fef7ef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-18T16:46:58Z",
+      "side": 1,
+      "message": "Clar: is it possible to record if it is pressed, so that we can identify what test was unexpected?",
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
