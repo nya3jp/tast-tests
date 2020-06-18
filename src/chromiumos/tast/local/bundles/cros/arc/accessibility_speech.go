@@ -6,9 +6,7 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"time"
 
@@ -30,7 +28,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"accessibility_speech.MainActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -67,20 +64,6 @@ func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 	return gotLogs, nil
 }
 
-// getSpeechTestSteps returns a slice of axSpeechTestStep, which is read from the specific file.
-// TODO(b/155949540): Migrate json to golang struct, so this parsing will no longer be necessary.
-func getSpeechTestSteps(filepath string) ([]axSpeechTestStep, error) {
-	f, err := os.Open(filepath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	var steps []axSpeechTestStep
-	err = json.NewDecoder(f).Decode(&steps)
-	return steps, err
-}
-
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	const axSpeechFilePrefix = "accessibility_speech"
 
@@ -96,42 +79,74 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		defer ew.Close()
 
-		axSpeechTestSteps, err := getSpeechTestSteps(s.DataPath(axSpeechFilePrefix + currentActivity.Name + ".json"))
-		if err != nil {
-			return errors.Wrap(err, "error reading from JSON")
-		}
-		for _, axSpeechTestStep := range axSpeechTestSteps {
-			// Ensure that ChromeVox log is cleared before proceeding.
-			if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
-				return errors.Wrap(err, "error with clearing ChromeVox log")
-			}
-			if err := ew.Accel(ctx, axSpeechTestStep.Key); err != nil {
-				return errors.Wrapf(err, "accel(%s) returned error", axSpeechTestStep.Key)
-			}
-
-			diff := ""
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				diff = ""
-				gotLogs, err := speechLog(ctx, cvconn)
-				if err != nil {
-					return testing.PollBreak(err)
+		for _, axSpeechTestStep := range []struct {
+			testActivity accessibility.TestActivity
+			testSteps    []axSpeechTestStep
+		}{
+			{
+				testActivity: accessibility.MainActivity,
+				testSteps: []axSpeechTestStep{
+					{
+						accessibility.ChromeVoxNextKey,
+						[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
+					}, {
+						accessibility.ChromeVoxNextKey,
+						[]string{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
+					}, {
+						accessibility.ChromeVoxNextKey,
+						[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
+					}, {
+						accessibility.ChromeVoxNextKey,
+						[]string{"Slider", "3", "Min 0", "Max 10"},
+					}, {
+						accessibility.ChromeVoxNextKey,
+						[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
+					}, {
+						accessibility.ChromeVoxActivateKey,
+						[]string{"test announcement"},
+					}, {
+						accessibility.ChromeVoxNextKey,
+						[]string{"CLICK TO SHOW TOAST", "Button", "Press Search+Space to activate"},
+					}, {
+						accessibility.ChromeVoxActivateKey,
+						[]string{"test toast"},
+					},
+				},
+			},
+		} {
+			for _, testStep := range axSpeechTestStep.testSteps {
+				// Ensure that ChromeVox log is cleared before proceeding.
+				if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+					return errors.Wrap(err, "error with clearing ChromeVox log")
+				}
+				if err := ew.Accel(ctx, testStep.Key); err != nil {
+					return errors.Wrapf(err, "accel(%s) returned error", testStep.Key)
 				}
 
-				if diff = cmp.Diff(axSpeechTestStep.WantLogs, gotLogs); diff != "" {
-					return errors.New("speech log was not as expected")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-				if diff != "" {
-					// Write diff to file, if diff is observed after polling.
-					diffFileName := "accessibility_speech_diff.txt"
-					diffFilePath := filepath.Join(s.OutDir(), diffFileName)
-					if writeFileErr := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); writeFileErr != nil {
-						return errors.Wrapf(err, "failed to write diff to the file; and the previous error is %v", writeFileErr)
+				diff := ""
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					diff = ""
+					gotLogs, err := speechLog(ctx, cvconn)
+					if err != nil {
+						return testing.PollBreak(err)
 					}
-					return errors.Wrapf(err, "dumped diff to %s", diffFileName)
+
+					if diff = cmp.Diff(testStep.WantLogs, gotLogs); diff != "" {
+						return errors.New("speech log was not as expected")
+					}
+					return nil
+				}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+					if diff != "" {
+						// Write diff to file, if diff is observed after polling.
+						diffFileName := "accessibility_speech_diff.txt"
+						diffFilePath := filepath.Join(s.OutDir(), diffFileName)
+						if writeFileErr := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); writeFileErr != nil {
+							return errors.Wrapf(err, "failed to write diff to the file; and the previous error is %v", writeFileErr)
+						}
+						return errors.Wrapf(err, "dumped diff to %s", diffFileName)
+					}
+					return errors.Wrap(err, "failed to check speech log")
 				}
-				return errors.Wrap(err, "failed to check speech log")
 			}
 		}
 		return nil

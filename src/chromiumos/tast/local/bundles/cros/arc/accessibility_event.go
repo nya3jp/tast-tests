@@ -6,8 +6,8 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
-	"os"
+	//"encoding/json"
+	//"os"
 	"reflect"
 	"time"
 
@@ -45,7 +45,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"accessibility_event.MainActivity.json", "accessibility_event.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -105,21 +104,9 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	if err := verifyLog(ctx, cvconn, test.Event, isFirstStep); err != nil {
 		return errors.Wrap(err, "failed to verify the log")
 	}
+	return nil
 
 	return nil
-}
-
-// getEventTestSteps returns a slice of axEventTestStep, which is read from the specific file.
-func getEventTestSteps(filepath string) ([]axEventTestStep, error) {
-	f, err := os.Open(filepath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	var steps []axEventTestStep
-	err = json.NewDecoder(f).Decode(&steps)
-	return steps, err
 }
 
 func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) error {
@@ -146,8 +133,161 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 }
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
+	MainActivityTestSteps := []axEventTestStep{
+		axEventTestStep{
+			Key: accessibility.ChromeVoxTab,
+			Params: ui.FindParams{
+				ClassName: "android.widget.ToggleButton",
+				Name:      "OFF",
+				Role:      ui.RoleTypeToggleButton,
+				Attributes: map[string]interface{}{
+					"checked": "false",
+					"tooltip": "button tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "OFF",
+			},
+		},
+		axEventTestStep{
+			Key: accessibility.ChromeVoxActivateKey,
+			Params: ui.FindParams{
+				ClassName: "android.widget.ToggleButton",
+				Name:      "ON",
+				Role:      ui.RoleTypeToggleButton,
+				Attributes: map[string]interface{}{
+					"checked": "true",
+					"tooltip": "button tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "checkedStateChanged",
+				TargetName: "ON",
+			},
+		},
+		axEventTestStep{
+			Key: accessibility.ChromeVoxTab,
+			Params: ui.FindParams{
+				ClassName: "android.widget.CheckBox",
+				Name:      "CheckBox",
+				Role:      ui.RoleTypeCheckBox,
+				Attributes: map[string]interface{}{
+					"checked": "false",
+					"tooltip": "checkbox tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "CheckBox",
+			},
+		},
+		axEventTestStep{
+			Key: accessibility.ChromeVoxActivateKey,
+			Params: ui.FindParams{
+				ClassName: "android.widget.CheckBox",
+				Name:      "CheckBox",
+				Role:      ui.RoleTypeCheckBox,
+				Attributes: map[string]interface{}{
+					"checked": "true",
+					"tooltip": "checkbox tooltip",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "checkedStateChanged",
+				TargetName: "CheckBox",
+			},
+		},
+		axEventTestStep{
+			Key: accessibility.ChromeVoxTab,
+			Params: ui.FindParams{
+				ClassName: "android.widget.SeekBar",
+				Name:      "seekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 25,
+				},
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "seekBar",
+			},
+		},
+		axEventTestStep{
+			Key: "=",
+			Params: ui.FindParams{
+				ClassName: "android.widget.SeekBar",
+				Name:      "seekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 26,
+				},
+			},
+			Event: axEventLog{
+				EventType:  "valueChanged",
+				TargetName: "seekBar",
+			},
+		},
+		axEventTestStep{
+			Key: accessibility.ChromeVoxTab,
+			Params: ui.FindParams{
+				ClassName: "android.widget.SeekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 3,
+				},
+			},
+			Event: axEventLog{
+				EventType: "focus",
+			},
+		},
+		axEventTestStep{
+			Key: "-",
+			Params: ui.FindParams{
+				ClassName: "android.widget.SeekBar",
+				Role:      ui.RoleTypeSlider,
+				Attributes: map[string]interface{}{
+					"valueForRange": 2,
+				},
+			},
+			Event: axEventLog{
+				EventType: "valueChanged",
+			},
+		},
+	}
+	EditTextActivityTestSteps := []axEventTestStep{
+		axEventTestStep{
+			Key: accessibility.ChromeVoxTab,
+			Params: ui.FindParams{
+				ClassName: "android.widget.EditText",
+				Name:      "contentDescription",
+				Role:      ui.RoleTypeTextField,
+			},
+			Event: axEventLog{
+				EventType:  "focus",
+				TargetName: "contentDescription",
+			},
+		},
+		axEventTestStep{
+			Key: "a",
+			Params: ui.FindParams{
+				ClassName: "android.widget.EditText",
+				Name:      "contentDescription",
+				Role:      ui.RoleTypeTextField,
+				Attributes: map[string]interface{}{
+					"value": "a",
+				},
+			},
+			Event: axEventLog{
+				EventType:  "textChanged",
+				TargetName: "contentDescription",
+			},
+		},
+	}
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
-
+	eventTestSteps := make(map[string][]axEventTestStep)
+	eventTestSteps[accessibility.MainActivity.Name] = MainActivityTestSteps
+	eventTestSteps[accessibility.EditTextActivity.Name] = EditTextActivityTestSteps
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
@@ -155,10 +295,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		testSteps, err := getEventTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
-		if err != nil {
-			return errors.Wrap(err, "error reading from JSON")
-		}
+		testSteps := eventTestSteps[currentActivity.Name]
 		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps); err != nil {
 			return err
 		}
