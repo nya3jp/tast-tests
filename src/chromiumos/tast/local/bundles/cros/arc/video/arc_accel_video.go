@@ -93,6 +93,23 @@ func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	}
 }
 
+// waitForFinishedHack is a temporary replacement for act.WaitForFinished
+// TODO(b/152576355): Use act.WaitForFinished when R is supported
+func waitForFinishedHack(ctx context.Context, a *arc.ARC, ac *arc.Activity) error {
+	pkgRegExp := regexp.MustCompile(ac.PackageName())
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "dumpsys", "activity", "top").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get 'dumpsys activity top' output"))
+		}
+		output := string(out)
+		if len(pkgRegExp.FindAllStringSubmatch(string(output), -1)) != 0 {
+			return errors.New("activity still running")
+		}
+		return nil
+	}, nil)
+}
+
 func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) *c2e2etest.VideoMetadata {
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -180,7 +197,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 
 	s.Log("Waiting for activity to finish")
-	if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+	if err := waitForFinishedHack(ctx, a, act); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
@@ -249,12 +266,11 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Waiting for activity to finish")
-	if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+	if err := waitForFinishedHack(ctx, a, act); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
 	outLogFile, outXMLLogFile, err := c2e2etest.PullLogs(ctx, a, arcFilePath, s.OutDir(), cfg.logPrefix, textLogName, xmlLogName)
-
 	if err != nil {
 		s.Fatal("Failed to pull logs: ", err)
 	}
