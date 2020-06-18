@@ -22,6 +22,30 @@
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a45a98_a2520fd4",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-18T00:07:25Z",
+      "side": 1,
+      "message": "At least on ARC container, the event timestamp is propagated through Chrome/Wayland/inputflinger, so it should be consistent with the timestamp of the kernel\u0027s input_event. Just did a quick test on P, InputEvent.getEventTime() is the same as the corresponding input_event.time timestamp (logged from here https://source.chromium.org/chromium/chromium/src/+/master:ui/events/ozone/evdev/event_converter_evdev_impl.cc;l\u003d155).\nOn ARCVM, Android and CrOS are running different monotonic clocks, so the event timestamp from the host doesn\u0027t make sense and is re-written in inputflinger (see http://ag/9608274). I did the same test as above; InputEvent.getEventTime and input_event.time are very different. http://b/123416853 is tracking the work around syncing the clocks, though it doesn\u0027t look like there\u0027s been an update recently. I\u0027ll add a comment clarifying this.\nUntil that\u0027s done, you\u0027re right that we will need another solution for measuring the host portion of the event latency for ARCVM. Re: your comment here https://crrev.com/c/2250164/2/src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go#98 we could add traces in Chrome to help us calculate the time an input event takes from kernel to being sent on the wayland socket to Android. Then we can add this to our current calculation for Android latency to get an approx. total latency. Let me know what you think.",
+      "parentUuid": "3e688a37_cc9838ee",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
