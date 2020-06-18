@@ -7,6 +7,7 @@ package pinprint
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
@@ -20,6 +21,33 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// Option is for supplying filter options
+type Option string
+
+// Params struct used by all pin print tests for parameterized tests.
+type Params struct {
+	PpdFile    string
+	PrintFile  string
+	GoldenFile string
+	DiffFile   string
+	Options    []Option
+}
+
+// WithJobPassword properly formats a job-password option
+func WithJobPassword(pass string) Option {
+	return Option(fmt.Sprintf("job-password=%s", pass))
+}
+
+// optionsToString turns an array of options into a space-delimited string
+func optionsToString(options []Option) string {
+
+	var arr []string
+	for _, o := range options {
+		arr = append(arr, string(o))
+	}
+	return strings.Join(arr, " ")
+}
 
 // cleanPSContents filters any unwanted lines from |content| to ensure a stable
 // diff.
@@ -48,15 +76,15 @@ func cleanPSContents(content string) string {
 	return r.ReplaceAllLiteralString(content, "")
 }
 
-// Run executes the main test logic with |options| included in the lp command.
-func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile, options string) {
+// Run executes the main test logic with |p.Options| included in the lp command.
+func Run(ctx context.Context, s *testing.State, p *Params) {
 	const printerID = "FakePrinterID"
 
-	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
+	ppd, err := ioutil.ReadFile(s.DataPath(p.PpdFile))
 	if err != nil {
 		s.Fatal("Failed to read PPD file: ", err)
 	}
-	expect, err := ioutil.ReadFile(s.DataPath(goldenFile))
+	expect, err := ioutil.ReadFile(s.DataPath(p.GoldenFile))
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
 	}
@@ -86,10 +114,11 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 
 	testing.ContextLog(ctx, "Issuing print request")
 	var cmd *testexec.Cmd
+	options := optionsToString(p.Options)
 	if len(options) != 0 {
-		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, "-o", options, s.DataPath(toPrintFile))
+		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, "-o", options, s.DataPath(p.PrintFile))
 	} else {
-		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(toPrintFile))
+		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(p.PrintFile))
 	}
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
@@ -109,17 +138,17 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 		s.Fatal("Unexpected diff output: ", err)
 	}
 	if diff != "" {
-		path := filepath.Join(s.OutDir(), diffFile)
+		path := filepath.Join(s.OutDir(), p.DiffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
 		}
 
 		// Write out the complete output.
-		psPath := filepath.Join(s.OutDir(), strings.TrimSuffix(diffFile, filepath.Ext(diffFile))+".ps")
+		psPath := filepath.Join(s.OutDir(), strings.TrimSuffix(p.DiffFile, filepath.Ext(p.DiffFile))+".ps")
 		if err := ioutil.WriteFile(psPath, []byte(cleanPSContents(string(request))), 0644); err != nil {
 			s.Error("Failed to dump ps: ", err)
 		}
 
-		s.Errorf("Output diff from the golden file, diff at %s, output.ps at %s", diffFile, psPath)
+		s.Errorf("Output diff from the golden file, diff at %s, output.ps at %s", p.DiffFile, psPath)
 	}
 }
