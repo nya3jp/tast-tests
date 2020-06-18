@@ -33,9 +33,9 @@ func init() {
 
 func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
-	var typingKeys = []string{"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
+	var typingKeys = []string{"g", "o"}
 
-	const expectedTypingResult = "hello tast"
+	const expectedTypingResult = "go"
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
