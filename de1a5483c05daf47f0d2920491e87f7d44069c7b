@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43130797_b4cf7215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T22:14:43Z",
+      "side": 1,
+      "message": "pointer package has a utility called \u0027Click\u0027 to do this.",
+      "range": {
+        "startLine": 380,
+        "startChar": 12,
+        "endLine": 385,
+        "endChar": 3
+      },
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54dcf1e_1f3dd92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T22:14:43Z",
+      "side": 1,
+      "message": "I guess pointer.Drag(ctx, pointerController, start, end, duration) will do",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 2
+      },
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "883a098d_0e0d44b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T22:14:43Z",
+      "side": 1,
+      "message": "I don\u0027t remember how long the video is, but combined with line 410 (waiting for the settings page to be quiescent), there could be a chance that the video has already stopped?  Or is it repeating?",
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61918b9_7bdd9819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T22:14:43Z",
+      "side": 1,
+      "message": "I am not so sure about this. So the test resizes the PiP windows, and then start measuring the performance on the playback of resized video. Is that the intended operation?  I am still struggling to understand what should be measured.  oshima, could you provide the details?",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 2
+      },
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
