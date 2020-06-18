@@ -117,6 +117,98 @@
     },
     {
       "key": {
+        "uuid": "5503e723_8dda5bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T20:09:01Z",
+      "side": 1,
+      "message": "When the video loops, are we sure there will be no different frame between end and beginning?",
+      "range": {
+        "startLine": 301,
+        "startChar": 28,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "236820b1_68cf8381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T20:09:01Z",
+      "side": 1,
+      "message": "Would it make sense to invert this. Say play the video for at most a minute, capture the screenshot once per second, return with success if the colors match, if not fail after a minute with the screenshot copied to results proving why the test failed? That way this somewhat arbitrary sleep is avoided.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 2
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b72eba_a35c3a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T20:09:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you would look at the corners which could be affected by anti-aliasing, blending, etc. Why not look at the 25% and 75% of the width (center of the colored rectangles of the video). That way presumably you are surrounded by the right colors. You could also use this (later) to analyze larger video areas.",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08cb155_47275155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T20:09:01Z",
+      "side": 1,
+      "message": "254?\nOne issue about the very arbitrary colors is that it is hard to judge what the original intent was. Looks like random numbers. And why these and not others? Can you encode the video with \"nice\" colors/numbers?",
+      "range": {
+        "startLine": 372,
+        "startChar": 56,
+        "endLine": 372,
+        "endChar": 59
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5cb167d_22cebbda",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/video_screenshot.go",
         "patchSetId": 1
