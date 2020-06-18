@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d7e5f3e_d5e3e8ac",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-18T18:44:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is necessary. The anonymous func() above should wait for the command to complete, so why do we need to testing.Poll() for it to exit?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 79
+      },
+      "revId": "09e96dcdfd031182d1883ba27d6f727478350e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
