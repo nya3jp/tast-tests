@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const DEFAULT_CONSTRAINTS = {audio: true, video: {width:320 , height: 240}};
+const DEFAULT_CONSTRAINTS = {audio: true, video: {width:160 , height: 120}};
 
 /**
  * @param {string} mimeType
@@ -48,6 +48,7 @@ async function testStartAndRecorderState() {
   const recorder = await createMediaRecorder();
   return await new Promise((resolve, reject) => {
     recorder.onstart = (event) => {
+      recorder.stop();
       if (recorder.state === 'recording') {
         resolve();
       } else {
@@ -88,6 +89,7 @@ async function testStartAndDataAvailable(type) {
   const recorder = await createAndStartMediaRecorder(type);
   return await new Promise((resolve, reject) => {
     recorder.ondataavailable = (event) => {
+      recorder.stop();
       if (event.data.size > 0) {
         resolve();
       } else {
@@ -105,8 +107,7 @@ async function testStartWithTimeSlice() {
   const defaultTimeSlice = 100;
   let timeStampCount = 0;
 
-  const recorder = await createAndStartMediaRecorder(
-      '', defaultTimeSlice);
+  const recorder = await createAndStartMediaRecorder('', defaultTimeSlice);
   return await new Promise((resolve, reject) => {
     recorder.ondataavailable = (event) => {
       timeStampCount++;
@@ -115,6 +116,7 @@ async function testStartWithTimeSlice() {
       }
 
       if (timeStampCount > 10) {
+        recorder.stop();
         resolve();
       }
     };
@@ -130,6 +132,7 @@ async function testResumeAndRecorderState() {
   recorder.pause();
   return await new Promise((resolve, reject) => {
     recorder.onresume = (event) => {
+      recorder.stop();
       resolve();
     };
     recorder.resume();
@@ -144,6 +147,7 @@ async function testResumeAndDataAvailable() {
   recorder.pause();
   return await new Promise((resolve, reject) => {
     recorder.ondataavailable = (event) => {
+      recorder.stop();
       if (event.data.size > 0) {
         resolve();
       } else {
@@ -250,6 +254,7 @@ async function testIllegalStartInRecordingStateThrowsDOMError() {
   try {
     recorder.start(1);
   } catch (e) {
+    recorder.stop();
     return;
   }
   throw new Error('Active recorder was started again');
@@ -265,6 +270,7 @@ async function testIllegalStartInPausedStateThrowsDOMError() {
   try {
     recorder.start(1);
   } catch (e) {
+    recorder.stop();
     return;
   }
   throw new Error(
@@ -301,6 +307,7 @@ async function testTwoChannelAudio() {
   const recorder = createMediaRecorderWithStream(dest.stream);
   return await new Promise((resolve, reject) => {
     recorder.ondataavailable = (event) => {
+      recorder.stop();
       resolve();
     };
     recorder.start(1);
