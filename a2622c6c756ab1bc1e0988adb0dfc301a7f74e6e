@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6082c583_e35cb9cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-18T09:20:40Z",
+      "side": 1,
+      "message": "Probably also worth adding a timeout for this, as we have a known issue of hanging \"iw list\". We shouldn\u0027t just waste the full ~20 minutes here in that case.",
+      "range": {
+        "startLine": 1117,
+        "startChar": 36,
+        "endLine": 1117,
+        "endChar": 43
+      },
+      "revId": "a2622c6c756ab1bc1e0988adb0dfc301a7f74e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a215c8_93f56480",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-18T09:20:40Z",
+      "side": 1,
+      "message": "Maybe add a timeout for each sub-test? As you are increasing the timeout to ~20 minutes, it would be nice to fail fast if a sub-test just hangs.",
+      "range": {
+        "startLine": 1227,
+        "startChar": 12,
+        "endLine": 1227,
+        "endChar": 15
+      },
+      "revId": "a2622c6c756ab1bc1e0988adb0dfc301a7f74e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

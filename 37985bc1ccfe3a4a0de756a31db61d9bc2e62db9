@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcad2062_2d9ecdd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-18T09:20:40Z",
+      "side": 1,
+      "message": "As we\u0027re doing combination on multiple dimensions here, do you think it might be simpler to wrap it into functions like Autotest? e.g.\n\n  func peapTestParam() []simpleConnectTestcase {\n    var ret []simpleConnectTestcase\n    ret \u003d append(ret, badCaes...)\n    for _, inner :\u003d range []Layer2Type{...} {\n      ret \u003d append(ret, goodCases...)\n    }\n    return ret;\n  }\n\nand have \"Val: peapTestParam()\" here.\n\n(similar for ttls case, and can also extract common testcases generating function)",
+      "revId": "37985bc1ccfe3a4a0de756a31db61d9bc2e62db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
