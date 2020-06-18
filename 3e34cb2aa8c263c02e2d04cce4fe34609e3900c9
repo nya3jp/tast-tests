@@ -62,6 +62,72 @@
       "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ab6dad_052ee290",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-18T16:53:23Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I don\u0027t think there\u0027s a function to check if this is already pressed, but I\u0027ll look around.",
+      "parentUuid": "a2060ef4_f0fef7ef",
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a127e72d_943f7f8e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-18T16:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f368836c_7e426377",
+      "range": {
+        "startLine": 584,
+        "startChar": 34,
+        "endLine": 584,
+        "endChar": 35
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a0b550f_c9b0365a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-18T16:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cbe5cef_b059825a",
+      "range": {
+        "startLine": 584,
+        "startChar": 17,
+        "endLine": 584,
+        "endChar": 28
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
