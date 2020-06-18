@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23ec1630_2c99be85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-18T23:28:27Z",
+      "side": 1,
+      "message": "Thank you for reminding me. Now I have updated not only here, but also lines 360-365.",
+      "parentUuid": "43130797_b4cf7215",
+      "range": {
+        "startLine": 380,
+        "startChar": 12,
+        "endLine": 385,
+        "endChar": 3
+      },
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d54dcf1e_1f3dd92b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0b74165e_9385e201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-18T23:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d54dcf1e_1f3dd92b",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 2
+      },
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "883a098d_0e0d44b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b78aaacc_b6f4810d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-18T23:28:27Z",
+      "side": 1,
+      "message": "It is repeating. See the loop attribute on line 3 of pip.html.",
+      "parentUuid": "883a098d_0e0d44b4",
+      "revId": "de1a5483c05daf47f0d2920491e87f7d44069c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
