@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a14444e4_21d05d28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-18T22:33:26Z",
+      "side": 1,
+      "message": "The latest patchset should already have this change",
+      "parentUuid": "c94a9449_972d1513",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "525f40e05486829954d86435aec7c80cd105e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4444aefa_cca5a397",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-18T21:57:50Z",
       "side": 1,
       "message": "This dependency should not be necessary after the sykaller test suite is created (as only DUTs w/ debug kernel images would be running the test)",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "525f40e05486829954d86435aec7c80cd105e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4858667_e056788f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-18T22:33:26Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll update this.",
+      "parentUuid": "4444aefa_cca5a397",
       "range": {
         "startLine": 69,
         "startChar": 2,
@@ -68,6 +116,30 @@
       "revId": "525f40e05486829954d86435aec7c80cd105e51e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcf57d4_1fbd56ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-18T22:33:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cef55c3b_ae5856c0",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "525f40e05486829954d86435aec7c80cd105e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
