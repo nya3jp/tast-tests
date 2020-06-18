@@ -169,6 +169,48 @@
       "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df5a8aa_a8348999",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-18T18:40:56Z",
+      "side": 1,
+      "message": "I confirmed with mukai@ that there isn\u0027t currently a way to do this.",
+      "parentUuid": "557e471e_2d4e10fe",
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2bcbf4_c474abcf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-18T18:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e797840d_0322afa1",
+      "range": {
+        "startLine": 584,
+        "startChar": 11,
+        "endLine": 584,
+        "endChar": 117
+      },
+      "revId": "3e34cb2aa8c263c02e2d04cce4fe34609e3900c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
