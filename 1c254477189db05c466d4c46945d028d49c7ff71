@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07fba32b_f3962f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "I think change to \"virgl\" to avoid\n06/18 06:22:20.774 INFO |             utils:0287| [stdout] crostini.GPUEnabled.artifact_gpu                             [ FAIL ] Failed to verify GPU device: got \"    Device: llvmpipe (LLVM 3.9, 128 bits) (0xffffffff)\\n\"; want \"virgl\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb718ef_97649eab",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 90,
+        "startChar": 114,
+        "endLine": 90,
+        "endChar": 127
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06c2a21_7bc49407",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "Do you mind making this larger, say 30 seconds? A generous timeout helps making sure we are not just on a slowed down device. Probably best to define a global constant. Same for all other wait/timeout.",
+      "range": {
+        "startLine": 90,
+        "startChar": 85,
+        "endLine": 90,
+        "endChar": 99
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f934cb9_e0be9b6a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 91,
+        "startChar": 77,
+        "endLine": 91,
+        "endChar": 91
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7eb309_068f046a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 120,
+        "startChar": 124,
+        "endLine": 120,
+        "endChar": 138
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7dd864_57ffd65c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 121,
+        "endChar": 76
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b52e941_d08e88d0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "Same here, 30 seconds.",
+      "range": {
+        "startLine": 123,
+        "startChar": 52,
+        "endLine": 123,
+        "endChar": 54
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f319a9_427066fb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 128,
+        "startChar": 108,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b8ba89_eeb0f25d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "Do you mind logging minDiskSize and size here on exit to aid debugging of install problems?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7ad002_2218e350",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-18T22:34:05Z",
+      "side": 1,
+      "message": "30s.",
+      "range": {
+        "startLine": 174,
+        "startChar": 80,
+        "endLine": 174,
+        "endChar": 83
+      },
+      "revId": "1c254477189db05c466d4c46945d028d49c7ff71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
