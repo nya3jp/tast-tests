@@ -205,6 +205,24 @@
     },
     {
       "key": {
+        "uuid": "00a7a28a_5344ec50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-18T07:49:48Z",
+      "side": 1,
+      "message": "Looks like ArcIntentHelperService is up, too.\n\n06-18 16:28:44.920  1659  1659 I ArcIntentHelperService: Handling android.intent.action.BOOT_COMPLETED...\n06-18 16:28:44.936   334   384 I ArcBridgeService: ArcBridgeHostProxy connection for process 1659 established\n06-18 16:28:44.946  1659  2804 I ArcIntentHelperService: Bridge ready.\n06-18 16:28:44.973  1659  2804 I ArcIntentHelperService: Host init.\n06-18 16:28:44.989  1659  2804 I ArcIntentHelperService: Host version 36\n\n2020/06/18 16:29:03 [16:29:02.226] Error at storage.go:84: Could not open file with ArcFileReaderTest: failed to find the Open menu button: context deadline exceeded; last error follows: node does not exist",
+      "parentUuid": "a990a7b9_b03ea3d8",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ade0f_53dbbc75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
