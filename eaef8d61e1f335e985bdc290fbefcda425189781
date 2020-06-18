@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "e6171930_d104978d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-18T09:44:40Z",
+      "side": 1,
+      "message": "Ack, keeping close sounds perfectly fine.",
+      "parentUuid": "9c4a7a54_6daa96d3",
+      "range": {
+        "startLine": 567,
+        "startChar": 2,
+        "endLine": 567,
+        "endChar": 19
+      },
+      "revId": "eaef8d61e1f335e985bdc290fbefcda425189781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d6adcca_bf05e2f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
