@@ -2,6 +2,161 @@
   "comments": [
     {
       "key": {
+        "uuid": "d2251b85_dd83dc57",
+        "filename": "android/ArcInputLatencyTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: is it tab? Could we convert it to spaces?",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d2cccc_bad171de",
+        "filename": "android/ArcInputLatencyTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: remove empty line?",
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febc7a7f_1c306861",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/EventListAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: may be final?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941c70ff_06f1f4ac",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: mAdapter, mList?",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d95fae19_5ae089b4",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: please add comment for public methods",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498e0b7e_0f7f51da",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit:\nif (event \u003d\u003d null) {\n    return;\n}\nBTW, is it expected to be null?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6acba936_0ecda11d",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "may be write to sdcard output file and parse it then?\nLog is not 100% reliable.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e688a37_cc9838ee",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
@@ -42,6 +197,29 @@
         "startChar": 0,
         "endLine": 23,
         "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a10e1b_488a5053",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-18T06:54:28Z",
+      "side": 1,
+      "message": "nit: not sure, but per convention we should use {}?",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 40
       },
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
