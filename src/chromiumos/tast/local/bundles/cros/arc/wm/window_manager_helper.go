@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -142,6 +143,14 @@ func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string,
 			wantedCaption.String(), info.CaptionButtonVisibleStatus.String())
 	}
 	return nil
+}
+
+// OrientationFromBounds returns orientation from the given bounds.
+func OrientationFromBounds(bounds coords.Rect) string {
+	if bounds.Height >= bounds.Width {
+		return Portrait
+	}
+	return Landscape
 }
 
 // ToggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
