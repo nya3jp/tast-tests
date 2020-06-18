@@ -8,12 +8,14 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/dynamicwep"
+	"chromiumos/tast/common/wifi/security/tunneled1x"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
@@ -594,6 +596,542 @@ func init() {
 						expectedFailure: true,
 					},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MSCHAPV2, MD5, and GTC.
+				Name:      "8021xpeap",
+				ExtraAttr: []string{"wificell_unstable"},
+				// This test contains 19 subtests and may take up to 8 minutes on some machines in labs.
+				Timeout: 10 * time.Minute,
+				Val: []simpleConnectTestcase{
+					// Expected failure cases. We do these tests for only one inner authentication protocol because
+					// we presume that supplicant reuses this code between inner authentication types.
+					{
+						// Failure due to bad password.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.ClientPassword("wrongpassword"),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to wrong client CA.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to expired server cred.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+						),
+						expectedFailure: true,
+					},
+					// MSCHAPV2 test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// MD5 test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// GTC test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MSCHAPV2, MD5, GTC, TTLSMSCHAPV2, TTLSMSCHAP, and TTLSPAP.
+				Name:      "8021xttls",
+				ExtraAttr: []string{"wificell_unstable"},
+				// This test contains 34 subtests and may take up to 13 minutes on some machines in labs.
+				Timeout: 16 * time.Minute,
+				Val: []simpleConnectTestcase{
+					// Expected failure cases. We do these tests for only one inner authentication protocol because
+					// we presume that supplicant reuses this code between inner authentication types.
+					{
+						// Failure due to bad password.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.ClientPassword("wrongpassword"),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to wrong client CA.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to expired server cred.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+						),
+						expectedFailure: true,
+					},
+					// MSCHAPV2 test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// MD5 test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// GTC test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// TTLSMSCHAPV2 test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// TTLSMSCHAP test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+					// TTLSPAP test cases.
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+							tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
+						),
+					},
+					{
+						// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
+						// For more information about how wpa_supplicant uses altsubject_match field:
+						// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+						),
+					},
+				},
 			},
 		},
 	})
@@ -708,6 +1246,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
 		}
+		ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
+		defer cancel()
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
 			return
@@ -743,8 +1283,10 @@ func wep104KeysHidden() []string {
 
 // EAP certs/keys for EAP tests.
 var (
-	eapCert1 = certificate.TestCert1()
-	eapCert2 = certificate.TestCert2()
+	eapCert1       = certificate.TestCert1()
+	eapCert2       = certificate.TestCert2()
+	eapCert3       = certificate.TestCert3()
+	eapCert3AltSub = certificate.TestCert3AltSubjectMatch()
 )
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
