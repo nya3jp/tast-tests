@@ -21,36 +21,40 @@ func init() {
 			"cros-printing-dev@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
-		Data:         []string{hpPPDFile, hpToPrintFile, hpNoPinGoldenFile, hpPinGoldenFile},
-		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline", "informational"},
+		Data: []string{
+			"printer_pin_print_HP.ppd",
+			"to_print.pdf",
+		},
+		Attr: []string{"group:mainline"},
+		Pre:  chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Name: "no_pin",
+			Val: pinprint.Params{
+				PpdFile:    "printer_pin_print_HP.ppd",
+				PrintFile:  "to_print.pdf",
+				GoldenFile: "printer_pin_print_hp_no_pin_golden.ps",
+				DiffFile:   "no-pin_diff.txt",
+				Options:    "",
+			},
+			ExtraData: []string{"printer_pin_print_hp_no_pin_golden.ps"},
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "pin",
+			Val: pinprint.Params{
+				PpdFile:    "printer_pin_print_HP.ppd",
+				PrintFile:  "to_print.pdf",
+				GoldenFile: "printer_pin_print_hp_pin_golden.ps",
+				DiffFile:   "pin_diff.txt",
+				Options:    "job-password=1234",
+			},
+			ExtraData: []string{"printer_pin_print_hp_pin_golden.ps"},
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
-const (
-	// hpPPDFile is a ppd where PIN printing is specified via
-	// HPDigit / HPPinPrnt options.
-	hpPPDFile = "printer_pin_print_HP.ppd"
-
-	// The file to be printed.
-	hpToPrintFile = "to_print.pdf"
-
-	// The golden file where no PIN is specified.
-	hpNoPinGoldenFile = "printer_pin_print_hp_no_pin_golden.ps"
-
-	// Golden file with PIN printing specified.
-	hpPinGoldenFile = "printer_pin_print_hp_pin_golden.ps"
-)
-
 func PinPrintHP(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		noPinDiffFile = "no_pin_diff.txt"
-		pinDiffFile   = "pin_diff.txt"
-	)
+	testOpt := s.Param().(pinprint.Params)
 
-	// Both jobs should match the same golden because the option is ignored.
-	pinprint.Run(ctx, s, hpPPDFile, hpToPrintFile, hpNoPinGoldenFile, noPinDiffFile, "")
-	pinprint.Run(ctx, s, hpPPDFile, hpToPrintFile, hpPinGoldenFile, pinDiffFile, "job-password=1234")
+	pinprint.Run(ctx, s, testOpt.PpdFile, testOpt.PrintFile, testOpt.GoldenFile, testOpt.DiffFile, testOpt.Options)
 }

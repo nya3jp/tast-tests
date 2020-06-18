@@ -21,6 +21,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Params struct used by all pin print tests for parameterized tests.
+type Params struct {
+	PpdFile    string
+	PrintFile  string
+	GoldenFile string
+	DiffFile   string
+	Options    string
+}
+
 // cleanPSContents filters any unwanted lines from |content| to ensure a stable
 // diff.
 func cleanPSContents(content string) string {
