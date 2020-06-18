@@ -249,7 +249,3 @@ func killADBLocalServer(ctx context.Context) error {
 	}
 	return nil
 }
-
-func setProp(ctx context.Context, name, value string) error {
-	return BootstrapCommand(ctx, "/system/bin/setprop", name, value).Run(testexec.DumpLogOnError)
-}
