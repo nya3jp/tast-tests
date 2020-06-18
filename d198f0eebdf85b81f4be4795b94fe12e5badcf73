@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28b5e37d_80e570aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "I\u0027m just wondering but why does this have to be non-pointer?  Do you need to copy the content?\nIt would be totally fine to use *ash.Window and I think that is slightly (very slightly) faster.",
+      "range": {
+        "startLine": 141,
+        "startChar": 119,
+        "endLine": 141,
+        "endChar": 147
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10885b39_f10b7185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "I guess maybe it is better to pass display info rather than getting every time. The test can invoke display.GetPrimaryInfo() at once, and reuse the same value.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb3b24d_52ba3f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 170,
+        "startChar": 82,
+        "endLine": 170,
+        "endChar": 107
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a29345_d6d2a4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af23804_02dac072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "Thanks for adding this.  Arthur added another test WMResizableClamshell meanwhile, which also can use this. Can you also modify WMResizableClamshell, in another CL or in this CL?",
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8118a6d_bfd2c757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "why wmNC01 is being commented out?  Doesn\u0027t it work now?",
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd5ca3f9_c23722ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-18T17:15:26Z",
+      "side": 1,
+      "message": "Please note that rotate-0 doesn\u0027t necessarily mean landscape orientation -- scarlet devices (dru, druwl, dumo) are in portrait orientation by default (they are pure-tablet devices and that\u0027s why).\n\nI am not sure about the details of the activity, but the NonResizableLandscapeActivity assumes it is in landscape orientation, please resolve this; the default orientation type can be obtained through display.Orientation.Type (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/display#Orientation)",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
