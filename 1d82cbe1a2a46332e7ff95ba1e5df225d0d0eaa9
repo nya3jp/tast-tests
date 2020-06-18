@@ -94,6 +94,98 @@
     },
     {
       "key": {
+        "uuid": "74da0b57_ecf7388a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "super nit: I feel weird calling this an arcAXNode, but I am not really sure a better name.\n\nOverall, I feel like the flat struct and the findParams method is the cleanest solution, especially if you need to define large tree hierarchies.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 14
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff53282_cbb5a3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "super nit: findParams",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518a085e_ac52bdd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "I think you can just use ioutil.WriteFile instead.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa91c68_766444c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "super nit: I would stick with the names actual and expected throughout this file as opposed to switching to got and want.",
+      "range": {
+        "startLine": 79,
+        "startChar": 36,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b6fdc44_baa44263",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 16
@@ -117,6 +209,29 @@
     },
     {
       "key": {
+        "uuid": "c5906891_794479c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "you need to defer releasing these nodes",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bd3e11a_9ee8a63b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 16
@@ -133,6 +248,98 @@
         "startChar": 60,
         "endLine": 94,
         "endChar": 72
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b171ee_3c903ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "you may want to use chrome/ui/faillog to dump the root tree on failure. You can see an example use at the top of the test ui.UberTrayOpenSettings. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go;l\u003d40\n\nMight even want to modify it to also include a method to dump a specific node on failure. Then after you get the app root, maybe you could just call defer faillog.DumpUINodeOnError method",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 63
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5ce861_6a1057aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "You should be able to use ui.FindWithTimeout instead of polling over find directly.",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10da4fb1_19326f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "you need to defer releasing this node",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 13
+      },
+      "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b7df02_ae4dfff2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-18T19:10:14Z",
+      "side": 1,
+      "message": "Can you update this to also use an anonymous function so that the two code locations are not different?",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 3
       },
       "revId": "1d82cbe1a2a46332e7ff95ba1e5df225d0d0eaa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
