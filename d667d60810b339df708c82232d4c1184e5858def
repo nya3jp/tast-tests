@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2efc41e1_be2f4787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "nit: can we have this inside func AccessibilityTree()? (with a shorter variable name, like \"treeFilePrefix\")",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42463b19_d1f3b73b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "Can you add a comment why we don\u0027t use ui.FindParams and define our own struct and provide FindParam() function?",
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1558e5e3_ecbbdd27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "Maybe |wantRoot| or |expectedRoot|?",
+      "range": {
+        "startLine": 77,
+        "startChar": 54,
+        "endLine": 77,
+        "endChar": 64
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcd42be_70cce238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "I think also logging what we got (outputting gotRoot) is also helpful.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 76
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415c508a_51c5f274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "What I meant in the previous comment was, I think we want to log the dumpTreeErr and instead of returning it we would return polling err, which is I think more important.\n\nSo, how about deleting this line?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 71
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83985548_0fadc737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "following golang\u0027s convention, I think shorter name is preferred.\nmaybe |expect| or |want|?",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 21
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7075e7ad_14c88242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "ditto. maybe |matched| or |found|?",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 12
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1e82148_341b9bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "Different from the previous logic, we don\u0027t compare the trees, and only dump the got tree. So, nestedErr looks also unnecessary to me.\n\nHow about doing something like below:\n\nif err :\u003d dumpTree(ctx, appRoot, gotFilePath); err !\u003d nil {\n\ts.Error(err)\n} else {\n\ts.Logf(\"Wrote the got tree: %s\", gotFileName)\n}",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 4
+      },
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1150f83_59a739e3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-18T06:00:24Z",
+      "side": 1,
+      "message": "Don\u0027t we need to do |return nil, err| after Release()?",
+      "revId": "d667d60810b339df708c82232d4c1184e5858def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
