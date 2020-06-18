@@ -567,15 +567,24 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
-	if vkEnabled {
-		tconn, err := c.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get test API connection")
-		}
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
 
+	if vkEnabled {
 		// calling the method directly to avoid vkb/chrome circular imports
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+	}
+
+	// Release the mouse buttons in case a test left them pressed. If a button
+	// is already released, releasing it is a no-op. Call the method directly to
+	// avoid chrome/mouse circular imports.
+	for _, button := range []string{"Left", "Right", "Middle"} {
+		if err := tconn.Eval(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseRelease)(%q)`, button), nil); err != nil {
+			return errors.Wrapf(err, "failed to release %s mouse button", button)
 		}
 	}
 	return nil
