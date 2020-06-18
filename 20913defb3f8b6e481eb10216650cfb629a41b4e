@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d02c1ff_e7720c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-18T00:42:49Z",
+      "side": 1,
+      "message": "stretch, however changing the name may be disruptive for test monitoring.",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "20913defb3f8b6e481eb10216650cfb629a41b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d147ef20_0cf307f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-18T00:42:49Z",
+      "side": 1,
+      "message": "stretch",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "20913defb3f8b6e481eb10216650cfb629a41b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3763a417_4fe60c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-18T00:42:49Z",
+      "side": 1,
+      "message": "You forget to copy crostini/crostini_guest_images.tar.external to graphics/crostini_guest_images.tar.external\n\nAnd FYI, we have the same test in private bundle that exercise private traces.",
+      "revId": "20913defb3f8b6e481eb10216650cfb629a41b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
