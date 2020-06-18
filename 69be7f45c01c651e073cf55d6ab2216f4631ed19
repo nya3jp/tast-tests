@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c98265d5_1fdc593d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-18T19:57:39Z",
+      "side": 1,
+      "message": "fwiw, this one failed recently, once. I\u0027m still fine with promoting it, since the Autotest one fails more often.",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "69be7f45c01c651e073cf55d6ab2216f4631ed19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0e884c_5d13224e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-18T19:57:39Z",
+      "side": 1,
+      "message": "There\u0027s no Autotest equivalent of this one, FYI. Not sure when it should be promoted, but its only failure is due to an issue that appears common to basically all tests.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 45
+      },
+      "revId": "69be7f45c01c651e073cf55d6ab2216f4631ed19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
