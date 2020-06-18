@@ -22,6 +22,30 @@
       "revId": "1813d6c31aada2d5cf7cc87444bbe5aa4d468a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8354344d_a5a12a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "It logs which test is running, also in case of failure, the name of the screenshot will contain this field as well as in error message.",
+      "parentUuid": "0c162efc_db48d2d5",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "1813d6c31aada2d5cf7cc87444bbe5aa4d468a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d94d180_03ea065e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "Isn\u0027t it safer if we always pass a copy instead of the reference of the object especially if the method isn\u0027t supposed to modify the object? \nIn this case if by mistake someone changed something in the function, since the object is passed by value, nothing will happen to the original object.\nI agree that calling by reference is a little faster and more memory efficient, but in these tests that we are dealing with several seconds I am not worried about few milliseconds (or even less).\nWhat do you think?",
+      "parentUuid": "28b5e37d_80e570aa",
+      "range": {
+        "startLine": 141,
+        "startChar": 119,
+        "endLine": 141,
+        "endChar": 147
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10885b39_f10b7185",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-18T17:15:26Z",
       "side": 1,
       "message": "I guess maybe it is better to pass display info rather than getting every time. The test can invoke display.GetPrimaryInfo() at once, and reuse the same value.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58945f71_5a864e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "I was following the abstraction principle, to hide  unwanted details from the consumers of this function. I assume GetPrimartInfo() is a method that gets the data that is already in memory and there is no service call and recalculation per display. So just like my previous comment, I am not too worried about that few milliseconds while we are dealing with several seconds (or even minutes).\nPlease advise.",
+      "parentUuid": "10885b39_f10b7185",
       "range": {
         "startLine": 152,
         "startChar": 0,
@@ -129,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "18a5d34d_6b78a013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "There are already some concerns about this CL that gets a little big and touches several files, I will take care of that in a separate CL.\n\nGarfield, I think Mukai is referring to your CL. \nAbout APK I would say for now all consumers of this method are installing same APK. We can easily refactor it when there are other users with other APKs. But I am ok to make that change now, it is just an extra repetitive parameter that everyone should pass same value.",
+      "parentUuid": "2af23804_02dac072",
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8118a6d_bfd2c757",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -146,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "80dbafd7_78c57514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8118a6d_bfd2c757",
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd5ca3f9_c23722ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
         "patchSetId": 1
@@ -157,6 +241,30 @@
       "writtenOn": "2020-06-18T17:15:26Z",
       "side": 1,
       "message": "Please note that rotate-0 doesn\u0027t necessarily mean landscape orientation -- scarlet devices (dru, druwl, dumo) are in portrait orientation by default (they are pure-tablet devices and that\u0027s why).\n\nI am not sure about the details of the activity, but the NonResizableLandscapeActivity assumes it is in landscape orientation, please resolve this; the default orientation type can be obtained through display.Orientation.Type (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/display#Orientation)",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "d198f0eebdf85b81f4be4795b94fe12e5badcf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d88aa5_78861f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-06-18T19:32:53Z",
+      "side": 1,
+      "message": "Please check the new patch. First it checks the display orientation type and if it is not the orientation that test case wants, it rotates the display to match with activity\u0027s desired rotation.",
+      "parentUuid": "bd5ca3f9_c23722ba",
       "range": {
         "startLine": 50,
         "startChar": 3,
