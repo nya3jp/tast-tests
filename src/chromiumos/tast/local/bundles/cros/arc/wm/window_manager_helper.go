@@ -209,6 +209,14 @@ func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string,
 	return nil
 }
 
+// OrientationFromBounds returns orientation from the given bounds.
+func OrientationFromBounds(bounds coords.Rect) string {
+	if bounds.Height >= bounds.Width {
+		return Portrait
+	}
+	return Landscape
+}
+
 // ToggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
 func ToggleFullscreen(ctx context.Context, tconn *chrome.TestConn) error {
 	ew, err := input.Keyboard(ctx)
