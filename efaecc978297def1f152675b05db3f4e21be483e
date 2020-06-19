@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9faccf38_97981cff",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-06-19T17:52:39Z",
+      "side": 1,
+      "message": "nit: |VerboseLogging| to keep the terminology consistent.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2ccf8d_5c3a9217",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-06-19T17:52:39Z",
+      "side": 1,
+      "message": "assistant* or *assistant*?",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387def14_41091def",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-06-19T17:52:39Z",
+      "side": 1,
+      "message": "maybe share this constant with line #94",
+      "range": {
+        "startLine": 103,
+        "startChar": 19,
+        "endLine": 103,
+        "endChar": 80
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8cfe10_5b71d8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-06-19T17:52:39Z",
+      "side": 1,
+      "message": "should this replace |chrome.LoggedIn()| or \"in addition\" to?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
