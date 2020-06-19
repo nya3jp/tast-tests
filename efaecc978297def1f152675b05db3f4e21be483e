@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa7fd1e0_c2bb583f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b41c10_d928f8f1",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eca5aa6b_5203f1b8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "efaecc978297def1f152675b05db3f4e21be483e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29eb03f4_0801caab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca5aa6b_5203f1b8",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 86
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "793022e9_542f2d16",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9faccf38_97981cff",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2ccf8d_5c3a9217",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "efaecc978297def1f152675b05db3f4e21be483e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "948aca1e_7b22bc8a",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "|assistant*| works for now but I agree |*assistant*| is more future proof so changed it.",
+      "parentUuid": "7f2ccf8d_5c3a9217",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "46778777_90acfaeb",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac74dd2a_8bf9fc3e",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387def14_41091def",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0e35689c_966f4afc",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "Good call, that was my intention (see the commented out |ExtensiveLogging| on the next line),\nbut I forgot to make the change.",
+      "parentUuid": "387def14_41091def",
+      "range": {
+        "startLine": 103,
+        "startChar": 19,
+        "endLine": 103,
+        "endChar": 80
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce8cfe10_5b71d8b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "efaecc978297def1f152675b05db3f4e21be483e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b2d3f9_2aa29975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-19T18:51:05Z",
+      "side": 1,
+      "message": "It should replace it. You can only provide one Pre condition (1) and the |chrome.LoggedIn()| pre condition is actually empty (2) so any pre condition seems to imply logged in.\n\n(1) https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/test.go;l\u003d76?q\u003dplatform%2Ftast%2Fsrc%2Fchromiumos%2Ftast%2Finternal%2Ftesting%2Ftest.go\n(2) https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/pre.go;l\u003d49?q\u003dplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fchrome%2Fpre.go",
+      "parentUuid": "ce8cfe10_5b71d8b7",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
