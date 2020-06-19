@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5c2e36a4_72ea6917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-06-19T12:51:50Z",
+      "side": 1,
+      "message": "It will create new rows in stainless, but AFAIK that\u0027s the only issue and we\u0027ve done it multiple times in the past. I think it\u0027s a win for clarity to have the test names explain what they are.",
+      "parentUuid": "24f24a6b_a300b298",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "b39de352b342495aeccc07f3b3307090ff299dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab2f6302_cb7cbbe0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
