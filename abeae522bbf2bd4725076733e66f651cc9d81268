@@ -142,6 +142,30 @@
       "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42821994_0e7d7bb8",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T18:59:00Z",
+      "side": 1,
+      "message": "thanks. LGTM!",
+      "parentUuid": "1c47008c_e7020d33",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
