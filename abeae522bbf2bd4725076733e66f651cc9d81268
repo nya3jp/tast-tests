@@ -22,6 +22,30 @@
       "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c523fc23_9d3033fc",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-19T00:21:14Z",
+      "side": 1,
+      "message": "Underscore is discouraged in Java package name (hence Android package name), so I need to concatenate words.\n\nThough I think allowlist brings more confusion than clarification. I could change it to InMaximizedList/InPhoneSizeList/InTabletSizeList.",
+      "parentUuid": "7f5e5617_52c729da",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
