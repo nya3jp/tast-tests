@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc1b758b_b2eed09c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "It\u0027s mentioned in the bug though, can you add a comment why we want to do it?\n(\"we can get auto formatting and static type check.\" or something like that)",
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0717b79e_c5e6e326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "As discussed offline, can you add a comment and file a bug that we want to use chrome.automation.AutomationEvent instead?",
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f63e95_bc288201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "I think we can just write this string to each \"Key\" value instead of having this variable.\nI\u0027m feeling this is too much YAGIN for test.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d82d8ee_b5dd21c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "I\u0027m feeling that checking tooltip property is not the responsibility of \"event test\".\nHow about moving this to tree test? (now that we can use ui.FindParams there)",
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d972d101_becadd51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "nit: similar to what I commented on another CL, but following gloang convention, can you make it more shorter?\nmaybe |steps|",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 15
+      },
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd7ff55_397233b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T05:55:06Z",
+      "side": 1,
+      "message": "ditto here. I think not having variables here is better.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
