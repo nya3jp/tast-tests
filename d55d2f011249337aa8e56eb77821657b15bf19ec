@@ -414,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "bd0b0930_234731e4",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T01:13:43Z",
+      "side": 1,
+      "message": "Update: it turns out the rtc clock in ARCVM is not *quite* synced to the host as I thought initially. While they are within 1 second of each other, the ARCVM rtc clock seems to be somewhere on the order of ~10ms behind the host clock. This means that our current method of measuring total latency (rtc timestamp in the test and in the app) does not work and reports negative latencies on ARCVM. On ARC++ it works fine and reports latencies very similar to the Android latency. We may have to wait until the ARCVM clock-sync work is further along before this will work. For now, I will disable the test on ARCVM.",
+      "parentUuid": "95a8bfad_30aa1d05",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79a10e1b_488a5053",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
