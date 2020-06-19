@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5661b3be_a38f2143",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/tools/keygen/factory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-19T04:29:56Z",
+      "side": 1,
+      "message": "Many returned values are ignored below in Gen(). How about do the formatting in Gen() instead of here?",
+      "revId": "2710175a84fd2860e8e28bcbd8406b70050178d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea059c8_003585d1",
         "filename": "src/chromiumos/tast/common/crypto/certificate/tools/keygen/factory.go",
         "patchSetId": 1
