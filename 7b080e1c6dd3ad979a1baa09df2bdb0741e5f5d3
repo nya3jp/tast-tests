@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "478a5f3c_3afb4b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "nit:  or \"InputEvent\"... (according to the regexp at least)",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1d5d3f_c564ad54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "nit:\nFrom what I can see, all the fields should be \"private\", no need to make them \"public\".\n\nIn golang:\n  public: if it starts with Uppercase.\n  private: if it starts with lowercase.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c302e3d1_3fb194b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "huge nit, style: \n\nend sentences with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 25,
+        "startChar": 73,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6775e012_1a7d0eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "not clear whats the indented purpose (see comment below)",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f2d968_23178548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "nit: .Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 108,
+        "startChar": 79,
+        "endLine": 108,
+        "endChar": 80
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd03db8b_0e3a43e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "add comment mentioning why on ARCVM these values should be calculated differently.\nif this is because of a bug, mention the bug.\n\nand to be more explicit, instead of just casting s.Param() to bool, you can cast it to a \"struct\" that contains a variable with a more explicit name. Something like:\n\n  type keyboardArgs struct {\n     ignoreMean bool    // Or whatever name you think is a good match\n  }\n\n\nand in the test:\n\n  Params: []testing.Param{{\n    ExtraSoftwareDeps: []string{\"android_p\"},\n      Val:  keyboardArgs {\n         ignoreMean: false,\n      },\n  },",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "490c4b23_24be5f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T14:58:44Z",
+      "side": 1,
+      "message": "nit: here and in L184 and L189 and L194.\n\nThe regexp guarantees that it should be an int.\nAnd if the ParseInt fails, I\u0027d return an error, and let the test fail, so that it can be analyzed.",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
