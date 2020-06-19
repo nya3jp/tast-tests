@@ -84,7 +84,7 @@ func init() {
 func Pinterest(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.pinterest"
-		appActivity = "com.pinterest.activity.PinterestActivity"
+		appActivity = ".activity.PinterestActivity"
 	)
 
 	// Step up chrome on Chromebook.
@@ -110,7 +110,6 @@ func Pinterest(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
-			s.Log("App launched successfully")
 
 			defer act.Stop(ctx, tconn)
 
@@ -133,10 +132,12 @@ func Pinterest(ctx context.Context, s *testing.State) {
 // verify Pinterest reached main activity page of the app.
 func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		allowButtonText                = "ALLOW"
+		emailAddressID                 = "com.google.android.gms:id/account_name"
 		loginWithGoogleButtonClassName = "android.widget.Button"
 		loginWithGoogleButtonText      = "Continue with Google"
-		emailAddressID                 = "com.google.android.gms:id/account_name"
 		profileIconID                  = "com.pinterest:id/profile_menu_view"
+		turnOnLocationText             = "Turn on location services"
 	)
 
 	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
@@ -162,10 +163,26 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
-	// Check for profile icon.
+	// Click on turn on location button.
+	turnOnLocationButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(turnOnLocationText))
+	if err := turnOnLocationButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("turnOnLocationButton doesn't exist: ", err)
+	} else if err := turnOnLocationButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on turnOnLocationButton: ", err)
+	}
+
+	// Keep clicking allow button until profile icon exists.
+	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
 	profileIcon := d.Object(ui.ID(profileIconID))
-	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("profileIcon doesn't exist: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := profileIcon.Exists(ctx); err != nil {
+			s.Log("Click on allow button")
+			allowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("profileIcon doesn't exists: ", err)
 	}
 
 	signOutOfPinterest(ctx, s, a, d, appPkgName, appActivity)
