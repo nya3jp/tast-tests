@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55af8f03_bc4321c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "I guess it tests both incidentally? But changed to clarify.",
+      "parentUuid": "60b8b4e4_7c2b219d",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2385e329_1ef95ad8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc0de22_f28e1aa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "Sounds good. I added a note in the comments.",
+      "parentUuid": "2385e329_1ef95ad8",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2cb96226_e8d383ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7196cd18_fe0877ea",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8dad51a_085c3ec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-18T19:14:32Z",
       "side": 1,
       "message": "Ugh that\u0027s very unexpected and it took me a while to find the docs for\nthis (https://blog.golang.org/image) :\u0027(\n\n-- could we just scale up the tolerance and operate directly as if\neach channel was in uint16? Less operations IIUC.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "794f01e2_03be27cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this: if the test fails and someone looks at a large tolerance, they might be even more surprised. I think people would have an easier time visualizing a tolerance of 2 WRT 255 instead of 512 WRT 65535, no? What if I clarify here what the output of RGBA() is?",
+      "parentUuid": "b8dad51a_085c3ec5",
       "range": {
         "startLine": 187,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "46173aa6_f210db65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21638e36_6b5493e9",
+      "range": {
+        "startLine": 291,
+        "startChar": 59,
+        "endLine": 292,
+        "endChar": 45
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5503e723_8dda5bfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2020-06-18T20:09:01Z",
       "side": 1,
       "message": "When the video loops, are we sure there will be no different frame between end and beginning?",
+      "range": {
+        "startLine": 301,
+        "startChar": 28,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6515c8_d950db9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "That\u0027s a good question and probably difficult to find the answer to. Maybe I can make the videos longer and not loop to avoid worrying about this? Or if I do what you suggest below about taking a screenshot periodically, this shouldn\u0027t be a problem?",
+      "parentUuid": "5503e723_8dda5bfa",
       "range": {
         "startLine": 301,
         "startChar": 28,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9a869319_bf29d811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "I would be fine with this. Let me work on this tomorrow.",
+      "parentUuid": "236820b1_68cf8381",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 2
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4b72eba_a35c3a57",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2020-06-18T20:09:01Z",
       "side": 1,
       "message": "I don\u0027t understand why you would look at the corners which could be affected by anti-aliasing, blending, etc. Why not look at the 25% and 75% of the width (center of the colored rectangles of the video). That way presumably you are surrounded by the right colors. You could also use this (later) to analyze larger video areas.",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6a9296_290920f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "A couple of reasons:\n\n1) I would really like to test as close to the edges as I can get away with because edges seem to be a common source of bugs both when changing Chrome and when upreving the driver. In particular, it\u0027s easy to fix a bug in Chrome that deals with a rectangle and accidentally break something else on the edges.\n\n2) I can still test the edges if I do 25%/75% width and height, but there will be more points and more calculations.\n\nYou\u0027re right that there might be blending artifacts. What if I pad these coordinates by a fixed offset (maybe 2?) to try to minimize that problem. I just rather not get too far away from the edges.",
+      "parentUuid": "c4b72eba_a35c3a57",
       "range": {
         "startLine": 362,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "32a766dc_886a648c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "Oh, that 254 was supposed to be 255... I was testing that it broke when expected and forgot to change it back.\n\nBut yes... My original intent was to choose random colors that would be unlikely to appear on the edges as artifacts. However, I can see how this is overkill and unclear. I\u0027ll change them in a follow-up if that\u0027s okay with you because the test videos are shared with another test and I\u0027d rather not change that in this CL.",
+      "parentUuid": "c08cb155_47275155",
+      "range": {
+        "startLine": 372,
+        "startChar": 56,
+        "endLine": 372,
+        "endChar": 59
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5cb167d_22cebbda",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/video_screenshot.go",
         "patchSetId": 1
@@ -220,6 +436,30 @@
       "writtenOn": "2020-06-18T19:15:34Z",
       "side": 1,
       "message": "Forgot: s/VideoScreenshot/VideoContents/ ? The Screenshot is just ways\nto an end, right? It could be done via DRM writeback if we had it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4bfed8_60ae78c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "How about just Contents since the full name will be video.Contents?",
+      "parentUuid": "f5cb167d_22cebbda",
       "range": {
         "startLine": 20,
         "startChar": 8,
@@ -246,6 +486,24 @@
       "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68154f22_9065bb36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-19T05:50:52Z",
+      "side": 1,
+      "message": "Indeed! I had forgotten to add this.",
+      "parentUuid": "57b5eff7_df6e6360",
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
