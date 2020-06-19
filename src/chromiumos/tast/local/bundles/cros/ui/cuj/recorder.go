@@ -7,11 +7,14 @@ package cuj
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/load"
+	"chromiumos/tast/testing"
 )
 
 type metricGroup string
@@ -21,6 +24,8 @@ const (
 	groupLatency    metricGroup = "InputLatency"
 	groupOther      metricGroup = ""
 )
+
+const checkInterval = 300 * time.Millisecond
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
@@ -77,7 +82,8 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
-	loadRecorder *loadRecorder
+	timeline   *perf.Timeline
+	loadValues []*perf.Values
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -107,23 +113,22 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
-	// TODO(mukai): also introduce power data collector.
-	procNames := map[int32]string{}
-	if err := browserProcData(procNames); err != nil {
-		return nil, errors.Wrap(err, "failed to obtain browser info")
+	sources := []perf.TimelineDatasource{
+		load.NewCPUUsageSource("TPS.CPU", false),
+		load.NewMemoryUsageSource("TPS.Memory"),
 	}
-	if err := arcProcData(procNames); err != nil {
-		return nil, errors.Wrap(err, "failed to obtain ARC info")
-	}
-	loadRecorder, err := newLoadRecorder(ctx, procNames)
+	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval))
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to start tracking processes")
+		return nil, errors.Wrap(err, "failed to start perf.Timeline")
+	}
+	if err = timeline.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
 	r := &Recorder{
-		names:        make([]string, 0, len(configs)),
-		records:      make(map[string]*record, len(configs)+2),
-		loadRecorder: loadRecorder,
+		names:    make([]string, 0, len(configs)),
+		records:  make(map[string]*record, len(configs)+2),
+		timeline: timeline,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -150,14 +155,23 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 // error if an error has occurred. If it's stopped already, it does nothing and
 // returns nil.
 func (r *Recorder) Stop() error {
-	return r.loadRecorder.Stop()
+	return nil
 }
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
-	r.loadRecorder.StartRecording()
-	defer r.loadRecorder.StopRecording()
+	if err := r.timeline.StartRecording(ctx); err != nil {
+		return errors.Wrap(err, "failed to start recording")
+	}
+	defer func() {
+		vs, err := r.timeline.StopRecording()
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to stop timeline: ", err)
+			return
+		}
+		r.loadValues = append(r.loadValues, vs)
+	}()
 	hists, err := metrics.Run(ctx, tconn, f, r.names...)
 	if err != nil {
 		return err
@@ -189,9 +203,7 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 // Record creates the reporting values from the currently stored data points and
 // sets the values into pv.
 func (r *Recorder) Record(pv *perf.Values) error {
-	if err := r.loadRecorder.Save(pv); err != nil {
-		return err
-	}
+	pv.Merge(r.loadValues...)
 
 	for name, record := range r.records {
 		if record.totalCount == 0 {
