@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // QueryResponse contains a subset of the results returned from the Assistant server
@@ -85,3 +86,17 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
 }
+
+// VerboseLogging is a helper function passed into chrome.New which will
+// enable VLOG traces in the assistant code.
+func VerboseLogging() chrome.Option {
+	return chrome.ExtraArgs(
+		"--vmodule=*assistant*=3,chromeos/services/assistant/service=3")
+}
+
+// VerboseLoggingEnabled creates a new precondition which can be shared by
+// tests that require an already-started Chromeobject with verbose logging
+// enabled.
+func VerboseLoggingEnabled() testing.Precondition { return verboseLoggingPre }
+
+var verboseLoggingPre = chrome.NewPrecondition("verbose-logging", VerboseLogging())
