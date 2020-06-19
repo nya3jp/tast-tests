@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6959a2ed_583cadec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-19T07:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954385dc_43d8a32e",
+      "range": {
+        "startLine": 187,
+        "startChar": 35,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a96375f7_bb788b50",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 18
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e1c172df_6e6f9c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-19T07:11:49Z",
+      "side": 1,
+      "message": "s/Ui/UI that was typo.",
+      "parentUuid": "a96375f7_bb788b50",
+      "range": {
+        "startLine": 196,
+        "startChar": 63,
+        "endLine": 196,
+        "endChar": 80
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d8b625_a1524b89",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 18
@@ -68,6 +116,30 @@
       "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c2a013c_20ea1ea1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-19T07:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d8b625_a1524b89",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
