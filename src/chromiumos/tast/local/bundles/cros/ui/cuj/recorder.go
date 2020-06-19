@@ -218,3 +218,12 @@ func (r *Recorder) Record(pv *perf.Values) error {
 	}
 	return nil
 }
+
+// Get total count of the given metric name.
+func (r *Recorder) GetMetricTotalCount(name string) (int64, error) {
+	if totalRecord, ok := r.records[name]; ok {
+		return totalRecord.totalCount, nil
+	} else {
+		return -1, errors.New("Metric isn't recorded")
+	}
+}
