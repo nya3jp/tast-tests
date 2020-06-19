@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c489f3b3_51c8a674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-06-19T07:16:39Z",
+      "side": 1,
+      "message": "Anything ending in \"download\" should be changed to \"download_stretch\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "b39de352b342495aeccc07f3b3307090ff299dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2f6302_cb7cbbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-06-19T07:16:39Z",
+      "side": 1,
+      "message": "This test only has one version, so it should be running buster",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "b39de352b342495aeccc07f3b3307090ff299dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4521d220_8c2f700a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-06-19T07:16:39Z",
+      "side": 1,
+      "message": "Same for this one",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "b39de352b342495aeccc07f3b3307090ff299dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e7d30c4_a2511cf9",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-06-19T07:16:39Z",
+      "side": 1,
+      "message": "nit: Could you match the order here with the order of the precondition functions?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "b39de352b342495aeccc07f3b3307090ff299dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
