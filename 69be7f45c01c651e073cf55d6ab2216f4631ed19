@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79174741_c35669e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-19T04:08:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c98265d5_1fdc593d",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "69be7f45c01c651e073cf55d6ab2216f4631ed19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc0e884c_5d13224e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "69be7f45c01c651e073cf55d6ab2216f4631ed19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99984418_2ba6b1ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-19T04:08:17Z",
+      "side": 1,
+      "message": "Let\u0027s wait for few more rounds. I\u0027ll consider it next week.",
+      "parentUuid": "cc0e884c_5d13224e",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 45
+      },
+      "revId": "69be7f45c01c651e073cf55d6ab2216f4631ed19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
