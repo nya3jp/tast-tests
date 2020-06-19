@@ -22,6 +22,30 @@
       "revId": "40e6f6f3566371311e7e47c815242c7eb50b6956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe90c765_d9a927e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice_cros_deploy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-06-19T20:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea64e08c_0c64fdf1",
+      "range": {
+        "startLine": 20,
+        "startChar": 59,
+        "endLine": 20,
+        "endChar": 67
+      },
+      "revId": "40e6f6f3566371311e7e47c815242c7eb50b6956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
