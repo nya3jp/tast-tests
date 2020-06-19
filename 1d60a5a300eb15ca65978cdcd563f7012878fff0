@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "499730bd_85d625e6",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T15:43:38Z",
+      "side": 1,
+      "message": "nit: you can remove this one now (it\u0027s fixed) 😊",
+      "range": {
+        "startLine": 24,
+        "startChar": 73,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "1d60a5a300eb15ca65978cdcd563f7012878fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
