@@ -118,6 +118,30 @@
       "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c47008c_e7020d33",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-19T18:56:45Z",
+      "side": 1,
+      "message": "I changed the package name and build target name per my suggestion.\n\nLet me know if you would like to rename them to something else.",
+      "parentUuid": "627bfec7_4a3aac33",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
