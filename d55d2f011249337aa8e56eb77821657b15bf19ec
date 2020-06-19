@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ebb575e_b251013b",
+        "filename": "android/ArcInputLatencyTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2251b85_dd83dc57",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82d2cccc_bad171de",
         "filename": "android/ArcInputLatencyTest/AndroidManifest.xml",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb53197_cb99b461",
+        "filename": "android/ArcInputLatencyTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82d2cccc_bad171de",
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "456d86c8_222310cf",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/EventListAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "febc7a7f_1c306861",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "941c70ff_06f1f4ac",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28bffa6_19424407",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "941c70ff_06f1f4ac",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "6234eb68_ca88b4b0",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d95fae19_5ae089b4",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "498e0b7e_0f7f51da",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
         "patchSetId": 2
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "a4f3f7a7_b2910cbe",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Just checked and it is not expected to be null. Will remove it. The reason this is here is because I originally converted this from Kotlin code, where the function signature for dispatchKeyEvent is nullable (e.g. KeyEvent? )",
+      "parentUuid": "498e0b7e_0f7f51da",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6acba936_0ecda11d",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
         "patchSetId": 2
@@ -154,6 +292,30 @@
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0217d18_952d745c",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Implemented logging to file but am currently having trouble reading it from tast test (using ARC.ReadFile()) so I will keep the logcat here as well for now.",
+      "parentUuid": "6acba936_0ecda11d",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -228,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "95a8bfad_30aa1d05",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Ah gotcha, I wasn\u0027t aware of the differences for gamepad events. Based on your suggestion, I\u0027ll modify the helper app to log realtime timestamp as well (System.currentTimeMillis) so that it can be compared to a timestamp taken from the app. AFAICT, on both ARC++ and ARCVM, the rtc clocks are synced between host and guest. Hopefully it\u0027s safe to use since it\u0027s unlikely the DUT will be put into sleep or have it\u0027s system clock set during the test.",
+      "parentUuid": "cce50778_aca76d5a",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79a10e1b_488a5053",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
@@ -248,6 +434,30 @@
       "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2ce148_5812ffdf",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-19T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79a10e1b_488a5053",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "d55d2f011249337aa8e56eb77821657b15bf19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
