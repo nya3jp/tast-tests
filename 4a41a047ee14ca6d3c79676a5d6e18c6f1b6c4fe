@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2140b5a7_7b29c5bb",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-19T22:47:40Z",
+      "side": 1,
+      "message": "Is it actually a problem to create more than one, if desired for some reason, apart from the fact that you use fixed/constant paths and credentials?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 124
+      },
+      "revId": "4a41a047ee14ca6d3c79676a5d6e18c6f1b6c4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8abb2ea2_a17df842",
+        "filename": "src/chromiumos/tast/common/wifi/tpm_store.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-19T22:47:40Z",
+      "side": 1,
+      "message": "why both of these? Isn\u0027t one a subset of the other? Seems like either the underlying libraries could be consolidated better, or maybe just construct one from the other here, and hide it from WiFi callers that way.\n\nIt seems like the only input here should just be CmdRunner.",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 103
+      },
+      "revId": "4a41a047ee14ca6d3c79676a5d6e18c6f1b6c4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
