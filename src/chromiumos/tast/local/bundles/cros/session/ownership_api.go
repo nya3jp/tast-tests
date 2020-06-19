@@ -36,7 +36,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Data: []string{"testcert.p12"},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
