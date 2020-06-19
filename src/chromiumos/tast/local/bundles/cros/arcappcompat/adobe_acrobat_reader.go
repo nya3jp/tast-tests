@@ -132,12 +132,14 @@ func AdobeAcrobatReader(ctx context.Context, s *testing.State) {
 func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		userButtonClassName    = "android.widget.TextView"
-		signInButtonText       = "Sign in with Google"
-		continueButtonText     = "Continue"
-		continueButtonID       = "com.adobe.reader:id/continue_button"
-		toolsButtonID          = "com.adobe.reader:id/fab_button"
-		toolsButtonDescription = "Tools"
+		continueButtonText  = "Continue"
+		continueButtonID    = "com.adobe.reader:id/continue_button"
+		closeClassName      = "android.widget.ImageButton"
+		closeDes            = "Close tour"
+		homeIconClassName   = "android.view.ViewGroup"
+		homeIconDescription = "Home"
+		signInButtonText    = "Sign in with Google"
+		userButtonClassName = "android.widget.TextView"
 	)
 
 	// Click on sign in button.
@@ -148,6 +150,19 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to click on signInButton: ", err)
 	}
 
+	// For selecting Gmail account
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_TAB: ", err)
+	} else {
+		s.Log("Entered KEYCODE_TAB")
+	}
+
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ENTER")
+	}
+
 	// Click on continue button.
 	continueButton := d.Object(ui.ID(continueButtonID), ui.Text(continueButtonText))
 	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -156,9 +171,17 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Check for tools button in home page.
-	toolsButton := d.Object(ui.ID(toolsButtonID), ui.DescriptionContains(toolsButtonDescription))
-	if err := toolsButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("ToolsButton doesn't exists: ", err)
+	// Click on close button.
+	closeButton := d.Object(ui.ClassName(closeClassName), ui.Description(closeDes))
+	if err := closeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("closeButton doesn't exists: ", err)
+	} else if err := closeButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on closeButton: ", err)
+	}
+
+	// Check for home icon in home page.
+	homeIcon := d.Object(ui.ClassName(homeIconClassName), ui.DescriptionContains(homeIconDescription))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
