@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
+	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -51,6 +52,29 @@ func CSA(ctx context.Context, s *testing.State) {
 
 	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
+
+	// TODO(b/154879577): Currently the action frames sent by FrameSender
+	// are not buffered for DTIM so if the DUT is in powersave mode, it
+	// cannot receive the action frame and the test will fail.
+	// Turn off powersave mode to sync the behavior of Autotest in this
+	// test for now.
+	iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the client interface: ", err)
+	}
+	psMode, err := iwr.PowersaveMode(ctx, iface)
+	if err != nil {
+		s.Fatal("Failed to get the powersave mode: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := iwr.SetPowersaveMode(ctx, iface, psMode); err != nil {
+			s.Errorf("Failed to restore powersave mode to %t: %v", psMode, err)
+		}
+	}(ctx)
+	if err := iwr.SetPowersaveMode(ctx, iface, false); err != nil {
+		s.Fatal("Failed to turn off powersave: ", err)
+	}
 
 	apOps := []hostapd.Option{
 		hostapd.Mode(hostapd.Mode80211nMixed),
