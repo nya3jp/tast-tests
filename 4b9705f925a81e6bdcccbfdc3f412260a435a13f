@@ -22,6 +22,30 @@
       "revId": "4b9705f925a81e6bdcccbfdc3f412260a435a13f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c511cb5_901e4287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-19T01:19:36Z",
+      "side": 1,
+      "message": "Oops, copy/paste error.",
+      "parentUuid": "e2bd40af_1a27f060",
+      "range": {
+        "startLine": 351,
+        "startChar": 48,
+        "endLine": 351,
+        "endChar": 68
+      },
+      "revId": "4b9705f925a81e6bdcccbfdc3f412260a435a13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
