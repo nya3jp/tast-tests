@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "61b41c10_d928f8f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-06-19T17:55:41Z",
+      "side": 1,
+      "message": "nit: 72 characters and align with indent when line wrap?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca5aa6b_5203f1b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-06-19T17:55:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 86
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9faccf38_97981cff",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
@@ -41,6 +87,29 @@
         "startChar": 13,
         "endLine": 94,
         "endChar": 23
+      },
+      "revId": "efaecc978297def1f152675b05db3f4e21be483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac74dd2a_8bf9fc3e",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-06-19T17:55:41Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 28
       },
       "revId": "efaecc978297def1f152675b05db3f4e21be483e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
