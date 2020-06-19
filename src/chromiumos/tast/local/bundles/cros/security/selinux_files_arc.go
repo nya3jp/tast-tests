@@ -116,8 +116,6 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
 		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
 		{path: "/run/arc/adbd", context: "(tmpfs|device)"},
-		{path: "/run/arc/bugreport", context: "debug_bugreport"},
-		{path: "/run/arc/bugreport/pipe", context: "debug_bugreport"},
 		{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
 		{path: "/run/arc/debugfs", context: "(debugfs|tmpfs)"},
 		{path: "/run/arc/fake_kptr_restrict", context: "proc_security"},
