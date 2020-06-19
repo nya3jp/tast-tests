@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7387a939_57eb7267",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-19T09:42:47Z",
+      "side": 1,
+      "message": "nit: We probably also want this comment in the registration? so that we can know if the timeout is sufficient without going down to the comment here. (downside of duplicate: one might forget to update all related comments when modifying the functions here)",
+      "range": {
+        "startLine": 769,
+        "startChar": 50,
+        "endLine": 769,
+        "endChar": 99
+      },
+      "revId": "ad046f6a584abe8a1ef6f13f1381933e0bc2b6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
