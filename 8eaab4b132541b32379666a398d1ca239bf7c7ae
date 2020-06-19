@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc7ca8d0_a4c5f534",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-19T17:36:04Z",
+      "side": 1,
+      "message": "Consider verifying this?",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36be00dd_6ff1dc62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-19T17:36:04Z",
+      "side": 1,
+      "message": "The error message would be: \"DUT: failed to get the client interface: failed to get the WiFi interface name\". How about \"DUT: failed to get the WiFi interface name\"?\n\ns.Fatal(\"DUT: \", err)",
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d199b52_efec13de",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
