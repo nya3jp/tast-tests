@@ -94,6 +94,30 @@
       "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "627bfec7_4a3aac33",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-19T15:50:23Z",
+      "side": 1,
+      "message": "fine for me if you prefer not to change the packagename.\nbut please, add a comment in the .gn file explaining a bit the purpose of these apks.\n(I said .bp before, but I meant .gn).\n\nIf you disagree, let\u0027s discuss it offline. Not productive to discuss it here.",
+      "parentUuid": "3b9dc68a_b749cc38",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
