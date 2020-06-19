@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98b274f8_c79fe9dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "just move \"informational\" to Attr above. It will be applied for both tests.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7664ac_a2a8629b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "remove from here 😊",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6a4d09_fc2385b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "why it cannot take 3 parameters: ctx, s, testOpt?\n\nyou literally passing everything you have in your structure",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806bd05b_ca1c3610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "please make value a pointer, it\u0027s a bit more efficient",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117e73cf_6e06182f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "same: it\u0027s useless here",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a46abd_8c58abeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "it can be less error prone if we can introduce some new types. For example:\n\n------------------------------------\n\n// package pinprint\n\ntype Option string\n\nfunc WithJobPassword(pass string) Option {\n  return fmt.Sprintf(\"job-password\u003d%s\", pass)\n}\n\n\n// Params struct used by all pin print tests for parameterized tests.\ntype Params struct {\n\tPpdFile    string\n\tPrintFile  string\n\tGoldenFile string\n\tDiffFile   string\n\tOptions    []Option\n}\n\n...\n\nfunc optionsToString(options []Option) string {\n\tvar arr []string\n\tfor _, o :\u003d range options {\n\t\tarr \u003d append(arr, string(o))\n\t}\n        return stirngs.Join(arr, \"\u003c-- your delimeter --\u003e\")\n}\n\n\nfunc Run(ctx context.Context, s *testing.State, params *Params) {\n   ...\n\n   options :\u003d optionsToString(params.Options)\n\n   ...\n}\n\n------------------------------------\n\nin tests:\n\n\u0026pinprint.Params{\n\tPpdFile:    \"printer_pin_print_Ricoh_LockedPrintPassword.ppd\",\n\tPrintFile:  \"to_print.pdf\",\n\tGoldenFile: \"printer_pin_print_ricoh_LockedPrintPassword_no_pin_golden.ps\",\n\tDiffFile:   \"lockedprintpassword_no-pin_diff.txt\",\n\tOptions:    []pinprint.Option{pinprint.WihJobPassword(\"1234\")},\n}",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ce2a591_56e63834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_unsupported.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-19T10:28:44Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
