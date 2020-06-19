@@ -23,9 +23,7 @@ func init() {
 			"mnissler@chromium.org", // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
-		// Marked informational due to flakiness on ToT.
-		// TODO(crbug.com/1004835): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
