@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1507d95a_105c2933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-19T19:44:15Z",
+      "side": 1,
+      "message": "I am fine either way. Either comment of why *256, or leave it like this as shift are pretty cheap. (The abs may not: http://graphics.stanford.edu/~seander/bithacks.html#IntegerAbs)",
+      "parentUuid": "794f01e2_03be27cd",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21638e36_6b5493e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -281,6 +305,30 @@
       "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf08ed45_ea9cebf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-19T19:44:15Z",
+      "side": 1,
+      "message": "If the video is about 30-60s long then looping really should not happen much. A 5s video would be more worrying, but maybe works in practice?",
+      "parentUuid": "0c6515c8_d950db9d",
+      "range": {
+        "startLine": 301,
+        "startChar": 28,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -378,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "2c5667a2_58e35277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-19T19:44:15Z",
+      "side": 1,
+      "message": "I see. I understand the desire. We should clarify though what the test is supposed to achieve. As the screenshots are sampling frames in time, maybe the goal should be to see one good frame, eventually? Or do you want to see multiple good frames?\n\nI am thinking if we had verification in phases that may make it more practical. Say fullscreen, then check centers, then verify borders for black and for color. And each of these phases has their own clear failure string.\n\nAn offset of 2 might be enough, but only if the video has about the same resolution as the fullscreen (so it is down, not upsampled)?",
+      "parentUuid": "ef6a9296_290920f3",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c08cb155_47275155",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -413,6 +485,30 @@
       "side": 1,
       "message": "Oh, that 254 was supposed to be 255... I was testing that it broke when expected and forgot to change it back.\n\nBut yes... My original intent was to choose random colors that would be unlikely to appear on the edges as artifacts. However, I can see how this is overkill and unclear. I\u0027ll change them in a follow-up if that\u0027s okay with you because the test videos are shared with another test and I\u0027d rather not change that in this CL.",
       "parentUuid": "c08cb155_47275155",
+      "range": {
+        "startLine": 372,
+        "startChar": 56,
+        "endLine": 372,
+        "endChar": 59
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "590fbd33_7e6d1a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-19T19:44:15Z",
+      "side": 1,
+      "message": "I think no big deal. Maybe just leave a comment and explain how the video was created.",
+      "parentUuid": "32a766dc_886a648c",
       "range": {
         "startLine": 372,
         "startChar": 56,
