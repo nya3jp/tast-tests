@@ -346,6 +346,9 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 	if err := d.Reboot(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to reboot DUT")
 	}
+	if err := waitSystemServiceRunning(ctx, d, s); err != nil {
+		return nil, err
+	}
 	if err := pollResultFile(ctx, d, s, resultFilePath, outPath); err != nil {
 		return nil, err
 	}
@@ -392,8 +395,7 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 	return collectFields(message, fieldsMapping)
 }
 
-// pollResultFile sleeps for |sleepTime|, polls the result file, and then copy
-// to local.
+// pollResultFile polls the result file, and then copies it to local.
 func pollResultFile(ctx context.Context, d *dut.DUT, s *testing.State, resultFilePath, outPath string) error {
 	const (
 		pollInterval = time.Second
@@ -410,6 +412,29 @@ func pollResultFile(ctx context.Context, d *dut.DUT, s *testing.State, resultFil
 		return nil
 	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
 		return errors.Wrap(err, "result file does not exist")
+	}
+	return nil
+}
+
+// waitSystemServiceRunning waits system-services to be start/running state.
+func waitSystemServiceRunning(ctx context.Context, d *dut.DUT, s *testing.State) error {
+	const (
+		pollInterval = time.Second
+		pollTimeout  = 2 * time.Minute
+	)
+
+	s.Log("Wait for system-services to be start/running state")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		output, err := d.Command("initctl", "status", "system-services").Output(ctx)
+		if err != nil {
+			return err
+		}
+		if strings.Contains(string(output), "start/running") {
+			return nil
+		}
+		return errors.New("system-services is not start/running state")
+	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
+		return err
 	}
 	return nil
 }
