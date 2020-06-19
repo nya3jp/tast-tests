@@ -20,6 +20,18 @@ executable("graphics.GBM.gbmtest") {
   ]
 }
 
+executable("hardware.VerifyRemoteSleep.timersignal") {
+  cflags = [
+    "-std=gnu99",
+  ]
+  libs = [
+    "rt",
+  ]
+  sources = [
+    "hardware.VerifyRemoteSleep.timersignal.c",
+  ]
+}
+
 executable("kernel.PerfCallgraph.graph") {
   cflags = [
     "-O2",
@@ -131,6 +143,7 @@ executable("security.PtraceThread.thread-prctl") {
 group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
+    ":hardware.VerifyRemoteSleep.timersignal",
     ":kernel.PerfCallgraph.graph",
     ":platform.UserCrash.crasher",
     ":platform.UserCrash.crasher.sym",
