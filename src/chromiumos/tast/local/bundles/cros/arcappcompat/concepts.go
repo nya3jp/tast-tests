@@ -84,7 +84,7 @@ func init() {
 func Concepts(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.tophatch.concepts"
-		appActivity = "com.tophatch.concepts.MainActivity"
+		appActivity = ".MainActivity"
 	)
 
 	// Step up chrome on Chromebook.
@@ -107,7 +107,6 @@ func Concepts(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed start app: ", err)
 			}
-			s.Log("App launched successfully")
 
 			defer act.Stop(ctx, tconn)
 

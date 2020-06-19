@@ -84,7 +84,7 @@ func init() {
 func GooglePhotos(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.google.android.apps.photos"
-		appActivity = "com.google.android.apps.photos.home.HomeActivity"
+		appActivity = ".home.HomeActivity"
 	)
 
 	// Step up chrome on Chromebook.
@@ -107,7 +107,6 @@ func GooglePhotos(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
-			s.Log("App launched successfully")
 
 			defer act.Stop(ctx, tconn)
 
