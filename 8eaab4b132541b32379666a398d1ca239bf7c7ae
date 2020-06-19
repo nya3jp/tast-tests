@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71f42568_aa29ab68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-19T22:13:17Z",
+      "side": 1,
+      "message": "I was able to connect to the AP and the ssid was the second one \"TAST_TEST_1nuBSkeClkHwdrq3ImEt\".",
+      "parentUuid": "bc7ca8d0_a4c5f534",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4c1eb3_ff942163",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-19T22:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36be00dd_6ff1dc62",
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6c9cd1_67ea721e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-19T22:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d199b52_efec13de",
+      "range": {
+        "startLine": 116,
+        "startChar": 42,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

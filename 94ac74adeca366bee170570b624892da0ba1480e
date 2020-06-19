@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "23da1bc0_6c44fb38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-19T22:13:17Z",
+      "side": 1,
+      "message": "That\u0027s true it\u0027s calling WiFiClient\u0027s scan method, I added a poll for the scan.\n\nI ran the test a 100 times and the scan command failed once:\n\u003eStarting dnsmasq 1 on interface managed1\n\u003eFailed to run command: iw dev wlan0 scan freq 2412 freq 5180 ssid \n     TAST_TEST_09MaJUL7K3pOK1hHmTmx ssid TAST_TEST_1k54n2KijMnpqAblxyVb\n\u003eCommand output stored in /tmp/tast/results/20200619-141401/tast_out.20200619- \n     141401.737087159/wifi.MaskedBSSID/cmdOutput.txt\nDeconfiguring the AP on freq 5180\n\u003eStopping dnsmasq",
+      "parentUuid": "a8b52297_0d1b267d",
+      "range": {
+        "startLine": 101,
+        "startChar": 54,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3926106b_f8002fdb",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
