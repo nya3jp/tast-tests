@@ -43,7 +43,7 @@ func callMultiProtoMethod(ctx context.Context, obj dbus.BusObject, method string
 
 	call := obj.CallWithContext(ctx, method, 0, args...)
 	if call.Err != nil {
-		return errors.Wrapf(call.Err, "failed calling %s", method)
+		return errors.Wrapf(call.Err, "failed calling %s: %v", method, call.Err)
 	}
 	if out != nil {
 		var marshOut []byte
