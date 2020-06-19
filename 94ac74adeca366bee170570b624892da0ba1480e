@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "a8b52297_0d1b267d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-19T09:35:29Z",
+      "side": 1,
+      "message": "I think Autotest version is calling WiFiClient\u0027s scan method which polls IwRunner.scan?\n\nTried on my krane with ui stopped. Looks like no active scan is triggered, but I\u0027m not yet sure if there are other sources of active scan trigger. (or possibly a still running active scan started before the test?)",
+      "parentUuid": "eea8584b_caca7ee9",
+      "range": {
+        "startLine": 101,
+        "startChar": 54,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3926106b_f8002fdb",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
