@@ -70,6 +70,30 @@
       "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9dc68a_b749cc38",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-19T01:05:54Z",
+      "side": 1,
+      "message": "I just don\u0027t like only using allowlist because the APK itself isn\u0027t the list. It confuses me a lot. Also the spec uses the word `whitelist`, which according to community guideline isn\u0027t as good as allowlist. However using different words can be confusing so I chose the common part \"list\". I\u0027ll stick to my choice unless someone feels strongly against it.\n\nAnd the ultimate way of avoiding unnecessary APK is code review regardless of the use of words.\n\nI\u0027ll do this tomorrow.",
+      "parentUuid": "3ece908d_5f161005",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "abeae522bbf2bd4725076733e66f651cc9d81268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
