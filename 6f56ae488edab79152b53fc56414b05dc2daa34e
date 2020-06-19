@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "7d2529bf_1cd1f904",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-19T01:33:57Z",
+      "side": 1,
+      "message": "Maybe I should have been clearer.\n\nI think the hwsec APIs are bad. Contrast it with our iw runners -- we only have a single iw.Runner object returned, and it implements all the functions we want to call on it. I don\u0027t see why the hwsec APIs should be any different (if they\u0027re going with exec\u0027ing a CLI tool for everything -- then the remote variant just hides that it\u0027s doing SSH instead of local)?\n\nOr if they want to do smarter things via local-only mechanisms, then it should be over gRPC -- but again, only a single object there. And I see that\u0027s where the dependent CL is blocked -- a reviewer suggesting gRPC. And that\u0027s exactly why I wanted the hwsec folks to own this stuff, and not reimplement the wheel in a wifi/ package :D\n\nI think I\u0027ll move myself to CC for this CL. Move me back if you have more questions, or if the dependency settles on a design.",
+      "parentUuid": "668d67da_8fd137ec",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 97
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c16c446_7e2ecadc",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
