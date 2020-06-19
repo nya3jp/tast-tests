@@ -31,20 +31,22 @@ func init() {
 		Func:        SimpleConnect,
 		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
 				// Verifies that DUT can connect to an open 802.11a network on channels 48, 64.
-				Name: "80211a",
+				Name:      "80211a",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(48)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(64)}},
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11b network on channels 1, 6, 11.
-				Name: "80211b",
+				Name:      "80211b",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211b), ap.Channel(1)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211b), ap.Channel(6)}},
@@ -52,7 +54,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11g network on channels 1, 6, 11.
-				Name: "80211g",
+				Name:      "80211g",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(6)}},
@@ -60,7 +63,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz.
-				Name: "80211n24ht20",
+				Name:      "80211n24ht20",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(1), ap.HTCaps(ap.HTCapHT20)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT20)}},
@@ -68,33 +72,38 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 2.4GHz channel 6 with a channel width of 40MHz.
-				Name: "80211n24ht40",
+				Name:      "80211n24ht40",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT40)}},
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 5GHz channel 48 with a channel width of 20MHz.
-				Name: "80211n5ht20",
+				Name:      "80211n5ht20",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20)}},
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 5GHz channel 48
 				// (40MHz channel with the second 20MHz chunk of the 40MHz channel on the channel below the center channel).
-				Name: "80211n5ht40",
+				Name:      "80211n5ht40",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus)}},
 				},
 			}, {
 				// This test verifies that DUT can connect to an open 802.11n network on 5 GHz channel with short guard intervals enabled (both 20/40 Mhz).
-				Name: "80211nsgi",
+				Name:      "80211nsgi",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)}},
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 60 with a channel width of 20MHz.
-				Name: "80211acvht20",
+				Name:      "80211acvht20",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{
 						ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20),
@@ -104,7 +113,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 120 with a channel width of 40MHz.
-				Name: "80211acvht40",
+				Name:      "80211acvht40",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{
 						ap.Mode(ap.Mode80211acPure), ap.Channel(120), ap.HTCaps(ap.HTCapHT40),
@@ -114,7 +124,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on 5GHz channel 36 with center channel of 42 and channel width of 80MHz.
-				Name: "80211acvht80mixed",
+				Name:      "80211acvht80mixed",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{
 						ap.Mode(ap.Mode80211acMixed), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
@@ -124,7 +135,8 @@ func init() {
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 157 with center channel of 155 and channel width of 80MHz.
 				// The router is forced to use 80 MHz wide rates only.
-				Name: "80211acvht80pure",
+				Name:      "80211acvht80pure",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{
 						ap.Mode(ap.Mode80211acPure), ap.Channel(157), ap.HTCaps(ap.HTCapHT40Plus),
@@ -134,7 +146,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to a hidden network on 2.4GHz and 5GHz channels.
-				Name: "hidden",
+				Name:      "hidden",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(6), ap.Hidden()}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT20), ap.Hidden()}},
@@ -142,7 +155,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
-				Name: "wep40",
+				Name:      "wep40",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -179,7 +193,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
-				Name: "wep104",
+				Name:      "wep104",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -216,7 +231,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
-				Name: "wephidden",
+				Name:      "wephidden",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
@@ -237,7 +253,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with TKIP.
-				Name: "wpatkip",
+				Name:      "wpatkip",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -249,7 +266,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with AES based CCMP.
-				Name: "wpaccmp",
+				Name:      "wpaccmp",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -261,7 +279,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
-				Name: "wpamulti",
+				Name:      "wpamulti",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -273,7 +292,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
-				Name: "wpa2tkip",
+				Name:      "wpa2tkip",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -286,7 +306,8 @@ func init() {
 			}, {
 				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
 				// In addition, the client must also support 802.11w protected management frames.
-				Name: "wpa2pmf",
+				Name:      "wpa2pmf",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
@@ -299,7 +320,8 @@ func init() {
 			}, {
 				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
 				// In addition, the client may also negotiate use of 802.11w protected management frames.
-				Name: "wpa2pmfoptional",
+				Name:      "wpa2pmfoptional",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
@@ -311,7 +333,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
-				Name: "wpa2",
+				Name:      "wpa2",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -323,7 +346,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
-				Name: "wpamixed",
+				Name:      "wpamixed",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -336,7 +360,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
-				Name: "wpavht80",
+				Name:      "wpavht80",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{
@@ -352,7 +377,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
-				Name: "wpaoddpassphrase",
+				Name:      "wpaoddpassphrase",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -399,7 +425,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
-				Name: "wpahidden",
+				Name:      "wpahidden",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
@@ -433,7 +460,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WPA network using a raw PMK value instead of an ASCII passphrase.
-				Name: "raw_pmk",
+				Name:      "raw_pmk",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -448,20 +476,23 @@ func init() {
 				// Verifies that DUT can connect to an open network on a DFS channel.
 				// DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.
 				// See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels
-				Name: "dfs",
+				Name:      "dfs",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)}},
 				},
 			}, {
 				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
-				Name: "ssid_limits",
+				Name:      "ssid_limits",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{apOpts: wificell.CommonAPOptions(ap.SSID("a"))},
 					{apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
 				},
 			}, {
 				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
-				Name: "non_ascii_ssid",
+				Name:      "non_ascii_ssid",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
 					// end to keep the coverage.
