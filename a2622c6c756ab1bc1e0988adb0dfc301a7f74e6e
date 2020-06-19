@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a341aec4_24882c46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-19T08:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6082c583_e35cb9cd",
+      "range": {
+        "startLine": 1117,
+        "startChar": 36,
+        "endLine": 1117,
+        "endChar": 43
+      },
+      "revId": "a2622c6c756ab1bc1e0988adb0dfc301a7f74e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4a215c8_93f56480",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a2622c6c756ab1bc1e0988adb0dfc301a7f74e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb600e2_81008bc4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-06-19T08:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a215c8_93f56480",
+      "range": {
+        "startLine": 1227,
+        "startChar": 12,
+        "endLine": 1227,
+        "endChar": 15
+      },
+      "revId": "a2622c6c756ab1bc1e0988adb0dfc301a7f74e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
