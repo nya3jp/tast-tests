@@ -29,6 +29,7 @@ func StartupInSignedInMode(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.Auth(s.RequiredVar("assistant.username"), s.RequiredVar("assistant.password"), ""),
 		chrome.GAIALogin(),
+		assistant.VerboseLogging(),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
