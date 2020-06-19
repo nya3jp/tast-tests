@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ea96c6d_710a88b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "Mukai\u0027s CL:2243864 is landed. Could we use \"Pre: cuj.LoggedInToCUJUser(),\" here? Does that account work?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a44578_9b185ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "It seems that clamshell_mode and browser window in normal state does not really matter.",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 63
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f86702_acdfc960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "Does this work on device? I wonder whether we could use the url in lab. Think \"*.sandbox.google.com\" should only work on corp network.",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8698ea40_be2a48ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "nit: debugging log ? If we want to keep, make it more descriptive.\ne.g.\n\n  s.Logf(\"New window state: %s\", w0.State)",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843250ac_3ba06a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "Think we check testing.Sleep error too.",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593f0868_19d95e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "nit: Drop? Or revise to\n\n  s.Log(\"Press space key to start game.\")",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4b0304_defde5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T16:30:58Z",
+      "side": 1,
+      "message": "ditto, check testing.Sleep error",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
