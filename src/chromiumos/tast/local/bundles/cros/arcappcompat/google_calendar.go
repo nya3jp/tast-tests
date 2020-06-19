@@ -7,37 +7,70 @@ package arcappcompat
 
 import (
 	"context"
+	"fmt"
 	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
+
+// ClamshellTests are placed here.
+var clamshellTestsForGoogleCalendar = []testutil.TestSuite{
+	{Name: "Launch app in Clamshell", Fn: launchAppForGoogleCalendar},
+	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// TouchviewTests are placed here.
+var touchviewTestsForGoogleCalendar = []testutil.TestSuite{
+	{Name: "Launch app in Touchview", Fn: launchAppForGoogleCalendar},
+	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GoogleCalendar,
-		Desc:         "Functional test for Google Calendar that installs the app also verifies it is logged in and that the main page is open",
+		Desc:         "Functional test for GoogleCalendar that installs the app also verifies it is logged in and that the main page is open, checks GoogleCalendar correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
+			Val: testutil.TestParams{
+				TabletMode: false,
+				Tests:      clamshellTestsForGoogleCalendar,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				TabletMode: true,
+				Tests:      touchviewTestsForGoogleCalendar,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			Val: testutil.TestParams{
+				TabletMode: false,
+				Tests:      clamshellTestsForGoogleCalendar,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				TabletMode: true,
+				Tests:      touchviewTestsForGoogleCalendar,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -47,13 +80,58 @@ func init() {
 }
 
 // GoogleCalendar test uses library for opting into the playstore and installing app.
-// Launch the app from playstore.
-// Verify app is logged in.
-// Verify app reached main activity page of the app.
+// Checks GoogleCalendar correctly changes the window states in both clamshell and touchview mode.
 func GoogleCalendar(ctx context.Context, s *testing.State) {
 	const (
-		appPkgName = "com.google.android.calendar"
+		appPkgName  = "com.google.android.calendar"
+		appActivity = "com.android.calendar.AllInOneActivity"
+	)
 
+	// Step up chrome on Chromebook.
+	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
+	defer d.Close()
+
+	testSet := s.Param().(testutil.TestParams)
+	// Run the different test cases.
+	for idx, test := range testSet.Tests {
+		// Run subtests.
+		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+			// Launch the app.
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+			s.Log("Created new app activity")
+
+			defer act.Close()
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed start app: ", err)
+			}
+			s.Log("App launched successfully")
+
+			defer act.Stop(ctx, tconn)
+
+			// Take screenshot on failure.
+			defer func() {
+				if s.HasError() {
+					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
+					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+						s.Log("Failed to capture screenshot: ", err)
+					}
+				}
+			}()
+
+			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
+		})
+	}
+}
+
+// launchAppForGoogleCalendar verifies GoogleCalendar is logged in and
+// verify GoogleCalendar reached main activity page of the app.
+func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+
+	const (
 		addButtonClassName       = "android.widget.ImageButton"
 		addButtonDescription     = "Create new event"
 		allowButtonText          = "ALLOW"
@@ -65,57 +143,12 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 		openButtonClassName      = "android.widget.Button"
 		openButtonRegex          = "Open|OPEN"
 		userNameID               = "com.google.android.calendar:id/tile"
-
-		defaultUITimeout = 20 * time.Second
-		longUITimeout    = 5 * time.Minute
 	)
 
-	// Setup Chrome.
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
+	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
+		s.Fatal("Entered launchAppForGoogleCalendar and failed to launch the app: ", currentAppPkg)
 	}
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close()
-
-	s.Log("Enable showing ANRs")
-	if err := a.Command(ctx, "settings", "put", "secure", "anr_show_background", "1").Run(testexec.DumpLogOnError); err != nil {
-		s.Error("Failed to enable showing ANRs: ", err)
-	}
-	s.Log("Enable crash dialog")
-	if err := a.Command(ctx, "settings", "put", "secure", "show_first_crash_dialog_dev_option", "1").Run(testexec.DumpLogOnError); err != nil {
-		s.Error("Failed to enable crash dialog: ", err)
-	}
-
-	s.Log("Installing app")
-	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Fatal("Failed to launch Play Store: ", err)
-	}
-	if err := playstore.InstallApp(ctx, a, d, appPkgName); err != nil {
-		s.Fatal("Failed to install app: ", err)
-	}
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Log("Failed to close Play Store: ", err)
-	}
-
-	must := func(err error) {
-		if err != nil {
-			s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-		}
-	}
-
-	// Launch Google Calendar app.
-	// Click on open button.
-	openButton := d.Object(ui.ClassName(openButtonClassName), ui.TextMatches(openButtonRegex))
-	must(openButton.WaitForExists(ctx, longUITimeout))
-	// Open button exists and click
-	must(openButton.Click(ctx))
+	s.Log("App launched successfully and entered launchAppForGoogleCalendar")
 
 	// Keep clicking next icon until the got it button exists.
 	nextIcon := d.Object(ui.ID(nextIconID))
@@ -126,40 +159,50 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: longUITimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
 		s.Log("GotIt Button doesn't exists: ", err)
-	} else {
-		gotItButton.Click(ctx)
+	}
+	// Click on got it button.
+	if err := gotItButton.Exists(ctx); err != nil {
+		s.Log("GotIt Button doesn't exist: ", err)
+	} else if err := gotItButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on gotItButton: ", err)
 	}
 
-	// Click on allow button to access your calendar.
-	allowButton := d.Object(ui.ClassName(androidButtonClassName), ui.Text(allowButtonText))
-	if err := allowButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else {
-		allowButton.Click(ctx)
-	}
-
-	// Click on allow button to access your contacts.
-	if err := allowButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else {
-		allowButton.Click(ctx)
-	}
-
-	// Click on hambugerIcon in home page of the app.
+	// Keep clicking allow button until hamburgerIcon exists.
 	hamburgerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.DescriptionContains(hamburgerIconDescription))
-	must(hamburgerIcon.WaitForExists(ctx, defaultUITimeout))
-	must(hamburgerIcon.Click(ctx))
+	allowButton := d.Object(ui.ClassName(androidButtonClassName), ui.Text(allowButtonText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := hamburgerIcon.Exists(ctx); err != nil {
+			allowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+		s.Log("hamburgerIcon doesn't exists: ", err)
+	}
+
+	// Click on hamburger icon.
+	if err := hamburgerIcon.Exists(ctx); err != nil {
+		s.Log("hamburgerIcon doesn't exist: ", err)
+	} else if err := hamburgerIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on hamburgerIcon: ", err)
+	}
 
 	// Check app is logged in with username.
 	userName := d.Object(ui.ID(userNameID))
-	must(userName.WaitForExists(ctx, longUITimeout))
+	if err := userName.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Error("userName doesn't exist: ", err)
+	}
 
 	// Click on press back.
-	must(d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0))
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_BACK: ", err)
+	}
 
 	// Check for add icon in home page.
 	addIcon := d.Object(ui.ClassName(addButtonClassName), ui.DescriptionContains(addButtonDescription))
-	must(addIcon.WaitForExists(ctx, longUITimeout))
+	if err := addIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Error("addIcon doesn't exist: ", err)
+	}
 }
