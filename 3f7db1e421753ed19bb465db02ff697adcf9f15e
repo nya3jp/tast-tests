@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "954385dc_43d8a32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T03:50:57Z",
+      "side": 1,
+      "message": "I guess this appRoot can be nil. Is this okay?\n(as Brendan commented, I like the idea defer this before getting appRoot so that we no longer need dumpTree function.)",
+      "range": {
+        "startLine": 187,
+        "startChar": 35,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a96375f7_bb788b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T03:50:57Z",
+      "side": 1,
+      "message": "would you tell me why?\nI think Golang prefers \"UI\" style rather than \"Ui\":\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 196,
+        "startChar": 63,
+        "endLine": 196,
+        "endChar": 80
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d8b625_a1524b89",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T03:50:57Z",
+      "side": 1,
+      "message": "Golang has Stringer interface.\nhttps://tour.golang.org/methods/17\nSo, name this String() and user side can use it by specifying just \u0027%v\u0027",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
