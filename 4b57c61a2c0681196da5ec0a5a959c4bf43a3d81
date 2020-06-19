@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b5ce0e0_cc1441c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T07:53:30Z",
+      "side": 1,
+      "message": "I think we don\u0027t need \".String()\" because you implemented Stringer interface.\nCould you check it works without \".String()\"?",
+      "range": {
+        "startLine": 66,
+        "startChar": 99,
+        "endLine": 66,
+        "endChar": 108
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac89825_11ebd23b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T07:53:30Z",
+      "side": 1,
+      "message": "Actually I don\u0027t think using s.HasError here is not a good idea here.\n\nI think Checking (appRoot !\u003d nil) and (matched \u003d\u003d true) is the condition of success.\nBy doing so, we can return the error when the error happened below (two places) so that error is handled by accessibility.RunTest() and it can take a screenshot.",
+      "range": {
+        "startLine": 168,
+        "startChar": 51,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d998c8_7ddbc436",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T07:53:30Z",
+      "side": 1,
+      "message": "do you mean |len(params.Attributes) \u003e 1|? (ditto below)",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117238ef_ae39f66e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T07:53:30Z",
+      "side": 1,
+      "message": "just curious, how different is it from fmt.Sprintf(\"%+v\", params)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 88
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbd3094_a6af2269",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-19T07:53:30Z",
+      "side": 1,
+      "message": "isn\u0027t it releasing nodes twice?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 22
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
