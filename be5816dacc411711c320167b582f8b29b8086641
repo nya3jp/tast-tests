@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd5b5121_59fdfca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "This was done on purpose due to commentary on last cl.\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2225922/3/src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go#37",
+      "parentUuid": "98b274f8_c79fe9dc",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b7664ac_a2a8629b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "be5816dacc411711c320167b582f8b29b8086641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6139983_cca32d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "8b7664ac_a2a8629b",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a6ad1bff_ba25367a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6a4d09_fc2385b0",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "806bd05b_ca1c3610",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "be5816dacc411711c320167b582f8b29b8086641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62662db6_4446c83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "Done, but this is not a pattern followed by any other test (https://osscs.corp.google.com/search?q\u003ds.Param%5C(%5C).%5C(%5C*%20file:%5C.go)",
+      "parentUuid": "806bd05b_ca1c3610",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "65b504d1_5053db0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "See discussion in pin_print_hp.go - this was done explicitly because of a previous review comment.",
+      "parentUuid": "117e73cf_6e06182f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a46abd_8c58abeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "563bcc0e_0ba671e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a46abd_8c58abeb",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ce2a591_56e63834",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_unsupported.go",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "be5816dacc411711c320167b582f8b29b8086641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67faf890_81dfd5f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_unsupported.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-19T19:45:11Z",
+      "side": 1,
+      "message": "See discussion in pin_print_hp.go",
+      "parentUuid": "1ce2a591_56e63834",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "be5816dacc411711c320167b582f8b29b8086641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
