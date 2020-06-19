@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6cad95_408dccc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-19T16:19:57Z",
+      "side": 1,
+      "message": "This is expected to fail on veyron_micky, right? How about adding a comment:\n\n// TODO(b/154440798): investigate why it fails on veyron_mickey.",
+      "revId": "1b775194ea4aa513bbf1d63f8533c069f37e1581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
