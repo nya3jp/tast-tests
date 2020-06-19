@@ -211,7 +211,14 @@ func (t *Timeline) StopRecording() (*Values, error) {
 	}
 
 	t.cancelRecording()
-	err := <-t.recordingStatus
+
+	var err error
+	select {
+	case err = <-t.recordingStatus:
+	case <-time.After(2 * time.Minute):
+		panic("StopRecording timed out")
+	}
+
 	if err != nil {
 		return nil, err
 	}
