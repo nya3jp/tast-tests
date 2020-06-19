@@ -143,6 +143,47 @@
     },
     {
       "key": {
+        "uuid": "442c7e61_2621b906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T20:54:04Z",
+      "side": 1,
+      "message": "Interesting. Works if I do it inside the cuj test user session.\n\nWe might be fine then.",
+      "parentUuid": "862966e6_9477fa62",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ada7811_3f0c1c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T20:54:04Z",
+      "side": 1,
+      "message": "super nit: Let\u0027s keep this empty line.",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8698ea40_be2a48ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -175,6 +216,23 @@
       "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd08b441_dc7d81b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-19T20:54:04Z",
+      "side": 1,
+      "message": "super nit: ditto, keep it.",
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
