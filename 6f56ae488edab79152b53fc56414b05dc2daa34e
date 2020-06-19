@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "19ca8697_9a8db3ba",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-19T01:35:31Z",
+      "side": 1,
+      "message": "\u003e or if the dependency settles on a design.\n\nSpecifically, CL:2244171.",
+      "parentUuid": "7d2529bf_1cd1f904",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 97
+      },
+      "revId": "6f56ae488edab79152b53fc56414b05dc2daa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c16c446_7e2ecadc",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
