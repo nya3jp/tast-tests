@@ -106,11 +106,11 @@ func init() {
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
-				// Verifies that DUT can connect to an open 802.11ac network on channel 120 with a channel width of 40MHz.
+				// Verifies that DUT can connect to an open 802.11ac network on channel 48 with a channel width of 40MHz.
 				Name: "80211acvht40",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{
-						ap.Mode(ap.Mode80211acPure), ap.Channel(120), ap.HTCaps(ap.HTCapHT40),
+						ap.Mode(ap.Mode80211acPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40),
 						ap.VHTChWidth(ap.VHTChWidth20Or40),
 					}},
 				},
@@ -468,6 +468,15 @@ func init() {
 				Name: "dfs",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)}},
+				},
+			}, {
+				// Verifies that DUT can connect to an open network on the DFS channel 120 (5600MHz).
+				// TODO(b/154440798): Investigate why this fails on veyron_mickey and consider merge this with
+				// "dfs" case after resolution.
+				Name:      "dfs_ch120",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)}},
 				},
 			}, {
 				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
