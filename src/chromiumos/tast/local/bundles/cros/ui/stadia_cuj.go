@@ -1,0 +1,162 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package ui
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         StadiaCUJ,
+		Desc:         "Measures the performance of critical user journey for Stadia",
+		Contacts:     []string{"yichenz@chromium.org"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      10 * time.Minute,
+		Vars: []string{
+			"ui.StadiaCUJ.username",
+			"ui.StadiaCUJ.password",
+		},
+	})
+}
+
+// StadiaCUJ test starts the default game 'Worm Game' and runs it for 5 minutes. It stays on the
+// main game menu instead of playing/interacting with the game.
+func StadiaCUJ(ctx context.Context, s *testing.State) {
+	const timeout = 10 * time.Second
+
+	username := s.RequiredVar("ui.StadiaCUJ.username")
+	password := s.RequiredVar("ui.StadiaCUJ.password")
+
+	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to the test API connection: ", err)
+	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
+	}
+	defer cleanup(ctx)
+
+	conn, err := cr.NewConn(ctx, "https://ggp-staging.sandbox.google.com")
+	if err != nil {
+		s.Fatal("Failed to open the stadia staging instance: ", err)
+	}
+	defer conn.Close()
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the window list: ", err)
+	}
+	id0 := ws[0].ID
+	if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+		s.Fatal("Failed to set the window state to normal: ", err)
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {
+		s.Fatal("Failed to wait for top window animation: ", err)
+	}
+	w0, err := ash.GetWindow(ctx, tconn, id0)
+	if err != nil {
+		s.Fatal("Failed to get the window: ", err)
+	}
+	if w0.State != ash.WindowStateNormal {
+		s.Fatalf("Wrong window state: expected Normal, got %s", w0.State)
+	}
+
+	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
+	if err != nil {
+		s.Fatal("Failed to find webview: ", err)
+	}
+	defer webview.Release(ctx)
+
+	// Start the worm game for testing.
+	wormGame, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Worm Game Edition Play game", Role: ui.RoleTypeButton}, timeout)
+	if err != nil {
+		s.Fatal("Failed to find the worm game: ", err)
+	}
+	defer wormGame.Release(ctx)
+	wormGame.FocusAndWait(ctx, 5*time.Second)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := wormGame.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the worm game start button")
+		}
+		w0, err := ash.GetWindow(ctx, tconn, id0)
+		if err != nil {
+			s.Fatal("Failed to get the window: ", err)
+		}
+		s.Logf("%s", w0.State)
+		if w0.State != ash.WindowStateFullscreen {
+			return errors.New("hasn't entered the game yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		s.Fatal("Failed to start the worm game: ", err)
+	}
+
+	// Wait for the game screen to show up
+	testing.Sleep(ctx, 30 * time.Second)
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a keyboard: ", err)
+	}
+	defer kb.Close()
+
+	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
+		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
+		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
+		configs = append(configs, cuj.NewCustomMetricConfig(
+			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
+			[]int64{50, 80}))
+	}
+	recorder, err := cuj.NewRecorder(ctx, configs...)
+	if err != nil {
+		s.Fatal("Failed to create the recorder: ", err)
+	}
+	if err := recorder.Run(ctx, tconn, func() error {
+
+		s.Log("press space")
+		if err := kb.Accel(ctx, "Space"); err != nil {
+			return errors.Wrap(err, "failed to enter the menu")
+		}
+		// Run the game for 30 seconds.
+		testing.Sleep(ctx, 30 * time.Second)
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to conduct the recorder task: ", err)
+	}
+	if err := recorder.Stop(); err != nil {
+		s.Fatal("Failed to stop the recorder: ", err)
+	}
+
+	pv := perf.NewValues()
+	if err := recorder.Record(pv); err != nil {
+		s.Fatal("Failed to record the data: ", err)
+	}
+	if pv.Save(s.OutDir()); err != nil {
+		s.Error("Failed to save the perf data: ", err)
+	}
+}
