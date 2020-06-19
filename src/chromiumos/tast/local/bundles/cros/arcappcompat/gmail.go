@@ -84,7 +84,7 @@ func init() {
 func Gmail(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.google.android.gm"
-		appActivity = "com.google.android.gm.ConversationListActivityGmail"
+		appActivity = ".ConversationListActivityGmail"
 	)
 
 	// Step up chrome on Chromebook.
@@ -107,7 +107,6 @@ func Gmail(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed start app: ", err)
 			}
-			s.Log("App launched successfully")
 
 			defer act.Stop(ctx, tconn)
 
@@ -141,9 +140,9 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 	)
 
 	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
-		s.Fatal("Failed to launch the app: ", currentAppPkg)
+		s.Fatal("Entered launchAppForGmail and failed to launch the app: ", currentAppPkg)
 	}
-	s.Log("App is launched successfully in launchAppForGmail")
+	s.Log("App launched successfully and entered launchAppForGmailApp")
 
 	// Click on Got It button.
 	GotItButton := d.Object(ui.ClassName(textViewClassName), ui.Text(gotItButtonText))

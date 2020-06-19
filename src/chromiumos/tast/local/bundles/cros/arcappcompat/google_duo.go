@@ -84,7 +84,7 @@ func init() {
 func GoogleDuo(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.google.android.apps.tachyon"
-		appActivity = "com.google.android.apps.tachyon.ui.main.MainActivity"
+		appActivity = ".ui.main.MainActivity"
 	)
 
 	// Step up chrome on Chromebook.
@@ -108,7 +108,6 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed start app: ", err)
 			}
-			s.Log("App relaunched successfully")
 
 			defer act.Stop(ctx, tconn)
 

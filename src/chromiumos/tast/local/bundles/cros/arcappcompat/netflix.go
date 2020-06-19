@@ -85,7 +85,7 @@ func init() {
 func Netflix(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.netflix.mediaclient"
-		appActivity = "com.netflix.mediaclient.ui.launch.UIWebViewActivity"
+		appActivity = ".ui.launch.UIWebViewActivity"
 	)
 
 	// Step up chrome on Chromebook.
@@ -109,7 +109,6 @@ func Netflix(ctx context.Context, s *testing.State) {
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
-			s.Log("App launched successfully")
 
 			defer act.Stop(ctx, tconn)
 
