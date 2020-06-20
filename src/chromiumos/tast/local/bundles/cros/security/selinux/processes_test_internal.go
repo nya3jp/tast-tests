@@ -86,7 +86,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case Stable:
 			testCases = append(testCases, []testCaseType{
 				{cmdline, ".*logger.*-t arc-kmsg-logger.*", "cros_arc_kmsg_logger", zeroProcs, ""},
-				{cmdline, ".*/usr/bin/periodic_scheduler.*", "cros_periodic_scheduler", twoProcs, ""},
 				{cmdline, ".*/usr/share/cros/init/activate_date.sh.*", "cros_activate_date", zeroProcs, ""},
 				{cmdline, "/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs, ""}, // Only when browser exists
@@ -118,6 +117,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/mount-passthrough", "cros_mount_passthrough", zeroProcs, ""},
 				{exe, "/usr/bin/newblued", "cros_newblued", zeroProcs, ""},
 				{exe, "/usr/bin/patchpaneld", "cros_patchpaneld", zeroProcs, ""},
+				{exe, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs, ""},
 				{exe, "/usr/bin/permission_broker", "cros_permission_broker", zeroProcs, ""},
 				{exe, "/usr/bin/powerd", "cros_powerd", zeroProcs, ""},
 				{exe, "/usr/bin/run_oci", "cros_arc_setup", zeroProcs, ""},
