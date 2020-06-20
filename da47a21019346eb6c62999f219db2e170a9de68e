@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42f7033e_7960fa46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T02:39:21Z",
+      "side": 1,
+      "message": "Add blank line to next line for separating section of file pattern and URL pattern.",
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aed38e0_b48508ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T02:39:21Z",
+      "side": 1,
+      "message": "Swap with L232 to group boilerplate code(this line and L231) together.\n\nI\u0027m also consider use a utility function here like:\n\nlet promiseAndCallbacks \u003d () \u003d\u003e {\n  let resolve\n  let reject;\n  let promise \u003d new Promise((resolveCB, rejectCB) \u003d\u003e {\n    resolve \u003d resolveCB;\n    reject \u003d rejectCB;\n  });\n  return {promise, resolve, reject};\n};\n\nlet {promise: closePromise, resolve: resolveClose} \u003d promiseAndCallbacks();\nlet {promise: connectPromise, resolve: resolveConnect} \u003d promiseAndCallbacks();\n\nwindow.CCATestConnection \u003d {\n  connect: connectPromise,\n  close: closePromise,\n  errors,\n  onReady \u003d ...\n}\n\nNot sure if it gain some readability. I\u0027m also fine with current structure.",
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
