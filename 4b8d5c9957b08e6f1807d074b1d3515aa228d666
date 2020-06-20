@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "9f50ae4c_5b5ce616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-20T02:26:01Z",
+      "side": 1,
+      "message": "Sounds good. I expanded the explanation.",
+      "parentUuid": "1507d95a_105c2933",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21638e36_6b5493e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -332,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "8b3d357b_b97d1e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-20T02:26:01Z",
+      "side": 1,
+      "message": "Unfortunately, the video is 1 second long :( But I\u0027m wanting to change these videos in a follow up, so I can extend the duration then?",
+      "parentUuid": "cf08ed45_ea9cebf1",
+      "range": {
+        "startLine": 301,
+        "startChar": 28,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "236820b1_68cf8381",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "I would be fine with this. Let me work on this tomorrow.",
       "parentUuid": "236820b1_68cf8381",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 2
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669ca0ce_774aa002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-20T02:26:01Z",
+      "side": 1,
+      "message": "We discussed this offline, but after that I also discussed with dcastagna@.\n\nHow about for now we leave the sleep just because it\u0027s the easiest thing to do to ensure the video is the only thing on the screen and maximize the chances it gets promoted to an overlay?\n\nHowever, my plan for a follow-up is to do the following:\n\n1) Have two variations for these tests: one that disables HW overlays and another that doesn\u0027t.\n\n2) In the variation that disable HW overlays, I can do what you say: take a screenshot periodically until it passes the color checks.\n\n3) In the variation that don\u0027t disable HW overlays, I can count the number of NV12 overlays periodically and as soon as that becomes 1, I can take a screenshot. I just have to be careful to do this only for devices that support NV12 HW overlays.\n\nDoing this would exercise both the compositing and overlay paths (both of which can be broken easily) and it would avoid the arbitrary sleep. WDYT?",
+      "parentUuid": "9a869319_bf29d811",
       "range": {
         "startLine": 305,
         "startChar": 0,
@@ -450,6 +522,30 @@
     },
     {
       "key": {
+        "uuid": "08e4ec83_6928177f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-20T02:26:01Z",
+      "side": 1,
+      "message": "\u003e I see. I understand the desire. We should clarify though what the test is supposed to achieve. As the screenshots are sampling frames in time, maybe the goal should be to see one good frame, eventually? Or do you want to see multiple good frames?\n\u003e \n\nI only care about one frame since the whole video is just one still image.\n\n\u003e I am thinking if we had verification in phases that may make it more practical. Say fullscreen, then check centers, then verify borders for black and for color. And each of these phases has their own clear failure string.\n\u003e \n\nThe verification in phases is a good idea. I don\u0027t know about checking for black borders though: I don\u0027t really care about them and they might not even be present if the video happens to have the same aspect ratio as the screen, no? I\u0027ve implemented a check for the centers and for the corners plus the 2 padding.\n\n\u003e An offset of 2 might be enough, but only if the video has about the same resolution as the fullscreen (so it is down, not upsampled)?\n\u003e \n\nThe current test videos are 360p, 720p, and 1080p, so at least for the first two cases, there will be upsampling. I kind of want to see how the test behaves with a small padding first. If it\u0027s flaky or fails incorrectly, I can increase it.",
+      "parentUuid": "2c5667a2_58e35277",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c08cb155_47275155",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -509,6 +605,30 @@
       "side": 1,
       "message": "I think no big deal. Maybe just leave a comment and explain how the video was created.",
       "parentUuid": "32a766dc_886a648c",
+      "range": {
+        "startLine": 372,
+        "startChar": 56,
+        "endLine": 372,
+        "endChar": 59
+      },
+      "revId": "4b8d5c9957b08e6f1807d074b1d3515aa228d666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0dd871_282b2a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-20T02:26:01Z",
+      "side": 1,
+      "message": "Sounds good. I expanded the README.md file.",
+      "parentUuid": "590fbd33_7e6d1a5b",
       "range": {
         "startLine": 372,
         "startChar": 56,
