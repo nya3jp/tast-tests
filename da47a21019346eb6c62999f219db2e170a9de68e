@@ -79,6 +79,63 @@
       "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f1032a_76877ea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T04:00:26Z",
+      "side": 1,
+      "message": "Where will close message being posted?",
+      "range": {
+        "startLine": 244,
+        "startChar": 14,
+        "endLine": 244,
+        "endChar": 19
+      },
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751909ec_b211beea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T04:00:26Z",
+      "side": 1,
+      "message": "If L422 get |tconn| failed, this line should not be executed.",
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83dca6f_fd941345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T04:00:26Z",
+      "side": 1,
+      "message": "Why we move this function out of App\u0027s member function?\nThe function will always use |conn| and |outDir| from the same App instance right?",
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
