@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f67e3d3_122912b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-20T13:33:03Z",
+      "side": 1,
+      "message": "We don\u0027t need to record these in cuj recorder. Just get the histograms of these and check their count.\ne.g.\n\n  for _, sadName :\u003d range []string{\"Tabs.SadTab.CrashCreated\",...} {\n    h, err :\u003d metrics.GetHistogram(ctx, tconn, sadName)\n    if err !\u003d nil {\n      s.Fatal(...)\n    }\n\n    if h.TotalCount() !\u003d 0 {\n      s.Fatal(...)\n    }\n  }",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "87cc0477d47e1ad4acc205481431914cdae35622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
