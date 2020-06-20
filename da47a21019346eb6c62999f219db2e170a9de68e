@@ -33,6 +33,52 @@
       "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f8f4e9_a8d0ce2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T03:44:02Z",
+      "side": 1,
+      "message": "I kind of think we should change the name like:\n|onReady| -\u003e |ready|\n|close| -\u003e |onClose|\n|connect| -\u003e |onConnect|\nIMO, the onXXX is a waitable event that have listener(listened by tast |Eval|).\nAnd the function without on prefix are some actions to be taken e.g. |onReady| will notify App side or |notifyReady| may be a better name here.",
+      "range": {
+        "startLine": 234,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9407ed8b_7e269b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-20T03:44:02Z",
+      "side": 1,
+      "message": "Where will the |ready| string be used?",
+      "range": {
+        "startLine": 234,
+        "startChar": 46,
+        "endLine": 234,
+        "endChar": 51
+      },
+      "revId": "da47a21019346eb6c62999f219db2e170a9de68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
