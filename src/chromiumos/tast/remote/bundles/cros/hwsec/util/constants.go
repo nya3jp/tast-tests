@@ -6,15 +6,15 @@ package util
 
 // This file contains some shared constants for vault/key related testing.
 const (
-	FirstUsername        = "PierreDeFermat@example.com"
+	FirstUsername        = "pierredefermat@example.com"
 	FirstPassword        = "F131dTooSm@ll2C0nt@1nMyP@ssw0rd!!"
 	FirstChangedPassword = "a^n+b^n=c^n" // Got a great proof, but margin too small.
 	FirstPin             = "65537"       // 5th Fermat Number
 
-	SecondUsername = "LeonhardEuler@example.com"
+	SecondUsername = "leonhardeuler@example.com"
 	SecondPassword = "e^(i*phi)=cos(phi)+i*sin(phi)"
 	SecondPin      = "271828" // e
-	ThirdUsername  = "Pythagoras@example.com"
+	ThirdUsername  = "pythagoras@example.com"
 	ThirdPassword  = "a^2+b^2=c^2"
 
 	PasswordLabel        = "password"
