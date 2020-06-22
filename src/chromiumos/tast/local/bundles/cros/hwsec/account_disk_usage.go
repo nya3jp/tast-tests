@@ -140,7 +140,7 @@ func createSparseFile(path string, size int64) error {
 // testAccountUsage will test a given account and see if GetAccountDiskUsage() works correctly with it or not.
 // Note that the account's home directory should be empty or nearly empty before calling this.
 // This method doesn't return anything, it'll just output the error or abort the test.
-func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.CmdRunner, username string, utility *hwsec.UtilityCryptohomeBinary) {
+func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.CmdRunner, username string, utility *hwsec.UtilityCryptohomeBinary, testSparseFile bool) {
 	const (
 		// The size of the test file in MiB.
 		testFileSize = 256
@@ -174,9 +174,11 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 		s.Fatal("Failed to write the test file: ", err)
 	}
 
-	// Write a sparse test file. *1024*1024 because 1MiB is 1024*1024 bytes.
-	if err := createSparseFile(testSparseFilePath, testSparseFileSize*1024*1024); err != nil {
-		s.Fatal("Failed to create sparse test file: ", err)
+	if testSparseFile {
+		// Write a sparse test file. *1024*1024 because 1MiB is 1024*1024 bytes.
+		if err := createSparseFile(testSparseFilePath, testSparseFileSize*1024*1024); err != nil {
+			s.Fatal("Failed to create sparse test file: ", err)
+		}
 	}
 
 	// Synchronize cached writes to persistent storage before we query again.
@@ -242,7 +244,7 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to setup vault and user as owner: ", err)
 	}
 
-	testAccountUsage(ctx, s, cmdRunner, util.FirstUsername, utility)
+	testAccountUsage(ctx, s, cmdRunner, util.FirstUsername, utility, true /* test sparse file case */)
 
 	// Set up the second user as ephemeral mount and test the ephemeral mount.
 	// Note: This need to be second because ephemeral mount is only possible after owner is established.
@@ -261,7 +263,7 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to setup vault and user for second user: ", err)
 	}
 
-	testAccountUsage(ctx, s, cmdRunner, util.SecondUsername, utility)
+	testAccountUsage(ctx, s, cmdRunner, util.SecondUsername, utility, true /* test sparse file case */)
 
 	// Set up the third user as a user with ecryptfs backed vault and test it.
 	err = setUpEcryptfsVaultAndUser(ctx, util.ThirdUsername, util.ThirdPassword, util.PasswordLabel, utility)
@@ -278,5 +280,6 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to setup vault and user for third user: ", err)
 	}
 
-	testAccountUsage(ctx, s, cmdRunner, util.ThirdUsername, utility)
+	// Note that sparse file in ecryptfs doesn't result in sparse file in underlying disk.
+	testAccountUsage(ctx, s, cmdRunner, util.ThirdUsername, utility, false /* do not test sparefile with ecryptfs */)
 }
