@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "5b39edbc_9c134e71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-06-22T16:35:37Z",
+      "side": 1,
+      "message": "Please use your @google name.\n\nsemihalf@google.com should be good.",
+      "parentUuid": "af356097_0a2a55a4",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46149897_be62e371",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1
@@ -242,6 +266,29 @@
         "startChar": 31,
         "endLine": 37,
         "endChar": 44
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f092ce6b_f98c0d9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-06-22T16:35:37Z",
+      "side": 1,
+      "message": "Didn\u0027t we say that ssh/network is the wrong way to go?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
       },
       "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
