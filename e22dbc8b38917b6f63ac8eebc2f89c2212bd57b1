@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "b4973240_a9229c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T01:47:00Z",
+      "side": 1,
+      "message": "I meant too much DRY for test here. sorry!",
+      "parentUuid": "30f63e95_bc288201",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "e22dbc8b38917b6f63ac8eebc2f89c2212bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d82d8ee_b5dd21c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 3
