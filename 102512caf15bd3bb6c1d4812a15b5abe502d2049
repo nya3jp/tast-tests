@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8998750_ec085ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-22T02:20:51Z",
+      "side": 1,
+      "message": "Can we make this vkb.GetVirtualKeyboardLocation?",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8e3eee_0bce913e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-22T02:20:51Z",
+      "side": 1,
+      "message": "Don\u0027t we have to Poll until the coordinates change i.e. is SetDisplayRotationSync sufficient?",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256cdda3_d4523034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-22T02:20:51Z",
+      "side": 1,
+      "message": "nit: \"got %q; want %q\"?",
+      "range": {
+        "startLine": 409,
+        "startChar": 71,
+        "endLine": 409,
+        "endChar": 79
+      },
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6110c9a_dffee101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-22T02:20:51Z",
+      "side": 1,
+      "message": "arc.ChromeVirtualKeyboard is still informational (in fact it\u0027s 100% failing right now). We have to prioritize promoting the test to CQ in order to prevent regression, so I\u0027m a bit concerned about adding up new test cases. It doesn\u0027t have to be in this CL, but do you think we can split them into two separate tests, or do you have any plan for stabilizing them so that we can promote them to CQ?",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
