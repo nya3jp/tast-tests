@@ -90,7 +90,7 @@ func PlayStore(ctx context.Context, s *testing.State) {
 
 	// Install app.
 	s.Log("Installing app")
-	if err := playstore.InstallApp(ctx, a, d, pkgName); err != nil {
+	if err := playstore.InstallAppByIntent(ctx, a, d, pkgName); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 }
