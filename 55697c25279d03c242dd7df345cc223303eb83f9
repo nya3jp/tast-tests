@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54ead49f_76340902",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T21:41:57Z",
+      "side": 1,
+      "message": "This is actually old documentation and not correct anymore",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 74
+      },
+      "revId": "55697c25279d03c242dd7df345cc223303eb83f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f62950_e19a6343",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T21:41:57Z",
+      "side": 1,
+      "message": "nit: So this is launching the play store to a specific page with an intent, but it is not really installing the app with an intent, so I am not sure if this name is the best.",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "55697c25279d03c242dd7df345cc223303eb83f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
