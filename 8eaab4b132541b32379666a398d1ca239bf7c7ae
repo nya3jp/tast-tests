@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3bb150eb_899596d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-22T09:38:04Z",
+      "side": 1,
+      "message": "For this test, the two hostapd are run on different phy (one on 2.4G and one on 5G band) so it should be fine here.\n\nFor the BSSID part, I haven\u0027t traced the related code so I\u0027m not sure. But, I see the behavior of the test changed once. It is originally using same frequency for both hostapd, so it is also possible that the comment is out-dated.",
+      "parentUuid": "ac33af1a_2c743a77",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
