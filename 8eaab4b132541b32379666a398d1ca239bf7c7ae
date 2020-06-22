@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ac33af1a_2c743a77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T09:11:12Z",
+      "side": 1,
+      "message": "I don\u0027t know why the original Autotest claims that we cannot connect to the AP that multiple SSIDs sharing the same BSSID.\n\nAs long as each SSID runs on different channel (and even the different band), I guess the device can connect to either AP without any problem.\n\nHowever, that reminds me an issue: does our Tast wificell framework support multiple interface correctly? Yenlin, can you confirm?",
+      "parentUuid": "71f42568_aa29ab68",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4

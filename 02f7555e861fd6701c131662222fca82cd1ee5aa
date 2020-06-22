@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7957c3f_a89ff6aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T09:11:12Z",
+      "side": 1,
+      "message": "Though the description is cloned from Autotest counterpart, please elaborate what behavior we expect to see in the test.",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3616980d_01602587",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T09:11:12Z",
+      "side": 1,
+      "message": "Let\u0027s append an underscore: \"TEST_TEST_%d_\"",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b37c25b_1d280454",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 5
