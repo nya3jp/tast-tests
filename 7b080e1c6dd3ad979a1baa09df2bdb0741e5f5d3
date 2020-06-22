@@ -94,6 +94,52 @@
     },
     {
       "key": {
+        "uuid": "1e9dcfc9_7d25a156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-22T14:19:19Z",
+      "side": 1,
+      "message": "nit: maybe use numEvents here and numEvents * 2 above?",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e73445_8d71dc47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-22T14:19:19Z",
+      "side": 1,
+      "message": "should be introduce some delay to be closer to user input?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f2d968_23178548",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -110,6 +156,29 @@
         "startChar": 79,
         "endLine": 108,
         "endChar": 80
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc039a90_9be34639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-06-22T14:19:19Z",
+      "side": 1,
+      "message": "please consider alternative way, not relying on logcat which is flaky by nature.\nAlternative: \n* set some property in Android code and read it here.\n* write some xml/txt file in data partition of apk or sdcard and read it in tast context.",
+      "range": {
+        "startLine": 108,
+        "startChar": 51,
+        "endLine": 108,
+        "endChar": 69
       },
       "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
