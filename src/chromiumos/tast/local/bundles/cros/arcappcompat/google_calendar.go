@@ -97,7 +97,7 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
-	if err := playstore.InstallApp(ctx, a, d, appPkgName); err != nil {
+	if err := playstore.InstallAppFromIntent(ctx, a, d, appPkgName); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
