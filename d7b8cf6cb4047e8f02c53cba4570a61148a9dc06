@@ -16,6 +16,360 @@
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e7f540_a6f15358",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "// ... is the maximum amount of time for rebooting the device.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715f3e35_60625476",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "content of the test file.",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a50348_b1a51f22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "the phase",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54cbc9c_247375ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": ". Then",
+      "range": {
+        "startLine": 55,
+        "startChar": 95,
+        "endLine": 55,
+        "endChar": 98
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0684f075_e4cb4c5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": ". It",
+      "range": {
+        "startLine": 55,
+        "startChar": 43,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0fbc3a_e589d97d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "It would be easier to read naming it \"cryptohome\" or \"cryptohomeUtil\".",
+      "range": {
+        "startLine": 56,
+        "startChar": 63,
+        "endLine": 56,
+        "endChar": 70
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa25cd63_dc5cb660",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Can we use d.WaitUnreachable()?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b63998a_3c9d4b87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Can be omitted.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84789516_ca7647eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "As long as WaitConnect succeeded, why we need to run /bin/true on DUT?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112c5ea9_ebf4c2f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Move to const () at the line 35?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3d4266_ef822e16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Where is the 20 seconds gap inserted?",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 47
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e6048a2_b206ab55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "As long as the logging is to inform test runner what the test is doing for time consuming tasks, it is okay to log.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5120b62a_b9dda287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "No need to log as you already return an error.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb6dc24_d9daf3ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "We used to omit the main test function\u0027s comment as it is addressed in testing.Test.Desc field.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c434bf_7818454b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "goes wrong",
+      "range": {
+        "startLine": 233,
+        "startChar": 104,
+        "endLine": 233,
+        "endChar": 127
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863e0d31_0f7434a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Clean them up to avoid interfering the following tests.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48cbf6d9_13ff8e5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "The method name is self-explanatory. The comment can be removed. Same below.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78c8169_66861362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-22T08:05:45Z",
+      "side": 1,
+      "message": "Error\n\nSame below.",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 8
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
