@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "529e248e_0fe46a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-22T07:57:48Z",
+      "side": 1,
+      "message": "Cq-Depend: cromium:2237576",
+      "revId": "17e36b7aec819048fab608b97c1aba3fb71e2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9113e9_8ceee91e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-22T07:57:48Z",
+      "side": 1,
+      "message": "Remove blank line",
+      "revId": "17e36b7aec819048fab608b97c1aba3fb71e2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8062ff_95aadd32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-22T07:57:48Z",
+      "side": 1,
+      "message": "nit: rephrase (also above).  Maybe just keep \"We want to run this test on ARC++ enabled boards.\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 71
+      },
+      "revId": "17e36b7aec819048fab608b97c1aba3fb71e2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
