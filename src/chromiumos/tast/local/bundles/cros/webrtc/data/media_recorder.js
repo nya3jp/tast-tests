@@ -48,12 +48,12 @@ async function testStartAndRecorderState() {
   const recorder = await createMediaRecorder();
   return await new Promise((resolve, reject) => {
     recorder.onstart = (event) => {
-      recorder.stop();
       if (recorder.state === 'recording') {
         resolve();
       } else {
         reject(new Error('Recording state is unexpected: ' + recorder.state));
       }
+      recorder.stop();
     };
     recorder.start(1);
   });
