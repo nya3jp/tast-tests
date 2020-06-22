@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "53bb8abc_359e9a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T03:41:08Z",
+      "side": 1,
+      "message": "The latest patch outputs the tree only on the second error.\n\nI think\n- We want to output the error on both errors in this func.\n- We need to return error, not using s.Error here because accessibility.RunTest handles the error and consistency with other arc.Accessibility* tests.\n\nWould you update to satisfy above?\n\nI think using anonymous function instead of s.HasError can be a solution.",
+      "parentUuid": "2b82b077_bf7078c7",
+      "range": {
+        "startLine": 168,
+        "startChar": 51,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d998c8_7ddbc436",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 20
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "ah I tried using \"%+v\" specifier, but it seems to not work here. \nI think it is because params has some nil properties, Attributes and State can be nil.",
       "parentUuid": "117238ef_ae39f66e",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 88
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2754e26e_22e5439a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T03:41:08Z",
+      "side": 1,
+      "message": "What part didn\u0027t work?\nName is not wrapped by quotes, but I think others working https://play.golang.org/p/fslERJ3ElPs",
+      "parentUuid": "1c161b41_a2e1e9b5",
       "range": {
         "startLine": 57,
         "startChar": 33,
