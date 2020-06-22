@@ -22,6 +22,30 @@
       "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ab947a_167320e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-22T02:34:55Z",
+      "side": 1,
+      "message": "There is an \"arc\" dependency, but that\u0027s apparently meant for running non-ARC tests only on boards that have ARC.\n\nAs for something like android_p_or_vm, that\u0027s not supported right now. I asked about it in the ARCVM chat last week: https://dynamite-preprod.sandbox.google.com/room/AAAAOWNQg6I/4EfPj9h4qfc. It sounds like how to handle the combinations of Android versions and informational/critical tests is still up in the air. For this case in particular, there\u0027s also the issue of not supporting arm ARCVM.",
+      "parentUuid": "36f43ed1_3eecc079",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
