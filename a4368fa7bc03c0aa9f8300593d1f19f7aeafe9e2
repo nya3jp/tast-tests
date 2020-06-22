@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7c83beb2_1a280f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f4c6ea_ae16b021",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffba481d_9e10e90b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
         "patchSetId": 5
@@ -51,6 +69,24 @@
       "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ed8c80_813ded83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffba481d_9e10e90b",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "0a94d647_6480dc95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7304204d_d9ad3b64",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0241c028_c0befe56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "d97617e7_3c9dde1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "fileWaitTime is removed",
+      "parentUuid": "0241c028_c0befe56",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1536f97_eb1facaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
@@ -120,6 +204,30 @@
       "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b69d6c_e9a0a035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1536f97_eb1facaf",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +367,48 @@
     },
     {
       "key": {
+        "uuid": "84d215ca_2aa67683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Changed to use polling.\nPlease see the comment below.",
+      "parentUuid": "f246cc83_d987dacd",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709162ba_07c3e965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Created b/159522677, crbug/1097567, b/159582246 to investigate and have some initial findings.\nAdded some TODOs. I will use Poll() until they are resolved.\nWith polling, it usually succeeds in the 2nd / 3rd attempt, taking 20 sec more.",
+      "parentUuid": "2f0e32ae_90a6054b",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ade0f_53dbbc75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
@@ -279,6 +429,30 @@
       "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f738cc18_60084090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-06-22T16:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143ade0f_53dbbc75",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 81
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
