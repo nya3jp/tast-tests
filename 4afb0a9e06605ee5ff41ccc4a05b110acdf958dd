@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "d86f5a8e_b6320c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-22T23:15:52Z",
+      "side": 1,
+      "message": "I am testing it with my own device so it should be working fine when they\u0027re out of corp network.",
+      "parentUuid": "91997f74_9856f340",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ada7811_3f0c1c9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4

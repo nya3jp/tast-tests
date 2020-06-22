@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f05f0ddd_bdd797d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-22T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c102148b_faa4fc1a",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "550d1211_83645c87",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 14
@@ -60,6 +84,30 @@
       "writtenOn": "2020-06-22T22:10:46Z",
       "side": 1,
       "message": "As I tried locally, this histogram does not appear. Does Stadia use WebRTC for video playing?\nIf not, maybe it\u0027s okay to reomve this.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cdd834_15865d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-22T23:15:52Z",
+      "side": 1,
+      "message": "Yeah it doesn\u0027t appear on my device either so guess it is not using WebRTC (I don\u0027t exactly know what components they are using actually...).\n\nDoes Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video work well here? https://screenshot.googleplex.com/bP5szbMKDd4",
+      "parentUuid": "550d1211_83645c87",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -86,6 +134,24 @@
       "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7317ae6d_ac17bbe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-22T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c76c87a_7f730836",
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
