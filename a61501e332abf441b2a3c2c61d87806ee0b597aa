@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb485e9_8643a876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "How many numbers of time tests do you expect to have in this category?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e846a66_0e4d0bed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "Throughout the code, please try to use time.Duration instead of bare integer types. With time.Duration we have less chance of misusing units (seconds vs. milliseconds).",
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8caba9_bd072b09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "huge nit: time.Duration is not needed (it\u0027s inferred from time.Hour)",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af356097_0a2a55a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "Can you add a group contact if there\u0027s a good one?",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46149897_be62e371",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "This can be removed as it\u0027s empty.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12d813f_ffaa7322",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "What\u0027s the plan of running this test? Is it run only manually?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaea94b4_e4a25923",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc695e5a_6b16fec9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "d time.Duration",
+      "range": {
+        "startLine": 35,
+        "startChar": 59,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485bf20b_d287268f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "measureSleep",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbcb99a_4dcfefbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "time.Duration",
+      "range": {
+        "startLine": 35,
+        "startChar": 72,
+        "endLine": 35,
+        "endChar": 75
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2d0028_7a20f092",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "int64(d.Seconds())",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52809e5d_cf59460d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "style: Running\n\nPlease start log message with capital letters.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050bdbfb_534d13f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "return elapsed",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42e134a_efd9218d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "Optional: This function is fairly small, you can inline it in VerifySleep.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b03e11_f7063589",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "time.Duration",
+      "range": {
+        "startLine": 51,
+        "startChar": 60,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7beefc6_d12edbde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Measured %v\", measured)\n\nNote that time.Duration is pretty formatted with %v.\nhttps://play.golang.org/p/9wDJTpJAm3s",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8060b430_05ebdccb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "s.Logf(\"[OK] Measured %v\", measured)",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e8b425_8a114ef2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "Rather than checking this condition runtime, how about computing the test timeout from sleep length and number of iterations?\n\n const (\n   sleepDuration \u003d 5 * time.Minute\n   sleepIterations \u003d 10\n )\n\n ...\n\n testing.AddTest(\u0026testing.Test{\n   ...\n   Timeout: sleepDuration * sleepIterations + time.Minute,\n })",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a386eb0_9042d647",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:37:27Z",
+      "side": 1,
+      "message": "style: Sleeping",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
