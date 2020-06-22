@@ -94,6 +94,30 @@
       "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1f836d_c103c7ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-22T03:48:02Z",
+      "side": 1,
+      "message": "Thanks for the reply! What future changes would there be made that can cause issues?\n\nAnd asides from marking tests as informational, are there other factors that we would want to do differently for ARC++ and ARCVM tests that would warrant keeping them separate? I would prefer only duplicating things as a last resort.\n\nCould you clarify what you mean with the problem of ARM tests? I guess to some extend we might add some logic in the tests themselves to skip on certain platforms (gtest supports a skip option, which I\u0027ve been using for the video decoder tests).",
+      "parentUuid": "fc3860f3_f9acba43",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
