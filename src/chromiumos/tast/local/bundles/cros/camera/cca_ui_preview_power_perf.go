@@ -20,6 +20,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testArgsForCCAUIPreviewPowerPerf struct {
+	setupOption setup.BatteryDischargeMode
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIPreviewPowerPerf,
@@ -30,15 +34,50 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
-			Name: "noarc",
-			Pre:  chrome.LoggedIn(),
+			Name:              "noarc",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "noarc_nobatterymetrics",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testArgsForCCAUIPreviewPowerPerf{
+				setupOption: setup.NoBatteryDischarge,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -76,7 +115,8 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	args := s.Param().(testArgsForCCAUIPreviewPowerPerf)
+	sup.Add(setup.PowerTest(ctx, tconn, args.setupOption))
 
 	const (
 		iterationCount          = 30
@@ -94,7 +134,12 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
+	metricsSet := power.TestMetrics()
+	if args.setupOption == setup.NoBatteryDischarge {
+		metricsSet = power.TestMetricsWithoutBattery()
+	}
+
+	metrics, err := perf.NewTimeline(ctx, metricsSet, perf.Interval(iterationDuration))
 
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
