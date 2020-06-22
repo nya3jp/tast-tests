@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Sanity,
+		Func:         Basic,
 		Desc:         "Tests basic lacros startup",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -25,7 +25,7 @@ func init() {
 	})
 }
 
-func Sanity(ctx context.Context, s *testing.State) {
+func Basic(ctx context.Context, s *testing.State) {
 	l, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
