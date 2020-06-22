@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		SoftwareDeps: []string{"android_p", "chrome", caps.HWEncodeH264},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Pre:          arc.BootedWithVideoLogging(),
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
@@ -36,6 +36,15 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraData: []string{video.Bear192P.Name},
+		}, {
+			Name: "h264_192p_i420_vm",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Bear192P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "android_vm", "amd64"},
+			ExtraData:         []string{video.Bear192P.Name},
 		}, {
 			Name: "h264_360p_i420",
 			Val: encoding.TestOptions{
