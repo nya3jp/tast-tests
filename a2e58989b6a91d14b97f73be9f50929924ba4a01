@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf56f43_b272f555",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/ui_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T07:31:57Z",
+      "side": 1,
+      "message": "Brandan@\nI moved this to output the filename, rather than the full file path.\n\nIn the previous tree dumps we were doing for a11y testing, we found that outputting the full file path was long and unnecessary.",
+      "range": {
+        "startLine": 38,
+        "startChar": 80,
+        "endLine": 38,
+        "endChar": 94
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
