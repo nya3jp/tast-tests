@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "392b58aa_2bb5c04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-06-22T02:28:13Z",
+      "side": 1,
+      "message": "Let\u0027s have a shorter timeout e.g. 10 seconds",
+      "range": {
+        "startLine": 476,
+        "startChar": 5,
+        "endLine": 476,
+        "endChar": 8
+      },
+      "revId": "0bee012a819bd99ff2f6b6a47b4a0435977112b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
