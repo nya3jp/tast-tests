@@ -66,6 +66,16 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
+	s.Log("Waiting for the virtual keyboard to show")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+
+	s.Log("Waiting for the virtual keyboard to render buttons")
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
@@ -110,26 +120,30 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 
 		// Need to hide and show virtual keyboard again to re-init suggestions after changing input method.
 		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-			s.Fatal("Failed to show the virtual keyboard: ", err)
+			s.Error("Failed to show the virtual keyboard: ", err)
+			continue
 		}
 
-		element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "e14s-inputbox"}, 5*time.Second)
-		if err != nil {
-			s.Fatal("Failed to find input element: ", err)
+		if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
+			s.Error("Failed to wait for the virtual keyboard to hide: ", err)
+			continue
 		}
-		s.Log("Click input field to trigger virtual keyboard shown up")
-		if err := element.LeftClick(ctx); err != nil {
-			s.Fatal("Failed to click the input element: ", err)
+
+		if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
+			s.Error("Failed to show the virtual keyboard: ", err)
+			continue
 		}
 
 		s.Log("Waiting for the virtual keyboard to show")
 		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+			s.Error("Failed to wait for the virtual keyboard to show: ", err)
+			continue
 		}
 
 		s.Log("Waiting for the virtual keyboard to render buttons")
 		if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+			s.Error("Failed to wait for the virtual keyboard to render: ", err)
+			continue
 		}
 
 		if err := vkb.TapKeys(ctx, tconn, testCase.Keys); err != nil {
