@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "764bdc02_4801de2d",
+        "filename": "android/ArcFileReaderTest/AndroidManifest.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-06-22T20:55:07Z",
+      "side": 1,
+      "message": "text/plain ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "bab5d0500383a46ead3e7f35270415b2d516588b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
