@@ -22,6 +22,30 @@
       "revId": "1d60a5a300eb15ca65978cdcd563f7012878fff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f53f693_29a37cd2",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "499730bd_85d625e6",
+      "range": {
+        "startLine": 24,
+        "startChar": 73,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "1d60a5a300eb15ca65978cdcd563f7012878fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
