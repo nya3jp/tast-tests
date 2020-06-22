@@ -22,6 +22,30 @@
       "revId": "1ac19fece509ac84dc083d27e01c47d9d5411ca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91e3466_34e12a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-22T22:09:51Z",
+      "side": 1,
+      "message": "Ah... It shouldn\u0027t have surprised me. This is a map (likely hashmap) behind the scene, even though it\u0027s a literal.\n\nDone.",
+      "parentUuid": "c0147eaa_f4d2f498",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 83
+      },
+      "revId": "1ac19fece509ac84dc083d27e01c47d9d5411ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
