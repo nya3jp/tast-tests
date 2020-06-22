@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60e83bd2_15c1a318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-22T20:35:37Z",
+      "side": 1,
+      "message": "This is done for security reasons - LibAssistant debug mode exposes potential PII so their team decided to only enable it when a beta backend is used.\n\nUnfortunately this is not something we can control/change.",
+      "parentUuid": "e7212008_23a244a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "84e0e368a388342097bef8e3977de8a001a6564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0128293e_9ff4aaf8",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "84e0e368a388342097bef8e3977de8a001a6564e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6155ab9_9087af1f",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-06-22T20:35:37Z",
+      "side": 1,
+      "message": "It is supposed to be stable, but I agree we want to keep an eye on it.",
+      "parentUuid": "0128293e_9ff4aaf8",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "84e0e368a388342097bef8e3977de8a001a6564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
