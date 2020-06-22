@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46fafd7_13d4a121",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2020-06-22T04:42:21Z",
+      "side": 1,
+      "message": "You could use |upstart.WaitForJobStatus()| like ready.go [1]. \n\n[1]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/ready/ready.go#70",
+      "revId": "e19f4c98b8c296232c6f490355b2639d7da9a702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
