@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f43ed1_3eecc079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-22T02:10:32Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that we have to use separate names for the tests running on ARCVM. This will quickly become hard to manage. Can\u0027t we reuse the same tests, and use something like \"android_p_or_vm\"? The tests themselves should be able to detect the platform we\u0027re running on and account for any differences.",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
