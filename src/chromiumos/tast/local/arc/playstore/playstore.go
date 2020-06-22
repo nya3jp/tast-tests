@@ -18,7 +18,7 @@ import (
 
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
-// Play Store should be open to the homepage before running this function.
+// Play Store should be open to the app page containing the Install button.
 func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
 	const (
 		defaultUITimeout = 20 * time.Second
@@ -34,14 +34,6 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		okButtonText       = "ok"
 		skipButtonText     = "skip"
 	)
-
-	testing.ContextLog(ctx, "Opening Play Store with Intent")
-	if err := a.WaitIntentHelper(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for ArcIntentHelper")
-	}
-	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to send intent to open the Play Store")
-	}
 
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
@@ -117,5 +109,23 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 	if _, ok := pkgs[pkgName]; !ok {
 		return errors.Errorf("failed to install %s", pkgName)
 	}
+	return nil
+}
+
+// InstallAppByIntent install an app from the Play Store home page.
+// Play Store should be open to the homepage before running this function.
+func InstallAppByIntent(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
+	testing.ContextLog(ctx, "Opening Play Store with Intent")
+	if err := a.WaitIntentHelper(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for ArcIntentHelper")
+	}
+	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to send intent to open the Play Store")
+	}
+
+	if err := InstallApp(ctx, a, d, pkgName); err != nil {
+		return errors.Wrapf(err, "failed to install %s", pkgName)
+	}
+
 	return nil
 }
