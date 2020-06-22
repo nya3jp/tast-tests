@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "37e179e8_ea094ec6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2020-06-22T17:11:45Z",
+      "side": 1,
+      "message": "nit: copy-pasta error.",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e31953d_c4ebda21",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
         "patchSetId": 9
@@ -64,6 +87,75 @@
         "startChar": 28,
         "endLine": 30,
         "endChar": 34
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748538a8_fbfda988",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2020-06-22T17:11:45Z",
+      "side": 1,
+      "message": "What does this mean from a logs collection POV. In general, tests should try to not modify system logs when possible because it makes for differences in logs across tests and makes it harder to make centralized improvements (e.g., to how logs are collected / compressed / correlated).\n\n+nya for any opinion Tast has on this topic.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa66361_7a40c1aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2020-06-22T17:11:45Z",
+      "side": 1,
+      "message": "To me, it is unclear what this type does.\n\nI\u0027m not a syzkaller / kernel expert, but a more descriptive name and / or docstring might be helpful.",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48742b8c_0b29225a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2020-06-22T17:11:45Z",
+      "side": 1,
+      "message": "Perhaps this should be \n\n syzkallerRunDuration + 2 * time.Minute",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 32
       },
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
