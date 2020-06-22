@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "8dfb2aee_0e3487b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T10:51:54Z",
+      "side": 1,
+      "message": "I guess act.Close() is called earlier than this deferred func. I would put it after starting activity.",
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cf8458_e234d327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T10:51:54Z",
+      "side": 1,
+      "message": "nit: match to the expectedRoot?",
+      "range": {
+        "startLine": 52,
+        "startChar": 98,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6171e7f9_a7c773fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T10:51:54Z",
+      "side": 1,
+      "message": "nit: It doesn\u0027t \"find\" node but \"match\" the node. How about something like (\"Node didn\u0027t match. got %v, want %+v\"...)?",
+      "range": {
+        "startLine": 65,
+        "startChar": 38,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec55f44_8a271b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T10:51:54Z",
+      "side": 1,
+      "message": "nit: Can we merge this with the output above, like (\"Failed to get children of %+v\", expectedRoot.findParams())?",
+      "range": {
+        "startLine": 72,
+        "startChar": 33,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0460e98_ba526d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T10:51:54Z",
+      "side": 1,
+      "message": "nit: explaining where we got error is more friendly. e.g. (ctx, \"number of children is incorrect, got %d; want %d; currently at %+v\", len(actualChildren), len(expectedRoot.Children), currentRoot.findParams())",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 127
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cf56f43_b272f555",
         "filename": "src/chromiumos/tast/local/chrome/ui/faillog/ui_tree.go",
         "patchSetId": 25
