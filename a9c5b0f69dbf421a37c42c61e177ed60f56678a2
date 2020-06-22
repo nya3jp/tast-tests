@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e51519f2_30e4214b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-22T22:10:46Z",
+      "side": 1,
+      "message": "I think this can be tracked by \"recorder\" of histogram (not the recorder of cuj):\n  sadHistRecorder, err :\u003d metrics.StartRecorder(ctx, tconn, \"Tabs.SadTab.CrashCreated\", ...)\n  if err !\u003d nil {\n    ...\n  }\n\nand then\n  sadDiffs, err :\u003d sadHistRecorder.Histogram(ctx, tconn)\n\nSee: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/metrics#Recorder",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550d1211_83645c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-22T22:10:46Z",
+      "side": 1,
+      "message": "As I tried locally, this histogram does not appear. Does Stadia use WebRTC for video playing?\nIf not, maybe it\u0027s okay to reomve this.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c76c87a_7f730836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-22T22:10:46Z",
+      "side": 1,
+      "message": "Could we have the name of the histogram? e.g.\n  s.Fatalf(\"Tab renderer crashed. Sad tab showed up (histogram %s)\", h.Name)",
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

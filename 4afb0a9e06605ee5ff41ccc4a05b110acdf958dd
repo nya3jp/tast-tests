@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "91997f74_9856f340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-22T22:10:46Z",
+      "side": 1,
+      "message": "the test should work on device.  you can verify through leasing a device from skylab, or simply using a physical device in your desk would be okay, either way they\u0027re out of corp network.",
+      "parentUuid": "86f86702_acdfc960",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "4afb0a9e06605ee5ff41ccc4a05b110acdf958dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ada7811_3f0c1c9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
