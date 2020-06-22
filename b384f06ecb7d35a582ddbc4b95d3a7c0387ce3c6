@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1450fe9a_eceb8371",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T20:30:57Z",
+      "side": 1,
+      "message": "Just note, there is no need to add this extra information for each patch set you upload. It is fine to just have the above paragraph and modify it only when something core changes.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 72
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa794b1_39542972",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
         "patchSetId": 2
