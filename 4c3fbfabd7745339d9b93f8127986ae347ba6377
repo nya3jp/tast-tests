@@ -70,6 +70,30 @@
       "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3860f3_f9acba43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-22T02:56:16Z",
+      "side": 1,
+      "message": "I would rather avoid using arc, since using that would likely cause problems with any future changes to the tast deps done by the ARC team. There\u0027s also the problem of the ARM tests (unless we\u0027re fine running them even though they\u0027re going to fail).",
+      "parentUuid": "5ca043cb_92018b10",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
