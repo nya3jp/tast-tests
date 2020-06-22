@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c102148b_faa4fc1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T22:14:48Z",
+      "side": 1,
+      "message": "oops, I forgot my own code to help capture hist diffs...",
+      "parentUuid": "e51519f2_30e4214b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "a9c5b0f69dbf421a37c42c61e177ed60f56678a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "550d1211_83645c87",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 14
