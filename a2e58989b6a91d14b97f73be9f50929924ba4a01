@@ -131,6 +131,30 @@
       "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00393b68_fb6a9066",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/ui_tree.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T19:44:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cf56f43_b272f555",
+      "range": {
+        "startLine": 38,
+        "startChar": 80,
+        "endLine": 38,
+        "endChar": 94
+      },
+      "revId": "a2e58989b6a91d14b97f73be9f50929924ba4a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
