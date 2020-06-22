@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8309d7e7_e6e60296",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-22T19:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01dfd7d_50307d3b",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9574c3e_3630591a",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "35352da18c979b99c40dbebf5c0593b095921610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608bcd9d_38a049de",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-22T19:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9574c3e_3630591a",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "488ec4a9_37900444",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-22T19:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab43da8_af6fbd5b",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a6e4382_73e978a8",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2020-06-17T00:31:53Z",
       "side": 1,
       "message": "It\u0027d be more direct if just added a member to store the starting v4 role and restore it back during close if it\u0027s not the same.  Defer isn\u0027t quite the best way to do this.",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6090b556_9c2caa40",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-22T19:30:28Z",
+      "side": 1,
+      "message": "I implemented it this way in order to create a reusable abstraction. Creating a new member for starting v4 role, and adding a special hard-coded call during svo.Close(), would require us to duplicate that logic the the next time we want to do something similar, such as crbug.com/1012925. As our framework grows, I worry that this will get messy. So, I created Defer to keep it all in one place.\n\nWith that additional context, do you still recommend keeping an individual variable for the starting v4 role?",
+      "parentUuid": "5a6e4382_73e978a8",
       "revId": "35352da18c979b99c40dbebf5c0593b095921610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
