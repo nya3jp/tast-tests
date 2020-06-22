@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02c027ef_5682f13b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-22T01:20:10Z",
+      "side": 1,
+      "message": "are you sure you can add this test to informational group w/o any logging issue?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
