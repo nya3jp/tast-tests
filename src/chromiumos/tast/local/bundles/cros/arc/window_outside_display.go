@@ -115,9 +115,9 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 
-	initBounds := info.WorkArea
-	initBounds.Width /= 2
-	initBounds.Height /= 2
+	initBounds := info.Bounds
+	initBounds.Width = initBounds.Width / 4 * 3
+	initBounds.Height = initBounds.Height / 4 * 3
 	if actualBounds, _, err := ash.SetWindowBounds(ctx, tconn, window.ID, initBounds, window.DisplayID); err != nil {
 		s.Fatal("Failed to set window bounds: ", err)
 	} else if actualBounds != initBounds {
