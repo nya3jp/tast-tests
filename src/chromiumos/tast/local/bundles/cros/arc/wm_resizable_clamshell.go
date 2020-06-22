@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,8 +13,6 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -32,50 +29,13 @@ func init() {
 }
 
 func WMResizableClamshell(ctx context.Context, s *testing.State) {
-
-	// testFunc represents a function that tests if the window is in a certain state.
-	type testFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
-
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
-
-	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
-		s.Fatal("Failed to install app: ", err)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close()
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure if tablet mode is disabled: ", err)
-	}
-	defer cleanup(ctx)
-
-	for _, test := range []struct {
-		name string
-		fn   testFunc
-	}{
-		{"RC01_launch", wmRC01}, // resizable/clamshell: default launch behavior
-	} {
-		s.Logf("Running test %q", test.name)
-
-		if err := test.fn(ctx, tconn, a, d); err != nil {
-			path := fmt.Sprintf("%s/screenshot-cuj-failed-test-%s.png", s.OutDir(), test.name)
-			if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-				s.Log("Failed to capture screenshot: ", err)
-			}
-			s.Errorf("%s test failed: %v", test.name, err)
-		}
-	}
+	wm.SetupAndRunTestCases(ctx, s, true, []wm.TestCase{
+		wm.TestCase{
+			// resizable/clamshell: default launch behavior
+			Name: "RC01_launch",
+			Func: wmRC01,
+		},
+	})
 }
 
 // wmRC01 covers resizable/clamshell default launch behavior.
