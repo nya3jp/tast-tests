@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e36f3791_3ee73e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pinterest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T21:48:24Z",
+      "side": 1,
+      "message": "can you mention your extra changes to here in the commit description?",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ae062ed1a1bafffa3ee410c3f88c2e1da5911000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
