@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "86611e01_8e2b6fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "That\u0027s right (entire desktop tree is outputted).\nThat\u0027s why I left the TODO above, which aims to fix that.",
+      "parentUuid": "71f45f31_300e0c79",
+      "range": {
+        "startLine": 196,
+        "startChar": 63,
+        "endLine": 196,
+        "endChar": 80
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d8b625_a1524b89",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 18
