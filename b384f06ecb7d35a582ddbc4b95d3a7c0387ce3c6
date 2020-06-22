@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa794b1_39542972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:47:33Z",
+      "side": 1,
+      "message": "Verifies default ARC apps are installed",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247f80d4_ba2b1477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:47:33Z",
+      "side": 1,
+      "message": "Can you add a group contact as well?",
+      "range": {
+        "startLine": 21,
+        "startChar": 63,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933c4c74_c6a0e549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:47:33Z",
+      "side": 1,
+      "message": "Since this is a simple repeat, let us check it in a loop.\n\n for _, app :\u003d range []app.App{app.Playstore, app.Duo, ...} {\n   if err :\u003d ...; err !\u003d nil {\n     s.Fatalf(\"Failed to wait for %s (%s) to be installed: %v\", app.Name, app.ID, err)\n   }\n }",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2c8a88_5bd7aee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T09:47:33Z",
+      "side": 1,
+      "message": "I assume we want to wait until the test timeout. Then you can use ctxutil.MaxTimeout instead to avoid repeating the same constant.",
+      "range": {
+        "startLine": 45,
+        "startChar": 72,
+        "endLine": 45,
+        "endChar": 85
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
