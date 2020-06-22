@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "20427674_6058d3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T18:41:23Z",
+      "side": 1,
+      "message": "I think your observation is correct. It is what stadia does. Forgot about that. A TODO sounds good but let\u0027s associate with the bug to follow new TODO style.\n\n    // TODO(yichenz): ...\n-\u003e  // TODO(crbug.com/1091976): ...",
+      "parentUuid": "c32bb5a8_d11d89f7",
+      "range": {
+        "startLine": 94,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e16e3920_3373c077",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 12
@@ -306,6 +330,24 @@
       "writtenOn": "2020-06-22T15:56:37Z",
       "side": 1,
       "message": "Should we assign the output of \"pv.Save\" to |err|?",
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b9403e_5a1e3ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T18:41:23Z",
+      "side": 1,
+      "message": "How about this one? Think we should\n\n    if pv.Save(s.OutDir()); err !\u003d nil {\n\u003d\u003e  if err :\u003d pv.Save(s.OutDir()); err !\u003d nil {",
+      "parentUuid": "7d3610d1_0b5a5fa4",
       "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
