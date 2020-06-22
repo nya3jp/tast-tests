@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,6 +35,7 @@ func init() {
 			"platform.Drivefs.user",     // GAIA username.
 			"platform.Drivefs.password", // GAIA password.
 		},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("nyan_kitty")), // TODO(crbug.com/1097615): Remove when test fixed on nyan_kitty.
 	})
 }
 
