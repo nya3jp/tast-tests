@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e0edbe6_3c62e7c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_hp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-22T16:04:02Z",
+      "side": 1,
+      "message": "Removed everywhere.",
+      "parentUuid": "2970a2c8_71d38385",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "69f5ac8a0046fdf2c75ddf97f15675a4954790e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "931cc402_831174da",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pinprint/pinprint.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "69f5ac8a0046fdf2c75ddf97f15675a4954790e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c1574b_5f7e0d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pinprint/pinprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-06-22T16:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931cc402_831174da",
+      "revId": "69f5ac8a0046fdf2c75ddf97f15675a4954790e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
