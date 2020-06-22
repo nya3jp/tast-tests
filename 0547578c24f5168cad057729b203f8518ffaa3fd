@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adb5bee0_486ee42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "nit: Use |timeout| ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6381c3c5_2fd4d766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "nit: Use |timeout| ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 89,
+        "endChar": 50
+      },
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2668400_1cacc622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "nit: End sentence with a \".\".",
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8517d5_62407f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "Do we have a better signal than sleeping? webview.DescendantWithTimeout to find something on the game UI?",
+      "range": {
+        "startLine": 94,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16e3920_3373c077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "nit: ditto, end with a \".\".",
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5011ac22_233e5e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "Sorry for the not fully thought suggestion.\n\nI just realized that we are using a pre and could be reusing the chrome instance. So instead of checking what is the current histogram count, we probably should check the delta.\ni.e.\n\n  Before test:\n\n    sadHistNames :\u003d []string{\"Tabs.SadTab.CrashCreated\",...}\n    sadBefore, err :\u003d metrics.GetHistograms(ctx, tconn, sadHistNames)\n    if err !\u003d nil {\n      ....\n    }\n\n   After test\n\n    sadAfter, err :\u003d metrics.GetHistograms(ctx, tconn, sadHistNames)\n    if err !\u003d nil {\n       ...\n    }\n\n    sadDiffs, err :\u003d metrics.DiffHistograms(sadBefre, sadAfter)\n    ...\n\n    // Check the sadDiffs and fail if any histogram has non-zero num.\n    for _, h :\u003d range sadDiffs {\n      if h.Sum !\u003d 0 {\n        s.Fatal(\"Tab renderer crashed...\")\n      }\n    }",
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e37307d_861125bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "nit: Isn\u0027t |err| nil when we get here ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 56,
+        "endLine": 140,
+        "endChar": 61
+      },
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3610d1_0b5a5fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-22T15:56:37Z",
+      "side": 1,
+      "message": "Should we assign the output of \"pv.Save\" to |err|?",
+      "revId": "0547578c24f5168cad057729b203f8518ffaa3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
