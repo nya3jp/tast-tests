@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "492f9e3f_eb66fdc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e179e8_ea094ec6",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e31953d_c4ebda21",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de187d65_468c5547",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e31953d_c4ebda21",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "55b1c1ff_5df6349c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6b6413_e5b79187",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 75
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb95dbc_845158fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "25afff19_a2985af1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb95dbc_845158fd",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "748538a8_fbfda988",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-22T17:11:45Z",
       "side": 1,
       "message": "What does this mean from a logs collection POV. In general, tests should try to not modify system logs when possible because it makes for differences in logs across tests and makes it harder to make centralized improvements (e.g., to how logs are collected / compressed / correlated).\n\n+nya for any opinion Tast has on this topic.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77800d23_2b9bfd4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "syzkaller relies on both dmesg logs(during fuzzing) and pstore ramoops file(after a subsequent reboot).\nWARNING messages can show up in the dmesg log during boottime(unrelated to any fuzzing); which syzkaller incorrectly interprets as a WARNING triggered by one of its inputs once it starts fuzzing; which in-turn causes syzkaller to reboot the DUT. This continues to happen in a loop.",
+      "parentUuid": "748538a8_fbfda988",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "995e86ca_2882b217",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "This type represents VM/DUT specific configuration. I\u0027ll rename it to DUTConfig and add a comment in as well.",
+      "parentUuid": "9aa66361_7a40c1aa",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48742b8c_0b29225a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -160,6 +304,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b672199_7ad2dba1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48742b8c_0b29225a",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,54 @@
     },
     {
       "key": {
+        "uuid": "0dbb0043_350a9351",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b86c0b_3927c6bd",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc04f020_69873cbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a9eb609_3645bba7",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8994cf1f_8f3319d2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -229,6 +445,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e0b78d_084553b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "I see, in that case I\u0027ll remove these as the syzkaller test group is scheduled to run only on boards with octopus debug kernels on them.",
+      "parentUuid": "8994cf1f_8f3319d2",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "90b4fa41_c1beb89b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "7be5dde3_9f1bdfe2",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f67132a9_f99326c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -275,6 +539,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04503da8_7c1c4b4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67132a9_f99326c6",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "dc4ec7c3_27d0a84c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64e3734_510e2fcc",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 70
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30a798d3_28235cf6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -321,6 +633,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686598d3_b4459679",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a798d3_28235cf6",
+      "range": {
+        "startLine": 126,
+        "startChar": 12,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "6369c0bd_74eb1c8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce875b3a_eb419b52",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e59dfe4_46dd7b04",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -367,6 +727,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d0bfde_73d375cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e59dfe4_46dd7b04",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "982f46d3_d97ceed4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55dadbf_50f40cfd",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ceda7d2_8ac98542",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
@@ -413,6 +821,30 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939f646a_f937a5ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ceda7d2_8ac98542",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 21
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -459,6 +891,54 @@
       "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef96f42_31e0a228",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adbcac3_d4cccefc",
+      "range": {
+        "startLine": 215,
+        "startChar": 48,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cdd10_ff9f455e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-22T19:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f657660c_9ac735f2",
+      "range": {
+        "startLine": 215,
+        "startChar": 23,
+        "endLine": 215,
+        "endChar": 32
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
