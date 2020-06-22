@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0128293e_9ff4aaf8",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-06-22T17:05:23Z",
+      "side": 1,
+      "message": "I am wondering if this will increase the test flakiness because of unstable server. Let\u0027s keep an eye on this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "84e0e368a388342097bef8e3977de8a001a6564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
