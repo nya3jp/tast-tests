@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "5d4ff68b_58158158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-06-22T03:41:08Z",
+      "side": 1,
+      "message": "I guess you want to output only the nodes under appRoot, but I think outputiong the entire tree to a file is more helpful. e.g. some other window or node interrupts us, we can debug from it.\nSo I prefer to leave it.",
+      "parentUuid": "86611e01_8e2b6fa9",
+      "range": {
+        "startLine": 196,
+        "startChar": 63,
+        "endLine": 196,
+        "endChar": 80
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4d8b625_a1524b89",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 18
