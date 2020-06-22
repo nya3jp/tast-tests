@@ -181,9 +181,13 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 		}
 	} else {
 		s.Log("Waiting for activity to finish")
-		if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+		if err := act.WaitForFinished(ctx, 10*time.Second); err != nil {
 			s.Fatal("Failed to wait for activity: ", err)
 		}
+
+		// TODO Sleep to catch some extra logs.
+		s.Log("Sleeping 5s to catch some extra logs...")
+		time.Sleep(5 * time.Second)
 
 		localOutputLogFile, localXMLLogFile, err := c2e2etest.PullLogs(ctx, a, arcFilePath, s.OutDir(), "", outputLogFileName, outputXMLFileName)
 
@@ -216,7 +220,7 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts enc
 	}
 	defer vl.Close()
 
-	runARCVideoEncoderTest(ctx, s, a, opts, nil, binArgs{testFilter: "C2VideoEncoderE2ETest.Test*"})
+	runARCVideoEncoderTest(ctx, s, a, opts, nil, binArgs{testFilter: "C2VideoEncoderE2ETest.TestSimpleEncode"})
 }
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.

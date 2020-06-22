@@ -139,9 +139,9 @@ var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWD
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
 	"--vmodule=" + strings.Join([]string{
-		"*/media/gpu/chromeos/*=2",
-		"*/media/gpu/vaapi/*=2",
-		"*/media/gpu/v4l2/*=2"}, ","))
+		"*/media/gpu/chromeos/*=4",
+		"*/media/gpu/vaapi/*=4",
+		"*/media/gpu/v4l2/*=4"}, ","))
 
 var chromeUseHwDecoderForSmallResolutions = chrome.ExtraArgs(
 	// The Renderer video stack might have a policy of not using hardware

@@ -76,10 +76,10 @@ var bootedWithVideoLoggingPre = &preImpl{
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 	extraArgs: []string{
 		"--vmodule=" + strings.Join([]string{
-			"*/media/gpu/chromeos/*=2",
-			"*/media/gpu/vaapi/*=2",
-			"*/media/gpu/v4l2/*=2",
-			"*/components/arc/video_accelerator/*=2"}, ",")},
+			"*/media/gpu/chromeos/*=4",
+			"*/media/gpu/vaapi/*=4",
+			"*/media/gpu/v4l2/*=4",
+			"*/components/arc/video_accelerator/*=4"}, ",")},
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
