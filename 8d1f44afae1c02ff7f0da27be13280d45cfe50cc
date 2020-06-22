@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cbd0322_1294f716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-22T22:45:39Z",
+      "side": 1,
+      "message": "Fatal / Fatalf will stop the test immediately, so it can not be used in a loop. You can use s.Error instead. \n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "8d1f44afae1c02ff7f0da27be13280d45cfe50cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
