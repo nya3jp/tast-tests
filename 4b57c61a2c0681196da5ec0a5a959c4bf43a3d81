@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37f40b15_99355002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "nice it works!",
+      "parentUuid": "9b5ce0e0_cc1441c4",
+      "range": {
+        "startLine": 66,
+        "startChar": 99,
+        "endLine": 66,
+        "endChar": 108
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ac89825_11ebd23b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b82b077_bf7078c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ac89825_11ebd23b",
+      "range": {
+        "startLine": 168,
+        "startChar": 51,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "377a4268_56687fc4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "whoops thanks",
+      "parentUuid": "d5d998c8_7ddbc436",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "117238ef_ae39f66e",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 20
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "1c161b41_a2e1e9b5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "ah I tried using \"%+v\" specifier, but it seems to not work here. \nI think it is because params has some nil properties, Attributes and State can be nil.",
+      "parentUuid": "117238ef_ae39f66e",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 88
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fbd3094_a6af2269",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 20
@@ -114,6 +210,30 @@
       "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db72d5f2_293e7b91",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T01:37:03Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "4fbd3094_a6af2269",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 22
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
