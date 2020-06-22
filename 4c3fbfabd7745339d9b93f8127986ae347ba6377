@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "e881da88_ba3a70a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-06-22T05:04:01Z",
+      "side": 1,
+      "message": "string(out)? `output` may not be needed",
+      "range": {
+        "startLine": 106,
+        "startChar": 41,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b92263b_a0de547e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-06-22T05:04:01Z",
+      "side": 1,
+      "message": "Currently, the order of params is like:\n* h264\n* vp8\n* vp9\n* h264_vm\n* vp8_vm\n* vp9_vm\n\nHow about reorder this like this?\n* h264\n* h264_vm\n* vp8\n* vp8_vm\n* vp9\n* vp9_vm\n\nThen, we can easily ensure that a codec is tested on both ARC++ and ARCVM.",
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36f43ed1_3eecc079",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
         "patchSetId": 2
@@ -133,6 +173,30 @@
       "side": 1,
       "message": "Based on the linked discussion, the software team is aware that the current situation isn\u0027t great, so I would expect some improvements from them in the future (especially since this problem will only get worse the more Android versions we support).\n\nRight now hardware decode isn\u0027t available on ARM, so all the c2e2e tests will fail when they try to create a MediaCodec. I guess it would be possible to modify the tast code or the c2e2etest apk to skip the tests on arm, but I think it\u0027s much better to handle that directly with tast softwaredeps.",
       "parentUuid": "0c1f836d_c103c7ef",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd586a89_a6c9de76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-06-22T05:04:01Z",
+      "side": 1,
+      "message": "I\u0027m personally okay with the current version until some improvement discussed is supported:\nhttps://docs.google.com/document/d/14TL-zZ3OqXVtfF3vwdvWPjjgt4CIO9z2guNH8C2lwOo/edit#heading\u003dh.x8svw1emvfrt\n\nRegarding ARM, acourbot@ has already tested it locally, IIRC. So, we might be able to wait for ARM, depending on his current bandwidth. I think it\u0027s CL:2228308 and one more CL in concierge.",
+      "parentUuid": "a783da35_73773b2b",
       "range": {
         "startLine": 46,
         "startChar": 23,
