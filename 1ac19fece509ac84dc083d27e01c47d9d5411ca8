@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0147eaa_f4d2f498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-22T21:38:19Z",
+      "side": 1,
+      "message": "The iteration order of Golang\u0027s map should be intentionally random, there\u0027s no guarantee which one comes first. If it relies on a particular order (for launchBoundsThreshold), please consider using the sorted order of keys, i.e.\n  testdata :\u003d map[string]func(*arc.Activity, *ash.Window) error { ... }\n  for _, pkgName :\u003d range []string{pkgPhoneSize, pkgTabletSize, pkgMaximized} {\n    verifyFunc :\u003d map[pkgName]\n    ...\n  }\n\nSee also: https://nathanleclaire.com/blog/2014/04/27/a-surprising-feature-of-golang-that-colored-me-impressed/#iteration-order, https://blog.golang.org/maps#TOC_7.",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 83
+      },
+      "revId": "1ac19fece509ac84dc083d27e01c47d9d5411ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
