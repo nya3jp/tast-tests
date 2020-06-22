@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e31953d_c4ebda21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "I\u0027m afraid that we might forget about this message soon and it gets stale. How about moving it to around testing.Test.Timeout?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6b6413_e5b79187",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "This is correct only when running the test locally. Use testing.State.OutDir to obtain the actual directory.",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 75
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb95dbc_845158fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "hug enit: string is not needed (it\u0027s inferred)",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9eb609_3645bba7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "style: Please start error/log messages with capital letters.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38b86c0b_3927c6bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Can you include err in the message for error details?\n\nAlso, s.Fatal is a shorthand for s.Error + return.\n\n s.Fatal(\"Unable to find DUT kernel version info: \", err)",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8994cf1f_8f3319d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Skipping tests at runtime is discouraged.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nInstead you can define software dependencies to kernel versions. See:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be5dde3_9f1bdfe2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Same here, please avoid skipping tests at runtime.\n\nI think in this case we can make the test fail. I guess this is an unexpected situation when scheduling syzkaller tests?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67132a9_f99326c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Why sleep?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64e3734_510e2fcc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Optional: My recommendation is to create a top-level temporary dir with ioutil.TempDir and create fixed-named directories/files under it. Then we can remove all files with just one call of os.RemoveAll(), and file names are slightly more predictable for debugging.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 70
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a798d3_28235cf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 126,
+        "startChar": 12,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce875b3a_eb419b52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "What\u0027s the point of Sync? IIUC completion of Write is sufficient for the written data to be visible from other processes.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e59dfe4_46dd7b04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Optional: You can write JSON to a stream by:\n\n err :\u003d json.NewEncoder(configFile).Encode(config)",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55dadbf_50f40cfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "Please prefer testexec.CommandContext. It comes with better defaults for Tast tests.",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ceda7d2_8ac98542",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "It is a race to access manager.Cmd.Process in this goroutine.\n\nActually we can do this without goroutine:\n\n managerCmd :\u003d testexec.CommandContext(ctx, syzManager, ...)\n ...\n\n if err :\u003d managerCmd.Start(); err !\u003d nil { ... }\n\n func() {\n   defer managerCmd.Wait()\n\n   if err :\u003d testing.Sleep(ctx, syzkallerRunDuration); err !\u003d nil {\n     managerCmd.Kill()\n     s.Fatal(\"Failed to wait syz-manager: \", err)\n   }\n\n   managerCmd.Process.Signal(os.Interrupt)\n }()",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 21
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2adbcac3_d4cccefc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "nit: usually leading / is not used.",
+      "range": {
+        "startLine": 215,
+        "startChar": 48,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f657660c_9ac735f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:25:17Z",
+      "side": 1,
+      "message": "filepath.Join",
+      "range": {
+        "startLine": 215,
+        "startChar": 23,
+        "endLine": 215,
+        "endChar": 32
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
