@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "028dcf66_c647afbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T07:31:57Z",
+      "side": 1,
+      "message": "Done, as per offline discussion moved tree dumping to a11y.go",
+      "parentUuid": "5d4ff68b_58158158",
+      "range": {
+        "startLine": 196,
+        "startChar": 63,
+        "endLine": 196,
+        "endChar": 80
+      },
+      "revId": "3f7db1e421753ed19bb465db02ff697adcf9f15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d8b625_a1524b89",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 18

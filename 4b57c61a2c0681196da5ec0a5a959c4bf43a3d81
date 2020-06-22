@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "24ff4941_d2923145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T07:31:57Z",
+      "side": 1,
+      "message": "Moved this to a11y.go, since we want to print the tree on error (regardless of the test)",
+      "parentUuid": "53bb8abc_359e9a27",
+      "range": {
+        "startLine": 168,
+        "startChar": 51,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d998c8_7ddbc436",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 20
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "What part didn\u0027t work?\nName is not wrapped by quotes, but I think others working https://play.golang.org/p/fslERJ3ElPs",
       "parentUuid": "1c161b41_a2e1e9b5",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 88
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0711fdc6_55024c22",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-22T07:31:57Z",
+      "side": 1,
+      "message": "thanks for your help.\nSeems like doing string() here, resulted in this method being called again (resulting in infite loop)",
+      "parentUuid": "2754e26e_22e5439a",
       "range": {
         "startLine": 57,
         "startChar": 33,
