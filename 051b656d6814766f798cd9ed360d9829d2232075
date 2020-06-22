@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7d0c06_e6085016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-22T13:08:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we are expecting more memory types.  Maybe we can simplify this one.",
+      "revId": "051b656d6814766f798cd9ed360d9829d2232075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213cbbe5_28f91d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-22T13:08:06Z",
+      "side": 1,
+      "message": "In memory probe we need to handle multiple dram components with the same name.",
+      "revId": "051b656d6814766f798cd9ed360d9829d2232075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
