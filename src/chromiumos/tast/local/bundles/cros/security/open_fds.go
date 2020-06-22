@@ -27,7 +27,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 			"chromeos-security@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
