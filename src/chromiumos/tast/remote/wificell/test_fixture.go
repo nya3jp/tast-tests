@@ -419,13 +419,18 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	ctx, st := timing.Start(ctx, "tf.PingFromServer")
 	defer st.End()
 
-	addr, err := tf.ClientIPv4Addrs(ctx)
-	if err != nil {
+	addrs, err := tf.ClientIPv4Addrs(ctx)
+	if err != nil || len(addrs) == 0 {
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
+	clientIP, _, err := net.ParseCIDR(addrs[0])
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse IP address %s", addrs[0])
+	}
+
 	pr := remoteping.NewRemoteRunner(tf.routerHost)
-	res, err := pr.Ping(ctx, addr[0], opts...)
+	res, err := pr.Ping(ctx, clientIP.String(), opts...)
 	if err != nil {
 		return err
 	}
