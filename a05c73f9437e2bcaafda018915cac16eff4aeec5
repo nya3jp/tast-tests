@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2551090b_e430ad16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-22T10:29:49Z",
+      "side": 1,
+      "message": "I think most remote tests want to do the same thing after reboot. I filed crbug.com/1097710 to track this.\n\nUntil crbug.com/1097710 is implemented please go ahead with this approach. But can you add a short TODO comment here mentioning crbug.com/1097710?",
+      "range": {
+        "startLine": 349,
+        "startChar": 11,
+        "endLine": 349,
+        "endChar": 35
+      },
+      "revId": "a05c73f9437e2bcaafda018915cac16eff4aeec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
