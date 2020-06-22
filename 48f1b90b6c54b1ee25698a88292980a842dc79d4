@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17ad1096_a3cd1c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-22T21:33:43Z",
+      "side": 1,
+      "message": "To avoid more tests that install apps through the play store and the flakiness that comes with them, can this just ensure that the playstore opens to the correct page? That should still ensure that the omnibox search is working correctly.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "48f1b90b6c54b1ee25698a88292980a842dc79d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
