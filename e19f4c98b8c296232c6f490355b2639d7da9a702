@@ -34,6 +34,24 @@
       "revId": "e19f4c98b8c296232c6f490355b2639d7da9a702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0a5c65_af0c7573",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2020-06-22T05:17:52Z",
+      "side": 1,
+      "message": "Oh, you are right.",
+      "parentUuid": "002fd085_74bd27b0",
+      "revId": "e19f4c98b8c296232c6f490355b2639d7da9a702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
