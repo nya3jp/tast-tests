@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "7730328e_6c276147",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-22T06:38:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23da1bc0_6c44fb38",
+      "range": {
+        "startLine": 101,
+        "startChar": 54,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "94ac74adeca366bee170570b624892da0ba1480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3926106b_f8002fdb",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3

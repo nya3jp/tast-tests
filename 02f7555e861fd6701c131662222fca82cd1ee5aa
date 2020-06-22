@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b37c25b_1d280454",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-22T06:38:12Z",
+      "side": 1,
+      "message": "minor nit: as we don\u0027t poll for the ssids, it might be a little more intuitive to only save res.BSSList in Poll and have this check outside and after Poll.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
