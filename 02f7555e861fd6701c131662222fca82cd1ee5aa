@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30b8db2f_a19f39ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-22T20:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7957c3f_a89ff6aa",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3616980d_01602587",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cb16dc20_36c3ecb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-22T20:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3616980d_01602587",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b37c25b_1d280454",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e086a3a_edf04522",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-22T20:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b37c25b_1d280454",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "02f7555e861fd6701c131662222fca82cd1ee5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

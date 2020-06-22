@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "42cad205_fccb8931",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-22T20:38:14Z",
+      "side": 1,
+      "message": "This is the CL where the behavior changed:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/1159461/",
+      "parentUuid": "3bb150eb_899596d6",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
