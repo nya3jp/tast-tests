@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1911fd84_c1e37387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Update: it turns out the rtc clock in ARCVM is not *quite* synced to the host as I thought initially. While they are within 1 second of each other, the ARCVM rtc clock seems to be somewhere on the order of ~10ms behind the host clock. This means that our current method of measuring total latency (rtc timestamp in the test and in the app) does not work and reports negative latencies on ARCVM. We may have to wait until the ARCVM clock-sync work is further along before this will work. For now, I will remove disable this on ARCVM.",
+      "parentUuid": "91c17ba7_077d0dd4",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "a3d1640418c3ed2c3ed4dc90c2fec65224ec0bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b9ada80_b2d29f9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 2

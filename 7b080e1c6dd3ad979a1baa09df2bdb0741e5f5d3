@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "48f7702a_0cb7b658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "478a5f3c_3afb4b3f",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04560c9_37754bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1d5d3f_c564ad54",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c302e3d1_3fb194b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97334f00_bc5eb987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c302e3d1_3fb194b0",
+      "range": {
+        "startLine": 25,
+        "startChar": 73,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fb327ded_a99f347a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "This was supposed to be a simple way to check whether the test was on ARCVM, and log the RTC mean metric if it was. For now we can\u0027t support ARCVM with this test so I\u0027ll remove this.",
+      "parentUuid": "6775e012_1a7d0eb9",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e9dcfc9_7d25a156",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f69a5f49_f9881993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9dcfc9_7d25a156",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37e73445_8d71dc47",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c1aec1_d47c3d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "From running the test locally it looks like there is not much difference between latency calculated using the time.Now() timestamp (eventTimes) and latency calculated using the kernel timestamp. Over a few runs, I\u0027m seeing an added ~0.2ms to the mean latency calculated using time.Now() vs the kernel timestamp. Given that we\u0027re currently recording eventTimes in whole milliseconds, any delay we add would likely overcompensate.",
+      "parentUuid": "37e73445_8d71dc47",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,54 @@
     },
     {
       "key": {
+        "uuid": "80adae7e_4e2d53d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc039a90_9be34639",
+      "range": {
+        "startLine": 108,
+        "startChar": 51,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df0d6426_437ca850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f2d968_23178548",
+      "range": {
+        "startLine": 108,
+        "startChar": 79,
+        "endLine": 108,
+        "endChar": 80
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd03db8b_0e3a43e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "c726710f_b7042b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "I removed this for now, see above comment.",
+      "parentUuid": "fd03db8b_0e3a43e9",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "490c4b23_24be5f7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea0f3e6_fe875ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-22T18:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "490c4b23_24be5f7e",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "7b080e1c6dd3ad979a1baa09df2bdb0741e5f5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
