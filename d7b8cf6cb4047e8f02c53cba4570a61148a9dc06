@@ -128,6 +128,29 @@
     },
     {
       "key": {
+        "uuid": "6c49a007_b9bb8376",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-22T14:35:22Z",
+      "side": 1,
+      "message": "This is a bit redundant. Just write\n// createUserAndFlag mounts the user\u0027s vault...",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e0fbc3a_e589d97d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
         "patchSetId": 1
@@ -276,6 +299,29 @@
     },
     {
       "key": {
+        "uuid": "163b57c9_001e9819",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-22T14:35:22Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fb6dc24_d9daf3ca",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
         "patchSetId": 1
@@ -287,6 +333,64 @@
       "writtenOn": "2020-06-22T08:05:45Z",
       "side": 1,
       "message": "We used to omit the main test function\u0027s comment as it is addressed in testing.Test.Desc field.",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed2629a_7ef29ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-22T14:35:22Z",
+      "side": 1,
+      "message": "This is required by golint but tast explicitly ignored the warning. That said, Test.Desc is much appropriate place to put additional info.\n\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast-lint/check/golint.go?l\u003d29\u0026rcl\u003dc5c87bf035af67cb4f7dce57abad0b2c09738c48",
+      "parentUuid": "3fb6dc24_d9daf3ca",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d80456_cccd3e12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-22T14:35:22Z",
+      "side": 1,
+      "message": "Can you call ctxutil.Shorten(ctx, cleanupTime) to save some time to cleanup?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5576c0ca_60d83242",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-06-22T14:35:22Z",
+      "side": 1,
+      "message": "How about \ns.Fatal(\"Failed to createUserAndFlag: \", err)\n\nStage1, Stage2, Stage3 doesn\u0027t hold much information for developer who doesn\u0027t familiar with this test.\n\nsame below",
+      "range": {
+        "startLine": 230,
+        "startChar": 11,
+        "endLine": 230,
+        "endChar": 25
+      },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
