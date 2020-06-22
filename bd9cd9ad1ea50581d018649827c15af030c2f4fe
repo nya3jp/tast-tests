@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06f53e4a_ad2e48ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-22T06:50:26Z",
+      "side": 1,
+      "message": "Oops, is this a typo of preparation? (not sure why Tricium did not find this)",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "bd9cd9ad1ea50581d018649827c15af030c2f4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
