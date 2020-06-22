@@ -46,6 +46,30 @@
       "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca043cb_92018b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-06-22T02:48:50Z",
+      "side": 1,
+      "message": "I think it would be better to use use \"arc\" here, as these tests should work on any variant of Android. We are also not planning on maintaining separate policies for ARC++ and ARCVM tests related to e.g. running in CQ. All of these tests are currently informational. If we want to enable these tests in CQ we will probably maintain a small whitelist and add dedicated \"_cq\" tests: https://crrev.com/c/2224742",
+      "parentUuid": "13ab947a_167320e6",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
