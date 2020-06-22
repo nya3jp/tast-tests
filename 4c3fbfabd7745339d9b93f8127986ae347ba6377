@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6156c73c_ae6b3a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-22T05:33:23Z",
+      "side": 1,
+      "message": "Whoops, not sure how I duplicated that line.",
+      "parentUuid": "e881da88_ba3a70a0",
+      "range": {
+        "startLine": 106,
+        "startChar": 41,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b92263b_a0de547e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c2f01e_b00ffa74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-22T05:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b92263b_a0de547e",
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +239,30 @@
       "side": 1,
       "message": "I\u0027m personally okay with the current version until some improvement discussed is supported:\nhttps://docs.google.com/document/d/14TL-zZ3OqXVtfF3vwdvWPjjgt4CIO9z2guNH8C2lwOo/edit#heading\u003dh.x8svw1emvfrt\n\nRegarding ARM, acourbot@ has already tested it locally, IIRC. So, we might be able to wait for ARM, depending on his current bandwidth. I think it\u0027s CL:2228308 and one more CL in concierge.",
       "parentUuid": "a783da35_73773b2b",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4c3fbfabd7745339d9b93f8127986ae347ba6377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e513ec_03c6e7f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-06-22T05:33:23Z",
+      "side": 1,
+      "message": "Waiting until ARM changes are checked in is fine with me.",
+      "parentUuid": "cd586a89_a6c9de76",
       "range": {
         "startLine": 46,
         "startChar": 23,
