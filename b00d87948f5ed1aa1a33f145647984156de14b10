@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06d84ec3_28cdd7db",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-23T18:20:46Z",
+      "side": 1,
+      "message": "Ack. I don\u0027t think any test should intentionally pass in a nil svo, so I would prefer to keep the error. If someone wants to boot to Normal without svo, they can directly call d.Reboot().",
+      "parentUuid": "4f3a772a_90f0959a",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f1eb151_8663cbc8",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8bf96979_0b343487",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-23T18:20:46Z",
+      "side": 1,
+      "message": "This is covered (without using \"fallthrough\") in PS4. In the model I\u0027ve written, any successful reboot should end in a \"return nil\" (such as in L66). Any others will reach the end of the switch-case, and return an error (L76).",
+      "parentUuid": "4f1eb151_8663cbc8",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed0ea9de_ced8d6e0",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e16720_69e91663",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-23T18:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0ea9de_ced8d6e0",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
