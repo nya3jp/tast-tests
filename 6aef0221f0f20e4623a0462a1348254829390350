@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bfb66c9_42f55ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-06-23T23:48:39Z",
+      "side": 1,
+      "message": "The first check (document.readyState \u003d\u003d\u003d \u0027complete\u0027) is probably not needed, but instead, you should check that document.activeElement is not null.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "6aef0221f0f20e4623a0462a1348254829390350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
