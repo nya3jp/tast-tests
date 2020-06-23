@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63972c65_5b9e4312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_memory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-06-23T09:32:15Z",
+      "side": 1,
+      "message": "More like a counter?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "5ec9e13ec8d7fc5b173f5af9f62d717f28d2b1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
