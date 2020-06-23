@@ -351,9 +351,10 @@ func Run(ctx context.Context, tconn *chrome.TestConn, f func() error, names ...s
 	return r.Histogram(ctx, tconn)
 }
 
-// RunAndWaitAll is a helper to calculate histogram diffs before and after
-// running a given function and waits for all histograms change before return.
-func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
+// runAndWait is a helper to calculate histogram diffs before and after
+// running a given function and waits for histograms change based on wait mode.
+func runAndWait(ctx context.Context, tconn *chrome.TestConn,
+	mode waitMode,
 	timeout time.Duration,
 	f func() error, names ...string) ([]*Histogram, error) {
 	r, err := StartRecorder(ctx, tconn, names...)
@@ -365,7 +366,35 @@ func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
 		return nil, err
 	}
 
-	return r.WaitAll(ctx, tconn, timeout)
+	// No need to wait if there is no histograms to capture.
+	if len(r.names()) == 0 {
+		return r.Histogram(ctx, tconn)
+	}
+
+	if mode == waitAll {
+		return r.WaitAll(ctx, tconn, timeout)
+	}
+
+	return r.WaitAny(ctx, tconn, timeout)
+}
+
+// RunAndWaitAll is a helper to calculate histogram diffs before and after
+// running a given function. It waits for all the histograms before return if
+// there are histograms to wait. Otherwise, it returns immediately like Run.
+func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
+	timeout time.Duration,
+	f func() error, names ...string) ([]*Histogram, error) {
+	return runAndWait(ctx, tconn, waitAll, timeout, f, names...)
+}
+
+// RunAndWaitAny is a helper to calculate histogram diffs before and after
+// running a given function. It waits for any one of the histograms before
+// return if there are histograms to wait. Otherwise, it returns immediately
+// like Run.
+func RunAndWaitAny(ctx context.Context, tconn *chrome.TestConn,
+	timeout time.Duration,
+	f func() error, names ...string) ([]*Histogram, error) {
+	return runAndWait(ctx, tconn, waitAny, timeout, f, names...)
 }
 
 // ClearHistogramTransferFile clears the histogramTransferFile. The
