@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wifi
+package tpmstore
 
 import (
 	"context"
@@ -19,7 +19,8 @@ import (
 )
 
 // TPMStore is a struct that contains the information related to using the TPM to store certificates/keys during the test. Strictly speaking, this struct holds the information required to access a chaps slot/token.
-// Note that TPMStore is currently a singleton because users of this struct (WiFi tests) only need one TPMStore at a moment.
+// Note that only one TPMStore can exist at a time.
+// TODO: check if the previous statement is necessary.
 type TPMStore struct {
 	// runner is a command runner interface for executing commands on the DUT.
 	runner hwsec.CmdRunner
@@ -35,6 +36,9 @@ type TPMStore struct {
 
 	// pin is the pin to access the PKCS#11 slot.
 	pin string
+
+	cryptohome *hwsec.UtilityCryptohomeBinary
+	config     *config
 }
 
 const (
@@ -61,19 +65,44 @@ func cleanupVault(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary
 	return nil
 }
 
-// singletonTPMStore is the singleton instance of TPMStore in use.
-var singletonTPMStore *TPMStore
+// tpmStoreExist is the flag of if some TPMStore is created and not yet closed.
+var tpmStoreExist bool
 
-// singletonTPMStoreLock is a mutex that guard the creation and destruction of singletonTPMStore.
-var singletonTPMStoreLock sync.Mutex
+// tpmStoreExistLock is a mutex that guard the access of tpmStoreExist.
+var tpmStoreExistLock sync.Mutex
+
+// config contains the information for constructing a TPMStore.
+// TODO: probably more parameters can be allowed here, e.g. username, password...
+type config struct {
+	system bool
+}
+
+type Option func(c *config)
+
+// SystemSlot returns an Option to ask TPMStore to use system slot.
+func SystemSlot() Option {
+	return func(c *config) {
+		c.system = true
+	}
+}
 
 // NewTPMStore sets up a TPMStore for WiFi testing.
-func NewTPMStore(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary, runner hwsec.CmdRunner) (result *TPMStore, retErr error) {
-	singletonTPMStoreLock.Lock()
-	defer singletonTPMStoreLock.Unlock()
+func NewTPMStore(ctx context.Context, runner hwsec.CmdRunner, ops ...Option) (result *TPMStore, retErr error) {
+	tpmStoreExistLock.Lock()
+	defer tpmStoreExistLock.Unlock()
 
-	if singletonTPMStore != nil {
+	if tpmStoreExist {
 		return nil, errors.New("another instance of TPMStore already exists")
+	}
+
+	conf := &config{}
+	for _, op := range ops {
+		op(conf)
+	}
+
+	cryptohome, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create cryptohome utility")
 	}
 
 	// Remove the vaults first before the test so we can be sure that the TPM Store returned is empty.
@@ -81,24 +110,27 @@ func NewTPMStore(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary,
 		return nil, errors.Wrap(err, "failed to cleanup vault at the beginning of SetupTPMStore")
 	}
 
-	// Now create the vault.
-	if err := cryptohome.MountVault(ctx, testUsername, testPassword, testKeyLabel, true, hwsec.NewVaultConfig()); err != nil {
-		return nil, errors.Wrap(err, "failed to mount vault")
-	}
-	defer func() {
-		// If this function failed, we'll need to cleanup the vault.
-		if retErr != nil {
-			cleanupVault(ctx, cryptohome)
+	username := ""
+	if !conf.system {
+		// Now create the vault.
+		if err := cryptohome.MountVault(ctx, testUsername, testPassword, testKeyLabel, true, hwsec.NewVaultConfig()); err != nil {
+			return nil, errors.Wrap(err, "failed to mount vault")
 		}
-	}()
+		defer func() {
+			// If this function failed, we'll need to cleanup the vault.
+			if retErr != nil {
+				cleanupVault(ctx, cryptohome)
+			}
+		}()
 
-	// Wait for the slot to be available.
-	if err := cryptohome.WaitForUserToken(ctx, testUsername); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for user token")
+		// Wait for the slot to be available.
+		if err := cryptohome.WaitForUserToken(ctx, testUsername); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for user token")
+		}
+		username = testUsername
 	}
 
-	// Get the slot.
-	label, pin, slot, err := cryptohome.GetTokenInfoForUser(ctx, testUsername)
+	label, pin, slot, err := cryptohome.GetTokenInfoForUser(ctx, username)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user token")
 	}
@@ -114,27 +146,35 @@ func NewTPMStore(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary,
 		return nil, errors.Wrap(err, "failed to prepare scratchpad")
 	}
 
-	singletonTPMStore = &TPMStore{runner, chaps, slot, label, pin}
-	return singletonTPMStore, nil
+	tpmStoreExist = true
+	store := &TPMStore{
+		runner:     runner,
+		cryptohome: cryptohome,
+		chaps:      chaps,
+		slot:       slot,
+		label:      label,
+		pin:        pin,
+		config:     conf,
+	}
+	return store, nil
 }
 
-// ResetTPMStore resets the environment (chaps keystore and cryptohome vault) back to the state before the TPMStore instance is created.
-func ResetTPMStore(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary) error {
-	singletonTPMStoreLock.Lock()
-	defer singletonTPMStoreLock.Unlock()
+func (s *TPMStore) Close(ctx context.Context) error {
+	tpmStoreExistLock.Lock()
+	defer tpmStoreExistLock.Unlock()
 
-	if singletonTPMStore == nil {
-		return errors.New("singleton TPMStore is nil")
-	}
+	tpmStoreExist = false
+
 	// Cleanup scratchpad as well.
-	if err := pkcs11test.CleanupScratchpad(ctx, singletonTPMStore.runner, scratchpadPath); err != nil {
+	if err := pkcs11test.CleanupScratchpad(ctx, s.runner, scratchpadPath); err != nil {
 		return errors.Wrap(err, "failed to cleanup scratchpad")
 	}
-	singletonTPMStore.slot = -1
-	singletonTPMStore.runner = nil
-	singletonTPMStore.chaps = nil
-	singletonTPMStore = nil
-	return cleanupVault(ctx, cryptohome)
+	if !s.config.system {
+		if err := cleanupVault(ctx, s.cryptohome); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // Slot returns the slot number to access the PKCS#11 slot/token for testing.

@@ -12,7 +12,7 @@ package security
 import (
 	"context"
 
-	"chromiumos/tast/common/wifi"
+	"chromiumos/tast/common/tpmstore"
 	"chromiumos/tast/ssh"
 )
 
@@ -35,7 +35,7 @@ type Config interface {
 	// InstallRouterCredentials installs the nacessary credentials onto router.
 	InstallRouterCredentials(ctx context.Context, host *ssh.Conn, workDir string) error
 	// InstallClientCredentials installs the nacessary credentials onto DUT.
-	InstallClientCredentials(context.Context, *wifi.TPMStore) error
+	InstallClientCredentials(context.Context, *tpmstore.TPMStore) error
 }
 
 // ConfigFactory defines a Gen() method to generate a Config instance.

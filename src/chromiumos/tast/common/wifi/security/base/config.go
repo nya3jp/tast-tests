@@ -8,7 +8,7 @@ package base
 import (
 	"context"
 
-	"chromiumos/tast/common/wifi"
+	"chromiumos/tast/common/tpmstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/ssh"
@@ -62,6 +62,6 @@ func (*Config) InstallRouterCredentials(context.Context, *ssh.Conn, string) erro
 }
 
 // InstallClientCredentials installs the necessary credentials onto DUT.
-func (*Config) InstallClientCredentials(context.Context, *wifi.TPMStore) error {
+func (*Config) InstallClientCredentials(context.Context, *tpmstore.TPMStore) error {
 	return nil
 }

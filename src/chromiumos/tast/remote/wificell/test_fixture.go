@@ -13,10 +13,9 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
-	"chromiumos/tast/common/wifi"
+	"chromiumos/tast/common/tpmstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
@@ -79,7 +78,7 @@ type TestFixture struct {
 	capturers      map[*APIface]*pcap.Capturer
 
 	// tpm is set lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests needs it.
-	tpm *wifi.TPMStore
+	tpm *tpmstore.TPMStore
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -97,15 +96,6 @@ func (tf *TestFixture) hwsecCmdRunner() (*remote_hwsec.CmdRunnerRemote, error) {
 	return remote_hwsec.NewCmdRunner(tf.dut)
 }
 
-// hwsecCryptohomeUtil returns cryptohome util object for hardware security use.
-func (tf *TestFixture) hwsecCryptohomeUtil() (*hwsec.UtilityCryptohomeBinary, error) {
-	runner, err := tf.hwsecCmdRunner()
-	if err != nil {
-		return nil, err
-	}
-	return hwsec.NewUtilityCryptohomeBinary(runner)
-}
-
 // setupTPMStore sets up the TPMStore for EAP-related tests.
 func (tf *TestFixture) setupTPMStore(ctx context.Context) error {
 	if tf.tpm != nil {
@@ -118,12 +108,7 @@ func (tf *TestFixture) setupTPMStore(ctx context.Context) error {
 		return err
 	}
 
-	cryptohomeUtil, err := tf.hwsecCryptohomeUtil()
-	if err != nil {
-		return err
-	}
-
-	tf.tpm, err = wifi.NewTPMStore(ctx, cryptohomeUtil, runner)
+	tf.tpm, err = tpmstore.NewTPMStore(ctx, runner)
 	return err
 }
 
@@ -134,13 +119,9 @@ func (tf *TestFixture) resetTPMStore(ctx context.Context) error {
 		return nil
 	}
 
-	cryptohomeUtil, err := tf.hwsecCryptohomeUtil()
-	if err != nil {
-		return err
-	}
-
+	err := tf.tpm.Close(ctx)
 	tf.tpm = nil
-	return wifi.ResetTPMStore(ctx, cryptohomeUtil)
+	return err
 }
 
 // NewTestFixture creates a TestFixture.
