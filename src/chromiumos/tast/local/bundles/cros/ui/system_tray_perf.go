@@ -78,7 +78,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 
 	// Toggle the collapsed state of the system tray for numRuns and record
 	// the relevant metrics.
-	hists, err := metrics.Run(ctx, tconn, func() error {
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		for i := 0; i < numRuns; i++ {
 			if err := collapseButton.LeftClick(ctx); err != nil {
 				return errors.Wrapf(err, "failed to click collapse button (at step %d)", i)

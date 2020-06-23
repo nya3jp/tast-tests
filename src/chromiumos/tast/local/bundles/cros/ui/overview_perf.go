@@ -149,7 +149,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "MinimizedTabletMode"
 			}
 
-			histograms, err := metrics.Run(ctx, tconn, func() error {
+			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
@@ -170,8 +170,11 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
 				}
 
+				name := fmt.Sprintf("%s.%dwindows", h.Name, currentWindows)
+				s.Log(name, "= ", mean)
+
 				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
+					Name:      name,
 					Unit:      "percent",
 					Direction: perf.BiggerIsBetter,
 				}, mean)

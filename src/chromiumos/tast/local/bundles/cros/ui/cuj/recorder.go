@@ -172,7 +172,7 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 		}
 		r.loadValues = append(r.loadValues, vs)
 	}()
-	hists, err := metrics.Run(ctx, tconn, f, r.names...)
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, f, r.names...)
 	if err != nil {
 		return err
 	}

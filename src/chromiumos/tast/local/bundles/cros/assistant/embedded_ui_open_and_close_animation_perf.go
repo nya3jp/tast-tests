@@ -101,7 +101,7 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 
-		histograms, err := metrics.Run(ctx, tconn,
+		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
 			func() error {
 				return openAndCloseEmbeddedUI(ctx, tconn)
 			},
