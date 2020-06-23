@@ -22,6 +22,30 @@
       "revId": "3c8bd0e91425e5dac977d70a0df12c76807ca361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4747ac57_326047ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-23T21:18:23Z",
+      "side": 1,
+      "message": "I remember adding this polling because the function \"service.SetProperty()\" was failing. However, I deleted the polling and I am not able to reproduce it now.",
+      "parentUuid": "7c4f8364_12ddfe38",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 62
+      },
+      "revId": "3c8bd0e91425e5dac977d70a0df12c76807ca361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
