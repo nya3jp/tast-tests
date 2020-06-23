@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ab0341_2257c375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-23T00:55:58Z",
+      "side": 1,
+      "message": "I\u0027m afraid that the 10 minutes would be long. Does this have to be that long, or can it be like 5 minutes or 8 minutes?",
+      "revId": "89d81a43017148e8a5e1f3b12feaa5b84e1aba1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
