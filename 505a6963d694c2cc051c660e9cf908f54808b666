@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55414953_d99bf99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-23T18:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a7aca3_885411a9",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "505a6963d694c2cc051c660e9cf908f54808b666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb5fe6ae_9bc55419",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "505a6963d694c2cc051c660e9cf908f54808b666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17104d4_9e7f3aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-23T18:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5fe6ae_9bc55419",
+      "revId": "505a6963d694c2cc051c660e9cf908f54808b666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "505a6963d694c2cc051c660e9cf908f54808b666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6106b2d_dccd9fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-23T18:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec57dc5e_4b76173f",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 12
+      },
+      "revId": "505a6963d694c2cc051c660e9cf908f54808b666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
