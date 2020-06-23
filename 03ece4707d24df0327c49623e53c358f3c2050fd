@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "874a148a_bfdcb9e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "ditto below (got; want)",
+      "range": {
+        "startLine": 135,
+        "startChar": 42,
+        "endLine": 135,
+        "endChar": 55
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b77642_348cc453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "nit, style: (see below)\n\n\"got ; want\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c23bb2_3902c3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "nit (see below):\nP -\u003e p",
+      "range": {
+        "startLine": 173,
+        "startChar": 26,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb711e4_b4585e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "nit: see below\n\nP -\u003e p",
+      "range": {
+        "startLine": 177,
+        "startChar": 26,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f354224_51039f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "huge nit, style (here and below):\n\nwhen applicable, use \"got ; want\". e.g:\n\n\"invalid orientation: got %v; want landscape\"",
+      "range": {
+        "startLine": 200,
+        "startChar": 26,
+        "endLine": 200,
+        "endChar": 48
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5193b2f9_bc7c452e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "huge nit (here and below):\nerror strings should not be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36aa2268_bd62ac81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-23T01:38:23Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 212,
+        "startChar": 26,
+        "endLine": 212,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
