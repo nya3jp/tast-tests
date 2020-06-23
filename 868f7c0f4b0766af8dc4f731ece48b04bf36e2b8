@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598e5864_f557f1e5",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T20:25:27Z",
+      "side": 1,
+      "message": "need to save the initialV4Role here too if it\u0027s not set.",
+      "revId": "868f7c0f4b0766af8dc4f731ece48b04bf36e2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6462906_d467d809",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T20:25:27Z",
+      "side": 1,
+      "message": "nit, since restoreV4RoleOnClose is not configurable, can eliminate this field and just restore the initialV4Role if it\u0027s non-empty.",
+      "revId": "868f7c0f4b0766af8dc4f731ece48b04bf36e2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
