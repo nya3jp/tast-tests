@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "552abc51_6ff0f228",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-23T22:33:25Z",
+      "side": 1,
+      "message": "can we call this PackageResizable?",
+      "range": {
+        "startLine": 496,
+        "startChar": 20,
+        "endLine": 496,
+        "endChar": 51
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdd530c_05b64f40",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-23T22:33:25Z",
+      "side": 1,
+      "message": "Change this name as well: getPackageTaskInfo",
+      "range": {
+        "startLine": 505,
+        "startChar": 20,
+        "endLine": 505,
+        "endChar": 48
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9133f18f_11aaf926",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-23T22:33:25Z",
+      "side": 1,
+      "message": "I am a little nervous about how this method is setup. Many tasks could have the same package name and this just returns the first. Can some activities for a package be resizable while others aren\u0027t?",
+      "range": {
+        "startLine": 512,
+        "startChar": 3,
+        "endLine": 512,
+        "endChar": 42
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
