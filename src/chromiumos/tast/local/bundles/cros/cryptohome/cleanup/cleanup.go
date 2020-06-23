@@ -50,7 +50,7 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 	}
 
 	// Wait for cleanup to finish.
-	if _, err := reader.Wait(ctx, 20*time.Second, func(e *syslog.Entry) bool {
+	if _, err := reader.Wait(ctx, 30*time.Second, func(e *syslog.Entry) bool {
 		return strings.Contains(e.Content, "Disk cleanup complete.")
 	}); err != nil {
 		return errors.Wrap(err, "cleanup not complete")
@@ -134,7 +134,7 @@ func RunOnExistingUsers(ctx context.Context) error {
 			}
 		}
 	}, &testing.PollOptions{
-		Timeout: 30 * time.Second,
+		Timeout: 60 * time.Second,
 	}); err != nil {
 		return errors.Wrap(err, "failed to remove users")
 	}
