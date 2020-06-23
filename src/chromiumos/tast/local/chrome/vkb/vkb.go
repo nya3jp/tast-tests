@@ -169,6 +169,8 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	return c.NewConnForTarget(ctx, f)
 }
 
+// TODO(b/159657128): Investigate why TapKey does not work very well consistently.
+
 // TapKey simulates a tap event on the middle of the specified key via touch event. The key can
 // be any letter of the alphabet, "space" or "backspace".
 func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
@@ -279,7 +281,7 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 }
 
 // InputWithVirtualKeyboard waits for virtual keyboard shown up, types given key series and hide keyboard after.
-func InputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
+func InputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, keys []string) error {
 	if err := WaitUntilShown(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for the virtual keyboard to show")
 	}
@@ -288,7 +290,13 @@ func InputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, keys 
 		return errors.Wrap(err, "failed to wait for the virtual keyboard to render")
 	}
 
-	if err := TapKeys(ctx, tconn, keys); err != nil {
+	kconn, err := UIConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard connection")
+	}
+	defer kconn.Close()
+
+	if err := TapKeysJS(ctx, kconn, keys); err != nil {
 		return errors.Wrapf(err, "failed to tap keys %v: %v", keys, err)
 	}
 
