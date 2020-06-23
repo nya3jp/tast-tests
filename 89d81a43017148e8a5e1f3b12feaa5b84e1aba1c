@@ -16,6 +16,24 @@
       "revId": "89d81a43017148e8a5e1f3b12feaa5b84e1aba1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1665f118_bba91f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-23T01:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4ab0341_2257c375",
+      "revId": "89d81a43017148e8a5e1f3b12feaa5b84e1aba1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
