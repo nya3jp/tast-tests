@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "716246ec_6a3f5131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874a148a_bfdcb9e5",
+      "range": {
+        "startLine": 135,
+        "startChar": 42,
+        "endLine": 135,
+        "endChar": 55
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b77642_348cc453",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e079d1_2abda483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b77642_348cc453",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "336a0d84_39e129ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c23bb2_3902c3ed",
+      "range": {
+        "startLine": 173,
+        "startChar": 26,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bb711e4_b4585e02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbc963d_61fd49d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb711e4_b4585e02",
+      "range": {
+        "startLine": 177,
+        "startChar": 26,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "11a280a1_689b1bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f354224_51039f90",
+      "range": {
+        "startLine": 200,
+        "startChar": 26,
+        "endLine": 200,
+        "endChar": 48
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5193b2f9_bc7c452e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 5
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "443b5192_ea34e945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done\n\nIt\u0027s funny to call it huge nit. That\u0027s not optional so it\u0027s beyond a nit already.",
+      "parentUuid": "5193b2f9_bc7c452e",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36aa2268_bd62ac81",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63272569_281722d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-06-23T23:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36aa2268_bd62ac81",
+      "range": {
+        "startLine": 212,
+        "startChar": 26,
+        "endLine": 212,
+        "endChar": 27
+      },
+      "revId": "03ece4707d24df0327c49623e53c358f3c2050fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
