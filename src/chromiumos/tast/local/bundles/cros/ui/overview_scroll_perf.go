@@ -8,12 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -84,9 +83,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		// Scroll from the top right of the screen to the top left.
-		if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+		// Scroll from the top right of the screen to the top middle (1/4 of the
+		// screen width). The destination position should match with the next swipe
+		// to make the same amount of scrolling.
+		if err := stw.Swipe(ctx, tsew.Width()-10, 10, tsew.Width()/4, 10, 500*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to execute a swipe gesture")
 		}
 
@@ -94,27 +95,22 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
 
+		// Scroll back from the top middle to the top right so that the test returns
+		// back to the original status. Note that this can't be starting from the
+		// top left, since it can be recognized as another gesture (back gesture).
+		if err := stw.Swipe(ctx, tsew.Width()/4, 10, tsew.Width()-10, 10, 500*time.Millisecond); err != nil {
+			return errors.Wrap(err, "failed to execute a swipe gesture")
+		}
+		if err := stw.End(); err != nil {
+			return errors.Wrap(err, "failed to finish the swipe gesture")
+		}
+
 		return nil
-	}, "Ash.Overview.Scroll.PresentationTime.TabletMode")
-	if err != nil {
-		s.Fatal("Failed to scroll or get histogram: ", err)
-	}
+	}, "Ash.Overview.Scroll.PresentationTime.TabletMode"), perfutil.StoreLatency)
 
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
-
-	latency, err := histograms[0].Mean()
-	if err != nil {
-		s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
-	}
-
-	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      histograms[0].Name,
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}, latency)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

@@ -8,11 +8,10 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -65,47 +64,28 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		const numRuns = 10
-		for i := 0; i < numRuns; i++ {
-			if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-				return errors.Wrap(err, "failed to enable tablet mode")
-			}
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+			return errors.Wrap(err, "failed to enable tablet mode")
+		}
 
-			// Wait for the top window to finish animating before changing states.
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
-				return errors.Wrap(err, "failed to wait for top window animation")
-			}
+		// Wait for the top window to finish animating before changing states.
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+			return errors.Wrap(err, "failed to wait for top window animation")
+		}
 
-			if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-				return errors.Wrap(err, "failed to disable tablet mode")
-			}
+		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to disable tablet mode")
+		}
 
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
-				return errors.Wrap(err, "failed to wait for top window animation")
-			}
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+			return errors.Wrap(err, "failed to wait for top window animation")
 		}
 		return nil
 	},
 		"Ash.TabletMode.AnimationSmoothness.Enter",
-		"Ash.TabletMode.AnimationSmoothness.Exit")
-	if err != nil {
-		s.Fatal("Failed to run transition or get histogram: ", err)
-	}
-
-	pv := perf.NewValues()
-	for _, h := range histograms {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+		"Ash.TabletMode.AnimationSmoothness.Exit"),
+		perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
