@@ -338,7 +338,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Run the drag and collect histogram.
-		histograms, err := metrics.Run(ctx, tconn, func() error {
+		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 			if err := drag.df(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to run drag")
 			}

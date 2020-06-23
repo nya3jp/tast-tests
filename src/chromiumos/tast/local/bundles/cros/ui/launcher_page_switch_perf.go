@@ -188,7 +188,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
 	s.Log("Starting the scroll by click")
-	hists, err := metrics.Run(ctx, tconn, func() error {
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		for step, idx := range []int{1, 0, len(pageButtons) - 1, 0} {
 			if err := clickPageButtonAndWait(ctx, pageButtons[idx]); err != nil {
 				return errors.Wrapf(err, "failed to click or wait %d-th button (at step %d)", idx, step)
@@ -246,7 +246,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
 	dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
-	hists, err = metrics.Run(ctx, tconn, func() error {
+	hists, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		ew, err := chromeui.NewWatcher(ctx, pageButtons[2], chromeui.EventTypeAlert)
 		if err != nil {
 			return errors.Wrap(err, "failed to create an event watcher")

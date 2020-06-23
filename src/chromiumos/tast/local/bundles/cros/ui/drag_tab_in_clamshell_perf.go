@@ -84,7 +84,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Error("Failed to wait for system UI to be stabilized: ", err)
 	}
 
-	hists, err := metrics.Run(ctx, tconn, func() error {
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
 			s.Fatal("Failed to drag to the end point: ", err)
 		}

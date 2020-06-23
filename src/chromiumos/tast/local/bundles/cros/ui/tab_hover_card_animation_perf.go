@@ -58,7 +58,7 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	bounds := ws[0].BoundsInRoot
 	// Use a heuristic offset (30, 30) from the window origin for the first tab.
-	tab := coords.NewPoint(bounds.Left + 30, bounds.Top + 30)
+	tab := coords.NewPoint(bounds.Left+30, bounds.Top+30)
 	center := bounds.CenterPoint()
 
 	// Stabilize CPU usage.
@@ -66,17 +66,17 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Error("Failed to wait for system UI to be stabilized: ", err)
 	}
 
-	hists, err := metrics.Run(ctx, tconn, func() error {
+	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		if err := mouse.Move(ctx, tconn, center, 0); err != nil {
 			s.Fatal("Failed to put mouse to the center: ", err)
 		}
-		if err := mouse.Move(ctx, tconn, tab, 5 * time.Second); err != nil {
+		if err := mouse.Move(ctx, tconn, tab, 5*time.Second); err != nil {
 			s.Fatal("Failed to move mouse to the first tab: ", err)
 		}
-		if err := testing.Sleep(ctx, 5 * time.Second); err != nil {
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			s.Fatal("Failed to sleep for 5 seconds: ", err)
 		}
-		if err := mouse.Move(ctx, tconn, center, 5 * time.Second); err != nil {
+		if err := mouse.Move(ctx, tconn, center, 5*time.Second); err != nil {
 			s.Fatal("Failed to move mouse back to the center: ", err)
 		}
 		return nil

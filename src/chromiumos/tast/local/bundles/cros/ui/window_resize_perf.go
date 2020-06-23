@@ -121,7 +121,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 		}
 		end := coords.NewPoint(start.X-bounds.Width/4, start.Y)
-		hists, err := metrics.Run(ctx, tconn, func() error {
+		hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 			if err := mouse.Drag(ctx, tconn, start, end, time.Second*2); err != nil {
 				return errors.Wrap(err, "failed to drag")
 			}

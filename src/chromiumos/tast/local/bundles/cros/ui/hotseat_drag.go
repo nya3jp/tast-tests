@@ -82,7 +82,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
+	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
 			s.Fatal("Failed to obtain the window list: ", err)
