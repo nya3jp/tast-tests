@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "62765614_52599a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-06-23T01:44:17Z",
+      "side": 1,
+      "message": "marking resolved",
+      "parentUuid": "24ff4941_d2923145",
+      "range": {
+        "startLine": 168,
+        "startChar": 51,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "4b57c61a2c0681196da5ec0a5a959c4bf43a3d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5d998c8_7ddbc436",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 20
