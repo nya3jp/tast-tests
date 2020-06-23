@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7871a67e_a299ee35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-23T06:55:16Z",
+      "side": 1,
+      "message": "Offtopic/Recommendation: s.Run() may help you to run table-driven tests. (Maybe nice to use it in another CL, I guess).",
+      "revId": "db305f68534b5297154b4f28edf7f56feb2fb056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
