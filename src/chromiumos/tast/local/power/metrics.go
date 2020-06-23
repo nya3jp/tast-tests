@@ -15,5 +15,6 @@ func TestMetrics() []perf.TimelineDatasource {
 		NewBatteryMetrics(2.0),
 		NewRAPLMetrics(),
 		NewSysfsBatteryMetrics(),
+		NewSysfsThermalMetrics(),
 	}
 }
