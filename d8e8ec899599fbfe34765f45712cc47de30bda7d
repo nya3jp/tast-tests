@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ead66147_9e82534c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/asphalt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-23T22:44:12Z",
+      "side": 1,
+      "message": "This should go after defer act.Stop",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "d8e8ec899599fbfe34765f45712cc47de30bda7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
