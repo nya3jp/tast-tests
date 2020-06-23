@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af113944_41a48889",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-23T22:48:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "552abc51_6ff0f228",
+      "range": {
+        "startLine": 496,
+        "startChar": 20,
+        "endLine": 496,
+        "endChar": 51
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fdd530c_05b64f40",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c9efbe8f_c3ed9fd7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-23T22:48:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fdd530c_05b64f40",
+      "range": {
+        "startLine": 505,
+        "startChar": 20,
+        "endLine": 505,
+        "endChar": 48
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9133f18f_11aaf926",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603447f0_1035451e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-06-23T22:48:31Z",
+      "side": 1,
+      "message": "The output for task is:  {10 8 2 (0, 0) - (3200 x 1800) [{com.adobe.creativeapps.draw .activity.HomeActivity} {com.adobe.creativeapps.draw .activity.DrawFeedbackActivity}] 2 true true}. \"if activity.PackageName \u003d\u003d ac.pkgName \"  this condition will check for package name in the output of task. From myunderstanding it will provide the right output.",
+      "parentUuid": "9133f18f_11aaf926",
+      "range": {
+        "startLine": 512,
+        "startChar": 3,
+        "endLine": 512,
+        "endChar": 42
+      },
+      "revId": "1dc15420af7e3d6576eccf345012b88661c9d221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
