@@ -139,6 +139,24 @@
       "revId": "35352da18c979b99c40dbebf5c0593b095921610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e116b7_bdf1b172",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T00:37:36Z",
+      "side": 1,
+      "message": "I think tying arbitrary things to happen when the servo closes will be misused.  It\u0027d be much better to expose it via a configuration option like \"servo.restoreCurrentV4RoleOnClose()\", or \"servo.dumpUartStreamOnClose(true)\".\n\nOne area of misuse would be duplicate defers on the same operation, for example defer v4 role restoration multiple times, or defer dumping the stream multiple times.  That\u0027s why making this work like defer is not a good fit.\n\nAnother area is some code could accidentally defer something that messes up the ability to performa a previous defer.",
+      "parentUuid": "6090b556_9c2caa40",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

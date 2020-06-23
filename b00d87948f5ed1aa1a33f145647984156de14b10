@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f3a772a_90f0959a",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T00:37:36Z",
+      "side": 1,
+      "message": "depending on how strict you want things, may not want to bail here since boot to normal doesn\u0027t need svo.",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1eb151_8663cbc8",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T00:37:36Z",
+      "side": 1,
+      "message": "You still want to indicate that recover boot is yet unsupported no?  Use the \"fallthrough\" keyword.",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0ea9de_ced8d6e0",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T00:37:36Z",
+      "side": 1,
+      "message": "Wouldn\u0027t hurt to log a message here, as autotest does.",
+      "revId": "b00d87948f5ed1aa1a33f145647984156de14b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
