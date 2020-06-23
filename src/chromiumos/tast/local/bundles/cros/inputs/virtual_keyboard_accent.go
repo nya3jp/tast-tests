@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -156,7 +156,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		accentKey.Update(ctx)
 		location = accentKey.Location.CenterPoint()
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for accent window: ", err)
 	}
 
