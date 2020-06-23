@@ -6,13 +6,11 @@ package ui
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -55,56 +53,48 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		windows, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to obtain the window list: ", err)
-		}
-
+	window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return true })
+	if err != nil {
+		s.Fatal("Failed to obtain the window list: ", err)
+	}
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
 		// Snap the window to the left.
-		if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventSnapLeft); err != nil {
-			s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
+		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventSnapLeft); err != nil {
+			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
 		}
 
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
 			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 
 		// Restore the normal state bounds, as no animation stats will be logged if the window size does not change.
-		if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventNormal); err != nil {
-			s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
+		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventNormal); err != nil {
+			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
 		}
 
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
 			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 
 		// Snap the window to the right.
-		if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventSnapRight); err != nil {
-			s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
+		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventSnapRight); err != nil {
+			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
 		}
 
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			s.Fatal("Failed to wait for top window animation: ", err)
+		}
+		// Restore the normal state bounds, as no animation stats will be logged if the window size does not change.
+		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventNormal); err != nil {
+			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
+		}
+
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
 			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 		return nil
 	},
-		"Ash.Window.AnimationSmoothness.Snap")
-	if err != nil {
-		s.Fatal("Failed to snap window or get histogram: ", err)
-	}
-
-	smoothness, err := histograms[0].Mean()
-	if err != nil {
-		s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
-	}
-
-	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      histograms[0].Name,
-		Unit:      "percent",
-		Direction: perf.BiggerIsBetter,
-	}, smoothness)
+		"Ash.Window.AnimationSmoothness.Snap"), perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

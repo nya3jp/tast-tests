@@ -12,9 +12,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
@@ -31,7 +31,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
 			Pre: chrome.LoggedIn(),
@@ -69,8 +69,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
 
-	pv := perf.NewValues()
-
 	// overviewAnimationType specifies the type of the animation of entering to or
 	// exiting from the overview mode.
 	type overviewAnimationType int
@@ -88,6 +86,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		animationTypeMinimizedTabletMode
 	)
 
+	r := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
@@ -154,7 +153,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "MinimizedTabletMode"
 			}
 
-			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+			r.RunMultiple(ctx, s, fmt.Sprintf("%s-%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func() error {
 				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
@@ -164,30 +163,12 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				return nil
 			},
 				"Ash.Overview.AnimationSmoothness.Enter"+"."+suffix,
-				"Ash.Overview.AnimationSmoothness.Exit"+"."+suffix)
-			if err != nil {
-				s.Fatal("Failed to enter/exit overview mode or get histograms: ", err)
-			}
-
-			for _, h := range histograms {
-				mean, err := h.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-				}
-
-				name := fmt.Sprintf("%s.%dwindows", h.Name, currentWindows)
-				s.Log(name, "= ", mean)
-
-				pv.Set(perf.Metric{
-					Name:      name,
-					Unit:      "percent",
-					Direction: perf.BiggerIsBetter,
-				}, mean)
-			}
+				"Ash.Overview.AnimationSmoothness.Exit"+"."+suffix),
+				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
 		}
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := r.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
