@@ -126,7 +126,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 
-		histograms, err := metrics.Run(ctx, tconn, func() error {
+		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 			// Drag from the bottom to the top; this should expand the app-list to
 			// fullscreen.
 			if err := mouse.Drag(ctx, tconn, bottom, top, time.Second); err != nil {

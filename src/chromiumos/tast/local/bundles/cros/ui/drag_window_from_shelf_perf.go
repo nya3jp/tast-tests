@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -79,7 +80,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
+	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}

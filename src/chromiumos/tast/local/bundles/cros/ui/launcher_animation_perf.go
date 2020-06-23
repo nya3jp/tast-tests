@@ -188,7 +188,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				suffix = "Half.ClamshellMode"
 			}
 
-			histograms, err := metrics.Run(ctx, tconn, func() error {
+			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 				if err := runLauncherAnimation(ctx, tconn, kb, at); err != nil {
 					return errors.Wrap(err, "fail to run launcher animation")
 				}

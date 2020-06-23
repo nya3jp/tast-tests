@@ -262,7 +262,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			hists, err := metrics.Run(ctx, tconn, func() (err error) {
+			hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() (err error) {
 				if err := pointerController.Press(ctx, dividerDragPointOne); err != nil {
 					return errors.Wrap(err, "failed to start divider drag")
 				}
