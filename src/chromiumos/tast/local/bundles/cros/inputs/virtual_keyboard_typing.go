@@ -76,7 +76,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Input with virtual keyboard")
-	if err := vkb.InputWithVirtualKeyboard(ctx, tconn, typingKeys); err != nil {
+	if err := vkb.InputWithVirtualKeyboard(ctx, tconn, cr, typingKeys); err != nil {
 		s.Fatal("Failed to type on virtual keyboard: ", err)
 	}
 
