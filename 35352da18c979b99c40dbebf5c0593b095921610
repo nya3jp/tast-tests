@@ -157,6 +157,24 @@
       "revId": "35352da18c979b99c40dbebf5c0593b095921610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea6fb9a_99b7fd24",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-06-23T00:42:44Z",
+      "side": 1,
+      "message": "correction, \"servo.restoreCurrentV4RoleOnClose()\" is not as good as \"servo.restoreStartingV4RoleOnClose()\", which means you\u0027ll still need to save the starting v4 role before changing it.",
+      "parentUuid": "66e116b7_bdf1b172",
+      "revId": "35352da18c979b99c40dbebf5c0593b095921610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
