@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d41448e3_6d3a849c",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-23T06:39:21Z",
+      "side": 1,
+      "message": "JFYI: \u0027.0\u0027 can be omitted since float64 / int -\u003e float.",
+      "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
