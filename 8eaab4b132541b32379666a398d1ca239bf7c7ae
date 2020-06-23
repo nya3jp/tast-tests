@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "413c6010_a3a8b998",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-23T02:02:52Z",
+      "side": 1,
+      "message": "+Brian to confirm: for the case with two SSIDs run on different phys with the same BSSID, is it possible that a device can connect to either SSID? If so, we might want to add the verification step and perhaps change test name and update the test description.",
+      "parentUuid": "42cad205_fccb8931",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
