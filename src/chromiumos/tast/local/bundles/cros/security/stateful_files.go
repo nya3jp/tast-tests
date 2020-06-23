@@ -198,8 +198,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
 	}
 
-	if _, err := user.Lookup("arc-oemcrypto"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()))
+	if _, err := user.Lookup("cdm-oemcrypto"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("cdm-oemcrypto"), groups("cdm-oemcrypto"), chk.Mode(0700), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("fwupd"); err == nil {
