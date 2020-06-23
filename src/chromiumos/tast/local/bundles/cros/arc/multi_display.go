@@ -582,7 +582,7 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, tconn *chrome.TestC
 		return errors.New("failed to start activity")
 	}
 
-	if err := ash.WaitForVisible(ctx, tconn, actName); err != nil {
+	if err := ash.WaitForVisible(ctx, tconn, pkgName); err != nil {
 		return errors.Wrap(err, "failed to wait for visible activity")
 	}
 	return nil
