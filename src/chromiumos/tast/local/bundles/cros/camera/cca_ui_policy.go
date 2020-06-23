@@ -29,6 +29,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
+		Params: []testing.Param{{
+			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
+		}},
 	})
 }
 
@@ -40,31 +48,43 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
-	cr, err := chrome.New(ctx,
-		chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"),
-		chrome.DMSPolicy(fdms.URL))
+
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	chromeConfig.UseFakeDms = true
+	chromeConfig.FakeDmsURL = fdms.URL
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Failed to open chrome: ", err)
+	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
+	defer cr.Close(ctx)
+
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	if err := testNoPolicy(ctx, fdms, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir()); err != nil {
+	if err := testNoPolicy(ctx, env, fdms, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir()); err != nil {
 		s.Error("Failed to test with no policy: ", err)
 	}
 
-	if err := testBlockCCAExtension(ctx, fdms, cr); err != nil {
-		s.Error("Failed to block CCA extension: ", err)
+	if !env.Config.InstallSWA {
+		if err := testBlockCCAExtension(ctx, env, fdms, cr); err != nil {
+			s.Error("Failed to block CCA extension: ", err)
+		}
 	}
 
-	if err := testBlockCameraFeature(ctx, fdms, cr); err != nil {
+	if err := testBlockCameraFeature(ctx, env, fdms, cr); err != nil {
 		s.Error("Failed to block camera feature: ", err)
 	}
 
-	if err := testBlockVideoCapture(ctx, fdms, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir()); err != nil {
+	if err := testBlockVideoCapture(ctx, env, fdms, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir()); err != nil {
 		s.Error("Failed to block video capture: ", err)
 	}
 }
 
-func servePolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
+func servePolicy(ctx context.Context, env *cca.TestEnvironment, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
 	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 		return errors.Wrap(err, "failed to reset Chrome")
 	}
@@ -76,11 +96,17 @@ func servePolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, 
 }
 
 // testNoPolicy tests without any policy and expects CCA works fine.
-func testNoPolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, scripts []string, outDir string) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{}); err != nil {
+func testNoPolicy(ctx context.Context, env *cca.TestEnvironment, fdms *fakedms.FakeDMS, cr *chrome.Chrome, scripts []string, outDir string) error {
+	if err := servePolicy(ctx, env, fdms, cr, []policy.Policy{}); err != nil {
 		return errors.Wrap(err, "failed to serve policy")
 	}
-	app, err := cca.New(ctx, cr, scripts, outDir)
+	// Since we have reset Chrome, we should reset the test bridge so that we
+	// can communicate with CCA again in the following tests.
+	if err := env.ResetTestBridge(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset test bridge")
+	}
+
+	app, err := cca.New(ctx, env, scripts, outDir)
 	if err != nil {
 		return errors.Wrap(err, "failed to start CCA with no policy")
 	}
@@ -89,8 +115,8 @@ func testNoPolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome,
 
 // testBlockCCAExtension tries to block CCA extension and expects the background
 // page of CCA is not accessible.
-func testBlockCCAExtension(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.ExtensionInstallBlacklist{Val: []string{cca.ID}}}); err != nil {
+func testBlockCCAExtension(ctx context.Context, env *cca.TestEnvironment, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
+	if err := servePolicy(ctx, env, fdms, cr, []policy.Policy{&policy.ExtensionInstallBlacklist{Val: []string{cca.ID}}}); err != nil {
 		return err
 	}
 	if available, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(cca.BackgroundURL)); err != nil {
@@ -103,8 +129,8 @@ func testBlockCCAExtension(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrom
 
 // testBlockCameraFeature tries to block camera feature and expects a message
 // box "Camera is blocked" will show when launching CCA through the launcher.
-func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.SystemFeaturesDisableList{Val: []string{"camera"}}}); err != nil {
+func testBlockCameraFeature(ctx context.Context, env *cca.TestEnvironment, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
+	if err := servePolicy(ctx, env, fdms, cr, []policy.Policy{&policy.SystemFeaturesDisableList{Val: []string{"camera"}}}); err != nil {
 		return errors.Wrap(err, "failed to serve policy")
 	}
 	tconn, err := cr.TestAPIConn(ctx)
@@ -123,11 +149,17 @@ func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chro
 
 // testBlockVideoCapture tries to block video capture and expects CCA fails to
 // initialize since the preview won't show.
-func testBlockVideoCapture(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, scripts []string, outDir string) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.VideoCaptureAllowed{Val: false}}); err != nil {
+func testBlockVideoCapture(ctx context.Context, env *cca.TestEnvironment, fdms *fakedms.FakeDMS, cr *chrome.Chrome, scripts []string, outDir string) error {
+	if err := servePolicy(ctx, env, fdms, cr, []policy.Policy{&policy.VideoCaptureAllowed{Val: false}}); err != nil {
 		return errors.Wrap(err, "failed to serve policy")
 	}
-	app, err := cca.New(ctx, cr, scripts, outDir)
+	// Since we have reset Chrome, we should reset the test bridge so that we
+	// can communicate with CCA again in the following tests.
+	if err := env.ResetTestBridge(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset test bridge")
+	}
+
+	app, err := cca.New(ctx, env, scripts, outDir)
 	if err == nil {
 		if err := app.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", err)

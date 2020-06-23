@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -24,16 +23,28 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
+		}},
 	})
 }
 
 // CCAUIPerf measure cold/warm start time of CCA and also measure its
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
 	defer cr.Close(ctx)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
@@ -42,7 +53,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
-	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
+	if err := cca.MeasurePerformance(ctx, env, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
 		IsColdStart:              true,
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: true,
@@ -52,7 +63,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// It is used to measure the warm start time of CCA.
-	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
+	if err := cca.MeasurePerformance(ctx, env, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
 		IsColdStart:              false,
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: false,

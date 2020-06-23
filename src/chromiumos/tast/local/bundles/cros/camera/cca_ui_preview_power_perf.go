@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -30,15 +29,39 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
-			Name: "noarc",
-			Pre:  chrome.LoggedIn(),
+			Name: "noarc_platform_app",
+			Val:  cca.ChromeConfig{},
 		}, {
+			Name:              "platform_app",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Val: cca.ChromeConfig{
+				ARCEnabled: true,
+			},
 		}, {
-			Name:              "vm",
+			Name:              "vm_platform_app",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Val: cca.ChromeConfig{
+				ARCEnabled: true,
+			},
+		}, {
+			Name: "noarc_swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+				ARCEnabled: true,
+			},
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+				ARCEnabled: true,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -54,10 +77,29 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr, ok := s.PreValue().(*chrome.Chrome)
-	if !ok {
-		cr = s.PreValue().(arc.PreData).Chrome
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
+	if err != nil {
+		s.Fatal("Failed to open chrome: ", err)
 	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
+	defer cr.Close(ctx)
+
+	var a *arc.ARC
+	if chromeConfig.ARCEnabled {
+		a, err = arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+	}
+	closeARC := func(a *arc.ARC) {
+		if a != nil {
+			a.Close()
+		}
+	}
+	defer closeARC(a)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -106,13 +148,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome Camera App (CCA).
-	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
-		if err := tconn.Call(ctx, nil, "chrome.management.launchApp", cca.ID); err != nil {
-			return err
-		}
-		return nil
-	})
-
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

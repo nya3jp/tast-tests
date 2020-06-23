@@ -22,12 +22,12 @@ import (
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
 
-type perfEvent struct {
+type perfEntry struct {
 	Event    string  `json:"event"`
 	Duration float64 `json:"duration"`
-	Extras   struct {
+	PerfInfo struct {
 		Facing string `json:"facing"`
-	} `json:"extras"`
+	} `json:"perfInfo"`
 }
 
 // MeasurementOptions contains the information for performance measurement.
@@ -39,7 +39,7 @@ type MeasurementOptions struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions) (retErr error) {
+func MeasurePerformance(ctx context.Context, env *TestEnvironment, cr *chrome.Chrome, scripts []string, options MeasurementOptions) (retErr error) {
 	// Time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
 
@@ -58,21 +58,21 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	perfEvents := &chrome.JSObject{}
-	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.TestConn) error {
-		if err := setupPerfListener(ctx, tconn, perfEvents, options.IsColdStart); err != nil {
+	app, err := Init(ctx, env, scripts, options.OutputDir, func(ctx context.Context, tconn *chrome.TestConn) error {
+		if err := env.setLaunchStartTime(ctx, options.IsColdStart); err != nil {
 			return err
 		}
-		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
+		if env.Config.InstallSWA {
+			return LaunchSWA(ctx, tconn)
+		}
+		return LaunchPlatformApp(ctx, tconn)
 	})
-
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}
-	defer perfEvents.Release(ctx)
 	defer app.Close(ctx)
 	defer (func() {
-		if err := app.CheckJSError(ctx, options.OutputDir); err != nil {
+		if err := app.CheckJSError(ctx, env, options.OutputDir); err != nil {
 			if retErr != nil {
 				testing.ContextLog(ctx, "Failed with javascript errors: ", err)
 			} else {
@@ -87,7 +87,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		}
 	}
 
-	if err := app.CollectPerfEvents(ctx, perfEvents, options.PerfValues); err != nil {
+	if err := app.CollectPerfEvents(ctx, options.PerfValues, env); err != nil {
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
@@ -199,58 +199,34 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 	return nil
 }
 
-// setupPerfListener setups the connection to CCA and add a perf event listener.
-func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, perfEvents *chrome.JSObject, isColdStart bool) error {
-	var launchEventName string
-	if isColdStart {
-		launchEventName = "launching-from-launch-app-cold"
-	} else {
-		launchEventName = "launching-from-launch-app-warm"
-	}
-
-	if err := tconn.Call(ctx, perfEvents, `
-		(id, launchEventName) => {
-		  const perfEvents = [];
-		  const port = chrome.runtime.connect(id, {name: 'SET_PERF_CONNECTION'});
-		  port.onMessage.addListener((message) => {
-		    perfEvents.push(message);
-		  });
-		  port.postMessage({name: launchEventName});
-		  return perfEvents;
-		}`, ID, launchEventName); err != nil {
-		return err
-	}
-	return nil
-}
-
 // CollectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) CollectPerfEvents(ctx context.Context, perfEvents *chrome.JSObject, perfValues *perf.Values) error {
-	var events []perfEvent
-	if err := perfEvents.Call(ctx, &events, "function() { return this; }"); err != nil {
+func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values, env *TestEnvironment) error {
+	entries, err := env.GetPerfEntries(ctx)
+	if err != nil {
 		return err
 	}
 
-	informativeEventName := func(event perfEvent) string {
-		extras := event.Extras
-		if len(extras.Facing) > 0 {
+	informativeEventName := func(entry perfEntry) string {
+		perfInfo := entry.PerfInfo
+		if len(perfInfo.Facing) > 0 {
 			// To avoid containing invalid character in the metrics name, we should remove the non-Alphanumeric characters from the facing.
 			// e.g. When the facing is not set, the corresponding string will be (not-set).
 			reg := regexp.MustCompile("[^a-zA-Z0-9]+")
-			validFacingString := reg.ReplaceAllString(extras.Facing, "")
-			return fmt.Sprintf(`%s-facing-%s`, event.Event, validFacingString)
+			validFacingString := reg.ReplaceAllString(perfInfo.Facing, "")
+			return fmt.Sprintf(`%s-facing-%s`, entry.Event, validFacingString)
 		}
-		return event.Event
+		return entry.Event
 	}
 
 	countMap := make(map[string]int)
-	for _, event := range events {
-		countMap[informativeEventName(event)]++
+	for _, entry := range entries {
+		countMap[informativeEventName(entry)]++
 	}
 
 	resultMap := make(map[string]float64)
-	for _, event := range events {
-		eventName := informativeEventName(event)
-		resultMap[eventName] += event.Duration / float64(countMap[eventName])
+	for _, entry := range entries {
+		eventName := informativeEventName(entry)
+		resultMap[eventName] += entry.Duration / float64(countMap[eventName])
 	}
 
 	for name, value := range resultMap {

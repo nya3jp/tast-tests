@@ -106,6 +106,12 @@ var Terminal = App{
 	Name: "Terminal",
 }
 
+// Camera has details about the Camera app.
+var Camera = App{
+	ID:   "lokiojgebppilomhkceogdnchlbpcoaj",
+	Name: "Camera",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -123,6 +129,11 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 		return err
 	}
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID)
+}
+
+// LaunchSystemWebApp launches a system web app specifide by its name and URL.
+func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, url string) error {
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.launchSystemWebApp)", appName, url)
 }
 
 // Close closes an app specified by appID.
