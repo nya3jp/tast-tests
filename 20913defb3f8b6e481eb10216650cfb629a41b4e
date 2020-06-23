@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "807ffdc2_bd55f83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-06-23T00:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d02c1ff_e7720c3f",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "20913defb3f8b6e481eb10216650cfb629a41b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d147ef20_0cf307f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sanity.go",
         "patchSetId": 1
