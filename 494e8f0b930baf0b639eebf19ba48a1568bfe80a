@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32631a8c_9e263364",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-23T06:03:13Z",
+      "side": 1,
+      "message": "`temp` reports its value in millidegree Celsius so we need to adjust the unit in Celsius with multiplying by 1000.\nc.f. https://www.kernel.org/doc/Documentation/thermal/sysfs-api.txt",
+      "revId": "494e8f0b930baf0b639eebf19ba48a1568bfe80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
