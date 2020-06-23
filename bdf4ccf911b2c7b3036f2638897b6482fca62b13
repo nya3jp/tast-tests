@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72763ae9_12e8c018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-23T23:56:42Z",
+      "side": 1,
+      "message": "You are no longer hiding the keyboard again. Does this not change the test functionality?",
+      "revId": "bdf4ccf911b2c7b3036f2638897b6482fca62b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
