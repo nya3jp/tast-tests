@@ -318,7 +318,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
-	defer recorder.Stop()
 
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
@@ -538,10 +537,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				}
 			}
 		})
-	}
-
-	if err := recorder.Stop(); err != nil {
-		s.Fatal("Failed to stop the recorder: ", err)
 	}
 
 	pv := perf.NewValues()

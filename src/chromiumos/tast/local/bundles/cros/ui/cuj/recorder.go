@@ -151,13 +151,6 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 	return r, nil
 }
 
-// Stop stops the background goroutines related to this recorder and returns the
-// error if an error has occurred. If it's stopped already, it does nothing and
-// returns nil.
-func (r *Recorder) Stop() error {
-	return nil
-}
-
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
