@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -58,18 +57,13 @@ func ChangeWallpaper(ctx context.Context, s *testing.State) {
 	defer setWallpaper.Release(ctx)
 
 	// This button takes a bit before it is clickable.
-	// Keep clicking it until the click is recieved and the menu closes.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if exists, err := ui.Exists(ctx, tconn, params); err != nil {
-			return testing.PollBreak(err)
-		} else if exists {
-			if err := setWallpaper.LeftClick(ctx); err != nil {
-				return errors.Wrap(err, "failed to click set wallpaper")
-			}
-			return errors.New("click may not have been received yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	// Keep clicking it until the click is received and the menu closes.
+	condition := func(ctx context.Context) (bool, error) {
+		exists, err := ui.Exists(ctx, tconn, params)
+		return !exists, err
+	}
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
+	if err := setWallpaper.LeftClickUntil(ctx, condition, &opts); err != nil {
 		s.Fatal("Failed to open wallpaper picker: ", err)
 	}
 
