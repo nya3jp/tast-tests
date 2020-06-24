@@ -16,6 +16,24 @@
       "revId": "bdf4ccf911b2c7b3036f2638897b6482fca62b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863b61f6_644b9bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T00:09:27Z",
+      "side": 1,
+      "message": "That\u0027s right. The current Tast strategy for Essential Inputs is to cover P0 sanity checks and prompt it to CQ. We consider this is part of the critical user journey, so removed it.",
+      "parentUuid": "72763ae9_12e8c018",
+      "revId": "bdf4ccf911b2c7b3036f2638897b6482fca62b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
