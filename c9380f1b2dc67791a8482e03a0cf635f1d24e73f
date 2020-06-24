@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b963a2af_264d4041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-24T20:53:31Z",
+      "side": 1,
+      "message": "In some tests, not all of histograms are expected to be in a single run -- for example, ui.TaskSwitchCUJ\u0027s recorder keeps all of possible histograms, but a run (like alt-tab) reports only a part of them.\n\nThus, this would be RunAndWaitAny() would be more appropriate (see my comments in window_cycle_perf.go).\n\nAlso note that r.names might be an empty list (ui.IdlePerf is an example). Please make sure that it works in that case.",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 36
+      },
+      "revId": "c9380f1b2dc67791a8482e03a0cf635f1d24e73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a9ec13_bf129734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-24T20:53:31Z",
+      "side": 1,
+      "message": "IIRC, this test doesn\u0027t assume all histograms are reported. I guess it is better to introduce RUnAndWaitAny(), and use it here.",
+      "revId": "c9380f1b2dc67791a8482e03a0cf635f1d24e73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
