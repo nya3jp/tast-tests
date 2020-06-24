@@ -12,6 +12,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/network/ping"
+	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/shillconst/devprop"
+	"chromiumos/tast/common/shillconst/ipconfprop"
+	"chromiumos/tast/common/shillconst/svcprop"
+	"chromiumos/tast/common/shillconst/svcstate"
+	"chromiumos/tast/common/shillconst/techtype"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
@@ -115,8 +121,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	// Also, a change in the default physical Ethernet during the test,
 	// could cause the L2TP VPN connection to fail (b:157677857).
 	props := map[string]interface{}{
-		shill.ServicePropertyType:  shill.TypeEthernet,
-		shill.ServicePropertyState: shill.ServiceStateOnline,
+		svcprop.Type:  techtype.Ethernet,
+		svcprop.State: svcstate.Online,
 	}
 
 	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
@@ -197,7 +203,7 @@ func removeDefaultProfile(ctx context.Context) (retErr error) {
 		}
 	}()
 
-	if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+	if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed removing default profile")
 	}
 
@@ -221,9 +227,9 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 		return errors.Wrapf(err, "failed to get properties of device %v", device)
 	}
 
-	servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
+	servicePath, err := deviceProp.GetObjectPath(devprop.SelectedService)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
+		return errors.Wrapf(err, "failed to get the DBus object path for the property %s", devprop.SelectedService)
 	}
 
 	service, err := shill.NewService(ctx, servicePath)
@@ -231,7 +237,7 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 		return errors.Wrap(err, "failed creating shill service proxy")
 	}
 
-	if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
+	if err := service.SetProperty(ctx, svcprop.StaticIPConfig, map[string]interface{}{ipconfprop.Address: address, "Prefixlen": networkPrefix}); err != nil {
 		return errors.Wrap(err, "failed to configure the static IP address")
 	}
 
@@ -257,7 +263,7 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+	if err := pw.Expect(timeoutCtx, svcprop.IsConnected, true); err != nil {
 		return err
 	}
 
@@ -319,7 +325,7 @@ func connectVPN(ctx context.Context, vpnType, authType, serverAddress string, ma
 	// 15 seconds for association and 15 seconds for configuration.
 	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+	if err := pw.Expect(timeoutCtx, svcprop.IsConnected, true); err != nil {
 		return err
 	}
 

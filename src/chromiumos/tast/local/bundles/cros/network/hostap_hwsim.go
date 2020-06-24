@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/shillconst/mgrprop"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -142,7 +143,7 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get properties: ", err)
 	}
-	origProhibited, err := props.GetString(shill.ManagerPropertyProhibitedTechnologies)
+	origProhibited, err := props.GetString(mgrprop.ProhibitedTechnologies)
 	if err != nil {
 		s.Fatal("Failed to get ProhibitedTechnologies: ", err)
 	}
@@ -153,12 +154,12 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	} else {
 		prohibited = string(shill.TechnologyWifi)
 	}
-	if err := m.SetProperty(ctx, shill.ManagerPropertyProhibitedTechnologies, prohibited); err != nil {
+	if err := m.SetProperty(ctx, mgrprop.ProhibitedTechnologies, prohibited); err != nil {
 		s.Fatal("Could not prohibit WiFi from shill: ", err)
 	}
 	defer func() {
 		// Reset to original prohibition list.
-		if err := m.SetProperty(fullCtx, shill.ManagerPropertyProhibitedTechnologies, origProhibited); err != nil {
+		if err := m.SetProperty(fullCtx, mgrprop.ProhibitedTechnologies, origProhibited); err != nil {
 			s.Error("Could not reset shill prohibited technologies: ", err)
 		}
 	}()

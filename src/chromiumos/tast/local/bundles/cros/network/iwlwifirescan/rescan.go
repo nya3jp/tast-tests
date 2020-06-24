@@ -13,6 +13,8 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst/devprop"
+	"chromiumos/tast/common/shillconst/mgrprop"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
@@ -40,7 +42,7 @@ func waitForIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface
 	// recovery might happen in the same polling cycle, in that case, we
 	// will miss the interface change with polling.
 	for {
-		v, err := pw.WaitAll(ctx, shill.ManagerPropertyDevices)
+		v, err := pw.WaitAll(ctx, mgrprop.Devices)
 		if err != nil {
 			return err
 		}
@@ -62,7 +64,7 @@ func waitForIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface
 				}
 				return err
 			}
-			devIface, err := devProps.GetString(shill.DevicePropertyInterface)
+			devIface, err := devProps.GetString(devprop.Interface)
 			if err != nil {
 				// Skip the devices without valid DevicePropertyInterface
 				testing.ContextLogf(ctx, "Skip device %s without valid interface, err=%s",

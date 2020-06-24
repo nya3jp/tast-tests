@@ -10,9 +10,10 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/shillconst/sectype"
+	"chromiumos/tast/common/shillconst/svcprop"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/shill"
 )
 
 // A PSK should be a string composed with 64 hex digits, or a ASCII passphrase whose length is between 8 and 63 (inclusive).
@@ -68,7 +69,7 @@ type Config struct {
 
 // Class returns security class of WPA network.
 func (c *Config) Class() string {
-	return shill.SecurityPSK
+	return sectype.PSK
 }
 
 // HostapdConfig returns hostapd config of WPA network.
@@ -137,10 +138,10 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 // ShillServiceProperties returns shill properties of WPA network.
 func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 	ret := map[string]interface{}{
-		shill.ServicePropertyPassphrase: c.psk,
+		svcprop.Passphrase: c.psk,
 	}
 	if c.ftMode&FTModePure > 0 {
-		ret[shill.ServicePropertyFTEnabled] = true
+		ret[svcprop.FTEnabled] = true
 	}
 	return ret, nil
 }
