@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "e311df8c_e6f071a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-06-24T14:26:41Z",
+      "side": 1,
+      "message": "Yes, syzkaller causes kernel panics, but it does not do a sync before starting fuzzing afaik(I did a quick re-check but could not find anything). I\u0027ve added in a change that does a sync on the DUT before fuzzing starts.",
+      "parentUuid": "29ff7bca_04856da1",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa66361_7a40c1aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
