@@ -91,44 +91,55 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
+	recorder, err := cuj.NewRecorder(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+
 	if err := tconn.EvalPromise(ctx,
 		`tast.promisify(chrome.autotestPrivate.startSmoothnessTracking)()`, nil); err != nil {
 		s.Fatal("Failed to start display smoothness tracking: ", err)
 	}
-	start := time.Now()
+	var elapsed time.Duration
+	if err := recorder.Run(ctx, tconn, func() error {
+		start := time.Now()
 
-	s.Log("Unlocking screen by typing password")
-	if err := kb.Type(ctx, password+"\n"); err != nil {
-		s.Fatal("Typing correct password failed: ", err)
-	}
-	s.Log("Waiting for Chrome to report that screen is unlocked")
-	if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, goodAuthTimeout); err != nil {
-		s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
-	}
+		s.Log("Unlocking screen by typing password")
+		if err := kb.Type(ctx, password+"\n"); err != nil {
+			return errors.Wrap(err, "typing correct password failed")
+		}
+		s.Log("Waiting for Chrome to report that screen is unlocked")
+		if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, goodAuthTimeout); err != nil {
+			return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
+		}
 
-	conn, err := cr.NewConn(ctx, "https://www.gmail.com/")
-	if err != nil {
-		s.Fatal("Failed to open web: ", err)
-	}
-	defer conn.Close()
+		conn, err := cr.NewConn(ctx, "https://www.gmail.com/")
+		if err != nil {
+			return errors.Wrap(err, "failed to open web")
+		}
+		defer conn.Close()
 
-	s.Log("Opening the first email thread")
-	row, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRow}, gmailTimeout)
-	if err != nil {
-		s.Fatal("Failed to find email thread row: ", err)
-	}
-	defer row.Release(ctx)
+		s.Log("Opening the first email thread")
+		row, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRow}, gmailTimeout)
+		if err != nil {
+			return errors.Wrap(err, "failed to find email thread row")
+		}
+		defer row.Release(ctx)
 
-	if err := row.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click to open the email thread row: ", err)
-	}
+		if err := row.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click to open the email thread row")
+		}
 
-	if err := webutil.WaitForQuiescence(ctx, conn, gmailTimeout); err != nil {
-		s.Fatal("Failed to wait for gmail to finish loading: ", err)
-	}
+		if err := webutil.WaitForQuiescence(ctx, conn, gmailTimeout); err != nil {
+			return errors.Wrap(err, "failed to wait for gmail to finish loading")
+		}
 
-	elapsed := time.Since(start)
-	s.Log("Elapsed ms: ", elapsed.Milliseconds())
+		elapsed = time.Since(start)
+		s.Log("Elapsed ms: ", elapsed.Milliseconds())
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to run the test scenario: ", err)
+	}
 
 	var ds float64
 	if err := tconn.EvalPromise(ctx,
@@ -151,6 +162,9 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		Direction: perf.SmallerIsBetter,
 	}, float64(elapsed.Milliseconds()))
 
+	if err := recorder.Record(pv); err != nil {
+		s.Fatal("Failed to collect the data from the recorder: ", err)
+	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
