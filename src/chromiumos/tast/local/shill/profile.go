@@ -16,36 +16,6 @@ const (
 	dbusProfileInterface = "org.chromium.flimflam.Profile"
 )
 
-const (
-	// DefaultProfileName is the name of default profile.
-	DefaultProfileName = "default"
-	// DefaultProfileObjectPath is the dbus object path of default profile.
-	DefaultProfileObjectPath dbus.ObjectPath = "/profile/" + DefaultProfileName
-	// DefaultProfilePath is the path of default profile.
-	DefaultProfilePath = defaultStorageDir + DefaultProfileName + ".profile"
-)
-
-// Profile property names.
-const (
-	ProfilePropertyCheckPortalList           = "CheckPortalList"
-	ProfilePropertyEntries                   = "Entries"
-	ProfilePropertyName                      = "Name"
-	ProfilePropertyPortalURL                 = "PortalURL"
-	ProfilePropertyPortalCheckInterval       = "PortalCheckInterval"
-	ProfilePropertyServices                  = "Services"
-	ProfilePropertyUserHash                  = "UserHash"
-	ProfilePropertyProhibitedTechnologies    = "ProhibitedTechnologies"
-	ProfilePropertyArpGateway                = "ArpGateway"
-	ProfilePropertyLinkMonitorTechnologies   = "LinkMonitorTechnologies"
-	ProfilePropertyNoAutoConnectTechnologies = "NoAutoConnectTechnologies"
-)
-
-// Profile entry property names.
-const (
-	ProfileEntryPropertyName = "Name"
-	ProfileEntryPropertyType = "Type"
-)
-
 // Profile wraps a Profile D-Bus object in shill.
 type Profile struct {
 	PropertyHolder
