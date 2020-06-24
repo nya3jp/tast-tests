@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/testing"
 )
 
 // Button specifies a button on mouse.
@@ -34,6 +35,22 @@ func Click(ctx context.Context, tconn *chrome.TestConn, location coords.Point, b
 		return errors.Wrap(err, "failed to move to the target location")
 	}
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseClick)(%q)`, button)
+	return tconn.EvalPromise(ctx, expr, nil)
+}
+
+// DoubleClick causes 2 mouse click events with an given interval. The location is relative to the top-left of
+// the display.
+func DoubleClick(ctx context.Context, tconn *chrome.TestConn, location coords.Point, doubleClickInterval time.Duration) error {
+	if err := Move(ctx, tconn, location, 0); err != nil {
+		return errors.Wrap(err, "failed to move to the target location")
+	}
+	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseClick)(%q)`, LeftButton)
+	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, doubleClickInterval); err != nil {
+		return errors.Wrap(err, "failed to wait for the gap between the double click")
+	}
 	return tconn.EvalPromise(ctx, expr, nil)
 }
 
