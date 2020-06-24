@@ -6,8 +6,8 @@
 package base
 
 import (
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
-	"chromiumos/tast/local/shill"
 )
 
 // Config implements security.Config interface for open network, i.e., no security.
@@ -34,7 +34,7 @@ var _ security.ConfigFactory = (*ConfigFactory)(nil)
 
 // Class returns the security class of open network.
 func (*Config) Class() string {
-	return shill.SecurityNone
+	return shillconst.SecurityNone
 }
 
 // HostapdConfig returns hostapd config of open network.

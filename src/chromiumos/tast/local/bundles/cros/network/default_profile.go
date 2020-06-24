@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -49,7 +50,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
-	os.Remove(shill.DefaultProfilePath)
+	os.Remove(shillconst.DefaultProfilePath)
 	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
@@ -65,7 +66,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		isDefaultProfileReady := func() bool {
-			if _, err := os.Stat(shill.DefaultProfilePath); err != nil {
+			if _, err := os.Stat(shillconst.DefaultProfilePath); err != nil {
 				return false
 			}
 
@@ -75,7 +76,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 			}
 
 			for _, p := range paths {
-				if p == shill.DefaultProfileObjectPath {
+				if p == shillconst.DefaultProfileObjectPath {
 					return true
 				}
 			}
@@ -90,7 +91,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	}()
 
 	// Read the default profile and check expected settings.
-	b, err := ioutil.ReadFile(shill.DefaultProfilePath)
+	b, err := ioutil.ReadFile(shillconst.DefaultProfilePath)
 	if err != nil {
 		s.Fatal("Failed reading the default profile: ", err)
 	}
