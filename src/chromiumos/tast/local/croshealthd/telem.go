@@ -28,12 +28,12 @@ const (
 	TelemCategoryBacklight         TelemCategory = "backlight"
 	TelemCategoryBattery           TelemCategory = "battery"
 	TelemCategoryBluetooth         TelemCategory = "bluetooth"
-	TelemCategoryCachedVPD         TelemCategory = "cached_vpd"
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
 	TelemCategoryMemory            TelemCategory = "memory"
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
 	TelemCategoryStorage           TelemCategory = "storage"
+	TelemCategorySystem            TelemCategory = "system"
 	TelemCategoryTimezone          TelemCategory = "timezone"
 )
 
