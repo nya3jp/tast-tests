@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/still-colors-360p_20200612.h264.mp4",
-  "size": 2652,
-  "sha256sum": "60b42fd4092cd979a290eebb8f720dbe0f4a49c1accee5663040ff8969cba504"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/still-colors-360p_20200709.h264.mp4",
+  "size": 15332,
+  "sha256sum": "2a1f0366f19a76cb96fc64ccca32954629978905f30e126dd104533d52ad95b4"
 }

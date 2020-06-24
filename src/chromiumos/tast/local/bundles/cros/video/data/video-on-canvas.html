@@ -25,19 +25,19 @@ async function playAndDrawOnCanvas(videoSourcePath) {
   const expectedRGBAColors = {
     'top-left': {
       pos: {x: 0, y: 0},
-      color: [39, 52, 195, 255]
+      color: [128, 64, 32, 255]
     },
     'top-right': {
       pos: {x: cWidth - 1, y: 0},
-      color: [220, 223, 51, 255]
+      color: [32, 128, 64, 255]
     },
     'bottom-right': {
       pos: {x: cWidth - 1, y: cHeight - 1},
-      color: [255, 156, 67, 255]
+      color: [64, 32, 128, 255]
     },
     'bottom-left': {
       pos: {x: 0, y: cHeight - 1},
-      color: [212, 50, 209, 255]
+      color: [128, 32, 64, 255]
     }
   };
   for (const c in expectedRGBAColors) {
