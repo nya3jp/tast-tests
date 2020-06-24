@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c13d49f3_57c5ad33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-24T06:59:20Z",
+      "side": 1,
+      "message": "\u003e \"openning\" is a possible misspelling of \"opening\".\n\nPlease fix.",
+      "parentUuid": "3565f98c_9f50903a",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "e9f3e9e81e69b47a2c192ec984d4b2aaaade2d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
