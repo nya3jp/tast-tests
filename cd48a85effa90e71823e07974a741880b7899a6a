@@ -22,6 +22,30 @@
       "revId": "cd48a85effa90e71823e07974a741880b7899a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade23921_e381837a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-06-24T04:55:14Z",
+      "side": 1,
+      "message": "Hmm according to the diagram in go/cros-camera:dd:cca-video-capture-improvement, shutter sound should be played before entering \"recording\" state, which we polled in the end of startRecording()? Why do we still need this?",
+      "parentUuid": "10226141_0741d6df",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 12
+      },
+      "revId": "cd48a85effa90e71823e07974a741880b7899a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
