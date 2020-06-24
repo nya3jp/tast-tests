@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/shillconst/devprop"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -68,15 +69,15 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		}
 		for i, device := range devices {
 			deviceProps := props[i]
-			if !deviceProps.Has(shill.DevicePropertyEthernetBusType) {
+			if !deviceProps.Has(devprop.EthernetBusType) {
 				continue
 			}
-			busType, err := deviceProps.GetString(shill.DevicePropertyEthernetBusType)
+			busType, err := deviceProps.GetString(devprop.EthernetBusType)
 			if err != nil {
 				s.Fatal("Failed to get bus type: ", err)
 			}
 
-			iface, err := deviceProps.GetString(shill.DevicePropertyInterface)
+			iface, err := deviceProps.GetString(devprop.Interface)
 			if err != nil {
 				s.Fatal("Failed to get interface name: ", err)
 			}
@@ -144,13 +145,13 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		s.Log("Start watching PropertyChanged signals")
-		vals, err := signalWatcher.WaitAll(ctx, shill.DevicePropertyAddress, shill.DevicePropertyEthernetMACSource)
+		vals, err := signalWatcher.WaitAll(ctx, devprop.Address, devprop.EthernetMACSource)
 		if err != nil {
 			s.Fatal("Failed to wait expected changes: ", err)
 		}
 
-		verifyProperty(shill.DevicePropertyAddress, vals[0], strings.Replace(expectedMAC, ":", "", -1))
-		verifyProperty(shill.DevicePropertyEthernetMACSource, vals[1], source)
+		verifyProperty(devprop.Address, vals[0], strings.Replace(expectedMAC, ":", "", -1))
+		verifyProperty(devprop.EthernetMACSource, vals[1], source)
 
 		if mac := getMAC(); mac != expectedMAC {
 			s.Fatalf("Can not verify MAC address change via `net` library, current MAC is %s vs %s expected", mac, expectedMAC)

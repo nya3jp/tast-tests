@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 
+	"chromiumos/tast/common/shillconst/profileprop"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -80,7 +81,7 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the Entries property of the profile.
-	profPropsEntries, err := profProps.GetStrings(shill.ProfilePropertyEntries)
+	profPropsEntries, err := profProps.GetStrings(profileprop.Entries)
 	if err != nil {
 		s.Fatal("Failed getting profile entries: ", err)
 	}
