@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "4bdf71ca_b921a402",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-24T01:29:47Z",
+      "side": 1,
+      "message": "I didn\u0027t change anything about the highlighted comment.\n\nI changed how the AP is *producing* those 2 BSSes (and ESSes), because mac80211 no longer allows reuse of the same MAC address on multiple BSSes for the same underlying PHY. But I did not change anything about how a client may connect to them.\n\nI imagine that maybe this comment is referring to this, from Shill:\n\nvoid WiFi::BSSAddedTask(const RpcIdentifier\u0026 path,\n                        const KeyValueStore\u0026 properties) {\n  // Note: we assume that BSSIDs are unique across endpoints. This\n  // means that if an AP reuses the same BSSID for multiple SSIDs, we\n  // lose.\n...\n\nThat dates very very far back, to here:\nhttp://gerrit.chromium.org/gerrit/2910\n\nAnd IIUC, it became obsolete here:\nhttps://gerrit.chromium.org/gerrit/12017\n\nMaybe that means we can simply try connecting, and discard this comment.",
+      "parentUuid": "413c6010_a3a8b998",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
