@@ -43,28 +43,24 @@ func MaskedBSSID(fullCtx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID.
-	// It returns a shorten ctx, the channel's mapping frequency, a callback to deconfigure the AP and an error object.
+	// It returns a shorten ctx, an APIface object, a callback to deconfigure the AP and an error object.
 	// Note that it directly used s and tf from the outer scope.
-	configureAP := func(ctx context.Context, ssid string, channel int) (context.Context, int, func(context.Context), error) {
-		freq, err := hostapd.ChannelToFrequency(channel)
-		if err != nil {
-			return ctx, 0, nil, err
-		}
-		s.Logf("Setting up the AP on freq %d", freq)
+	configureAP := func(ctx context.Context, ssid string, channel int) (context.Context, *wificell.APIface, func(context.Context), error) {
+		s.Logf("Setting up the AP on channel %d", channel)
 		options := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID("00:11:22:33:44:55"), hostapd.SSID(ssid)}
 		ap, err := tf.ConfigureAP(ctx, options, nil)
 		if err != nil {
-			return ctx, freq, nil, err
+			return ctx, nil, nil, err
 		}
 		sCtx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		deferFunc := func(ctx context.Context) {
-			s.Logf("Deconfiguring the AP on freq %d", freq)
+			s.Logf("Deconfiguring the AP on channel %d", channel)
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig AP: ", err)
 			}
 			cancel()
 		}
-		return sCtx, freq, deferFunc, nil
+		return sCtx, ap, deferFunc, nil
 	}
 
 	// Create an AP, manually specifying both the SSID and BSSID.
@@ -75,15 +71,22 @@ func MaskedBSSID(fullCtx context.Context, s *testing.State) {
 	channels := []int{1, 36}
 	var ssids []string
 	var freqs []int
+	var aps []*wificell.APIface
 	for i, ch := range channels {
+		if freq, err := hostapd.ChannelToFrequency(ch); err != nil {
+			s.Fatalf("Invalid channel %d: %v", ch, err)
+		} else {
+			freqs = append(freqs, freq)
+		}
+
 		ssid := hostapd.RandomSSID(fmt.Sprintf("TAST_TEST_%d_", i))
-		sCtx, freq, deconfig, err := configureAP(ctx, ssid, ch)
+		sCtx, ap, deconfig, err := configureAP(ctx, ssid, ch)
 		if err != nil {
 			s.Fatal("Failed to set up AP: ", err)
 		}
 		defer deconfig(fullCtx)
 		ssids = append(ssids, ssid)
-		freqs = append(freqs, freq)
+		aps = append(aps, ap)
 		ctx = sCtx
 	}
 
@@ -122,4 +125,15 @@ func MaskedBSSID(fullCtx context.Context, s *testing.State) {
 		s.Errorf("DUT: failed to find the ssids=%v in the scan", ssids)
 	}
 
+	for _, ap := range aps {
+		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+			s.Errorf("Failed to connect to WiFi SSID %s: %v", ap.Config().SSID, err)
+		}
+		if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
+			s.Error("Failed to ping from the Server: ", err)
+		}
+		if err := tf.DisconnectWifi(ctx); err != nil {
+			s.Error("Failed to disconnect WiFi: ", err)
+		}
+	}
 }
