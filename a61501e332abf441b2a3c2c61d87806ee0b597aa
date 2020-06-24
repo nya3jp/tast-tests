@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7c4d7425_a2d10a5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-24T06:52:13Z",
+      "side": 1,
+      "message": "I see. Until we get many timer tests, can we use an existing category? I think \"hardware\" is a good fit for this test.\n\nPlease note that there are already a few local tests for the \"hardware\" category, but there\u0027s no remote test now, so we still have to create a new directory.",
+      "parentUuid": "90a48ff2_efe58f97",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e846a66_0e4d0bed",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1
@@ -284,6 +308,30 @@
       "side": 1,
       "message": "Sorry, I forgot about this one. I want it to run on infra, so I think \"group:mainline\" and \"informational\" would be appropriate, right?",
       "parentUuid": "e12d813f_ffaa7322",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbb8235_c89709fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-24T06:52:13Z",
+      "side": 1,
+      "message": "Hmm. I\u0027m afraid we can\u0027t put this test to the mainline group because it takes too long time to finish. The usual expectation for mainline tests is to finish in 2-3 minutes.\n\nCan you discuss with your contact in Chrome OS infra team to discuss the resource planning?",
+      "parentUuid": "9b8f002e_13170aa1",
       "range": {
         "startLine": 23,
         "startChar": 2,
@@ -834,6 +882,30 @@
       "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366d33b8_e789b55b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-24T06:52:13Z",
+      "side": 1,
+      "message": "That\u0027s fair, thanks for explanation.",
+      "parentUuid": "f6980cd1_c95697f7",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
