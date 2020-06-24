@@ -136,7 +136,7 @@ func init() {
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "copy_wayland_download",
+			Name:      "copy_wayland_download_stretch",
 			ExtraData: []string{"secure_copy.py"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -147,7 +147,7 @@ func init() {
 			},
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:      "copy_x11_download",
+			Name:      "copy_x11_download_stretch",
 			ExtraData: []string{"secure_copy.py"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -158,7 +158,7 @@ func init() {
 			},
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:      "paste_wayland_download",
+			Name:      "paste_wayland_download_stretch",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -169,7 +169,7 @@ func init() {
 			},
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:      "paste_x11_download",
+			Name:      "paste_x11_download_stretch",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,

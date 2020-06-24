@@ -143,7 +143,7 @@ func init() {
 			},
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 		}, {
-			Name:      "local_wayland_download",
+			Name:      "local_wayland_download_stretch",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -155,7 +155,7 @@ func init() {
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
 		}, {
-			Name:      "local_x11_download",
+			Name:      "local_x11_download_stretch",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -167,7 +167,7 @@ func init() {
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
 		}, {
-			Name:      "system_wayland_download",
+			Name:      "system_wayland_download_stretch",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
@@ -179,7 +179,7 @@ func init() {
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
 		}, {
-			Name:      "system_x11_download",
+			Name:      "system_x11_download_stretch",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 			Pre:       crostini.StartedByDownload(),
 			Timeout:   10 * time.Minute,
