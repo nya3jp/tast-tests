@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c653cfba_8da14fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-24T19:29:18Z",
+      "side": 1,
+      "message": "Recently arc.VMBooted() got removed. Instead you can use arc.Booted() for both:\n\nPre:    arc.Booted(),\nParams: []testing.Param{{\n\t\tExtraSoftwareDeps: []string{\"android_p\"},\n\t}, {\n\t\tName:              \"vm\",\n\t\tExtraSoftwareDeps: []string{\"android_vm\"},\n\t}},",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "55f93e38dccad6a77afe13d2ec5bfe8d06522766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
