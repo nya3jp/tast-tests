@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/remote/bundles/cros/camera/pre"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/ssh/linuxssh"
@@ -24,6 +25,9 @@ func init() {
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
+		Data:         []string{"scene.pdf"},
+		Vars:         []string{"chart"},
+		Pre:          pre.DataChart("scene.pdf"),
 		// For extra params, reference corresponding tests in:
 		// src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3_*.go
 		Params: []testing.Param{
