@@ -168,6 +168,16 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 	return file.LeftClick(ctx)
 }
 
+// OpenFile executes double click on a file to open it with default app.
+func (f *FilesApp) OpenFile(ctx context.Context, filename string) error {
+	file, err := f.file(ctx, filename, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer file.Release(ctx)
+	return file.DoubleClick(ctx)
+}
+
 // OpenQuickView opens the QuickView menu for a file.
 func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 	file, err := f.file(ctx, filename, uiTimeout)
