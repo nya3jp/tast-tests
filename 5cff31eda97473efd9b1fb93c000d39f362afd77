@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96d036c6_0c3abe50",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T10:43:56Z",
+      "side": 1,
+      "message": "It works indeed. Can you advise if anything wrong here?",
+      "parentUuid": "4e70c78e_5c660c45",
+      "range": {
+        "startLine": 210,
+        "startChar": 21,
+        "endLine": 210,
+        "endChar": 22
+      },
+      "revId": "5cff31eda97473efd9b1fb93c000d39f362afd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19d406b7_9a7fd7a4",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-06-24T09:58:11Z",
       "side": 1,
       "message": "I think the CQ failed with \"unreachable code\" in this line.",
+      "revId": "5cff31eda97473efd9b1fb93c000d39f362afd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d4f3b5_357c92d4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T10:43:56Z",
+      "side": 1,
+      "message": "Interesting, it was not complained on uploading code. It previously failed my test on local with err \u0027missed return\u0027, and I added this line to fix it. Can not remember what happened. Anyway, removed this line.",
+      "parentUuid": "19d406b7_9a7fd7a4",
       "revId": "5cff31eda97473efd9b1fb93c000d39f362afd77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
