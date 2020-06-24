@@ -90,7 +90,7 @@ func init() {
 		// static initialisers hence the big list.
 		Params: []testing.Param{
 			{
-				Name: "wayland_to_wayland_download",
+				Name: "wayland_to_wayland_download_stretch",
 				Val: testParameters{
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
@@ -100,7 +100,7 @@ func init() {
 				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "wayland_to_x11_download",
+				Name: "wayland_to_x11_download_stretch",
 				Val: testParameters{
 					Copy:  waylandCopyConfig,
 					Paste: x11PasteConfig,
@@ -110,7 +110,7 @@ func init() {
 				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "x11_to_wayland_download",
+				Name: "x11_to_wayland_download_stretch",
 				Val: testParameters{
 					Copy:  x11CopyConfig,
 					Paste: waylandPasteConfig,
@@ -120,7 +120,7 @@ func init() {
 				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "x11_to_x11_download",
+				Name: "x11_to_x11_download_stretch",
 				Val: testParameters{
 					Copy:  x11CopyConfig,
 					Paste: x11PasteConfig,
