@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5b815f_b320acb1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-06-24T21:57:47Z",
+      "side": 0,
+      "message": "unforch this one flaked today",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "ce38847cb77e6a450e92b36fab96492ffbfb9159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
