@@ -578,6 +578,30 @@
     },
     {
       "key": {
+        "uuid": "d119b94e_a7c2143c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-06-24T06:17:08Z",
+      "side": 1,
+      "message": "to be honest I\u0027m very much against landing it - it would create too much noise. at best it would make people ignore this test, at worst spend a lot of time debugging phantoms.",
+      "parentUuid": "589bcd0f_85a9c431",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52809e5d_cf59460d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1
