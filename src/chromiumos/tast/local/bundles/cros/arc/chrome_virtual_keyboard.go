@@ -16,6 +16,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// vkTestFunc is a signature of a "test" function.
+type vkTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *chrome.Chrome, *ui.Device, *testing.State)
+
+// vkTestParams represents the name of the test and the function to call.
+type vkTestParams struct {
+	name string
+	fn   vkTestFunc
+}
+
+var stableVkTests = []vkTestParams{
+	{"Basic editing", chromeVirtualKeyboardBasicEditingTest},
+	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
+}
+
+var unstableVkTests = []vkTestParams{
+	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
+}
+
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
 
 func init() {
@@ -27,9 +45,19 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
 		Params: []testing.Param{{
+			Val:               stableVkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			Val:               stableVkTests,
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "unstable",
+			Val:               unstableVkTests,
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "unstable_vm",
+			Val:               unstableVkTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -225,6 +253,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 
 // chromeVirtualKeyboardEditingOnNullTypeTest tests the virtual keyboard behavior on an EditText with InputType.TYPE_NULL
 // The virtual keyboard should send a key event instead of inserting text through InputConnection on such an EditText.
+// TODO(crbug.com/1081596): Add tests with an IME with composition.
 func chromeVirtualKeyboardEditingOnNullTypeTest(
 	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
 	const (
@@ -319,14 +348,9 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	s.Run(ctx, "editing", func(ctx context.Context, s *testing.State) {
-		chromeVirtualKeyboardBasicEditingTest(ctx, tconn, a, cr, d, s)
-	})
-	s.Run(ctx, "focusChange", func(ctx context.Context, s *testing.State) {
-		chromeVirtualKeyboardFocusChangeTest(ctx, tconn, a, cr, d, s)
-	})
-	// TODO(crbug.com/1081596): Add tests with an IME with composition.
-	s.Run(ctx, "editingOnNull", func(ctx context.Context, s *testing.State) {
-		chromeVirtualKeyboardEditingOnNullTypeTest(ctx, tconn, a, cr, d, s)
-	})
+	for _, test := range s.Param().([]vkTestParams) {
+		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			test.fn(ctx, tconn, a, cr, d, s)
+		})
+	}
 }
