@@ -744,13 +744,37 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 	return a.StopRecording(ctx, timerState, startTime)
 }
 
-// SavedDir returns the path to the folder where captured files are saved.
-func (a *App) SavedDir(ctx context.Context) (string, error) {
-	path, err := cryptohome.UserPath(ctx, a.cr.User())
+// savedDir returns the path to the folder where captured files are saved.
+func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	path, err := cryptohome.UserPath(ctx, cr.User())
 	if err != nil {
 		return "", err
 	}
 	return filepath.Join(path, "Downloads"), err
+}
+
+// ClearSavedDir clears all files in the folder where captured files are saved.
+func ClearSavedDir(ctx context.Context, cr *chrome.Chrome) error {
+	dir, err := savedDir(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Downloads directory")
+	}
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return errors.Wrap(err, "failed to read Downloads directory")
+	}
+	for _, file := range files {
+		path := filepath.Join(dir, file.Name())
+		if err := os.Remove(path); err != nil {
+			return errors.Wrapf(err, "failed to remove file %v from Downloads directory", path)
+		}
+	}
+	return nil
+}
+
+// SavedDir returns the path to the folder where captured files are saved.
+func (a *App) SavedDir(ctx context.Context) (string, error) {
+	return savedDir(ctx, a.cr)
 }
 
 // CheckFacing returns an error if the active camera facing is not expected.
