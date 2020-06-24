@@ -109,6 +109,11 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 	if err := downloadToFile(ctx, url, filesPath); err != nil {
 		return "", err
 	}
+	defer func() {
+		if err := os.RemoveAll(filesPath); err != nil {
+			testing.ContextLogf(ctx, "Ignoring error deleting uneeded archive file: %s", err)
+		}
+	}()
 
 	if err := os.RemoveAll(path.Join(imageDir, "image.ext4")); err != nil {
 		return "", errors.Wrapf(err, "failed to delete old image.ext4 from %s", imageDir)
@@ -118,6 +123,7 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 	if err := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrapf(err, "failed to unzip image.ext4 from %s", filesPath)
 	}
+
 	return path.Join(imageDir, "image.ext4"), nil
 }
 
