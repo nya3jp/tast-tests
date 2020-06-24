@@ -27,9 +27,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// ModelBlacklist is list of models that are too flaky for the CQ. Use the standard tast
+// UnstableModels is list of models that are too flaky for the CQ. Use the standard tast
 // criteria at go/tast-add-test to judge whether it should be on the CQ.
-var ModelBlacklist = []string{
+var UnstableModels = []string{
 	// Platform auron
 	"auron_paine",
 	"auron_yuna",
@@ -108,11 +108,11 @@ var ModelBlacklist = []string{
 
 // CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
 // known flakiness issues.
-var CrostiniStable = hwdep.D(hwdep.SkipOnModel(ModelBlacklist...))
+var CrostiniStable = hwdep.D(hwdep.SkipOnModel(UnstableModels...))
 
 // CrostiniUnstable is a hardware dependency that is the inverse of CrostiniStable. It only runs a test on
 // models that are known to be flaky when running Crostini tests.
-var CrostiniUnstable = hwdep.D(hwdep.Model(ModelBlacklist...))
+var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 
 // ImageArtifact holds the name of the artifact which will be used to
 // boot crostini. When using the StartedByArtifact precondition, you
