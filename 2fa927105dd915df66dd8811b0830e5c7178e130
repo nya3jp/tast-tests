@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "800e4c08_ae7ab232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T07:31:45Z",
+      "side": 1,
+      "message": "Solved by force enabling the feature",
+      "parentUuid": "e4f27dda_7fad3e09",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bafc12c_b7827667",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f392de87_c99a12c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T07:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bafc12c_b7827667",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f8abdf5_67cb2894",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378b8af4_180d5fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T07:31:45Z",
+      "side": 1,
+      "message": "Solved by force enabling the feature",
+      "parentUuid": "9f8abdf5_67cb2894",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e27089_8bd8d8d9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-24T07:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc49ed6_58d428f8",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
