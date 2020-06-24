@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/network/ping"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
@@ -77,7 +78,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 			}
 		}()
 
-		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
 	}()
@@ -98,7 +99,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		manager.RemoveProfile(ctx, testDefaultProfileName)
 
 		upstart.StopJob(ctx, "shill")
-		os.Remove(shill.DefaultProfilePath)
+		os.Remove(shillconst.DefaultProfilePath)
 		upstart.RestartJob(ctx, "shill")
 	}()
 
@@ -189,9 +190,9 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 			return errors.Wrapf(err, "failed to get properties of device %v", device)
 		}
 
-		servicePath, err := deviceProp.GetObjectPath(shill.DevicePropertySelectedService)
+		servicePath, err := deviceProp.GetObjectPath(shillconst.DevicePropertySelectedService)
 		if err != nil {
-			return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shill.DevicePropertySelectedService)
+			return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shillconst.DevicePropertySelectedService)
 		}
 
 		service, err := shill.NewService(ctx, servicePath)
@@ -199,7 +200,7 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 			return errors.Wrap(err, "failed creating shill service proxy")
 		}
 
-		if err := service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, map[string]interface{}{shillconst.IPConfigPropertyAddress: address, "Prefixlen": networkPrefix}); err != nil {
 			return errors.Wrap(err, "failed to configure the static IP address")
 		}
 
@@ -279,7 +280,7 @@ func connectVPN(ctx context.Context, vpnType, authType, serverAddress string, ma
 	// 15 seconds for association and 15 seconds for configuration.
 	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+	if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
 		return err
 	}
 

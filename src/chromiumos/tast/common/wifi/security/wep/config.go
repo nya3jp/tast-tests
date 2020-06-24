@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/shill"
 )
 
 // AuthAlgo is the type for specifying WEP authentication algorithms.
@@ -33,7 +33,7 @@ type Config struct {
 
 // Class returns security class of WEP network.
 func (c *Config) Class() string {
-	return shill.SecurityWEP
+	return shillconst.SecurityWEP
 }
 
 // HostapdConfig returns hostapd config of WEP network.
@@ -58,7 +58,7 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 // ShillServiceProperties returns shill properties of WEP network.
 func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 	keyWithIndex := fmt.Sprintf("%d:%s", c.defaultKey, c.keys[c.defaultKey])
-	return map[string]interface{}{shill.ServicePropertyPassphrase: keyWithIndex}, nil
+	return map[string]interface{}{shillconst.ServicePropertyPassphrase: keyWithIndex}, nil
 }
 
 // formatKey is a helper function for generating hostapd and wpa_cli config.

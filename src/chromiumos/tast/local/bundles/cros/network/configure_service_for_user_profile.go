@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -59,15 +60,15 @@ func ConfigureServiceForUserProfile(ctx context.Context, s *testing.State) {
 		ssid = "org.chromium.DfltPrflSrvcsTest"
 	)
 	props := map[string]interface{}{
-		shill.ServicePropertyType:          shill.TypeWifi,
-		shill.ServicePropertySecurityClass: shill.SecurityPSK,
-		shill.ServicePropertySSID:          ssid,
-		shill.ServicePropertyPassphrase:    "notarealpassword",
+		shillconst.ServicePropertyType:          shillconst.TypeWifi,
+		shillconst.ServicePropertySecurityClass: shillconst.SecurityPSK,
+		shillconst.ServicePropertySSID:          ssid,
+		shillconst.ServicePropertyPassphrase:    "notarealpassword",
 	}
 	expectProps := map[string]interface{}{
-		shill.ServicePropertyType:          shill.TypeWifi,
-		shill.ServicePropertyName:          ssid,
-		shill.ServicePropertySecurityClass: shill.SecurityPSK,
+		shillconst.ServicePropertyType:          shillconst.TypeWifi,
+		shillconst.ServicePropertyName:          ssid,
+		shillconst.ServicePropertySecurityClass: shillconst.SecurityPSK,
 	}
 
 	m, err := shill.NewManager(ctx)

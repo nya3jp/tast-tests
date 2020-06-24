@@ -9,90 +9,12 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 )
 
 const (
 	dbusServiceInterface = "org.chromium.flimflam.Service"
-)
-
-// Service property names defined in dbus-constants.h .
-const (
-	// Service property names.
-	ServicePropertyDevice         = "Device"
-	ServicePropertyName           = "Name"
-	ServicePropertyType           = "Type"
-	ServicePropertyIsConnected    = "IsConnected"
-	ServicePropertyMode           = "Mode"
-	ServicePropertyState          = "State"
-	ServicePropertyStaticIPConfig = "StaticIPConfig"
-	ServicePropertyVisible        = "Visible"
-
-	// WiFi service property names.
-	ServicePropertyPassphrase        = "Passphrase"
-	ServicePropertySecurityClass     = "SecurityClass"
-	ServicePropertySSID              = "SSID"
-	ServicePropertyWiFiBSSID         = "WiFi.BSSID"
-	ServicePropertyFTEnabled         = "WiFi.FTEnabled"
-	ServicePropertyWiFiFrequency     = "WiFi.Frequency"
-	ServicePropertyWiFiFrequencyList = "WiFi.FrequencyList"
-	ServicePropertyWiFiHexSSID       = "WiFi.HexSSID"
-	ServicePropertyWiFiHiddenSSID    = "WiFi.HiddenSSID"
-	ServicePropertyWiFiPhyMode       = "WiFi.PhyMode"
-
-	// EAP service property names.
-	ServicePropertyEAPCACertPEM                   = "EAP.CACertPEM"
-	ServicePropertyEAPMethod                      = "EAP.EAP"
-	ServicePropertyEAPInnerEAP                    = "EAP.InnerEAP"
-	ServicePropertyEAPIdentity                    = "EAP.Identity"
-	ServicePropertyEAPPassword                    = "EAP.Password"
-	ServicePropertyEAPPin                         = "EAP.PIN"
-	ServicePropertyEAPCertID                      = "EAP.CertID"
-	ServicePropertyEAPKeyID                       = "EAP.KeyID"
-	ServicePropertyEAPKeyMgmt                     = "EAP.KeyMgmt"
-	ServicePropertyEAPUseSystemCAs                = "EAP.UseSystemCAs"
-	ServicePropertyEAPSubjectAlternativeNameMatch = "EAP.SubjectAlternativeNameMatch"
-)
-
-// ServiceKeyMgmtIEEE8021X is a value of EAPKeyMgmt.
-const ServiceKeyMgmtIEEE8021X = "IEEE8021X"
-
-// Service state values defined in dbus-constants.h
-const (
-	ServiceStateIdle              = "idle"
-	ServiceStateCarrier           = "carrier"
-	ServiceStateAssociation       = "association"
-	ServiceStateConfiguration     = "configuration"
-	ServiceStateReady             = "ready"
-	ServiceStatePortal            = "portal"
-	ServiceStateNoConnectivity    = "no-connectivity"
-	ServiceStateRedirectFound     = "redirect-found"
-	ServiceStatePortalSuspected   = "portal-suspected"
-	ServiceStateOffline           = "offline"
-	ServiceStateOnline            = "online"
-	ServiceStateDisconnect        = "disconnecting"
-	ServiceStateFailure           = "failure"
-	ServiceStateActivationFailure = "activation-failure"
-)
-
-// ServiceConnectedStates is a list of service states that are considered connected.
-var ServiceConnectedStates = []string{
-	ServiceStatePortal,
-	ServiceStateNoConnectivity,
-	ServiceStateRedirectFound,
-	ServiceStatePortalSuspected,
-	ServiceStateOnline,
-	ServiceStateReady,
-}
-
-// Security options defined in dbus-constants.h
-const (
-	SecurityWPA   = "wpa"
-	SecurityWEP   = "wep"
-	SecurityRSN   = "rsn"
-	Security8021x = "802_1x"
-	SecurityPSK   = "psk"
-	SecurityNone  = "none"
 )
 
 // Service wraps a Service D-Bus object in shill.
@@ -115,7 +37,7 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 	if err != nil {
 		return nil, err
 	}
-	deviceObjPath, err := serviceProps.GetObjectPath(ServicePropertyDevice)
+	deviceObjPath, err := serviceProps.GetObjectPath(shillconst.ServicePropertyDevice)
 	if err != nil {
 		return nil, errors.Wrap(err, "no device associated with service")
 	}

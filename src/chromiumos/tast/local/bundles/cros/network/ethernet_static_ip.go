@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -94,7 +95,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		// before the default profile is created by the previous test's
 		// (re)starting of Shill. It's a confusing race condition, so
 		// fix it by making sure that the default profile exsits here.
-		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
 	}()
@@ -116,7 +117,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		manager.RemoveProfile(ctx, testDefaultProfileName)
 
 		upstart.StopJob(ctx, "shill")
-		os.Remove(shill.DefaultProfilePath)
+		os.Remove(shillconst.DefaultProfilePath)
 		upstart.RestartJob(ctx, "shill")
 	}()
 
@@ -138,12 +139,12 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		ctx, st := timing.Start(ctx, "waitForEthernetService")
 		defer st.End()
 
-		return manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 8*time.Second)
+		return manager.WaitForServiceProperties(ctx, map[string]interface{}{shillconst.ServicePropertyType: "ethernet"}, 8*time.Second)
 	}()
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
-	if err = service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: testIP1}); err != nil {
+	if err = service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP1}); err != nil {
 		s.Fatal("Failed to set property: ", err)
 	}
 
@@ -157,7 +158,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get properties of device: ", err)
 	}
-	iface, err := deviceProp.GetString(shill.DevicePropertyInterface)
+	iface, err := deviceProp.GetString(shillconst.DevicePropertyInterface)
 	if err != nil {
 		s.Fatal("Failed to get interface for device: ", err)
 	}
@@ -178,8 +179,8 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push profile: ", err)
 	}
 	defaultProfileProps := map[string]interface{}{
-		shill.ServicePropertyType:           "ethernet",
-		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP1},
+		shillconst.ServicePropertyType:           "ethernet",
+		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP1},
 	}
 	if _, err := manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
@@ -191,8 +192,8 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	// Configure service for user profile with different static IP.
 	s.Log("Configure different static IP for the new profile")
 	userProfileProps := map[string]interface{}{
-		shill.ServicePropertyType:           "ethernet",
-		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP2},
+		shillconst.ServicePropertyType:           "ethernet",
+		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP2},
 	}
 	if _, err = manager.ConfigureServiceForProfile(ctx, userProfileObjectPath, userProfileProps); err != nil {
 		s.Fatal("Unable to configure service: ", err)

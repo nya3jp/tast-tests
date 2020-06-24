@@ -16,28 +16,6 @@ const (
 	dbusDeviceInterface = "org.chromium.flimflam.Device"
 )
 
-// Device property names defined in dbus-constants.h .
-const (
-	// Device property names.
-	DevicePropertyAddress         = "Address"
-	DevicePropertyInterface       = "Interface"
-	DevicePropertyType            = "Type"
-	DevicePropertySelectedService = "SelectedService"
-
-	// Ethernet device property names.
-	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
-	DevicePropertyEthernetLinkUp    = "Ethernet.LinkUp"
-	DevicePropertyEthernetMACSource = "Ethernet.UsbEthernetMacAddressSource"
-	DevicePropertyEapDetected       = "EapAuthenticatorDetected"
-	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
-
-	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod       = "BgscanMethod"
-	DevicePropertyMACAddrRandomEnabled   = "MACAddressRandomizationEnabled"
-	DevicePropertyMACAddrRandomSupported = "MACAddressRandomizationSupported"
-	DevicePropertyScanning               = "Scanning" // Also for cellular.
-)
-
 // Device wraps a Device D-Bus object in shill.
 type Device struct {
 	PropertyHolder
