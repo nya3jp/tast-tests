@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "9a0d2e99_07b4168e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-24T16:56:29Z",
+      "side": 1,
+      "message": "The assertion is still the same: that the driver should not mask the second ESS just because it uses a duplicate BSSID. Both before my change and after, that is what we\u0027re testing.\n\nI don\u0027t really care about the name much. You can equally well choose to name based on:\n * [negative form] the original buggy behavior that we\u0027re trying to prevent (\"masked BSSID\") or\n * [positive form] the test scenario that we\u0027re trying to support (something like \"duplicate BSSID\")\n\nMaybe the positive form is a little clearer?\n\nBTW, I don\u0027t see how changing the channel/band has much to do with this question.",
+      "parentUuid": "1a026dd6_8a18e290",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
