@@ -64,6 +64,12 @@ var Help = App{
 	Name: "Explore",
 }
 
+// Gallery (aka Backlight) has details about the Gallery app.
+var Gallery = App{
+	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
+	Name: "Gallery",
+}
+
 // WhatsNew has details about the What's New app.
 var WhatsNew = App{
 	ID:   "lddhblppcjmenljhdleiahjighahdcje",
