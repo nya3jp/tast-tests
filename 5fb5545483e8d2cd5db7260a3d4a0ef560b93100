@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc81e55_4f7d1872",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T12:30:03Z",
+      "side": 1,
+      "message": "Move this to the for-loop in line 78 as we don\u0027t use freq to set up AP.\n\nAlso, return APIface instead of freq so that we can perform tf.ConnectWifiAP and PingFromDUT later.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09255f7c_ee09e35e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T12:30:03Z",
+      "side": 1,
+      "message": "Rename it to \"scanData\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3006ded_ef21e7ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T12:30:03Z",
+      "side": 1,
+      "message": "s.Errorf(\"DUT: failed to find the ssids\u003d%v in the scan\", ssids)",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86fb5169_1e066410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T12:30:03Z",
+      "side": 1,
+      "message": "Let\u0027s emit error for each unseen SSID.",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

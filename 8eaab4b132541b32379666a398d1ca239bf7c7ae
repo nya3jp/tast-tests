@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "1a026dd6_8a18e290",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T12:30:03Z",
+      "side": 1,
+      "message": "My question is: the original goal of the test was to see how DUT reacts when seeing two SSIDs with the same BSSID. And as you said, this is an illegal configuration on current router, e.g. Gale, so you changed the scenario to provide two SSIDs on different band with the same BSSID (which is okay for Gale). \n\nFor current testing scenario, would BSSID be masked? From my experiment, both SSID under current configuration can be connected and ping is also okay:\nhttps://crrev.com/c/2263316\n\nIf so, the BSSID is not masked. We shall rename the test to something like MultiSSIDSameBSSID. WDYT?",
+      "parentUuid": "4bdf71ca_b921a402",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
