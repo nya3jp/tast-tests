@@ -174,7 +174,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}))
 	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
@@ -223,7 +223,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err := recorder.Record(pv); err != nil {
+	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
 	if pv.Save(s.OutDir()); err != nil {

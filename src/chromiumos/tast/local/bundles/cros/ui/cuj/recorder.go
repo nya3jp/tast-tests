@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
 	"chromiumos/tast/local/power"
@@ -83,6 +84,8 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
+	tconn *chrome.TestConn
+
 	timeline   *perf.Timeline
 	loadValues []*perf.Values
 }
@@ -113,7 +116,7 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("Memory"),
@@ -130,6 +133,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 	r := &Recorder{
 		names:    make([]string, 0, len(configs)),
 		records:  make(map[string]*record, len(configs)+2),
+		tconn:    tconn,
 		timeline: timeline,
 	}
 	for _, config := range configs {
@@ -155,7 +159,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
+func (r *Recorder) Run(ctx context.Context, f func() error) error {
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return errors.Wrap(err, "failed to start recording")
 	}
@@ -167,7 +171,7 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 		}
 		r.loadValues = append(r.loadValues, vs)
 	}()
-	hists, err := metrics.Run(ctx, tconn, f, r.names...)
+	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
 	if err != nil {
 		return err
 	}
@@ -197,8 +201,35 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 
 // Record creates the reporting values from the currently stored data points and
 // sets the values into pv.
-func (r *Recorder) Record(pv *perf.Values) error {
+func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	pv.Merge(r.loadValues...)
+
+	displayInfo, err := display.GetPrimaryInfo(ctx, r.tconn)
+	if err != nil {
+		return err
+	}
+	mode, err := displayInfo.GetSelectedMode()
+	if err != nil {
+		return err
+	}
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display",
+		Variant:   "width",
+		Direction: perf.BiggerIsBetter,
+		Unit:      "pixels",
+	}, float64(mode.WidthInNativePixels))
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display",
+		Variant:   "height",
+		Direction: perf.BiggerIsBetter,
+		Unit:      "pixels",
+	}, float64(mode.HeightInNativePixels))
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display",
+		Variant:   "refresh_rate",
+		Direction: perf.BiggerIsBetter,
+		Unit:      "hz",
+	}, mode.RefreshRate)
 
 	for name, record := range r.records {
 		if record.totalCount == 0 {

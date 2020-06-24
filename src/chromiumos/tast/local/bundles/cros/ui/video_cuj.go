@@ -328,7 +328,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		)
 	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
@@ -342,7 +342,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start display smoothness tracking: ", err)
 	}
 
-	if err = recorder.Run(ctx, tconn, func() error {
+	if err = recorder.Run(ctx, func() error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
 			if err := tapFullscreenButton(); err != nil {
@@ -459,7 +459,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, vs)
 
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {

@@ -314,7 +314,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs,
 			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
@@ -391,7 +391,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			return errors.New("too many dialog popups")
 		}},
 	} {
-		if err = recorder.Run(ctx, tconn, func() error {
+		if err = recorder.Run(ctx, func() error {
 			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 			defer cancel()
 			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, app.packageName); err == nil {
@@ -532,7 +532,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Log(st.desc)
 		s.Run(ctx, st.name, func(ctx context.Context, s *testing.State) {
 			for i := 0; i < len(ws); i++ {
-				if err := recorder.Run(ctx, tconn, func() error { return st.f(ctx, s, i) }); err != nil {
+				if err := recorder.Run(ctx, func() error { return st.f(ctx, s, i) }); err != nil {
 					s.Error("Failed to run the scenario: ", err)
 				}
 			}
@@ -540,7 +540,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {
