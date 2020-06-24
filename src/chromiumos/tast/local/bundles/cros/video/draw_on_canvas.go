@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// TODO(andrescj): add tests for VP8 and VP9.
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DrawOnCanvas,
@@ -35,6 +34,20 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
+			Name:              "h264_360p_exotic_crop_hw",
+			Val:               "still-colors-720x480-cropped-to-640x360.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video-on-canvas.html", "still-colors-720x480-cropped-to-640x360.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:              "h264_480p_hw",
+			Val:               "still-colors-480p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video-on-canvas.html", "still-colors-480p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
+		}, {
 			Name:              "h264_720p_hw",
 			Val:               "still-colors-720p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -49,9 +62,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}},
+		// TODO(andrescj): add tests for VP8 and VP9.
 	})
 }
 
+// DrawOnCanvas starts playing a video, draws it on a canvas, and checks a few interesting pixels.
 func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -61,7 +76,8 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to open %v: %v", url, err)
 	}
+	defer conn.Close()
 	if err := conn.Eval(ctx, fmt.Sprintf("playAndDrawOnCanvas(%q)", s.Param().(string)), nil); err != nil {
-		s.Fatal(err)
+		s.Fatal("playAndDrawOnCanvas() failed: ", err)
 	}
 }
