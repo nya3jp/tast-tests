@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f27dda_7fad3e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2020-06-24T07:02:00Z",
+      "side": 1,
+      "message": "Is there a setting set/verify that --enable-features\u003dMediaApp is set?\n\n(I doubt we we make that change on ToT, but on beta branch it\u0027s a possibility, and that shouldn\u0027t cause this test to fail)",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bafc12c_b7827667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2020-06-24T07:02:00Z",
+      "side": 1,
+      "message": "nit: full stop at end",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8abdf5_67cb2894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2020-06-24T07:02:00Z",
+      "side": 1,
+      "message": "perhaps comment that this matches the alt\u003d attribute? that seems a bit subtle.\n(also I\u0027m not sure that works for the _old_ gallery app)",
+      "revId": "2fa927105dd915df66dd8811b0830e5c7178e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
