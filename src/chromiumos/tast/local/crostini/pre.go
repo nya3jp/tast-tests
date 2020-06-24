@@ -41,20 +41,12 @@ var UnstableModels = []string{
 	"buddy",
 	// Platform celes
 	"celes",
-	// Platform coral
-	"blacktip360",
-	"blacktiplte",
-	"bruce",
-	"lava",
-	"nasher",
 	// Platform cyan
 	"cyan",
 	// Platform elm
 	"elm",
 	// Platform fiss-moblab
 	"wukong",
-	// Platform fizz
-	"jax",
 	// Platform gandof
 	"gandof",
 	// Platform grunt
@@ -71,28 +63,16 @@ var UnstableModels = []string{
 	"kefka",
 	// Platform kevin
 	"kevin",
-	// Platform kukui
-	"krane",
-	// Platform lulu
-	"lulu",
 	// Platform nocturne
 	"nocturne",
 	// Platform octopus
-	"ampton",
 	"apel",
 	"bloog",
 	"bluebird",
 	"bobba",
 	"bobba360",
-	"droid",
 	"fleex",
-	"foob",
-	"garg",
-	"laser14",
-	"phaser360",
-	"sparky",
 	"vorticon",
-	"vortininja",
 	// Platform relm
 	"relm",
 	// Platform sarien
