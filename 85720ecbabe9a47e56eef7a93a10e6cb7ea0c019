@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "29ff7bca_04856da1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-24T07:06:02Z",
+      "side": 1,
+      "message": "Clearing dmesg in remote tests is fine. Remote tests can reboot the DUT, and reboot always clears dmesg anyway.\n\nWe want to keep other system logs (e.g. /var/log/messages) though. Can syzkaller cause kernel panics? Then it would be good to call sync(1) on the DUT before running syzkaller to make sure system logs written before the test are saved to the disk. (Or is it done automatically by syzkaller?)",
+      "parentUuid": "77800d23_2b9bfd4d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "85720ecbabe9a47e56eef7a93a10e6cb7ea0c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9aa66361_7a40c1aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 9
