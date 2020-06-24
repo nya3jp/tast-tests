@@ -33,6 +33,20 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
+			Name:              "h264_360p_exotic_crop_hw",
+			Val:               "still-colors-720x480-cropped-to-640x360.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:              "h264_480p_hw",
+			Val:               "still-colors-480p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
+		}, {
 			Name:              "h264_720p_hw",
 			Val:               "still-colors-720p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
