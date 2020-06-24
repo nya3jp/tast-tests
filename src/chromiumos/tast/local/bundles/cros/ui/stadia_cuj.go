@@ -98,7 +98,7 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 
 	// Wait for the game screen to show up.
 	// TODO(crbug.com/1091976): use signal from Stadia games instead.
-	if err := testing.Sleep(ctx, 30 * time.Second); err != nil {
+	if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
@@ -128,9 +128,6 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
-	if err := recorder.Stop(); err != nil {
-		s.Fatal("Failed to stop the recorder: ", err)
-	}
 
 	sadDiffs, err := sadHistRecorder.Histogram(ctx, tconn)
 	if err != nil {
@@ -139,7 +136,7 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 	// Check the sadDiffs and fail if any histogram has non-zero num.
 	for _, h := range sadDiffs {
 		if h.Sum != 0 {
-			s.Fatalf("Tab renderer crashed. Sad tab showed up (histogram %s).", h.Name)
+			s.Fatalf("Tab renderer crashed. Sad tab showed up (histogram %s)", h.Name)
 		}
 	}
 
