@@ -31,6 +31,10 @@ func init() {
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
 	for _, tc := range []struct {
 		name  string
 		run   func(context.Context, *cca.App) error
