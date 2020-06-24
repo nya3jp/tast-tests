@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5d3b6cf_71d61773",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-24T23:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "598e5864_f557f1e5",
+      "revId": "868f7c0f4b0766af8dc4f731ece48b04bf36e2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6462906_d467d809",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "868f7c0f4b0766af8dc4f731ece48b04bf36e2b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d356703c_e974226e",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-24T23:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6462906_d467d809",
+      "revId": "868f7c0f4b0766af8dc4f731ece48b04bf36e2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
