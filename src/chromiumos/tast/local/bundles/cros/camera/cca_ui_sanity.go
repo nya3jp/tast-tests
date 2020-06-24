@@ -53,6 +53,10 @@ func init() {
 func CCAUISanity(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
 	if s.Param().(ccaUISanityParams).useFakeDeviceInChrome {
 		var err error
 		cr, err = chrome.New(ctx, chrome.ExtraArgs(
