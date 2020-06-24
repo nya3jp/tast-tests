@@ -178,25 +178,46 @@ func (n *Node) Release(ctx context.Context) {
 // LeftClick executes the default action of the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) LeftClick(ctx context.Context) error {
-	if err := n.Update(ctx); err != nil {
-		return errors.Wrap(err, "failed to update the node's location")
-	}
-	if n.Location.Empty() {
-		return errors.New("this node doesn't have a location on the screen and can't be clicked")
-	}
-	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
+	return n.mouseClick(ctx, leftClick)
 }
 
 // RightClick shows the context menu of the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) RightClick(ctx context.Context) error {
+	return n.mouseClick(ctx, rightClick)
+}
+
+// DoubleClick executes 2 mouse left clicks on the node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) DoubleClick(ctx context.Context) error {
+	return n.mouseClick(ctx, doubleClick)
+}
+
+// clickType describes how user clicks mouse.
+type clickType int
+
+const (
+	leftClick clickType = iota
+	rightClick
+	doubleClick
+)
+
+func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
 	if err := n.Update(ctx); err != nil {
 		return errors.Wrap(err, "failed to update the node's location")
 	}
 	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
+	switch ct {
+	case leftClick:
+		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
+	case rightClick:
+		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
+	case doubleClick:
+		return mouse.DoubleClick(ctx, n.tconn, n.Location.CenterPoint(), 100*time.Millisecond)
+	}
+	return nil
 }
 
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
