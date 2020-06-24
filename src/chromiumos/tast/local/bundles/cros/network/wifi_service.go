@@ -19,6 +19,7 @@ import (
 
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	localnet "chromiumos/tast/local/network"
@@ -136,7 +137,7 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	for k, v := range props {
 		visibleProps[k] = v
 	}
-	visibleProps[shill.ServicePropertyVisible] = true
+	visibleProps[shillconst.ServicePropertyVisible] = true
 
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -185,15 +186,15 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 
 	// Prepare the state list for ExpectIn.
 	var connectedStates []interface{}
-	for _, s := range shill.ServiceConnectedStates {
+	for _, s := range shillconst.ServiceConnectedStates {
 		connectedStates = append(connectedStates, s)
 	}
-	associatedStates := append(connectedStates, shill.ServiceStateConfiguration)
+	associatedStates := append(connectedStates, shillconst.ServiceStateConfiguration)
 
 	testing.ContextLog(ctx, "Associating with ", service)
 	assocCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 	defer cancel()
-	state, err := pw.ExpectIn(assocCtx, shill.ServicePropertyState, associatedStates)
+	state, err := pw.ExpectIn(assocCtx, shillconst.ServicePropertyState, associatedStates)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to associate")
 	}
@@ -201,11 +202,11 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	start = time.Now()
 
 	testing.ContextLog(ctx, "Configuring ", service)
-	if state == shill.ServiceStateConfiguration {
+	if state == shillconst.ServiceStateConfiguration {
 		// We're not yet in connectedStates, wait until connected.
 		configCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 		defer cancel()
-		if _, err := pw.ExpectIn(configCtx, shill.ServicePropertyState, connectedStates); err != nil {
+		if _, err := pw.ExpectIn(configCtx, shillconst.ServicePropertyState, connectedStates); err != nil {
 			return 0, 0, errors.Wrap(err, "failed to configure")
 		}
 	}
@@ -232,19 +233,19 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	// Configure a service for the hidden SSID as a result of manual input SSID.
 	if request.Hidden {
 		props := map[string]interface{}{
-			shill.ServicePropertyType:           shill.TypeWifi,
-			shill.ServicePropertyWiFiHexSSID:    hexSSID,
-			shill.ServicePropertyWiFiHiddenSSID: request.Hidden,
-			shill.ServicePropertySecurityClass:  request.Security,
+			shillconst.ServicePropertyType:           shillconst.TypeWifi,
+			shillconst.ServicePropertyWiFiHexSSID:    hexSSID,
+			shillconst.ServicePropertyWiFiHiddenSSID: request.Hidden,
+			shillconst.ServicePropertySecurityClass:  request.Security,
 		}
 		if _, err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
 		}
 	}
 	props := map[string]interface{}{
-		shill.ServicePropertyType:          shill.TypeWifi,
-		shill.ServicePropertyWiFiHexSSID:   hexSSID,
-		shill.ServicePropertySecurityClass: request.Security,
+		shillconst.ServicePropertyType:          shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID:   hexSSID,
+		shillconst.ServicePropertySecurityClass: request.Security,
 	}
 
 	service, err := s.discoverService(ctx, m, props)
@@ -298,7 +299,7 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	testing.ContextLog(ctx, "Wait for the service to be idle")
 	timeoutCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+	if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
 		return nil, err
 	}
 	testing.ContextLog(ctx, "Disconnected")
@@ -329,17 +330,17 @@ func (s *WifiService) AssureDisconnect(ctx context.Context, request *network.Ass
 		return nil, errors.Wrap(err, "failed to get service properties")
 	}
 
-	state, err := props.GetString(shill.ServicePropertyState)
+	state, err := props.GetString(shillconst.ServicePropertyState)
 	if err != nil {
 		return nil, err
 	}
 
-	if state != shill.ServiceStateIdle {
+	if state != shillconst.ServiceStateIdle {
 		testing.ContextLog(ctx, "Wait for the service to be idle")
 		timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(request.Timeout))
 		defer cancel()
 
-		if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
 			return nil, err
 		}
 	}
@@ -372,61 +373,61 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		return nil, errors.Wrap(err, "failed to get service properties")
 	}
 
-	name, err := props.GetString(shill.ServicePropertyName)
+	name, err := props.GetString(shillconst.ServicePropertyName)
 	if err != nil {
 		return nil, err
 	}
-	device, err := props.GetObjectPath(shill.ServicePropertyDevice)
+	device, err := props.GetObjectPath(shillconst.ServicePropertyDevice)
 	if err != nil {
 		return nil, err
 	}
-	serviceType, err := props.GetString(shill.ServicePropertyType)
+	serviceType, err := props.GetString(shillconst.ServicePropertyType)
 	if err != nil {
 		return nil, err
 	}
-	mode, err := props.GetString(shill.ServicePropertyMode)
+	mode, err := props.GetString(shillconst.ServicePropertyMode)
 	if err != nil {
 		return nil, err
 	}
-	state, err := props.GetString(shill.ServicePropertyState)
+	state, err := props.GetString(shillconst.ServicePropertyState)
 	if err != nil {
 		return nil, err
 	}
-	visible, err := props.GetBool(shill.ServicePropertyVisible)
+	visible, err := props.GetBool(shillconst.ServicePropertyVisible)
 	if err != nil {
 		return nil, err
 	}
-	isConnected, err := props.GetBool(shill.ServicePropertyIsConnected)
-	if err != nil {
-		return nil, err
-	}
-
-	bssid, err := props.GetString(shill.ServicePropertyWiFiBSSID)
+	isConnected, err := props.GetBool(shillconst.ServicePropertyIsConnected)
 	if err != nil {
 		return nil, err
 	}
 
-	ftEnabled, err := props.GetBool(shill.ServicePropertyFTEnabled)
+	bssid, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
 	if err != nil {
 		return nil, err
 	}
-	frequency, err := props.GetUint16(shill.ServicePropertyWiFiFrequency)
+
+	ftEnabled, err := props.GetBool(shillconst.ServicePropertyFTEnabled)
 	if err != nil {
 		return nil, err
 	}
-	frequencyList, err := props.GetUint16s(shill.ServicePropertyWiFiFrequencyList)
+	frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
 	if err != nil {
 		return nil, err
 	}
-	hexSSID, err := props.GetString(shill.ServicePropertyWiFiHexSSID)
+	frequencyList, err := props.GetUint16s(shillconst.ServicePropertyWiFiFrequencyList)
 	if err != nil {
 		return nil, err
 	}
-	hiddenSSID, err := props.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	hexSSID, err := props.GetString(shillconst.ServicePropertyWiFiHexSSID)
 	if err != nil {
 		return nil, err
 	}
-	phyMode, err := props.GetUint16(shill.ServicePropertyWiFiPhyMode)
+	hiddenSSID, err := props.GetBool(shillconst.ServicePropertyWiFiHiddenSSID)
+	if err != nil {
+		return nil, err
+	}
+	phyMode, err := props.GetUint16(shillconst.ServicePropertyWiFiPhyMode)
 	if err != nil {
 		return nil, err
 	}
@@ -461,8 +462,8 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, request *network
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
 	filter := map[string]interface{}{
-		shill.ServicePropertyWiFiHexSSID: s.hexSSID(request.Ssid),
-		shill.ProfileEntryPropertyType:   shill.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID: s.hexSSID(request.Ssid),
+		shillconst.ProfileEntryPropertyType:   shillconst.TypeWifi,
 	}
 	if err := s.removeMatchedEntries(ctx, m, filter); err != nil {
 		return nil, err
@@ -482,8 +483,8 @@ func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error
 		if err != nil {
 			return errors.Wrap(err, "failed to get properties from profile object")
 		}
-		name, err := props.GetString(shill.ProfilePropertyName)
-		if name == shill.DefaultProfileName {
+		name, err := props.GetString(shillconst.ProfilePropertyName)
+		if name == shillconst.DefaultProfileName {
 			break
 		}
 		if err != nil {
@@ -504,7 +505,7 @@ func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error
 // removeWifiEntries removes all the entries with type=wifi in all profiles.
 func (s *WifiService) removeWifiEntries(ctx context.Context, m *shill.Manager) error {
 	filter := map[string]interface{}{
-		shill.ProfileEntryPropertyType: shill.TypeWifi,
+		shillconst.ProfileEntryPropertyType: shillconst.TypeWifi,
 	}
 	return s.removeMatchedEntries(ctx, m, filter)
 }
@@ -520,7 +521,7 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager
 		if err != nil {
 			return errors.Wrap(err, "failed to get properties from profile object")
 		}
-		entryIDs, err := props.GetStrings(shill.ProfilePropertyEntries)
+		entryIDs, err := props.GetStrings(shillconst.ProfilePropertyEntries)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get entryIDs from profile %s", p.String())
 		}
@@ -683,26 +684,26 @@ func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRa
 	}
 
 	// Check if it is supported.
-	support, err := prop.GetBool(shill.DevicePropertyMACAddrRandomSupported)
+	support, err := prop.GetBool(shillconst.DevicePropertyMACAddrRandomSupported)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
-			shill.DevicePropertyMACAddrRandomSupported)
+			shillconst.DevicePropertyMACAddrRandomSupported)
 	}
 	if !support {
 		return nil, errors.New("MAC randomization not supported")
 	}
 	// Get old setting.
-	old, err := prop.GetBool(shill.DevicePropertyMACAddrRandomEnabled)
+	old, err := prop.GetBool(shillconst.DevicePropertyMACAddrRandomEnabled)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
-			shill.DevicePropertyMACAddrRandomEnabled)
+			shillconst.DevicePropertyMACAddrRandomEnabled)
 	}
 
 	// NOP if the setting is already as requested.
 	if req.Enable != old {
-		if err := dev.SetProperty(ctx, shill.DevicePropertyMACAddrRandomEnabled, req.Enable); err != nil {
+		if err := dev.SetProperty(ctx, shillconst.DevicePropertyMACAddrRandomEnabled, req.Enable); err != nil {
 			return nil, errors.Wrapf(err, "failed to set WiFi device property %q",
-				shill.DevicePropertyMACAddrRandomEnabled)
+				shillconst.DevicePropertyMACAddrRandomEnabled)
 		}
 	}
 
@@ -730,7 +731,7 @@ func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get properties of WiFi device")
 	}
-	scanning, err := prop.GetBool(shill.DevicePropertyScanning)
+	scanning, err := prop.GetBool(shillconst.DevicePropertyScanning)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get WiFi scanning state")
 	}
@@ -742,7 +743,7 @@ func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.
 	// Wait scanning to become false.
 	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.DevicePropertyScanning, false); err != nil {
+	if err := pw.Expect(timeoutCtx, shillconst.DevicePropertyScanning, false); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for not scanning state")
 	}
 
@@ -787,8 +788,8 @@ func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.Ex
 
 	hexSSID := s.hexSSID(req.Ssid)
 	query := map[string]interface{}{
-		shill.ServicePropertyType:        "wifi",
-		shill.ServicePropertyWiFiHexSSID: hexSSID,
+		shillconst.ServicePropertyType:        shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID: hexSSID,
 	}
 
 	service, err := s.discoverService(ctx, m, query)
@@ -811,9 +812,9 @@ func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.Ex
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get service properties")
 		}
-		freqs, err := props.GetUint16s(shill.ServicePropertyWiFiFrequencyList)
+		freqs, err := props.GetUint16s(shillconst.ServicePropertyWiFiFrequencyList)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to get property %s", shill.ServicePropertyWiFiFrequencyList)
+			return nil, errors.Wrapf(err, "failed to get property %s", shillconst.ServicePropertyWiFiFrequencyList)
 		}
 		if uint16sEqualUint32s(freqs, req.Frequencies) {
 			testing.ContextLogf(shortCtx, "Got wanted frequencies %v for service with SSID: %s", req.Frequencies, req.Ssid)
@@ -821,7 +822,7 @@ func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.Ex
 		}
 
 		testing.ContextLogf(shortCtx, "Got frequencies %v for service with SSID: %s; want %v; waiting for update", freqs, req.Ssid, req.Frequencies)
-		if _, err := pw.WaitAll(shortCtx, shill.ServicePropertyWiFiFrequencyList); err != nil {
+		if _, err := pw.WaitAll(shortCtx, shillconst.ServicePropertyWiFiFrequencyList); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for the service property change")
 		}
 	}
@@ -856,7 +857,7 @@ func (s *WifiService) GetBgscanMethod(ctx context.Context, e *empty.Empty) (*net
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the WiFi device properties")
 	}
-	method, err := props.GetString(shill.DevicePropertyWiFiBgscanMethod)
+	method, err := props.GetString(shillconst.DevicePropertyWiFiBgscanMethod)
 	if err != nil {
 		return nil, err
 	}
@@ -874,8 +875,8 @@ func (s *WifiService) SetBgscanMethod(ctx context.Context, method *network.SetBg
 		return nil, err
 	}
 
-	if err := dev.SetProperty(ctx, shill.DevicePropertyWiFiBgscanMethod, method.Method); err != nil {
-		return nil, errors.Wrapf(err, "failed to set the WiFi device property %s with value %s", shill.DevicePropertyWiFiBgscanMethod, method.Method)
+	if err := dev.SetProperty(ctx, shillconst.DevicePropertyWiFiBgscanMethod, method.Method); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the WiFi device property %s with value %s", shillconst.DevicePropertyWiFiBgscanMethod, method.Method)
 	}
 	return &empty.Empty{}, nil
 }
@@ -930,7 +931,7 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 		testing.ContextLog(ctx, "Waiting for idle state")
 		timeoutCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
 		defer cancel()
-		if err := pw.Expect(timeoutCtx, shill.ServicePropertyState, shill.ServiceStateIdle); err != nil {
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
 			return errors.Wrap(err, "failed to wait for idle state after disabling")
 		}
 		return nil
@@ -943,7 +944,7 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 	testing.ContextLog(ctx, "Waiting for IsConnected property")
 	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
+	if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for IsConnected property after enabling")
 	}
 

@@ -14,22 +14,6 @@ const (
 	dbusIPConfigInterface = "org.chromium.flimflam.IPConfig"
 )
 
-// IPConfig property names.
-const (
-	IPConfigPropertyAddress                   = "Address"
-	IPConfigPropertyNameServers               = "NameServers"
-	IPConfigPropertyBroadcast                 = "Broadcast"
-	IPConfigPropertyDomainName                = "DomainName"
-	IPConfigPropertyGateway                   = "Gateway"
-	IPConfigPropertyMethos                    = "Method"
-	IPConfigPropertyMtu                       = "Mtu"
-	IPConfigPropertyPeerAddress               = "PeerAddress"
-	IPConfigPropertyPrefixlen                 = "Prefixlen"
-	IPConfigPropertyVendorEncapsulatedOptions = "VendorEncapsulatedOptions"
-	IPConfigPropertyWebProxyAutoDiscoveryURL  = "WebProxyAutoDiscoveryUrl"
-	IPConfigPropertyiSNSOptionData            = "iSNSOptionData"
-)
-
 // IPConfig wraps an IPConfig D-Bus object in shill.
 type IPConfig struct {
 	PropertyHolder

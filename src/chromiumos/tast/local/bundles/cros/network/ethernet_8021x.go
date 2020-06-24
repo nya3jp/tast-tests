@@ -11,6 +11,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
@@ -47,7 +48,7 @@ func init() {
 					outerAuth: "TTLS",
 					innerAuth: "TTLS-MSCHAPV2",
 					serviceProps: map[string]interface{}{
-						shill.ServicePropertyEAPInnerEAP: "auth=MSCHAPV2",
+						shillconst.ServicePropertyEAPInnerEAP: "auth=MSCHAPV2",
 					},
 				},
 			},
@@ -108,7 +109,7 @@ func Ethernet8021X(fullCtx context.Context, s *testing.State) {
 
 	// Before the server starts up, Shill shouldn't think we're doing EAP.
 	s.Log("Ensure EAP is not detected yet")
-	if err := waitForDeviceProperty(ctx, tc.device, shill.DevicePropertyEapDetected, false); err != nil {
+	if err := waitForDeviceProperty(ctx, tc.device, shillconst.DevicePropertyEapDetected, false); err != nil {
 		s.Fatal("Failed to check initial EAP stat: ", err)
 	}
 
@@ -316,7 +317,7 @@ func testAuthDetection(ctx context.Context, tc *testContext) error {
 	}
 
 	testing.ContextLog(ctx, "Waiting for EAP detection")
-	if err := waitForDeviceProperty(ctx, tc.device, shill.DevicePropertyEapDetected, true); err != nil {
+	if err := waitForDeviceProperty(ctx, tc.device, shillconst.DevicePropertyEapDetected, true); err != nil {
 		return errors.Wrap(err, "failed to detect EAP")
 	}
 
@@ -333,7 +334,7 @@ func waitForAuth(ctx context.Context, tc *testContext, auth bool) error {
 		staStatusProperty = wiredhostapd.STAStatusAuthLogoff
 	}
 
-	clientErr := waitForDeviceProperty(ctx, tc.device, shill.DevicePropertyEapCompleted, auth)
+	clientErr := waitForDeviceProperty(ctx, tc.device, shillconst.DevicePropertyEapCompleted, auth)
 	// Check in with hostapd in either failure or success.
 	serverErr := tc.server.ExpectSTAStatus(ctx, tc.veth.Iface.HardwareAddr.String(), staStatusProperty, "1")
 	if clientErr != nil {
@@ -348,11 +349,11 @@ func waitForAuth(ctx context.Context, tc *testContext, auth bool) error {
 func testAuthentication(ctx context.Context, tc *testContext) error {
 	// Configure client authentication parameters.
 	eap := map[string]interface{}{
-		shill.ServicePropertyType:         "etherneteap",
-		shill.ServicePropertyEAPMethod:    tc.param.outerAuth,
-		shill.ServicePropertyEAPCACertPEM: []string{tc.certs.CACert},
-		shill.ServicePropertyEAPPassword:  password,
-		shill.ServicePropertyEAPIdentity:  identity,
+		shillconst.ServicePropertyType:         "etherneteap",
+		shillconst.ServicePropertyEAPMethod:    tc.param.outerAuth,
+		shillconst.ServicePropertyEAPCACertPEM: []string{tc.certs.CACert},
+		shillconst.ServicePropertyEAPPassword:  password,
+		shillconst.ServicePropertyEAPIdentity:  identity,
 	}
 	for k, v := range tc.param.serviceProps {
 		eap[k] = v
