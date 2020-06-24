@@ -22,6 +22,29 @@
       "revId": "71388138f87678021876051ce99fae479b5bbde0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d0c43c_a8c1a7e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-06-24T01:11:55Z",
+      "side": 1,
+      "message": "You can put max and abs in one function and avoid repeated abs.\n\nmaxAbs :\u003d func(nums ...int) ...\n\nreturn maxAbs(...)",
+      "range": {
+        "startLine": 199,
+        "startChar": 12,
+        "endLine": 199,
+        "endChar": 15
+      },
+      "revId": "71388138f87678021876051ce99fae479b5bbde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
