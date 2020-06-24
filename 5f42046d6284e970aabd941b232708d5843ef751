@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2175c9e_6b9f4e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-24T14:44:17Z",
+      "side": 1,
+      "message": "would it be possible that the APK might be still writing the data while the test is being read?\nif so, then \"parseEvents\" might fail.\n\nsome possible options:\n - wait until certain \"flag\" file is created? (or until a certain \"lock\" file is deleted?)\n - or have the APK to put a \"done\" text in a TextField read it using UIAutomator",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b992606e_efd181ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-24T14:44:17Z",
+      "side": 1,
+      "message": "nit: sum :\u003d 0.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc864fa_e89eb02e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-24T14:44:17Z",
+      "side": 1,
+      "message": "nit: stdSum :\u003d 0.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e2ca5d_19f06f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-24T14:44:17Z",
+      "side": 1,
+      "message": "now that you write your own file, if this condition happens, should you do something? like log something like:\n \"unexpected line\" ...",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 11
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d5d756c_6c8ed057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-24T14:44:17Z",
+      "side": 1,
+      "message": "don\u0027t ignore the errors.\nyou can do something like:\n\n  for _, dst :\u003d range []struct {\n\t\t\tv     *int\n\t\t\tgroup int\n\t\t}{\n\t\t\t{\u0026et, 3},\n\t\t\t{\u0026rt, 4},\n\t\t\t{\u0026rtc, 5},\n\t\t\t{\u0026lt, 6},\n\t\t} {\n\t\t\t*dst.v, err \u003d strconv.Atoi(groups[dst.group])\n\t\t\tif err !\u003d nil {\n\t\t\t\treturn nil, errors.Wrapf(err, \"could not parse line %q\", line)\n\t\t\t}\n\t\t}",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 9
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
