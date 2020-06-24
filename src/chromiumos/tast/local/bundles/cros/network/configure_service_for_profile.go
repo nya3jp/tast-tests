@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -28,8 +29,8 @@ func init() {
 
 func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	const (
-		filePath   = shill.DefaultProfilePath
-		objectPath = shill.DefaultProfileObjectPath
+		filePath   = shillconst.DefaultProfilePath
+		objectPath = shillconst.DefaultProfileObjectPath
 	)
 
 	// We lose connectivity along the way here, and if that races with the
@@ -66,9 +67,9 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	}
 
 	props := map[string]interface{}{
-		shill.ServicePropertyType: "ethernet",
-		shill.ServicePropertyStaticIPConfig: map[string]interface{}{
-			shill.IPConfigPropertyNameServers: []string{"8.8.8.8"},
+		shillconst.ServicePropertyType: "ethernet",
+		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{
+			shillconst.IPConfigPropertyNameServers: []string{"8.8.8.8"},
 		},
 	}
 	_, err = manager.ConfigureServiceForProfile(ctx, objectPath, props)

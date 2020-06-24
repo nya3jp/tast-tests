@@ -10,6 +10,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 )
 
@@ -26,7 +27,7 @@ func WifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (stri
 		}
 		var ifaces []string
 		for _, p := range props {
-			if iface, err := p.GetString(DevicePropertyInterface); err == nil {
+			if iface, err := p.GetString(shillconst.DevicePropertyInterface); err == nil {
 				ifaces = append(ifaces, iface)
 			}
 		}
@@ -50,7 +51,7 @@ func WifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (stri
 			return ifaces[0], nil
 		}
 
-		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
+		if _, err := pw.WaitAll(ctx, shillconst.ManagerPropertyDevices); err != nil {
 			return "", err
 		}
 	}

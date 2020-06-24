@@ -11,10 +11,10 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/shill"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -584,7 +584,7 @@ func (c *Config) validatePMF() error {
 		return nil
 	case PMFOptional, PMFRequired:
 		secClass := c.SecurityConfig.Class()
-		if secClass == shill.SecurityNone || secClass == shill.SecurityWEP {
+		if secClass == shillconst.SecurityNone || secClass == shillconst.SecurityWEP {
 			return errors.Errorf("class %s does not support PMF", secClass)
 		}
 		return nil
