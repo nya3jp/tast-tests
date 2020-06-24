@@ -59,6 +59,10 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		cr = s.PreValue().(arc.PreData).Chrome
 	}
 
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)

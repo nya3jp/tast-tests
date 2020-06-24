@@ -189,6 +189,10 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	a := d.ARC
 	cr := d.Chrome
 
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
 	uiDevice, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
