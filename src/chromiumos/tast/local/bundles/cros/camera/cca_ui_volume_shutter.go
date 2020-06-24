@@ -113,6 +113,10 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
