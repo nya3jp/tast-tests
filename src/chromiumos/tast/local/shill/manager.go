@@ -10,6 +10,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -19,17 +20,6 @@ import (
 const (
 	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
-)
-
-// Manager property names.
-const (
-	ManagerPropertyActiveProfile          = "ActiveProfile"
-	ManagerPropertyDevices                = "Devices"
-	ManagerPropertyEnabledTechnologies    = "EnabledTechnologies"
-	ManagerPropertyProfiles               = "Profiles"
-	ManagerPropertyProhibitedTechnologies = "ProhibitedTechnologies"
-	ManagerPropertyServices               = "Services"
-	ManagerPropertyServiceCompleteList    = "ServiceCompleteList"
 )
 
 // Manager wraps a Manager D-Bus object in shill.
@@ -44,11 +34,11 @@ type Technology string
 // Refer to Flimflam type options in
 // https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
 const (
-	TechnologyCellular Technology = TypeCellular
-	TechnologyEthernet Technology = TypeEthernet
-	TechnologyPPPoE    Technology = TypePPPoE
-	TechnologyVPN      Technology = TypeVPN
-	TechnologyWifi     Technology = TypeWifi
+	TechnologyCellular Technology = shillconst.TypeCellular
+	TechnologyEthernet Technology = shillconst.TypeEthernet
+	TechnologyPPPoE    Technology = shillconst.TypePPPoE
+	TechnologyVPN      Technology = shillconst.TypeVPN
+	TechnologyWifi     Technology = shillconst.TypeWifi
 )
 
 // NewManager connects to shill's Manager.
@@ -99,7 +89,7 @@ func (m *Manager) ProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
 	if err != nil {
 		return nil, err
 	}
-	return p.GetObjectPaths(ManagerPropertyProfiles)
+	return p.GetObjectPaths(shillconst.ManagerPropertyProfiles)
 }
 
 // Profiles returns a list of profiles.
@@ -125,7 +115,7 @@ func (m *Manager) ActiveProfile(ctx context.Context) (*Profile, error) {
 	if err != nil {
 		return nil, err
 	}
-	path, err := props.GetObjectPath(ManagerPropertyActiveProfile)
+	path, err := props.GetObjectPath(shillconst.ManagerPropertyActiveProfile)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +128,7 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	if err != nil {
 		return nil, err
 	}
-	paths, err := p.GetObjectPaths(ManagerPropertyDevices)
+	paths, err := p.GetObjectPaths(shillconst.ManagerPropertyDevices)
 	if err != nil {
 		return nil, err
 	}
@@ -238,7 +228,7 @@ func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology
 			}
 			return nil, nil, err
 		}
-		if devType, err := p.GetString(DevicePropertyType); err != nil {
+		if devType, err := p.GetString(shillconst.DevicePropertyType); err != nil {
 			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", dev, err)
 			continue
 		} else if devType != string(technology) {
@@ -266,7 +256,7 @@ func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, erro
 			}
 			return nil, err
 		}
-		if devIface, err := p.GetString(DevicePropertyInterface); err != nil {
+		if devIface, err := p.GetString(shillconst.DevicePropertyInterface); err != nil {
 			testing.ContextLogf(ctx, "Error getting the device interface %q: %v", dev, err)
 			continue
 		} else if devIface == iface {
@@ -293,7 +283,7 @@ func (m *Manager) WaitForDeviceByName(ctx context.Context, iface string, timeout
 			return d, nil
 		}
 
-		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
+		if _, err := pw.WaitAll(ctx, shillconst.ManagerPropertyDevices); err != nil {
 			return nil, err
 		}
 	}

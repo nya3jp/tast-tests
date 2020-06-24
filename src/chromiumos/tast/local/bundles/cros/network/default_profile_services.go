@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -57,8 +58,8 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		// removed by the previous test, and this test has started
 		// before the default profile is created by the previous test's
 		// (re)starting of Shill. It's a confusing race condition, so
-		// fix it by making sure that the default profile exsits here.
-		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+		// fix it by making sure that the default profile exists here.
+		if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
 	}()
@@ -72,11 +73,11 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	}
 
 	if _, err := manager.ConfigureService(ctx, map[string]interface{}{
-		shill.ServicePropertyType:           "wifi",
-		shill.ServicePropertyMode:           "managed",
-		shill.ServicePropertySSID:           ssid,
-		shill.ServicePropertyWiFiHiddenSSID: true,
-		shill.ServicePropertySecurityClass:  "none",
+		shillconst.ServicePropertyType:           "wifi",
+		shillconst.ServicePropertyMode:           "managed",
+		shillconst.ServicePropertySSID:           ssid,
+		shillconst.ServicePropertyWiFiHiddenSSID: true,
+		shillconst.ServicePropertySecurityClass:  "none",
 	}); err != nil {
 		s.Fatal("Failed to configure service: ", err)
 	}
@@ -98,7 +99,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	}
 
 	expectProp := map[string]interface{}{
-		shill.ServicePropertyName: ssid,
+		shillconst.ServicePropertyName: ssid,
 	}
 
 	if _, err := manager.WaitForServiceProperties(ctx, expectProp, 5*time.Second); err != nil {
