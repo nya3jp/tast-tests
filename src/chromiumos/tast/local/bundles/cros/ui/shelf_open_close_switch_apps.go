@@ -114,16 +114,23 @@ func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		if err := app.ShelfBtn.RightClick(ctx); err != nil {
 			s.Fatalf("Failed to right-click %v shelf button: %v", app.Name, err)
 		}
-		closeBtn, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Close"}, 10*time.Second)
+
+		params := ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Close"}
+		closeBtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 		if err != nil {
 			s.Fatalf("Failed to find Close option in %v shelf icon context menu: %v", app.Name, err)
 		}
 		defer closeBtn.Release(ctx)
 
-		// The 'Close' button is not immediately clickable after we context-click.
-		testing.Sleep(ctx, time.Second)
+		// The 'Close' button is not immediately clickable after we context-click,
+		// so keep clicking until it goes away, indicating it has been clicked.
+		condition := func(ctx context.Context) (bool, error) {
+			exists, err := ui.Exists(ctx, tconn, params)
+			return !exists, err
+		}
+		opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
 
-		if err := closeBtn.LeftClick(ctx); err != nil {
+		if err := closeBtn.LeftClickUntil(ctx, condition, &opts); err != nil {
 			s.Fatalf("Failed to click Close in %v shelf icon context menu: %v", app.Name, err)
 		}
 		if err := ash.WaitForAppClosed(ctx, tconn, app.ID); err != nil {
