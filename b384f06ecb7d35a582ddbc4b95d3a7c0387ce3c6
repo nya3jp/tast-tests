@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fab610c6_fc6ff9f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1450fe9a_eceb8371",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 72
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa794b1_39542972",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9c075f_4daf6bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Changed test description to \"Verifies default ARC apps are installed\"",
+      "parentUuid": "7aa794b1_39542972",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "317b7f9a_832461ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Added \"arc-eng@google.com\" group in contact as well.",
+      "parentUuid": "247f80d4_ba2b1477",
+      "range": {
+        "startLine": 21,
+        "startChar": 63,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "933c4c74_c6a0e549",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5b316c27_c401eba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Added the for loop to iterate through App struct type for various apps, replacing chain of if/else statements.",
+      "parentUuid": "933c4c74_c6a0e549",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da2c8a88_5bd7aee3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abcda1a8_ed55d4d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Added ctxutil.MaxTimeout wait time to find arc app.",
+      "parentUuid": "da2c8a88_5bd7aee3",
+      "range": {
+        "startLine": 45,
+        "startChar": 72,
+        "endLine": 45,
+        "endChar": 85
+      },
+      "revId": "b384f06ecb7d35a582ddbc4b95d3a7c0387ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

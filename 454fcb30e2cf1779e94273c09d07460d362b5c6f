@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "302d771d_96a80096",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Added updated Title and body for the CL.",
+      "parentUuid": "87f531d6_7d6e4c3a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8ef5c97_46d40fa7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "b699eb09_f83ac1aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c054ca4e_6e6caa9c",
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "929b5e41_d989a5fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_arc_apps.go",
         "patchSetId": 1
@@ -80,6 +122,30 @@
       "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd92813_15d408f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_arc_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Changed test name to VerifyDefaultApps from VerifyDefaultArcApps",
+      "parentUuid": "929b5e41_d989a5fc",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "d650b9f8_265f25aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_arc_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Replaced new arc setup steps with arc.Booted and arc.VMBooted preconditions.",
+      "parentUuid": "d0f43b00_93d63653",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7b6c681_a3fb9f81",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_arc_apps.go",
         "patchSetId": 1
@@ -126,6 +216,30 @@
       "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0bee6e_2adf6796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_default_arc_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-06-24T17:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b6c681_a3fb9f81",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "454fcb30e2cf1779e94273c09d07460d362b5c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
