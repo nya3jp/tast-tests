@@ -1,0 +1,33 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+// ChartService provides RPC methods to display a chart on the screen.
+service ChartService {
+  // Send accepts a chart file and saves it in the cached storage.
+  rpc Send (SendRequest) returns (google.protobuf.Empty) {}
+  // Display displays a chart file on the screen.
+  rpc Display (DisplayRequest) returns (google.protobuf.Empty) {}
+  // Cleanup restore the state before running the test.
+  rpc Cleanup (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message SendRequest {
+  // Name of the chart to be sent.
+  string name = 1;
+  // Binary content of chart file.
+  bytes content = 2;
+}
+
+message DisplayRequest {
+  // Name of the chart to be displayed.
+  string name = 1;
+}

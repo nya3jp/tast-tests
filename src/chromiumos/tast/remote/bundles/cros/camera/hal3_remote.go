@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -23,7 +24,9 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
-		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
+		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service", "tast.cros.camerabox.ChartService"},
+		Data:         []string{"scene.pdf"},
+		Vars:         []string{"chart"},
 		// For extra params, reference corresponding tests in:
 		// src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3_*.go
 		Params: []testing.Param{
@@ -122,11 +125,45 @@ func init() {
 	})
 }
 
+// sceneName is the name of chart for HAL3 default scene.
+const sceneName = "scene.pdf"
+
 func HAL3Remote(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
+	// Set up chart tablet.
+	altChartTarget, ok := s.Var("chart")
+	if !ok {
+		testing.ContextLog(ctx, "No --var=chart= args present")
+		altChartTarget = ""
+	}
+
+	chart, err := d.CameraboxChart(ctx, altChartTarget)
+	if err != nil {
+		s.Fatal("Failed to connect to the chart tablet: ", err)
+	}
+
+	cl, err := rpc.Dial(ctx, chart, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to rpc service on chart tablet: ", err)
+	}
+	defer cl.Close(ctx)
+
+	chartClient := pb.NewChartServiceClient(cl.Conn)
+	scenePath := s.DataPath(sceneName)
+	content, err := ioutil.ReadFile(scenePath)
+	if err != nil {
+		s.Fatalf("Failed to read scene file %v: %v", scenePath, err)
+	}
+	if _, err := chartClient.Send(ctx, &pb.SendRequest{Name: sceneName, Content: content}); err != nil {
+		s.Fatal("Remote call Send() failed: ", err)
+	}
+	if _, err := chartClient.Display(ctx, &pb.DisplayRequest{Name: sceneName}); err != nil {
+		s.Fatal("Remote call Display() failed: ", err)
+	}
+
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the HAL3 service on the DUT: ", err)
 	}
