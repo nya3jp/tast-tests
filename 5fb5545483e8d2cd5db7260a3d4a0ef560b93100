@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ab04275_533b42b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-24T21:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc81e55_4f7d1872",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09255f7c_ee09e35e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aaff7613_165684f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-24T21:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09255f7c_ee09e35e",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a76a8d_9c1498b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 7
@@ -62,6 +110,24 @@
       "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195d0d19_571d6f66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-24T21:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a76a8d_9c1498b7",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "a03c509d_5be93b89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-24T21:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3006ded_ef21e7ce",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86fb5169_1e066410",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 7
@@ -96,6 +180,24 @@
       "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6024376_af76f3bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-24T21:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fb5169_1e066410",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
