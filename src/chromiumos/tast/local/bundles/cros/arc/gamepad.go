@@ -128,6 +128,7 @@ type gamepadMotionEvent struct {
 	Axes   map[string]float64 `json:"axes"`
 }
 
+// getInputDevices gets the input device information saved in app UI.
 func getInputDevices(ctx context.Context, d *ui.Device) ([]inputDevice, error) {
 	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/device_status"))
 	text, err := view.GetText(ctx)
@@ -142,6 +143,7 @@ func getInputDevices(ctx context.Context, d *ui.Device) ([]inputDevice, error) {
 	return devices, nil
 }
 
+// getGamepadKeyEvents gets all key events saved in app UI.
 func getGamepadKeyEvents(ctx context.Context, d *ui.Device) ([]gamepadKeyEvent, error) {
 	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/key_events"))
 	text, err := view.GetText(ctx)
@@ -156,6 +158,28 @@ func getGamepadKeyEvents(ctx context.Context, d *ui.Device) ([]gamepadKeyEvent, 
 	return events, nil
 }
 
+// waitForKeyEvents waits until the app receives expected events and the length of received events is same as expected events.
+func waitForKeyEvents(ctx context.Context, d *ui.Device, deviceID int, expects []gamepadKeyEvent) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		events, err := getGamepadKeyEvents(ctx, d)
+		if err != nil {
+			return err
+		} else if len(events) != len(expects) {
+			return errors.Errorf("unexpected number of gamepad key events: got %d; want %d", len(events), len(expects))
+		} else {
+			for i, expect := range expects {
+				// DeviceID may change at runtime.
+				expect.DeviceID = deviceID
+				if expect != events[i] {
+					return errors.Errorf("unexpected gamepad event: got %v; want %v", events[i], expect)
+				}
+			}
+			return nil
+		}
+	}, nil)
+}
+
+// getGamepadMotionEvent gets the motion event saved in app UI.
 func getGamepadMotionEvent(ctx context.Context, d *ui.Device) (*gamepadMotionEvent, error) {
 	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/motion_event"))
 	text, err := view.GetText(ctx)
@@ -170,6 +194,7 @@ func getGamepadMotionEvent(ctx context.Context, d *ui.Device) (*gamepadMotionEve
 	return &event, nil
 }
 
+// waitForGamepadAxis waits until the app receives expected motion event.
 func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected float64) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if event, err := getGamepadMotionEvent(ctx, d); err != nil {
@@ -258,26 +283,8 @@ func Gamepad(ctx context.Context, s *testing.State) {
 		{Action: ActionUp, KeyCode: KeycodeButtonX}}
 
 	s.Log("Checking the generated gamepad events")
-	var actualEvents []gamepadKeyEvent
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		if actualEvents, err = getGamepadKeyEvents(ctx, d); err != nil {
-			return err
-		} else if len(actualEvents) != len(expectedEvents) {
-			return errors.Errorf("unexpected number of gamepad events: got %d; want %d",
-				len(actualEvents), len(expectedEvents))
-		}
-		return nil
-	}, nil); err != nil {
-		s.Fatal("Failed to get gamepad events: ", err)
-	}
-
-	for i, expected := range expectedEvents {
-		// DeviceID may change at runtime.
-		expected.DeviceID = device.DeviceID
-		if expected != actualEvents[i] {
-			s.Fatalf("Unexpected gamepad event: got %v; want %v", actualEvents[i], expected)
-		}
+	if err := waitForKeyEvents(ctx, d, device.DeviceID, expectedEvents); err != nil {
+		s.Fatal("Failed to wait for key events: ", err)
 	}
 
 	s.Log("Moving the analog stick")
@@ -292,6 +299,31 @@ func Gamepad(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move axis: ", err)
 	}
 	if err := waitForGamepadAxis(ctx, d, AxisX, -1.0); err != nil {
+		s.Fatal("Failed to wait for axis change: ", err)
+	}
+
+	// Press button and move axis together, and then release button.
+	s.Log("Pressing button and moving the analog stick together")
+	injectEvents := []input.GamepadEvent{
+		{Et: input.EV_ABS, Ec: input.ABS_X, Val: axis.Maximum},
+		{Et: input.EV_KEY, Ec: input.BTN_EAST, Val: 1}}
+
+	if err := gp.PressButtonsAndAxes(ctx, injectEvents); err != nil {
+		s.Fatal("Failed to press button and move axis together: ", err)
+	}
+
+	// Release button.
+	if err := gp.ReleaseButton(ctx, input.BTN_EAST); err != nil {
+		s.Fatal("Failed to release button: ", err)
+	}
+
+	expectedEvents = append(expectedEvents, gamepadKeyEvent{Action: ActionDown, KeyCode: KeycodeButtonA})
+	expectedEvents = append(expectedEvents, gamepadKeyEvent{Action: ActionUp, KeyCode: KeycodeButtonA})
+
+	if err := waitForKeyEvents(ctx, d, device.DeviceID, expectedEvents); err != nil {
+		s.Fatal("Failed to wait for key event change: ", err)
+	}
+	if err := waitForGamepadAxis(ctx, d, AxisX, 1.0); err != nil {
 		s.Fatal("Failed to wait for axis change: ", err)
 	}
 

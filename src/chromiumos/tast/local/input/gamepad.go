@@ -8,6 +8,8 @@ import (
 	"context"
 	"math/big"
 	"os"
+
+	"chromiumos/tast/errors"
 )
 
 // Axis contains information about a gamepad axis.
@@ -17,6 +19,13 @@ type Axis struct {
 	Fuzz       int32
 	Flat       int32
 	Resolution int32
+}
+
+// GamepadEvent contains information about button or axis event.
+type GamepadEvent struct {
+	Et  EventType
+	Ec  EventCode
+	Val int32
 }
 
 // GamepadEventWriter supports injecting events into a virtual gamepad device.
@@ -105,18 +114,50 @@ func (gw *GamepadEventWriter) sendKey(ctx context.Context, ec EventCode, val int
 	return gw.rw.Sync()
 }
 
+// PressButton presses the gamepad button specified by EventCode.
+//
+// Caveat: UIAutomator will never return after pressing a button and it will
+// keep sending pressing key event after calling this function, so remember to
+// call ReleaseButton() to release button after calling PressButton().
+// Or call TapButton() including PressButton() and ReleaseButton() instead.
+func (gw *GamepadEventWriter) PressButton(ctx context.Context, ec EventCode) error {
+	return gw.sendKey(ctx, ec, 1)
+}
+
+// ReleaseButton releases the gamepad button specified by EventCode.
+func (gw *GamepadEventWriter) ReleaseButton(ctx context.Context, ec EventCode) error {
+	return gw.sendKey(ctx, ec, 0)
+}
+
 // TapButton presses and releases the gamepad button specified by EventCode.
 func (gw *GamepadEventWriter) TapButton(ctx context.Context, ec EventCode) error {
-	if err := gw.sendKey(ctx, ec, 1); err != nil {
+	if err := gw.PressButton(ctx, ec); err != nil {
 		return err
 	}
-	return gw.sendKey(ctx, ec, 0)
+	return gw.ReleaseButton(ctx, ec)
 }
 
 // MoveAxis moves the gamepad axis specified by EventCode to the value.
 func (gw *GamepadEventWriter) MoveAxis(ctx context.Context, ec EventCode, val int32) error {
 	if err := gw.rw.Event(EV_ABS, ec, val); err != nil {
 		return err
+	}
+	return gw.rw.Sync()
+}
+
+// PressButtonsAndAxes allows to send more than one gamepad events at the same times.
+//
+// Caveat: UIAutomator will never return after pressing a button and it will
+// keep sending pressing key event if there is no releasing key event, so after
+// pressing key button, remember to release key button.
+func (gw *GamepadEventWriter) PressButtonsAndAxes(ctx context.Context, events []GamepadEvent) error {
+	if len(events) == 0 {
+		return errors.New("no gamepad events found")
+	}
+	for _, event := range events {
+		if err := gw.rw.Event(event.Et, event.Ec, event.Val); err != nil {
+			return err
+		}
 	}
 	return gw.rw.Sync()
 }
