@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "93a76a8d_9c1498b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T18:33:42Z",
+      "side": 1,
+      "message": "You may check my do-not-commit CL https://crrev.com/c/2263316.\nHere we can verify that for each ESS, the DUT can see its SSID and can connect to it.\n\nfor _, ap :\u003d range aps {\n  ssid :\u003d ap.Config().SSID\n  if !findSSID(scanData, ssid) {\n    s.Errorf(...)\n  }\n  tf.ConnectWifiAP(ctx, ap)\n  tf.PingFromDUT(...)\n  ...\n}",
+      "revId": "5fb5545483e8d2cd5db7260a3d4a0ef560b93100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3006ded_ef21e7ce",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 7

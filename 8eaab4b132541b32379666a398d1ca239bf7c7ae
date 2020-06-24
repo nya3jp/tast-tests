@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "dca9bcca_4ca1efc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T18:33:42Z",
+      "side": 1,
+      "message": "Sorry that I was confused the goal of the test because of the name, MaskedBSSID. I thought the test expects to see a ESS(SSID) out of the two with the same BSSID is masked (unable to discover) by the stations.\n\n+1 on positive form.\n\nThe reason why the AP serves two ESS in different band is that Gale does not support running multiple SSID with same BSSID on the same phy. It is unrelated to the whether DUT can see multiple SSIDs and connect to them.",
+      "parentUuid": "9a0d2e99_07b4168e",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "8eaab4b132541b32379666a398d1ca239bf7c7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36be00dd_6ff1dc62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
         "patchSetId": 4
