@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0f7bea0_614347cd",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-24T02:20:31Z",
+      "side": 1,
+      "message": "I have never seen that happening, but added a check to be sure.",
+      "parentUuid": "79ae66e5_8b453488",
+      "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc645bd0_77b5b5cc",
         "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40751a15_ba8bdd6c",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-24T02:20:31Z",
+      "side": 1,
+      "message": "What follows is an enumeration of sensors, thus the colon. (See next comment.)",
+      "parentUuid": "bc645bd0_77b5b5cc",
+      "range": {
+        "startLine": 99,
+        "startChar": 62,
+        "endLine": 99,
+        "endChar": 63
+      },
+      "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "41e95133_123ea3ae",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-24T02:20:31Z",
+      "side": 1,
+      "message": "This is just an enumeration of sensors. Will be deleted once I have confirmed that this is working properly on all boards. Keeping it as is so that it is consistent with `SysfsBatteryMetrics`, which enumerates batteries in the same way.",
+      "parentUuid": "8c6a4cde_8a4f921a",
+      "range": {
+        "startLine": 101,
+        "startChar": 28,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d41448e3_6d3a849c",
         "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcd9dd7_470a93dc",
+        "filename": "src/chromiumos/tast/local/power/thermal_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-24T02:20:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41448e3_6d3a849c",
+      "revId": "6f3d923994fe8022270f9df57121d9f9ca6522f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
