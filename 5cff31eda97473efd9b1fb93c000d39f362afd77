@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e70c78e_5c660c45",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-24T09:58:11Z",
+      "side": 1,
+      "message": "I think tast-lint should have error on this, no?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#error-fmt",
+      "range": {
+        "startLine": 210,
+        "startChar": 21,
+        "endLine": 210,
+        "endChar": 22
+      },
+      "revId": "5cff31eda97473efd9b1fb93c000d39f362afd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d406b7_9a7fd7a4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-24T09:58:11Z",
+      "side": 1,
+      "message": "I think the CQ failed with \"unreachable code\" in this line.",
+      "revId": "5cff31eda97473efd9b1fb93c000d39f362afd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
