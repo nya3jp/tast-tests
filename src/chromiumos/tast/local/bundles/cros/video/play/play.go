@@ -403,10 +403,10 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		CenterX, CenterY int
 		Color            color.Color
 	}{
-		"top-left":     {left + 2, top + 2, x25, y25, color.RGBA{39, 52, 195, 255}},
-		"top-right":    {right - 2, top + 2, x75, y25, color.RGBA{220, 223, 51, 255}},
-		"bottom-right": {right - 2, bottom - 2, x75, y75, color.RGBA{255, 156, 67, 255}},
-		"bottom-left":  {left + 2, bottom - 2, x25, y75, color.RGBA{212, 50, 209, 255}},
+		"top-left":     {left + 2, top + 2, x25, y25, color.RGBA{128, 64, 32, 255}},
+		"top-right":    {right - 2, top + 2, x75, y25, color.RGBA{32, 128, 64, 255}},
+		"bottom-right": {right - 2, bottom - 2, x75, y75, color.RGBA{64, 32, 128, 255}},
+		"bottom-left":  {left + 2, bottom - 2, x25, y75, color.RGBA{128, 32, 64, 255}},
 	}
 
 	const tolerance = 2

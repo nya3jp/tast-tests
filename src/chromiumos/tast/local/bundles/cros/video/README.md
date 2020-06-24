@@ -241,17 +241,23 @@ starts playing it, draws it once onto a 2D canvas, and finally reads the color
 of the four corners of the canvas to assert a specific value on them (within
 some tolerance).
 
-To avoid worrying about when exactly the video is drawn to the canvas, the test
-videos must be generated from a single still image. For example, to generate the
-360p H.264 test video, a PNG image was saved from GIMP and the following command
-adapted from the [ffmpeg Slideshow docs] was used:
+The test videos are designed with certain considerations in mind:
 
-    ffmpeg -loop 1 -i rect-640x360.png -c:v libx264 -pix_fmt yuv420p -t 1 -profile:v baseline still-colors-360p.h264.mp4
+- They consist of a single still image so that the exact moment at which we
+capture its pixels doesn't matter.
+- We have cases where the video's visible size is the same as its coded size
+(e.g., a 1280x720 H.264) and cases where it's not (e.g., a 640x360 H.264).
+- In cases where the visible size is not the same as the coded size, the
+non-visible area contains a color that's unexpected by the test so that certain
+cases of incorrect cropping can be detected.
+- We have a case where the visible rectangle does not start at (0, 0). These
+videos are not expected to be common in the wild, but the H.264 specification
+allows such exotic crops.
+- The videos are long enough that we don't have to worry about the possibility
+of capturing an empty frame when the video loops.
 
-The still image consists of four solid color rectangles (one in each quadrant of
-the image). The colors were chosen arbitrarily under the assumption that those
-colors are unlikely to correspond to artifacts (for example, a common artifact
-is a green line).
+See [this](#generation-of-test-videos) for the script used to generate these
+videos.
 
 To run these tests use:
 
@@ -281,6 +287,142 @@ pipeline.
 To run these tests use:
 
     tast run $HOST video.Contents.*
+
+## Addendum
+
+### Generation of test videos (for `video.{DrawOnCanvas,Contents}`)
+
+```
+#!/bin/bash
+
+# Generates an image of size canvas_width x canvas_height. The image contains an
+# area of size area_width x area_height starting at (offset_x, offset_y) which
+# is subdivided into quadrants and each one is colored differently. The rest of
+# the image is cyan. The colors of the quadrants are chosen arbitrarily with the
+# assumption that those colors are unlikely to correspond to common artifacts
+# (e.g., green lines). The image is saved as output_file.
+gen_image() {
+  canvas_width=$1
+  canvas_height=$2
+  area_width=$3
+  area_height=$4
+  offset_x=$5
+  offset_y=$6
+  output_file=$7
+
+  # Calculate the coordinates of the top left corner of the area (x0, y0), the
+  # middle of the area (x50, y50), and the bottom right corner (x100, y100).
+  ((x0 = offset_x))
+  ((y0 = offset_y))
+  ((x50 = offset_x + area_width / 2 - 1))
+  ((y50 = offset_y + area_height / 2 - 1))
+  ((x100 = offset_x + area_width - 1))
+  ((y100 = offset_y + area_height - 1))
+
+  # Draw rectangles in the following order: top-left, top-right, bottom-right,
+  # bottom-left.
+  convert -size ${canvas_width}x${canvas_height} canvas:cyan -draw " \
+    fill rgba(128, 64, 32, 255) \
+    rectangle ${x0},${y0} ${x50},${y50} \
+    fill rgba(32, 128, 64, 255) \
+    rectangle $((x50 + 1)),${y0} ${x100},${y50} \
+    fill rgba(64, 32, 128, 255) \
+    rectangle $((x50 + 1)),$((y50 + 1)) ${x100},${y100} \
+    fill rgba(128, 32, 64, 255) \
+    rectangle ${x0},$((y50 + 1)) ${x50},${y100}" \
+    ${output_file}
+}
+
+# Given an image (input_file), generates an H.264 video which lasts 30 seconds,
+# removes the EXIF metadata, and saves it as output_file.
+gen_video() {
+  input_file=$1
+  output_file=$2
+  ffmpeg -y -loop 1 -i ${input_file} -c:v libx264 -pix_fmt yuv420p -t 30 \
+    -profile:v baseline ${output_file}
+  exiftool -overwrite_original -all= ${output_file}
+}
+
+# Similar to gen_video(), but we get to specify the H.264 crop rectangle.
+gen_cropped_video() {
+  crop_top=$1
+  crop_right=$2
+  crop_bottom=$3
+  crop_left=$4
+  input_file=$5
+  output_file=$6
+  ffmpeg -y -loop 1 -i ${input_file} -c:v libx264 -pix_fmt yuv420p -t 30 \
+    -profile:v baseline \
+    -bsf:v h264_metadata="crop_top=${crop_top}: \
+                          crop_right=${crop_right}: \
+                          crop_bottom=${crop_bottom}: \
+                          crop_left=${crop_left}" \
+    ${output_file}
+  exiftool -overwrite_original -all= ${output_file}
+}
+
+# Modifies file (MP4) to make sure the image width and source image width
+# reported by exiftool is width. The offsets used here assume that the EXIF
+# metadata has been removed from the file.
+overwrite_image_width() {
+  file=$1
+  width=$2
+  echo "000000f8: $(printf "%04x" ${width})" | xxd -r - ${file}
+  echo "000001f1: $(printf "%04x" ${width})" | xxd -r - ${file}
+}
+
+# Same as overwrite_image_width() but for the height.
+overwrite_image_height() {
+  file=$1
+  height=$2
+  echo "000000fc: $(printf "%04x" ${height})" | xxd -r - ${file}
+  echo "000001f3: $(printf "%04x" ${height})" | xxd -r - ${file}
+}
+
+################################################################################
+# Generate typical videos:
+#
+# The visible rectangle for these videos starts at (0, 0). For some of these
+# videos, the coded size is different from the visible size because the coded
+# size is aligned to 16 on each dimension. For example, for a 640x360 H.264
+# video, the coded size is 640x368. If we supplied a 640x360 image, ffmpeg will
+# repeat the last row to fill the remaining 640x8 pixels prior to encoding. This
+# is not desirable because if Chrome doesn't apply the visible rectangle for
+# cropping (something that has occurred in the past) video.Contents and
+# video.DrawOnCanvas will have a hard time detecting that regression because of
+# the way the color at the edges are checked. Instead, we give ffmpeg a 640x368
+# image where the last 640x8 are of a color not expected by the test. That way,
+# ffmpeg doesn't have to pad. When we do this, we also have to tell ffmpeg the
+# H.264 crop rectangle and modify the resulting MP4 file to make sure it carries
+# a 640x360 size instead of 640x368.
+
+gen_image 640 368 640 360 0 0 still-colors-360p.bmp
+gen_cropped_video 0 0 8 0 still-colors-360p.bmp still-colors-360p.h264.mp4
+overwrite_image_height still-colors-360p.h264.mp4 360
+
+gen_image 864 480 854 480 0 0 still-colors-480p.bmp
+gen_cropped_video 0 10 0 0 still-colors-480p.bmp still-colors-480p.h264.mp4
+overwrite_image_width still-colors-480p.h264.mp4 854
+
+gen_image 1280 720 1280 720 0 0 still-colors-720p.bmp
+gen_video still-colors-720p.bmp still-colors-720p.h264.mp4
+
+gen_image 1920 1088 1920 1080 0 0 still-colors-1080p.bmp
+gen_cropped_video 0 0 8 0 still-colors-1080p.bmp still-colors-1080p.h264.mp4
+overwrite_image_height still-colors-1080p.h264.mp4 1080
+
+################################################################################
+# Generate a video with an exotic visible rectangle:
+#
+# H.264 allows for fancy visible rectangles that don't start at (0, 0). The
+# video here is 720x480 but it is cropped by a different amount on each side
+# (using H.264 metadata) in such a way that the visible area ends up being
+# 640x360.
+
+gen_image 720 480 640 360 64 32 still-colors-720x480.bmp
+gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
+  still-colors-720x480-cropped-to-640x360.h264.mp4
+```
 
 [15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
 [15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
