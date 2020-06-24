@@ -118,6 +118,9 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 	if err := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrapf(err, "failed to unzip image.ext4 from %s", filesPath)
 	}
+	if err := os.RemoveAll(filesPath); err != nil {
+		return "", errors.Wrap(err, "error deleting uneeded archive file")
+	}
 	return path.Join(imageDir, "image.ext4"), nil
 }
 
