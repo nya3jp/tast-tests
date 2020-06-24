@@ -8,6 +8,8 @@ import (
 	"context"
 	"math/big"
 	"os"
+
+	"chromiumos/tast/errors"
 )
 
 // Axis contains information about a gamepad axis.
@@ -17,6 +19,13 @@ type Axis struct {
 	Fuzz       int32
 	Flat       int32
 	Resolution int32
+}
+
+// ButtonOrAxis contains information about button or axis event.
+type ButtonOrAxis struct {
+	Et  EventType
+	Ec  EventCode
+	Val int32
 }
 
 // GamepadEventWriter supports injecting events into a virtual gamepad device.
@@ -105,18 +114,41 @@ func (gw *GamepadEventWriter) sendKey(ctx context.Context, ec EventCode, val int
 	return gw.rw.Sync()
 }
 
+// TapButtonPress presses the gamepad button specified by EventCode.
+func (gw *GamepadEventWriter) TapButtonPress(ctx context.Context, ec EventCode) error {
+	return gw.sendKey(ctx, ec, 1)
+}
+
+// TapButtonRelease releases the gamepad button specified by EventCode.
+func (gw *GamepadEventWriter) TapButtonRelease(ctx context.Context, ec EventCode) error {
+	return gw.sendKey(ctx, ec, 0)
+}
+
 // TapButton presses and releases the gamepad button specified by EventCode.
 func (gw *GamepadEventWriter) TapButton(ctx context.Context, ec EventCode) error {
-	if err := gw.sendKey(ctx, ec, 1); err != nil {
+	if err := gw.TapButtonPress(ctx, ec); err != nil {
 		return err
 	}
-	return gw.sendKey(ctx, ec, 0)
+	return gw.TapButtonRelease(ctx, ec)
 }
 
 // MoveAxis moves the gamepad axis specified by EventCode to the value.
 func (gw *GamepadEventWriter) MoveAxis(ctx context.Context, ec EventCode, val int32) error {
 	if err := gw.rw.Event(EV_ABS, ec, val); err != nil {
 		return err
+	}
+	return gw.rw.Sync()
+}
+
+// ButtonAxis allows to send more than one gamepad events at the same times.
+func (gw *GamepadEventWriter) ButtonAxis(ctx context.Context, events []ButtonOrAxis) error {
+	if len(events) == 0 {
+		return errors.New("no gamepad events found")
+	}
+	for _, event := range events {
+		if err := gw.rw.Event(event.Et, event.Ec, event.Val); err != nil {
+			return err
+		}
 	}
 	return gw.rw.Sync()
 }
