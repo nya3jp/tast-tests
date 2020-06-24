@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceda0128_4038c7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T07:26:19Z",
+      "side": 1,
+      "message": "Consider refactoring it after the CL:\n\nMove the logic in line 99-101 and line 68-82 to removeDefaultProfile() and call it in the two places.",
+      "revId": "fbbb1d4f73af04f86ee4ba17931dde88618eff6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aac03b8_4a8e29dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T07:26:19Z",
+      "side": 1,
+      "message": "Ethernet",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "fbbb1d4f73af04f86ee4ba17931dde88618eff6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c69eaa5_ea1b4654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T07:26:19Z",
+      "side": 1,
+      "message": "Expecting an Ethernet service does not imply it is stable afterward. How about:\n\n// Wait for the Ethernet service to be online before running the test.\n// It is because the previous profile cleanup step restarts shill and the Ethernet service the test depends on might not be ready yet.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 69
+      },
+      "revId": "fbbb1d4f73af04f86ee4ba17931dde88618eff6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e819c86c_c0b3cbae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-24T07:26:19Z",
+      "side": 1,
+      "message": "a watcher",
+      "range": {
+        "startLine": 222,
+        "startChar": 10,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "fbbb1d4f73af04f86ee4ba17931dde88618eff6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
