@@ -199,6 +199,23 @@ func (n *Node) RightClick(ctx context.Context) error {
 	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
 }
 
+// LeftClickUntil repeatedly left clicks the node until the condition returns true with no error.
+// This is useful for situations where there is no indication of whether the node is ready to receive clicks.
+// The interval between clicks and the timeout can be specified using testing.PollOptions.
+func (n *Node) LeftClickUntil(ctx context.Context, condition func(context.Context) (bool, error), opts *testing.PollOptions) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if result, err := condition(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if !result {
+			if err := n.LeftClick(ctx); err != nil {
+				return errors.Wrap(err, "failed to click node")
+			}
+			return errors.New("click may not have been received yet")
+		}
+		return nil
+	}, opts)
+}
+
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
 // This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
