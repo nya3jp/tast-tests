@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79b7f7a6_7ec2bbd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-24T12:29:40Z",
+      "side": 1,
+      "message": "I found VirtualKeyboard() in vkb.go which does most of what this function does. I changed to use it.",
+      "parentUuid": "c8998750_ec085ccc",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a8e3eee_0bce913e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298ac803_fc32e6d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-24T12:29:40Z",
+      "side": 1,
+      "message": "I think SetDisplayRotationSync is enough as the name says.",
+      "parentUuid": "6a8e3eee_0bce913e",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "080761ec_b9f65735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-24T12:29:40Z",
+      "side": 1,
+      "message": "Changed to \"before %q; after %q\".",
+      "parentUuid": "256cdda3_d4523034",
+      "range": {
+        "startLine": 409,
+        "startChar": 71,
+        "endLine": 409,
+        "endChar": 79
+      },
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6110c9a_dffee101",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 7
@@ -70,6 +130,24 @@
       "writtenOn": "2020-06-22T02:20:51Z",
       "side": 1,
       "message": "arc.ChromeVirtualKeyboard is still informational (in fact it\u0027s 100% failing right now). We have to prioritize promoting the test to CQ in order to prevent regression, so I\u0027m a bit concerned about adding up new test cases. It doesn\u0027t have to be in this CL, but do you think we can split them into two separate tests, or do you have any plan for stabilizing them so that we can promote them to CQ?",
+      "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff9635e_24e9bf45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-24T12:29:40Z",
+      "side": 1,
+      "message": "Splitting into two (or maybe more) tests sounds good to me. I\u0027ll make a CL to do that.",
+      "parentUuid": "c6110c9a_dffee101",
       "revId": "102512caf15bd3bb6c1d4812a15b5abe502d2049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
