@@ -22,6 +22,30 @@
       "revId": "0bee012a819bd99ff2f6b6a47b4a0435977112b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9a02ca_737c28b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-24T13:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392b58aa_2bb5c04e",
+      "range": {
+        "startLine": 476,
+        "startChar": 5,
+        "endLine": 476,
+        "endChar": 8
+      },
+      "revId": "0bee012a819bd99ff2f6b6a47b4a0435977112b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
