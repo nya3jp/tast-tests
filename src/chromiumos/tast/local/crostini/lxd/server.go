@@ -235,6 +235,9 @@ func fileHandler(ctx context.Context, imageDirectory string) func(w http.Respons
 		if _, err := io.Copy(w, f); err != nil {
 			testing.ContextLogf(ctx, "Error: Couldn't copy file %s requested from image server at url %s: %v", filepath, r.URL.Path, err)
 		}
+		if err := os.RemoveAll(filepath); err != nil {
+			testing.ContextLogf(ctx, "Error: Couldn't delete file %s after it was requested from image server at url %s: %v", filepath, r.URL.Path, err)
+		}
 	}
 }
 
