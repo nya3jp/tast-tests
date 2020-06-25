@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_dymo_printer_lw450_20200624.ppd",
+  "size": 41325,
+  "sha256sum": "61bc8a251f029edc688b3dae0f543f3b687f1749a1fb1a3419bf5fed79f30367"
+}
