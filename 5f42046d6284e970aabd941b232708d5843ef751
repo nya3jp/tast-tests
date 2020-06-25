@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc37fbf6_0b6c4dbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-25T21:30:27Z",
+      "side": 1,
+      "message": "Yeah you\u0027re definitely right that there\u0027s a potential race here. My idea is to set a hotkey (i.e. Esc) that will cause the test app to finish() itself. During onStop(), the app can block until any queued writes are completed. From tast-side, we can use Activity.WaitForFinished() so that we don\u0027t read before the writes are finished.",
+      "parentUuid": "e2175c9e_6b9f4e79",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b992606e_efd181ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "5f42046d6284e970aabd941b232708d5843ef751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c154924_b0ed3513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-25T21:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b992606e_efd181ab",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e964b9d_bf456596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-25T21:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dc864fa_e89eb02e",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e2ca5d_19f06f76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-24T14:44:17Z",
       "side": 1,
       "message": "now that you write your own file, if this condition happens, should you do something? like log something like:\n \"unexpected line\" ...",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 11
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9092b886_96db842a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-25T21:30:27Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to do nothing here. This condition may happen if there is an extra newline somewhere in the file, and line \u003d \"\". This is not necessarily an error condition; if there are events missing from the file we will catch it later in the function.",
+      "parentUuid": "51e2ca5d_19f06f76",
       "range": {
         "startLine": 165,
         "startChar": 2,
@@ -114,6 +210,30 @@
       "revId": "5f42046d6284e970aabd941b232708d5843ef751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb102c8_6c9b4459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-06-25T21:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5d756c_6c8ed057",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 9
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
