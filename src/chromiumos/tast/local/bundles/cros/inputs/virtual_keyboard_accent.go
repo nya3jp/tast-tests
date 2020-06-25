@@ -156,11 +156,11 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		accentKey.Update(ctx)
 		location = accentKey.Location.CenterPoint()
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
 		s.Fatal("Failed to wait for accent window: ", err)
 	}
 
-	if err := mouse.Move(ctx, tconn, location, 100*time.Millisecond); err != nil {
+	if err := mouse.Move(ctx, tconn, location, 500*time.Millisecond); err != nil {
 		s.Fatalf("Failed to move mouse to key %s: %v", accentKeyName, err)
 	}
 
