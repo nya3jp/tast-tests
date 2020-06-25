@@ -69,6 +69,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
 	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
@@ -161,6 +166,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer askToJoin.Release(ctx)
 
+	// Before recording the metrics, check if there is any tab crashed.
+	if err := tabChecker.Check(ctx, tconn); err != nil {
+		s.Fatal("Tab renderer crashed: ", err)
+	}
+
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 		"percent", perf.SmallerIsBetter, []int64{50, 80})}
@@ -173,7 +183,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
-	defer recorder.Stop()
 	if err := recorder.Run(ctx, tconn, func() error {
 		if err := askToJoin.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
@@ -213,9 +222,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
 
-	if err := recorder.Stop(); err != nil {
-		s.Fatal("Failed to stop the recorder: ", err)
-	}
 	pv := perf.NewValues()
 	if err := recorder.Record(pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
