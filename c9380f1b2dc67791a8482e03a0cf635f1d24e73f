@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "402c67d7_78ad6477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T00:07:43Z",
+      "side": 1,
+      "message": "Hmm, it reproduces on my environment too; I haven\u0027t seen this... will check but that\u0027s not a problem for this CL. Filed crbug.com/1099054",
+      "parentUuid": "fc44a15b_3c10c02b",
+      "range": {
+        "startLine": 265,
+        "startChar": 25,
+        "endLine": 265,
+        "endChar": 38
+      },
+      "revId": "c9380f1b2dc67791a8482e03a0cf635f1d24e73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15a9ec13_bf129734",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 2
