@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "ef40f815_cc602aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-06-25T18:41:31Z",
+      "side": 1,
+      "message": "I filed crbug.com/1085420, but no one has started working on it yet.",
+      "parentUuid": "c192ccf0_9d4bdf78",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54f2a7fb_2e4db3f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
