@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -114,10 +115,11 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // the aggregated reports.
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
 	sources := []perf.TimelineDatasource{
-		load.NewCPUUsageSource("TPS.CPU", false),
-		load.NewMemoryUsageSource("TPS.Memory"),
+		load.NewCPUUsageSource("CPU", false),
+		load.NewMemoryUsageSource("Memory"),
+		power.NewSysfsThermalMetrics(),
 	}
-	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval))
+	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}

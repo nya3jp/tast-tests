@@ -6,7 +6,6 @@ package load
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/shirou/gopsutil/mem"
 
@@ -26,9 +25,7 @@ func NewMemoryUsageSource(name string) *MemoryUsageSource {
 
 // Setup implements perf.TimelineDatasource.Setup.
 func (s *MemoryUsageSource) Setup(ctx context.Context, prefix string) error {
-	if prefix != "" {
-		s.name = fmt.Sprintf("%s.%s", prefix, s.name)
-	}
+	s.name = prefix + s.name
 	return nil
 }
 

@@ -34,9 +34,7 @@ func NewCPUUsageSource(name string, perCPU bool) *CPUUsageSource {
 
 // Setup implements perf.TimelineDatasource.Setup.
 func (s *CPUUsageSource) Setup(ctx context.Context, prefix string) error {
-	if prefix != "" {
-		s.name = fmt.Sprintf("%s.%s", prefix, s.name)
-	}
+	s.name = prefix + s.name
 	return nil
 }
 
