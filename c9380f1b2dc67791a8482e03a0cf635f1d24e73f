@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2b9615f0_02973e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-25T15:51:38Z",
+      "side": 1,
+      "message": "Oops, just realized I marked the wrong file. I meant ui.TabHoverCardAnimationPerf...",
+      "parentUuid": "402c67d7_78ad6477",
+      "range": {
+        "startLine": 265,
+        "startChar": 25,
+        "endLine": 265,
+        "endChar": 38
+      },
+      "revId": "c9380f1b2dc67791a8482e03a0cf635f1d24e73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15a9ec13_bf129734",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 2
