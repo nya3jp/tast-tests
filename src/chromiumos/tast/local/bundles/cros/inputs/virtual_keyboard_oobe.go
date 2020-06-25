@@ -93,11 +93,8 @@ func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector s
 			return errors.Wrap(err, "failed to get viewport size")
 		}
 
-		if newViewPort.Height == originalViewPortSize.Height {
-			return errors.New("Viewport has not changed yet")
-		} else if newViewPort.Height > originalViewPortSize.Height {
-			// This should not happen in theory
-			return testing.PollBreak(errors.Errorf(`View port is getting larger during test; got %v; want %v`, newViewPort, originalViewPortSize))
+		if newViewPort.Height >= originalViewPortSize.Height {
+			return errors.Errorf(`original viewport size: %v; latest viewport size: %v`, originalViewPortSize, newViewPort)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
