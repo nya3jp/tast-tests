@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c36e11f4_a8816cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "let\u0027s call it \"recorder\" since there\u0027s no ambiguity in this function.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e02010a_0160cdef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "return \u0026TabCrashChecker{recorder: recorder}, nil",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ef6277_ce516e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "Can we keep the \u0027tconn\u0027 in TabCrashChecker struct so that you don\u0027t need to pass them all the time?  (context.Context is fine -- the style guide requires to do so).",
+      "range": {
+        "startLine": 34,
+        "startChar": 59,
+        "endLine": 34,
+        "endChar": 81
+      },
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5d1e95_f576bb68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "similarly, let\u0027s call it \u0027diffs\u0027.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6bc060_5215aedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "I\u0027ve overseen previously, but maybe not Sum but TotalCount()?  (I think they\u0027re identical for these histograms, but I feel that\u0027s clearer).",
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdb9abf_3e94e48d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tab_crash_checker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T22:20:13Z",
+      "side": 1,
+      "message": "error string should start with lower-case and should not end with a period (cf. https://github.com/golang/go/wiki/CodeReviewComments#error-strings)",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "51b6ad18c7e982d94662cc9e9936c419db3d12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
