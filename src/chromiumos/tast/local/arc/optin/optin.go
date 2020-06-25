@@ -17,7 +17,7 @@ import (
 )
 
 // OptinTimeout is the maximum amount of time that Optin is expected to take.
-const OptinTimeout = 2 * time.Minute
+const OptinTimeout = 3 * time.Minute
 
 // arcApp maps ArcAppDict definition
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
