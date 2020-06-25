@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>windowmanagertest</title>
+    <style>
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+    </style>
+  </head>
+
+  <body>
+    <canvas id="webglcanvas"></canvas>
+  </body>
+
+  <script>
+const kVertexShader = `
+  attribute vec4 vertices;
+  varying vec2 v1;
+  void main() {
+    gl_Position = vec4(vertices.x, vertices.y, 0.0, 1.0);
+    v1 = vec2(0.5 * vertices.x + 0.5, 0.5 * vertices.y + 0.5);
+  }
+`;
+
+const kFragmentShader = `
+  precision mediump float;
+  uniform sampler2D tex;
+  uniform vec4 color;
+  varying vec2 v1;
+  void main() {
+    gl_FragColor = color * texture2D(tex, v1);
+  }
+`;
+
+const vertices = [
+     -1.0, -1.0,
+      1.0, -1.0,
+     -1.0,  1.0,
+      1.0,  1.0,
+];
+
+
+function loadShader(gl, type, src) {
+	const s = gl.createShader(type);
+	gl.shaderSource(s, src);
+	gl.compileShader(s);
+	return s;
+}
+
+function loadProgram(gl, vssrc, fssrc) {
+	const vs = loadShader(gl, gl.VERTEX_SHADER, vssrc);
+	const fs = loadShader(gl, gl.FRAGMENT_SHADER, fssrc);
+
+	const prog = gl.createProgram();
+	gl.attachShader(prog, vs);
+	gl.attachShader(prog, fs);
+	gl.linkProgram(prog);
+
+	return prog;
+}
+
+function generateAndBindTexture(gl) {
+	const name = gl.createTexture();
+	gl.bindTexture(gl.TEXTURE_2D, name);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+	return name;
+}
+
+function createBitmap(w, h) {
+	var bitmap = [];
+	var w2 = 0.5 * w;
+	var h2 = 0.5 * h;
+	var idx = 0;
+	for (var y = 0; y < h; y++) {
+		for (var x = 0; x < w; x++) {
+			// Fill with soft ellipse
+			var dx = Math.abs((x - w2) / w2);
+			var dy = Math.abs((y - h2) / h2);
+			var dist2 = dx * dx + dy * dy;
+			if (dist2 > 1.0)
+				dist2 = 1.0;
+			bitmap[idx] = (1.0 - dist2) * 255.0;
+			idx++;
+			bitmap[idx] = (1.0 - dist2) * 255.0;
+			idx++;
+			bitmap[idx] = (1.0 - dist2) * 255.0;
+			idx++;
+			bitmap[idx] = 0;
+			idx++;
+		}
+	}
+	return new Uint8Array(bitmap);
+}
+
+const blue  = [0.5, 0.5, 1.0, 1.0];
+const white = [1.0, 1.0, 1.0, 1.0];
+
+function draw(color) {
+	const canvas = document.querySelector("#webglcanvas");
+
+	// hide mouse cursor so-as to not show up in captured screen-shot:
+	canvas.style.cursor = 'none';
+
+	const gl = canvas.getContext('webgl');
+	if (!gl) {
+		alert("Failed to obtain WebGL context.");
+		return;
+	}
+
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	gl.viewport(0, 0, canvas.width, canvas.height);
+
+	const texw = canvas.height;
+	const texh = canvas.width;
+
+	const bitmap = createBitmap(texw, texh);
+	const texture = generateAndBindTexture(gl);
+
+	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, texw, texh, 0, gl.RGBA, gl.UNSIGNED_BYTE, bitmap);
+
+	const program = loadProgram(gl, kVertexShader, kFragmentShader);
+	gl.useProgram(program);
+
+	const attribute_index = gl.getAttribLocation(program, "vertices");
+
+	const buf = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+	gl.vertexAttribPointer(attribute_index, 2, gl.FLOAT, false, 0, 0);
+	gl.enableVertexAttribArray(attribute_index);
+
+	const texture_sampler = gl.getUniformLocation(program, 'tex');
+	gl.uniform1i(texture_sampler, 0);
+
+	const display_color = gl.getUniformLocation(program, 'color');
+
+	gl.uniform4fv(display_color, color);
+
+	gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	gl.clear(gl.COLOR_BUFFER_BIT);
+
+	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+}
+
+window.addEventListener("keydown", function(event) {
+	if (event.key == 'f') {
+		document.getElementById('webglcanvas').requestFullscreen();
+	} else if (event.key == 'w') {
+		draw(white);
+	} else if (event.key == 'b') {
+		draw(blue);
+	}
+});
+
+  </script>
+</html>
