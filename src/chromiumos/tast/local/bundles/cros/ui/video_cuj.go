@@ -61,6 +61,11 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
@@ -434,6 +439,11 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	metricSuffix := "clamshell"
 	if tabletMode {
 		metricSuffix = "tablet"
+	}
+
+	// Before recording the metrics, check if there is any tab crashed.
+	if err := tabChecker.Check(ctx); err != nil {
+		s.Fatal("Tab renderer crashed: ", err)
 	}
 
 	pv := perf.NewValues()
