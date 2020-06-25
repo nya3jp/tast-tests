@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a527780e_ca5e397b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:41:32Z",
+      "side": 1,
+      "message": "Cq-Depend on https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/3135082",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dab8319_df987af3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
