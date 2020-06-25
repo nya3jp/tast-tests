@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d00c9056_69541f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-06-25T19:49:45Z",
+      "side": 1,
+      "message": "Are we planning to use the motioninput APK to test all of the WM things as well?\n\nIt doesn\u0027t report things like window state or bounds, so if you want to assert that stuff (i.e. the maximize event below), you\u0027ll have to wait until the dumpsys API in R works in Tast and then add assertions for it. If that\u0027s so, then maybe add a TODO?",
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
