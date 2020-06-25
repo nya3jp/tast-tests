@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1412b7cd_f4f39793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-25T22:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29647219_bc85fbde",
+      "revId": "4173969450242e87aa2bd2afc0b41094e55b761c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7319231_11db6da6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "4173969450242e87aa2bd2afc0b41094e55b761c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e59d469_6d12914f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-25T22:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7319231_11db6da6",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "4173969450242e87aa2bd2afc0b41094e55b761c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
