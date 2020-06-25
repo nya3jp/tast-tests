@@ -34,8 +34,9 @@ func init() {
 		// of the device. To account for this, the power button behaves differently
 		// on drallion360 devices when in tablet mode and requires a separate test.
 		HardwareDeps: hwdep.D(hwdep.Model("drallion360")),
-		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"servo"},
+		// TODO(mwiitala): Restore attributes after fixing http://b/149035007
+		// Attr: []string{ "group:mainline", "informational"},
+		Vars: []string{"servo"},
 	})
 }
 
