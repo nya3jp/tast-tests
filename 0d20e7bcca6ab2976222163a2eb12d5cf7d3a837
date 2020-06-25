@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15240862_e1c7d14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-06-25T21:04:32Z",
+      "side": 1,
+      "message": "Which kernel versions support this? If it\u0027s not everything from 3.whatever-we-still-support on, we\u0027ll need to either:\n\na) provide an alternative method to induce the iwlwifi error\nb) set up softwaredeps on the kernel version to skip test execution on kernels that don\u0027t support this",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "0d20e7bcca6ab2976222163a2eb12d5cf7d3a837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
