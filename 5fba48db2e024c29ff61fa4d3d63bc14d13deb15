@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c6c6c74_75d5a64b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-25T19:22:46Z",
+      "side": 1,
+      "message": "I think you want to return an error in case something goes wrong here. However, the current writing doesn\u0027t work. You have to change the named return:\n\nfunc removeDefaultProfile(...) (retErr error) {\n  ...\n  defer func() {\n    if err :\u003d upstart.RestartJob(ctx, \"shill\"); err !\u003d nil {\n      retErr \u003d errors.Wrap(err, \"failed starting shill\")\n    }\n  }()\n  ...\n  return nil\n}\n\nRefer to https://stackoverflow.com/questions/37248898/how-does-defer-and-named-return-value-work",
+      "range": {
+        "startLine": 182,
+        "startChar": 14,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "5fba48db2e024c29ff61fa4d3d63bc14d13deb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
