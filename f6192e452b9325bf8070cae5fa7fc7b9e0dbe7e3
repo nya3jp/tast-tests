@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eae0d056_a8199f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-06-25T00:20:45Z",
+      "side": 1,
+      "message": "Can you also add \"kevin\"? If both eve and kevin are in the Chromium waterfall we should cover both.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "f6192e452b9325bf8070cae5fa7fc7b9e0dbe7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
