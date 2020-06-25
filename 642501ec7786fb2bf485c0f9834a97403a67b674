@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b01b5e2a_18d27f23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/masked_bssid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-25T05:41:53Z",
+      "side": 1,
+      "message": "Failed to ping from the DUT:",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "642501ec7786fb2bf485c0f9834a97403a67b674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
