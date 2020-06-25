@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dab8319_df987af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "nit: // arcEnabled is the value of ArcEnabled user policy.",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b604ec40_23716abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "If we ever get the test to run faster we can consider using a table driven test.",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f42d3b_ebb7d060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "Add a TODO to use FakeDMS\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1099310",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391690a0_3b7000e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "Create a cleanup context to give this enough time",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82aaafb9_fe26c9ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "nit: start ARC in both cases and only differentiate when checking for error",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498889c2_eb84f205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "nit: add a TODO (+bug) to check this without waiting for 2 minutes",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0fbb0a_23d5cf95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafcef52_e912194c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9234f4d_96fd5715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "Is it possible to check for a specific error?",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da69dc14_a27b4b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-25T16:40:38Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
