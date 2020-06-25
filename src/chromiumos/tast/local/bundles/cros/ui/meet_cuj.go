@@ -69,6 +69,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
 	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
@@ -160,6 +165,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find join-now button: ", err)
 	}
 	defer askToJoin.Release(ctx)
+
+	// Before recording the metrics, check if there is any tab crashed
+	if err := tabChecker.Check(ctx, tconn); err != nil {
+		s.Fatal("Tab renderer crashed: ", err)
+	}
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",

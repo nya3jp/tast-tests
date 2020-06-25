@@ -47,10 +47,9 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
-	sadHistRecorder, err := metrics.StartRecorder(ctx, tconn, "Tabs.SadTab.CrashCreated",
-		"Tabs.SadTab.OomCreated", "Tabs.SadTab.KillCreated.OOM", "Tabs.SadTab.KillCreated")
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to start histogram recorder for sad tabs: ", err)
+		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
 	conn, err := cr.NewConn(ctx, "https://ggp-staging.sandbox.google.com")
@@ -132,15 +131,9 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop the recorder: ", err)
 	}
 
-	sadDiffs, err := sadHistRecorder.Histogram(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get diffs of histograms: ", err)
-	}
-	// Check the sadDiffs and fail if any histogram has non-zero num.
-	for _, h := range sadDiffs {
-		if h.Sum != 0 {
-			s.Fatalf("Tab renderer crashed. Sad tab showed up (histogram %s).", h.Name)
-		}
+	// Check if there is any tab crashed
+	if err := tabChecker.Check(ctx, tconn); err != nil {
+		s.Fatal("Tab renderer crashed: ", err)
 	}
 
 	pv := perf.NewValues()
