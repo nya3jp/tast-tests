@@ -293,7 +293,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	configs := []cuj.MetricConfig{
 		cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-		cuj.NewSmoothnessMetricConfig("Ash.SwipeHomeToOverviewGesture"),
+		cuj.NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
 		cuj.NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
 	}
 	for _, suffix := range []string{"HideLauncherForWindow", "EnterFullscreenAllApps", "EnterFullscreenSearch", "FadeInOverview", "FadeOutOverview"} {
