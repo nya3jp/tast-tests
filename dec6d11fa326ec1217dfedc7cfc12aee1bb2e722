@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25d103c8_5678165e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/checker.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-25T16:09:58Z",
+      "side": 1,
+      "message": "Should we call this file tab_crash_checker.go ? \"checker\" is too generic IMHO.",
+      "revId": "dec6d11fa326ec1217dfedc7cfc12aee1bb2e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c3c1a6_720cfabd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-25T16:09:58Z",
+      "side": 1,
+      "message": "Move this block down to before L225, just before we record data.\n\nThe point of the check is the detect whether any tab crashed during tests and avoid recording invalid data.",
+      "revId": "dec6d11fa326ec1217dfedc7cfc12aee1bb2e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
