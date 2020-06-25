@@ -8,7 +8,10 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
+	"path"
 	"path/filepath"
 	"time"
 
@@ -33,7 +36,7 @@ func init() {
 		Attr: []string{"group:mainline"},
 		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
 		SoftwareDeps: []string{"no_qemu", "chrome", "display_backlight"},
-		Data:         []string{"screenshot1_reference.png", "screenshot2_reference.png"},
+		Data:         []string{"screenshot1_reference.png", "screenshot2_reference.png", "windowmanagertest.html"},
 	})
 }
 
@@ -151,10 +154,21 @@ func testSomethingOnScreen(ctx context.Context, s *testing.State) {
 // testGeneratedScreenshot draws a texture with a soft ellipse twice and captures each image.
 // Compares the output fuzzily against the reference images.
 func testGeneratedScreenshot(ctx context.Context, s *testing.State) {
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui job: ", err)
+	// Start chrome without hw overlays, as they get tested elsewhere:
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-hardware-overlays=\"\""))
+	if err != nil {
+		s.Error("Failed to log into Chrome: ", err)
+		return
 	}
-	defer upstart.StartJob(ctx, "ui")
+	defer cr.Close(ctx)
+
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Error("failed to initialize the keyboard writer", err)
+	}
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 
 	tempdir, err := ioutil.TempDir("", "generated_screenshot")
 	if err != nil {
@@ -165,24 +179,59 @@ func testGeneratedScreenshot(ctx context.Context, s *testing.State) {
 
 	generated1 := filepath.Join(tempdir, "screenshot1_generated.png")
 	generated2 := filepath.Join(tempdir, "screenshot2_generated.png")
+
+	url := path.Join(server.URL, "windowmanagertest.html")
+	conn, err := cr.NewConn(ctx, url)
+	if err != nil {
+		s.Error("Failed to open %v: ", url, err)
+		return
+	}
+	defer conn.Close()
+
+	// Make the webgl go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
+	if err := ew.Type(ctx, "f"); err != nil {
+		s.Error("failed to inject the 'f' key")
+	}
+
+	// Delay to wait for the exit-fullscreen prompt to go away:
+	if err := testing.Sleep(ctx, 6 * time.Second); err != nil {
+		s.Fatal("Cannot sleep: ", err)
+	}
+
+	// Trigger draw of white ellipse:
+	if err := ew.Type(ctx, "w"); err != nil {
+		s.Error("failed to inject the 'w' key")
+	}
+
+	// Give the javascript time to react to the input and draw the pattern:
+	if err := testing.Sleep(ctx, 1 * time.Second); err != nil {
+		s.Fatal("Cannot sleep: ", err)
+	}
+
+	if err := screenshot.Capture(ctx, generated1); err != nil {
+		s.Error("Failed to take screenshot 1: ", err)
+		return
+	}
+
+	// Trigger draw of blue ellipse:
+	if err := ew.Type(ctx, "b"); err != nil {
+		s.Error("failed to inject the 'b' key")
+	}
+
+	// Give the javascript time to react to the input and draw the pattern:
+	if err := testing.Sleep(ctx, 1 * time.Second); err != nil {
+		s.Fatal("Cannot sleep: ", err)
+	}
+
+	if err := screenshot.Capture(ctx, generated2); err != nil {
+		s.Error("Failed to take screenshot 2: ", err)
+		return
+	}
+
 	resized1 := filepath.Join(s.OutDir(), "screenshot1_resized.png")
 	resized2 := filepath.Join(s.OutDir(), "screenshot2_resized.png")
 	reference1 := s.DataPath("screenshot1_reference.png")
 	reference2 := s.DataPath("screenshot2_reference.png")
-
-	if err := testexec.CommandContext(ctx,
-		"/usr/local/glbench/bin/windowmanagertest",
-		// Delay before screenshot: 1 second has caused failures.
-		"--screenshot1_sec", "2",
-		"--screenshot2_sec", "1",
-		"--cooldown_sec", "1",
-		// perceptualdiff can handle only 8bit images.
-		"--screenshot1_cmd", "screenshot "+generated1,
-		"--screenshot2_cmd", "screenshot "+generated2,
-	).Run(testexec.DumpLogOnError); err != nil {
-		s.Error("Failed to run windowmanagertest: ", err)
-		return
-	}
 
 	resizePng := func(src, dst string, width, height int) error {
 		return testexec.CommandContext(ctx, "convert", "-channel", "RGB", "-colorspace", "RGB", "-depth", "8", "-resize", fmt.Sprintf("%dx%d!", width, height), src, dst).Run(testexec.DumpLogOnError)
