@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7319231_11db6da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T18:29:42Z",
+      "side": 1,
+      "message": "I think you should use perf.Timeline;\n  timeline, err :\u003d perf.NewTimeline(ctx, power.NewRAPLMetrics(), power.NewRAPLPowerMetrics())\n   ...\n  if err :\u003d timeline.Start(ctx); err !\u003d nil { ... }\n  timeline.StartRecording(ctx)\n  testing.Sleep()\n  pv, err :\u003d timeline.StopRecording(ctx)\n  ...\n\n\nIf you don\u0027t mind, power.TestMetrics() would provide more data points.",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "4173969450242e87aa2bd2afc0b41094e55b761c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
