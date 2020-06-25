@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "29647219_bc85fbde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-25T19:35:43Z",
+      "side": 1,
+      "message": "There\u0027s a hardware dependency which would be useful here. Please add HardwareDeps: hwdep.D(hwdep.SupportsNV120Overlays())\n\nI talked with dcastagna and agreed this is a good starting point. https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing/hwdep#SupportsNV12Overlays",
+      "revId": "4173969450242e87aa2bd2afc0b41094e55b761c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7319231_11db6da6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 3
