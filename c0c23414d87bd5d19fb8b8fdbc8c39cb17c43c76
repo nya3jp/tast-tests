@@ -22,6 +22,30 @@
       "revId": "c0c23414d87bd5d19fb8b8fdbc8c39cb17c43c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034cab82_a74ca56c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-25T17:35:54Z",
+      "side": 1,
+      "message": "Could you exclude \"informational\", too, that\u0027s the sub attribute available only with group:mainline ?",
+      "parentUuid": "d7bb572c_9ca5f065",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "c0c23414d87bd5d19fb8b8fdbc8c39cb17c43c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
