@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{common.VirtiofsKernel(), runPjdfstest},
-		Timeout:      10 * time.Minute,
+		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"vm_host"},
 	})
 }
