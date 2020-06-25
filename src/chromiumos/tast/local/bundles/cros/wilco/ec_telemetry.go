@@ -18,7 +18,7 @@ func init() {
 		Func: ECTelemetry,
 		Desc: "Checks that telemetry requests to the EC (e.g. hardware temperature or fan state info) work on Wilco devices",
 		Contacts: []string{
-			"ncrews@chromium.org",       // Test author and EC kernel driver author.
+			"campello@chromium.org",     // Test maintainer.
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 			"chromeos-kernel-test@google.com",
 		},

@@ -19,7 +19,7 @@ func init() {
 		Func: ECRTC,
 		Desc: "Checks that the EC RTC on Wilco devices is readable, writable, and updates itself",
 		Contacts: []string{
-			"ncrews@chromium.org",       // Test author and EC kernel driver author.
+			"campello@chromium.org",     // Test maintainer.
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 			"chromeos-kernel-test@google.com",
 		},
