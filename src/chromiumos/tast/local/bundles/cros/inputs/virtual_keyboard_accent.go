@@ -127,7 +127,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	}
 	defer key.Release(ctx)
 
-	if err := mouse.Move(ctx, tconn, key.Location.CenterPoint(), 100*time.Millisecond); err != nil {
+	if err := mouse.Move(ctx, tconn, key.Location.CenterPoint(), 500*time.Millisecond); err != nil {
 		s.Fatalf("Failed to move mouse to key %s: %v", keyName, err)
 	}
 
@@ -145,22 +145,37 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		}
 		defer accentContainer.Release(ctx)
 
+		// Wait for pop up window fully positioned
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			containerLocation := accentContainer.Location
+			testing.Sleep(ctx, time.Second)
+			accentContainer.Update(ctx)
+			if accentContainer.Location != containerLocation {
+				return errors.New("popup window is not positioned")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return err
+		}
+
 		accentKeyParams := ui.FindParams{Name: accentKeyName}
 		accentKey, err := accentContainer.Descendant(ctx, accentKeyParams)
 		if err != nil {
 			return errors.Wrapf(err, "failed to find accentkey with %v", accentKeyParams)
 		}
+		defer accentKey.Release(ctx)
+
 		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to wait for animation finished")
 		}
 		accentKey.Update(ctx)
 		location = accentKey.Location.CenterPoint()
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for accent window: ", err)
 	}
 
-	if err := mouse.Move(ctx, tconn, location, 100*time.Millisecond); err != nil {
+	if err := mouse.Move(ctx, tconn, location, 500*time.Millisecond); err != nil {
 		s.Fatalf("Failed to move mouse to key %s: %v", accentKeyName, err)
 	}
 
