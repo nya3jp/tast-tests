@@ -18,7 +18,7 @@ func init() {
 		Func: ECEvent,
 		Desc: "Tests that userspace can receive events from the EC on Wilco devices",
 		Contacts: []string{
-			"ncrews@chromium.org",       // Test author and EC kernel driver author.
+			"campello@chromium.org",     // Test maintainer.
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 			"chromeos-kernel-test@google.com",
 		},
