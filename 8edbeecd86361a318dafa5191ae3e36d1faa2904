@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "da6d0228_40475849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-06-25T00:49:33Z",
+      "side": 1,
+      "message": "Yeah, when running locally I was seeing it the most when trying to click the Settings button, while the builder failures were mainly for the status area.",
+      "parentUuid": "e9c4dc8a_9528cd46",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 91
+      },
+      "revId": "8edbeecd86361a318dafa5191ae3e36d1faa2904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6b35fcb_dc45c37a",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-06-24T23:03:00Z",
       "side": 1,
       "message": "I\u0027m not sure what I think about this function. I get is purpose, but I am not really sure I want to promote its use. I think that generally tests should avoid this type of repeated clicking and find another solutions. This is kinda a bandage over a bigger flakiness related issue.\n\nI think it may be better to keep the polling local with a todo to investigate why it is needed and remove it.\n\nThoughts?",
+      "range": {
+        "startLine": 202,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 18
+      },
+      "revId": "8edbeecd86361a318dafa5191ae3e36d1faa2904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159f8c21_247e77e5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-06-25T00:49:33Z",
+      "side": 1,
+      "message": "I agree, it is a bit weird and fixing the underlying issue would be ideal. I thought it might be useful to provide this in the meantime, since it\u0027s something we\u0027re running into pretty often. Could save some potential headaches for test writers. I\u0027m also guessing a general solution for click-readiness across the accessibility tree could be a bit of ways off, so having an easy-to-find workaround seems like a good thing, especially for such a fundamental interaction with the UI.\n\nWith that being said, I\u0027m also open to keeping the polling local. The codelab demonstrates it, so maybe that would be enough to raise awareness. I\u0027ll register a bug for sure, though.",
+      "parentUuid": "d6b35fcb_dc45c37a",
       "range": {
         "startLine": 202,
         "startChar": 3,
