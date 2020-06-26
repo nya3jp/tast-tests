@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bd726e34_1ee30d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a527780e_ca5e397b",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dab8319_df987af3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0c0f5c43_7230c2ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dab8319_df987af3",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b604ec40_23716abd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-06-25T16:40:38Z",
       "side": 1,
       "message": "If we ever get the test to run faster we can consider using a table driven test.",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8c3ce2f_bb87fc43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Could you please elaborate on what do you mean by table driven test and why do we need them?\n\nIn general, it is possible to set a separate timeout per each test case.",
+      "parentUuid": "b604ec40_23716abd",
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ff03522f_c555ff1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f42d3b_ebb7d060",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "391690a0_3b7000e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2020-06-25T16:40:38Z",
       "side": 1,
       "message": "Create a cleanup context to give this enough time",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1faea2b8_78d22e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "What is a cleanup context?",
+      "parentUuid": "391690a0_3b7000e7",
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "04fc5488_fb7337ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82aaafb9_fe26c9ff",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "498889c2_eb84f205",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -118,6 +226,24 @@
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a54694_bdae8b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Hm, arc.New does not start a new ARC instance, it just connects to existing one waiting for adb become available.\nBug good point, no need in explicit timeout, arc.New handles it itself.",
+      "parentUuid": "498889c2_eb84f205",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "841eba63_897bdc5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0fbb0a_23d5cf95",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cafcef52_e912194c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "3290349f_eba25497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cafcef52_e912194c",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9234f4d_96fd5715",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -172,6 +340,30 @@
       "writtenOn": "2020-06-25T16:40:38Z",
       "side": 1,
       "message": "Is it possible to check for a specific error?",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c32ba2ef_390a96aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "I can extract error messages from internals of arc.New.\nCase 1: ARC has to be enabled, but failed \u003d\u003e a fatal error regardless of what error is returned from arc.New.\nCase 2: ARC has to be disabled and err !\u003d nil was returned by arc.New \u003d\u003e it means that ARC has not been started - correct, regardless of returned err.\n\nCould you please elaborate what for do you think we need to distinguish errors?",
+      "parentUuid": "d9234f4d_96fd5715",
       "range": {
         "startLine": 135,
         "startChar": 11,
@@ -204,6 +396,30 @@
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e99869_36a350cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-26T12:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da69dc14_a27b4b91",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
