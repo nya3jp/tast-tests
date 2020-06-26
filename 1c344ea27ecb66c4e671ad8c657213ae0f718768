@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374dcb5d_998c384f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T06:40:53Z",
+      "side": 1,
+      "message": "Remove\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "1c344ea27ecb66c4e671ad8c657213ae0f718768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddaa14ba_d9753661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T06:40:53Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "1c344ea27ecb66c4e671ad8c657213ae0f718768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
