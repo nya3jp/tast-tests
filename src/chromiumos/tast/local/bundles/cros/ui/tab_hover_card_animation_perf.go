@@ -46,12 +46,14 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	conn, err := cr.NewConn(ctx, ui.PerftestURL)
-	if err != nil {
-		s.Fatal("Failed to open the tab: ", err)
-	}
-	if err := conn.Close(); err != nil {
-		s.Fatal("Failed to close the connection to the tab: ", err)
+	for i := 0; i < 2; i++ {
+		conn, err := cr.NewConn(ctx, ui.PerftestURL)
+		if err != nil {
+			s.Fatalf("Failed to open %d-th tab: %v", i, err)
+		}
+		if err := conn.Close(); err != nil {
+			s.Fatalf("Failed to close the connection to %d-th tab: %v", i, err)
+		}
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -60,7 +62,8 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	bounds := ws[0].BoundsInRoot
 	// Use a heuristic offset (30, 30) from the window origin for the first tab.
-	tab := coords.NewPoint(bounds.Left+30, bounds.Top+30)
+	tab1 := coords.NewPoint(bounds.Left+30, bounds.Top+30)
+	tab2 := coords.NewPoint(bounds.Left+bounds.Width/4+30, bounds.Top+30)
 	center := bounds.CenterPoint()
 
 	// Stabilize CPU usage.
@@ -72,9 +75,20 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 		if err := mouse.Move(ctx, tconn, center, 0); err != nil {
 			s.Fatal("Failed to put mouse to the center: ", err)
 		}
-		if err := mouse.Move(ctx, tconn, tab, 5*time.Second); err != nil {
+		if err := mouse.Move(ctx, tconn, tab1, 5*time.Second); err != nil {
 			s.Fatal("Failed to move mouse to the first tab: ", err)
 		}
+		// Hover on the inactive tab
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to sleep for 5 seconds: ", err)
+		}
+		if err := mouse.Move(ctx, tconn, center, 5*time.Second); err != nil {
+			s.Fatal("Failed to move mouse back to the center: ", err)
+		}
+		if err := mouse.Move(ctx, tconn, tab2, 5*time.Second); err != nil {
+			s.Fatal("Failed to move mouse to the second tab: ", err)
+		}
+		// Hover on the active tab
 		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			s.Fatal("Failed to sleep for 5 seconds: ", err)
 		}
