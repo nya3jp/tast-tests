@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb88184f_78ae17d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-26T19:11:11Z",
+      "side": 1,
+      "message": "The (30, 30) seems not working well with all devices. Have we checked the automation api\u0027s output for tabs? Do we have anything represent a Tab in Tabstrip?\n\nCheck out the screenshot on my device. Mouse hovers at edge of a tab and no hover card shows up.\nhttps://screenshot.googleplex.com/WUvuBwYwJLu",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 70
+      },
+      "revId": "f65259bd6b81fffa5de1c948dfa8840c3c7c6427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f548a6_f9490a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-26T19:11:11Z",
+      "side": 1,
+      "message": "We might want to track the metrics under different names for active and inactive tab instead of mixing them together.\n\nThat is, have a metrics.RunAndWaitAll to get histograms for active tab, record them under h.Name + suffix, say, h.Name + \".activeTab\".\n\nThen do similar thing for the inactive one and record the histograms under a different suffix, say h.Name + \".inactiveTab\".",
+      "revId": "f65259bd6b81fffa5de1c948dfa8840c3c7c6427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
