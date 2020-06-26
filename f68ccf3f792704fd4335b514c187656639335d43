@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83a7e68f_d4f828f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-26T10:55:03Z",
+      "side": 1,
+      "message": "FYI: at this moment, it\u0027s ok, but this will be a blocker to promote this test to CQ, because 20 mins means to make the CQ tests significantly slower.",
+      "revId": "f68ccf3f792704fd4335b514c187656639335d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
