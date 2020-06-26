@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0832e7_dda4a69b",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-26T16:53:01Z",
+      "side": 1,
+      "message": "Based on the description, I think it is better to modify IsRunning method itself rather than the caller code like this place.",
+      "revId": "5fba8fbc19a8f853b388aeeefb47a2f07e867927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
