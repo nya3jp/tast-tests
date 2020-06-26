@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90703e92_3070162c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-26T23:48:25Z",
+      "side": 1,
+      "message": "automation api is amazing...Done.",
+      "parentUuid": "cb88184f_78ae17d1",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 70
+      },
+      "revId": "f65259bd6b81fffa5de1c948dfa8840c3c7c6427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64f548a6_f9490a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "f65259bd6b81fffa5de1c948dfa8840c3c7c6427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8949afd7_dcb0c278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-26T23:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f548a6_f9490a9c",
+      "revId": "f65259bd6b81fffa5de1c948dfa8840c3c7c6427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
