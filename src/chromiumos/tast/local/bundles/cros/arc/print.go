@@ -153,6 +153,15 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
 
+	// Maximize the app window to ensure print preview is visible.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, ash.WMEventMaximize); err != nil {
+		s.Fatal("Failed to set app window state: ", err)
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize app window: ", err)
+	}
+
 	// Wait for print preview to load before selecting a printer.
 	s.Log("Waiting for print preview to load")
 	if err := waitForPrintPreview(ctx, tconn); err != nil {
