@@ -44,6 +44,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
+		propertyModel         = "ro.product.model"
 		propertySDKVersion    = "ro.build.version.sdk"
 	)
 
@@ -109,7 +110,12 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	device = match[1]
 
 	expectedFirstAPILevel := getProperty(propertySDKVersion)
-	if overwrite, ok := expectedFirstAPILevelMap[device]; ok {
+	if getProperty(propertyModel) == "rammus-arc-r" {
+		// Correct value for rammus-arc-r is the same for rammus (28, obtained
+		// from the map), but it is currently put under a special experiment
+		// to test behaviros of devices of first API level 30. See b/159114376.
+		expectedFirstAPILevel = "30"
+	} else if overwrite, ok := expectedFirstAPILevelMap[device]; ok {
 		expectedFirstAPILevel = strconv.Itoa(overwrite)
 	}
 
