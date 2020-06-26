@@ -23,11 +23,12 @@ type preImpl struct {
 	prepared   bool
 }
 
-var dummyApps100Pre = NewDummyAppPrecondition("dummy_apps", 100, chrome.NewPrecondition)
+var dummyApps100Pre = NewDummyAppPrecondition("dummy_apps", 100, chrome.NewPrecondition, false)
+var dummyApps100PreSkiaRenderer = NewDummyAppPrecondition("dummy_apps", 100, chrome.NewPrecondition, true)
 
 // NewDummyAppPrecondition creates a Precondition with numApps number of dummy apps, wrapping the Precondition
 // created by innerPre.
-func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string, opts ...chrome.Option) testing.Precondition) *preImpl {
+func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string, opts ...chrome.Option) testing.Precondition, skiaRenderer bool) *preImpl {
 	name = fmt.Sprintf("%s_%d", name, numApps)
 	tmpDir, err := ioutil.TempDir("", name)
 	if err != nil {
@@ -36,6 +37,9 @@ func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string
 	opts := make([]chrome.Option, 0, numApps)
 	for i := 0; i < numApps; i++ {
 		opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpDir, fmt.Sprintf("dummy_%d", i))))
+	}
+	if skiaRenderer {
+		opts = append(opts, chrome.ExtraArgs("--enable-features=UseSkiaRenderer"))
 	}
 	crPre := innerPre(name, opts...)
 	return &preImpl{crPre: crPre, numApps: numApps, extDirBase: tmpDir, prepared: false}
@@ -46,6 +50,12 @@ func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string
 // the test with this precondition is an instance of *chrome.Chrome.
 func LoggedInWith100DummyApps() testing.Precondition {
 	return dummyApps100Pre
+}
+
+// LoggedInWith100DummyAppsWithSkiaRenderer creates a precondition similar
+// to LoggedInWith100DummyApps with the added feature SkiaRenderer enabled.
+func LoggedInWith100DummyAppsWithSkiaRenderer() testing.Precondition {
+	return dummyApps100PreSkiaRenderer
 }
 
 func (p *preImpl) String() string         { return p.crPre.String() }
