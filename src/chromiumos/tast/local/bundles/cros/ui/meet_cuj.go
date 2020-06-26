@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -178,6 +179,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+	pv := perf.NewValues()
 	if err := recorder.Run(ctx, tconn, func() error {
 		if err := askToJoin.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
@@ -204,6 +206,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to create bots")
 		}
 
+		errc := make(chan error)
+		go func() {
+			// Using goroutine to measure GPU counters asynchronously because:
+			// - we will add some test scenarios (controlling windows / meet sessions)
+			//   rather than just sleeping.
+			// - graphics.MeasureGPUCounters may quit immediately when the hardware or
+			//   kernel does not support the reporting mechanism.
+			errc <- graphics.MeasureGPUCounters(ctx, 30*time.Second, pv)
+		}()
 		s.Log("Waiting for 30 seconds")
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
@@ -211,6 +222,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		// Close the browser window to finish it.
 		if err := conn.CloseTarget(ctx); err != nil {
 			return errors.Wrap(err, "failed to close")
+		}
+		if err := <-errc; err != nil {
+			return errors.Wrap(err, "failed to collect GPU counters")
 		}
 		return nil
 	}); err != nil {
@@ -222,7 +236,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
-	pv := perf.NewValues()
 	if err := recorder.Record(pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
