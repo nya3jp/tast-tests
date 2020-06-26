@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60556d74_48034e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-06-26T01:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a784ab_46bdf2ab",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "8edbeecd86361a318dafa5191ae3e36d1faa2904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9c4dc8a_9528cd46",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go",
         "patchSetId": 1
