@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dee8bb84_38a404e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-06-26T01:48:58Z",
+      "side": 1,
+      "message": "I think this only works on x86 and arm (kukui) is broken, but I guess it\u0027s fine for now?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea0898b_df8d19a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump_follow.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-06-26T01:48:58Z",
+      "side": 1,
+      "message": "which part of chrome does it depend?",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
