@@ -16,6 +16,24 @@
       "revId": "904157d2690ade19d8376cddfe7d5cc408a0a294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5003604_acce4b71",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-26T03:47:33Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "2b4a5963_830ccc78",
+      "revId": "904157d2690ade19d8376cddfe7d5cc408a0a294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
