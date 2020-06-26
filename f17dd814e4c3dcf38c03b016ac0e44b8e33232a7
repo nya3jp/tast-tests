@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab4e01d_cce888ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-26T09:53:07Z",
+      "side": 1,
+      "message": "nit: Error",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 8
+      },
+      "revId": "f17dd814e4c3dcf38c03b016ac0e44b8e33232a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315450ca_65888083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-26T09:53:07Z",
+      "side": 1,
+      "message": "if that is critical, we should introduce cleanup context to be sure that we will have time for proper cleanup.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "f17dd814e4c3dcf38c03b016ac0e44b8e33232a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5601ba3e_30d5633d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-26T09:53:07Z",
+      "side": 1,
+      "message": "nit: please add that you will start shill again then",
+      "range": {
+        "startLine": 176,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 78
+      },
+      "revId": "f17dd814e4c3dcf38c03b016ac0e44b8e33232a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e617f30_a40b7077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-26T09:53:07Z",
+      "side": 1,
+      "message": "you actually can overwrite existing non nil error\n\ni\u0027d like to check whether retErr not nil, then assign. Otherwise, we should not overwrite retErr and log err using testing.ContextLog",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 9
+      },
+      "revId": "f17dd814e4c3dcf38c03b016ac0e44b8e33232a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
