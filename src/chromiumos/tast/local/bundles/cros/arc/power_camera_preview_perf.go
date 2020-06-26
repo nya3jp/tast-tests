@@ -128,13 +128,14 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to query resolution from activity: ", err)
 	}
+	s.Log("Camera preview resolution: ", resolution)
 
 	// Create metrics. We report separately for each target FPS.
-	numFramesMetric := perf.Metric{Name: resolution + "_total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
-	numDroppedFramesMetric := perf.Metric{Name: resolution + "_num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
-	frameDropRatioMetric := perf.Metric{Name: resolution + "_frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
+	numFramesMetric := perf.Metric{Name: "total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
+	numDroppedFramesMetric := perf.Metric{Name: "num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
+	frameDropRatioMetric := perf.Metric{Name: "frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
 
-	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration), perf.Prefix(resolution+"_"))
+	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
