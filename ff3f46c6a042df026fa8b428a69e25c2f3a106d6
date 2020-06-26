@@ -92,6 +92,30 @@
       "revId": "ff3f46c6a042df026fa8b428a69e25c2f3a106d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c18d1b8_80f79419",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-26T21:12:39Z",
+      "side": 1,
+      "message": "Done. SetPowerState was implemented in a different CL: https://crrev.com/c/2228145",
+      "parentUuid": "66ae3685_621b09dd",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 63
+      },
+      "revId": "ff3f46c6a042df026fa8b428a69e25c2f3a106d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
