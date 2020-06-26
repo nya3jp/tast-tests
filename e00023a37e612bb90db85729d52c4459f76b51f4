@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5208c4e_dec25f0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T09:39:27Z",
+      "side": 1,
+      "message": "Please test on board with and without R\n\nVideo tests are not part of the Cq.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "e00023a37e612bb90db85729d52c4459f76b51f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
