@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4f99cd1_e4c11e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_cros_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2020-06-26T08:20:08Z",
+      "side": 1,
+      "message": "pprabhu@/nya@ are actively working to remove these type of special cases (context: go/to-model-is-to-err)\n\ncan we migrate atlas to use thermal config instead to avoid this leaking into tast code as a special exclusion",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "bd275bf0bea12f6dd1d215602a2925c6415f063f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
