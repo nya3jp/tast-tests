@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d20e0ef6_6ee6b970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T21:24:16Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\nYou don\u0027t change the test metadata so a parametric test is not required and they pollute the tast-board. But in this case it makes sense to separate them due to the long runtime.",
+      "parentUuid": "a8c3ce2f_bb87fc43",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f42d3b_ebb7d060",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "What is a cleanup context?",
       "parentUuid": "391690a0_3b7000e7",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47771505_75c5d0c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T21:24:16Z",
+      "side": 1,
+      "message": "use after the defer:\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n\nThis will allow cr.Close(ctx) to work even when the test times out. Otherwise the expired context will not allow it do do anything.",
+      "parentUuid": "1faea2b8_78d22e7c",
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -364,6 +400,30 @@
       "side": 1,
       "message": "I can extract error messages from internals of arc.New.\nCase 1: ARC has to be enabled, but failed \u003d\u003e a fatal error regardless of what error is returned from arc.New.\nCase 2: ARC has to be disabled and err !\u003d nil was returned by arc.New \u003d\u003e it means that ARC has not been started - correct, regardless of returned err.\n\nCould you please elaborate what for do you think we need to distinguish errors?",
       "parentUuid": "d9234f4d_96fd5715",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8817b4e4_1e4f2998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-06-26T21:24:16Z",
+      "side": 1,
+      "message": "It\u0027s only for the \"err !\u003d nil\" case. I was asking if an error specific for the disabled by policy case exists. This can prevent the test from succeeding if the ARC failure was unrelated.\n\nIt\u0027s not required, but useful.",
+      "parentUuid": "c32ba2ef_390a96aa",
       "range": {
         "startLine": 135,
         "startChar": 11,
