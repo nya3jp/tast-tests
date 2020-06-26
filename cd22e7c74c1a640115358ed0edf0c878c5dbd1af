@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c74ea59f_ed9f5411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-26T10:57:43Z",
+      "side": 1,
+      "message": "Could you add explicit TODO to clean up this part?",
+      "revId": "cd22e7c74c1a640115358ed0edf0c878c5dbd1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
