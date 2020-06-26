@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb6f4da4_bf5d736a",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-26T21:17:28Z",
+      "side": 1,
+      "message": "Yes, this is expected. Haven\u0027t yet implemented the actual reboot to recovery mode. I intend to address that with https://crrev.com/c/2204464",
+      "parentUuid": "34f0d8bd_25482e4c",
+      "revId": "85c550c83de74ad1ebf534583819dc6788edec90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "527771c1_46b72bd3",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-26T17:15:51Z",
       "side": 1,
       "message": "nit: This sets initialV4Role to curr before updating through SetString. I guess sometimes curr could equal to value.  That looks a bit redundant.\n\nFor now, initialV4Role is used to reset upon Close(), so I think that doesn\u0027t matter much and you\u0027re aware of that, but ideally, I guess it might be slightly better to set initialV4Role after SetString succeeds.  I think this is fine though.",
+      "revId": "85c550c83de74ad1ebf534583819dc6788edec90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e387c58_5b17cb85",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-26T21:17:28Z",
+      "side": 1,
+      "message": "My worry with that approach is that I don\u0027t trust the servo interface, which runs outside of Tast, to leave the value unchanged when returning an error. If SetString modifies the value, but still return an error, then the method you described would not set initialV4Role, so we would not reset during Close(). Doing it this way may be redundant, but it is safe against strange servo behavior.",
+      "parentUuid": "527771c1_46b72bd3",
       "revId": "85c550c83de74ad1ebf534583819dc6788edec90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
