@@ -16,6 +16,24 @@
       "revId": "f68ccf3f792704fd4335b514c187656639335d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7710f7d7_fa911082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-06-26T11:00:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83a7e68f_d4f828f4",
+      "revId": "f68ccf3f792704fd4335b514c187656639335d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
