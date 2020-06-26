@@ -37,6 +37,11 @@ func init() {
 			Val: lacros.ChromeTypeChromeOS,
 			Pre: ash.LoggedInWith100DummyApps(),
 		}, {
+			Name:              "skia_renderer",
+			Val:               lacros.ChromeTypeChromeOS,
+			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
+		}, {
 			Name:      "lacros",
 			Val:       lacros.ChromeTypeLacros,
 			Pre:       lacroslauncher.StartedByDataWith100DummyApps(),

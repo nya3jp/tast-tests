@@ -33,8 +33,14 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          ash.LoggedInWith100DummyApps(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Pre: ash.LoggedInWith100DummyApps(),
+		}, {
+			Name:              "skia_renderer",
+			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
+		}},
 	})
 }
 

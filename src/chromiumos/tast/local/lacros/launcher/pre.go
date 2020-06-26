@@ -81,7 +81,7 @@ var startedByDataForceCompositionPre = &preImpl{
 	opts:    []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, // Force composition.
 }
 
-var startedByDataWith100DummyAppsPre = ash.NewDummyAppPrecondition("dummy_apps", 100, startedByDataWithChromeOSChromeOptions)
+var startedByDataWith100DummyAppsPre = ash.NewDummyAppPrecondition("dummy_apps", 100, startedByDataWithChromeOSChromeOptions, false)
 
 // Implementation of lacros's precondition.
 type preImpl struct {
