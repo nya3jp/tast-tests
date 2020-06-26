@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0b930fdd_4157af4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-06-26T02:12:08Z",
+      "side": 1,
+      "message": "I\u0027d prefer to have a more explicit flag from the APK side rather than relying on ESC + wait until finish.\n\nThere are a few things that could go wrong (low chances, but still possible). Context:\n\n* The idea is to reuse the APK for all the input latency tests (keyboard, mouse, touch, gamepad, pencil(?)):\n* ESC key is sent via wayland, but it is processed by the keyboard handler in Chrome.\n* Touches are processed by the \"Gesture handler\" in Chrome. The \"Gesture handler\" might delay the delivery by a few ms to try to determine whether the touch is a gesture or not. So, if you are unlucky, a touch event might arrive to ARC, later than a key event, even though the touch was generated before.\n* Some tests might was to reuse the APK for different tests. For example the gamepad test might run one cycle by sending just \"single button\" events. And then another by sending \"buttons + axis\" events. You can relaunch the APK if needed. But in theory, you shouldn\u0027t need to close the APK just to verify that the data was written correctly.\n\nIn addition to:\n* When you read the tast code it is not obvious that ESC should close the APK\n* And when you read the Java code, it is not obvious what should happen at \"finish\". \n\n\nOne possible solution is to create a \"flag\" in the APK, saying something like \"I received X events, and were written to file NNN\"\nAnother solution is to put the output in a TextView in the APK.\nFor example, the ArcGamepadTest is doing that. It puts the data in a JSON format in a TextView:\n \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcGamepadTest/src/org/chromium/arc/testapp/gamepad/MainActivity.java\n\nAnd you can read that data by using UIAutomator. e.g:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/gamepad.go?l\u003d145\n\n\nIf you use JSON, then there is still the possibility of a race:\n  * you read the JSON while it is still being generated.\nBut that can be solved by adding an extra widget in the APK that says \"ready / busy\".\nOr just polling until you get a valid JSON should work.\n\nWDYT?",
+      "parentUuid": "dc37fbf6_0b6c4dbd",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b992606e_efd181ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 4
