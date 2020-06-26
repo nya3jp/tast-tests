@@ -28,7 +28,7 @@ func init() {
 		Func:         RTCPeerConnectionPerf,
 		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.

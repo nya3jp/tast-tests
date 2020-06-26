@@ -26,7 +26,7 @@ func init() {
 		Func:         PlaybackPerf,
 		Desc:         "Measures video playback performance in Chrome browser with/without HW acceleration",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
