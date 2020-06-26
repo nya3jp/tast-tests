@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "473f5ffa_45780d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-26T10:49:04Z",
+      "side": 1,
+      "message": "hugenit: preferring shorter name, how about \"expected\"",
+      "range": {
+        "startLine": 386,
+        "startChar": 25,
+        "endLine": 386,
+        "endChar": 39
+      },
+      "revId": "7a45148be337d6b8bec00ffea51ce304ad5c9dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55e63eb_4e713d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-06-26T10:49:04Z",
+      "side": 1,
+      "message": "nit/style: preferring the style guide: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\ncould you negate the condition?\n\nif expected !\u003d bounds {\n  return errors.Errorf(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 392,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 83
+      },
+      "revId": "7a45148be337d6b8bec00ffea51ce304ad5c9dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
