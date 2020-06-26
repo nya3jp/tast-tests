@@ -22,6 +22,30 @@
       "revId": "bd275bf0bea12f6dd1d215602a2925c6415f063f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d88beea_990ee2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override_cros_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-26T14:54:35Z",
+      "side": 1,
+      "message": "Atlas can\u0027t use cros_config here since memory part numbers are being used, which is beyond what we can get with SMBIOS/sku-id/whitelabel.  I guess cros_config intentionally does not provide this level of identity precision as we can force new platforms to \"do the right thing\" and make unique software configs correspond to unique SKU ids.\n\nSo here, using the model is probably the right thing. We\u0027re \"allow-listing\" which devices are allowed to use this pattern going forward.",
+      "parentUuid": "b4f99cd1_e4c11e53",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "bd275bf0bea12f6dd1d215602a2925c6415f063f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
