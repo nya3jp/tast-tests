@@ -69,6 +69,24 @@
       "revId": "85c550c83de74ad1ebf534583819dc6788edec90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecd4ad77_1b7dbd8d",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-26T21:58:28Z",
+      "side": 1,
+      "message": "Got it. Thanks for the explaining.",
+      "parentUuid": "7e387c58_5b17cb85",
+      "revId": "85c550c83de74ad1ebf534583819dc6788edec90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
