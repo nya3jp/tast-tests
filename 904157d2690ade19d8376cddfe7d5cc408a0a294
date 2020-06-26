@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4a5963_830ccc78",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-06-26T03:07:21Z",
+      "side": 1,
+      "message": "Is there a way to know the test is run against Android R?\nIf so, I think that using if statement to prevent checking whether an activity is running or not is a better idea than just commenting out since the lines commented out are not evaluated by compiler and will be broken silently.",
+      "revId": "904157d2690ade19d8376cddfe7d5cc408a0a294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
