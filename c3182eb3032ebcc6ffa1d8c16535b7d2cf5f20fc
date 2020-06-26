@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87525f2c_31e4c746",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-06-26T09:10:21Z",
+      "side": 1,
+      "message": "So this CL does 4 different things? It should be split then. We are getting 4 chances that this will need a revert, and if that\u0027s the case then we need to revert everything.\n\nAt least the new parameters and R workaround look like they can easily be in a CL of their own but of course the more split the merrier. :)",
+      "revId": "c3182eb3032ebcc6ffa1d8c16535b7d2cf5f20fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
