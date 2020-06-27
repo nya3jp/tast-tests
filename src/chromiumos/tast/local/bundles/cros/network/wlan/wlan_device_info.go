@@ -111,7 +111,7 @@ var denyListMUMIMO = []string{
 	BroadcomBCM4356PCIE, // According to datasheet.
 }
 
-var compatibleRE = regexp.MustCompile("^OF_COMPATIBLE_[0-9]+$")
+var compatibleRE = regexp.MustCompile("^OF_COMPATIBLE_[0-9]")
 
 // DeviceInfo returns a public struct (DevInfo) that has the WLAN device information.
 func DeviceInfo(ctx context.Context, netIf string) (*DevInfo, error) {
@@ -130,12 +130,14 @@ func DeviceInfo(ctx context.Context, netIf string) (*DevInfo, error) {
 		return nil, errors.Wrapf(err, "failed to get uevent at device %q", netIf)
 	}
 
-	// To Do: test this code with a device that has (qcom,wcn3990-wifi) chip.
+	// Support for (qcom,wcn3990-wifi) chip.
 	for _, line := range strings.Split(uevent, "\n") {
 		if kv := compatibleRE.FindStringSubmatch(line); kv != nil {
-			if d, ok := lookupWLANDev[DevInfo{compatible: kv[0]}]; ok {
-				// Found the matching device.
-				return &DevInfo{Name: d}, nil
+			if wifiSnoc := strings.Split(line, "="); wifiSnoc != nil {
+				if d, ok := lookupWLANDev[DevInfo{compatible: wifiSnoc[1]}]; ok {
+					// Found the matching device.
+					return &DevInfo{Name: d}, nil
+				}
 			}
 		}
 	}
