@@ -142,9 +142,9 @@ Self-test execution status:      (   0)	The previous self-test routine completed
 					without error or no self-test has ever
 					been run.
 Total time to complete Offline
-data collection: 		(  120) seconds.
+data collection:		(  120) seconds.
 Offline data collection
-capabilities: 			 (0x51) SMART execute Offline immediate.
+capabilities:			 (0x51) SMART execute Offline immediate.
 					No Auto Offline data collection support.
 					Suspend Offline collection upon new
 					command.
@@ -158,9 +158,9 @@ SMART capabilities:            (0x0003)	Saves SMART data before entering
 Error logging capability:        (0x01)	Error logging supported.
 					General Purpose Logging supported.
 Short self-test routine
-recommended polling time: 	 (   2) minutes.
+recommended polling time:	 (   2) minutes.
 Extended self-test routine
-recommended polling time: 	 (   3) minutes.
+recommended polling time:	 (   3) minutes.
 
 SMART Attributes Data Structure revision number: 1
 Vendor Specific SMART Attributes with Thresholds:
@@ -273,7 +273,6 @@ ID      Size     Value  Description
 		Name:              "145138402365",
 		Device:            SSD,
 		Status:            Healthy,
-		PercentageUsed:    2,
 		TotalBytesWritten: 1084308464640,
 	}
 

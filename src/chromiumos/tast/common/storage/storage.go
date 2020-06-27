@@ -81,7 +81,6 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 	}
 
 	var lifeStatus LifeStatus
-	var percentageUsed int64
 	var bytesWritten int64
 	var name string
 	switch deviceType {
@@ -92,14 +91,14 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		}
 		name = parseDeviceNameEMMC(lines)
 	case NVMe:
-		percentageUsed, lifeStatus, err = parseDeviceHealthNVMe(lines)
+		lifeStatus, err = parseDeviceHealthNVMe(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
 		bytesWritten, err = parseTotalBytesWrittenNVMe(lines)
 		name = parseDeviceNameNVMe(lines)
 	case SSD:
-		percentageUsed, lifeStatus, err = parseDeviceHealthSSD(lines)
+		lifeStatus, err = parseDeviceHealthSSD(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse SSD health")
 		}
@@ -110,7 +109,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 	}
 
 	return &Info{Name: name, Device: deviceType, Status: lifeStatus,
-		PercentageUsed: percentageUsed, TotalBytesWritten: bytesWritten}, nil
+		TotalBytesWritten: bytesWritten}, nil
 }
 
 var (
@@ -138,9 +137,13 @@ var (
 	// We want to detect 0x03 for the Urgent case.
 	// That indicates that the eMMC is near the end of life.
 	emmcFailing = regexp.MustCompile(`.*(?P<param>PRE_EOL_INFO]?: 0x03)`)
-	// nvmeFailing detects if nvme is failing using a regex.
-	// Example NVMe usage text: "	Percentage Used:                        0%"
-	nvmeFailing = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
+	// nvmeSpare and nvmeThreshold are used to detect if nvme is failing using regex.
+	// If Available Spare is less than Available Spare Threshold, the device
+	// is likely close to failing and we should remove the DUT.
+	// Example NVMe usage text: "	Available Spare:               100%"
+	// "Available Spare Threshold:         10%"
+	nvmeSpare     = regexp.MustCompile(`\s*Available Spare:\s+(?P<spare>\d+)%`)
+	nvmeThreshold = regexp.MustCompile(`\s*Available Spare Threshold:\s+(?P<thresh>\d+)%`)
 	// ssdFailingLegacy detects if ssd device is failing using a regex.
 	// The indicator used here is not reported for all SATA devices.
 	ssdFailingLegacy = regexp.MustCompile(`\s*(?P<param>\S+\s\S+)` + // ID and attribute name
@@ -148,17 +151,19 @@ var (
 		`(\s+\d{3}){3}` + // Three 3-digit numbers
 		`\s+NOW`) // Fail indicator
 	// ssdFailing detects if ssd device is failing using a regex.
-	// Example SSD usage text: "0x07  0x008  1              91  ---  Percentage Used Endurance Indicator"
-	ssdFailing = regexp.MustCompile(`.*\s{3,}(?P<percentage>\d*).*Percentage Used Endurance Indicator`)
-
-	// percentageUsedThreshold is the threshold for percentage used values we
-	// flag as indicating a failing device. If an NVMe or SATA device indicates
-	// a percentage used value above this threshold, we flag the device as failing.
-	percentageUsedThreshold int64 = 97
 	// nvmeUnitsWritten is the regexp for matching TBW value for NVMe devices.
 	nvmeUnitsWritten = regexp.MustCompile(`\s*Data Units Written:\s*(?P<param>\d+[,\d]*)`)
 	// ssdUnitsWritten is the regexp for matching TBW value for SATA SSD devices.
 	ssdUnitsWritten = regexp.MustCompile(`.*Total_LBAs_Written.*\s+(?P<param>\d+)$`)
+	// We look for non-zero values for either attribute 160 Uncorrectable_Error_Cnt
+	// or attribute 187 Reported_Uncorrect.
+	// Example usage text: "187 Reported_Uncorrect      -O----   100   100   000    -    0"
+	ssdFailing = regexp.MustCompile(`\s*(?P<param>(160\s+Uncorrectable_Error_Cnt|` +
+		`187\s+Reported_Uncorrect))` + // ID and attribute name
+		`\s+[P-][O-][S-][R-][C-][K-]` + // Flags
+		`(\s+\d{1,3}){3}` + // Three 1 to 3-digit numbers
+		`\s+(NOW|-)` + // Fail indicator
+		`\s+(?P<value>[1-9][0-9]*)`) // Non-zero raw value
 )
 
 // parseDeviceType searches outlines for storage device type.
@@ -248,59 +253,59 @@ func parseDeviceHealtheMMC(outLines []string) (LifeStatus, error) {
 	return Healthy, nil
 }
 
-// parsePercentageUsed is a helper function that analyzes the percentage used
-// value for indications of a failure.
-func parsePercentageUsed(match []string) (int64, LifeStatus, error) {
-	// Flag devices which report estimates approaching 100%
-
-	percentageUsed, err := strconv.ParseInt(match[1], 10, 32)
-	if err != nil {
-		return 0, Healthy, errors.Errorf("failed to parse percentage used %v", match[1])
-	}
-
-	if percentageUsed > percentageUsedThreshold {
-		return percentageUsed, Failing, nil
-	}
-
-	return percentageUsed, Healthy, nil
-}
-
 // parseDeviceHealthNVMe analyzes NVMe SMART attributes for indications of failure.
 // Returns usage percentage, drive health status and error (if encountered).
-func parseDeviceHealthNVMe(outLines []string) (int64, LifeStatus, error) {
-	// Flag devices which report estimates approaching 100%
+func parseDeviceHealthNVMe(outLines []string) (LifeStatus, error) {
+	// Flag devices which report available spare less than available threshold
 
-	for _, line := range outLines {
-		match := nvmeFailing.FindStringSubmatch(line)
+	for i, line := range outLines {
+		match := nvmeSpare.FindStringSubmatch(line)
 		if match == nil {
 			continue
 		}
 
-		return parsePercentageUsed(match)
+		tmatch := nvmeThreshold.FindStringSubmatch(outLines[i+1])
+		if tmatch == nil {
+			return 0, errors.Errorf("failed to find available spare threshold %v", match[1])
+		}
+
+		sparePercent, err := strconv.ParseInt(match[1], 10, 32)
+		if err != nil {
+			return 0, errors.Errorf("failed to parse available spare %v", match[1])
+		}
+
+		threshPercent, err := strconv.ParseInt(tmatch[1], 10, 32)
+		if err != nil {
+			return 0, errors.Errorf("failed to parse available spare threshold %v", tmatch[1])
+		}
+
+		if sparePercent < threshPercent {
+			return Failing, nil
+		}
 	}
 
-	return -1, Healthy, nil
+	return Healthy, nil
 }
 
 // parseDeviceHealthSSD analyzes storage information for indications of failure specific to SSDs.
 // Returns usage percentage, drive health status and error (if encountered).
-func parseDeviceHealthSSD(outLines []string) (int64, LifeStatus, error) {
-	// Flag devices which report estimates approaching 100% or that report failing
+func parseDeviceHealthSSD(outLines []string) (LifeStatus, error) {
+	// Flag devices which report non-zero uncorrectable errors or that report failing
 	// End-to-End_Error attribute
 
 	for _, line := range outLines {
 		if ssdFailingLegacy.MatchString(line) {
-			return -1, Failing, nil
+			return Failing, nil
 		}
 		match := ssdFailing.FindStringSubmatch(line)
 		if match == nil {
 			continue
 		}
+		return Failing, nil
 
-		return parsePercentageUsed(match)
 	}
 
-	return -1, Healthy, nil
+	return Healthy, nil
 }
 
 // parseTotalBytesWrittenNVMe parses NVMe SMART attribute value to extract
