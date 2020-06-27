@@ -22,6 +22,30 @@
       "revId": "e5d8ad76696d4df042a7fe0aae611c8cf27d9ade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d8e131d_dbfc29aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-27T00:54:23Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d99a0a83_e4ab1293",
+      "range": {
+        "startLine": 31,
+        "startChar": 78,
+        "endLine": 31,
+        "endChar": 86
+      },
+      "revId": "e5d8ad76696d4df042a7fe0aae611c8cf27d9ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
