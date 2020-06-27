@@ -87,10 +87,9 @@ No Errors Logged
 	}
 
 	exp := &Info{
-		Name:           "S3VBNY0J708174",
-		Device:         NVMe,
-		Status:         Healthy,
-		PercentageUsed: 3,
+		Name:   "S3VBNY0J708174",
+		Device: NVMe,
+		Status: Healthy,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
