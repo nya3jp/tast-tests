@@ -83,6 +83,7 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
+	memDiff    *memoryDiffDataSource
 	timeline   *perf.Timeline
 	loadValues []*perf.Values
 }
@@ -114,10 +115,12 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
+	memDiff := newMemoryDiffDataSource("Memory.Diff")
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("Memory"),
 		power.NewSysfsThermalMetrics(),
+		memDiff,
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
@@ -130,6 +133,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 	r := &Recorder{
 		names:    make([]string, 0, len(configs)),
 		records:  make(map[string]*record, len(configs)+2),
+		memDiff:  memDiff,
 		timeline: timeline,
 	}
 	for _, config := range configs {
@@ -156,8 +160,11 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
+	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
+		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
+	}
 	if err := r.timeline.StartRecording(ctx); err != nil {
-		return errors.Wrap(err, "failed to start recording")
+		return errors.Wrap(err, "failed to start recording timeline data")
 	}
 	defer func() {
 		vs, err := r.timeline.StopRecording()
