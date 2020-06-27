@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e94ca6f_d9d8bbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-27T00:18:45Z",
+      "side": 1,
+      "message": "Could you run \u0027go fmt\u0027 locally?\n\nI believe it will eliminate the space between this operator (and some others in this file); I personally prefer spacey ones, but possibly this is the go\u0027s style somehow.\n\nI don\u0027t know which editor you\u0027re using, but major editors should have the go-mode which can format files automatically through go-fmt. That would be helpful since you don\u0027t really have to worry much about the style details.",
+      "range": {
+        "startLine": 90,
+        "startChar": 48,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "1f40aa471e65c7f3629f505e7b7655c147c1c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d488a083_e5e9106f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-27T00:18:45Z",
+      "side": 1,
+      "message": "Please don\u0027t separate perf.Values(); you only need a single pv to invoke Save() once.\n\nInternally, Save(s.OutDir()) will create a file \u0027results-chart.json\u0027 in s.OutDir(), so subsequent Save will replace the previous data by the new one.  pv.Set with different name should work well.",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "1f40aa471e65c7f3629f505e7b7655c147c1c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296c0026_33d65f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-27T00:18:45Z",
+      "side": 1,
+      "message": "I think this will be mostly identical to the inactive tab case, you could introduce a for-loop; that would simplify the code structure.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 0
+      },
+      "revId": "1f40aa471e65c7f3629f505e7b7655c147c1c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
