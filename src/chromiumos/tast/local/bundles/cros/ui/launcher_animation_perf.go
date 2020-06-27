@@ -26,9 +26,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LauncherAnimationPerf,
-		Desc:         "Measures animation smoothness of lancher animations",
-		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
+		Func: LauncherAnimationPerf,
+		Desc: "Measures animation smoothness of lancher animations",
+		Contacts: []string{
+			"newcomer@chromium.org", "tbarzic@chromium.org", "cros-launcher-prod-notifications@google.com",
+			"mukai@chromium.org", // original test author
+		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
