@@ -26,9 +26,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LauncherPageSwitchPerf,
-		Desc:         "Measures smoothness of switching pages within the launcher",
-		Contacts:     []string{"mukai@chromium.org", "andrewxu@chromium.org", "cros-launcher-prod-notifications@google.com"},
+		Func: LauncherPageSwitchPerf,
+		Desc: "Measures smoothness of switching pages within the launcher",
+		Contacts: []string{
+			"newcomer@chromium.org", "tbarzic@chromium.org", "cros-launcher-prod-notifications@google.com",
+			"mukai@chromium.org", // original test author
+		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
