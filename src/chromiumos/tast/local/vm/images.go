@@ -148,13 +148,13 @@ func DownloadStagingContainer(ctx context.Context, debianVersion ContainerArchTy
 	}
 
 	var imagesJSON bytes.Buffer
-	url := fmt.Sprintf("https://storage.googleapis.com/cros-containers/%d/streams/v1/images.json", milestone)
+	url := fmt.Sprintf("https://storage.googleapis.com/cros-containers-staging/%d/streams/v1/images.json", milestone)
 	if err := downloadTo(ctx, url, &imagesJSON); err != nil {
 		return "", errors.Wrapf(err, "error downloading images.json from %s", url)
 	}
 
 	allPaths := pathRe.FindAllStringSubmatch(imagesJSON.String(), -1)
-	urlPrefix := fmt.Sprintf("https://storage.googleapis.com/cros-containers/%d/", milestone)
+	urlPrefix := fmt.Sprintf("https://storage.googleapis.com/cros-containers-staging/%d/", milestone)
 	for _, matches := range allPaths {
 		imagePath := matches[0]
 		filename := matches[1]
