@@ -88,7 +88,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	if err := files.OpenDownloads(ctx); err != nil {
 		s.Fatal("Opening Downloads folder failed: ", err)
 	}
-	if err := files.WaitForFile(ctx, testFile, 10*time.Second); err != nil {
+	if err := files.WaitForFile(ctx, testFile, 30*time.Second); err != nil {
 		s.Fatal("Waiting for test file failed: ", err)
 	}
 
@@ -96,16 +96,18 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 		s.Fatal("Waiting to select test file failed: ", err)
 	}
 
+	s.Log("Wait for Gallery shown in shelf")
 	if err := ash.WaitForApp(ctx, tconn, apps.Gallery.ID); err != nil {
 		s.Fatal("Failed to check Gallery in shelf: ", err)
 	}
 
+	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
 	params := ui.FindParams{
 		Role: ui.RoleTypeImage,
 		Name: testFile,
 	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 10*time.Second); err != nil {
+	if _, err = ui.FindWithTimeout(ctx, tconn, params, 60*time.Second); err != nil {
 		s.Fatal("Failed to render Gallery or open image: ", err)
 	}
 }
