@@ -130,11 +130,9 @@ func RandomMACAddress(testCtx context.Context, s *testing.State) {
 			pcap.TypeFilter(
 				layers.LayerTypeDot11MgmtProbeReq,
 				func(layer gopacket.Layer) bool {
-					// LayerContents of probe request layer is the frame body.
-					body := layer.LayerContents()
-					ssid, err := parseProbeReqSSID(body)
+					ssid, err := pcap.ParseProbeReqSSID(layer.(*layers.Dot11MgmtProbeReq))
 					if err != nil {
-						s.Logf("skip probe request with malformed frame body [%v]", body)
+						s.Logf("skip malformed probe request %v: %v", layer, err)
 						return false
 					}
 					// Take the ones with wildcard SSID or SSID of the AP.
@@ -201,25 +199,6 @@ func RandomMACAddress(testCtx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verified; tearing down")
-}
-
-// parseProbeReqSSID parses SSID element from the frame body of probe request packet.
-func parseProbeReqSSID(content []byte) (string, error) {
-	// Parse the content as information elements.
-	e := gopacket.NewPacket(content, layers.LayerTypeDot11InformationElement, gopacket.NoCopy)
-	if err := e.ErrorLayer(); err != nil {
-		return "", errors.Wrap(err.Error(), "failed to parse information elements")
-	}
-	for _, l := range e.Layers() {
-		element, ok := l.(*layers.Dot11InformationElement)
-		if !ok {
-			return "", errors.Errorf("unexpected layer %v", l)
-		}
-		if element.ID == layers.Dot11InformationElementIDSSID {
-			return string(element.Info), nil
-		}
-	}
-	return "", errors.New("no SSID element found")
 }
 
 // scanAndCollectPcap requests active scans and collect pcap file. Path to the pcap
