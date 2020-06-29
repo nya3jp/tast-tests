@@ -67,7 +67,7 @@ func saveSelinuxLog(ctx context.Context, destDir string) error {
 
 func SelinuxViolation(ctx context.Context, s *testing.State) {
 	// Directory name should keep in sync with platform2/sepolicy/policy/chromeos/dev/cros_ssh_session.te
-	const markerDirName = "cros_selinux_audit_sanity_test"
+	const markerDirName = "cros_selinux_audit_basic_test"
 
 	opt := crash.WithMockConsent()
 	useConsent := s.Param().(crash.ConsentType)
@@ -129,7 +129,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 
 	expectedLogMsgs := []string{"avc:  granted  { create }",
 		fileName,
-		"cros_audit_sanity_test_file"}
+		"cros_audit_basic_test_file"}
 
 	var matchingFile string
 	for _, f := range files[logFileRegex] {
