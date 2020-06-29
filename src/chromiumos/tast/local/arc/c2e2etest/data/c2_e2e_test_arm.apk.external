@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/c2_e2e_test_arm_6601756_20200618.apk",
-  "size": 881133,
-  "sha256sum": "6baadac05f3ad95993044b451bd4efb809b1a0828042e7b0dd4d59bca475b219"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/c2_e2e_test_arm_6637294_20200629.apk",
+  "size": 885229,
+  "sha256sum": "54845a97076cbc07312096ac23e9e7ee350b20fa9ecd3bdbba98a16461df64d4"
 }
