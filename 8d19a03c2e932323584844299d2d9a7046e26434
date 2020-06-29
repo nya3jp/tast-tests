@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "455b990b_b5d2088d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T21:47:33Z",
+      "side": 1,
+      "message": "nit: Insert an empty line above.\n\nPrefer to have the meta lines separate from others.",
+      "revId": "8d19a03c2e932323584844299d2d9a7046e26434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
