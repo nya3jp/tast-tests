@@ -22,6 +22,30 @@
       "revId": "e5e19c1f3cb01634ffbbec66e0bf203ce74b4939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cfbbc8_b485522f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-29T23:15:21Z",
+      "side": 1,
+      "message": "Thanks for the tip!",
+      "parentUuid": "e2cfdfbe_f2a668ae",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "e5e19c1f3cb01634ffbbec66e0bf203ce74b4939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
