@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4770be9_2bf6b9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-29T18:21:06Z",
+      "side": 1,
+      "message": "Will be resolved in the CL below, because this one is already merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2273556",
+      "parentUuid": "b40d5f7c_fe5ddae9",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "d8951ce0c7aa93d28fe2b2e6ba0839d0b25e163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "866f71a9_e2136861",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9e909431_84be2f48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-29T18:21:06Z",
+      "side": 1,
+      "message": "Will be resolved in the CL below, because this one is already merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2273556",
+      "parentUuid": "866f71a9_e2136861",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 4
+      },
+      "revId": "d8951ce0c7aa93d28fe2b2e6ba0839d0b25e163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13e7cded_da3929ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-29T09:43:47Z",
       "side": 1,
       "message": "it\u0027s better to use cleanup context here as well",
+      "range": {
+        "startLine": 141,
+        "startChar": 25,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "d8951ce0c7aa93d28fe2b2e6ba0839d0b25e163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d00a75a_89b9c780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-29T18:21:06Z",
+      "side": 1,
+      "message": "Will be resolved in the CL below, because this one is already merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2273556",
+      "parentUuid": "13e7cded_da3929ec",
       "range": {
         "startLine": 141,
         "startChar": 25,
