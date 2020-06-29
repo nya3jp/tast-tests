@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c95ac0f5_9e47a638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-29T02:45:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473f5ffa_45780d15",
+      "range": {
+        "startLine": 386,
+        "startChar": 25,
+        "endLine": 386,
+        "endChar": 39
+      },
+      "revId": "7a45148be337d6b8bec00ffea51ce304ad5c9dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f55e63eb_4e713d79",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "7a45148be337d6b8bec00ffea51ce304ad5c9dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a531c90_19c3f386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-29T02:45:11Z",
+      "side": 1,
+      "message": "Thanks for the pointer! Done.",
+      "parentUuid": "f55e63eb_4e713d79",
+      "range": {
+        "startLine": 392,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 83
+      },
+      "revId": "7a45148be337d6b8bec00ffea51ce304ad5c9dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
