@@ -35,13 +35,16 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
-		Data:         []string{"arc_print_ippusb_golden.pdf"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
+			Val:               "arc_print_ippusb_golden.pdf",
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
 			Name:              "vm",
+			Val:               "arc_print_vm_ippusb_golden.pdf",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
 		}},
 	})
 }
@@ -219,7 +222,7 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Print job failed to complete: ", err)
 	}
 
-	golden := s.DataPath("arc_print_ippusb_golden.pdf")
+	golden := s.DataPath(s.Param().(string))
 	diffPath := filepath.Join(s.OutDir(), "diff.txt")
 	if err := document.CompareFiles(ctx, recordPath, golden, diffPath); err != nil {
 		s.Error("Printed file differs from golden file: ", err)
