@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a353cbd_2a3ba897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/memory_diff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T23:22:21Z",
+      "side": 1,
+      "message": "nit: on -\u003e for ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "d1dbaf5bb8e6ad584b6d5decb5fb293212ebeba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
