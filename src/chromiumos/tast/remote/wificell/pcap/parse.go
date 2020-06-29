@@ -91,3 +91,25 @@ func ReadPackets(pcapFile string, filters ...Filter) ([]gopacket.Packet, error) 
 	defer f.Close()
 	return readPacketsFromReader(f, filters...)
 }
+
+// ParseProbeReqSSID parses the frame body of a probe reqeust packet and
+// returns the SSID in the request.
+func ParseProbeReqSSID(req *layers.Dot11MgmtProbeReq) (string, error) {
+	// LayerContents of probe request is the frame body.
+	content := req.LayerContents()
+	// Parse the content as information elements.
+	e := gopacket.NewPacket(content, layers.LayerTypeDot11InformationElement, gopacket.NoCopy)
+	if err := e.ErrorLayer(); err != nil {
+		return "", errors.Wrap(err.Error(), "failed to parse information elements")
+	}
+	for _, l := range e.Layers() {
+		element, ok := l.(*layers.Dot11InformationElement)
+		if !ok {
+			return "", errors.Errorf("unexpected layer %v", l)
+		}
+		if element.ID == layers.Dot11InformationElementIDSSID {
+			return string(element.Info), nil
+		}
+	}
+	return "", errors.New("no SSID element found")
+}
