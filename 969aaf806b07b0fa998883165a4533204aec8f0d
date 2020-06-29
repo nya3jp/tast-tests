@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "538b22c0_793ad63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-06-29T19:56:05Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2202522 -- there is a comment how CSV validation may look like:\n\n\n\tarr :\u003d [][]string{{\"weigth\", \"powered\", \"height\"}, {\"1\", \"true\", \"23\"}}\n\tvalidCSV(arr,\n\t\tHeaders(\"weigth\", \"powered\", \"height\"),\n\t\tColumn(0, Int(GreaterThanInt(0), SmallerThanInt(12))),\n\t\tColumn(1, String(func(s string) error {\n\t\t\t// custom validator\n\t\t\tif s !\u003d \"true\" {\n\t\t\t\treturn errors.New(\"some issue\")\n\t\t\t}\n\t\t\treturn nil\n\t\t})),\n\t\tColumn(2, Int(EqualInt(23))))\n\n\ncons of your approach:\n1. you don\u0027t verify types\n2. to report errors you need hack like printStr\n3. once you got failure you just con\u0027t validate other values.\n\nI guess you need to start thinking about some helper to validate your output, otherwise we\u0027ll see a lot of repeating code in tests.",
+      "parentUuid": "0ab768c4_c154c101",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54f2a7fb_2e4db3f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
