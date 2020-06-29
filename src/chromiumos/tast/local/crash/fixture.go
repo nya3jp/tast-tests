@@ -330,7 +330,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 			return errors.Wrap(err, "couldn't disable crash filtering: ")
 		}
 	} else {
-		if err := enableCrashFiltering(p.filterInPath, p.filterIn); err != nil {
+		if err := enableCrashFiltering(ctx, p.filterInPath, p.filterIn); err != nil {
 			return errors.Wrap(err, "couldn't enable crash filtering: ")
 		}
 	}
