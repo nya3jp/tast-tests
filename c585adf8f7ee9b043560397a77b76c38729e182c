@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a7b37b3_e0caf66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-29T09:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7792ec57_577fb4f9",
+      "range": {
+        "startLine": 760,
+        "startChar": 41,
+        "endLine": 760,
+        "endChar": 50
+      },
+      "revId": "c585adf8f7ee9b043560397a77b76c38729e182c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75cf09e7_f1fff535",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "c585adf8f7ee9b043560397a77b76c38729e182c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9bfd65_8432e345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-06-29T09:41:40Z",
+      "side": 1,
+      "message": "Thanks for raise this good point. We do need to check filename pattern before deleting it.\nUpdate the CL to check filename matches capture file pattern or metadata pattern before deleting it.",
+      "parentUuid": "bbb63d22_2c90216b",
+      "range": {
+        "startLine": 768,
+        "startChar": 15,
+        "endLine": 768,
+        "endChar": 21
+      },
+      "revId": "c585adf8f7ee9b043560397a77b76c38729e182c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
