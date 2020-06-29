@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6245b637_0a9c300c",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-06-29T07:46:04Z",
+      "side": 1,
+      "message": "Do we want to remove the zip file on errors above, e.g. when unzip fails? If so it\u0027s good to do this in a deferred statement soon after downloadFile.\n\n if err :\u003d downloadFile(...); err !\u003d nil { ... }\n defer func() {\n   if err :\u003d os.RemoveAll(...); err !\u003d nil { ... }\n }()",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "1963cc55a9bf8662f1d6d0bcac34c54b422395a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
