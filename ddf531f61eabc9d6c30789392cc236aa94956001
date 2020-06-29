@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98b24244_0313052e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-06-29T07:43:24Z",
+      "side": 0,
+      "message": "this could be: strings.Split(expectedTypingResult, \"\")",
+      "revId": "ddf531f61eabc9d6c30789392cc236aa94956001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
