@@ -16,6 +16,24 @@
       "revId": "49704f257e6ae7c9c3d408867023f8ef83a1a55a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd5e7bf1_b60e6408",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-06-29T07:29:27Z",
+      "side": 1,
+      "message": "Yes. Agree. b/157686038 attached to track this tech debt. Let\u0027s work on some improvement.",
+      "parentUuid": "ca8e2787_a7632263",
+      "revId": "49704f257e6ae7c9c3d408867023f8ef83a1a55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
