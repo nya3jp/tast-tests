@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ae6448b_bfb39327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-29T22:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bdfd5d2_880a4822",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97fa6440_bca4ef22",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cdaaaf9b_034da57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-29T22:31:10Z",
+      "side": 1,
+      "message": "It works well on my DUT so I guess we can.",
+      "parentUuid": "97fa6440_bca4ef22",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9306d568_f96afb4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6542a047_7f5482ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-06-29T22:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9306d568_f96afb4c",
+      "range": {
+        "startLine": 110,
+        "startChar": 43,
+        "endLine": 110,
+        "endChar": 57
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
