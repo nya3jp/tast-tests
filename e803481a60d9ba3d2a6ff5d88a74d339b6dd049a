@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "291a1d06_e9debfae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-29T09:32:15Z",
+      "side": 1,
+      "message": "side note: In the Autotest version, it captures packets for debugging. In Tast, we might just add TFCapture(true) here. Maybe we can have it when needed later?\n\nThis also reminds me that spawning capturer before APIface is probably preferred. I\u0027ll have a cl for this.",
+      "range": {
+        "startLine": 42,
+        "startChar": 93,
+        "endLine": 42,
+        "endChar": 94
+      },
+      "revId": "e803481a60d9ba3d2a6ff5d88a74d339b6dd049a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbc3f28_6c53a58b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-29T09:32:15Z",
+      "side": 1,
+      "message": "As we only have one metric here, probably no need of the defer? If more metrics are expected, I think having this defer right after NewValues makes them better paired?\n\nSide note: Not sure if the order of s.Error-s will affect the reason displayed on dashboards. (but we can also move this after the res.Loss check, if the order does matter.)",
+      "range": {
+        "startLine": 109,
+        "startChar": 15,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "e803481a60d9ba3d2a6ff5d88a74d339b6dd049a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
