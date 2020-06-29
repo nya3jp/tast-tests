@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "891f3637_ee3ed103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-29T00:41:19Z",
+      "side": 1,
+      "message": "I would like to keep this one here on purpose. We had a bug in the bug in the past, where the wrong camera resolution was chosen.",
+      "parentUuid": "374dcb5d_998c384f",
+      "revId": "1c344ea27ecb66c4e671ad8c657213ae0f718768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddaa14ba_d9753661",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "1c344ea27ecb66c4e671ad8c657213ae0f718768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efcb7e21_ae50f140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-06-29T00:41:19Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "ddaa14ba_d9753661",
+      "revId": "1c344ea27ecb66c4e671ad8c657213ae0f718768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
