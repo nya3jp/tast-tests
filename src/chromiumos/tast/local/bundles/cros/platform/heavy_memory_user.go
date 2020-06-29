@@ -19,7 +19,13 @@ func init() {
 		Contacts:     []string{"asavery@chromium.org", "chromeos-storage@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		Timeout:      10 * time.Minute,
-		SoftwareDeps: []string{"android_p", "chrome", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
