@@ -48,10 +48,12 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertySDKVersion    = "ro.build.version.sdk"
 	)
 
+	a := s.PreValue().(arc.PreData).ARC
+
 	getProperty := func(propertyName string) string {
 		var value string
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			out, err := arc.BootstrapCommand(ctx, "/system/bin/getprop", propertyName).Output()
+			out, err := a.Command(ctx, "getprop", propertyName).Output()
 			if err != nil {
 				return err
 			}
@@ -124,7 +126,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 
 	firstAPILevel := getProperty(propertyFirstAPILevel)
 	if firstAPILevel != expectedFirstAPILevel {
-		if props, err := arc.BootstrapCommand(ctx, "/system/bin/getprop").Output(testexec.DumpLogOnError); err != nil {
+		if props, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError); err != nil {
 			s.Log("Failed to read properties: ", err)
 		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
 			s.Log("Failed to dump properties: ", err)
