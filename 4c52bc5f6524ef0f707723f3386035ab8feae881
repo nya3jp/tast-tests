@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6313fa43_8727412c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-29T18:31:09Z",
+      "side": 1,
+      "message": "I know Golang doesn\u0027t have line limits, but your comment blocks are pretty inconsistent. This one isn\u0027t wrapped at all, but line 66+ is.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940a2f50_c0d26aa7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-29T18:31:09Z",
+      "side": 1,
+      "message": "shortened",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed70f6ae_8d238c9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-29T18:31:09Z",
+      "side": 1,
+      "message": "this is sort of why I wanted to discourage using \u0027iw\u0027 for scans in other places (e.g., ScanPerformance) -- because it sets a bad precedent. Generally, you\u0027re adding some flake, by conflicting with any scans Shill might be doing already. Polling works out OK, but it still seems like we should just go through Shill instead. And naybe we need a big warning on these methods, to discourage their use unless necessary.\n\nIs there much difference between this, and just exporting WifiService.discoverService() as a proper RPC method? We just need to call it for both SSIDs.\n\nOr, do we even need this at all, now that we\u0027re actually connecting to both APs? I think we\u0027d be OK just deleting lines 94-123.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 94
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb115d6_92f18653",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-29T18:31:09Z",
+      "side": 1,
+      "message": "you probably don\u0027t want to continue to Ping and Disconnect after a Connect failure, right? Either Fatal, or just \u0027continue\u0027 (to try the other AP)?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3d8d0c_a8472fcc",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-29T18:31:09Z",
+      "side": 1,
+      "message": "its\n\nsame below",
+      "range": {
+        "startLine": 166,
+        "startChar": 52,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
