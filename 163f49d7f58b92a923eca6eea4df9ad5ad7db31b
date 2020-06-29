@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bdfd5d2_880a4822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-29T22:05:29Z",
+      "side": 1,
+      "message": "Use inline struct arrays instead:\n\n  for _, data :\u003d range []struct{\n    tab: *chromeui.Node,\n    suffix: string\n  } {\n    {tabs[0], \"inactive\"},\n    {tabs[1], \"active\"},\n  } {\n    ..\n  }",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97fa6440_bca4ef22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-29T22:05:29Z",
+      "side": 1,
+      "message": "nit: Can this be 1 second or so?",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9306d568_f96afb4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-29T22:05:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 43,
+        "endLine": 110,
+        "endChar": 57
+      },
+      "revId": "163f49d7f58b92a923eca6eea4df9ad5ad7db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
