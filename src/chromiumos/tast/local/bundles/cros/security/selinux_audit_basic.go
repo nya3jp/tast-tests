@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxAuditSanity,
+		Func:         SELinuxAuditBasic,
 		Desc:         "Checks SELinux audit works as intended",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux"},
@@ -30,9 +30,9 @@ func init() {
 	})
 }
 
-func SELinuxAuditSanity(ctx context.Context, s *testing.State) {
+func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 	// Directory name should keep in sync with platform2/sepolicy/policy/chromeos/dev/cros_ssh_session
-	const markerDirName = "cros_selinux_audit_sanity_test"
+	const markerDirName = "cros_selinux_audit_basic_test"
 
 	s.Log("Waiting for auditd job to be running")
 	if err := upstart.WaitForJobStatus(ctx, "auditd", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
@@ -51,7 +51,7 @@ func SELinuxAuditSanity(ctx context.Context, s *testing.State) {
 	}
 
 	// Generate an audit event by creating a file inside markerDirectory
-	td, err := ioutil.TempDir("/tmp", "tast.security.SELinuxAuditSanity.")
+	td, err := ioutil.TempDir("/tmp", "tast.security.SELinuxAuditBasic.")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory for testing: ", err)
 	}
