@@ -75,9 +75,18 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	s.Log("Input with virtual keyboard")
-	if err := vkb.InputWithVirtualKeyboard(ctx, tconn, cr, typingKeys); err != nil {
-		s.Fatal("Failed to type on virtual keyboard: ", err)
+	s.Log("Wait for virtual keyboard shown up")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	}
+
+	s.Log("Wait for decoder running")
+	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	}
+
+	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
+		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
 	// Value change can be a bit delayed after input.
@@ -90,7 +99,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		s.Error("Failed to input with virtual keyboard: ", err)
 	}
 }
