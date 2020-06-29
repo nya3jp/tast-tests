@@ -10,6 +10,11 @@
     <uses-sdk android:minSdkVersion="23" />
     <application android:label="ARC Notification Test"
                  android:allowBackup="false">
-        <activity android:name=".NotificationActivity" android:exported="true"></activity>
+        <activity android:name=".NotificationActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>
