@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd6c50a_ff429b6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T21:38:46Z",
+      "side": 1,
+      "message": "nit: Use a shorter subject. If needed, put more contents in the body of CL description.\ne.g.\n\n  ui.TabHoverCardAnimationPerf run for active/inactive tab\n\n  Make ui.TabHoverCardAnimationPerf collect hover card animation\n  metrics for both active and inactive tab.\n\n  BUG\u003dchromium:1060816\n  TEST\u003dtast run IP ui.TabHoverCardAnimationPerf",
+      "revId": "481dde2e1750e261e87df99fd06299bdae5f75ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
