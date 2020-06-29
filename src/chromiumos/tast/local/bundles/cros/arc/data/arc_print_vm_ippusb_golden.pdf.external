@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/arc_print_vm_ippusb_golden_20200629.pdf",
+  "size": 188629,
+  "sha256sum": "23eed1c17335c453377d8dfb855e13ce3f1398635a0e6757336b824af3f2594e"
+}
