@@ -52,7 +52,7 @@ func TFPcap(target string) TFOption {
 	}
 }
 
-// TFCapture sets if the test fixture should spawn packet capturer.
+// TFCapture sets if the test fixture should spawn packet capturer in ConfigureAP.
 func TFCapture(b bool) TFOption {
 	return func(tf *TestFixture) {
 		tf.packetCapture = b
@@ -266,36 +266,48 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		return nil, err
 	}
 
-	ap, err := tf.router.StartAPIface(ctx, name, config)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start APIface")
-	}
-	defer func() {
-		if retErr != nil {
-			tf.router.StopAPIface(ctx, ap)
-		}
-	}()
-
+	var capturer *pcap.Capturer
 	if tf.packetCapture {
 		freqOps, err := config.PcapFreqOptions()
 		if err != nil {
 			return nil, err
 		}
-		capturer, err := tf.pcap.StartCapture(ctx, name, config.Channel, freqOps)
+		capturer, err = tf.pcap.StartCapture(ctx, name, config.Channel, freqOps)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
+		defer func() {
+			if retErr != nil {
+				tf.pcap.StopCapture(ctx, capturer)
+			}
+		}()
+	}
+
+	ap, err := tf.router.StartAPIface(ctx, name, config)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start APIface")
+	}
+
+	if capturer != nil {
 		tf.capturers[ap] = capturer
 	}
+
 	return ap, nil
 }
 
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
-func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (context.Context, context.CancelFunc) {
 	if tf.router == nil {
 		return ctx, func() {}
 	}
-	return tf.router.ReserveForStopAPIface(ctx, h)
+	ctx, cancel := tf.router.ReserveForStopAPIface(ctx, ap)
+	if capturer, ok := tf.capturers[ap]; ok {
+		// Also reserve time for stopping the capturer if it exists.
+		// Noted that CancelFunc returned here is dropped as we rely on its
+		// parent's cancel() being called.
+		ctx, _ = tf.pcap.ReserveForStopCapture(ctx, capturer)
+	}
+	return ctx, cancel
 }
 
 // DeconfigAP stops the WiFi service on router.
@@ -307,15 +319,21 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
+	if err := tf.router.StopAPIface(ctx, ap); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
+	}
 	if capturer != nil {
 		if err := tf.pcap.StopCapture(ctx, capturer); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
-	if err := tf.router.StopAPIface(ctx, ap); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
-	}
 	return firstErr
+}
+
+// Capturer returns the auto-spawned Capturer for the APIface instance.
+func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
+	capturer, ok := tf.capturers[ap]
+	return capturer, ok
 }
 
 // ConnectWifi asks the DUT to connect to the specified WiFi.
