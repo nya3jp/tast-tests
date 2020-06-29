@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2cfdfbe_f2a668ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-29T22:52:27Z",
+      "side": 1,
+      "message": "Please add data.suffix into all of s.Fatal()/s.Fatalf() within this range so that you can clearly see which run fails (for example, s.Fatalf(\"Failed to put mouse to the center in %s: %v\", data.suffix, err))\n\nAlternatively, you could use s.Run:\n  s.Run(ctx, data.suffix, func(ctx context.Context, s *testing.State) {\n    ...\n  })\n\n(within s.Run, s.Error/Fatal functions prints out the name).",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "e5e19c1f3cb01634ffbbec66e0bf203ce74b4939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
