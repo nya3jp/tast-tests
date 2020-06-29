@@ -58,54 +58,54 @@ const (
 	networkPrefix          = 24
 )
 
-func VPNConnect(ctx context.Context, s *testing.State) {
+func VPNConnect(fullCtx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
-	cleanupCtx := ctx
-	mainCtx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
+	cleanupCtx := fullCtx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
 	// We lose connectivity along the way here, and if that races with the
 	// recover_duts network-recovery hooks, it may interrupt us.
-	unlock, err := network.LockCheckNetworkHook(mainCtx)
+	unlock, err := network.LockCheckNetworkHook(ctx)
 	if err != nil {
 		s.Fatal("Failed to lock the check network hook: ", err)
 	}
 	defer unlock()
 
-	if err := removeDefaultProfile(mainCtx); err != nil {
+	if err := removeDefaultProfile(ctx); err != nil {
 		s.Fatal("Failed to remove the default profile: ", err)
 	}
 
-	manager, err := shill.NewManager(mainCtx)
+	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 	// Remove test profiles in case they already exist.
-	manager.RemoveProfile(mainCtx, testDefaultProfileName)
-	manager.RemoveProfile(mainCtx, testUserProfileName)
+	manager.RemoveProfile(ctx, testDefaultProfileName)
+	manager.RemoveProfile(ctx, testUserProfileName)
 
 	// Clean up custom services and test profiles on exit.
-	defer func() {
-		manager.PopProfile(cleanupCtx, testUserProfileName)
-		manager.RemoveProfile(cleanupCtx, testUserProfileName)
-		manager.PopProfile(cleanupCtx, testDefaultProfileName)
-		manager.RemoveProfile(cleanupCtx, testDefaultProfileName)
+	defer func(ctx context.Context) {
+		manager.PopProfile(ctx, testUserProfileName)
+		manager.RemoveProfile(ctx, testUserProfileName)
+		manager.PopProfile(ctx, testDefaultProfileName)
+		manager.RemoveProfile(ctx, testDefaultProfileName)
 
-		if err := removeDefaultProfile(cleanupCtx); err != nil {
+		if err := removeDefaultProfile(ctx); err != nil {
 			s.Error("Failed to remove the default profile: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	// Pop user profiles and push a temporary default profile on top.
 	s.Log("Popping all user profiles and pushing new default profile")
-	if err = manager.PopAllUserProfiles(mainCtx); err != nil {
+	if err = manager.PopAllUserProfiles(ctx); err != nil {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
-	if _, err = manager.CreateProfile(mainCtx, testDefaultProfileName); err != nil {
+	if _, err = manager.CreateProfile(ctx, testDefaultProfileName); err != nil {
 		s.Fatal("Failed to create profile: ", err)
 	}
-	if _, err = manager.PushProfile(mainCtx, testDefaultProfileName); err != nil {
+	if _, err = manager.PushProfile(ctx, testDefaultProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
 
@@ -119,12 +119,12 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		shill.ServicePropertyState: shill.ServiceStateOnline,
 	}
 
-	if _, err := manager.WaitForServiceProperties(mainCtx, props, 15*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
 		s.Fatal("Service not found: ", err)
 	}
 
 	// Prepare virtual ethernet link.
-	if _, err := veth.NewPair(mainCtx, serverInterfaceName, clientInterfaceName); err != nil {
+	if _, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName); err != nil {
 		s.Fatal("Failed to setup veth: ", err)
 	}
 
@@ -133,12 +133,12 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	if vpnType == l2tpIPsec {
 		// Create new L2TP/IPsec.
-		server := vpn.NewL2tpipSecVpnServer(mainCtx, authType, serverInterfaceName, serverAddress, networkPrefix)
-		if err := server.StartServer(mainCtx); err != nil {
+		server := vpn.NewL2tpipSecVpnServer(ctx, authType, serverInterfaceName, serverAddress, networkPrefix)
+		if err := server.StartServer(ctx); err != nil {
 			s.Fatal("Failed to create a L2TP/IPsec server: ", err)
 		}
 		defer func() {
-			if err := server.Exit(mainCtx); err != nil {
+			if err := server.Exit(cleanupCtx); err != nil {
 				s.Fatal("Failed to Stop a L2TP/IPsec server: ", err)
 			}
 		}()
@@ -148,16 +148,16 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	// When shill finds this ethernet interface, it will reset its IP address and start a DHCP client.
 	// We must configure the static IP address through shill.
-	if err := configureStaticIP(mainCtx, clientInterfaceName, clientAddress, manager); err != nil {
+	if err := configureStaticIP(ctx, clientInterfaceName, clientAddress, manager); err != nil {
 		s.Fatal("Failed configuring the static IP: ", err)
 	}
 
-	if err := connectVPN(mainCtx, vpnType, authType, serverAddress, manager); err != nil {
+	if err := connectVPN(ctx, vpnType, authType, serverAddress, manager); err != nil {
 		s.Fatal("Failed connecting to VPN server: ", err)
 	}
 
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(mainCtx, vpn.Xl2tpdServerIPAddress, ping.Count(3), ping.User("chronos"))
+	res, err := pr.Ping(ctx, vpn.Xl2tpdServerIPAddress, ping.Count(3), ping.User("chronos"))
 	if err != nil {
 		s.Fatal("Failed pinging the server IPv4: ", err)
 	}
@@ -174,7 +174,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}
 		return false
 	}
-	if _, err := pr.Ping(mainCtx, "2001:db8::1", ping.Count(1), ping.User("chronos")); !isExitCode(err, 2) {
+	if _, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); !isExitCode(err, 2) {
 		s.Fatal("Failed IPv6 ping should have aborted: ", err)
 	}
 
