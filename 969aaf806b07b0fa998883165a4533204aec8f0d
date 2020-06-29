@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85ee7986_77126a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-06-29T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d0b7ea_f341ac6e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fba707f_a0043ed2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983c113b_8d0c5b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-06-29T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fba707f_a0043ed2",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0ab768c4_c154c101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-06-29T18:44:14Z",
+      "side": 1,
+      "message": "Ah, good catch. I have created a separate function to handle the checking and validation, which has significantly reduced the # of LOC.",
+      "parentUuid": "ef40f815_cc602aa2",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54f2a7fb_2e4db3f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af57356_e7ecb548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-06-29T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f2a7fb_2e4db3f1",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
