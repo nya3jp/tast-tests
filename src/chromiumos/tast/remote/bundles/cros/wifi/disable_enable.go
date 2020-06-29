@@ -56,11 +56,11 @@ func DisableEnable(fullCtx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func() {
-		if err := tf.DisconnectWifi(fullCtx); err != nil {
+		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
 		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
 	}()
