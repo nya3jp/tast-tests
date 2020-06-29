@@ -22,6 +22,30 @@
       "revId": "7c7847de719b9864263907ae41592d645a78468e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2f5089_7640ebc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-06-29T08:04:53Z",
+      "side": 1,
+      "message": "I didn\u0027t know they are the same. Thank you! Done",
+      "parentUuid": "5ffdf281_60c40121",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 35,
+        "endChar": 81
+      },
+      "revId": "7c7847de719b9864263907ae41592d645a78468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
