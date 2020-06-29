@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0546e44_16939bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T15:57:22Z",
+      "side": 1,
+      "message": "Cool. Unrelated to this CL, just a reminder that we should update tab dragging test to do this too.",
+      "revId": "963275e170b0f8cd1c3911d61e07268fb5160579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6fbaa0c_9baf6b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T15:57:22Z",
+      "side": 1,
+      "message": "Move this before we start the i loop since we should create only one.",
+      "revId": "963275e170b0f8cd1c3911d61e07268fb5160579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb09a75_33e10d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T15:57:22Z",
+      "side": 1,
+      "message": "I think you meant without the double quote.\ni.e.\n\n   \"suffix\"\n-\u003e suffix",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 38
+      },
+      "revId": "963275e170b0f8cd1c3911d61e07268fb5160579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba867d2_f6804700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_hover_card_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-29T15:57:22Z",
+      "side": 1,
+      "message": "Move this after the i loop since we only need to do if after all values are collected for he tests.",
+      "revId": "963275e170b0f8cd1c3911d61e07268fb5160579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
