@@ -169,6 +169,25 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	return c.NewConnForTarget(ctx, f)
 }
 
+// BackgroundConn returns a connection to the virtual keyboard background page,
+// where JavaScript can be executed to simulate interactions with IME.
+func BackgroundConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
+	extURL := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
+
+	// Background target from login persists for a few seconds, causing 2 background targets.
+	// Polling until connected to the unique target.
+	var bconn *chrome.Conn
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		bconn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+		return err
+	}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 3 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
+	}
+
+	return bconn, nil
+}
+
 // TODO(b/159657128): Investigate why TapKey does not work very well consistently.
 
 // TapKey simulates a tap event on the middle of the specified key via touch event. The key can
@@ -280,28 +299,22 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 	return suggestions, err
 }
 
-// InputWithVirtualKeyboard waits for virtual keyboard shown up, types given key series and hide keyboard after.
-func InputWithVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, keys []string) error {
-	if err := WaitUntilShown(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for the virtual keyboard to show")
-	}
-
-	if err := WaitUntilButtonsRender(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for the virtual keyboard to render")
-	}
-
-	kconn, err := UIConn(ctx, cr)
+// WaitForDecoderEnabled waits for decoder to be enabled or disabled.
+func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool) error {
+	bconn, err := BackgroundConn(ctx, cr)
 	if err != nil {
-		return errors.Wrap(err, "failed to create keyboard connection")
+		return errors.Wrap(err, "failed to create IME background connection")
 	}
-	defer kconn.Close()
+	defer bconn.Close()
 
-	if err := TapKeysJS(ctx, kconn, keys); err != nil {
-		return errors.Wrapf(err, "failed to tap keys %v: %v", keys, err)
+	// Decoder works async in returning status to frontend IME and self loading.
+	// So sleep is still required to wait for decoder warming up.
+	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader_.controller_.currentInputBundle_.ime_.shouldUseDecoder()===%t", enabled)); err != nil {
+		return errors.Wrapf(err, "failed wait for decoder enabled to be %t: %v", enabled, err)
 	}
 
-	if err := HideVirtualKeyboard(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to hide the virtual keyboard")
+	if enabled {
+		return testing.Sleep(ctx, 3*time.Second)
 	}
 	return nil
 }
