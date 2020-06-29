@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "302f0245_4b9f882f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-29T08:14:28Z",
+      "side": 1,
+      "message": "Got it, thanks",
+      "parentUuid": "d20e0ef6_6ee6b970",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f42d3b_ebb7d060",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
         "patchSetId": 1
@@ -210,6 +228,24 @@
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38758af6_39f42e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-29T08:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47771505_75c5d0c6",
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -433,6 +469,30 @@
       "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b03bb0_57e040e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-06-29T08:14:28Z",
+      "side": 1,
+      "message": "Got your point. In this case a timer expired error is expected (the system is waiting for ARC, but it never happens).\n\nI think it is excessive.\nLet\u0027s assume the test is not flaky and consistent. If arc.New fails for arcEnabled \u003d false with the different error (not related to the policy), then most probably it will fail for arcEnabled \u003d true and not start ARC and the error will be caught.\nCurrently, the test runs true/false tests for the same domain, but later with the fake dms it will do that even for the same account (only policy values will be different).",
+      "parentUuid": "8817b4e4_1e4f2998",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "1ecfeefe2385cce8b4a378565a5ebf32e420efa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
