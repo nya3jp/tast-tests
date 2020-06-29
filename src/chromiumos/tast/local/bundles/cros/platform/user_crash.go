@@ -448,12 +448,12 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
 func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	localcrash.EnableCrashFiltering(localcrash.FilterInIgnoreAllCrashes)
+	localcrash.EnableCrashFiltering(ctx, localcrash.FilterInIgnoreAllCrashes)
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
 	}
 
-	localcrash.EnableCrashFiltering("sleep")
+	localcrash.EnableCrashFiltering(ctx, "sleep")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"sleep\": ", err)
 	}

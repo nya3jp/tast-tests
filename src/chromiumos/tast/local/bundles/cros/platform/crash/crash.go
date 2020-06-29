@@ -206,7 +206,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	if len(filterBasename) > 15 {
 		filterBasename = filterBasename[:15]
 	}
-	if err := crash.EnableCrashFiltering(filterBasename); err != nil {
+	if err := crash.EnableCrashFiltering(ctx, filterBasename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
 	command = append(command, opts.CrasherPath)
