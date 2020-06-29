@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b017bc3c_9751ac36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-06-29T00:26:33Z",
+      "side": 1,
+      "message": "I unfortunately don\u0027t have any way to test on krane/kukui these days..  I\u0027d appreciate if someone else could.",
+      "parentUuid": "dc963d32_8cfb5ed3",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9eb93402_9ccf59c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-06-28T23:28:58Z",
       "side": 1,
       "message": "You might want to consider starting Chrome with HW overlays disabled. That way, if that path gets broken in Chrome, it doesn\u0027t affect this test (and we\u0027re not really interested in testing HW overlays). This is done by starting Chrome with a specific command line argument. I think it\u0027s either --enable-hardware-overlays\u003d\"\" or --disable-hardware-overlays.\n\nYou should be able to test by appending --tint-gl-composited-content to the command line. If the content is red tinted, it means it didn\u0027t get promoted to an overlay.",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0b34ff_8c1ca085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-06-29T00:26:33Z",
+      "side": 1,
+      "message": "I\u0027m still learning my way around tast.. any hints about how to do this?",
+      "parentUuid": "9eb93402_9ccf59c9",
       "range": {
         "startLine": 157,
         "startChar": 19,
@@ -105,6 +153,30 @@
       "writtenOn": "2020-06-28T23:28:58Z",
       "side": 1,
       "message": "nit: Comment on why this Sleep is needed as Tast prefers polling for some condition as opposed to sleeping. I assume it\u0027s needed to wait for rendering to finish?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb9e661_460f3027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-06-29T00:26:33Z",
+      "side": 1,
+      "message": "yeah, just to give sufficient time for the js/webgl to react to the input.. open to suggestions if there is a better way to accomplish that.",
+      "parentUuid": "073944f6_d32b710a",
       "range": {
         "startLine": 205,
         "startChar": 1,
