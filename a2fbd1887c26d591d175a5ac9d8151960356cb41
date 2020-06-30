@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41ea3bba_091b2508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-06-30T14:43:06Z",
+      "side": 1,
+      "message": "please add information why is it needed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "a2fbd1887c26d591d175a5ac9d8151960356cb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d46e718_ad029d9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-06-30T14:43:06Z",
+      "side": 1,
+      "message": "\"tast run ... \"",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "a2fbd1887c26d591d175a5ac9d8151960356cb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605e7bb6_e227f361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-06-30T14:43:06Z",
+      "side": 1,
+      "message": "could you please provide a brief comment why is it needed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 97
+      },
+      "revId": "a2fbd1887c26d591d175a5ac9d8151960356cb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
