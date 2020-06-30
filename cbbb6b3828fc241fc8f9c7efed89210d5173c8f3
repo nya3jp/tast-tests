@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "914dbd95_bb5c887e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:40:01Z",
+      "side": 1,
+      "message": "go/inclusive documentation recommends against using \"sanity\" in this context, as it is ableist language. How about \"basic test\", \"confidence test\", or \"smoke test\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "922fcc73_bd8342bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
         "patchSetId": 3
