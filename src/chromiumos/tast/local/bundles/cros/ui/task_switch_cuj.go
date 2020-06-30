@@ -102,7 +102,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Installing ", pkgName)
 		installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
-		if err = playstore.InstallApp(installCtx, a, d, pkgName); err != nil {
+		if err = playstore.InstallApp(installCtx, a, d, pkgName, -1); err != nil {
 			cancel()
 			s.Fatalf("Failed to install %s: %v", pkgName, err)
 		}

@@ -19,7 +19,7 @@ import (
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
 // Play Store should be open to the homepage before running this function.
-func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
+func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
 	const (
 		defaultUITimeout = 20 * time.Second
 
@@ -45,6 +45,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
+	tries := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
 		// dismiss the dialog. This check needs to be done before checking the
@@ -63,8 +64,15 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		// If the install button is enabled, click it.
 		installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
 		if err := installButton.Exists(ctx); err == nil {
-			if err := installButton.Click(ctx); err != nil {
-				return err
+			// Limit number of tries to help mitigate Play Store rate limiting across test runs.
+			if tryLimit == -1 || tries < tryLimit {
+				tries++
+				testing.ContextLogf(ctx, "Trying to hit the install button. Total attempts so far: %d", tries)
+				if err := installButton.Click(ctx); err != nil {
+					return err
+				}
+			} else {
+				return testing.PollBreak(errors.Errorf("hit install attempt limit of %d times", tryLimit))
 			}
 		}
 
@@ -104,7 +112,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 			return errors.Wrap(err, "failed to wait for enabled open button")
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		return err
 	}
 
