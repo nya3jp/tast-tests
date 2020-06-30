@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7a16db7_467662eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-30T03:37:08Z",
+      "side": 1,
+      "message": "\u003e \"exsits\" is a possible misspelling of \"exists\" or \"exist\".\n\nFixed.",
+      "parentUuid": "613ee78b_5f3d8d03",
+      "range": {
+        "startLine": 97,
+        "startChar": 52,
+        "endLine": 97,
+        "endChar": 58
+      },
+      "revId": "32bb2ec1b0dc35bfec565613c41ec6d9194c28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
