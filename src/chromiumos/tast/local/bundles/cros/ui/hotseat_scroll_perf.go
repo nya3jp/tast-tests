@@ -233,6 +233,7 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
 			return nil, errors.Wrap(err, "failed to switch to fullscreen")
 		}
+		defer ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch)
 		// Verify the launcher's state.
 		if err := ash.WaitForLauncherState(ctx, tconn, launcherTargetState); err != nil {
 			return nil, errors.Wrapf(err, "failed to switch the state to %s", launcherTargetState)
