@@ -38,12 +38,22 @@ func init() {
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", "vhci_hcd_is_stable"},
+			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
+		}, {
+			Name:              "flaky",
+			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraSoftwareDeps: []string{"android_p", "vhci_hcd_is_unstable"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
 			Name:              "vm",
 			Val:               "arc_print_vm_ippusb_golden.pdf",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "vhci_hcd_is_stable"},
+			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
+		}, {
+			Name:              "vm_flaky",
+			Val:               "arc_print_vm_ippusb_golden.pdf",
+			ExtraSoftwareDeps: []string{"android_vm", "vhci_hcd_is_unstable"},
 			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
 		}},
 	})
