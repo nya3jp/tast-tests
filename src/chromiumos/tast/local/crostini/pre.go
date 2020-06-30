@@ -166,34 +166,34 @@ const (
 
 var startedByArtifactPre = &preImpl{
 	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
+	timeout: chrome.LoginTimeout + 11*time.Minute,
 	mode:    artifact,
 }
 
 var startedByDownloadStretchPre = &preImpl{
 	name:    "crostini_started_by_download_stretch",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
+	timeout: chrome.LoginTimeout + 14*time.Minute,
 	mode:    download,
 	arch:    vm.DebianStretch,
 }
 
 var startedByDownloadBusterPre = &preImpl{
 	name:    "crostini_started_by_download_buster",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
+	timeout: chrome.LoginTimeout + 14*time.Minute,
 	mode:    download,
 	arch:    vm.DebianBuster,
 }
 
 var startedTraceVMPre = &preImpl{
 	name:        "crostini_started_trace_vm",
-	timeout:     chrome.LoginTimeout + 10*time.Minute,
+	timeout:     chrome.LoginTimeout + 14*time.Minute,
 	mode:        artifact,
 	minDiskSize: 16 * cui.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
 var startedARCEnabledPre = &preImpl{
 	name:       "crostini_started_arc_enabled",
-	timeout:    chrome.LoginTimeout + 10*time.Minute,
+	timeout:    chrome.LoginTimeout + 14*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
 }

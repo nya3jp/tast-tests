@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/input"
 )
 
@@ -169,8 +170,15 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 
 // Install clicks the install button and waits for the Linux installation to complete.
 func (p *Installer) Install(ctx context.Context) error {
+	installButtonFindParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}
+	if err := ui.WaitUntilExists(ctx, p.tconn, installButtonFindParams, uiTimeout); err != nil {
+		return errors.Wrap(err, "failed to find the install button")
+	}
+	if err := vkb.EnsureVirtualKeyboardHidden(ctx, p.tconn); err != nil {
+		return errors.Wrap(err, "failed to hide the virtual keyboard")
+	}
 	return uig.Do(ctx, p.tconn,
 		uig.Steps(
-			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout).LeftClick(),
+			uig.Find(installButtonFindParams).LeftClick(),
 			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
 }

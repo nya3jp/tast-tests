@@ -331,3 +331,17 @@ func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool)
 	}
 	return nil
 }
+
+// EnsureVirtualKeyboardHidden hides the virtual keyboard when it is shown. It
+// does nothing otherwise.
+func EnsureVirtualKeyboardHidden(ctx context.Context, tconn *chrome.TestConn) error {
+	if isShown, err := IsShown(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get shown status")
+	} else if !isShown {
+		return nil
+	}
+	if err := HideVirtualKeyboard(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide the virtual keyboard")
+	}
+	return WaitUntilHidden(ctx, tconn)
+}
