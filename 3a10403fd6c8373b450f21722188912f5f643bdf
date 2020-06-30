@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "384a062d_e17d3f75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-30T11:10:03Z",
+      "side": 1,
+      "message": "Not sure if moving it to gRPC an overkill?",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ecc6c62_2eafd772",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-30T11:10:03Z",
+      "side": 1,
+      "message": "How about moving line 70-77 into\nif psMode {\n  ...\n}",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
