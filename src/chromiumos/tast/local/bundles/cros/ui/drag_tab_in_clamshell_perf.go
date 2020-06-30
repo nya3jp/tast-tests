@@ -13,8 +13,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -56,6 +57,8 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
@@ -74,10 +77,25 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	if w0.State != ash.WindowStateNormal {
 		s.Fatalf("Wrong window state: expected Normal, got %s", w0.State)
 	}
-	bounds := w0.BoundsInRoot
-	// Use a heuristic offset (30, 30) from the window origin for the first tab.
-	start := coords.NewPoint(bounds.Left+30, bounds.Top+30)
-	end := bounds.CenterPoint()
+
+	webview, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeWebView, ClassName: "WebView"}, 10*time.Second)
+	if err != nil {
+		s.Fatal("Failed to find webview: ", err)
+	}
+	defer webview.Release(ctx)
+
+	// Find tabs.
+	tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+	if err != nil {
+		s.Fatal("Failed to find tabs: ", err)
+	}
+	defer tabs.Release(ctx)
+	if len(tabs) != 2 {
+		s.Fatalf("expected 2 tabs, only found %v tab(s)", len(tabs))
+	}
+
+	start := tabs[0].Location.CenterPoint()
+	end := webview.Location.CenterPoint()
 
 	// Stabilize CPU usage.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
