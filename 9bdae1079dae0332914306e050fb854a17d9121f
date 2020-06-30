@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e10c7f0d_9d022591",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-30T10:55:58Z",
+      "side": 1,
+      "message": "I have an idea, not sure if it is overkill:\n\nInside shillconst, let\u0027s have the following sub-packages:\n * devprop/const.go: defines DeviceProperty* but the prefix \"DeviceProperty\" can be omitted;\n * ipconfprop/const.go: defines IPConfigProperty*;\n * mgrprop/const.go: defines ManagerProperty*;\n * svcprop/const.go: defines ServiceProperty*;\n * svcstate/const.go: defines ServiceStarte*;\n * svcprop/const.go: defines ServiceProperty*;\n * security/const.go: defines Security*;\n * profileprop/const.go: defines ProfileProperty*;\nand the rest unclassified are put in shillconst/const.go.",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
