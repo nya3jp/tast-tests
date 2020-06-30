@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "981a902a_8c6e1a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-06-30T00:56:36Z",
+      "side": 1,
+      "message": "Should we ensure that we\u0027re not already in a rotated state at this point, or are we guaranteed to have 0 degrees rotation?",
+      "revId": "50a5d9345e2d7974659052ee3b041e21c02cf7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
