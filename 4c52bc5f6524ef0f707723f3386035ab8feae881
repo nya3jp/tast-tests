@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a1d0e0d_9577d734",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6313fa43_8727412c",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "940a2f50_c0d26aa7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd92be5_80134f9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940a2f50_c0d26aa7",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5495ecf1_8c2ffd4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T06:24:09Z",
+      "side": 1,
+      "message": "I agree with you the scan is not needed here,so I deleted the scan part. If needed to do a scan in another test I will implement a gRPC call and export WifiService.discoverService().",
+      "parentUuid": "ed70f6ae_8d238c9d",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 94
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eb115d6_92f18653",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
         "patchSetId": 10
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "1a195abb_93eb64eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb115d6_92f18653",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db3d8d0c_a8472fcc",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dfe74a_3b38889f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3d8d0c_a8472fcc",
+      "range": {
+        "startLine": 166,
+        "startChar": 52,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
