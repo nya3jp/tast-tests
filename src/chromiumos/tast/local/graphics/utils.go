@@ -144,20 +144,6 @@ func GLESVersion(ctx context.Context) (major, minor int, err error) {
 	return extractOpenGLVersion(ctx, string(out))
 }
 
-// IsNewVideoDecoderDisabled returns true when the current platform supports the
-// "new" hardware accelerated video decoder implementation. Chrome has two said
-// implementations: a "legacy" one (VDA-based) and a "new" (VD-based) one. The
-// "new" one is disabled for certain chipsets/boards by policy via overlays/ USE
-// flags. If such flag is not present, it's considered enabled.
-func IsNewVideoDecoderDisabled() bool {
-	f, err := parseUIUseFlags(uiUseFlagsPath)
-	if err != nil {
-		return false
-	}
-	_, ok := f["disable_cros_video_decoder"]
-	return ok
-}
-
 // SupportsVulkanForDEQP decides whether the board supports Vulkan for DEQP
 // testing. An error is returned if something unexpected happens while deciding.
 // This is a port of part of the functionality of GraphicsApiHelper defined in

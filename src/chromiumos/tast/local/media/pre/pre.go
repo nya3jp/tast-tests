@@ -10,7 +10,6 @@ import (
 	"sync"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 )
 
@@ -24,21 +23,14 @@ var alternateVideoDecoderOnce sync.Once
 
 // ChromeAlternateVideoDecoder returns a precondition with flags selecting the
 // alternate hardware accelerated video decoder implementation. Chrome has two
-// said implementations: a "legacy" one (VDA-based) and a "new" (VD-based) one.
-// Selecting one or the other depends on the hardware and is ultimately
-// determined by the overlays/ flags. Tests should be centered on what the users
-// see, hence most of the testing should use ChromeVideo(), with a few test
-// cases using this alternate precondition.
-func ChromeAlternateVideoDecoder() testing.Precondition {
-	alternateVideoDecoderOnce.Do(func() {
-		if graphics.IsNewVideoDecoderDisabled() {
-			alternateVideoDecoderPre = chrome.NewPrecondition("alternateVideo", chromeVModuleArgs, chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"))
-		} else {
-			alternateVideoDecoderPre = chrome.NewPrecondition("alternateVideo", chromeVModuleArgs, chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
-		}
-	})
-	return alternateVideoDecoderPre
-}
+// said implementations: a "legacy" one and a Direct, VD-based one. Selecting
+// one or the other depends on the hardware and is ultimately determined by the
+// overlays/ flags. Tests should be centered on what the users see, hence most
+// of the testing should use ChromeVideo(), with a few test cases using this
+// alternate precondition.
+func ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternateVideoDecoderPre }
+
+var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoderPre", chromeVModuleArgs, chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
 
 // ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo but
 // forcing login as a guest, which is known to be different from a "normal"
