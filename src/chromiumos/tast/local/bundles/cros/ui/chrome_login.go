@@ -24,8 +24,9 @@ func init() {
 		Contacts:     []string{"chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:       1,
-			ExtraAttr: []string{"group:mainline"},
+			Val: 1,
+			// Marking informational until b/159858451 is resolved.
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name:      "stress",
 			Val:       50,
