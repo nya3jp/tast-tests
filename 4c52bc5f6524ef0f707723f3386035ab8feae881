@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5c6dcd69_da4a7cba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-30T10:43:20Z",
+      "side": 1,
+      "message": "Brian, thank you for your suggestion. Removing duplicate verification, especially from the lower level, improves the test quality.",
+      "parentUuid": "5495ecf1_8c2ffd4c",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 94
+      },
+      "revId": "4c52bc5f6524ef0f707723f3386035ab8feae881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eb115d6_92f18653",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
         "patchSetId": 10
