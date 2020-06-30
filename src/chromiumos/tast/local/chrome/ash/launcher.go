@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -37,8 +38,11 @@ const (
 	AccelShiftSearch Accelerator = "{keyCode: 'search', shift: true, control: false, alt: false, search: false, pressed: true}"
 )
 
-// WaitForLauncherState waits until the launcher state becomes state.
+// WaitForLauncherState waits until the launcher state becomes state. It waits
+// up to 10 seconds and fail if the launcher doesn't have the desired state.
 func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForLauncherState)('%s')`, state)
 	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
