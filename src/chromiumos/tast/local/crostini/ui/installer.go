@@ -169,8 +169,12 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 
 // Install clicks the install button and waits for the Linux installation to complete.
 func (p *Installer) Install(ctx context.Context) error {
+	// Focus on the install button to ensure virtual keyboard does not get in the
+	// way and prevent the button from being clicked.
+	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
 	return uig.Do(ctx, p.tconn,
 		uig.Steps(
-			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout).LeftClick(),
+			install.FocusAndWait(uiTimeout),
+			install.LeftClick(),
 			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
 }
