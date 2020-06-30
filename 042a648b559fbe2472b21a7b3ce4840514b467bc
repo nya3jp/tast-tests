@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98741f65_2c2f3b7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-30T05:10:03Z",
+      "side": 1,
+      "message": "\u003e \"convension\" is a possible misspelling of \"convention\" or \"conversion\".\n\nFixed.",
+      "parentUuid": "f3e96c60_99b890ea",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "042a648b559fbe2472b21a7b3ce4840514b467bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
