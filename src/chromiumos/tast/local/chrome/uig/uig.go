@@ -153,6 +153,43 @@ func Steps(actions ...*Action) *Action {
 	return Root().Steps(actions...)
 }
 
+// Retry retries a given action graph if it returns error.
+//
+// The graphs will be executed up to times times, including the first attempt.
+//
+// The last error will be returned.  Any other errors will be silently ignored.
+func (a *Action) Retry(times int, action *Action) *Action {
+	name := fmt.Sprintf("%v.Retry(%d, %s)", a, times, action)
+
+	return &Action{
+		name: name,
+		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
+			node, err := a.do(ctx, tconn, root)
+			if err != nil {
+				return nil, errors.Wrap(err, name)
+			}
+			var actionErr error
+			for i := 0; i < times; i++ {
+				node.acquire()
+				var child *nodeRef
+				child, actionErr = action.do(ctx, tconn, node)
+				if actionErr == nil {
+					node.release(ctx)
+					return child, nil
+				}
+				child.release(ctx)
+			}
+			node.release(ctx)
+			return nil, errors.Wrapf(actionErr, "action failed %d times, last error", times)
+		},
+	}
+}
+
+// Retry is a shortcut for uig.Root().Retry(...)
+func Retry(times int, action *Action) *Action {
+	return Root().Retry(times, action)
+}
+
 // LeftClick sends a left mouse click to the screen location of the given node.
 //
 // Note that if the node is not on the screen it cannot be clicked.  thus you

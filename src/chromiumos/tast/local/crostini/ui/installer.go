@@ -89,7 +89,7 @@ func (p *Settings) OpenInstaller(ctx context.Context) (*Installer, error) {
 	}
 	return &Installer{p.tconn}, uig.Do(ctx, p.tconn,
 		uig.Steps(
-			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick(),
+			uig.Retry(2, uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
 			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Next"}, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
 }
 
