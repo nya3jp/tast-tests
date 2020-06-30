@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f7739e_1aa092bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-06-30T03:34:58Z",
+      "side": 1,
+      "message": "\u003e \"exsits\" is a possible misspelling of \"exists\" or \"exist\".\n\nFixed.",
+      "parentUuid": "dda7c26f_bc1bebc7",
+      "range": {
+        "startLine": 61,
+        "startChar": 52,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "7647407ac73b116f35ce6afc1e68c9e94e4b3807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
