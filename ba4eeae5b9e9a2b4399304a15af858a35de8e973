@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad8c6ec_23fc689c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-30T05:39:52Z",
+      "side": 1,
+      "message": "This should now be named download_stretch, it changed recently.",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "ba4eeae5b9e9a2b4399304a15af858a35de8e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
