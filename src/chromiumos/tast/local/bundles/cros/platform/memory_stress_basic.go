@@ -52,8 +52,14 @@ func init() {
 			allocPageFilename,
 			javascriptFilename,
 		},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"platform.MemoryStressBasic.enableARC", "platform.MemoryStressBasic.minFilelistKB", "platform.MemoryStressBasic.seed"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 
 }
