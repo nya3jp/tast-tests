@@ -46,6 +46,30 @@
       "revId": "57ee9f2b28a5255958d634f938e1ef8feb44f03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7d686c4_d8126fba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-06-30T15:10:42Z",
+      "side": 1,
+      "message": "Also, if you\u0027ve run the test manually, you need to set \"Verified\" flag on the issue.",
+      "parentUuid": "05797d4a_182acdb1",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "57ee9f2b28a5255958d634f938e1ef8feb44f03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
