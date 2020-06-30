@@ -7,6 +7,7 @@ package arcappcompat
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -109,7 +110,8 @@ func Hearthstone(ctx context.Context, s *testing.State) {
 
 			defer func() {
 				if s.HasError() {
-					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
+					filename := fmt.Sprintf("screenshot-arcappcompat-failed-test-%d.png", idx)
+					path := filepath.Join(s.OutDir(), filename)
 					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 						s.Log("Failed to capture screenshot: ", err)
 					}
