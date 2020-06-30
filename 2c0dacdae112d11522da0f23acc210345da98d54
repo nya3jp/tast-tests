@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cbaa6e6_b7bddd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-06-30T16:54:00Z",
+      "side": 1,
+      "message": "This is somewhat different from what getMetadataPatterns() creates. Does this match correctly?\n\ngetMetadataPatterns() eliminates \u0027 (2)\u0027-style suffix and extension, and then added \u0027.*\\.json\u0027 pattern at the end. I thought there might be some strings there for \u0027.*\u0027.",
+      "range": {
+        "startLine": 768,
+        "startChar": 56,
+        "endLine": 768,
+        "endChar": 61
+      },
+      "revId": "2c0dacdae112d11522da0f23acc210345da98d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
