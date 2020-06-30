@@ -19,8 +19,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WMNonresizableConversion,
-		Desc:         "Verifies that Window Manager non-resizable/conversion use-cases behaves as described in go/arc-wm-r",
+		Func:         WMResizableConversion,
+		Desc:         "Verifies that Window Manager resizable/conversion use-cases behaves as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
@@ -29,20 +29,20 @@ func init() {
 	})
 }
 
-func WMNonresizableConversion(ctx context.Context, s *testing.State) {
+func WMResizableConversion(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
 		wm.TestCase{
-			// non-resizable/conversion: landscape
-			Name: "NV_conversion_landscape",
-			Func: wmNV19,
+			// resizable/conversion: landscape
+			Name: "RV_conversion_landscape",
+			Func: wmRV19,
 		},
 	})
 }
 
-// wmNV19 covers non-resizable/conversion behavior in landscape mode.
-// Expected behavior is defined in: go/arc-wm-r NV19 non-resizable/conversion: landscape.
-func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableLandscapeActivity)
+// wmRV19 covers resizable/conversion behavior in landscape mode.
+// Expected behavior is defined in: go/arc-wm-r RV19 resizable/conversion: landscape.
+func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -63,7 +63,7 @@ func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return nil
 	}
 
-	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
@@ -116,7 +116,7 @@ func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
