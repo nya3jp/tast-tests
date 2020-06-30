@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922fcc73_bd8342bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "This ExtraAttr seems to be redundant, as \"informational\" is listed Attr at L22. Could you remove one or the other?\n\nDitto L40 and L45.",
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c92f1f_e5536218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "nit/style: It is most common in Tast to add a space after the //:\n\n    // Open Files app\n\nHowever, this is not prescribed by the Go/Tast docs, nor is it ubiquitous in Tast. So OK if you would rather leave as-is.\n\nDitto L60, L66, L70, L74.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdad0b03_e2e10d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "Because these two strings are reused in the file (here and L71), it might make sense to set them as constants in order to avoid typos and to make it easier to change later down the line.",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5e386a_5529ac96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "nit/style: could you use a const here?\n\n    const filename \u003d \"test.txt\"",
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ce303e_094299a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "You might want a different error message here than L62 to make it easier to debug issues.",
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a8c10e_aa6e31e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "I recommend using s.Error() here, in case you want to add more to the test later.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a20408c_7b7dbfd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-06-30T16:09:45Z",
+      "side": 1,
+      "message": "Defer statements should be declared as close as possible to where the object is initialized; in this case, after L59. Otherwise, if the test encounters an s.Fatal(), then fa.Close() will never be called.",
+      "revId": "cbbb6b3828fc241fc8f9c7efed89210d5173c8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
