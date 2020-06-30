@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2e914f6_4e291aa8",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-30T21:44:40Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "eced23bda2ff304485e5fc91650b70fab75babec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d910e39_27c1fd6f",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-30T21:44:40Z",
+      "side": 1,
+      "message": "I think this is supposed to be the new flag, right? :)",
+      "range": {
+        "startLine": 33,
+        "startChar": 125,
+        "endLine": 33,
+        "endChar": 164
+      },
+      "revId": "eced23bda2ff304485e5fc91650b70fab75babec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
