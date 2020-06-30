@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060dcc0d_bad1ebec",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-06-30T05:27:37Z",
+      "side": 1,
+      "message": "Thanks for fixing this.\n\n// Also reserve time for stopping the capturer if it exists.\n// Noted that CancelFunc returned here is dropped as we rely on its parent\u0027s cancel() being called.",
+      "revId": "a545fcbb986006106f11ed0dde1282ae12e5be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
