@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a003fe41_a249c0c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-30T15:02:57Z",
+      "side": 1,
+      "message": "Presubmit script should warn about missing \"BUG\u003d\" and \"TEST\u003d\" lines.\n\nLet\u0027s use ones as the initial impl CL.\n\nBUG\u003dchromium:1032766\nTEST\u003dtast run IP ui.DragTabInClamshellPerf",
+      "revId": "e3e61d17bf2f8dc9a3fcd0f54ea002e56e1a2993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7401580_f141f653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-30T15:02:57Z",
+      "side": 1,
+      "message": "nit: We could use |bounds|\u0027s center as the drag end like before. |webview| way is not really needed IMO.",
+      "revId": "e3e61d17bf2f8dc9a3fcd0f54ea002e56e1a2993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
