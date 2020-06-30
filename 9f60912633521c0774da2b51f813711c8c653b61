@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21a0b7cd_13d67ab2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-06-30T17:56:57Z",
+      "side": 1,
+      "message": "nit: you can just move this into an else statement in the defer and avoid the var capturer",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 29
+      },
+      "revId": "9f60912633521c0774da2b51f813711c8c653b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
