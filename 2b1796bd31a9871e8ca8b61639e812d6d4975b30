@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b7e37bf_99b89a9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-30T17:08:23Z",
+      "side": 1,
+      "message": "This seems unnecessary now. If we\u0027re really specifying bad channels in the test, hostapd will tell us at line 75.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65b7b3d_76a57e12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-30T17:08:23Z",
+      "side": 1,
+      "message": "do we need to specify these? We\u0027ll get distinct SSIDs by default, right? And that\u0027s all we want.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c803f0dd_5b85b91e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-06-30T17:08:23Z",
+      "side": 1,
+      "message": "Note to self (and TIL): this apparently *does* work the way you want it to -- it defers until the function ends, not the loop.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
