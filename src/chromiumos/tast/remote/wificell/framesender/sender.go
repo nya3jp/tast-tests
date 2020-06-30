@@ -6,14 +6,16 @@
 package framesender
 
 import (
-	"bytes"
 	"context"
+	"io/ioutil"
 	"path"
+	"path/filepath"
 	"strconv"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 )
 
 // Sender sends management frame with send_management_frame tool provided by
@@ -110,12 +112,25 @@ func (s *Sender) Send(ctx context.Context, t Type, ch int, ops ...Option) error 
 	if err != nil {
 		return err
 	}
-	// Keep stderr in buffer so that we can have the reason of failure.
-	var stderr bytes.Buffer
+
+	// Prepare the log file under OutDir.
+	outdir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get OutDir")
+	}
+	f, err := ioutil.TempFile(outdir, "frame_sender_*.log")
+	if err != nil {
+		return errors.Wrap(err, "failed to create log file for frame_sender")
+	}
+	defer f.Close()
+	testing.ContextLogf(ctx, "Logging send_management_frame output to %q", filepath.Base(f.Name()))
+
 	cmd := s.host.Command("send_management_frame", args...)
-	cmd.Stderr = &stderr
+	// Collect combined output to f.
+	cmd.Stdout = f
+	cmd.Stderr = f
 	if err := cmd.Run(ctx); err != nil {
-		return errors.Wrapf(err, "send_management_frame failed with stderr=%q", string(stderr.Bytes()))
+		return errors.Wrap(err, "send_management_frame failed")
 	}
 	return nil
 }
