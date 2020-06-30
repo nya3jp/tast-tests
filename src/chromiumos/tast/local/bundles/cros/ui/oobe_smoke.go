@@ -22,7 +22,7 @@ func init() {
 }
 
 func OOBESmoke(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--disable-hid-detection-on-oobe"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
