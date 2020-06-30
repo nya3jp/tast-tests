@@ -41,10 +41,10 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click welcome page next button: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('oobe-network-md[hidden]')"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('oobe-network[hidden]')"); err != nil {
 		s.Fatal("Failed to wait for the network screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-network-md').$.nextButton.click()"); err != nil {
+	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-network').$.nextButton.click()"); err != nil {
 		s.Fatal("Failed to click network page next button: ", err)
 	}
 
