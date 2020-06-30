@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcAppLoadingTest_20200704.apk",
+  "size": 2619752,
+  "sha256sum": "fad0fc73ed3338d62a3f7194b8c14abf72a7226089edef10bc7b58ac651ac83d"
+}
