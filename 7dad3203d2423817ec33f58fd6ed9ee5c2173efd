@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e02e81a_745cf7d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-06-30T18:31:09Z",
+      "side": 1,
+      "message": "I am finding that this part works if I run only video.ChromePIPEnergyAndPower.tablet_big_h264_hw_alt, but not if I run video.ChromePIPEnergyAndPower.* and wait for video.ChromePIPEnergyAndPower.tablet_big_h264_hw_alt. In the latter case, the resizing swipe moves the PIP window instead of resizing it. When making this observation, I change the one-minute sleep (near the end of the test) to one second, so that I can sit and watch several subtests in a reasonable enough amount of time.\n\nI am puzzled. Please advise.",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 2
+      },
+      "revId": "7dad3203d2423817ec33f58fd6ed9ee5c2173efd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
