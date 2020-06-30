@@ -16,6 +16,24 @@
       "revId": "50a5d9345e2d7974659052ee3b041e21c02cf7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "794de2ca_de224ea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-06-30T11:52:38Z",
+      "side": 1,
+      "message": "That\u0027s good point. I added code to make sure to have 0 degrees rotation at the start. Thanks!",
+      "parentUuid": "981a902a_8c6e1a76",
+      "revId": "50a5d9345e2d7974659052ee3b041e21c02cf7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
