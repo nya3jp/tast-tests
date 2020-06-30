@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82252dae_7501efe7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T18:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7e37bf_99b89a9e",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f65b7b3d_76a57e12",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7159627_2a01c514",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-06-30T18:41:58Z",
+      "side": 1,
+      "message": "Yes, we get different SSIDs by default.",
+      "parentUuid": "f65b7b3d_76a57e12",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "2b1796bd31a9871e8ca8b61639e812d6d4975b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
