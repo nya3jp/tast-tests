@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47306cd_e17bafbf",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-30T22:48:26Z",
+      "side": 1,
+      "message": "I\u0027m guessing this is no longer needed.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "1bf54fc49ffcee05bba4996e1614528ed2558726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6f9901_a74847d2",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-06-30T22:48:26Z",
+      "side": 1,
+      "message": "nit: For consistency with the other preconditions, omit the \"Pre\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 82,
+        "endLine": 33,
+        "endChar": 85
+      },
+      "revId": "1bf54fc49ffcee05bba4996e1614528ed2558726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
