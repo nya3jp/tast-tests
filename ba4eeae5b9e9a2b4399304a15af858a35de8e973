@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ef0e3f1_98b24b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-06-30T06:03:35Z",
+      "side": 1,
+      "message": "Maybe mention files app in the name as this tests the integration between the two and crostini.HomeDirectory doesn\u0027t really imply that.",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "ba4eeae5b9e9a2b4399304a15af858a35de8e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ad8c6ec_23fc689c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory.go",
         "patchSetId": 1
