@@ -92,21 +92,27 @@ func Gmail(ctx context.Context, s *testing.State) {
 	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
 	defer d.Close()
 
+	// Ensure app launches before test cases.
+	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	if err != nil {
+		s.Fatal("Failed to create new app activity: ", err)
+	}
+	defer act.Close()
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start app before test cases: ", err)
+	}
+	if err := act.Stop(ctx, tconn); err != nil {
+		s.Fatal("Failed to stop app before test cases: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
 	// Run the different test cases.
 	for idx, test := range testSet.Tests {
 		// Run subtests.
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
 			// Launch the app.
-			act, err := arc.NewActivity(a, appPkgName, appActivity)
-			if err != nil {
-				s.Fatal("Failed to create new app activity: ", err)
-			}
-			s.Log("Created new app activity")
-
-			defer act.Close()
 			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed start app: ", err)
+				s.Fatal("Failed to start app: ", err)
 			}
 
 			defer act.Stop(ctx, tconn)
