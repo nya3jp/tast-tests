@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c1d655c7_dbfed95a",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-06-30T18:33:31Z",
+      "side": 1,
+      "message": "Ack. Thanks.",
+      "parentUuid": "40f6988d_b5c8bfab",
+      "revId": "07caf02553577b82a4c760b4da204aa6944ce8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87816f7f_2d230e65",
         "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
         "patchSetId": 1
