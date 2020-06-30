@@ -102,24 +102,45 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
 func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+	conn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
 		return nil, err
 	}
 
-	// Ensure that we don't attempt to use the extension before its APIs are
-	// available: https://crbug.com/789313.
-	if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
-		extConn.Close()
-		return nil, errors.Wrap(err, "ChromeVox unavailable")
+	if err := func() error {
+		// Ensure that we don't attempt to use the extension before its APIs are
+		// available: https://crbug.com/789313.
+		if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+			return errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
+		}
+
+		// Export necessary modules which is not exported globally.
+		if err := conn.Eval(ctx, `(async () => {
+		  if (!window.EventStreamLogger) {
+		    window.EventStreamLogger = (await import('/chromevox/background/logging/event_stream_logger.js')).EventStreamLogger;
+		    window.LogStore = (await import('/chromevox/background/logging/log_store.js')).LogStore;
+		    window.ChromeVoxPrefs = (await import('/chromevox/background/prefs.js')).ChromeVoxPrefs;
+		  }
+		})()`, nil); err != nil {
+			return errors.Wrap(err, "failed to export modules from ChromeVox")
+		}
+
+		// Make sure ChromeVoxState is exported globally.
+		if err := conn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
+			return errors.Wrap(err, "ChromeVoxState is unavailable")
+		}
+
+		if err := chrome.AddTastLibrary(ctx, conn); err != nil {
+			return errors.Wrap(err, "failed to introduce tast library")
+		}
+
+		return nil
+	}(); err != nil {
+		conn.Close()
+		return nil, err
 	}
 
-	if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
-		extConn.Close()
-		return nil, errors.Wrap(err, "failed to introduce tast library")
-	}
-
-	return extConn, nil
+	return conn, nil
 }
 
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
@@ -145,17 +166,12 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
+		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled")
 	}
 
 	cvconn, err := chromeVoxExtConn(ctx, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed: ")
-	}
-
-	// Poll until ChromeVox connection finishes loading.
-	if err := cvconn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
+		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed")
 	}
 
 	return cvconn, nil
