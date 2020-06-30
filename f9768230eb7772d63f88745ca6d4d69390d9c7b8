@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6393825e_f3f53aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-06-30T14:22:35Z",
+      "side": 1,
+      "message": "The videos used are all variations of \"bear\"s except for the AV1 and this Peru, which\nis notoriously large. This should be no issue but makes comparison across codecs\ndifficult. Also, the only hdr-capable panel is kohaku\u0027s, so feel free to gate this\nand similar hdr tests by \n  ExtraHardwareDeps: hwdep.D(hwdep.Model(\"kohaku\")),\n\nif you need to lower the load.",
+      "range": {
+        "startLine": 69,
+        "startChar": 98,
+        "endLine": 69,
+        "endChar": 122
+      },
+      "revId": "f9768230eb7772d63f88745ca6d4d69390d9c7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
