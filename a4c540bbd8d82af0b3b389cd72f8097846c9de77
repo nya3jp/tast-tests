@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fa09f05_235884bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-06-30T21:23:22Z",
+      "side": 1,
+      "message": "\u003e \"accesibility\" is a possible misspelling of \"accessibility\".\n\nPlease fix.",
+      "parentUuid": "f362630f_a43f64d9",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "a4c540bbd8d82af0b3b389cd72f8097846c9de77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
