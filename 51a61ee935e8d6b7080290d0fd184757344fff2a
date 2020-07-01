@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cda65e4_de434e1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/duplicate_bssid.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-01T05:10:31Z",
+      "side": 1,
+      "message": "nit: uses ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "51a61ee935e8d6b7080290d0fd184757344fff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
