@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84afbc99_bfcbafd9",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-01T14:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e914f6_4e291aa8",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "eced23bda2ff304485e5fc91650b70fab75babec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d910e39_27c1fd6f",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "eced23bda2ff304485e5fc91650b70fab75babec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94267a4f_5d7f73c9",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-01T14:27:07Z",
+      "side": 1,
+      "message": "The evil mix of Ctrl-C Ctrl-V and Meta-X Ctrl-Y bites me again.\nFixed, thanks!",
+      "parentUuid": "5d910e39_27c1fd6f",
+      "range": {
+        "startLine": 33,
+        "startChar": 125,
+        "endLine": 33,
+        "endChar": 164
+      },
+      "revId": "eced23bda2ff304485e5fc91650b70fab75babec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
