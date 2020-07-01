@@ -20,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WMNonresizableTablet,
-		Desc:         "Verifies that Window Manager non-resizable tablet use-cases behave as described in go/arc-wm-r",
+		Func:         WMResizableTablet,
+		Desc:         "Verifies that Window Manager resizable tablet use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
@@ -30,19 +30,19 @@ func init() {
 	})
 }
 
-func WMNonresizableTablet(ctx context.Context, s *testing.State) {
+func WMResizableTablet(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, true, []wm.TestCase{
 		wm.TestCase{
-			// non-resizable/tablet: default launch behavior
-			Name: "NT_default_launch_behavior",
-			Func: wmNT01,
+			// resizable/tablet: default launch behavior
+			Name: "RT_default_launch_behavior",
+			Func: wmRT01,
 		},
 	})
 }
 
-// wmNT01 covers non-resizable/tablet: default launch behavior.
-// Expected behavior is defined in: go/arc-wm-r NT01: non-resizable/tablet: default launch behavior.
-func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+// wmRT01 covers resizable/tablet: default launch behavior.
+// Expected behavior is defined in: go/arc-wm-r RT01: resizable/tablet: default launch behavior.
+func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, tc := range []struct {
 		// Test-case activity name.
 		activityName string
@@ -50,11 +50,11 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		displayOrientationType display.OrientationType
 	}{
 		{
-			activityName:           wm.NonResizableLandscapeActivity,
+			activityName:           wm.ResizableLandscapeActivity,
 			displayOrientationType: display.OrientationLandscapePrimary,
 		},
 		{
-			activityName:           wm.NonResizablePortraitActivity,
+			activityName:           wm.ResizablePortraitActivity,
 			displayOrientationType: display.OrientationPortraitPrimary,
 		},
 	} {
