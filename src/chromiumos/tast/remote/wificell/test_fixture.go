@@ -6,19 +6,23 @@ package wificell
 
 import (
 	"context"
+	"io/ioutil"
 	"math/rand"
 	"net"
+	"path/filepath"
 	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -32,6 +36,9 @@ import (
 
 // The allowed packets loss percentage for the ping command.
 const pingLossThreshold float64 = 20
+
+// The allowed packets loss percentage for the arping command.
+const arpingLossThreshold float64 = 30
 
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
@@ -436,6 +443,80 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	}
 
 	return nil
+}
+
+// ArpingFromDUT tests that DUT can send the broadcast packets to server.
+func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromDUT")
+	defer st.End()
+
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the client WiFi interface")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.dut.Conn())
+	res, output, err := runner.Arping(ctx, serverIP, iface, ops...)
+	logErr := logArping(ctx, output)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+	if logErr != nil {
+		return errors.Wrap(logErr, "failed to write arping output")
+	}
+	testing.ContextLog(ctx, "arping from DUT: ", res.String())
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
+	}
+
+	return nil
+}
+
+// ArpingFromServer tests that DUT can receive the broadcast packets from server.
+func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromServer")
+	defer st.End()
+
+	addrs, err := tf.ClientIPv4Addrs(ctx)
+	if err != nil || len(addrs) == 0 {
+		return errors.Wrap(err, "failed to get the IP address")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.routerHost)
+	res, output, err := runner.Arping(ctx, addrs[0].String(), serverIface, ops...)
+	logErr := logArping(ctx, output)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+	if logErr != nil {
+		return errors.Wrap(logErr, "failed to write arping output")
+	}
+	testing.ContextLog(ctx, "arping from DUT: ", res.String())
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
+	}
+
+	return nil
+}
+
+// logArping save the output of arping command to OutDir with a random generated file name.
+func logArping(ctx context.Context, output []byte) error {
+	outdir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get OutDir")
+	}
+
+	f, err := ioutil.TempFile(outdir, "arping_*.log")
+	if err != nil {
+		return errors.Wrap(err, "failed to create log file for arping")
+	}
+	defer f.Close()
+
+	testing.ContextLogf(ctx, "logging arping output to %q", filepath.Base(f.Name()))
+	_, err = f.Write(output)
+	return err
 }
 
 // ClientIPv4Addrs returns the IPv4 addresses for the network interface.
