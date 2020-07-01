@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51f70b4_94cff417",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:20:34Z",
+      "side": 1,
+      "message": "small nit: maybe note this is percentage? e.g. with inline comment after it: \"// Allow 20% ping loss.\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "8424e80f4bd050d1473bf30aeea4179e56e56ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b415cc3a_36b9e2c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:20:34Z",
+      "side": 1,
+      "message": "As you\u0027re enabling TFCapture, it might be nice to forward Var(\"pcap\") to TFPcap option of NewTestFixture?",
+      "range": {
+        "startLine": 42,
+        "startChar": 93,
+        "endLine": 42,
+        "endChar": 95
+      },
+      "revId": "8424e80f4bd050d1473bf30aeea4179e56e56ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
