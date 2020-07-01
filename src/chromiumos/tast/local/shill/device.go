@@ -76,3 +76,14 @@ func (d *Device) Disable(ctx context.Context) error {
 	}
 	return nil
 }
+
+// RequestRoam requests that we roam to the specified BSSID.
+// Note: this operation assumes that:
+// 1- We are connected to an SSID for wich |bssid| is a member.
+// 2- There is a BSS with an appropriate ID in our scan results.
+func (d *Device) RequestRoam(ctx context.Context, bssid string) error {
+	if err := d.dbusObject.Call(ctx, "RequestRoam", bssid).Err; err != nil {
+		return errors.Wrapf(err, "failed to roam %s", d.String())
+	}
+	return nil
+}
