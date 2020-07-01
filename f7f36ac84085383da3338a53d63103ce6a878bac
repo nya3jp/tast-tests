@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f3da738_80d73dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-01T16:22:53Z",
+      "side": 1,
+      "message": "nit: Is this intentional? If so, update the comment above why we are scrolling in two swipe gestures.",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "f7f36ac84085383da3338a53d63103ce6a878bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597ff1cb_ac938951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-01T16:22:53Z",
+      "side": 1,
+      "message": "\u003e \"utlity\" is a possible misspelling of \"utility\".\n\nPlease fix.",
+      "parentUuid": "c1f7d015_0fb7954b",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "f7f36ac84085383da3338a53d63103ce6a878bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
