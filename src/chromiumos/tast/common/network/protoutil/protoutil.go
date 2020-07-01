@@ -17,46 +17,64 @@ type ShillValMap map[string]*network.ShillVal
 func EncodeToShillValMap(conf map[string]interface{}) (ShillValMap, error) {
 	ret := make(ShillValMap)
 	for k, v := range conf {
-		switch x := v.(type) {
-		case string:
-			ret[k] = &network.ShillVal{
-				Val: &network.ShillVal_Str{
-					Str: x,
-				},
-			}
-		case bool:
-			ret[k] = &network.ShillVal{
-				Val: &network.ShillVal_Bool{
-					Bool: x,
-				},
-			}
-		case []string:
-			ret[k] = &network.ShillVal{
-				Val: &network.ShillVal_StrArray{
-					StrArray: &network.StrArray{Vals: x},
-				},
-			}
-		default:
-			return nil, errors.Errorf("unsupported type %T", x)
+		val, err := ToShillVal(v)
+		if err != nil {
+			return nil, err
 		}
+		ret[k] = val
 	}
 	return ret, nil
+}
+
+// ToShillVal converts a common golang type to a ShillVal .
+func ToShillVal(i interface{}) (*network.ShillVal, error) {
+	switch x := i.(type) {
+	case string:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Str{
+				Str: x,
+			},
+		}, nil
+	case bool:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Bool{
+				Bool: x,
+			},
+		}, nil
+	case []string:
+		return &network.ShillVal{
+			Val: &network.ShillVal_StrArray{
+				StrArray: &network.StrArray{Vals: x},
+			},
+		}, nil
+	default:
+		return nil, errors.Errorf("unsupported type %T", x)
+	}
 }
 
 // DecodeFromShillValMap converts a ShillValMap to a (key, value) map.
 func DecodeFromShillValMap(conf ShillValMap) (map[string]interface{}, error) {
 	ret := make(map[string]interface{})
 	for k, v := range conf {
-		switch x := v.Val.(type) {
-		case *network.ShillVal_Str:
-			ret[k] = x.Str
-		case *network.ShillVal_Bool:
-			ret[k] = x.Bool
-		case *network.ShillVal_StrArray:
-			ret[k] = x.StrArray.Vals
-		default:
-			return nil, errors.Errorf("unsupported type %T", x)
+		i, err := FromShillVal(v)
+		if err != nil {
+			return nil, err
 		}
+		ret[k] = i
 	}
 	return ret, nil
+}
+
+// FromShillVal converts a ShillVal to a common golang type.
+func FromShillVal(v *network.ShillVal) (interface{}, error) {
+	switch x := v.Val.(type) {
+	case *network.ShillVal_Str:
+		return x.Str, nil
+	case *network.ShillVal_Bool:
+		return x.Bool, nil
+	case *network.ShillVal_StrArray:
+		return x.StrArray.Vals, nil
+	default:
+		return nil, errors.Errorf("unsupported type %T", x)
+	}
 }
