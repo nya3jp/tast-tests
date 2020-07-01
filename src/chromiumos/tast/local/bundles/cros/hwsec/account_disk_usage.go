@@ -28,7 +28,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
-		SoftwareDeps: []string{"tpm2"},
+		SoftwareDeps: []string{"tpm"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"testcert.p12"},
 		Timeout:      3 * time.Minute,
