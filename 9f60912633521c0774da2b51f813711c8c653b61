@@ -22,6 +22,30 @@
       "revId": "9f60912633521c0774da2b51f813711c8c653b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4b6ef2_4cdb5c98",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T04:46:41Z",
+      "side": 1,
+      "message": "Hmm..., but then we\u0027ll need \"var ap *APIface\" instead.",
+      "parentUuid": "21a0b7cd_13d67ab2",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 29
+      },
+      "revId": "9f60912633521c0774da2b51f813711c8c653b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
