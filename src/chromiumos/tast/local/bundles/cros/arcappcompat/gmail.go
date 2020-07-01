@@ -7,8 +7,6 @@ package arcappcompat
 
 import (
 	"context"
-	"fmt"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -16,12 +14,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
 // ClamshellTests are placed here.
-var clamshellTestsForGmail = []testutil.TestSuite{
+var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
@@ -30,7 +27,7 @@ var clamshellTestsForGmail = []testutil.TestSuite{
 }
 
 // TouchviewTests are placed here.
-var touchviewTestsForGmail = []testutil.TestSuite{
+var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
@@ -44,34 +41,22 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForGmail,
-			},
+			Val:               clamshellTestsForGmail,
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForGmail,
-			},
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForGmail,
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name: "vm",
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForGmail,
-			},
+			Name:              "vm",
+			Val:               clamshellTestsForGmail,
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForGmail,
-			},
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForGmail,
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -87,51 +72,8 @@ func Gmail(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.google.android.gm"
 		appActivity = ".ConversationListActivityGmail"
 	)
-
-	// Step up chrome on Chromebook.
-	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
-	defer d.Close()
-
-	// Ensure app launches before test cases.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app before test cases: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app before test cases: ", err)
-	}
-
-	testSet := s.Param().(testutil.TestParams)
-	// Run the different test cases.
-	for idx, test := range testSet.Tests {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
-			// Launch the app.
-			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed to start app: ", err)
-			}
-
-			defer act.Stop(ctx, tconn)
-
-			// Take screenshot on failure.
-			defer func() {
-				if s.HasError() {
-					filename := fmt.Sprintf("screenshot-arcappcompat-failed-test-%d.png", idx)
-					path := filepath.Join(s.OutDir(), filename)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
-					}
-				}
-			}()
-
-			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
-		})
-	}
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
 }
 
 // launchAppForGmail verifies Gmail is logged in and
@@ -146,11 +88,6 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		takeMeToGmailButtonText = "TAKE ME TO GMAIL"
 		userNameID              = "com.google.android.gm:id/account_address"
 	)
-
-	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
-		s.Fatal("Entered launchAppForGmail and failed to launch the app: ", currentAppPkg)
-	}
-	s.Log("App launched successfully and entered launchAppForGmailApp")
 
 	// Click on Got It button.
 	GotItButton := d.Object(ui.ClassName(textViewClassName), ui.Text(gotItButtonText))
