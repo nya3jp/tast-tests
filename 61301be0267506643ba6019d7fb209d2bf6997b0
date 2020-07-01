@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8be05b7d_f7dfb33c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-07-01T22:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f6348f4_157638c6",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f477b278_c2d24b43",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -175,6 +193,24 @@
       "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce935b76_056c38d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-07-01T22:26:50Z",
+      "side": 1,
+      "message": "Done.\n\nI think it should work. Typically Cq-Depend and Change-Id have spaces after the colon.",
+      "parentUuid": "c714c19e_a477fe6d",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
