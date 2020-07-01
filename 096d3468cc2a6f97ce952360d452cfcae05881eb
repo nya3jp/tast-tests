@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21d3254b_dfebf462",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T10:15:36Z",
+      "side": 1,
+      "message": "Not sure we should check \"len(packets) !\u003d 0\" here. I guess it is possible that DUT finds a visible service with passive scan and no probe request is sent as a result?",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
