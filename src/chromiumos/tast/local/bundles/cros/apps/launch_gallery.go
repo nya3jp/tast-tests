@@ -12,10 +12,10 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/apps/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/testing"
 )
@@ -66,7 +66,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	isTabletEnabled := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletEnabled)

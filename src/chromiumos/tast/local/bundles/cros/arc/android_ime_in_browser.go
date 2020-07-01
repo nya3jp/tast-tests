@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arc/ime"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
