@@ -209,6 +209,22 @@ func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string,
 	return nil
 }
 
+// RotateDisplay rotates the screen by given rotation angle.
+func RotateDisplay(ctx context.Context, tconn *chrome.TestConn, angle display.RotationAngle) (func() error, error) {
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := display.SetDisplayRotationSync(ctx, tconn, primaryDisplayInfo.ID, angle); err != nil {
+		return nil, err
+	}
+
+	return func() error {
+		return display.SetDisplayRotationSync(ctx, tconn, primaryDisplayInfo.ID, display.Rotate0)
+	}, nil
+}
+
 // OrientationFromBounds returns orientation from the given bounds.
 func OrientationFromBounds(bounds coords.Rect) string {
 	if bounds.Height >= bounds.Width {
