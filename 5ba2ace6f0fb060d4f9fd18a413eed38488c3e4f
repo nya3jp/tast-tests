@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df40870d_311823f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-01T17:33:32Z",
+      "side": 1,
+      "message": "Here is the CL to merge as well: http://crrev.com/c/2278106",
+      "parentUuid": "a7d793b5_efb7b9e4",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8cb15aa_c3f691ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
         "patchSetId": 3
