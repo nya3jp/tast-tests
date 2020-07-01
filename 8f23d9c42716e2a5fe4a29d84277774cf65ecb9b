@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8cf0819e_170f87d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-01T18:19:58Z",
+      "side": 1,
+      "message": "In the SetupAndRunTest() method, there is a parameter that sets tablet mode. For this test it is set to false (line 33) which will put the DUT on Clamshell mode. \nSo we start in clamshell mode then change it to tablet mode (line 74) and back to clamshell (line 104).\nThere is a cleanup function in SetupAndRunTest() that will put the DUT back to its original state once all test cases are completed (successfully or unsuccessfully). In this particular test case, there is a deferred function (line 78) that will set the DUT back to clamshell mode in case of any failures before reaching line 104. This is done so for future test cases, the DUT gets back to clamshell mode.",
+      "parentUuid": "c50e8de3_b61764c6",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "8f23d9c42716e2a5fe4a29d84277774cf65ecb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba2d9531_db02210b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8f23d9c42716e2a5fe4a29d84277774cf65ecb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32533b17_82131b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-01T18:19:58Z",
+      "side": 1,
+      "message": "Similar change has been done in wm_nonresizable_conversion.go",
+      "parentUuid": "ba2d9531_db02210b",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "8f23d9c42716e2a5fe4a29d84277774cf65ecb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
