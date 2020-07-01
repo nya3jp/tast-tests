@@ -7,8 +7,6 @@ package arcappcompat
 
 import (
 	"context"
-	"fmt"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -16,12 +14,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
 // ClamshellTests are placed here.
-var clamshellTestsForPinterest = []testutil.TestSuite{
+var clamshellTestsForPinterest = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForPinterest},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
@@ -30,7 +27,7 @@ var clamshellTestsForPinterest = []testutil.TestSuite{
 }
 
 // TouchviewTests are placed here.
-var touchviewTestsForPinterest = []testutil.TestSuite{
+var touchviewTestsForPinterest = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForPinterest},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
@@ -44,34 +41,22 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForPinterest,
-			},
+			Val:               clamshellTestsForPinterest,
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForPinterest,
-			},
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForPinterest,
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name: "vm",
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForPinterest,
-			},
+			Name:              "vm",
+			Val:               clamshellTestsForPinterest,
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForPinterest,
-			},
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForPinterest,
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -87,51 +72,8 @@ func Pinterest(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.pinterest"
 		appActivity = ".activity.PinterestActivity"
 	)
-
-	// Step up chrome on Chromebook.
-	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
-	defer d.Close()
-
-	testSet := s.Param().(testutil.TestParams)
-
-	// Ensure app launches before test cases.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app before test cases: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app before test cases: ", err)
-	}
-
-	// Run the different test cases.
-	for idx, test := range testSet.Tests {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
-			// Launch the app.
-			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed to start app: ", err)
-			}
-
-			defer act.Stop(ctx, tconn)
-
-			defer func() {
-				if s.HasError() {
-					filename := fmt.Sprintf("screenshot-arcappcompat-failed-test-%d.png", idx)
-					path := filepath.Join(s.OutDir(), filename)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
-					}
-				}
-			}()
-
-			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
-		})
-	}
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
 }
 
 // launchAppForPinterest verifies Pinterest is logged in and
@@ -145,10 +87,6 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		profileIconID                  = "com.pinterest:id/profile_menu_view"
 		turnOnLocationText             = "Turn on location services"
 	)
-
-	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
-		s.Log("Failed to launch the app: ", currentAppPkg)
-	}
 
 	loginWithGoogleButton := d.Object(ui.ClassName(loginWithGoogleButtonClassName), ui.Text(loginWithGoogleButtonText))
 	emailAddress := d.Object(ui.ID(emailAddressID))
