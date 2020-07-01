@@ -13,12 +13,14 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -32,6 +34,9 @@ import (
 
 // The allowed packets loss percentage for the ping command.
 const pingLossThreshold float64 = 20
+
+// The allowed packets loss percentage for the arping command.
+const arpingLossThreshold float64 = 30
 
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
@@ -433,6 +438,54 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 
 	if res.Loss > pingLossThreshold {
 		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	}
+
+	return nil
+}
+
+// ArpingFromDUT tests that DUT can send the broadcast packets to server.
+func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromDUT")
+	defer st.End()
+
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the client WiFi interface")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.dut.Conn())
+	res, err := runner.Arping(ctx, serverIP, iface, ops...)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+	testing.ContextLog(ctx, "arping from DUT: ", res.String())
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
+	}
+
+	return nil
+}
+
+// ArpingFromServer tests that DUT can receive the broadcast packets from server.
+func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromServer")
+	defer st.End()
+
+	addrs, err := tf.ClientIPv4Addrs(ctx)
+	if err != nil || len(addrs) == 0 {
+		return errors.Wrap(err, "failed to get the IP address")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.routerHost)
+	res, err := runner.Arping(ctx, addrs[0].String(), serverIface, ops...)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+	testing.ContextLog(ctx, "arping from DUT: ", res.String())
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
 	}
 
 	return nil
