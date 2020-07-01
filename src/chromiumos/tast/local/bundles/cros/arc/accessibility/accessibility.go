@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -225,12 +224,6 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 	if err := a.Install(ctx, arc.APKPath(ApkName)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
-
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Error with creating EventWriter from keyboard: ", err)
-	}
-	defer ew.Close()
 
 	for _, activity := range activities {
 		s.Run(ctx, activity.Name, func(ctx context.Context, s *testing.State) {
