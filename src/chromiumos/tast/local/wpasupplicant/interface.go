@@ -9,12 +9,15 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
 const (
 	dbusInterfaceInterface = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfacePropBSSs  = "BSSs"
+	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
+	DBusInterfaceSignalBSSAdded = "BSSAdded"
 )
 
 // Interface is the object to interact with wpa_supplicant's
@@ -48,4 +51,59 @@ func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
 		}
 	}
 	return ret, nil
+}
+
+// DBusObject returns the D-Bus object of the interface.
+func (iface *Interface) DBusObject() *DBusObject {
+	return iface.dbus
+}
+
+// BSSAddedSignal wraps D-Bus BSSAdded signal arguments.
+type BSSAddedSignal struct {
+	BSS   dbus.ObjectPath
+	SSID  []byte
+	BSSID []byte
+}
+
+// ParseBSSAddedSignal parses the D-Bus signal to a BSSAddedSignal.
+func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signal) (*BSSAddedSignal, error) {
+	if len(sig.Body) != 2 {
+		return nil, errors.Errorf("len(sig.Body)=%d, want 2", len(sig.Body))
+	}
+
+	path, ok := sig.Body[0].(dbus.ObjectPath)
+	if !ok {
+		return nil, errors.Errorf("got sig.Body[0]: %v, want dbus.ObjectPath type", sig.Body[0])
+	}
+
+	bssProps, ok := sig.Body[1].(map[string]dbus.Variant)
+	if !ok {
+		return nil, errors.Errorf("got sig.Body[1]: %v, want map[string]dbus.Variant type", sig.Body[1])
+	}
+
+	ssid, ok := bssProps["SSID"]
+	if !ok {
+		return nil, errors.New("failed to find the value of the property SSID")
+	}
+
+	bssid, ok := bssProps["BSSID"]
+	if !ok {
+		return nil, errors.New("failed to find the value of the property BSSID")
+	}
+
+	bSSID, ok := ssid.Value().([]byte)
+	if !ok {
+		return nil, errors.Errorf("got SSID %v, want []byte", ssid.Value())
+	}
+
+	bBSSID, ok := bssid.Value().([]byte)
+	if !ok {
+		return nil, errors.Errorf("got BSSID %v, want []byte", bssid.Value())
+	}
+
+	return &BSSAddedSignal{
+		BSS:   path,
+		SSID:  bSSID,
+		BSSID: bBSSID,
+	}, nil
 }

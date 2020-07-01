@@ -96,6 +96,13 @@ service WifiService {
   // pushes, and pops the profiles and asserts the connection states between
   // those operations.
   rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
+
+  // DiscoverBSSID discovers the specified BSSID by running a scan.
+  rpc DiscoverBSSID (DiscoverBSSIDRequest) returns (DiscoverBSSIDResponse) {}
+
+  // RequestRoam requests DUT to roam to the specified BSSID and waits until
+  // the DUT has roamed.
+  rpc RequestRoam (RequestRoamRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -132,6 +139,16 @@ message ConnectResponse {
   int64 discovery_time = 2;
   int64 association_time = 3;
   int64 configuration_time = 4;
+}
+
+message DiscoverBSSIDRequest {
+  string bssid = 1;
+  string interface = 2;
+  bytes ssid = 3;
+}
+
+message DiscoverBSSIDResponse {
+  int64 discovery_time = 1;
 }
 
 message DisconnectRequest {
@@ -274,4 +291,10 @@ message ProfileBasicTestRequest {
   }
   Config ap0 = 1;
   Config ap1 = 2;
+}
+
+message RequestRoamRequest {
+  string interfaceName = 1;
+  string bssid = 2;
+  int64 timeout = 3;
 }
