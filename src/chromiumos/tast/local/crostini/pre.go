@@ -92,6 +92,7 @@ var UnstableModels = []string{
 	"foob",
 	"garg",
 	"laser14",
+	"mimrock",
 	"phaser360",
 	"sparky",
 	"vorticon",
