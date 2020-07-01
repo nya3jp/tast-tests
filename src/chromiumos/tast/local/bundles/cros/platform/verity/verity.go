@@ -26,7 +26,7 @@ const (
 	blockSize = 4096
 
 	// The number of blocks of the test image file.
-	nTestBlocks = 100
+	nTestBlocks = 50
 )
 
 // releaseDevice releases the device by executing the given command.
