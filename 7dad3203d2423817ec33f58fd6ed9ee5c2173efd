@@ -22,6 +22,30 @@
       "revId": "7dad3203d2423817ec33f58fd6ed9ee5c2173efd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7bb5eb_5eabc789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T22:50:53Z",
+      "side": 1,
+      "message": "One possibility would be the notification. notification may overlap with the pip window and may block the user input.\n\nash.HideAllNotifications() at the beginning of the test may fix the issue if so.",
+      "parentUuid": "7e02e81a_745cf7d7",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 2
+      },
+      "revId": "7dad3203d2423817ec33f58fd6ed9ee5c2173efd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75c2400a_9b744194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T22:50:53Z",
+      "side": 1,
+      "message": "nit: time.Minute seems quite long. Could it be shorter, like 10 seconds?",
+      "range": {
+        "startLine": 536,
+        "startChar": 69,
+        "endLine": 536,
+        "endChar": 80
+      },
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4522b8c0_efa089ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T22:50:53Z",
+      "side": 1,
+      "message": "Related to your comment in the patchset 6; do we want to check the size of the pip window so that the resize is done correctly?",
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
