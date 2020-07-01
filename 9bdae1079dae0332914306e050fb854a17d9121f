@@ -16,6 +16,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5720859d_ee238a17",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T05:46:31Z",
+      "side": 1,
+      "message": "The shorter name looks nice, but then key and values will be separated into different sub-packages (key in *prop and values in *typename) which make it hard to find the related constants. If we group key and values together, then property keys are separated...\n\nDo you think the fragmentation might be a problem? Or the convention is enough for finding the sub-package maybe?",
+      "parentUuid": "e10c7f0d_9d022591",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
