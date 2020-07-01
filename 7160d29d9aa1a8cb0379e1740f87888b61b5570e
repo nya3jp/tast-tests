@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e180474_d5f7935a",
+        "filename": "src/chromiumos/tast/common/network/arping/regexps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:58:56Z",
+      "side": 1,
+      "message": "I personally think it is easier to understand with these regexp definition right before its usage. e.g. know how many submatches could exist. (sorry that I didn\u0027t notice this in the cl moving ping to common)\n\nIf you want to avoid multiple compiles, maybe place these right before the parse function?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 69
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3a22e8_c388fc7a",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:58:56Z",
+      "side": 1,
+      "message": "As this is float, i.e. no restriction on the unit, do you think it might be better to use time.Duration here? (Duration has a function Seconds to obtain the same float64)",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c4f79c_33d1b550",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:58:56Z",
+      "side": 1,
+      "message": "Add some comments for these configuration?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845e2132_5c0f6368",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:58:56Z",
+      "side": 1,
+      "message": "The logic here seems to be the same as in PingFromServer. Maybe extract these into a utility method? (Or is it an overkill?)",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79832b5_f232dd1c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T07:58:56Z",
+      "side": 1,
+      "message": "I guess you want to avoid printing the long slice here.\n\nAs this is already quite verbose, do you think we can have this format as arping.Result.String ?",
+      "range": {
+        "startLine": 495,
+        "startChar": 47,
+        "endLine": 495,
+        "endChar": 90
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
