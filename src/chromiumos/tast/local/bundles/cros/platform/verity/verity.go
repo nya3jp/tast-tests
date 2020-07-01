@@ -27,6 +27,9 @@ const (
 
 	// The number of blocks of the test image file.
 	nTestBlocks = 100
+
+	// Slice of the filesystem where the blocks are tested, at the beginning and the end
+	fsSlice = .2
 )
 
 // releaseDevice releases the device by executing the given command.
@@ -306,6 +309,10 @@ func testZeroFill(ctx context.Context, s *testing.State) {
 
 	// Test 0-filled data for each block.
 	for i := 0; i < nTestBlocks; i++ {
+		if i >= nTestBlocks*fsSlice &&
+			i < nTestBlocks*(1-fsSlice) {
+			i = nTestBlocks * (1 - fsSlice)
+		}
 		if err := runCheck(ctx, "ZeroFill", false, func(image string) error {
 			return testexec.CommandContext(
 				ctx, "dd", "if=/dev/zero", "of="+image,
@@ -340,6 +347,10 @@ func testAFill(ctx context.Context, s *testing.State) {
 func testBitFlip(ctx context.Context, s *testing.State, off int64, mask byte) {
 	// Walks nTestBlocks followed by a hash block.
 	for i := 0; i < nTestBlocks+1; i++ {
+		if i >= nTestBlocks*fsSlice &&
+			i < nTestBlocks*(1-fsSlice) {
+			i = nTestBlocks * (1 - fsSlice)
+		}
 		if err := runCheck(ctx, "BitFlip", false, func(image string) error {
 			f, err := os.OpenFile(image, os.O_RDWR, 0666)
 			if err != nil {
