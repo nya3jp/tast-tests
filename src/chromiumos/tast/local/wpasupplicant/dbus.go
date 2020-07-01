@@ -1,0 +1,54 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package wpasupplicant
+
+import (
+	"context"
+
+	"github.com/godbus/dbus"
+
+	"chromiumos/tast/local/dbusutil"
+)
+
+// TODO: This objects are stolen and extended from shill package. Probably worth to
+// extract them into common component.
+
+const serviceName = "fi.w1.wpa_supplicant1"
+
+// NewDBusObject creates a DBusObject to wpa_supplicant.
+func NewDBusObject(ctx context.Context, path dbus.ObjectPath, iface string) (*DBusObject, error) {
+	conn, obj, err := dbusutil.Connect(ctx, serviceName, path)
+	if err != nil {
+		return nil, err
+	}
+	return &DBusObject{
+		iface: iface,
+		conn:  conn,
+		obj:   obj,
+	}, nil
+}
+
+// DBusObject wraps D-Bus interface, object and connection needed for communication with shill.
+type DBusObject struct {
+	iface string
+	obj   dbus.BusObject
+	conn  *dbus.Conn
+}
+
+// String returns the path of the D-Bus object.
+// It is so named to conform to the Stringer interface.
+func (d *DBusObject) String() string {
+	return string(d.obj.Path())
+}
+
+// Call calls the D-Bus method with argument against the designated D-Bus object.
+func (d *DBusObject) Call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
+	return d.obj.CallWithContext(ctx, d.iface+"."+method, 0, args...)
+}
+
+// Get calls org.freedesktop.DBus.Properties.Get and store the result into val.
+func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) error {
+	return d.obj.CallWithContext(ctx, "org.freedesktop.DBus.Properties.Get", 0, d.iface, propName).Store(val)
+}
