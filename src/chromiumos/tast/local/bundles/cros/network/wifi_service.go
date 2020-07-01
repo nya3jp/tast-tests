@@ -214,6 +214,29 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	return assocTime, configTime, nil
 }
 
+// DiscoverService discovers a service with the given properties.
+// This is the implementation of network.Wifi/DiscoverService gRPC.
+func (s *WifiService) DiscoverService(ctx context.Context, request *network.DiscoverServiceRequest) (*network.DiscoverServiceResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+	start := time.Now()
+	props, err := protoutil.DecodeFromShillValMap(request.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	service, err := s.discoverService(ctx, m, props)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover service")
+	}
+	discoveryTime := time.Since(start)
+	return &network.DiscoverServiceResponse{
+		ServicePath:   string(service.ObjectPath()),
+		DiscoveryTime: discoveryTime.Nanoseconds(),
+	}, nil
+}
+
 // Connect connects to a WiFi service with specific config.
 // This is the implementation of network.Wifi/Connect gRPC.
 func (s *WifiService) Connect(ctx context.Context, request *network.ConnectRequest) (*network.ConnectResponse, error) {
