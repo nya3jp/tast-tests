@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1ce8674a_2a799527",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T05:41:49Z",
+      "side": 1,
+      "message": "Given that we\u0027ll also set it with iw.Runner in gRPC, I think it is simpler to do it with remote runner directly.",
+      "parentUuid": "c0c2c188_30ff907e",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ecc6c62_2eafd772",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
         "patchSetId": 2
