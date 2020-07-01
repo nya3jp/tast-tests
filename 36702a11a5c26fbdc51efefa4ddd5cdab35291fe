@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "124ad252_bbe88b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-01T05:56:50Z",
+      "side": 1,
+      "message": "nit/style: while you\u0027re here, could you merge those three?\n\nchrome.New(ctx, chrome.ExtraArgs(\"--enable-virtual-keyboard\", \"--force-tablet-mode\u003dtouch_view\", \"--enable-features\u003dVirtualKeyboardFloatingDefault\"))\n\nshould work.",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 195
+      },
+      "revId": "36702a11a5c26fbdc51efefa4ddd5cdab35291fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2cf4d9_e61ae8c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-01T05:56:50Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d vkb.SwitchToFloatMode(ctx, tconn); err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "36702a11a5c26fbdc51efefa4ddd5cdab35291fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
