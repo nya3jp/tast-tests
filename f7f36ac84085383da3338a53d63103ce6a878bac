@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b213f1f_ac871252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T20:50:29Z",
+      "side": 1,
+      "message": "Yes, it is intentional. To run this test multiple times, it needs to scroll back to the original position, and starting from the top-left was troublesome (it was recognized as a back gesture). Thus I changed the location. Added comment.",
+      "parentUuid": "2f3da738_80d73dc2",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "f7f36ac84085383da3338a53d63103ce6a878bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597ff1cb_ac938951",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "f7f36ac84085383da3338a53d63103ce6a878bac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57a8a4e_73ba1ff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T20:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "597ff1cb_ac938951",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "f7f36ac84085383da3338a53d63103ce6a878bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
