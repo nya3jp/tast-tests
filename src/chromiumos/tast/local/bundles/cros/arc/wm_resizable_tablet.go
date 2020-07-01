@@ -20,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WMNonresizableTablet,
-		Desc:         "Verifies that Window Manager non-resizable tablet use-cases behave as described in go/arc-wm-r",
+		Func:         WMResizableTablet,
+		Desc:         "Verifies that Window Manager resizable tablet use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
@@ -30,19 +30,19 @@ func init() {
 	})
 }
 
-func WMNonresizableTablet(ctx context.Context, s *testing.State) {
+func WMResizableTablet(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, true, []wm.TestCase{
 		wm.TestCase{
-			// non-resizable/tablet: default launch behavior
-			Name: "NT_default_launch_behavior",
-			Func: wmNT01,
+			// resizable/tablet: default launch behavior
+			Name: "RT_default_launch_behavior",
+			Func: wmRT01,
 		},
 	})
 }
 
-// wmNT01 covers non-resizable/tablet: default launch behavior.
-// Expected behavior is defined in: go/arc-wm-r NT01: non-resizable/tablet: default launch behavior.
-func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+// wmRT01 covers resizable/tablet: default launch behavior.
+// Expected behavior is defined in: go/arc-wm-r RT01: resizable/tablet: default launch behavior.
+func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, tc := range []struct {
 		// Test-case activity name
 		activityName string
@@ -50,11 +50,11 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		displayOrientationType display.OrientationType
 	}{
 		{
-			activityName:           wm.NonResizableLandscapeActivity,
+			activityName:           wm.ResizableLandscapeActivity,
 			displayOrientationType: display.OrientationLandscapePrimary,
 		},
 		{
-			activityName:           wm.NonResizablePortraitActivity,
+			activityName:           wm.ResizablePortraitActivity,
 			displayOrientationType: display.OrientationPortraitPrimary,
 		},
 	} {
@@ -64,8 +64,8 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 				return err
 			}
 			// Compare device's display orientation with the test-case orientation.
-			// If they are not equal, the display should rotate 270 degrees so the landscape will become protirate and vice versa.
-			// After the display is in the correct orientation that the activity wants, then the activity can start.
+			// If they are not equal, the display should rotate 270 degree so landscape will become protirate and vice versa.
+			// After the display is in correct orientation that the activity must have, then the activty can start.
 			if tc.displayOrientationType != orientation.Type {
 				resetRot, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
 				if err != nil {
