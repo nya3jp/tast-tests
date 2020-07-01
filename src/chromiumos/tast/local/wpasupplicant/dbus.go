@@ -52,3 +52,18 @@ func (d *DBusObject) Call(ctx context.Context, method string, args ...interface{
 func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) error {
 	return d.obj.CallWithContext(ctx, dbusGetPropsMethod, 0, d.iface, propName).Store(val)
 }
+
+// CreateWatcher returns a SignalWatcher to observe the specified signal.
+func (d *DBusObject) CreateWatcher(ctx context.Context, signalName string) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      d.obj.Path(),
+		Interface: d.iface,
+		Member:    signalName,
+	}
+	watcher, err := dbusutil.NewSignalWatcher(ctx, d.conn, spec)
+	if err != nil {
+		return nil, err
+	}
+	return watcher, nil
+}

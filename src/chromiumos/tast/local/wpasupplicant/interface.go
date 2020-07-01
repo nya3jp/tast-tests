@@ -15,6 +15,8 @@ import (
 const (
 	dbusInterfaceInterface = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfacePropBSSs  = "BSSs"
+	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
+	DBusInterfaceSignalBSSAdded = "BSSAdded"
 )
 
 // Interface is the object to interact with wpa_supplicant's
@@ -48,4 +50,9 @@ func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
 		}
 	}
 	return ret, nil
+}
+
+// DBusObject returns the D-Bus object of the interface.
+func (iface *Interface) DBusObject() *DBusObject {
+	return iface.dbus
 }
