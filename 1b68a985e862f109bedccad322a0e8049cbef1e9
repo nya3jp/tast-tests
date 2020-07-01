@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "88c87065_6de8a6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-01T22:58:12Z",
+      "side": 1,
+      "message": "The rightmost pixel might not be a valid location. It is safer to reduce the x by 1.",
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4522b8c0_efa089ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 7
