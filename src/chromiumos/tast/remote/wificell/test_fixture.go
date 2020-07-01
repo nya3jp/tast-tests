@@ -441,6 +441,36 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	return response, nil
 }
 
+// DiscoverBSSID discovers a service with the given properties.
+func (tf *TestFixture) DiscoverBSSID(ctx context.Context, bssid, iface string, ssid []byte) error {
+	ctx, st := timing.Start(ctx, "tf.DiscoverBSSID")
+	defer st.End()
+	request := &network.DiscoverBSSIDRequest{
+		Bssid:     bssid,
+		Interface: iface,
+		Ssid:      ssid,
+	}
+	if _, err := tf.wifiClient.DiscoverBSSID(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// RequestRoam requests DUT to roam to the specified BSSID and waits until the DUT has roamed.
+func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, timeout time.Duration) error {
+	request := &network.RequestRoamRequest{
+		InterfaceName: iface,
+		Bssid:         bssid,
+		Timeout:       timeout.Nanoseconds(),
+	}
+	if _, err := tf.wifiClient.RequestRoam(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network.ConnectResponse, error) {
 	conf := ap.Config()
