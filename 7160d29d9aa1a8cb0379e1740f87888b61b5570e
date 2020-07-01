@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d3a9bead_b88787e6",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T08:44:31Z",
+      "side": 1,
+      "message": "According to the source of arping [1], the timeout is an integer in seconds, so yes, let\u0027s use int here to reflect the constraint of the binary.\n\n[1] https://github.com/iputils/iputils/blob/master/arping.c#L692",
+      "parentUuid": "e90de0ce_6910b92e",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53c4f79c_33d1b550",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
         "patchSetId": 1
