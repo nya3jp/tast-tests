@@ -210,6 +210,27 @@ func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected
 	}
 }
 
+// ExpectNotExpectIn expects the prop's value to become one of the expected values returns the first matched one.
+// However, this function fails if the prop's value is one of the not expected values.
+func (pw *PropertiesWatcher) ExpectNotExpectIn(ctx context.Context, prop string, expected, notExpected []interface{}) (interface{}, error) {
+	for {
+		vals, err := pw.WaitAll(ctx, prop)
+		if err != nil {
+			return nil, err
+		}
+		for _, e := range expected {
+			if reflect.DeepEqual(e, vals[0]) {
+				return vals[0], nil
+			}
+		}
+		for _, e := range notExpected {
+			if reflect.DeepEqual(e, vals[0]) {
+				return nil, errors.Wrapf(err, "unexpected property value: %s = %v", prop, vals[0])
+			}
+		}
+	}
+}
+
 // PropertyHolder provides methods to access properties of a DBus object.
 // The DBus object must provides GetProperties and SetProperty methods, and a PropertyChanged signal.
 type PropertyHolder struct {

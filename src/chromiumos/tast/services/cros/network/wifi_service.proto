@@ -73,6 +73,24 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // DiscoverBSSID discovers the specified BSSID by running a scan.
+  rpc DiscoverBSSID (DiscoverBSSIDRequest) returns (DiscoverBSSIDResponse) {}
+
+  // RequestRoam requests DUT to roam to the specified BSSID and waits until
+  // the DUT has roamed.
+  rpc RequestRoam (RequestRoamRequest) returns (google.protobuf.Empty) {}
+
+  // ExpectShillPropertyValues is a server-streaming method that waits for the
+  // matched shill (property, [expectedValues], [notExpextedValues]) pairs IN ORDER.
+  // The method waites for the property to equal one of the expected values, and sends
+  // the waited (property, value) pair back to the test server. The method fails if the
+  // property changes to one of the not expected values. If the check flag is true for
+  // a property, then the method checks the current property value and does not wait for
+  // change. Note that an empty response (Key="") would be sent first after this method
+  // is ready for waiting.
+  rpc ExpectShillPropertyValues(ExpectShillPropertyValuesRequest) returns (stream ExpectShillPropertyValuesResponse) {}
+
 }
 
 message ConnectRequest {
@@ -109,6 +127,15 @@ message ConnectResponse {
   int64 discovery_time = 2;
   int64 association_time = 3;
   int64 configuration_time = 4;
+}
+
+message DiscoverBSSIDRequest {
+  string bssid = 1;
+  string interface = 2;
+}
+
+message DiscoverBSSIDResponse {
+  int64 discovery_time = 1;
 }
 
 message DisconnectRequest {
@@ -198,4 +225,32 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+
+message RequestRoamRequest {
+  string interfaceName = 1;
+  string bssid = 2;
+  int64 timeout = 3;
+}
+
+message ExpectShillPropertyValuesRequest {
+  message Entry {
+    // The shill property name.
+    string key = 1;
+    // The expected property values.
+    repeated ShillVal any_of = 2;
+    // The unexpected property values.
+    repeated ShillVal none_of = 3;
+    // If check is true the method only checks
+    // the current property value without waiting
+    // for property change.
+    bool check = 4;
+  }
+  string service_path = 1;
+  repeated Entry props = 2;
+}
+
+message ExpectShillPropertyValuesResponse {
+  string key = 1;
+  ShillVal val = 2;
 }
