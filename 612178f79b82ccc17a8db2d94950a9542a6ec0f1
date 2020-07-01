@@ -16,6 +16,24 @@
       "revId": "612178f79b82ccc17a8db2d94950a9542a6ec0f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55327731_d180f3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-07-01T18:19:42Z",
+      "side": 1,
+      "message": "Whoops.  I got caught copying code.  I\u0027ve updated the comment.",
+      "parentUuid": "8b421de0_095c3ae4",
+      "revId": "612178f79b82ccc17a8db2d94950a9542a6ec0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
