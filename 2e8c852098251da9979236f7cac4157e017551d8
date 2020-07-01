@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "3be9305e_69652eaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T08:34:28Z",
+      "side": 1,
+      "message": "IIRC, I got a comment from tast reviewer to not drop the children\u0027s cancel. I personally don\u0027t have strong opinion though.",
+      "parentUuid": "7f2a9c3a_3046298b",
+      "revId": "2e8c852098251da9979236f7cac4157e017551d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "254ade69_8ce0a8e2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
         "patchSetId": 5
