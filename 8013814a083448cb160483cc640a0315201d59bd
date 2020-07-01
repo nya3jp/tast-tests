@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6782c3e2_bcafdabf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-01T08:49:12Z",
+      "side": 1,
+      "message": "Can you file a bug for tracking purpose?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "8013814a083448cb160483cc640a0315201d59bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18b9379_4606d389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-01T08:49:12Z",
+      "side": 1,
+      "message": "style: Please end comment sentences with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "8013814a083448cb160483cc640a0315201d59bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826708c6_34c44da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-01T08:49:12Z",
+      "side": 1,
+      "message": "This will panic if filesapp.Launch failed and fa is nil.\n\nThe standard way to call a function like this is:\n\n foo, err :\u003d NewFoo(...)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n defer foo.Close(...)",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "8013814a083448cb160483cc640a0315201d59bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c69f0ba_19a32fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-01T08:49:12Z",
+      "side": 1,
+      "message": "Oh, empty! :) Please insert some error message.",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "8013814a083448cb160483cc640a0315201d59bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
