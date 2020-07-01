@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c0c2c188_30ff907e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-01T05:34:59Z",
+      "side": 1,
+      "message": "No I mean just add a method in wifi service to toggle powersave mode. But the current approach is okay, too.",
+      "parentUuid": "fd459ffa_2ad4ddad",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ecc6c62_2eafd772",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
         "patchSetId": 2
