@@ -19,7 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const imePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+// ImePrefix is the prefix of IME chrome extension
+const ImePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
@@ -56,7 +57,7 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMet
 				}
 			);
 		})
-		`, imePrefix+inputMethod), nil); err != nil {
+		`, ImePrefix+inputMethod), nil); err != nil {
 		return errors.Wrapf(err, "failed to set current input method: %q", inputMethod)
 	}
 
@@ -81,7 +82,7 @@ func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string,
 		return inputMethodID, errors.Wrap(err, "failed to get current input method")
 	}
 
-	return strings.TrimPrefix(inputMethodID, imePrefix+":"), nil
+	return strings.TrimPrefix(inputMethodID, ImePrefix+":"), nil
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether

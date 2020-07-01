@@ -12,10 +12,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/apps/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -98,8 +98,9 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer tconn.Close()
 
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Verify HelpApp (aka Explore) launched in Clamshell mode only.
 	if err := assertHelpAppLaunched(ctx, s, tconn, cr, !isTabletMode); err != nil {
@@ -115,8 +116,6 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	s.Logf("Ensure tablet mode enabled(%v)", isTabletMode)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
