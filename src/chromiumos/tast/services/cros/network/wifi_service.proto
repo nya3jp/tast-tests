@@ -76,6 +76,13 @@ service WifiService {
 
   // GetCurrentTime returns the current local time in the given format.
   rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
+
+  // DiscoverBSSID discovers the specified BSSID by running a scan.
+  rpc DiscoverBSSID (DiscoverBSSIDRequest) returns (DiscoverBSSIDResponse) {}
+
+  // RequestRoam requests DUT to roam to the specified BSSID and waits until
+  // the DUT has roamed.
+  rpc RequestRoam (RequestRoamRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -112,6 +119,15 @@ message ConnectResponse {
   int64 discovery_time = 2;
   int64 association_time = 3;
   int64 configuration_time = 4;
+}
+
+message DiscoverBSSIDRequest {
+  string bssid = 1;
+  string interface = 2;
+}
+
+message DiscoverBSSIDResponse {
+  int64 discovery_time = 1;
 }
 
 message DisconnectRequest {
@@ -206,4 +222,10 @@ message ConfigureAndAssertAutoConnectResponse {
 message GetCurrentTimeResponse {
   int64 nowSecond = 1;
   int64 nowNanosecond = 2;
+}
+
+message RequestRoamRequest {
+  string interfaceName = 1;
+  string bssid = 2;
+  int64 timeout = 3;
 }
