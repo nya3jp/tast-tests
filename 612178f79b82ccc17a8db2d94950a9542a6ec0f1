@@ -34,6 +34,24 @@
       "revId": "612178f79b82ccc17a8db2d94950a9542a6ec0f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720c6d47_09b55e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-07-01T21:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55327731_d180f3b8",
+      "revId": "612178f79b82ccc17a8db2d94950a9542a6ec0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
