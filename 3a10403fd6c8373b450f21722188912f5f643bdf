@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd459ffa_2ad4ddad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T05:19:27Z",
+      "side": 1,
+      "message": "You mean setting this through shill? I didn\u0027t see a corresponding property on shill Device, and didn\u0027t find related logic in shill with some simple grep-s.",
+      "parentUuid": "384a062d_e17d3f75",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ecc6c62_2eafd772",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5924bf_a2537569",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-01T05:19:27Z",
+      "side": 1,
+      "message": "Done, and also reserve some time for the restore defer.",
+      "parentUuid": "0ecc6c62_2eafd772",
+      "revId": "3a10403fd6c8373b450f21722188912f5f643bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
