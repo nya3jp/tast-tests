@@ -22,6 +22,30 @@
       "revId": "2ad3e5a33a803cd19bd3a0bd48222050f78ea2de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacef40f_baa88287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T23:34:41Z",
+      "side": 1,
+      "message": "oh, thanks for the information. I did not know this. When I saw the code somewhere else \u0027local_tests/arc/auth_perf.go\u0027, I thought it was my mistake forgot to close it.",
+      "parentUuid": "7b6297cc_121df365",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "2ad3e5a33a803cd19bd3a0bd48222050f78ea2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
