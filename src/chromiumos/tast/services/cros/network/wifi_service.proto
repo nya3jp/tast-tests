@@ -67,6 +67,12 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DiscoverService discovers a service with the given properties.
+  rpc DiscoverService (DiscoverServiceRequest) returns (DiscoverServiceResponse) {}
+
+  // RequestRoam requests DUT to roam to the specified BSSID.
+  rpc RequestRoam (RequestRoamRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -103,6 +109,15 @@ message ConnectResponse {
   int64 discovery_time = 2;
   int64 association_time = 3;
   int64 configuration_time = 4;
+}
+
+message DiscoverServiceRequest {
+  map<string, ShillVal> shillprops = 4;
+}
+
+message DiscoverServiceResponse {
+  string service_path = 1;
+  int64 discovery_time = 2;
 }
 
 message DisconnectRequest {
@@ -184,4 +199,10 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message RequestRoamRequest {
+  string interfaceName = 1;
+  string bssid = 2;
+  int64 timeout = 3;
 }
