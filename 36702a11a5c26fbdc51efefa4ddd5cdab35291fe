@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "492d5eb6_b823bcfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T06:02:24Z",
+      "side": 1,
+      "message": "Good point. Thanks for it. Done.",
+      "parentUuid": "124ad252_bbe88b94",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 195
+      },
+      "revId": "36702a11a5c26fbdc51efefa4ddd5cdab35291fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b2cf4d9_e61ae8c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "36702a11a5c26fbdc51efefa4ddd5cdab35291fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a51745_8272c1b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T06:02:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6b2cf4d9_e61ae8c7",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "36702a11a5c26fbdc51efefa4ddd5cdab35291fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
