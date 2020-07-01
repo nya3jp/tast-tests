@@ -363,6 +363,40 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	return response, nil
 }
 
+// DiscoverService discovers a service with the given properties.
+func (tf *TestFixture) DiscoverService(ctx context.Context, props map[string]interface{}) (string, error) {
+	ctx, st := timing.Start(ctx, "tf.DiscoverService")
+	defer st.End()
+
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return "", err
+	}
+	request := &network.DiscoverServiceRequest{
+		Shillprops: propsEnc,
+	}
+	response, err := tf.wifiClient.DiscoverService(ctx, request)
+	if err != nil {
+		return "", err
+	}
+
+	return response.ServicePath, nil
+}
+
+// RequestRoam requests DUT to roam to the specified BSSID.
+func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, timeout time.Duration) error {
+	request := &network.RequestRoamRequest{
+		InterfaceName: iface,
+		Bssid:         bssid,
+		Timeout:       timeout.Nanoseconds(),
+	}
+	if _, err := tf.wifiClient.RequestRoam(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network.ConnectResponse, error) {
 	conf := ap.Config()

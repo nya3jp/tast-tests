@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	localnet "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
+	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/network"
@@ -213,6 +214,53 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	configTime = time.Since(start)
 
 	return assocTime, configTime, nil
+}
+
+// DiscoverBSSID discovers the specified BSSID by running a scan.
+// This is the implementation of network.Wifi/DiscoverBSSID gRPC.
+func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+	iwr := iw.NewLocalRunner()
+
+	start := time.Now()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Scan WiFi AP again if the expected AP is not found.
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to request active scan"))
+		}
+
+		scanData, err := iwr.ScanDump(ctx, request.Interface)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the current BSSID")
+		}
+
+		foundBSSID := false
+		for i, data := range scanData {
+			if request.Bssid == data.BSS {
+				testing.ContextLogf(ctx, "Fooooooooooooooooooooooooound BSSID = %s, i = %d", data.BSS, i)
+				foundBSSID = true
+				break
+			}
+		}
+		if !foundBSSID {
+			return errors.Errorf("failed to find the bssid=%s in the scan", request.Bssid)
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  15 * time.Second,
+		Interval: 200 * time.Millisecond, // RequestScan is spammy, but shill handles that for us.
+	}); err != nil {
+		return nil, err
+	}
+
+	discoveryTime := time.Since(start)
+	return &network.DiscoverBSSIDResponse{
+		DiscoveryTime: discoveryTime.Nanoseconds(),
+	}, nil
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -668,6 +716,68 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
+}
+
+// RequestRoam requests shill to roam to another BSSID.
+func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	device, err := m.WaitForDeviceByName(ctx, req.InterfaceName, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for the interface %s", req.InterfaceName)
+	}
+
+	if err := device.RequestRoam(ctx, req.Bssid); err != nil {
+		return nil, err
+	}
+
+	deviceProp, err := device.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get properties of device %v", device)
+	}
+
+	servicePath, err := deviceProp.GetObjectPath(shillconst.DevicePropertySelectedService)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get the DBus object path for the property %s", shillconst.DevicePropertySelectedService)
+	}
+
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed creating shill service proxy")
+	}
+
+	// Spawn watcher before disconnect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	currBSSID, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
+	if err != nil {
+		return nil, err
+	}
+
+	if currBSSID != req.Bssid {
+		testing.ContextLog(ctx, "Wait for roam to the given bssid")
+		timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(req.Timeout))
+		defer cancel()
+
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyWiFiBSSID, req.Bssid); err != nil {
+			return nil, err
+		}
+	}
+
+	testing.ContextLog(ctx, "Roamed")
+	return &empty.Empty{}, nil
 }
 
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
