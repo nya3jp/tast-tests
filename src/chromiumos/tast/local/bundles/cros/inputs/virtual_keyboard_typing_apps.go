@@ -10,10 +10,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/inputs/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -46,7 +46,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	app := apps.Settings
 	s.Logf("Launching %s", app.Name)
