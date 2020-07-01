@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bf562019_2c64ce88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-07-01T18:55:23Z",
+      "side": 1,
+      "message": "Sounds good. I didn\u0027t realize that touch/gesture events might be delivered out of order with respect with to other input events. I will implement your suggestion to use JSON and a \"ready\" widget.",
+      "parentUuid": "0b930fdd_4157af4c",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "5f42046d6284e970aabd941b232708d5843ef751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b992606e_efd181ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 4
