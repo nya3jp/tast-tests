@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/wpasupplicant"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -214,6 +215,122 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	configTime = time.Since(start)
 
 	return assocTime, configTime, nil
+}
+
+// DiscoverBSSID discovers the specified BSSID by running a scan.
+// This is the implementation of network.Wifi/DiscoverBSSID gRPC.
+func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	// Create watcher for BSSAdded signal.
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalBSSAdded)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	start := time.Now()
+	// Check if the BSS is already in the table.
+	bsses, err := iface.BSSs(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get BSSs")
+	}
+
+	for _, bss := range bsses {
+		ssid, err := bss.SSID(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get SSID for bss: ", err)
+		} else if request.Ssid == string(ssid) {
+			bssid, err := bss.BSSID(ctx)
+			if err != nil {
+				testing.ContextLog(ctx, "Failed to get BSSID for bss: ", err)
+			} else if request.Bssid == net.HardwareAddr(bssid).String() {
+				testing.ContextLogf(ctx, "The BSSID %s is discovered", net.HardwareAddr(bssid).String())
+				discoveryTime := time.Since(start)
+				return &network.DiscoverBSSIDResponse{
+					DiscoveryTime: discoveryTime.Nanoseconds(),
+				}, nil
+			}
+		}
+	}
+
+	// Start background routine to wait for BSSAdded signals.
+	done := make(chan error, 1)
+	// Wait for bg routine to end.
+	defer func() { <-done }()
+	// Notify the bg routine to end if we return early.
+	bgCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	go func(ctx context.Context) {
+		defer close(done)
+		done <- func() error {
+			checkSig := func(sig *dbus.Signal) (bool, error) {
+				bss, err := iface.ParseBSSAddedSignal(ctx, sig)
+				if err != nil {
+					return false, errors.Wrap(err, "failed to parse the BSSAdded signal")
+				}
+
+				bssSSID := string(bss.SSID.([]byte))
+				bssBSSID := net.HardwareAddr(bss.BSSID.([]byte)).String()
+
+				if bssSSID != request.Ssid || bssBSSID != request.Bssid {
+					return false, errors.Errorf("unexpected SSID and BSSID values: got %s, %s, Want %s, %s", bssSSID, bssBSSID, request.Ssid, request.Bssid)
+				}
+
+				return true, nil
+			}
+
+			for {
+				select {
+				case <-ctx.Done():
+					return ctx.Err()
+				case sig := <-sw.Signals:
+					match, err := checkSig(sig)
+					if err != nil {
+						return err
+					} else if match {
+						return nil
+					}
+				}
+			}
+		}()
+	}(bgCtx)
+
+	// Trigger request scan every 200ms if the expected BSS is not found.
+	// It might be spammy, but shill handles it for us.
+	for {
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return nil, err
+		}
+		select {
+		case err := <-done:
+			if err != nil {
+				return nil, err
+			}
+			discoveryTime := time.Since(start)
+			return &network.DiscoverBSSIDResponse{
+				DiscoveryTime: discoveryTime.Nanoseconds(),
+			}, nil
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		case <-time.After(200 * time.Millisecond):
+		}
+	}
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -713,6 +830,26 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
+}
+
+// RequestRoam requests shill to roam to another BSSID and waits until the DUT has roamed.
+// This is the implementation of network.Wifi/RequestRoam gRPC.
+func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	dev, err := m.WaitForDeviceByName(ctx, req.InterfaceName, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for the interface %s", req.InterfaceName)
+	}
+
+	if err := dev.RequestRoam(ctx, req.Bssid); err != nil {
+		return nil, err
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
