@@ -9,12 +9,19 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
 const (
 	dbusInterfaceInterface = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfacePropBSSs  = "BSSs"
+	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
+	DBusInterfaceSignalBSSAdded = "BSSAdded"
+	// BSSAddedSignalPropSSID  BSS SSID property name.
+	BSSAddedSignalPropSSID = "SSID"
+	// BSSAddedSignalPropBSSID  BSS BSSID property name.
+	BSSAddedSignalPropBSSID = "BSSID"
 )
 
 // Interface is the object to interact with wpa_supplicant's
@@ -48,4 +55,46 @@ func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
 		}
 	}
 	return ret, nil
+}
+
+// DBusObject returns the D-Bus object of the interface.
+func (iface *Interface) DBusObject() *DBusObject {
+	return iface.dbus
+}
+
+// BSSAddedSignal wraps D-Bus BSSAdded signal arguments.
+type BSSAddedSignal struct {
+	BSS   dbus.ObjectPath
+	Props map[string]interface{}
+}
+
+// ParseBSSAddedSignal returns the BSSAdded signal arguments. It only add the specified properties to the BSSAddedSignal struct.
+func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signal, props []string) (*BSSAddedSignal, error) {
+	if len(sig.Body) != 2 {
+		return nil, errors.Errorf("got body length=%d, want 2", len(sig.Body))
+	}
+
+	path, ok := sig.Body[0].(dbus.ObjectPath)
+	if !ok {
+		return nil, errors.Errorf("got body %v, want dbus.ObjectPath", sig.Body[0])
+	}
+
+	bssProps, ok := sig.Body[1].(map[string]dbus.Variant)
+	if !ok {
+		return nil, errors.Errorf("got body %v, want map[string]dbus.Variant", sig.Body[1])
+	}
+
+	values := make(map[string]interface{})
+	for _, p := range props {
+		val, ok := bssProps[p]
+		if !ok {
+			return nil, errors.Errorf("failed to find the value of the property %s", p)
+		}
+		values[p] = val.Value()
+	}
+
+	return &BSSAddedSignal{
+		BSS:   path,
+		Props: values,
+	}, nil
 }
