@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "abae3446_4af01c20",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-01T16:19:36Z",
+      "side": 1,
+      "message": "Oh right, missed that, my mistake.",
+      "parentUuid": "1f4b6ef2_4cdb5c98",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 29
+      },
+      "revId": "9f60912633521c0774da2b51f813711c8c653b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2723d3d2_fedfd478",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
