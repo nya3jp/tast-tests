@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9c560afa_35d3e8a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T22:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df40870d_311823f5",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8cb15aa_c3f691ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2020-07-01T17:32:34Z",
       "side": 1,
       "message": "It looks like there are 5 tests in the inputs package that also use this setup. Could you make a precondition for this or make a bug/todo for it?",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 126
+      },
+      "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af04b0f_b30ee0d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T22:46:03Z",
+      "side": 1,
+      "message": "For input tests, they can not use pre-condition, the reason is as below:\n1. During test, different language might be installed, and it can be changed at any time, which can ruin the next test.\n2. Test conditions are different, for example, testing oobe stage and pre-set system language can not use pre-condition.",
+      "parentUuid": "b8cb15aa_c3f691ea",
       "range": {
         "startLine": 36,
         "startChar": 12,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "404c2f0a_c3872a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T22:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad511fd_b69fa236",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ed5da33_4d5acece",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -115,6 +187,30 @@
       "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cc4b42_78f9897f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-01T22:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed5da33_4d5acece",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "5ba2ace6f0fb060d4f9fd18a413eed38488c3e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
