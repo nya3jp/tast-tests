@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3693cf88_faf4e4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-01T18:26:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8cf0819e_170f87d4",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "8f23d9c42716e2a5fe4a29d84277774cf65ecb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba2d9531_db02210b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 1
