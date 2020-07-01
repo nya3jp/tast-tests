@@ -29,7 +29,7 @@ func init() {
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.ExtraArgs("--enable-features=VirtualKeyboardFloatingDefault"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -51,15 +51,12 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
-
-	err = vkb.SwitchToFloatMode(ctx, tconn)
-	if err != nil {
-		s.Fatal("Switch to floating layout failed: ", err)
-	}
+	// TODO(b/159178907) disable zero state suggestion to show switch float layout button by default.
+	// Current workaround is to enable float window by default using --enable-features=VirtualKeyboardFloatingDefault
+	// err = vkb.SwitchToFloatMode(ctx, tconn)
+	// if err != nil {
+	// 	s.Fatal("Switch to floating layout failed: ", err)
+	// }
 
 	params := ui.FindParams{
 		Role: ui.RoleTypeButton,
