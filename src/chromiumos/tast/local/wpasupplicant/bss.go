@@ -13,6 +13,7 @@ import (
 const (
 	dbusBSSInterface = "fi.w1.wpa_supplicant1.BSS"
 	dbusBSSPropBSSID = "BSSID"
+	dbusBSSPropSSID  = "SSID"
 )
 
 // BSS is the object to interact with wpa_supplicant's
@@ -37,4 +38,13 @@ func (b *BSS) BSSID(ctx context.Context) ([]byte, error) {
 		return nil, err
 	}
 	return bssid, nil
+}
+
+// SSID returns the SSID of this BSS.
+func (b *BSS) SSID(ctx context.Context) ([]byte, error) {
+	var ssid []byte
+	if err := b.dbus.Get(ctx, dbusBSSPropSSID, &ssid); err != nil {
+		return nil, err
+	}
+	return ssid, nil
 }
