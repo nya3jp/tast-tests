@@ -7,7 +7,6 @@ package arcappcompat
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -15,12 +14,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
 // ClamshellTests are placed here.
-var clamshellTestsForMessenger = []testutil.TestSuite{
+var clamshellTestsForMessenger = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForMessenger},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
@@ -29,7 +27,7 @@ var clamshellTestsForMessenger = []testutil.TestSuite{
 }
 
 // TouchviewTests are placed here.
-var touchviewTestsForMessenger = []testutil.TestSuite{
+var touchviewTestsForMessenger = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForMessenger},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
@@ -43,34 +41,22 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForMessenger,
-			},
+			Val:               clamshellTestsForMessenger,
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForMessenger,
-			},
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForMessenger,
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name: "vm",
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForMessenger,
-			},
+			Name:              "vm",
+			Val:               clamshellTestsForMessenger,
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForMessenger,
-			},
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForMessenger,
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -87,44 +73,8 @@ func Messenger(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.facebook.orca"
 		appActivity = ".auth.StartScreenActivity"
 	)
-
-	// Step up chrome on Chromebook.
-	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
-	defer d.Close()
-
-	testSet := s.Param().(testutil.TestParams)
-	// Run the different test cases.
-	for idx, test := range testSet.Tests {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
-			// Launch the app.
-			act, err := arc.NewActivity(a, appPkgName, appActivity)
-			if err != nil {
-				s.Fatal("Failed to create new app activity: ", err)
-			}
-			s.Log("Created new app activity")
-
-			defer act.Close()
-
-			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed to start app: ", err)
-			}
-			s.Log("App launched successfully")
-			defer act.Stop(ctx, tconn)
-
-			defer func() {
-				if s.HasError() {
-					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
-					}
-				}
-			}()
-
-			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
-		})
-	}
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
 }
 
 // launchAppForMessenger verifies Messenger is logged in and
@@ -140,11 +90,6 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		userNameDes        = "Phone Number or Email"
 		viewGroupClassName = "android.view.ViewGroup"
 	)
-
-	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
-		s.Fatal("Failed to launch the app: ", currentAppPkg)
-	}
-	s.Log("App is launched successfully in launchAppForMessenger")
 
 	// Enter email address.
 	MessengerEmailID := s.RequiredVar("arcappcompat.Messenger.emailid")

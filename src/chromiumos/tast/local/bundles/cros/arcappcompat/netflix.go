@@ -7,7 +7,6 @@ package arcappcompat
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -15,12 +14,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
 // ClamshellTests are placed here.
-var clamshellTestsForNetflix = []testutil.TestSuite{
+var clamshellTestsForNetflix = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForNetflix},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
@@ -29,7 +27,7 @@ var clamshellTestsForNetflix = []testutil.TestSuite{
 }
 
 // TouchviewTests are placed here.
-var touchviewTestsForNetflix = []testutil.TestSuite{
+var touchviewTestsForNetflix = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForNetflix},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
@@ -43,34 +41,22 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForNetflix,
-			},
+			Val:               clamshellTestsForNetflix,
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForNetflix,
-			},
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForNetflix,
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name: "vm",
-			Val: testutil.TestParams{
-				TabletMode: false,
-				Tests:      clamshellTestsForNetflix,
-			},
+			Name:              "vm",
+			Val:               clamshellTestsForNetflix,
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				TabletMode: true,
-				Tests:      touchviewTestsForNetflix,
-			},
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForNetflix,
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -87,44 +73,8 @@ func Netflix(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.netflix.mediaclient"
 		appActivity = ".ui.launch.UIWebViewActivity"
 	)
-
-	// Step up chrome on Chromebook.
-	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
-	defer d.Close()
-
-	testSet := s.Param().(testutil.TestParams)
-	// Run the different test cases.
-	for idx, test := range testSet.Tests {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
-			// Launch the app.
-			act, err := arc.NewActivity(a, appPkgName, appActivity)
-			if err != nil {
-				s.Fatal("Failed to create new app activity: ", err)
-			}
-			s.Log("Created new app activity")
-
-			defer act.Close()
-
-			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed to start app: ", err)
-			}
-
-			defer act.Stop(ctx, tconn)
-
-			defer func() {
-				if s.HasError() {
-					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
-					}
-				}
-			}()
-
-			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
-		})
-	}
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
 }
 
 // launchAppForNetflix verifies Netflix is logged in and
@@ -141,11 +91,6 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 		homeIconID            = "com.netflix.mediaclient:id/ribbon_n_logo"
 	)
 	var selectUserIndex int
-
-	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
-		s.Fatal("Failed to launch the app: ", currentAppPkg)
-	}
-	s.Log("App is launched successfully in launchAppForNetflix")
 
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signInButtonDes))
 	enterEmailAddress := d.Object(ui.ClassName(TextClassName), ui.Text(enterEmailAddressText))
