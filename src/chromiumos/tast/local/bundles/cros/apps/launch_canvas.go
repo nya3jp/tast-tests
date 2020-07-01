@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/apps/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -44,7 +44,7 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Canvas.ID, 2*time.Minute); err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)

@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arc/ime"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
