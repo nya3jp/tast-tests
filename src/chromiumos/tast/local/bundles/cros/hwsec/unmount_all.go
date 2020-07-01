@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -23,7 +22,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
-		SoftwareDeps: []string{"tpm2"},
+		SoftwareDeps: []string{"tpm"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
@@ -70,14 +69,8 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 
-	// Resets the TPM, system, and user states before running the tests.
-	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
-		s.Fatal("Failed to reset TPM or system states: ", err)
-	}
-	if err = cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
-	}
-	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	// Take TPM Ownership before the test.
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 
