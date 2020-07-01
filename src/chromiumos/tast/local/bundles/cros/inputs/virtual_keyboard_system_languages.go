@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -72,6 +73,9 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer tconn.Close()
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Verify default input method
 	currentInputMethodID, err := vkb.GetCurrentInputMethod(ctx, tconn)
