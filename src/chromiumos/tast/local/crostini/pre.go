@@ -92,6 +92,7 @@ var UnstableModels = []string{
 	"foob",
 	"garg",
 	"laser14",
+	"mimrock", // TODO: reenable once crbug.com/1101221 is fixed.
 	"phaser360",
 	"sparky",
 	"vorticon",
