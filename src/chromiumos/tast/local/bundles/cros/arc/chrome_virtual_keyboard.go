@@ -311,6 +311,8 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		Key      string
 		Expected int
 	}{
+		{"0", 7},          // AKEYCODE_0
+		{"7", 14},         // AKEYCODE_7
 		{"a", 29},         // AKEYCODE_A
 		{"b", 30},         // AKEYCODE_B
 		{"c", 31},         // AKEYCODE_C
