@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29af248b_c70b1f95",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-01T17:25:44Z",
+      "side": 1,
+      "message": "nit: add comment saying \"// TODO(...) remove from once bug is fixed... (or something like that)",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "6bf33ac7c2519cde2510f36fc9c4583d3c610cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
