@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5669304_c4961ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-01T22:26:44Z",
+      "side": 1,
+      "message": "what else you would like to test here?\n\ni am thinking maybe it\u0027s better to have a separate file per thing you want to test? Otherwise, this test will be growing over time and it\u0027ll be hard to make it stable and promote to CQ",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4410cff3_d5e2a512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-01T22:26:44Z",
+      "side": 1,
+      "message": "it looks like we already have similar test: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_state.go\n\n\ndo we have tests for other things you want to test?",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 105
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec32a872_f74e9a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-01T22:26:44Z",
+      "side": 1,
+      "message": "it\u0027s commonly used as just `a`",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d00c9056_69541f02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 2
@@ -31,6 +100,29 @@
       "side": 1,
       "message": "I intend to use the motioninput library in addition to what\u0027s below but I don\u0027t think the motioninput tests pass on betty even though the build is playable. This being the case I think we have to wait until it\u0027s more stable otherwise we\u0027ll get too many false negatives",
       "parentUuid": "d00c9056_69541f02",
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7eb5758_8c7de46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-01T22:26:44Z",
+      "side": 1,
+      "message": "why this is commented? i\u0027d like to don\u0027t submit commented code",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 44
+      },
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
