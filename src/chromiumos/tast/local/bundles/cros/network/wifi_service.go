@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/wpasupplicant"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -214,6 +215,61 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	configTime = time.Since(start)
 
 	return assocTime, configTime, nil
+}
+
+// DiscoverBSSID discovers the specified BSSID by running a scan.
+// This is the implementation of network.Wifi/DiscoverBSSID gRPC.
+func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	start := time.Now()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		bsses, err := iface.BSSs(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get BSSs")
+		}
+
+		for _, bss := range bsses {
+			bssid, err := bss.BSSID(ctx)
+			if err != nil {
+				testing.ContextLog(ctx, "Failed to get BSSID for bss: ", err)
+			} else if request.Bssid == net.HardwareAddr(bssid).String() {
+				return nil
+			}
+		}
+
+		// Scan WiFi AP again if the expected AP is not found.
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to request active scan"))
+		}
+
+		return errors.Errorf("failed to find the BSSID %s", request.Bssid)
+	}, &testing.PollOptions{
+		Timeout:  15 * time.Second,
+		Interval: 200 * time.Millisecond, // RequestScan is spammy, but shill handles that for us.
+	}); err != nil {
+		return nil, err
+	}
+
+	discoveryTime := time.Since(start)
+	return &network.DiscoverBSSIDResponse{
+		DiscoveryTime: discoveryTime.Nanoseconds(),
+	}, nil
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -674,6 +730,98 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
+}
+
+// RequestRoam requests shill to roam to another BSSID and waits until the DUT has roamed.
+// This is the implementation of network.Wifi/RequestRoam gRPC.
+func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	dev, err := m.WaitForDeviceByName(ctx, req.InterfaceName, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for the interface %s", req.InterfaceName)
+	}
+
+	devProp, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get properties of device %v", dev)
+	}
+
+	servicePath, err := devProp.GetObjectPath(shillconst.DevicePropertySelectedService)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get the DBus object path for the property %s", shillconst.DevicePropertySelectedService)
+	}
+
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed creating shill service proxy")
+	}
+
+	// Spawn watcher before disconnect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := dev.RequestRoam(ctx, req.Bssid); err != nil {
+		return nil, err
+	}
+
+	// Wait for new connection after requesting roam.
+
+	// Prepare the state list for ExpectIn.
+	var connectedStates []interface{}
+	for _, s := range shillconst.ServiceConnectedStates {
+		connectedStates = append(connectedStates, s)
+	}
+	associatedStates := append(connectedStates, shillconst.ServiceStateConfiguration)
+
+	testing.ContextLog(ctx, "Associating with ", service)
+	assocCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	state, err := pw.ExpectIn(assocCtx, shillconst.ServicePropertyState, associatedStates)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to associate")
+	}
+
+	testing.ContextLog(ctx, "Configuring ", service)
+	if state == shillconst.ServiceStateConfiguration {
+		// We're not yet in connectedStates, wait until connected.
+		configCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+		if _, err := pw.ExpectIn(configCtx, shillconst.ServicePropertyState, connectedStates); err != nil {
+			return nil, errors.Wrap(err, "failed to configure")
+		}
+	}
+
+	// Wait for the BSSID to equal the roam to AP BSSID.
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	bssidVal, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
+	if err != nil {
+		return nil, err
+	}
+
+	if bssidVal != req.Bssid {
+		testing.ContextLogf(ctx, "Wait for the BSSID to be %s", req.Bssid)
+		timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyWiFiBSSID, req.Bssid); err != nil {
+			return nil, err
+		}
+	}
+
+	testing.ContextLog(ctx, "Roamed")
+	return &empty.Empty{}, nil
 }
 
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
