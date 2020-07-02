@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90fa3dfe_867ac7be",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T10:49:58Z",
+      "side": 1,
+      "message": "Is there any issue blocking us from renaming it?\nIf so, please add TODO(crbug.com/xxx): to address it.",
+      "range": {
+        "startLine": 2141,
+        "startChar": 55,
+        "endLine": 2141,
+        "endChar": 67
+      },
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56cb0fa_2adbc704",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T10:49:58Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 2170,
+        "startChar": 56,
+        "endLine": 2170,
+        "endChar": 68
+      },
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
