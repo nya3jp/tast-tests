@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0dfd94b1_c91cb845",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-02T01:12:05Z",
+      "side": 1,
+      "message": "If multiple test failed, we only get one ss. Can we add test name as prefix?",
+      "range": {
+        "startLine": 50,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "35fee7873cd10732ad5e3a293ffc9c72c74fe59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e9e6df2_5f4bb06a",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
