@@ -28,22 +28,30 @@ func setChargeControl(ctx context.Context, s chargeControlState) error {
 }
 
 // SetBatteryDischarge forces the battery to discharge. This will fail if the
-// remaining battery is within lowBatteryMargin of the low power shutdown
-// level.
+// remaining battery charge is lower than lowBatteryCutoff.
 func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) (CleanupCallback, error) {
 	testing.ContextLog(ctx, "Setting battery to discharge")
-	low, err := power.LowBatteryShutdownPercent(ctx)
+	shutdownCutoff, err := power.LowBatteryShutdownPercent(ctx)
 	if err != nil {
 		return nil, err
 	}
-	b, err := power.NewBatteryState(ctx)
+	lowBatteryCutoff := shutdownCutoff + lowBatteryMargin
+	devPaths, err := power.ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return nil, err
 	}
-	if (low + lowBatteryMargin) >= b.ChargePercent() {
-		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", b.ChargePercent())
+	capacity, err := power.ReadBatteryCapacity(devPaths)
+	if err != nil {
+		return nil, err
 	}
-	if b.Discharging() {
+	if lowBatteryCutoff >= capacity {
+		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", capacity)
+	}
+	status, err := power.ReadBatteryStatus(devPaths)
+	if err != nil {
+		return nil, err
+	}
+	if status == power.BatteryStatusDischarging {
 		testing.ContextLog(ctx, "WARNING Battery is already discharging")
 	}
 	if err := setChargeControl(ctx, ccDischarge); err != nil {
