@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a80d0aca_355f3ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-02T10:21:00Z",
+      "side": 1,
+      "message": "Please include err in the error message for the more detailed context.",
+      "range": {
+        "startLine": 79,
+        "startChar": 69,
+        "endLine": 79,
+        "endChar": 71
+      },
+      "revId": "11533bd7b54ec40072bab9c8ffdaa714d939cd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
