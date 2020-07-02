@@ -91,7 +91,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
 		s.Fatal("Failed to maximize the activity: ", err)
 	}
 
@@ -110,7 +110,8 @@ func Cgroups(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected ARC CPU shares value foreground: ", share)
 	}
 	// Minimize ARC window and ensure we go back to background shares.
-	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
+
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMinimize); err != nil {
 		s.Fatal("Failed to set window state to Minimized: ", err)
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMinimized); err != nil {
