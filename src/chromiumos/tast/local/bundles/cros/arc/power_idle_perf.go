@@ -118,7 +118,12 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Setup failed: ", err)
 	}
 
-	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
+	metricsSet := power.TestMetrics()
+	if args.setupOption == setup.NoBatteryDischarge {
+		metricsSet = power.TestMetricsWithoutBattery()
+	}
+
+	metrics, err := perf.NewTimeline(ctx, metricsSet, perf.Interval(iterationDuration))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
