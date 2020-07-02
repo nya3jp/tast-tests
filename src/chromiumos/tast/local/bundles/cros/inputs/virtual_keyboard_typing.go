@@ -69,6 +69,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to find input element %s: %v", identifier, err)
 	}
+	defer element.Release(ctx)
 
 	s.Log("Click searchbox to trigger virtual keyboard")
 	if err := element.LeftClick(ctx); err != nil {
@@ -91,7 +92,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 
 	// Value change can be a bit delayed after input.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
+		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
 		if err != nil {
 			return err
 		}
@@ -99,7 +100,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Error("Failed to input with virtual keyboard: ", err)
 	}
 }
