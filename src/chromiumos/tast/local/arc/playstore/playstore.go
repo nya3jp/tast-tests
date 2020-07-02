@@ -26,12 +26,15 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		accountSetupText = "Complete account setup"
 		permissionsText  = "needs access to"
 		cantDownloadText = "Can.t download.*"
+		versionText      = "Your device isn.t compatible with this version."
+		compatibleText   = "Your device is not compatible with this item."
 		acceptButtonID   = "com.android.vending:id/continue_button"
 
 		continueButtonText = "continue"
 		installButtonText  = "install"
 		openButtonText     = "open"
 		okButtonText       = "ok"
+		retryButtonText    = "retry"
 		skipButtonText     = "skip"
 	)
 
@@ -59,6 +62,31 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			if err := okButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
+		}
+
+		// When Play Store hits the rate limit it sometimes show "Your device is not compatible with this item." error.
+		// This error is incorrect and should be ignored like the "Can't download <app name>" error.
+		if err := d.Object(ui.TextMatches(compatibleText)).Exists(ctx); err == nil {
+			testing.ContextLog(ctx, `"Item incompatibiltiy" popup found. Skipping`)
+			okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+okButtonText))
+			if err := okButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := okButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+
+		// If the version isn't compatible with the device, no install button will be available.
+		// Fail immediately.
+		if err := d.Object(ui.TextMatches(versionText)).Exists(ctx); err == nil {
+			return testing.PollBreak(errors.New("app not compatible with this device"))
+		}
+
+		// If retry button appears, clicking it tends not to fix the issue.
+		// Simply notify the user of this for better error messages.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+retryButtonText)).Exists(ctx); err == nil {
+			return testing.PollBreak(errors.New("Play Store failed to load, retry button showing"))
 		}
 
 		// If the install button is enabled, click it.
