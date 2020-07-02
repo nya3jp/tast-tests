@@ -46,6 +46,30 @@
       "revId": "cf07a02be9d772d6e79e38d3ffabd362e1ee17ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1766f002_fb04e534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-02T06:08:23Z",
+      "side": 1,
+      "message": "Ah yes, it seems to cover all those cases. Thanks for confirm.",
+      "parentUuid": "5be4f524_67f5240a",
+      "range": {
+        "startLine": 768,
+        "startChar": 40,
+        "endLine": 768,
+        "endChar": 65
+      },
+      "revId": "cf07a02be9d772d6e79e38d3ffabd362e1ee17ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
