@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46930ea6_ee52c9c7",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-02T10:43:42Z",
+      "side": 1,
+      "message": "Hmm, why did you remove this verification? It looked useful to catch obvious mistakes.",
+      "revId": "b81b2c8352542c634cd2838225f5c32b6049c142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
