@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +35,83 @@ func readFloat64(filePath string) (float64, error) {
 		return 0., err
 	}
 	return strconv.ParseFloat(str, 64)
+}
+func readInt64(filePath string) (int64, error) {
+	str, err := readLine(filePath)
+	if err != nil {
+		return 0, err
+	}
+	return strconv.ParseInt(str, 10, 64)
+}
+
+// LowBatteryShutdownPercent gets the battery percentage below which the system
+// turns off.
+func LowBatteryShutdownPercent(ctx context.Context) (float64, error) {
+	output, err := testexec.CommandContext(ctx,
+		"check_powerd_config",
+		"--low_battery_shutdown_percent").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "failed to get low battery shutdown percent")
+	}
+	percent, err := strconv.ParseFloat(strings.TrimSpace(string(output)), 64)
+	if err != nil {
+		return 0.0, errors.Wrapf(err, "failed to parse low battery shutdown percent from %q", output)
+	}
+	return percent, nil
+}
+
+// BatteryStatus represents a charging status of a battery
+type BatteryStatus int
+
+// These values are corresponds to status attribute of sysfs power_supply
+const (
+	BatteryStatusUnknown BatteryStatus = iota
+	BatteryStatusCharging
+	BatteryStatusDischarging
+	BatteryStatusNotCharging
+	BatteryStatusFull
+)
+
+var batteryStatusMap = map[string]BatteryStatus{
+	"Unknown":      BatteryStatusUnknown,
+	"Charging":     BatteryStatusCharging,
+	"Discharging":  BatteryStatusDischarging,
+	"Not charging": BatteryStatusNotCharging,
+	"Full":         BatteryStatusFull,
+}
+
+// ReadBatteryStatus returns current battery status of the first battery
+// which supports `status` attribute
+func ReadBatteryStatus(ctx context.Context, devPaths []string) (BatteryStatus, error) {
+	var lastError error
+	for _, devPath := range devPaths {
+		statusStr, lastError := readLine(path.Join(devPath, "status"))
+		if lastError != nil {
+			testing.ContextLogf(ctx, "%v lacks status attribute", devPath)
+			continue
+		}
+		status, ok := batteryStatusMap[statusStr]
+		if !ok {
+			return BatteryStatusUnknown,
+				errors.Errorf("status %v is not expected", statusStr)
+		}
+		return status, nil
+	}
+	return BatteryStatusUnknown, lastError
+}
+
+// ReadBatteryCapacity returns current battery capacity of the first battery
+// which supports `capacity` attribute in percent
+func ReadBatteryCapacity(ctx context.Context, devPaths []string) (float64, error) {
+	var lastError error
+	for _, devPath := range devPaths {
+		capacity, lastError := readInt(path.Join(devPath, "capacity"))
+		if lastError == nil {
+			return float64(capacity), nil
+		}
+		testing.ContextLogf(ctx, "%v lacks capacity attribute", devPath)
+	}
+	return 0, lastError
 }
 
 // readSystemPower returns system power consumption in Watt.
@@ -64,9 +142,9 @@ func readSystemPower(devPaths []string) (float64, error) {
 	return systemPower, nil
 }
 
-// listSysfsBatteryPaths lists paths of batteries which supply power to the system
+// ListSysfsBatteryPaths lists paths of batteries which supply power to the system
 // and has voltage_now and current_now attributes.
-func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {
+func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	// TODO(hikarun): Remove ContextLogf()s after checking this function works on all platforms
 	const sysfsPowerSupplyPath = "/sys/class/power_supply"
 	testing.ContextLog(ctx, "Listing batteries in ", sysfsPowerSupplyPath)
@@ -122,7 +200,7 @@ func NewSysfsBatteryMetrics() *SysfsBatteryMetrics {
 // Setup reads the low battery shutdown percent that that we can error out a
 // test if the battery is ever too low.
 func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
-	batteryPaths, err := listSysfsBatteryPaths(ctx)
+	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return err
 	}
