@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2524f7d_e3d1152a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-02T01:19:40Z",
+      "side": 1,
+      "message": "ll",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "e2cd39fd54ed5897288133bc8008283debeae9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7187c412_3b4e8765",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-02T01:19:40Z",
+      "side": 1,
+      "message": "A general tip: the body of the commit should explain why you are doing this CL, e..g, \"because for TPM1.2 it should also work\"; here what i am seeing is, you explain the \"how\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "e2cd39fd54ed5897288133bc8008283debeae9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
