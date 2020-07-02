@@ -7,9 +7,11 @@ package assistant
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -38,6 +40,19 @@ func Enable(ctx context.Context, tconn *chrome.TestConn) error {
 // Disable stops the Google Assistant service and returns any errors.
 func Disable(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, false, 10*1000 /* timeout_ms */)
+}
+
+// Cleanup stops the Google Assistant service so other tests are not impacted.
+// If a failure happened, we make a screenshot beforehand so the Assistant UI
+// is visible in the screenshot
+func Cleanup(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) {
+	if s.HasError() {
+		screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "screenshot.png"))
+	}
+
+	if err := Disable(ctx, tconn); err != nil {
+		s.Fatal("Failed to disable Assistant: ", err)
+	}
 }
 
 // EnableAndWaitForReady brings up Google Assistant service, waits for
