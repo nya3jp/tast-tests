@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1538bb1_fdc52c73",
+        "filename": "src/chromiumos/tast/common/shillconst/security/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T11:59:47Z",
+      "side": 1,
+      "message": "Maybe sectype (security type) or seccls (security class)?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "9def8ce45679677ab4fece331a0b3a7ac10a24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

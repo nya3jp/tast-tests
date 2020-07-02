@@ -88,6 +88,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31cffa58_371ca639",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T11:59:47Z",
+      "side": 1,
+      "message": "For shillconst/security, perhaps we can rename it as sectype or seccls?\n\nI personally would prefer patchset as it is shorter when using them. However, your point also makes sense.  How about invoking wifi-owners to take a look as well?",
+      "parentUuid": "cd27fddd_07bc355c",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
