@@ -22,6 +22,29 @@
       "revId": "0e30e303c93c97c18f5f9df7188a68e4f4924ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287754f9_d5d5e952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/mount_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-02T04:41:22Z",
+      "side": 1,
+      "message": "cf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2275948/2/src/chromiumos/tast/cmd/local_test_runner/main.go#142",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "0e30e303c93c97c18f5f9df7188a68e4f4924ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
