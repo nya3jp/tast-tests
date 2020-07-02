@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4ba2d47_d2be5dbd",
+        "filename": "src/chromiumos/tast/common/network/arping/regexps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e180474_d5f7935a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 69
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf5870d3_8499c4f9",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d6becd27_9bb50242",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf5870d3_8499c4f9",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cf532cc_2313d249",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2020-07-02T01:45:59Z",
       "side": 1,
       "message": "For this case, shall we dump output to a file under s.OutDir and log the file path for debugging reference.",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1ec552_25383128",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Hmm... then we probably need to return the raw output to TestFixture, or even test body, since we should prevent the conflict of the file name of the different arping commands. Or maybe concatenating the outputs into the same file should just work. WDYT?",
+      "parentUuid": "6cf532cc_2313d249",
       "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -184,6 +250,30 @@
     },
     {
       "key": {
+        "uuid": "45d47e53_0bfe7257",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Use time.Duration instead and truncated the timeout to seconds before arping command.",
+      "parentUuid": "92e06e7e_35784d81",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aac82889_136e2769",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
@@ -198,6 +288,24 @@
       "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42995102_af48dac4",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac82889_136e2769",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "fc9f04ea_9f23c61a",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "I guess not: regexp should guarantee the length of it.\nUsually these errors (also the default scope in following switch) should be fixed before merge to ToT so something like assert in C++ may be properer, but we don\u0027t have that in golang.",
+      "parentUuid": "6c76a8ed_82d94cef",
+      "range": {
+        "startLine": 121,
+        "startChar": 30,
+        "endLine": 121,
+        "endChar": 65
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81ed9ed3_a8e0bae1",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
@@ -244,6 +376,30 @@
       "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1d20f2_1f835965",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81ed9ed3_a8e0bae1",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -270,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "a143529c_97979d53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c4f79c_33d1b550",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "845e2132_5c0f6368",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -281,6 +461,30 @@
       "writtenOn": "2020-07-01T07:58:56Z",
       "side": 1,
       "message": "The logic here seems to be the same as in PingFromServer. Maybe extract these into a utility method? (Or is it an overkill?)",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046a8ce4_7061f69a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "I will prefer moving the net.ParseCIDR into tf.ClientIPv4Addrs so it would be more convenient to use -- but I am not sure if it is good to return ([]net.IP, []*net.IPNet, error) or not. If possible, something like ([](net.IP, *net.IPNet), error) should tell more info.\nOr, since all of the use cases of tf.ClientIPv4Addrs doesn\u0027t really care about the subnet mask, how about just omit it so the return type should become ([]IP, error).\nWDYT?",
+      "parentUuid": "845e2132_5c0f6368",
       "range": {
         "startLine": 480,
         "startChar": 0,
@@ -313,6 +517,30 @@
       "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed645c1_71a5e390",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-02T09:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79832b5_f232dd1c",
+      "range": {
+        "startLine": 495,
+        "startChar": 47,
+        "endLine": 495,
+        "endChar": 90
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
