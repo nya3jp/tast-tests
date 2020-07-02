@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa74b5fe_592c4aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login_gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-02T10:29:35Z",
+      "side": 1,
+      "message": "style: ChromeLoginGAIA\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "0adc02116671763f1b8adb11bff4ea65e789afc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b33df5_af540a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login_gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-02T10:29:35Z",
+      "side": 1,
+      "message": "This test is very similar to ui.ChromeLogin (by design). It\u0027s great if we can reduce logic duplication between two tests.\n\nFirst I thought we want to parameterize ui.ChromeLogin test for two variables (fake login and GAIA login), but I guess it\u0027s not easy because testing.Param doesn\u0027t allow customizing Vars.\n\nI can come up with two approaches:\n\n1. Introduce a subpackage containing the common logic and rewrite the two tests to call into it.\n2. Simplify this test to just call chrome.New(... GAIALogin ...), and drop other verifications (e.g. using a local server and verifying the browser) because they\u0027re not the main point of this test.",
+      "range": {
+        "startLine": 43,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "0adc02116671763f1b8adb11bff4ea65e789afc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
