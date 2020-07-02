@@ -1216,6 +1216,15 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		return err
 	}
 
+	if err := oobeConn.Exec(ctx, "Oobe.closeEnrollmentForTesting()"); err != nil {
+		return err
+	}
+
+	if err := oobeConn.WaitForExpr(ctx,
+		"Oobe.getInstance().currentScreen.id == 'gaia-signin'"); err != nil {
+		return errors.Wrap(err, "failed to wait for Gaia frame")
+	}
+
 	var url string
 	if err := oobeConn.Eval(ctx, "window.location.href", &url); err != nil {
 		return err
@@ -1232,7 +1241,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	}
 
 	isGAIAWebView := func(t *target.Info) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/") && !strings.Contains(t.URL, "flow=enterprise")
 	}
 
 	testing.ContextLog(ctx, "Waiting for GAIA webview")
