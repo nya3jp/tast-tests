@@ -2130,27 +2130,27 @@ func (p *AutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 103. URLBlacklist
+// 103. URLDenylist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
-type URLBlacklist struct {
+type URLDenylist struct {
 	Stat Status
 	Val  []string
 }
 
-func (p *URLBlacklist) Name() string          { return "URLBlacklist" }
-func (p *URLBlacklist) Field() string         { return "" }
-func (p *URLBlacklist) Scope() Scope          { return ScopeUser }
-func (p *URLBlacklist) Status() Status        { return p.Stat }
-func (p *URLBlacklist) UntypedV() interface{} { return p.Val }
-func (p *URLBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+func (p *URLDenylist) Name() string          { return "URLBlacklist" }
+func (p *URLDenylist) Field() string         { return "" }
+func (p *URLDenylist) Scope() Scope          { return ScopeUser }
+func (p *URLDenylist) Status() Status        { return p.Stat }
+func (p *URLDenylist) UntypedV() interface{} { return p.Val }
+func (p *URLDenylist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	var v []string
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
 }
-func (p *URLBlacklist) Equal(iface interface{}) bool {
+func (p *URLDenylist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
 		return ok
@@ -2159,27 +2159,27 @@ func (p *URLBlacklist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 104. URLWhitelist
+// 104. URLAllowlist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
-type URLWhitelist struct {
+type URLAllowlist struct {
 	Stat Status
 	Val  []string
 }
 
-func (p *URLWhitelist) Name() string          { return "URLWhitelist" }
-func (p *URLWhitelist) Field() string         { return "" }
-func (p *URLWhitelist) Scope() Scope          { return ScopeUser }
-func (p *URLWhitelist) Status() Status        { return p.Stat }
-func (p *URLWhitelist) UntypedV() interface{} { return p.Val }
-func (p *URLWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+func (p *URLAllowlist) Name() string          { return "URLWhitelist" }
+func (p *URLAllowlist) Field() string         { return "" }
+func (p *URLAllowlist) Scope() Scope          { return ScopeUser }
+func (p *URLAllowlist) Status() Status        { return p.Stat }
+func (p *URLAllowlist) UntypedV() interface{} { return p.Val }
+func (p *URLAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	var v []string
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
 }
-func (p *URLWhitelist) Equal(iface interface{}) bool {
+func (p *URLAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
 		return ok
