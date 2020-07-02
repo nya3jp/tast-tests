@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70a4cf07_ce0f9f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-07-02T23:09:35Z",
+      "side": 1,
+      "message": "From understanding these commands will executed only once before launchApp test case not for every test case. It would be nice if we are closing and relaunching the app before every test case by moving this block inside s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) { } block so that it will be fresh start for every test case of an app. Please provide your suggestion on this. Thanks.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "135764698fd09bfd94f31516acfe24b2ad2958f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d23360_f01719b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-07-02T23:09:35Z",
+      "side": 1,
+      "message": "Need to remove comments.",
+      "revId": "135764698fd09bfd94f31516acfe24b2ad2958f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
