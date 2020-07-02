@@ -22,6 +22,30 @@
       "revId": "20e5e390439c3b1d2c5668f44747f4e2236464ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182f9aa5_89d605d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-02T03:39:11Z",
+      "side": 1,
+      "message": "It is nice to leave log for both SetPowersaveMode. Done.\n\nFor the powersave\u003don, as hard-coding any state can be a problem when policy changes, I also prefer keeping the default and have the tests restoring it for now. May re-consider this if we find that more tests really need to disable/restore and much increase the probability of leaving bad settings to later tests.",
+      "parentUuid": "9f3c6fd2_120149e4",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "20e5e390439c3b1d2c5668f44747f4e2236464ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
