@@ -37,7 +37,7 @@ func SimpleQueries(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Disable(ctx, tconn)
+	defer assistant.Cleanup(ctx, s, cr, tconn)
 
 	testAssistantSimpleMathQuery(ctx, s, tconn)
 }
