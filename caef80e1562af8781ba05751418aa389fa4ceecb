@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "975feb30_6ef573a5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-07-02T15:57:56Z",
+      "side": 1,
+      "message": "Ill fix the long line.",
+      "range": {
+        "startLine": 1244,
+        "startChar": 21,
+        "endLine": 1244,
+        "endChar": 135
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
