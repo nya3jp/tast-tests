@@ -18,3 +18,13 @@ func TestMetrics() []perf.TimelineDatasource {
 		NewSysfsThermalMetrics(),
 	}
 }
+
+// TestMetricsWithoutBattery returns a slice of metrics that should be
+// used for power tests on DUTs without a battery
+func TestMetricsWithoutBattery() []perf.TimelineDatasource {
+	return []perf.TimelineDatasource{
+		NewRAPLMetrics(),
+		NewRAPLPowerMetrics(),
+		NewSysfsThermalMetrics(),
+	}
+}
