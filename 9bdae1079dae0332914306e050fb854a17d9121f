@@ -70,6 +70,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd27fddd_07bc355c",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-02T08:06:54Z",
+      "side": 1,
+      "message": "Patchset 5 contains the proposed layout. PTAL.\n\nAlso found one more problem:\n- the package name shillconst/security conflicts with wifi/security, move it to shillconst/securitytype can fix it but the name is still kind of general.\n\nWDYT? IMO, the information looks quite fragmented in this layout, with only 10-ish constants in each package, so I slightly prefer the single package design for reasons:\n- Easier to find related information. And probably also easier for auto-complete? (I don\u0027t use auto-complete myself, so I\u0027m not really sure. :p)\n- The name is longer but also informative and specific. i.e. if not aliased, shillconst is clear that this is only used for interacting with shill.",
+      "parentUuid": "8d94bd04_613e51b0",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
