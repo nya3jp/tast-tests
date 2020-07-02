@@ -42,6 +42,10 @@ import (
 
 \t"chromiumos/tast/errors"
 )
+
+// TODO(crbug.com/1101928): fix template to use URLDenyList and URLBlacklist.
+type URLDenylist = URLBlacklist
+type URLAllowlist = URLWhitelist
 """
 
 # Note: A double "{{" is to produce a single "{" in the formatted Go code.
