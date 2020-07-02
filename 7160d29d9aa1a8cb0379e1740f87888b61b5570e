@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "92e06e7e_35784d81",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-02T02:10:14Z",
+      "side": 1,
+      "message": "The problem of time.Duration is that it have a more precise time precision that the tool does not really support which might cause some unexpected behavior. (e.g. passing a 0.5s timeout here) But I think it\u0027s OK if the truncate/rounding to seconds is well-documented.\n\nFor the other related usages, some duration related settings also have similar problem (or even harder to handle). e.g. beacon interval in hostapd has a 1024us unit which will make it hard to configure with time.Duration. But we can handle them case by case, I guess.",
+      "parentUuid": "079d731d_eb5fdc4f",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aac82889_136e2769",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
