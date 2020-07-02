@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b85bcd8a_872a1dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-07-02T02:46:39Z",
+      "side": 1,
+      "message": "I could not find these files in the current repository. Did you mean to add these files as well?",
+      "revId": "179e5d9d4f8abf983ef4c35be5be5921f3d5a252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
