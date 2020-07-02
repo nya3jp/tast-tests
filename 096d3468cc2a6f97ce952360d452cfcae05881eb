@@ -16,6 +16,57 @@
       "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ab16d8_30716662",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T11:45:27Z",
+      "side": 1,
+      "message": "For visible network, is \"\" SSID also expected?",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6efed2_5ccdf798",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T11:45:27Z",
+      "side": 1,
+      "message": "What\u0027s the intention of the function? From the code itself, it is used to override the return tuple when there\u0027s an error in defer function after return is called. \"collectErr\" is not correct as it only collect error when the original retErr is nil. How about:\n\nmayOverrideReturn :\u003d func(err error) {\n  if err \u003d\u003d nil {\n    return\n  }\n  testing.ContextLog(ctx, \"Error in defer func in connectAndCollectPcap: \", err)\n  if retErr \u003d\u003d nil {\n    ret \u003d nil\n    retConf \u003d nil\n    retErr \u003d err\n  }\n}\n\nAnd defer func can be modified like:\ndefer func(ctx) {\n  mayOverrideReturn(tf.DeconfigAP(ctx, ap))\n}",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32fd0897_332dbabf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T11:45:27Z",
+      "side": 1,
+      "message": "Call tf.WifiClient().DeleteEntriesForSSID()?",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
