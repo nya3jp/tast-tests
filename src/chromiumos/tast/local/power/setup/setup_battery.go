@@ -36,14 +36,22 @@ func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) (Cleanup
 	if err != nil {
 		return nil, err
 	}
-	b, err := power.NewBatteryState(ctx)
+	devPaths, err := power.ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return nil, err
 	}
-	if (low + lowBatteryMargin) >= b.ChargePercent() {
-		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", b.ChargePercent())
+	capacity, err := power.ReadBatteryCapacity(ctx, devPaths)
+	if err != nil {
+		return nil, err
 	}
-	if b.Discharging() {
+	if low+lowBatteryMargin >= capacity {
+		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", capacity)
+	}
+	status, err := power.ReadBatteryStatus(ctx, devPaths)
+	if err != nil {
+		return nil, err
+	}
+	if status == power.BatteryStatusDischarging {
 		testing.ContextLog(ctx, "WARNING Battery is already discharging")
 	}
 	if err := setChargeControl(ctx, ccDischarge); err != nil {
