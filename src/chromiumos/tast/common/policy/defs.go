@@ -15,6 +15,10 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// TODO(crbug.com/1101928): fix template to use URLDenyList and URLBlacklist.
+type URLDenylist = URLBlacklist
+type URLAllowlist = URLWhitelist
+
 ///////////////////////////////////////////////////////////////////////////////
 // 1. HomepageLocation
 // This policy can be modified without rebooting.
