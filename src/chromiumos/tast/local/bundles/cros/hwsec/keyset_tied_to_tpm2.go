@@ -14,10 +14,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// NOTE: This test is largely similar to hwsec.KeysetTiedToTPM1 (a remote test), if change is made to one, it is likely that the other have to be changed as well.
+// The referred test is specifically for TPMv1.2, while this test is for TPMv2.0.
+// Both versions of TPM is incompatible with each other and they way we handle reboot for the 2 versions are different and thus the need for 2 versions of the same test.
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: KeysetTiedToTPM,
-		Desc: "Verifies that the keyset is tied to TPM regardless of when it's created and if a reboot happens",
+		Func: KeysetTiedToTPM2,
+		Desc: "Verifies that for TPMv2.0 devices, the keyset is tied to TPM regardless of when it's created and if a reboot happens",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
@@ -83,9 +87,9 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 	}
 }
 
-// KeysetTiedToTPM is an integration test that verifies a user's VKK is tied
+// KeysetTiedToTPM2 is an integration test that verifies a user's VKK is tied
 // to the TPM after the second login.
-func KeysetTiedToTPM(ctx context.Context, s *testing.State) {
+func KeysetTiedToTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
