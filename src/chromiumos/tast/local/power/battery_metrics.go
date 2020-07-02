@@ -8,7 +8,6 @@ import (
 	"context"
 	"regexp"
 	"strconv"
-	"strings"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -41,20 +40,6 @@ func (b *BatteryState) ChargePercent() float64 {
 func (b *BatteryState) Discharging() bool {
 	const dischargingBit = 0x04
 	return (b.Flags & dischargingBit) != 0
-}
-
-// LowBatteryShutdownPercent gets the battery percentage below which the system
-// turns off.
-func LowBatteryShutdownPercent(ctx context.Context) (float64, error) {
-	output, err := testexec.CommandContext(ctx, "check_powerd_config", "--low_battery_shutdown_percent").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return 0.0, errors.Wrap(err, "failed to get low battery shutdown percent")
-	}
-	percent, err := strconv.ParseFloat(strings.TrimSpace(string(output)), 64)
-	if err != nil {
-		return 0.0, errors.Wrapf(err, "failed to parse low battery shutdown percent from %q", output)
-	}
-	return percent, nil
 }
 
 // ectoolBatteryRegexp is used to parse the results of an 'ectool battery'
