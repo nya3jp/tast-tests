@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a695585_ff2865c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-02T01:10:54Z",
+      "side": 1,
+      "message": "So, on betty it doesn\u0027t work? why?",
+      "revId": "69aabed5f2ac225c8e25663144c6ad54a5356143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
