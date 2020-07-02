@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a936583_b81daead",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-02T10:54:18Z",
+      "side": 1,
+      "message": "This file is auto-generated, so it is not maintainable to rewrite it manually.\n\nHow about defining type aliases to allow rewriting tests? That is, something like:\n\n type URLDenylist \u003d URLBlacklist\n type URLAllowlist \u003d URLWhitelist",
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90fa3dfe_867ac7be",
         "filename": "src/chromiumos/tast/common/policy/defs.go",
         "patchSetId": 2
