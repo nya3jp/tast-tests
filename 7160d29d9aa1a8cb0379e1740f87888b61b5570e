@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "cf5870d3_8499c4f9",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf532cc_2313d249",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "For this case, shall we dump output to a file under s.OutDir and log the file path for debugging reference.",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c3a22e8_c388fc7a",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
@@ -89,6 +129,93 @@
         "startChar": 13,
         "endLine": 88,
         "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079d731d_eb5fdc4f",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "In Golang world, I would prefer choosing time.Duration as the type for any duration or latency field. It is self explanatory, i.e. we no longer to denote the time unit in comment.\n\nLooks like we have several places to change in our code. How about starting from this CL?",
+      "parentUuid": "d3a9bead_b88787e6",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac82889_136e2769",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "failed to convert %q to integer",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c76a8ed_82d94cef",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "failed to parse unicast message; got %d submatches; want 5\n\nAlso, is it possible?",
+      "range": {
+        "startLine": 121,
+        "startChar": 30,
+        "endLine": 121,
+        "endChar": 65
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ed9ed3_a8e0bae1",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-02T01:45:59Z",
+      "side": 1,
+      "message": "It would be more semantically correct to use \"float(len(latencies))\".\n\nYou may assert len(latencies) \u003d\u003d received after the previous for-loop.",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 47
       },
       "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
