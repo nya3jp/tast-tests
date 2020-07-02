@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca43ab9_2e7ad0e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-02T01:23:59Z",
+      "side": 1,
+      "message": "same as the other CL; we don\u0027t really care about this details; if you think this is something you really need to mention in the commit message, it probabaly means this change itself deserves another CL.\ngo/small-cls",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "0e30e303c93c97c18f5f9df7188a68e4f4924ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
