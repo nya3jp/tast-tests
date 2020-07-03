@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdbfe7c1_fecc954a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-03T12:34:25Z",
+      "side": 1,
+      "message": "Because the delays introduced by SSH may be a bit too large, we opted not to run `sleep` remotely and instead have a low-level C application that sets up a timer and sends a TCP packet to the testing machine at consistent intervals. To further minimize the delays, the client enables `TCP_NODELAY` and the server (aka this test) - `TCP_QUICKACK`.\n\nFrom what I\u0027ve read[1] it seems that the C client must be distributed with the test image and not uploaded by the tast. Does anyone, by chance, have any resources concerning creating new portage packages and integrating them into the test image? I\u0027m not experienced in this area of ChromeOS development.\n\n[1]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Executables",
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

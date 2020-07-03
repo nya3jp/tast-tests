@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "caaa2dd3_6bfbdf74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-03T12:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4d7425_a2d10a5f",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e846a66_0e4d0bed",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1
@@ -332,6 +356,30 @@
       "side": 1,
       "message": "Hmm. I\u0027m afraid we can\u0027t put this test to the mainline group because it takes too long time to finish. The usual expectation for mainline tests is to finish in 2-3 minutes.\n\nCan you discuss with your contact in Chrome OS infra team to discuss the resource planning?",
       "parentUuid": "9b8f002e_13170aa1",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fe8903_23cf58d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-03T12:34:25Z",
+      "side": 1,
+      "message": "We\u0027re currently discussing this issue. For the time being I removed it from the mainline group.",
+      "parentUuid": "8cbb8235_c89709fc",
       "range": {
         "startLine": 23,
         "startChar": 2,
