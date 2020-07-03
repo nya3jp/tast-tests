@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a656b4d_1a7d0185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "Can you add a group alias of your team?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d33c87_75bfb85f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "style: NNAPI\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e789e7_be6bdc96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "This will run ml_cmdline with argv \u003d {\"ml_cmdline\", \"\"}, which is different from {\"ml_cmdline\"}. Is it intended?\n\nIf we want to pass no parameter, we can use []string here and construct the Cmd in the following way:\n\n for _, tc :\u003d range []struct {\n    args []string\n    expectedLines []string\n }{\n   {nil, []string{...}},\n   {[]string{\"--nnapi\"}, []string{...}},\n } {\n   cmd :\u003d testexec.CommandContext(ctx, \"ml_cmdline\", tc.args...)\n   ...",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d74c35_9801c432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "huge nit: stdout :\u003d ... is more idiomatic to define a new variable with type inference.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38f2b6a_c61be2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "shutil.EscapeSlice already escapes the command line, so %s is better here.",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195d0ed0_9ee90d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T02:22:33Z",
+      "side": 1,
+      "message": "Can the output contain multi-line or long strings? If so I recommend saving them as output files instead of embedding them in the error message so that failures are more debuggable.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
