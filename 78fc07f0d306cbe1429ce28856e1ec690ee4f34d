@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14bb632d_b1606ffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-07-03T08:39:11Z",
+      "side": 1,
+      "message": "\u003e Patch Set 7:\n\u003e \n\u003e Hmm. \"Failed to wait wiping finished: wipe_init failed\" error is still concerning if we haven\u0027t done anything about it.\n\u003e \n\u003e Wild guess: is it possible that it\u0027s too early after reboot to call gooftool? wipe_init.log says:\n\u003e \n\u003e  [2020-06-25 00:52:02,464] INFO:root:Running services (service_name, LOG_PATH): [(\u0027boot-services\u0027, \u0027\u0027), (\u0027failsafe\u0027, \u0027\u0027), (\u0027dbus\u0027, \u0027\u0027), (\u0027wpasupplicant\u0027, \u0027\u0027), (\u0027openssh-server\u0027, \u0027\u0027), (\u0027shill\u0027, \u0027\u0027), (\u0027sslh\u0027, \u0027\u0027)]\n\u003e  [2020-06-25 00:52:02,465] INFO:root:Going to stop services (service_name, LOG_PATH): []\n\u003e \n\u003e The \"going to stop\" list is empty, and I guess it\u0027s not what you expect (e.g. \"ui\" will be there usually). It seems to suggest that the system is still booting.\n\nOur code will scan and stop the daemons 3 times to prevent that some daemons are hanged and not stopped. The log you list is for the 2nd and the 3rd times. From much earlier log, you can see the list is not empty and we did the killing.\n\n\u003e Wild guess: is it possible that it\u0027s too early after reboot to call gooftool?\n\nI also worried about that, but I haven\u0027t seen any failure caused by killing process too early.\nI can add a sleep() to waiting for a while after boot. (Any suggestion about how long we should wait?) But it may not help for the issue you mentioned. I have tried to catch this by add more log and local run 1000 times, but no luck. It only happened for a week on Tast dashboard and then disappeared.\n\nBTW, I have more concern about the DUT drop the connection sometimes. Do you have seem similar issue in other test?\n",
+      "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
