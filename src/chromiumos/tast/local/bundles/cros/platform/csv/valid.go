@@ -19,21 +19,21 @@ import (
 	"chromiumos/tast/local/crosconfig"
 )
 
-// Validator represents a function validator that takes in as input an element
+// validator represents a function validator that takes in as input an element
 // that is part of the csv data. If the validation fails, an error is returned.
 // If the validation succeeds, nil is returned.
-type Validator func(string) error
+type validator func(string) error
 
 // ValidateCSV is responsible for validating headers and all values of the CSV
 // output. An error is returned if the headers are invalid or if any of the CSV
 // values are incorrect as determined by the validators provided to verify a
 // particular CSV value.
 func ValidateCSV(csv [][]string,
-	dimensionFunc func([][]string, []string, []Validator) error,
+	rowsFunc func([][]string, []string, []validator) error,
 	headers []string,
-	columnFuncs ...Validator) error {
+	columnFuncs ...validator) error {
 	// Validate csv dimensions.
-	if err := dimensionFunc(csv, headers, columnFuncs); err != nil {
+	if err := rowsFunc(csv, headers, columnFuncs); err != nil {
 		return errors.Wrap(err, "incorrect csv dimensions")
 	}
 	if len(csv) == 0 {
@@ -54,11 +54,11 @@ func ValidateCSV(csv [][]string,
 	return nil
 }
 
-// Dimensions takes the expected number of rows the CSV should contain
-// (including header) and returns a function that does varios dimension checks.
-// The function will be invoked in ValidateCSV() with a CSV of type [][]string.
-func Dimensions(expectedRows int) func([][]string, []string, []Validator) error {
-	return func(csv [][]string, headers []string, columnFuncs []Validator) error {
+// Rows takes the expected number of rows the CSV should contain (including
+// header) and returns a function that does varios dimension checks.  The
+// function will be invoked in ValidateCSV() with a CSV of type [][]string.
+func Rows(expectedRows int) func(csv [][]string, headers []string, columnFuncs []validator) error {
+	return func(csv [][]string, headers []string, columnFuncs []validator) error {
 		if len(csv) != expectedRows {
 			return errors.Errorf("incorrect number of rows in csv: got %v, want %v", len(csv), expectedRows)
 		}
@@ -77,10 +77,9 @@ func Headers(headers ...string) []string {
 	return headers
 }
 
-// Column takes in a list of validators that will verify different properties
-// of |csvValue|. Column returns a function that will be invoked in
-// ValidateCSV().
-func Column(validators ...Validator) Validator {
+// Column returns a validator that will use a list of validators to validate
+// all values in specific CSV column.
+func Column(validators ...validator) validator {
 	return func(csvValue string) error {
 		for _, validator := range validators {
 			if err := validator(csvValue); err != nil {
@@ -91,100 +90,99 @@ func Column(validators ...Validator) Validator {
 	}
 }
 
-// UInt64 returns a function that checks whether |actualValue| can be parsed
+// UInt64 returns a validator that checks whether |actual| can be parsed
 // into a uint64.
-func UInt64() Validator {
-	return func(actualValue string) error {
-		// Confirm |actualValue| can be converted to uint64
-		_, err := strconv.ParseUint(actualValue, 10, 64)
-		if err != nil {
-			return errors.Wrapf(err, "failed to convert %v to uint64", actualValue)
+func UInt64() validator {
+	return func(actual string) error {
+		if _, err := strconv.ParseUint(actual, 10, 64); err != nil {
+			if err != nil {
+				return errors.Wrapf(err, "failed to convert %v to uint64", actual)
+			}
 		}
 		return nil
 	}
 }
 
-// TelemMatchRegex returns a function that checks whether |actualValue| matches the
-// regex pattern specified by |regex|. If |actualValue| is "NA", do not proceed
+// MatchRegexOrNA returns a function that checks whether |actual| matches the
+// regex pattern specified by |regex|. If |actual| is "NA", do not proceed
 // with the pattern matching.
-func TelemMatchRegex(regex *regexp.Regexp) Validator {
-	return func(actualValue string) error {
+func MatchRegexOrNA(regex *regexp.Regexp) validator {
+	return func(actual string) error {
 		// If the value does not exist, do not check the format.
-		if actualValue == "NA" {
+		if actual == "NA" {
 			return nil
 		}
-		if matched := regex.MatchString(actualValue); !matched {
-			return errors.Errorf("failed to follow correct pattern: got %v, want %v", regex, actualValue)
+		if !regex.MatchString(actual) {
+			return errors.Errorf("failed to follow correct pattern: got %v, want %v", regex, actual)
 		}
 		return nil
 	}
 }
 
-// TelemEqualToFileContent returns a function that checks whether |filePathAndName|
-// and exists. If it does, it compares the value at that location wih
-// |actualValue|. If it does not, it ensures that |actualValue| equals "NA".
-func TelemEqualToFileContent(filePathAndName string) Validator {
-	return func(actualValue string) error {
-		expectedValueByteArr, err := ioutil.ReadFile(filePathAndName)
+// EqualToFileContentOrNA returns a function that checks whether
+// |path| exists. If it does, it compares the value at that location
+// wih |actual|. If it does not, it ensures that |actual| equals
+// "NA".
+func EqualToFileContentOrNA(path string) validator {
+	return func(actual string) error {
+		expectedBytes, err := ioutil.ReadFile(path)
 		if os.IsNotExist(err) {
-			if actualValue != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actualValue)
+			if actual != "NA" {
+				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
 			}
 			return nil
 		} else if err != nil {
-			return errors.Wrapf(err, "failed to read from file %v", filePathAndName)
+			return errors.Wrapf(err, "failed to read from file %v", path)
 		}
-		expectedValue := strings.TrimRight(string(expectedValueByteArr), "\n")
-		if actualValue != expectedValue {
-			return errors.Errorf("value does not match content of %v: got %v, want %v", filePathAndName, actualValue, expectedValue)
+		expected := strings.TrimRight(string(expectedBytes), "\n")
+		if actual != expected {
+			return errors.Errorf("value does not match content of %v: got %v, want %v", path, actual, expected)
 		}
 		return nil
 	}
 }
 
-// TelemCheckFileContentIfFileShouldExist returns a function that checks
-// whether |filePathAndName| should exist by using crosconfig and its two
-// arguments, |crosConfigProperty| and |crosConfigPath|. If the file should
+// EqualToFileIfCrosConfigPropOrNA returns a function that checks
+// whether |filePath| should exist by using crosconfig and its two
+// arguments, |prop| and |path|. If the file should
 // exist, it attempts to read the value from the file. If it cannot, an error
-// is reported. If it can, it compares the read value with |actualValue|.
-func TelemCheckFileContentIfFileShouldExist(ctx context.Context, crosConfigPath,
-	crosConfigProperty, filePathAndName string) Validator {
-	return func(actualValue string) error {
-		val, err := crosconfig.Get(ctx, crosConfigPath, crosConfigProperty)
+// is reported. If it can, it compares the read value with |actual|.
+func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath string) validator {
+	return func(actual string) error {
+		val, err := crosconfig.Get(ctx, path, prop)
 		if err != nil && !crosconfig.IsNotFound(err) {
-			errors.Wrapf(err, "failed to get crosconfig %v property", crosConfigProperty)
+			return errors.Wrapf(err, "failed to get crosconfig %v property", prop)
 		}
-		hasProperty := err == nil && val == "true"
-		if !hasProperty {
-			if actualValue != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actualValue)
+		// Property does not exist
+		if crosconfig.IsNotFound(err) || val != "true" {
+			if actual != "NA" {
+				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
 			}
 			return nil
 		}
-		expectedValueByteArr, err := ioutil.ReadFile(filePathAndName)
+		expectedBytes, err := ioutil.ReadFile(filePath)
 		if err != nil {
-			return errors.Wrapf(err, "failed to read file %v", filePathAndName)
+			return errors.Wrapf(err, "failed to read file %v", filePath)
 		}
-		expectedValue := strings.TrimRight(string(expectedValueByteArr), "\n")
-		if actualValue != expectedValue {
-			return errors.Errorf("failed to get correct value: got %v, want %v", actualValue, expectedValue)
+		expected := strings.TrimRight(string(expectedBytes), "\n")
+		if actual != expected {
+			return errors.Errorf("failed to get correct value: got %v, want %v", actual, expected)
 		}
 		return nil
 	}
 }
 
-// TelemEqualToCrosConfigContent returns a function that uses crosconfig and
-// its two arguments, |crosConfigProperty| and |crosConfigPath| to obtain a
-// value that is compared with |actualValue|.
-func TelemEqualToCrosConfigContent(ctx context.Context, crosConfigPath,
-	crosConfigProperty string) Validator {
-	return func(actualValue string) error {
-		expectedValue, err := crosconfig.Get(ctx, crosConfigPath, crosConfigProperty)
+// EqualToCrosConfigProp returns a function that uses crosconfig and
+// its two arguments, |prop| and |path| to obtain a
+// value that is compared with |actual|.
+func EqualToCrosConfigProp(ctx context.Context, path, prop string) validator {
+	return func(actual string) error {
+		expected, err := crosconfig.Get(ctx, path, prop)
 		if err != nil && !crosconfig.IsNotFound(err) {
-			errors.Wrapf(err, "failed to get crosconfig %v property", crosConfigProperty)
+			return errors.Wrapf(err, "failed to get crosconfig %v property", prop)
 		}
-		if actualValue != expectedValue {
-			return errors.Errorf("failed to get correct value: got %v, want %v", actualValue, expectedValue)
+		if actual != expected {
+			return errors.Errorf("failed to get correct value: got %v, want %v", actual, expected)
 		}
 		return nil
 	}
