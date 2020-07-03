@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9de464b8_1513c7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-03T07:57:05Z",
+      "side": 1,
+      "message": "closure",
+      "range": {
+        "startLine": 1142,
+        "startChar": 34,
+        "endLine": 1142,
+        "endChar": 41
+      },
+      "revId": "3ab7a562b4ea74dab3c22afd7cbd4e480c9cfcd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
