@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab8712ad_96f75a04",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-07-03T07:37:42Z",
+      "side": 1,
+      "message": "I checked skipToLoginForTesting and there is a lot of code relying on it. It might break other tests that might be expecting an enterprise screen.",
+      "parentUuid": "4f26723c_e3a14952",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bcafc7_7ab31242",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87546b02_20709907",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-07-03T07:37:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28bcafc7_7ab31242",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1221,
+        "endChar": 2
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
