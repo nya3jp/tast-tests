@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "4f26723c_e3a14952",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-03T07:09:44Z",
+      "side": 1,
+      "message": "just realized - could we just close the enrollment screen on skipToLoginForTesting? Just call WizardController::ShowLoginScreen in SkipToLoginForTesting",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28bcafc7_7ab31242",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-03T07:09:44Z",
+      "side": 1,
+      "message": "please leave a comment why is it needed.",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1221,
+        "endChar": 2
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975feb30_6ef573a5",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
