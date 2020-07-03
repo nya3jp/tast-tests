@@ -22,6 +22,30 @@
       "revId": "9def8ce45679677ab4fece331a0b3a7ac10a24d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4feb66e_0202c9cb",
+        "filename": "src/chromiumos/tast/common/shillconst/security/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-03T05:16:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1538bb1_fdc52c73",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "9def8ce45679677ab4fece331a0b3a7ac10a24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
