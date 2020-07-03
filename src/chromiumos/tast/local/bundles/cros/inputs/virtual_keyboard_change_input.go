@@ -48,10 +48,12 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	const (
-		defaultInputMethod      = "xkb:us::eng"
-		defaultInputMethodLabel = "US keyboard"
-		language                = "fr-FR"
-		inputMethod             = "xkb:fr::fra"
+		defaultInputMethod       = "xkb:us::eng"
+		defaultInputMethodLabel  = "US"
+		defaultInputMethodOption = "US keyboard"
+		language                 = "fr-FR"
+		inputMethod              = "xkb:fr::fra"
+		InputMethodLabel         = "FR"
 	)
 
 	if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
@@ -93,14 +95,24 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
-	assertInputMethod := func(ctx context.Context, inputMethod string) {
-		s.Logf("Wait for current input method to be %q", inputMethod)
+	assertInputMethod := func(ctx context.Context, inputMethod, inputMethodLabel string) {
+		s.Logf("Wait for current input method label to be %q, %q", inputMethod, inputMethodLabel)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Assert current language using API
 			currentInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
 			} else if currentInputMethod != vkb.ImePrefix+inputMethod {
 				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, vkb.ImePrefix+inputMethod)
+			}
+			keyboard, err := vkb.VirtualKeyboard(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "virtual keyboard does not show")
+			}
+			defer keyboard.Release(ctx)
+
+			if _, err := keyboard.Descendants(ctx, ui.FindParams{Name: inputMethodLabel}); err != nil {
+				return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
@@ -109,7 +121,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	}
 
 	// Assert default input method.
-	assertInputMethod(ctx, defaultInputMethod)
+	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)
 
 	s.Log("Switch input method with keybaord shortcut Ctrl+Shift+Space")
 	keyboard, err := input.Keyboard(ctx)
@@ -123,7 +135,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	}
 
 	// Assert new input method after switching with keyboard shortcut.
-	assertInputMethod(ctx, inputMethod)
+	assertInputMethod(ctx, inputMethod, InputMethodLabel)
 
 	s.Log("Switch input method on virtual keyboard")
 	if err := vkb.TapKey(ctx, tconn, "open keyboard menu"); err != nil {
@@ -136,7 +148,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	}
 
 	languageOptionParams := ui.FindParams{
-		Name: defaultInputMethodLabel,
+		Name: defaultInputMethodOption,
 	}
 
 	languageOption, err := ui.FindWithTimeout(ctx, tconn, languageOptionParams, 10*time.Second)
@@ -149,5 +161,5 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click default language: ", err)
 	}
 
-	assertInputMethod(ctx, defaultInputMethod)
+	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)
 }

@@ -37,7 +37,7 @@ func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, err
 	params := ui.FindParams{
 		Role: ui.RoleTypeKeyboard,
 	}
-	return ui.FindWithTimeout(ctx, tconn, params, time.Second)
+	return ui.FindWithTimeout(ctx, tconn, params, 3*time.Second)
 }
 
 // SetCurrentInputMethod sets the current input method used by the virtual
