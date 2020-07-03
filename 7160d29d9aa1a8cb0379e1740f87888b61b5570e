@@ -497,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "10276a7b_09ea07c0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-03T05:48:59Z",
+      "side": 1,
+      "message": "The latter sounds good to me. Those who need the mask length can call the gRPC directly, I guess.",
+      "parentUuid": "046a8ce4_7061f69a",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a79832b5_f232dd1c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
