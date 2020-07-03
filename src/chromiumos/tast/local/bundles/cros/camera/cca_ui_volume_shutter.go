@@ -260,8 +260,8 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if err := app.WaitForState(ctx, "taking", true); err != nil {
-			return errors.Wrap(err, "shutter is not started")
+		if err := app.WaitForState(ctx, "recording", true); err != nil {
+			return errors.Wrap(err, "recording is not started")
 		}
 
 		testing.ContextLog(ctx, "Record video for a second")
