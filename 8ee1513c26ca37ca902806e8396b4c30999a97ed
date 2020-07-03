@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d29b4f85_c8fc6946",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T05:52:29Z",
+      "side": 1,
+      "message": "I think we could move this function, readLine and readFloat64 into a separate util.go file. We are using some of these functions in thermal_metrics.go. In fact, thermal_metrics.go also contains a readInt function. I wrote that one a few days ago, but I think we can just use your readInt64 instead and delete readInt.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215d727b_edb4b727",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T05:52:29Z",
+      "side": 1,
+      "message": "I am wondering if this is the same as `/sys/class/power_supply/\u003csupply_name\u003e/capacity_alert_min`.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9ab9f63_bee6d8f4",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T05:52:29Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de6a481_dc82d413",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T05:52:29Z",
+      "side": 1,
+      "message": "This is return how much the battery is currently charged right? I think `capacity` may not be right word. The capacity is how much energy the battery can hold if it is full charged. But since the sysfs file is also called `capacity`, I think this is fine.",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
