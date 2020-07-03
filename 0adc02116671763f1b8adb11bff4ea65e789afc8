@@ -45,6 +45,54 @@
       "revId": "0adc02116671763f1b8adb11bff4ea65e789afc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca24fe3_6f94b41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login_gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-07-03T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa74b5fe_592c4aa5",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "0adc02116671763f1b8adb11bff4ea65e789afc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59294350_ba73b436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login_gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-07-03T01:52:05Z",
+      "side": 1,
+      "message": "Yeah, ideally it would be a precondition because some tests only care about being logged in, not about the log in process, e.g. different flavour of chrome.LogedIn(). But it\u0027s complicated because credentials.\n\nI\u0027ve stripped it down to bare minimum.",
+      "parentUuid": "21b33df5_af540a0f",
+      "range": {
+        "startLine": 43,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "0adc02116671763f1b8adb11bff4ea65e789afc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
