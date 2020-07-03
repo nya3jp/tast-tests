@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90fcdb5a_10fa91f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-03T22:09:23Z",
+      "side": 1,
+      "message": "Hi Oleh,\n\nPlease take a look at these changes to include CSV validation for the croshealthd tast tests. Thanks!",
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
