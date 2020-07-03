@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d4396274_5c2580e3",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-03T07:39:38Z",
+      "side": 1,
+      "message": "Good point, I totally missed that it maybe regenerated.\nI added the aliases to the generator and manually edited this file to do what the generator would have.\nI open a bug to request information be added to the generator on how to generate the defs.go file.",
+      "parentUuid": "3a936583_b81daead",
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90fa3dfe_867ac7be",
         "filename": "src/chromiumos/tast/common/policy/defs.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "11d3de9a_1c88a019",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-03T07:39:38Z",
+      "side": 1,
+      "message": "Fixed by adding an alias at the top of the file.\nSince this is a generated file, we will have to fix the generator.\n\nAdded a bug: crbug.com/1101928 to track the removal of the aliases and offending\n   terms.\nadded a bug: crbug.com/1101938 to get information on how to generate the file. \n   I will hold on to the CL until I get a reply, maybe I can make the full change\n   there.",
+      "parentUuid": "90fa3dfe_867ac7be",
+      "range": {
+        "startLine": 2141,
+        "startChar": 55,
+        "endLine": 2141,
+        "endChar": 67
+      },
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c56cb0fa_2adbc704",
         "filename": "src/chromiumos/tast/common/policy/defs.go",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2020-07-02T10:49:58Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 2170,
+        "startChar": 56,
+        "endLine": 2170,
+        "endChar": 68
+      },
+      "revId": "59d07d33832c0e45267d148759ff367bf3f4bb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5662ab7_bce68339",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-03T07:39:38Z",
+      "side": 1,
+      "message": "See comment above",
+      "parentUuid": "c56cb0fa_2adbc704",
       "range": {
         "startLine": 2170,
         "startChar": 56,
