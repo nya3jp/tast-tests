@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "874e42df_75b16934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-03T22:10:11Z",
+      "side": 1,
+      "message": "Added CSV validation that follows this pattern.",
+      "parentUuid": "538b22c0_793ad63f",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "969aaf806b07b0fa998883165a4533204aec8f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54f2a7fb_2e4db3f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
