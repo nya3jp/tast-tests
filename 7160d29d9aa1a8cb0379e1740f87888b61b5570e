@@ -539,6 +539,30 @@
     },
     {
       "key": {
+        "uuid": "9b6b7512_daf316d3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T07:46:27Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/2280744.",
+      "parentUuid": "10276a7b_09ea07c0",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 2
+      },
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a79832b5_f232dd1c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
