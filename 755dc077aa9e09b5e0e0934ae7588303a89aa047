@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4e6be2d0_443a128e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-03T06:17:43Z",
+      "side": 1,
+      "message": "Selecting \"this\" looks not that easier according to my local experiment.\n\nEven if Tast is set to this, we still need Tast.switchMode as eval expression to select the method for some reason, that means, we have to set two \"Tast\".\n\nInstead of using the closure here, I replace \"this\" by \"Tast\" with introducing the name of the class. That looks simpler to me that introducing auto bind wrapper. WDYT?",
+      "parentUuid": "6f8cabe7_13323610",
+      "range": {
+        "startLine": 956,
+        "startChar": 34,
+        "endLine": 956,
+        "endChar": 44
+      },
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d298504f_84e4f9cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -167,6 +191,24 @@
       "side": 1,
       "message": "Could we wrap it here as something like:\n((p) \u003d\u003e () \u003d\u003e p)(Tast.waitNextConfiguration())\nor\n{promise: Tast.waitNextConfiguration()}\n\ninstead of changing the JS implementation?",
       "parentUuid": "2f3a509a_04acd7f6",
+      "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266dc8b8_f7c56056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-03T06:17:43Z",
+      "side": 1,
+      "message": "Done by the closure. Note that the latter object approach won\u0027t work, because it\u0027s blocked here.",
+      "parentUuid": "187489ff_59996cd5",
       "revId": "755dc077aa9e09b5e0e0934ae7588303a89aa047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
