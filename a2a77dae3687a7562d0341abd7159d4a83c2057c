@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a49c6bc6_2409e16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_denylist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:51:32Z",
+      "side": 1,
+      "message": "At this point there\u0027s no policy named URLDenylist/URLAllowlist. :( \n\nHow about changing it to more generic description, e.g. \"Checks behavior of URL allow/deny-listing policies\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "a2a77dae3687a7562d0341abd7159d4a83c2057c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7418c76_c48aa887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_denylist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:51:32Z",
+      "side": 1,
+      "message": "This test is named \"policy.URLDenylist.allowlist\", which sounds a bit odd. I know it was also true before this rename, but I think this is a good timing to revisit it.\n\nHow about renaming the test and parameters so that two test variants are named in the following way:\n\n- policy.URL.allowlist\n- policy.URL.denylist",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "a2a77dae3687a7562d0341abd7159d4a83c2057c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
