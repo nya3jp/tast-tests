@@ -424,13 +424,8 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
-	clientIP, _, err := net.ParseCIDR(addrs[0])
-	if err != nil {
-		return errors.Wrapf(err, "failed to parse IP address %s", addrs[0])
-	}
-
 	pr := remoteping.NewRemoteRunner(tf.routerHost)
-	res, err := pr.Ping(ctx, clientIP.String(), opts...)
+	res, err := pr.Ping(ctx, addrs[0].String(), opts...)
 	if err != nil {
 		return err
 	}
@@ -444,7 +439,7 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 }
 
 // ClientIPv4Addrs returns the IPv4 addresses for the network interface.
-func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]string, error) {
+func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
@@ -458,7 +453,15 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]string, error) {
 		return nil, errors.Wrap(err, "failed to get the IPv4 addresses")
 	}
 
-	return addrs.Ipv4, nil
+	ret := make([]net.IP, len(addrs.Ipv4))
+	for i, a := range addrs.Ipv4 {
+		ret[i], _, err = net.ParseCIDR(a)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse IP address %s", a)
+		}
+	}
+
+	return ret, nil
 }
 
 // AssertNoDisconnect runs the given routine and verifies that no disconnection event
