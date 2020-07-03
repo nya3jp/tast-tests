@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15db6bf0_0edc84f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T09:48:38Z",
+      "side": 1,
+      "message": "I was using os.O_APPEND in that method, but agree that separate files are probably easier for debugging, so implemented individual files.",
+      "parentUuid": "257d1afa_a8529a71",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5670f2d4_f6f2e2d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "12b245dc_5b124d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T09:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5670f2d4_f6f2e2d4",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50197c30_19b72f97",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100bee4c_d85d4452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T09:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50197c30_19b72f97",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
