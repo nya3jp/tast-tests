@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce0cf067_fea6148d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-03T12:39:29Z",
+      "side": 1,
+      "message": "Yes, but it looks buggy. I really don\u0027t get why we don\u0027t just call ShowLoginScreen() there. Denis, any thoughts?",
+      "parentUuid": "ab8712ad_96f75a04",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bcafc7_7ab31242",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
