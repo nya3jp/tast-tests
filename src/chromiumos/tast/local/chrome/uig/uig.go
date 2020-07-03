@@ -177,7 +177,6 @@ func (a *Action) Retry(times int, action *Action) *Action {
 					node.release(ctx)
 					return child, nil
 				}
-				child.release(ctx)
 			}
 			node.release(ctx)
 			return nil, errors.Wrapf(actionErr, "action failed %d times, last error", times)
