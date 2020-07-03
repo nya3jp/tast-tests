@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "147b3827_3b1bfe3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:46:22Z",
+      "side": 1,
+      "message": "Hmm, graphics.DRM.* seems not using preconditions. Am I looking at a different file?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/drm.go\n\nPrecondition\u0027s point is to avoid lengthy setup process for every test. In this case setup is fairly fast (especially when the ui job is already stopped), so we don\u0027t need it.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions",
+      "parentUuid": "01a21d8a_e9ffd5d2",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bce9c5e_6dcf68d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "fb1302766091531aae8b144648b77d7a21c35593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4fd300_6057d353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:46:22Z",
+      "side": 1,
+      "message": "Thanks for clarification!",
+      "parentUuid": "130623b3_3c56d9a4",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
