@@ -106,6 +106,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a30dcb4_6107fb55",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-03T05:16:13Z",
+      "side": 1,
+      "message": "Done renaming security to sectype.\n\nYeah, let\u0027s see if they have suggestion or preference over patchset4 (single package) or patchset5 (sub-packages for categories).",
+      "parentUuid": "31cffa58_371ca639",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
