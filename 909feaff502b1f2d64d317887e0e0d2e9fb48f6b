@@ -22,6 +22,30 @@
       "revId": "909feaff502b1f2d64d317887e0e0d2e9fb48f6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "718dd4e7_1f2dc108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-07-03T04:09:20Z",
+      "side": 1,
+      "message": "This was taken from arc.PlayStore test https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/play_store.go;l\u003d80 \nDoes make sense for the first one to be a Fatal, kind of sounds like deferring a func with a Fatal in it might be a bit of a smell though, @bhansknecht is this the case why it\u0027s s.Error instead of s.Fatal?",
+      "parentUuid": "19513395_56dec338",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 106
+      },
+      "revId": "909feaff502b1f2d64d317887e0e0d2e9fb48f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
