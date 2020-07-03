@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47c2224f_80df762d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T06:36:05Z",
+      "side": 1,
+      "message": "I would put this in the else branch of the below if statement. This could be a fairly expensive operation.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "4696aea6ef8047a6104a0d82266b8b46c5db1b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76363ffc_24cef88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-03T06:36:05Z",
+      "side": 1,
+      "message": "Is this something we have to do with every test? If we do not add this check, then the test will be \"red\" on Stainless, right? I\u0027m wondering if there\u0027s a way to avoid this boilerplate code...",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "4696aea6ef8047a6104a0d82266b8b46c5db1b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
