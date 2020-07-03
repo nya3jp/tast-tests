@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01a21d8a_e9ffd5d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-03T06:22:35Z",
+      "side": 1,
+      "message": "Okay, that\u0027s simpler. What\u0027s the guide for when a precondition should be used, versus just performing the action in the test body as suggested?\n\ngraphics.DRM.* do something similar. My understanding is that I could also make them use the same precondition, which might batch these tests to run consecutively. Maybe not a big time saving in the big picture, though.",
+      "parentUuid": "7a2c7402_27be0baa",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bce9c5e_6dcf68d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-02T10:16:29Z",
       "side": 1,
       "message": "I assume we\u0027re going to add more parameters soon?",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130623b3_3c56d9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-03T06:22:35Z",
+      "side": 1,
+      "message": "Yes, I filled this out with kms_atomic, but there are a few dozen test executables, of which I\u0027d expect to run several. Still working on the exact set.",
+      "parentUuid": "2bce9c5e_6dcf68d5",
       "range": {
         "startLine": 70,
         "startChar": 20,
