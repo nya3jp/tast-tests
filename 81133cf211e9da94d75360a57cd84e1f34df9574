@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "257d1afa_a8529a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:59:03Z",
+      "side": 1,
+      "message": "This will overwrite a log file from previous subtests, which will make debugging harder. Can you save it to a different file?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5670f2d4_f6f2e2d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:59:03Z",
+      "side": 1,
+      "message": "os.Create is handy unless you want to set options explicitly.",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50197c30_19b72f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-03T08:59:03Z",
+      "side": 1,
+      "message": "Use s.Fatal instead of s.Error. Otherwise nil logf is used below and it panics.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "81133cf211e9da94d75360a57cd84e1f34df9574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
