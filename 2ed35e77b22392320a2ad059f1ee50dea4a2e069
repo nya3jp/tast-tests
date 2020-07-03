@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "306519d5_b519a84a",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T11:50:12Z",
+      "side": 1,
+      "message": "Use time.Duration instead.",
+      "parentUuid": "41c8417e_dcb1c932",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7096615e_dd267994",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-03T07:39:14Z",
       "side": 1,
       "message": "nit: timeout/time.Second might be more readable?",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33fc941a_725d4596",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T11:50:12Z",
+      "side": 1,
+      "message": "Since timeout/time.Second is a time.Duration, a int() conversion is still needed. Then I guess leaving it as it is would be better (though it perform additional float \u003c-\u003e int conversion).",
+      "parentUuid": "7096615e_dd267994",
       "range": {
         "startLine": 75,
         "startChar": 40,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b18d6a13_17d089c7",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T11:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a9d2b83_66e183cf",
+      "range": {
+        "startLine": 100,
+        "startChar": 57,
+        "endLine": 100,
+        "endChar": 67
+      },
+      "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66bbe8a_d9635a3f",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-03T07:39:14Z",
       "side": 1,
       "message": "Looks like it is also possible that the replies can also be broadcast. [1] Not sure if it is important in our usage.\n\nI think the number of received will be unmatched if broadcast replies received, so maybe we can handle that when found in real run? (but will need to have the output properly logged for debugging)\n\n[1] https://tools.ietf.org/html/rfc5227#section-1.2.1",
+      "range": {
+        "startLine": 107,
+        "startChar": 38,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d1f064_ebb89eb5",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T11:50:12Z",
+      "side": 1,
+      "message": "I am not sure the format of the output when we meet the broadcast replies. Though it should be similar to the unicast replies (according to the source code), the regex may not match it. I guess we can just log the output anyway, and wait until one day the error caused by broadcast replies appears?",
+      "parentUuid": "f66bbe8a_d9635a3f",
       "range": {
         "startLine": 107,
         "startChar": 38,
@@ -108,6 +204,24 @@
       "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc74d10_0fee6cea",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-03T11:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00742ef_3e81d8e8",
+      "revId": "2ed35e77b22392320a2ad059f1ee50dea4a2e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
