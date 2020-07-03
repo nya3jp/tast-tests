@@ -169,6 +169,25 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 
 // Install clicks the install button and waits for the Linux installation to complete.
 func (p *Installer) Install(ctx context.Context) error {
+	// First check for an error screen.
+	status, err := ui.Find(ctx, p.tconn, ui.FindParams{Role: ui.RoleTypeStatus})
+	if err == nil {
+		defer status.Release(ctx)
+		// There is an error message, fetch and return it rather than the "can't find Install button" error.
+		nodes, err := status.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeStaticText})
+		if err != nil {
+			return err
+		}
+		var messages []string
+		for _, node := range nodes {
+			messages = append(messages, node.Name)
+			node.Release(ctx)
+		}
+		message := strings.Join(messages, ": ")
+		if strings.HasPrefix(message, "Error") {
+			return errors.Errorf("error message in dialog: %s", strings.Join(messages, ": "))
+		}
+	}
 	// Focus on the install button to ensure virtual keyboard does not get in the
 	// way and prevent the button from being clicked.
 	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
