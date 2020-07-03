@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "e6faba6f_98ff381a",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-03T07:39:14Z",
+      "side": 1,
+      "message": "Do you think it is OK to create files under OutDir with ioutil.TempFile and leave the filename in log? e.g. something I did in crrev.com/c/2275379\n\nThe downside of the approach is there might be many files if it is called multiple times.",
+      "parentUuid": "9d1ec552_25383128",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c3a22e8_c388fc7a",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
