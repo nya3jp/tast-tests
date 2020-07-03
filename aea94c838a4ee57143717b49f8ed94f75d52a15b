@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6504cac0_1b2c4e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a656b4d_1a7d0185",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97d33c87_75bfb85f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1257f65d_a2a4ba0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d33c87_75bfb85f",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "53e1dc31_5c7ba91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done, nice, thanks!",
+      "parentUuid": "14e789e7_be6bdc96",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7d74c35_9801c432",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67a3c4b_3038186f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d74c35_9801c432",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +233,54 @@
       "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218837df_b4e6fff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195d0ed0_9ee90d2e",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d42d367e_b1115986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-03T08:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d38f2b6a_c61be2a8",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "aea94c838a4ee57143717b49f8ed94f75d52a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
