@@ -14,6 +14,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -109,11 +110,13 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		}
 	}
 	s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
-		if err := r.cr.StartTracing(ctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
+		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
+		defer cancel()
+		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
 			s.Fatal("Failed to start tracing: ", err)
 		}
-		if _, err := scenario(ctx); err != nil {
-			s.Fatal("Failed to run the test scenario: ", err)
+		if _, err := scenario(sctx); err != nil {
+			s.Error("Failed to run the test scenario: ", err)
 		}
 		tr, err := r.cr.StopTracing(ctx)
 		if err != nil {
