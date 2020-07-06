@@ -64,9 +64,19 @@ func init() {
 		Desc:     "Mutli-display ARC window management tests",
 		Contacts: []string{"ruanc@chromium.org", "niwa@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ruanc): There is no hardware dependency for multi-display. Move back to the mainline group once it is supported.
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			Name:              "",
+			Val:               "",
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name: "r",
+			Val:  "r",
+			// We need R+ but don't have software deps for it. Use android_vm instead.
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -112,7 +122,7 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	type testFunc func(context.Context, *chrome.Chrome, *arc.ARC) error
+	type testFunc func(context.Context, *testing.State, *chrome.Chrome, *arc.ARC) error
 	for idx, test := range []struct {
 		name string
 		fn   testFunc
@@ -129,7 +139,7 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		s.Logf("Running test %q", test.name)
 
 		// Log test result.
-		if err := test.fn(ctx, cr, a); err != nil {
+		if err := test.fn(ctx, s, cr, a); err != nil {
 			for _, info := range displayInfos {
 				path := fmt.Sprintf("%s/screenshot-multi-display-failed-test-%d-%q.png", s.OutDir(), idx, info.ID)
 				if err := screenshot.CaptureChromeForDisplay(ctx, cr, info.ID, path); err != nil {
@@ -142,7 +152,7 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 }
 
 // launchActivityOnExternalDisplay launches the activity directly on the external display.
-func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -188,7 +198,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 }
 
 // maximizeVisibility checks whether the window is visible on one display if another window is maximized on the other display.
-func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -287,7 +297,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 }
 
 // relayoutDisplays checks whether the window moves position when relayout displays.
-func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -397,7 +407,7 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 
 // removeAddDisplay checks whether the window moves to another display and shows inside of display.
 // After adding the display back without changing windows, it checks whether the window restores to the previous display.
-func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -491,6 +501,10 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 		// When removing external display, the window on external display will move to the internal display.
 		{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
 	} {
+		// TODO(b/159759425): Stop skipping the test once b/159759425 is resolved.
+		if removeAdd.name == "Remove and add internal display" && s.Param().(string) == "r" {
+			continue
+		}
 		if err := func() error {
 			// Remove one display and the window on the removed display should move to the other display.
 			if err := setDisplayPower(ctx, removeAdd.power); err != nil {
