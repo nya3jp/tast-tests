@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0db3450d_e1f3127f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-07-06T08:26:28Z",
+      "side": 1,
+      "message": "I noticed this when debugging another issue.\nWhen a11y test fails, for example both MainActivity and EditTextActivity fails (in the same test) then ui_tree.txt gets overwritten (since same file name). We missed this when DumpUiTreeOnError was added in crrev/c/2243012.\n\nSo this CL adds activity names to the dumped tree file name (similar to what we had before). ",
+      "revId": "5b2441568b095614285c151ac184ebd4d8508499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
