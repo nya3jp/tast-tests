@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c48f5cf8_c4000049",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-06T08:00:55Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. I added a CL to add util.go and rebase this CL on top of it.",
+      "parentUuid": "d29b4f85_c8fc6946",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "215d727b_edb4b727",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-03T05:52:29Z",
       "side": 1,
       "message": "I am wondering if this is the same as `/sys/class/power_supply/\u003csupply_name\u003e/capacity_alert_min`.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78d3dedb_b3c2b97d",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-06T08:00:55Z",
+      "side": 1,
+      "message": "From my understanding, this value is coming from a file per overlay like src/overlays/overlay-orco/chromeos-base/chromeos-bsp-orco/files/powerd_prefs/low_battery_shutdown_percent. This value is used by powerd service and may be reflected to sysfs, but I don\u0027t know whether it is always reflected or not. I think it is better to get this value through check_powerd_config, not through sysfs.",
+      "parentUuid": "215d727b_edb4b727",
       "range": {
         "startLine": 52,
         "startChar": 5,
@@ -68,6 +116,30 @@
       "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bb3958_c940361d",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-06T08:00:55Z",
+      "side": 1,
+      "message": "Iota represents successive integer constants. (c.f. https://golang.org/ref/spec#Iota )\nThis idiom is also used in other Tast code so I used this. (e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d114?q\u003diota\u0026sq\u003dpackage:%5Echromeos_public$ )",
+      "parentUuid": "a9ab9f63_bee6d8f4",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "8ee1513c26ca37ca902806e8396b4c30999a97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
