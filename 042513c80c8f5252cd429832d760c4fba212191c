@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f81860_4fcab817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-06T13:38:48Z",
+      "side": 1,
+      "message": "takise@, I have a comment inline.",
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79a1d4c4_5c43b747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-06T13:38:48Z",
+      "side": 1,
+      "message": "This test is not working yet. I always hit this error, and these are the screenshots from just 1 tast run:\nhttps://drive.google.com/drive/folders/1oG-HzyV2f9dccKVP6N6cVtb9ta9rQFOD?usp\u003dsharing\nThere is 1 image when the app is in the middle of maximizing (https://drive.google.com/file/d/1YpIxBNtCQygldLS9PgyBAR20i9Zd2lLR/view?usp\u003dsharing), but I don\u0027t see blue colors (except some from the background, but they don\u0027t have all the same blue).\n\nHow should we make this to work?",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
