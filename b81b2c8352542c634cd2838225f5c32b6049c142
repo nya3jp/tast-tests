@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6dcdda2_23a7c73c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-06T18:50:42Z",
+      "side": 1,
+      "message": "\u003e Patch Set 5: Code-Review+2\n\u003e \n\u003e (1 comment)\n\u003e \n\u003e LGTM for now, but I really recommend avoiding secret keys. They seem to complicate things without real benefit...\n\u003e \n\u003e \n\u003e \u003e Patch Set 5: Verified+1 Commit-Queue+1\n\u003e \u003e \n\u003e \u003e (14 comments)\n\u003e \u003e \n\u003e \u003e \u003e \u003e While it is okay to put the key to the private repo, it means that sign-in tests will lose coverage in some infrastructure, e.g. Chromium OS public builders, Chromium CQ presubmit, and Android TreeHugger. This sounds unfortunate.\n\u003e \u003e \n\u003e \u003e This extension explicitly created for Chrome OS OOBE/Login tast tests only. So I guess Android TreeHugger is not relevant? Not sure about Chromium OS public builder and Chromium CQ presubmit - do we run Chrome OS tast there?\n\u003e \n\u003e I agree that Android TH might not be relevant. But yes, we\u0027re running Tast tests on those builders.\n\u003e \n\u003e Chromium OS public builder:\n\u003e https://cros-goldeneye.corp.google.com/chromeos/legoland/builderHistory?buildConfig\u003damd64-generic-full\u0026buildBranch\u003dmaster\n\u003e e.g.\n\u003e https://ci.chromium.org/p/chromeos/builders/general/Full/b8875938183798287360?\n\u003e \n\u003e Chromium CQ presubmit:\n\u003e https://ci.chromium.org/p/chromium/builders/try/chromeos-amd64-generic-rel\n\u003e e.g.\n\u003e https://ci.chromium.org/p/chromium/builders/try/chromeos-amd64-generic-rel/586694\n\nThanks for the links! Let me land this one first as it\u0027s blocking people from writing tests. I\u0027ll take a look into the builders. Also please lgtm the key CL :)",
+      "revId": "b81b2c8352542c634cd2838225f5c32b6049c142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46930ea6_ee52c9c7",
         "filename": "src/chromiumos/tast/local/chrome/extensions.go",
         "patchSetId": 5
@@ -16,6 +33,24 @@
       "revId": "b81b2c8352542c634cd2838225f5c32b6049c142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a137dcab_cae4dd71",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-06T18:50:42Z",
+      "side": 1,
+      "message": "I moved it to the chrome.go. to have all the constants in one place",
+      "parentUuid": "46930ea6_ee52c9c7",
+      "revId": "b81b2c8352542c634cd2838225f5c32b6049c142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
