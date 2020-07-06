@@ -16,6 +16,75 @@
       "revId": "78ea604b62f7fc3b49c1131419b4a4074821506a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a64405d_2f3090ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T12:51:57Z",
+      "side": 1,
+      "message": "i\u0027d like to avoid such variables, instead you can put validator into csv or vcsv packages and use directly packages fucntions.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "78ea604b62f7fc3b49c1131419b4a4074821506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff957dfc_2f1edd26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T12:51:57Z",
+      "side": 1,
+      "message": "maybe validator also can check how many lines are there?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 71
+      },
+      "revId": "78ea604b62f7fc3b49c1131419b4a4074821506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966149ef_6f203deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T12:51:57Z",
+      "side": 1,
+      "message": "Error, since it\u0027s not critical to continue test",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 9
+      },
+      "revId": "78ea604b62f7fc3b49c1131419b4a4074821506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
