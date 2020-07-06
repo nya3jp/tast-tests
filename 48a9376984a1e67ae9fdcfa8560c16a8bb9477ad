@@ -16,6 +16,46 @@
       "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d606e9f_c6266723",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-06T04:41:03Z",
+      "side": 1,
+      "message": "AFAIK, in Chrome OS infra in Google,\n\n- Connections from DUTs to hosts are blocked by firewalls (DUTs are in restricted networks)\n- Direct connections from hosts to DUTs are allowed today, but the infra team is planning to forbid them in the next-gen infra\n\nI recommend contacting the infra team to discuss workable approaches.",
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d58046_9d7862ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-06T04:41:03Z",
+      "side": 1,
+      "message": "SoftwareDeps lists \"software features\" defined in the following way.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nSo you need another CL to define the new software feature to declare this dependency.\n\nThat said, we don\u0027t need this software feature if we install the remote_sleep_test command to all test images. I think it\u0027s fine since I expect the command is very small.",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

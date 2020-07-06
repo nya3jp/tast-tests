@@ -392,6 +392,30 @@
     },
     {
       "key": {
+        "uuid": "173e8a83_450fb1f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-06T04:41:03Z",
+      "side": 1,
+      "message": "Ack. Thanks!",
+      "parentUuid": "a0fe8903_23cf58d2",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaea94b4_e4a25923",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1
