@@ -58,13 +58,40 @@ const (
 	displayPowerInternalOnExternalOff displayPowerState = 3
 )
 
+type testFunc func(context.Context, *chrome.Chrome, *arc.ARC) error
+type testEntry struct {
+	name string
+	fn   testFunc
+}
+
+var stableTestSet = []testEntry{
+	// Based on http://b/129564108.
+	{"Launch activity on external display", launchActivityOnExternalDisplay},
+	// Based on http://b/110105532.
+	{"Activity is visible when other is maximized", maximizeVisibility},
+	// Based on http://b/63773037 and http://b/140056612.
+	{"Relayout displays", relayoutDisplays},
+	// Based on http://b/130897153.
+	{"Remove and re-add displays", removeAddDisplay},
+}
+
+// TODO(b/159759425): Unify the stable/unstable test set once b/159759425 is resolved.
+var unstableTestSet = []testEntry{
+	// Based on http://b/129564108.
+	{"Launch activity on external display", launchActivityOnExternalDisplay},
+	// Based on http://b/110105532.
+	{"Activity is visible when other is maximized", maximizeVisibility},
+	// Based on http://b/63773037 and http://b/140056612.
+	{"Relayout displays", relayoutDisplays},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MultiDisplay,
 		Desc:     "Mutli-display ARC window management tests",
 		Contacts: []string{"ruanc@chromium.org", "niwa@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ruanc): There is no hardware dependency for multi-display. Move back to the mainline group once it is supported.
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"arc", "chrome"},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
@@ -112,20 +139,20 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	type testFunc func(context.Context, *chrome.Chrome, *arc.ARC) error
-	for idx, test := range []struct {
-		name string
-		fn   testFunc
-	}{
-		// Based on http://b/129564108.
-		{"Launch activity on external display", launchActivityOnExternalDisplay},
-		// Based on http://b/110105532.
-		{"Activity is visible when other is maximized", maximizeVisibility},
-		// Based on http://b/63773037 and http://b/140056612.
-		{"Relayout displays", relayoutDisplays},
-		// Based on http://b/130897153.
-		{"Remove and re-add displays", removeAddDisplay},
-	} {
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC version: ", err)
+	}
+	var testSet []testEntry
+	if version >= arc.SDKR {
+		testing.ContextLog(ctx, "Using unstable test set")
+		testSet = unstableTestSet
+	} else {
+		testing.ContextLog(ctx, "Using stable test set")
+		testSet = stableTestSet
+	}
+
+	for idx, test := range testSet {
 		s.Logf("Running test %q", test.name)
 
 		// Log test result.
@@ -529,7 +556,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 				return err
 			}
 			var restoreWinBounds coords.Rect
-			testing.Poll(ctx, func(ctx context.Context) error {
+			err = testing.Poll(ctx, func(ctx context.Context) error {
 				restoreWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, removeAdd.moveAct.PackageName())
 				if err != nil {
 					return err
@@ -540,6 +567,9 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 				restoreWinBounds = restoreWinInfo.BoundsInRoot
 				return nil
 			}, &testing.PollOptions{Timeout: 5 * time.Second})
+			if err != nil {
+				return err
+			}
 			return ensureWinBoundsInDisplay(restoreWinBounds, removeAdd.origDispInfo.Bounds)
 		}(); err != nil {
 			return errors.Wrapf(err, "test removeAddDispaly failed when %q", removeAdd.name)
