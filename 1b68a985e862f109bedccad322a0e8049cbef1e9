@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "d4108553_bafcf0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-06T23:27:18Z",
+      "side": 1,
+      "message": "Sub(coords.NewPoint(1, 1)) is fine. Again, the right/bottom most pixel in the touchscreen is considered to be out of the screen and may fail (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/input/touch.go#309). I encountered this failure when I tried to reproduce on nocturne locally.\n\nY axis was fine without subtracting, because it uses WorkArea, there are some spaces for shelf below. But subtracting is fine.",
+      "parentUuid": "2672f113_1f1bf3df",
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4522b8c0_efa089ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 7
