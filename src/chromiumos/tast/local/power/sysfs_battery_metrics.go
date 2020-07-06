@@ -9,31 +9,15 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"strconv"
-	"strings"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
-func readLine(filePath string) (string, error) {
-	strBytes, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSuffix(string(strBytes), "\n"), nil
-}
 func hasSysfsAttribute(filePath string) bool {
 	_, err := os.Stat(filePath)
 	return err != nil
-}
-func readFloat64(filePath string) (float64, error) {
-	str, err := readLine(filePath)
-	if err != nil {
-		return 0., err
-	}
-	return strconv.ParseFloat(str, 64)
 }
 
 // readSystemPower returns system power consumption in Watt.
