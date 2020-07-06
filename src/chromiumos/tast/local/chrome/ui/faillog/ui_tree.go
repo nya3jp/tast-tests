@@ -20,10 +20,15 @@ const (
 	uiTreeFileName = "ui_tree.txt"
 )
 
-// DumpUITreeOnError checks the testing.State and dumps the whole UI tree data
-// into a file 'ui_tree.txt' when the test fails. It does nothing when the test
-// succeeds.
+// DumpUITreeOnError dumps tree to 'ui_tree.txt', when the test fails.
+// Use DumpUITreeOnErrorToFile, if you want to specify the fileName.
 func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.TestConn) {
+	DumpUITreeOnErrorToFile(ctx, outDir, hasError, tconn, uiTreeFileName)
+}
+
+// DumpUITreeOnErrorToFile checks the given hasError function and dumps the whole UI tree data
+// into a file 'fileName' when the test fails. It does nothing when the test succeeds.
+func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.TestConn, fileName string) {
 	if !hasError() {
 		return
 	}
@@ -34,9 +39,9 @@ func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool,
 		return
 	}
 
-	fileName := filepath.Join(dir, uiTreeFileName)
-	testing.ContextLog(ctx, "Test failed. Dumping the automation node tree into ", uiTreeFileName)
-	if err := ui.LogRootDebugInfo(ctx, tconn, fileName); err != nil {
+	filePath := filepath.Join(dir, fileName)
+	testing.ContextLog(ctx, "Test failed. Dumping the automation node tree into ", fileName)
+	if err := ui.LogRootDebugInfo(ctx, tconn, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to dump: ", err)
 	}
 }
