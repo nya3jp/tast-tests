@@ -711,3 +711,31 @@ func (c *ContainerCreationWatcher) WaitForCreationComplete(ctx context.Context) 
 		}
 	}
 }
+
+// CheckFilesExistInContainer checks files existence in container
+// Return error if files in filesExist do not exist or files in filesNotExist exist or any other error.
+func (c *Container) CheckFilesExistInContainer(ctx context.Context, filesExist, filesNotExist []string) error {
+	// Get file list in home directory in container.
+	cmd := c.Command(ctx, "ls", ".")
+	result, err := cmd.Output()
+	if err != nil {
+		errors.Wrap(err, "failed to list the content of home directory in container")
+		return err
+	}
+	fileslist := string(result)
+
+	// Check files in filesExist exist
+	for _, file := range filesExist {
+		if !strings.Contains(fileslist, file) {
+			return errors.Errorf("failed to find %s in container", file)
+		}
+	}
+
+	// Check files in filesNotExist do not exist
+	for _, file := range filesNotExist {
+		if strings.Contains(fileslist, file) {
+			return errors.Errorf("File %s unexpectedly exists in container", file)
+		}
+	}
+	return nil
+}
