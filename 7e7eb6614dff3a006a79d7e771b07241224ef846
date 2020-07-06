@@ -16,6 +16,69 @@
       "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "217b468c_3c7030c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T23:04:28Z",
+      "side": 1,
+      "message": "just two more nits, thanks.",
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfa5a198_f58b2966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T23:04:28Z",
+      "side": 1,
+      "message": "huge nit:\nerrors should not be capitalized:  Event -\u003e event\nuse \"want, got\" pattern for expected results.\ne.g:\n\n\"unexpected number of events; got %d, want %d\"",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1ef0b5_d40e28bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T23:04:28Z",
+      "side": 1,
+      "message": "nit:\nIt looks weird that getEvents() and waitForEventCount() are both calling for v.GetText().\nYou know that v.GetText() will have the correct values when it returns from waitForEventCount().\n\nSo, one possible (small) improvement is:\n\n  json, err :\u003d waitForEvents()\n  if err !\u003d nil {\n    ...\n  }\n\n  events, err :\u003d parseJSONEvents(ctx, d, json)\n  ...\n\n\nPerhaps the func names that I\u0027m suggesting are not the best. Feel free to change them.\n\nnit2:\nin Go, it is discouraged to use the \"get\" prefix. For getters you should ommit the \"get\" when applicable.",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
