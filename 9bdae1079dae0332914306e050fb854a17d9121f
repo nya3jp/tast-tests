@@ -124,6 +124,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74589408_ae779c89",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-06T22:50:21Z",
+      "side": 1,
+      "message": "(I\u0027m not sure we have to pick package names just to avoid conflict; for example, with \u0027iw\u0027, we have local, command, and remote, and we just alias it to remoteiw if needed.)\n\nI personally think the proliferation of packages is too much. I really do like it that, for instance, godoc.org has everything in one place:\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/shill\n\nNow I\u0027ll have to figure out how to navigate ~10 packages.\n\nI\u0027m not sure the best solution to managing the length of identifier names.",
+      "parentUuid": "5a30dcb4_6107fb55",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
