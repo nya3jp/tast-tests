@@ -41,6 +41,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "NC_user_immerse_portrait",
 			Func: wmNC04,
 		},
+		wm.TestCase{
+			// non-resizable/clamshell: user immerse non-portrait app
+			Name: "NC_user_immerse_non_portrait",
+			Func: wmNC05,
+		},
 	})
 }
 
@@ -78,7 +83,26 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmNC04 covers non-resizable/clamshell: user immerse portrait app (pillarbox) behavior.
 // Expected behavior is defined in: go/arc-wm-r NC04: non-resizable/clamshell: user immerse portrait app (pillarbox).
 func wmNC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizablePortraitActivity)
+	return checkMaxActivityToFullscreen(ctx, tconn, a, d, wm.NonResizablePortraitActivity)
+}
+
+// wmNC05 covers non-resizable/clamshell: user immerse non-portrait app behavior.
+// Expected behavior is defined in: go/arc-wm-r NC05: non-resizable/clamshell: user immerse non-portrait app.
+func wmNC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, activityName := range []string{
+		wm.NonResizableLandscapeActivity,
+		wm.NonResizableUnspecifiedActivity,
+	} {
+		if err := checkMaxActivityToFullscreen(ctx, tconn, a, d, activityName); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// checkMaxActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
+func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
 	}
@@ -101,7 +125,6 @@ func wmNC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err != nil {
 		return err
 	}
-
 	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
 		return err
 	}
@@ -118,6 +141,5 @@ func wmNC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err != nil {
 		return err
 	}
-
-	return wm.CheckMaximizeToFullscreenTogglePortrait(ctx, tconn, windowInfoMaximized.TargetBounds, *windowInfoFullscreen)
+	return wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoMaximized.TargetBounds, *windowInfoFullscreen)
 }

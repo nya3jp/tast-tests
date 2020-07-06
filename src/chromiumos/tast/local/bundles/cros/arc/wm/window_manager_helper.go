@@ -137,8 +137,8 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 	return nil
 }
 
-// CheckMaximizeToFullscreenTogglePortrait checks window's bounds transisionning from max to fullscreen in portrait mode.
-func CheckMaximizeToFullscreenTogglePortrait(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, fullscreenWindow ash.Window) error {
+// CheckMaximizeToFullscreenToggle checks window's bounds transisionning from max to fullscreen.
+func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, fullscreenWindow ash.Window) error {
 	if maxWindowCoords.Left != fullscreenWindow.TargetBounds.Left ||
 		maxWindowCoords.Top != fullscreenWindow.TargetBounds.Top ||
 		maxWindowCoords.Width != fullscreenWindow.TargetBounds.Width ||
