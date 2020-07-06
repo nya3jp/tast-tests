@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a627fa5b_21c539a3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-06T03:13:56Z",
+      "side": 1,
+      "message": "Avoid excessive logging. If the arping result is important for some tests, you may return the result and let the caller log/store the result.",
+      "revId": "b6f8e425e1e85d15a9d428d1354e644b0fb3ca00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c3158b_db847278",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-06T03:13:56Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "b6f8e425e1e85d15a9d428d1354e644b0fb3ca00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
