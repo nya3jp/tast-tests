@@ -16,6 +16,23 @@
       "revId": "eb829fba4f120221c5264dd57f73e02ff215e8df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b998581_6c50f354",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-06T19:07:35Z",
+      "side": 1,
+      "message": "Looks like the fix was simpler than I thought; created https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2283845, I think that\u0027s preferred.",
+      "revId": "eb829fba4f120221c5264dd57f73e02ff215e8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
