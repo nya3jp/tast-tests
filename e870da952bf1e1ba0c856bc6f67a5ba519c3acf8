@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a9c628_4d99b77c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-06T15:39:02Z",
+      "side": 1,
+      "message": "andrescj@, tast-owners@ PTAL\n\n\nOthers FYI. \n\nNote that a number of the newly enabled test cases will fail,\njkardatzke will see them as gfx-video guard :- )\n",
+      "revId": "e870da952bf1e1ba0c856bc6f67a5ba519c3acf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
