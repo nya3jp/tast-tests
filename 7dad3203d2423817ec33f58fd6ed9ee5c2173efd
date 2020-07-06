@@ -46,6 +46,30 @@
       "revId": "7dad3203d2423817ec33f58fd6ed9ee5c2173efd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c720c4_b36bb863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-06T23:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7bb5eb_5eabc789",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 2
+      },
+      "revId": "7dad3203d2423817ec33f58fd6ed9ee5c2173efd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

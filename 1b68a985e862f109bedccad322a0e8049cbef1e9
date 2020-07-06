@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49ccae37_b5f0b5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-06T23:12:51Z",
+      "side": 1,
+      "message": "Done, and I similarly changed the timeout waiting for chrome://settings to achieve quiescence.",
+      "parentUuid": "75c2400a_9b744194",
+      "range": {
+        "startLine": 536,
+        "startChar": 69,
+        "endLine": 536,
+        "endChar": 80
+      },
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88c87065_6de8a6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2020-07-01T22:58:12Z",
       "side": 1,
       "message": "The rightmost pixel might not be a valid location. It is safer to reduce the x by 1.",
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2672f113_1f1bf3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-06T23:12:51Z",
+      "side": 1,
+      "message": "Now I have reduced both coordinates by 1. Did you really mean only the x? If so, why is that?",
+      "parentUuid": "88c87065_6de8a6cd",
       "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +98,47 @@
       "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db609f4_ce086bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-06T23:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4522b8c0_efa089ba",
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d30d1841_d35a3084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-06T23:12:51Z",
+      "side": 1,
+      "message": "I am going to make it coords.NewPoint(20, 20).",
+      "range": {
+        "startLine": 576,
+        "startChar": 83,
+        "endLine": 576,
+        "endChar": 109
+      },
+      "revId": "1b68a985e862f109bedccad322a0e8049cbef1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
