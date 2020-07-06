@@ -46,6 +46,30 @@
       "revId": "ba8c2605dc23e08767087788e979c34dff9e56d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d99ecb2a_5ec560fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-07-06T18:49:09Z",
+      "side": 1,
+      "message": "Not sure about the syntax, but we still want to run the test after P.",
+      "parentUuid": "fda26529_3e6bffe9",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "ba8c2605dc23e08767087788e979c34dff9e56d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
