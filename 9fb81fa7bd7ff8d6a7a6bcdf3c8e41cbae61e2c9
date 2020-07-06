@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b1929a3_da5ddc59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-07-06T16:35:13Z",
+      "side": 1,
+      "message": "Hi Oleh, thanks for the comments. I\u0027ve tried to provide some additional context for what we are doing in hopes it\u0027ll make more sense. You can also see go/playability-dd.\n\nI haven\u0027t changed anything yet since I figure your thoughts may change with the additional background, so please let me know what you think afterwards.\n\nThanks!",
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5669304_c4961ca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 2
@@ -48,6 +65,54 @@
     },
     {
       "key": {
+        "uuid": "e96286fd_7373ee39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-07-06T16:35:13Z",
+      "side": 1,
+      "message": "I agree with the general notion that tests should be testing one thing. We have a specific use case which is why we wanted to make this more general test, but there may be a better way to do this that I\u0027m not thinking of.\n\nWe wanted to have a way for people to look at our test dashboard and immediately see whether a given Android build is \"playable\". The reason for this is that we don\u0027t want our developers to sync to a build that doesn\u0027t work when testing their changes. Right now this is (sadly) a manual process, and we have a rotation where someone will report what a usable build is.\n\nHence, we are hoping to run this test for every Android build and have developers use the results of this test to determine whether it\u0027s workable or not.\n\nThe issue with using multiple tests for each different component is that we just want the basic functionality to work. If we use something like the general window state test (as suggested), the issue is that it might fail for more complex use cases, but still be usable for developers. We could just write a bunch of simple tests, but then I think we would be adding too many test cases that are only useful for this specific use-case. Having multiple tests also requires developers to have to look at many different tests on the dashboard and know which ones are relevant.\n\nI understand this is not a best practice but in this scenario I think it makes sense to keep this as one test because at least the \"mess\" is contained here. Seeing as this is supposed to test only the most basic functionality, I don\u0027t anticipate this test growing. It\u0027s entirely possible we\u0027ll actually have to simplify it further if we have too many false negatives.\n\nOf course, if there\u0027s a better solution to this please let me know!",
+      "parentUuid": "e5669304_c4961ca7",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc73a0c3_af2110fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-07-06T16:35:13Z",
+      "side": 1,
+      "message": "Please see other comment",
+      "parentUuid": "4410cff3_d5e2a512",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 105
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec32a872_f74e9a67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 2
@@ -68,6 +133,30 @@
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0770c8_afa7767c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-07-06T16:35:13Z",
+      "side": 1,
+      "message": "Ack. If you want me to change it I can, but when I was reading the other code I found it difficult, hence why I changed it.",
+      "parentUuid": "ec32a872_f74e9a67",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -126,6 +215,30 @@
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15694d6f_6ce707f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-07-06T16:35:13Z",
+      "side": 1,
+      "message": "It\u0027s described in the TODO but essentially they don\u0027t work yet because we haven\u0027t implemented those features yet in R.",
+      "parentUuid": "e7eb5758_8c7de46f",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
