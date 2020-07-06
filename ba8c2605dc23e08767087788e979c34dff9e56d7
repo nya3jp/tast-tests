@@ -22,6 +22,30 @@
       "revId": "ba8c2605dc23e08767087788e979c34dff9e56d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda26529_3e6bffe9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-06T18:00:04Z",
+      "side": 1,
+      "message": "Android all is no longer supported based on this - https://crrev.com/c/2125384",
+      "parentUuid": "17932102_0d53ca47",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "ba8c2605dc23e08767087788e979c34dff9e56d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
