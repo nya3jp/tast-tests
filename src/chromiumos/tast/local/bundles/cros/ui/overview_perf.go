@@ -31,7 +31,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
 			Pre: chrome.LoggedIn(),
