@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "d5782477_58651fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T17:29:22Z",
+      "side": 1,
+      "message": "I guess you may be interested in\n1. parameterized tests:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n2. multiple files like PlayabilityWindow, PlayabilityInputOutput, PlayabilityAPK, ...\n\n\nI vote for (2), because otherwise you will try to put everything into one file, which is hard to maintain. When you will have multiple files, you will be able to run all of them using regex: tast run localhost arc.Playability*",
+      "parentUuid": "e96286fd_7373ee39",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec32a872_f74e9a67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 2
@@ -157,6 +181,30 @@
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b0073c_712aa8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T17:29:22Z",
+      "side": 1,
+      "message": "I\u0027d like to be consistent across all tests",
+      "parentUuid": "1e0770c8_afa7767c",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -239,6 +287,30 @@
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f24ed1c_99af931f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-06T17:29:22Z",
+      "side": 1,
+      "message": "Do you want to submit this commented code in the repository? If so, you may create a separate CL with these changes and submit once this functionality will be ready",
+      "parentUuid": "15694d6f_6ce707f7",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
