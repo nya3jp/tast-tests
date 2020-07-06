@@ -49,6 +49,9 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
 		out, err := d.Command("cat", "/tmp/wipe_init.log").Output(ctx)
 		// keep retrying when the log file is not created.
 		if err != nil {
