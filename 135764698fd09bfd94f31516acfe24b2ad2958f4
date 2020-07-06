@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46cbfba2_4b273c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-06T17:11:36Z",
+      "side": 1,
+      "message": "So this is an early fail that will completely stop the test if it can not open and close the app. If the app won\u0027t launch at all, no point in running the test.\n\nThe app is still opened before each test case and closed after each test case on lines 67 to 73.",
+      "parentUuid": "70a4cf07_ce0f9f91",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "135764698fd09bfd94f31516acfe24b2ad2958f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74d23360_f01719b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-07-02T23:09:35Z",
       "side": 1,
       "message": "Need to remove comments.",
+      "revId": "135764698fd09bfd94f31516acfe24b2ad2958f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bc9970_652c99ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-06T17:11:36Z",
+      "side": 1,
+      "message": "I feel like logging this all the time just leads to extra noise in the logs. If the wrong package is returned, an error will be logged(L91). If the right package is returned, nothing will be logged. I just left this in because I thought it might be nice to uncomment for debugging.\n\nIf you want this logged every time, I can uncomment it.",
+      "parentUuid": "74d23360_f01719b8",
       "revId": "135764698fd09bfd94f31516acfe24b2ad2958f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
