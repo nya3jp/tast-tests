@@ -46,6 +46,30 @@
       "revId": "909feaff502b1f2d64d317887e0e0d2e9fb48f6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a315bb9_29547a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-06T17:36:37Z",
+      "side": 1,
+      "message": "I have never actually dug through the code to confirm, but s.Fatal simply feels wrong to use here. If this cleanup function fails, we want any other cleanup functions to continue running. I am not sure which would happen with s.Fatal, but I know that s.Error allows for continuation. Also, it might be worth using s.Log instead. I find that this error can mess with stainless clusters and isn\u0027t too helpful in general.\n\nAnyway, if I were to rewrite this now, I would write it more like: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/faillog/ui_tree.go\n\nIt probably should be refactored to one library call in arc/faillog at some point, but that can be done in another CL. For now, I would just use an else. ex:\n\nif err :\u003d a.Command(ctx, \"uiautomator\", \"dump\").Run(testexec.DumpLogOnError); err !\u003d nil {\n\ts.Error(\"Failed to dump UIAutomator: \", err)\n}else if err :\u003d a.PullFile(ctx, \"/sdcard/window_dump.xml\", filepath.Join(s.OutDir(), \"uiautomator_dump.xml\")); err !\u003d nil {\n\ts.Error(\"Failed to pull UIAutomator dump: \", err)\n}",
+      "parentUuid": "718dd4e7_1f2dc108",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 106
+      },
+      "revId": "909feaff502b1f2d64d317887e0e0d2e9fb48f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
