@@ -90,14 +90,14 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
 	// Input method changing is done async between front-end ui and background.
 	// So nicely to assert both of them to make sure input method changed completely.
 	assertInputMethod := func(ctx context.Context, inputMethod, inputMethodLabel string) {
+		s.Logf("Waiting for %v virtual keyboard to show", inputMethod)
+		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+		}
+
 		s.Logf("Wait for current input method label to be %q, %q", inputMethod, inputMethodLabel)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// Assert current language using API
