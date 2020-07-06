@@ -17,19 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// readInt reads an integer from a file.
-func readInt(filePath string) (int, error) {
-	str, err := readLine(filePath)
-	if err != nil {
-		return 0, err
-	}
-	value, err := strconv.Atoi(str)
-	if err != nil {
-		return 0, err
-	}
-	return value, nil
-}
-
 // listSysfsThermalSensors lists names and paths of thermal sensors which can be read through sysfs.
 func listSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
 	// TODO(springerm): Remove ContextLogf()s after checking this function works on all platforms
@@ -49,7 +36,7 @@ func listSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
 		}
 
 		devPath := path.Join(sysfsThermalPath, file.Name())
-		_, err := readInt(path.Join(devPath, "temp"))
+		_, err := readInt64(path.Join(devPath, "temp"))
 		if err != nil {
 			testing.ContextLogf(ctx, "%v is not readable", devPath)
 			continue
@@ -129,7 +116,7 @@ func (b *SysfsThermalMetrics) Snapshot(ctx context.Context, values *perf.Values)
 	}
 	for _, metric := range b.metrics {
 		tempFile := path.Join(metric.path, "temp")
-		temp, err := readInt(tempFile)
+		temp, err := readInt64(tempFile)
 		if err != nil {
 			return errors.Wrapf(err, "cannot read temperature from %s", tempFile)
 		}
