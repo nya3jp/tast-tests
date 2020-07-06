@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce061a92_e7dbb8c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-07-06T16:51:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "35fee7873cd10732ad5e3a293ffc9c72c74fe59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dfd94b1_c91cb845",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
@@ -93,6 +110,30 @@
       "revId": "35fee7873cd10732ad5e3a293ffc9c72c74fe59a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89222d24_c3156d82",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-07-06T16:51:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e9e6df2_5f4bb06a",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "35fee7873cd10732ad5e3a293ffc9c72c74fe59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
