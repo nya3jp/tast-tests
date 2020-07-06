@@ -16,6 +16,24 @@
       "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee6f3b8_117c54e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-06T08:24:54Z",
+      "side": 1,
+      "message": "I looked at failures further.\n\n\u003e Dump wipe_in_tmpfs.log (before pivot root) fail\n\nLooking at syslog on this failure, SSH login is not attempted until the polling timeout is almost reached! I suspect that this is because d.Command(...).Run(ctx) can block up to ctx timeout.\n\nCan you try setting a per-iteration timeout in the following way?\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   ctx, cancel :\u003d context.WithTimeout(ctx, 10*time.Second)\n   defer cancel()\n\n   ...\n }...\n\nc.f.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/dut/dut.go;l\u003d189\n\n\u003e Failed to wait wiping finished: wipe_init failed\n\nTast has some logic to wait for the DUT to get ready in the ready package. It is currently used only in pre-run hooks, but it should be useful for tests rebooting the DUT as well. ready.Wait function contains some pre-run-specific logics as well, so you might have to refactor it a bit.\n\n\u003e Failed to reboot DUT\n\nThis seems general boot flakiness. It is known that a DUT might not return from a reboot for some time due to boot flakiness, e.g. crbug.com/1040286#c38\n\n\u003e Failed to reconnect to DUT\n\nLooking at logs, they seem caused by crash.KernelCrash. It\u0027s tracked by crbug.com/1040286, so you can ignore those failures on evaluating your test.",
+      "parentUuid": "14bb632d_b1606ffa",
+      "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
