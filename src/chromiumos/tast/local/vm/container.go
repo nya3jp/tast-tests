@@ -711,3 +711,53 @@ func (c *ContainerCreationWatcher) WaitForCreationComplete(ctx context.Context) 
 		}
 	}
 }
+
+// CheckFileExists checks files exist in container
+// Return error if and files does not exist or any other error.
+func (c *Container) CheckFileExists(ctx context.Context, files []string) error {
+	// Get file list in home directory in container.
+	fileslist, err := c.GetFileListInContainerHomeDir(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to list the content of home directory in container")
+		return err
+	}
+
+	// Check files exist
+	for _, file := range files {
+		if !strings.Contains(fileslist, file) {
+			return errors.Errorf("failed to find %s in container", file)
+		}
+	}
+	return nil
+}
+
+// CheckFileDoesNotExist checks files do not exist in container
+// Return error if any file exists or any other error.
+func (c *Container) CheckFileDoesNotExist(ctx context.Context, files []string) error {
+	// Get file list in home directory in container.
+	fileslist, err := c.GetFileListInContainerHomeDir(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to list the content of home directory in container")
+		return err
+	}
+
+	// Check files do not exist
+	for _, file := range files {
+		if strings.Contains(fileslist, file) {
+			return errors.Errorf("File %s unexpectedly exists in container", file)
+		}
+	}
+	return nil
+}
+
+// GetFileListInContainerHomeDir list the files in home directory in container
+// Return a string as file list or error if any.
+func (c *Container) GetFileListInContainerHomeDir(ctx context.Context) (fileslist string, err error) {
+	// Get file list in home directory in container.
+	cmd := c.Command(ctx, "ls", ".")
+	result, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+	return string(result), nil
+}
