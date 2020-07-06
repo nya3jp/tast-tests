@@ -40,6 +40,24 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
+	// Wait system daemons up
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
+		out, err := d.Command("initctl", "status", "system-services").Output(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "fail to access initctl"))
+		}
+
+		if strings.Contains(string(out), "start/running") {
+			return nil
+		}
+
+		return errors.New("status: " + string(out))
+	}, nil); err != nil {
+		s.Fatal("Failed to wait system daemons up after reboot: ", err)
+	}
 
 	s.Log("Start wiping and umount")
 
