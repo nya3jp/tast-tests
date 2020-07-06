@@ -29,9 +29,15 @@ func init() {
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"ArcBlackFlashTest.apk"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -89,7 +95,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	}
 
 	// Set the activity to Restored.
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
 		s.Fatal("Failed to set the activity to Normal: ", err)
 	}
 
@@ -98,18 +104,13 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	}
 
 	// Set the activity to Maximized, but don't wait for the activity to be idle as we are interested in its transient state.
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
 		s.Fatal("Failed to set the activity to Maximized: ", err)
 	}
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	primaryDispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
-	}
-
-	dispSize, err := disp.Size(ctx)
-	if err != nil {
-		s.Fatal("Failed to get display bounds")
 	}
 
 	// Check the screenshot of the activity a few times to see if it shows a black flash or not.
@@ -124,12 +125,16 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	// Even if state transition finishes completely and the maximized buffer is ready on the Android side,
 	// it doesn't mean the buffer is shown on the Chrome side as transition animation can be still hapenning.
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		bounds, err := act.WindowBounds(ctx)
+		if err != nil {
+			return err
+		}
+		windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+		bounds := windowInfo.TargetBounds
 		if err != nil {
 			return err
 		}
 		// Note if Chrome caption is enabled, the size of a maximized activity can be larger than the display size by the height of the caption.
-		if bounds.Width < dispSize.Width || bounds.Height < dispSize.Height {
+		if bounds.Width < primaryDispInfo.Bounds.Width || bounds.Height < primaryDispInfo.Bounds.Height {
 			return errors.New("activity is smaller than display yet")
 		}
 
