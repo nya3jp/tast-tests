@@ -15,6 +15,20 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 )
 
+// Context menu items for a file
+const (
+	Open         = "Open"
+	OpenWith     = "Open with..."
+	Cut          = "Cut"
+	Copy         = "Copy"
+	Paste        = "Paste"
+	GetInfo      = "Get info"
+	Rename       = "Rename"
+	Delete       = "Delete"
+	ZipSelection = "Zip select"
+	NewFolder    = "New folder"
+)
+
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
@@ -237,5 +251,68 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 		}
 	}
 
+	return nil
+}
+
+// SelectContextMenu right clicks and selects a context menu for a file.
+// An error is returned if the menu item can't be found.
+func (f *FilesApp) SelectContextMenu(ctx context.Context, filename, menuname string) error {
+	file, err := f.file(ctx, filename, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find %s", filename)
+	}
+	defer file.Release(ctx)
+	if err := file.RightClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to right click on %s", filename)
+	}
+
+	// Wait location.
+	ui.WaitForLocationChangeCompleted(ctx, f.tconn)
+
+	// Left click menuItem.
+	if err := f.LeftClickItem(ctx, menuname, ui.RoleTypeMenuItem); err != nil {
+		return errors.Wrapf(err, "failed to click %s in context menu", menuname)
+	}
+	return nil
+}
+
+// LeftClickItem left clicks a target item
+// An error is returned if the target item can't be found.
+func (f *FilesApp) LeftClickItem(ctx context.Context, itemname string, role ui.RoleType) error {
+	params := ui.FindParams{
+		Name: itemname,
+		Role: role,
+	}
+	item, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed to left click %s", itemname)
+	}
+	defer item.Release(ctx)
+	return item.LeftClick(ctx)
+}
+
+// DeleteAFileOrFolder delete a file or folder through selecting Delete in context menu
+// Return error if any
+func (f *FilesApp) DeleteAFileOrFolder(ctx context.Context, tconn *chrome.TestConn, filename string) error {
+	// Select Delete from context menu of the file / folder
+	if err := f.SelectContextMenu(ctx, filename, Delete); err != nil {
+		return errors.Wrapf(err, "failed to right click on %s", filename)
+	}
+
+	f.Root.Update(ctx)
+	ui.WaitForLocationChangeCompleted(ctx, tconn)
+	params := ui.FindParams{
+		ClassName: "cr-dialog-ok",
+		Name:      Delete,
+		Role:      ui.RoleTypeButton,
+	}
+	delete, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find button Delete after selecting Delet in context menu of %s", filename)
+	}
+	// Click button "Delete".
+	if err := delete.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click button Delete on file %s ", filename)
+	}
 	return nil
 }
