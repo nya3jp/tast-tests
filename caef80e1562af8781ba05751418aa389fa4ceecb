@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "792346f3_8f63aca8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-06T15:05:42Z",
+      "side": 1,
+      "message": "\u003e I wonder why does the enrollment screen is triggered at the first place - that is the real reason for the issue. Knowing that we could have a proper fix.\n\nIt depends on a device state. They could be enrolled + powerwash. I guess sometimes we advertise enrollment for them.\n\n\u003e Also, I would try to avoid using skipToLoginForTesting in tast tests. We should implement Go function that performs necessary steps to pass through OOBE.\nIt\u0027s a bit fragile. Tast should have as less knowledge of OOBE as possible. Otherwise it\u0027s easy to break. And takes a lot of time to investigate and fix.",
+      "parentUuid": "5ff007d8_69c1ebb4",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bcafc7_7ab31242",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
