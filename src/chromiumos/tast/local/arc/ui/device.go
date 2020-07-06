@@ -26,9 +26,7 @@ const (
 	StartTimeout = 120 * time.Second
 
 	// Hard-coded IP addresses of Android and fixed port of the UI automator server.
-	// TODO(jasongustaman): Consolidate once b/133797849 is resolved.
-	containerHost = "100.115.92.2:9008"
-	vmHost        = "100.115.92.6:9008"
+	host = "100.115.92.2:9008"
 
 	serverPackage  = "com.github.uiautomator.test"
 	serverActivity = "androidx.test.runner.AndroidJUnitRunner"
@@ -156,13 +154,6 @@ func (d *Device) Close() error {
 // out is a variable to store a returned result. If it is nil, results are discarded.
 // params is a list of parameters to the remote method.
 func (d *Device) call(ctx context.Context, method string, out interface{}, params ...interface{}) error {
-	host := containerHost
-	if vm, err := arc.VMEnabled(); err != nil {
-		return errors.Wrap(err, "failed to determine if ARCVM is enabled")
-	} else if vm {
-		host = vmHost
-	}
-
 	// Prepare the request.
 	req, err := http.NewRequest("POST", "http://"+host+"/jsonrpc/0", nil)
 	if err != nil {
