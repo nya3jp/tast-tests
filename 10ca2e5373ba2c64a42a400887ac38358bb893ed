@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9e806bc5_791f8dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T20:07:20Z",
+      "side": 1,
+      "message": "don\u0027t submit yet, see the nits first.",
+      "revId": "10ca2e5373ba2c64a42a400887ac38358bb893ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5973434_bfed4952",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 2
