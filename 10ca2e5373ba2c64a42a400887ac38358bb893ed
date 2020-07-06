@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "3c5fc2c5_e7edb365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-06T20:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5973434_bfed4952",
+      "range": {
+        "startLine": 212,
+        "startChar": 59,
+        "endLine": 212,
+        "endChar": 60
+      },
+      "revId": "10ca2e5373ba2c64a42a400887ac38358bb893ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "912263ba_cd4100eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 2
@@ -70,6 +94,30 @@
       "writtenOn": "2020-07-06T20:03:54Z",
       "side": 1,
       "message": "nit: please add comment describing why 270-rotation is needed. It is not clear why \"270\" is different thatn PortraitPrimary / LandscapePrimary.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "10ca2e5373ba2c64a42a400887ac38358bb893ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1312f71c_4fbca036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-06T20:35:52Z",
+      "side": 1,
+      "message": "Please check my comments in the code, I had to add the same comment in wm_nonresizable_tablet.go since these two have very similar logic.",
+      "parentUuid": "912263ba_cd4100eb",
       "range": {
         "startLine": 64,
         "startChar": 0,
