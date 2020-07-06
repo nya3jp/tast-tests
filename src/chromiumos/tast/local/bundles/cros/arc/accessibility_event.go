@@ -68,6 +68,10 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog,
 		if log.RootName == expectedLog.RootName {
 			logs[i] = log
 			i++
+
+			if reflect.DeepEqual(log, expectedLog) {
+				return nil
+			}
 		}
 	}
 	logs = logs[:i]
