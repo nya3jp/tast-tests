@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45099095_9d769a51",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/ui_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-07-06T08:34:39Z",
+      "side": 1,
+      "message": "not directly related to this change, but how about updating this to match the current implementation, like \"checks the given hasError func and ...\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "996a035b7dde912c77439cb4bbf345d859de33bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
