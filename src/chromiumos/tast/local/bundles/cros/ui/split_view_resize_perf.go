@@ -120,13 +120,13 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	// is at (0, 0).
 	yCenter := info.WorkArea.Height / 2
 	// Compute the coordinates where we will drag an overview window to snap left.
-	leftSnapPoint := coords.Point{X: 0, Y: yCenter}
+	leftSnapPoint := coords.NewPoint(0, yCenter)
 	// Compute the coordinates for the actual test scenario: drag the divider
 	// slightly left and then all the way right. The left snapped window should
 	// shrink and then expand and become maximized.
-	dividerDragPointOne := coords.Point{X: info.WorkArea.Width / 2, Y: yCenter}
-	dividerDragPointTwo := coords.Point{X: info.WorkArea.Width / 4, Y: yCenter}
-	dividerDragPointThree := coords.Point{X: info.WorkArea.Width - 1, Y: yCenter}
+	dividerDragPointOne := coords.NewPoint(info.WorkArea.Width/2, yCenter)
+	dividerDragPointTwo := coords.NewPoint(info.WorkArea.Width/4, yCenter)
+	dividerDragPointThree := coords.NewPoint(info.WorkArea.Width-1, yCenter)
 
 	// Testing 3 patterns;
 	// SingleWindow: there's a single window which is snapped to the left.
