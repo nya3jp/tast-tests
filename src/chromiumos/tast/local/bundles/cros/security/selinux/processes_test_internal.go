@@ -104,7 +104,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/biod", "cros_biod", zeroProcs, ""},
 				{exe, "/usr/bin/btdispatch", "cros_btdispatch", zeroProcs, ""},
 				{exe, "/usr/bin/cras", "cros_cras", zeroProcs, ""},
-				{exe, "/usr/bin/cros-disks", "cros_disks", oneProc, ""},
+				{exe, "/usr/bin/cros-disks", "cros_disks", zeroProcs, ""},
 				{exe, "/usr/bin/cros_camera_algo", "cros_camera_algo", zeroProcs, ""},
 				{exe, "/usr/bin/cros_camera_service", "cros_camera_service", zeroProcs, ""},
 				{exe, "/usr/bin/dbus-daemon", "cros_dbus_daemon", oneProc, ""},
