@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc8b4e2_548f0d79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T22:46:04Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "8df95eef7c19ad3865615efd9861f487ade10d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cafbc3c7_2e2e6a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T22:46:04Z",
+      "side": 1,
+      "message": "nit: please add docstring for all non-trivial funcs.",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "8df95eef7c19ad3865615efd9861f487ade10d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
