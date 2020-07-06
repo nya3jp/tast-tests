@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "238731cf_8eba30c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-07-06T03:44:08Z",
+      "side": 1,
+      "message": "I wonder what the cause of this is...\n\nIs it okay to allow this case to pass the test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "9680aee9ddaeafa4232707e07da351bcff24c134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d35bfcd0_fa32b07f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
