@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "9cf4fe6c_788e612d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-07-06T18:34:20Z",
+      "side": 1,
+      "message": "\u003e It depends on a device state. They could be enrolled + powerwash. I guess \n\u003e sometimes we advertise enrollment for them.\nWhy are we testing device in a random state, but expect some stable results?\n\n\u003eIt\u0027s a bit fragile. Tast should have as less knowledge of OOBE as possible. \n\u003eOtherwise it\u0027s easy to break. And takes a lot of time to investigate and fix.\nI am not totally aware about our tast infrastructure, but if we get notified about tast tests failures with 1-2 days after commit, it is much better that we have some explicit code path and fail early when code changes (e.g. we add a new screen, or rename button) rather than we skip some screen, and fail later because some data piece that should be handled by that particular screen is missing -- that would actually take a long time to investigate and fix.",
+      "parentUuid": "792346f3_8f63aca8",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bcafc7_7ab31242",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
