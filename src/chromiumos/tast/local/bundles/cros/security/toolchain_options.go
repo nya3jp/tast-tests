@@ -114,11 +114,6 @@ var libgccAllowlist = []string{
 	"/usr/lib64/dri/kms_swrast_dri.so",
 	"/usr/lib64/dri/swrast_dri.so",
 	"/usr/lib64/dri/virtio_gpu_dri.so",
-
-	// Prebuilt binaries installed by Mediatek Camera HAL on kukui boards.
-	// See b/140535983.
-	"/usr/lib/lib3a.*.so",
-	"/usr/lib/libcamalgo.*.so",
 }
 
 var libstdcAllowlist = []string{
