@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c375274_994a277c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T17:03:21Z",
+      "side": 1,
+      "message": "nit: remove line perhaps ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7efccd_249ad71f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T17:03:21Z",
+      "side": 1,
+      "message": "nit: name should be \"vm\".\nsee: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go?l\u003d39",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e90c93e_74bace9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-06T17:03:21Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that we should pass \"r\" as val.\nwhat about checking for arc.SDKVersion() \u003e\u003d arc.SDKR ?\n\nor perhaps a better alternative (more maintainable, less error prone, more explicit), is to pass a list of test for each platform.\n\nSee:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go?l\u003d42",
+      "range": {
+        "startLine": 505,
+        "startChar": 60,
+        "endLine": 505,
+        "endChar": 86
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
