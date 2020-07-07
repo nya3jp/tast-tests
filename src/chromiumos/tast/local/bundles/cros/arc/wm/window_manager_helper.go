@@ -68,7 +68,7 @@ const (
 // TestFunc represents a function that tests if the window is in a certain state.
 type TestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
 
-// TestCase reporesents a struct fir test names and their func.
+// TestCase represents a struct for test names and their func.
 type TestCase struct {
 	Name string
 	Func TestFunc
