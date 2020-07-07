@@ -32,15 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Data:         []string{"smb.conf", crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
-		Params: []testing.Param{
-			{
-				Name:              "crostini_unstable",
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-			}, {
-				Name:              "crostini_stable",
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-		},
+		HardwareDeps: crostini.CrostiniStable,
 	})
 }
 
