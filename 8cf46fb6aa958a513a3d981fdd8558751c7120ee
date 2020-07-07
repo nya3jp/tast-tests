@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5511f71a_683af81f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-07T20:48:41Z",
+      "side": 1,
+      "message": "no worries, I\u0027m only just getting back to this after getting side-tracked on some other things, so the timing is good.\n\nThanks for testing on krane, I\u0027ll update my patch and push an update in a bit.",
+      "parentUuid": "9669e55e_b7ad590b",
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eb93402_9ccf59c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
