@@ -160,6 +160,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7532747e_d247a95a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-07T03:46:41Z",
+      "side": 1,
+      "message": "\u003e 2. to make package more focused (refer to https://blog.golang.org/package-names \"avoid meaningless package names\" section)\n\nI wouldn\u0027t call \"shill\" or \"shillconst\" meaningless. It\u0027s a shared set of constants, not much different than .../platform2/system_api/dbus/shill/dbus-constants.h\n\nThanks for that link though -- I was really looking around for guidelines on package boundaries and naming and couldn\u0027t really find much. Maybe I just need to read through blog.golang.org more.\n\n\u003e Let\u0027s use patchset 4 solution if everyone agree that easier to find consts outweighs shorter names and focused package.\n\nI think patchset 4 looks relatively good.",
+      "parentUuid": "fd00ad78_88d76890",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
