@@ -52,6 +52,24 @@
       "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57678477_3b0138b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-07T09:56:26Z",
+      "side": 1,
+      "message": "\u003e \u003e Looking at syslog on this failure, SSH login is not attempted until the polling timeout is almost reached! I suspect that this is because d.Command(...).Run(ctx) can block up to ctx timeout.\n\u003e \n\u003e But we already shorted the timeout at the beginning of the test. The cleanup() should at least have 1 minute to dump log and reboot.\n\u003e \n\u003e I prepared a CL for per-iteration timeout at CL:2282603, but I doubt it could fix the issue.\n\u003e \n\u003e From the log, it keeps showing\n\u003e \u003e  failed to create session: read tcp 10.0.195.119:38338-\u003e100.115.194.198:22: read: connection reset by peer\n\u003e Doesn\u0027t it means the somehow the DUT is on bad state and keep refusing the connection?\n\nMy guess is that the following scenario might be happening:\n\n1. d.Command(\"gooftool\") is called\n2. testing.Poll is called\n3. d.Command(\"cat\") is called, but it fails with \"...: connection reset by peer\" because the device is going down\n4. the DUT reboots\n5. d.Command(\"cat\") is called again, but it doesn\u0027t fail until 1-minute timeout is reached because SYN packets to the DUT go to void\n6. testing.Poll returns with an error \"context deadline exceeded; last error follows: fail to access log: ...: connection reset by peer\" because \"connection reset by peer\" was the last error observed in (3).\n\n\n\u003e \u003e \u003e Failed to wait wiping finished: wipe_init failed\n\u003e \u003e Tast has some logic to wait for the DUT to get ready in the ready package. It is currently used only in pre-run hooks, but it should be useful for tests rebooting the DUT as well. ready.Wait function contains some pre-run-specific logics as well, so you might have to refactor it a bit.\n\u003e \n\u003e It seems ready.Wait() is for local test. It looks there are a lot of libs (upstart/dbus/...) that have to port. Can I re-implement similar logic inside this test? Like CL:2282604. In this case, I think we only need to wait system-service up.\n\nThat sounds good to me, thanks!",
+      "parentUuid": "db5129b0_5266d7bb",
+      "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
