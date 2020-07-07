@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ae585d71_01cb0741",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-07T08:00:10Z",
+      "side": 1,
+      "message": "Hmm..., but not quite sure when the very first beacon is sent. Need to look deeper into the related behavior (e.g. how hostapd schedules beacons, how DUT reacts to a beacon of a new service) I\u0027ll update here if I find some more hints.",
+      "parentUuid": "b9fd61e9_2b012534",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8ab16d8_30716662",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 3
