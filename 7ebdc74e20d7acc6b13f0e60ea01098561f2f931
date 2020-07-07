@@ -16,6 +16,23 @@
       "revId": "7ebdc74e20d7acc6b13f0e60ea01098561f2f931",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73a22fec_41a1eaf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-07T16:56:16Z",
+      "side": 1,
+      "message": "LGTM -- small / trivial change. No need to wait for the shadow.",
+      "revId": "7ebdc74e20d7acc6b13f0e60ea01098561f2f931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
