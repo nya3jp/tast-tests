@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "05275cfa_028e018d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T09:22:37Z",
+      "side": 1,
+      "message": "There is no good way for it, but \"csv.\" is MUCH shorter than \"croshealthd.\", so should be fine.",
+      "parentUuid": "b861a67f_02c3b357",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "78ea604b62f7fc3b49c1131419b4a4074821506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff957dfc_2f1edd26",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 4
