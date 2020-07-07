@@ -14,7 +14,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
+	crui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -42,6 +45,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: default launch behavior
 			Name: "RC01_launch",
 			Func: wmRC01,
+		},
+		wm.TestCase{
+			// resizable/clamshell: resizable/clamshell: maximize portrait app (pillarbox)
+			Name: "RC02_maximize_portrait",
+			Func: wmRC02,
 		},
 	})
 }
@@ -222,5 +230,172 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 			return err
 		}
 	}
+	return nil
+}
+
+// eventTypeFunc represents a function that can trigger caption button event by button name.
+type eventTypeFunc func(context.Context, *chrome.TestConn, string) error
+
+// eventTypeTestCase represents a struct for touching or clicking on caption buttons.
+type eventTypeTestCase struct {
+	Name string
+	Func eventTypeFunc
+}
+
+// wmRC02 covers resizable/clamshell: maximize portrait app (pillarbox).
+// Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize portrait app (pillarbox).
+func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, eTC := range []eventTypeTestCase{
+		eventTypeTestCase{
+			Name: "touchCaptionButton",
+			Func: touchCaptionButton,
+		},
+		eventTypeTestCase{
+			Name: "leftClickCaptionButton",
+			Func: leftClickCaptionButton,
+		},
+	} {
+		if err := func() error {
+			if err := runRC02ByEventTypeFunc(ctx, tconn, a, d, eTC.Func); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q event type test case failed", eTC.Name)
+		}
+	}
+
+	return nil
+}
+
+// touchCaptionButton function will simulate touch event on a caption button by button's name.
+func touchCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
+	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	if err != nil {
+		return errors.Errorf("failed to find \"%q\" caption button", btnName)
+	}
+	defer captionBtn.Release(ctx)
+
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.New("failed to get TouchscreenEventWriter")
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.New("failed to get SingleTouchEventWriter")
+	}
+
+	// Get display info for touch coords calculation.
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.New("failed to get display info")
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("no primary display info found")
+	}
+
+	cBCX, cBCY := tsw.NewTouchCoordConverter(primaryDisplayInfo.Bounds.Size()).ConvertLocation(captionBtn.Location.CenterPoint())
+
+	// Touch caption button center.
+	if err := stw.Move(cBCX, cBCY); err != nil {
+		return errors.Errorf("failed to move touch event writer on \"%q\" button", btnName)
+	}
+	if err := stw.End(); err != nil {
+		return errors.Errorf("failed to end touch event writer on \"%q\" button", btnName)
+	}
+
+	return nil
+}
+
+// leftClickCaptionButton function will simulate left click event on a caption button by button's name.
+func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
+	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	if err != nil {
+		return errors.Errorf("failed to find \"%q\" caption button", btnName)
+	}
+	defer captionBtn.Release(ctx)
+
+	if err := captionBtn.LeftClick(ctx); err != nil {
+		return errors.Errorf("failed to perform left click on \"%q\" button", btnName)
+	}
+
+	return nil
+}
+
+// runRC02ByEventTypeFunc performs RC02 test either by left clicking or touching the caption button.
+func runRC02ByEventTypeFunc(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, etFunc eventTypeFunc) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Store windows info before maximizing the activity to compare it with after restoring it.
+	winInfoBeforeMax, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Store windowID to wait for animating finishes.
+	windowID := winInfoBeforeMax.ID
+
+	// Touch/Click maximize button on caption bar.
+	if err := etFunc(ctx, tconn, "Maximize"); err != nil {
+		return err
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
+		return err
+	}
+
+	if err := wm.CheckMaximizeResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Touch/Click restore button on caption bar.
+	if err := etFunc(ctx, tconn, "Restore"); err != nil {
+		return err
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
+		return err
+	}
+
+	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get window info after restoring, this should be equal to winInfoBeforeMax.
+	winInfoAfterMax, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare BoundsInRoot of the activity before and after switching to maximize and restore button on caption bar.
+	if winInfoBeforeMax.BoundsInRoot != winInfoAfterMax.BoundsInRoot {
+		return errors.Errorf("failed to validate window bounds after restoring from maximize state, got: %q, want: %q", winInfoAfterMax.BoundsInRoot, winInfoBeforeMax.BoundsInRoot)
+	}
+
 	return nil
 }
