@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "8155c4c0_f6c3dcd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Thanks for the feedback, Oleh!",
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd497801_5395dd13",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -59,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "df8229dd_88ee4a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd497801_5395dd13",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0c1daf7_6261e36f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -70,6 +111,30 @@
       "writtenOn": "2020-07-07T09:16:44Z",
       "side": 1,
       "message": "tbh, this construction looks a bit complicated. What if dimensionFunc / rowFunc will just return int and all logic will be inside ValidateCSV?",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 60
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40efea1_c8b65def",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Hmm, please correct me if I\u0027m wrong, but if rowsFunc returns just an int, then it won\u0027t be a \"validator\" type because all validators return func(string) error?",
+      "parentUuid": "a0c1daf7_6261e36f",
       "range": {
         "startLine": 32,
         "startChar": 15,
@@ -105,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "fca5db16_b4eaa93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e52532_ed41cfc7",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb4bd358_4b844297",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -125,6 +214,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed9ecca_194d3cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4bd358_4b844297",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "075bca90_1f112866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b8ef05_32e75183",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1a1f65d_7a46dd47",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -174,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "bcb2d893_492092a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1a1f65d_7a46dd47",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 53
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18ac9d4a_e9d3d503",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -194,6 +355,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8fab8c_d12341e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ac9d4a_e9d3d503",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +428,54 @@
     },
     {
       "key": {
+        "uuid": "baf2ee6c_48553727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beb2e024_d700911d",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f630b1cd_df045499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebe5eff_dafd566f",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8113760e_a39f2ad3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -263,6 +496,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d849465b_803f9e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8113760e_a39f2ad3",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "20cf48f1_52afecf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52658ae5_431b52b7",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a36ab36a_89443e12",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -309,6 +590,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c119e6_1ae811c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a36ab36a_89443e12",
+      "range": {
+        "startLine": 126,
+        "startChar": 29,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -335,6 +640,30 @@
     },
     {
       "key": {
+        "uuid": "aee344d3_82a8e478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb129a48_cf3fc090",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 24
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7ed143c_e8f6f251",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -355,6 +684,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9cb2465_01a1c8c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ed143c_e8f6f251",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -381,6 +734,30 @@
     },
     {
       "key": {
+        "uuid": "4687bbe7_e22e3c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d12388a_19afcedd",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 15
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e424bedc_8d06f1c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -401,6 +778,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d94d553_778c3828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e424bedc_8d06f1c5",
+      "range": {
+        "startLine": 150,
+        "startChar": 10,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -427,6 +828,30 @@
     },
     {
       "key": {
+        "uuid": "8f2badee_c77dea76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae907e48_1a337239",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4074f122_7daac857",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -447,6 +872,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60bdded0_9d945f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "We are following the rule here that the property only exists if there is a value and that value is set to \"true\". Correct me if I\u0027m missing something, but looks like we return the error if it\u0027s not a \"crosconfig.IsNotFound\" error. If it is a \"crosconfig.IsNotFound\" error (or if the value is not \"true\"), we check for the actual value and a return an error if that value is not \"NA\u0027 (this is the approach we want to follow).",
+      "parentUuid": "4074f122_7daac857",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 13
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -496,6 +945,54 @@
     },
     {
       "key": {
+        "uuid": "134462e9_b5e9f39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f30ae65_9431f318",
+      "range": {
+        "startLine": 179,
+        "startChar": 10,
+        "endLine": 179,
+        "endChar": 34
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e72470c5_f6359779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebab3731_f59f2ff1",
+      "range": {
+        "startLine": 179,
+        "startChar": 56,
+        "endLine": 179,
+        "endChar": 70
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c044e5d_41fa38a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -519,6 +1016,30 @@
     },
     {
       "key": {
+        "uuid": "c8d186b5_8eeadd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c044e5d_41fa38a3",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040651bb_fb7137e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -539,6 +1060,30 @@
       "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571c2e54_9e28cf0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T23:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040651bb_fb7137e7",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "4b816dcca3d3436c5e8f0192d6a032b1c2d28813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
