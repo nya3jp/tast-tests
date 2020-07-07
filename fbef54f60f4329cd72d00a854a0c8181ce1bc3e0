@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2712609b_7aafaf9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2020-07-07T23:54:19Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "fbef54f60f4329cd72d00a854a0c8181ce1bc3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c7b4a8_1dd08c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2020-07-07T23:54:19Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is the same -- SWAs are not ChromeApps -- but poking around https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go;l\u003d286?q\u003dWaitForChromeAppInstalled it seems to just poll \"getAllInstalledApps\", so maybe it will work.",
+      "revId": "fbef54f60f4329cd72d00a854a0c8181ce1bc3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
