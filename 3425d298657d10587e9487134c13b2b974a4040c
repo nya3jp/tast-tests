@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a4c24cb_0ec89e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-07T16:03:57Z",
+      "side": 1,
+      "message": "arthurhsu@/tetsui@: Is snapping not working yet in R?\n\nError at soft_input_mode.go:134: .AdjustPanActivity: Failed to snap app in split view: cdp.Runtime: Evaluate: context deadline exceeded",
+      "revId": "3425d298657d10587e9487134c13b2b974a4040c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
