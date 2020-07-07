@@ -36,6 +36,40 @@
     },
     {
       "key": {
+        "uuid": "17b4c570_6a794f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-07T16:47:46Z",
+      "side": 1,
+      "message": "Sorry, I overlooked in the previous iteration. Could you check the error?",
+      "revId": "b88c36bbc447e2e415da80974f93516b274ad5b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb87c8a8_f284514a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-07T16:47:46Z",
+      "side": 1,
+      "message": "ditto for the error check.",
+      "revId": "b88c36bbc447e2e415da80974f93516b274ad5b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8583fbd_feb5c05a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
         "patchSetId": 8
