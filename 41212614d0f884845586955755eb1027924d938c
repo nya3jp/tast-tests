@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44412078_0ad4e089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001271
+      },
+      "writtenOn": "2020-07-07T01:26:01Z",
+      "side": 1,
+      "message": "(Manoj is on leave).\n\nPlease update the comment to use \"allow list\" instead of the other term. ",
+      "revId": "41212614d0f884845586955755eb1027924d938c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
