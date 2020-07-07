@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c96919cf_3a20a047",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3fe96f3_5f250251",
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b61ac3f_cf8e8608",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -56,6 +74,30 @@
       "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832672a3_4eed8b71",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b61ac3f_cf8e8608",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "5c869d59_abfc0a97",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e491e5a8_2cda827c",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f78ba29_b2c7990e",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -102,6 +168,30 @@
       "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf06346_a959a74c",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f78ba29_b2c7990e",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "a4c260b5_c1c90d38",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474c1ab2_f9229633",
+      "range": {
+        "startLine": 115,
+        "startChar": 31,
+        "endLine": 115,
+        "endChar": 42
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d1ff2d_aae2db52",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -148,6 +262,30 @@
       "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269e4298_a5d9d4bd",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "I agree - I was mostly trying to follow String(//list of validators) the pattern. Removed.",
+      "parentUuid": "56d1ff2d_aae2db52",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "fe01f30f_94771263",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done. I have made UInt64 a validator that simply checks whether a string can be parsed into a uint64.",
+      "parentUuid": "9bf99c99_e2d1093e",
+      "range": {
+        "startLine": 146,
+        "startChar": 12,
+        "endLine": 146,
+        "endChar": 49
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45c4f3bb_3442c2e5",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -194,6 +356,30 @@
       "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4afd7b_4b16069b",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Sounds good, I replaced interface{} to string.",
+      "parentUuid": "45c4f3bb_3442c2e5",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 40
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +452,78 @@
     },
     {
       "key": {
+        "uuid": "d040f94e_d9a57476",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "978e2b20_d6e5d55d",
+      "range": {
+        "startLine": 168,
+        "startChar": 25,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8292ea5e_61ae5528",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Since valid.go is meant to be a generic CSV validator, with specific validators passed in, I think it may make sense to namespace the telem related validators with \"Telem\". Consequently, I have named this function TelemMatchRegex since it also includes this code that is specific to telem:\n\n// If the value does not exist, do not check the format.\nif str \u003d\u003d \"NA\" {\n\treturn nil\n}\n\nAnother example is changing \"EqualToFileContent\" to \"TelemEqualToFileContent\" since it has telem related logic. LMK what you think.",
+      "parentUuid": "91937efa_38698987",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "542ee047_b6eaac05",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e85ce9f_3d7c997c",
+      "range": {
+        "startLine": 168,
+        "startChar": 38,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad7df0a_d59b715d",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -286,6 +544,30 @@
       "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786fe400_d5e49189",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6ad7df0a_d59b715d",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 11
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

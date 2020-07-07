@@ -22,6 +22,30 @@
       "revId": "31f3242305d6862c4f5b3b46cbd9f422bdd998f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c614db_653d0989",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-07T05:10:49Z",
+      "side": 0,
+      "message": "Moved this to the child CL.",
+      "parentUuid": "d021d68f_c1ead462",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "31f3242305d6862c4f5b3b46cbd9f422bdd998f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
