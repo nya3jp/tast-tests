@@ -203,6 +203,24 @@
     },
     {
       "key": {
+        "uuid": "bfae740b_31550ffe",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-07T05:05:22Z",
+      "side": 1,
+      "message": "Ah, right. I typed the wrong condition. Current version LGTM. Thanks.",
+      "parentUuid": "8cc075aa_d615e646",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c3a22e8_c388fc7a",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
