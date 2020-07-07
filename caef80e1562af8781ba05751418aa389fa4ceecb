@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "7e4198c9_24118a29",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-07-07T09:44:59Z",
+      "side": 1,
+      "message": "We should understand why we are showing the enterprise enrolment screen on for basically all enrolment modes after the device disabled check. Take a look at this should_enroll() parameter:\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/login/wizard_controller.cc;drc\u003d5ba77dad98cf94506cf3700f9e12fcdc65fadfb6;l\u003d1318?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nWaiting for further guidance on this issue.",
+      "parentUuid": "9cf4fe6c_788e612d",
+      "range": {
+        "startLine": 1215,
+        "startChar": 36,
+        "endLine": 1215,
+        "endChar": 57
+      },
+      "revId": "caef80e1562af8781ba05751418aa389fa4ceecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bcafc7_7ab31242",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
