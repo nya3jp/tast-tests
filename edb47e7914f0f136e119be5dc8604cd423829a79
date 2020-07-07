@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "8aa2a29d_9dc90612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T15:13:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad158a25_de00ad5e",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33daa798_ffbe75cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
         "patchSetId": 1
@@ -219,6 +243,30 @@
       "side": 1,
       "message": "If I\u0027m not mistaken if we don\u0027t timeout here and the context times out instead we won\u0027t get the error from within the loop as return value.",
       "parentUuid": "33daa798_ffbe75cb",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefb1db9_f43ff684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T15:13:53Z",
+      "side": 1,
+      "message": "It\u0027ll return last error: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d31?q\u003dtesting.Poll",
+      "parentUuid": "c9f00279_167fbe1b",
       "range": {
         "startLine": 54,
         "startChar": 11,
