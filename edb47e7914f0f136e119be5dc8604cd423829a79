@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "78ca497d_01ef1c24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2020-07-07T13:36:50Z",
+      "side": 1,
+      "message": "This sounds kind of wasteful (and slow). \nCan\u0027t we just give new policies to FakeDMS and make device fetch them?\nAlso for some scenarios it is also necessary to make FakeDMS to respond differently on some other requests besides getting policies. And at the moment this responses are not configurable even with restart (https://source.chromium.org/chromium/chromium/src/+/master:components/policy/test_support/policy_testserver.py;l\u003d1269;drc\u003d46c3a3dddf8eb719b9991d0355fcfa0f07723578).",
+      "parentUuid": "fcfac3de_9ce8a3c4",
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e683474b_ebdb0ed6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
         "patchSetId": 1
