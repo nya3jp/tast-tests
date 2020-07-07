@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "315df302_52b500d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-07T06:11:52Z",
+      "side": 1,
+      "message": "lint: click input field to trigger. Actually this is my fault when I copied the code from another test.",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5248a2e6_0c250ebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-07T06:11:52Z",
+      "side": 1,
+      "message": "Is this duplicate of last function vkb.ShowVirtualKeyboard?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
