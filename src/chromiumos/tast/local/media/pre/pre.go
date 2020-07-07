@@ -15,7 +15,9 @@ import (
 // ChromeVideo returns a precondition with Chrome started and logging enabled.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs)
+var chromeVideoPre = chrome.NewPrecondition("video",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions)
 
 // ChromeAlternateVideoDecoder returns a precondition with flags selecting the
 // alternate hardware accelerated video decoder implementation. Chrome has two
@@ -26,21 +28,29 @@ var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs)
 // alternate precondition.
 func ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternateVideoDecoderPre }
 
-var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoder", chromeVModuleArgs, chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
+var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoder",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
 
 // ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo but
 // forcing login as a guest, which is known to be different from a "normal"
 // user in, at least, the flag set used.
 func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGuestLoginPre }
 
-var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs, chrome.GuestLogin())
+var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chrome.GuestLogin())
 
 // ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
 // also enabling the HDR screen if present.
 // TODO(crbug.com/958166): Use simply ChromeVideo() when HDR is launched.
 func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDRScreenPre }
 
-var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen", chromeVModuleArgs,
+var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
 	chrome.ExtraArgs("--enable-features=UseHDRTransferFunction"))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
@@ -48,7 +58,10 @@ var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen", c
 // "fake webcam"), see https://webrtc.org/testing/.
 func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
 
-var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeVModuleArgs, chromeFakeWebcamArgs)
+var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chromeFakeWebcamArgs)
 
 // ChromeVideoWithFakeWebcamAndVP9VaapiEncoder returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with VA-API VP9 hardware encoder enabled.
@@ -57,7 +70,11 @@ func ChromeVideoWithFakeWebcamAndVP9VaapiEncoder() testing.Precondition {
 	return chromeVideoWithFakeWebcamAndVP9VaapiEncoder
 }
 
-var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
+var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chromeFakeWebcamArgs,
+	chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
 
 // ChromeVideoWithFakeWebcamAndSWDecoding returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with hardware decoding disabled.
@@ -125,6 +142,12 @@ var chromeVModuleArgs = chrome.ExtraArgs(
 		"*/media/gpu/chromeos/*=2",
 		"*/media/gpu/vaapi/*=2",
 		"*/media/gpu/v4l2/*=2"}, ","))
+
+var chromeUseHwDecoderForSmallResolutions = chrome.ExtraArgs(
+	// The video stack might have a policy of not using hardware acelerated
+	// decoding for  certain small resolutions (crbug.com/684792). Disable that
+	// here for testing.
+	"--disable-features=ResoutionBasedDecoderPriority")
 
 var chromeFakeWebcamArgs = chrome.ExtraArgs(
 	// Use a fake media capture device instead of live webcam(s)/microphone(s).
