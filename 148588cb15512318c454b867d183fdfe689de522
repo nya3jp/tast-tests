@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d297f7_bff0e7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-07T02:35:13Z",
+      "side": 1,
+      "message": "Rebase and correct the commit message: this change effects PingFromServer, not PingFromDUT.",
+      "revId": "148588cb15512318c454b867d183fdfe689de522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
