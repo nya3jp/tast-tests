@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "fc261508_43b7dd81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-07T09:43:49Z",
+      "side": 1,
+      "message": "err refers the outer scope.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835a181b_26f29bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-07T09:43:49Z",
+      "side": 1,
+      "message": "IIUC windowInfo should not be referred when err !\u003d nil.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 35
+      },
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a1d4c4_5c43b747",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
         "patchSetId": 1
