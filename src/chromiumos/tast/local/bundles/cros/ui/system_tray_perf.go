@@ -8,10 +8,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -32,7 +31,6 @@ func init() {
 }
 
 func SystemTrayPerf(ctx context.Context, s *testing.State) {
-	const numRuns = 6
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -74,37 +72,22 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 	}
 	defer collapseButton.Release(ctx)
 
-	pv := perf.NewValues()
-
-	// Toggle the collapsed state of the system tray for numRuns and record
-	// the relevant metrics.
-	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		for i := 0; i < numRuns; i++ {
-			if err := collapseButton.LeftClick(ctx); err != nil {
-				return errors.Wrapf(err, "failed to click collapse button (at step %d)", i)
-			}
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-				return errors.Wrap(err, "failed to wait")
-			}
+	// Toggle the collapsed state of the system tray.
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+		if err := collapseButton.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click collapse button")
 		}
-		return nil
+		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait")
+		}
+		if err := collapseButton.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the collapse button")
+		}
+		return ui.WaitForLocationChangeCompleted(ctx, tconn)
 	},
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
-		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded")
-	if err != nil {
-		s.Fatal("Failed to run the test scenario: ", err)
-	}
-	for _, hist := range hists {
-		mean, err := hist.Mean()
-		if err != nil {
-			s.Fatal("Failed to find the histogram data: ", err)
-		}
-		pv.Set(perf.Metric{
-			Name:      hist.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded"),
+		perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)

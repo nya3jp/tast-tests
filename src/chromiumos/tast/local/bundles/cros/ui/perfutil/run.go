@@ -36,6 +36,14 @@ func RunAndWaitAll(tconn *chrome.TestConn, f func() error, names ...string) Scen
 	}
 }
 
+// RunAndWaitAny is a utility function to create ScenarioFunc which conducts
+// f with metrics.RunAndWaitAny.
+func RunAndWaitAny(tconn *chrome.TestConn, f func() error, names ...string) ScenarioFunc {
+	return func(ctx context.Context) ([]*metrics.Histogram, error) {
+		return metrics.RunAndWaitAny(ctx, tconn, time.Second, f, names...)
+	}
+}
+
 // StoreFunc is a function to be used for RunMultiple.
 type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error
 

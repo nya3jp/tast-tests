@@ -6,14 +6,12 @@ package ui
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -80,37 +78,17 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
-
-		return nil
+		// Clear the overview mode state so that the next drag can enter into the
+		// overview mode.
+		return ash.SetOverviewModeAndWait(ctx, tconn, false)
 	},
 		"Ash.DragWindowFromShelf.PresentationTime",
-		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency")
-	if err != nil {
-		s.Fatal("Failed to swipe or get histogram: ", err)
-	}
-
-	// Return the device back to non-overview mode.
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("It does not appear to be in the overview mode: ", err)
-	}
-
-	pv := perf.NewValues()
-	for _, h := range histograms {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, mean)
-	}
+		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency"),
+		perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

@@ -11,10 +11,10 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -53,8 +53,8 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
-	pv := perf.NewValues()
 	currentWindows := 0
+	runner := perfutil.NewRunner(cr)
 	// Run the screen rotation in overview mode with 2 or 8 windows.
 	for _, windows := range []int{2, 8} {
 		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
@@ -72,31 +72,19 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 
-		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+		suffix := fmt.Sprintf("%dwindows", windows)
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
 			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
 				if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
 					return errors.Wrap(err, "failed to rotate display")
 				}
 			}
 			return nil
-		}, "Ash.Rotation.AnimationSmoothness")
-		if err != nil {
-			s.Fatal("Failed to rotate display or get histogram: ", err)
-		}
-
-		smoothness, err := histograms[0].Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("%s.%dwindows", histograms[0].Name, currentWindows),
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, smoothness)
+		}, "Ash.Rotation.AnimationSmoothness"),
+			perfutil.StoreAll(perf.BiggerIsBetter, "percent", suffix))
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

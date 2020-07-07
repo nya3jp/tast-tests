@@ -6,13 +6,11 @@ package ui
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -37,7 +35,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create a new desk")
@@ -51,24 +49,8 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.Desks.AnimationSmoothness.DeskActivation",
-		"Ash.Desks.AnimationSmoothness.DeskRemoval")
-	if err != nil {
-		s.Fatal("Failed to run desk animations or get histograms: ", err)
-	}
-
-	pv := perf.NewValues()
-	for _, h := range histograms {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+		"Ash.Desks.AnimationSmoothness.DeskRemoval"),
+		perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

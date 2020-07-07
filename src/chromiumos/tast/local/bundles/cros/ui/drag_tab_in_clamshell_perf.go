@@ -8,11 +8,10 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -87,7 +86,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tabs.Release(ctx)
 	if len(tabs) != 2 {
-		s.Fatalf("expected 2 tabs, only found %v tab(s)", len(tabs))
+		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
 	start := tabs[0].Location.CenterPoint()
 
@@ -96,51 +95,38 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Error("Failed to wait for system UI to be stabilized: ", err)
 	}
 
-	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
 		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
-			s.Fatal("Failed to drag to the end point: ", err)
+			return errors.Wrap(err, "failed to drag the end of point")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// Expecting 2 windows.
 			return checkWindowsNum(ctx, tconn, 2)
 		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
-			s.Fatal("Failed to get expected windows: ", err)
+			return errors.Wrap(err, "failed to get expected windows")
 		}
 
 		// Sleep to ensure post drag finishes so that the window is ready for the next drag.
 		if err := testing.Sleep(ctx, time.Second); err != nil {
-			s.Fatal("Failed to sleep: ", err)
+			return errors.Wrap(err, "failed to sleep")
 		}
 
 		if err := mouse.Drag(ctx, tconn, end, start, 2*time.Second); err != nil {
-			s.Fatal(err, "Failed to drag back to the start point: ", err)
+			return errors.Wrap(err, "failed to drag back to the start point")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// Expecting 1 window.
 			return checkWindowsNum(ctx, tconn, 1)
 		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
-			s.Fatal("Failed to get expected windows: ", err)
+			return errors.Wrap(err, "failed to get expected windows")
 		}
-		return nil
+		// Sleep to ensure that the next run performs correctly.
+		return testing.Sleep(ctx, time.Second)
 	},
 		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode",
-		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.MaxLatency.ClamshellMode")
-	if err != nil {
-		s.Fatal("Failed to drag or get the histogram: ", err)
-	}
+		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.MaxLatency.ClamshellMode"),
+		perfutil.StoreLatency)
 
-	pv := perf.NewValues()
-	for _, h := range hists {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, mean)
-	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
