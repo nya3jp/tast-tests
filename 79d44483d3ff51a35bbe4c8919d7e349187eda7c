@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1420c6e_d0326578",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-07T09:47:15Z",
+      "side": 1,
+      "message": "This comment looks irrelevant.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "79d44483d3ff51a35bbe4c8919d7e349187eda7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
