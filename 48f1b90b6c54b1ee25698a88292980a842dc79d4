@@ -22,6 +22,30 @@
       "revId": "48f1b90b6c54b1ee25698a88292980a842dc79d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9ba1f75_5cfe8828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-07-07T03:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ad1096_a3cd1c9e",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "48f1b90b6c54b1ee25698a88292980a842dc79d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
