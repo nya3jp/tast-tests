@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25b92693_68b0ac32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-07T17:39:50Z",
+      "side": 1,
+      "message": "If you want to avoid closing over this here you can also not shadow ctx on L58. Up to you.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "e9dc72591a247ccc2e05958c9004e71eab9f5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e08177c_782303ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-07T17:39:50Z",
+      "side": 1,
+      "message": "nit: Do we need this log line?",
+      "revId": "e9dc72591a247ccc2e05958c9004e71eab9f5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
