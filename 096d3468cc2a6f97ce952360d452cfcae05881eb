@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9fd61e9_2b012534",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-07T07:01:06Z",
+      "side": 1,
+      "message": "If so, the goal of the test cannot be met. Can we set a long beacon interval on AP, say 1000 TU (10 seconds), so that passive scan does not find a service just before DUT sends out an active scan?",
+      "parentUuid": "21d3254b_dfebf462",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8ab16d8_30716662",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "d23d513f_c888e4b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-07T07:01:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3f2c335_42845eed",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c6efed2_5ccdf798",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 3
@@ -86,6 +122,24 @@
       "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9539a08_292b5474",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-07T07:01:06Z",
+      "side": 1,
+      "message": "The name \"collectFirstErr\" looks better.",
+      "parentUuid": "f5fa3083_0fadb3c3",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
