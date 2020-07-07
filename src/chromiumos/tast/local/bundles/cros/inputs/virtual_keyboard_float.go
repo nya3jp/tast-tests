@@ -51,11 +51,11 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
-	// TODO(b/159178907) disable zero state suggestion to show switch float layout button by default.
-	// Current workaround is to enable float window by default using --enable-features=VirtualKeyboardFloatingDefault
-	// if err = vkb.SwitchToFloatMode(ctx, tconn); err != nil {
-	// 	s.Fatal("Switch to floating layout failed: ", err)
-	// }
+	kconn, err := vkb.UIConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
+	}
+	defer kconn.Close()
 
 	params := ui.FindParams{
 		Role: ui.RoleTypeButton,
@@ -98,19 +98,37 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	// Drag top left to resize layout.
 	resizeToPoint := coords.NewPoint(resizeTopLeftHandler.X-100, resizeTopLeftHandler.Y-100)
-	if err := mouse.Drag(ctx, tconn, resizeTopLeftHandler, resizeToPoint, time.Second); err != nil {
-		s.Fatal("Failed to resize vk: ", err)
+
+	if err := mouse.Move(ctx, tconn, resizeTopLeftHandler, 0); err != nil {
+		s.Fatal("Failed to move to the resize start location: ", err)
+	}
+	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		s.Fatal("Failed to press left button: ", err)
 	}
 
-	// Get new top left resize handler button.
-	newResizeTopLeftHandler, err := elementCenterPoint(ctx, tconn, params)
-	if err != nil {
-		s.Fatal("Failed to get new resize handler: ", err)
+	s.Log("Wait for float vk to be resizing")
+	if err := kconn.WaitForExprFailOnErrWithTimeout(ctx, `document.querySelector("body.is-resizing")`, 3*time.Second); err != nil {
+		s.Fatal(err, "failed to wait for resizing started: ", err)
 	}
 
+	if err := mouse.Move(ctx, tconn, resizeToPoint, 1*time.Second); err != nil {
+		s.Fatal("Failed to move to the resize end location: ", err)
+	}
+
+	// Resizing can be a bit delayed, polling to wait.
 	// New position after resizing can be not precisely verified. Simply check new drag point moves in the desired direction.
-	if resizeTopLeftHandler.X <= newResizeTopLeftHandler.X || resizeTopLeftHandler.Y <= newResizeTopLeftHandler.Y {
-		s.Errorf("Failed to resize float VK. Top left resize handle old position: %s. New position: %s", resizeTopLeftHandler, newResizeTopLeftHandler)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get new top left resize handler button.
+		newResizeTopLeftHandler, err := elementCenterPoint(ctx, tconn, params)
+		if err != nil {
+			return errors.Wrap(err, "failed to get new resize handler")
+		}
+		if resizeTopLeftHandler.X <= newResizeTopLeftHandler.X || resizeTopLeftHandler.Y <= newResizeTopLeftHandler.Y {
+			return errors.Errorf("top left resize handle old position: %s. New position: %s", resizeTopLeftHandler, newResizeTopLeftHandler)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Error("Failed to wait for float vk resized: ", err)
 	}
 }
 
