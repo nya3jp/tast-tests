@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d30a901_7cc9c579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-07-07T05:09:37Z",
+      "side": 1,
+      "message": "lgtm, thanks. You also need to pass review by tast-owners@\nThanks",
+      "revId": "2d8211cfd6aa3affe0e682e8ee3d7b149daa51d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
