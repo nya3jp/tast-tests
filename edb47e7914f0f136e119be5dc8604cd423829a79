@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "428d192f_534b7b55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:45:05Z",
+      "side": 1,
+      "message": "Agree, but IIUC it\u0027ll change soon and you won\u0027t need to reset TMP. I guess Victor is the best person for status update about it.\n\nI guess end prod team can add missing functionality to FakeDMS 😊",
+      "parentUuid": "78ca497d_01ef1c24",
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e683474b_ebdb0ed6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
         "patchSetId": 1
