@@ -316,6 +316,30 @@
       "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820be35a_b0b49626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-07T21:02:02Z",
+      "side": 1,
+      "message": "It turns out we can hide the mouse cursor from the javascript.  I\u0027ve added that to v2.",
+      "parentUuid": "8a13ea6f_9c41248b",
+      "range": {
+        "startLine": 209,
+        "startChar": 22,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
