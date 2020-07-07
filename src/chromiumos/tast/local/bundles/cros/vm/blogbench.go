@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -27,6 +28,11 @@ const (
 	runBlogbench string = "run-blogbench.sh"
 )
 
+type config struct {
+	kind         string
+	externalDisk bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Blogbench,
@@ -39,34 +45,76 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "block",
-				Val:  "block",
+				Val:  config{kind: "block"},
+			},
+			{
+				Name: "block_external",
+				Val:  config{kind: "block", externalDisk: true},
+			},
+			{
+				Name: "block_btrfs",
+				Val:  config{kind: "block_btrfs"},
+			},
+			{
+				Name: "block_btrfs_external",
+				Val:  config{kind: "block_btrfs", externalDisk: true},
 			},
 			{
 				Name: "virtiofs",
-				Val:  "fs",
+				Val:  config{kind: "fs"},
+			},
+			{
+				Name: "virtiofs_external",
+				Val:  config{kind: "fs", externalDisk: true},
+			},
+			{
+				Name: "virtiofs_dax",
+				Val:  config{kind: "fs_dax"},
+			},
+			{
+				Name: "virtiofs_dax_external",
+				Val:  config{kind: "fs_dax", externalDisk: true},
 			},
 			{
 				Name: "p9",
-				Val:  "p9",
+				Val:  config{kind: "p9"},
+			},
+			{
+				Name: "direct_mount",
+				Val:  config{kind: "direct"},
 			},
 		},
 	})
 }
 
 func Blogbench(ctx context.Context, s *testing.State) {
-	// Create a temporary directory on the stateful partition rather than in memory.
-	td, err := ioutil.TempDir("/usr/local/tmp", "tast.vm.Blogbench.")
-	if err != nil {
-		s.Fatal("Failed to create temporary directory: ", err)
+	config := s.Param().(config)
+	// Create a temporary directory on external disk or stateful partition rather than in memory.
+	var td string
+	if config.externalDisk {
+		td = "/media/removable/USBDrive/tast.vm.Blogbench"
+		if err := os.Mkdir(td, 0755); err != nil {
+			s.Fatal("Failed to create shared directory: ", err)
+		}
+	} else {
+		var err error
+		td, err = ioutil.TempDir("/usr/local/tmp", "tast.vm.Blogbench.")
+		if err != nil {
+			s.Fatal("Failed to create temporary directory: ", err)
+		}
 	}
 	defer os.RemoveAll(td)
 
-	vmlinux := s.DataPath(common.VirtiofsKernel())
+	/*
+		vmlinux := s.DataPath(common.VirtiofsKernel())
 
-	kernel := filepath.Join(td, "kernel")
-	if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
-		s.Fatal("Failed to unpack kernel: ", err)
-	}
+		kernel := filepath.Join(td, "kernel")
+		if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
+			s.Fatal("Failed to unpack kernel: ", err)
+		}
+	*/
+	// Use a custom kernel with unmerged virtio-fs patches.
+	kernel := "/mnt/stateful_partition/virtiofs_dax_kernel"
 
 	shared := filepath.Join(td, "shared")
 	if err := os.Mkdir(shared, 0755); err != nil {
@@ -78,11 +126,11 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create block device file: ", err)
 	}
-	defer f.Close()
 
 	if err := f.Truncate(8 * gB); err != nil {
 		s.Fatal("Failed to set block device file size: ", err)
 	}
+	f.Close()
 
 	logFile := filepath.Join(s.OutDir(), "serial.log")
 
@@ -91,24 +139,38 @@ func Blogbench(ctx context.Context, s *testing.State) {
 		"--nofile=262144",
 		"crosvm", "run",
 		"-c", "1",
-		"-m", "256",
+		"-m", "1024",
 		"-s", td,
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
 	}
 
-	kind := s.Param().(string)
+	kind := config.kind
 	var tag string
-	if kind == "block" {
+	if kind == "block" || kind == "block_btrfs" {
 		tag = "/dev/vda"
 		args = append(args, "--rwdisk", block)
-	} else if kind == "fs" {
+	} else if kind == "fs" || kind == "fs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
-			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, kind))
+			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, "fs"))
 	} else if kind == "p9" {
 		tag = "shared"
 		args = append(args, "--shared-dir", fmt.Sprintf("%s:%s", shared, tag))
+	} else if kind == "direct" {
+		// Assume /dev/sda is mounted at /media/removable/USBDrive/,
+		// We unmount /dev/sda in the host and pass it to crosvm.
+		if err := syscall.Unmount("/media/removable/USBDrive/", 0); err != nil {
+			s.Fatal("Failed to unmount USB drive: ", err)
+		}
+		defer func() {
+			if err := syscall.Mount("/dev/sda", "/media/removable/USBDrive/", "ext4", 0, ""); err != nil {
+				s.Log("Failed to remount USB drive: ", err)
+			}
+		}()
+
+		tag = "/dev/vda"
+		args = append(args, "--rwdisk", "/dev/sda")
 	} else {
 		s.Fatal("Unknown storage device type: ", err)
 	}
@@ -132,6 +194,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	}
 	defer output.Close()
 
+	s.Log("args: ", args)
 	s.Log("Running blogbench")
 	cmd := testexec.CommandContext(ctx, "prlimit", args...)
 	cmd.Stdout = output
