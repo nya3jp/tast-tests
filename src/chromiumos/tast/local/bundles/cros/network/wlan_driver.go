@@ -74,6 +74,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.Intel22560: {
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
