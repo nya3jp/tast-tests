@@ -16,6 +16,23 @@
       "revId": "2b83a8e80466b4d33f998cec3872b0059efdb159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0266e31a_906c8550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-07-07T23:23:37Z",
+      "side": 1,
+      "message": "Thanks for review! Will put up the touch latency test next",
+      "revId": "2b83a8e80466b4d33f998cec3872b0059efdb159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
