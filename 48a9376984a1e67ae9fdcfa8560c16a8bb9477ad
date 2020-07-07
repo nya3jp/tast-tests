@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "18cfd211_f5d4f445",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2020-07-07T12:52:08Z",
+      "side": 1,
+      "message": "Kamil lets revert the direction, so te C app will listen and test will connect.\nIn mean time lets discuss the overall approach with infra team. \nThe SSH is another connection type so I guess they cannot forbid the network connections at all.",
+      "parentUuid": "5d606e9f_c6266723",
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04d58046_9d7862ea",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
         "patchSetId": 3
