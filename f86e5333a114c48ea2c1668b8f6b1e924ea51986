@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c5f8b1c_47692498",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-07T08:50:32Z",
+      "side": 1,
+      "message": "Yamaguchi-san, could you take a look? This CL replaces the usage of journalctl with the replacement \"croslog\". As for now, croslog works as a wrapper of journalctl and shouldn\u0027t change any behavior. Thanks.",
+      "revId": "f86e5333a114c48ea2c1668b8f6b1e924ea51986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
