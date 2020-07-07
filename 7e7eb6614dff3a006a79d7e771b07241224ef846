@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "472e09d8_fb46e796",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-07-07T05:02:52Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfa5a198_f58b2966",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 7
