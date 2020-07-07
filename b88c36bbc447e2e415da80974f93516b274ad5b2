@@ -16,6 +16,40 @@
       "revId": "b88c36bbc447e2e415da80974f93516b274ad5b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be947cf8_9ff59a15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-07T16:47:09Z",
+      "side": 1,
+      "message": "just one small thing to change",
+      "revId": "b88c36bbc447e2e415da80974f93516b274ad5b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8583fbd_feb5c05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_omnibox.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-07T16:47:09Z",
+      "side": 1,
+      "message": "just realized we missed one thing:\ndefer install.Release(ctx)",
+      "revId": "b88c36bbc447e2e415da80974f93516b274ad5b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
