@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c545277_d3b236ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-07T15:00:16Z",
+      "side": 1,
+      "message": "Thanks for the comments.\n\n@ Michael: probably I won\u0027t be able to continue working on the test for the time being, it actually already took way more time than intended.\nChecking over the UI is actually currently not that nice as for that I would have to copy a lot of code from policy_service as otherwise I won\u0027t have access to the current chrome instance. Maybe once precondition V2 is released, as this will make remote tests a lot easier to manage.\nWe will take ownership of the FakeDMS in the eng prod team as far as I understood it, however currently we have quite a lot of other things in the pipeline. But if enough people complain about a missing feature this might move up in the priority list.",
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
