@@ -76,16 +76,11 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 
 	waitForRotation := func(expectLandscape bool) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+			displayInfo, err := display.GetInternalInfo(ctx, tconn)
 			if err != nil {
 				return testing.PollBreak(err)
 			}
-			defer disp.Close()
-			s, err := disp.Size(ctx)
-			if err != nil {
-				// It may return error while transition, keep retrying.
-				return err
-			}
+			s := displayInfo.Bounds.Size()
 			if s.Width > s.Height == expectLandscape {
 				return nil
 			}
@@ -150,6 +145,9 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		if err := field.Click(ctx); err != nil {
 			s.Fatal("Failed to click the field: ", err)
+		}
+		if err := field.SetText(ctx, "ARC"); err != nil {
+			s.Fatal("Failed to set text: ", err)
 		}
 		if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
