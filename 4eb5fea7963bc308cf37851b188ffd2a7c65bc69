@@ -33,6 +33,115 @@
       "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f626220_e091fb73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-07-07T15:27:36Z",
+      "side": 1,
+      "message": "LGTM % nits ! Thanks for working on this :-)",
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73b07d98_d9847648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/client_certificate_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-07-07T15:27:36Z",
+      "side": 1,
+      "message": "nit: Let\u0027s add a comment that 0 refers to the \u0027system\u0027 slot, and that it has ID 0 currently because it\u0027s loaded first (so people know that it was not a contract if it should ever break :-D )",
+      "range": {
+        "startLine": 42,
+        "startChar": 107,
+        "endLine": 42,
+        "endChar": 108
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e9797ba_238bfb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/client_certificate_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-07-07T15:27:36Z",
+      "side": 1,
+      "message": "nit: Why trim leading/trailing if we just use Contains later?",
+      "range": {
+        "startLine": 46,
+        "startChar": 20,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f879faee_39d4f68c",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-07-07T15:27:36Z",
+      "side": 1,
+      "message": "nit: Let\u0027s mention for clarity that it matches on a well-known certificate name, which policy_testserver.py currently issues.",
+      "range": {
+        "startLine": 13,
+        "startChar": 87,
+        "endLine": 13,
+        "endChar": 96
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6df8c5b_4528245d",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-07-07T15:27:36Z",
+      "side": 1,
+      "message": "nit: Later, for checking the user token, are we envisioning adding a parameter here?\n\n(if not, i.e. if we\u0027ll have another rpc altogether, I think we could already name this something like TestClientCertIsInstalledOnSystemToken. OTOH that\u0027s pretty long :-D )",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
