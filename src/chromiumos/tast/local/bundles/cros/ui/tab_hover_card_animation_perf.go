@@ -8,10 +8,10 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 
@@ -73,10 +73,10 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tabs.Release(ctx)
 	if len(tabs) != 2 {
-		s.Fatalf("expected 2 tabs, only found %v tab(s)", len(tabs))
+		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	for _, data := range []struct {
 		tab    *chromeui.Node
 		suffix string
@@ -90,42 +90,28 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 				s.Error("Failed to wait for system UI to be stabilized: ", err)
 			}
 
-			hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+			runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func() error {
 				if err := mouse.Move(ctx, tconn, center, 0); err != nil {
-					s.Fatal("Failed to put mouse to the center: ", err)
+					return errors.Wrap(err, "failed to put the mouse to the center")
 				}
-				if err := mouse.Move(ctx, tconn, data.tab.Location.CenterPoint(), time.Second); err != nil {
-					s.Fatalf("Failed to move mouse to the %s tab: %s", data.suffix, err)
+				if err := mouse.Move(ctx, tconn, data.tab.Location.CenterPoint(), 500*time.Millisecond); err != nil {
+					return errors.Wrapf(err, "failed to move the mouse to the %s tab", data.suffix)
 				}
 				// Hover on the tab.
-				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-					s.Fatal("Failed to sleep for 5 seconds: ", err)
+				if err := testing.Sleep(ctx, 4*time.Second); err != nil {
+					return errors.Wrap(err, "failed to sleep for 5 seconds")
 				}
-				if err := mouse.Move(ctx, tconn, center, time.Second); err != nil {
-					s.Fatal("Failed to move mouse back to the center: ", err)
+				if err := mouse.Move(ctx, tconn, center, 500*time.Millisecond); err != nil {
+					return errors.Wrap(err, "failed to move the mouse back to the center")
 				}
 				return nil
 			},
 				"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn",
-				"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut")
-			if err != nil {
-				s.Fatal("Failed to move mouse or get the histogram: ", err)
-			}
-
-			for _, h := range hists {
-				mean, err := h.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s (%s tab): %v ", h.Name, data.suffix, err)
-				}
-				pv.Set(perf.Metric{
-					Name:      h.Name + "." + data.suffix,
-					Unit:      "percent",
-					Direction: perf.BiggerIsBetter,
-				}, mean)
-			}
+				"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut"),
+				perfutil.StoreSmoothness)
 		})
 	}
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }

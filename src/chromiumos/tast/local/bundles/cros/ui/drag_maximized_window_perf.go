@@ -8,12 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
@@ -121,7 +120,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// Return to the caption center, this will trigger a remaximize animation.
 	points = append(points, points[0])
 
-	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
 		// Move the mouse to caption and press down.
 		if err := mouse.Move(ctx, tconn, points[0], 10*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to move to caption")
@@ -160,24 +159,8 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.Window.AnimationSmoothness.CrossFade.DragMaximize",
-		"Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize")
-	if err != nil {
-		s.Fatal("Failed to drag or get the histogram: ", err)
-	}
-
-	pv := perf.NewValues()
-	for _, h := range hists {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+		"Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize"),
+		perfutil.StoreSmoothness)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
