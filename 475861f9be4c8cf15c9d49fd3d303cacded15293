@@ -117,6 +117,30 @@
       "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c496d9c2_fefa65dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-07-07T06:27:06Z",
+      "side": 1,
+      "message": "To my great surprise, also not always. It works on 99% of the devices, but sometimes it doesn\u0027t show the keyboard (unless, maybe, I wait for a long time). I found it working the best when using both methods in this particular case.",
+      "parentUuid": "7d23788a_ef3e756b",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
