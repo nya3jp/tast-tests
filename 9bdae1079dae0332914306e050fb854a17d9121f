@@ -178,6 +178,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b70503a5_7fb76d9f",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-07T05:36:42Z",
+      "side": 1,
+      "message": "Reset to patchset 4 and rebase onto master. PTAL.",
+      "parentUuid": "7532747e_d247a95a",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
