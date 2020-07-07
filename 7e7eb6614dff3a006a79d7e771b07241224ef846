@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "6e4dd526_9c3ee62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-07-07T19:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa5a198_f58b2966",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1ef0b5_d40e28bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 7
@@ -96,6 +120,30 @@
       "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733493c6_6392cfa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-07-07T19:01:38Z",
+      "side": 1,
+      "message": "Sounds good, moved both UIAutomator calls to waitForEvents().",
+      "parentUuid": "5f1ef0b5_d40e28bc",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "7e7eb6614dff3a006a79d7e771b07241224ef846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
