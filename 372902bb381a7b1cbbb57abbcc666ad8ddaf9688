@@ -524,6 +524,30 @@
     },
     {
       "key": {
+        "uuid": "2dfa08de_4121c29f",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T09:16:44Z",
+      "side": 1,
+      "message": "see my other comment about Telem prefix 😊",
+      "parentUuid": "8292ea5e_61ae5528",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "372902bb381a7b1cbbb57abbcc666ad8ddaf9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad7df0a_d59b715d",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
