@@ -75,6 +75,13 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// SWA installation is not guaranteed during startup.
+	// Using this wait to check installation finished before starting test.
+	s.Log("Wait for Gallery to be installed")
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Gallery.ID, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for installed app: ", err)
+	}
+
 	// Open the Files App.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
