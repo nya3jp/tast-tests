@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38d0c6c9_70a4485e",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-07T16:39:41Z",
+      "side": 1,
+      "message": "nit: (not your fault but) this should be \"Method\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "cd9538637f7919842c5ec5a47e298d6cac8854b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
