@@ -134,7 +134,7 @@ func ChromeVideoWithSWDecodingAndHDRScreen() testing.Precondition {
 }
 
 var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWDecodingAndHDRScreen", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.ExtraArgs("--enable-use-hdr-transfer-function"))
+	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.ExtraArgs("--enable-features=UseHDRTransferFunction"))
 
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
