@@ -72,6 +72,47 @@
     },
     {
       "key": {
+        "uuid": "c6680efd_fcb1316c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-07T02:44:25Z",
+      "side": 1,
+      "message": "Ok, I tested on krane and it passes.",
+      "parentUuid": "b017bc3c_9751ac36",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9669e55e_b7ad590b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-07T02:44:25Z",
+      "side": 1,
+      "message": "Sorry for the delay. I don\u0027t have problems with this if other folks are okay depending on Chrome\u0027s WebGL stack.",
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eb93402_9ccf59c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -107,6 +148,30 @@
       "side": 1,
       "message": "I\u0027m still learning my way around tast.. any hints about how to do this?",
       "parentUuid": "9eb93402_9ccf59c9",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6666741f_1f766893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-07T02:44:25Z",
+      "side": 1,
+      "message": "Yes, the following works:\n\ncr, err :\u003d chrome.New(ctx, chrome.ExtraArgs(\"--enable-hardware-overlays\u003d\\\"\\\"\"))",
+      "parentUuid": "4b0b34ff_8c1ca085",
       "range": {
         "startLine": 157,
         "startChar": 19,
@@ -182,6 +247,53 @@
         "startChar": 1,
         "endLine": 207,
         "endChar": 2
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ae4c480_a052814c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-07T02:44:25Z",
+      "side": 1,
+      "message": "I was about to say that maybe you could do gl.finish(), but I don\u0027t think this guarantees the content is on the screen.\n\nI guess another way is to not take a screenshot and instead do gl.readPixels() on the canvas and somehow read the pixels back from Go.\n\nOverall, sleeping is the simplest it seems. Just make sure to add a comment indicating why it\u0027s needed.",
+      "parentUuid": "bcb9e661_460f3027",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a13ea6f_9c41248b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-07T02:44:25Z",
+      "side": 1,
+      "message": "I noticed that this can capture the mouse cursor. If you look at the PNGs it saves, you can see a few dark pixels in the center of the circle. Since the images are scaled down, this doesn\u0027t make the fuzzy comparison fail, at least on the boards I tried.\n\nJust keep in mind that if it does fail, this might be a reason. We should be able to exclude the cursor plane in the screenshot tool though if this becomes a problem.",
+      "range": {
+        "startLine": 209,
+        "startChar": 22,
+        "endLine": 209,
+        "endChar": 29
       },
       "revId": "8cf46fb6aa958a513a3d981fdd8558751c7120ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
