@@ -33,6 +33,162 @@
       "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfac3de_9ce8a3c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "Hi Michael,\n\nIn one test you can test multiple scenarios, but you need to restart FakeDMS and reset TPM each time. See example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+      "parentUuid": "d99708c0_6191f62e",
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e683474b_ebdb0ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "nit: can it be no more than 80 symbols?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 112
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88b15b7_fa214633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "Maybe i am missing something, but why do you use this constant here?\n\nAlso, don\u0027t you want to verify other certificate parameters like renewal period, name, key algorithm?",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33daa798_ffbe75cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate_for_device_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "I am not sure we should limit timeout here, because RPC call already have context with deadline. It\u0027ll be more flexible if client will setup timeout/deadline",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc2dcb7_bce7269a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "I see that for wilco policy we have 3 minutes for cleanup, maybe we should use 3 minutes here as well?",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febfb659_fa54019d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "i\u0027d like it to be closer to the first use.\n\nAlso, you can do next:\n\npb.AddPolicy(\u0026policy.AttestationEnabledForDevice{Val: true}) \n\npb.AddPolicy(\u0026policy.RequiredClientCertificateForDevice{\n  Val: []*policy.RequiredClientCertificateForDeviceValue{\n      \u0026policy.RequiredClientCertificateForDeviceValue{\n\t\t\tCertProfileId:        \"cert_profile_device_1\",\n\t\t\tKeyAlgorithm:         \"rsa\",\n\t\t\tName:                 \"Cert Profile Device 1\",\n\t\t\tPolicyVersion:        \"policy_version_1\",\n\t\t\tRenewalPeriodSeconds: 60 * 60 * 24 * 365,\n      }\n   }\n})",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "660ca99a_b687ae3a",
+        "filename": "src/chromiumos/tast/services/cros/policy/required_client_certificate_for_device_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-07T13:04:54Z",
+      "side": 1,
+      "message": "Can we reuse this service for other certificate related things in the future? If so, maybe ClientCertificateService name fits better?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
