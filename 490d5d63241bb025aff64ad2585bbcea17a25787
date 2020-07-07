@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ace6b2d_b3ed6ac2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2020-07-07T09:03:05Z",
+      "side": 1,
+      "message": "Please explain why setting a shorter timeout in the commit message.\n(e.g. It is meaningless to wait longer)",
+      "revId": "490d5d63241bb025aff64ad2585bbcea17a25787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
