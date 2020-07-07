@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a13f9120_486e89c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-07T03:04:30Z",
+      "side": 1,
+      "message": "Sorry for late reply. continue some discussion on the output logging mechanism.",
+      "revId": "2625332fbfd6ac8b08c1770ffbe1a09b1113a80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

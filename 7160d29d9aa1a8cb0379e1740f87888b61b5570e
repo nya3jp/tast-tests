@@ -167,6 +167,24 @@
     },
     {
       "key": {
+        "uuid": "b1afe860_9cb847af",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-07T03:04:30Z",
+      "side": 1,
+      "message": "\u003e it would fail if we run with local command runner and save the output in Arping function\n\nI\u0027m not quite sure where the failure comes from. I think it should be OK for local tests to access OutDir, no? Or, did you try this with gRPC, which still has a TODO to support OutDir in [1]?\n\nI personally think the interface with raw output returned is not quite easy to understand so I want to avoid it if possible. Do you think something like below might work?\n\n  outDir, ok :\u003d testing.ContextOutDir(ctx)\n  if !ok {\n    testing.ContextLogf(\"arping output: %q\", content)\n  } else {\n    f, err :\u003d ioutil.TempFile(outDir, \"arping_*.log\")\n    ...\n    testing.ContextLogf(ctx, \"logging arping output to %q\",\n      filepath.Base(f.Name()))\n  }\n\nAlso, if we want to avoid excessive logging, we might only collect the output when (parseErr !\u003d nil \u0026\u0026 err !\u003d nil), given that CmdRunner already dump on error? maybe around line91 in PS6.\n\n[1] http://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/rpc/metadata.go?l\u003d39\u0026rcl\u003ded6458d0726a1905ce26e6192714b34485da1e96",
+      "parentUuid": "15974dc7_ba40fcd1",
+      "revId": "7160d29d9aa1a8cb0379e1740f87888b61b5570e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c3a22e8_c388fc7a",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 1
