@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -44,4 +45,31 @@ func GetSystemLogs(ctx context.Context, tconn *chrome.TestConn) (string, error) 
 		return "", err
 	}
 	return string(systemLogs), nil
+}
+
+// GetMultilineSection exports the system logs from chrome by calling GetSystemLogs,
+// then searches for the provided multiline section. If found, returns the
+// contents of the section between the START and END markers as a string.
+func GetMultilineSection(ctx context.Context, tconn *chrome.TestConn, section string) (string, error) {
+	logs, err := GetSystemLogs(ctx, tconn)
+	if err != nil {
+		return "", err
+	}
+
+	var index, start, end int
+	key := section + "=<multiline>"
+	if index = strings.Index(logs, key); index == -1 {
+		return "", errors.Errorf("System logs missing section: %s", section)
+	}
+	logs = logs[index:]
+	const startKey = "---------- START ----------"
+	if start = strings.Index(logs, startKey); start == -1 {
+		return "", errors.New("System logs missing start key")
+	}
+	start += len(startKey)
+	const endKey = "---------- END ----------"
+	if end = strings.Index(logs, endKey); end == -1 {
+		return "", errors.New("System logs missing end key")
+	}
+	return logs[start:end], nil
 }
