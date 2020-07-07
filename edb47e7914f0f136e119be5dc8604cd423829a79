@@ -16,6 +16,23 @@
       "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d99708c0_6191f62e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2020-07-07T11:42:43Z",
+      "side": 1,
+      "message": "Thanks a lot for writing this test, this is very helpful!\nDo you plan to keep working on it?\n\nIIUC currently we check certificates only via pkcs11-tool.\nWill we add some UI interactions later?\n\nAlso it’d be great to make FakeDMS more flexible.\nCurrently it always answers in the same way, we could add more different scenarios if we could configure it. \n",
+      "revId": "edb47e7914f0f136e119be5dc8604cd423829a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
