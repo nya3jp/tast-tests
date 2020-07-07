@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70563111_dfc30e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-07T04:47:21Z",
+      "side": 1,
+      "message": "Removed Params block entirely. See a reply at #75",
+      "parentUuid": "8c375274_994a277c",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c7efccd_249ad71f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "77418b05_59524318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-07T04:47:21Z",
+      "side": 1,
+      "message": "Let me avoid \u0027vm\u0027 name as the test is actually interested in if it\u0027s R+, rather than if it\u0027s vm. Stopped using Params and let the test check the ARC version by `arc.SDKVersion() \u003e\u003d arc.SDKR`",
+      "parentUuid": "6c7efccd_249ad71f",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e90c93e_74bace9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bbd85c_3f2c7a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-07T04:47:21Z",
+      "side": 1,
+      "message": "Followed the compromised solution: Defined stable/unstable test set globally then switch the test set by checking `arc.SDKVersion() \u003e\u003d arc.SDKR` as we don\u0027t have proper software dependency to specify R+ versions",
+      "parentUuid": "8e90c93e_74bace9c",
+      "range": {
+        "startLine": 505,
+        "startChar": 60,
+        "endLine": 505,
+        "endChar": 86
+      },
+      "revId": "f1c24850b302f8d81046cc3eaf4c94f31ea6a143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
