@@ -1178,6 +1178,7 @@ func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) er
 	if err := a.conn.Eval(ctx, `(p => () => p)(Tast.waitNextConfiguration())`, &waiting); err != nil {
 		return errors.Wrap(err, "failed to start watching congiruation update")
 	}
+	defer waiting.Release(ctx)
 	if err := trigger(); err != nil {
 		return err
 	}
