@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2742629f_0c93372a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-07T14:41:24Z",
+      "side": 1,
+      "message": "yunfanc@, based on your comment in the sheets it seems that we are keeping this test in R, so please review this CL.",
+      "revId": "4d9c1fc4d0f7125d73bbc81af1ec937d01220f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
