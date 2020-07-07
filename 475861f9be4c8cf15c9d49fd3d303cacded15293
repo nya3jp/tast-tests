@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b579fa0b_b8ac321a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-07-07T06:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315df302_52b500d8",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5248a2e6_0c250ebb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-07T06:11:52Z",
       "side": 1,
       "message": "Is this duplicate of last function vkb.ShowVirtualKeyboard?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "475861f9be4c8cf15c9d49fd3d303cacded15293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2aafea_b34fc9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-07-07T06:21:49Z",
+      "side": 1,
+      "message": "Not exactly: ShowVirtualKeyboard triggers internal vkb method while clicking on the input field  triggers OS-level event. Normally, they are redundant, but I\u0027ve noticed that on some devices focus is not on the input field when typing, hence clicking on the input field.",
+      "parentUuid": "5248a2e6_0c250ebb",
       "range": {
         "startLine": 152,
         "startChar": 2,
