@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "8bec1fa5_736b09ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/client_certificate_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-07T15:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b07d98_d9847648",
+      "range": {
+        "startLine": 42,
+        "startChar": 107,
+        "endLine": 42,
+        "endChar": 108
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e9797ba_238bfb4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/client_certificate_service.go",
         "patchSetId": 2
@@ -96,6 +120,30 @@
       "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25f2295_1dc28354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/client_certificate_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-07T15:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9797ba_238bfb4a",
+      "range": {
+        "startLine": 46,
+        "startChar": 20,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "07d0c52c_e3538cab",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-07T15:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f879faee_39d4f68c",
+      "range": {
+        "startLine": 13,
+        "startChar": 87,
+        "endLine": 13,
+        "endChar": 96
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6df8c5b_4528245d",
         "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
         "patchSetId": 2
@@ -133,6 +205,30 @@
       "writtenOn": "2020-07-07T15:27:36Z",
       "side": 1,
       "message": "nit: Later, for checking the user token, are we envisioning adding a parameter here?\n\n(if not, i.e. if we\u0027ll have another rpc altogether, I think we could already name this something like TestClientCertIsInstalledOnSystemToken. OTOH that\u0027s pretty long :-D )",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "4eb5fea7963bc308cf37851b188ffd2a7c65bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a246b865_09c5f47b",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-07T15:46:41Z",
+      "side": 1,
+      "message": "Probably we won\u0027t have to deal with this anymore as the rpc service should become obsolete once precondition V2 is released.",
+      "parentUuid": "f6df8c5b_4528245d",
       "range": {
         "startLine": 15,
         "startChar": 6,
