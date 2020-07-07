@@ -74,6 +74,11 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
+	s.Log("Wait for decoder running")
+	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
+		s.Fatal("Failed to wait for decoder: ", err)
+	}
+
 	s.Log("Waiting for the virtual keyboard to render buttons")
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
@@ -84,6 +89,12 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
 	}
 	defer kconn.Close()
+
+	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "e14s-inputbox"}, 5*time.Second)
+	if err != nil {
+		s.Fatal("Failed to find input element: ", err)
+	}
+	defer element.Release(ctx)
 
 	// The input method ID is from:
 	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
@@ -135,6 +146,11 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
 			s.Error("Failed to show the virtual keyboard: ", err)
 			continue
+		}
+
+		s.Log("Click searchbox to trigger virtual keyboard")
+		if err := element.LeftClick(ctx); err != nil {
+			s.Fatal("Failed to click the input element: ", err)
 		}
 
 		s.Log("Waiting for the virtual keyboard to show")
