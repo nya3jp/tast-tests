@@ -19,9 +19,11 @@ main() {
     [[ "$$" == "1" ]] || die "Not runnnig as PID 1"
 
     [[ $# -eq 3 ]] || \
-        die "Usage: $(basename "$0") <block|fs|p9> <src> <test directory>"
+        die "Usage: $(basename "$0") <block|block_btrfs|direct|fs|fs_dax|p9> \
+<src> <test directory>"
 
-    [[ -d "${mountpoint}" ]] || die "${mountpoint} is not a directory"
+    [[ -d "${mountpoint}" ]] || [[ "${kind}" == "direct" ]]  || \
+        die "${mountpoint} is not a directory"
 
     # We are running as pid 1.  Mount some necessary file systems.
     mount -t proc proc /proc
@@ -35,6 +37,14 @@ main() {
             mkfs.ext4 "${src}"
             mount "${src}" "${mountpoint}"
             ;;
+        block_btrfs)
+            [[ -b "${src}" ]] || die "${src} is not a block device"
+            mkfs.btrfs "${src}"
+            mount "${src}" "${mountpoint}"
+            ;;
+        direct)
+            mount "${src}" "/media/removable/SSD/"
+            ;;
         p9)
             mount -t 9p \
                   -o "trans=virtio,version=9p2000.L,access=client,cache=loose" \
@@ -43,11 +53,16 @@ main() {
         fs)
             mount -t virtiofs "${src}" "${mountpoint}"
             ;;
+        fs_dax)
+            mount -t virtiofs -o dax "${src}" "${mountpoint}"
+            ;;
         *)
             die "Unknown storage type: ${kind}"
     esac
 
-    exec blogbench -d "${mountpoint}" -i 12
+    blogbench -d "${mountpoint}" -i 12
+
+    sync
 }
 
 main "$@"
