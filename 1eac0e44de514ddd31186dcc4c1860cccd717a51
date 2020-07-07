@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2678323d_80582726",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-07T18:34:41Z",
+      "side": 1,
+      "message": "nit: replicate?",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "1eac0e44de514ddd31186dcc4c1860cccd717a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
