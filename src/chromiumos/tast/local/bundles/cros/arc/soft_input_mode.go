@@ -23,8 +23,14 @@ func init() {
 		Desc:         "Verifies that Ash split view works properly with softInputMode=adjustPan|adjustResize activity flags",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -70,16 +76,11 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 
 	waitForRotation := func(expectLandscape bool) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+			displayInfo, err := display.GetInternalInfo(ctx, tconn)
 			if err != nil {
 				return testing.PollBreak(err)
 			}
-			defer disp.Close()
-			s, err := disp.Size(ctx)
-			if err != nil {
-				// It may return error while transition, keep retrying.
-				return err
-			}
+			s := displayInfo.Bounds.Size()
 			if s.Width > s.Height == expectLandscape {
 				return nil
 			}
