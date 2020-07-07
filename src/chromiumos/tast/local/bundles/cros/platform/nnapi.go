@@ -30,6 +30,7 @@ func init() {
 			"group:mainline",
 			"informational",
 		},
+		SoftwareDeps: []string{"nnapi"},
 	})
 }
 
