@@ -142,6 +142,24 @@
       "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd00ad78_88d76890",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-07T03:00:03Z",
+      "side": 1,
+      "message": "The reasons I proposed to have finer grain packages for shillconst are:\n1. to make const name shorter as subpackage name can eliminate common prefix of const names of the same group;\n2. to make package more focused (refer to https://blog.golang.org/package-names \"avoid meaningless package names\" section)\n\nYour concerns are also valid, too. Fine-grain subpackages makes it harder to browse the document and find the const. Let\u0027s use patchset 4 solution if everyone agree that easier to find consts outweighs shorter names and focused package.",
+      "parentUuid": "74589408_ae779c89",
+      "revId": "9bdae1079dae0332914306e050fb854a17d9121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
