@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "b4340e91_a6738510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-08T21:28:57Z",
+      "side": 1,
+      "message": "This was actually done because of Arthur\u0027s suggestion.\nThe test-case says click/touch, I thought it say click OR touch and one should be good enough but after I asks Arthur, he said it should be both.",
+      "parentUuid": "a3e2be87_64ccbd00",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "128b8f4a_bbf06bbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
