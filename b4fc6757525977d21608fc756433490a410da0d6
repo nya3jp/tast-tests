@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22943f76_f4a2d283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-08T23:44:42Z",
+      "side": 1,
+      "message": "CR+2 (shadow review). Please still wait for review by Hidehiko and test owner.",
+      "revId": "b4fc6757525977d21608fc756433490a410da0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
