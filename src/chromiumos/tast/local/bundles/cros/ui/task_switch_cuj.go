@@ -338,7 +338,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				dismissID           = "com.google.android.gm:id/gm_dismiss_button"
 				customPanelMaxCount = 10
 			)
-			gotIt := d.Object(ui.TextMatches("GOT IT"))
+			gotIt := d.Object(ui.Text("GOT IT"))
 			if err := gotIt.WaitForExists(ctx, timeout); err != nil {
 				s.Log(`Failed to find "GOT IT" button, believing splash screen has been dismissed already`)
 				return nil
@@ -349,7 +349,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			// Sometimes, the account information might not be ready yet. In that case
 			// a warning dialog appears. If the warning message does not appear, it
 			// is fine.
-			pleaseAdd := d.Object(ui.TextMatches("Please add at least one email address"))
+			pleaseAdd := d.Object(ui.Text("Please add at least one email address"))
 			if err := pleaseAdd.WaitForExists(ctx, timeout); err == nil {
 				// Even though the warning dialog appears, the email address should
 				// appear already. Therefore, here simply clicks the 'OK' button to
@@ -365,7 +365,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to click the OK button")
 				}
 			}
-			takeMe := d.Object(ui.TextMatches("TAKE ME TO GMAIL"))
+			takeMe := d.Object(ui.Text("TAKE ME TO GMAIL"))
 			if err := takeMe.WaitForExists(ctx, timeout); err != nil {
 				return errors.Wrap(err, `"TAKE ME TO GMAIL" is not shown`)
 			}
