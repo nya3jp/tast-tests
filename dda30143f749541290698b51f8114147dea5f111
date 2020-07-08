@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3484bdd1_074d164e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-08T16:40:54Z",
+      "side": 1,
+      "message": "please add\n  defer captionBtn.Release(ctx)",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d8d03b_dce23856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-08T16:40:54Z",
+      "side": 1,
+      "message": "Is this have to be a touch event?  Since it is a test for clamshell mode, I think mouse would be good enough.\n\nIf mouse is fine, captionBtn.LeftClick(ctx) works.  Or even written in one line:\n  uig.Do(ctx, tconn, uig.Find(crui.FindParams{...}).LeftClick())\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uig",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128b8f4a_bbf06bbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-08T16:40:54Z",
+      "side": 1,
+      "message": "please use GetPrimaryInfo() instead. Some devices (like chromeboxes) don\u0027t have internal display.",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83c378bd_37d55b48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-08T16:40:54Z",
+      "side": 1,
+      "message": "Those calculation can be done through TouchCoordConverter:\n  cBCX, cBCY :\u003d tsw.NewTouchCoordConverter(info.Bounds.Size).ConvertLocation(captionBtn.Location.CenterPoint())",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 110
+      },
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
