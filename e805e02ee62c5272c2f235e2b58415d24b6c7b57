@@ -16,6 +16,23 @@
       "revId": "e805e02ee62c5272c2f235e2b58415d24b6c7b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2ebabf2_4803f951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-08T15:49:36Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, but please note that I am not a full Tast OWNER, so you will need to wait for Brendan\u0027s CR.",
+      "revId": "e805e02ee62c5272c2f235e2b58415d24b6c7b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
