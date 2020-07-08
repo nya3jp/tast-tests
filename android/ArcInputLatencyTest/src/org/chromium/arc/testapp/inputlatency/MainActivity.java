@@ -10,8 +10,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,13 +29,13 @@ import org.json.JSONException;
 /** Main activity for the ArcInputLatencyTest app. */
 public class MainActivity extends Activity {
     private static final String TAG = "InputLatencyTest";
-    private static final int FINISH_KEY = KeyEvent.KEYCODE_ESCAPE;
     private EventListAdapter mAdapter;
     private ListView mList;
     private TextView mEvents;
     private TextView mCount;
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
+    private Button mClrBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,19 @@ public class MainActivity extends Activity {
         ((ListView) findViewById(R.id.event_list)).setAdapter(mAdapter);
         mEvents = findViewById(R.id.event_json);
         mCount = findViewById(R.id.event_count);
+        mClrBtn = findViewById(R.id.clear_btn);
+
+        mClrBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mRecvEvents.clear();
+                mAdapter.notifyDataSetChanged();
+                mExecutor.submit(
+                    () -> {
+                        runOnUiThread(() -> setEvents("", 0));
+                    });
+            }
+        });
     }
 
     @Override
@@ -64,6 +80,12 @@ public class MainActivity extends Activity {
                 new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis());
 
         traceEvent(recv);
+        final int source = event.getSource();
+        // Stop dispatching gamepad event.
+        if ((event.getSource() & InputDevice.SOURCE_GAMEPAD) != 0
+                || (source & InputDevice.SOURCE_JOYSTICK) != 0) {
+            return true;
+        }
         return super.dispatchKeyEvent(event);
     }
 
@@ -71,14 +93,33 @@ public class MainActivity extends Activity {
     public boolean dispatchTouchEvent(MotionEvent event) {
         traceEvent(
                 new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+        final int source = event.getSource();
+        // Stop dispatching gamepad event.
+        if ((source & InputDevice.SOURCE_GAMEPAD) != 0
+                || (source & InputDevice.SOURCE_JOYSTICK) != 0) {
+            return true;
+        }
         return super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean dispatchGenericMotionEvent(MotionEvent event) {
+        final int source = event.getSource();
+        // Dispatching non-gamepad event.
+        if ((source & InputDevice.SOURCE_GAMEPAD) == 0
+                && (source & InputDevice.SOURCE_JOYSTICK) == 0) {
+            traceEvent(
+                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+            return  super.dispatchGenericMotionEvent(event);
+        }
+        // It is possible that the InputDevice is already gone when MotionEvent arrives.
+        InputDevice device = InputDevice.getDevice(event.getDeviceId());
+        if (device == null) {
+            return true;
+        }
         traceEvent(
                 new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
-        return super.dispatchGenericMotionEvent(event);
+        return true;
     }
 
     /** Called to record timing of received input events. */
