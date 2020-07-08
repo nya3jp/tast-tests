@@ -16,6 +16,23 @@
       "revId": "3875c2c1412091fd2af10c99d5dc835ae1362c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd4615be_f580d0e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1143639
+      },
+      "writtenOn": "2020-07-08T19:05:17Z",
+      "side": 1,
+      "message": "Note that this CL is to adapt this code to a change in Chromium.",
+      "revId": "3875c2c1412091fd2af10c99d5dc835ae1362c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
