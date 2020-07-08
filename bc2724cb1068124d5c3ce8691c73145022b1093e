@@ -16,6 +16,74 @@
       "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cf4e651_b099921e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-08T18:07:55Z",
+      "side": 1,
+      "message": "Whats the accuracy of this sleep?  Should you be tracking that as well?  (eg take time before and after sleep)\n\nAlso, is this high enough frequency?  Doesn\u0027t this mean we essentially are giving the system 5ms to react?  And I\u0027m guessing (without thinking this through), that it might actually mean we\u0027ve only got granularity of 2x (10ms).",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6cf4b38_1257a664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-08T18:07:55Z",
+      "side": 1,
+      "message": "How about if outputParsed is empty?",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655c185f_6c8d5190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-08T18:07:55Z",
+      "side": 1,
+      "message": "If we\u0027re doing this, shouldn\u0027t this only check if it\u0027s following the alternating pattern?\n\nAlso, does this hold true if the sleep is much smaller above.",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d1d70c_e87f1af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-08T18:07:55Z",
+      "side": 1,
+      "message": "Nit: Apparently sum of squares is not numerically stable.  Knuth has some other options (and I\"m sure there\u0027s other examples online).  (I don\u0027t feel particular strong about this, but I was schooled in some CR about it. :))",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
