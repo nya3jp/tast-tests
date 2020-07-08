@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f65a0b2b_d8e0434b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T08:30:26Z",
+      "side": 1,
+      "message": "cc nya for the question on PreState.OutDir.",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4adbaa90_809513d6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
         "patchSetId": 3
@@ -122,6 +139,30 @@
       "writtenOn": "2020-07-08T07:54:02Z",
       "side": 1,
       "message": "Hi tast owners,\nWould like to know if there\u0027s any docs mention about how to use |testing.PreState.Outdir()|.\nThe |testing.PreState.Outdir()| will point to a directory not exist in chroot environment:\n/tmp/tast/results/20200708-154226/tast_out.20200708-154226.976778533/camera.HAL3Remote.module_back\nWhile the test log directory locate at:\n/tmp/tast/results/20200708-154226/tests/camera.HAL3Remote.module_back",
+      "range": {
+        "startLine": 171,
+        "startChar": 69,
+        "endLine": 171,
+        "endChar": 77
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c26394_4e43f526",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T08:30:26Z",
+      "side": 1,
+      "message": "IIUC, the path from s.OutDir() is a temporary storage path and the one in PreState is currently shared with the test (i.e. Prepare shares the one of the up-comming test, Close shares the one of the last test right before Close). The temporary dir will be renamed after the test exits. (i.e. to the log location you mentioned)\n\nSome information can be found in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#output-files. (it is for testing.State, but I guess PreState should be similar?)\n\nMay I know the problem you have when operating OutDir?",
+      "parentUuid": "75f3b73e_20c06dfb",
       "range": {
         "startLine": 171,
         "startChar": 69,
