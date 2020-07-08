@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "d3b970d5_c6197581",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-08T01:57:28Z",
+      "side": 1,
+      "message": "nit: Could you add a period?",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "35fee7873cd10732ad5e3a293ffc9c72c74fe59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dfd94b1_c91cb845",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
