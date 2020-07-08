@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bd28536_983235ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-08T06:03:57Z",
+      "side": 1,
+      "message": "this is an initial effort.\n\ngoing forward we will also evaluate while the dut is under CPU/GPU load",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
