@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e62afc6c_62362020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-08T01:34:07Z",
+      "side": 1,
+      "message": "tast-wise: +2",
+      "revId": "fbef54f60f4329cd72d00a854a0c8181ce1bc3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c7b4a8_1dd08c72",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
         "patchSetId": 2
