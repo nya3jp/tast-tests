@@ -33,6 +33,24 @@
       "revId": "fbef54f60f4329cd72d00a854a0c8181ce1bc3e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92706ff9_52ed4049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-08T00:05:21Z",
+      "side": 1,
+      "message": "Yes. It should work I believe. Thanks for the comment.",
+      "parentUuid": "87c7b4a8_1dd08c72",
+      "revId": "fbef54f60f4329cd72d00a854a0c8181ce1bc3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
