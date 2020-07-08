@@ -22,6 +22,30 @@
       "revId": "1eac0e44de514ddd31186dcc4c1860cccd717a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac69ed92_54df00e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T01:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2678323d_80582726",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "1eac0e44de514ddd31186dcc4c1860cccd717a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
