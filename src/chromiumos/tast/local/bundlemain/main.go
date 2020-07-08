@@ -95,7 +95,7 @@ func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	return nil
 }
 
-func testHook(ctx context.Context, s *testing.State) func(ctx context.Context, s *testing.State) {
+func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
