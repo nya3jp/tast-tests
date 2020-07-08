@@ -96,27 +96,22 @@ func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 }
 
 func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context, s *testing.State) {
-	// Store the current log state
+	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
 		s.Logf("Saving log position: failed to stat %s: %v", varLogMessages, err)
-
-		// Call faillog even if saving the log position failed
-		return func(ctx context.Context, s *testing.State) {
-			if s.HasError() {
-				faillog.Save(ctx)
-			}
-		}
+		oldInfo = nil
 	}
 
+	checkFreeSpace := false
 	freeSpaceBefore, err := disk.FreeSpace(statefulPartition)
 	if err != nil {
 		s.Log("Failed to read the amount of free disk space: ", err)
-		freeSpaceBefore = 0
-	}
-
-	if freeSpaceBefore < lowSpaceThreshold {
-		s.Logf("Low disk space before starting test: %d MiB available", freeSpaceBefore/mib)
+	} else {
+		checkFreeSpace = true
+		if freeSpaceBefore < lowSpaceThreshold {
+			s.Logf("Low disk space before starting test: %d MiB available", freeSpaceBefore/mib)
+		}
 	}
 
 	return func(ctx context.Context, s *testing.State) {
@@ -124,8 +119,10 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 			faillog.Save(ctx)
 		}
 
-		if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
-			s.Log("Failed to copy logs: ", err)
+		if oldInfo != nil {
+			if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
+				s.Log("Failed to copy logs: ", err)
+			}
 		}
 
 		// Delete all core dumps to free up spaces.
@@ -133,21 +130,23 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 			s.Log("Failed to delete core dumps: ", err)
 		}
 
-		freeSpaceAfter, err := disk.FreeSpace(statefulPartition)
-		if err != nil {
-			s.Log("Failed to read the amount of free disk space: ", err)
-			freeSpaceAfter = freeSpaceBefore
-		}
+		if checkFreeSpace {
+			freeSpaceAfter, err := disk.FreeSpace(statefulPartition)
+			if err != nil {
+				s.Log("Failed to read the amount of free disk space: ", err)
+				freeSpaceAfter = freeSpaceBefore
+			}
 
-		var spaceUsage uint64
-		if freeSpaceBefore < freeSpaceAfter {
-			spaceUsage = 0
-		} else {
-			spaceUsage = freeSpaceBefore - freeSpaceAfter
-		}
+			var spaceUsage uint64
+			if freeSpaceBefore < freeSpaceAfter {
+				spaceUsage = 0
+			} else {
+				spaceUsage = freeSpaceBefore - freeSpaceAfter
+			}
 
-		if spaceUsage > spaceUsageThreshold {
-			s.Logf("Stateful partition usage: %d MiB (%d MiB free -> %d MiB free)", spaceUsage/mib, freeSpaceBefore/mib, freeSpaceAfter/mib)
+			if spaceUsage > spaceUsageThreshold {
+				s.Logf("Stateful partition usage: %d MiB (%d MiB free -> %d MiB free)", spaceUsage/mib, freeSpaceBefore/mib, freeSpaceAfter/mib)
+			}
 		}
 	}
 }
