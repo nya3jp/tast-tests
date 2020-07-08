@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "020663c4_15367659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-08T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3484bdd1_074d164e",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d8d03b_dce23856",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "489078e0_abcbfba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-08T19:48:45Z",
+      "side": 1,
+      "message": "Now there are two implementations, one with touch and the other by left clicking on the caption button. Please take a look.",
+      "parentUuid": "c5d8d03b_dce23856",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "128b8f4a_bbf06bbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "dda30143f749541290698b51f8114147dea5f111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549aa289_c3ade821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-08T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "128b8f4a_bbf06bbf",
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "dda30143f749541290698b51f8114147dea5f111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf0cff9_3eda8b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-08T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c378bd_37d55b48",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 110
+      },
+      "revId": "dda30143f749541290698b51f8114147dea5f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
