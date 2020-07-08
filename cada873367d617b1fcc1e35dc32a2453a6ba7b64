@@ -16,6 +16,23 @@
       "revId": "cada873367d617b1fcc1e35dc32a2453a6ba7b64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8772e342_baa7bab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2020-07-08T06:59:31Z",
+      "side": 1,
+      "message": "Thanks for the quick update!",
+      "revId": "cada873367d617b1fcc1e35dc32a2453a6ba7b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
