@@ -139,9 +139,17 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	// Assert new input method after switching with keyboard shortcut.
 	assertInputMethod(ctx, inputMethod, InputMethodLabel)
 
+	// Using polling to retry open language menu.
+	// Right after changing input method, input view might not respond to js call in a short time.
+	// Causing issue "a javascript remote object was not return".
 	s.Log("Switch input method on virtual keyboard")
-	if err := vkb.TapKey(ctx, tconn, "open keyboard menu"); err != nil {
-		s.Fatal("Failed to click language menu on virtual keyboard: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := vkb.TapKey(ctx, tconn, "open keyboard menu"); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to click language menu on vk: ", err)
 	}
 
 	// Wait for language option menu full positioned.
