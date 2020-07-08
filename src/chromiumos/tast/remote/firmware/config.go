@@ -22,8 +22,9 @@ type ModeSwitcherType string
 // Currently, there are exactly three possible values for ModeSwitcherType.
 const (
 	JetStreamSwitcher        ModeSwitcherType = "jetstream_switcher"
-	TabletDetachableSwitcher ModeSwitcherType = "tablet_detachable_switcher"
 	KeyboardDevSwitcher      ModeSwitcherType = "keyboard_dev_switcher"
+	MenuSwitcher             ModeSwitcherType = "menu_switcher"
+	TabletDetachableSwitcher ModeSwitcherType = "tablet_detachable_switcher"
 )
 
 // ConfigDir is the basename of the directory within remote/firmware/data/ which contains the JSON files.
