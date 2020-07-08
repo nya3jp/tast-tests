@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901c3186_7b18ff2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-08T04:53:37Z",
+      "side": 1,
+      "message": "\u003e \"inital\" is a possible misspelling of \"initial\".\n\nPlease fix.",
+      "parentUuid": "880efe10_4d6e81e8",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75a4af4_a1cf9de2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-08T04:53:37Z",
+      "side": 1,
+      "message": "So you set AP2 in different band (5G for AP1 and 2.4G for AP2) of the same AP, right? Consider addressing this in comment:\n\n// Set up the second AP interface on the same device with the same SSID but on different band (5GHz for AP1 and 2.4GHz for AP2).",
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ebe59ed_1475c9e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-08T04:53:37Z",
+      "side": 1,
+      "message": "bssid2?",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
