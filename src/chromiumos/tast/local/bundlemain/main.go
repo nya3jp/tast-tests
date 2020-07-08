@@ -95,7 +95,7 @@ func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	return nil
 }
 
-func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context, s *testing.State) {
+func testHook(ctx context.Context, s *testing.State) func(ctx context.Context, s *testing.State) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
@@ -154,7 +154,7 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 // Main is an entry point function for bundles.
 func Main() {
 	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
-		Ready:      ready.Wait,
-		PreTestRun: preTestRun,
+		Ready:    ready.Wait,
+		TestHook: testHook,
 	}))
 }
