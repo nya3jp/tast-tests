@@ -23,9 +23,15 @@ func init() {
 		Desc:         "Tests the placement of an ARC app in a virtual desk",
 		Contacts:     []string{"afakhry@chromium.org", "arc-framework+tast@@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -94,7 +100,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	}
 
 	// Put the activity in "normal" (non-maximized mode).
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
