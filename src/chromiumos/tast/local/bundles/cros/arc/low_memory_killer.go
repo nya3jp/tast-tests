@@ -26,11 +26,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LowMemoryKiller,
-		Desc:         "Checks that oom_score_adj is set for Chrome and Android processes and that a process is killed by Chrome tab manager before OOM",
-		Contacts:     []string{"wvk@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_p"},
+		Func:     LowMemoryKiller,
+		Desc:     "Checks that oom_score_adj is set for Chrome and Android processes and that a process is killed by Chrome tab manager before OOM",
+		Contacts: []string{"wvk@chromium.org"},
+		Attr:     []string{"group:mainline", "informational"},
+		// This test doesn't run well in VMs. See crbug.com/1103472.
+		SoftwareDeps: []string{"chrome", "android_p", "no_qemu"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 	})
