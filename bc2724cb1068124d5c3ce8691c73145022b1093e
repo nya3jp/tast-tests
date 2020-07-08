@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "60cec9ab_b58204b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-08T23:35:10Z",
+      "side": 1,
+      "message": "\u003e Should you be tracking that as well\n\ndone\n\n\u003e Is this high enough...\n\nIve modified it to 1ms because it seems like faster frequency causes greater imprecision (at 5ms the receive deltas roughly equal the send deltas, at 1ms they are quite different).",
+      "parentUuid": "8cf4e651_b099921e",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6cf4b38_1257a664",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17db0a19_8ded3bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-08T23:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6cf4b38_1257a664",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "14023586_e7d206ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-08T23:35:10Z",
+      "side": 1,
+      "message": "so given that i dont know whats causing them i cant guarantee they will always alternate (e.g. maybe one day you start getting two false events for every true one). Checking that the events have the same timestamps seems more reliable.\n\nIve included checking that they have the same positions as well, this way we should be robust to actually distinct events occuring at granularities finer than 1ms",
+      "parentUuid": "655c185f_6c8d5190",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d1d70c_e87f1af7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 2
@@ -84,6 +138,24 @@
       "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1227f16f_940c3204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-08T23:35:10Z",
+      "side": 1,
+      "message": "TIL\n\nActually i think this is kinda relevant to us since we want variance to be close to zero and thats exactly where the naive algorithm fails.\n\nIve switched to the two-pass approach. IIUC all these algs are numerically unstable but the two-pass\u0027 stability depends on compounding imprecision of the sum, so for our small sample size it should be reasonable (~ e * |samples|)",
+      "parentUuid": "b9d1d70c_e87f1af7",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
