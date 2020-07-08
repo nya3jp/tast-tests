@@ -215,6 +215,10 @@ window.Tast = class Tast {
    * @return {number}
    */
   static async getNumOfCameras() {
+    // Call getUserMedia before to authorize enumerateDevices() to expose
+    // device info.
+    const stream = await navigator.mediaDevices.getUserMedia({video:true});
+    stream.getTracks().forEach(track => track.stop());
     const devices = await navigator.mediaDevices.enumerateDevices();
     return devices.filter((d) => d.kind === 'videoinput').length;
   }
