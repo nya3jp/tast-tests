@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af03b6b_48863bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-07-08T04:39:59Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e \u003e Patch Set 2:\n\u003e \u003e \n\u003e \u003e Do you think accessibility_* tests are stable enough to promote to CQ?\n\u003e \u003e \n\u003e \u003e (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1950290)\n\u003e \n\u003e I really want to promote these tests to CQ, but tests are still too flaky to promote to CQ.\n\u003e Let\u0027s talk offline on this.\n\nI\u0027ll abandon this CL for now. and let\u0027s re-do this when it is ready",
+      "revId": "a74929eea967cf04b070a32b662a1089fc8ddf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
