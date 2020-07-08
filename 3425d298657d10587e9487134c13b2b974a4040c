@@ -34,6 +34,24 @@
       "revId": "3425d298657d10587e9487134c13b2b974a4040c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c4f27ad_e53675dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-08T12:53:43Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. What I meant by snapping is SetARCAppWindowState when we pass ash.WMEventSnapRight that doesn\u0027t work. The other kind of SetARCAppWindowState (like maximizing, normal, e.g., https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2282611) actually works.\n\nI\u0027m opening b/160768445 for this.",
+      "parentUuid": "eacac380_e29799fd",
+      "revId": "3425d298657d10587e9487134c13b2b974a4040c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
