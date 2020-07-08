@@ -398,29 +398,8 @@ func chromeVirtualKeyboardFloatingTest(
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 
-	// The virtual keyboard state after switching mode is unstable.
-	// We may need to retry if the suggestion shows up just after tapping "show access points" button.
-	switchToFloatingMode := func() error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			vkb.TapKey(ctx, tconn, "Show access points")
-			if err := vkb.SwitchToFloatMode(ctx, tconn); err != nil {
-				return errors.New("failed to switch to floating mode")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-	}
-	switchToDockMode := func() error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			vkb.TapKey(ctx, tconn, "Show access points")
-			if err := vkb.SwitchToDockMode(ctx, tconn); err != nil {
-				return errors.New("failed to switch to dock mode")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-	}
-
 	// Switching the VK to floating mode.
-	if err := switchToFloatingMode(); err != nil {
+	if err := vkb.SwitchToFloatMode(ctx, cr); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
@@ -431,7 +410,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching back to the normal mode
-	if err := switchToDockMode(); err != nil {
+	if err := vkb.SwitchToDockMode(ctx, cr); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {

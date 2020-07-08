@@ -252,25 +252,29 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 }
 
 // SwitchToFloatMode changes virtual keyboard to floating layout.
-func SwitchToFloatMode(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := TapKey(ctx, tconn, "make virtual keyboard movable"); err != nil {
-		return err
+func SwitchToFloatMode(ctx context.Context, cr *chrome.Chrome) error {
+	bconn, err := BackgroundConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to create IME background connection")
 	}
+	defer bconn.Close()
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return err
+	if err := bconn.WaitForExpr(ctx, "background.inputviewLoader_.controller_.maybeSetFloatingModeEnabled(true)"); err != nil {
+		return errors.Wrap(err, "failed to wait for switching to dock mode")
 	}
 	return nil
 }
 
 // SwitchToDockMode changes virtual keyboard to dock layout.
-func SwitchToDockMode(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := TapKey(ctx, tconn, "dock virtual keyboard"); err != nil {
-		return err
+func SwitchToDockMode(ctx context.Context, cr *chrome.Chrome) error {
+	bconn, err := BackgroundConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to create IME background connection")
 	}
+	defer bconn.Close()
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return err
+	if err := bconn.WaitForExpr(ctx, "background.inputviewLoader_.controller_.maybeSetFloatingModeEnabled(false)"); err != nil {
+		return errors.Wrap(err, "failed to wait for switching to dock mode")
 	}
 	return nil
 }
