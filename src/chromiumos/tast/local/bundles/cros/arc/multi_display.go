@@ -24,15 +24,20 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
+type androidDisplayID int32
+
 const (
+	internalDisplayID androidDisplayID = arc.DefaultDisplayID
 	// FirstExternalDisplayID represents the display ID for the first external display.
-	firstExternalDisplayID = "1"
+	firstExternalDisplayID androidDisplayID = 1
 
 	// Apk compiled against target SDK 24 (N).
 	wmPkgMD = "org.chromium.arc.testapp.windowmanager24"
@@ -83,6 +88,7 @@ var unstableTestSet = []testEntry{
 	{"Activity is visible when other is maximized", maximizeVisibility},
 	// Based on http://b/63773037 and http://b/140056612.
 	{"Relayout displays", relayoutDisplays},
+	{"Drag a window between displays", dragWindowBetweenDisplays},
 }
 
 func init() {
@@ -430,24 +436,12 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 		return err
 	}
 
-	infos, err := display.GetInfo(ctx, tconn)
+	info, err := getInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
 		return err
 	}
-
-	var intDispInfo, extDispInfo display.Info
-	for _, info := range infos {
-		if info.IsInternal {
-			intDispInfo = info
-		} else if extDispInfo.ID == "" {
-			// Get the first external display info.
-			extDispInfo = info
-		}
-	}
-
-	if intDispInfo.ID == "" || extDispInfo.ID == "" {
-		return errors.Wrap(err, "not enough displays: need at least one internal display and one external display")
-	}
+	intDispInfo := info.internal
+	extDispInfo := info.external
 
 	// Start settings Activity on internal display.
 	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
@@ -578,6 +572,109 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	return nil
 }
 
+func dragWindowBetweenDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	disp, err := getInternalAndExternalDisplays(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	// Raw mouse API
+	m, err := input.Mouse(ctx)
+	if err != nil {
+		return err
+	}
+	defer m.Close()
+
+	for _, param := range []struct {
+		name     string
+		srcDisp  androidDisplayID
+		dstDisp  androidDisplayID
+		winState ash.WindowStateType
+		activity string
+	}{
+		{"move resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
+		{"move resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
+		{"move resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
+		{"move resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
+		{"move non-resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
+		{"move non-resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
+		{"move non-resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
+		{"move non-resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
+	} {
+		testing.ContextLog(ctx, "Run subtest: ", param.name)
+		if err := func() error {
+			act, err := lunchActivity(ctx, tconn, a, wmPkgMD, param.activity, param.srcDisp)
+			if err != nil {
+				return err
+			}
+			defer act.close(ctx, tconn)
+
+			if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+				return err
+			}
+
+			win, err := act.findWindow(ctx, tconn)
+			if err != nil {
+				return err
+			}
+
+			cursor := cursorOnDisplay{internalDisplayID}
+			defer cursor.moveTo(ctx, tconn, m, internalDisplayID, disp)
+			if err := cursor.moveTo(ctx, tconn, m, param.srcDisp, disp); err != nil {
+				return err
+			}
+
+			winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
+			if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
+				return err
+			}
+
+			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				return err
+			}
+
+			if err := cursor.moveTo(ctx, tconn, m, param.dstDisp, disp); err != nil {
+				return err
+			}
+
+			dstDispBnds := disp.get(param.dstDisp).Bounds
+			dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
+			if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
+				return err
+			}
+
+			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				return err
+			}
+
+			dstDispID := disp.get(param.dstDisp).ID
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				win, err := act.findWindow(ctx, tconn)
+				if err != nil {
+					return err
+				}
+				if win.DisplayID != dstDispID {
+					return errors.Errorf("Activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+				return err
+			}
+
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "test dragWindowBetweenDisplays failed when %q", param.name)
+		}
+	}
+
+	return nil
+}
+
 // Helper functions.
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
@@ -594,8 +691,8 @@ func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName,
 
 // startActivityOnDisplay starts an activity by calling "am start --display" on the given display ID.
 // TODO(ruanc): Move this function to proper location (activity.go or Ash) once the external displays has better support.
-func startActivityOnDisplay(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, pkgName, actName, dispID string) error {
-	cmd := a.Command(ctx, "am", "start", "--display", dispID, pkgName+"/"+actName)
+func startActivityOnDisplay(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, pkgName, actName string, dispID androidDisplayID) error {
+	cmd := a.Command(ctx, "am", "start", "--display", dispID.string(), pkgName+"/"+actName)
 	output, err := cmd.Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity")
@@ -809,4 +906,161 @@ func setDisplayPower(ctx context.Context, power displayPowerState) error {
 	}
 
 	return obj.CallWithContext(ctx, dbusInterface+"."+setPowerMethod, 0, power).Err
+}
+
+// displayLayout is a pair of internal and external display.Info
+type displayLayout struct {
+	internal display.Info
+	external display.Info
+}
+
+// get returns display.Info by id
+func (layout *displayLayout) get(id androidDisplayID) *display.Info {
+	if id == internalDisplayID {
+		return &layout.internal
+	} else if id == firstExternalDisplayID {
+		return &layout.external
+	}
+	panic("Out of index")
+}
+
+// getInternalAndExternalDisplays returns internal and external display info
+func getInternalAndExternalDisplays(ctx context.Context, tconn *chrome.TestConn) (result displayLayout, err error) {
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return
+	}
+
+	var foundInt, foundExt bool
+	for _, info := range infos {
+		if info.IsInternal {
+			result.internal = info
+			foundInt = true
+		} else if !foundExt {
+			// Get the first external display info.
+			result.external = info
+			foundExt = true
+		}
+	}
+
+	if !foundInt || !foundExt {
+		err = errors.Wrap(err, "not enough displays: need at least one internal display and one external display")
+		return
+	}
+
+	return
+}
+
+// activity provides activity-related operations ensuring state changes complete when returning from the function
+type activity struct {
+	activity    *arc.Activity
+	packageName string
+	className   string
+}
+
+// lunchActivity issues commands to launch an activity, then wait until launch completes
+func lunchActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg, cls string, displayID androidDisplayID) (*activity, error) {
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		return nil, err
+	}
+
+	err = startActivityOnDisplay(ctx, a, tconn, pkg, cls, displayID)
+	if err != nil {
+		act.Close()
+		return nil, err
+	}
+
+	actOp := &activity{act, pkg, cls}
+	if err := ensureActivityReady(ctx, tconn, act); err != nil {
+		actOp.close(ctx, tconn)
+		return nil, err
+	}
+	return actOp, nil
+}
+
+// close cleans up internal resources of activity
+func (act *activity) close(ctx context.Context, tconn *chrome.TestConn) error {
+	act.activity.Close()
+	return act.activity.Stop(ctx, tconn)
+}
+
+// setWindowState issues command to set window state, then wait until the new state is applied
+func (act *activity) setWindowState(ctx context.Context, tconn *chrome.TestConn, state ash.WindowStateType) error {
+	err := ensureSetWindowState(ctx, tconn, act.packageName, state)
+	if err != nil {
+		return err
+	}
+	if err := ensureActivityReady(ctx, tconn, act.activity); err != nil {
+		return err
+	}
+	return nil
+}
+
+// findWindow returns an only window which shares the same package name with activity
+func (act *activity) findWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	var win *ash.Window
+	for _, window := range windows {
+		if window.ARCPackageName == act.packageName {
+			if win != nil {
+				return nil, errors.Errorf("found multiple windows for %q", act.packageName)
+			}
+			win = window
+		}
+	}
+	if win == nil {
+		return nil, errors.Errorf("Window not found for %q", act.packageName)
+	}
+	return win, nil
+}
+
+// cursorOnDisplay remembers which display the mouse cursor is on
+type cursorOnDisplay struct {
+	currentDisp androidDisplayID
+}
+
+// moveTo moves mouse cursor across displays
+func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestConn, m *input.MouseEventWriter, dstDisp androidDisplayID, layout displayLayout) error {
+	// Validates display layout
+	intBnds := layout.internal.Bounds
+	extBnds := layout.external.Bounds
+	if intBnds.Left != 0 || intBnds.Top != 0 || extBnds.Left != intBnds.Width || extBnds.Top != 0 {
+		return errors.Errorf("Display layout is different from one the test assumed intDisp %q extDisp %q", intBnds, extBnds)
+	}
+
+	if cursor.currentDisp == dstDisp {
+		return nil
+	}
+
+	var start coords.Point
+	var delta coords.Point
+	if cursor.currentDisp == internalDisplayID && dstDisp == firstExternalDisplayID {
+		start = coords.NewPoint(layout.internal.Bounds.Width-100, 100)
+		delta = coords.NewPoint(1, 0)
+	} else if cursor.currentDisp == firstExternalDisplayID && dstDisp == internalDisplayID {
+		start = coords.NewPoint(100, 100)
+		delta = coords.NewPoint(-1, 0)
+	} else {
+		return errors.Errorf("unexpected display current %d destination %d", cursor.currentDisp, dstDisp)
+	}
+	if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+		return err
+	}
+	for i := 0; i < 200; i++ {
+		if err := m.Move(int32(delta.X), int32(delta.Y)); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, 5*time.Millisecond)
+	}
+	cursor.currentDisp = dstDisp
+	return nil
+}
+
+// string returns string representation of id
+func (id androidDisplayID) string() string {
+	return fmt.Sprintf("%d", id)
 }
