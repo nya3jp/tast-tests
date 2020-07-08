@@ -108,6 +108,29 @@
       "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f3b73e_20c06dfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-08T07:54:02Z",
+      "side": 1,
+      "message": "Hi tast owners,\nWould like to know if there\u0027s any docs mention about how to use |testing.PreState.Outdir()|.\nThe |testing.PreState.Outdir()| will point to a directory not exist in chroot environment:\n/tmp/tast/results/20200708-154226/tast_out.20200708-154226.976778533/camera.HAL3Remote.module_back\nWhile the test log directory locate at:\n/tmp/tast/results/20200708-154226/tests/camera.HAL3Remote.module_back",
+      "range": {
+        "startLine": 171,
+        "startChar": 69,
+        "endLine": 171,
+        "endChar": 77
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
