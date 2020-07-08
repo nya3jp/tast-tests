@@ -16,6 +16,23 @@
       "revId": "4d9c1fc4d0f7125d73bbc81af1ec937d01220f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc69e8e_26c90343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-08T03:08:55Z",
+      "side": 1,
+      "message": "LGTM per Tast reviews, I\u0027ll defer to WM experts.",
+      "revId": "4d9c1fc4d0f7125d73bbc81af1ec937d01220f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
