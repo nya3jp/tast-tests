@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4482da5_3d6b863e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-08T05:21:53Z",
+      "side": 1,
+      "message": "mcasas@, ihf@ PTAL. If the way I generated the files looks good to you, I\u0027ll upload them to GS. See https://screenshot.googleplex.com/RgcoND5jB4Z.png for an example of how the cyan color makes a known bug obvious (a 480p video as a HW overlay) and easy to detect by the test.",
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
