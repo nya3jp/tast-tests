@@ -16,6 +16,52 @@
       "revId": "faf159334f81257cfb5fdfe013c75b95c2949c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b58fb8be_ebc15090",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-08T12:22:09Z",
+      "side": 1,
+      "message": "These 2 functions can be merged to one. SwitchFloatMode(ctx context.Context, cr *chrome.Chrome, floatMode bool), WDYT",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 22
+      },
+      "revId": "faf159334f81257cfb5fdfe013c75b95c2949c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068a4344_4eb5f9e6",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-08T12:22:09Z",
+      "side": 1,
+      "message": "float",
+      "range": {
+        "startLine": 263,
+        "startChar": 59,
+        "endLine": 263,
+        "endChar": 63
+      },
+      "revId": "faf159334f81257cfb5fdfe013c75b95c2949c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
