@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"arc-core@google.com", "vraheja@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "critical"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
