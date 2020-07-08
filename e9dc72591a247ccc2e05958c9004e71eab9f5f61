@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7f25316_5b01799a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-08T02:57:58Z",
+      "side": 1,
+      "message": "I would prefer the current version. The name of variable is not so meaningful because we are using only one ctx in only one segment of code. And reusing variable name may prevent some bugs of using wrong ctx in mistake (which I just did one recently :p).",
+      "parentUuid": "25b92693_68b0ac32",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "e9dc72591a247ccc2e05958c9004e71eab9f5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e08177c_782303ae",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "e9dc72591a247ccc2e05958c9004e71eab9f5f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4743f8e8_ff2ef51e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-08T02:57:58Z",
+      "side": 1,
+      "message": "No, I guess.",
+      "parentUuid": "5e08177c_782303ae",
+      "revId": "e9dc72591a247ccc2e05958c9004e71eab9f5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
