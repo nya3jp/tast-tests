@@ -31,11 +31,10 @@ type vkTestParams struct {
 var stableVkTests = []vkTestParams{
 	{"Basic editing", chromeVirtualKeyboardBasicEditingTest},
 	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
+	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
 }
 
 var unstableVkTests = []vkTestParams{
-	// TODO(b/157432003) Stabilize this test.
-	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
 }
