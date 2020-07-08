@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4adbaa90_809513d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T07:07:06Z",
+      "side": 1,
+      "message": "Do you think it is better to move this to external data file?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6667cee8_161dfd59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T07:07:06Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure if this is good. In current usage, all sub-tests with different parameters will have the same chartPre object so this works. However, if you have multiple tests with this precondition, each of them will create a new object even with a same \"name\" and the inner prepare will still be run once for each object. Is this intended?\n\nIf not, maybe you can do something like keeping a map[string]*chartPre. (but I didn\u0027t see similar usage before.)",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d50d87_3d6364f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T07:07:06Z",
+      "side": 1,
+      "message": "nit: Should we remove the displayOutputLog on chart after GetFile?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daeb4185_0ae7649d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T07:07:06Z",
+      "side": 1,
+      "message": "nit: not sure if these parameters might contain characters which need to be escaped?",
+      "range": {
+        "startLine": 130,
+        "startChar": 33,
+        "endLine": 130,
+        "endChar": 46
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8173c632_34d8586c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-08T07:07:06Z",
+      "side": 1,
+      "message": "nit: This might be dropped as zero value for string is already \"\".",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
