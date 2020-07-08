@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -75,6 +77,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 	defer conns.Close()
+
+	// Ensure mouse does not hover on overview items and affect latency.
+	if err := mouse.Move(ctx, tconn, coords.Point{X: 1, Y: 1}, 0); err != nil {
+		s.Fatal("Failed to drag to the end point: ", err)
+	}
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
