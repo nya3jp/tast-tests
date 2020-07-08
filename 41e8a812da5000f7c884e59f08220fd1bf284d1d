@@ -16,6 +16,41 @@
       "revId": "41e8a812da5000f7c884e59f08220fd1bf284d1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fa01a27_9b56dc40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-08T14:38:06Z",
+      "side": 1,
+      "message": "The group is deprecated. So I guess it\u0027s fine.",
+      "parentUuid": "043eb58e_79dde2a7",
+      "revId": "41e8a812da5000f7c884e59f08220fd1bf284d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42c67ecf_27c51968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-07-08T14:38:06Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "41e8a812da5000f7c884e59f08220fd1bf284d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
