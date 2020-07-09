@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e256a4d8_ef8dda70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-09T08:43:32Z",
+      "side": 1,
+      "message": "Fix build failure:\n```\nsrc/chromiumos/tast/remote/bundles/cros/wifi/ptk.go:108:3: Errorf format %g has arg pingLossThreshold of wrong type int\n```",
+      "revId": "9f61550ae4866c1e2f417af05424460bae4accc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
