@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00a1a772_ae7891b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/youtube_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-09T22:23:19Z",
+      "side": 1,
+      "message": "This uses a real GAIA login with real youtube application. It makes me really nervous for various reasons; real login and app installation takes long time, and it is actually flaky. Also youtube has a lot of UI features and experiments which are out of our controls.\n\nI believe this doesn\u0027t have to be youtube app itself; it would be an android app with the ability of PiP, and playing video in it. Is that right?\n\nIf so; please write your own test app and use it. Video should be playable through the standard VideoView (https://developer.android.com/reference/android/widget/VideoView).\n\nThe test app code can be placed under tast-tests/android directory. Please also refer to ArcPipTastTest code base for handling of PiP in Android apps. Please also consult with ricardoq@ (for generic test app code base) and takise@ (for ArcPipTastTest code) for constructing your own Android apps.  If takise@ is fine, it would be an idea to modify ArcPipTastTest to play some video rather than a blank view.",
+      "revId": "a649a0443c7b211b12537e3560942d8933481517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
