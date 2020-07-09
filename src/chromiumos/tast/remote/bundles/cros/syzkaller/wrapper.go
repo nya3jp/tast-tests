@@ -151,7 +151,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	s.Logf("Starting syzkaller with logfile at %v", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
-	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10")
+	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10", "-debug")
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
 
