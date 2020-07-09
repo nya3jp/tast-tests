@@ -16,6 +16,92 @@
       "revId": "3c81f4414a88aa1e60f3aa99d0e17c35ae82177d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae03c1db_1ade855b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:19:23Z",
+      "side": 1,
+      "message": "LGTM % comments\n\nThanks!",
+      "revId": "3c81f4414a88aa1e60f3aa99d0e17c35ae82177d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78197b25_9e74ad4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:19:23Z",
+      "side": 1,
+      "message": "nit: active.",
+      "range": {
+        "startLine": 88,
+        "startChar": 50,
+        "endLine": 88,
+        "endChar": 56
+      },
+      "revId": "3c81f4414a88aa1e60f3aa99d0e17c35ae82177d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f29ea1_a0c615a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:19:23Z",
+      "side": 1,
+      "message": "nit: \"return app.Close(ctx)\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "3c81f4414a88aa1e60f3aa99d0e17c35ae82177d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e9f7f2_34e4fd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:19:23Z",
+      "side": 1,
+      "message": "So it actually can return error, so you can do next:\n\nif err :\u003d app.Close(ctx); err !\u003d nil {\n   testing.ContextLog(ctx, \"Failed to close app: \", err)\n}",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "3c81f4414a88aa1e60f3aa99d0e17c35ae82177d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
