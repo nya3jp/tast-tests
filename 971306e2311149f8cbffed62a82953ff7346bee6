@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26678a52_940e2284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T18:42:18Z",
+      "side": 1,
+      "message": "nit: apps",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603eb025_030bb5e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T18:42:18Z",
+      "side": 1,
+      "message": "nit: Is there a plan to add an actual precondition to this package? Otherwise, pre is probably not the correct package name. Same for the other pre package.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd9c9f4_6fc86f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T18:42:18Z",
+      "side": 1,
+      "message": "nit: inputs",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
