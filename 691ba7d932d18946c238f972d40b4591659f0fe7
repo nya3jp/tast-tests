@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e9d8a99_d417df9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-07-09T20:11:00Z",
+      "side": 1,
+      "message": "Hi Jorge, could you do a security review of this change?\n\nTast owners, could I get an OWNERS review?",
+      "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
