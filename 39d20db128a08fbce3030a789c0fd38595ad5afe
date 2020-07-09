@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d2ac3b_2888d42b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-09T15:28:25Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, but please note I am not a full OWNER, so you will need to wait for nya@\u0027s review.",
+      "revId": "39d20db128a08fbce3030a789c0fd38595ad5afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
