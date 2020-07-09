@@ -694,6 +694,23 @@ func (a *App) StartRecording(ctx context.Context, timerState TimerState) (time.T
 	if err := a.ClickShutter(ctx); err != nil {
 		return startTime, err
 	}
+
+	// Wait for end of timer and start of recording.
+	if err := a.WaitForState(ctx, "recording", true); err != nil {
+		return startTime, errors.Wrap(err, "recording is not started")
+	}
+	recordStartTime := time.Now()
+	if timerState == TimerOn {
+		// Assume that the delay between recording state being set and
+		// time.Now() getting timestamp is small enough to be
+		// neglected. Otherwise, it may miss the case if |autual
+		// recording start time|+ |this delay| > |startTime| +
+		// |TimerDelay|.
+		if delay := recordStartTime.Sub(startTime); delay < TimerDelay {
+			return startTime, errors.Errorf("recording starts %v before timer finished", TimerDelay-delay)
+		}
+	}
+
 	return startTime, nil
 }
 
@@ -719,18 +736,14 @@ func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTim
 	return info, nil
 }
 
-// RecordVideo records a video and save to default location.
+// RecordVideo records a video with duration length and save to default location.
 func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration time.Duration) (os.FileInfo, error) {
 	startTime, err := a.StartRecording(ctx, timerState)
 	if err != nil {
 		return nil, err
 	}
 
-	sleepDelay := duration
-	if timerState == TimerOn {
-		sleepDelay += TimerDelay
-	}
-	if err := testing.Sleep(ctx, sleepDelay); err != nil {
+	if err := testing.Sleep(ctx, duration); err != nil {
 		return nil, err
 	}
 
