@@ -591,6 +591,24 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 			return errors.Wrapf(err, "failed to release %s mouse button", button)
 		}
 	}
+
+	// Disable the automation feature. Otherwise, automation tree updates and
+	// events will come to the test API, and sometimes it causes significant
+	// performance drawback on low-end devices. See: https://crbug.com/1096719.
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+		return errors.Wrap(err, "failed to disable the automation feature")
+	}
+
+	// Reloading the test extension contents to clear all of Javascript objects.
+	// This also resets the internal state of automation tree, so without
+	// reloading, disableAutomation above would cause failures.
+	testing.ContextLog(ctx, "Reloading the extension process")
+	if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
+		return errors.Wrap(err, "failed to reload the test extension")
+	}
+	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed to wait for the ready state")
+	}
 	return nil
 }
 
