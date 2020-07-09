@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f30ec5b_c1323cc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-09T14:30:46Z",
+      "side": 1,
+      "message": "Kyle, what is the status of this CL?",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b3f522_f62e93d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
         "patchSetId": 6
