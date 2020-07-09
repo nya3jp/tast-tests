@@ -17,6 +17,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -123,6 +124,18 @@ func tearDown(ctx context.Context, env *TestEnv) {
 
 	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		testing.ContextLog(ctx, errors.Wrap(err, "failed restarting shill"))
+	}
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, errors.Wrap(err, "failed creating shill manager object"))
+	}
+
+	expectProps := map[string]interface{}{
+		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
+	}
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
+		testing.ContextLog(ctx, errors.Wrap(err, "failed to connect to network after shill restart"))
 	}
 }
 
