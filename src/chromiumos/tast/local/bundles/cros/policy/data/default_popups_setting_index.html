@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DefaultPopupsSetting</title>
+</head>
+<script>
+var popUp = window.open('default_popups_setting_popup.html')
+if(!popUp || popUp.closed)
+{
+  document.querySelector("head > title").innerText = "Popups blocked";
+}
+</script>
+</html>
