@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9838a266_b29186f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-09T02:30:26Z",
+      "side": 1,
+      "message": "Could you document the behavior about waiting duration?",
+      "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1242fdd7_f06b87ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2020-07-09T02:28:59Z",
       "side": 1,
       "message": "Should we put this logic in StartRecoding() for consistency, as we put WaitForState(\"taking\", false) in StopRecording()?",
+      "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea73935_f6c4927c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-09T02:30:26Z",
+      "side": 1,
+      "message": "(could be out of scope of this CL, but as you touch this), question. is this needed to be called even in case of failure?",
       "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
