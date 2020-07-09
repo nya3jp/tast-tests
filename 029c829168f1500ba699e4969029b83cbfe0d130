@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f23d7f42_86827838",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T22:31:27Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2289947\n\nTo make sure it doesn\u0027t git submitted before it is ready.",
+      "revId": "029c829168f1500ba699e4969029b83cbfe0d130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
