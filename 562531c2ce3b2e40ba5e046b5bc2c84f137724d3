@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e61ea2de_e752c41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2020-07-09T05:08:27Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20902e42_85ecd7d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2020-07-09T05:08:27Z",
+      "side": 1,
+      "message": "Maybe transform this into an array of structs? I think it would make the code easier to read and reduce the potential for off-by-one errors, for example if we add/remove fields later. It would also allow using different types for each field, if that became useful.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52204d13_8979fe43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2020-07-09T05:08:27Z",
+      "side": 1,
+      "message": "Took me a moment longer than it should have to realize why we need to subtract 1 (we\u0027re looking for differences between each triplet). Maybe a comment?",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 37
+      },
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
