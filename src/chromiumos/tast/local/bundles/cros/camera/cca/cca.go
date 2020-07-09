@@ -726,11 +726,15 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 		return nil, err
 	}
 
-	sleepDelay := duration
-	if timerState == TimerOn {
-		sleepDelay += TimerDelay
+	if err := a.WaitForState(ctx, "recording", true); err != nil {
+		return nil, errors.Wrap(err, "recording is not started")
 	}
-	if err := testing.Sleep(ctx, sleepDelay); err != nil {
+	startRecordTime := time.Now()
+
+	if timerState == TimerOn && startRecordTime.Sub(startTime) < TimerDelay {
+		return nil, errors.Wrap(err, "recording starts before timer finished")
+	}
+	if err := testing.Sleep(ctx, duration); err != nil {
 		return nil, err
 	}
 
