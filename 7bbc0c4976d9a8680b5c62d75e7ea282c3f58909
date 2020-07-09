@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a6be75c_51b67309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Can we break these into three separate tests?",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 63
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a99fdf_93c4321e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Why do we need a downloaded zip file?  Can\u0027t we just create a few small files with ioutil.WriteFile?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ed6dcd_fc908f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this space should be here before the .",
+      "range": {
+        "startLine": 134,
+        "startChar": 33,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb7a4d8_a34866cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Using random in tests is probably not a good idea as it make it difficult to reproduce the failure and can introduce flakiness.   Can you please always delete the first one or something?",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad55191e_dd42ff5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Can you avoid using sleep here?  WaitUntilDescendantGone or something?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f8c9c1_9ba5b139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "space before .",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149febfc_f705fbb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "please avoid rand if possible",
+      "range": {
+        "startLine": 252,
+        "startChar": 6,
+        "endLine": 252,
+        "endChar": 10
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50336f94_30d064ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Is this misspelled? (Exits vs Exist)",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e1d662_08e7f72f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "please avoid rand",
+      "range": {
+        "startLine": 273,
+        "startChar": 6,
+        "endLine": 273,
+        "endChar": 10
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26cb861_b665fab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "space before .",
+      "range": {
+        "startLine": 282,
+        "startChar": 33,
+        "endLine": 282,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b3eab5_3dbf456d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "This is done a lot of times, should you put it in a function of its own?",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fd254b_971e67d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Spelling of Exist",
+      "range": {
+        "startLine": 328,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 22
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2333958_b41defbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "Can you avoid Sleep here?",
+      "range": {
+        "startLine": 335,
+        "startChar": 9,
+        "endLine": 335,
+        "endChar": 14
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

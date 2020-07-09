@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b1a774cd_35fb25d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/home_directory_fileoperations.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:46:44Z",
+      "side": 1,
+      "message": "We are already failing due to out of disk space for Crostini tests on at least 5 boards.  Please try to minimize the size of this to make these boards easier to fix/prevent breaking on more boards.",
+      "parentUuid": "6cd58ea7_8cd63172",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "9992319b37f286dae5f49fcd0058cc09811fdd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98560e0_09ab2f18",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 3
