@@ -70,6 +70,24 @@
       "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173125c2_ac9d4efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-07-09T10:02:46Z",
+      "side": 1,
+      "message": "Both CL are merged. \n\nRecently there is much less issues, and we added two mitigation. Maybe we can wait 1~2 day and then promote this test to CQ if there is no new issue?",
+      "parentUuid": "57678477_3b0138b5",
+      "revId": "78fc07f0d306cbe1429ce28856e1ec690ee4f34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
