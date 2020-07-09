@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f7e1cf_00ac258f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-07-09T18:55:29Z",
+      "side": 1,
+      "message": "Gentle ping to the reviewers - we\u0027re expecting to land this patch as soon as possible. Could you take a look?",
+      "revId": "1945a35c2b449c905724d19e81ffbc26561f73fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
