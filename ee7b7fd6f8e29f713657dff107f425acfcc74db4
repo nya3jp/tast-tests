@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "0bf8c891_1445ec00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T08:13:56Z",
+      "side": 1,
+      "message": "Not sure what\u0027s wrong with my test environment.\nI finally run it by manually comment out lines here to force use a PseudoClient.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/devserver/devserver.go;rcl\u003d45359e5e3ecdab3971f47aedeb9248e592925d8b;l\u003d16",
+      "parentUuid": "59bf8044_c1d5c2ce",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6667cee8_161dfd59",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3
