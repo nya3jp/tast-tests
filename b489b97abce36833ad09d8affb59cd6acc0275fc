@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "577d5236_64c5c389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-09T06:50:19Z",
+      "side": 1,
+      "message": "Looks like nya fixed the blocker crbug.com/1081099. I\u0027ll try this with ToT later.\n\nThank nya for the help. :)",
+      "revId": "b489b97abce36833ad09d8affb59cd6acc0275fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
