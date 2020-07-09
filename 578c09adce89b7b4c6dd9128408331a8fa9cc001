@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a648daf9_2b7d1137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T13:30:47Z",
+      "side": 1,
+      "message": "if it\u0027s not covered by Tast, maybe we should do that? Also you will check whether changing policy works:\n\nblocked (by default) -\u003e allowed (by policy) -\u003e blocked (by policy)",
+      "parentUuid": "c9126cda_5b30231c",
+      "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfdaa7e7_4cb77554",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
         "patchSetId": 2
