@@ -16,6 +16,167 @@
       "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "749a556b_40f3b47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "huge nit: weightsDict :\u003d map[string]float64{ ... } is more idiomatic.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f594a1_89537663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "Functions taking testing.State but returning an error is a bit weird because there are two possible ways to report errors: returning an error, or calling testing.State.Error.\n\nI recommend taking an either way, i.e.\n\n1. func RunTest(ctx context.Context, config TestConfig, ...) (float64, error)\n2. func RunTest(ctx context.Context, s *testing.State, config TestConfig) float64",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 89
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d4b4e1_16c1dd5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "Can you define this variable just before it\u0027s really needed, and replace occurrences of \"score\" in early returns with 0? It will allow readers to learn that 0 is returned on errors without looking carefully into the function body.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6379f1_6f153043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "errors.Wrap",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42c7430_69888db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "huge nit: if err :\u003d ioutil.WriteFile(...)\nto align with other statements in this function?",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 8
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1919d09b_5200c18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "nit: Use errors.Errorf to format the message.",
+      "range": {
+        "startLine": 179,
+        "startChar": 23,
+        "endLine": 179,
+        "endChar": 26
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e972a12_017164b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-09T09:02:20Z",
+      "side": 1,
+      "message": "nit: Use errors.Errorf to format the message.",
+      "range": {
+        "startLine": 249,
+        "startChar": 30,
+        "endLine": 249,
+        "endChar": 33
+      },
+      "revId": "dc75a9485cf87a141f2219396ffbe8bffac3c33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
