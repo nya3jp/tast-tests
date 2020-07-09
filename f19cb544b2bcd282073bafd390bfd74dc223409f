@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c38d1dd4_0761b2e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-09T14:38:31Z",
+      "side": 1,
+      "message": "I think I\u0027m missing in this CL:\n- A couple of updates to the existing data/still-colors-*.h264.mp4.external\n(because the expected values are changing).\n- A new data/still-colors-720x480-cropped-to-640x360.h264.mp4.external.\n- A new data/still-colors-480p.h264.mp4.external.\n:-?",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4482da5_3d6b863e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -16,6 +39,69 @@
       "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98c1ff3e_d2364b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-09T14:38:31Z",
+      "side": 1,
+      "message": "Changes are looking good, I think we\u0027re missing files/files updates.",
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80a6f80b_fc4a0a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-09T14:38:31Z",
+      "side": 1,
+      "message": "Hmm this is a bit of a long script. Would you consider putting it\nat the end of the file in an addendum Section?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a437a87_9d36a2b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-09T14:38:31Z",
+      "side": 1,
+      "message": "nit: Since this is an exotic case, I\u0027d leave it to graphics_nightly,\nor even graphics_weekly (if they fail we can always bisect every \nrevision).\n\nSame comment about the Contents.h264_360p_exotic_crop_hw case above.",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 85
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
