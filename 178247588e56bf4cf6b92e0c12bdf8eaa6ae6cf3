@@ -85,6 +85,29 @@
       "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc9815d_736a4e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:12:55Z",
+      "side": 1,
+      "message": "BTW, to increase readability:\n\ncsv.Column(\"bios_version\", csv.EqualToFileContentOrNA(biosVersionPath))\n\n\nand we can just remove csv.Headers then 😊",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
