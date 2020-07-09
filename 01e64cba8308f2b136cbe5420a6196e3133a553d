@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c8f77d_33b7b884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-07-09T05:56:48Z",
+      "side": 1,
+      "message": "Infra failure. CQ +2 again!",
+      "revId": "01e64cba8308f2b136cbe5420a6196e3133a553d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
