@@ -16,6 +16,29 @@
       "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e94e499f_27a65b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-07-09T20:40:10Z",
+      "side": 1,
+      "message": "Can you add a comment here documenting which one is the main daemon and which one is the executor?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 96
+      },
+      "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
