@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2caca7_966a89db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111669
+      },
+      "writtenOn": "2020-07-09T20:47:47Z",
+      "side": 1,
+      "message": "Can we leave the chrome_internal as is and add the chrome_media software dependency?",
+      "revId": "6d21cfee2eb629bbaf6920eccf583aeeaad72d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
