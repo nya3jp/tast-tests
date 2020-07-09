@@ -12,6 +12,7 @@ package bundlemain
 import (
 	"context"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -26,6 +27,7 @@ import (
 
 const varLogMessages = "/var/log/messages"
 const statefulPartition = "/mnt/stateful_partition"
+const inProgTestName = "/run/tast-in-progress-test"
 const mib = 1024 * 1024
 const lowSpaceThreshold = 100 * mib
 const spaceUsageThreshold = 10 * mib
@@ -95,7 +97,7 @@ func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	return nil
 }
 
-func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context, s *testing.State) {
+func preTestRun(ctx context.Context, s *testing.State, name string) func(ctx context.Context, s *testing.State) {
 	// Store the current log state
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
@@ -119,6 +121,10 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 		s.Logf("Low disk space before starting test: %d MiB available", freeSpaceBefore/mib)
 	}
 
+	if err := ioutil.WriteFile(inProgTestName, []byte(name), 0644); err != nil {
+		s.Log("Failed to write in-progress filename: ", err)
+	}
+
 	return func(ctx context.Context, s *testing.State) {
 		if s.HasError() {
 			faillog.Save(ctx)
@@ -131,6 +137,10 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 		// Delete all core dumps to free up spaces.
 		if err := crash.DeleteCoreDumps(ctx); err != nil {
 			s.Log("Failed to delete core dumps: ", err)
+		}
+
+		if err := os.Remove(inProgTestName); err != nil && !os.IsNotExist(err) {
+			s.Log("Failed to delete in-progress test name file: ", err)
 		}
 
 		freeSpaceAfter, err := disk.FreeSpace(statefulPartition)
