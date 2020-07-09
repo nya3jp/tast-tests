@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "122e6c48_df8d4c35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T03:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9150096_bd7b9233",
+      "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9838a266_b29186f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3230bdb2_273d1f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T03:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9838a266_b29186f5",
+      "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1242fdd7_f06b87ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4348b1_205873d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T03:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1242fdd7_f06b87ba",
+      "revId": "57d268cc139b7d013069f55ffdd37a99c2ecc3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
