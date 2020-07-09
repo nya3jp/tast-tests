@@ -332,6 +332,30 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4a8c86_7265e8a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:39:18Z",
+      "side": 1,
+      "message": "ignore. I double-checked, and actually String() is more popular than ToString()",
+      "parentUuid": "588a362f_839d32ac",
+      "range": {
+        "startLine": 1064,
+        "startChar": 27,
+        "endLine": 1064,
+        "endChar": 33
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
