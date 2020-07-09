@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acf4e520_32757218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-09T00:31:08Z",
+      "side": 1,
+      "message": "Okay -- I respect your decision. Left a few nit comments, but they are rather minor. Giving CR+2 in advance.",
+      "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23f2c7d8_375d2572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-09T00:31:08Z",
+      "side": 1,
+      "message": "nit: maybe I\u0027m too nervous, but this could be generic and there\u0027s a slight risk of name conflict. To reduce the risk, you could prefix name like rcEventTypeFunc / rcEventTypeTestCase to make sure these are for this test case specific, or don\u0027t use the shared name for them.\n\nFor the latter case, you could write:\n  for _, eTC :\u003d range []struct {\n    Name string\n    Func func(context.Context, *chrome.TestConn, string) error\n  } {\n    {\"touchCaptionButton\", touchCaptionButton},\n    {\"leftClickCaptionButton\", leftClickCaptionButton},\n  } {\n     if err :\u003d func() error { ...\n  }\n\nand use the bare function type for runRC02ByEventTypeFunc.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 1
+      },
+      "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e344ac_a96da0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-09T00:31:08Z",
+      "side": 1,
+      "message": "nit: defer stw.Close() -- it ensures to end the input session (i.e. release the finger).",
+      "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
