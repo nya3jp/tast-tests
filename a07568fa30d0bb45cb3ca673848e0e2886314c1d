@@ -22,6 +22,30 @@
       "revId": "a07568fa30d0bb45cb3ca673848e0e2886314c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4240c49_98b8ac69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-09T02:12:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7c11b8_8da310f8",
+      "range": {
+        "startLine": 8,
+        "startChar": 66,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "a07568fa30d0bb45cb3ca673848e0e2886314c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
