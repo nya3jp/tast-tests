@@ -16,6 +16,23 @@
       "revId": "f9629e307bf8297c8549cfe60f3a5940e0e3def5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "267621cd_0ff96a11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-07-09T23:52:35Z",
+      "side": 1,
+      "message": "Oh, I see, Ricardo is owner. Well, nothing exciting here, just rebase.",
+      "revId": "f9629e307bf8297c8549cfe60f3a5940e0e3def5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
