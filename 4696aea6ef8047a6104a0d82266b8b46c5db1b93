@@ -45,6 +45,30 @@
       "revId": "4696aea6ef8047a6104a0d82266b8b46c5db1b93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b907fd0_787c1c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-09T05:15:43Z",
+      "side": 1,
+      "message": "I think removing the ectool_* metrics is enough to fix the tests failing due to ectool related things. However, battery metrics is tried to be collected on some models which runs \"_nobatterymetrics\" variant of a test, and the values on those models are not useful (because they are always zeros) so I wrote this CL to stop collecting battery metrics on them. If it is okay to collect unnecessary metrics, this CL is not needed. (I agree that we want to avoid adding this boilerplate to every tests, so please let me know if there is another better way to do the same thing...)",
+      "parentUuid": "76363ffc_24cef88c",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "4696aea6ef8047a6104a0d82266b8b46c5db1b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
