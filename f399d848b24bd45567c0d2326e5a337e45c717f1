@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "fb24fd36_9890fbfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-09T00:56:38Z",
+      "side": 1,
+      "message": "I like the anonymous function idea.",
+      "parentUuid": "23f2c7d8_375d2572",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 1
+      },
+      "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11e344ac_a96da0d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
@@ -56,6 +80,24 @@
       "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931ce10a_ecb731cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-09T00:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e344ac_a96da0d9",
+      "revId": "f399d848b24bd45567c0d2326e5a337e45c717f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
