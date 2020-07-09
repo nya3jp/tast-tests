@@ -196,6 +196,30 @@
       "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa0b662_62c5d8dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-09T02:16:56Z",
+      "side": 1,
+      "message": "Ah, I probably found the problem. The current code uses outdir as dst in GetFile call which will call RemoveAll(dst). So, the dir is removed and then the file is downloaded to dst but not to path.Join(dst, path.Base(src)). As a result, the framework cannot collect the data in OutDir as it is gone.\n\nBy replacing the call in pre.go:L58 with\n  linuxssh.GetFile(ctx, p.conn, displayOutputLog, filepath.Join(outdir, filepath.Base(displayOutputLog)))\n\nI can successfully see chart_service.log collected in the result.",
+      "parentUuid": "a069d475_1411ac55",
+      "range": {
+        "startLine": 171,
+        "startChar": 69,
+        "endLine": 171,
+        "endChar": 77
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
