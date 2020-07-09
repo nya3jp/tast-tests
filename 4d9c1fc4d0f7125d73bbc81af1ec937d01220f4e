@@ -50,6 +50,23 @@
       "revId": "4d9c1fc4d0f7125d73bbc81af1ec937d01220f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7370cbbd_3e2fc802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286973
+      },
+      "writtenOn": "2020-07-09T05:38:43Z",
+      "side": 1,
+      "message": "Thanks, the test looks suitable for R.",
+      "revId": "4d9c1fc4d0f7125d73bbc81af1ec937d01220f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
