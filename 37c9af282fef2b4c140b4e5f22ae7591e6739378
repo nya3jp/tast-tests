@@ -16,6 +16,322 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28287fed_1bd36ce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "(1st pass... I\u0027ll do another pass in the next patchset).",
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8283c48_6b684081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit: please add docstrings for all non trivial funcs.",
+      "range": {
+        "startLine": 575,
+        "startChar": 5,
+        "endLine": 575,
+        "endChar": 30
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66dab7f_9c23211f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "huge nit: end all sentences with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 586,
+        "startChar": 16,
+        "endLine": 586,
+        "endChar": 17
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6ff658_24e7e929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit: using \"get\" for getters or name functions is not that common in go.\n\nprefer to use something like: \"displayInfo()\" (or any other name that you think is better)",
+      "range": {
+        "startLine": 918,
+        "startChar": 29,
+        "endLine": 918,
+        "endChar": 32
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa6d9a2_3dc872ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "instead of panic, please return error",
+      "range": {
+        "startLine": 924,
+        "startChar": 1,
+        "endLine": 924,
+        "endChar": 22
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc27e7b_4ab26945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit: don\u0027t capilize errors \n(see comment below)",
+      "range": {
+        "startLine": 1016,
+        "startChar": 29,
+        "endLine": 1016,
+        "endChar": 30
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c489388c_54a7d0aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "huge nit: here and in the rest.\n\nend comments with period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 1021,
+        "startChar": 64,
+        "endLine": 1021,
+        "endChar": 65
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aedc1dc_984b7e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit, use \"got, want\" pattern when applicable. eg:\n\n\"unexpected display layout; got %q, want %q\"",
+      "range": {
+        "startLine": 1032,
+        "startChar": 32,
+        "endLine": 1032,
+        "endChar": 99
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c2577f_fa9abdb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit:\ndon\u0027t capitalize errors\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 1032,
+        "startChar": 24,
+        "endLine": 1032,
+        "endChar": 25
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4088ec_fc862406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "could you move the \"100\" to a const with a descriptive name? eg.:\n\n  const coordsMargin \u003d 100  // or any name that you consider appropriate",
+      "range": {
+        "startLine": 1042,
+        "startChar": 55,
+        "endLine": 1042,
+        "endChar": 58
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e99939_dbd379c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "huge nit, formatting:\n\n  \"unexpected display: current ID %d, destination ID: %d\"",
+      "range": {
+        "startLine": 1048,
+        "startChar": 24,
+        "endLine": 1048,
+        "endChar": 68
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e9ef8e_18b82be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "It is not clear why this is needed. \n\n - Could this be removed?\n - or could this be replaced with `mouse.Move()` ?\n\nif not, please add a comment describing why this is needed.\n\n\nUsually you should avoid using `input.MouseEventWritter` if it can be done with `chrome/ui/mouse`.  `chrome/ui/mouse` is more deterministic.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 1,
+        "endLine": 1058,
+        "endChar": 2
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bf45893_10546fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit: end with period (.)",
+      "range": {
+        "startLine": 1063,
+        "startChar": 43,
+        "endLine": 1063,
+        "endChar": 45
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588a362f_839d32ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-09T00:33:38Z",
+      "side": 1,
+      "message": "nit:  string() -\u003e toString()\n\nin golang ToString is used in many places. let\u0027s use that name.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 27,
+        "endLine": 1064,
+        "endChar": 33
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
