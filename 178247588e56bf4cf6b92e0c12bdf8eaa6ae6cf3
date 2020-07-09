@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7945376a_587aa857",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:10:57Z",
+      "side": 1,
+      "message": "LGTM % comments\n\nThanks!",
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f7ddde1_2a8a7553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:10:57Z",
+      "side": 1,
+      "message": "maybe it makes sense to add cros-tdm@ as well?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b8a69c_71e4b18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:10:57Z",
+      "side": 1,
+      "message": "nit: contents.",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd4b33d_7ec57208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:10:57Z",
+      "side": 1,
+      "message": "nit:\n\nvar (\n   // put all your vars here without \"var\"\n  firstPowerDatePath \u003d filepath.Join(cachedVpdRwPath, \"ActivateDate\")\n  ....  \n)",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
