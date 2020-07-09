@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "59bf8044_c1d5c2ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-09T06:09:20Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with devserver, but it works in my local run:\n\n  Devserver status: using pseudo client\n  Found 1 external linked data file(s), need to download 1\n  Downloading gs://chromiumos-test-assets-public/camerabox/scene.pdf\n  Finished downloading gs://chromiumos-test-assets-public/camerabox/scene.pdf (216008 bytes, 348ms, 0.6MB/s)\n\nDid you pass devserver argument when running?",
+      "parentUuid": "67b4588e_aec4e490",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6667cee8_161dfd59",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3

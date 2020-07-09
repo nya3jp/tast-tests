@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e1cd9f_8a223d19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-09T06:09:20Z",
+      "side": 1,
+      "message": "Do you think this function should create one chartPre if none for the name yet exists?\n\nOr, if only a limited set of DataChart precondtion is expected, probably you can make it explicit by having different functions? (I think preconditions in chrome package use similar design) e.g.\n\n  dataChartScene :\u003d newDataChartPre(\"scene.pdf\")\n  func DataChartScene() *chartPre {\n    return dataChartScene\n  }",
+      "revId": "475563a383e2e08c99bca4ccd7fb4ccaf02bcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79320e3c_d70b16f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-09T06:09:20Z",
+      "side": 1,
+      "message": "I think you don\u0027t want to escape all strings in the slice, e.g. \u0027\u003e\u0027 or \u0027\u0026\u0027 ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 27
+      },
+      "revId": "475563a383e2e08c99bca4ccd7fb4ccaf02bcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
