@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "e6e2eda4_0718b632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "This should not use ms when you\u0027re tracking results in the ms range.  ie, keep the calculation with nanos.",
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413fde98_75d1c239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "I think this code ends up being simpler and more correct if you start a timer at the start of the loop or before the sleep, and then finish at the end of the loop.  Then you don\u0027t need the weird checking sendTimestamp vs initial value.\n\nDoes mouse.Move() ever take much time?  Sleep was thing I was worried about accuracy for but I think including everything makes the most sense.",
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20902e42_85ecd7d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 3
@@ -30,6 +64,30 @@
       "writtenOn": "2020-07-09T05:08:27Z",
       "side": 1,
       "message": "Maybe transform this into an array of structs? I think it would make the code easier to read and reduce the potential for off-by-one errors, for example if we add/remove fields later. It would also allow using different types for each field, if that became useful.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c2e986_da0343ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "+0.7",
+      "parentUuid": "20902e42_85ecd7d2",
       "range": {
         "startLine": 99,
         "startChar": 5,
@@ -59,6 +117,40 @@
         "endLine": 114,
         "endChar": 37
       },
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25723b87_475496dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "Should there be a count in the number of samples in both cases?",
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d633ea_e0d93f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "I think this should include n.",
       "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

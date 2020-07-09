@@ -54,6 +54,41 @@
     },
     {
       "key": {
+        "uuid": "32a8f27a_be74e050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "So is that the 1ms is adding noise, or the 5ms is just smoothing and hiding what we\u0027re actually trying to determine.  In either case, I think 1ms is better too.\n\nThis post from 10 years ago indicates 125KHz to 1000KHz mouse polling rates being common:\nhttps://www.urbanterror.info/forums/topic/21844-howto-changing-mouse-polling-rate-on-ubuntu/",
+      "parentUuid": "60cec9ab_b58204b3",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "564238eb_b02810d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "I somehow had a comment which didn\u0027t get saved.  Can this be moved to the test image like apitrace.  Otherwise this will potentially add network flake.",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6cf4b38_1257a664",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 2
@@ -153,6 +188,24 @@
       "side": 1,
       "message": "TIL\n\nActually i think this is kinda relevant to us since we want variance to be close to zero and thats exactly where the naive algorithm fails.\n\nIve switched to the two-pass approach. IIUC all these algs are numerically unstable but the two-pass\u0027 stability depends on compounding imprecision of the sum, so for our small sample size it should be reasonable (~ e * |samples|)",
       "parentUuid": "b9d1d70c_e87f1af7",
+      "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3709d8f_c0197f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-09T18:47:24Z",
+      "side": 1,
+      "message": "Yeah, the other CL linked some Knuth algorithm which was one pass, but two pass is totally fine here.",
+      "parentUuid": "1227f16f_940c3204",
       "revId": "bc2724cb1068124d5c3ce8691c73145022b1093e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
