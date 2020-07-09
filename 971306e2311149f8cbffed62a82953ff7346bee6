@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9d0e308_8396dfe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-09T21:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26678a52_940e2284",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "603eb025_030bb5e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "78f5b132_0b8fd5cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-09T21:56:24Z",
+      "side": 1,
+      "message": "Yes. We do have a plan to have preconditions since more tests are being added.",
+      "parentUuid": "603eb025_030bb5e5",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bd9c9f4_6fc86f36",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a4f3da_bafb4aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-09T21:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd9c9f4_6fc86f36",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "971306e2311149f8cbffed62a82953ff7346bee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
