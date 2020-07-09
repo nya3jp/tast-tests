@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "67b4588e_aec4e490",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Hi, after I move the file to google cloud storage, the test will failed with:\nRequired data file scene.pdf missing: failed to download gs://chromiumos-test-assets-public/camerabox/scene.pdf: no devserver is up\n\nIs it because it\u0027s not running in lab environment? Is there any workaround for this if I want to run it in chroot on my workstation?",
+      "parentUuid": "4adbaa90_809513d6",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6667cee8_161dfd59",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3
@@ -56,6 +74,30 @@
       "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d590ac09_f47ea345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6667cee8_161dfd59",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "c498f57f_c521323b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d50d87_3d6364f1",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daeb4185_0ae7649d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "1e57d513_76ba428e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daeb4185_0ae7649d",
+      "range": {
+        "startLine": 130,
+        "startChar": 33,
+        "endLine": 130,
+        "endChar": 46
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8173c632_34d8586c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3
@@ -125,6 +215,30 @@
       "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e621c1_411296cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8173c632_34d8586c",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +334,30 @@
       "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd835cd_783baec4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-09T04:31:50Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the root cause of my problem. Thanks a lot for investigation on it.",
+      "parentUuid": "ffa0b662_62c5d8dc",
+      "range": {
+        "startLine": 171,
+        "startChar": 69,
+        "endLine": 171,
+        "endChar": 77
+      },
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
