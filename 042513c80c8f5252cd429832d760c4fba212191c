@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e849e31f_55b89645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-09T13:58:29Z",
+      "side": 1,
+      "message": "I see. Thank",
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc261508_43b7dd81",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
         "patchSetId": 1
@@ -100,6 +117,30 @@
       "side": 1,
       "message": "This test is using Chrome OS Companion Lib, which is not fully implemented yet in R. That\u0027s probably why this is failing I guess.",
       "parentUuid": "79a1d4c4_5c43b747",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "042513c80c8f5252cd429832d760c4fba212191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863f34b9_cadb1f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-09T13:58:29Z",
+      "side": 1,
+      "message": "I see. thanks for explaining! I will put this on hold then.",
+      "parentUuid": "09e33fa6_ac61253d",
       "range": {
         "startLine": 175,
         "startChar": 2,
