@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef9e9ee_307507e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-09T14:51:32Z",
+      "side": 1,
+      "message": "There is a case that the actual elapsed time of L690-L701 is slightly shorter than TimerDelay, but delay can be slightly longer than TimerDelay. So, it could be possibly false-positive.\n\nIs it intended? Any alternatives to avoid that false-positive ness?\nIf so, could you explicitly document it?",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
