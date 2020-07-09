@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7c11b8_8da310f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-09T01:57:33Z",
+      "side": 1,
+      "message": "Note that as written this will prevent them from running anywhere, not just CQ.  If you want them to run in CI on kevin64 you will need to add an informationl test with the inverse hwdep.\n\nIf this is intended, remove mention of CQ from the comment.",
+      "range": {
+        "startLine": 8,
+        "startChar": 66,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "a07568fa30d0bb45cb3ca673848e0e2886314c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
