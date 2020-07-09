@@ -591,6 +591,12 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 			return errors.Wrapf(err, "failed to release %s mouse button", button)
 		}
 	}
+
+	// Invalidate the desktop (i.e. clear the accessibility features/listeners)
+	// for the extension API.
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.automation.invalidateDesktop)()", nil); err != nil {
+		return errors.Wrap(err, "failed to invalidate the desktop")
+	}
 	return nil
 }
 
