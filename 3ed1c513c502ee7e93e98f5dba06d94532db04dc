@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e37e5dc0_80897198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T18:02:04Z",
+      "side": 1,
+      "message": "This should fix ui.ChangeWallpaper on M84, but I am not sure if this will have an effect on ui.LauncherSearchAndroidApps.",
+      "revId": "3ed1c513c502ee7e93e98f5dba06d94532db04dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
