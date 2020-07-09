@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a582c6b_b2a2ce51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-09T18:32:21Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like the flakes are related but they are a bit concerning -- shouldn\u0027t they be excused failures?",
+      "revId": "bb658c393a712c16346824f51f7d38a5653fb74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
