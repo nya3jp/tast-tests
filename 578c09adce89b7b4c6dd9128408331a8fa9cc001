@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b30bc133_e571a699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T14:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a648daf9_2b7d1137",
+      "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfdaa7e7_4cb77554",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
         "patchSetId": 2
@@ -75,6 +93,30 @@
       "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196ef8e8_f587452c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T14:19:53Z",
+      "side": 1,
+      "message": "My mistake. I was just thinking in ones and zeroes :)",
+      "parentUuid": "dfdaa7e7_4cb77554",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

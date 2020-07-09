@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d00277d_0692c18d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T14:19:53Z",
+      "side": 1,
+      "message": "I found a nice way to check both blocked and not blocked popups. So the test now covers your suggested workflow.",
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
