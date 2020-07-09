@@ -16,6 +16,47 @@
       "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9126cda_5b30231c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T13:23:50Z",
+      "side": 1,
+      "message": "Is there tast test that check this behavior?\n\nDo you maybe have some errors in the developer console when popups are not allowed?",
+      "parentUuid": "eb454bf5_696db47c",
+      "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfdaa7e7_4cb77554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T13:23:50Z",
+      "side": 1,
+      "message": "Looks like 2 is for blocked:\nhttps://chromium.googlesource.com/chromium/src/+/master/components/policy/resources/policy_templates.json#5376",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "578c09adce89b7b4c6dd9128408331a8fa9cc001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
