@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "586bc966_4f603a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-09T15:35:43Z",
+      "side": 1,
+      "message": "Hey actually just came back to working on this one yesterday, I\u0027ll have a patch today with updates. The wifi one is in a good place I believe, so just need to get some feedback for the bluetooth part.",
+      "parentUuid": "0f30ec5b_c1323cc9",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b3f522_f62e93d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
         "patchSetId": 6
