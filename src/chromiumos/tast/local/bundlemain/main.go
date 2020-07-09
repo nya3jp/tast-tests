@@ -24,11 +24,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const varLogMessages = "/var/log/messages"
-const statefulPartition = "/mnt/stateful_partition"
-const mib = 1024 * 1024
-const lowSpaceThreshold = 100 * mib
-const spaceUsageThreshold = 10 * mib
+const (
+	varLogMessages    = "/var/log/messages"
+	statefulPartition = "/mnt/stateful_partition"
+
+	mib                 = 1024 * 1024
+	lowSpaceThreshold   = 100 * mib
+	spaceUsageThreshold = 10 * mib
+)
 
 func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	dp := filepath.Join(outDir, "messages")
@@ -95,6 +98,30 @@ func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
 	return nil
 }
 
+func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
+	// Unconditionally delete core dumps.
+	if err := crash.DeleteCoreDumps(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to delete core dumps: ", err)
+	}
+
+	// Delete purgeable files until the free space gets more than lowSpaceThreshold.
+	for _, path := range purgeable {
+		free, err := disk.FreeSpace(statefulPartition)
+		if err != nil {
+			return 0, err
+		}
+		if free >= lowSpaceThreshold {
+			return free, nil
+		}
+		if err := os.Remove(path); err != nil {
+			testing.ContextLog(ctx, "Failed to remove a purgeable file: ", err)
+		} else {
+			testing.ContextLog(ctx, "Deleted ", path)
+		}
+	}
+	return disk.FreeSpace(statefulPartition)
+}
+
 func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
@@ -103,10 +130,11 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 		oldInfo = nil
 	}
 
+	// Ensure disk space and record the current free space.
 	checkFreeSpace := false
-	freeSpaceBefore, err := disk.FreeSpace(statefulPartition)
+	freeSpaceBefore, err := ensureDiskSpace(ctx, s.Purgeable())
 	if err != nil {
-		s.Log("Failed to read the amount of free disk space: ", err)
+		s.Log("Failed to ensure disk space: ", err)
 	} else {
 		checkFreeSpace = true
 		if freeSpaceBefore < lowSpaceThreshold {
