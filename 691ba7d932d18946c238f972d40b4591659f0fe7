@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "27046ffa_7db622df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-07-09T21:13:27Z",
+      "side": 1,
+      "message": "Thanks, Jorge.",
+      "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e94e499f_27a65b90",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
@@ -39,6 +56,30 @@
       "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f36e97_218a4d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-07-09T21:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e94e499f_27a65b90",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 96
+      },
+      "revId": "691ba7d932d18946c238f972d40b4591659f0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
