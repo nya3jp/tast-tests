@@ -16,6 +16,138 @@
       "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48c80222_9130bf46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "LGTM % comments\n\nThanks!",
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7ce940_a868a8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305502c3_503cc200",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "when it can be undefined?\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/Window/closed",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6a7368_81f4758d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121c39e3_8ce131da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "tbh, looks a bit hacky to compare with test name:)\n\nwhat about one more item: \"expected_title\" ?\n\n```\n{\n  name: \"allowed\",\n  expected_title: \"Popups allowed\",\n  policy: ...\n}\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38398611_f6d9fc11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:41:36Z",
+      "side": 1,
+      "message": "I guess we can skip such comments",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
