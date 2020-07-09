@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e424dc2e_5dd3f708",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-09T04:36:43Z",
+      "side": 1,
+      "message": "I think normal behaviour should be the default.\nHow about setting true here, and set false in the err !\u003d nil clause?\nThen you can reduce the nest of ifs with\nelse if freeSpace... \u003c ... {\n  s.Logf(...)\n}",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "42d55e962b503a716f0e1f0fd379061b9b49383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
