@@ -22,6 +22,30 @@
       "revId": "dcf5ceedb75ca764064d7e9e8d3ba3495335b465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0751a4fc_896da96f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-09T15:40:59Z",
+      "side": 1,
+      "message": "The logic is probably stable, although I feel that this can be fragile in many ways. Since we just want to test bigger/smaller one, my suggestion is to use\nthe max/min size that we pick (but smaller / bigger than max/min) so that we can torelate smaller change.",
+      "parentUuid": "87dde07d_1516b981",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "dcf5ceedb75ca764064d7e9e8d3ba3495335b465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
