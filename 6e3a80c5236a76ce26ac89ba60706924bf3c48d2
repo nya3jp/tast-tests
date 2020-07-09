@@ -33,6 +33,24 @@
       "revId": "6e3a80c5236a76ce26ac89ba60706924bf3c48d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c30ccc4_7bd6d445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-09T22:08:21Z",
+      "side": 1,
+      "message": "When one of them fails, the oveall test will fail. It reports at which iteration it failed too. So if the test scenario is already flaky, this makes the test flakier. My intention is to stabilize the reported numbers (i.e. reduce the variance) but not increase the success rate -- ideally, test shouldn\u0027t be flaky at all.\n\nAnyways, thanks for asking, maybe this should have been noted as the comment of RunMultiple. I\u0027ll do that in another CL.",
+      "parentUuid": "8dcbaaed_39455216",
+      "revId": "6e3a80c5236a76ce26ac89ba60706924bf3c48d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
