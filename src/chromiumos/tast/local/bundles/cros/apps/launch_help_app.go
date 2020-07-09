@@ -12,11 +12,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // testParameters contains all the data needed to run a single test iteration.
@@ -36,6 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
 		Params: []testing.Param{{
 			Val: testParameters{
 				tabletMode: false,
