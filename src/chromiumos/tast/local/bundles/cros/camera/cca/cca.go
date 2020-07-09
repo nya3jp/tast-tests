@@ -83,6 +83,10 @@ var (
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
 	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
+	// BackgroundURL is the url of the CCA background page.
+	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
+	// ErrVideoNotActive indicates that video is not active
+	ErrVideoNotActive = errors.New("Video is not active within given time")
 )
 
 // Orientation is the screen orientation from JavaScript window.screen.orientation.type.
@@ -299,7 +303,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	app := &App{conn, cr, scriptPaths, outDir}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
-			return err
+			return ErrVideoNotActive
 		}
 		return app.WaitForState(ctx, "view-camera", true)
 	}
