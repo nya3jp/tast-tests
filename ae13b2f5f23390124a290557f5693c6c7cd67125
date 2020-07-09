@@ -16,6 +16,115 @@
       "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51d236e9_70373dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:09:07Z",
+      "side": 1,
+      "message": "LGTM % comments\n\nThanks for your effort!\n\nNow we can also migrate all other tests to use this library :) Will be happy to review!",
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6de803c9_8ed53752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:09:07Z",
+      "side": 1,
+      "message": "nit (optional): maybe let\u0027s all args in 1 line?",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927c15b7_728cc44e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:09:07Z",
+      "side": 1,
+      "message": "let\u0027s maybe check if len(csv) \u003d\u003d 0 and return error at the beginning of the function, so we can relly that it\u0027s not empty. Also, we won\u0027t need \"if len(csv) \u003e 0\" checks.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7486be04_575a7ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:09:07Z",
+      "side": 1,
+      "message": "looks like leftover, remove it",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59a062a_b165183e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-09T14:09:07Z",
+      "side": 1,
+      "message": "please align to ~80 sybmols, same for other comments",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 68
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
