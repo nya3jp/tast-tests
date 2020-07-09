@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cabbf724_43f3188a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-09T18:25:19Z",
+      "side": 1,
+      "message": "See the Shill documentation:\n\n                string WiFi.BSSID [readonly]\n\n                        (WiFi only) The BSSID of the associated AP.\n                        One can monitor this property for PropertyChanged\n                        signals to identify when roaming changes the\n                        current AP.\n\n\nThis is not the right way to find a non-associated BSS -- it only works for an associated one.\n\nIf you\u0027re looking for a specific BSS, I don\u0027t think Shill really exposes this kind of API. So you can initiate scans via Shill if needed, but you might still have to poll something like \u0027iw ... scan dump\u0027 to actually look for the BSS, or perhaps ask wpa_supplicant.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "2178aa4c1c5fa09ed6b58c1b17aad6175b633328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
