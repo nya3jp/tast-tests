@@ -22,7 +22,7 @@ func init() {
 		Func:         VideoEncodeAccel,
 		Desc:         "Verifies ARC++ and ARCM hardware encode acceleration by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Pre:          arc.BootedWithVideoLogging(),
@@ -36,7 +36,6 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 			ExtraData:         []string{video.Bear192P.Name},
 		}, {
 			Name: "h264_192p_i420_vm",
@@ -46,7 +45,6 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
-			ExtraAttr:         []string{"disabled"},
 			ExtraData:         []string{video.Bear192P.Name},
 		}, {
 			Name: "h264_360p_i420",
@@ -55,7 +53,6 @@ func init() {
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 			ExtraData:         []string{video.Tulip360P.Name},
 		}, {
 			Name: "h264_360p_i420_vm",
@@ -64,7 +61,6 @@ func init() {
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
-			ExtraAttr:         []string{"disabled"},
 			ExtraData:         []string{video.Tulip360P.Name},
 		}, {
 			Name: "h264_720p_i420",
@@ -73,7 +69,6 @@ func init() {
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 			ExtraData:         []string{video.Tulip720P.Name},
 		}, {
 			Name: "h264_720p_i420_vm",
@@ -82,7 +77,6 @@ func init() {
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
-			ExtraAttr:         []string{"disabled"},
 			ExtraData:         []string{video.Tulip720P.Name},
 		}, {
 			Name: "h264_1080p_i420",
@@ -91,7 +85,6 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 		}, {
 			Name: "h264_1080p_i420_vm",
@@ -100,7 +93,6 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
-			ExtraAttr:         []string{"disabled"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 		}},
 	})
