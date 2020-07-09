@@ -37,6 +37,167 @@
     },
     {
       "key": {
+        "uuid": "88519275_3c9f5968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "you may want: assistant.VerboseLoggingEnabled()",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b09db90_b02cecd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "There is now assistant.EnableAndWaitForReady\n\nAlso, make sure to defer assistant.Disable",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f714b9_88b4a693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "Is there a bug tracking this?",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 123
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5448a5_06ece99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "This probably should be:\n\nif enabled, err :\u003d bluetoothEnabled(ctx); err !\u003d nil {\n\treturn testing.PollBreak(err)\n} else if enabled !\u003d status {\n\treturn errors.Wrapf(\"bluetooth enabled %v\", enabled)\n}\n\nAlso for the error message, It might be useful to specify actual and expected.\nreturn errors.Wrapf(\"incorrect bluetooth state(expected: %v, actual: %v)\", status, enabled)",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56d11fd_d605f01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "nit: I would probably use testing.PollBreak here.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23557bc6_eb08b5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "It might be useful to specify actual and expected here as well.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 121
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc2c424_77f8a3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "For this and L101, you may want to use the same wording but specify that one is ubertray, but the other is settings app",
+      "range": {
+        "startLine": 121,
+        "startChar": 12,
+        "endLine": 121,
+        "endChar": 53
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06b3f522_f62e93d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
         "patchSetId": 6
@@ -53,6 +214,98 @@
         "startChar": 0,
         "endLine": 28,
         "endChar": 35
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2893832f_ec9c930f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "you may want: assistant.VerboseLoggingEnabled()",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c05bb0_d0923f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "There is now assistant.EnableAndWaitForReady\n\nAlso, make sure to defer assistant.Disable",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bab88d1_862379df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "same comment as other file",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a30fe0_47c6059f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "same comment as other file",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 111
       },
       "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -89,6 +342,29 @@
       "side": 1,
       "message": "You can create the Manager and Watcher objects before you start your test actions, then the Watcher will buffer any events and you can exclusively use WaitAll (it returns the property status) post-action.\n\nMy suggestion won\u0027t work quite right if the property doesn\u0027t actually change though (e.g., if the Assistant is requesting \"enabled\" and WiFi is already enabled). So maybe you\u0027re better with something like your current design.",
       "parentUuid": "7bc9bc58_016bb15c",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33f296e_52a576c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-09T19:08:31Z",
+      "side": 1,
+      "message": "make sure you rebase. I think a lot of the shill constants are now in a shillconst package.",
+      "range": {
+        "startLine": 115,
+        "startChar": 39,
+        "endLine": 115,
+        "endChar": 44
+      },
       "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
