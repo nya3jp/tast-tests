@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "b5f87a3f_209152d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8283c48_6b684081",
+      "range": {
+        "startLine": 575,
+        "startChar": 5,
+        "endLine": 575,
+        "endChar": 30
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c66dab7f_9c23211f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -79,6 +103,30 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b429e86_9a503442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66dab7f_9c23211f",
+      "range": {
+        "startLine": 586,
+        "startChar": 16,
+        "endLine": 586,
+        "endChar": 17
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "e71a1128_d45d54e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc6ff658_24e7e929",
+      "range": {
+        "startLine": 918,
+        "startChar": 29,
+        "endLine": 918,
+        "endChar": 32
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa6d9a2_3dc872ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -116,6 +188,30 @@
       "writtenOn": "2020-07-09T00:33:38Z",
       "side": 1,
       "message": "instead of panic, please return error",
+      "range": {
+        "startLine": 924,
+        "startChar": 1,
+        "endLine": 924,
+        "endChar": 22
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e74028e_671e9a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "I wonder if it should be a runtime error. Thinking of runtime error v.s. panic, I think the difference is something like this.\n\nRuntime error: Not a bug of test code. Can be caused by a bug of test target. Even correct code cannot avoid it, thus we need to handle it runtime. Equivalent to a checked exception in Java.\n\nPanic: Bug of test code. Programming error. Correct code should not cause panic. Need to be addressed by fixing the code. Equivalent to an unchecked exception in Java, DCHECK in cpp.\n\nBased on the difference, I feel this error deserves a panic.",
+      "parentUuid": "7aa6d9a2_3dc872ad",
       "range": {
         "startLine": 924,
         "startChar": 1,
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "a482d757_20b692e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cc27e7b_4ab26945",
+      "range": {
+        "startLine": 1016,
+        "startChar": 29,
+        "endLine": 1016,
+        "endChar": 30
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c489388c_54a7d0aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -171,6 +291,30 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c39cc3_6342c9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c489388c_54a7d0aa",
+      "range": {
+        "startLine": 1021,
+        "startChar": 64,
+        "endLine": 1021,
+        "endChar": 65
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +364,54 @@
     },
     {
       "key": {
+        "uuid": "85683518_e92f8a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c2577f_fa9abdb5",
+      "range": {
+        "startLine": 1032,
+        "startChar": 24,
+        "endLine": 1032,
+        "endChar": 25
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05cc00a0_5dfe9fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aedc1dc_984b7e5d",
+      "range": {
+        "startLine": 1032,
+        "startChar": 32,
+        "endLine": 1032,
+        "endChar": 99
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b4088ec_fc862406",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -240,6 +432,30 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8d173f_17dcf950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4088ec_fc862406",
+      "range": {
+        "startLine": 1042,
+        "startChar": 55,
+        "endLine": 1042,
+        "endChar": 58
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "a22088d8_85cc1039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e99939_dbd379c3",
+      "range": {
+        "startLine": 1048,
+        "startChar": 24,
+        "endLine": 1048,
+        "endChar": 68
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e9ef8e_18b82be8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -289,6 +529,30 @@
     },
     {
       "key": {
+        "uuid": "2d415b69_f5874be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Added more explanation to the moveTo method comment.",
+      "parentUuid": "93e9ef8e_18b82be8",
+      "range": {
+        "startLine": 1053,
+        "startChar": 1,
+        "endLine": 1058,
+        "endChar": 2
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bf45893_10546fd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 2
@@ -309,6 +573,30 @@
       "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ca1d26_77b2eb0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bf45893_10546fd2",
+      "range": {
+        "startLine": 1063,
+        "startChar": 43,
+        "endLine": 1063,
+        "endChar": 45
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -346,6 +634,30 @@
       "writtenOn": "2020-07-09T00:39:18Z",
       "side": 1,
       "message": "ignore. I double-checked, and actually String() is more popular than ToString()",
+      "parentUuid": "588a362f_839d32ac",
+      "range": {
+        "startLine": 1064,
+        "startChar": 27,
+        "endLine": 1064,
+        "endChar": 33
+      },
+      "revId": "37c9af282fef2b4c140b4e5f22ae7591e6739378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "424ffbb0_5fdcb7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-09T02:37:38Z",
+      "side": 1,
+      "message": "Ack. Thanks for checking!",
       "parentUuid": "588a362f_839d32ac",
       "range": {
         "startLine": 1064,
