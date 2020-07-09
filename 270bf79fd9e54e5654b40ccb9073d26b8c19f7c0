@@ -82,6 +82,54 @@
     },
     {
       "key": {
+        "uuid": "160d77d4_5c64030e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T15:18:41Z",
+      "side": 1,
+      "message": "Apparently it can only happen in the safari browser, so it\u0027s not a case we need to be concerned with.",
+      "parentUuid": "305502c3_503cc200",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "748f825f_c826bef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T15:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a7ce940_a868a8bb",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6a7368_81f4758d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
         "patchSetId": 3
@@ -102,6 +150,30 @@
       "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579fc599_705ec338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_popups_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T15:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6a7368_81f4758d",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +220,54 @@
       "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca53433c_8bc73737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T15:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38398611_f6d9fc11",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef62b017_5426de1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_popups_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-09T15:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121c39e3_8ce131da",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "270bf79fd9e54e5654b40ccb9073d26b8c19f7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
