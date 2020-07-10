@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.chromium.arc.testapp.inputlatency">
 
+    <uses-feature android:name="android.hardware.type.pc" android:required="false"/>
     <application
         android:allowBackup="false"
         android:label="ARC Input Latency helper">
