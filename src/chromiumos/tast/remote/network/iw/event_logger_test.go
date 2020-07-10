@@ -53,6 +53,24 @@ func TestParseEvent(t *testing.T) {
 				Message:   "disconnected (local request) reason: 3: Deauthenticated because sending station is leaving (or has left) the IBSS or ESS",
 			},
 		},
+		{
+			input: "1594348712.637469: wlan0 (phy #0): scan started",
+			expected: &Event{
+				Type:      EventTypeScanStart,
+				Timestamp: time.Unix(1594348712, 637469000),
+				Interface: "wlan0",
+				Message:   "scan started",
+			},
+		},
+		{
+			input: "1594348724.592450: wlan0 (phy #0): connected to 3c:28:6d:c4:79:fc",
+			expected: &Event{
+				Type:      EventTypeConnected,
+				Timestamp: time.Unix(1594348724, 592450000),
+				Interface: "wlan0",
+				Message:   "connected to 3c:28:6d:c4:79:fc",
+			},
+		},
 	}
 
 	// We may have float parsing error, so construct our own compare.
