@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a3b2dc1_c4828c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:51:38Z",
+      "side": 1,
+      "message": "Ack\n\nI guess what you actually wanted here would be the timestamp of when Chrome UI reads the mouse event, which should be stored in ui::Event::time_stamp() in Chrome. It would be ideal to track that timestamp, though it is not available from Tast (at least for now).  Maybe you can add some testing API to chrome (or exosphere/wayland) if that\u0027s the wanted data.\n\nBut this would be also fine.",
+      "parentUuid": "cac1ffd1_77a9f646",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84ce151a_e1923e4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 6
@@ -89,6 +107,30 @@
       "side": 1,
       "message": "1ms is deliberate to avoid 5ms potentially smoothing out and hiding what we\u0027re trying to measure.  Gamers will run with their mouse up to 1000Hz and we want to ensure smooth performance within the VM.",
       "parentUuid": "84ce151a_e1923e4e",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca38495_e2065c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:51:38Z",
+      "side": 1,
+      "message": "Ack for the frequency (though I\u0027m not sure if crostini can serve 1000hz input frequency).\n\nStill this needs to check the error.",
+      "parentUuid": "e2e6e79a_9b6fa837",
       "range": {
         "startLine": 69,
         "startChar": 3,
