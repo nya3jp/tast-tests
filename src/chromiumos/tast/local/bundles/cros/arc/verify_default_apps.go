@@ -42,7 +42,7 @@ func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Lookup for ARC++ default apps
-	for _, app := range []apps.App{apps.PlayStore, apps.Duo, apps.PlayMusic, apps.PlayBooks, apps.PlayGames, apps.PlayMovies} {
+	for _, app := range []apps.App{apps.PlayStore, apps.Duo, apps.PlayBooks, apps.PlayGames, apps.PlayMovies} {
 		if err := ash.WaitForChromeAppInstalled(ctx, tconn, app.ID, ctxutil.MaxTimeout); err != nil {
 			s.Fatalf("Failed to wait for %s (%s) to be installed: %v", app.Name, app.ID, err)
 		}
