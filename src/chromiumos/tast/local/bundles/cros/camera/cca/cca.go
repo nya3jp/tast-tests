@@ -218,9 +218,11 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	if err := tconn.Call(ctx, nil, `
 		(id) => {
 		  let resolveConnect;
+		  let resolveDisconnect;
 		  const errors = [];
 		  window.CCATestConnection = {
 		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
+		    disconnect: new Promise((resolve) => { resolveDisconnect = resolve; }),
 		    errors,
 		  };
 		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
@@ -228,6 +230,9 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		    switch(msg.name) {
 		      case 'connect':
 		        resolveConnect(msg.windowUrl);
+		        return;
+		      case 'disconnect':
+		        resolveDisconnect(msg.windowUrl);
 		        return;
 		      case 'error':
 		        errors.push(msg.errorInfo);
@@ -397,6 +402,13 @@ func (a *App) Close(ctx context.Context) error {
 	if err := a.conn.Close(); err != nil && firstErr == nil {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
+
+	if tconn, err := a.cr.TestAPIConn(ctx); err != nil {
+		firstErr = errors.Wrap(err, "failed to get test api connection")
+	} else if err := tconn.Eval(ctx, `window.CCATestConnection.disconnect`, nil); err != nil {
+		firstErr = errors.Wrap(err, "failed to wait for disconnect event")
+	}
+
 	a.conn = nil
 	testing.ContextLog(ctx, "CCA closed")
 	return firstErr
