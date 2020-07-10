@@ -91,7 +91,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx)
+	recorder, err := cuj.NewRecorder(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
