@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07793314_fc5bfef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-10T02:46:50Z",
+      "side": 1,
+      "message": "LGTM with some nits. I\u0027m a shadow tast reviewer so please also wait for review from Katherine and your teammate.",
+      "revId": "053b6b024223f954b3e77b95deb7e78f21cbfdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6230342b_b1acbce5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-10T02:46:50Z",
+      "side": 1,
+      "message": "minor nit: as we have OutDir, probably \"outDir\" instead?",
+      "range": {
+        "startLine": 100,
+        "startChar": 84,
+        "endLine": 100,
+        "endChar": 90
+      },
+      "revId": "053b6b024223f954b3e77b95deb7e78f21cbfdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f398a26e_8b0cb50c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-10T02:46:50Z",
+      "side": 1,
+      "message": "use shutil.Escape instead?",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 24
+      },
+      "revId": "053b6b024223f954b3e77b95deb7e78f21cbfdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
