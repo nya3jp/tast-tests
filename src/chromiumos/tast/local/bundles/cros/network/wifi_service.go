@@ -949,3 +949,9 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 
 	return &empty.Empty{}, nil
 }
+
+// GetCurrentTime returns the current local time in the given format.
+func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*network.GetCurrentTimeResponse, error) {
+	now := time.Now()
+	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
+}
