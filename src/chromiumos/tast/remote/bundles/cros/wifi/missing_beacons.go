@@ -19,7 +19,7 @@ func init() {
 		Func:        MissingBeacons,
 		Desc:        "Test how a DUT behaves when an AP disappears suddenly",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 		Params: []testing.Param{
