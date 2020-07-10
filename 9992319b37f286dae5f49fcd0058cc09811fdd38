@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "63d18e7f_372c7c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/home_directory_fileoperations.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "According to our discussion, just creating some txt files to test here.",
+      "parentUuid": "b1a774cd_35fb25d7",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "9992319b37f286dae5f49fcd0058cc09811fdd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e98560e0_09ab2f18",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 3

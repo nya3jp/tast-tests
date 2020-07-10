@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5fa0ea5_f008b929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "According to our discussion, rename and delete needs add.",
+      "parentUuid": "1a6be75c_51b67309",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 63
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a99fdf_93c4321e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcefb8a4_f52e8a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a99fdf_93c4321e",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7e76b4f6_c327d455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ed6dcd_fc908f36",
+      "range": {
+        "startLine": 134,
+        "startChar": 33,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acb7a4d8_a34866cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c4a5820c_05760b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb7a4d8_a34866cc",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad55191e_dd42ff5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2020-07-09T01:46:44Z",
       "side": 1,
       "message": "Can you avoid using sleep here?  WaitUntilDescendantGone or something?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a3f9bf_6b2bed88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "I tried that, it does not work.",
+      "parentUuid": "ad55191e_dd42ff5d",
       "range": {
         "startLine": 230,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "e4510434_eaf04e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f8c9c1_9ba5b139",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "149febfc_f705fbb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501f7470_0590d523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "149febfc_f705fbb9",
+      "range": {
+        "startLine": 252,
+        "startChar": 6,
+        "endLine": 252,
+        "endChar": 10
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "a21e81b4_612278dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50336f94_30d064ed",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9e1d662_08e7f72f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -206,6 +398,30 @@
       "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d7d86d_bb17ffb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e1d662_08e7f72f",
+      "range": {
+        "startLine": 273,
+        "startChar": 6,
+        "endLine": 273,
+        "endChar": 10
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "6f756924_f78e20e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26cb861_b665fab2",
+      "range": {
+        "startLine": 282,
+        "startChar": 33,
+        "endLine": 282,
+        "endChar": 34
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02b3eab5_3dbf456d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -252,6 +492,30 @@
       "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb935816_5dc75342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b3eab5_3dbf456d",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "93459a83_d0b13ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fd254b_971e67d5",
+      "range": {
+        "startLine": 328,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 22
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2333958_b41defbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 4
@@ -289,6 +577,30 @@
       "writtenOn": "2020-07-09T01:46:44Z",
       "side": 1,
       "message": "Can you avoid Sleep here?",
+      "range": {
+        "startLine": 335,
+        "startChar": 9,
+        "endLine": 335,
+        "endChar": 14
+      },
+      "revId": "7bbc0c4976d9a8680b5c62d75e7ea282c3f58909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "883d7567_419c9bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:40:08Z",
+      "side": 1,
+      "message": "Tried but it does not work.",
+      "parentUuid": "b2333958_b41defbb",
       "range": {
         "startLine": 335,
         "startChar": 9,
