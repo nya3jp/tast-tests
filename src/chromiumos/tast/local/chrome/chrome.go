@@ -535,7 +535,6 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
 		firstErr = err
 	}
-
 	return firstErr
 }
 
@@ -875,6 +874,27 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 				testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
 			} else {
 				testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
+			}
+		}
+
+		// Delete files from shadow directory.
+		const shadowDir = "/home/.shadow"
+		shadowFiles, err := ioutil.ReadDir(shadowDir)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+		}
+		for _, file := range shadowFiles {
+			if !file.IsDir() {
+				continue
+			}
+			// Only look for chronos file with names matching u-*.
+			chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+			shadowName := filepath.Join(shadowDir, file.Name())
+			// Remove the shadow directory if it does not have a corresponding chronos directory.
+			if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+				if err := os.RemoveAll(shadowName); err != nil {
+					testing.ContextLogf(ctx, "Failed to remove %q: %v", shadowName, err)
+				}
 			}
 		}
 
