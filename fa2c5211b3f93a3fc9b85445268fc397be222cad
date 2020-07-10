@@ -16,6 +16,52 @@
       "revId": "fa2c5211b3f93a3fc9b85445268fc397be222cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917961cc_7bcbc830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-10T13:29:19Z",
+      "side": 1,
+      "message": "These files don\u0027t seem to be used.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 95
+      },
+      "revId": "fa2c5211b3f93a3fc9b85445268fc397be222cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc7d813_d68f598b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-10T13:29:19Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be nicer to check separately, so the error can be more clear?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "fa2c5211b3f93a3fc9b85445268fc397be222cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
