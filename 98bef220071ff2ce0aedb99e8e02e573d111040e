@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "759d21f2_489bb204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T23:26:36Z",
+      "side": 1,
+      "message": "PTAL: due to the discussion in crrev.com/c/2289947, I changed the API slightly.",
+      "revId": "98bef220071ff2ce0aedb99e8e02e573d111040e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
