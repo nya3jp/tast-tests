@@ -22,6 +22,30 @@
       "revId": "abddfd85c76cf1a6306a404b3611ba235e8ace18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17d000fc_0681c9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-10T14:13:53Z",
+      "side": 1,
+      "message": "That is WAI: that particular video is high bit depth (10bits per component, 30\nbits per pixel); the associated quads cannot be promoted to overlay on nautilus\nbecause the display controller in it doesn\u0027t support any compatible formats (which\ncould be e.g. XR30, XB30, AR30, AB30 or P010). (Note that TGL will support \nthose).",
+      "parentUuid": "5721df89_6a81f9e8",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "abddfd85c76cf1a6306a404b3611ba235e8ace18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
