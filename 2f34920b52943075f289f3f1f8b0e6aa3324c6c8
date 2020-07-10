@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5277907_d8726b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-10T19:36:55Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1:\n\u003e \n\u003e Hmmm.... 8 mins for one test in CQ sounds long. Questions:\n\u003e - Do you know the reason why it is so slow only on VM?\n\u003e - According to tastboard, the test passes in 4 mins. Where did you find the problem?\nWhen I remove the --force option, the timeout occurs: see https://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm/b8876621564724821712?\n\nhttps://storage.cloud.google.com/chromeos-vmtest-archive/amd64-generic-direct-tast-vm/8876621564724821712/first_results/tests/platform.DMVerity/log.txt\n\n2020/06/24 02:39:54 Started test platform.DMVerity\n2020/06/24 02:39:54 [02:39:52.857] Running testNoModify\n2020/06/24 02:39:54 [02:39:53.078] Running testZeroFill\n2020/06/24 02:42:00 [02:41:58.931] Running testAFill\n2020/06/24 02:42:00 [02:41:59.565] Running testFirstBitFlip\n2020/06/24 02:42:44 [02:42:43.449] Running testMiddleBitFlip\n2020/06/24 02:43:27 [02:43:26.658] Running testLastBitFlip\n2020/06/24 02:43:53 [02:43:52.859] External command failed: signal: killed\n...\n2020/06/24 02:43:53 [02:43:52.861] Failed release command losetup for device /dev/loop2: context deadline exceeded\n\nZeroFill takes ~1 min, each BitFlip ~45s. I would expect the whole test to take ~5 minutes. I can reduce the length of each BitFlip test instead: the loop test 100 blocks, half would suffice.\n",
+      "revId": "2f34920b52943075f289f3f1f8b0e6aa3324c6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
