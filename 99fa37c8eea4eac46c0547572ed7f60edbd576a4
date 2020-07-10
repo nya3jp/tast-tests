@@ -22,6 +22,30 @@
       "revId": "99fa37c8eea4eac46c0547572ed7f60edbd576a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8095531_842d1eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-10T22:52:44Z",
+      "side": 1,
+      "message": "At this point we haven\u0027t pressed tab yet, so there\u0027s nothing to check on screen. We do check for the cycle menu below, after the first tab press, but it\u0027s not appearing in the failing runs.",
+      "parentUuid": "61364746_65fb5055",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "99fa37c8eea4eac46c0547572ed7f60edbd576a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
