@@ -314,7 +314,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs,
 			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
