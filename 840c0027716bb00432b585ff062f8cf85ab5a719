@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0e8a8a6_8f777d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-10T23:53:10Z",
+      "side": 1,
+      "message": "This function returns an error. Consider return an error instead calling s.Fatal inside the function.",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 10
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b488a9_ea1c1c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-10T23:53:10Z",
+      "side": 1,
+      "message": "The function returns an error, consider not calling s.Error inside the function and let the callee calls s.Error/s.Fatal if error is returned.",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 10
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae627308_8a8edfb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-10T23:53:10Z",
+      "side": 1,
+      "message": "Consider to use s.Logf with printf style format string.\ns.Logf(\"%s failed on the %dth iteration\", name, n)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 9
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b1d77c_7adb136e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-10T23:53:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it return an error?",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d52c4d_de4cd103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-10T23:53:10Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 8
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
