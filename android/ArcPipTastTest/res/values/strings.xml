@@ -14,6 +14,6 @@
   <string name="blank_activity_text" translatable="false">BlankActivity</string>
   <!-- Enter PIP button text-->
   <string name="enter_pip_button_text" translatable="false">Enter PIP</string>
-  <!-- Enter PIP button text-->
+  <!-- Launch PIP activity button text-->
   <string name="launch_pip_activity_button_text" translatable="false">Launch PIP activity</string>
 </resources>
