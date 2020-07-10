@@ -172,6 +172,10 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 			testing.ContextLog(ctx, "Failed to stop timeline: ", err)
 			return
 		}
+		if err := AddDisplayInfoValue(ctx, tconn, vs); err != nil {
+			testing.ContextLog(ctx, "Failed to add display info: ", err)
+			return
+		}
 		r.loadValues = append(r.loadValues, vs)
 	}()
 	hists, err := metrics.Run(ctx, tconn, f, r.names...)
