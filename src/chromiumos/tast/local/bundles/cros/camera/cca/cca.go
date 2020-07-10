@@ -170,6 +170,7 @@ type errorInfo struct {
 
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
+	tconn       *chrome.TestConn
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
@@ -218,9 +219,11 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	if err := tconn.Call(ctx, nil, `
 		(id) => {
 		  let resolveConnect;
+		  let resolveDisconnect;
 		  const errors = [];
 		  window.CCATestConnection = {
 		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
+		    disconnect: new Promise((resolve) => { resolveDisconnect = resolve; }),
 		    errors,
 		  };
 		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
@@ -228,6 +231,9 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		    switch(msg.name) {
 		      case 'connect':
 		        resolveConnect(msg.windowUrl);
+		        return;
+		      case 'disconnect':
+		        resolveDisconnect(msg.windowUrl);
 		        return;
 		      case 'error':
 		        errors.push(msg.errorInfo);
@@ -291,7 +297,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 	testing.ContextLog(ctx, "CCA launched")
 
-	app := &App{conn, cr, scriptPaths, outDir}
+	app := &App{tconn, conn, cr, scriptPaths, outDir}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return err
@@ -323,11 +329,7 @@ func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 // CheckJSError checks javascript error emitted by CCA error callback.
 func (a *App) CheckJSError(ctx context.Context, logDir string) error {
 	var errorInfos []errorInfo
-	tconn, err := a.cr.TestAPIConn(ctx)
-	if err != nil {
-		return err
-	}
-	if err := tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
+	if err := a.tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
 		return err
 	}
 
@@ -397,6 +399,10 @@ func (a *App) Close(ctx context.Context) error {
 	if err := a.conn.Close(); err != nil && firstErr == nil {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
+	if err := a.tconn.Eval(ctx, `window.CCATestConnection.disconnect`, nil); err != nil {
+		firstErr = errors.Wrap(err, "failed to wait for disconnect event")
+	}
+
 	a.conn = nil
 	testing.ContextLog(ctx, "CCA closed")
 	return firstErr
@@ -1193,17 +1199,12 @@ func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) er
 // device and app are enabled, and returns a function which reverts back to the
 // original state.
 func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(ctx context.Context) error, error) {
-	tconn, err := a.cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get test api connection")
-	}
-
-	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	originallyEnabled, err := ash.TabletModeEnabled(ctx, a.tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get tablet mode state")
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, enabled)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, a.tconn, enabled)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to ensure tablet mode enabled(%v)", enabled)
 	}
