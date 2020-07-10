@@ -16,6 +16,40 @@
       "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1809aab2_0e539dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/display_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T20:47:28Z",
+      "side": 1,
+      "message": "In my understanding, we actually don\u0027t have to calculate the score here; I think it is better to report individual subscores (i.e. height / width / refreshRate) separately. The score calculation can be done by the analysis script, that way we can refine and reevaluate the TPS later.",
+      "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "388a426e_8a72e26f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T20:47:28Z",
+      "side": 1,
+      "message": "Run() can be called multiple times, so it can be called multiple times (see ui.TaskSwitchCUJ for example).\nIn that case, I think this causes an error, since pv.Set() should be allowed at once.\n\nIdeally it should be reported in Record() method. Or add a flag to recorder to ensure that this is called just once.",
+      "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
