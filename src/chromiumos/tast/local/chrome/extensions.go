@@ -128,6 +128,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "autotestPrivate",
     "clipboardRead",
     "clipboardWrite",
+    "feedbackPrivate",
     "fontSettings",
     "i18n",
     "inputMethodPrivate",
