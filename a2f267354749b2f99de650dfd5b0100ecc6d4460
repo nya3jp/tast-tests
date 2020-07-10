@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6080505_7e6dfd1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-07-10T23:26:52Z",
+      "side": 1,
+      "message": "\u003e \"dependecy\" is a possible misspelling of \"dependency\".\n\nPlease fix.",
+      "parentUuid": "58f0fdeb_71dbe9a1",
+      "range": {
+        "startLine": 17,
+        "startChar": 113,
+        "endLine": 17,
+        "endChar": 122
+      },
+      "revId": "a2f267354749b2f99de650dfd5b0100ecc6d4460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcaf6ab_1d5a2881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-07-10T23:26:52Z",
+      "side": 1,
+      "message": "Thanks for the quick fix!",
+      "revId": "a2f267354749b2f99de650dfd5b0100ecc6d4460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
