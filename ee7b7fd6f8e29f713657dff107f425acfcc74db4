@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "9a619bbd_7bef4114",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-10T02:45:50Z",
+      "side": 1,
+      "message": "Thanks for hinting that I forget to ./update_chroot. It passed after update_chroot. PTAL thanks.",
+      "parentUuid": "0bf8c891_1445ec00",
+      "revId": "ee7b7fd6f8e29f713657dff107f425acfcc74db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6667cee8_161dfd59",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 3
