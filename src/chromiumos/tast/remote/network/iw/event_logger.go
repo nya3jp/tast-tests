@@ -7,6 +7,7 @@ package iw
 import (
 	"context"
 	"sync"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -79,4 +80,22 @@ func (e *EventLogger) EventsByType(et EventType) []*Event {
 		}
 	}
 	return ret
+}
+
+// DisconnectTime finds the first disconnect event and returns the time.
+func (e *EventLogger) DisconnectTime() (time.Time, error) {
+	disconnectEvs := e.EventsByType(EventTypeDisconnect)
+	if len(disconnectEvs) == 0 {
+		return time.Time{}, errors.New("disconnect event not found")
+	}
+	return disconnectEvs[0].Timestamp, nil
+}
+
+// ConnectedTime finds the first connected event and returns the time.
+func (e *EventLogger) ConnectedTime() (time.Time, error) {
+	connectedEvs := e.EventsByType(EventTypeConnected)
+	if len(connectedEvs) == 0 {
+		return time.Time{}, errors.New("connected event not found")
+	}
+	return connectedEvs[0].Timestamp, nil
 }
