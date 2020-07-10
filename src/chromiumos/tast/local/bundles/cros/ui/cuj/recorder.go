@@ -83,9 +83,10 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
-	memDiff    *memoryDiffDataSource
-	timeline   *perf.Timeline
-	loadValues []*perf.Values
+	memDiff     *memoryDiffDataSource
+	timeline    *perf.Timeline
+	loadValues  []*perf.Values
+	displayInfo *DisplayInfo
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -163,6 +164,10 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
 		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
 	}
+	displayInfo, err := NewDisplayInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display info")
+	}
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return errors.Wrap(err, "failed to start recording timeline data")
 	}
@@ -173,6 +178,7 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 			return
 		}
 		r.loadValues = append(r.loadValues, vs)
+		r.displayInfo = displayInfo
 	}()
 	hists, err := metrics.Run(ctx, tconn, f, r.names...)
 	if err != nil {
@@ -230,5 +236,8 @@ func (r *Recorder) Record(pv *perf.Values) error {
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
+
+	r.displayInfo.Record(pv)
+
 	return nil
 }
