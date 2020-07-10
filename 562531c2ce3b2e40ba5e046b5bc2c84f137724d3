@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3ffd2fe0_0109d64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T01:18:26Z",
+      "side": 1,
+      "message": "maybe comment as to why you are doing the screenshot here",
+      "revId": "562531c2ce3b2e40ba5e046b5bc2c84f137724d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6e2eda4_0718b632",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 3
