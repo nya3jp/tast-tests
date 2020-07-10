@@ -15,13 +15,13 @@ import android.view.MotionEvent;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 /** Main activity for the ArcInputLatencyTest app. */
 public class MainActivity extends Activity {
@@ -33,6 +33,8 @@ public class MainActivity extends Activity {
     private TextView mCount;
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
+    private Float mLastMouseX = null;
+    private Float mLastMouseY = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,9 +85,22 @@ public class MainActivity extends Activity {
 
     /** Called to record timing of received input events. */
     private void traceEvent(ReceivedEvent recv) {
+        // Android may sometimes send duplicate MotionEvent events with the same coordinates
+        // and action as the last event. Discard these events.
+        if (recv.type == "MouseEvent") {
+            MotionEvent event = (MotionEvent) recv.event;
+            if ((mLastMouseX != null && mLastMouseY != null)
+                    && mLastMouseX.equals(event.getX(0))
+                    && mLastMouseY.equals(event.getY(0))) {
+                // ignore this event
+                return;
+            }
+            mLastMouseX = event.getX(0);
+            mLastMouseY = event.getY(0);
+        }
+
         mRecvEvents.add(recv);
         mAdapter.notifyDataSetChanged();
-        Log.i(TAG, recv.toString());
 
         // Serialize events to JSON
         mExecutor.submit(

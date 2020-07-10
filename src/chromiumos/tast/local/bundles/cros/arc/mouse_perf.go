@@ -20,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KeyboardPerf,
-		Desc:     "Test ARC keyboard system performance",
+		Func:     MousePerf,
+		Desc:     "Test ARC mouse system performance",
 		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
 		// TODO(wvk): Once clocks are synced between the host and guest, add
 		// support for ARCVM to this test (b/123416853).
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-func KeyboardPerf(ctx context.Context, s *testing.State) {
+func MousePerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -44,12 +44,12 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
 
-	s.Log("Creating virtual keyboard")
-	kbd, err := input.Keyboard(ctx)
+	s.Log("Creating virtual mouse")
+	m, err := input.Mouse(ctx)
 	if err != nil {
-		s.Fatal("Unable to create virtual keyboard: ", err)
+		s.Fatal("Unable to create virtual mouse: ", err)
 	}
-	defer kbd.Close()
+	defer m.Close()
 
 	const (
 		apkName      = "ArcInputLatencyTest.apk"
@@ -73,22 +73,30 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
+	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
+		s.Fatal("Could not maximize test app: ", err)
+	}
+
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait until CPU idle: ", err)
 	}
 
-	s.Log("Injecting key events")
+	s.Log("Injecting mouse events")
 	const numEvents = 50
 	eventTimes := make([]int64, 0, numEvents)
-	for i := 0; i < numEvents; i += 2 {
+	var x, y int32 = 10, 0
+	for i := 0; i < numEvents; i++ {
 		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
-		if err := kbd.AccelPress(ctx, "a"); err != nil {
-			s.Fatal("Unable to inject key events: ", err)
+		if err := m.Move(x, y); err != nil {
+			s.Fatal("Unable to inject mouse event: ", err)
 		}
-
-		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
-		if err := kbd.AccelRelease(ctx, "a"); err != nil {
-			s.Fatal("Unable to inject key events: ", err)
+		if x == 10 {
+			x = -10
+		} else {
+			x = 10
+		}
+		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+			s.Fatal("Failed to sleep between events: ", err)
 		}
 	}
 
@@ -114,16 +122,16 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	mean, median, stdDev, max, min := inputlatency.CalculateMetrics(events, func(i int) float64 {
 		return float64(events[i].Latency)
 	})
-	s.Logf("Keyboard latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
+	s.Logf("Mouse latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
 
 	rmean, rmedian, rstdDev, rmax, rmin := inputlatency.CalculateMetrics(events, func(i int) float64 {
 		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
 	})
-	s.Logf("Keyboard RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
+	s.Logf("Mouse RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
 
 	pv := perf.NewValues()
 	pv.Set(perf.Metric{
-		Name:      "avgKeyboardLatency",
+		Name:      "avgMouseLatency",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, mean)

@@ -6,12 +6,13 @@
 
 package org.chromium.arc.testapp.inputlatency;
 
+import android.view.InputDevice;
 import android.view.InputEvent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ReceivedEvent {
     public InputEvent event;
@@ -34,7 +35,21 @@ public class ReceivedEvent {
         if (event instanceof KeyEvent) {
             type = "KeyEvent";
         } else if (event instanceof MotionEvent) {
-            type = "MotionEvent";
+            if (event.isFromSource(InputDevice.SOURCE_JOYSTICK)) {
+                type = "JoystickEvent";
+            } else if (event.isFromSource(InputDevice.SOURCE_GAMEPAD)) {
+                type = "GamepadEvent";
+            } else if (event.isFromSource(InputDevice.SOURCE_MOUSE)) {
+                type = "MouseEvent";
+            } else if (event.isFromSource(InputDevice.SOURCE_STYLUS)) {
+                type = "StylusEvent";
+            } else if (event.isFromSource(InputDevice.SOURCE_TOUCHPAD)) {
+                type = "TouchpadEvent";
+            } else if (event.isFromSource(InputDevice.SOURCE_TOUCHSCREEN)) {
+                type = "TouchscreenEvent";
+            } else {
+                type = "MotionEvent";
+            }
         } else {
             type = "InputEvent";
         }
