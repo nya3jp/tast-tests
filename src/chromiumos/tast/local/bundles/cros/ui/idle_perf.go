@@ -57,7 +57,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 
 	// Recorder with no additional config; it records and reports memory usage and
 	// CPU percents of browser/GPU processes.
-	recorder, err := cuj.NewRecorder(ctx)
+	recorder, err := cuj.NewRecorder(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

@@ -114,13 +114,15 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
 	memDiff := newMemoryDiffDataSource("Memory.Diff")
+	displayInfo := NewDisplayInfoSource("Display", tconn)
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("Memory"),
 		power.NewSysfsThermalMetrics(),
 		memDiff,
+		displayInfo,
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
