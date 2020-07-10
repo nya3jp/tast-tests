@@ -82,12 +82,6 @@ var Duo = App{
 	Name: "Duo",
 }
 
-// PlayMusic has details about the Play Music app.
-var PlayMusic = App{
-	ID:   "ophbaopahelaolbjliokocojjbgfadfn",
-	Name: "Play Music",
-}
-
 // PlayBooks has details about the Play Books app.
 var PlayBooks = App{
 	ID:   "cafegjnmmjpfibnlddppihpnkbkgicbg",
