@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dab4c3bd_8dca1be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T05:09:31Z",
+      "side": 1,
+      "message": "Changed to var since cross file reference to const is not recommended.",
+      "parentUuid": "74bdc843_1f6927f0",
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2bb69f2_03071c95",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f924f192_41a05bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T05:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bb69f2_03071c95",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "1d9b5fc3_723470c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T05:09:31Z",
+      "side": 1,
+      "message": "I think that will make the code longer.",
+      "parentUuid": "7f002344_0e1fcec5",
+      "range": {
+        "startLine": 347,
+        "startChar": 5,
+        "endLine": 347,
+        "endChar": 35
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04886f4d_10a7017b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 5
@@ -136,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "0e75231e_2bfc6761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T05:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04886f4d_10a7017b",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 360,
+        "endChar": 19
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d84f2ac_2f72eae9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 5
@@ -156,6 +246,30 @@
       "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6426327_d1b7c4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T05:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d84f2ac_2f72eae9",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 13
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
