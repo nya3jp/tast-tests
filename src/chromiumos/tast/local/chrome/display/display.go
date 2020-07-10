@@ -36,6 +36,7 @@ type DisplayMode struct { // NOLINT
 	HeightInNativePixels int     `json:"heightInNativePixels"`
 	UIScale              float64 `json:"uiScale,omitempty"`
 	DeviceScaleFactor    float64 `json:"deviceScaleFactor"`
+	RefreshRate          float64 `json:"refreshRate"`
 	IsNative             bool    `json:"isNative"`
 	IsSelected           bool    `json:"isSelected"`
 	IsInterlaced         bool    `json:"isInterlaced,omitempty"`

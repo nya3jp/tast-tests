@@ -83,9 +83,10 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
-	memDiff    *memoryDiffDataSource
-	timeline   *perf.Timeline
-	loadValues []*perf.Values
+	memDiff     *memoryDiffDataSource
+	timeline    *perf.Timeline
+	loadValues  []*perf.Values
+	displayInfo *DisplayInfo
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -173,6 +174,12 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 			return
 		}
 		r.loadValues = append(r.loadValues, vs)
+
+		r.displayInfo, err = NewDisplayInfo(ctx, tconn)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get display info: ", err)
+			return
+		}
 	}()
 	hists, err := metrics.Run(ctx, tconn, f, r.names...)
 	if err != nil {
@@ -230,5 +237,8 @@ func (r *Recorder) Record(pv *perf.Values) error {
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
+
+	r.displayInfo.ToValues(pv)
+
 	return nil
 }
