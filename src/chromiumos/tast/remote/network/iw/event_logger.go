@@ -28,6 +28,8 @@ type EventType int
 const (
 	EventTypeDisconnect EventType = iota
 	EventTypeChanSwitch
+	EventTypeScanStart
+	EventTypeConnected
 	EventTypeUnknown
 )
 
@@ -169,5 +171,40 @@ func detectEventType(ev *Event) EventType {
 	if strings.Contains(ev.Message, "ch_switch_started_notify") {
 		return EventTypeChanSwitch
 	}
+	if strings.HasPrefix(ev.Message, "scan started") {
+		return EventTypeScanStart
+	}
+	if strings.HasPrefix(ev.Message, "connected") {
+		return EventTypeConnected
+	}
 	return EventTypeUnknown
+}
+
+// LinkFailureDetectedTime returns the time of link failure detected event
+// by finding the first ScanStart or Disconnect event.
+func (e *EventLogger) LinkFailureDetectedTime() (time.Time, error) {
+	disconnectEvs := e.EventsByType(EventTypeDisconnect)
+	if len(disconnectEvs) == 0 {
+		return time.Time{}, errors.New("disconnect event not found")
+	}
+
+	startScanEvs := e.EventsByType(EventTypeScanStart)
+	if len(startScanEvs) != 0 {
+		if startScanEvs[0].Timestamp.Before(disconnectEvs[0].Timestamp) {
+			return startScanEvs[0].Timestamp, nil
+		}
+	}
+	// Newer wpa_supplicant would attempt to disconnect then reconnect without scanning.
+	// So if no scan event is detected before the disconnect attempt,
+	// we'll assume the disconnect attempt is the beginning of the reassociate attempt.
+	return disconnectEvs[0].Timestamp, nil
+}
+
+// ConnectedTime finds the first connected event and returns the time.
+func (e *EventLogger) ConnectedTime() (time.Time, error) {
+	connectedEvs := e.EventsByType(EventTypeConnected)
+	if len(connectedEvs) == 0 {
+		return time.Time{}, errors.New("connected event not found")
+	}
+	return connectedEvs[0].Timestamp, nil
 }

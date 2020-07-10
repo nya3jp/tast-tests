@@ -189,3 +189,35 @@ func (h *APIface) configureIP(ctx context.Context) error {
 	maskLen, _ := h.mask().Size()
 	return ipr.AddIP(ctx, h.iface, h.ServerIP(), maskLen, ip.AddIPBroadcast(h.broadcastIP()))
 }
+
+// changeSubnetIdx configures the ip to the new index and restart the dhcp server.
+// On failure, the APIface object will keep holding the old index, but the states of the
+// dhcp server and WiFi interface are not guaranteed and a call of stop is still needed.
+func (h *APIface) changeSubnetIdx(ctx context.Context, newIdx byte) (retErr error) {
+	if h.dhcpd != nil {
+		if err := h.dhcpd.Close(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop dhcp server")
+		}
+		h.dhcpd = nil
+	}
+
+	// Reset the subnet index to old value on failure.
+	oldIdx := h.subnetIdx
+	defer func() {
+		if retErr != nil {
+			h.subnetIdx = oldIdx
+		}
+	}()
+
+	h.subnetIdx = newIdx
+	if err := h.configureIP(ctx); err != nil {
+		return errors.Wrap(err, "failed to configure ip")
+	}
+
+	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
+	if err != nil {
+		return errors.Wrap(err, "failed to start dhcp server")
+	}
+	h.dhcpd = ds
+	return nil
+}
