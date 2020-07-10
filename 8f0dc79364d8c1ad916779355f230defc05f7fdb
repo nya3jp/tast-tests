@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d694ce04_bc043b6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-10T09:33:26Z",
+      "side": 1,
+      "message": "I want to discuss the approach. I commented at crbug.com/1084432#c6.\n",
+      "revId": "8f0dc79364d8c1ad916779355f230defc05f7fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
