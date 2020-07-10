@@ -17,7 +17,7 @@ func init() {
 		Func:        DisableEnable,
 		Desc:        "Tests that disabling and enabling WiFi re-connects the system",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_cq", "wificell_unstable", "wificell_func"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 	})
