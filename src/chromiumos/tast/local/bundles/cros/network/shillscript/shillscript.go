@@ -124,18 +124,6 @@ func tearDown(ctx context.Context, env *TestEnv) {
 	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		testing.ContextLog(ctx, errors.Wrap(err, "failed restarting shill"))
 	}
-
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		testing.ContextLog(ctx, errors.Wrap(err, "failed creating shill manager object"))
-	}
-
-	expectProps := map[string]interface{}{
-		shill.ServicePropertyState: shill.ServiceStateOnline,
-	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 15*time.Second); err != nil {
-		testing.ContextLog(ctx, errors.Wrap(err, "failed to connect to network after shill restart"))
-	}
 }
 
 // DbusEventMonitor monitors the system message bus for those D-Bus calls we want to observe (InsertUserProfile, PopAllUserProfiles, CreateUserProfile).
