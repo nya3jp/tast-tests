@@ -67,6 +67,9 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // GetCurrentTime returns the current local time in the given format.
+  rpc GetCurrentTime(GetCurrentTimeRequest) returns (GetCurrentTimeResponse) {}
 }
 
 message ConnectRequest {
@@ -184,4 +187,12 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message GetCurrentTimeRequest {
+  string layout = 1;
+}
+
+message GetCurrentTimeResponse {
+  string now = 1;
 }

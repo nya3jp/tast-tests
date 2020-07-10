@@ -588,3 +588,17 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 	return nil
 }
+
+// CurrentClientTime returns the current time on DUT.
+func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error) {
+	const layout = time.RFC3339Nano
+	res, err := tf.WifiClient().GetCurrentTime(ctx, &network.GetCurrentTimeRequest{Layout: layout})
+	if err != nil {
+		return time.Time{}, errors.Wrap(err, "failed to get the current DUT time")
+	}
+	currentTime, err := time.Parse(layout, res.Now)
+	if err != nil {
+		return time.Time{}, errors.Wrap(err, "failed to parse the current DUT time")
+	}
+	return currentTime, nil
+}
