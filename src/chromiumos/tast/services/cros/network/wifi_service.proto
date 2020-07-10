@@ -73,6 +73,9 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // GetCurrentTime returns the current local time in the given format.
+  rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
 }
 
 message ConnectRequest {
@@ -199,4 +202,9 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+
+message GetCurrentTimeResponse {
+  int64 nowSecond = 1;
+  int64 nowNanosecond = 2;
 }
