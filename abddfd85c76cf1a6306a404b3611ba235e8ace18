@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5721df89_6a81f9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-10T00:01:57Z",
+      "side": 1,
+      "message": "With my nautilus, I have observed that regardless of the PIP window size, an overlay is used for bear-320x240.vp9.webm but not for bear-320x240.vp9.2.webm. As you can see, I have used this observation to make with_overlay subtests and without_overlay subtests. Can I rely on it for all the relevant devices? Miguel, what is the difference between these two video files?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "abddfd85c76cf1a6306a404b3611ba235e8ace18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
