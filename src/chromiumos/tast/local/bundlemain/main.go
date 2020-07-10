@@ -114,6 +114,10 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 		}
 	}
 
+	if err := crash.MarkTestInProgress(s.TestInstance().Name); err != nil {
+		s.Log("Failed to mark crash test in progress: ", err)
+	}
+
 	return func(ctx context.Context, s *testing.TestHookState) {
 		if s.HasError() {
 			faillog.Save(ctx)
@@ -128,6 +132,10 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 		// Delete all core dumps to free up spaces.
 		if err := crash.DeleteCoreDumps(ctx); err != nil {
 			s.Log("Failed to delete core dumps: ", err)
+		}
+
+		if err := crash.MarkTestDone(); err != nil {
+			s.Log("Failed to unmark crash test in progress file: ", err)
 		}
 
 		if checkFreeSpace {
