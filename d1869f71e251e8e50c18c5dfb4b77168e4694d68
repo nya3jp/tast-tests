@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee2e20c7_54fa1ce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "just a few more nits.",
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e8599f0_45b156d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "nit: move this const close to where it is being used. e.g: to L1066",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5bc99c_9788da93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "nit: end sentences with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 584,
+        "startChar": 23,
+        "endLine": 584,
+        "endChar": 24
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a7702f_9fe92fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "Activity -\u003e activity\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 685,
+        "startChar": 27,
+        "endLine": 685,
+        "endChar": 28
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0362e1fa_e1fb48f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "(sorry, missed from previous review)\n\nnit: \nthis is not a \"trivial\" func. avoid naked returns.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "range": {
+        "startLine": 954,
+        "startChar": 2,
+        "endLine": 954,
+        "endChar": 8
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86dbab21_1cc3e459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "nit:\n...including stopping the activity.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 9,
+        "endLine": 1005,
+        "endChar": 50
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68be5683_a0720df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-10T00:48:05Z",
+      "side": 1,
+      "message": "nit:\n\nyou can just do:\n\n   return ensureActivityReady(...)",
+      "range": {
+        "startLine": 1017,
+        "startChar": 1,
+        "endLine": 1017,
+        "endChar": 11
+      },
+      "revId": "d1869f71e251e8e50c18c5dfb4b77168e4694d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
