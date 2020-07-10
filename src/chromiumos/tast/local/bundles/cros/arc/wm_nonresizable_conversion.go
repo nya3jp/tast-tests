@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -31,10 +32,15 @@ func init() {
 
 func WMNonresizableConversion(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
+		// wm.TestCase{
+		// 	// non-resizable/conversion: landscape
+		// 	Name: "NV_conversion_landscape",
+		// 	Func: wmNV19,
+		// },
 		wm.TestCase{
-			// non-resizable/conversion: landscape
-			Name: "NV_conversion_landscape",
-			Func: wmNV19,
+			// non-resizable/conversion: portrait
+			Name: "NV_conversion_portrait",
+			Func: wmNV20,
 		},
 	})
 }
@@ -42,7 +48,17 @@ func WMNonresizableConversion(ctx context.Context, s *testing.State) {
 // wmNV19 covers non-resizable/conversion behavior in landscape mode.
 // Expected behavior is defined in: go/arc-wm-r NV19 non-resizable/conversion: landscape.
 func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableLandscapeActivity)
+	return runNVConversionByOrientation(ctx, tconn, a, d, wm.NonResizableLandscapeActivity, display.OrientationLandscapePrimary)
+}
+
+// wmNV20 covers non-resizable/conversion behavior in portrait mode.
+// Expected behavior is defined in: go/arc-wm-r NV20 non-resizable/conversion: portrait.
+func wmNV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	return runNVConversionByOrientation(ctx, tconn, a, d, wm.NonResizablePortraitActivity, display.OrientationPortraitPrimary)
+}
+
+func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string, desiredOrientation display.OrientationType) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
@@ -90,14 +106,23 @@ func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
-	windowInfoAtTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	windowInfoInTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}
 
 	// Compare activity's window TargetBounds to primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoAtTabletMode); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoInTabletMode); err != nil {
 		return err
+	}
+
+	// Check display orientation.
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if orientation.Type != desiredOrientation {
+		return errors.Errorf("invalid display orientation, want: %q, got: %q", desiredOrientation, orientation)
 	}
 
 	// Disable tablet mode.
@@ -109,6 +134,13 @@ func wmNV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return w.ID == windowID && w.IsFrameVisible == true
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for frame to become visible")
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
+		return err
 	}
 
 	windowInfoAfterTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
