@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3b0008e_5b63d206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-10T04:38:45Z",
+      "side": 1,
+      "message": "Sorry for totally letting this one slip! Rebased and updated with latest changes to Assistant tests, and incorporating Brendan\u0027s feedback.",
+      "revId": "1caa5ca79b4e0d7d4c5bd2989fe69026de766e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
