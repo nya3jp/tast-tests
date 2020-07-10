@@ -69,6 +69,9 @@ const (
 	userCrashDirs = "/home/chronos/u-*/crash"
 	// FilterInPath is the path to the filter-in file.
 	FilterInPath = "/run/crash_reporter/filter-in"
+	// TestInProgressPath is the path to a file containing the name of the
+	// currently-running test, if any.
+	TestInProgressPath = "/run/crash_reporter/test-in-prog"
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
@@ -386,4 +389,21 @@ func processRunning(procName string) (bool, error) {
 		}
 	}
 	return false, nil
+}
+
+// MarkTestInProgress writes |name| to |TestInProgressPath|, indicating to crash_reporter
+// that the given test is in progress.
+func MarkTestInProgress(name string) error {
+	if err := ioutil.WriteFile(TestInProgressPath, []byte(name), 0644); err != nil {
+		return errors.Wrap(err, "failed to write in-progress test name: ")
+	}
+	return nil
+}
+
+// MarkTestDone removes the file indicating which test is running.
+func MarkTestDone() error {
+	if err := os.Remove(TestInProgressPath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to remove in-progress test name: ")
+	}
+	return nil
 }
