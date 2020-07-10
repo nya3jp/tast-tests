@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -45,6 +46,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			// non-resizable/clamshell: user immerse non-portrait app
 			Name: "NC_user_immerse_non_portrait",
 			Func: wmNC05,
+		},
+		wm.TestCase{
+			// non-resizable/clamshell: hide shelf when app maximized
+			Name: "NC_hide_shelf_app_max",
+			Func: wmNC12,
 		},
 	})
 }
@@ -100,6 +106,102 @@ func wmNC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	return nil
 }
 
+// wmNC12 covers non-resizable/clamshell: hide shelf when app maximized.
+// Expected behavior is defined in: go/arc-wm-r NC12: non-resizable/clamshell: hide shelf when app maximized.
+func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	// Get primary display info to set shelf behavior.
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	// Get initial shelf behavior.
+	initSB, err := ash.GetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID)
+	if err != nil {
+		return err
+	}
+	if initSB != ash.ShelfBehaviorNeverAutoHide {
+		// Set shelf behavior to never auto hide for test's initial state.
+		if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+			return err
+		}
+	}
+
+	// Start the activity.
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Store initial window info to compare with after hiding and showing the shelf.
+	winInfoInitialState, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Set shelf behavior to auto hide.
+	if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := waitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	winInfoShelfHidden, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare window bounds before and after hiding the shelf. It should be larger when shelf is hidden.
+	if winInfoShelfHidden.BoundsInRoot.Height <= winInfoInitialState.BoundsInRoot.Height {
+		return errors.Errorf("invalid window bounds when shelf is shown, got: %s, want smaller than: %s", winInfoInitialState.BoundsInRoot, winInfoShelfHidden.BoundsInRoot)
+	}
+
+	// Show the shelf.
+	if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := waitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	winInfoShelfReShown, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare window bounds after showing the shelf with initial bounds. They should be equal.
+	if winInfoInitialState.BoundsInRoot != winInfoShelfReShown.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after hiding and showing the shelf, got: %s, want: %s", winInfoShelfReShown.BoundsInRoot, winInfoInitialState.BoundsInRoot)
+	}
+
+	return nil
+}
+
 // checkMaxActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
 func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
@@ -142,4 +244,17 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 		return err
 	}
 	return wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoMaximized.TargetBounds, *windowInfoFullscreen)
+}
+
+func waitForShelfAnimationComplete(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		shelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if shelfInfo.IsShelfWidgetAnimating {
+			return errors.New("shelf is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
