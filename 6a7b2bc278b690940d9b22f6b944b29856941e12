@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ac2e727_f3372086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-07-10T10:26:08Z",
+      "side": 1,
+      "message": "We have 10+ other tests depending on \"chrome_internal\" to handle H.264 codec. So, you should change those tests as well for consistency.\nhttps://source.chromium.org/search?q\u003d%22chrome_internal%22%20h264\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fc7fcf_1e0dbf48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-07-10T10:26:08Z",
+      "side": 1,
+      "message": "You also need to ensure that the test will be skipped on _Chromium_ OS as intended.",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3ae1ffd_84e4546c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -13,6 +47,23 @@
       "writtenOn": "2020-07-10T09:57:34Z",
       "side": 1,
       "message": "Is anyone know where to set chrome_media USE flag.\nI couldn\u0027t find the place.\nhttps://source.chromium.org/search?q\u003dchrome_media\u0026ss\u003dchromiumos\n\nIf it\u0027s set by default (meaning in the default ChromeOS build system), this CL should be fine.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/chromeos-base/chromeos-chrome/chromeos-chrome-9999.ebuild;l\u003d377?q\u003dchrome_media\u0026ss\u003dchromiumos",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ade43e8_7168314c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-07-10T10:26:08Z",
+      "side": 1,
+      "message": "I think this topic must be discussed with Miguel (mcasas@) and his video team as other video tests such as video.Play.*h264* depend on \"chrome_internal\".\nLet me add him and remove Tast reviewers who were manually added.",
       "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
