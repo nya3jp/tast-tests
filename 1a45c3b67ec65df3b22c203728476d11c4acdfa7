@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e34966bc_2a5d557d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/display_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-10T21:58:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1809aab2_0e539dc1",
+      "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "388a426e_8a72e26f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 7
@@ -50,6 +68,24 @@
       "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74dda68_7635e5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-10T21:58:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "388a426e_8a72e26f",
+      "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
