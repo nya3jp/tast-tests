@@ -12,7 +12,8 @@ die() {
 }
 
 usage() {
-  die "Usage: $(basename "$0") <block|fs|p9> <src> <mountpoint> <output> <jobs>"
+    die "Usage: $(basename "$0") <block|block_btrfs|fs|fs_dax|p9> <src> \
+<mountpoint> <output> <jobs>"
 }
 
 main() {
@@ -42,6 +43,14 @@ main() {
       mkfs.ext4 "${src}"
       mount "${src}" "${mountpoint}"
       ;;
+    block_btrfs)
+        [[ -b "${src}" ]] || die "${src} is not a block device"
+        mkfs.btrfs "${src}"
+        mount "${src}" "${mountpoint}"
+        ;;
+    direct)
+        mount "${src}" "/media/removable/USBDrive/"
+        ;;
     p9)
       mount -t 9p \
             -o "trans=virtio,version=9p2000.L,access=client,cache=loose" \
@@ -50,6 +59,9 @@ main() {
     fs)
       mount -t virtiofs "${src}" "${mountpoint}"
       ;;
+    fs_dax)
+        mount -t virtiofs -o dax "${src}" "${mountpoint}"
+        ;;
     *)
       die "Unknown storage type: ${kind}"
   esac
