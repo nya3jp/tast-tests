@@ -97,8 +97,12 @@ func (r *Runner) Values() *Values {
 	return r.pv
 }
 
-// RunMultiple runs scenario multiple times and store the data through store function.
-// At the end of the runs, it invokes scenario once more with recording the trace.
+// RunMultiple runs scenario multiple times and store the data through store
+// function. It invokes scenario+store 10 times, and then invokes scenario only
+// with tracing enabled. If one of the runs fails, it quits immediately and
+// reports an error. The name parameter is used for the prefix of subtest names
+// for calling scenario/store function and the prefix for the trace data file.
+// The name can be empty, in which case the runner uses default prefix values.
 func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) {
 	runPrefix := name
 	if name == "" {
