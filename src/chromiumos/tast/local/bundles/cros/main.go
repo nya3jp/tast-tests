@@ -26,6 +26,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/dev"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/factory"
+	_ "chromiumos/tast/local/bundles/cros/feedback"
 	_ "chromiumos/tast/local/bundles/cros/filemanager"
 	_ "chromiumos/tast/local/bundles/cros/firmware"
 	_ "chromiumos/tast/local/bundles/cros/gamepad"
