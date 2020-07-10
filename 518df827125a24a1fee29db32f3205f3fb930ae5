@@ -16,6 +16,103 @@
       "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "994f8403_6500a5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:15:11Z",
+      "side": 1,
+      "message": "I am not quite sure what this statistics measures.  This would be mostly 1 millisecond (the wait) + duration of writing mouse event (access to the device file) + jitter -- that would be a performance of Go runtime?",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ce151a_e1923e4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:15:11Z",
+      "side": 1,
+      "message": "Please add a check of error: (if err :\u003d testing.Sleep(ctx, ...); err !\u003d nil { ... })\n\nBy the way, 1 millisecond looks a bit short. Do you have some knowledge of how much should it wait?\nFor the comparison, Swipe for touchscreen uses 5msecs frequency (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/input/touch.go#57).",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b079e3_0a24a723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:15:11Z",
+      "side": 1,
+      "message": "What does this mean by multiplying a nanosecond?   Duration / time.Millisecond should return a value in millisecond.\n\nI think this should also use a standard time functions, i.e.\n  startTime :\u003d time.Now()\n  ...\n  float64(time.Now().Sub(startTime)) / float64(time.Millisecond)",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b3e569_ea424c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:15:11Z",
+      "side": 1,
+      "message": "nit: \"stats\", \"processStats\", \"recordStats\" sound a bit too generic. Maybe I\u0027m too nervous, but keep in mind that these types/functions are shared among packages (i.e. the files in the same directory) and their names can\u0027t conflict with each other.\n\nI\u0027d recommend to:\n- use some prefix to all of them (i.e. mouseStats, processMouseStats etc)\n- or make them internal to the test case function\n- or create its own package (i.e. local/bundles/cros/crostini/mouse package) and put there",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a659347_a45fb10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:15:11Z",
+      "side": 1,
+      "message": "Just curious: no need to record average?",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
