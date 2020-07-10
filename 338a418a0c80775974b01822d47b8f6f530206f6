@@ -16,6 +16,23 @@
       "revId": "338a418a0c80775974b01822d47b8f6f530206f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4174d584_d6f4cc89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-10T15:45:28Z",
+      "side": 1,
+      "message": "Display info is like a hardware config and does not change, at least not during the test. So I am not sure whether we want to make it a timeline source.\n\nMaybe we should have a helper function to get the score and put it to |loadValues| in Recorder.Run, either before actual test run, or in the deferred call after we do \"r.timeline.StopRecording()\" and store timeline values.",
+      "revId": "338a418a0c80775974b01822d47b8f6f530206f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
