@@ -231,7 +231,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	origBounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds := window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial PIP bounds: %+v", origBounds)
 
 	deltaX := dispMode.WidthInNativePixels / (totalMovements + 1)
@@ -263,7 +263,7 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Bounds before resize: %+v", bounds)
 
 	testing.ContextLog(ctx, "Resizing window to x=0, y=0")
@@ -277,7 +277,7 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	bounds = coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds = window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 
 	// Max PIP window size relative to the display size, as defined in WindowPosition.getMaximumSizeForPip().
 	// See: https://cs.corp.google.com/pi-arc-dev/frameworks/base/services/core/arc/java/com/android/server/am/WindowPositioner.java
@@ -317,7 +317,7 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.TestConn, a *ar
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 
 	if err = waitForNewBoundsWithMargin(ctx, tconn, dispMode.WidthInNativePixels-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 		return errors.Wrap(err, "the PIP window must be along the right edge of the display")
@@ -362,7 +362,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	origBounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds := window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 
 	// Move the PIP window upwards as much as possible to avoid possible interaction with shelf.
 	if err := act.MoveWindow(ctx, coords.NewPoint(origBounds.Left, 0), time.Second); err != nil {
@@ -379,7 +379,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc
 		return errors.Wrap(err, "could not get PIP window")
 	}
 
-	origBounds = coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds = window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
 	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -530,7 +530,7 @@ func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := window.BoundsInRoot.WithUnitConversion(dispMode.DeviceScaleFactor)
 
 	pixelX := float64(bounds.Left + bounds.Width/2)
 	pixelY := float64(bounds.Top + bounds.Height/2)

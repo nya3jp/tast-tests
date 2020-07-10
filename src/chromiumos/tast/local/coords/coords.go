@@ -42,6 +42,13 @@ func (p Point) Sub(p2 Point) Point {
 	return Point{p.X - p2.X, p.Y - p2.Y}
 }
 
+// WithUnitConversion returns a new Point converted by the given factor.
+func (p Point) WithUnitConversion(factor float64) Point {
+	return Point{
+		X: int(math.Round(float64(p.X) * factor)),
+		Y: int(math.Round(float64(p.Y) * factor))}
+}
+
 // Size represents a size of a region.
 type Size struct {
 	Width  int `json:"width"`
@@ -56,6 +63,18 @@ func NewSize(w, h int) Size {
 // String returns the string representation of Size.
 func (s Size) String() string {
 	return fmt.Sprintf("(%d x %d)", s.Width, s.Height)
+}
+
+// Equals returns true if the size equals another one.
+func (s Size) Equals(s2 Size) bool {
+	return s.Width == s2.Width && s.Height == s2.Height
+}
+
+// WithUnitConversion returns a new Size converted by the given factor.
+func (s Size) WithUnitConversion(factor float64) Size {
+	return Size{
+		Width:  int(math.Round(float64(s.Width) * factor)),
+		Height: int(math.Round(float64(s.Height) * factor))}
 }
 
 // Rect represents a rectangular region.
@@ -157,11 +176,11 @@ func (r Rect) WithOffset(dl, dt int) Rect {
 	return NewRect(r.Left+dl, r.Top+dt, r.Width, r.Height)
 }
 
-// ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
-func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
+// WithUnitConversion returns a new Rect converted by the given factor.
+func (r Rect) WithUnitConversion(factor float64) Rect {
 	return Rect{
-		Left:   int(math.Round(float64(bounds.Left) * dsf)),
-		Top:    int(math.Round(float64(bounds.Top) * dsf)),
-		Width:  int(math.Round(float64(bounds.Width) * dsf)),
-		Height: int(math.Round(float64(bounds.Height) * dsf))}
+		Left:   int(math.Round(float64(r.Left) * factor)),
+		Top:    int(math.Round(float64(r.Top) * factor)),
+		Width:  int(math.Round(float64(r.Width) * factor)),
+		Height: int(math.Round(float64(r.Height) * factor))}
 }

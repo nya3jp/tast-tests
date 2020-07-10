@@ -248,7 +248,7 @@ func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestCon
 
 	for _, mode := range dispInfo.Modes {
 		if mode.IsSelected {
-			return mode.WidthInNativePixels, mode.HeightInNativePixels, coords.ConvertBoundsFromDpToPx(dispInfo.WorkArea, mode.DeviceScaleFactor), nil
+			return mode.WidthInNativePixels, mode.HeightInNativePixels, dispInfo.WorkArea.WithUnitConversion(mode.DeviceScaleFactor), nil
 		}
 	}
 	return 0, 0, coords.Rect{}, errors.New("failed to get the selected screen mode")

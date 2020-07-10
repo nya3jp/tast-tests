@@ -102,7 +102,7 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 
 	// Waits for the window bounds to be updated on the Android side.
 	waitForWindowBounds := func(ctx context.Context, expected coords.Rect) error {
-		expected = coords.ConvertBoundsFromDpToPx(expected, dispMode.DeviceScaleFactor)
+		expected = expected.WithUnitConversion(dispMode.DeviceScaleFactor)
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			actual, err := act.WindowBounds(ctx)
 			if err != nil {
