@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -526,7 +527,6 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
 		firstErr = err
 	}
-
 	return firstErr
 }
 
@@ -870,8 +870,48 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		if err := session.ClearDeviceOwnership(ctx); err != nil {
 			return err
 		}
+
+		if err := cleanChromeShadowDir(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to clean chrome shadow directory: ", err)
+		}
 	}
 	return upstart.EnsureJobRunning(ctx, "ui")
+}
+
+// cleanChromeShadowDir cleans unused chrome directories from /home/.shadow.
+// Remove /home/.shadow [dir1,] that are not found in /home/chronos ['u-$dir1',]
+// If a directory is found in /home/.shadow and /home/chronos and it is not
+// open in /home/chronos, it is removed from /home/.shadow.
+func cleanChromeShadowDir(ctx context.Context) error {
+	const shadowDir = "/home/.shadow"
+	files, err := ioutil.ReadDir(shadowDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+	}
+	for _, file := range files {
+		if !file.IsDir() {
+			continue
+		}
+		const chronosDir = "/home/chronos"
+		// Only look for chronos file with names matching u-*.
+		chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+		shadowName := filepath.Join(shadowDir, file.Name())
+		// Remove the shadow directory if it does not have a corresponding chronos directory.
+		if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+			testing.ContextLogf(ctx, "%q is not found, removing %q", chronosName, shadowName)
+			_ = os.RemoveAll(shadowName)
+			continue
+		}
+		// If the corresponding chronos directory is not in use, remove the shadow directory.
+		cmd := testexec.CommandContext(ctx, "/usr/bin/lsof", "-Pt", chronosName)
+		if err := cmd.Run(); err != nil {
+			testing.ContextLogf(ctx, "%q is not in use, removing %q", chronosName, shadowName)
+			_ = os.RemoveAll(shadowName)
+			continue
+		}
+		testing.ContextLogf(ctx, "%q found, keeping %q", chronosName, shadowName)
+	}
+	return nil
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
