@@ -39,6 +39,30 @@
       "revId": "2b7dc1a36b9e975ebc90cdbfe98ce0640d99bfeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3f76cd6_4c349637",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-07-10T13:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b23c241_dc1595fe",
+      "range": {
+        "startLine": 263,
+        "startChar": 54,
+        "endLine": 263,
+        "endChar": 62
+      },
+      "revId": "2b7dc1a36b9e975ebc90cdbfe98ce0640d99bfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
