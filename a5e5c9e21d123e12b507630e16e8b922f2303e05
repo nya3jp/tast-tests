@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f67d7a7_e8c1bfc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:49:22Z",
+      "side": 1,
+      "message": "\u003e \"seleted\" is a possible misspelling of \"selected\".\n\nPlease fix.",
+      "parentUuid": "101466b0_da282755",
+      "range": {
+        "startLine": 256,
+        "startChar": 24,
+        "endLine": 256,
+        "endChar": 31
+      },
+      "revId": "a5e5c9e21d123e12b507630e16e8b922f2303e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

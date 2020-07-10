@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "562def03_bf9e03ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:49:22Z",
+      "side": 1,
+      "message": "\u003e \"Existance\" is a possible misspelling of \"Existence\".\n\nPlease fix.",
+      "parentUuid": "0f5414e1_5c7051ad",
+      "range": {
+        "startLine": 345,
+        "startChar": 13,
+        "endLine": 345,
+        "endChar": 22
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e2defe7_fd61533f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-10T01:49:22Z",
+      "side": 1,
+      "message": "\u003e \"existance\" is a possible misspelling of \"existence\".\n\nPlease fix.",
+      "parentUuid": "62047c2d_bc8839f0",
+      "range": {
+        "startLine": 345,
+        "startChar": 47,
+        "endLine": 345,
+        "endChar": 56
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
