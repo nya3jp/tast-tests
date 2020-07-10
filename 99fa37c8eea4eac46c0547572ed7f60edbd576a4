@@ -46,6 +46,30 @@
       "revId": "99fa37c8eea4eac46c0547572ed7f60edbd576a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf31ba8_0e3af706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-10T23:34:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8095531_842d1eaf",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "99fa37c8eea4eac46c0547572ed7f60edbd576a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
