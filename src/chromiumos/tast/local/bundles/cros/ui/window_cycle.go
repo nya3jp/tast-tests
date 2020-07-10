@@ -123,6 +123,8 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 					defer keyboard.AccelRelease(ctx, "Shift")
 				}
 
+				testing.Sleep(ctx, 500*time.Millisecond)
+
 				if err := keyboard.Accel(ctx, "Tab"); err != nil {
 					s.Fatal("Failed to press Tab: ", err)
 				}
