@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "09c4d0df_3e81b1b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-10T18:15:38Z",
+      "side": 1,
+      "message": "A new function added for this, please check it.",
+      "parentUuid": "42618c80_fa881abd",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 52
+      },
+      "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a709dbca_b2e66230",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1fc452_4fa6599c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-10T18:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a709dbca_b2e66230",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 51
+      },
+      "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
