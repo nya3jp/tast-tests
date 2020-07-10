@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db1aaf51_72873ec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-10T06:28:53Z",
+      "side": 1,
+      "message": "Hi Mukai and Xiyuan, could you please review this CL and see if this is the display score we want? Thank you!",
+      "revId": "338a418a0c80775974b01822d47b8f6f530206f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
