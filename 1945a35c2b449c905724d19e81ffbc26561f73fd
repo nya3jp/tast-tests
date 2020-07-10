@@ -148,6 +148,30 @@
       "revId": "1945a35c2b449c905724d19e81ffbc26561f73fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e92dc5_b62cdcb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-10T15:37:36Z",
+      "side": 1,
+      "message": "Another alternative is to use requestAnimationFrame() in JS in order to get to a point where we know a frame has been presented (taking into account that Chrome can be double or tripled buffered):\n\n1) Do a requestAnimationFrame()\n2) When the callback is called, draw the ellipse.\n3) Do another requestAnimationFrame().\n4) When the callback is called, if Chrome is double buffered, the first ellipse should be on the screen; however, since we don\u0027t know if Chrome is double or tripled buffer, draw the ellipse again to be safe.\n5) Do another requestAnimationFrame().\n6) When the callback is called, there should now be an ellipse on the screen regardless of double or triple buffering in Chrome.\n\nTo make it simpler and avoid assumptions, you could have a loop that calls requestAnimationFrame() say 10 times. For the first 9 callbacks, you do WebGL. On the 10th callback, fulfill a promise so that Tast can keep going.\n\nIn the typical case, this condition should be reached in less than a second.",
+      "parentUuid": "423f1099_87dba3a6",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "1945a35c2b449c905724d19e81ffbc26561f73fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
