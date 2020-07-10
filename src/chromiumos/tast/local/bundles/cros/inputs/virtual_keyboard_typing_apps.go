@@ -93,10 +93,16 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 
 	// Value change can be a bit delayed after input.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		element, err := ui.FindWithTimeout(ctx, tconn, params, 2*time.Second)
+		if err != nil {
+			s.Fatal("Failed to find searchbox input field in settings: ", err)
+		}
+		defer element.Release(ctx)
 		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
 		if err != nil {
 			return err
 		}
+		defer inputValueElement.Release(ctx)
 		if inputValueElement.Name != expectedTypingResult {
 			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
 		}
