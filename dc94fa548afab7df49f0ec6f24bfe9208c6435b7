@@ -16,6 +16,29 @@
       "revId": "dc94fa548afab7df49f0ec6f24bfe9208c6435b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15ee8eaf_cb6753dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-10T23:00:49Z",
+      "side": 1,
+      "message": "update this comment",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "dc94fa548afab7df49f0ec6f24bfe9208c6435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
