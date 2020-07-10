@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ae1ffd_84e4546c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-07-10T09:57:34Z",
+      "side": 1,
+      "message": "Is anyone know where to set chrome_media USE flag.\nI couldn\u0027t find the place.\nhttps://source.chromium.org/search?q\u003dchrome_media\u0026ss\u003dchromiumos\n\nIf it\u0027s set by default (meaning in the default ChromeOS build system), this CL should be fine.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/chromeos-base/chromeos-chrome/chromeos-chrome-9999.ebuild;l\u003d377?q\u003dchrome_media\u0026ss\u003dchromiumos",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
