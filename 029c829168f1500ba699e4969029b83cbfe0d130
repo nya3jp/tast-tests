@@ -16,6 +16,24 @@
       "revId": "029c829168f1500ba699e4969029b83cbfe0d130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf85ec1_ee497cf6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T00:41:56Z",
+      "side": 1,
+      "message": "Thanks, added.  (though, strictly, this should be merged after that CL is merged and then the next chromium-uprev is merged).",
+      "parentUuid": "f23d7f42_86827838",
+      "revId": "029c829168f1500ba699e4969029b83cbfe0d130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
