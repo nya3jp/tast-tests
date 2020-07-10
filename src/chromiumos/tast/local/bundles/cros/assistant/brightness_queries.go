@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Tests changing the screen brightness using Assistant queries",
 		Contacts:     []string{"kyleshima@chromium.org", "bhansknecht@chromium.org", "meilinw@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "display_backlight"},
 		Pre:          assistant.VerboseLoggingEnabled(),
 	})
 }
