@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"net/url"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -321,6 +322,36 @@ func (c *Chrome) DebugAddrPort() string {
 	return c.devsess.DebugAddrPort()
 }
 
+// cleanChromeHomeDirs cleans unused chrome directories from /home/.shadow and /home/chronos.
+func cleanChromeHomeDirs(ctx context.Context) error {
+	const shadowDir = "/home/.shadow"
+	files, err := ioutil.ReadDir(shadowDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+	}
+	for _, file := range files {
+		if file.IsDir() {
+			const chronosDir = "/home/chronos"
+			// Only look for chronos file with names matching u-*.
+			chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+			shadowName := filepath.Join(shadowDir, file.Name())
+			// Remove the shadow directory if it does not have a corresponding chronos directory.
+			if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+				_ = os.RemoveAll(shadowName)
+				continue
+			}
+			// If the corresponding chronos directory is not in use, remove both chronos and shadow directories.
+			cmd := exec.Command("/usr/bin/lsof", "-Pt", chronosName)
+			if _, err := cmd.CombinedOutput(); err != nil {
+				_ = os.RemoveAll(shadowName)
+				_ = os.RemoveAll(chronosName)
+				continue
+			}
+		}
+	}
+	return nil
+}
+
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...Option) (*Chrome, error) {
@@ -364,6 +395,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		if toClose != nil {
 			toClose.Close(ctx)
 		}
+		_ = cleanChromeHomeDirs(ctx)
 	}()
 
 	if err := checkSoftwareDeps(ctx); err != nil {
@@ -502,6 +534,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 		firstErr = err
 	}
 
+	_ = cleanChromeHomeDirs(ctx)
 	return firstErr
 }
 
