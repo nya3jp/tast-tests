@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cac1ffd1_77a9f646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-10T17:28:56Z",
+      "side": 1,
+      "message": "This entire test is meant to measure issues with input latency (eventually at high cpu/system load).  In general sleep doesn\u0027t have guarantees on upper bounds of how long the sleep will take, just minimum bounds.  At some point, if the test is getting starved out, then the jitter could become substantial and should be measured.",
+      "parentUuid": "994f8403_6500a5e1",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84ce151a_e1923e4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 6
@@ -47,6 +65,30 @@
       "writtenOn": "2020-07-10T17:15:11Z",
       "side": 1,
       "message": "Please add a check of error: (if err :\u003d testing.Sleep(ctx, ...); err !\u003d nil { ... })\n\nBy the way, 1 millisecond looks a bit short. Do you have some knowledge of how much should it wait?\nFor the comparison, Swipe for touchscreen uses 5msecs frequency (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/input/touch.go#57).",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e6e79a_9b6fa837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-07-10T17:28:56Z",
+      "side": 1,
+      "message": "1ms is deliberate to avoid 5ms potentially smoothing out and hiding what we\u0027re trying to measure.  Gamers will run with their mouse up to 1000Hz and we want to ensure smooth performance within the VM.",
+      "parentUuid": "84ce151a_e1923e4e",
       "range": {
         "startLine": 69,
         "startChar": 3,
