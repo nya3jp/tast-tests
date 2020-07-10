@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69536829_2b016dfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "Hi Gabor,\n\nThanks for your CL!\n\nI have few comments:",
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4bbf431_d7f283c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "please add few words what exactly you are doing in the test:\n\nsee example: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2288235\n\n\nI guess in that example we actually can skip \"Behavior of DefaultPopupsSetting policy,\" part.",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4360d18_643c4f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "such comments looks a bit useless here",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7f2b1d_b71de6f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "why there is \"set\" prefix?\n\nmaybe rename it to wantValue and to restricted to wantRestricted?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316943f2_1c519c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "looks like it don\u0027t need to be a function",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289eea97_5942ec77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "it looks like key is always the same: settingName. So, it can be part of request, not a param",
+      "range": {
+        "startLine": 73,
+        "startChar": 38,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f81219_714c7cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "Do you need reject here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb37497a_1d4c0724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "evaluate JS code",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 27
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9919b58f_8c86d1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "it\u0027s not safe to compare interface{} with bool/string, you may have panic if there will be wrong type\n\nplease use type assertions:\nhttps://tour.golang.org/methods/15",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cfee61_a330f81b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-10T15:30:49Z",
+      "side": 1,
+      "message": "Go style for such messages is smth like:\n\nUnexpected checkbox value: got %t; want %t",
+      "range": {
+        "startLine": 99,
+        "startChar": 14,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
