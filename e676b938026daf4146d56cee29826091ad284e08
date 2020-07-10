@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3842f982_5de6e33d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-07-10T23:32:49Z",
+      "side": 1,
+      "message": "Thanks!\n\nlgtm with few wording suggestions.",
+      "revId": "e676b938026daf4146d56cee29826091ad284e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20985c3f_9a4dcda5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-07-10T23:32:49Z",
+      "side": 1,
+      "message": "nit: the invocations (or runs), the test runner quits ...",
+      "range": {
+        "startLine": 102,
+        "startChar": 35,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "e676b938026daf4146d56cee29826091ad284e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b29cc2_2e27b0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-07-10T23:32:49Z",
+      "side": 1,
+      "message": "nit: the trace data file",
+      "range": {
+        "startLine": 104,
+        "startChar": 53,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "e676b938026daf4146d56cee29826091ad284e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23dccc57_5e87b3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-07-10T23:32:49Z",
+      "side": 1,
+      "message": "nit: The name can be empty, in which case the runner uses default prefix values.",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "e676b938026daf4146d56cee29826091ad284e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
