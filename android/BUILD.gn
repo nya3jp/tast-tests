@@ -27,6 +27,7 @@ group("all") {
     "ArcNotificationTest:ArcNotificationTest",
     "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPipTastTest:ArcPipTastTest",
+    "ArcPipVideoTest:ArcPipVideoTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
