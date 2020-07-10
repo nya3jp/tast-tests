@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f55a9623_af84ddff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-10T19:28:36Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af74328_c138b296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-10T19:28:36Z",
+      "side": 1,
+      "message": "fix comment.",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6051f9dd_4704a11c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-10T19:28:36Z",
+      "side": 1,
+      "message": "does match[\"spare\"] work? It will be more readable.",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a03fee_147f9d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-10T19:28:36Z",
+      "side": 1,
+      "message": "same for tmatch[\"thresh\"]",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
