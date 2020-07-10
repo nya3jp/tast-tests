@@ -39,6 +39,30 @@
       "revId": "1caa5ca79b4e0d7d4c5bd2989fe69026de766e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0bf2a1_2d5b076b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/bluetooth_queries.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-10T21:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18abc32c_b43b1907",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "1caa5ca79b4e0d7d4c5bd2989fe69026de766e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
