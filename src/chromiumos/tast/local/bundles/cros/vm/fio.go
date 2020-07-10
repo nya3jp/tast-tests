@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -23,11 +24,100 @@ import (
 const runFio string = "run-fio.sh"
 
 type param struct {
-	kind string
-	job  string
+	kind         string
+	job          string
+	externalDisk bool
 }
 
 func init() {
+
+	jobs := []string{"boot", "login", "surfing", "seq_read", "rand_read", "seq_write", "rand_write", "stress_rw"}
+
+	// I know it's not allowed to generate parameters dynamically, but let me do so only for testing.
+	var params []testing.Param
+	for _, j := range jobs {
+		job := fmt.Sprintf("fio_%s.job", j)
+
+		params = append(params,
+			testing.Param{
+				Name:      fmt.Sprintf("block_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind: "block",
+					job:  job,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("block_external_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind:         "block",
+					job:          job,
+					externalDisk: true,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("block_btrfs_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind: "block_btrfs",
+					job:  job,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("block_btrfs_external_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind:         "block_btrfs",
+					job:          job,
+					externalDisk: true,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("virtiofs_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind: "fs",
+					job:  job,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("virtiofs_external_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind:         "fs",
+					job:          job,
+					externalDisk: true,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("virtiofs_dax_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind: "fs_dax",
+					job:  job,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("virtiofs_dax_external_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind:         "fs_dax",
+					job:          job,
+					externalDisk: true,
+				},
+			},
+			testing.Param{
+				Name:      fmt.Sprintf("direct_mount_%s", j),
+				ExtraData: []string{job},
+				Val: param{
+					kind: "direct",
+					job:  job,
+				},
+			},
+		)
+	}
+
 	testing.AddTest(&testing.Test{
 		Func:         Fio,
 		Desc:         "Tests crosvm storage device bandwidth",
@@ -36,217 +126,39 @@ func init() {
 		Data:         []string{common.VirtiofsKernel(), runFio},
 		SoftwareDeps: []string{"vm_host"},
 		Timeout:      15 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name:      "block_boot",
-				ExtraData: []string{"fio_boot.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_boot.job",
-				},
-			},
-			{
-				Name:      "virtiofs_boot",
-				ExtraData: []string{"fio_boot.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_boot.job",
-				},
-			},
-			{
-				Name:      "p9_boot",
-				ExtraData: []string{"fio_boot.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_boot.job",
-				},
-			},
-			{
-				Name:      "block_login",
-				ExtraData: []string{"fio_login.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_login.job",
-				},
-			},
-			{
-				Name:      "virtiofs_login",
-				ExtraData: []string{"fio_login.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_login.job",
-				},
-			},
-			{
-				Name:      "p9_login",
-				ExtraData: []string{"fio_login.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_login.job",
-				},
-			},
-			{
-				Name:      "block_surfing",
-				ExtraData: []string{"fio_surfing.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_surfing.job",
-				},
-			},
-			{
-				Name:      "virtiofs_surfing",
-				ExtraData: []string{"fio_surfing.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_surfing.job",
-				},
-			},
-			{
-				Name:      "p9_surfing",
-				ExtraData: []string{"fio_surfing.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_surfing.job",
-				},
-			},
-			{
-				Name:      "block_randread",
-				ExtraData: []string{"fio_rand_read.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_rand_read.job",
-				},
-			},
-			{
-				Name:      "virtiofs_randread",
-				ExtraData: []string{"fio_rand_read.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_rand_read.job",
-				},
-			},
-			{
-				Name:      "p9_randread",
-				ExtraData: []string{"fio_rand_read.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_rand_read.job",
-				},
-			},
-			{
-				Name:      "block_seqread",
-				ExtraData: []string{"fio_seq_read.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_seq_read.job",
-				},
-			},
-			{
-				Name:      "virtiofs_seqread",
-				ExtraData: []string{"fio_seq_read.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_seq_read.job",
-				},
-			},
-			{
-				Name:      "p9_seqread",
-				ExtraData: []string{"fio_seq_read.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_seq_read.job",
-				},
-			},
-			{
-				Name:      "block_seqwrite",
-				ExtraData: []string{"fio_seq_write.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_seq_write.job",
-				},
-			},
-			{
-				Name:      "virtiofs_seqwrite",
-				ExtraData: []string{"fio_seq_write.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_seq_write.job",
-				},
-			},
-			{
-				Name:      "p9_seqwrite",
-				ExtraData: []string{"fio_seq_write.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_seq_write.job",
-				},
-			},
-			{
-				Name:      "block_randwrite",
-				ExtraData: []string{"fio_rand_write.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_rand_write.job",
-				},
-			},
-			{
-				Name:      "virtiofs_randwrite",
-				ExtraData: []string{"fio_rand_write.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_rand_write.job",
-				},
-			},
-			{
-				Name:      "p9_randwrite",
-				ExtraData: []string{"fio_rand_write.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_rand_write.job",
-				},
-			},
-			{
-				Name:      "block_stress_rw",
-				ExtraData: []string{"fio_stress_rw.job"},
-				Val: param{
-					kind: "block",
-					job:  "fio_stress_rw.job",
-				},
-			},
-			{
-				Name:      "virtiofs_stress_rw",
-				ExtraData: []string{"fio_stress_rw.job"},
-				Val: param{
-					kind: "fs",
-					job:  "fio_stress_rw.job",
-				},
-			},
-			{
-				Name:      "p9_stress_rw",
-				ExtraData: []string{"fio_stress_rw.job"},
-				Val: param{
-					kind: "p9",
-					job:  "fio_stress_rw.job",
-				},
-			},
-		},
+		Params:       params,
 	})
 }
 
 func Fio(ctx context.Context, s *testing.State) {
+	p := s.Param().(param)
+
 	// Create a temporary directory on the stateful partition rather than in memory.
-	td, err := ioutil.TempDir("/usr/local/tmp", "tast.vm.Fio.")
-	if err != nil {
-		s.Fatal("Failed to create temporary directory: ", err)
+	var td string
+	if p.externalDisk {
+		td = "/media/removable/USBDrive/tast.vm.Fio"
+		if err := os.Mkdir(td, 0755); err != nil {
+			s.Fatal("Failed to create shared directory: ", err)
+		}
+	} else {
+		var err error
+		td, err = ioutil.TempDir("/usr/local/tmp", "tast.vm.Fio.")
+		if err != nil {
+			s.Fatal("Failed to create temporary directory: ", err)
+		}
 	}
 	defer os.RemoveAll(td)
 
-	vmlinux := s.DataPath(common.VirtiofsKernel())
+	/*
+		vmlinux := s.DataPath(common.VirtiofsKernel())
 
-	kernel := filepath.Join(td, "kernel")
-	if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
-		s.Fatal("Failed to unpack kernel: ", err)
-	}
+		kernel := filepath.Join(td, "kernel")
+		if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
+			s.Fatal("Failed to unpack kernel: ", err)
+		}
+	*/
+	// Use a custom kernel with unmerged virtio-fs patches.
+	kernel := "/mnt/stateful_partition/virtiofs_dax_kernel"
 
 	shared := filepath.Join(td, "shared")
 	if err := os.Mkdir(shared, 0755); err != nil {
@@ -271,27 +183,40 @@ func Fio(ctx context.Context, s *testing.State) {
 		"--nofile=262144",
 		"crosvm", "run",
 		"-c", "1",
-		"-m", "512",
+		"-m", "1024",
 		"-s", td,
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
 	}
 
-	p := s.Param().(param)
 	kind := p.kind
 	job := p.job
 
 	var tag string
-	if kind == "block" {
+	if kind == "block" || kind == "block_btrfs" {
 		tag = "/dev/vda"
 		args = append(args, "--rwdisk", block)
-	} else if kind == "fs" {
+	} else if kind == "fs" || kind == "fs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
-			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, kind))
+			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, "fs"))
 	} else if kind == "p9" {
 		tag = "shared"
 		args = append(args, "--shared-dir", fmt.Sprintf("%s:%s", shared, tag))
+	} else if kind == "direct" {
+		// Assume /dev/sda is mounted at /media/removable/USBDrive/,
+		// We unmount /dev/sda in the host and pass it to crosvm.
+		if err := syscall.Unmount("/media/removable/USBDrive/", 0); err != nil {
+			s.Fatal("Failed to unmount USB drive: ", err)
+		}
+		defer func() {
+			if err := syscall.Mount("/dev/sda", "/media/removable/USBDrive/", "ext4", 0, ""); err != nil {
+				s.Log("Failed to remount USB drive: ", err)
+			}
+		}()
+
+		tag = "/dev/vda"
+		args = append(args, "--rwdisk", "/dev/sda")
 	} else {
 		s.Fatal("Unknown storage device type: ", err)
 	}
