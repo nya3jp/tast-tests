@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "74bdc843_1f6927f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T02:01:34Z",
+      "side": 1,
+      "message": "this is merged now right?",
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2bb69f2_03071c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T02:01:34Z",
+      "side": 1,
+      "message": "checkFilesExistInContainer",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "562def03_bf9e03ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 5
@@ -47,6 +87,75 @@
       "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f002344_0e1fcec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T02:01:34Z",
+      "side": 1,
+      "message": "maybe just break this into two functions, one for exist, one for not exist",
+      "range": {
+        "startLine": 347,
+        "startChar": 5,
+        "endLine": 347,
+        "endChar": 35
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04886f4d_10a7017b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T02:01:34Z",
+      "side": 1,
+      "message": "you don\u0027t have an error to wrap here, you are making a new error. Use errors.New or errors.Errorf.",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 360,
+        "endChar": 19
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d84f2ac_2f72eae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-10T02:01:34Z",
+      "side": 1,
+      "message": "you are not returning the error you are making on the previous line, you are returning the error from the ls command above (which will always be nil)\n\nit should be:L\n\nreturn errors.Errorf(\"failed to find %s in container\", file)\n\nsame below.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 13
+      },
+      "revId": "8cd5c51f8e4cee6edbeeee7dbd3bead39bd998eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
