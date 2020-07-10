@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -43,37 +44,29 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 // wmNT01 covers non-resizable/tablet: default launch behavior.
 // Expected behavior is defined in: go/arc-wm-r NT01: non-resizable/tablet: default launch behavior.
 func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// 2 Test-cases for activities with specified orientation.
 	for _, tc := range []struct {
 		// Test-case activity name.
 		activityName string
-		// The orientation that device must be in so test-case can run.
-		displayOrientationType display.OrientationType
+		// Activity's desired orientation.
+		desiredDO display.OrientationType
 	}{
 		{
-			activityName:           wm.NonResizableLandscapeActivity,
-			displayOrientationType: display.OrientationLandscapePrimary,
+			activityName: wm.NonResizableLandscapeActivity,
+			desiredDO:    display.OrientationLandscapePrimary,
 		},
 		{
-			activityName:           wm.NonResizablePortraitActivity,
-			displayOrientationType: display.OrientationPortraitPrimary,
+			activityName: wm.NonResizablePortraitActivity,
+			desiredDO:    display.OrientationPortraitPrimary,
 		},
 	} {
 		if err := func() error {
-			orientation, err := display.GetOrientation(ctx, tconn)
-			if err != nil {
+			// Set the display to the opposite orientation, so when activity starts, the display should adjust itself to match with activity's desired orientation.
+			if err := setDisplayOrientation(ctx, tconn, getOppositeDisplayOrientation(tc.desiredDO)); err != nil {
 				return err
 			}
-			// Compare device's display orientation with the test-case orientation.
-			// If they are not equal, the display should rotate 270 degrees so the landscape will become portrait and vice versa.
-			// After the display is in the correct orientation that the activity wants, then the activity can start.
-			if tc.displayOrientationType != orientation.Type {
-				resetRot, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
-				if err != nil {
-					return err
-				}
-				defer resetRot()
-			}
 
+			// Start the activity.
 			act, err := arc.NewActivity(a, wm.Pkg24, tc.activityName)
 			if err != nil {
 				return err
@@ -88,15 +81,135 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
+
 			windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 			if err != nil {
 				return err
 			}
 
-			return wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfo)
+			if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfo); err != nil {
+				return err
+			}
+
+			newDO, err := display.GetOrientation(ctx, tconn)
+			if err != nil {
+				return err
+			}
+
+			// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
+			if tc.desiredDO != newDO.Type {
+				return errors.Errorf("invalid display orientation, want: %q, got: %q", tc.desiredDO, newDO.Type)
+			}
+
+			return nil
 		}(); err != nil {
 			return errors.Wrapf(err, "%q test failed", tc.activityName)
 		}
 	}
+
+	// Unspecified activity orientation.
+	// Set the display to an orientation, then start Unspecified activity.
+	// Unspecified activity shouldn't change the display orientation.
+	for _, displayOrientation := range []display.OrientationType{
+		display.OrientationPortraitPrimary,
+		display.OrientationLandscapePrimary,
+	} {
+		if err := checkUnspecifiedActivityInTabletMode(ctx, tconn, a, d, displayOrientation); err != nil {
+			return errors.Wrapf(err, "%q test failed", wm.NonResizableUnspecifiedActivity)
+		}
+	}
+
 	return nil
+}
+
+// getOppositeDisplayOrientation returns Portrait for Landscape orientation and vice versa.
+func getOppositeDisplayOrientation(orientation display.OrientationType) display.OrientationType {
+	if orientation == display.OrientationPortraitPrimary {
+		return display.OrientationLandscapePrimary
+	}
+	return display.OrientationPortraitPrimary
+}
+
+// checkUnspecifiedActivityInTabletMode makes sure that the display orientation won't change for an activity with unspecified orientation.
+func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, orientation display.OrientationType) error {
+	// Set the display orientation.
+	if err := setDisplayOrientation(ctx, tconn, orientation); err != nil {
+		return err
+	}
+
+	// Start undefined activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	newDO, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	// Compare display orientation after the activity is ready, it should be equal to the initial display orientation.
+	if orientation != newDO.Type {
+		return errors.Errorf("invalid display orientation for unspecified activity, want: %q, got: %q", orientation, newDO.Type)
+	}
+
+	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if isPortraitRect(windowInfo.BoundsInRoot) {
+		// If app is portrait but the display is not, then return error.
+		if orientation != display.OrientationPortraitPrimary {
+			return errors.New("invalid unspecified activity orientation, want: Landscape, got: Portrait")
+		}
+	} else { // App is Landscape
+		// If app is Landscape but the display is not, then return error.
+		if orientation != display.OrientationLandscapePrimary {
+			return errors.New("invalid unspecified activity orientation, want: Portrait, got: Landscape")
+		}
+	}
+
+	return nil
+}
+
+// setDisplayOrientation sets the display orientation by OrientationType.
+func setDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredOrientation display.OrientationType) error {
+	// Get display orientation
+	initialDO, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	if initialDO.Type != desiredOrientation {
+		rotationAngle := display.Rotate0
+		if desiredOrientation == display.OrientationPortraitPrimary {
+			rotationAngle = display.Rotate270
+		}
+
+		_, err := wm.RotateDisplay(ctx, tconn, rotationAngle)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// isPortraitRect returns true if width is greater than height.
+func isPortraitRect(rect coords.Rect) bool {
+	if rect.Width < rect.Height {
+		return true
+	}
+	return false
 }
