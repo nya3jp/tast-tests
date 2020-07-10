@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0ff669f_605ac6ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-10T04:16:36Z",
+      "side": 1,
+      "message": "Correct, I just wanted to make sure the videos were not controversial before uploading them. Done.",
+      "parentUuid": "c38d1dd4_0761b2e0",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4482da5_3d6b863e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "13d7ab43_540dfe3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-10T04:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a6f80b_fc4a0a39",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a437a87_9d36a2b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
         "patchSetId": 3
@@ -102,6 +150,30 @@
       "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04fbc18_07745f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/draw_on_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-07-10T04:16:36Z",
+      "side": 1,
+      "message": "I was thinking that since I\u0027m still stabilizing these tests, I would like to get frequent feedback, so I\u0027d prefer to leave it running often for now. I\u0027ll leave a TODO to move it.",
+      "parentUuid": "4a437a87_9d36a2b0",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 85
+      },
+      "revId": "f19cb544b2bcd282073bafd390bfd74dc223409f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
