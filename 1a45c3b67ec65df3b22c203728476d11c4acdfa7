@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b5d83bc_9de48000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-10T20:37:52Z",
+      "side": 1,
+      "message": "lgtm\n\nBut you have me and mukai@ in cc rather in reviwers list. 😊",
+      "revId": "1a45c3b67ec65df3b22c203728476d11c4acdfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
