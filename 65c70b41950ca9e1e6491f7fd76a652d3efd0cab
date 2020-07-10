@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dbea46f_3be7ca17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:21:13Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42618c80_fa881abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:21:13Z",
+      "side": 1,
+      "message": "Looks like window is not essential for this waiting. Let\u0027s just use testing.Poll.\n  if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n    shelfInfo, err :\u003d ash.FetchScrollableShelfInfoForState(ctx, tconn, \u0026ash.ShelfState{})\n    if err !\u003d nil {\n      return testing.PollBreak(err)\n    }\n    if shelfInfo.IsShelfWidgetAnimating {\n      return errors.New(\"shelf is still animating\")\n    }\n    return nil\n  }, \u0026testing.PollOptions{Timeout: 5*time.Second}); err !\u003d nil {\n    ...",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 52
+      },
+      "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a709dbca_b2e66230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T17:21:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 51
+      },
+      "revId": "65c70b41950ca9e1e6491f7fd76a652d3efd0cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
