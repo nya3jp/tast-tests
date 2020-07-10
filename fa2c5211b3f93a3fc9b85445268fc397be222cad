@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d664db82_ea918b0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-10T13:09:33Z",
+      "side": 1,
+      "message": "Is there a need to free up the map after each use?\n\nThere are two more checkboxes that are disabled with this policy in the Advanced tab of the Clear browsing data window. Right now the test only checks the Basic tab. Should I add the other two checkboxes as well?",
+      "revId": "fa2c5211b3f93a3fc9b85445268fc397be222cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
