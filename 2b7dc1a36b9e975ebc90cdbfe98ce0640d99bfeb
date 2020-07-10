@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bda2780_cd5edcc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-10T06:33:44Z",
+      "side": 1,
+      "message": "A nitpick. Please fix it before merge.",
+      "revId": "2b7dc1a36b9e975ebc90cdbfe98ce0640d99bfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b23c241_dc1595fe",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-10T06:33:44Z",
+      "side": 1,
+      "message": "When enable \u003d\u003d false, this is \"dock\".",
+      "range": {
+        "startLine": 263,
+        "startChar": 54,
+        "endLine": 263,
+        "endChar": 62
+      },
+      "revId": "2b7dc1a36b9e975ebc90cdbfe98ce0640d99bfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
