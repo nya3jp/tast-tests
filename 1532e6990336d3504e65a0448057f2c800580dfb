@@ -34,6 +34,23 @@
       "revId": "1532e6990336d3504e65a0448057f2c800580dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9687e1b0_83793d4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-10T23:29:21Z",
+      "side": 1,
+      "message": "I\u0027ll leave the wificell-cq questions to others",
+      "revId": "1532e6990336d3504e65a0448057f2c800580dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
