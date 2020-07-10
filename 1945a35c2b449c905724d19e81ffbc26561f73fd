@@ -128,6 +128,30 @@
     },
     {
       "key": {
+        "uuid": "245c867b_c2b4a05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-10T15:52:10Z",
+      "side": 1,
+      "message": "Hmm, that appears intentional:\n\n// Close disconnects from Chrome and cleans up standard extensions.\n// To avoid delays between tests, the ui job (and by extension, Chrome) is not restarted,\n// so the current user (if any) remains logged in.\n\nI guess I can:\n\n   defer upstart.RestartJob(ctx, \"ui\")",
+      "parentUuid": "5f0b383c_48be744e",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "1945a35c2b449c905724d19e81ffbc26561f73fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "423f1099_87dba3a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 2
