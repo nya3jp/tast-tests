@@ -24,7 +24,7 @@ func init() {
 		Func:        PowerSave,
 		Desc:        "Test that we can enter and exit powersave mode without issues",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 	})
