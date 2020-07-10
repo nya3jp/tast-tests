@@ -70,6 +70,30 @@
       "revId": "abddfd85c76cf1a6306a404b3611ba235e8ace18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d84a502_6a3f9569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-10T23:50:35Z",
+      "side": 1,
+      "message": "Sorry but let me refresh my memory, what was the purpose of this test?  How does having both vp9 and vp9.2 serve the purpose?\n\nI thought it is to ensure that overlays of video playing is used for PiP windows so it won\u0027t add extra power consumption.  I guess simply having vp9 would be sufficient; measuring the power consumption within normal state (which should be handled in overlay properly), and comparing it with PiP window state would satisfy the purpose.\n\nI also wonder that, based on Miguel\u0027s explanation, it would depend on the hardware. If that\u0027s the case, nautilus happens to be the device which can\u0027t overlay vp9.2 but other boards might have that ability. It would be hard to foresee it.",
+      "parentUuid": "ea762244_8a7d335f",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "abddfd85c76cf1a6306a404b3611ba235e8ace18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
