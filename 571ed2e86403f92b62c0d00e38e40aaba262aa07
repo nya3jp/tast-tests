@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fc65044_9f537bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-07-10T20:59:36Z",
+      "side": 1,
+      "message": "Can we add YouTube Music part of the default app verification as well?",
+      "revId": "571ed2e86403f92b62c0d00e38e40aaba262aa07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
