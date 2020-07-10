@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"net/url"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -851,8 +852,41 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		if err := session.ClearDeviceOwnership(ctx); err != nil {
 			return err
 		}
+
+		if err := cleanChromeShadowDir(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to clean chrome shadow directory: ", err)
+		}
 	}
 	return upstart.EnsureJobRunning(ctx, "ui")
+}
+
+// cleanChromeShadowDir cleans unused chrome directories from /home/.shadow.
+func cleanChromeShadowDir(ctx context.Context) error {
+	const shadowDir = "/home/.shadow"
+	files, err := ioutil.ReadDir(shadowDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+	}
+	for _, file := range files {
+		if file.IsDir() {
+			const chronosDir = "/home/chronos"
+			// Only look for chronos file with names matching u-*.
+			chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+			shadowName := filepath.Join(shadowDir, file.Name())
+			// Remove the shadow directory if it does not have a corresponding chronos directory.
+			if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+				_ = os.RemoveAll(shadowName)
+				continue
+			}
+			// If the corresponding chronos directory is not in use, remove shadow directories.
+			cmd := exec.Command("/usr/bin/lsof", "-Pt", chronosName)
+			if _, err := cmd.CombinedOutput(); err != nil {
+				_ = os.RemoveAll(shadowName)
+				continue
+			}
+		}
+	}
+	return nil
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
