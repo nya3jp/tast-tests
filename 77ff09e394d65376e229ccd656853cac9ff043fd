@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e9a2d5e_44cbde25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-11T00:54:57Z",
+      "side": 1,
+      "message": "This seems unnecessarily fragile. Google could change the way they name their search results page or the network could be down. \n\nIs it possible to just having an html file on the system (checked in as a data dependency), and having Chrome open it as a file:// URL?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "77ff09e394d65376e229ccd656853cac9ff043fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
