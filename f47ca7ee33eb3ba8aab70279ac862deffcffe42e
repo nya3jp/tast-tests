@@ -34,6 +34,24 @@
       "revId": "f47ca7ee33eb3ba8aab70279ac862deffcffe42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4505fd22_52815702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2020-07-11T01:41:37Z",
+      "side": 1,
+      "message": "Yup - I didn\u0027t see the bug update until after I posted my previous comment. The dependency isn\u0027t \"hard\" - just this CL is useless without a corresponding change to check_ethernet.hook (I\u0027ve +2 your version).\n\nI\u0027m not familiar with go and will +1 since the logic looks right to me. I\u0027ll leave it to Matthew to approve.",
+      "parentUuid": "2b0575bc_9480981d",
+      "revId": "f47ca7ee33eb3ba8aab70279ac862deffcffe42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
