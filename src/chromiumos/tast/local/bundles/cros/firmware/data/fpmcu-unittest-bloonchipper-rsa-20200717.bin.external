@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/fpmcu-unittest-bloonchipper-rsa-20200717.bin",
+  "size": 1048576,
+  "sha256sum": "05b73998da715633701b6d01793f230c576628202104c498cbbf82e8055879e2"
+}
