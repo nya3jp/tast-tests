@@ -11,10 +11,10 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -117,7 +117,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	bottom := coords.NewPoint(xPosition, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
 	top := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+10)
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the dragging gesture for different numbers of browser windows (0 or 2).
 	for _, windows := range []int{0, 2} {
@@ -135,7 +135,8 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 
-		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+		suffix := fmt.Sprintf("%dwindows", currentWindows)
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
 			// Drag from the bottom to the top; this should expand the app-list to
 			// fullscreen.
 			if err := mouse.Drag(ctx, tconn, bottom, top, time.Second); err != nil {
@@ -153,25 +154,10 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		},
-			"Apps.StateTransition.Drag.PresentationTime.ClamshellMode")
-		if err != nil {
-			s.Fatal("Failed to run luancher animation or get histograms: ", err)
-		}
-
-		for _, h := range histograms {
-			mean, err := h.Mean()
-			if err != nil {
-				s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-			}
-
-			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
-				Unit:      "ms",
-				Direction: perf.SmallerIsBetter,
-			}, mean)
-		}
+			"Apps.StateTransition.Drag.PresentationTime.ClamshellMode"),
+			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
