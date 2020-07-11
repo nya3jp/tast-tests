@@ -59,10 +59,11 @@ var deqpTests = []string{
 	"dEQP-VK.info.memory_limits",
 	"dEQP-VK.api.smoke.create_sampler",
 	"dEQP-VK.api.smoke.create_shader",
-	"dEQP-VK.api.smoke.triangle",
-	"dEQP-VK.api.smoke.triangle_ext_structs",
-	"dEQP-VK.api.smoke.asm_triangle",
-	"dEQP-VK.api.smoke.asm_triangle_no_opname",
+	// TODO(ihf): reenable when smoke.triangle is not flaky anymore on coral/boxton b/149329522
+	//"dEQP-VK.api.smoke.triangle",
+	//"dEQP-VK.api.smoke.triangle_ext_structs",
+	//"dEQP-VK.api.smoke.asm_triangle",
+	//"dEQP-VK.api.smoke.asm_triangle_no_opname",
 	"dEQP-VK.api.smoke.unused_resolve_attachment",
 }
 
