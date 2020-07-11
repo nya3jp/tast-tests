@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef7598ee_e5ebe749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-11T00:13:33Z",
+      "side": 1,
+      "message": "It might be great to ensure the display orientation to the default one (original one) at the end, e.g.\n  defaultOrientation, err :\u003d display.GetOrientation(ctx, tconn)\n  defer setDisplayOrientation(ctx, tconn, defaultOrientation)\n\nThat way, even when it quits at an unexpected state, it can ensure the orientation change won\u0027t be revealed to other test cases.",
+      "revId": "7ba5268302a84833c2819df7b8f73a66f629b833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
