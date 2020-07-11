@@ -12,9 +12,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
@@ -137,7 +137,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// launcher widget once we have a utility to initialize the
 	// prevHists with current data. (crbug.com/1024071)
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the launcher open/close flow for various situations.
 	// - change the number of browser windows, 0 or 2.
@@ -196,33 +196,15 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				suffix = "Half.ClamshellMode"
 			}
 
-			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-				if err := runLauncherAnimation(ctx, tconn, kb, at); err != nil {
-					return errors.Wrap(err, "fail to run launcher animation")
-				}
-				return nil
+			runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func() error {
+				return runLauncherAnimation(ctx, tconn, kb, at)
 			},
 				"Apps.StateTransition.AnimationSmoothness."+suffix,
-				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode")
-			if err != nil {
-				s.Fatal("Failed to run luancher animation or get histograms: ", err)
-			}
-
-			for _, h := range histograms {
-				mean, err := h.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-				}
-
-				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
-					Unit:      "percent",
-					Direction: perf.BiggerIsBetter,
-				}, mean)
-			}
+				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode"),
+				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
 		}
 	}
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

@@ -8,12 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/coords"
@@ -170,7 +169,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		suffix = "TabletMode"
 	}
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 
 	const pageSwitchTimeout = 2 * time.Second
 	clickPageButtonAndWait := func(ctx context.Context, pageButton *chromeui.Node) error {
@@ -191,28 +190,15 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
 	s.Log("Starting the scroll by click")
-	hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	runner.RunMultiple(ctx, s, "click", perfutil.RunAndWaitAll(tconn, func() error {
 		for step, idx := range []int{1, 0, len(pageButtons) - 1, 0} {
 			if err := clickPageButtonAndWait(ctx, pageButtons[idx]); err != nil {
 				return errors.Wrapf(err, "failed to click or wait %d-th button (at step %d)", idx, step)
 			}
 		}
 		return nil
-	}, "Apps.PaginationTransition.AnimationSmoothness."+suffix)
-	if err != nil {
-		s.Fatal("Failed to run the test scenario: ", err)
-	}
-	for _, hist := range hists {
-		mean, err := hist.Mean()
-		if err != nil {
-			s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
-		}
-		pv.Set(perf.Metric{
-			Name:      hist.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+	}, "Apps.PaginationTransition.AnimationSmoothness."+suffix),
+		perfutil.StoreSmoothness)
 
 	// Second: scroll by drags. This involves two types of operations, drag-up
 	// from the bottom for scrolling to the next page, and the drag-down from the
@@ -249,7 +235,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
 	dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
-	hists, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	runner.RunMultiple(ctx, s, "drag", perfutil.RunAndWaitAll(tconn, func() error {
 		ew, err := chromeui.NewWatcher(ctx, pageButtons[2], chromeui.EventTypeAlert)
 		if err != nil {
 			return errors.Wrap(err, "failed to create an event watcher")
@@ -272,23 +258,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Apps.PaginationTransition.DragScroll.PresentationTime."+suffix,
-		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix)
-	if err != nil {
-		s.Fatal("Failed to run the test scenario: ", err)
-	}
-	for _, hist := range hists {
-		mean, err := hist.Mean()
-		if err != nil {
-			s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
-		}
-		pv.Set(perf.Metric{
-			Name:      hist.Name,
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, mean)
-	}
+		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix),
+		perfutil.StoreLatency)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }
