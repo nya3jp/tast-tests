@@ -16,6 +16,69 @@
       "revId": "60604bb519a7ada75ab1a8773334ca485f4cc842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "117aea9f_2d7edff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-11T01:40:27Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "60604bb519a7ada75ab1a8773334ca485f4cc842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eb8dc87_538d19e3",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-11T01:40:27Z",
+      "side": 1,
+      "message": "optional: should it be replaced with something like \"UnsupportedMotionEvent\" ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "60604bb519a7ada75ab1a8773334ca485f4cc842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a832de22_561831c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-11T01:40:27Z",
+      "side": 1,
+      "message": "huge nit, style:\n\nInstead of:\n  /*\n  Package\n  */\n\nreplace it with:\n\n  // Package",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "60604bb519a7ada75ab1a8773334ca485f4cc842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
