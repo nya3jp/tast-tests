@@ -54,7 +54,7 @@ func init() {
 }
 
 func saveSelinuxLog(ctx context.Context, destDir string) error {
-	out, err := testexec.CommandContext(ctx, "journalctl", "--boot", "--identifier=audit", "--lines=500").Output()
+	out, err := testexec.CommandContext(ctx, "croslog", "--source=journal", "--boot", "--identifier=audit", "--lines=500").Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to get selinux audit log entries")
 	}

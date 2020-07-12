@@ -68,8 +68,8 @@ func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 	f.Close()
 
 	// Checks no logs matching the file name in syslog.
-	if badContent, err := exec.Command("journalctl", "-q", "-b", "0", "-t", "kernel", "--grep", fileName).Output(); err != nil {
-		s.Fatal("Failed to read syslog from journald: ", err)
+	if badContent, err := exec.Command("croslog", "--source=journal", "--quiet", "--boot=0", "--tag=kernel", "--grep="+fileName).Output(); err != nil {
+		s.Fatal("Failed to read system log: ", err)
 	} else if string(badContent) != "" {
 		s.Errorf("audit shouldn't be logged to syslog, but found %q", badContent)
 	}

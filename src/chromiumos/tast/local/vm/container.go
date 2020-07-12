@@ -547,7 +547,7 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 
 // DumpLog dumps the logs from the container to a local output file named
 // container_log.txt in dir (typically the test's output dir).
-// It does this by executing journalctl in the container and grabbing the output.
+// It does this by executing croslog in the container and grabbing the output.
 func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	f, err := os.Create(filepath.Join(dir, "container_log.txt"))
 	if err != nil {
@@ -555,10 +555,7 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	}
 	defer f.Close()
 
-	// TODO(jkardatzke): Remove stripping off the color codes that show up in
-	// journalctl once crbug.com/888102 is fixed.
-	cmd := c.Command(ctx, "sh", "-c",
-		"sudo journalctl --no-pager | tr -cd '[:space:][:print:]'")
+	cmd := c.Command(ctx, "croslog", "--source=journal", "--no-pager")
 	cmd.Stdout = f
 	return cmd.Run()
 }
