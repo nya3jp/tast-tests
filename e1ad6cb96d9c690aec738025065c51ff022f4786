@@ -50,6 +50,23 @@
       "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12acaaaf_f89c8d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-12T23:50:46Z",
+      "side": 1,
+      "message": "Shadow review: LGTM from a Tast perspective. Please wait for Shuhei to approve.\n\n(Non-Tast review: Just checking you\u0027ve checked with @mwarton this is the correct thing to do? Is it not possible to deflake the failing boards anymore?)",
+      "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
