@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -293,24 +294,24 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 
 	// The copy event happens at some indeterminate time after the
 	// copy applet receives a key press. To be sure we get that event
-	// we have to start listening for it before that point. We do
-	// this by assigning a promise to a variable in the javascript
-	// scope and waiting on it later. This could be moved inside
-	// crostini.RunWindowedApp but it would complicate the API even
-	// further.
-	if err := tconn.Exec(ctx, `
-copy_promise = new Promise((resolve, reject) => {
-	chrome.autotestPrivate.onClipboardDataChanged.addListener((e) => {
-		resolve();
-	});
-})`); err != nil {
+	// we have to start listening for it before that point.
+	// Here, wrapping the promise by a closure in order not to be
+	// awaited at this moment.
+	var waiting chrome.JSObject
+	if err := tconn.Eval(ctx, `(p => () => p)(new Promise((resolve) => {
+		  const listener = (e) => {
+		    chrome.autotestPrivate.onClipboardDataChanged.removeListener(listener);
+		    resolve();
+		  };
+		  chrome.autotestPrivate.onClipboardDataChanged.addListener(listener);
+		}))`, &waiting); err != nil {
 		s.Fatal("Failed to set listener for 'copy' event: ", err)
 	}
-
-	_, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 120*time.Second, func(ctx context.Context) error {
-		return tconn.EvalPromise(ctx, "copy_promise", nil)
-	}, true, copyAppletTitle, append(param.Copy.cmdArgs, copiedData))
-	if err != nil {
+	defer waiting.Release(ctx)
+	if _, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 120*time.Second, func(ctx context.Context) error {
+		// Unwrap the promise to wait its settled state.
+		return tconn.Call(ctx, nil, `p => p()`, &waiting)
+	}, true, copyAppletTitle, append(param.Copy.cmdArgs, copiedData)); err != nil {
 		s.Fatal("Failed to run copy applet: ", err)
 	}
 
