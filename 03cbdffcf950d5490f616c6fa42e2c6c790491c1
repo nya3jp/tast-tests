@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c8d2ff_9907b234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-07-13T01:44:12Z",
+      "side": 1,
+      "message": "PTAL. Adding a pre condition for DriveFS tests to reuse the same login and wait for drive to stabilise",
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
