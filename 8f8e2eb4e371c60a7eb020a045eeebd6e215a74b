@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be4a5ea2_c404f56b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-07-13T09:42:13Z",
+      "side": 1,
+      "message": "Thanks for reviewing Shuhei.  I\u0027ve made edits based on your suggestions.",
+      "revId": "8f8e2eb4e371c60a7eb020a045eeebd6e215a74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
