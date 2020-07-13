@@ -39,6 +39,30 @@
       "revId": "dc94fa548afab7df49f0ec6f24bfe9208c6435b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ab620d_ac7842ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T08:56:01Z",
+      "side": 1,
+      "message": "As it calls the function to parse the SSID now, the comment is no longer relevant. Removed.",
+      "parentUuid": "15ee8eaf_cb6753dd",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "dc94fa548afab7df49f0ec6f24bfe9208c6435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
