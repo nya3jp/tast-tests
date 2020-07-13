@@ -10,6 +10,7 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -21,6 +22,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/testexec"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -96,6 +98,17 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		return nil, errors.Wrap(err, "failed to run getArcStartTime()")
 	}
 
+	uptimeDeltaMS, err := uptimeDeltaMS(ctx, a)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain uptime delta")
+	}
+
+	// On ARCVM, guest uptime and host uptime are different
+	// and arcStartTimeInGuestUptimeMS is expected to be a negative value.
+	arcStartTimeInGuestUptimeMS := int64(arcStartTimeMS) - uptimeDeltaMS
+	testing.ContextLogf(ctx, "ARC start time in host uptime: %dms, ARC start time in guest uptime: %dms",
+		int64(arcStartTimeMS), arcStartTimeInGuestUptimeMS)
+
 	// Set timeout for the logcat command below.
 	ctx, cancel := context.WithTimeout(ctx, logcatTimeout)
 	defer cancel()
@@ -138,7 +151,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to extract event time from %q", l)
 		}
-		dur := time.Duration(eventTimeMS-int64(arcStartTimeMS)) * time.Millisecond
+		dur := time.Duration(eventTimeMS-arcStartTimeInGuestUptimeMS) * time.Millisecond
 
 		perfValue := &arcpb.GetPerfValuesResponse_PerfValue{
 			Name:     eventTag,
@@ -160,4 +173,40 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	}
 
 	return res, nil
+}
+
+// uptimeDeltaMS returns (hostUptime - guestUptime) in millisecond.
+func uptimeDeltaMS(ctx context.Context, a *arc.ARC) (int64, error) {
+	parseUptime := func(output string) (int64, error) {
+		tokens := strings.Split(output, " ")
+		if len(tokens) != 2 {
+			return 0, errors.Errorf("unexpected format of /proc/uptime: %q", output)
+		}
+		uptime, err := strconv.ParseFloat(tokens[0], 64)
+		if err != nil {
+			return 0, errors.Wrapf(err, "unexpected content in uptime fil: %q", output)
+		}
+		return (int64)(uptime * 1000), nil
+	}
+
+	out, err := a.Command(ctx, "cat", "/proc/uptime").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read guest's /proc/uptime")
+	}
+	guestUptimeMS, err := parseUptime(string(out))
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to prase guest's /proc/uptime")
+	}
+
+	out, err = testexec.CommandContext(ctx, "cat", "/proc/uptime").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read host's /proc/uptime")
+	}
+	hostUptimeMS, err := parseUptime(string(out))
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to prase host's /proc/uptime")
+	}
+
+	testing.ContextLogf(ctx, "Host uptime: %dms, Guest uptime: %dms", hostUptimeMS, guestUptimeMS)
+	return hostUptimeMS - guestUptimeMS, nil
 }
