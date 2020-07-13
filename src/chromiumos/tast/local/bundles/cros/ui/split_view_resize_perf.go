@@ -262,6 +262,16 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
+			const dividerSmoothnessName = "Ash.SplitViewResize.AnimationSmoothness.DividerAnimation"
+			histogramNames := []string{
+				fmt.Sprintf("Ash.SplitViewResize.PresentationTime.%s.%s", modeName, testCase.name),
+				fmt.Sprintf("Ash.SplitViewResize.PresentationTime.MaxLatency.%s.%s", modeName, testCase.name),
+			}
+
+			// In tablet mode, there is a divider which snaps to the closest fixed ratio on release. The written histogram is a smoothness histogram.
+			if modeName == "TabletMode" {
+				histogramNames = append(histogramNames, dividerSmoothnessName)
+			}
 			hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() (err error) {
 				if err := pointerController.Press(ctx, dividerDragPointOne); err != nil {
 					return errors.Wrap(err, "failed to start divider drag")
@@ -286,22 +296,27 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateMaximized
 				}, &testing.PollOptions{Timeout: 2 * time.Second})
 			},
-				fmt.Sprintf("Ash.SplitViewResize.PresentationTime.%s.%s", modeName, testCase.name),
-				fmt.Sprintf("Ash.SplitViewResize.PresentationTime.MaxLatency.%s.%s", modeName, testCase.name))
+				histogramNames...)
 			if err != nil {
 				s.Fatal("Failed to drag or get the histogram: ", err)
 			}
 
 			for _, hist := range hists {
-				latency, err := hist.Mean()
+				value, err := hist.Mean()
 				if err != nil {
 					s.Fatalf("Failed to get mean for histogram %s: %v", hist.Name, err)
 				}
+				var unit = "ms"
+				var direction = perf.SmallerIsBetter
+				if hist.Name == dividerSmoothnessName {
+					unit = "percent"
+					direction = perf.BiggerIsBetter
+				}
 				pv.Set(perf.Metric{
 					Name:      hist.Name,
-					Unit:      "ms",
-					Direction: perf.SmallerIsBetter,
-				}, latency)
+					Unit:      unit,
+					Direction: direction,
+				}, value)
 			}
 		})
 	}
