@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "40c23dd9_23acbef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c39d882_699d5fa6",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dc88f68_209155a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2020-07-13T11:57:41Z",
       "side": 1,
       "message": "Can you trigger the click from outside the page? This behaviour could be broken by a security change in Chrome at some point.",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "882467e9_784e940f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Don\u0027t really know how I could do that, unless firing the script from the test is already enough.",
+      "parentUuid": "9dc88f68_209155a5",
       "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "6a5241f5_85684982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238357fc_63e96dc4",
+      "range": {
+        "startLine": 22,
+        "startChar": 93,
+        "endLine": 22,
+        "endChar": 117
+      },
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bb19258_c55d2513",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 1
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "f7aac97c_fb06a713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bb19258_c55d2513",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4681e646_8b2c874e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 1
@@ -113,6 +197,24 @@
       "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0120b31_4b8ac59c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4681e646_8b2c874e",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "678133ba_a189718e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc1bc0f_6e465d7d",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebe8bbf_6cbeebc8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 1
@@ -147,6 +267,24 @@
       "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe68051_86a75b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T14:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebe8bbf_6cbeebc8",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
