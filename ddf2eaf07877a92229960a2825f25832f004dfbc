@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7497e202_8c6033ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "you are only deleting one file so this should be testDeleteFileFromLinuxFiles.\n\nSimilar for the other delete and rename functions.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53b45b7c_a2c45ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "pass a filename argument instead of accessing a global variable here.",
+      "range": {
+        "startLine": 179,
+        "startChar": 43,
+        "endLine": 179,
+        "endChar": 55
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ebbdf81_342e93d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "The filename should be passed in as an argument, so it should be removed from the array (if necessary) in the calling function.\n\nSimilar in the other functions.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 43
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f6f2cbc_7ab1b122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "Optional: now that it is no longer random, I\u0027m not sure there is any need to delete it from the array, (or possibly even have an array)",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8933271_3d0b40ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "should be checkFileDoesNotExist",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798866a2_5435dd77",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "You might need to ensure the file is on the screen before you can click it (if there are a lot of files in the directory)",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 45
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9f94e2_a5c9ff36",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-13T03:54:29Z",
+      "side": 1,
+      "message": "Can we please make two functions:\n\nCheckFileExists(ctx context.Context, files ...string)\n\nand\n\nCheckFileDoesNotExist(ctx context.Context, files ...string)",
+      "range": {
+        "startLine": 717,
+        "startChar": 20,
+        "endLine": 717,
+        "endChar": 111
+      },
+      "revId": "ddf2eaf07877a92229960a2825f25832f004dfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
