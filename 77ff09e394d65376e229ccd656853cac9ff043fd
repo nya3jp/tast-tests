@@ -22,6 +22,30 @@
       "revId": "77ff09e394d65376e229ccd656853cac9ff043fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5664d9c1_f0a527d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-13T21:18:09Z",
+      "side": 1,
+      "message": "file:// URLs are treated slightly differently than http(s):// (e.g. by the anonymizer, which will filter out full URLs like https://www.google.com/... in logs, and by `mem_usage_with_tab_titles`, which appears to use the URL rather than the tab \u003ctitle\u003e for file:// URLs).\n\nI think I\u0027d prefer to keep something as close to realistic as we can, though I definitely share your concern about having an implicit dependency on a website that might change its \u003ctitle\u003e. If you have suggestions on a page that might be more stable, or a way to make one, I\u0027m all ears.\n\nI\u0027m less worried about the network connection being down, because I think tast already relies on being able to connect to the device via ethernet to start running a test.",
+      "parentUuid": "5e9a2d5e_44cbde25",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "77ff09e394d65376e229ccd656853cac9ff043fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
