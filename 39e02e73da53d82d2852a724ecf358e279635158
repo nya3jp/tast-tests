@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7e08482_13d62dd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-13T03:04:33Z",
+      "side": 1,
+      "message": "Can we implement this is `Activity.IsRunning`? There are a bunch of other tests that use IsRunning. We could either change all of them to use the ash API or query the ash API in `Activity.IsRunning`.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go;l\u003d409?q\u003dactivity%20isRUnning%20tast",
+      "revId": "39e02e73da53d82d2852a724ecf358e279635158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
