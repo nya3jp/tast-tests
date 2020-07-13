@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "44e9df05_acf3e060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T14:56:37Z",
+      "side": 1,
+      "message": "Does the ui package have support for this? Otherwise we can keep it as is.",
+      "parentUuid": "882467e9_784e940f",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "238357fc_63e96dc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 1
