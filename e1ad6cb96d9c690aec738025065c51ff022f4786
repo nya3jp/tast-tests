@@ -121,6 +121,24 @@
       "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914d95d_04b4f295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-07-13T00:29:01Z",
+      "side": 1,
+      "message": "The unstable variants are not providing us with additional benefit and just creating noise. My understanding is when boards are stabilized, they will transition to the stable variant. Currently the team is receiving notifications about the failures with nothing other than to ignore them (bugs have been raised and efforts are underway to fix the issues)",
+      "parentUuid": "f333a48a_8caf7e9e",
+      "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
