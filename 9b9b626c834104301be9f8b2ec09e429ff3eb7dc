@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68413f5d_e365a4c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T08:49:18Z",
+      "side": 1,
+      "message": "The blocker crbug.com/1081099 is resolve, so this cl can go on now. Thank nya for the help!\n\nAdd back previous WiFi team reviewers for taking a look.",
+      "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
