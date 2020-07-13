@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -119,20 +120,16 @@ func parseDiskSizeString(str string) (uint64, error) {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
+	//TODO(pwang): The name only applies to chromebook but not chromebox.
 	window := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}, uiTimeout)
+	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
-	if err := uig.Do(ctx, p.tconn, slider.FocusAndWait(uiTimeout)); err != nil {
+	if err := uig.Do(ctx, p.tconn, uig.Steps(
+		radioGroup.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "Custom"}, uiTimeout).LeftClick(),
+		slider.FocusAndWait(uiTimeout),
+	)); err != nil {
 		return errors.Wrap(err, "error in SetDiskSize()")
-	}
-
-	getSize := func() (string, error) {
-		node, err := uig.GetNode(ctx, p.tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
-		if err != nil {
-			return "", errors.Wrap(err, "error getting disk size setting")
-		}
-		defer node.Release(ctx)
-		return node.Name, nil
 	}
 
 	// Use keyboard to manipulate the slider rather than writing
@@ -143,25 +140,38 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	}
 	defer kb.Close()
 
-	lastSize := uint64(0)
+	// getSize returns the current size based on the slider text.
+	getSize := func() (uint64, error) {
+		node, err := uig.GetNode(ctx, p.tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
+		if err != nil {
+			return 0, errors.Wrap(err, "error getting disk size setting")
+		}
+		defer node.Release(ctx)
+		return parseDiskSizeString(node.Name)
+	}
+
 	for {
-		sizeStr, err := getSize()
+		size, err := getSize()
 		if err != nil {
-			return errors.Wrap(err, "error in SetDiskSize")
+			return errors.Wrap(err, "error getting disk size")
 		}
-		size, err := parseDiskSizeString(sizeStr)
-		if err != nil {
-			return errors.Wrap(err, "error in SetDiskSize")
-		}
-		if size > minDiskSize || size == lastSize {
+		if size >= minDiskSize {
 			break
 		}
-		if size == lastSize {
-			return errors.Errorf("error in SetDiskSize: could not set disk size to larger than %v, largest disk size available is %v (%v)", minDiskSize, sizeStr, size)
-		}
-		lastSize = size
-		if err := kb.Accel(ctx, "right"); err != nil {
-			return errors.Wrap(err, "error in SetDiskSize: error sending right arrow key")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := kb.Accel(ctx, "right"); err != nil {
+				return errors.Wrap(err, "error sending right arrow key")
+			}
+			curSize, err := getSize()
+			if err != nil {
+				return errors.Wrap(err, "error getting disk size")
+			}
+			if size == curSize {
+				return errors.Errorf("could not set disk size to larger than %v", curSize)
+			}
+			return nil
+		}, &testing.PollOptions{Interval: 50 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
+			return err
 		}
 	}
 	return nil
