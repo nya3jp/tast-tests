@@ -51,6 +51,29 @@
       "revId": "39e02e73da53d82d2852a724ecf358e279635158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e30eb845_6dd0d40c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-13T05:14:30Z",
+      "side": 1,
+      "message": "Hmm, does it ever happen that err \u003d\u003d nil \u0026\u0026 windowInfo \u003d\u003d nil? IIUC ash.FindWindow returns \"failed to find window\" error in that case.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d421?q\u003dchrome%2Fash%2Fwm.go\u0026ct\u003dos",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "39e02e73da53d82d2852a724ecf358e279635158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
