@@ -104,6 +104,10 @@ func (a *AndroidAllocator) prepareAllocator(ctx context.Context, dataPathGetter 
 		return nil, errors.Wrap(err, "failed to read android cpu abi")
 	}
 	arch := strings.TrimSpace(string(out))
+	if string(arch) == "x86" {
+		// x86_64 APK comes with JNI allocation code for both x86 and x64.
+		arch = "x86_64"
+	}
 	if _, ok := supportedArchs[arch]; !ok {
 		return nil, errors.Errorf("unsupported Android abi %q", arch)
 	}
