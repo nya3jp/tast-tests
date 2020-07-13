@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f19113e6_5407c134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-13T16:49:04Z",
+      "side": 1,
+      "message": "nit: ToValues is a bit misleading that reader might think it does some type conversion. Suggest to rename. How about\n\n  ToValues -\u003e Record (or Report)\n\n?",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "17886bc2baf8f412821fe83894ec5f193ddfcc5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6cc39d_87e3586f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-13T16:49:04Z",
+      "side": 1,
+      "message": "It seems we don\u0027t have to do it here. It is hard to catch error in a deferred call. Can we move it out before L167 as part of the test run preparation?",
+      "revId": "17886bc2baf8f412821fe83894ec5f193ddfcc5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
