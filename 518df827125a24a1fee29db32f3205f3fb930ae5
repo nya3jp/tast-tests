@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "6842de03_fb90ab75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-13T01:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca38495_e2065c04",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4b079e3_0a24a723",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 6
@@ -166,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "88691a81_8e1a29af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-13T01:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4b079e3_0a24a723",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48b3e569_ea424c30",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 6
@@ -183,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "e64f7877_adbb0fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-13T01:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b3e569_ea424c30",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a659347_a45fb10c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
         "patchSetId": 6
@@ -197,6 +263,24 @@
       "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c6a996_3baa507c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-07-13T01:39:46Z",
+      "side": 1,
+      "message": "indeed.\n\nthis test is mainly concerned with consistency. We send 400 events over a 400ms window, and most of those events are received within a window of roughly that duration, so average doesn\u0027t work out to be particularly interesting.\n\nWe mainly target variance: high variance in the receive times indicates that events are being bunched up or delivered inconsistently. We record the consistency of the send times in order to discount that from the inconsistency of receive. Observations on my DUT put recieve\u0027s stdev at an order of magnitude larger than send\u0027s, and its bounds at 1-6ms (as opposed to 1-1.4ms for send)",
+      "parentUuid": "0a659347_a45fb10c",
+      "revId": "518df827125a24a1fee29db32f3205f3fb930ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
