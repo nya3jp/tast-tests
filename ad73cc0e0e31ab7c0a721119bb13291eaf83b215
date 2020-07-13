@@ -22,6 +22,30 @@
       "revId": "ad73cc0e0e31ab7c0a721119bb13291eaf83b215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c40403a9_ec62301f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-13T10:02:25Z",
+      "side": 1,
+      "message": "Got it, keep the original way of getting tconn.",
+      "parentUuid": "7ab5e193_aff8f66a",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "ad73cc0e0e31ab7c0a721119bb13291eaf83b215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
