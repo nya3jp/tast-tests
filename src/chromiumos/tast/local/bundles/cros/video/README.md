@@ -151,7 +151,7 @@ video playback, as opposed to those without the identifier that use a simple
 file URL.
 
 - Tests with the `alt` identifier employ an alternative hardware video decoding
-implementation (see go/vd-migration).
+implementation (see [tinyurl.com/chromeos-video-decoders](tinyurl.com/chromeos-video-decoders)).
 
 To run these tests use:
 
