@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d572beb8_90311912",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-13T05:06:26Z",
+      "side": 1,
+      "message": "Is it okay to unexport this constant?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "b88e56adebce35a277e0b6d2dcefb999846b22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32989ce_f2ea1071",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-13T05:06:26Z",
+      "side": 1,
+      "message": "s/: //g",
+      "range": {
+        "startLine": 398,
+        "startChar": 64,
+        "endLine": 398,
+        "endChar": 66
+      },
+      "revId": "b88e56adebce35a277e0b6d2dcefb999846b22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
