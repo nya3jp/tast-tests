@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "429f7592_ed48a36d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-07-13T06:58:03Z",
+      "side": 1,
+      "message": "Fixed compile issue, PTAL",
+      "revId": "4422ae391b7cd6afb317e01286f1376b90ac8c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
