@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2fcdd083_8a1903be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-13T18:20:09Z",
+      "side": 1,
+      "message": "OK, but did you do some manual testings? If so, please add what you did. Thanks!",
+      "parentUuid": "8aae26ba_0f8464a5",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "8dc54c601a40fdfc73784fdaea87f976abde53c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "212bb26e_d3b3ef6b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
