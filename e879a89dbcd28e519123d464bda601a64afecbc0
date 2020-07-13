@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "762f46e1_52be1719",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-13T07:59:59Z",
+      "side": 1,
+      "message": "\"the test\"\n\nSame below.",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5578126_b9f375ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-13T07:59:59Z",
+      "side": 1,
+      "message": "Refer to the \"when to log\" section [1], we can log message to inform developers what\u0027s happening when the upcoming task take some time to finish; otherwise, avoid logging unnecessary information.\n\nSo I think we can log:\n1. before line 37: \"Setting up the test fixture and AP\"\n2. here: \"Test fixture setup done; Connecting the DUT to the AP\"\n3. in line 73: \"WiFi connected; starting the test\" \n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df2deb7_13a8a792",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-13T07:59:59Z",
+      "side": 1,
+      "message": "the AP",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cccaf2b4_00a746f0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
