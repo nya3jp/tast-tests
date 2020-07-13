@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "54215d37_5b6eb123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T05:48:38Z",
+      "side": 1,
+      "message": "# Sorry for delay. I was OOO on friday.",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ef9e9ee_307507e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 3
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "Please take a look at the above explanation. I think the intention is clear here, not sure how can I improve the comment.",
       "parentUuid": "1374e3b5_cc340323",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db8e7fe_d344c1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T05:48:38Z",
+      "side": 1,
+      "message": "Let\u0027s say TimerDelay is 3 secs. Also, it is expected L690-L701 takes 3 secs (or longer for overhead).\n\nAnd let\u0027s consider the case where, WaitForState at L699 resumed before 3 secs, e.g., 2.99 secs.\nMy understanding is, the condition of L703 becomes \"true\". However, because there takes time to compare \"timerState \u003d\u003d TimerOn\" and \"time.Now()\", time.Now() may return the timestamp later than 3 secs. So, it accidentally \"NOT\" returns an error.\nI.e., even if the failure case, it may report a success.\nQ1: is it expected/intended?\nQ2: If so, could you explicitly comment that there\u0027s cases that this cannot capture failures.",
+      "parentUuid": "001187b4_07866dd5",
       "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
