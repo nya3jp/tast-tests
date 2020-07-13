@@ -85,6 +85,24 @@
       "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a81188f_fcb44910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-13T00:13:55Z",
+      "side": 1,
+      "message": "Understood, though you don\u0027t need to remove the unstable variant to get the stable variant promoted to CQ. The test can be made critical on stable boards, and the unstable tests can continue to run as informational while the crostini issues are being resolved.",
+      "parentUuid": "1bd05810_aab7e5e9",
+      "revId": "e1ad6cb96d9c690aec738025065c51ff022f4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
