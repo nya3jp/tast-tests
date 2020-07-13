@@ -87,6 +87,24 @@
       "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7267a882_8df5b509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-13T06:10:43Z",
+      "side": 1,
+      "message": "I though the comparison \"timerState \u003d\u003d TimerOn\" should be very fast(few ms or ns maybe?) and is negligible comparing with 3 sec.\nHow about I move the end timing code like:\nrecordStartTime :\u003d time.Now()\nbetween L701 and L702 right after recording state changed.\nAnd use the |recordStartTime| here?\nIt should be more close to the actual elapsed time.",
+      "parentUuid": "7db8e7fe_d344c1de",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
