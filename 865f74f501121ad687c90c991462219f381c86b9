@@ -19,6 +19,121 @@
     },
     {
       "key": {
+        "uuid": "8f5ca99e_b56cd2cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "super nit: given this is in filemanager/pre, it feels wrong to call it drivefs_started, because it sounds feasible that another drivefs_started could get created in another package causing an accidental naming conflict.",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 61
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ae9bcd_732fd389",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "Is there any need to reset the files in DriveFS between tests?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b4c925_e5858e19",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "Is there any chance the mount path can change when you call WaitForDriveFS again?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a010040c_3477e4c7",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "nit: merge lines:\nif _, err :\u003d ...; err !\u003d nil{",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4e7e93_89c5ad4c",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "nit: this error is not very clear as what happened: maybe, \"Failed to wait for DriveFS to stabilize\"?",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae0ca4b2_30431b13",
         "filename": "src/chromiumos/tast/local/drivefs/pre.go",
         "patchSetId": 7
@@ -30,6 +145,70 @@
       "writtenOn": "2020-07-13T08:39:08Z",
       "side": 1,
       "message": "Do you need to unlock chrome before this?",
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c76ae78_2a5ea9d7",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "yep, that should be needed here",
+      "parentUuid": "ae0ca4b2_30431b13",
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70141b65_c316e842",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "nit: there is no need to have this error here and define err on L89 since the error is only on one side of the if statement. You can move this after L93 in the if.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f634883_555e2715",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-13T17:35:37Z",
+      "side": 1,
+      "message": "not necessarily a bug, but kinda strange to reset chrome right after you launch it",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 30
+      },
       "revId": "865f74f501121ad687c90c991462219f381c86b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
