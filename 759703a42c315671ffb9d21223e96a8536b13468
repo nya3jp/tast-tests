@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e48086a_0a585454",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-07-13T14:49:23Z",
+      "side": 1,
+      "message": "Would it make sense to keep this in platform.?",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "759703a42c315671ffb9d21223e96a8536b13468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd85e135_c570df83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/firewall_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-07-13T14:49:23Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "759703a42c315671ffb9d21223e96a8536b13468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
