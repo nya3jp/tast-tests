@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01633096_823260bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T13:11:37Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "a9485eafe91efd8ae8010d2cdcbe4a84dd58c99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36ee99b9_3903fd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T13:11:37Z",
+      "side": 1,
+      "message": "nit: maybe \"failure cases\" ?",
+      "range": {
+        "startLine": 706,
+        "startChar": 39,
+        "endLine": 706,
+        "endChar": 47
+      },
+      "revId": "a9485eafe91efd8ae8010d2cdcbe4a84dd58c99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
