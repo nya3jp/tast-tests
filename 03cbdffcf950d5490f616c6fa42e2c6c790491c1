@@ -16,6 +16,52 @@
       "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6b6637_50eb26bd",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-07-13T05:04:01Z",
+      "side": 1,
+      "message": "Punctuation.",
+      "range": {
+        "startLine": 68,
+        "startChar": 53,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff92cce2_3ccd9989",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-07-13T05:04:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a fatal error? IIUC this is a codepath for when precondition was set up, but it no longer holds, possibly because of some crash. I\u0027m not entirely sure what should be the correct handling of such situations.",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
