@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f338bc6a_6865f6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-07-13T20:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55a9623_af84ddff",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af74328_c138b296",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cbf302ae_88f30fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-07-13T20:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af74328_c138b296",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6051f9dd_4704a11c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-07-10T19:28:36Z",
       "side": 1,
       "message": "does match[\"spare\"] work? It will be more readable.",
+      "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4311f8b_cac6ee28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-07-13T20:08:31Z",
+      "side": 1,
+      "message": "Unfortunately no that doesn\u0027t work. It looks like the only way to do that currently is to create a map between the group names and the matches. I can try to do that, but I don\u0027t know if the increased complication of creating a map for the single value is worth it for the improved readability",
+      "parentUuid": "6051f9dd_4704a11c",
       "revId": "4eee24d502c31b37fca98c496c1028e8cbba89e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
