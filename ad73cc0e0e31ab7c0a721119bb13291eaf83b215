@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab5e193_aff8f66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-13T08:35:43Z",
+      "side": 1,
+      "message": "Since the ownership of |tconn| is in Chrome and we should avoid closing tconn according to its comment in chrome.go, we can avoid duplicated code by having a simple method like getTestConn() rather than making it a field of App.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "ad73cc0e0e31ab7c0a721119bb13291eaf83b215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
