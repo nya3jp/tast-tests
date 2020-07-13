@@ -371,6 +371,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	if p.minDiskSize != 0 {
 		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
+			logUITree()
 			s.Fatal("SetDiskSize error: ", err)
 		}
 	}
