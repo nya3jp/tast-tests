@@ -88,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "d006fb11_293ae1f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-13T08:03:14Z",
+      "side": 1,
+      "message": "Shall we poll for disconnect and reassociate event together as some drivers support direct reassociation?\nhttps://crbug.com/990012#c6",
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "419b8193_8f2bf4ad",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
