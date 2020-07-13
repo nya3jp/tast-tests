@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "93c44f41_bbff2235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T10:51:01Z",
+      "side": 1,
+      "message": "Use lowercase:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "316943f2_1c519c25",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -134,6 +157,29 @@
     },
     {
       "key": {
+        "uuid": "01b3467b_d8d9457c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T10:51:01Z",
+      "side": 1,
+      "message": "the settings page",
+      "range": {
+        "startLine": 76,
+        "startChar": 35,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5f81219_714c7cd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -145,6 +191,30 @@
       "writtenOn": "2020-07-10T15:30:49Z",
       "side": 1,
       "message": "Do you need reject here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78b0671_57d9154d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T10:51:01Z",
+      "side": 1,
+      "message": "It should reject if the key is not found",
+      "parentUuid": "d5f81219_714c7cd1",
       "range": {
         "startLine": 82,
         "startChar": 36,
