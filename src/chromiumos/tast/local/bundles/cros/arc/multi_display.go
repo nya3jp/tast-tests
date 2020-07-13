@@ -14,6 +14,8 @@ import (
 	"os"
 	"reflect"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -29,6 +31,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -43,12 +46,16 @@ const (
 	wmPkgMD = "org.chromium.arc.testapp.windowmanager24"
 	wmApkMD = "ArcWMTestApp_24.apk"
 
+	dispPkg = "org.chromium.arc.testapp.multidisplay"
+	dispApk = "ArcMultiDisplayTest.apk"
+
 	settingsPkgMD = "com.android.settings"
 	settingsActMD = ".Settings"
 
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+	resizeableConfigHandleActivity     = "org.chromium.arc.testapp.multidisplay.ResizeableActivity"
 )
 
 // Power state for displays.
@@ -125,6 +132,10 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 	}
 
 	if err := a.Install(ctx, arc.APKPath(wmApkMD)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	if err := a.Install(ctx, arc.APKPath(dispApk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
@@ -620,24 +631,59 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
+	ccMoveDisplay := configChangeEvent{
+		handled: true,
+		density: true,
+	}
+	ccMaximize := configChangeEvent{
+		handled:            true,
+		screenSize:         true,
+		smallestScreenSize: true,
+		orientation:        true,
+	}
+	ccRestoreAndMoveDisplay := configChangeEvent{
+		handled:            true,
+		density:            true,
+		screenSize:         true,
+		smallestScreenSize: true,
+		orientation:        true,
+	}
+
 	for _, param := range []struct {
-		name     string
-		srcDisp  androidDisplayID
-		dstDisp  androidDisplayID
+		// Name of the sub-test.
+		name string
+		// Display where drag operation starts.
+		srcDisp androidDisplayID
+		// Display where drag operation ends.
+		dstDisp androidDisplayID
+		// Initial state of the window being dragged.
 		winState ash.WindowStateType
+		// Activity package.
+		pkg string
+		// Activity class.
 		activity string
+		// Expected config set to be changed.
+		wantCC []configChangeEvent
 	}{
-		{"move resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
-		{"move resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
-		{"move resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
-		{"move resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
-		{"move non-resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
+		{"move resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
+			ccMoveDisplay,
+		}},
+		{"move resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
+			ccMoveDisplay,
+		}},
+		{"move resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
+			ccMaximize, ccRestoreAndMoveDisplay,
+		}},
+		{"move resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
+			ccMaximize, ccRestoreAndMoveDisplay,
+		}},
+		{"move non-resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
+		{"move non-resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
+		{"move non-resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
+		{"move non-resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
 	} {
 		runOrFatal(ctx, s, param.name, func(ctx context.Context, s *testing.State) error {
-			act, err := lunchActivity(ctx, tconn, a, wmPkgMD, param.activity, param.srcDisp)
+			act, err := lunchActivity(ctx, tconn, a, param.pkg, param.activity, param.srcDisp)
 			if err != nil {
 				return err
 			}
@@ -682,7 +728,7 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 			}
 
 			dstDispID := disp.displayInfo(param.dstDisp).ID
-			return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				win, err := act.findWindow(ctx, tconn)
 				if err != nil {
 					return err
@@ -691,7 +737,32 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 5 * time.Second})
+			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+				return err
+			}
+
+			if param.wantCC == nil {
+				// No cc to verify.
+				return nil
+			}
+
+			ccActs, err := queryConfigurationChanges(ctx, a)
+			if err != nil {
+				return err
+			}
+			if len(ccActs) > 1 {
+				return errors.Errorf("there must be at most one activity generating config changes: got %d; want %d", len(ccActs), 1)
+			}
+
+			var ccList = []configChangeEvent{}
+			for _, c := range ccActs {
+				ccList = c
+			}
+			if !reflect.DeepEqual(ccList, param.wantCC) {
+				return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
+			}
+
+			return nil
 		})
 	}
 
@@ -699,6 +770,75 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 }
 
 // Helper functions.
+
+// configChangeEvent is an entry of config change event.
+type configChangeEvent struct {
+	// True if config change is handled by Activity.
+	handled bool
+	// Config set.
+	screenSize, density, orientation, fontScale, smallestScreenSize bool
+}
+
+// URI for logged config changes.
+const configChangesURI = "content://org.chromium.arc.testapp.multidisplay/configChanges"
+
+// Parser for config changes.
+type configChangeParser struct {
+	pattern *regexp.Regexp
+}
+
+var ccParser = configChangeParser{regexp.MustCompile("Row: [0-9]+ activityId=([0-9]+), " +
+	"handled=(true|false), density=(true|false), " +
+	"fontScale=(true|false), orientation=(true|false), screenLayout=(?:true|false), " +
+	"screenSize=(true|false), smallestScreenSize=(true|false)")}
+
+// parse parses the output of `content query` command.
+func (parser *configChangeParser) parse(line string) (int32, configChangeEvent, error) {
+	s := parser.pattern.FindStringSubmatch(line)
+	if s == nil {
+		return 0, configChangeEvent{}, errors.Errorf("unexpected line format %q", line)
+	}
+
+	actID, err := strconv.ParseInt(s[1], 10, 32)
+	if err != nil {
+		return 0, configChangeEvent{}, err
+	}
+
+	var c configChangeEvent
+	for i, config := range []*bool{&c.handled, &c.density, &c.fontScale, &c.orientation, &c.screenSize, &c.smallestScreenSize} {
+		*config, err = strconv.ParseBool(s[i+2])
+		if err != nil {
+			return 0, configChangeEvent{}, err
+		}
+	}
+
+	return int32(actID), c, nil
+}
+
+// queryConfigurationChanges obtains the history of configuration change from test app.
+func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]configChangeEvent, error) {
+	bytes, err := a.Command(ctx, "content", "query", "--uri", configChangesURI).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	result := make(map[int32][]configChangeEvent)
+	lines := strings.Split(string(bytes), "\n")
+	for _, line := range lines {
+		if line == "" {
+			continue
+		}
+		// "No result found." taken from here: https://source.corp.google.com/android/frameworks/base/cmds/content/src/com/android/commands/content/Content.java;l=657
+		if line == "No result found." {
+			return make(map[int32][]configChangeEvent), nil
+		}
+		actID, c, err := ccParser.parse(line)
+		if err != nil {
+			return nil, err
+		}
+		result[actID] = append(result[actID], c)
+	}
+	return result, nil
+}
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
 func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName, dispID string) error {
