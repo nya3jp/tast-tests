@@ -34,6 +34,24 @@
       "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001187b4_07866dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-13T01:48:28Z",
+      "side": 1,
+      "message": "Please take a look at the above explanation. I think the intention is clear here, not sure how can I improve the comment.",
+      "parentUuid": "1374e3b5_cc340323",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
