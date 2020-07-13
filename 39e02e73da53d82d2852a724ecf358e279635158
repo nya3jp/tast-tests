@@ -16,6 +16,24 @@
       "revId": "39e02e73da53d82d2852a724ecf358e279635158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e02e89f_51b2934a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-13T03:09:23Z",
+      "side": 1,
+      "message": "This is actually the only tast test that use isRunning:\nhttps://source.corp.google.com/search?q\u003dactivity%20isRunning%20tast%20package:chromeos%20lang:go\u0026sq\u003d\n\nAlso, the workaround in this CL only works for activity \"with window\" and not general enough to be implemented as activity.IsRunning. So the alternative is to have a function like: activity.hasWindow \u003c- but this is basically just a redundant wrapper of ash API.",
+      "parentUuid": "a7e08482_13d62dd1",
+      "revId": "39e02e73da53d82d2852a724ecf358e279635158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
