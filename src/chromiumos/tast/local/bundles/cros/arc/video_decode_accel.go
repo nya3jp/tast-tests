@@ -34,7 +34,7 @@ func init() {
 		}, {
 			Name:              "h264_vm",
 			Val:               "test-25fps.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm", "amd64"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8",
@@ -44,7 +44,7 @@ func init() {
 		}, {
 			Name:              "vp8_vm",
 			Val:               "test-25fps.vp8",
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm", "amd64"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
@@ -54,7 +54,7 @@ func init() {
 		}, {
 			Name:              "vp9_vm",
 			Val:               "test-25fps.vp9",
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm", "amd64"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}},
 	})
