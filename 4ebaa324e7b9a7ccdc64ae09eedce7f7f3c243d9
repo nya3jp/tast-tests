@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db2d436_d442c361",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-13T23:15:52Z",
+      "side": 1,
+      "message": "I have updated the CL in accordance with offline discussion. Please take another look.",
+      "revId": "4ebaa324e7b9a7ccdc64ae09eedce7f7f3c243d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
