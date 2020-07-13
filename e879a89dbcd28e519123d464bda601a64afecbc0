@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cccaf2b4_00a746f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:53:16Z",
+      "side": 1,
+      "message": "I guess you can poll for the check in L97 instead? So that we can save some time if the recovery uses less than the maximum timeout.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419b8193_8f2bf4ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:53:16Z",
+      "side": 1,
+      "message": "The time on test runner and the time on DUT is combined here. IIRC, I think I see time difference around the order of a second between the logs on DUT and on test runner. [1]\n\nNot sure if it might be more accurate to get the startTime from DUT?\n\n[1] For example, wifi.SimpleConnect.80211acvht20 in https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4d5ba80b39278510/ the connection log in log.txt and net.log have difference ~1 second.",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 62
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06cec0c_f5894d12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:53:16Z",
+      "side": 1,
+      "message": "This is added in crrev.com/c/250840 which says the behavior is available after wpa_supplicant-2.3. I guess we don\u0027t have any model using wpa_supplicant that old, so probably we can consider dropping the code for the old behavior if there\u0027s really no scan event expected?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 84
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
