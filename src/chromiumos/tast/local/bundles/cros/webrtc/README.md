@@ -1,4 +1,4 @@
-# WebRTC Tests Overview (tinyurl.com/cros-gfx-webrtc)
+# WebRTC Tests Overview ([tinyurl.com/cros-gfx-webrtc](tinyurl.com/cros-gfx-webrtc))
 
 The Tast WebRTC tests are used to exercise and verify various WebRTC-related
 APIs. WebRTC in the current scope refers to the W3C Specifications (Specs)
