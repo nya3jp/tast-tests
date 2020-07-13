@@ -227,6 +227,30 @@
     },
     {
       "key": {
+        "uuid": "c4827780_bd5f8e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-13T11:03:12Z",
+      "side": 1,
+      "message": "Right, but not used now",
+      "parentUuid": "f78b0671_57d9154d",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb37497a_1d4c0724",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
