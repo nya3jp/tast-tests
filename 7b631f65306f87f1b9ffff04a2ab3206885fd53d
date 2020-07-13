@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "007a1793_859e76a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-13T17:09:55Z",
+      "side": 1,
+      "message": "Can we do this with L167 block instead of inside the deferred call?\neither\n\n  r.displayInfo, err :\u003d NewDisplayInfo(ctx, tconn)\n  ...\n\nor\n\n  displayInfo, err :\u003d NewDisplayInfo(ctx, tconn)\n  if err !\u003d nil {\n  }\n  r.displayInfo \u003d displayInfo",
+      "revId": "7b631f65306f87f1b9ffff04a2ab3206885fd53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
