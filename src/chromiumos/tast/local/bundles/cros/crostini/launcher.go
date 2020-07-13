@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -376,5 +375,5 @@ func waitForIcon(ctx context.Context, ownerID, appID string, expectation iconExp
 
 // setAppScaled sets the specified application to be scaled or not via an autotest API call.
 func setAppScaled(ctx context.Context, tconn *chrome.TestConn, appID string, scaled bool) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setCrostiniAppScaled)('%v', %v)`, appID, scaled), nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setCrostiniAppScaled)`, appID, scaled)
 }

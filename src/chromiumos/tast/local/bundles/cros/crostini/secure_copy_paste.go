@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -234,13 +233,12 @@ func init() {
 // is on there. We need this because the applications under test are fighting
 // for clipboard control.
 func forceClipboard(ctx context.Context, tconn *chrome.TestConn, data string) error {
-	setClipboardPromise := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setClipboardTextData)(%q)`, data)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := tconn.EvalPromise(ctx, setClipboardPromise, nil); err != nil {
+		if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setClipboardTextData)`, data); err != nil {
 			return err
 		}
 		var clipData string
-		if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+		if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
 			return err
 		}
 		if clipData != data {
@@ -322,7 +320,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 		// contents (currently: "secret").
 		clipboardCheck = func(ctx context.Context) error {
 			var clipData string
-			if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+			if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
 				return err
 			} else if clipData == "secret" {
 				return errors.New("clipboard data has not been changed")
