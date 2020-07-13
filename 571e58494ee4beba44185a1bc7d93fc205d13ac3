@@ -105,6 +105,24 @@
       "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478df028_0105d8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T07:54:12Z",
+      "side": 1,
+      "message": "\u003e I though the comparison \"timerState \u003d\u003d TimerOn\" should be very fast(few ms or ns maybe?) and is negligible comparing with 3 sec.\n\nIn most cases, I expect so, but it does not mean there is no race here.\n\n\u003e How about I move the end timing code like: ...\n\nThe approach just reduces the chance of race issue, but does not fix it.\nI.e., as long as you detect the timeout by measuring the actual time, there\u0027s no way to fix the problem.\n\nIf you\u0027d like to fix, you have to develop a way to propagate timeout somehow from the test target.\nIf not, and if it is intentional to keep the race condition, please explicitly document it.",
+      "parentUuid": "7267a882_8df5b509",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
