@@ -34,6 +34,23 @@
       "revId": "39e02e73da53d82d2852a724ecf358e279635158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f494c73d_8c2196f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-13T03:19:00Z",
+      "side": 1,
+      "message": "Oh right, all tests use `setup_app.go`. And all tests that I am aware of actually have a window. I think we can delete `Activity.IsRunning`.",
+      "revId": "39e02e73da53d82d2852a724ecf358e279635158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
