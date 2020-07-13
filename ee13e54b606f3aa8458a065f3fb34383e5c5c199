@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e015e2b_9a45c439",
+        "filename": "android/ArcKeyboardTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "As this is not a part of arc.PhysicalKeyboard subtest, can we create a new APK?",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a564f6b_e90561b8",
+        "filename": "android/ArcKeyboardTest/src/org/chromium/arc/testapp/keyboard/CheckKeyPreImeActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "nit: camelCase",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cee5b02_6a0e8bf6",
+        "filename": "android/ArcKeyboardTest/src/org/chromium/arc/testapp/keyboard/CheckKeyPreImeActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "I expect this button will be used later.",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe44b55_871c9487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "nit: put this in testPreImeKeyEvent?\n\n    getExpectedKeyLabelText :\u003d func(keyCode int) string { ... }",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018e692f_d7a3f7a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "nit: WaitForText can be used?",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f44acc0c_8e9f2bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043c1f2d_f2b76570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-13T07:13:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ee13e54b606f3aa8458a065f3fb34383e5c5c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
