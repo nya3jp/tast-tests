@@ -411,7 +411,7 @@ var metricMap = map[string]struct {
 		uma:       true,
 	},
 	"Compositing.Display.DrawToSwapUs": {
-		unit:      "ms",
+		unit:      "us",
 		direction: perf.SmallerIsBetter,
 		uma:       true,
 	},
