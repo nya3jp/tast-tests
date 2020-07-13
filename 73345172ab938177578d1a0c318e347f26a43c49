@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67c8d307_bf1f4ece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T08:49:18Z",
+      "side": 1,
+      "message": "\u003e \"precondtion\" is a possible misspelling of \"precondition\".\n\nFixed.",
+      "parentUuid": "9e71c8f5_7d174126",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "73345172ab938177578d1a0c318e347f26a43c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92f97df2_e0feaa62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T08:49:18Z",
+      "side": 1,
+      "message": "\u003e \"Precondtion\" is a possible misspelling of \"Precondition\".\n\nFixed.",
+      "parentUuid": "6ecff21c_bb55703a",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "73345172ab938177578d1a0c318e347f26a43c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdde4716_21839534",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T08:49:18Z",
+      "side": 1,
+      "message": "\u003e \"creats\" is a possible misspelling of \"creates\".\n\nFixed.",
+      "parentUuid": "ec9e636c_a9bb04f6",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "73345172ab938177578d1a0c318e347f26a43c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
