@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd78b540_c0cc074d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:20:55Z",
+      "side": 1,
+      "message": "Looks like hitting crbug.com/1104635, but it is not yet fixed.",
+      "revId": "727043f8a981ed5c0b68a922b287a5ee417d07d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
