@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c166312_428270fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T22:15:01Z",
+      "side": 1,
+      "message": "I found a nicer way to check for the download with the filesapp package, so I changed the test to use that.",
+      "revId": "9338b6c7fc8cb45dd7e86c1a38fc2319acf0e70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

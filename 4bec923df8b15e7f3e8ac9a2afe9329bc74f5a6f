@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "021d1008_768e8230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T22:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f171a09e_634bcad8",
+      "revId": "4bec923df8b15e7f3e8ac9a2afe9329bc74f5a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1aab7f8_2bb87c12",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2020-07-13T14:56:37Z",
       "side": 1,
       "message": "Is it possible to check if the policy prevented the download? Isn\u0027t there a notification shown to the user?",
+      "revId": "4bec923df8b15e7f3e8ac9a2afe9329bc74f5a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0535d5a7_4d7eda3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T22:15:01Z",
+      "side": 1,
+      "message": "Unfortunately not. There is no notification or anything that the download is blocked. It\u0027s just not downloading.",
+      "parentUuid": "c1aab7f8_2bb87c12",
       "revId": "4bec923df8b15e7f3e8ac9a2afe9329bc74f5a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

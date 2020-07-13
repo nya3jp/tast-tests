@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d09e1494_846e7fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-13T22:15:01Z",
+      "side": 1,
+      "message": "There is support to left click an element on the screen, but I wasn\u0027t able to find a method to get a reference to the download link to use the left click function on.",
+      "parentUuid": "44e9df05_acf3e060",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "238357fc_63e96dc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 1
