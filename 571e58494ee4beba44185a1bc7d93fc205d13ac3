@@ -123,6 +123,24 @@
       "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a15c47_311a60c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-13T09:52:30Z",
+      "side": 1,
+      "message": "I think we don\u0027t want to make code on test target over-complex just for this small case. Add comments for it. Please take a look, see if it\u0027s clearly addressing your problem. Thanks.",
+      "parentUuid": "478df028_0105d8b0",
+      "revId": "571e58494ee4beba44185a1bc7d93fc205d13ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
