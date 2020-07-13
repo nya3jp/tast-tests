@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "44732d4d_a39aec22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:14:55Z",
+      "side": 1,
+      "message": "nit: end the comment with period?",
+      "range": {
+        "startLine": 17,
+        "startChar": 92,
+        "endLine": 17,
+        "endChar": 93
+      },
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "691c4643_32e2386c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:14:55Z",
+      "side": 1,
+      "message": "This seems to be extraArgs, but I\u0027m not sure if this is necessary? (I didn\u0027t see passing extra argument to chrome.New in the original version).",
+      "range": {
+        "startLine": 18,
+        "startChar": 77,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef6b6637_50eb26bd",
         "filename": "src/chromiumos/tast/local/drivefs/pre.go",
         "patchSetId": 6
@@ -59,6 +105,23 @@
         "endLine": 72,
         "endChar": 56
       },
+      "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b46524_a207e35d",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-13T05:14:55Z",
+      "side": 1,
+      "message": "I guess you want to do the setup again, if this condition is reached. But the old objects like p.cr and p.tconn are not properly closed? (probably need a p.cleanUp call here)",
       "revId": "03cbdffcf950d5490f616c6fa42e2c6c790491c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
