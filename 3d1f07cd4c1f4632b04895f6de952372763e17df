@@ -102,6 +102,24 @@
       "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc925c09_a1344b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-13T11:09:55Z",
+      "side": 1,
+      "message": "so, if statement will be like:\n\nif err !\u003d nil \u0026\u0026 !errors.Is(err, cca.ErrVideoNotActive) ?",
+      "parentUuid": "4cdff22a_479df8dc",
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
