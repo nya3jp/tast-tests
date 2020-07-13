@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cf8858_22a85c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-07-13T20:15:35Z",
+      "side": 1,
+      "message": "Thank you for fixing this! Just one nit.",
+      "revId": "63eeaffde2b812362ec038c12cf085cd5a6347c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0f0b2d_62eebe89",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-07-13T20:15:35Z",
+      "side": 1,
+      "message": "One space before TODO. Also consider writing precisely what needs to be done. (Parse also string for Chromebox.)",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "63eeaffde2b812362ec038c12cf085cd5a6347c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
