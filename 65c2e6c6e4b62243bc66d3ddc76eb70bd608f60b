@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02c30bb3_48aada1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "TEST\u003d at least make sure it compiles.... e.g: \"emerge-$BOARD [ebuild-file]\" (can\u0027t remember the name)",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3338a8b_f4d9b661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ded1775e_26108132",
+        "filename": "android/ArcMultiDisplayTest/src/org/chromium/arc/testapp/multidisplay/BaseActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "huge nit:  \"Must *be* invoked...\" ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bdd232_54e02ea6",
+        "filename": "android/ArcMultiDisplayTest/src/org/chromium/arc/testapp/multidisplay/ConfigChangeEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "huge nit: you can remove \"if\", since \"whether\" is before it.",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d91be1f_a365c11f",
+        "filename": "android/ArcMultiDisplayTest/src/org/chromium/arc/testapp/multidisplay/ConfigChangeEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "huge nit: not clear what \"aka.\" does here. remove it perhaps?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b744ee_8622a063",
+        "filename": "android/ArcMultiDisplayTest/src/org/chromium/arc/testapp/multidisplay/ConfigChangeEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-13T14:36:36Z",
+      "side": 1,
+      "message": "if more fields are added in the future, this could be refactored with a map of \"bit_mask, string\".",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "65c2e6c6e4b62243bc66d3ddc76eb70bd608f60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
