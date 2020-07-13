@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f24f45_6138a5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-13T16:41:41Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve overseen this in my previous review, but this would also be too generic. Don\u0027t other crostini tests use the term of \u0027applet\u0027?\n\nMy point is, there is no \u0027file-local\u0027 variables in Golang. This constant will be shared with other files in this directory. So no other tests can\u0027t use the constant name \u0027appletFile\u0027 in their files because it is already defined here. That wouldn\u0027t be healthy.\n\nI would put this to a local constant within MousePerf, and use just a string literal (\"mouse_perf.py\") within init() function. Or create your own package (see https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/arc/wm/ as an example of doing similar)",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "7599513c87f5b86e53cff6119b06218362a8559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ce00854_b28f4ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/mouse_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-13T16:41:41Z",
+      "side": 1,
+      "message": "Similarly, I\u0027m mostly worried about this type name. Don\u0027t other crostini test ever use stats? How do they name their structs if so?  To avoid the conflicts in the future, it\u0027s better to avoid a generic name like this.\n\nThe solution would be adding a prefix (i.e. \u0027mouseStats\u0027) or create your own package.",
+      "revId": "7599513c87f5b86e53cff6119b06218362a8559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
