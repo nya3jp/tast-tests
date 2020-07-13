@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdddde23_768cc1b2",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-13T13:44:22Z",
+      "side": 0,
+      "message": "This had timing issue. (reject in the callback may be called after the invocation of resolve here).",
+      "revId": "25690a5ef310d319ce56540b36c2bb93dbf8d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
