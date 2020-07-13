@@ -16,6 +16,137 @@
       "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c39d882_699d5fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "Move the script to the test and trigger it from there.",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc88f68_209155a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/download_restrictions_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "Can you trigger the click from outside the page? This behaviour could be broken by a security change in Chrome at some point.",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "238357fc_63e96dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "the value of the policy",
+      "range": {
+        "startLine": 22,
+        "startChar": 93,
+        "endLine": 22,
+        "endChar": 117
+      },
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb19258_c55d2513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "block_downloads. Same below",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4681e646_8b2c874e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "Maybe also test the unset policy",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc1bc0f_6e465d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "Don\u0027t use sleep, use testing.Poll instead. Especially in the allowed case.",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebe8bbf_6cbeebc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-13T11:57:41Z",
+      "side": 1,
+      "message": "Maybe check for the existence of the element instead of depending on the error.\n\nCan you check that this specific file is being downloaded?",
+      "revId": "dac8e9e09527cadb16a27ef5ae02d711b168facd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
