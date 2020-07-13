@@ -150,6 +150,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("unencrypted/preserve/cros-update"), chk.SkipChildren()),                 // only exists for testing
 		chk.NewPattern(chk.Path("unencrypted/preserve/log"), chk.SkipChildren()),                         // only exists for testing
 		chk.NewPattern(chk.Tree("unencrypted/preserve"), users("attestation", "root"), chk.NotMode(022)), // other children
+		chk.NewPattern(chk.Path("unencrypted/userspace_swap.tmp"), users("chronos"), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("unencrypted"), users("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("var_overlay"), chk.SkipChildren()), // only exists for dev images
