@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6440df6c_297652fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-13T18:05:48Z",
+      "side": 1,
+      "message": "for reminder for myself: this needs to wait for the chromium CL merge, the next uprev of chromium, and LKGM update.",
+      "revId": "7fa81374aa422fca3b38241e7d48b2546044abaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
