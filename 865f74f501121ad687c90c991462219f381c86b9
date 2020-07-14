@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "aadbaa36_85f603c0",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-07-14T00:54:18Z",
+      "side": 1,
+      "message": "There is a slight chance to get into a situation when the old mountpoint is not operational, but it does exist, so a new one will be created. But then WaitForDriveFS will fail the test inside itself as there is no reasonable approach to handle multiple mount points in the test: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/drivefs/wait.go?l\u003d54",
+      "parentUuid": "e2b4c925_e5858e19",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a010040c_3477e4c7",
         "filename": "src/chromiumos/tast/local/drivefs/pre.go",
         "patchSetId": 7
