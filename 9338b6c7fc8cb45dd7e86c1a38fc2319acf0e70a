@@ -16,6 +16,57 @@
       "revId": "9338b6c7fc8cb45dd7e86c1a38fc2319acf0e70a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7911b25b_caaf0e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-14T05:46:33Z",
+      "side": 1,
+      "message": "Clear the Downloads folder before the test begins",
+      "revId": "9338b6c7fc8cb45dd7e86c1a38fc2319acf0e70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc49070_8ef8e6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-14T05:46:33Z",
+      "side": 1,
+      "message": "Check if the error was a timeout",
+      "revId": "9338b6c7fc8cb45dd7e86c1a38fc2319acf0e70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa36fdb_bed9c0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-14T05:46:33Z",
+      "side": 1,
+      "message": "log if error occurs",
+      "revId": "9338b6c7fc8cb45dd7e86c1a38fc2319acf0e70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
