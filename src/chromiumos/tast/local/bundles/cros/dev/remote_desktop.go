@@ -144,7 +144,7 @@ func launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*ch
 	}
 
 	const waitIdle = "new Promise(resolve => window.requestIdleCallback(resolve))"
-	if err := conn.EvalPromise(ctx, waitIdle, nil); err != nil {
+	if err := conn.Eval(ctx, waitIdle, nil); err != nil {
 		return nil, err
 	}
 
@@ -158,7 +158,7 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 	}
 
 	const clickBtn = genCodeBtn + ".click()"
-	if err := crd.Exec(ctx, clickBtn); err != nil {
+	if err := crd.Eval(ctx, clickBtn, nil); err != nil {
 		return "", err
 	}
 
@@ -169,7 +169,7 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 
 	var code string
 	const getCode = codeSpan + `.getAttribute('aria-label').match(/\d+/g).join('')`
-	if err := crd.EvalPromise(ctx, getCode, &code); err != nil {
+	if err := crd.Eval(ctx, getCode, &code); err != nil {
 		return "", err
 	}
 	return code, nil
