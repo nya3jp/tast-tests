@@ -161,7 +161,7 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Wait for shelf animation to complete.
-	if err := waitForShelfAnimationComplete(ctx, tconn); err != nil {
+	if err := wm.WaitForShelfAnimationComplete(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for shelf animation to complete")
 	}
 
@@ -181,7 +181,7 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Wait for shelf animation to complete.
-	if err := waitForShelfAnimationComplete(ctx, tconn); err != nil {
+	if err := wm.WaitForShelfAnimationComplete(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for shelf animation to complete")
 	}
 
@@ -272,17 +272,4 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 	}
 
 	return nil
-}
-
-func waitForShelfAnimationComplete(ctx context.Context, tconn *chrome.TestConn) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		shelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		if shelfInfo.IsShelfWidgetAnimating {
-			return errors.New("shelf is still animating")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
