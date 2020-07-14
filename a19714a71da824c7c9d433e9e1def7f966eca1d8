@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32197833_3f33eb74",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T05:18:41Z",
+      "side": 1,
+      "message": "optional: You don\u0027t need the steps, uig.Do takes multiple args and runs them in sequence.",
+      "range": {
+        "startLine": 128,
+        "startChar": 32,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "a19714a71da824c7c9d433e9e1def7f966eca1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
