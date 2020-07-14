@@ -47,7 +47,7 @@ func AudioAEC(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}
-	streams, err := atast.RunAppAndPollStream(ctx, s.DataPath(audio.Apk), param)
+	streams, err := atast.RunAppAndPollStream(ctx, arc.APKPath(audio.Apk), param)
 	if err != nil {
 		s.Fatal("Test failed: ", err)
 	}
