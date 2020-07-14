@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.chromium.arc.testapp.arcaudiotestapp">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <application
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+      <activity android:label="@string/title_activity_test_input" android:name=".TestInputActivity">
+        <intent-filter>
+          <action android:name="android.intent.action.TEST_INPUT" />
+          <category android:name="android.intent.category.CATEGORY_DEFAULT" />
+        </intent-filter>
+      </activity>
+      <activity android:label="@string/title_activity_test_output" android:name=".TestOutputActivity">
+        <intent-filter>
+          <action android:name="android.intent.action.TEST_OUTPUT" />
+          <category android:name="android.intent.category.CATEGORY_DEFAULT" />
+        </intent-filter>
+      </activity>
+      <activity android:label="@string/title_activity_test_aec" android:name=".TestAECEffectActivity">
+        <intent-filter>
+          <action android:name="android.intent.action.TEST_AEC" />
+          <category android:name="android.intent.category.CATEGORY_DEFAULT" />
+        </intent-filter>
+      </activity>
+    </application>
+
+</manifest>
