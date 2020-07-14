@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6ce93d9_0ab033f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-14T07:30:59Z",
+      "side": 1,
+      "message": "Discussed about the dbus interface of wpa_supplicant with Arowa, we find that the interface design [1] is different from the one of shill. As some convention (e.g. org.freedesktop.DBus.Properties methods) is not explicitly written on the doc, it takes us some time to try and know how it works. Write a simple PoC as a reference for possible usage in the future.\n\ncc dean and hsin-chen, also FYI. :)\n\n[1] https://w1.fi/wpa_supplicant/devel/dbus.html",
+      "revId": "0dbf6b0e8c8726d1c887265fd729f63eb5315adf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
