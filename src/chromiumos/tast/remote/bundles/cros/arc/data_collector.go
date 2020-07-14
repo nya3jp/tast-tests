@@ -34,6 +34,14 @@ type buildDescriptor struct {
 	cpuAbi string
 }
 
+type testParam struct {
+	vmEnabled bool
+	// if set, collected data will be upload to cloud.
+	upload bool
+	// if set, keep local data in this directory.
+	dataDir string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DataCollector,
@@ -42,7 +50,6 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
-		Attr: []string{"group:arc-data-collector"},
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
@@ -54,12 +61,38 @@ func init() {
 		// then disabling this in Android PFQ. At this time missing the data is allowed
 		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               false,
+			Val: testParam{
+				vmEnabled: false,
+				upload:    true,
+				dataDir:   "",
+			},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               true,
+			Val: testParam{
+				vmEnabled: true,
+				upload:    true,
+				dataDir:   "",
+			},
+		}, {
+			Name:              "local",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: testParam{
+				vmEnabled: false,
+				upload:    false,
+				dataDir:   "/tmp/data_collector",
+			},
+		}, {
+			Name:              "vm_local",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				vmEnabled: true,
+				upload:    false,
+				dataDir:   "/tmp/data_collector",
+			},
 		}},
 		Vars: []string{
 			"arc.DataCollector.UreadaheadService_username",
@@ -148,9 +181,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		return fmt.Sprintf("%s/%s_%s.tar", runtimeArtifactsRoot, bucket, version)
 	}
 
-	vmEnabled := s.Param().(bool)
+	param := s.Param().(testParam)
 
-	desc, err := getBuildDescriptorRemotely(ctx, d, vmEnabled)
+	desc, err := getBuildDescriptorRemotely(ctx, d, param.vmEnabled)
 	if err != nil {
 		s.Fatal("Failed to get ARC build desc: ", err)
 	}
@@ -160,6 +193,10 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 	// Checks if generated resources need to be uploaded to the server.
 	needUpload := func(bucket string) bool {
+		if !param.upload {
+			s.Log("Cloud upload is disabled")
+			return false
+		}
 		if !desc.official {
 			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
 			return false
@@ -199,12 +236,23 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	tempDir, err := ioutil.TempDir("", "data_collector")
-	if err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
+	dataDir := param.dataDir
+	// If data dir is not provided, use temp folder and remove after use.
+	if dataDir == "" {
+		dataDir, err = ioutil.TempDir("", "data_collector")
+		if err != nil {
+			s.Fatal("Failed to create temp dir: ", err)
+		}
+		os.Chmod(dataDir, 0744)
+		defer os.RemoveAll(dataDir)
+	} else {
+		// Clean up before use
+		os.RemoveAll(dataDir)
+		err := os.Mkdir(dataDir, 0744)
+		if err != nil {
+			s.Fatal("Failed to create local dir: ", err)
+		}
 	}
-	os.Chmod(tempDir, 0744)
-	defer os.RemoveAll(tempDir)
 
 	genUreadaheadPack := func() {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
@@ -213,7 +261,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			InitialBoot: true,
 			Username:    s.RequiredVar("arc.DataCollector.UreadaheadService_username"),
 			Password:    s.RequiredVar("arc.DataCollector.UreadaheadService_password"),
-			VmEnabled:   vmEnabled,
+			VmEnabled:   param.vmEnabled,
 		}
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
@@ -232,7 +280,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
 		}
 
-		targetDir := filepath.Join(tempDir, ureadAheadPack)
+		targetDir := filepath.Join(dataDir, ureadAheadPack)
 		if err = os.Mkdir(targetDir, 0744); err != nil {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
@@ -282,7 +330,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
 
-		targetDir := filepath.Join(tempDir, gmsCoreCache)
+		targetDir := filepath.Join(dataDir, gmsCoreCache)
 		if err = os.Mkdir(targetDir, 0744); err != nil {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
