@@ -1,4 +1,3 @@
-#!/usr/bin/env python2
 # Copyright 2019 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -10,7 +9,6 @@ It waits for 2 types of events:
   - socket messages from host (e.g., from CrostiniInputLatency test).
 When any event comes in, returns a response to client immediately.
 """
-from __future__ import print_function
 import socket
 import select
 import sys
