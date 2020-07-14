@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa37a39d_9a6791e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "R+\u003dBrendan for ARC app change repecting android/OWNERS. PTAL, too.",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b86353a_d40bd717",
+        "filename": "android/ArcAudioTestApp/.gitignore",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "git ignore here won\u0027t work?",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee31ebe_b860f651",
+        "filename": "android/ArcAudioTestApp/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "Android.bp won\u0027t work in CrOS. Could you remve?",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f84af4_3fad22c2",
+        "filename": "android/ArcAudioTestApp/build.gradle",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee652e5_880b283d",
+        "filename": "android/ArcAudioTestApp/src/org/chromium/arc/testapp/arcaudiotestapp/SamplePlayerBase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "style/nit: unneeded empty line?",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2dc3d4_0427e303",
+        "filename": "android/ArcAudioTestApp/src/org/chromium/arc/testapp/arcaudiotestapp/SamplePlayerBytes.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "in csae of exception, resources will leak.\nLet\u0027s use try-with-resource stmt.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ddb9d5_b13204b6",
+        "filename": "android/ArcAudioTestApp/src/org/chromium/arc/testapp/arcaudiotestapp/SamplePlayerBytes.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-14T13:56:42Z",
+      "side": 1,
+      "message": "optional: can be\n\nint bytesToWrite \u003d Math.min(numBytes, mData.length - mOffset);",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
