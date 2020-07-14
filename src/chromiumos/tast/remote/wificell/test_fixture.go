@@ -588,3 +588,19 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 	return nil
 }
+
+// ConfigureServiceAssertConnection configures the WiFi service with the given properties and waits for connection.
+func (tf *TestFixture) ConfigureServiceAssertConnection(ctx context.Context, props map[string]interface{}) error {
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return errors.Wrap(err, "failed to encode shill properties")
+	}
+	service, err := tf.WifiClient().ConfigureServiceAssertConnection(ctx,
+		&network.ConfigureServiceAssertConnectionRequest{Props: propsEnc},
+	)
+	if err != nil {
+		return err
+	}
+	tf.curServicePath = service.Path
+	return nil
+}
