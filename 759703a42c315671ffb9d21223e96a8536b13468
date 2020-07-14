@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aff5fb33_08dbfeee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-07-14T05:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e48086a_0a585454",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "759703a42c315671ffb9d21223e96a8536b13468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd85e135_c570df83",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/firewall_service.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "759703a42c315671ffb9d21223e96a8536b13468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a131e6_a732dd48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/firewall_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-07-14T05:56:40Z",
+      "side": 1,
+      "message": "I copied from security\u0027s firewall.go and did not recheck. Thanks for noticing!",
+      "parentUuid": "fd85e135_c570df83",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "759703a42c315671ffb9d21223e96a8536b13468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
