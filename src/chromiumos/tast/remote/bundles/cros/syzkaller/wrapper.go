@@ -68,6 +68,7 @@ func init() {
 		// stopping. The overall test duration is 12 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
+		Data:    []string{"testing_rsa"},
 	})
 }
 
@@ -116,12 +117,12 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
-		SSHKey:    d.KeyFile(),
+		SSHKey:    s.DataPath("testing_rsa"),
 		Procs:     10,
 		DUTConfig: dutConfig{
 			Targets:       []string{d.HostName()},
 			TargetDir:     "/tmp",
-			TargetReboot:  false,
+			TargetReboot:  true,
 			StartupScript: startupScript,
 		},
 	}
