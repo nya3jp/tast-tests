@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/testing"
 )
 
 // RegexpPred returns a function to be passed to WaitForLogcat that returns true if a given regexp is matched in that line.
@@ -21,7 +22,8 @@ func RegexpPred(exp *regexp.Regexp) func(string) bool {
 }
 
 // WaitForLogcat keeps scanning logcat. The function pred is called on the logcat contents line by line. This function returns successfully if pred returns true. If pred never returns true, this function returns an error as soon as the context is done.
-func (a *ARC) WaitForLogcat(ctx context.Context, pred func(string) bool) error {
+// An optional quitFunc will be polled at regular interval, which can be used to break early if for example the activity which is supposed to print the exp has crashed
+func (a *ARC) WaitForLogcat(ctx context.Context, pred func(string) bool, quitFunc ...func() bool) error {
 	cmd := a.Command(ctx, "logcat")
 
 	pipe, err := cmd.StdoutPipe()
@@ -38,7 +40,8 @@ func (a *ARC) WaitForLogcat(ctx context.Context, pred func(string) bool) error {
 		cmd.Wait()
 	}()
 
-	status := make(chan error, 2)
+	status := make(chan error)
+	stopQuit := make(chan struct{})
 
 	go func() {
 		// pred might panic, so always write something to the channel.
@@ -48,23 +51,47 @@ func (a *ARC) WaitForLogcat(ctx context.Context, pred func(string) bool) error {
 
 		scanner := bufio.NewScanner(pipe)
 		for scanner.Scan() {
-			if pred(scanner.Text()) {
-				status <- nil
+			select {
+			case <-stopQuit:
 				return
+			default:
+				if pred(scanner.Text()) {
+					status <- nil
+					return
+				}
 			}
 		}
 
 		status <- errors.New("reached EOF of logcat, but pred has not matched")
 	}()
 
+	if len(quitFunc) > 0 {
+		go func() {
+			testing.Poll(ctx, func(ctx context.Context) error {
+				select {
+				case <-stopQuit:
+					return nil
+				default:
+					if quitFunc[0]() {
+						status <- nil
+						return nil
+					}
+					return errors.New("still good")
+				}
+			}, &testing.PollOptions{})
+		}()
+	}
+
 	select {
 	case err := <-status:
+		close(stopQuit)
 		if err != nil {
 			return errors.Wrap(err, "error while scanning logcat")
 		}
 		return nil
 	case <-ctx.Done():
 		// This is usually a timeout.
+		close(stopQuit)
 		return errors.Wrap(ctx.Err(), "context was done while waiting match of pred in logcat")
 	}
 }
