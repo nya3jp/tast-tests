@@ -36,7 +36,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
-		Pre:          crostini.StartedByArtifact(),
+		Pre:          crostini.StartedDiskTest(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
