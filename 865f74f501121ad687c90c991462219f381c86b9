@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "77c6d33c_215d5401",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-07-14T03:01:58Z",
+      "side": 1,
+      "message": "We had problems with removing files at the end of tests in the past - before the DrivefsUI test would create a temporary file and delete it at the end of the test, but we ended up seeing stray temporary files. I think the issue was that syncing the delete up to the server raced with the end of the test, see crbug.com/1082662.\n\nOne other thing to note is that deleted files only get moved to trash on Drive server side.\n\nSo if we do want to remove files between tests, we need to ensure that it gets synced up to the server and also clear trash too.",
+      "parentUuid": "a63f0031_b71633bf",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "865f74f501121ad687c90c991462219f381c86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b4c925_e5858e19",
         "filename": "src/chromiumos/tast/local/drivefs/pre.go",
         "patchSetId": 7
