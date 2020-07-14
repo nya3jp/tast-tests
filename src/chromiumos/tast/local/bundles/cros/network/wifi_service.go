@@ -431,6 +431,10 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 	if err != nil {
 		return nil, err
 	}
+	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	if err != nil {
+		return nil, err
+	}
 
 	return &network.QueryServiceResponse{
 		Name:        name,
@@ -440,6 +444,7 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		State:       state,
 		Visible:     visible,
 		IsConnected: isConnected,
+		Guid:        guid,
 		Wifi: &network.QueryServiceResponse_Wifi{
 			Bssid:         bssid,
 			FtEnabled:     ftEnabled,
@@ -949,4 +954,71 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// ConfigureServiceAssertConnection creates or modifies a shill service if the matched service already existed,
+// and then wait for the IsConnected property becomes true.
+func (s *WifiService) ConfigureServiceAssertConnection(ctx context.Context,
+	request *network.ConfigureServiceAssertConnectionRequest) (*network.ConfigureServiceAssertConnectionResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	props, err := protoutil.DecodeFromShillValMap(request.Props)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to decode shill properties")
+	}
+	servicePath, err := m.ConfigureService(ctx, props)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to configure service")
+	}
+	testing.ContextLog(ctx, "configured service; start scanning")
+
+	service, err := shill.NewService(ctx, dbus.ObjectPath(servicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create property watcher")
+	}
+
+	// Service may become connected between ConfigureService and CreateWatcher, we would lose the property changing event of IsConnected then.
+	// Checking once after creating watcher should be good enough since we expect that the connection should not disconnect without our attempt.
+	p, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	isConnected, err := p.GetBool(shillconst.ServicePropertyIsConnected)
+	if err != nil {
+		return nil, err
+	}
+	if isConnected {
+		return &network.ConfigureServiceAssertConnectionResponse{Path: string(servicePath)}, nil
+	}
+
+	done := make(chan error, 1)
+	// Wait for bg routine to end.
+	defer func() { <-done }()
+
+	go func() {
+		defer close(done)
+		done <- pw.Expect(ctx, shillconst.ServicePropertyIsConnected, true)
+	}()
+
+	// Request a scan every 200ms until the backgroud routine catches the IsConnected signal.
+	for {
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return nil, errors.Wrap(err, "failed to request scan")
+		}
+		select {
+		case err := <-done:
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to wait for IsConnected property becoming true")
+			}
+			return &network.ConfigureServiceAssertConnectionResponse{Path: string(servicePath)}, nil
+		case <-time.After(200 * time.Millisecond):
+		}
+	}
 }
