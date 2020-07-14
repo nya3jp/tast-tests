@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7634a6ce_820690fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-14T15:15:09Z",
+      "side": 1,
+      "message": "Can you check if the buttons are actually disabled?",
+      "parentUuid": "59722b08_e0cf3a75",
+      "revId": "cbf71123e97f917bcd66d816d4f9008ac7be58c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5367c2d_303b3ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 4
