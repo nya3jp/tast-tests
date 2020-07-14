@@ -151,6 +151,30 @@
     },
     {
       "key": {
+        "uuid": "5033cb21_15fb4305",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-14T08:00:16Z",
+      "side": 1,
+      "message": "I would prefer using golang\u0027s time.Duration type to represent duration. It makes the interface succinct and consistent.",
+      "parentUuid": "aa1bdcde_6c0e2f15",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 35
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41cf628d_c45b36af",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 7
