@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dd266a8_0f4f9f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "Give it a name before the uuid, so we know what it is.\nOtherwise, delete the tmp file after this funciton finished.",
+      "range": {
+        "startLine": 55,
+        "startChar": 17,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a554194f_2e2e10cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "simply +",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a9636_8a4c9c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "s/str/b/ or other names you like.\nOtherwise it is confusing that \"str\" is \"[]byte\".",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bda7a46_09701fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "simply s + \" \" + bootchartKConfig",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05585ec9_38db9c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47a16da_1e52f527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "Personally I don\u0027t like variable name \"l\", which looks too similar to \"1\".",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 9
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429a3e67_cbc3a258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "check if index out of boundary.",
+      "range": {
+        "startLine": 179,
+        "startChar": 13,
+        "endLine": 179,
+        "endChar": 18
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fae816_c862e572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "Is \"\u003e\" safe here? I mean, can we assume bootstatArchiveGlob always has identical length of digits?\n(otherwise \"9\" \u003e \"10\")\nIf so, please add comment.",
+      "range": {
+        "startLine": 339,
+        "startChar": 6,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee6c760_72c8cf3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "how about\nstatlist \u003d append(statlist, firmwareTimeFile)",
+      "range": {
+        "startLine": 452,
+        "startChar": 27,
+        "endLine": 452,
+        "endChar": 43
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356b85a5_b65b5f3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/src/chromiumos/tast/dut/dut.go#106\nd.Command is deprecated.",
+      "range": {
+        "startLine": 56,
+        "startChar": 28,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e74587_0ac287ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-14T10:01:53Z",
+      "side": 1,
+      "message": "check /home/chronos/.oobe_completed again?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "7a81d7320e203dffbb9f9e680a4a97ed56ff32a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
