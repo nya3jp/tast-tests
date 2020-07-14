@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -96,10 +97,12 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.startSmoothnessTracking)()`, nil); err != nil {
+	dsTracker := perfutil.NewDisplaySmoothnessTracker()
+	defer dsTracker.Close(ctx, tconn)
+	if err := dsTracker.Start(ctx, tconn, ""); err != nil {
 		s.Fatal("Failed to start display smoothness tracking: ", err)
 	}
+
 	var elapsed time.Duration
 	if err := recorder.Run(ctx, tconn, func() error {
 		start := time.Now()
@@ -142,8 +145,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	var ds float64
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.stopSmoothnessTracking)()`, &ds); err != nil {
+	if ds, err = dsTracker.Stop(ctx, tconn, ""); err != nil {
 		s.Fatal("Failed to stop display smoothness tracking: ", err)
 	}
 	s.Log("Display smoothness: ", ds)

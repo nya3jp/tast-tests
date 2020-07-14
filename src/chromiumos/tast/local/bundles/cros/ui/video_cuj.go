@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -337,8 +338,9 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.startSmoothnessTracking)()`, nil); err != nil {
+	dsTracker := perfutil.NewDisplaySmoothnessTracker()
+	defer dsTracker.Close(ctx, tconn)
+	if err := dsTracker.Start(ctx, tconn, ""); err != nil {
 		s.Fatal("Failed to start display smoothness tracking: ", err)
 	}
 
@@ -417,8 +419,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	// Calculate display smoothness.
 	s.Log("Get display smoothness")
 	var ds float64
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.stopSmoothnessTracking)()`, &ds); err != nil {
+	if ds, err = dsTracker.Stop(ctx, tconn, ""); err != nil {
 		s.Fatal("Failed to stop display smoothness tracking: ", err)
 	}
 	s.Log("Display smoothness: ", ds)
