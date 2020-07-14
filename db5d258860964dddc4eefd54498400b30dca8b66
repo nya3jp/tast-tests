@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5c2fa7b7_d27eeced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bbf431_d7f283c9",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4360d18_643c4f45",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed7f9715_db29e1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4360d18_643c4f45",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "579635dd_a215094f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "set was refering to settings. Changed to want.",
+      "parentUuid": "5e7f2b1d_b71de6f4",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93c44f41_bbff2235",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -108,6 +180,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00382b9_90f828e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c44f41_bbff2235",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +253,54 @@
     },
     {
       "key": {
+        "uuid": "77e85fbd_8a8f875c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "316943f2_1c519c25",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a66a6777_fe77ea1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "It now checks 3 different settings.",
+      "parentUuid": "289eea97_5942ec77",
+      "range": {
+        "startLine": 73,
+        "startChar": 38,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01b3467b_d8d9457c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -177,6 +321,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c860279d_33072c4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01b3467b_d8d9457c",
+      "range": {
+        "startLine": 76,
+        "startChar": 35,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -251,6 +419,30 @@
     },
     {
       "key": {
+        "uuid": "fda66245_50f35370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Reject related part is added.",
+      "parentUuid": "c4827780_bd5f8e6c",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb37497a_1d4c0724",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -271,6 +463,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79fd7fb3_432731b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb37497a_1d4c0724",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 27
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -297,6 +513,30 @@
     },
     {
       "key": {
+        "uuid": "6491cf69_29f11317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9919b58f_8c86d1f2",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3cfee61_a330f81b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -317,6 +557,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28b8800_44579bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T13:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cfee61_a330f81b",
+      "range": {
+        "startLine": 99,
+        "startChar": 14,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
