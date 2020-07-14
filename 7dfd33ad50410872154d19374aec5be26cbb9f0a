@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d8b98b3f_f755f14e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-07-14T01:01:21Z",
+      "side": 1,
+      "message": "nit: not sure about correctness of using guest for container.",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "7dfd33ad50410872154d19374aec5be26cbb9f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d5427fa_f89ea36e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2020-07-13T10:53:00Z",
       "side": 1,
       "message": "FYI, uptimeDeltaMS returns 20ms for ARC Container, so I think this CL\u0027s effect on ARC Container boards are negligibly small.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 68
+      },
+      "revId": "7dfd33ad50410872154d19374aec5be26cbb9f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed50fe5c_ed438c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-07-14T01:01:21Z",
+      "side": 1,
+      "message": "For all boards?",
+      "parentUuid": "4d5427fa_f89ea36e",
       "range": {
         "startLine": 179,
         "startChar": 0,
