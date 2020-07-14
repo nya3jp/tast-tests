@@ -16,6 +16,23 @@
       "revId": "95ae5271671e8598440ec8a4ecad464d08194743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "767f4a2a_c45f59a4",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-14T23:15:27Z",
+      "side": 1,
+      "message": "micro nit: period at the end of the line",
+      "revId": "95ae5271671e8598440ec8a4ecad464d08194743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
