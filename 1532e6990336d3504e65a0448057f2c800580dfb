@@ -69,6 +69,24 @@
       "revId": "1532e6990336d3504e65a0448057f2c800580dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "455430f7_dd44c171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-14T07:52:09Z",
+      "side": 1,
+      "message": "Confirmed. We need to run wificell_cq tests in suite:wifi_matfunc as well.",
+      "parentUuid": "6a882c86_a8217473",
+      "revId": "1532e6990336d3504e65a0448057f2c800580dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
