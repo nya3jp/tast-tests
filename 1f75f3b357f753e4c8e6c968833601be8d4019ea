@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e5ff1ea_a7fdca4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-14T03:34:33Z",
+      "side": 1,
+      "message": "Should we have |\u0026\u0026 firstErr \u003d\u003d nil| here?",
+      "range": {
+        "startLine": 406,
+        "startChar": 51,
+        "endLine": 406,
+        "endChar": 52
+      },
+      "revId": "1f75f3b357f753e4c8e6c968833601be8d4019ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f573c873_04edb061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-14T03:34:33Z",
+      "side": 1,
+      "message": "ditto, and maybe no |else| given the firstErr logic?",
+      "revId": "1f75f3b357f753e4c8e6c968833601be8d4019ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
