@@ -158,6 +158,11 @@ func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 // with ARCEnabled() option.
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
+// StartedDiskTest is similar to StartedByArtifact but will use a pre-built
+// image as a data-dependency rather than downloading one. It uses a longer
+// timeout and a larger disk size to support Disk I/O performance tests.
+func StartedDiskTest() testing.Precondition { return startedDiskTestPre }
+
 type setupMode int
 
 const (
@@ -197,6 +202,13 @@ var startedARCEnabledPre = &preImpl{
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
+}
+
+var startedDiskTestPre = &preImpl{
+	name:        "crostini_started_disk_test_pre",
+	timeout:     chrome.LoginTimeout + 60*time.Minute,
+	mode:        artifact,
+	minDiskSize: 8 * cui.SizeGB,
 }
 
 // Implementation of crostini's precondition.
