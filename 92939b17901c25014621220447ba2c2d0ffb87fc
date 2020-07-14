@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5609021_d12bc5a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-14T17:52:25Z",
+      "side": 1,
+      "message": "super nit: basically all of the current apps don\u0027t put App at the end of the folder name. Can we rename this to ArcAudioTest and move it to the ArcAudioTest folder?",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa37a39d_9a6791e1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -53,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "2ad23bfe_a058ec35",
+        "filename": "android/ArcAudioTestApp/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-14T17:52:25Z",
+      "side": 1,
+      "message": "Wrong type of comments. This won\u0027t build. It should use \u0027#\u0027",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39f84af4_3fad22c2",
         "filename": "android/ArcAudioTestApp/build.gradle",
         "patchSetId": 3
@@ -64,6 +110,75 @@
       "writtenOn": "2020-07-14T13:56:42Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54757a3_e9a533c7",
+        "filename": "android/ArcAudioTestApp/res/layout/activity_main.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-14T17:52:25Z",
+      "side": 1,
+      "message": "I believe this license should be updated to the chromium license.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca90915_ccad142f",
+        "filename": "android/ArcAudioTestApp/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-14T17:52:25Z",
+      "side": 1,
+      "message": "ditto license",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873c9744_bd94e947",
+        "filename": "android/ArcAudioTestApp/src/org/chromium/arc/testapp/arcaudiotestapp/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-14T17:52:25Z",
+      "side": 1,
+      "message": "super nit: this is defined in a lot of place, can it be refactored to be defined in one place and imported in others?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 53
+      },
       "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
