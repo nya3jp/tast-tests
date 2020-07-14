@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "84f2b3c5_ee42143e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-14T04:24:20Z",
+      "side": 1,
+      "message": "You are right. But on second thought I think we should change the behavior to not install CCA if the app id is blocked. Let\u0027s keep the comment unchanged and change the code logic below.",
+      "parentUuid": "5efa64ad_99e3feb8",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f57017a8_d7b52c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 4
@@ -147,6 +171,30 @@
       "side": 1,
       "message": "Thanks for the explanation, but even if we change the policy used to disable CCA, we still need to check that the app is properly blocked.\n\nSince background page might be killed after idle, I would prefer to check launcher instead. Is it expected to see CCA in launcher if it\u0027s blocked by ID?",
       "parentUuid": "2120e047_8e42e0c5",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f14eb14_06594ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-14T04:24:20Z",
+      "side": 1,
+      "message": "We do not check policies when installing CCA in component loader so the app icon will show in the launcher now.\n\nAlthough I am not very familiar with those policies and what should they behave, but imo, \nhaving CCA icon in the launcher but showing no response when clicking it is a bit weird to me.\n\nAs a result, I think it would be better to have another CL to change the behavior first, and then we can land this CL and check by the existence of the app icon in the launcher.",
+      "parentUuid": "adeeba74_3ab61d65",
       "range": {
         "startLine": 95,
         "startChar": 70,
