@@ -22,6 +22,30 @@
       "revId": "f856d59f6ed26a434728171aaf90f7a2db712236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb7f1e8_57df1ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-07-14T22:16:50Z",
+      "side": 1,
+      "message": "ack, thanks.",
+      "parentUuid": "68f76aae_7ee8ef72",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "f856d59f6ed26a434728171aaf90f7a2db712236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
