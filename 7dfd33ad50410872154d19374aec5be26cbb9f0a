@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3647d2df_7878dae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-07-14T01:49:07Z",
+      "side": 1,
+      "message": "I updated the CL so timestamp adjustment is applied only on ARCVM.",
+      "parentUuid": "d8b98b3f_f755f14e",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "7dfd33ad50410872154d19374aec5be26cbb9f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d5427fa_f89ea36e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "7dfd33ad50410872154d19374aec5be26cbb9f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770e8a62_d3123fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-07-14T01:49:07Z",
+      "side": 1,
+      "message": "ok, I updated the CL so timestamp adjustment is applied only on ARCVM",
+      "parentUuid": "ed50fe5c_ed438c98",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 68
+      },
+      "revId": "7dfd33ad50410872154d19374aec5be26cbb9f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
