@@ -103,7 +103,8 @@ func (r *Runner) Values() *Values {
 // reports an error. The name parameter is used for the prefix of subtest names
 // for calling scenario/store function and the prefix for the trace data file.
 // The name can be empty, in which case the runner uses default prefix values.
-func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) {
+// Returns false when it has an error.
+func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) bool {
 	runPrefix := name
 	if name == "" {
 		runPrefix = "run"
@@ -118,10 +119,10 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 				s.Fatal("Failed to store the histogram data: ", err)
 			}
 		}) {
-			return
+			return false
 		}
 	}
-	s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
+	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
