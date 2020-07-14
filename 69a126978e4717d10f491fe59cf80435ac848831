@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50162fdc_18dc8f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-14T19:00:10Z",
+      "side": 1,
+      "message": "nit: Can be in the if statement",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "69a126978e4717d10f491fe59cf80435ac848831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e28b97_0afd6842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-14T19:00:10Z",
+      "side": 1,
+      "message": "nit: Maybe just make this an else if to reduce nesting level",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "69a126978e4717d10f491fe59cf80435ac848831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
