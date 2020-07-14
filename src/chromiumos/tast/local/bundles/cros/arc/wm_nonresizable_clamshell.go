@@ -32,11 +32,11 @@ func init() {
 
 func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
-			// non-resizable/clamshell: default launch behavior
-			Name: "NC_default_launch_behavior",
-			Func: wmNC01,
-		},
+		// wm.TestCase{
+		// 	// non-resizable/clamshell: default launch behavior
+		// 	Name: "NC_default_launch_behavior",
+		// 	Func: wmNC01,
+		// },
 		wm.TestCase{
 			// non-resizable/clamshell: user immerse portrait app (pillarbox)
 			Name: "NC_user_immerse_portrait",
@@ -47,11 +47,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "NC_user_immerse_non_portrait",
 			Func: wmNC05,
 		},
-		wm.TestCase{
-			// non-resizable/clamshell: hide shelf when app maximized
-			Name: "NC_hide_shelf_app_max",
-			Func: wmNC12,
-		},
+		// wm.TestCase{
+		// 	// non-resizable/clamshell: hide shelf when app maximized
+		// 	Name: "NC_hide_shelf_app_max",
+		// 	Func: wmNC12,
+		// },
 	})
 }
 
@@ -204,6 +204,7 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 // checkMaxActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
 func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+	// Start the activity
 	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
@@ -219,14 +220,17 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 		return err
 	}
 
+	// Check the activity
 	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
-	windowInfoMaximized, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	windowInfoBefore, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}
+
+	// Toggle to fullscreen
 	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
 		return err
 	}
@@ -234,8 +238,7 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateFullscreen); err != nil {
 		return err
 	}
-
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoMaximized.ID); err != nil {
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
 		return err
 	}
 
@@ -243,7 +246,32 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 	if err != nil {
 		return err
 	}
-	return wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoMaximized.TargetBounds, *windowInfoFullscreen)
+	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, *windowInfoFullscreen); err != nil {
+		return err
+	}
+
+	// Toggle back from fullscreen
+	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
+		return err
+	}
+
+	windowInfoAfter, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if windowInfoBefore.BoundsInRoot != windowInfoAfter.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after switching from fullscreen, got: %q, want: %q", windowInfoAfter.BoundsInRoot, windowInfoBefore.BoundsInRoot)
+	}
+
+	return nil
 }
 
 func waitForShelfAnimationComplete(ctx context.Context, tconn *chrome.TestConn) error {
