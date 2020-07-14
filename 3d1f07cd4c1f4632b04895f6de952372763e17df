@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "2120e047_8e42e0c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-14T03:43:31Z",
+      "side": 1,
+      "message": "For current behavior, CCA will still be installed as a component app but will fail to launch its background page since the app id is blocked. I think for SWA we can simply skip this test since we might not want to use app id to block SWA. I believe they might have some other policies for SWA after more and more app is migrated to SWA, and we can add cases for those policies afterwards.",
+      "parentUuid": "f57017a8_d7b52c85",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cdff22a_479df8dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 4
@@ -117,6 +141,24 @@
       "side": 1,
       "message": "so, if statement will be like:\n\nif err !\u003d nil \u0026\u0026 !errors.Is(err, cca.ErrVideoNotActive) ?",
       "parentUuid": "4cdff22a_479df8dc",
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05867bf_221672e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-14T03:43:31Z",
+      "side": 1,
+      "message": "I prefer reporting different errors for these two cases since they are actually different cases:\n\n1. err !\u003d nil:\n  That means the policy does not work as expected\n2. !errors.Is(err, cca.ErrVideoNotActive):\n  The initialization fails on unexpected stage, which means there might be some errors that we need to investigate more. \n\nSo if we want to move the if condition out, maybe we can revert it and use the original structure, like:\n\nif err \u003d\u003d nil {\n  //\n} else if !errors.Is(err, cca.ErrVideoNotActive) {\n  //\n}\n\nWDYT?",
+      "parentUuid": "dc925c09_a1344b4e",
       "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
