@@ -102,6 +102,133 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 	return nil
 }
 
+// TabletShelfHideShowHelper runs tablet test-cases that hide and show the shelf.
+func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
+	// Get primary display info to set shelf behavior.
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+	// Get the default display orientation and set it back after all test-cases are completed.
+	defaultOrientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+
+	for _, tc := range activityInfo {
+		if err := func() error {
+			if err := showHideShelfHelper(ctx, tconn, a, d, tc, primaryDisplayInfo.ID); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q test failed", tc)
+		}
+	}
+
+	return nil
+}
+
+func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo, pdID string) error {
+	// Get initial shelf behavior to make sure it is never hide.
+	initSB, err := ash.GetShelfBehavior(ctx, tconn, pdID)
+	if err != nil {
+		return err
+	}
+	if initSB != ash.ShelfBehaviorNeverAutoHide {
+		// Set shelf behavior to never auto hide for test's initial state.
+		if err := ash.SetShelfBehavior(ctx, tconn, pdID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+			return err
+		}
+	}
+
+	// Start the activity.
+	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+	if err := CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Check the display orientation
+	displayOrientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
+	if activityInfo.DesiredDO != displayOrientation.Type {
+		return errors.Errorf("invalid display orientation, want: %q, got: %q", activityInfo.DesiredDO, displayOrientation.Type)
+	}
+
+	// Store initial window info to compare with after hiding and showing the shelf.
+	winInfoInitialState, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Set shelf behavior to auto hide.
+	if err := ash.SetShelfBehavior(ctx, tconn, pdID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := WaitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	winInfoShelfHidden, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare window bounds before and after hiding the shelf. It should be larger when shelf is hidden.
+	if winInfoShelfHidden.BoundsInRoot.Height <= winInfoInitialState.BoundsInRoot.Height {
+		return errors.Errorf("invalid window bounds when shelf is shown, got: %s, want smaller than: %s", winInfoInitialState.BoundsInRoot, winInfoShelfHidden.BoundsInRoot)
+	}
+
+	// Show the shelf.
+	if err := ash.SetShelfBehavior(ctx, tconn, pdID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := WaitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	if err := CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	winInfoShelfReShown, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare window bounds after showing the shelf with initial bounds. They should be equal.
+	if winInfoInitialState.BoundsInRoot != winInfoShelfReShown.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after hiding and showing the shelf, got: %s, want: %s", winInfoShelfReShown.BoundsInRoot, winInfoInitialState.BoundsInRoot)
+	}
+
+	return nil
+}
+
 // getOppositeDisplayOrientation returns Portrait for Landscape orientation and vice versa.
 func getOppositeDisplayOrientation(orientation display.OrientationType) display.OrientationType {
 	if orientation == display.OrientationPortraitPrimary {

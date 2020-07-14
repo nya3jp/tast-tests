@@ -35,6 +35,11 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 			Name: "NT_default_launch_behavior",
 			Func: wmNT01,
 		},
+		wm.TestCase{
+			// non-resizable/tablet: hide Shelf
+			Name: "NT_hide_shelf",
+			Func: wmNT12,
+		},
 	})
 }
 
@@ -53,4 +58,42 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, false)
+}
+
+// wmNT12 covers non-resizable/tablet: hide Shelf behavior.
+// Expected behavior is defined in: go/arc-wm-r NT12: non-resizable/tablet: hide Shelf.
+func wmNT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// landscape | undefined activities
+	luActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+	}
+
+	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities); err != nil {
+		return err
+	}
+
+	// portrait | undefined activities
+	puActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities); err != nil {
+		return err
+	}
+
+	return nil
 }
