@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "29c179ae_13f38232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-14T15:16:46Z",
+      "side": 1,
+      "message": "https://osscs.corp.google.com/android/platform/superproject/+/master:external/autotest/client/site_tests/policy_AllowDeletingBrowserHistory/policy_AllowDeletingBrowserHistory.py?q\u003dAllowDeletingBrowserHistory\n\nautotest checks that if the button is disabled.",
+      "parentUuid": "7634a6ce_820690fd",
+      "revId": "cbf71123e97f917bcd66d816d4f9008ac7be58c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5367c2d_303b3ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 4
