@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "fc76ad0a_2715bfa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-14T15:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad621b5c_257e73d5",
+      "revId": "1dae3a0d2217e86bff1e313bcc04efd9dbe6b306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c44ab5ec_c5762223",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 5
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "47fe5863_ef4e1be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-14T15:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c44ab5ec_c5762223",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "1dae3a0d2217e86bff1e313bcc04efd9dbe6b306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42b14534_9ddf040d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
         "patchSetId": 5
@@ -73,6 +115,24 @@
       "revId": "1dae3a0d2217e86bff1e313bcc04efd9dbe6b306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b238565_149f3c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-07-14T15:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b14534_9ddf040d",
+      "revId": "1dae3a0d2217e86bff1e313bcc04efd9dbe6b306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
