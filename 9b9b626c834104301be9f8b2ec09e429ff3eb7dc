@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e822e6a3_1c81c075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T19:08:12Z",
+      "side": 1,
+      "message": "but...you dropped using precondition for SimpleConnect.",
+      "range": {
+        "startLine": 14,
+        "startChar": 58,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68413f5d_e365a4c6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 14
@@ -33,6 +56,29 @@
       "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ac217_96ff0d9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T19:08:12Z",
+      "side": 1,
+      "message": "can\u0027t we use TestFixturePreWithCapture()? Earlier revisions had this test using a precondition.",
+      "range": {
+        "startLine": 525,
+        "startChar": 14,
+        "endLine": 525,
+        "endChar": 33
+      },
+      "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
