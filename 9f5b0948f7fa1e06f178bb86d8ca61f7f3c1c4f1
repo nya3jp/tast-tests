@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bace9ec_cf0de707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-14T16:02:10Z",
+      "side": 1,
+      "message": "just a readability nit",
+      "revId": "9f5b0948f7fa1e06f178bb86d8ca61f7f3c1c4f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2d517f9_c02860d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-14T16:02:10Z",
+      "side": 1,
+      "message": "Maybe it\u0027s more readable to define a scenario ful and a list of uma names as  separate vars and pass them? I\u0027m not sure if it against go style so you may ignore.",
+      "revId": "9f5b0948f7fa1e06f178bb86d8ca61f7f3c1c4f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
