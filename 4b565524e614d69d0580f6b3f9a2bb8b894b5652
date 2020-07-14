@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594ab58d_1ac59d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-14T11:33:50Z",
+      "side": 1,
+      "message": "\u003e \"backgroud\" is a possible misspelling of \"background\".\n\nFixed.",
+      "parentUuid": "7ea03028_84ab4025",
+      "range": {
+        "startLine": 1010,
+        "startChar": 41,
+        "endLine": 1010,
+        "endChar": 50
+      },
+      "revId": "4b565524e614d69d0580f6b3f9a2bb8b894b5652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
