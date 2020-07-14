@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d47f735d_e6a48c06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T00:27:07Z",
+      "side": 1,
+      "message": "nit: Why is this in an inner function rather than in the main body of the function?  Please put a comment.",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 50
+      },
+      "revId": "ed0d29d4afedf03c5dc479a5ccab7e8618062819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
