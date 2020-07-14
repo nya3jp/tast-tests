@@ -68,6 +68,24 @@
       "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a227ba0_8598073c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-07-14T23:46:04Z",
+      "side": 1,
+      "message": "minDiskSize works by moving the slider in the installer to the appropriate position, though it looks like the test will throw an error if it can\u0027t get a disk big enough. So we\u0027d know if we excluded a board by accident, but it\u0027s not a good way to prevent the test from running on devices without enough space.",
+      "parentUuid": "8d6d2f2c_f3fd4085",
+      "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
