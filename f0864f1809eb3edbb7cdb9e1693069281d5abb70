@@ -22,6 +22,30 @@
       "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3daac3_06075ba2",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-14T09:55:49Z",
+      "side": 0,
+      "message": "If `ExpectedStoppedOnTeardown` is set, then we assume that the app closes automatically. So we don\u0027t want to throw an error if it is no longer running. If `!ExpectedStoppedOnTeardown`, then we we have to close the app manually. So if it is no longer running, it must have crashed and we want to throw an error.",
+      "parentUuid": "0ee29d1e_5b3454d9",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
