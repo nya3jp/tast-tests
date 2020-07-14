@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd395db_d225dbaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T21:34:31Z",
+      "side": 1,
+      "message": "Sorry I left this so long. I\u0027m not really sure why :(\n\nCR+2, because I think the only outstanding stuff is relatively trivial. Please do make sure to look through the unresolved Gerrit comments though.\n\nAlso, if you upload another version, there\u0027s a good chance I\u0027ll look again, but if you specifically need me to look, feel free to bug me directly.",
+      "revId": "0b7680d8b2646ade6c7e86a4dc8c34993c5d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7287b64_01055d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T21:34:31Z",
+      "side": 1,
+      "message": "dump the value of \u0027val\u0027 in here?\n\nOr if you just wrap the returned error, it\u0027ll get it for you:\n\n  errors.Wrap(err, \"invalid ASL...\")",
+      "range": {
+        "startLine": 115,
+        "startChar": 49,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "0b7680d8b2646ade6c7e86a4dc8c34993c5d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ace4965_61df185f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T21:34:31Z",
+      "side": 1,
+      "message": "Carrying a specific suggestion out of prior comment threads: this could probably use a comment, to note that ERWD may contain additional tables, but Chrome OS only looks at 2 of them (\"high-power\"/\"non-tablet\" and \"low-power\"/\"tablet\"), so we ignore them.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 29
+      },
+      "revId": "0b7680d8b2646ade6c7e86a4dc8c34993c5d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66411d5e_a4e56511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T21:34:31Z",
+      "side": 1,
+      "message": "it\u0027s pretty typical to handler err !\u003d nil first, which would also save your nesting:\n\n  if err !\u003d nil {\n    return nil, err\n  }\n  if values \u003d\u003d nil {\n    // A missing ...\n     return nil, errors.New(...)\n  }",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "0b7680d8b2646ade6c7e86a4dc8c34993c5d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff977112_5321b711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-14T21:34:31Z",
+      "side": 1,
+      "message": "\u003e \"Indicies\" is a possible misspelling of \"Indices\".\n\nPlease fix.",
+      "parentUuid": "87287a0d_6f2d8e69",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 17
+      },
+      "revId": "0b7680d8b2646ade6c7e86a4dc8c34993c5d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
