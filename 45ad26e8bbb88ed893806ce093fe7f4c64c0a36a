@@ -16,6 +16,23 @@
       "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3232d1b_24a0f084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-07-14T23:35:57Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure 8 GiB will exclude devices that we support crostini on, so it\u0027s not a suitable requirement for the general preconditions. We already have a separate precondition for the trace tests which require larger amounts of free space, please use that instead (and maybe rename it...)",
+      "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
