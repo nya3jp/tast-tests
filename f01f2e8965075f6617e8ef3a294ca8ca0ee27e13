@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4d1b80b_2c55d6e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T04:42:59Z",
+      "side": 1,
+      "message": "why do you need a variable for the index here?",
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de651e5_25b130c2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T04:42:59Z",
+      "side": 1,
+      "message": "you need to document that files must be in the home directory (or preferably change the function name or implementation)",
+      "range": {
+        "startLine": 715,
+        "startChar": 41,
+        "endLine": 715,
+        "endChar": 50
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42555979_900858a6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T04:42:59Z",
+      "side": 1,
+      "message": "Can you use varargs here?  it makes it much nicer to use:\n\nc.CheckFileExists(ctx, file1, file2)\n\ninstead of \n\nc.CheckFileExists(ctx, []string{file1, file2})\n\nhttps://gobyexample.com/variadic-functions",
+      "range": {
+        "startLine": 717,
+        "startChar": 63,
+        "endLine": 717,
+        "endChar": 71
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c74990_34e96ee8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-14T04:42:59Z",
+      "side": 1,
+      "message": "Given the function name, this should work for any file in the container, not just files in the home directory.  I think you should ls each file individually to make sure it exists or something.",
+      "range": {
+        "startLine": 717,
+        "startChar": 20,
+        "endLine": 717,
+        "endChar": 35
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
