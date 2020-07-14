@@ -33,6 +33,23 @@
       "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8879093_18e61149",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-14T23:36:05Z",
+      "side": 1,
+      "message": "I\u0027d expect the download tests to need similar space as the artifact tests (they\u0027re not on the CQ, so failures might not have been noticed), so be good to up those as well.\n\n+mwarton@: How did min disk space for tests end up working? If we up the limit too high and we lose coverage will we know?\n\nOtherwise LGTM.",
+      "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
