@@ -16,6 +16,24 @@
       "revId": "2ba3192d9633177a88b24a50c521bdba63284d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7a9e447_a7ded87a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-14T23:45:41Z",
+      "side": 1,
+      "message": "The only reason that I didn\u0027t separate the CL is CQ that is very flaky and I thought since I am not adding a new test it would be time saver to have one CL. For now, if you don\u0027t mind I will keep it in the same CL but in future if there was a similar situation, I will keep in mind to have separate CLs.",
+      "parentUuid": "688bceff_19647ef1",
+      "revId": "2ba3192d9633177a88b24a50c521bdba63284d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
