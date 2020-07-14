@@ -16,6 +16,23 @@
       "revId": "ddf6b50ebc0d856166320c7ffb824b48c477f941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aae89eb3_8b63faf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-14T23:39:37Z",
+      "side": 1,
+      "message": "I\u0027ve recently learnt that a good idiom of ctxutil.Shorten (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/ctxutil#Shorten) to ensure the enough time for Close().\n\nFor example:\n  closeCtx :\u003d ctx\n  var cancel cancelFunc\n  ctx, cancel \u003d ctxutil.Shorten(ctx, 2*time.Second)\n  defer cancel()\n  defer dsTracker.Close(closeCtx, tconn)\n\nThis means\n- closeCtx keeps the original timeout\n- ctx timeout is shortened by 2 seconds\n\nand that way, it should have enough time to close the smoothness trackers even when the test fails due to timeout.",
+      "revId": "ddf6b50ebc0d856166320c7ffb824b48c477f941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
