@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "fc81cda4_1d6d454b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-14T15:23:11Z",
+      "side": 1,
+      "message": "The linked test also only checks the checkbox state. The policy does not disable the \"Clear Data\" button, only 3 checkboxes (1 in basic, 2 in advanced). The deletion of other data is not restricted.",
+      "parentUuid": "29c179ae_13f38232",
+      "revId": "cbf71123e97f917bcd66d816d4f9008ac7be58c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5367c2d_303b3ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 4
