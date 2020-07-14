@@ -51,6 +51,115 @@
       "revId": "80d1783d63ea73f6abcf159b115636176144672a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "615e9657_addac684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-14T15:41:43Z",
+      "side": 1,
+      "message": "Optional, you can use fmt.Sprintf to format the string as well.\n\nfmt.Sprintf(\"-A INPUT -i %s -p tcp -m tcp --dport %d -j ACCEPT\", iface, accessPort)",
+      "revId": "80d1783d63ea73f6abcf159b115636176144672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40583ff1_5e683840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-14T15:41:43Z",
+      "side": 1,
+      "message": "delRule?",
+      "range": {
+        "startLine": 167,
+        "startChar": 41,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "80d1783d63ea73f6abcf159b115636176144672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f12da9_7dc4e760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-14T15:41:43Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 13
+      },
+      "revId": "80d1783d63ea73f6abcf159b115636176144672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e876332_3dc3fc3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-14T15:41:43Z",
+      "side": 1,
+      "message": "Effective Go suggests plain natural language documentation. Hence tast.\nhttps://golang.org/doc/effective_go.html#commentary\n\nCan you use plain expected instead |expected|? And other comments as well.",
+      "range": {
+        "startLine": 187,
+        "startChar": 17,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "80d1783d63ea73f6abcf159b115636176144672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91111c26_6028e8da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-14T15:41:43Z",
+      "side": 1,
+      "message": "expected sounds kind of implies this should be included. How about func(query string, rules []string, expected bool, errMsg string)?",
+      "range": {
+        "startLine": 188,
+        "startChar": 15,
+        "endLine": 188,
+        "endChar": 23
+      },
+      "revId": "80d1783d63ea73f6abcf159b115636176144672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
