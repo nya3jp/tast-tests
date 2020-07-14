@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b8ed3df_1409c45a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-14T23:49:53Z",
+      "side": 1,
+      "message": "Does this happen in a bunch of tests? Should we factor it into a test fixture option or similar?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "079a96405307225094b20684fa793c25073ef181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d026ae_893f52c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-14T23:49:53Z",
+      "side": 1,
+      "message": "This might look weird since we\u0027re printing sets and there will be some struct{} hanging around. Should we convert these to lists of keys before stringifying them?",
+      "revId": "079a96405307225094b20684fa793c25073ef181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
