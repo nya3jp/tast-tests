@@ -166,9 +166,10 @@ const (
 )
 
 var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    artifact,
+	name:        "crostini_started_by_artifact",
+	timeout:     chrome.LoginTimeout + 7*time.Minute,
+	mode:        artifact,
+	minDiskSize: 8 * cui.SizeGB,
 }
 
 var startedByDownloadStretchPre = &preImpl{
