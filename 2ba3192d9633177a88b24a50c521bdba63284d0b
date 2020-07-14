@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "688bceff_19647ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-14T23:19:35Z",
+      "side": 1,
+      "message": "I believe those new logic would be good, though I\u0027m afraid that this is not related to the CL description. I\u0027m good to keep this but it might be cleaner to separate the CL.",
+      "revId": "2ba3192d9633177a88b24a50c521bdba63284d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
