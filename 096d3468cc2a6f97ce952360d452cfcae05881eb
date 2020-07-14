@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "64364628_8f2cdd2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-14T02:43:41Z",
+      "side": 1,
+      "message": "I guess we can start with a stricter version and see how it goes. Make the case of \"no packet captured\" fail.",
+      "parentUuid": "ae585d71_01cb0741",
+      "revId": "096d3468cc2a6f97ce952360d452cfcae05881eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ab16d8_30716662",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 3
