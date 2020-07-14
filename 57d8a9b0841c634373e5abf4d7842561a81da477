@@ -16,6 +16,299 @@
       "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fffd407_558f5397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "Sorry for being late. Initial pass...",
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e96f8a02_0b75620b",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "nit: Treating zero value specially can be error-prone. (What it 0 is set as an option?)\nHow about using -1? (set -1 in initialization of conf)",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe2d4da_e5c940d2",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "Failed",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c106fbb8_1abb4a09",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "nit: saves",
+      "range": {
+        "startLine": 103,
+        "startChar": 19,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70ac979_01d4e6da",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "Logging",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1bdcde_6c0e2f15",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "If only seconds are allowed, how about \nTimeoutSecond(second uint) Option ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 35
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cf628d_c45b36af",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "I\u0027d move them near L48.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2de5f1e_34794ea6",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "loss :\u003d",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cf5683_700bac13",
+        "filename": "src/chromiumos/tast/common/network/arping/runner_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "I think the casting is not needed.\nJust 5 works?",
+      "range": {
+        "startLine": 37,
+        "startChar": 72,
+        "endLine": 37,
+        "endChar": 88
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509dde7a_3571c7b5",
+        "filename": "src/chromiumos/tast/common/network/arping/runner_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "3",
+      "range": {
+        "startLine": 83,
+        "startChar": 58,
+        "endLine": 83,
+        "endChar": 73
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54c376c_bb71a2fb",
+        "filename": "src/chromiumos/tast/common/network/arping/runner_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "You can use cmp.Equal().\n\ncmp.Equal(.., .., cmp.Comparer(func(x, y float64) bool {\n    return math.Abs(x - y) \u003c 1e-6\n})\n\nhttps://godoc.org/github.com/google/go-cmp/cmp#Option",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48ddba1_b09ede5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "I think you can overwrite ctx.\nctx, cancel :\u003d ...",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e20d49_15d2016d",
+        "filename": "src/chromiumos/tast/remote/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-14T03:53:35Z",
+      "side": 1,
+      "message": "nit: an",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
