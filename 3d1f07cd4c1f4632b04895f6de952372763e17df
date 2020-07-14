@@ -65,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "5efa64ad_99e3feb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-14T04:10:58Z",
+      "side": 1,
+      "message": "nit: We should not use the term \"installed\" here since CCA is always installed as part of the Chrome as you said below.",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f57017a8_d7b52c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 4
@@ -100,6 +123,30 @@
       "side": 1,
       "message": "For current behavior, CCA will still be installed as a component app but will fail to launch its background page since the app id is blocked. I think for SWA we can simply skip this test since we might not want to use app id to block SWA. I believe they might have some other policies for SWA after more and more app is migrated to SWA, and we can add cases for those policies afterwards.",
       "parentUuid": "f57017a8_d7b52c85",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adeeba74_3ab61d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-14T04:10:58Z",
+      "side": 1,
+      "message": "Thanks for the explanation, but even if we change the policy used to disable CCA, we still need to check that the app is properly blocked.\n\nSince background page might be killed after idle, I would prefer to check launcher instead. Is it expected to see CCA in launcher if it\u0027s blocked by ID?",
+      "parentUuid": "2120e047_8e42e0c5",
       "range": {
         "startLine": 95,
         "startChar": 70,
