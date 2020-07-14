@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7826c9f3_8c323630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "What about rephrasing a bit and rename function to checkboxValueAndRestriction:\n\n```\ncheckboxValueAndRestriction retrieves checkbox with the corresponding key from Chrome settings and returns checkbox value and whether checkbox is restricted.\n```\n\n?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60add0c0_4d49279d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "with this function here we have kind of spaghetti code. Let\u0027s maybe move if before \"for\" loop in line 36?\n\nAlso, \n1. please don\u0027t use s.Fatal there and return error. You will be able to log error and continue iterating by other keys in line 114.\n2. pass ctx by value, don\u0027t bind by reference. ctx may change in your program",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15631f65_b12c52f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "nit: \u003d\u003d\u003d",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa386b4_5a5f7857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "value may not exist in checkbox map, i\u0027d like to check it before",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95046e93_d1dbcc61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "please also log what exactly did you receive, e.g. checkbox[\"value\"]",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac0ebd3_990399b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "not needed, just return \"value\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e554a36_35a61622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 108,
+        "startChar": 14,
+        "endLine": 108,
+        "endChar": 56
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3fd5cf_da0f9ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-14T18:07:28Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
