@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
@@ -75,6 +76,23 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
+
+	if len(files[baseName+`\.meta`]) == 1 {
+		metaFile := files[baseName+`\.meta`][0]
+		contents, err := ioutil.ReadFile(metaFile)
+		if err != nil {
+			s.Errorf("Couldn't read meta file %s contents: %v", metaFile, err)
+		} else {
+			if !strings.Contains(string(contents), "upload_var_in_progress_test=crash.KernelWarning") {
+				s.Error(".meta file did not contain expected contents")
+				crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
+			}
+		}
+	} else {
+		s.Errorf("Unexpectedly found multiple meta files: %q", files[baseName+`\.meta`])
+		crash.MoveFilesToOut(ctx, s.OutDir(), files[baseName+`\.meta`]...)
+	}
+
 	if err := crash.RemoveAllFiles(ctx, files); err != nil {
 		s.Log("Couldn't clean up files: ", err)
 	}
