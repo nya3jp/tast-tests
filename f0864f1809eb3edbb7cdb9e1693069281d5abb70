@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee29d1e_5b3454d9",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-14T09:53:52Z",
+      "side": 0,
+      "message": "What happened to this?",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
