@@ -79,6 +79,8 @@ const (
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
 	ServicePropertyVisible        = "Visible"
+	ServicePropertyAutoConnect    = "AutoConnect"
+	ServicePropertyGUID           = "GUID"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase        = "Passphrase"
