@@ -51,6 +51,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "RC02_maximize_portrait",
 			Func: wmRC02,
 		},
+		wm.TestCase{
+			// resizable/clamshell: resizable/clamshell: user immerse portrait app (pillarbox)
+			Name: "RC04_user_immerse_portrait",
+			Func: wmRC04,
+		},
 	})
 }
 
@@ -251,6 +256,76 @@ func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		}(); err != nil {
 			return errors.Wrapf(err, "%q event type test case failed", eTC.Name)
 		}
+	}
+
+	return nil
+}
+
+// wmRC04 covers resizable/clamshell: user immerse portrait app (pillarbox).
+// Expected behavior is defined in: go/arc-wm-r RC04: resizable/clamshell: user immerse portrait app (pillarbox).
+func wmRC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	return checkRestoreActivityToFullscreen(ctx, tconn, a, d, wm.ResizablePortraitActivity)
+}
+
+// checkRestoreActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
+func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+	// Start the activity
+	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Check the activity
+	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	windowInfoBefore, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Toggle to fullscreen
+	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateFullscreen); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
+		return err
+	}
+
+	// Toggle back from fullscreen
+	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
+		return err
+	}
+
+	windowInfoAfter, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if windowInfoBefore.BoundsInRoot != windowInfoAfter.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after switching from fullscreen, got: %q, want: %q", windowInfoAfter.BoundsInRoot, windowInfoBefore.BoundsInRoot)
 	}
 
 	return nil
