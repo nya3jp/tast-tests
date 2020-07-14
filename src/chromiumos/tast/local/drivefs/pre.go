@@ -6,8 +6,11 @@ package drivefs
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -70,6 +73,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			chrome.Unlock()
 			p.cleanUp(ctx, s)
 		} else {
+			p.removeDriveContents(ctx)
 			return p.buildPreData(ctx, s)
 		}
 	}
@@ -125,6 +129,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	defer st.End()
 
 	chrome.Unlock()
+	p.removeDriveContents(ctx)
 	p.cleanUp(ctx, s)
 }
 
@@ -147,4 +152,28 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		}
 		p.cr = nil
 	}
+}
+
+// removeDriveContents clears up all the files placed in the DriveFS root folder
+func (p *preImpl) removeDriveContents(ctx context.Context) error {
+	rootDrivePath := filepath.Join(p.mountPath, "root")
+	dir, err := os.Open(rootDrivePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open root mount path: %q", rootDrivePath)
+	}
+	defer dir.Close()
+
+	contents, err := dir.Readdirnames(-1)
+	if err != nil {
+		return errors.Wrapf(err, "failed reading directory contents: %q", rootDrivePath)
+	}
+
+	for _, fileOrDirName := range contents {
+		path := filepath.Join(rootDrivePath, fileOrDirName)
+		if err := os.Remove(path); err != nil {
+			return errors.Wrapf(err, "failed removing file or directory: %q", path)
+		}
+	}
+
+	return nil
 }
