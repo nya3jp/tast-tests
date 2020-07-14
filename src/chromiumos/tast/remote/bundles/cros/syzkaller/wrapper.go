@@ -68,6 +68,7 @@ func init() {
 		// stopping. The overall test duration is 12 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
+		Data:    []string{"testing_rsa"},
 	})
 }
 
@@ -103,6 +104,13 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unable to create temp configfile: %v", err)
 	}
 
+	// Chmod the keyfile so that ssh connections do not fail due to
+	// open permissions.
+	sshKey := s.DataPath("testing_rsa")
+	if err := os.Chmod(sshKey, 0600); err != nil {
+		s.Fatalf("Unable to chmod sshkey to 0600: %v", err)
+	}
+
 	// Create syzkaller configuration file.
 	// Generating reproducers is unlikely to work as :
 	// [1] Corpus is not shared across two runs of the test.
@@ -116,12 +124,12 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
-		SSHKey:    d.KeyFile(),
+		SSHKey:    sshKey,
 		Procs:     10,
 		DUTConfig: dutConfig{
 			Targets:       []string{d.HostName()},
 			TargetDir:     "/tmp",
-			TargetReboot:  false,
+			TargetReboot:  true,
 			StartupScript: startupScript,
 		},
 	}
