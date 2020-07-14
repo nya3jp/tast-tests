@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ea2576_179c6a01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-14T21:29:10Z",
+      "side": 1,
+      "message": "The intention of the CL is to ensure \"stopSmoothnessTracking\" happens in case of s.Fatal(). Otherwise, the next test using the tracking would fail.",
+      "revId": "ddf6b50ebc0d856166320c7ffb824b48c477f941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
