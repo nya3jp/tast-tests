@@ -67,6 +67,10 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ConfigureServiceAssertConnection configures the matched shill service and
+  // then waits for the IsConnected property becomes true.
+  rpc ConfigureServiceAssertConnection(ConfigureServiceAssertConnectionRequest) returns (ConfigureServiceAssertConnectionResponse) {}
 }
 
 message ConnectRequest {
@@ -134,7 +138,8 @@ message QueryServiceResponse {
   string state = 5;
   bool visible = 6;
   bool is_connected = 7;
-  Wifi wifi = 8;
+  string guid = 8;
+  Wifi wifi = 9;
 }
 
 message GetInterfaceResponse {
@@ -184,4 +189,12 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message ConfigureServiceAssertConnectionRequest {
+  map<string, ShillVal> props = 1;
+}
+
+message ConfigureServiceAssertConnectionResponse {
+  string path = 1;
 }
