@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0aed410a_266a9cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-14T05:48:51Z",
+      "side": 1,
+      "message": "The index is used three times in the following code, using a variable to make it easier to read and shorter.",
+      "parentUuid": "c4d1b80b_2c55d6e0",
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de651e5_25b130c2",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99db61d1_d6f2df61",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-14T05:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de651e5_25b130c2",
+      "range": {
+        "startLine": 715,
+        "startChar": 41,
+        "endLine": 715,
+        "endChar": 50
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +127,54 @@
       "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3288c36c_36bb4529",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-14T05:48:51Z",
+      "side": 1,
+      "message": "Changed the names.",
+      "parentUuid": "d6c74990_34e96ee8",
+      "range": {
+        "startLine": 717,
+        "startChar": 20,
+        "endLine": 717,
+        "endChar": 35
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a894519_86e619f7",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-14T05:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42555979_900858a6",
+      "range": {
+        "startLine": 717,
+        "startChar": 63,
+        "endLine": 717,
+        "endChar": 71
+      },
+      "revId": "f01f2e8965075f6617e8ef3a294ca8ca0ee27e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
