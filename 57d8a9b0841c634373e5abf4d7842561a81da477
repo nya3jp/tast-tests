@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98e06cc0_2e1987e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-14T03:13:34Z",
+      "side": 1,
+      "message": "(forgot to reply again after gwsq assignment) Still LGTM.",
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
