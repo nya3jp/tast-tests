@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49b540cd_18b51286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-15T16:11:42Z",
+      "side": 1,
+      "message": "Nice! LGTM with two suggestions.",
+      "revId": "04f4817d12be41061b95f06c0992d55284a9a186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbafda13_4cf3620e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-15T16:11:42Z",
+      "side": 1,
+      "message": "nit: Should we leave a TODO() (like in l.58-59) for potential future\ndevelopers to know that parts of this Pre are meant to be -eventually-\nreleased as stable?\n\nAlso to be coherent with l.60, perhaps add \"vaapi\" here as well.",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "04f4817d12be41061b95f06c0992d55284a9a186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
