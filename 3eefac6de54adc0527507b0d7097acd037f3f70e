@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea60d1b4_79270012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-15T21:16:45Z",
+      "side": 1,
+      "message": "Hello, please help me review this change. Thank you.\n\nNote: This is largely independent to the stack below it, so changes there is unlikely to cause changes here.",
+      "revId": "3eefac6de54adc0527507b0d7097acd037f3f70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
