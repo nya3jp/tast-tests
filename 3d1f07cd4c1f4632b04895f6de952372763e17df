@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "227539aa_543c860a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-15T05:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8c04f1_9ee99878",
+      "range": {
+        "startLine": 306,
+        "startChar": 10,
+        "endLine": 306,
+        "endChar": 27
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ad917e8_61d831b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173fff70_020165ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-15T05:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad917e8_61d831b5",
+      "range": {
+        "startLine": 72,
+        "startChar": 37,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +148,30 @@
       "side": 1,
       "message": "You are right. But on second thought I think we should change the behavior to not install CCA if the app id is blocked. Let\u0027s keep the comment unchanged and change the code logic below.",
       "parentUuid": "5efa64ad_99e3feb8",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c63c72_2da95925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-15T05:16:11Z",
+      "side": 1,
+      "message": "Per offline discussion, we decide to not change the behavior since current behavior is consistent to other apps. Edited the comment accordingly.",
+      "parentUuid": "84f2b3c5_ee42143e",
       "range": {
         "startLine": 90,
         "startChar": 6,
@@ -195,6 +267,30 @@
       "side": 1,
       "message": "We do not check policies when installing CCA in component loader so the app icon will show in the launcher now.\n\nAlthough I am not very familiar with those policies and what should they behave, but imo, \nhaving CCA icon in the launcher but showing no response when clicking it is a bit weird to me.\n\nAs a result, I think it would be better to have another CL to change the behavior first, and then we can land this CL and check by the existence of the app icon in the launcher.",
       "parentUuid": "adeeba74_3ab61d65",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "3d1f07cd4c1f4632b04895f6de952372763e17df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a988ccd_f155bdd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-15T05:16:11Z",
+      "side": 1,
+      "message": "Per offline discussion, we decide to not change the behavior since current behavior is consistent to other apps.\n\nFor the background page, I tested sleeping 90 seconds after creating Chrome and before testing policies, and the tests work fine. So I think it might be safe now to check background page availability in Tast tests.",
+      "parentUuid": "8f14eb14_06594ae6",
       "range": {
         "startLine": 95,
         "startChar": 70,
