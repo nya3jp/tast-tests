@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/input"
 )
 
 // DownloadPath is the location of Downloads for the user.
@@ -166,6 +167,46 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 	}
 	defer file.Release(ctx)
 	return file.LeftClick(ctx)
+}
+
+// DeleteFile clicks a file, sends Alt+Backspace to delete and clicks confirmation dialogue
+func (f *FilesApp) DeleteFile(ctx context.Context, filename string) error {
+	// Get a handle to the input keyboard
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	defer kb.Close()
+
+	if err := f.SelectFile(ctx, filename); err != nil {
+		return err
+	}
+
+	if err := kb.Accel(ctx, "Alt+Backspace"); err != nil {
+		return err
+	}
+
+	// Wait for delete confirmation dialogue.
+	params := ui.FindParams{
+		ClassName: "cr-dialog-ok",
+		Name:      "Delete",
+		Role:      ui.RoleTypeButton,
+	}
+	deleteButton, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer deleteButton.Release(ctx)
+	if err := deleteButton.LeftClick(ctx); err != nil {
+		return err
+	}
+
+	// Wait for the file to leave the listbox.
+	params = ui.FindParams{
+		Name: filename,
+		Role: ui.RoleTypeStaticText,
+	}
+	return f.Root.WaitUntilDescendantGone(ctx, params, uiTimeout)
 }
 
 // OpenFile executes double click on a file to open it with default app.

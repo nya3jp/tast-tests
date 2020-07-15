@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path"
 	"time"
@@ -43,8 +44,9 @@ func init() {
 func DrivefsUI(ctx context.Context, s *testing.State) {
 	const (
 		filesAppUITimeout = 15 * time.Second
-		testFileName      = "drivefs"
 	)
+
+	testFileName := fmt.Sprintf("drivefs-%d", time.Now().Unix())
 
 	user := s.RequiredVar("platform.DrivefsUI.user")
 	password := s.RequiredVar("platform.DrivefsUI.password")
@@ -82,6 +84,12 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not create test API connection: ", err)
 	}
+
+	d, err := drivefs.Setup(ctx, cr, tconn)
+	if err != nil {
+		s.Fatal("Failed getting recent drive web files: ", err)
+	}
+
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Could not launch the Files App: ", err)
@@ -98,5 +106,21 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 	// Check for the test file created earlier.
 	if err := filesApp.WaitForFile(ctx, testFileName, filesAppUITimeout); err != nil {
 		s.Fatal("Could not find test file '", testFileName, "' in Drive: ", err)
+	}
+
+	if err := d.WaitForRecentFile(ctx, testFileName); err != nil {
+		s.Fatal("Failed waiting for drive web changed files: ", err)
+	}
+
+	if err := d.MinimizeWindow(ctx); err != nil {
+		s.Fatal("Failed minimizing drive window: ", err)
+	}
+
+	if err := filesApp.DeleteFile(ctx, testFileName); err != nil {
+		s.Fatalf("Failed trying to delete the file %q: %v", testFileName, err)
+	}
+
+	if err := d.WaitForDeletedFile(ctx, testFileName); err != nil {
+		s.Fatal("Failed waiting for drive web deleted files: ", err)
 	}
 }
