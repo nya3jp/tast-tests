@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "80340769_97eccaef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-15T05:48:08Z",
+      "side": 1,
+      "message": "Thanks! I have filed a bug (crbug.com/1105739) to migrate the rest of the tests so that it\u0027ll be on my radar.",
+      "parentUuid": "51d236e9_70373dac",
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6de803c9_8ed53752",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 3
@@ -56,6 +74,30 @@
       "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f1f17e_a935ccda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-15T05:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de803c9_8ed53752",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "87548b0a_d6807796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-15T05:48:08Z",
+      "side": 1,
+      "message": "I removed the \"len(csv) \u003e 0\" checks and moved this right after the \"len(csv) !\u003d rows\" check because csv might be empty when it should have for e.g. 2 rows (which would be an error). If we move len(csv) \u003d\u003d 0 all the way the beginning, I think we will miss this case. LMK if I\u0027m missing something!",
+      "parentUuid": "927c15b7_728cc44e",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7486be04_575a7ffa",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 3
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "b312d509_7b8bc6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-15T05:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7486be04_575a7ffa",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d59a062a_b165183e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 3
@@ -125,6 +215,30 @@
       "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05438a9c_4f7c9b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-15T05:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d59a062a_b165183e",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 68
+      },
+      "revId": "ae13b2f5f23390124a290557f5693c6c7cd67125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
