@@ -630,37 +630,44 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
+	type shouldMoveFlag bool
+	const (
+		shouldMove    shouldMoveFlag = true
+		shouldNotMove shouldMoveFlag = false
+	)
 	for _, param := range []struct {
 		// Activity package and class.
 		pkg, activity string
 		// Initial state of the window being dragged.
 		winState ash.WindowStateType
+		// Display where activity should be placed after the drag operation.
+		shouldMove shouldMoveFlag
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: true,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            true,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: false,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            false,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
+		{dispPkg, activityName(nonResizeable, handling), ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
 		for _, dir := range []struct {
 			// Display where drag operation starts.
@@ -723,23 +730,35 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return err
 				}
 
-				dstDispID := disp.displayInfo(dir.dstDisp).ID
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
+				sourceDispID := disp.displayInfo(dir.srcDisp).ID
+				wantDispID := disp.displayInfo(dir.dstDisp).ID
+
+				err = testing.Poll(ctx, func(ctx context.Context) error {
 					win, err := act.findWindow(ctx, tconn)
 					if err != nil {
 						return err
 					}
-					if win.DisplayID != dstDispID {
-						return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+					if win.DisplayID == wantDispID {
+						return nil
 					}
-					return nil
-				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-					return err
-				}
+					if win.DisplayID == sourceDispID {
+						return &activityStayingError{win.DisplayID}
+					}
+					return testing.PollBreak(errors.Errorf("Display is moved to unexpected display: got %s; want %s", win.DisplayID, wantDispID))
+				}, &testing.PollOptions{Timeout: 2 * time.Second})
 
-				if param.wantCC == nil {
-					// No cc to verify.
-					return nil
+				if param.shouldMove {
+					if err != nil {
+						return err
+					}
+				} else {
+					if err == nil {
+						return errors.New("Activity is unexpectedly moved to the destination display")
+					}
+					var notMoved *activityStayingError
+					if !errors.As(err, &notMoved) {
+						return err
+					}
 				}
 
 				ccActs, err := queryConfigurationChanges(ctx, a)
@@ -1300,4 +1319,14 @@ func runOrFatal(ctx context.Context, s *testing.State, name string, body func(co
 			s.Fatal("subtest failed: ", err)
 		}
 	})
+}
+
+// activityStayingError warns the activity keeps staying at the original display.
+type activityStayingError struct {
+	displayID string
+}
+
+// Error is for error interface.
+func (e *activityStayingError) Error() string {
+	return fmt.Sprintf("activity still stays at the source display %s", e.displayID)
 }
