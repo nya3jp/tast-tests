@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8cf86cd_6d29b23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-15T23:12:21Z",
+      "side": 1,
+      "message": "Some bot fails on reading audit.log but it should be unrelated since this CL doesn\u0027t touch audit.log. And it doesn\u0027t fail locally. Let me retry.",
+      "revId": "8f82415d0adf13463cd646e1eb88db501b30f8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
