@@ -28,7 +28,6 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcWMTestApp_24.apk"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -42,7 +41,7 @@ func WindowDefaultBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := a.Install(ctx, s.DataPath("ArcWMTestApp_24.apk")); err != nil {
+	if err := a.Install(ctx, arc.APKPath("ArcWMTestApp_24.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
