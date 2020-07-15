@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1040ddf_57621191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-15T01:35:34Z",
+      "side": 1,
+      "message": "I didn\u0027t reproduce the original issue, but I believe this change is conceptually the right thing.",
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
