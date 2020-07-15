@@ -16,6 +16,63 @@
       "revId": "56377509931073a87285a810852e7fa1428f96bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20f1db1c_347dcd6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-15T19:17:58Z",
+      "side": 1,
+      "message": "Took a look at split_view_resize.go, lgtm, thanks!",
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d71ec962_1d81ca57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-15T19:17:58Z",
+      "side": 1,
+      "message": "Not related to your CL, its an oversight from my CL with add metric form divider animation, but can we increase this to 10. It should still maximize and end split view, but visually we will see more animation.\n\nIf your not making any more changes to this file, or its not trivial, I will look into it on a follow up, thanks in advance!",
+      "range": {
+        "startLine": 131,
+        "startChar": 38,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243a0a9b_bf1b5e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-15T19:17:58Z",
+      "side": 1,
+      "message": "Do we need to append testCase here? Would that make it Ash.SplitViewResize.AnimationSMoothness.SingleOverview which is not written?",
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
