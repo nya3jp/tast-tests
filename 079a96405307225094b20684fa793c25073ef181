@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c74828c_33a7c22c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T03:23:40Z",
+      "side": 1,
+      "message": "grep-ed in Autotest, I think only 4 tests changing mac randomization setting. Total 2 in Tast as similar tests are merged and one of them will change the setting during the test. So probably only this test has this setup usage.",
+      "parentUuid": "5b8ed3df_1409c45a",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "079a96405307225094b20684fa793c25073ef181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10d026ae_893f52c2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "079a96405307225094b20684fa793c25073ef181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae59ad1_39d0b6ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T03:23:40Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. formatter added.",
+      "parentUuid": "10d026ae_893f52c2",
+      "revId": "079a96405307225094b20684fa793c25073ef181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
