@@ -33,6 +33,41 @@
       "revId": "e0db7597d8f4c4dba27e2d1591799bbe955f0db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "942e16fa_825558c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T00:58:25Z",
+      "side": 1,
+      "message": "Conceptually, yes.\nPractically, IMHO, because currently crostini tests are (surprisingly) only one which uses/watches clipboard via the API, it\u0027d be probably better to do that when another test starts to use it.",
+      "parentUuid": "511139b7_3dadec1a",
+      "revId": "e0db7597d8f4c4dba27e2d1591799bbe955f0db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8a74ff8_02e6529d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T00:58:25Z",
+      "side": 1,
+      "message": "Thank you for review. The build failure looks independent from this change, so trying to send to CQ now.",
+      "revId": "e0db7597d8f4c4dba27e2d1591799bbe955f0db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
