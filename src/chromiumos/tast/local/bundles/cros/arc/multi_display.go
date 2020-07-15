@@ -630,38 +630,44 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
+	type shouldMoveFlag bool
+	const (
+		shouldMove    shouldMoveFlag = true
+		shouldNotMove shouldMoveFlag = false
+	)
 	for _, param := range []struct {
 		// Activity package and class.
 		pkg, activity string
 		// Initial state of the window being dragged.
 		winState ash.WindowStateType
+		// Display where activity should be placed after the drag operation.
+		shouldMove shouldMoveFlag
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: true,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            true,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: false,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            false,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateNormal, nil},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
+		{dispPkg, activityName(nonResizeable, handling), ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
 		for _, dir := range []struct {
 			// Display where drag operation starts.
@@ -724,23 +730,34 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return err
 				}
 
-				dstDispID := disp.displayInfo(dir.dstDisp).ID
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
+				// When verifying a display is not moved, wait a sec
+				if param.shouldMove {
+					wantDispID := disp.displayInfo(dir.dstDisp).ID
+					if err := testing.Poll(ctx, func(ctx context.Context) error {
+						win, err := act.findWindow(ctx, tconn)
+						if err != nil {
+							return err
+						}
+						if win.DisplayID != wantDispID {
+							return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, wantDispID)
+						}
+						return nil
+					}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+						return err
+					}
+				} else {
+					// Wait a sec to ensure nothing unexpected happens during sleep
+					if err := testing.Sleep(ctx, time.Second); err != nil {
+						return err
+					}
 					win, err := act.findWindow(ctx, tconn)
 					if err != nil {
 						return err
 					}
-					if win.DisplayID != dstDispID {
-						return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+					wantID := disp.displayInfo(dir.srcDisp).ID
+					if win.DisplayID != wantID {
+						return errors.Errorf("Expects activity stays at the original display but moved: got %s; want %s", win.DisplayID, wantID)
 					}
-					return nil
-				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-					return err
-				}
-
-				if param.wantCC == nil {
-					// No cc to verify.
-					return nil
 				}
 
 				ccActs, err := queryConfigurationChanges(ctx, a)
