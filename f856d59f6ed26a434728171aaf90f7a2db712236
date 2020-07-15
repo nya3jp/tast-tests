@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7cf83d37_3733ce53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2020-07-15T01:23:46Z",
+      "side": 1,
+      "message": "shall we use b/148306892?",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "f856d59f6ed26a434728171aaf90f7a2db712236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68f76aae_7ee8ef72",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
         "patchSetId": 1
