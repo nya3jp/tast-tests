@@ -16,6 +16,23 @@
       "revId": "23b8940bb902b9a6439f4f49149e31be0b2662d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0cfee7_b41ac163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-15T08:42:01Z",
+      "side": 1,
+      "message": "Nice!\n\nApproving without waiting for Patrick (shadow reviewer) since this is a very small change.\n",
+      "revId": "23b8940bb902b9a6439f4f49149e31be0b2662d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
