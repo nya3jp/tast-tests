@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe9e902e_b938e232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:16:21Z",
+      "side": 1,
+      "message": "tast-wise: +2 % nit\n\nMoving Cici as reviewer.\nCici, PTAL.",
+      "revId": "bb531bba082642246dc5bee730d5ebcc8aefde55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53981c47_48a78dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:16:21Z",
+      "side": 1,
+      "message": "huge nit: append period (.)",
+      "range": {
+        "startLine": 745,
+        "startChar": 21,
+        "endLine": 745,
+        "endChar": 22
+      },
+      "revId": "bb531bba082642246dc5bee730d5ebcc8aefde55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09949298_1139c935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:16:21Z",
+      "side": 1,
+      "message": "huge nit: errors should not be capitalized \"There\" -\u003e \"there\"",
+      "range": {
+        "startLine": 754,
+        "startChar": 25,
+        "endLine": 754,
+        "endChar": 27
+      },
+      "revId": "bb531bba082642246dc5bee730d5ebcc8aefde55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35661c22_8c4b4437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:16:21Z",
+      "side": 1,
+      "message": "nit: just to be consistent with the var names, should this be \"line\" ? or should \"line\" be renamed to \u0027row\u0027 ?",
+      "range": {
+        "startLine": 799,
+        "startChar": 59,
+        "endLine": 799,
+        "endChar": 62
+      },
+      "revId": "bb531bba082642246dc5bee730d5ebcc8aefde55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997bcd97_f1625ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:16:21Z",
+      "side": 1,
+      "message": "nit:\nDoes this come from Android source code? if so, add reference. e.g:\n\n  // \"No result found\" taken from here: ... URL to code ...",
+      "range": {
+        "startLine": 830,
+        "startChar": 14,
+        "endLine": 830,
+        "endChar": 30
+      },
+      "revId": "bb531bba082642246dc5bee730d5ebcc8aefde55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
