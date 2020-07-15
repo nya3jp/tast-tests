@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "4d1355cf_fdc14974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-15T22:18:51Z",
+      "side": 1,
+      "message": "This function can return an error (at least in general). Check it.",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 17
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d71ec962_1d81ca57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -76,6 +99,52 @@
     },
     {
       "key": {
+        "uuid": "0a6c9fc6_0e789dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-15T22:18:51Z",
+      "side": 1,
+      "message": "As you are adding code that removes the \"extra virtual desk\" mentioned here, this part should become simply {\"WithOverview\", 8, nil, nil}.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 33
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1373ea_7d5e871d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-15T22:18:51Z",
+      "side": 1,
+      "message": "The word normal here could be taken to mean ash.WindowStateNormal instead of ash.WindowStateMaximized.",
+      "range": {
+        "startLine": 315,
+        "startChar": 74,
+        "endLine": 315,
+        "endChar": 80
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "243a0a9b_bf1b5e14",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -87,6 +156,47 @@
       "writtenOn": "2020-07-15T19:17:58Z",
       "side": 1,
       "message": "Do we need to append testCase here? Would that make it Ash.SplitViewResize.AnimationSMoothness.SingleOverview which is not written?",
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8805b122_a360ce79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-15T22:18:51Z",
+      "side": 1,
+      "message": "If anything, it should be testCase.name.",
+      "parentUuid": "243a0a9b_bf1b5e14",
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cca1ce5_4026d4dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-15T22:18:51Z",
+      "side": 1,
+      "message": "nit: I would add LeftCenter, TopCenter, RightCenter, and BottomCenter to coords.go, so that this would simply be bounds.RightCenter().",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 81
+      },
       "revId": "56377509931073a87285a810852e7fa1428f96bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
