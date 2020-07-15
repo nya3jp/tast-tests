@@ -555,7 +555,7 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	}
 	defer f.Close()
 
-	cmd := c.Command(ctx, "croslog", "--source=journal", "--no-pager")
+	cmd := c.Command(ctx, "croslog", "--no-pager")
 	cmd.Stdout = f
 	return cmd.Run()
 }
