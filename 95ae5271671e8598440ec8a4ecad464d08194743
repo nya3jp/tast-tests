@@ -33,6 +33,24 @@
       "revId": "95ae5271671e8598440ec8a4ecad464d08194743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93cf38d6_092291e0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-15T01:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767f4a2a_c45f59a4",
+      "revId": "95ae5271671e8598440ec8a4ecad464d08194743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
