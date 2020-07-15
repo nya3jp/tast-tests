@@ -56,6 +56,7 @@ const (
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
 	resizeableConfigHandleActivity     = "org.chromium.arc.testapp.multidisplay.ResizeableActivity"
+	resizeableRelaunchingActivity      = "org.chromium.arc.testapp.multidisplay.ResizeableRelaunchingActivity"
 )
 
 // Power state for displays.
@@ -676,6 +677,10 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return err
 				}
 
+				if err := deleteConfigurationChanges(ctx, a); err != nil {
+					return err
+				}
+
 				win, err := act.findWindow(ctx, tconn)
 				if err != nil {
 					return err
@@ -822,6 +827,11 @@ func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]con
 		result[actID] = append(result[actID], c)
 	}
 	return result, nil
+}
+
+// deleteConfigurationChanges deletes recorded config changes.
+func deleteConfigurationChanges(ctx context.Context, a *arc.ARC) error {
+	return a.Command(ctx, "content", "delete", "--uri", configChangesURI).Run(testexec.DumpLogOnError)
 }
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
