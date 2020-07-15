@@ -16,6 +16,75 @@
       "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f286cd3d_45a78af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T21:59:19Z",
+      "side": 1,
+      "message": "it is not clear with \"removeAddDisplay\" is being added to unstable (which runs in R), and then \"removeAddDisplay\" checks the version, and if it is R, it returns error\n\n(more comments below)",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee168b9d_965ad983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T21:59:19Z",
+      "side": 1,
+      "message": "In Tast, you should avoid failing if certain requirements are not met.\n\nIt is better, based on preconditions or parameter tests, to pass the needed requirements to run the test.\n\nIn this case, if displayPowerInternalOffExternalOn and displayPowerInternalOnExternalOff shouldn\u0027t be run on R, then they should be excluded from the list.\n\n\nAnd if there is a bug that prevent a subtest from passing the alternatives, it is better to leave the subtest disabled with a TODO.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 88
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b83bc80_be77ff66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T21:59:19Z",
+      "side": 1,
+      "message": "optional: runOrFatal",
+      "range": {
+        "startLine": 1093,
+        "startChar": 5,
+        "endLine": 1093,
+        "endChar": 24
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
