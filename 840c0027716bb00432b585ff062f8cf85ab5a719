@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7692a977_0e3263e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-15T15:58:03Z",
+      "side": 1,
+      "message": "I\u0027m fine with it. However, |err| returns by ew.Type represents the underlying failure and we should not ignore it. If the function returns an error, please makes the callee handles/logs it. Otherwise, please use s.Error to log |err|.",
+      "parentUuid": "54a4a4f4_96204395",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 10
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae627308_8a8edfb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 3
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "testGeneratedScreenshot() itself does not currently return an error..",
       "parentUuid": "76b1d77c_7adb136e",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c2c8b8c_2a6b57d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-15T15:58:03Z",
+      "side": 1,
+      "message": "Oops Sorry, I mean s.Error\n\nSomething like \ns.Error(\"Unexpected diff for screenshot 1: \", err);",
+      "parentUuid": "a046fd7f_c0a220fd",
       "range": {
         "startLine": 263,
         "startChar": 2,
