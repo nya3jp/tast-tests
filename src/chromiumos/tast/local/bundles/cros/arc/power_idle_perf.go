@@ -23,8 +23,7 @@ type testArgsForPowerIdlePerf struct {
 }
 
 func init() {
-	testing.AddTest(&testing.Test{
-		Func: PowerIdlePerf,
+	testing.AddTest(&testing.Test{Func: PowerIdlePerf,
 		Desc: "Measures the battery drain of an idle system",
 		Contacts: []string{
 			"cwd@chromium.org",
@@ -32,56 +31,24 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Params: []testing.Param{{
-			Name:              "noarc",
-			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.ForceBatteryDischarge,
-			},
-			Pre: chrome.LoggedIn(),
-		}, {
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.ForceBatteryDischarge,
-			},
-			Pre: arc.Booted(),
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.ForceBatteryDischarge,
-			},
-			Pre: arc.Booted(),
-		}, {
-			Name:              "noarc_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.NoBatteryDischarge,
-			},
-			Pre: chrome.LoggedIn(),
-		}, {
-			Name:              "nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.NoBatteryDischarge,
-			},
-			Pre: arc.Booted(),
-		}, {
-			Name:              "vm_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testArgsForPowerIdlePerf{
-				setupOption: setup.NoBatteryDischarge,
-			},
-			Pre: arc.Booted(),
-		}},
-		Timeout: 15 * time.Minute,
-	})
+
+		// to prevent this from running on non-ARC boards
+
+		// to prevent this from running on non-ARC boards
+
+		Timeout: 15 * time.Minute, Params: []testing.Param{{Name: "noarc", ExtraSoftwareDeps: []string{"arc"}, Pre: chrome.LoggedIn(), ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()), Val: testArgsForPowerIdlePerf{setupOption: setup.ForceBatteryDischarge}}, {Name: "", ExtraSoftwareDeps: []string{"android_p"}, Pre: arc.Booted(), ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()), Val: testArgsForPowerIdlePerf{setupOption: setup.ForceBatteryDischarge}}, {Name: "vm", ExtraSoftwareDeps: []string{"android_vm"}, Pre: arc.
+				Booted(), ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testArgsForPowerIdlePerf{setupOption: setup.
+				ForceBatteryDischarge,
+			}}, {Name: "noarc_nobatterymetrics",
+
+			ExtraSoftwareDeps: []string{"arc"},
+			Pre:               chrome.LoggedIn(), ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()), Val: testArgsForPowerIdlePerf{
+
+				setupOption: setup.NoBatteryDischarge},
+		},
+			{Name: "nobatterymetrics", ExtraSoftwareDeps: []string{"android_p"}, Pre: arc.Booted(), ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()), Val: testArgsForPowerIdlePerf{setupOption: setup.NoBatteryDischarge}}, {Name: "vm_nobatterymetrics", ExtraSoftwareDeps: []string{"android_vm"}, Pre: arc.Booted(), ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()), Val: testArgsForPowerIdlePerf{setupOption: setup.NoBatteryDischarge}}}},
+	)
 }
 
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
