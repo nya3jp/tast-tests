@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ebec46_b4ede8d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T05:35:10Z",
+      "side": 1,
+      "message": "+1 % one nit for tast style from tast shadow reviewer.",
+      "revId": "89f75d1c9059d3b7943b5f18c76861b419d2ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91b813aa_f7f5e94a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T05:35:10Z",
+      "side": 1,
+      "message": "nit: maybe directly\n  return ui.Exists(ctx, tconn, ui.FindParams{ClassName: \"SearchResultPageView\"})",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "89f75d1c9059d3b7943b5f18c76861b419d2ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
