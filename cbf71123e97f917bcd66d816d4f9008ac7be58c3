@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "8bba7612_1e6710c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-15T07:10:33Z",
+      "side": 1,
+      "message": "Sorry if I was unclear: I meant you should check if the checkbox was disabled in the same way as the autotest.\n\nThe mapping between policy and settings is already tested in Chrome:\nhttps://osscs.corp.google.com/chromium/chromium/src/+/master:chrome/test/data/policy/policy_test_cases.json;l\u003d261",
+      "parentUuid": "fc81cda4_1d6d454b",
+      "revId": "cbf71123e97f917bcd66d816d4f9008ac7be58c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5367c2d_303b3ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 4
