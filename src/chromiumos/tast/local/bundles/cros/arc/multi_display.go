@@ -631,139 +631,123 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
-	ccMoveDisplay := configChangeEvent{
-		handled: true,
-		density: true,
-	}
-	ccMaximize := configChangeEvent{
-		handled:            true,
-		screenSize:         true,
-		smallestScreenSize: true,
-		orientation:        true,
-	}
-	ccRestoreAndMoveDisplay := configChangeEvent{
-		handled:            true,
-		density:            true,
-		screenSize:         true,
-		smallestScreenSize: true,
-		orientation:        true,
-	}
-
 	for _, param := range []struct {
-		// Name of the sub-test.
-		name string
-		// Display where drag operation starts.
-		srcDisp androidDisplayID
-		// Display where drag operation ends.
-		dstDisp androidDisplayID
+		// Activity package and class.
+		pkg, activity string
 		// Initial state of the window being dragged.
 		winState ash.WindowStateType
-		// Activity package.
-		pkg string
-		// Activity class.
-		activity string
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{"move resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
-			ccMoveDisplay,
-		}},
-		{"move resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
-			ccMoveDisplay,
-		}},
-		{"move resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
-			ccMaximize, ccRestoreAndMoveDisplay,
-		}},
-		{"move resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, dispPkg, resizeableConfigHandleActivity, []configChangeEvent{
-			ccMaximize, ccRestoreAndMoveDisplay,
-		}},
-		{"move non-resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
-		{"move non-resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
-		{"move non-resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
-		{"move non-resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, wmPkgMD, nonResizeableUnspecifiedActivityMD, nil},
+		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateNormal, []configChangeEvent{{
+			handled: true,
+			density: true,
+		}}},
+		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateMaximized, []configChangeEvent{{
+			handled:            true,
+			density:            true,
+			screenSize:         true,
+			smallestScreenSize: true,
+			orientation:        true,
+		}}},
+		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateNormal, nil},
+		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
 	} {
-		runOrFatal(ctx, s, param.name, func(ctx context.Context, s *testing.State) error {
-			act, err := lunchActivity(ctx, tconn, a, param.pkg, param.activity, param.srcDisp)
-			if err != nil {
-				return err
-			}
-			defer act.close(ctx, tconn)
+		for _, dir := range []struct {
+			// Display where drag operation starts.
+			srcDisp androidDisplayID
+			// Display where drag operation ends.
+			dstDisp androidDisplayID
+		}{
+			{internalDisplayID, firstExternalDisplayID},
+			{firstExternalDisplayID, internalDisplayID},
+		} {
+			name := fmt.Sprintf(
+				"%s %s from %s to %s",
+				param.winState, simpleClassName(param.activity), dir.srcDisp.label(), dir.dstDisp.label())
+			runOrFatal(ctx, s, name, func(ctx context.Context, s *testing.State) error {
+				act, err := lunchActivity(ctx, tconn, a, param.pkg, param.activity, dir.srcDisp)
+				if err != nil {
+					return err
+				}
+				defer act.close(ctx, tconn)
 
-			if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
-				return err
-			}
+				if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+					return err
+				}
 
-			win, err := act.findWindow(ctx, tconn)
-			if err != nil {
-				return err
-			}
-
-			cursor := cursorOnDisplay{internalDisplayID}
-			defer cursor.moveTo(ctx, tconn, m, internalDisplayID, disp)
-			if err := cursor.moveTo(ctx, tconn, m, param.srcDisp, disp); err != nil {
-				return err
-			}
-
-			winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
-			if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
-				return err
-			}
-
-			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-				return err
-			}
-
-			if err := cursor.moveTo(ctx, tconn, m, param.dstDisp, disp); err != nil {
-				return err
-			}
-
-			dstDispBnds := disp.displayInfo(param.dstDisp).Bounds
-			dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
-			if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
-				return err
-			}
-
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-				return err
-			}
-
-			dstDispID := disp.displayInfo(param.dstDisp).ID
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				win, err := act.findWindow(ctx, tconn)
 				if err != nil {
 					return err
 				}
-				if win.DisplayID != dstDispID {
-					return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+
+				cursor := cursorOnDisplay{internalDisplayID}
+				defer cursor.moveTo(ctx, tconn, m, internalDisplayID, disp)
+				if err := cursor.moveTo(ctx, tconn, m, dir.srcDisp, disp); err != nil {
+					return err
 				}
+
+				winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
+				if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
+					return err
+				}
+
+				if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+					return err
+				}
+
+				if err := cursor.moveTo(ctx, tconn, m, dir.dstDisp, disp); err != nil {
+					return err
+				}
+
+				dstDispBnds := disp.displayInfo(dir.dstDisp).Bounds
+				dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
+				if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
+					return err
+				}
+
+				if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+					return err
+				}
+
+				dstDispID := disp.displayInfo(dir.dstDisp).ID
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					win, err := act.findWindow(ctx, tconn)
+					if err != nil {
+						return err
+					}
+					if win.DisplayID != dstDispID {
+						return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+					}
+					return nil
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return err
+				}
+
+				if param.wantCC == nil {
+					// No cc to verify.
+					return nil
+				}
+
+				ccActs, err := queryConfigurationChanges(ctx, a)
+				if err != nil {
+					return err
+				}
+				if len(ccActs) > 1 {
+					return errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(ccActs))
+				}
+
+				var ccList []configChangeEvent
+				for _, c := range ccActs {
+					ccList = c
+				}
+				if !reflect.DeepEqual(ccList, param.wantCC) {
+					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
+				}
+
 				return nil
-			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				return err
-			}
-
-			if param.wantCC == nil {
-				// No cc to verify.
-				return nil
-			}
-
-			ccActs, err := queryConfigurationChanges(ctx, a)
-			if err != nil {
-				return err
-			}
-			if len(ccActs) > 1 {
-				return errors.Errorf("there must be at most one activity generating config changes: got %d; want %d", len(ccActs), 1)
-			}
-
-			var ccList = []configChangeEvent{}
-			for _, c := range ccActs {
-				ccList = c
-			}
-			if !reflect.DeepEqual(ccList, param.wantCC) {
-				return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
-			}
-
-			return nil
-		})
+			})
+		}
 	}
 
 	return nil
@@ -1227,6 +1211,23 @@ func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestCon
 // string returns string representation of id.
 func (id androidDisplayID) string() string {
 	return fmt.Sprintf("%d", id)
+}
+
+// label returns display name of android ID.
+func (id androidDisplayID) label() string {
+	if id == internalDisplayID {
+		return "internal"
+	} else if id == firstExternalDisplayID {
+		return "external"
+	}
+	panic(fmt.Sprintf("invalid id %q", id))
+}
+
+var classNameReg = regexp.MustCompile("[^.]+$")
+
+// simpleClassName removes package from class name
+func simpleClassName(act string) string {
+	return classNameReg.FindString(act)
 }
 
 // runOrFatal runs body as subtest, then invokes s.Fatal if it returns an error
