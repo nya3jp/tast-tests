@@ -9,14 +9,17 @@ package org.chromium.arc.testapp.multidisplay;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.ArrayMap;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseActivity extends Activity {
-  private static final String TAG ="BaseActivity";
+
+  private static final String TAG = "BaseActivity";
+
+  private static final String KEY_CONFIGURATION = "configuration";
+  private static final String KEY_ACTIVITIY_ID = "activityId";
 
   /**
    * Map between activityId and config events. Must access only on the main thread.
@@ -36,18 +39,23 @@ public class BaseActivity extends Activity {
   /**
    * Activity ID.
    */
-  private final int mActivityId;
-
-  BaseActivity() {
-    if (!Looper.getMainLooper().isCurrentThread()) {
-      throw new IllegalStateException("Must be invoked on the main looper");
-    }
-    mActivityId = sNextActivityId++;
-  }
+  private int mActivityId = -1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    if (savedInstanceState != null && savedInstanceState.containsKey(KEY_ACTIVITIY_ID)) {
+      mActivityId = savedInstanceState.getInt(KEY_ACTIVITIY_ID);
+    } else {
+      mActivityId = sNextActivityId++;
+    }
+
     mConfiguration.setTo(getResources().getConfiguration());
+    if (savedInstanceState != null && savedInstanceState.containsKey(KEY_CONFIGURATION)) {
+      Log.d(TAG, String.format("relaunched %d %s", mActivityId, mConfiguration));
+      sConfigEvents.computeIfAbsent(mActivityId, key -> new ArrayList<>()).add(ConfigChangeEvent
+          .relaunched(savedInstanceState.getParcelable(KEY_CONFIGURATION), mConfiguration));
+    }
+
     Log.d(TAG, String.format("onCreate %d %s", mActivityId, mConfiguration));
     super.onCreate(savedInstanceState);
   }
@@ -65,13 +73,20 @@ public class BaseActivity extends Activity {
   @Override
   protected void onDestroy() {
     Log.d(TAG, "onDestroy " + mActivityId);
-    sConfigEvents.remove(mActivityId);
     super.onDestroy();
   }
 
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    Log.d(TAG, "onSaveInstanceState " + mActivityId);
+    super.onSaveInstanceState(outState);
+    outState.putParcelable(KEY_CONFIGURATION, mConfiguration);
+    outState.putInt(KEY_ACTIVITIY_ID, mActivityId);
+  }
+
   /**
-   * Returns config change events on each running Activity.
-   * Must be invoked on the main thread.
+   * Returns config change events on each running Activity. Must be invoked on the main thread.
+   *
    * @return config change events on each running Activity.
    */
   public static ArrayMap<Integer, List<ConfigChangeEvent>> getConfigChangeEvents() {
