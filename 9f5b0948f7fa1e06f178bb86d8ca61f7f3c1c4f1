@@ -69,6 +69,24 @@
       "revId": "9f5b0948f7fa1e06f178bb86d8ca61f7f3c1c4f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a71a4306_a1405a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:56:41Z",
+      "side": 1,
+      "message": "I see, that\u0027s possible (and that\u0027s done on some tests). Done here.",
+      "parentUuid": "99fcf393_f90589ee",
+      "revId": "9f5b0948f7fa1e06f178bb86d8ca61f7f3c1c4f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
