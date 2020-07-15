@@ -29,7 +29,7 @@ type TestParameters struct {
 const (
 	// Apk is the testing App.
 	Apk = "ARCAudioTest.apk"
-	pkg = "org.chromium.arc.testapp.arcaudiotestapp"
+	pkg = "org.chromium.arc.testapp.arcaudiotest"
 
 	// UI IDs in the app.
 	idPrefix              = pkg + ":id/"
