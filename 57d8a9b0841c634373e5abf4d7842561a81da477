@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "af093adc_3f9c1118",
+        "filename": "src/chromiumos/tast/common/network/arping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-15T15:02:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae5bb91d_5433bd0d",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 35
+      },
+      "revId": "57d8a9b0841c634373e5abf4d7842561a81da477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41cf628d_c45b36af",
         "filename": "src/chromiumos/tast/common/network/arping/runner.go",
         "patchSetId": 7
