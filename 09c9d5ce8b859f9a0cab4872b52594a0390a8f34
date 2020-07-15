@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924f2e30_c450e9a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T04:25:25Z",
+      "side": 1,
+      "message": "I got assigned as tast shadow reviewer, so some more comments related to that",
+      "revId": "09c9d5ce8b859f9a0cab4872b52594a0390a8f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848753ac_42bd3a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T04:25:25Z",
+      "side": 1,
+      "message": "You should return the wrapped error:\n\nreturn errors.Wrap(err, \"failed to find the first file\")",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 8
+      },
+      "revId": "09c9d5ce8b859f9a0cab4872b52594a0390a8f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f44708_3f085ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T04:25:25Z",
+      "side": 1,
+      "message": "return the wrapped error here as well.\n\nThere are many other places in this file that you need to do the same for too.",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 8
+      },
+      "revId": "09c9d5ce8b859f9a0cab4872b52594a0390a8f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea09e36c_0a2e8b38",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T04:25:25Z",
+      "side": 1,
+      "message": "UI errors can be very hard to track down, please wrap them so that if they fail it is possible to work out which one failed.\n\nSimilar for the other UI errors in this file.",
+      "revId": "09c9d5ce8b859f9a0cab4872b52594a0390a8f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
