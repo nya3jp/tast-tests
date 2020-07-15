@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb77377e_2d5fa2bb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T05:42:29Z",
+      "side": 1,
+      "message": "Still need to return the wrapped error here",
+      "range": {
+        "startLine": 740,
+        "startChar": 2,
+        "endLine": 740,
+        "endChar": 10
+      },
+      "revId": "d99482021d40c73b5665167d7bd3508697861eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
