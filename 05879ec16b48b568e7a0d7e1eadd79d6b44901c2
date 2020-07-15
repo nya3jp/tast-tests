@@ -16,6 +16,23 @@
       "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2127c5c_e3492b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-15T08:13:59Z",
+      "side": 1,
+      "message": "lnishan@\nThe sequence for bringing up chart is similar to autotest:\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/camerabox_utils.py;rcl\u003d9d68af8a9c3a4ffe67bdb4a9301b51f3c7762951;l\u003d17\n\nYou can take a look see if you can help review this CL, thanks a lot.",
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
