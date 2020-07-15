@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a2a0671a_d930ec0d",
+        "filename": "android/ArcAudioTestApp/.gitignore",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "Could you explicitly comment it?",
+      "parentUuid": "0958a170_1c817d3b",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ee31ebe_b860f651",
         "filename": "android/ArcAudioTestApp/Android.bp",
         "patchSetId": 3
@@ -215,6 +233,24 @@
       "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95f00705_e66f9381",
+        "filename": "android/ArcAudioTestApp/build.gradle",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "Ditto for comments.\nAlso, this rule must be in sync with BUILD.gn.",
+      "parentUuid": "d9a8ec9b_683bc8fc",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f7ab80f_7d45263e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "Mostly just minor comments (sorry, I overlooked some of them in the previous iteration).\nI still strongly would like to see the document about .gitignore and gradle.",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "627aafbc_e12b9ee7",
+        "filename": "android/ArcAudioTest/res/layout/activity_main.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "nit: 4 indent to be consistent?",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3c54ad_5f97c907",
+        "filename": "android/ArcAudioTest/res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "nit: indent to be alined with \"C\" above line?",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7903b191_e5013d05",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBytes.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T16:00:09Z",
+      "side": 1,
+      "message": "nit/style: move to above line?",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
