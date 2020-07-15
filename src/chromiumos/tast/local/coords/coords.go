@@ -82,6 +82,26 @@ func (r Rect) String() string {
 	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
 }
 
+// Right returns the x-value of the right edge of the rectangle.
+func (r Rect) Right() int {
+	return r.Left + r.Width
+}
+
+// Bottom returns the y-value of the bottom edge of the rectangle.
+func (r Rect) Bottom() int {
+	return r.Top + r.Height
+}
+
+// CenterX returns the x-value of the center point of the rectangle.
+func (r Rect) CenterX() int {
+	return r.Left + r.Width/2
+}
+
+// CenterY returns the y-value of the center point of the rectangle.
+func (r Rect) CenterY() int {
+	return r.Top + r.Height/2
+}
+
 // TopLeft returns the location of the top left of the rectangle.
 func (r Rect) TopLeft() Point {
 	return Point{X: r.Left, Y: r.Top}
