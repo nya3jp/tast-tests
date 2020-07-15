@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "fb466fd8_6a0486c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:16:52Z",
+      "side": 1,
+      "message": "Done (in the new patch, it\u0027s like left-snapped, so phrased as \u0027original position\u0027)",
+      "parentUuid": "8c1373ea_7d5e871d",
+      "range": {
+        "startLine": 315,
+        "startChar": 74,
+        "endLine": 315,
+        "endChar": 80
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243a0a9b_bf1b5e14",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
