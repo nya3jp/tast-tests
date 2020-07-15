@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a88ffc2d_dc99aec4",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T07:35:27Z",
+      "side": 1,
+      "message": "Clar: Currently, it is used only from one test, so there\u0027s no benefit in terms of performance.\nAny plan to share this with other tests?",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d035737_ea508de1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T07:35:27Z",
+      "side": 1,
+      "message": "Clar: this and the new StartDiskTestPre looks very similar.\nAdding a new precondition will have large overhead. Is it an option to merge this and the new pre for you?",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e49afe_65f1c6e8",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-15T07:35:27Z",
+      "side": 1,
+      "message": "preparation for 1 hour is surprising to me.\nIs it need really long like this? If so, it may be a part of test itself...?\nCan it be shorter, like 10mins like above?\nIf you really need this, I\u0027d recommend to contact to crosbolt team, too, before landing, to make sure the load in crosbolt.",
+      "range": {
+        "startLine": 208,
+        "startChar": 36,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
