@@ -24,7 +24,6 @@ func init() {
 			"judyhsiao@chromium.org",         // Author
 		},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Data:         []string{"ARCAudioTest.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      2 * time.Minute,
 		Pre:          arc.Booted(),
@@ -40,14 +39,14 @@ func AudioAEC(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(arc.PreData).Chrome
 	param := audio.TestParameters{
 		Permission: "android.permission.RECORD_AUDIO",
-		Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestAECEffectActivity",
+		Class:      "org.chromium.arc.testapp.arcaudiotest.TestAECEffectActivity",
 	}
 
 	atast, err := audio.NewARCAudioTast(ctx, a, cr)
 	if err != nil {
 		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}
-	streams, err := atast.RunAppAndPollStream(ctx, s.DataPath(audio.Apk), param)
+	streams, err := atast.RunAppAndPollStream(ctx, arc.APKPath(audio.Apk), param)
 	if err != nil {
 		s.Fatal("Test failed: ", err)
 	}
