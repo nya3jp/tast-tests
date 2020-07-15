@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8be45ebc_bf78f250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-15T03:33:35Z",
+      "side": 0,
+      "message": "Journal log is about to be removed. Let me remove this test to read journal log.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 155
+      },
+      "revId": "8f82415d0adf13463cd646e1eb88db501b30f8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
