@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -32,7 +33,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -124,9 +125,11 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	// Compute the coordinates for the actual test scenario: drag the divider
 	// slightly left and then all the way right. The left snapped window should
 	// shrink and then expand and become maximized.
-	dividerDragPointOne := coords.NewPoint(info.WorkArea.Width/2, yCenter)
-	dividerDragPointTwo := coords.NewPoint(info.WorkArea.Width/4, yCenter)
-	dividerDragPointThree := coords.NewPoint(info.WorkArea.Width-1, yCenter)
+	dragPoints := []coords.Point{
+		coords.NewPoint(info.WorkArea.Width/2, yCenter),
+		coords.NewPoint(info.WorkArea.Width/4, yCenter),
+		coords.NewPoint(info.WorkArea.Width-1, yCenter),
+	}
 
 	// Testing 3 patterns;
 	// SingleWindow: there's a single window which is snapped to the left.
@@ -135,17 +138,18 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	// MultiWindow (tablet only): one window is snapped to the left and another
 	//   window is snapped to the right.
 	type testCaseSlice []struct {
-		name       string
-		numWindows int
-		customPrep func() error
+		name          string
+		numWindows    int
+		customPrep    func(ctx context.Context) error
+		customCleanup func(ctx context.Context) error
 	}
 	var testCases testCaseSlice
 	var modeName string
 	if tabletMode {
 		testCases = testCaseSlice{
-			{"SingleWindow", 1, func() error { return nil }},
-			{"WithOverview", 8, func() error { return nil }},
-			{"MultiWindow", 8, func() error {
+			{"SingleWindow", 1, nil, nil},
+			{"WithOverview", 8, nil, nil},
+			{"MultiWindow", 8, func(ctx context.Context) error {
 				// Additional preparation for the multi-window; by default the right side
 				// should be in the overview mode, so here selects one of the windows.
 				// First, find the window which is in the overview and obtains the center
@@ -161,12 +165,12 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 					return w.ID == id1 && !w.IsAnimating && w.State == ash.WindowStateRightSnapped
 				}, &testing.PollOptions{Timeout: 5 * time.Second})
-			}},
+			}, nil},
 		}
 		modeName = "TabletMode"
 	} else {
 		testCases = testCaseSlice{
-			{"SingleWindow", 2, func() error {
+			{"SingleWindow", 2, func(ctx context.Context) error {
 				// Additional preparation for the empty overview grid. When we drag and
 				// snap an overview item to achieve clamshell split view in the first
 				// place, we need a second overview item so that overview stays nonempty;
@@ -202,15 +206,18 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return errors.New("failed to arrange clamshell split view with empty overview grid")
 				}
 				return nil
+			}, func(ctx context.Context) error {
+				// Desk needs to be removed, as it's created as a preparation step.
+				return ash.RemoveActiveDesk(ctx, tconn)
 			}},
 			// 9 windows, including 1 on the extra virtual desk from the "SingleWindow" case.
-			{"WithOverview", 9, func() error { return nil }},
+			{"WithOverview", 9, nil, nil},
 		}
 		modeName = "ClamshellMode"
 	}
 
 	currentWindows := 0
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	for _, testCase := range testCases {
 		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
 			conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, testCase.numWindows-currentWindows)
@@ -219,44 +226,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			}
 			conns.Close()
 			currentWindows = testCase.numWindows
-
-			// Enter overview, and then drag and snap a window to enter split view.
-			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-				s.Fatal("Failed to enter into the overview mode: ", err)
-			}
-			w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to find the window in the overview mode: ", err)
-			}
-			wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
-			if err := pointerController.Press(ctx, wCenterPoint); err != nil {
-				s.Fatal("Failed to start window drag from overview grid to snap: ", err)
-			}
-			// A window drag from a tablet overview grid must begin with a long press to
-			// disambiguate from scrolling.
-			if tabletMode {
-				if err := testing.Sleep(ctx, time.Second); err != nil {
-					s.Fatal("Failed to wait for touch to become long press, for window drag from overview grid to snap: ", err)
-				}
-			}
-			if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, time.Second); err != nil {
-				s.Fatal("Failed during window drag from overview grid to snap: ", err)
-			}
-			if err := pointerController.Release(ctx); err != nil {
-				s.Fatal("Failed to end window drag from overview grid to snap: ", err)
-			}
-
-			// id0 supposed to have the window id which is left-snapped.
-			id0 := w.ID
-			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
-			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				s.Fatal("Failed to wait for the window to be left-snapped: ", err)
-			}
-
-			if err := testCase.customPrep(); err != nil {
-				s.Fatal("Failed to prepare: ", err)
-			}
 
 			if err = cpu.WaitUntilIdle(ctx); err != nil {
 				s.Fatal("Failed to wait: ", err)
@@ -272,56 +241,113 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if modeName == "TabletMode" {
 				histogramNames = append(histogramNames, dividerSmoothnessName)
 			}
-			hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() (err error) {
-				if err := pointerController.Press(ctx, dividerDragPointOne); err != nil {
-					return errors.Wrap(err, "failed to start divider drag")
+			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(tconn, func() (err error) {
+				// Enter overview, and then drag and snap a window to enter split view.
+				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
+				w, err := ash.FindFirstWindowInOverview(ctx, tconn)
+				if err != nil {
+					return errors.Wrap(err, "failed to find the window in the overview mode")
+				}
+				wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
 				ended := false
+				if err := pointerController.Press(ctx, wCenterPoint); err != nil {
+					return errors.Wrap(err, "failed to start window drag from overview grid to snap")
+				}
 				defer func() {
 					if !ended {
-						err = pointerController.Release(ctx)
+						if releaseErr := pointerController.Release(ctx); releaseErr != nil {
+							if err != nil {
+								err = releaseErr
+							} else {
+								testing.ContextLog(ctx, "Failed to release at the end: ", err)
+							}
+						}
 					}
 				}()
-				if err := pointerController.Move(ctx, dividerDragPointOne, dividerDragPointTwo, 3*time.Second); err != nil {
+				// A window drag from a tablet overview grid must begin with a long press to
+				// disambiguate from scrolling.
+				if tabletMode {
+					if err := testing.Sleep(ctx, time.Second); err != nil {
+						return errors.Wrap(err, "failed to wait for touch to become long press, for window drag from overview grid to snap")
+					}
+				}
+				if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, 200*time.Millisecond); err != nil {
+					return errors.Wrap(err, "failed during window drag from ovreview grid to snap")
+				}
+				if err := pointerController.Release(ctx); err != nil {
+					return errors.Wrap(err, "failed to end window drag from overview grid to snap")
+				}
+				ended = true
+
+				// id0 supposed to have the window id which is left-snapped.
+				id0 := w.ID
+				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+					return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return errors.Wrap(err, "failed to wait for the window to be left-snapped")
+				}
+
+				if testCase.customPrep != nil {
+					if err := testCase.customPrep(ctx); err != nil {
+						return errors.Wrap(err, "failed to prepare")
+					}
+				}
+
+				if err := pointerController.Press(ctx, dragPoints[0]); err != nil {
+					return errors.Wrap(err, "failed to start divider drag")
+				}
+				ended = false
+				if err := pointerController.Move(ctx, dragPoints[0], dragPoints[1], time.Second); err != nil {
 					return errors.Wrap(err, "failed to drag divider slightly left")
 				}
-				if err := pointerController.Move(ctx, dividerDragPointTwo, dividerDragPointThree, 3*time.Second); err != nil {
+				if err := pointerController.Move(ctx, dragPoints[1], dragPoints[2], time.Second); err != nil {
 					return errors.Wrap(err, "failed to drag divider all the way right")
 				}
 				if err := pointerController.Release(ctx); err != nil {
 					return errors.Wrap(err, "failed to end divider drag")
 				}
 				ended = true
-				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 					return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateMaximized
-				}, &testing.PollOptions{Timeout: 2 * time.Second})
-			},
-				histogramNames...)
-			if err != nil {
-				s.Fatal("Failed to drag or get the histogram: ", err)
-			}
-
-			for _, hist := range hists {
-				value, err := hist.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s: %v", hist.Name, err)
+				}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+					return errors.Wrap(err, "failed to wait for the window state back to normal")
 				}
-				var unit = "ms"
-				var direction = perf.SmallerIsBetter
-				if hist.Name == dividerSmoothnessName {
-					unit = "percent"
-					direction = perf.BiggerIsBetter
+				if testCase.customCleanup != nil {
+					if err := testCase.customCleanup(ctx); err != nil {
+						return errors.Wrap(err, "failed to conduct the custom cleanup phase")
+					}
 				}
-				pv.Set(perf.Metric{
-					Name:      hist.Name,
-					Unit:      unit,
-					Direction: direction,
-				}, value)
-			}
+				return nil
+			}, histogramNames...),
+				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
+					for _, hist := range hists {
+						value, err := hist.Mean()
+						if err != nil {
+							return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+						}
+						testing.ContextLog(ctx, hist.Name, " = ", value)
+						name := hist.Name
+						unit := "ms"
+						direction := perf.SmallerIsBetter
+						if hist.Name == dividerSmoothnessName {
+							name = name + "." + testCase
+							unit = "percent"
+							direction = perf.BiggerIsBetter
+						}
+						pv.Append(perf.Metric{
+							Name:      name,
+							Unit:      unit,
+							Direction: direction,
+						}, value)
+					}
+					return nil
+				})
 		})
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

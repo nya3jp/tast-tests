@@ -11,10 +11,10 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -48,7 +48,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "normal_drag",
 			Val: dragTest{
@@ -314,7 +314,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 	const histName = "Ash.Overview.WindowDrag.PresentationTime.TabletMode"
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	drag := s.Param().(dragTest)
 
 	currentWindows := 0
@@ -338,41 +338,34 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Run the drag and collect histogram.
-		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+		suffix := fmt.Sprintf("%dwindows", currentWindows)
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
 			if err := drag.df(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to run drag")
 			}
-			return nil
-		}, histName)
-		if err != nil {
-			s.Fatalf("Failed to drag or get histogram %v: %v", histName, err)
-		}
 
-		// Record the latency metric.
-		latency, err := histograms[0].Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
-		}
-		metricName := fmt.Sprintf("%s.%s.%dwindows", histograms[0].Name, drag.l, currentWindows)
-		pv.Set(perf.Metric{
-			Name:      metricName,
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, latency)
-		s.Logf("%s=%f", metricName, latency)
-
-		// Clean up.
-		switch drag.dt {
-		case dragTypeSnap:
-			if err := clearSnap(ctx, tsw, stw, tconn); err != nil {
-				s.Fatal("Failed to clearSnap: ", err)
+			// Clean up.
+			switch drag.dt {
+			case dragTypeSnap:
+				if err := clearSnap(ctx, tsw, stw, tconn); err != nil {
+					s.Fatal("Failed to clearSnap: ", err)
+				}
+			case dragTypeClose:
+				conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1)
+				if err != nil {
+					return errors.Wrap(err, "failed to create windows")
+				}
+				conns.Close()
+				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+					return errors.Wrap(err, "failed to re-enter into overview mode")
+				}
 			}
-		case dragTypeClose:
-			currentWindows--
-		}
+			return nil
+		}, histName),
+			perfutil.StoreAll(perf.SmallerIsBetter, "ms", drag.l+"."+suffix))
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
