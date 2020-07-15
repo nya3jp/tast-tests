@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a426dd72_b5dd0505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-15T00:49:26Z",
+      "side": 1,
+      "message": "Need to wait for crrev.com/c/2291513 uprev",
+      "revId": "87f3dd633d2d1fc70348c0acbdff5433a444efd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
