@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "574443a4_c24258cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-15T18:11:08Z",
+      "side": 1,
+      "message": "+ cros-wifi-reviewers, to get an ACK on the approach in this series",
+      "revId": "4a0bd5a46ee1186a2adf0f3ca34755d5be21757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
