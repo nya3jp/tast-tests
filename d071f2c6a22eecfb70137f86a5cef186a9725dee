@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9e3642e_2cb9dd3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T18:19:53Z",
+      "side": 1,
+      "message": "Last patch (using only 50 4K blocks) did not work, as the underlying files becomes too small to hold a filesystem. \nI could test on every other block, but it is not clean, as we may not test edge cases properly.\n\nReverting to previous patch (8 minutes timeout, test lasting ~5 minutes on VM, faster on DUT).\n  ",
+      "revId": "d071f2c6a22eecfb70137f86a5cef186a9725dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
