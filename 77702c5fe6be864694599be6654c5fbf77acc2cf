@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9096040_5aac453f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-15T21:18:40Z",
+      "side": 1,
+      "message": "I\u0027m holding off the review on this CL because the one directly below it in the stack could affect this CL. I\u0027ll start the review once the one directly below it gets +2\u0027ed, but still feel free to review it if you don\u0027t mind the risk of unstable CL.",
+      "revId": "77702c5fe6be864694599be6654c5fbf77acc2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
