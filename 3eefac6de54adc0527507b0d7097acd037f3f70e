@@ -16,6 +16,69 @@
       "revId": "3eefac6de54adc0527507b0d7097acd037f3f70e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45e140b6_83512aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:18:17Z",
+      "side": 1,
+      "message": "tast-wise: +2 % nit\n\nplease wait for Leo Lai\u0027s approval as well.",
+      "revId": "3eefac6de54adc0527507b0d7097acd037f3f70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a181ae_2600e785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault_tpm2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:18:17Z",
+      "side": 1,
+      "message": "huge nit: the ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 60,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "3eefac6de54adc0527507b0d7097acd037f3f70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9f60df_23d698f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault_tpm2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:18:17Z",
+      "side": 1,
+      "message": "huge nit: are ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "3eefac6de54adc0527507b0d7097acd037f3f70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
