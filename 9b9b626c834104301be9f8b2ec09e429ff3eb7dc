@@ -103,6 +103,30 @@
       "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118d7cd3_526f4992",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-15T23:19:46Z",
+      "side": 1,
+      "message": "Eh, I guess that\u0027s a fine reason. The commit message made it look like an oversight though. Also, SimpleConnect is still the bulk of our wifi.* Tast tests, so it seemed like the best target for a win.\n\nBut it\u0027s fine to wait too.\n\nSooner or later, I expect we\u0027ll have enough refactors/changes that are necessarily going to change our \"stable\" tests, and we\u0027ll just have to live with it (and revert judiciously, if things really do regress). But I suppose if you have an obvious way to do a phased approach, that\u0027s OK too.",
+      "parentUuid": "97c000bb_fdd6df03",
+      "range": {
+        "startLine": 525,
+        "startChar": 14,
+        "endLine": 525,
+        "endChar": 33
+      },
+      "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
