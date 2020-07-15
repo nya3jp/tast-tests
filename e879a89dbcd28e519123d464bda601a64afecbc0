@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "f0ac1019_b7cf4b1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T08:47:05Z",
+      "side": 1,
+      "message": "Sounds nice. It will be useful for some waiting case like this and I guess wifi.CSA might be suitable too. But I\u0027m not sure if it is possible to obtain both interface on the same object. (one concern: channel might block sender) If not, probably we can have the caller to spawn goroutine to buffer events. Or have a new object iw.EventWatcher and let EventLogger depend on it.\n\nProbably we can discuss the design and have another CL for this change.",
+      "parentUuid": "3f4615b9_807a0484",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d006fb11_293ae1f4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
@@ -304,6 +328,30 @@
       "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d47226_b8125638",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T08:47:05Z",
+      "side": 1,
+      "message": "Then, this looks good to me for now. Might also worth investigating the behavior in current wpa_supplicant. (e.g. does it always send the scan or conditionally or ...)",
+      "parentUuid": "ec757729_6fe7d04e",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 84
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
