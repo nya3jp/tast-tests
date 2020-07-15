@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe54c5b_4b48cd43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/check_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-15T22:40:02Z",
+      "side": 1,
+      "message": "drive-by: for new tests, can you support arcvm too?",
+      "revId": "6a82915c06733af399a225937816950d1cd16064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
