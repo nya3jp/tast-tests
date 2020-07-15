@@ -21,4 +21,7 @@ const (
 	ChangedPasswordLabel = "changed"
 	PinLabel             = "pin"
 	IncorrectPassword    = "ImJustGuessing~"
+
+	TestFileName1   = "TESTFILE1"
+	TestFileContent = "TEST_CONTENT"
 )
