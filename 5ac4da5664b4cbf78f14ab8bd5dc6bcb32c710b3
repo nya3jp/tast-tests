@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69432555_eba4033b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "all non-trivial funcs should have docstrings",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54279315_6a42f620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "huge nit: append period",
+      "range": {
+        "startLine": 168,
+        "startChar": 32,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334821af_3d1b5ec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "You are waiting for shelf animation to complete [good]\nBut after the animation is complete it might be possible that Android state is not \"ready\" yet.\n\nIn my experience is good to put these kind of \"if state !\u003d wanted\" inside a poll.  in your case, something like this:\n\n  testing.Poll(....) {\n    winInfoShelfHidden :\u003d ash.GetARCApp(...)\n    if X \u003c Y\n      return err\n    return nil\n  }",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77719267_3a8dc3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "ditto above: \n\nsafer to wrap this in a Poll",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "725b7303_d9ab244f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "huge nit: here and below\n\nend sentences with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 66,
+        "startChar": 35,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e37b10_67045803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 82,
+        "startChar": 34,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c498b05_c84fe103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-15T22:28:34Z",
+      "side": 1,
+      "message": "nit:\n\n  return wm.TabletShelfHideShowHelper(....)",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 10
+      },
+      "revId": "5ac4da5664b4cbf78f14ab8bd5dc6bcb32c710b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
