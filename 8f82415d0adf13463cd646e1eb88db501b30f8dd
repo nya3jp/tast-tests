@@ -39,6 +39,24 @@
       "revId": "8f82415d0adf13463cd646e1eb88db501b30f8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99f5ece_cc88e138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-15T05:21:59Z",
+      "side": 0,
+      "message": "You are right. I will get rid of journald binary after removing the dependency on journald and journal logs.",
+      "parentUuid": "f352a490_b4f40f0f",
+      "revId": "8f82415d0adf13463cd646e1eb88db501b30f8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
