@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -1201,6 +1202,12 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 func (c *Chrome) logIn(ctx context.Context) error {
 	switch c.loginMode {
 	case fakeLogin, gaiaLogin:
+		// GAIA login requires Internet connectivity.
+		if c.loginMode == gaiaLogin {
+			if err := shill.WaitForOnline(ctx); err != nil {
+				return err
+			}
+		}
 		if err := c.loginUser(ctx); err != nil {
 			return err
 		}
