@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7dfa60eb_b5ba1a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-15T23:46:40Z",
+      "side": 1,
+      "message": "Resolved around #515",
+      "parentUuid": "f286cd3d_45a78af8",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee168b9d_965ad983",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "fefeb707_77225544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-15T23:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee168b9d_965ad983",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 88
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b83bc80_be77ff66",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -85,6 +133,30 @@
       "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d42efd_8d7d44a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-15T23:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b83bc80_be77ff66",
+      "range": {
+        "startLine": 1093,
+        "startChar": 5,
+        "endLine": 1093,
+        "endChar": 24
+      },
+      "revId": "2c2ee6acc9c07af14682146ce9419112087bbc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
