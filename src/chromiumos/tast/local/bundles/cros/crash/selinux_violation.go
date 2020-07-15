@@ -26,29 +26,15 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"selinux"},
-		// TODO(https://crbug.com/1072306, b/155009503): Remove _unstable/_stable deps when bug is resolved
-		// and test is stable on 5.x kernels.
 		Params: []testing.Param{{
 			Name:              "real_consent",
-			ExtraSoftwareDeps: []string{"chrome", "metrics_consent", "crash_selinux_stable"},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 			ExtraAttr:         []string{"informational"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
 		}, {
-			Name:              "real_consent_unstable",
-			ExtraSoftwareDeps: []string{"chrome", "metrics_consent", "crash_selinux_unstable"},
-			ExtraAttr:         []string{"informational"},
-			Pre:               crash.ChromePreWithVerboseConsent(),
-			Val:               crash.RealConsent,
-		}, {
-			Name:              "mock_consent",
-			Val:               crash.MockConsent,
-			ExtraSoftwareDeps: []string{"crash_selinux_stable"},
-		}, {
-			Name:              "mock_consent_unstable",
-			Val:               crash.MockConsent,
-			ExtraSoftwareDeps: []string{"crash_selinux_unstable"},
-			ExtraAttr:         []string{"informational"},
+			Name: "mock_consent",
+			Val:  crash.MockConsent,
 		}},
 	})
 }
