@@ -16,6 +16,69 @@
       "revId": "de6b84b0af92c04a4fd6e06f6e180aec602ca4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "668fd994_de9724a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-15T16:32:35Z",
+      "side": 1,
+      "message": "LGTM with some suggestions, thanks!",
+      "revId": "de6b84b0af92c04a4fd6e06f6e180aec602ca4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1414d396_032970ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-15T16:32:35Z",
+      "side": 1,
+      "message": "nit: Since recently, this can be simplified  to \n\n  video: { width: 1920, height: 1080}\n\nas I was told by the WebRTC folks during some review or another and\ncan be seen at \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js;l\u003d9",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "de6b84b0af92c04a4fd6e06f6e180aec602ca4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fde9b0c_2d0d103d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-15T16:32:35Z",
+      "side": 1,
+      "message": "nit: These two guys are now legacy  :-) so we can take this\nchance to remove this options dictionary altogether.\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer",
+      "range": {
+        "startLine": 119,
+        "startChar": 41,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "de6b84b0af92c04a4fd6e06f6e180aec602ca4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
