@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "887a9b9e_9172a28f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-15T22:08:58Z",
+      "side": 1,
+      "message": "Yes.\n\nhttps://golang.org/doc/effective_go.html#commentary\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "b64ec413_58869a4c",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "178247588e56bf4cf6b92e0c12bdf8eaa6ae6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd4b33d_7ec57208",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 7
