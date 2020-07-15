@@ -45,13 +45,10 @@ func SShot(ctx context.Context, s *testing.State, cr *chrome.Chrome, capture fun
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	if err := tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-  chrome.windows.getLastFocused({}, (window) => {
-    chrome.windows.update(window.id, {state: 'maximized'}, resolve);
-  });
-})
-`, nil); err != nil {
+	if err := tconn.Call(ctx, nil, `async() => {
+		  const window = await tast.promisify(chrome.windows.getLastFocused)({});
+		  await tast.promisify(chrome.windows.update)(window.id, {state: 'maximized'});
+		}`); err != nil {
 		s.Fatal("Maximizing the window failed: ", err)
 	}
 
