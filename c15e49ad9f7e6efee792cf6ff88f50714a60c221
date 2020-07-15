@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf40d5fc_c05b6bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-15T09:18:21Z",
+      "side": 1,
+      "message": "Sorry for delay. I think we can try promoting the test now...\n",
+      "revId": "c15e49ad9f7e6efee792cf6ff88f50714a60c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
