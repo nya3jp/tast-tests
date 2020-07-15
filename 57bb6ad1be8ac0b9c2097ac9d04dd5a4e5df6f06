@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "483523b4_1ea13b39",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-15T22:01:16Z",
+      "side": 1,
+      "message": "The disk test needs more space and more time to run. The reviewers suggested to create a new one. No plans as of now to share but can in the future ?",
+      "parentUuid": "a88ffc2d_dc99aec4",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d035737_ea508de1",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "874f39a0_3747a7a6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-15T22:01:16Z",
+      "side": 1,
+      "message": "I wanted lesser disk space and more timeout time, let me talk to crosbolt first and decide on this.",
+      "parentUuid": "7d035737_ea508de1",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8e49afe_65f1c6e8",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2020-07-15T07:35:27Z",
       "side": 1,
       "message": "preparation for 1 hour is surprising to me.\nIs it need really long like this? If so, it may be a part of test itself...?\nCan it be shorter, like 10mins like above?\nIf you really need this, I\u0027d recommend to contact to crosbolt team, too, before landing, to make sure the load in crosbolt.",
+      "range": {
+        "startLine": 208,
+        "startChar": 36,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6a4e62_5aa49437",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Oh, I was seeing failures due to \"deadline exceeded\" and hence decided to increase the timeout. Ack on contacting crosbolt.",
+      "parentUuid": "a8e49afe_65f1c6e8",
       "range": {
         "startLine": 208,
         "startChar": 36,
