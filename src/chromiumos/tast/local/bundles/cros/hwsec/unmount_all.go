@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func checkBothUnmounted(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func checkBothUnmounted(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, cmdRunner hwsec.CmdRunner) error {
 	// Check with IsMounted().
 	if mounted, err := utility.IsMounted(ctx); err != nil {
 		return errors.Wrap(err, "failed to check is mounted")
@@ -36,14 +36,14 @@ func checkBothUnmounted(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 	}
 
 	// Check with test files for first user.
-	if exist, err := util.DoesUserTestFileExist(ctx, util.FirstUsername, util.TestFileName1); err != nil {
+	if exist, err := hwsec.DoesUserTestFileExist(ctx, utility, cmdRunner, util.FirstUsername, util.TestFileName1); err != nil {
 		return errors.Wrap(err, "failed to check if first user's test file exist")
 	} else if exist {
 		return errors.New("first user's test file exists")
 	}
 
 	// Check with test files for second user.
-	if exist, err := util.DoesUserTestFileExist(ctx, util.SecondUsername, util.TestFileName1); err != nil {
+	if exist, err := hwsec.DoesUserTestFileExist(ctx, utility, cmdRunner, util.SecondUsername, util.TestFileName1); err != nil {
 		return errors.Wrap(err, "failed to check if second user's test file exist")
 	} else if exist {
 		return errors.New("second user's test file exists")
@@ -103,10 +103,10 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	}()
 
 	// Write test files to those 2 users' directory.
-	if err := util.WriteUserTestContent(ctx, util.FirstUsername, util.TestFileName1, []byte(util.TestFileContent)); err != nil {
+	if err := hwsec.WriteUserTestContent(ctx, utility, cmdRunner, util.FirstUsername, util.TestFileName1, util.TestFileContent); err != nil {
 		s.Fatal("Failed to write first user's test content: ", err)
 	}
-	if err := util.WriteUserTestContent(ctx, util.SecondUsername, util.TestFileName1, []byte(util.TestFileContent)); err != nil {
+	if err := hwsec.WriteUserTestContent(ctx, utility, cmdRunner, util.SecondUsername, util.TestFileName1, util.TestFileContent); err != nil {
 		s.Fatal("Failed to write second user's test content: ", err)
 	}
 
@@ -116,7 +116,7 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if unmounted.
-	if err := checkBothUnmounted(ctx, utility); err != nil {
+	if err := checkBothUnmounted(ctx, utility, cmdRunner); err != nil {
 		s.Fatal("Still mounted: ", err)
 	}
 
@@ -129,12 +129,12 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Both files should be there, right?
-	if exist, err := util.DoesUserTestFileExist(ctx, util.FirstUsername, util.TestFileName1); err != nil {
+	if exist, err := hwsec.DoesUserTestFileExist(ctx, utility, cmdRunner, util.FirstUsername, util.TestFileName1); err != nil {
 		s.Fatal("Failed to check if first user's test file exist: ", err)
 	} else if !exist {
 		s.Fatal("First user's test file disappeared")
 	}
-	if exist, err := util.DoesUserTestFileExist(ctx, util.SecondUsername, util.TestFileName1); err != nil {
+	if exist, err := hwsec.DoesUserTestFileExist(ctx, utility, cmdRunner, util.SecondUsername, util.TestFileName1); err != nil {
 		s.Fatal("Failed to check if second user's test file exist: ", err)
 	} else if !exist {
 		s.Fatal("Second user's test file disappeared")
@@ -146,7 +146,7 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if unmounted.
-	if err := checkBothUnmounted(ctx, utility); err != nil {
+	if err := checkBothUnmounted(ctx, utility, cmdRunner); err != nil {
 		s.Fatal("Still mounted: ", err)
 	}
 }
