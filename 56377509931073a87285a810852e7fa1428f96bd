@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "5fdb8514_f24b79e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1355cf_fdc14974",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 17
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d71ec962_1d81ca57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -99,6 +123,30 @@
     },
     {
       "key": {
+        "uuid": "87f3ecba_31135b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:15:18Z",
+      "side": 1,
+      "message": "Thanks for the comment. That brings me up another question; what would be the condition to trigger Ash.SplitViewResize.AnimationSmoothness.DividerAnimation?\n\nIt looks like the moving animation of the divider to snap into a position, am I correct?  Given that assumption, I changed the code a lot; instead of finishing with maximum window, it returns back to the original position (so it moves left, moves right, and then moves back to the center). In tablet-mode, it is not exactly the original position but a bit shifted to left, so that the divider should animate.\n\nThis is actually better for me, since that way it only has to repeat the drag action but not the preparation steps -- I can save the time for repetition.\n\nUploaded the new patchset, PTAL.\n(by the way -- what is the width to use for divider animation?  I used screen width / 20 and verified it\u0027s working on nocturne)",
+      "parentUuid": "d71ec962_1d81ca57",
+      "range": {
+        "startLine": 131,
+        "startChar": 38,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a6c9fc6_0e789dd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -119,6 +167,30 @@
       "revId": "56377509931073a87285a810852e7fa1428f96bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42cc43e8_f4f232a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:15:18Z",
+      "side": 1,
+      "message": "I updated the code a bit after reconsidering the repetition, and it does not have to delete the desk, so now it is fine. Thanks for catching.",
+      "parentUuid": "0a6c9fc6_0e789dd7",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 33
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +252,24 @@
     },
     {
       "key": {
+        "uuid": "6df4ad30_6da1ee25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:15:18Z",
+      "side": 1,
+      "message": "hm, I thought it would be useful but no need to append. Removed.",
+      "parentUuid": "243a0a9b_bf1b5e14",
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cca1ce5_4026d4dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
         "patchSetId": 1
@@ -200,6 +290,30 @@
       "revId": "56377509931073a87285a810852e7fa1428f96bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b851883_17a394d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-15T23:15:18Z",
+      "side": 1,
+      "message": "Thanks. Done by introducing Right(), Bottom(), CenterX(), and CenterY().",
+      "parentUuid": "9cca1ce5_4026d4dc",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 81
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
