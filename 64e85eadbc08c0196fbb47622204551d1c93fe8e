@@ -39,6 +39,30 @@
       "revId": "64e85eadbc08c0196fbb47622204551d1c93fe8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84559dbb_7db49319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-15T01:22:55Z",
+      "side": 1,
+      "message": "Output() returns a []byte",
+      "parentUuid": "3b25d1cc_6d20c4e2",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "64e85eadbc08c0196fbb47622204551d1c93fe8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
