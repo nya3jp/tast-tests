@@ -79,6 +79,30 @@
       "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c000bb_fdd6df03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T01:49:05Z",
+      "side": 1,
+      "message": "The reason I drop the change in SimpleConnect is that it already has sub-tests moved into wifi_matfunc. (i.e. wificell_unstable removed) So, I want to make sure precondition does not have big downside before applying to the stable tests. Or do you think we can have it a try in this cl and if there\u0027s really something bad, we can then remove it?",
+      "parentUuid": "cd1ac217_96ff0d9c",
+      "range": {
+        "startLine": 525,
+        "startChar": 14,
+        "endLine": 525,
+        "endChar": 33
+      },
+      "revId": "9b9b626c834104301be9f8b2ec09e429ff3eb7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
