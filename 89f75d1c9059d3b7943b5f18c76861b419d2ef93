@@ -39,6 +39,30 @@
       "revId": "89f75d1c9059d3b7943b5f18c76861b419d2ef93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b608039b_ebd8f1c7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-15T06:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91b813aa_f7f5e94a",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "89f75d1c9059d3b7943b5f18c76861b419d2ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
