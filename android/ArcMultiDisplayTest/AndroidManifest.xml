@@ -32,6 +32,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SizeCompatHandlingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:label="NonResizeablePortraitActivity"
+            android:configChanges="density|fontScale|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <provider android:authorities="org.chromium.arc.testapp.multidisplay"
                   android:name=".TestApiProvider"
                   android:exported="true">

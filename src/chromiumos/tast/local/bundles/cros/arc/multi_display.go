@@ -668,6 +668,7 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 			orientation:        true,
 		}}},
 		{dispPkg, activityName(nonResizeable, handling), ash.WindowStateMaximized, shouldNotMove, nil},
+		{dispPkg, activityName(sizeCompat, handling), ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
 		for _, dir := range []struct {
 			// Display where drag operation starts.
