@@ -55,7 +55,6 @@ const (
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
-	resizeableConfigHandleActivity     = "org.chromium.arc.testapp.multidisplay.ResizeableActivity"
 )
 
 // Power state for displays.
@@ -639,12 +638,23 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, []configChangeEvent{{
 			handled: true,
 			density: true,
 		}}},
-		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, []configChangeEvent{{
 			handled:            true,
+			density:            true,
+			screenSize:         true,
+			smallestScreenSize: true,
+			orientation:        true,
+		}}},
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, []configChangeEvent{{
+			handled: false,
+			density: true,
+		}}},
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, []configChangeEvent{{
+			handled:            false,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
@@ -672,6 +682,10 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 				defer act.close(ctx, tconn)
 
 				if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+					return err
+				}
+
+				if err := deleteConfigurationChanges(ctx, a); err != nil {
 					return err
 				}
 
@@ -754,6 +768,51 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 
 // Helper functions.
 
+// See go/arc-wm-r-spec for details.
+type resizeability int
+
+const (
+	// Resizeable
+	resizeable resizeability = iota
+	// Non-resizeable
+	nonResizeable
+	// Non-resizeable + specifying orientation
+	sizeCompat
+)
+
+// Whether activity is expected to handle config changes, or it's going to relaunch.
+type configChangeHandling int
+
+const (
+	handling configChangeHandling = iota
+	relaunching
+)
+
+// activityName generates Activity name based on its properties.
+func activityName(r resizeability, c configChangeHandling) string {
+	var rs, cs string
+
+	if r == resizeable {
+		rs = "Resizeable"
+	} else if r == nonResizeable {
+		rs = "NonResizeable"
+	} else if r == sizeCompat {
+		rs = "SizeCompat"
+	} else {
+		panic("not reached")
+	}
+
+	if c == handling {
+		cs = "Handling"
+	} else if c == relaunching {
+		cs = "Relaunching"
+	} else {
+		panic("not reached")
+	}
+
+	return fmt.Sprintf("%s.%s%sActivity", dispPkg, rs, cs)
+}
+
 // configChangeEvent is an entry of config change event.
 type configChangeEvent struct {
 	// True if config change is handled by Activity.
@@ -821,6 +880,11 @@ func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]con
 		result[actID] = append(result[actID], c)
 	}
 	return result, nil
+}
+
+// deleteConfigurationChanges deletes recorded config changes.
+func deleteConfigurationChanges(ctx context.Context, a *arc.ARC) error {
+	return a.Command(ctx, "content", "delete", "--uri", configChangesURI).Run(testexec.DumpLogOnError)
 }
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
