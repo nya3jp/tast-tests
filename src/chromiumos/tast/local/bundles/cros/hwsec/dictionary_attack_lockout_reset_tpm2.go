@@ -14,10 +14,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// NOTE: This test is largely similar to hwsec.DictionaryAttackLockoutResetTPM1 (a remote test), if change is made to one, it is likely that the other have to be changed as well.
+// The referred test is specifically for TPMv1.2, while this test is for TPMv2.0.
+// Both versions of TPM is incompatible with each other and they way we handle reboot for the 2 versions are different and thus the need for 2 versions of the same test.
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DictionaryAttackLockoutReset,
-		Desc: "Verifies that dictionary attack counter functions correctly and can be reset",
+		Func: DictionaryAttackLockoutResetTPM2,
+		Desc: "Verifies that for TPMv2.0 devices, dictionary attack counter functions correctly and can be reset",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
@@ -58,8 +62,8 @@ func getDAInfo(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinar
 	return infoFromCryptohome, nil
 }
 
-// DictionaryAttackLockoutReset checks that get dictionary attack info and reset dictionary attack lockout works as expected.
-func DictionaryAttackLockoutReset(ctx context.Context, s *testing.State) {
+// DictionaryAttackLockoutResetTPM2 checks that get dictionary attack info and reset dictionary attack lockout works as expected.
+func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
