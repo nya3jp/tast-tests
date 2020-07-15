@@ -33,6 +33,24 @@
       "revId": "ddf6b50ebc0d856166320c7ffb824b48c477f941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429bab98_2b259e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-15T15:15:40Z",
+      "side": 1,
+      "message": "Good point and nice trick. Thanks for the snippet.\n\nDone.",
+      "parentUuid": "aae89eb3_8b63faf2",
+      "revId": "ddf6b50ebc0d856166320c7ffb824b48c477f941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
