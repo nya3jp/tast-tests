@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b40b04c2_05837ebf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "762f46e1_52be1719",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5578126_b9f375ec",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c700444_53a84cbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5578126_b9f375ec",
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "61533317_e5ee0493",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df2deb7_13a8a792",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cccaf2b4_00a746f0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "3f4615b9_807a0484",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "Done with polling a connected event. BTW, to avoid polling the events, do you think adding some signal-like util to EventLogger is good? For example, we may simply keep calling el.Wait(ctx) util it returns a connected event here.",
+      "parentUuid": "cccaf2b4_00a746f0",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d006fb11_293ae1f4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
@@ -99,6 +189,24 @@
       "writtenOn": "2020-07-13T08:03:14Z",
       "side": 1,
       "message": "Shall we poll for disconnect and reassociate event together as some drivers support direct reassociation?\nhttps://crbug.com/990012#c6",
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2058dd1c_c2741f04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "I guess there is no reassociate event in this case? According to this comment, iw prints the connected event right after the scan event.\nhttps://crbug.com/990012#c4",
+      "parentUuid": "d006fb11_293ae1f4",
       "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "7dc96f5d_6534a79e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "Added a gRPC command: GetCurrentTime.",
+      "parentUuid": "419b8193_8f2bf4ad",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 62
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f06cec0c_f5894d12",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
@@ -139,6 +271,30 @@
       "writtenOn": "2020-07-13T05:53:16Z",
       "side": 1,
       "message": "This is added in crrev.com/c/250840 which says the behavior is available after wpa_supplicant-2.3. I guess we don\u0027t have any model using wpa_supplicant that old, so probably we can consider dropping the code for the old behavior if there\u0027s really no scan event expected?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 84
+      },
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec757729_6fe7d04e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-15T08:15:46Z",
+      "side": 1,
+      "message": "I can still get the scan event before disconnect event on my DUT though wpa_supplicant-2.8 is installed, so let\u0027s leave the code for the old behavior here.",
+      "parentUuid": "f06cec0c_f5894d12",
       "range": {
         "startLine": 124,
         "startChar": 0,
