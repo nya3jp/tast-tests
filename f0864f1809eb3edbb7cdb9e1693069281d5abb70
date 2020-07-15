@@ -46,6 +46,30 @@
       "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5afa94e_416cd7c5",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-07-15T03:19:08Z",
+      "side": 0,
+      "message": "hm, looks like what we should do when err !\u003d nil is to have additional check:\n\n```\nif error message is \"failed to find window\" \u0026\u0026 args.ExpectStoppedOnTeardown {\n  return nil;\n} else {\n  return err;\n}\n```\n\n+nya is it acceptable to differentiate error by their message?",
+      "parentUuid": "4d3daac3_06075ba2",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
