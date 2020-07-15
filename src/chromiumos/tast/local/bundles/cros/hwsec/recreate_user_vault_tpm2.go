@@ -16,10 +16,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// NOTE: This test is largely similar to hwsec.RecreateUserVaultTPM1 (a remote test), if change is made to one,
+// it is likely that the other have to be changed as well.
+// The referred test is specifically for TPMv1.2, while this test is for TPMv2.0.
+// Both versions of TPM are incompatible with each other and the way we handle reboot for the 2 versions are
+// different and thus the need for 2 versions of the same test.
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RecreateUserVault,
-		Desc: "Verifies that cryptohome recreates user's vault directory when the TPM is re-owned",
+		Func: RecreateUserVaultTPM2,
+		Desc: "Verifies that for TPMv2.0 devices, cryptohome recreates user's vault directory when the TPM is re-owned",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"garryxiao@chromium.org",
@@ -30,10 +36,10 @@ func init() {
 	})
 }
 
-// RecreateUserVault is ported from the autotest test platform_CryptohomeTPMReOwn and renamed to
+// RecreateUserVaultTPM2 is ported from the autotest test platform_CryptohomeTPMReOwn and renamed to
 // reflects what's being tested. It avoids reboots in the original test by using the soft-clearing
 // TPM utils and restarting TPM-related daemons.
-func RecreateUserVault(ctx context.Context, s *testing.State) {
+func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
