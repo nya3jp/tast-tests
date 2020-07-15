@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6f07053_95f5ff88",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-15T15:29:38Z",
+      "side": 1,
+      "message": "nit/YMMV: this name seems a little redundant to me, but I\u0027m not sure that something like \"breakChan\" makes it better...",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "f913fc54858296ba361d2c0f2fea6b6dea657620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81a657b_73e97960",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-15T15:29:38Z",
+      "side": 1,
+      "message": "might also want to assert somewhere at the top of the function that quitFunc is of len \u003c\u003d 1",
+      "revId": "f913fc54858296ba361d2c0f2fea6b6dea657620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
