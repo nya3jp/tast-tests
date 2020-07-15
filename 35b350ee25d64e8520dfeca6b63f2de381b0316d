@@ -16,6 +16,40 @@
       "revId": "35b350ee25d64e8520dfeca6b63f2de381b0316d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6867ecc_076752f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T10:09:39Z",
+      "side": 1,
+      "message": "LGTM with one nit.",
+      "revId": "35b350ee25d64e8520dfeca6b63f2de381b0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80e9e3be_86be9e2c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-15T10:09:39Z",
+      "side": 1,
+      "message": "nit: Not sure if it might be simpler to have the gRPC return (now.Unix(), now.Nanosecond()) and construct time.Time with time.Unix here.",
+      "revId": "35b350ee25d64e8520dfeca6b63f2de381b0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
