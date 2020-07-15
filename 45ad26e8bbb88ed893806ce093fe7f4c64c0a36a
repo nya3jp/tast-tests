@@ -104,6 +104,24 @@
       "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44eaf073_35bfc245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-15T00:54:51Z",
+      "side": 1,
+      "message": "We have 5 boards already that don\u0027t have the minimum 3GB disk space\n\nI\u0027m not sure how many boards there are between 3 and 8GB free, but I suspect many of the octopus and some of the grunt boards fall into this category.\n\nPlease just make this change for the diskio test itself, feel free to create a new precondition if required.",
+      "parentUuid": "e0d0e496_0493ab1c",
+      "revId": "45ad26e8bbb88ed893806ce093fe7f4c64c0a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
