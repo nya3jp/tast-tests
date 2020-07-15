@@ -16,6 +16,29 @@
       "revId": "bd5424d3a83144ea09fb1313447b6a5c918f1674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eb1079f_09d69cd5",
+        "filename": "src/chromiumos/tast/common/hwsec/home_files_helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-07-15T21:28:27Z",
+      "side": 1,
+      "message": "could we have issues here if the content string has quotes in it? Should we escape it?",
+      "range": {
+        "startLine": 34,
+        "startChar": 66,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "bd5424d3a83144ea09fb1313447b6a5c918f1674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
