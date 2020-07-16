@@ -6,6 +6,7 @@ package filemanager
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path"
 	"time"
@@ -42,11 +43,10 @@ func init() {
 func DrivefsUI(ctx context.Context, s *testing.State) {
 	mountPath := s.PreValue().(drivefs.PreData).MountPath
 	tconn := s.PreValue().(drivefs.PreData).TestAPIConn
+	driveWeb := s.PreValue().(drivefs.PreData).DriveWeb
 
-	const (
-		filesAppUITimeout = 15 * time.Second
-		testFileName      = "drivefs"
-	)
+	const filesAppUITimeout = 15 * time.Second
+	testFileName := fmt.Sprintf("drivefs-%d", time.Now().Unix())
 
 	// Create a test file inside Drive.
 	drivefsRoot := path.Join(mountPath, "root")
@@ -57,6 +57,8 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 	testFile.Close()
 	// Don't delete the test file after the test as there may not be enough time
 	// after the test for the deletion to be synced to Drive.
+
+	driveWeb.RefreshFileList(ctx)
 
 	// Launch Files App and check that Drive is accessible.
 	filesApp, err := filesapp.Launch(ctx, tconn)
@@ -75,5 +77,10 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 	// Check for the test file created earlier.
 	if err := filesApp.WaitForFile(ctx, testFileName, filesAppUITimeout); err != nil {
 		s.Fatalf("Could not find test file %q in Drive: %v", testFileName, err)
+	}
+
+	// Make sure the file synced properly
+	if err := driveWeb.WaitForRecentFile(ctx, testFileName); err != nil {
+		s.Fatalf("Could not find test file %q in Drive Web UI: %v", testFileName, err)
 	}
 }
