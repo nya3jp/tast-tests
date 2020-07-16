@@ -56,6 +56,30 @@
       "revId": "56ec53d7cfc72afb873de6eb67b43a6db476d3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626b0517_8520dfcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-16T23:45:37Z",
+      "side": 1,
+      "message": "Ah, that\u0027s true. Moved the check above line 48.",
+      "parentUuid": "28f61c67_986bbac1",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "56ec53d7cfc72afb873de6eb67b43a6db476d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
