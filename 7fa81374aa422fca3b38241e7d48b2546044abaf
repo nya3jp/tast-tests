@@ -16,6 +16,23 @@
       "revId": "7fa81374aa422fca3b38241e7d48b2546044abaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b2abf0c_6432210d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-16T16:45:41Z",
+      "side": 1,
+      "message": "uprev-ed/LKGM updated. Confirmed with kukui/13351.0.0",
+      "revId": "7fa81374aa422fca3b38241e7d48b2546044abaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
