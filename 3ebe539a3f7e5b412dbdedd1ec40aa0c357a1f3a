@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ff3974_aad8a41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-16T05:17:46Z",
+      "side": 1,
+      "message": "changed GetFileListInHomeDir to GetFileList which returns a string of all the files / folders in the given path.",
+      "revId": "3ebe539a3f7e5b412dbdedd1ec40aa0c357a1f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
