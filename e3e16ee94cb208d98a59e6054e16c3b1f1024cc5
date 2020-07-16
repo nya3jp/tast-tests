@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0068f90_72884ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-16T08:31:49Z",
+      "side": 1,
+      "message": "Hi all, here is my idea of implementing EventWatcher which provides Wait() so we can prevent polling in tests like LinkMonitorFailure and CSA, and the API of EventLogger is not changed at all.\n\nHere are some concerns:\n1. Do we really need to reimplement EventLogger with EventWatcher? By reusing the unexported functions (parseEvent and detectEventType), the code would only grow a little bit than the current version, and the advantage is the lessened usages of go routines and channels.\n2. In the current implementation, EventWatcher drops all the received events right after Stop() is called. Do you think this behavior is acceptable? If not, we would need another slice to store the Events in EventWatcher, which is kind of wasting if we implement EventLogger with it.\n\nPlease let me know what you think, thanks.",
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
