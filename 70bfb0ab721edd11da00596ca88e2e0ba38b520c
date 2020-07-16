@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdddc158_f8cec752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T13:44:54Z",
+      "side": 1,
+      "message": "LGTM % final nit",
+      "revId": "70bfb0ab721edd11da00596ca88e2e0ba38b520c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2141973f_603cff17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T13:44:54Z",
+      "side": 1,
+      "message": "nit: got %t; want %t\", restricted, wantRestricted.\nAnd log the restriction string separately.",
+      "range": {
+        "startLine": 157,
+        "startChar": 65,
+        "endLine": 157,
+        "endChar": 109
+      },
+      "revId": "70bfb0ab721edd11da00596ca88e2e0ba38b520c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
