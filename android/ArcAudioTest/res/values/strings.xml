@@ -6,10 +6,12 @@
 <resources>
     <!--  Title of Main Activity [CHAR LIMIT=32] -->
     <string name="app_name">ArcAudioTest</string>
-    <!--  Title of  TestOutputActivity [CHAR LIMIT=32] -->
+    <!--  Title of TestOutputActivity [CHAR LIMIT=32] -->
     <string name="title_activity_test_output">Playback</string>
-    <!--  Title of  TestInputActivity [CHAR LIMIT=32] -->
+    <!--  Title of TestInputActivity [CHAR LIMIT=32] -->
     <string name="title_activity_test_input">Recording</string>
-    <!--  Title of  TestAECEffectActivity [CHAR LIMIT=32] -->
+    <!--  Title of TestAECEffectActivity [CHAR LIMIT=32] -->
     <string name="title_activity_test_aec">Recording With AEC</string>
+    <!--  Title of PlaybackPerformanceActivity [CHAR LIMIT=32] -->
+    <string name="title_activity_test_perf_playback">Playback Performance Testing</string>
 </resources>
