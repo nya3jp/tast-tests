@@ -29,6 +29,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Timeout:      3 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -96,7 +97,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
-		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
+		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {
 			return errors.Wrap(err, "failed to drag the end of point")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -111,7 +112,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to sleep")
 		}
 
-		if err := mouse.Drag(ctx, tconn, end, start, 2*time.Second); err != nil {
+		if err := mouse.Drag(ctx, tconn, end, start, time.Second); err != nil {
 			return errors.Wrap(err, "failed to drag back to the start point")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
