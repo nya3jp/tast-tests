@@ -203,6 +203,52 @@
     },
     {
       "key": {
+        "uuid": "a5b2f9b9_4f7f2ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-16T10:09:20Z",
+      "side": 1,
+      "message": "How about this?\n    files :\u003d []string{firmwareTimeFile}\n    files \u003d append(files, diskFiles...)\n    files \u003d append(files, uptimeFiles...)\n\n If so, I feel the code for these two lists are more symmetric.",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 9
+      },
+      "revId": "62890f573ad534f4fc2a40d594ccc7439685d401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b1157f_19baba9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-16T10:09:20Z",
+      "side": 1,
+      "message": "how about use /usr/bin/test -e ?",
+      "range": {
+        "startLine": 145,
+        "startChar": 29,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "62890f573ad534f4fc2a40d594ccc7439685d401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2621be16_0998577a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
         "patchSetId": 4
