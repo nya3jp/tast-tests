@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6f23d40_d8c41643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-16T22:36:45Z",
+      "side": 1,
+      "message": "Hmm, so I was playing with this again, and I\u0027m realizing this has some somewhat fundamental problems. It works for the case of deleting a known SSID that you\u0027re about to use, if you call it once -- but the recent framework adjustments make this loop over all possible storage of this Service (which could be more than one, with different SecurityClass), and if I imitate that, I have to loop and run this multiple times. But...it\u0027s not actually possible to Remove all services -- WiFi services that only exist because they\u0027re Visible in scans cannot be removed.\n\nThis is further highlighted now that we have removeWifiEntries() using the same code -- and if I adapt *that* to this same helper, I quickly run into an infinite loop, where I\u0027m trying to Remove() temporary scan-based Services.\n\nI could probably hack this some other way, but in the end, I think we *do* need the profile iteration code for some of this class, and so this refactor makes a little less sense.\n\nAbandoning now, unless someone wants to convince me this is still a good refactor.",
+      "revId": "42f9292983970a0721d6b96318e6e4b89cf03865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
