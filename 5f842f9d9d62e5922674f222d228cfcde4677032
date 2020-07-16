@@ -16,6 +16,23 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68c17106_6ddd99f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-16T01:20:44Z",
+      "side": 1,
+      "message": "it doesn\u0027t have to be a remote test if you can test the default owner auth. \nDon\u0027t worry about TPM readiness; TPM readiness is considered as an assumption.",
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
