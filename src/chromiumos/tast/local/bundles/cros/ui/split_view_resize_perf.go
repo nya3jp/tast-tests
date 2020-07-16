@@ -226,7 +226,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to open windows: ", err)
 			}
-			conns.Close()
+			if err := conns.Close(); err != nil {
+				s.Fatal("Failed to close the connections to the windows: ", err)
+			}
 			currentWindows = testCase.numWindows
 
 			// Enter overview, and then drag and snap a window to enter split view.
