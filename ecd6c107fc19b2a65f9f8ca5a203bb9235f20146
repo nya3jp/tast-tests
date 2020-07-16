@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be8c4184_d335c1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "7826c9f3_8c323630",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60add0c0_4d49279d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85c1130_63eb9d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "60add0c0_4d49279d",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "70949f77_75daf9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "15631f65_b12c52f2",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efa386b4_5a5f7857",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae20fc0_6f75de38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "efa386b4_5a5f7857",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4deef378_cb5414e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "95046e93_d1dbcc61",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ac0ebd3_990399b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112f6081_88609e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "9ac0ebd3_990399b3",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f8738c6e_9794a1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "5e554a36_35a61622",
+      "range": {
+        "startLine": 108,
+        "startChar": 14,
+        "endLine": 108,
+        "endChar": 56
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa3fd5cf_da0f9ac6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c61e28e_8a658681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "Code removed.",
+      "parentUuid": "aa3fd5cf_da0f9ac6",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "ecd6c107fc19b2a65f9f8ca5a203bb9235f20146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

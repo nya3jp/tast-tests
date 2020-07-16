@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "2fbd23ea_9b0de479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "I thought you mean I should delete the comment, as it is trivial. What is the expected resolution?",
+      "parentUuid": "551d3164_70f4fff8",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e7f2b1d_b71de6f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 3
@@ -488,6 +512,30 @@
       "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad42105e_0ea5b252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T12:08:32Z",
+      "side": 1,
+      "message": "I used it in patch set 4, but it had no effect on the error msg-es, so I deleted it all in patch set 5.\nWhole code are is removed in patch set 6.",
+      "parentUuid": "b432676e_ecb88a96",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "db5d258860964dddc4eefd54498400b30dca8b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
