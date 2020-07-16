@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1eb1960e_48146a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-16T09:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ddaeac6_a44ba0b2",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25e43897_af77bbff",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
         "patchSetId": 5
@@ -47,6 +65,24 @@
       "writtenOn": "2020-07-16T07:47:34Z",
       "side": 1,
       "message": "As all WiFi tests are in the same package, we might get conflict on the common constant name. Do you think it might be too verbose to have some prefix for them?\n\n(it is also possible for utility function names to collide but I guess it\u0027s usually longer and less probable)",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29395d76_ba1c8842",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-16T09:09:40Z",
+      "side": 1,
+      "message": "Adding prefix SGTM though, do you think placing all the constants and functions in ProfileGUID() is good? Another benefit is that some variables like tf and ssid can be captured directly, but it seems a little bit messy...",
+      "parentUuid": "25e43897_af77bbff",
       "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "4197cf5d_91e92c6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-16T09:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a07d6e5_9e58e7f3",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45286097_c81d5c5f",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 5
@@ -96,6 +156,30 @@
       "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c86408_78b7efea",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-16T09:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45286097_c81d5c5f",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
