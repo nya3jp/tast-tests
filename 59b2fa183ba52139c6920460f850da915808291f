@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4b35fe8_d51b3054",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-16T22:41:13Z",
+      "side": 1,
+      "message": "Will you be adding additional steps to this test?  Currently the name doesn\u0027t seem to match what it does.",
+      "revId": "59b2fa183ba52139c6920460f850da915808291f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100fe810_ef7776e2",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-16T22:41:13Z",
+      "side": 1,
+      "message": "nit, the current autotest code is more lax and returns false if a 1 is not detected, check to see that being more strict here won\u0027t be a problem.  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/autotest/files/client/cros/faft/rpc_functions.py;l\u003d875?q\u003dfw_vboot2\u0026ss\u003dchromiumos",
+      "revId": "59b2fa183ba52139c6920460f850da915808291f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
