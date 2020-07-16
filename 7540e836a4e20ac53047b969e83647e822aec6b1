@@ -50,6 +50,40 @@
       "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e35daa2_e2124566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-16T00:56:19Z",
+      "side": 1,
+      "message": "err contains the actual failure from the WriteFile. Can you include err in s.Error here and there?",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59933c4b_6f1dbf94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-16T00:56:19Z",
+      "side": 1,
+      "message": "Instead of writing 3 if statement, how about looping over a list and checking if info.Value contains any of those?",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
