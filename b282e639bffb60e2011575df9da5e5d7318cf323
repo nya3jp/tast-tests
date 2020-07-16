@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d494c5d7_8013e4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-07-16T23:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f767b73d_10b729f8",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 73
+      },
+      "revId": "b282e639bffb60e2011575df9da5e5d7318cf323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12a15971_781560d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 8
