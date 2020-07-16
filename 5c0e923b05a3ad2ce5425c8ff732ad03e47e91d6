@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47dec35b_3bf6b4cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-16T14:39:14Z",
+      "side": 1,
+      "message": "Increased the timeouts to 15 sec, as I got a timeout during testing.",
+      "revId": "5c0e923b05a3ad2ce5425c8ff732ad03e47e91d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
