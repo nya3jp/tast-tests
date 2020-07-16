@@ -16,6 +16,92 @@
       "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d014427d_14f95e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T09:20:12Z",
+      "side": 1,
+      "message": "Generally LGTM. Some ideas for discussion.",
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9456038_6aabd542",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T09:20:12Z",
+      "side": 1,
+      "message": "We might have some buffer for this if we want the parsing routine less probable to get blocked by the channel.",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f26dcd5f_584686cc",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T09:20:12Z",
+      "side": 1,
+      "message": "Probably we can have a comparable error so that the behavior of Wait and WaitByType will be similar in this case.",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d46d171_f85c337e",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T09:20:12Z",
+      "side": 1,
+      "message": "Maybe the struct can hold an inner context from WithCancel and cancel() in Stop. Then the two cases can be merged.\n\nAnother alternative is to depend on the behavior that Reader will be closed after Abort. (as the old EventLogger)\n\nNot sure which one will be cleaner/safer. (IIRC, tast ssh.Cmd use a similar abort channel as here so just some ideas for discussion.).",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
