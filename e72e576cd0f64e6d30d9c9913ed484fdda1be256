@@ -50,6 +50,69 @@
       "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3787a91_94c8687a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-16T09:19:11Z",
+      "side": 1,
+      "message": "Thanks Brian! I have only some minor/optional comments.\n",
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "428e4d6a_dab01e92",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-16T09:19:11Z",
+      "side": 1,
+      "message": "Since Go doesn\u0027t allow circular imports, adding this dependency means that the shill package can\u0027t import the chrome package in the future. I\u0027m not sure if it\u0027s fine, but I hope so.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a90929_1202a1cf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-16T09:19:11Z",
+      "side": 1,
+      "message": "logIn is a simple method that calls into loginUser/logInAsGuest depending on c.loginMode. I\u0027d rather put the new logic in loginUser to keep this method simple.",
+      "range": {
+        "startLine": 1202,
+        "startChar": 17,
+        "endLine": 1202,
+        "endChar": 22
+      },
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
