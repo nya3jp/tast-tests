@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "415c94f2_58e053e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-16T00:37:59Z",
+      "side": 1,
+      "message": "Thanks, slgtm!",
+      "revId": "d8faa22331f6e4de88ebee524105df4506fe0d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f4b5284_f7a8e4df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-16T00:37:59Z",
+      "side": 1,
+      "message": "huge nit: divider",
+      "range": {
+        "startLine": 136,
+        "startChar": 41,
+        "endLine": 136,
+        "endChar": 49
+      },
+      "revId": "d8faa22331f6e4de88ebee524105df4506fe0d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

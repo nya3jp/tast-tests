@@ -147,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "52321766_b1e4528f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-07-16T00:37:59Z",
+      "side": 1,
+      "message": "Thank you for doing this mukai-san.\n\nThe condition is if its not exact then it animates (even if its off by 1). It\u0027s a compositor based animation which updates window bounds of snapped window every tick. Increasing to 10 (or your method) would mean the window bounds update several times more and would be visually seen to animate, which i think is kind of helpful.\n\nThere\u0027s 5 control points (0, 0.333, 0.5, 0.667, 1). The divider will animate to the closest one, so width/20 would animate to the end and exit splitscreen.",
+      "parentUuid": "87f3ecba_31135b5b",
+      "range": {
+        "startLine": 131,
+        "startChar": 38,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "56377509931073a87285a810852e7fa1428f96bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a6c9fc6_0e789dd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
