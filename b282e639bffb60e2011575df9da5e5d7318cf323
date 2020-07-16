@@ -16,6 +16,52 @@
       "revId": "b282e639bffb60e2011575df9da5e5d7318cf323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f767b73d_10b729f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:15:35Z",
+      "side": 1,
+      "message": "nit: group related vars\n\nvar (\n\tfirstPowerDatePath   \u003d filepath.Join(cachedVpdRwPath, \"ActivateDate\")\n\tmanufactureDatePath  \u003d filepath.Join(cachedVpdRoPath, \"mfg_date\")\n\tskuNumberPath        \u003d filepath.Join(cachedVpdRoPath, \"sku_number\")\n\n\tbiosVersionPath      \u003d filepath.Join(dmiPath, \"bios_version\")\n\tboardNamePath        \u003d filepath.Join(dmiPath, \"board_name\")\n\tboardVersionPath     \u003d filepath.Join(dmiPath, \"board_version\")\n\tchassisTypePath      \u003d filepath.Join(dmiPath, \"chassis_type\")\n\tproductNamePath      \u003d filepath.Join(dmiPath, \"product_name\")\n\n\tfirstPowerDateRegex  \u003d regexp.MustCompile(\"[0-9]{4}-[0-9]{2}\")\n\tmanufactureDateRegex \u003d regexp.MustCompile(\"[0-9]{4}-[0-9]{2}-[0-9]{2}\")\n)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 73
+      },
+      "revId": "b282e639bffb60e2011575df9da5e5d7318cf323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a15971_781560d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:15:35Z",
+      "side": 1,
+      "message": "looks even better, thanks!",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "b282e639bffb60e2011575df9da5e5d7318cf323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
