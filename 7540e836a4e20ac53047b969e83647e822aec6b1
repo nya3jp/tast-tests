@@ -120,6 +120,24 @@
       "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f6063d_d1cba4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-16T01:17:33Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a big problem have additional error message in the logs. Tests ideally should be verbose and logs every unexpected entries.\n\nJust wondering, assume Google changed the title of the page in the future, and strings.Contains(info.Value, title) returns true, should we care about searchQuery?",
+      "parentUuid": "03fef8bd_69208a7c",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
