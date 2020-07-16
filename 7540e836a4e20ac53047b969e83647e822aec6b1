@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "e2424991_dd684db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-16T01:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e35daa2_e2124566",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59933c4b_6f1dbf94",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
         "patchSetId": 5
@@ -81,6 +99,24 @@
       "writtenOn": "2020-07-16T00:56:19Z",
       "side": 1,
       "message": "Instead of writing 3 if statement, how about looping over a list and checking if info.Value contains any of those?",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03fef8bd_69208a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-16T01:04:42Z",
+      "side": 1,
+      "message": "I considered this, but the control flow makes it difficult. If the log contains the title, it will likely contain the search query as well, since right now the search query is a substring of the title that Google uses (Google might change the title of the page, which is why we cannot rely on it being a substring and only check the search query.)  But because of that, we do not want to check the search query if the title is present -- but we *do* still want to check the URL suffix.\n\nWe could unconditionally check all three, which would let us simplify and use a for loop, but it would mean that any failure where the title is present would also have an additional error message in the logs from the search query being present.\n\nWDYT?",
+      "parentUuid": "59933c4b_6f1dbf94",
       "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
