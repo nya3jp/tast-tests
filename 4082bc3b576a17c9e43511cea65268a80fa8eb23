@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "640079fd_4fb5a1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "Do you mean bss might be invalid during the loop?",
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fed9b56_f9573c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "Shall we type cast request.Bssid to []byte before the polling so we can directly compare expectedBssid and bssid?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 40
+      },
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa6e721_edada0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "dev",
+      "range": {
+        "startLine": 746,
+        "startChar": 1,
+        "endLine": 746,
+        "endChar": 7
+      },
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ad13a8_eec149a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "devProps",
+      "range": {
+        "startLine": 755,
+        "startChar": 1,
+        "endLine": 755,
+        "endChar": 11
+      },
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483497c0_d0adf918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "a property watcher",
+      "range": {
+        "startLine": 773,
+        "startChar": 49,
+        "endLine": 773,
+        "endChar": 56
+      },
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a3cfec_c40feed7",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "I agree. Please create a buganizer issue.",
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e039cbb_5cb7f59d",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T05:44:23Z",
+      "side": 1,
+      "message": "wpa_supplicant",
+      "range": {
+        "startLine": 33,
+        "startChar": 89,
+        "endLine": 33,
+        "endChar": 94
+      },
+      "revId": "4082bc3b576a17c9e43511cea65268a80fa8eb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
