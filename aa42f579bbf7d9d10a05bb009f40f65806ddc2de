@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc5bc9a_9969fcba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-16T15:46:22Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "aa42f579bbf7d9d10a05bb009f40f65806ddc2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5468e60b_9adda442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-16T15:46:22Z",
+      "side": 1,
+      "message": "nit: \"triggering\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 37
+      },
+      "revId": "aa42f579bbf7d9d10a05bb009f40f65806ddc2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
