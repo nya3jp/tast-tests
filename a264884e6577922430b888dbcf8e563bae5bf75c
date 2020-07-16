@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "443f4c95_47d755af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T03:34:13Z",
+      "side": 1,
+      "message": "establish a Chrome renderer connection",
+      "range": {
+        "startLine": 49,
+        "startChar": 21,
+        "endLine": 49,
+        "endChar": 36
+      },
+      "revId": "a264884e6577922430b888dbcf8e563bae5bf75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e02165_aef551a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T03:34:13Z",
+      "side": 1,
+      "message": "a tab",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "a264884e6577922430b888dbcf8e563bae5bf75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e56d9bc_70699301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T03:34:13Z",
+      "side": 1,
+      "message": "the page",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "a264884e6577922430b888dbcf8e563bae5bf75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5f0bc1_09874c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T03:34:13Z",
+      "side": 1,
+      "message": "Please unify the naming among \"page title\", \"tab name\" and \"tab title\". I believe they refer the same thing here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 50,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "a264884e6577922430b888dbcf8e563bae5bf75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
