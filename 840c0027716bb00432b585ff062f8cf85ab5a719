@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "efb5e0ba_e8168545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-16T17:02:34Z",
+      "side": 1,
+      "message": "The testOneScreenshot should either return an error or s.Error/return. \nIn tast, support function/library is recommended to return an error and let the test decide how to response to it.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\n\n\n\ntestOneScreenshot :\u003d func(name string, key string) {\n    if err :\u003d ew.Type(ctx, key); err !\u003d nil {\n        s.Errorf(\"failed to inject the \u0027%s\u0027 key: %s\", key, err)\n        return\n    }\n...\n}\n\ntestOneScreenshot(\"screenshot1\", \"w\")\ntestOneScreenshot(\"screenshot2\", \"w\")\n\nor \n\ntestOneScreenshot :\u003d func(name string, key string) error {\n    if err :\u003d ew.Type(ctx, key); err !\u003d nil {\n        return err\n    }\n...\n}\n\nif err :\u003d testOneScreenshot(\"screenshot1\", \"w\"); err !\u003d nil {\n    return s.Errorf(\"Unexpected diff for screenshot1:\" err)\n}\nif err :\u003d testOneScreenshot(\"screenshot2\", \"w\"); err !\u003d nil {\n    return s.Errorf(\"Unexpected diff for screenshot2:\" err)\n}",
+      "parentUuid": "c3a585a5_2dc9a99b",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6d52c4d_de4cd103",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 3
