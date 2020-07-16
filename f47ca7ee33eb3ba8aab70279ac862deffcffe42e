@@ -52,6 +52,23 @@
       "revId": "f47ca7ee33eb3ba8aab70279ac862deffcffe42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b074c529_1fbef8aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-16T22:53:53Z",
+      "side": 1,
+      "message": "Ping for tast-owners review",
+      "revId": "f47ca7ee33eb3ba8aab70279ac862deffcffe42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
