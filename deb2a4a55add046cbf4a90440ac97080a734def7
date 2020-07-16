@@ -16,6 +16,120 @@
       "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7541867_5e7cdd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "is this part of the name?",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7054b589_feccb2ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "minor nit: you could chain the ifs\n\nif checked, err :\u003d cbNode.Attribute(ctx, \"checked\"); err !\u003d nil {}\nelse if checkedStr, ok :\u003d checked.(string); !ok {}\nelse if checkedStr !\u003d strconv.FormatBool(param.wantChecked) {}",
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ece41fc_48b8b2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "reverse the condition and return early. You can also chain the ifs.",
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3cfd1a_2ea77cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "minor nit: move to var to be clearer, but keep it in the if",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 70
+      },
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8b00b9_565dbe73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec787d5c_d1c54073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-16T12:20:28Z",
+      "side": 1,
+      "message": "nit: use else if",
+      "revId": "deb2a4a55add046cbf4a90440ac97080a734def7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
