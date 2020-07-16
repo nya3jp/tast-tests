@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4f7b812a_d700e88b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T09:40:33Z",
+      "side": 1,
+      "message": "I think it depends. Some shorter/simpler function is good to be declared inside another function. e.g. assertGUID might be simple enough. On the other hand, long nested functions can be hard to read.\n\nFor the constants, I think there are few usages outside testbody, so it is also possible to move it into testbody and pass to other function with parameter? e.g. genShillProps(*Config) -\u003e shillPropsWithGUID(c *Config, guid string)",
+      "parentUuid": "29395d76_ba1c8842",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a07d6e5_9e58e7f3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
         "patchSetId": 5
