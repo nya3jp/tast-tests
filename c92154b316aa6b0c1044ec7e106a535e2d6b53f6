@@ -16,6 +16,368 @@
       "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80b2d12_14710e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "Hi Judy,\n\nThanks for you CL!\n\nThis Tast test looks a bit complicated, because you are trying to test all operations in one test and each step relies on the result of the previous step. Also, if you are going to add more and more file operations here it even will be more complicated.\n\nAlso, if you have one very big and complicated test file you just increase flakiness of it and it can be extrimely hard to promote it to CQ.\n\nAre there some good reasons why it should be in one test? Otherwsie, i\u0027d suggest to have multiple short tests in few smaller CLs: HomeDirectoryAddFile, HomeDirectoryRemoveFile, HomeDirectoryRenameFile, HomeDirectoryZipFile, etc.",
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43a219cc_0b3fca48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "it\u0027s used only once, so it makes sense to introduce this variable only for that funcion",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 75
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31390ea1_812a3713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "try use constants:\n\nconst (\n    linuxFiles      \u003d \"Linux files\"\n    filesLinuxFiles \u003d \"Files - Linux files\"\n)\n\n\n\nAlso, remove them from here, because they used only in one function",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5370ca71_d9961877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "please add your teammates or team alias here",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f298944_9ef7e01e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "google.com since you use your google account for this CL?",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1951bbea_824fe6ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "why do you need so long timeout?",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05bbd92c_e43250d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "HomeDirectoryFileOperations",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba78950_60ad5ea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "use filesApp.Close() instead\n\nalso, please use cleanupCtx: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5b8879_1478a779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "please don\u0027t modify global variables, you may have surprised side effects 😊",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa18a045_2eea5ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "fileName: https://golang.org/doc/effective_go.html#mixed-caps",
+      "range": {
+        "startLine": 259,
+        "startChar": 77,
+        "endLine": 259,
+        "endChar": 85
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ec15c5_15057bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "Don\u0027t use sleep when possible\n\nUse testing.Poll instead",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 34
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317aa87b_88f81bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "let\u0027s avoid such comments, if your funcion already returns error it implicitly means that it can return error if any.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61cbb10_85b88555",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "looks like you don\u0027t use all these constants, so do you need to introduce them in this CL?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3446dd27_56c2f74f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "please don\u0027t ignore return error",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3615d049_eeea89a9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "same, don\u0027t ignore return errors",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 46
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9c6aa3_fab1954a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "delete is Go key word, please use another name to avoid confusing 😊",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 7
+      },
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

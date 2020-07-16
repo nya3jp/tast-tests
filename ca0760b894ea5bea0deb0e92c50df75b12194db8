@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cabe3217_4e35f04d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "Actually it returns error also in other cases. I guess we may just skip this part of a comment.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 56
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a8a1e2_67bf8f3f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "please use period at the end ot the comment: https://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 42
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb345d8_a7be045a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "nit: fileList\nor to don\u0027t mix with existing `files` variable, it can be for example existingFiles",
+      "range": {
+        "startLine": 719,
+        "startChar": 1,
+        "endLine": 719,
+        "endChar": 10
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed15b2e_c4718829",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-16T10:06:26Z",
+      "side": 1,
+      "message": "instead we can have only one function:\n\nfunc (c *Container) FilterFilesByExistingInHomeDir(ctx context.Context, files ...string) ([]string, error)\n\nso, if result is empty --\u003e all files do not exist. if len(result) \u003d\u003d input(files) --\u003e all files are present",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 1
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
