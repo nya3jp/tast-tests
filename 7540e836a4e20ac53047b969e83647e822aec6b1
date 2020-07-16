@@ -138,6 +138,24 @@
       "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ed8be0_80391430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-16T18:58:11Z",
+      "side": 1,
+      "message": "Done\n\nMy thinking about checking for search query is that it\u0027s still sensitive information regardless of whether it\u0027s in the tab, and if someone truncates the title the search query might still show up. That isn\u0027t too likely, perhaps, but it\u0027s quite a cheap thing to check.",
+      "parentUuid": "f6f6063d_d1cba4e0",
+      "revId": "7540e836a4e20ac53047b969e83647e822aec6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
