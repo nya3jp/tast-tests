@@ -409,6 +409,48 @@
     },
     {
       "key": {
+        "uuid": "8f9e6211_b1817afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-16T14:40:19Z",
+      "side": 1,
+      "message": "Please see update below.",
+      "parentUuid": "84d215ca_2aa67683",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c25959c2_76c505cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-16T14:40:19Z",
+      "side": 1,
+      "message": "Update: I\u0027ve removed the polling code.\n\nb/159522677: waitForFileType() can mitigate the issue. The correct MIME type is passed to android now. But the \u0027Open with android app\u0027 button is still missing sometimes, though rarely. Will need to keep the workaround in AndroidManifest.xml: \u003cdata android:mimeType\u003d\"*/*\" /\u003e until the root cause is found.\n\ncrbug/1097567: Wait for Drive FS banner to appear can prevent flakiness in file selection.\n\nb/159582246: This is a bug. Will be fixed by https://chromium-review.googlesource.com/c/chromium/src/+/2287898",
+      "parentUuid": "709162ba_07c3e965",
+      "revId": "a4368fa7bc03c0aa9f8300593d1f19f7aeafe9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ade0f_53dbbc75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 5
