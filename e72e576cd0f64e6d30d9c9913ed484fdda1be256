@@ -93,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "215291e6_203fea68",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-16T20:09:48Z",
+      "side": 1,
+      "message": "I don\u0027t see why we\u0027d need that direction. This mirrors the dependency relationship of the production code too, where Chrome is a client of Shill, and not vice versa. And the shill package is intentionally very constrained to wrapping only the shill API, and a few helpers to make that easier (e.g., variants of WaitFor...()). Anything integrating shill with other entities should probably be in other packages.\n\n+ a few, in case there\u0027s any concern about this.",
+      "parentUuid": "428e4d6a_dab01e92",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42a90929_1202a1cf",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -104,6 +128,30 @@
       "writtenOn": "2020-07-16T09:19:11Z",
       "side": 1,
       "message": "logIn is a simple method that calls into loginUser/logInAsGuest depending on c.loginMode. I\u0027d rather put the new logic in loginUser to keep this method simple.",
+      "range": {
+        "startLine": 1202,
+        "startChar": 17,
+        "endLine": 1202,
+        "endChar": 22
+      },
+      "revId": "e72e576cd0f64e6d30d9c9913ed484fdda1be256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5b78ab_0f992114",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-16T20:09:48Z",
+      "side": 1,
+      "message": "Ah, good point. I\u0027ll move that.",
+      "parentUuid": "42a90929_1202a1cf",
       "range": {
         "startLine": 1202,
         "startChar": 17,
