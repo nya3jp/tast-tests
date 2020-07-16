@@ -50,6 +50,23 @@
       "revId": "1be545472533a0bd82250cdf4d776fb7ded62a4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67fb3be3_5ce8f010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:37:21Z",
+      "side": 1,
+      "message": "Tha tast board reports several errors as follows:\n\nGot global error: runner.go:159: Bundle /usr/local/libexec/tast/bundles/local/cros failed: signal: killed (status 5), Test did not finish\n\nthat means the test executable is crashed during the test.\nIs the root cause of the crash identified that it is unrelated to the test? If so, could you explicitly mention it in the commit message?\n\nIf not, could you take a look? Considering there\u0027s several reports, I\u0027m worried about if it is a real test error on PhysicalKeyboard test.",
+      "revId": "1be545472533a0bd82250cdf4d776fb7ded62a4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
