@@ -33,6 +33,23 @@
       "revId": "b5bf2d8e630877665d7d39636532bebc4cf1a088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f9908fd_aba04863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-16T08:13:34Z",
+      "side": 1,
+      "message": "tast-owners@: PTAL for OWNERS. Thank you.",
+      "revId": "b5bf2d8e630877665d7d39636532bebc4cf1a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
