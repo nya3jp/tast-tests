@@ -16,6 +16,86 @@
       "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddaeac6_a44ba0b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T07:47:34Z",
+      "side": 1,
+      "message": "Hmm..., I guess you still need a context for bg routine here. Consider the case:\n- service never gets connected\n- RequestScan failed\n\nThe main routine will return at L1013 and wait for done in L1003. However, pw.Expect will not return before ctx.Done, then it\u0027ll take all given time in ctx waiting for an error that it does not quite care.",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e43897_af77bbff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T07:47:34Z",
+      "side": 1,
+      "message": "As all WiFi tests are in the same package, we might get conflict on the common constant name. Do you think it might be too verbose to have some prefix for them?\n\n(it is also possible for utility function names to collide but I guess it\u0027s usually longer and less probable)",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a07d6e5_9e58e7f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T07:47:34Z",
+      "side": 1,
+      "message": "I got comments not to drop this. Maybe still catch it and \"defer cancel()\"? (same below)",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45286097_c81d5c5f",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-16T07:47:34Z",
+      "side": 1,
+      "message": "nit: Changing the existing field number breaks the compatibility, so probably should be avoided if possible. However, as we\u0027ll have the gRPC server/client with same version, this is not really a problem. So, it\u0027s up to you.",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
