@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "1daa02b4_1b66a8bd",
+        "filename": "android/ArcAudioTestApp/.gitignore",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-16T04:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a0671a_d930ec0d",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ee31ebe_b860f651",
         "filename": "android/ArcAudioTestApp/Android.bp",
         "patchSetId": 3
@@ -251,6 +269,24 @@
       "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a054df_2a80282c",
+        "filename": "android/ArcAudioTestApp/build.gradle",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-16T04:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f00705_e66f9381",
+      "revId": "92939b17901c25014621220447ba2c2d0ffb87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

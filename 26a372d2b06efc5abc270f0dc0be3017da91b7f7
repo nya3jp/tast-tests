@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e8385d21_5360f95a",
+        "filename": "android/ArcAudioTest/res/layout/activity_main.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-16T04:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627aafbc_e12b9ee7",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc3c54ad_5f97c907",
         "filename": "android/ArcAudioTest/res/values/strings.xml",
         "patchSetId": 5
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "444198e8_6d55a9e3",
+        "filename": "android/ArcAudioTest/res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-16T04:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3c54ad_5f97c907",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7903b191_e5013d05",
         "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBytes.java",
         "patchSetId": 5
@@ -67,6 +103,24 @@
       "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db12613_f83f3cab",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBytes.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-16T04:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7903b191_e5013d05",
+      "revId": "26a372d2b06efc5abc270f0dc0be3017da91b7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
