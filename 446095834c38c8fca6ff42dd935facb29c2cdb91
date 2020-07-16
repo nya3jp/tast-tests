@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b82ff590_e948e09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:33:29Z",
+      "side": 1,
+      "message": "Defer to Brendan.",
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba753382_a6f71801",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:33:29Z",
+      "side": 1,
+      "message": "huge nit: \"**\" to be a javadoc.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1c68a0_ae42a19a",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestAECEffectActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:33:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d151f362_4d9cf6f6",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestInputActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:33:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9efbcea5_6b7fd283",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T15:33:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
