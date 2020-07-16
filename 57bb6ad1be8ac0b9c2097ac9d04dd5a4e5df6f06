@@ -116,6 +116,30 @@
       "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f459f1cb_1240d2b2",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-16T05:21:07Z",
+      "side": 1,
+      "message": "Did you hit the time out of the \"test\"? or \"precondition setup\"?\nIf the former, you\u0027d need to increase the timeout of the test rather than this.\nIt is hard to imagine for me though (because this is expected to be faster than trace_vm_pre), if the latter, it is in theory.",
+      "parentUuid": "7e6a4e62_5aa49437",
+      "range": {
+        "startLine": 208,
+        "startChar": 36,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
