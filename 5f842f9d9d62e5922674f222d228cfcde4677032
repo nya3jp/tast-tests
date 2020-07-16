@@ -33,6 +33,316 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8af685_f0ee6555",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "Why we don\u0027t make DictionaryAttackLockoutResetTPM1 a local test? We shall extract common logic to tast/local/hwsec/dictattack. Or we can consolidate both to a single test with TPM1 and TPM2 subtests.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 79
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3651c5ae_880eb720",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "Do you need to reboot the DUT?",
+      "range": {
+        "startLine": 18,
+        "startChar": 79,
+        "endLine": 18,
+        "endChar": 85
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8464a7_094d7d29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "range": {
+        "startLine": 33,
+        "startChar": 124,
+        "endLine": 33,
+        "endChar": 197
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6606a1b6_78293142",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "calls",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe4f266_341796d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "\"get\" is a stop word for function name in Golang. How about \"daInfo\" or \"verifyDAInfo\" as it uses two sources to verify the result.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8baa60_cc6ba49f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "and sees",
+      "range": {
+        "startLine": 33,
+        "startChar": 99,
+        "endLine": 33,
+        "endChar": 108
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d028ef_3fa6a172",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "The comment can be omitted. Same below.",
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7c3289_78569e47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "Clean up",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe795225_6102f861",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 129,
+        "startChar": 22,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ff01d1_296403b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "increase",
+      "range": {
+        "startLine": 133,
+        "startChar": 60,
+        "endLine": 133,
+        "endChar": 68
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a212f15f_8227f003",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "The error message is self explanatory. Removed.",
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f7e367_fdcc484c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "should not succeed",
+      "range": {
+        "startLine": 136,
+        "startChar": 29,
+        "endLine": 136,
+        "endChar": 38
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef510eec_a2d4f574",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "Writing",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d9a4d0_8d61bf1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-16T02:14:55Z",
+      "side": 1,
+      "message": "lockout",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 148,
+        "endChar": 50
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
