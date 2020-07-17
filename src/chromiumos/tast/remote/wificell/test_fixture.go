@@ -588,3 +588,23 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 	return nil
 }
+
+// WaitForConnection verifies a connection to network ssid.
+func (tf *TestFixture) WaitForConnection(ctx context.Context, props map[string]interface{}) error {
+	ctx, st := timing.Start(ctx, "tf.WaitForConnection")
+	defer st.End()
+
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return err
+	}
+
+	request := &network.WaitForConnectionRequest{
+		Shillprops: propsEnc,
+	}
+	if _, err := tf.wifiClient.WaitForConnection(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}
