@@ -67,6 +67,9 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // WaitForConnection verifies a connection to network with the specified peroperties.
+  rpc WaitForConnection(WaitForConnectionRequest) returns (WaitForConnectionResponse) {}
 }
 
 message ConnectRequest {
@@ -184,4 +187,12 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message WaitForConnectionRequest {
+  map<string, ShillVal> shillprops = 1;
+}
+
+message WaitForConnectionResponse {
+  int64 connection_time = 1;
 }
