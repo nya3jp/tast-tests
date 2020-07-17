@@ -950,3 +950,53 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 
 	return &empty.Empty{}, nil
 }
+
+// WaitForConnection verifies a connection to network with the specified peroperties.
+// This is the implementation of network.Wifi/WaitForConnection gRPC.
+func (s *WifiService) WaitForConnection(ctx context.Context, request *network.WaitForConnectionRequest) (*network.WaitForConnectionResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+
+	start := time.Now()
+
+	shillProps, err := protoutil.DecodeFromShillValMap(request.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	service, err := s.discoverService(ctx, m, shillProps)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover service")
+	}
+
+	// Spawn watcher before connect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	state, err := props.GetString(shillconst.ServicePropertyState)
+	if err != nil {
+		return nil, err
+	}
+
+	if state != shillconst.ServicePropertyIsConnected {
+		timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
+			return nil, err
+		}
+	}
+
+	discoveryTime := time.Since(start)
+	return &network.WaitForConnectionResponse{
+		DiscoveryTime: discoveryTime.Nanoseconds(),
+	}, nil
+}
