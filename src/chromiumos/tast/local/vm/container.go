@@ -429,6 +429,30 @@ func (c *Container) CheckFilesExistInDir(ctx context.Context, path string, files
 	return nil
 }
 
+// CheckFileDoesNotExistInDir checks files do not exist in the given path in container.
+// Return error if any file exists or any other error.
+func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string, files ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list the content of %s in container", path)
+	}
+
+	// Create a map.
+	set := make(map[string]struct{}, len(fileList))
+	for _, s := range fileList {
+		set[s] = struct{}{}
+	}
+
+	// Check each file exists in fileList.
+	for _, file := range files {
+		if _, ok := set[file]; ok {
+			return errors.Errorf("failed to find %s in container", file)
+		}
+	}
+	return nil
+}
+
 // GetFileList returns a list of the files in the given path in the container.
 func (c *Container) GetFileList(ctx context.Context, path string) (fileList []string, err error) {
 	// Get files in the path in container.
@@ -438,7 +462,33 @@ func (c *Container) GetFileList(ctx context.Context, path string) (fileList []st
 		return nil, errors.Wrapf(err, "failed to run 'ls %s' in container", path)
 	}
 
-	return strings.Split(strings.TrimRight(string(result), "\r\n"), "\n"), nil
+	files := strings.TrimRight(string(result), "\r\n")
+	if files == "" {
+		return nil, nil
+	}
+	return strings.Split(files, "\n"), nil
+}
+
+// CheckFileContent checks that the content of the specified file equals to the given string.
+// Returns error if fail to read content or the contest does not equal to the given string.
+func (c *Container) CheckFileContent(ctx context.Context, filePath, testString string) error {
+	content, err := c.readFile(ctx, filePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to cat the result %s", filePath)
+	}
+	if content != testString {
+		return errors.Wrapf(err, "expect %s, got %s: ", testString, content)
+	}
+	return nil
+}
+
+// readFile reads the content of file using command cat and returns it as a string.
+func (c *Container) readFile(ctx context.Context, filePath string) (content string, err error) {
+	result, err := c.Command(ctx, "cat", filePath).Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to cat the content of %s", filePath)
+	}
+	return strings.TrimRight(string(result), "\r\n"), nil
 }
 
 // LinuxPackageInfo queries the container for information about a Linux package
