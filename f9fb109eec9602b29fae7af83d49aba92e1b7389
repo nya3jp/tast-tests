@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "c9f1b0b3_26733d24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-17T00:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901c3186_7b18ff2f",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d75a4af4_a1cf9de2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 1
@@ -40,6 +64,24 @@
       "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a577329c_2e35065a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-17T00:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75a4af4_a1cf9de2",
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "Shall we check both bssid1 and bssid2?",
       "parentUuid": "4ebe59ed_1475c9e6",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "f9fb109eec9602b29fae7af83d49aba92e1b7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d2ea9f_a3fee8cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-17T00:11:05Z",
+      "side": 1,
+      "message": "We already connected to the bssid 1, so I think it\u0027s not necessary.",
+      "parentUuid": "ec84f668_ff66a96a",
       "range": {
         "startLine": 115,
         "startChar": 34,
