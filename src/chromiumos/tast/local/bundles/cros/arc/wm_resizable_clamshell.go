@@ -56,6 +56,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "RC04_user_immerse_portrait",
 			Func: wmRC04,
 		},
+		wm.TestCase{
+			// resizable/clamshell: resizable/clamshell: user immerse non-portrait app
+			Name: "RC05_user_immerse_non_portrait",
+			Func: wmRC05,
+		},
 	})
 }
 
@@ -265,6 +270,26 @@ func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC04: resizable/clamshell: user immerse portrait app (pillarbox).
 func wmRC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	return checkRestoreActivityToFullscreen(ctx, tconn, a, d, wm.ResizablePortraitActivity)
+}
+
+// wmRC05 covers resizable/clamshell: user immerse non-portrait app.
+// Expected behavior is defined in: go/arc-wm-r RC05: resizable/clamshell: user immerse non-portrait app.
+func wmRC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, actName := range []string{
+		wm.ResizableLandscapeActivity,
+		wm.ResizableUnspecifiedActivity,
+	} {
+		if err := func() error {
+			if err := checkRestoreActivityToFullscreen(ctx, tconn, a, d, actName); err != nil {
+				return err
+			}
+
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q test failed", actName)
+		}
+	}
+	return nil
 }
 
 // checkRestoreActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
