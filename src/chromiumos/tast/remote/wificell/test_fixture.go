@@ -445,6 +445,11 @@ func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceR
 	return resp, nil
 }
 
+// GetServicePath returns the current service path.
+func (tf *TestFixture) GetServicePath(ctx context.Context) string {
+	return tf.curServicePath
+}
+
 // PingFromDUT tests the connectivity between DUT and target IP.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ...ping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
@@ -662,6 +667,22 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	// Perform ping.
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 		return errors.Wrap(err, "failed to ping from the DUT")
+	}
+
+	return nil
+}
+
+// WaitForConnection verifies a connection to the specified AP.
+func (tf *TestFixture) WaitForConnection(ctx context.Context, bssid string) error {
+	ctx, st := timing.Start(ctx, "tf.WaitForConnection")
+	defer st.End()
+
+	request := &network.WaitForConnectionRequest{
+		ServicePath: tf.curServicePath,
+		Bssid:       bssid,
+	}
+	if _, err := tf.wifiClient.WaitForConnection(ctx, request); err != nil {
+		return err
 	}
 
 	return nil

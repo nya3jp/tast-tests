@@ -73,6 +73,9 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // WaitForConnection verifies a connection to network with the specified peroperties and frequency.
+  rpc WaitForConnection(WaitForConnectionRequest) returns (WaitForConnectionResponse) {}
 }
 
 message ConnectRequest {
@@ -199,4 +202,12 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+message WaitForConnectionRequest {
+  string service_path = 1;
+  string bssid = 2;
+}
+
+message WaitForConnectionResponse {
+  int64 connection_time = 1;
 }

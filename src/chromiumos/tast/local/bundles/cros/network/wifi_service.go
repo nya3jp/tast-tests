@@ -163,7 +163,7 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 
 // connectService connects to a WiFi service and wait until conntected state.
 // The time used for association and configuration is returned when success.
-func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
+func (s *WifiService) connectService(ctx context.Context, service *shill.Service, needConn bool) (assocTime, configTime time.Duration, retErr error) {
 	ctx, st := timing.Start(ctx, "connectService")
 	defer st.End()
 	testing.ContextLog(ctx, "Connecting to the service: ", service)
@@ -177,19 +177,38 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	}
 	defer pw.Close(ctx)
 
-	if err := service.Connect(ctx); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to connect to service")
+	// Prepare the state list for ExpectIn.
+	var connectedStates []interface{}
+	for _, s := range shillconst.ServiceConnectedStates {
+		connectedStates = append(connectedStates, s)
+	}
+
+	if needConn {
+		if err := service.Connect(ctx); err != nil {
+			return 0, 0, errors.Wrap(err, "failed to connect to service")
+		}
+	} else {
+		// Check if the service is already in connected state.
+		props, err := service.GetProperties(ctx)
+		if err != nil {
+			return 0, 0, errors.Wrap(err, "failed to get service properties")
+		}
+
+		stateVal, err := props.GetString(shillconst.ServicePropertyState)
+		if err != nil {
+			return 0, 0, err
+		}
+		for _, s := range connectedStates {
+			if stateVal == s {
+				return 0, 0, nil
+			}
+		}
 	}
 
 	// Wait until connection established.
 	// For debug and profile purpose, it is separated into association
 	// and configuration stages.
 
-	// Prepare the state list for ExpectIn.
-	var connectedStates []interface{}
-	for _, s := range shillconst.ServiceConnectedStates {
-		connectedStates = append(connectedStates, s)
-	}
 	associatedStates := append(connectedStates, shillconst.ServiceStateConfiguration)
 
 	testing.ContextLog(ctx, "Associating with ", service)
@@ -214,6 +233,71 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	configTime = time.Since(start)
 
 	return assocTime, configTime, nil
+}
+
+// WaitForConnection verifies a connection to network with the specified BSSID.
+// This is the implementation of network.Wifi/WaitForConnection gRPC.
+func (s *WifiService) WaitForConnection(ctx context.Context, request *network.WaitForConnectionRequest) (*network.WaitForConnectionResponse, error) {
+	start := time.Now()
+
+	service, err := shill.NewService(ctx, dbus.ObjectPath(request.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+
+	if _, err := s.waitForBSSID(ctx, service, request.Bssid); err != nil {
+		return nil, err
+	}
+
+	// Wait for the service to be connected.
+	if _, _, err := s.connectService(ctx, service, false); err != nil {
+		return nil, err
+	}
+
+	if _, err := s.waitForBSSID(ctx, service, request.Bssid); err != nil {
+		return nil, err
+	}
+
+	connectionTime := time.Since(start)
+	return &network.WaitForConnectionResponse{
+		ConnectionTime: connectionTime.Nanoseconds(),
+	}, nil
+}
+
+// waitForBSSID watites for the BSSID to change to the specified bssid.
+func (s *WifiService) waitForBSSID(ctx context.Context, service *shill.Service, bssid string) (time.Duration, error) {
+	ctx, st := timing.Start(ctx, "waitForBSSID")
+	defer st.End()
+
+	start := time.Now()
+	// Spawn watcher before disconnect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get service properties")
+	}
+
+	bssidVal, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
+	if err != nil {
+		return 0, err
+	}
+
+	if bssidVal != bssid {
+		testing.ContextLogf(ctx, "Wait for the BSSID to be %s", bssid)
+		timeoutCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+
+		if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyWiFiBSSID, bssid); err != nil {
+			return 0, err
+		}
+	}
+
+	return time.Since(start), nil
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -265,7 +349,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 		}
 	}
 
-	assocTime, configTime, err := s.connectService(ctx, service)
+	assocTime, configTime, err := s.connectService(ctx, service, true)
 	if err != nil {
 		return nil, err
 	}
