@@ -16,6 +16,138 @@
       "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b248f55_68b36ff7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "+2 % nits\n\nplease, wait for Cici\u0027s review.",
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f527a83a_37ad4540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "huge nit: period.",
+      "range": {
+        "startLine": 635,
+        "startChar": 30,
+        "endLine": 635,
+        "endChar": 31
+      },
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b9d988_89e658ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "huge nit: period.",
+      "range": {
+        "startLine": 728,
+        "startChar": 22,
+        "endLine": 728,
+        "endChar": 23
+      },
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97407bcc_c242383b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t capitalize errors\n\nThere -\u003e there",
+      "range": {
+        "startLine": 737,
+        "startChar": 27,
+        "endLine": 737,
+        "endChar": 28
+      },
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61576fc8_393b714f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "optional: replace %d with 1",
+      "range": {
+        "startLine": 737,
+        "startChar": 102,
+        "endLine": 737,
+        "endChar": 105
+      },
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4347f4c5_d3e9cee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:35:07Z",
+      "side": 1,
+      "message": "nit: \"invalid id %q\", id",
+      "range": {
+        "startLine": 1223,
+        "startChar": 8,
+        "endLine": 1223,
+        "endChar": 19
+      },
+      "revId": "7d5ead6329bc3e0acec09557b3d83fc88d4705f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
