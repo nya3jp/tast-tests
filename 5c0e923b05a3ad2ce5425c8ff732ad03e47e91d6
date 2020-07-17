@@ -268,6 +268,30 @@
       "revId": "5c0e923b05a3ad2ce5425c8ff732ad03e47e91d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4831b5_1c0f6964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-17T09:23:41Z",
+      "side": 1,
+      "message": "you misue guideline a bit: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\ns.Log used before long running operations. s.Error means smth bad happened, it\u0027s better if all info wil be in the same line. For example, when tast will fail, as a short report you will get only s.Error message. The same probably in the CQ failure message.\n\n\nif restricted is false, restrictionStr can be any.",
+      "parentUuid": "bace82ad_0b2e8279",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 60
+      },
+      "revId": "5c0e923b05a3ad2ce5425c8ff732ad03e47e91d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
