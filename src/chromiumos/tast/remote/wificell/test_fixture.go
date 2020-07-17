@@ -421,6 +421,19 @@ func (tf *TestFixture) AssureDisconnect(ctx context.Context, timeout time.Durati
 	return nil
 }
 
+// WaitForDisconnection verify a disconnection to the current WiFi service.
+func (tf *TestFixture) WaitForDisconnection(ctx context.Context, timeout time.Duration) error {
+	req := &network.AssureDisconnectRequest{
+		ServicePath: tf.curServicePath,
+		Timeout:     timeout.Nanoseconds(),
+	}
+	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // QueryService queries shill service information.
 func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
 	req := &network.QueryServiceRequest{
@@ -652,6 +665,26 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	// Perform ping.
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 		return errors.Wrap(err, "failed to ping from the DUT")
+	}
+
+	return nil
+}
+
+// WaitForConnection verifies a connection to network ssid.
+func (tf *TestFixture) WaitForConnection(ctx context.Context, props map[string]interface{}) error {
+	ctx, st := timing.Start(ctx, "tf.WaitForConnection")
+	defer st.End()
+
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return err
+	}
+
+	request := &network.WaitForConnectionRequest{
+		Shillprops: propsEnc,
+	}
+	if _, err := tf.wifiClient.WaitForConnection(ctx, request); err != nil {
+		return err
 	}
 
 	return nil
