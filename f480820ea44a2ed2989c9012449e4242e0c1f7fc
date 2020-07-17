@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "eabd385e_bebebae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-07-17T01:51:32Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f480820ea44a2ed2989c9012449e4242e0c1f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f789f88_2a9fb2e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
         "patchSetId": 5
