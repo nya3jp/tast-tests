@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43e3a85b_13dd7177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "nit: S -\u003e s to make startGameFromGameListsView a private function. Or we could rename and move it to some util file later if we need to share it with other tests.",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2127d7_4ac64a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "nit: End with a \".\".",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878d593f_4bdd8e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "nit: Missed from previous reviews. We should handle error for this as well.",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910f672b_e48b0afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "What do we wait for? If it is resource loading, we could try \"webutil.WaitForQuiescence\". Generally, prefer to wait for a specific condition than sleep.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1015de6_84ce1ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "nit: ditto, error handling.",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff962f1a_431ed9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "Do we need to keep clicking on |gamePlayButton| ?",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8913e64_98f1664e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "We have WaitUntilExists/WaitUntilDescendantExists and could use that instead of testing.Poll + DescendantExists.",
+      "range": {
+        "startLine": 159,
+        "startChar": 30,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff03a8b_4a6e318b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "We are using DescendantWithTimeout here. Why do we need testing.Poll before this?",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a251174_33bf9fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "nit: ditto, error handling.",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c200234d_d6faf665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T14:45:07Z",
+      "side": 1,
+      "message": "We could use ash.WaitForCondition to replace the testing.Poll if we don\u0027t need gameStartButton.LeftClick() inside the poll.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
