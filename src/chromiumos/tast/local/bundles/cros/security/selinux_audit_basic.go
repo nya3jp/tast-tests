@@ -10,7 +10,6 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path"
 	"path/filepath"
 	"regexp"
@@ -67,23 +66,31 @@ func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 	fileName := path.Base(f.Name())
 	f.Close()
 
-	// Checks no logs matching the file name in syslog.
-	if badContent, err := exec.Command("croslog", "--source=journal", "--quiet", "--boot=0", "--identifier=kernel", "--grep="+fileName).Output(); err != nil {
-		s.Fatal("Failed to read system log: ", err)
-	} else if string(badContent) != "" {
-		s.Errorf("audit shouldn't be logged to syslog, but found %q", badContent)
-	}
-
 	// Checks log can be found in audit.log for file name.
+	// TODO(yoshiki): Replace this with croslog command.
 	f, err = os.Open("/var/log/audit/audit.log")
 	if err != nil {
 		s.Fatal("Failed to open audit.log: ", err)
 	}
 	defer f.Close()
-	wantedLine := regexp.MustCompile("granted.*" + fileName)
-	if match, err := hasLineMatch(f, wantedLine); err != nil {
-		s.Fatal("Failed to read audit.log: ", err)
-	} else if !match {
-		s.Error("Expected audit message in audit.log but not found")
+
+	const (
+		retryCount = 5
+		sleepTime  = 3 * time.Second
+	)
+	for i := 0; i < retryCount; i++ {
+		wantedLine := regexp.MustCompile("granted.*" + fileName)
+		if match, err := hasLineMatch(f, wantedLine); err != nil {
+			s.Fatal("Failed to read audit.log: ", err)
+			return
+		} else if !match {
+			// sleep
+			testing.Sleep(ctx, sleepTime)
+			continue
+		}
+
+		return
 	}
+
+	s.Error("Expected audit message in audit.log but not found")
 }
