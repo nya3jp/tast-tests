@@ -5,7 +5,7 @@
 -->
 <resources>
   <!-- App name -->
-  <string name="app_name" translatable="false">ArcPipTastTest</string>
+  <string name="app_name" translatable="false">ArcPipTest</string>
   <!-- PipActivity title -->
   <string name="pip_activity_text" translatable="false">PipActivity</string>
   <!-- MaPipBaseActivity title -->

@@ -34,7 +34,7 @@ func init() {
 func AppSanity(ctx context.Context, s *testing.State) {
 	const (
 		// This is a plain hello world app.
-		apk = "ArcAppSanityTastTest.apk"
+		apk = "ArcAppSanityTest.apk"
 		pkg = "org.chromium.arc.testapp.appsanitytast"
 		cls = ".MainActivity"
 	)

@@ -89,7 +89,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 	a := s.PreValue().(arc.PreData).ARC
 
-	const apkName = "ArcPipTastTest.apk"
+	const apkName = "ArcPipTest.apk"
 	s.Log("Installing ", apkName)
 	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed installing app: ", err)
@@ -642,7 +642,7 @@ func pressShelfIcon(ctx context.Context, tconn *chrome.TestConn) error {
 	// Depending the test order, the status area might not be ready at this point.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		icon, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: "ArcPipTastTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
+		icon, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: "ArcPipTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "no shelf icon has been created yet")
 		}
