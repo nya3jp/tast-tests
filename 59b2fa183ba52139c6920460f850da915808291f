@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b531c33d_3651cb7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-17T16:05:21Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll be adding more steps. I think the ultimate state will be similar to Autotest\u0027s firmware_FWTries. This CL just initializes the library and test so that we can build onto it.\n\nPS2 amends the test description to clarify that this test is under active development.",
+      "parentUuid": "e4b35fe8_d51b3054",
+      "revId": "59b2fa183ba52139c6920460f850da915808291f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "100fe810_ef7776e2",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "59b2fa183ba52139c6920460f850da915808291f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951d73f3_301822d7",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-17T16:05:21Z",
+      "side": 1,
+      "message": "Ack, this is definitely stricter than Autotest code. I think that that will not be an issue, but Tastboard results will make it clear. In any case, I think it is safer for our test to tell us that we are getting unexpected results, rather than silently assuming 0 as Autotest does. And, I think it is safer to fail rather than warning logs, because we might never look at the warning logs, and because the failure would force us to change the library to be more correct.",
+      "parentUuid": "100fe810_ef7776e2",
+      "revId": "59b2fa183ba52139c6920460f850da915808291f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
