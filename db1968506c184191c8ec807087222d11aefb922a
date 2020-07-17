@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3114df95_f19c54cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-07-17T19:30:49Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromium/src/+/774e7f163a106133875f4add65e918c00b6b19d8 was merged.\nLet\u0027s submit.",
+      "revId": "db1968506c184191c8ec807087222d11aefb922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
