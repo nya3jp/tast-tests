@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ca1cead3_93c1388a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T21:58:05Z",
+      "side": 1,
+      "message": "I think so. It sometimes went to Wolfenstein 2 page after going to Worm Game Edition page.\n\nNow things seem to be working with webutil.WaitForQuiescence at least I didn\u0027t see that happen now.",
+      "parentUuid": "18782cd8_e2a770df",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1015de6_84ce1ada",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -454,6 +478,30 @@
       "side": 1,
       "message": "Interesting. It sounds like the button is shown before all code is loaded and ready.\n\nIf I have to choose between testing.Poll() and testing.Sleep(), I vote for testing.Poll(). It is difficult to get a good sleep duration for all boards.",
       "parentUuid": "2873ee6a_99ee5cec",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c07993e0_4e7fba18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T21:58:05Z",
+      "side": 1,
+      "message": "Ok I will keep the testing.Poll then :)",
+      "parentUuid": "4c2718d3_c343afac",
       "range": {
         "startLine": 182,
         "startChar": 0,
