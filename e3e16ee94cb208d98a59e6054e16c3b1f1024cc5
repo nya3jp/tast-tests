@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "8c23aa29_4b50313c",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-17T04:22:56Z",
+      "side": 1,
+      "message": "Done. As I mentioned in my first comment, do you think we still need a slice to store all the events if we set a buffer here?",
+      "parentUuid": "d9456038_6aabd542",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f26dcd5f_584686cc",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 1
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "29934d7c_058bae8c",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-17T04:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26dcd5f_584686cc",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d46d171_f85c337e",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 1
@@ -102,6 +150,30 @@
       "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c9a134_a625b189",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-17T04:22:56Z",
+      "side": 1,
+      "message": "WithCancel LGTM, since we don\u0027t really care about the aborted reason here.",
+      "parentUuid": "6d46d171_f85c337e",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
