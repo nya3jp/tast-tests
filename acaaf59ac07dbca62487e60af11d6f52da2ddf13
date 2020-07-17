@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af282351_b62599da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-17T09:09:33Z",
+      "side": 1,
+      "message": "Simple sanitization of the variable name.\nDone in the context of crbug/1101215: Remove oppressive language from Tast core and Tast tests.\n\nBased on the code changes, I did a build to make sure that nothing was broken (i.e. typo) by trying to run graphics.TraceReplays*.\n",
+      "revId": "acaaf59ac07dbca62487e60af11d6f52da2ddf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
