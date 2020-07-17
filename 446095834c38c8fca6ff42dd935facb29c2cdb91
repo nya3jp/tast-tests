@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "78a45c03_57eaed5c",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-17T02:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba753382_a6f71801",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a1c68a0_ae42a19a",
         "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestAECEffectActivity.java",
         "patchSetId": 7
@@ -62,6 +86,30 @@
       "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a3ec91_877cc490",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestAECEffectActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-17T02:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1c68a0_ae42a19a",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "2a9cee47_8c3e0aa4",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestInputActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-17T02:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d151f362_4d9cf6f6",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9efbcea5_6b7fd283",
         "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputActivity.java",
         "patchSetId": 7
@@ -108,6 +180,30 @@
       "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb3a401_f0a9311e",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-17T02:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efbcea5_6b7fd283",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "446095834c38c8fca6ff42dd935facb29c2cdb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
