@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4843f721_1279784e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e3a85b_13dd7177",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac2127d7_4ac64a59",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91547c14_ef720b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac2127d7_4ac64a59",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "6049c548_3fdd7599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878d593f_4bdd8e19",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910f672b_e48b0afd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2020-07-17T14:45:07Z",
       "side": 1,
       "message": "What do we wait for? If it is resource loading, we could try \"webutil.WaitForQuiescence\". Generally, prefer to wait for a specific condition than sleep.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2371327_ce5f9404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "I observed some times it went to another game page after entering the worm game page. I suspect it may due to that the interval of two clicks is too short. Since I added the sleep somehow I didn\u0027t observe that situation happened again.",
+      "parentUuid": "910f672b_e48b0afd",
       "range": {
         "startLine": 145,
         "startChar": 0,
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "535d89e1_399a3a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1015de6_84ce1ada",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff962f1a_431ed9bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -110,6 +212,24 @@
       "writtenOn": "2020-07-17T14:45:07Z",
       "side": 1,
       "message": "Do we need to keep clicking on |gamePlayButton| ?",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "119f89ce_4fba4568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "I added this to solve the case that it sometimes went another game page after entering the worm game page. I think we don\u0027t need to do this now.",
+      "parentUuid": "ff962f1a_431ed9bb",
       "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "88924afe_e52ef70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8913e64_98f1664e",
+      "range": {
+        "startLine": 159,
+        "startChar": 30,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bff03a8b_4a6e318b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -153,6 +297,24 @@
       "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5964244b_d9671ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff03a8b_4a6e318b",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "3894e213_2ff04b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a251174_33bf9fd5",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c200234d_d6faf665",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -184,6 +364,30 @@
       "writtenOn": "2020-07-17T14:45:07Z",
       "side": 1,
       "message": "We could use ash.WaitForCondition to replace the testing.Poll if we don\u0027t need gameStartButton.LeftClick() inside the poll.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2873ee6a_99ee5cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T20:56:52Z",
+      "side": 1,
+      "message": "I think we need to left click on it until it goes to full-screened. Because for the first few seconds after the start button showed up (animation hasn\u0027t done), left click won\u0027t bring it to the game and the game won\u0027t start (I tried it by myself). Either we can add a sleep between gameStartButton.FocusAndWait and gameStartButton.LeftClick, or we can do the poll. Which one do you think is better?",
+      "parentUuid": "c200234d_d6faf665",
       "range": {
         "startLine": 182,
         "startChar": 0,
