@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f16467f_653cd5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-17T23:34:19Z",
+      "side": 1,
+      "message": "My test is not working on my nautilus (see [1]). There seems to be something wrong with my Go version of the Java code responsible for the minimum and maximum size of an ARC++ PIP window. As I am not an ARC developer, can you please investigate that for me?\n\n[1] https://paste.googleplex.com/4650431907102720",
+      "revId": "7529c87f3dcb02ca9ae93e72193e57619ae3802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
