@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf6bf8a1_80e8be25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-17T14:37:26Z",
+      "side": 1,
+      "message": "Added a reference name for the checkboxes so the logging can be nicer:\nWas:\ndeny: Unexpected Browsing history Clears history and autocompletions in the address bar. checkbox restriction in the Basic tab: got true; want false\nNow:\ndeny: Unexpected \"Browsing history\" checkbox restriction in the Basic tab: got true; want false\n\nThe checkbox name in the logs are now quoted.\n\nPTAL",
+      "revId": "57a203d117d522dfd3d963b3d1a3f2b12c7c6b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
