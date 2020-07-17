@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "1c15b6d1_ec199d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-17T09:26:16Z",
+      "side": 1,
+      "message": "nit: typo: checkbox",
+      "range": {
+        "startLine": 90,
+        "startChar": 97,
+        "endLine": 90,
+        "endChar": 105
+      },
+      "revId": "70bfb0ab721edd11da00596ca88e2e0ba38b520c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2141973f_603cff17",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
         "patchSetId": 7
