@@ -158,11 +158,28 @@ func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 // with ARCEnabled() option.
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
+// StartedByArtifactWithGaialogin is similar to StartedByArtifact, but will log in Chrome with Gaia
+// with Auth() option.
+func StartedByArtifactWithGaialogin() testing.Precondition { return startedByArtifactWithGaialoginPre }
+
+// StartedByDownloadBusterWithGaialogin is similar to StartedByDownloadBuster, but will log in Chrome with Gaia
+// with Auth() option.
+func StartedByDownloadBusterWithGaialogin() testing.Precondition {
+	return startedByDownloadBusterWithGaialoginPre
+}
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
+)
+
+type loginType int
+
+const (
+	loginNonGaia loginType = iota
+	loginGaia
 )
 
 var startedByArtifactPre = &preImpl{
@@ -199,6 +216,21 @@ var startedARCEnabledPre = &preImpl{
 	arcEnabled: true,
 }
 
+var startedByArtifactWithGaialoginPre = &preImpl{
+	name:      "crostini_started_by_artifact_gaialogin",
+	timeout:   chrome.LoginTimeout + 7*time.Minute,
+	mode:      artifact,
+	loginType: loginGaia,
+}
+
+var startedByDownloadBusterWithGaialoginPre = &preImpl{
+	name:      "crostini_started_by_download_buster_gaialogin",
+	timeout:   chrome.LoginTimeout + 10*time.Minute,
+	mode:      download,
+	arch:      vm.DebianBuster,
+	loginType: loginGaia,
+}
+
 // Implementation of crostini's precondition.
 type preImpl struct {
 	name        string               // Name of this precondition (for logging/uniqueing purposes).
@@ -211,6 +243,7 @@ type preImpl struct {
 	tconn       *chrome.TestConn
 	cont        *vm.Container
 	keyboard    *input.KeyboardEventWriter
+	loginType   loginType
 }
 
 // Interface methods for a testing.Precondition.
@@ -289,10 +322,19 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
+	opts := []chrome.Option{opt, chrome.ExtraArgs("--vmodule=crostini*=1")}
+	if p.loginType == loginGaia {
+		opts = append(opts, chrome.Auth(
+			s.RequiredVar("crostini.gaiaUsername"),
+			s.RequiredVar("crostini.gaiaPassword"),
+			s.RequiredVar("crostini.gaiaID"),
+		), chrome.GAIALogin())
+	}
 	var err error
-	if p.cr, err = chrome.New(ctx, opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
+	if p.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
+
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}

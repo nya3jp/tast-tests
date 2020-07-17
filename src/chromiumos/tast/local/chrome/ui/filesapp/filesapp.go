@@ -20,6 +20,20 @@ const DownloadPath = "/home/chronos/user/Downloads/"
 
 const uiTimeout = 15 * time.Second
 
+// Context menu items for a file
+const (
+	Open         = "Open"
+	OpenWith     = "Open with..."
+	Cut          = "Cut"
+	Copy         = "Copy"
+	Paste        = "Paste"
+	GetInfo      = "Get info"
+	Rename       = "Rename"
+	Delete       = "Delete"
+	ZipSelection = "Zip select"
+	NewFolder    = "New folder"
+)
+
 // TODO(crbug/1046853): Look for way to not rely on names being in English.
 var rootFindParams ui.FindParams = ui.FindParams{
 	Name:      "Files",
@@ -237,5 +251,69 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 		}
 	}
 
+	return nil
+}
+
+// SelectContextMenu right clicks and selects a context menu for a file.
+func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName, menuname string) error {
+	file, err := f.file(ctx, fileName, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find %s", fileName)
+	}
+	defer file.Release(ctx)
+	if err := file.RightClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to right click on %s", fileName)
+	}
+
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
+	// Left click menuItem.
+	if err := f.LeftClickItem(ctx, menuname, ui.RoleTypeMenuItem); err != nil {
+		return errors.Wrapf(err, "failed to click %s in context menu", menuname)
+	}
+	return nil
+}
+
+// LeftClickItem left clicks a target item.
+// An error is returned if the target item can't be found.
+func (f *FilesApp) LeftClickItem(ctx context.Context, itemname string, role ui.RoleType) error {
+	params := ui.FindParams{
+		Name: itemname,
+		Role: role,
+	}
+	item, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed to left click %s", itemname)
+	}
+	defer item.Release(ctx)
+	return item.LeftClick(ctx)
+}
+
+// DeleteFileOrFolder delete a file or folder through selecting Delete in context menu.
+func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) error {
+	// Select Delete from context menu of the file / folder
+	if err := f.SelectContextMenu(ctx, fileName, Delete); err != nil {
+		return errors.Wrapf(err, "failed to right click on %s", fileName)
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+	params := ui.FindParams{
+		ClassName: "cr-dialog-ok",
+		Name:      Delete,
+		Role:      ui.RoleTypeButton,
+	}
+	deleteButton, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find button Delete after selecting Delet in context menu of %s", fileName)
+	}
+	// Click button "Delete".
+	if err := deleteButton.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click button Delete on file %s ", fileName)
+	}
 	return nil
 }
