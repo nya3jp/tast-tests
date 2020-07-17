@@ -102,7 +102,7 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 		}
 
 		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
-			func() error {
+			func(ctx context.Context) error {
 				return openAndCloseEmbeddedUI(ctx, tconn)
 			},
 			"Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode",

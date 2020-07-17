@@ -350,7 +350,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer dsTracker.Close(closeCtx, tconn)
 
-	if err = recorder.Run(ctx, tconn, func() error {
+	if err = recorder.Run(ctx, tconn, func(ctx context.Context) error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
 			if err := tapFullscreenButton(); err != nil {

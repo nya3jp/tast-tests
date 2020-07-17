@@ -110,7 +110,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	defer dsTracker.Close(closeCtx, tconn)
 
 	var elapsed time.Duration
-	if err := recorder.Run(ctx, tconn, func() error {
+	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
 		start := time.Now()
 
 		s.Log("Unlocking screen by typing password")
