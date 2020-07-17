@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "73dfd5c3_6ee67108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-17T00:23:06Z",
+      "side": 1,
+      "message": "Thanks for the correct deadline tip. The test now passes.",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a88ffc2d_dc99aec4",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -37,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "92d9140d_6716f38b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-17T00:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483523b4_1ea13b39",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d035737_ea508de1",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -66,6 +101,24 @@
       "side": 1,
       "message": "I wanted lesser disk space and more timeout time, let me talk to crosbolt first and decide on this.",
       "parentUuid": "7d035737_ea508de1",
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853dd15e_449995fa",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-17T00:23:06Z",
+      "side": 1,
+      "message": "I need the pre-built image and a larger disk size, can\u0027t think of any other way to get this ?",
+      "parentUuid": "874f39a0_3747a7a6",
       "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -140,6 +193,30 @@
       "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8951f9b_a248acbd",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2020-07-17T00:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f459f1cb_1240d2b2",
+      "range": {
+        "startLine": 208,
+        "startChar": 36,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "57bb6ad1be8ac0b9c2097ac9d04dd5a4e5df6f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
