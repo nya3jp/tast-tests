@@ -445,6 +445,11 @@ func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceR
 	return resp, nil
 }
 
+// GetServicePath returns the current service path.
+func (tf *TestFixture) GetServicePath(ctx context.Context) string {
+	return tf.curServicePath
+}
+
 // PingFromDUT tests the connectivity between DUT and target IP.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ...ping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
