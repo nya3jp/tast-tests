@@ -316,6 +316,30 @@
       "revId": "5c0e923b05a3ad2ce5425c8ff732ad03e47e91d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bfaaf6_d1fa8e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-17T09:32:46Z",
+      "side": 1,
+      "message": "update due to our char discussion: it\u0027s OK to use s.Log only when error happened to pring debug info.",
+      "parentUuid": "da4831b5_1c0f6964",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 60
+      },
+      "revId": "5c0e923b05a3ad2ce5425c8ff732ad03e47e91d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
