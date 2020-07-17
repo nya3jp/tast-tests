@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1b6a8b88_cd69aa0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-17T09:51:53Z",
+      "side": 1,
+      "message": "remove and rename requires some file to be in the home dir. You can use PushFile method to copy files to the container. You won\u0027t need to add \"Add\" as part of test in this case",
+      "parentUuid": "3ccfa93c_63c0b21a",
+      "revId": "c92154b316aa6b0c1044ec7e106a535e2d6b53f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43a219cc_0b3fca48",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_fileoperations.go",
         "patchSetId": 15
