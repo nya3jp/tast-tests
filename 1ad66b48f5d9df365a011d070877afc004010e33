@@ -39,6 +39,30 @@
       "revId": "1ad66b48f5d9df365a011d070877afc004010e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2516c2ed_cafe031c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-07-17T18:25:49Z",
+      "side": 1,
+      "message": "Ah, good point, we can attempt to modify our patch.",
+      "parentUuid": "4c0fa481_58123330",
+      "range": {
+        "startLine": 56,
+        "startChar": 34,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "1ad66b48f5d9df365a011d070877afc004010e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
