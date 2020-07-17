@@ -158,11 +158,34 @@ func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 // with ARCEnabled() option.
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
+// StartedByArtifactGaialogin is similar to StartedByArtifact, but will login Chrome with Gaia
+// with Auth() option.
+func StartedByArtifactGaialogin() testing.Precondition { return startedByArtifactGaialoginPre }
+
+// StartedByDownloadBusterGaialogin is similar to StartedByDownloadBuster, but will login Chrome with Gaia
+// with Auth() option.
+func StartedByDownloadBusterGaialogin() testing.Precondition {
+	return startedByDownloadBusterGaialoginPre
+}
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
+)
+
+type loginType int
+
+const (
+	nongaia loginType = iota
+	gaia
+)
+
+const (
+	gaiaUsername = "crostinitasttest@gmail.com"
+	gaiaPassword = "Abc1234%"
+	gaiaID       = "733642173435"
 )
 
 var startedByArtifactPre = &preImpl{
@@ -199,6 +222,21 @@ var startedARCEnabledPre = &preImpl{
 	arcEnabled: true,
 }
 
+var startedByArtifactGaialoginPre = &preImpl{
+	name:      "crostini_started_by_artifact_gaialogin",
+	timeout:   chrome.LoginTimeout + 7*time.Minute,
+	mode:      artifact,
+	logintype: gaia,
+}
+
+var startedByDownloadBusterGaialoginPre = &preImpl{
+	name:      "crostini_started_by_download_buster_gaialogin",
+	timeout:   chrome.LoginTimeout + 10*time.Minute,
+	mode:      download,
+	arch:      vm.DebianBuster,
+	logintype: gaia,
+}
+
 // Implementation of crostini's precondition.
 type preImpl struct {
 	name        string               // Name of this precondition (for logging/uniqueing purposes).
@@ -211,6 +249,7 @@ type preImpl struct {
 	tconn       *chrome.TestConn
 	cont        *vm.Container
 	keyboard    *input.KeyboardEventWriter
+	logintype   loginType
 }
 
 // Interface methods for a testing.Precondition.
@@ -290,9 +329,19 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	var err error
-	if p.cr, err = chrome.New(ctx, opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+	switch p.logintype {
+	case nongaia:
+		if p.cr, err = chrome.New(ctx, opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+	case gaia:
+		if p.cr, err = chrome.New(ctx, chrome.Auth(gaiaUsername, gaiaPassword, gaiaID), chrome.GAIALogin(), opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+	default:
+		s.Fatal("Unrecognized mode: ", p.logintype)
 	}
+
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
@@ -371,7 +420,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	if p.minDiskSize != 0 {
 		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			logUITree()
 			s.Fatal("SetDiskSize error: ", err)
 		}
 	}
