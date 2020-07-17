@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a843897_ae559644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-17T18:12:50Z",
+      "side": 1,
+      "message": "LGTM. One question but you don\u0027t have to address it in this CL.",
+      "revId": "1ad66b48f5d9df365a011d070877afc004010e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c0fa481_58123330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-17T18:12:50Z",
+      "side": 1,
+      "message": "just curious but can\u0027t this be changed in prior?\n\nI\u0027m not so sure about this, though it looks like specific to ChromeOS project (seen at \na patch like https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/dev-libs/openssl/files/openssl-1.1.1g-blacklist.patch#95), so technically speaking, you can change this.",
+      "range": {
+        "startLine": 56,
+        "startChar": 34,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "1ad66b48f5d9df365a011d070877afc004010e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
