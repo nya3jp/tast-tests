@@ -656,3 +656,29 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 	return nil
 }
+
+// WaitForConnection verifies a connection to the specified AP.
+func (tf *TestFixture) WaitForConnection(ctx context.Context, props map[string]interface{}, ap *APIface) error {
+	ctx, st := timing.Start(ctx, "tf.WaitForConnection")
+	defer st.End()
+
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return err
+	}
+
+	serverFreq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
+	if err != nil {
+		return errors.Wrap(err, "failed to get server frequency")
+	}
+
+	request := &network.WaitForConnectionRequest{
+		Shillprops: propsEnc,
+		Frequency:  uint32(serverFreq),
+	}
+	if _, err := tf.wifiClient.WaitForConnection(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}

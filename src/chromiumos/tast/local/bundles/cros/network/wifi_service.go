@@ -216,6 +216,74 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	return assocTime, configTime, nil
 }
 
+// WaitForConnection verifies a connection to network with the specified peroperties and frequency.
+// This is the implementation of network.Wifi/WaitForConnection gRPC.
+func (s *WifiService) WaitForConnection(ctx context.Context, request *network.WaitForConnectionRequest) (*network.WaitForConnectionResponse, error) {
+	start := time.Now()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+
+	shillProps, err := protoutil.DecodeFromShillValMap(request.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	service, err := s.discoverService(ctx, m, shillProps)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover service")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Spawn watcher for checking property change.
+		pw, err := service.CreateWatcher(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create watcher")
+		}
+		defer pw.Close(ctx)
+
+		props, err := service.GetProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get service properties")
+		}
+
+		isConnected, err := props.GetBool(shillconst.ServicePropertyIsConnected)
+		if err != nil {
+			return err
+		}
+
+		if !isConnected {
+			timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+			defer cancel()
+			if err := pw.Expect(timeoutCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
+				return err
+			}
+		}
+
+		frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
+		if err != nil {
+			return err
+		}
+
+		if uint32(frequency) != request.Frequency {
+			return errors.Wrapf(err, "unexpected frequency: got %d, want %d", uint32(frequency), request.Frequency)
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  60 * time.Second,
+		Interval: 2 * time.Second,
+	}); err != nil {
+		return nil, err
+	}
+
+	connectionTime := time.Since(start)
+	return &network.WaitForConnectionResponse{
+		ConnectionTime: connectionTime.Nanoseconds(),
+	}, nil
+}
+
 // Connect connects to a WiFi service with specific config.
 // This is the implementation of network.Wifi/Connect gRPC.
 func (s *WifiService) Connect(ctx context.Context, request *network.ConnectRequest) (*network.ConnectResponse, error) {
