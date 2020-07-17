@@ -1,0 +1,156 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package wifi
+
+import (
+	"context"
+	"encoding/hex"
+	"strings"
+
+	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/wep"
+	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/testing"
+)
+
+type roamTestcase struct {
+	apOpts1    []hostapd.Option
+	apOpts2    []hostapd.Option
+	secConfFac security.ConfigFactory
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:        Roam,
+		Desc:        "Tests roaming to an AP that changes while the client is awake",
+		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		ServiceDeps: []string{"tast.cros.network.WifiService"},
+		Vars:        []string{"router"},
+		Params: []testing.Param{
+			{
+				// Verifies that DUT can roam between two APs in full view of it.
+				Val: roamTestcase{
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
+					secConfFac: nil,
+				},
+			}, {
+				// Verifies that DUT can roam between two WPA APs in full view of it.
+				Name: "wpa",
+				Val: roamTestcase{
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
+					secConfFac: wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP)),
+				},
+			}, {
+				// Verifies that DUT can roam between two WEP APs in full view of it.
+				Name: "wep",
+				Val: roamTestcase{
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)},
+					secConfFac: wep.NewConfigFactory([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}, wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+				},
+			},
+			// TODO(b:161550825): Add a test case for EAP-TLS configuration to verify that DUT can roam between
+			// two 802.1x EAP-TLS APs in full view of it. In the meantime, the EAP-TLS is blocked by hwsec's
+			// NetCertStore component.
+		},
+	})
+}
+
+func Roam(fullCtx context.Context, s *testing.State) {
+	router, _ := s.Var("router")
+	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
+	if err != nil {
+		s.Fatal("Failed to set up test fixture: ", err)
+	}
+	defer func() {
+		if err := tf.Close(fullCtx); err != nil {
+			s.Error("Failed to tear down test fixture: ", err)
+		}
+	}()
+
+	ap1Ctx, cancel := tf.ReserveForClose(fullCtx)
+	defer cancel()
+
+	// Configure the initial AP.
+	param := s.Param().(roamTestcase)
+	ap1, err := tf.ConfigureAP(ap1Ctx, param.apOpts1, param.secConfFac)
+	if err != nil {
+		s.Fatal("Failed to configure ap, err: ", err)
+	}
+	ssid := ap1.Config().SSID
+	defer func() {
+		if ap1 == nil {
+			// ap1 is already deconfigured.
+			return
+		}
+		if err := tf.DeconfigAP(ap1Ctx, ap1); err != nil {
+			s.Error("Failed to deconfig ap, err: ", err)
+		}
+	}()
+	ap2Ctx, cancel := tf.ReserveForDeconfigAP(ap1Ctx, ap1)
+	defer cancel()
+	s.Log("AP1 setup done")
+
+	// Connect to the initial AP.
+	if _, err := tf.ConnectWifiAP(ap2Ctx, ap1); err != nil {
+		s.Fatal("Failed to connect to WiFi, err: ", err)
+	}
+	defer func() {
+		if err := tf.DisconnectWifi(ap2Ctx); err != nil {
+			s.Error("Failed to disconnect WiFi, err: ", err)
+		}
+		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ap2Ctx, req); err != nil {
+			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ssid, err)
+		}
+	}()
+	s.Log("Connected to AP1")
+
+	if err := tf.VerifyConnection(ap2Ctx, ap1); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
+	}
+
+	// Configure the second AP.
+	ops := append([]hostapd.Option{hostapd.SSID(ssid)}, param.apOpts2...)
+	ap2, err := tf.ConfigureAP(ap2Ctx, ops, param.secConfFac)
+	if err != nil {
+		s.Fatal("Failed to configure ap, err: ", err)
+	}
+	defer func() {
+		if err := tf.DeconfigAP(ap2Ctx, ap2); err != nil {
+			s.Error("Failed to deconfig ap, err: ", err)
+		}
+	}()
+	ctx, cancel := tf.ReserveForDeconfigAP(ap2Ctx, ap1)
+	defer cancel()
+	s.Log("AP2 setup done")
+
+	// Deconfigure the initial AP.
+	if err := tf.DeconfigAP(ctx, ap1); err != nil {
+		s.Error("Failed to deconfig ap, err: ", err)
+	}
+	ap1 = nil
+	s.Log("Deconfigured AP1")
+
+	props := map[string]interface{}{
+		shillconst.ServicePropertyType:        shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID: strings.ToUpper(hex.EncodeToString([]byte(ap2.Config().SSID))),
+	}
+
+	if err := tf.WaitForConnection(ctx, props); err != nil {
+		s.Fatal("DUT: failed to connect to the second AP: ", err)
+	}
+
+	if err := tf.VerifyConnection(ctx, ap2); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
+	}
+}
