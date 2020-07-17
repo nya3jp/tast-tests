@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "018c0e57_37c9e309",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-07-17T07:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6f07053_95f5ff88",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "f913fc54858296ba361d2c0f2fea6b6dea657620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81a657b_73e97960",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f913fc54858296ba361d2c0f2fea6b6dea657620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5002969b_cf30721d",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-07-17T07:17:46Z",
+      "side": 1,
+      "message": "Right. I wish there was assert in go...",
+      "parentUuid": "b81a657b_73e97960",
+      "revId": "f913fc54858296ba361d2c0f2fea6b6dea657620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
