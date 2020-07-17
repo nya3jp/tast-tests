@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c49210_4cbe68e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-17T22:57:25Z",
+      "side": 1,
+      "message": "Ready for review but not ready for landing",
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab93615_db7cc9ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-17T22:57:25Z",
+      "side": 1,
+      "message": "Tom, will we be able to pack all unittests for bloonchipper into one binary? Will it fit in size? And should we check in Makefile code to build this all-in-one test binary?",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7429c5ff_0acf781f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-17T22:57:25Z",
+      "side": 1,
+      "message": "We should probably include the EC commit that the binary is built from.",
+      "range": {
+        "startLine": 48,
+        "startChar": 86,
+        "endLine": 48,
+        "endChar": 94
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec11e1dc_51a2d2fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-17T22:57:25Z",
+      "side": 1,
+      "message": "This argument can be extracted from the DUT or from the image file name.",
+      "range": {
+        "startLine": 49,
+        "startChar": 55,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
