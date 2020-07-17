@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc08ccc8_773cd593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:28:58Z",
+      "side": 1,
+      "message": "java / tast wise: +2 % nis.\n\nplease wait for wvk@ review",
+      "revId": "f480820ea44a2ed2989c9012449e4242e0c1f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f789f88_2a9fb2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:28:58Z",
+      "side": 1,
+      "message": "nit:\nthe \"joystick\" is usually called \"thumbstick\", but probably better call it \"axis\" here.",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "f480820ea44a2ed2989c9012449e4242e0c1f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3780a2a_4881d422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:28:58Z",
+      "side": 1,
+      "message": "ditto above: it is better to replace it with \"axis x\"",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 18
+      },
+      "revId": "f480820ea44a2ed2989c9012449e4242e0c1f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8c2fde_560e9cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:28:58Z",
+      "side": 1,
+      "message": "axis",
+      "range": {
+        "startLine": 205,
+        "startChar": 47,
+        "endLine": 205,
+        "endChar": 55
+      },
+      "revId": "f480820ea44a2ed2989c9012449e4242e0c1f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

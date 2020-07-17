@@ -16,6 +16,29 @@
       "revId": "f8334ed2cb50729d32a1f7f8fbf33cd802d72460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10fd5212_f5535da6",
+        "filename": "android/ArcInputLatencyTest/res/layout/activity_main.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:28:58Z",
+      "side": 1,
+      "message": "just remove this, unless you want it for some reason. if so, add a comment.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "f8334ed2cb50729d32a1f7f8fbf33cd802d72460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
