@@ -160,25 +160,14 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	return service, nil
 }
 
-// connectService connects to a WiFi service and wait until conntected state.
-// The time used for association and configuration is returned when success.
-func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
-	ctx, st := timing.Start(ctx, "connectService")
-	defer st.End()
-	testing.ContextLog(ctx, "Connecting to the service: ", service)
-
+func (s *WifiService) waitForConnection(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
 	start := time.Now()
-
 	// Spawn watcher before connect.
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to create watcher")
 	}
 	defer pw.Close(ctx)
-
-	if err := service.Connect(ctx); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to connect to service")
-	}
 
 	// Wait until connection established.
 	// For debug and profile purpose, it is separated into association
@@ -213,6 +202,48 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	configTime = time.Since(start)
 
 	return assocTime, configTime, nil
+}
+
+// connectService connects to a WiFi service and wait until conntected state.
+// The time used for association and configuration is returned when success.
+func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
+	ctx, st := timing.Start(ctx, "connectService")
+	defer st.End()
+	testing.ContextLog(ctx, "Connecting to the service: ", service)
+
+	if err := service.Connect(ctx); err != nil {
+		return 0, 0, errors.Wrap(err, "failed to connect to service")
+	}
+
+	return s.waitForConnection(ctx, service)
+}
+
+// WaitForConnection verifies a connection to network with the specified peroperties.
+// This is the implementation of network.Wifi/WaitForConnection gRPC.
+func (s *WifiService) WaitForConnection(ctx context.Context, request *network.WaitForConnectionRequest) (*network.WaitForConnectionResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+
+	shillProps, err := protoutil.DecodeFromShillValMap(request.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	service, err := s.discoverService(ctx, m, shillProps)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover service")
+	}
+
+	assocTime, configTime, err := s.waitForConnection(ctx, service)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to wait for connection")
+	}
+
+	connectionTime := assocTime + configTime
+	return &network.WaitForConnectionResponse{
+		ConnectionTime: connectionTime.Nanoseconds(),
+	}, nil
 }
 
 // Connect connects to a WiFi service with specific config.
