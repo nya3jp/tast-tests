@@ -16,6 +16,23 @@
       "revId": "acaaf59ac07dbca62487e60af11d6f52da2ddf13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a68cf382_94e8b093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-17T09:37:24Z",
+      "side": 1,
+      "message": "Since change is trivial, I don\u0027t wait shadow reviewer feedback. LGTM!",
+      "revId": "acaaf59ac07dbca62487e60af11d6f52da2ddf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
