@@ -708,3 +708,21 @@ func (c *ContainerCreationWatcher) WaitForCreationComplete(ctx context.Context) 
 		}
 	}
 }
+
+// CheckFileDoesNotExistInDir checks files do not exist in the given path in container.
+// Return error if any file exists or any other error.
+func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string, files ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list the content of %s in container", path)
+	}
+
+	// Check files do not exist
+	for _, file := range files {
+		if strings.Contains(fileList, file) {
+			return errors.Errorf("File %s unexpectedly exists in %s in container", file, path)
+		}
+	}
+	return nil
+}
