@@ -722,6 +722,30 @@
     },
     {
       "key": {
+        "uuid": "d88dae3a_4b6a917a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-17T14:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d119b94e_a7c2143c",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "a61501e332abf441b2a3c2c61d87806ee0b597aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52809e5d_cf59460d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/time/verify_sleep.go",
         "patchSetId": 1

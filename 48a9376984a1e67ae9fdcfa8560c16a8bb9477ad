@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d330995a_8c5eabc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-17T14:16:28Z",
+      "side": 1,
+      "message": "I rewrote the test to use servo\u0027s serial, which completely bypasses the network issues",
+      "parentUuid": "18cfd211_f5d4f445",
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04d58046_9d7862ea",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
         "patchSetId": 3
@@ -65,6 +83,30 @@
       "writtenOn": "2020-07-06T04:41:03Z",
       "side": 1,
       "message": "SoftwareDeps lists \"software features\" defined in the following way.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nSo you need another CL to define the new software feature to declare this dependency.\n\nThat said, we don\u0027t need this software feature if we install the remote_sleep_test command to all test images. I think it\u0027s fine since I expect the command is very small.",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "48a9376984a1e67ae9fdcfa8560c16a8bb9477ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1ef57b_826a5c59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_sleep.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-17T14:16:28Z",
+      "side": 1,
+      "message": "Ok, the review for the DUT-side program is here in Cq-Depend",
+      "parentUuid": "04d58046_9d7862ea",
       "range": {
         "startLine": 34,
         "startChar": 26,
