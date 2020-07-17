@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f59a12f0_2e588b48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-17T02:50:48Z",
+      "side": 1,
+      "message": "Done. Moved constants, configureAPWithPassword, and shillPropsWithGUID into testbody.",
+      "parentUuid": "4f7b812a_d700e88b",
+      "revId": "25d10877ee00e250a293b64c91d8a6beef9c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a07d6e5_9e58e7f3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
         "patchSetId": 5
