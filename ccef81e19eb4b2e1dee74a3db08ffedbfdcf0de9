@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec43139b_22d97227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-17T12:27:34Z",
+      "side": 1,
+      "message": "need to handle if no glob matching",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 17
+      },
+      "revId": "ccef81e19eb4b2e1dee74a3db08ffedbfdcf0de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
