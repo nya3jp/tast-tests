@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
@@ -37,7 +37,10 @@ func init() {
 // StadiaCUJ test starts the default game 'Worm Game' and runs it for 5 minutes. It stays on the
 // main game menu instead of playing or interacting with the game.
 func StadiaCUJ(ctx context.Context, s *testing.State) {
-	const timeout = 10 * time.Second
+	const (
+		timeout  = 10 * time.Second
+		gameName = "Worm Game Edition"
+	)
 
 	cr := s.PreValue().(cuj.PreData).Chrome
 
@@ -51,18 +54,12 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	conn, err := cr.NewConn(ctx, "https://ggp-staging.sandbox.google.com")
+	conn, err := cr.NewConn(ctx, "https://ggp-staging.sandbox.google.com/store/list")
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
 	defer conn.Close()
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to obtain the window list: ", err)
-	}
-	id0 := ws[0].ID
 
 	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
 	if err != nil {
@@ -70,31 +67,11 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer webview.Release(ctx)
 
-	// Start the worm game for testing.
-	wormGame, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Worm Game Edition Play game", Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find the worm game: ", err)
-	}
-	defer wormGame.Release(ctx)
-	wormGame.FocusAndWait(ctx, timeout)
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := wormGame.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click the worm game start button")
-		}
-		w0, err := ash.GetWindow(ctx, tconn, id0)
-		if err != nil {
-			s.Fatal("Failed to get the window: ", err)
-		}
-		// The window should turn into fullscreen mode when game starts.
-		if w0.State != ash.WindowStateFullscreen {
-			return errors.New("hasn't entered the game yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
-		s.Fatal("Failed to start the worm game: ", err)
+	if err := stadiacuj.StartGameFromGameListsView(ctx, tconn, conn, webview, gameName, timeout); err != nil {
+		s.Fatalf("Failed to start the game %s: %s", gameName, err)
 	}
 
-	// Wait for the game screen to show up.
+	// Wait for the game to be completely loaded.
 	// TODO(crbug.com/1091976): use signal from Stadia games instead.
 	if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to sleep: ", err)
