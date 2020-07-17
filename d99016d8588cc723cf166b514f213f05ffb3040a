@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "199b5bd1_cc2b941f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-17T20:58:27Z",
+      "side": 1,
+      "message": "I like the idea of breaking out sub-functions. Especially since most of the cases  where we run R specific code, it is also an early return to the function.\n\nI think that a switch over the sdk version that calls a method specific to the version would be much more readable. Of course, R and S could end up calling the same method.\n\n\nAs another note, I feel that a lot of this should be dealt with in the arc library and not specifically in this test. The test should call act.SetWindowState(..). The arc library should deal with the intricacies of actually doing that differently depending on the version. That way when another test calls act.SetWindowState(..), they don\u0027t have to repeat the same logic implemented here. I know this comment is slightly going back towards a previous implementation. Sorry about that, but I now think that the cleanest implementation would be to modify MoveWindow, ResizeWindow, and SetWindowState in activity.go to dispatch to a specific version of the method based on the android sdk version.\n\nLater, if dumpsys gets updated, these methods can be remerged, otherwise, they can stay unique by sdk version.\n\nIf this doesn\u0027t sound reasonable, it might be good to ping or setup a GVC with Ricardo and I to help speed up coming up with a clear implementation. Replying on a CL can be slow.",
+      "parentUuid": "8b20f3c7_86ddf8e2",
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd61686_d1c20d1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -42,6 +60,52 @@
     },
     {
       "key": {
+        "uuid": "f2143e70_e0f350d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-17T20:58:27Z",
+      "side": 1,
+      "message": "nit: merge into one chain of ifs\n\nif isArcR, err :\u003d isARCR(); err !\u003d nil{\n   ...\n} else if !isArcR {\n   ...\n}",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19408359_3ed608b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-17T20:58:27Z",
+      "side": 1,
+      "message": "nit: it is probably worth using S.Run and making this proper subtests.\nhttp://go/tast-writing#Table_driven-tests",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 5
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00c6794b_9c9c821f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -58,6 +122,52 @@
         "startChar": 0,
         "endLine": 299,
         "endChar": 13
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f921b73f_be7c38fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-17T20:58:27Z",
+      "side": 1,
+      "message": "nit: d",
+      "range": {
+        "startLine": 544,
+        "startChar": 32,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c251ae2_8cfe0897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-17T20:58:27Z",
+      "side": 1,
+      "message": "super nit: potentially merge lines",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 17
       },
       "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
