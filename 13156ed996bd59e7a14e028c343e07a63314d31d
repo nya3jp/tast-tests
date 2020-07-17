@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1ebed2_0630cb71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-17T10:48:57Z",
+      "side": 1,
+      "message": "After checking that the folder does not exist if not shared, seems like a good time to share and check it does exist. Plans for that to come later?",
+      "revId": "13156ed996bd59e7a14e028c343e07a63314d31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3798039e_e361b88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-17T10:48:57Z",
+      "side": 1,
+      "message": "Make this a defer up higher to clean up in case of error?",
+      "revId": "13156ed996bd59e7a14e028c343e07a63314d31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
