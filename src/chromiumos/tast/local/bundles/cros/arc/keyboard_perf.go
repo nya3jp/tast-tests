@@ -43,9 +43,15 @@ func init() {
 		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
 		// TODO(wvk): Once clocks are synced between the host and guest, add
 		// support for ARCVM to this test (b/123416853).
-		SoftwareDeps: []string{"chrome", "android_p"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      2 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
