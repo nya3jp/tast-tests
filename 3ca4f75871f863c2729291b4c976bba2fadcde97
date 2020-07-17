@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8278db2_87f84a70",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/bss.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T04:53:20Z",
+      "side": 1,
+      "message": "make this a const (same with others in this change).",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef79dbe_500ea9a3",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/bss.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T04:53:20Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b697099_fc072bb7",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T04:53:20Z",
+      "side": 1,
+      "message": "do we need to error out of the whole function just because we failed to connect with one BSS?",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
