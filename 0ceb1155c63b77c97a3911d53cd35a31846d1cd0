@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "18782cd8_e2a770df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T21:11:42Z",
+      "side": 1,
+      "message": "By \"two clicks\", do you mean gameViewButton.LeftClick() and gamePlayButton.LeftClick() ? And we could get into an undesired game if the two happens too close to each other?\n\nAnd things are working with webutil.WaitForQuiescence() ?",
+      "parentUuid": "f2371327_ce5f9404",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1015de6_84ce1ada",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
         "patchSetId": 4
@@ -233,6 +257,24 @@
       "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836cb83a_14e0589e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T21:11:42Z",
+      "side": 1,
+      "message": "Consider done then.",
+      "parentUuid": "119f89ce_4fba4568",
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -388,6 +430,30 @@
       "side": 1,
       "message": "I think we need to left click on it until it goes to full-screened. Because for the first few seconds after the start button showed up (animation hasn\u0027t done), left click won\u0027t bring it to the game and the game won\u0027t start (I tried it by myself). Either we can add a sleep between gameStartButton.FocusAndWait and gameStartButton.LeftClick, or we can do the poll. Which one do you think is better?",
       "parentUuid": "c200234d_d6faf665",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0ceb1155c63b77c97a3911d53cd35a31846d1cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c2718d3_c343afac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-17T21:11:42Z",
+      "side": 1,
+      "message": "Interesting. It sounds like the button is shown before all code is loaded and ready.\n\nIf I have to choose between testing.Poll() and testing.Sleep(), I vote for testing.Poll(). It is difficult to get a good sleep duration for all boards.",
+      "parentUuid": "2873ee6a_99ee5cec",
       "range": {
         "startLine": 182,
         "startChar": 0,
