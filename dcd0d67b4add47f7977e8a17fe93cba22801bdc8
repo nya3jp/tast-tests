@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b34e329_a04e881a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/noaccess_to_downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-17T05:23:55Z",
+      "side": 1,
+      "message": "Capitalize the A,\n\nNoAccessToDownloads",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "dcd0d67b4add47f7977e8a17fe93cba22801bdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e510e2c_b0d31a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/noaccess_to_downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-17T05:23:55Z",
+      "side": 1,
+      "message": "Add \"cros-containers-dev@google.com\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "dcd0d67b4add47f7977e8a17fe93cba22801bdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
