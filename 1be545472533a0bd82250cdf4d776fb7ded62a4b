@@ -67,6 +67,24 @@
       "revId": "1be545472533a0bd82250cdf4d776fb7ded62a4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da0b5e7b_ca4061f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-07-17T06:21:59Z",
+      "side": 1,
+      "message": "I found that it is happening because arc.PerAppDensity sometimes crashes ARC and Tast is not properly recovering from it. Given that, it is safe to promote arc.PhysicalKeyboard but we have to fix the problem separately. Mentioned it in the commit message.",
+      "parentUuid": "67fb3be3_5ce8f010",
+      "revId": "1be545472533a0bd82250cdf4d776fb7ded62a4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
