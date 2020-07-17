@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82c0a22b_c67c4090",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-17T01:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabe3217_4e35f04d",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 56
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a8a1e2_67bf8f3f",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b4aec4_0385adc0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-17T01:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a8a1e2_67bf8f3f",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 42
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2699cd3b_afd9ce34",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-17T01:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb345d8_a7be045a",
+      "range": {
+        "startLine": 719,
+        "startChar": 1,
+        "endLine": 719,
+        "endChar": 10
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ed15b2e_c4718829",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 13
@@ -91,6 +163,30 @@
       "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30b7cbb_b78be008",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-17T01:08:29Z",
+      "side": 1,
+      "message": "I changed this a bit to allow these funcs be used by other tests. Could you please review the newest version and provide comments? Thanks a lot.",
+      "parentUuid": "1ed15b2e_c4718829",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 1
+      },
+      "revId": "ca0760b894ea5bea0deb0e92c50df75b12194db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
