@@ -136,7 +136,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			// Drag from the bottom to the top; this should expand the app-list to
 			// fullscreen.
 			if err := mouse.Drag(ctx, tconn, bottom, top, time.Second); err != nil {

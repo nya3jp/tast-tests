@@ -95,7 +95,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Error("Failed to wait for system UI to be stabilized: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := mouse.Drag(ctx, tconn, start, end, 2*time.Second); err != nil {
 			return errors.Wrap(err, "failed to drag the end of point")
 		}

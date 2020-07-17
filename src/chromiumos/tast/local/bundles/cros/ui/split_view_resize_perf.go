@@ -292,7 +292,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if modeName == "TabletMode" {
 				histogramNames = append(histogramNames, dividerSmoothnessName)
 			}
-			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(tconn, func() (err error) {
+			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
 				if !tabletMode {
 					// In clamshell mode, the window width does not stick to the half of
 					// the screen exactly, and the previous drag will end up with a

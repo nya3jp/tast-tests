@@ -338,13 +338,13 @@ func (r *Recorder) WaitAll(ctx context.Context, tconn *chrome.TestConn, timeout 
 
 // Run is a helper to calculate histogram diffs before and after running a given
 // function.
-func Run(ctx context.Context, tconn *chrome.TestConn, f func() error, names ...string) ([]*Histogram, error) {
+func Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx context.Context) error, names ...string) ([]*Histogram, error) {
 	r, err := StartRecorder(ctx, tconn, names...)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := f(); err != nil {
+	if err := f(ctx); err != nil {
 		return nil, err
 	}
 
@@ -356,13 +356,13 @@ func Run(ctx context.Context, tconn *chrome.TestConn, f func() error, names ...s
 func runAndWait(ctx context.Context, tconn *chrome.TestConn,
 	mode waitMode,
 	timeout time.Duration,
-	f func() error, names ...string) ([]*Histogram, error) {
+	f func(ctx context.Context) error, names ...string) ([]*Histogram, error) {
 	r, err := StartRecorder(ctx, tconn, names...)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := f(); err != nil {
+	if err := f(ctx); err != nil {
 		return nil, err
 	}
 
@@ -383,7 +383,7 @@ func runAndWait(ctx context.Context, tconn *chrome.TestConn,
 // there are histograms to wait. Otherwise, it returns immediately like Run.
 func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
 	timeout time.Duration,
-	f func() error, names ...string) ([]*Histogram, error) {
+	f func(ctx context.Context) error, names ...string) ([]*Histogram, error) {
 	return runAndWait(ctx, tconn, waitAll, timeout, f, names...)
 }
 
@@ -393,7 +393,7 @@ func RunAndWaitAll(ctx context.Context, tconn *chrome.TestConn,
 // like Run.
 func RunAndWaitAny(ctx context.Context, tconn *chrome.TestConn,
 	timeout time.Duration,
-	f func() error, names ...string) ([]*Histogram, error) {
+	f func(ctx context.Context) error, names ...string) ([]*Histogram, error) {
 	return runAndWait(ctx, tconn, waitAny, timeout, f, names...)
 }
 

@@ -30,7 +30,7 @@ type ScenarioFunc func(context.Context) ([]*metrics.Histogram, error)
 
 // RunAndWaitAll is a utility function to create ScenarioFunc which conducts
 // f with metrics.RunAndWaitAll.
-func RunAndWaitAll(tconn *chrome.TestConn, f func() error, names ...string) ScenarioFunc {
+func RunAndWaitAll(tconn *chrome.TestConn, f func(ctx context.Context) error, names ...string) ScenarioFunc {
 	return func(ctx context.Context) ([]*metrics.Histogram, error) {
 		return metrics.RunAndWaitAll(ctx, tconn, time.Second, f, names...)
 	}
@@ -38,7 +38,7 @@ func RunAndWaitAll(tconn *chrome.TestConn, f func() error, names ...string) Scen
 
 // RunAndWaitAny is a utility function to create ScenarioFunc which conducts
 // f with metrics.RunAndWaitAny.
-func RunAndWaitAny(tconn *chrome.TestConn, f func() error, names ...string) ScenarioFunc {
+func RunAndWaitAny(tconn *chrome.TestConn, f func(ctx context.Context) error, names ...string) ScenarioFunc {
 	return func(ctx context.Context) ([]*metrics.Histogram, error) {
 		return metrics.RunAndWaitAny(ctx, tconn, time.Second, f, names...)
 	}
