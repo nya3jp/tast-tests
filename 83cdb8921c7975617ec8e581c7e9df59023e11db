@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a5c80a4_8cfed6fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-17T10:39:02Z",
+      "side": 1,
+      "message": "Typo: \"Run a test\"",
+      "revId": "83cdb8921c7975617ec8e581c7e9df59023e11db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
