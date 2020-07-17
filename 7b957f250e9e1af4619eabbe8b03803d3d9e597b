@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb94fc69_52c53bf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-17T08:31:04Z",
+      "side": 1,
+      "message": "Hi guys, please review this CL if you have time 😊 Thanks!\n\nI am writing a test to actually \"play\" another game in a hardcoded way, so I extracted the logic of starting games in this CL.",
+      "revId": "7b957f250e9e1af4619eabbe8b03803d3d9e597b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
