@@ -163,7 +163,7 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 
 // connectService connects to a WiFi service and wait until conntected state.
 // The time used for association and configuration is returned when success.
-func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
+func (s *WifiService) connectService(ctx context.Context, service *shill.Service, needConn bool) (assocTime, configTime time.Duration, retErr error) {
 	ctx, st := timing.Start(ctx, "connectService")
 	defer st.End()
 	testing.ContextLog(ctx, "Connecting to the service: ", service)
@@ -177,19 +177,38 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	}
 	defer pw.Close(ctx)
 
-	if err := service.Connect(ctx); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to connect to service")
+	// Prepare the state list for ExpectIn.
+	var connectedStates []interface{}
+	for _, s := range shillconst.ServiceConnectedStates {
+		connectedStates = append(connectedStates, s)
+	}
+
+	if needConn {
+		if err := service.Connect(ctx); err != nil {
+			return 0, 0, errors.Wrap(err, "failed to connect to service")
+		}
+	} else {
+		// Check if the service is already in connected state.
+		props, err := service.GetProperties(ctx)
+		if err != nil {
+			return 0, 0, errors.Wrap(err, "failed to get service properties")
+		}
+
+		stateVal, err := props.GetString(shillconst.ServicePropertyState)
+		if err != nil {
+			return 0, 0, err
+		}
+		for _, s := range connectedStates {
+			if stateVal == s {
+				return 0, 0, nil
+			}
+		}
 	}
 
 	// Wait until connection established.
 	// For debug and profile purpose, it is separated into association
 	// and configuration stages.
 
-	// Prepare the state list for ExpectIn.
-	var connectedStates []interface{}
-	for _, s := range shillconst.ServiceConnectedStates {
-		connectedStates = append(connectedStates, s)
-	}
 	associatedStates := append(connectedStates, shillconst.ServiceStateConfiguration)
 
 	testing.ContextLog(ctx, "Associating with ", service)
@@ -265,7 +284,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 		}
 	}
 
-	assocTime, configTime, err := s.connectService(ctx, service)
+	assocTime, configTime, err := s.connectService(ctx, service, true)
 	if err != nil {
 		return nil, err
 	}
@@ -1025,4 +1044,91 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
+}
+
+// ExpectShillPropertyValues is a server-streaming method that waits for the
+// matched shill (property, [values]) pairs IN ORDER, and sends the waited
+// (property, value) pair back to the test server.
+// Note that an empty response (Key="") would be sent first after this method
+// is ready for waiting.
+func (s *WifiService) ExpectShillPropertyValues(req *network.ExpectShillPropertyValuesRequest, sender network.WifiService_ExpectShillPropertyValuesServer) error {
+	ctx := sender.Context()
+
+	// Spawn watcher before disabling and enabling.
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := sender.Send(&network.ExpectShillPropertyValuesResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send response")
+	}
+
+	for _, p := range req.Props {
+		var expectedVals []interface{}
+		for _, sv := range p.ExpectedVals {
+			v, err := protoutil.FromShillVal(sv)
+			if err != nil {
+				return err
+			}
+
+			expectedVals = append(expectedVals, v)
+		}
+
+		var notExpectedVals []interface{}
+		for _, sv := range p.NotExpectedVals {
+			v, err := protoutil.FromShillVal(sv)
+			if err != nil {
+				return err
+			}
+
+			notExpectedVals = append(notExpectedVals, v)
+		}
+
+		if p.Check {
+			props, err := service.GetProperties(ctx)
+			if err != nil {
+				return err
+			}
+			val, err := props.GetString(p.Key)
+			if err != nil {
+				return err
+			}
+
+			found := false
+			for _, ev := range expectedVals {
+				if val == ev {
+					found = true
+				}
+			}
+			if found {
+				shillVal, err := protoutil.ToShillVal(val)
+				if err != nil {
+					return err
+				}
+				if err := sender.Send(&network.ExpectShillPropertyValuesResponse{Key: p.Key, Val: shillVal}); err != nil {
+					return errors.Wrap(err, "failed to send response")
+				}
+				break
+			}
+		}
+
+		val, err := pw.ExpectNotExpectIn(ctx, p.Key, expectedVals, notExpectedVals)
+		if err != nil {
+			return errors.Wrap(err, "failed to expect property")
+		}
+		shillVal, err := protoutil.ToShillVal(val)
+		if err != nil {
+			return err
+		}
+		if err := sender.Send(&network.ExpectShillPropertyValuesResponse{Key: p.Key, Val: shillVal}); err != nil {
+			return errors.Wrap(err, "failed to send response")
+		}
+	}
+	return nil
 }
