@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b20f3c7_86ddf8e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:48:24Z",
+      "side": 1,
+      "message": "I\u0027m worried about the quantity of: \"if R do this, else do that\".\n\nI know it is needed, specially for the WM tests since the behavior change a bit.\nBut I\u0027m wondering if there is a better case to handle it, something that will make the test more maintainable.\n\nNot sure whether it is better to have something like:\n\n moveWindow(args) {\n    if P:\n      moveWindowP(args)\n    if R:\n      moveWindowR(args)\n    else:\n      notSupported()\n }\n\n\n\nBrendan: What are you thoughts?\n  ",
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd61686_d1c20d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:48:24Z",
+      "side": 1,
+      "message": "no need to prepend \"mouse\". it will be already be used as mouse.\n\nthe cases where you change the name, is when there is a name conflict, like in \"ui\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c6794b_9c9c821f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-17T01:48:24Z",
+      "side": 1,
+      "message": "the problem with this approach is that this code will be executed in S",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 13
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
