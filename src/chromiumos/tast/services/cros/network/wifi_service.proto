@@ -73,6 +73,13 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // ExpectShillPropertyValues is a server-streaming method that waits for the
+  // matched shill (property, [values]) pairs IN ORDER, and sends the waited
+  // (property, value) pair back to the test server.
+  // Note that an empty response (Key="") would be sent first after this method
+  // is ready for waiting.
+  rpc ExpectShillPropertyValues(ExpectShillPropertyValuesRequest) returns (stream ExpectShillPropertyValuesResponse) {}
 }
 
 message ConnectRequest {
@@ -198,4 +205,20 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+
+message ExpectShillPropertyValuesRequest {
+  message Pair {
+    string key = 1;
+    repeated ShillVal expectedVals = 2;
+    repeated ShillVal notExpectedVals = 3;
+    bool check = 4; 
+  }
+  string servicePath = 1;
+  repeated Pair props = 2;
+}
+
+message ExpectShillPropertyValuesResponse {
+  string key = 1;
+  ShillVal val = 2;
 }
