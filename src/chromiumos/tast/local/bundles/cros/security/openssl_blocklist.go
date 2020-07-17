@@ -17,43 +17,43 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenSSLBlacklist,
-		Desc: "Verifies that OpenSSL certificate blacklisting works",
+		Func: OpenSSLBlocklist,
+		Desc: "Verifies that OpenSSL certificate blocklisting works",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
 		Data: []string{
-			"openssl_blacklist_ca.pem",
-			"openssl_blacklist_cert.key",
-			"openssl_blacklist_cert.pem",
-			"openssl_blacklist_bogus_blacklist",
-			"openssl_blacklist_serial_blacklist",
-			"openssl_blacklist_sha1_blacklist",
-			"openssl_blacklist_sha256_blacklist",
+			"openssl_blocklist_ca.pem",
+			"openssl_blocklist_cert.key",
+			"openssl_blocklist_cert.pem",
+			"openssl_blocklist_bogus_blocklist",
+			"openssl_blocklist_serial_blocklist",
+			"openssl_blocklist_sha1_blocklist",
+			"openssl_blocklist_sha256_blocklist",
 		},
 		Attr: []string{"group:mainline"},
 	})
 }
 
-func OpenSSLBlacklist(ctx context.Context, s *testing.State) {
+func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
 	var (
-		caPEM          = s.DataPath("openssl_blacklist_ca.pem")
-		certKey        = s.DataPath("openssl_blacklist_cert.key")
-		certPEM        = s.DataPath("openssl_blacklist_cert.pem")
-		nullBlacklist  = "/dev/null"
-		bogusBlacklist = s.DataPath("openssl_blacklist_bogus_blacklist")
+		caPEM          = s.DataPath("openssl_blocklist_ca.pem")
+		certKey        = s.DataPath("openssl_blocklist_cert.key")
+		certPEM        = s.DataPath("openssl_blocklist_cert.pem")
+		nullBlocklist  = "/dev/null"
+		bogusBlocklist = s.DataPath("openssl_blocklist_bogus_blocklist")
 	)
-	blacklists := []string{
-		s.DataPath("openssl_blacklist_serial_blacklist"),
-		s.DataPath("openssl_blacklist_sha1_blacklist"),
-		s.DataPath("openssl_blacklist_sha256_blacklist"),
+	blocklists := []string{
+		s.DataPath("openssl_blocklist_serial_blocklist"),
+		s.DataPath("openssl_blocklist_sha1_blocklist"),
+		s.DataPath("openssl_blocklist_sha256_blocklist"),
 	}
 
-	// verify runs "openssl verify" against the cert while using the supplied blacklist.
-	verify := func(blacklist string, dumpOnFail bool) error {
+	// verify runs "openssl verify" against the cert while using the supplied blocklist.
+	verify := func(blocklist string, dumpOnFail bool) error {
 		cmd := testexec.CommandContext(ctx, "openssl", "verify", "-CAfile", caPEM, certPEM)
-		cmd.Env = append(os.Environ(), "OPENSSL_BLACKLIST_PATH="+blacklist)
+		cmd.Env = append(os.Environ(), "OPENSSL_BLACKLIST_PATH="+blocklist)
 		err := cmd.Run()
 		if err != nil && dumpOnFail {
 			cmd.DumpLog(ctx)
@@ -61,14 +61,14 @@ func OpenSSLBlacklist(ctx context.Context, s *testing.State) {
 		return err
 	}
 
-	s.Log("Verifying blacklists")
-	if err := verify(nullBlacklist, true); err != nil {
+	s.Log("Verifying blocklists")
+	if err := verify(nullBlocklist, true); err != nil {
 		s.Fatal("Cert does not verify normally: ", err)
 	}
-	if err := verify(bogusBlacklist, true); err != nil {
-		s.Fatal("Cert does not verify with non-empty blacklist: ", err)
+	if err := verify(bogusBlocklist, true); err != nil {
+		s.Fatal("Cert does not verify with non-empty blocklist: ", err)
 	}
-	for _, bl := range blacklists {
+	for _, bl := range blocklists {
 		if err := verify(bl, false); err == nil {
 			s.Error("Cert unexpectedly verified with ", filepath.Base(bl))
 		}
@@ -87,22 +87,22 @@ func OpenSSLBlacklist(ctx context.Context, s *testing.State) {
 		srvCmd.Wait()
 	}()
 
-	// fetch uses curl with the blacklist at the supplied path to connect to the server.
-	fetch := func(ctx context.Context, blacklist string) error {
+	// fetch uses curl with the blocklist at the supplied path to connect to the server.
+	fetch := func(ctx context.Context, blocklist string) error {
 		cmd := testexec.CommandContext(ctx, "curl", "--cacert", caPEM,
 			fmt.Sprintf("https://127.0.0.1:%d/", port), "-o", "/dev/null")
-		cmd.Env = []string{"OPENSSL_BLACKLIST_PATH=" + blacklist}
+		cmd.Env = []string{"OPENSSL_BLACKLIST_PATH=" + blocklist}
 		return cmd.Run()
 	}
 
 	s.Log("Waiting for server to be ready")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return fetch(ctx, nullBlacklist)
+		return fetch(ctx, nullBlocklist)
 	}, nil); err != nil {
 		s.Fatal("Failed waiting for server to be ready: ", err)
 	}
 
-	for _, bl := range blacklists {
+	for _, bl := range blocklists {
 		s.Log("Connecting to server using ", filepath.Base(bl))
 		if err := fetch(ctx, bl); err == nil {
 			s.Error("Connection unexpectedly succeeded using ", filepath.Base(bl))
