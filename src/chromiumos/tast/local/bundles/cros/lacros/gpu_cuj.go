@@ -554,7 +554,7 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 	return nil
 }
 
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func() error) error {
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func(ctx context.Context) error) error {
 	var keys []string
 	for k, v := range metricMap {
 		if v.uma {
@@ -630,7 +630,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		return err
 	}
 
-	perfFn := func() error {
+	perfFn := func(ctx context.Context) error {
 		return testing.Sleep(ctx, testDuration)
 	}
 	if invoc.scenario == testTypeResize {
@@ -646,7 +646,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			return errors.Wrap(err, "failed to set window initial bounds")
 		}
 
-		perfFn = func() error {
+		perfFn = func(ctx context.Context) error {
 			// End bounds are just flipping the rectangle.
 			// TODO(crbug.com/1067535): Subtract -1 to ensure drag-resize occurs for now.
 			start := coords.NewPoint(sb.Left+sb.Width-1, sb.Top+sb.Height-1)
@@ -690,7 +690,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		if err := setWindowBounds(ctx, ctconn, wb.ID, sbr); err != nil {
 			return errors.Wrap(err, "failed to set blank window initial bounds")
 		}
-		perfFn = func() error {
+		perfFn = func(ctx context.Context) error {
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
 			end := coords.NewPoint(sbl.Left+dragMoveOffsetDP, sbl.Top+dragMoveOffsetDP)

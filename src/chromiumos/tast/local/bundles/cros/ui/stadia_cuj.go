@@ -114,7 +114,7 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
-	if err := recorder.Run(ctx, tconn, func() error {
+	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
 		if err := kb.Accel(ctx, "Space"); err != nil {
 			return errors.Wrap(err, "failed to enter the menu")
 		}

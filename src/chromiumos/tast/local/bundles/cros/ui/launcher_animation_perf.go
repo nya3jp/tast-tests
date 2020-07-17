@@ -200,7 +200,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
 			}
 
-			runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func() error {
+			runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				return runLauncherAnimation(ctx, tconn, kb, at)
 			}, histograms...),
 				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))

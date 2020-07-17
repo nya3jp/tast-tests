@@ -341,7 +341,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 		// Run the drag and collect histogram.
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			if err := drag.df(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to run drag")
 			}

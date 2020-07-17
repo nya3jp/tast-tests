@@ -157,7 +157,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			hiddenHomeButtonHistogram,
 			hiddenWidgetHistogram)
 	}
-	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func() error {
+	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 		conn, err := cr.NewConn(sctx, "", cdputil.WithNewWindow())
@@ -221,7 +221,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	conn.Close()
 
-	runner.RunMultiple(ctx, s, "", perfutil.RunAndWaitAll(tconn, func() error {
+	runner.RunMultiple(ctx, s, "", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}

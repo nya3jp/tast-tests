@@ -97,7 +97,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			w0, err := ash.GetWindow(ctx, tconn, id0)
 			if err != nil {
 				s.Error("Failed to get windows: ", err)
