@@ -39,6 +39,30 @@
       "revId": "f8334ed2cb50729d32a1f7f8fbf33cd802d72460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7a0b33_23f2ad55",
+        "filename": "android/ArcInputLatencyTest/res/layout/activity_main.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-07-17T02:14:07Z",
+      "side": 1,
+      "message": "Yes I removed in patch#5 already. Sorry, I sent out for reviewing before finding the issue.",
+      "parentUuid": "10fd5212_f5535da6",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "f8334ed2cb50729d32a1f7f8fbf33cd802d72460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
