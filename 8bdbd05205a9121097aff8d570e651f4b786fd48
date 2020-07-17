@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a36a464_91faccb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "Can we really do anything about this? As along as they\u0027re two separate calls, it\u0027s impossible to guarantee any atomicity. Also, if the BSS really has disappeared, then has it really been \"Discover\"-ed anyway?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 34
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49a9adb_f7912092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "this will be nil if err !\u003d nil",
+      "range": {
+        "startLine": 259,
+        "startChar": 40,
+        "endLine": 259,
+        "endChar": 45
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf9a561_c4cda439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "just return nil here and get rid of foundBSSID",
+      "range": {
+        "startLine": 261,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 9
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49678ce2_65f1f717",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "can we define these separately instead (like you do for BSSID)? It\u0027s more clear that way.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adad7885_997fa03a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "connected to*",
+      "range": {
+        "startLine": 108,
+        "startChar": 36,
+        "endLine": 108,
+        "endChar": 45
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e778cc61_56f30bb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "roamed*",
+      "range": {
+        "startLine": 109,
+        "startChar": 38,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66b519c_e6b6bcab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "you asked me about this over chat, but let\u0027s figure out why the test fails without this. We probably shouldn\u0027t be sleeping if we don\u0027t need to.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38759389_fb1c3a9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-17T05:06:09Z",
+      "side": 1,
+      "message": "current",
+      "range": {
+        "startLine": 124,
+        "startChar": 37,
+        "endLine": 124,
+        "endChar": 43
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
