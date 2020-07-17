@@ -58,5 +58,6 @@ func DecodeFromShillValMap(conf ShillValMap) (map[string]interface{}, error) {
 			return nil, errors.Errorf("unsupported type %T", x)
 		}
 	}
+
 	return ret, nil
 }
