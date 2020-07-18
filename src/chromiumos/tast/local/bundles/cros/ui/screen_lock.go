@@ -64,7 +64,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Waiting for Chrome to report that screen is locked")
 	_, lockStage := timing.Start(ctx, "lock_screen") // don't assign to ctx; there's no child stage
-	if st, err := lockscreen.WaitState(ctx, conn, func(st lockscreen.State) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
+	if st, err := lockscreen.WaitState(ctx, conn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, lockTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 	lockStage.End()
@@ -74,7 +74,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Typing wrong password failed: ", err)
 	}
 	s.Log("Waiting for lock screen to respond to wrong password (can block if TPM is busy)")
-	if st, err := lockscreen.WaitState(ctx, conn, func(st lockscreen.State) bool { return !st.Locked || st.Ready }, badAuthTimeout); err != nil {
+	if st, err := lockscreen.WaitState(ctx, conn, func(st lockscreen.State) bool { return !st.Locked || st.ReadyForPassword }, badAuthTimeout); err != nil {
 		s.Fatalf("Waiting for response to wrong password failed: %v (last status %+v)", err, st)
 	} else if !st.Locked {
 		s.Fatalf("Was able to unlock screen by typing wrong password: %+v", st)

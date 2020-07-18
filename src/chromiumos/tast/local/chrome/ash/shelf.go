@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -74,6 +75,15 @@ func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID str
 		return ShelfBehaviorInvalid, errors.Errorf("invalid shelf behavior %q", b)
 	}
 	return b, nil
+}
+
+// WaitForShelf waits for the shelf to exist in the UI tree.
+func WaitForShelf(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	params := ui.FindParams{Role: ui.RoleTypeToolbar, ClassName: "ShelfView"}
+	if err := ui.WaitUntilExists(ctx, tconn, params, timeout); err != nil {
+		return errors.Wrap(err, "shelf not found")
+	}
+	return nil
 }
 
 // PinApp pins the shelf icon for the app specified by appID.

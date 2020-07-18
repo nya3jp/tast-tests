@@ -65,7 +65,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatalf("Typing %v failed: %v", accel, err)
 	}
 	s.Log("Waiting for Chrome to report that screen is locked")
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, lockTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 
