@@ -26,7 +26,13 @@ func cleanPSContents(content string) string {
 	// Matches the embedded poppler version in the PS file. This gets
 	// outdated on every poppler uprev, so we strip it out.
 	r := regexp.MustCompile("(?m)^.*poppler.*version:.*[\r\n]")
-	return r.ReplaceAllLiteralString(content, "")
+	content = r.ReplaceAllLiteralString(content, "")
+	// Remove time metadata
+	r = regexp.MustCompile("(?m)^@PJL SET JOBTIME = .*[\r\n]")
+	content = r.ReplaceAllLiteralString(content, "")
+	r = regexp.MustCompile("(?m)^@PJL PRINTLOG ITEM = 2,.*[\r\n]")
+	content = r.ReplaceAllLiteralString(content, "")
+	return content
 }
 
 // Run executes the main test logic with given parameters.
