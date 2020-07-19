@@ -80,10 +80,25 @@ func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open audit.log: ", err)
 	}
 	defer f.Close()
-	wantedLine := regexp.MustCompile("granted.*" + fileName)
-	if match, err := hasLineMatch(f, wantedLine); err != nil {
-		s.Fatal("Failed to read audit.log: ", err)
-	} else if !match {
-		s.Error("Expected audit message in audit.log but not found")
+
+	// Try reading multiple times, since there is a possibility of delay in
+	// auditd's wriging to the log file.
+	const (
+		retryCount = 10
+		sleepTime  = 1 * time.Second
+	)
+	for i := 0; i < retryCount; i++ {
+		wantedLine := regexp.MustCompile("granted.*" + fileName)
+		if match, err := hasLineMatch(f, wantedLine); err != nil {
+			s.Fatal("Failed to read audit.log: ", err)
+			return
+		} else if !match {
+			testing.Sleep(ctx, sleepTime)
+			continue
+		}
+
+		return
 	}
+
+	s.Error("Expected audit message in audit.log but not found")
 }
