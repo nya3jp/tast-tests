@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7d42e00b_1023873d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2020-07-20T18:34:02Z",
+      "side": 1,
+      "message": "tast-owners, PTAL",
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f10b496_83e13d25",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 1
