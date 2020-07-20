@@ -23,7 +23,7 @@ func init() {
 		Func:     MousePerf,
 		Desc:     "Test ARC mouse system performance",
 		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
-		Attr:     []string{"group:crosbolt"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// TODO(wvk): Once clocks are synced between the host and guest, add
 		// support for ARCVM to this test (b/123416853).
 		SoftwareDeps: []string{"chrome", "android_p"},
