@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c2374f2e_87bb4119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-20T21:09:54Z",
+      "side": 1,
+      "message": "I went ahead and renamed \u0026 documented the fields. The individual attribute is added to each test individual, and is by design, and matches the pattern of all of the other PIN tests in this directory.",
+      "parentUuid": "bd5e9599_441628a4",
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9467621_729a88b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03b7afa_2605c098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-20T21:09:54Z",
+      "side": 1,
+      "message": "The informational attribute is attached to each test. This is to follow the pattern for the rest of the PIN tests, in case at some point we do wish to promote them.",
+      "parentUuid": "a9467621_729a88b6",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "cec92ebb_edebc706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-20T21:09:54Z",
+      "side": 1,
+      "message": "Um, no... The no_pin test expects \"printer_pin_print_lexmark_no_pin_golden.ps\" whereas the pin test expects \"printer_pin_print_lexmark_pin_golden.ps\". I checked the externals and they point to different files. The two tests should produce different output.",
+      "parentUuid": "af61d843_6e20fd32",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e04f062_e66ba0a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
         "patchSetId": 2
@@ -102,6 +168,30 @@
       "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a41a4e2_d0213690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-20T21:09:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e04f062_e66ba0a4",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

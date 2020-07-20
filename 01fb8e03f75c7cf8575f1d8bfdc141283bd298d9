@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1491738_cd831f63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-20T21:09:54Z",
+      "side": 1,
+      "message": "Thanks Oleh! Dealt with all of the issues, including the renaming, but I want to highlight I did *not* change the location of the informational attribute, as this matches the pattern of the rest of the tests and was changed this way specifically in prior cl\u0027s to match reviewers preferences.\n",
+      "revId": "01fb8e03f75c7cf8575f1d8bfdc141283bd298d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
