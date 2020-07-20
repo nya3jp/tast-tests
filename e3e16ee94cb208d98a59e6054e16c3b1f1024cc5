@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "970d12c5_0cedee83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-20T00:55:53Z",
+      "side": 1,
+      "message": "Sorry, I overlooked this comment.\n\nFor 1, if the private functions are enough, it might be OK, but I think it still need to handle the command execution/abortion? So, it\u0027s a trade-off between performance and duplicated code, I guess. IMO, the performance difference might not be that much here and it\u0027s for testing so I slightly prefer avoiding duplicated code here.\n\nFor 2, I guess the caller usually won\u0027t operate more on the object after Stop()? So dropping the events might not be that bad? Also, I\u0027m not totally sure where you want a slice to store the Events: a slice buffer for sending to the channel (which cannot have infinite buffer)? or storing the remaining Events in another slice?",
+      "parentUuid": "e0068f90_72884ed0",
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9456038_6aabd542",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 1
