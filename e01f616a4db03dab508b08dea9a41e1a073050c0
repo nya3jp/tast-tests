@@ -16,6 +16,92 @@
       "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd5e9599_441628a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-20T20:14:06Z",
+      "side": 1,
+      "message": "LGTM % comment about informational.\n\nAlso, please rename pinprint.Paarams fields and add documentation for each field in the following CL :)\n\nThanks!",
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9467621_729a88b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-20T20:14:06Z",
+      "side": 1,
+      "message": "Please add informational attribute, otherwise you will promote it to CQ once you submit CL.",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af61d843_6e20fd32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-20T20:14:06Z",
+      "side": 1,
+      "message": "same: ExpectedFile?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e04f062_e66ba0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-20T20:14:06Z",
+      "side": 1,
+      "message": "a bit out of this CL scope, but i found that it\u0027s hard to understand what DiffFile means without reading code. It also a bit confusing that there is no pin_diff.txt file in \"Data\" array list.\n\nMaybe rename it to OutDiffFile?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
