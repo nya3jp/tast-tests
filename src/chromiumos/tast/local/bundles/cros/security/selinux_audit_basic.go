@@ -16,6 +16,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -80,10 +81,29 @@ func SELinuxAuditBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open audit.log: ", err)
 	}
 	defer f.Close()
-	wantedLine := regexp.MustCompile("granted.*" + fileName)
-	if match, err := hasLineMatch(f, wantedLine); err != nil {
-		s.Fatal("Failed to read audit.log: ", err)
-	} else if !match {
-		s.Error("Expected audit message in audit.log but not found")
+
+	// Try reading multiple times, since there is a possibility of delay in
+	// auditd's wriging to the log file.
+	const (
+		retryTimeout  = 10 * time.Second
+		retryInterval = 1 * time.Second
+	)
+	wantedLine, err := regexp.Compile("granted.*" + fileName)
+	if err != nil {
+		s.Fatal("Regexp compile error. The path of temporary file may be wrong: ", err)
+	}
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		if match, err := hasLineMatch(f, wantedLine); err != nil {
+			// Failed: something is wrong in reading the log file.
+			return testing.PollBreak(errors.Wrap(err, "failed to read audit.log"))
+		} else if !match {
+			// Retry after sleep.
+			return errors.New("expected audit message is not found in audit.log")
+		}
+		// Succeeded: the log entry is found.
+		return nil
+	}, &testing.PollOptions{Timeout: retryTimeout, Interval: retryInterval}); err != nil {
+		// Failed: the retry count exceeded.
+		s.Error("Expected audit message in audit.log but not found: ", err)
 	}
 }
