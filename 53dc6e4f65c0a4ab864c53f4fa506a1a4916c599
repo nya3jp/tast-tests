@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8d801a2_edd17a1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-07-20T21:04:09Z",
+      "side": 1,
+      "message": "added crosbolt_perbuild",
+      "revId": "53dc6e4f65c0a4ab864c53f4fa506a1a4916c599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
