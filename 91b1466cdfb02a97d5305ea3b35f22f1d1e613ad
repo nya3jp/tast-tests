@@ -16,6 +16,46 @@
       "revId": "91b1466cdfb02a97d5305ea3b35f22f1d1e613ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c87e01e9_651e5a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-07-20T01:11:01Z",
+      "side": 1,
+      "message": "nit: how about \"retryInterval\"?",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "91b1466cdfb02a97d5305ea3b35f22f1d1e613ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946dcff9_382084bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-07-20T01:11:01Z",
+      "side": 1,
+      "message": "How about using testing.Poll()?",
+      "revId": "91b1466cdfb02a97d5305ea3b35f22f1d1e613ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
