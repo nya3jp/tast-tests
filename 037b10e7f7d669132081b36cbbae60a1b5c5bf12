@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "587ced8c_77952448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-20T19:32:27Z",
+      "side": 1,
+      "message": "IIRC, pip layout is controlled by chrome side even for ARC++. Has it been changed? (but in that case, the collision detection won\u0027t work I guess)",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69703104_240e0e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-20T19:32:27Z",
+      "side": 1,
+      "message": "Add comment why/how this triggers PIP",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b80d4e9_c52698d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-20T19:32:27Z",
+      "side": 1,
+      "message": "why reason not to use what was found by Polling?",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
