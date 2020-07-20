@@ -33,6 +33,24 @@
       "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c59e353_96f17f73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2020-07-20T20:40:21Z",
+      "side": 1,
+      "message": "Hey Avery,\nSorry for getting back to you late. I think I also saw this issue before. What\u0027s your chrome version and ARC version? And also what\u0027s your Android version (you should be able to find it in Settings-\u003eAndroid Settings-\u003eSystem-\u003eAbout device)?",
+      "parentUuid": "976e64de_81b19687",
+      "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
