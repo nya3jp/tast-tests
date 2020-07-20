@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a839f2_86d26e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-20T08:24:35Z",
+      "side": 1,
+      "message": "LGTM. I think Eric is on leave so probably you can remove and ask gwsq to assign tast reviewer again?",
+      "revId": "ed3f9ba5a02feb598f72fccbea1adc4685271c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
