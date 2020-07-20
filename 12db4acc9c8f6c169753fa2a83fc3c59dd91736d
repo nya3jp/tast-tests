@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "130b7fdf_7473f124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-20T09:48:27Z",
+      "side": 1,
+      "message": "LGTM % questions",
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15344ce6_38b04300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-20T09:48:27Z",
+      "side": 1,
+      "message": "Is this force enabled for users if set? Maybe call it forced in that case.",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fceaed1_d17bcf45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-20T09:48:27Z",
+      "side": 1,
+      "message": "Since this code is pretty similar to AllowDeletingBrowserHistory and possibly other tests, you could create a common module for checking the state of checkboxes (in a separate CL).",
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
