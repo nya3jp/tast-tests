@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "273887f5_16d300a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-20T22:45:00Z",
+      "side": 0,
+      "message": "Do we need to remove this from the tast list of software deps? I don\u0027t see a Cq-Depends on this change.",
+      "range": {
+        "startLine": 33,
+        "startChar": 61,
+        "endLine": 33,
+        "endChar": 81
+      },
+      "revId": "a40e176afc83eda2440728d1370587cebd265b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

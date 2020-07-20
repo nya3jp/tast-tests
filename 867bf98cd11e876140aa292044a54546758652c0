@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "454ea139_18f183bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-20T22:45:00Z",
+      "side": 1,
+      "message": "Well, if we\u0027re going to be technical, the mock consent version is stable. The real_consent_unstable is just as (not) stable as real_consent.",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "867bf98cd11e876140aa292044a54546758652c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff0c6ba_007d7704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-20T22:45:00Z",
+      "side": 1,
+      "message": "Looking for a Cq-Depends, otherwise good",
+      "revId": "867bf98cd11e876140aa292044a54546758652c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
