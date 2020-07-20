@@ -109,6 +109,30 @@
       "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5f03d8_f4a6bc86",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-20T18:04:58Z",
+      "side": 1,
+      "message": "There\u0027s also the case where a BSS is removed in between the time we call BSSs and NewBSS, which is certainly more likely than a device being removed, for instance, especially in an AP-dense environment. That being said, I\u0027m not sure if this is a legitimate concern or if that\u0027s less likely than some random D-Bus connection failure. Just food for thought.\n\n\u003e We\u0027ll want to apply the same change there, if any.\n\nI don\u0027t think this pattern is something we need to match across all functions that do similar things.",
+      "parentUuid": "3f26b43f_0cde793d",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
