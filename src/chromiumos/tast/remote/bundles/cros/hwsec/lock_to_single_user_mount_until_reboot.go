@@ -68,6 +68,10 @@ func create2VaultsForTesting(ctx context.Context, utility *hwsec.UtilityCryptoho
 
 // cleanupVault will delete the first and second user's vault.
 func cleanupVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) (returnedErr error) {
+	// Unmount first.
+	if err := utility.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount vaults before cleanup")
+	}
 	// Remove the vault.
 	if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
 		returnedErr = errors.Wrap(err, "failed to remove first user's vault")
