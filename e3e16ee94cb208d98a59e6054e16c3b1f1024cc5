@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dc3359e3_724d4365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-20T02:55:44Z",
+      "side": 1,
+      "message": "\u003e a slice buffer for sending to the channel (which cannot have infinite buffer)?\n\nYeah, I meant this. Once the author calls the Stop(), the channel would be closed and the events that come BEFORE calling Stop() would also be dropped -- if they were not yet sent into the channel.\n\nNow I think this should not be a problem because if one would like to log the events between an accurate interval, then EventLogger should be suitable.",
+      "parentUuid": "970d12c5_0cedee83",
+      "revId": "e3e16ee94cb208d98a59e6054e16c3b1f1024cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9456038_6aabd542",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 1
