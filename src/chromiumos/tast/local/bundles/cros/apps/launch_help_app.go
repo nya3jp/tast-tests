@@ -160,7 +160,7 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		// Find Overview tab to verify app rendering.
 		params = ui.FindParams{
 			Name: "Overview",
-			Role: ui.RoleTypeTab,
+			Role: ui.RoleTypeTreeItem,
 		}
 		if _, err := helpAppRootNode.DescendantWithTimeout(ctx, params, 20*time.Second); err != nil {
 			return errors.Wrap(err, "failed to render help app")
