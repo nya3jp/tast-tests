@@ -83,7 +83,7 @@ var configPlatforms = []string{
 	"kalista",
 	"kefka",
 	"kevin",
-	"kevin-tpm2",
+	"kevin_tpm2",
 	"kip",
 	"kitty",
 	"kukui",
