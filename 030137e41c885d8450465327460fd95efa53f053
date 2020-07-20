@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d3e55567_a76e5ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T02:42:03Z",
+      "side": 1,
+      "message": "I did not find the mount point of drive.",
+      "parentUuid": "00a28adf_9cfc551f",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "030137e41c885d8450465327460fd95efa53f053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea89217c_22eb3181",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -83,6 +107,30 @@
       "writtenOn": "2020-07-20T01:44:25Z",
       "side": 1,
       "message": "Did you use an owned test account or just a normal account?",
+      "range": {
+        "startLine": 186,
+        "startChar": 17,
+        "endLine": 186,
+        "endChar": 43
+      },
+      "revId": "030137e41c885d8450465327460fd95efa53f053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82aabed8_3800b547",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T02:42:03Z",
+      "side": 1,
+      "message": "It\u0027s a test account I created.",
+      "parentUuid": "ea89217c_22eb3181",
       "range": {
         "startLine": 186,
         "startChar": 17,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "36ae1146_8a5584d3",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T02:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e391d0b_808adf3d",
+      "range": {
+        "startLine": 187,
+        "startChar": 17,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "030137e41c885d8450465327460fd95efa53f053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d27f917_49d1b50c",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -138,6 +210,30 @@
       "revId": "030137e41c885d8450465327460fd95efa53f053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e544190_dff13f8d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T02:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d27f917_49d1b50c",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 29
+      },
+      "revId": "030137e41c885d8450465327460fd95efa53f053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
