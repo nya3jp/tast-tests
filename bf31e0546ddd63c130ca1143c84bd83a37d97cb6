@@ -68,6 +68,24 @@
       "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6de83ce_e02352e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-20T07:16:49Z",
+      "side": 1,
+      "message": "The robot account is an extra user account on an enrolled device and has its own cryptohome. Removing the files may break tests that depend on the robot account to function.",
+      "parentUuid": "e5e8a24f_5565f5b3",
+      "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
