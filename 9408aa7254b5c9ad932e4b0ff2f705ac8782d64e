@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e109f617_570f3ab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:59:10Z",
+      "side": 1,
+      "message": "LGTM, but please note that I am not a full Tast reviewer yet, so you\u0027ll need to wait for Hidehiko\u0027s LGTM.",
+      "revId": "9408aa7254b5c9ad932e4b0ff2f705ac8782d64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
