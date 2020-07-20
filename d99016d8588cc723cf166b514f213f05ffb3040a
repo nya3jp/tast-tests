@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1d252924_45a624a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "I was able to make move and resize work with mouse drags for both P and R, so there\u0027s no need to break it out anymore",
+      "parentUuid": "199b5bd1_cc2b941f",
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd61686_d1c20d1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "dc02c5fc_b6eb2e95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd61686_d1c20d1e",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2143e70_e0f350d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -80,6 +122,30 @@
       "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d3782b_dd15fb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2143e70_e0f350d0",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "fa07c527_900dab97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "Was able make the ash API work for both versions so no need to execute different paths for each SDK",
+      "parentUuid": "00c6794b_9c9c821f",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 13
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f921b73f_be7c38fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -152,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "d18080e6_ad59ea62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f921b73f_be7c38fb",
+      "range": {
+        "startLine": 544,
+        "startChar": 32,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c251ae2_8cfe0897",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 10
@@ -172,6 +286,30 @@
       "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0801c6_0a305048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-20T21:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c251ae2_8cfe0897",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 17
+      },
+      "revId": "d99016d8588cc723cf166b514f213f05ffb3040a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
