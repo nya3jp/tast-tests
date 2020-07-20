@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7d371816_c1fe7a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-20T20:13:12Z",
+      "side": 1,
+      "message": "I might be wrong, but the function testPIPResizeToMax at [1] gives me the impression that ARC++ PIP layout is controlled by the ARC++ side. I want to hear from takise.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go;rcl\u003d769ca321589d2fdceee696dd9e11e94df0a92504;l\u003d253",
+      "parentUuid": "587ced8c_77952448",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69703104_240e0e85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9b757c6b_51f273bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-20T20:13:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69703104_240e0e85",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b80d4e9_c52698d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51eed0b_77ec0857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-20T20:13:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b80d4e9_c52698d5",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
