@@ -16,6 +16,23 @@
       "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "976e64de_81b19687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-20T20:35:16Z",
+      "side": 1,
+      "message": "Now I am seeing different behavior on my nautilus: overview shows one of the two minimized ARC windows. It is still wrong. Overview should show both of the minimized ARC windows.\nhttps://photos.app.goo.gl/3J2hN6TDRzo3cdmp7",
+      "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
