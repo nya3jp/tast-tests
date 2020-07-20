@@ -16,6 +16,23 @@
       "revId": "cf012180cde1a2bb98b7d0a46a23b44f065f65cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93b2a9c1_883c0131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-20T16:27:26Z",
+      "side": 1,
+      "message": "Given that this test has recently had some failures and has a lot of gaps in recent build execution, I would rather wait a bit before promoting this. The official rule from go/tast-add-test is 20 builds without failures. Can we wait another week on this to ensure it won\u0027t have other flakes?",
+      "revId": "cf012180cde1a2bb98b7d0a46a23b44f065f65cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
