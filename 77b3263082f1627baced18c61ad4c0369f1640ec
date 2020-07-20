@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d111fa41_e0116fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "If insets is necessary, I think it should be a separate struct from Rect, and you can put the definition into coords package.  See ui/gfx/geometry/insets.h in chromium for the reference.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77f1151d_e2b3d3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "I think it\u0027s better to avoid internal URL like this.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14e27c3_8b9cdb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "m-prefix should be removed from Go code.\n\nAlso, I\u0027m afraid that it is not clear what it does and how workspace and screen-edge are related to the task. Maybe, I guess it should be named differently.",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4bd0fc7_76a43491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "I am really concerned about the ported code like this.\n\nDo you really think it needs to check the PiP windows in the exactly same pixel size, as it matches the rounded logic or whatever it is?\n\nMy personal opinion is, it\u0027s nothing necessary.  It is great to make some basic checking for the test validity, but pixel-level comparison of the size is overly complicated and it\u0027s hard to debug, and it\u0027s easier to fail.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6deea310_e563dc4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "Remove m-prefixes. Use const ( ... ) clause. Also, please describe what are they.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 66
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4bbd232_5d1a77ea",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "Please note in the comment that the result will be rounded.  That\u0027s a bit complicated what would be the \"right\" calculation when fractional factors are taken into account.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5106c22a_4f9c8546",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "To me personally, \"WithUnitConversion\" does not sound the right name. It would rather be \u0027scale\u0027. For unit conversion, it would mean to specify the source unit / target unit etc; but those structs don\u0027t have units actually.\n\nThat\u0027s my personal preference though.",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a248f97_d329382f",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:27:53Z",
+      "side": 1,
+      "message": "Sorry to say this, but I prefer the previous naming scheme for this.\n\nPreviously it says FromDpToPx and givevn dsf, which is clear (to me) that the given bounds is assumed to be in Dp and converting it to in Pixel with device-scale-factor.  WithUnitConversion, those details are lost.\n\nI have to admit that the previous name is dumb and the new name is clean, but the previous name clarifies what it does.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
