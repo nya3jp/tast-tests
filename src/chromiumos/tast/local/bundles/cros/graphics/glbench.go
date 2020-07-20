@@ -68,6 +68,7 @@ func init() {
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 				Timeout:           60 * time.Minute,
 			}, {
 				Name:              "crostini_hasty",
