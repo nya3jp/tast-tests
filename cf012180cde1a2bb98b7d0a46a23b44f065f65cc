@@ -33,6 +33,24 @@
       "revId": "cf012180cde1a2bb98b7d0a46a23b44f065f65cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aa8d89_66ccaa48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-07-20T16:47:15Z",
+      "side": 1,
+      "message": "All the recent failures are accounted by the two CLs in the commit message. There are only two individual failures in the last twelve runs, and those failures are covered by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2304253.\n\nWaiting another week will allow more security-risky failures to creep in, and continue keeping maintenance of this test a treadmill.\n\nI asked Ross and Katherine specifically to get this in before the 20 build limit because of that exact reason and they agreed:\n\n\"\"\"\nGreat, thank you for the followup.  \n\nYou have an explicit ACK from Katherine and me to make this test Critical once you see some green test results.  Please watch the CQ and be ready to drop it back to Informational if bystander CLs start to get rejected.\n\nThanks!\n- Ross \"\n\nI will watch the CQ and revert if things go wrong, but I cannot afford to maintain this test outside of the CQ. Because of that, I would like to land this CL today. 12 almost-perfect builds with 10 perfect builds should be enough in this circumstance.",
+      "parentUuid": "93b2a9c1_883c0131",
+      "revId": "cf012180cde1a2bb98b7d0a46a23b44f065f65cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
