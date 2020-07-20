@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1455b3a_e2b184ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-07-20T07:22:11Z",
+      "side": 1,
+      "message": "PTAL: This CL contains the Tast tests as promised in the previous several cls in this chain",
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
