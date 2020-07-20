@@ -99,6 +99,23 @@
     },
     {
       "key": {
+        "uuid": "cb0a1c49_3a3bd08b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-20T23:29:53Z",
+      "side": 1,
+      "message": "If it\u0027s always okay to be a mouse, simply use of mouse package would be good enough.\n(https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui/mouse)",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4bbd232_5d1a77ea",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 3
