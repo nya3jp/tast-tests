@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31fbc302_fcb97917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-20T03:23:37Z",
+      "side": 1,
+      "message": "Yamaguchi-san, PTAL again? Thanks.",
+      "revId": "a9f71c4adf7a4c8cb8fe8e16c85763d8be7ffd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
