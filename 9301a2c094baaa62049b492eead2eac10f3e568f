@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2be64ca2_857279f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-20T06:11:39Z",
+      "side": 1,
+      "message": "How about giving a comment for why getting timestamp from the DUT?\n// Obtain current time from the DUT because we use the \"disconnect\" event timestamp as the end time of the link failure detection duration, which is from the DUT\u0027s clock.",
+      "revId": "9301a2c094baaa62049b492eead2eac10f3e568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

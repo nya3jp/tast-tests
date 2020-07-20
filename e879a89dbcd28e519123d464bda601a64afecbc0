@@ -237,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "26e75746_c7412c0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-20T06:11:39Z",
+      "side": 1,
+      "message": "I mean reassociateStart obtained in reassociateTime(). It can be either from the first scan event or from the first disconnect event just before the link is gone deliberately.\n\nShouldn\u0027t we obtain reassociateStart in a separate function and the value is used to calculate linkFailureTime and reassociateStart?\nlinkFailureTime \u003d reassociateStart - testStart\nreassociateStart \u003d connectedTime - reassociateStart",
+      "parentUuid": "2058dd1c_c2741f04",
+      "revId": "e879a89dbcd28e519123d464bda601a64afecbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "419b8193_8f2bf4ad",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 2
