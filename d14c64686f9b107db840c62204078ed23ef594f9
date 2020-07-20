@@ -16,6 +16,29 @@
       "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad7617c8_78e05eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-07-20T07:51:53Z",
+      "side": 1,
+      "message": "Does this do with and without NNAPI? Does it matter for these tests?",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
