@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0d243cff_36b1327b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-07-20T20:24:50Z",
+      "side": 1,
+      "message": "The size constraint should be specified by Android side (since chrome doesn\u0027t know about it), but position should be controlled by ARC++. You can add your login ash/wm/pip/pip_positioner.cc and check it",
+      "parentUuid": "7d371816_c1fe7a13",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69703104_240e0e85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 2
