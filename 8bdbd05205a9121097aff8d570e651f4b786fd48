@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2a637406_093348e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-20T17:47:18Z",
+      "side": 1,
+      "message": "Yeah, and Arowa already does that by just logging below as opposed to returning. My point was just that we don\u0027t really need this TODO.",
+      "parentUuid": "b74d4799_99ba4314",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 34
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b49a9adb_f7912092",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 9
