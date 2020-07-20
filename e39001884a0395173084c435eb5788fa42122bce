@@ -65,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "34bf647f_5bd34a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:24:15Z",
+      "side": 1,
+      "message": "This is the same Desc as in logs.NetworkEventLog. Could you please update the Desc\u0027s to be more specific?",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8613cf99_bb54ea3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
         "patchSetId": 2
