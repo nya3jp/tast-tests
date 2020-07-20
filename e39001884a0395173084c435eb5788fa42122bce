@@ -329,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "f791221c_ca87237d",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3053eec9_ec6a6193",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cad14e2d_4d0905fe",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 2
@@ -443,6 +461,24 @@
       "revId": "e39001884a0395173084c435eb5788fa42122bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "372d8ac4_9885eb86",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:58:06Z",
+      "side": 1,
+      "message": "Looks like we\u0027re on the same page 😊",
+      "parentUuid": "4e9ae17a_80836017",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
