@@ -16,6 +16,91 @@
       "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de129745_3c1bd3b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-20T22:01:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be \"B\", 2 here?",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650d0e9e_598365a3",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-20T22:01:24Z",
+      "side": 1,
+      "message": "create constants for A and B.",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b13900_08e3b448",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-20T22:01:24Z",
+      "side": 1,
+      "message": "Existing autotest code says if count is less than 0, it will be set to 15, so probably don\u0027t want to rule it out here.",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3047a8_edaac9a8",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-20T22:01:24Z",
+      "side": 1,
+      "message": "factor this out from vboot1 and vboot2 cases.",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9a94f2_ac15bcd4",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-20T22:01:24Z",
+      "side": 1,
+      "message": "nit, wrap the error, move this check to start of function",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
