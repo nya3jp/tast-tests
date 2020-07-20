@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f714dfd_979d0998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:58:06Z",
+      "side": 1,
+      "message": "LGTM, although my comment about ioutil.TempDir remains open. Note that I am not a full Tast reviewer yet, so you will need to wait for Hidehiko\u0027s LGTM.",
+      "revId": "17c207028d46d2996f185f557a31580019acda72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
