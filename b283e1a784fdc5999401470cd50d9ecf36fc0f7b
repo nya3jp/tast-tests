@@ -16,6 +16,23 @@
       "revId": "b283e1a784fdc5999401470cd50d9ecf36fc0f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa70226c_b7b32055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-07-20T05:35:11Z",
+      "side": 1,
+      "message": "Sorry I missed this before.\nI prefer handling error of this regexp compilation, because fileName value is something given from outside this module at runtime.\nAdditionally this can be put outside this Polling loop function so that the compilation happen only once.",
+      "revId": "b283e1a784fdc5999401470cd50d9ecf36fc0f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
