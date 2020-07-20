@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "105b285d_49998bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "nit: \"tast\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83027124_5a6849c7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -16,6 +39,200 @@
       "revId": "e39001884a0395173084c435eb5788fa42122bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "067b56a8_c53978ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "nit: \"succeed\", I think.",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8613cf99_bb54ea3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "The following is cleaner and equivalent:\n\n    s.Fatal(\"System logs not written: \", err)",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84d8c48_2fb688bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "I think strings.Contains is closer to what you want.\n\n    if !strings.Contains(logs, \"CHROME VERSION\") {",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e97497_dc41a3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "Could you wrap \"CHROME VERSION\" in a const? That would make it easier to change or reference later.",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd6f634_b2b3bf47",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "Could you make this a constant?\n\n    const dest \u003d \"/tmp\"\n\nAnd, I\u0027m not sure what exactly is done by autotestPrivate.writeSystemLogs, but could you use ioutil.TempDir instead? This could safeguard against an unexpected filesystem structure.\n\nhttp://go/godoc/io/ioutil#TempFile\n\n(If you do, don\u0027t forget to update the docstring in L21!)",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f39779_92902d4c",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "style: IMO, it is more idiomatic to define err inline (L27) with :\u003d unless you have a reason not to. This makes it clearer to the reader that there\u0027s nothing unexpected going on.\n\n    if err :\u003d tconn.Call(...); err !\u003d nil {",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad14e2d_4d0905fe",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "nit: There are at least three filepaths referred to in this function (dest, filepath, and txtFilepath). Could you choose a more precise name for this variable, such as logZipFilepath / zipFilepath?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36ab33b_0566b10a",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "style: I think filepath.Ext more precisely describes your intention here.\n\nhttp://go/godoc/path/filepath/#Ext",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5d9635_ebd3ea2c",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "nit/style: Similar to my comment on L25, I think the following is more idiomatic:\n\n    systemLogs, err :\u003d ioutil.ReadFile(txtFilepath)\n    if err !\u003d nil {\n        return \"\", err\n    }",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b009cd99_2378e39e",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-20T23:23:11Z",
+      "side": 1,
+      "message": "If L42 returns an error, then txtFilepath will be left intact on the filesystem. Could you move this deferral up to above L40?",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
