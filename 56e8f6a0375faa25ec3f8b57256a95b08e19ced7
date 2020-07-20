@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "944b6929_21302c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/network_event_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59709de_3e5b51be",
+      "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0267880d_33b17665",
         "filename": "src/chromiumos/tast/local/bundles/cros/logs/network_event_log.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-20T23:30:49Z",
       "side": 1,
       "message": "nit/style: as I described in https://crrev.com/c/2309169/2, I think the following is more idiomatic:\n\n    logs, err :\u003d systemLogs.GetMultilineSection(ctx, tconn, networkSection)\n    if err !\u003d nil {",
+      "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00cb9d7_a0dd517e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/network_event_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:31Z",
+      "side": 1,
+      "message": "Same problem, same fix, lmkwyt",
+      "parentUuid": "0267880d_33b17665",
       "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbd21a4_7a96925d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/network_event_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65096a7_949e05ea",
+      "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "6612a6ac_ce9cc0b6",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eae3341_04c2b912",
+      "range": {
+        "startLine": 48,
+        "startChar": 35,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64bfe84e_0f5e7c03",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2020-07-20T23:30:49Z",
       "side": 1,
       "message": "nit/style: As I describe elsewhere, I think the following is more idiomatic:\n\n    logs, err :\u003d GetSystemLogs(ctx, tconn)\n    if err !\u003d nil {\n        return \"\", err\n    }",
+      "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1761d18b_8c776da3",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:31Z",
+      "side": 1,
+      "message": "Same change, lmkwyt",
+      "parentUuid": "64bfe84e_0f5e7c03",
       "revId": "56e8f6a0375faa25ec3f8b57256a95b08e19ced7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
