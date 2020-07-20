@@ -33,6 +33,41 @@
       "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ccdebd3_fe62db3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-20T04:44:52Z",
+      "side": 1,
+      "message": "Can you give more details how it would break the robot account?",
+      "parentUuid": "5e1bf174_45f4d571",
+      "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5e8a24f_5565f5b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-20T04:44:52Z",
+      "side": 1,
+      "message": "I am not familiar with how the robot account would be affected by removing files in the shadow directory, can you add more info about it?",
+      "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
