@@ -487,8 +487,9 @@ func init() {
 				},
 			}, {
 				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
-				Name:      "non_ascii_ssid",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name:              "non_ascii_ssid",
+				ExtraAttr:         []string{"wificell_unstable"},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiMarvell()),
 				Val: []simpleConnectTestcase{
 					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
 					// end to keep the coverage.
