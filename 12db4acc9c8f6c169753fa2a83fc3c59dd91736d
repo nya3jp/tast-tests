@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b4ee1318_ee6b9508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-20T11:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15344ce6_38b04300",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fceaed1_d17bcf45",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
         "patchSetId": 1
@@ -56,6 +80,24 @@
       "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13038677_0baa34f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-20T11:30:23Z",
+      "side": 1,
+      "message": "When I find a third policy that uses these kind of checks for checked or restricted status, I plan to create a common module for it.",
+      "parentUuid": "1fceaed1_d17bcf45",
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
