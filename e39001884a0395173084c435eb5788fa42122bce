@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2f5f7ea_f51eb0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105b285d_49998bef",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83027124_5a6849c7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -82,6 +106,48 @@
     },
     {
       "key": {
+        "uuid": "79bbdf9c_64650471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "This is subtle, but its \"Tests that writing {...} succeeds\". I\u0027ll rephrase this.",
+      "parentUuid": "067b56a8_c53978ba",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee0cf7f_63edc15d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "34bf647f_5bd34a60",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8613cf99_bb54ea3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
         "patchSetId": 2
@@ -96,6 +162,24 @@
       "revId": "e39001884a0395173084c435eb5788fa42122bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4e299a_7532f659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8613cf99_bb54ea3a",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +229,54 @@
     },
     {
       "key": {
+        "uuid": "b239ffef_724800e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e97497_dc41a3cd",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da375fb4_1c91e1d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84d8c48_2fb688bd",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdd6f634_b2b3bf47",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 2
@@ -179,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "3053eec9_ec6a6193",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "I ran into problems at line 41, see comment there.",
+      "parentUuid": "d0f39779_92902d4c",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cad14e2d_4d0905fe",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 2
@@ -202,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "f1a95714_085442b9",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad14e2d_4d0905fe",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b36ab33b_0566b10a",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 2
@@ -216,6 +390,24 @@
       "revId": "e39001884a0395173084c435eb5788fa42122bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d48fbfb_313b2a71",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b36ab33b_0566b10a",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +428,24 @@
     },
     {
       "key": {
+        "uuid": "4e9ae17a_80836017",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "If I do this then systemLogs is undefined below. I\u0027ve \"fixed\" this by separating out the if, LMKWYT.",
+      "parentUuid": "5e5d9635_ebd3ea2c",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b009cd99_2378e39e",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 2
@@ -250,6 +460,24 @@
       "revId": "e39001884a0395173084c435eb5788fa42122bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5360e9e6_972aaa06",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T23:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b009cd99_2378e39e",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
