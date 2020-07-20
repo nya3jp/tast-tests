@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,7 +32,10 @@ func init() {
 		Contacts:     []string{"drinkcat@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(),
+			// See crbug.com/1031054, broken on veyron
+			hwdep.SkipOnPlatform("veyron_tiger")),
+		Pre: chrome.LoggedIn(),
 		Data: []string{
 			"fps.html",
 		},
