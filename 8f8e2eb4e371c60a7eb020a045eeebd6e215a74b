@@ -56,6 +56,30 @@
       "revId": "8f8e2eb4e371c60a7eb020a045eeebd6e215a74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eea518d_cf7bf09d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-07-20T11:14:43Z",
+      "side": 1,
+      "message": "Updated.  Please help take another quick look.  Thanks!",
+      "parentUuid": "484eadc7_addb9c67",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 66
+      },
+      "revId": "8f8e2eb4e371c60a7eb020a045eeebd6e215a74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
