@@ -16,6 +16,23 @@
       "revId": "13980f194767b6d8e2380d665ca5f0f916a7dba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c8f283_4805f970",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-20T04:48:00Z",
+      "side": 1,
+      "message": "I found the flakiness of security.SELinuxAuditBasic test and created the fix: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2303339\n\nLet me wait until the above fix is submitted.",
+      "revId": "13980f194767b6d8e2380d665ca5f0f916a7dba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
