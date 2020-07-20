@@ -39,6 +39,30 @@
       "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d49c337_94dac7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2020-07-20T17:46:42Z",
+      "side": 1,
+      "message": "The next line where it sets the Logfile for the tests will do just that. The gtest subfolder will then have the gtest output data for each test run. I verified that it works.",
+      "parentUuid": "7f10b496_83e13d25",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
