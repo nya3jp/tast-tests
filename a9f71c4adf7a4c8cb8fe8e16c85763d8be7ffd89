@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a35274e7_536d26fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-20T05:17:22Z",
+      "side": 1,
+      "message": "Thanks, I restored timeout variable and kept parenthesis.",
+      "parentUuid": "99f8e723_403cdf43",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "a9f71c4adf7a4c8cb8fe8e16c85763d8be7ffd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54601ae2_63f1c79d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
         "patchSetId": 5
@@ -62,6 +86,30 @@
       "revId": "a9f71c4adf7a4c8cb8fe8e16c85763d8be7ffd89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fbdd7f_fdcca0aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-20T05:17:22Z",
+      "side": 1,
+      "message": "Good catch. I misunderstood the usage of testing.PollOption. Done.",
+      "parentUuid": "54601ae2_63f1c79d",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 49
+      },
+      "revId": "a9f71c4adf7a4c8cb8fe8e16c85763d8be7ffd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
