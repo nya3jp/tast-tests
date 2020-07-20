@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8679444c_16ddc246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T01:17:20Z",
+      "side": 1,
+      "message": "Yes, it is planned. In this case, just checking not sharing. In the planned case, will share and do some operations in shared folder. Makes sense to you?",
+      "parentUuid": "5d1ebed2_0630cb71",
+      "revId": "13156ed996bd59e7a14e028c343e07a63314d31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3798039e_e361b88b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "13156ed996bd59e7a14e028c343e07a63314d31d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32565a09_262b087d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-20T01:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3798039e_e361b88b",
+      "revId": "13156ed996bd59e7a14e028c343e07a63314d31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
