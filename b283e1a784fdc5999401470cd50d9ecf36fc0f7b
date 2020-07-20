@@ -33,6 +33,24 @@
       "revId": "b283e1a784fdc5999401470cd50d9ecf36fc0f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de77b103_3c528014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_basic.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-07-20T06:03:49Z",
+      "side": 1,
+      "message": "Thank you. Done for moving regexp compile and adding an error handling of regexp compile.",
+      "parentUuid": "fa70226c_b7b32055",
+      "revId": "b283e1a784fdc5999401470cd50d9ecf36fc0f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
