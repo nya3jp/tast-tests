@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f370002d_6e4fb951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-20T10:48:37Z",
+      "side": 1,
+      "message": "Hi Xiyuan, I am writing another cuj test so I just moved out util functions.",
+      "revId": "3c717f95430fb5ea8550e735fdc4d3bc0720b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
