@@ -39,6 +39,30 @@
       "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6ff108_c4cbf69d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-07-20T07:55:16Z",
+      "side": 1,
+      "message": "The current deployed drivers can work with and without NNAPI.\n\nEventually we will have Tast tests that will benchmark NNAPI through the ML benchmark, but I have not gotten that far",
+      "parentUuid": "ad7617c8_78e05eff",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
