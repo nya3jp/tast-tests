@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83027124_5a6849c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-20T22:19:02Z",
+      "side": 1,
+      "message": "Whoever reviews this, please also review the related follow-up CL, \"Add logs.NetworkEventLog test\", thanks!\n",
+      "revId": "e39001884a0395173084c435eb5788fa42122bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
