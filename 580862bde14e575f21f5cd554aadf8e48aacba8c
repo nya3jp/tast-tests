@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd205c9c_d733e51f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-20T01:34:43Z",
+      "side": 1,
+      "message": "Now that this is very short, maybe just put the code in the AddFilesToLinuxFiles function instead?",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "580862bde14e575f21f5cd554aadf8e48aacba8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d46345_83cafb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-20T01:34:43Z",
+      "side": 1,
+      "message": "Since this is never read back, why not make it shorter so the line is shorted, eg \"test\"",
+      "range": {
+        "startLine": 104,
+        "startChar": 81,
+        "endLine": 104,
+        "endChar": 129
+      },
+      "revId": "580862bde14e575f21f5cd554aadf8e48aacba8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0f00d2_dd4a4cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-20T01:34:43Z",
+      "side": 1,
+      "message": "It is strange that a function called copyFiles... actually creates the files before copying them.  Maybe rename the function?",
+      "range": {
+        "startLine": 104,
+        "startChar": 19,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "580862bde14e575f21f5cd554aadf8e48aacba8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
