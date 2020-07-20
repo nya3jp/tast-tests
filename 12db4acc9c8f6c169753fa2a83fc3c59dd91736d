@@ -98,6 +98,24 @@
       "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "875776fe_1138d0d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-20T11:38:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13038677_0baa34f5",
+      "revId": "12db4acc9c8f6c169753fa2a83fc3c59dd91736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
