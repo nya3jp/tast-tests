@@ -334,14 +334,11 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
 					return errors.Wrap(err, "failed to wait for the window state back to original position")
 				}
-				if tabletMode {
-					// In tablet mode, the split-view divider may animate and
-					// ash.WaitForCondition can't wait for it properly, so use
-					// WaitForLocationChangeCompleted to wait for that change.
-					if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-						return errors.Wrap(err, "failed to wait for the location changes to complete")
-					}
-				}
+				// Note: in tablet mode, the split view divider will be still animating
+				// at this point because ash.WaitForCondition does not check divider's
+				// status. Still this is not a problem, as RunAndWaitAll function will
+				// wait for the metrics for the divider animation which is generated
+				// after the divider animation finishes.
 				return nil
 			}, histogramNames...),
 				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
