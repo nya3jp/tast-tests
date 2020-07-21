@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1837a011_2842d858",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-21T08:23:38Z",
+      "side": 1,
+      "message": "p.cont, err :\u003d ... ?",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a0b0303_6e1fbaed",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-21T08:23:38Z",
+      "side": 1,
+      "message": "How big/verbose is this logging?",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7646f3a4_34a4137b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-21T08:23:38Z",
+      "side": 1,
+      "message": "Why+where are you switching tablet mode on?",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
