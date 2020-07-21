@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "1cbbeb72_0d214c27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-07-21T04:54:26Z",
+      "side": 1,
+      "message": "For DRY, could you extract common logic into tast/common package?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/hwsec/",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 177
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3651c5ae_880eb720",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
