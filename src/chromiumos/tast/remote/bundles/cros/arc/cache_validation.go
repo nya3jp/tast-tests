@@ -73,12 +73,12 @@ func generateJarURL(ctx context.Context, dut *dut.DUT, propertyFile, branch stri
 
 	buildPropStr := string(buildProp)
 
-	mBuildID := regexp.MustCompile(`(\n|^)ro.system.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	mBuildID := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
 	if mBuildID == nil {
 		return "", errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
-	url := fmt.Sprintf("%s/%s/%s/%s", buildsRoot, branch, "6400433" /*mBuildID[2],*/, jarName)
+	url := fmt.Sprintf("%s/%s/%s/%s", buildsRoot, branch, mBuildID[2], jarName)
 	return url, nil
 }
 
