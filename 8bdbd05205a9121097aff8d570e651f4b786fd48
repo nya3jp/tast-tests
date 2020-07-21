@@ -662,6 +662,30 @@
     },
     {
       "key": {
+        "uuid": "6a7ff574_7678ba66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-21T08:09:12Z",
+      "side": 1,
+      "message": "After looking at the net.log, the test fails if there is no sleep with the following error:\nwpas_dbus_handler_roam[dbus] Target AP not found from BSS table\n\nI see that the roaming request happens before the BSS is added. \n\nThese are the logs for both the PASS and FAIL cases. \nPASS: https://paste.googleplex.com/6607935025184768\nFAIL: https://paste.googleplex.com/6551316149043200\n\nAfter I fixed the bug you found in the DiscoverBSSID() in PS10, the test pass without the sleep.\n\nIt used to also fail in the PS9, so I only changed the order inside the poll in DiscoverBSSID() as Matthew suggested to check the BSSID first then run the scan. I ran the test after that and it passes without the sleep.",
+      "parentUuid": "76db30d0_595f201d",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "8bdbd05205a9121097aff8d570e651f4b786fd48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38759389_fb1c3a9d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 9
