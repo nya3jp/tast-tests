@@ -205,6 +205,30 @@
       "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b77f62_25699a46",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-21T01:48:45Z",
+      "side": 1,
+      "message": "\u003e There\u0027s also the case where a BSS is removed in between the time we call BSSs and NewBSS.\n\nI mean NewBSS does not really fail in this case as it does not check if the object path is valid or not. e.g. I tried to NewBSS(ctx, \"/invalid/path\") and it did not return error, but the following BSSID call will fail.\n\nIn any case, I\u0027m also OK with having this logged instead, in case the behavior of dbusutil changes. And yes, devices are less likely to have the race so it is reasonable to error out there.",
+      "parentUuid": "711cc955_25d290cf",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "3ca4f75871f863c2729291b4c976bba2fadcde97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
