@@ -32,7 +32,7 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		// TODO(b/149247291): remove the blacklist once elm/hana upreved kernel to 4.19 or above.
+		// TODO(b/149247291): remove the dependency once elm/hana upreved kernel to 4.19 or above.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
 	})
 }
