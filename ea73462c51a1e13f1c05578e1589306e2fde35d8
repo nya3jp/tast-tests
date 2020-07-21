@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "78b5070d_99aca5a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "LGTM % minor comments",
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41185d20_44b4c605",
         "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBase.java",
         "patchSetId": 2
@@ -105,6 +122,132 @@
     },
     {
       "key": {
+        "uuid": "88846c9a_7557c914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "You can add yourself as well since you are author on this test.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5662dfe_a8d28be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "remove blank line",
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061c305e_23e69490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "same",
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3495518b_dca0e7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "not used in the test",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 96
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262e4294_427d5ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "same: unused",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0feed15_9843fac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "used once, do we need it to be a constant? Looks like such string literals are self explainable",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47512d5a_6fa7e26e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
         "patchSetId": 2
@@ -121,6 +264,52 @@
         "startChar": 29,
         "endLine": 94,
         "endChar": 31
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a4a070_e3c16ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "you can actually uncomment this, e.g.  playbackDurationSecond \u003d audioWarmupDuration + measureDuration  + 10",
+      "range": {
+        "startLine": 94,
+        "startChar": 32,
+        "endLine": 94,
+        "endChar": 86
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae3f6729_3ccafe58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "Measuing?",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 17
       },
       "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -145,6 +334,23 @@
         "endLine": 100,
         "endChar": 55
       },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8e9dc5_c7488333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:14:04Z",
+      "side": 1,
+      "message": "please add blank line before",
       "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
