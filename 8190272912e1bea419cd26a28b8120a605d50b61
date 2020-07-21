@@ -16,6 +16,29 @@
       "revId": "8190272912e1bea419cd26a28b8120a605d50b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fcbec88_bb07852b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-21T17:57:04Z",
+      "side": 1,
+      "message": "Ignoring the cancel function is a bad manner. Actually it is forbidden by go-vet normally, while ctxutil is out of its scope.\n\nPlease consider to take the cancel function and ensure calling it.\n\nMy recommendation is to return a cleanup function as a return value.\n  return shortenedCtx, store, func() { CleanupNetCertsStore(store); cancel() }, nil",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "8190272912e1bea419cd26a28b8120a605d50b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
