@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "16318e92_3e69761e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-21T15:22:32Z",
+      "side": 1,
+      "message": "Correction:\nSometimes it succeeded with one round (~3 sec).\nSometimes Drive FS didn\u0027t refresh the metadata immediately and it needed two rounds (~10 sec).",
+      "parentUuid": "2116f028_e98cafbe",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b10261_4e82091b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 8
