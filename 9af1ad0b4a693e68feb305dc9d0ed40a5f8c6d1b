@@ -16,6 +16,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e1362_22a1cd58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2020-07-21T23:22:57Z",
+      "side": 1,
+      "message": "Weird. So the error message is \"Ash window state was Maximized but should be Minimized\" which suggested DragToShowHomescreen() does not minimize the ARC window as expected. Is there any way for you to verify that this function https://source.chromium.org/chromium/chromium/src/+/master:ash/home_screen/drag_window_from_shelf_controller.cc;drc\u003dc12f7a008d7096c48d0c4db36c6d6edbc71700fb;l\u003d631?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F is called for the two ARC windows?",
+      "parentUuid": "7642c237_baf74067",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
