@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "0525e4ae_becddd35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-07-21T09:23:28Z",
+      "side": 1,
+      "message": "From top level, is it possible to measure c0 / c1 ratio as well?",
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41185d20_44b4c605",
         "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBase.java",
         "patchSetId": 2
@@ -39,6 +56,98 @@
       "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1ab4e19_fba76511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-07-21T09:23:28Z",
+      "side": 1,
+      "message": "PerformaceMode",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f1e906_5acde4fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-07-21T09:23:28Z",
+      "side": 1,
+      "message": "move to a separated const with type\n\ntype PerformanceMode uint64\n\nconst (\n    // ...\n    PerformaceModeNone PerformaceMode \u003d iota\n    // ...\n    PerformaceModeLowLatency\n    // ...\n    PerformaceModePowerSaving\n)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47512d5a_6fa7e26e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-07-21T09:23:28Z",
+      "side": 1,
+      "message": "audioWarmupDuration + measureDuration + 10 // with 10 seconds buffer",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 31
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06336ab6_f4c48142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-07-21T09:23:28Z",
+      "side": 1,
+      "message": "With type PerformanceMode, this can be removed",
+      "range": {
+        "startLine": 100,
+        "startChar": 49,
+        "endLine": 100,
+        "endChar": 55
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
