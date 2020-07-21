@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59a2a5d6_bc52438e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T15:04:17Z",
+      "side": 1,
+      "message": "LGTM to avoid cross timezone iteration, but please address my inline comments before submitting.",
+      "revId": "ca77b3c6e2e4f3c9cc4d3d0c7a626adcac52d320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1dc2968_36a145f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T15:04:17Z",
+      "side": 1,
+      "message": "Clar: Do you plan to add more biod related tests here?",
+      "revId": "ca77b3c6e2e4f3c9cc4d3d0c7a626adcac52d320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c50ac1_4878b6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/is_running.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T15:04:17Z",
+      "side": 1,
+      "message": "In Go, we often avoid stop words, such as \"Is\", \"Has\", \"Get\" etc. unlike other languages.\n\nCould you remove \"is\" prefix from here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "ca77b3c6e2e4f3c9cc4d3d0c7a626adcac52d320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
