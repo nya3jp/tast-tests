@@ -74,12 +74,12 @@ var stablePipTests = []pipTestParams{
 	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
 	{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
 	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
+	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
+	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 }
 
 var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
-	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
-	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: enterPip},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
 }
@@ -570,7 +570,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the window will have an initial maximized state.
-	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, settingPkgName, ash.WMEventMaximize); err != nil {
 		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
 	}
 
