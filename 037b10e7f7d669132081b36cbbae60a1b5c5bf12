@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6a24ea90_ad81918f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d243cff_36b1327b",
+      "revId": "037b10e7f7d669132081b36cbbae60a1b5c5bf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69703104_240e0e85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 2

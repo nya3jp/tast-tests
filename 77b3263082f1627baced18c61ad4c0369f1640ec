@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "41fb6d50_85e5a601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "This code review comment does not apply to the latest patchset.",
+      "parentUuid": "d111fa41_e0116fa2",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77f1151d_e2b3d3c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-20T23:27:53Z",
       "side": 1,
       "message": "I think it\u0027s better to avoid internal URL like this.",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ffcff8_e5ca7b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "See the discussion of the code that gets the bounds of the PIP resize handle.",
+      "parentUuid": "77f1151d_e2b3d3c9",
       "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1188d2f7_a11495db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "This code review comment does not apply to the latest patchset.",
+      "parentUuid": "a14e27c3_8b9cdb99",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4bd0fc7_76a43491",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc6c07e_837ad304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4bd0fc7_76a43491",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "1b1b6bf5_7ffa9b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "This code review comment does not apply to the latest patchset.",
+      "parentUuid": "6deea310_e563dc4f",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 66
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f6e7b4_bfb021aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "15c9c154_608c4e55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f6e7b4_bfb021aa",
+      "range": {
+        "startLine": 85,
+        "startChar": 73,
+        "endLine": 85,
+        "endChar": 74
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb0a1c49_3a3bd08b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -136,6 +262,24 @@
       "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b00983a_aecc90b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb0a1c49_3a3bd08b",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "a3958cdd_ccbdbdeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797c5943_e463af1b",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f46c1cd_d8496a27",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -173,6 +341,30 @@
       "writtenOn": "2020-07-21T01:04:23Z",
       "side": 1,
       "message": "nit: are you trying to match that the description must be empty?\n\nif so, would mind adding a comment. e.g:\n\n// Description must be empty. See: ...link to code, where it sets the empty description. Just in case it breaks in the future, we know what it should match.",
+      "range": {
+        "startLine": 207,
+        "startChar": 26,
+        "endLine": 207,
+        "endChar": 32
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19530ace_7f7aa7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "I think that this suggestion contradicts Mukai\u0027s suggestion \"I think it\u0027s better to avoid internal URL like this.\" For now, I have added a code comment that simply says \"Look for an empty content description.\"\n\nKazuki Takise, where does the Android code set the content description for a PIP resize handle? Can you change that content description so that it is meaningful instead of empty?",
+      "parentUuid": "7f46c1cd_d8496a27",
       "range": {
         "startLine": 207,
         "startChar": 26,
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "fb315822_f8e4fd9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Now I have added a code comment here, and I have replaced my call to cpu.WaitUntilIdle with a call to power.WaitUntilCPUCoolDown.",
+      "parentUuid": "e40bc1ba_40a576e9",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 2
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b68982ab_cae14a1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
@@ -231,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "559f752a_7370ebda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68982ab_cae14a1d",
+      "range": {
+        "startLine": 263,
+        "startChar": 30,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4bbd232_5d1a77ea",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 3
@@ -245,6 +485,24 @@
       "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7b8b04_776037e2",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bbd232_5d1a77ea",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -295,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "64096172_7123e306",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "In the latest patchset, there is only the Rect version of this function, for which Mukai advocates other naming ideas, and for which the name \"Scale\" would cause confusion about the pivot.",
+      "parentUuid": "36628b15_d97410ce",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a248f97_d329382f",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 3
@@ -309,6 +591,24 @@
       "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73204e72_c62d0db6",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T23:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a248f97_d329382f",
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
