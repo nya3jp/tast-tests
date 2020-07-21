@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29abf3dc_41fa29bb",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T04:24:20Z",
+      "side": 1,
+      "message": "dbusInterfaceInterface? This applies the same naming rule. It looks weird I know but I have no better name yet.",
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4136d40f_d6494b0c",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T04:24:20Z",
+      "side": 1,
+      "message": "dbusInterfacePropBSSs",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca0a046d_c1a14f39",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T04:24:20Z",
+      "side": 1,
+      "message": "How about using the property framework we used in shill? E.g. objects are derived from Properties and they can use the getters in local/shill/property.go?",
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7effc2be_1fff141e",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T04:24:20Z",
+      "side": 1,
+      "message": "Since it is in wpasupplicant interface, let\u0027s omit \"wpasupplicant\".\nSince it is the base path in the package, how about naming it as \"dbusBasePath\".",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13137c5_09b4d277",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T04:24:20Z",
+      "side": 1,
+      "message": "How about \"dbusBaseInterface\"?",
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
