@@ -73,13 +73,13 @@ var stablePipTests = []pipTestParams{
 	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
 	{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
 	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
+	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 }
 
 var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: enterPip},
-	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
 }
 
