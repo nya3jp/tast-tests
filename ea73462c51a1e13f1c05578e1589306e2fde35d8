@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38dc759e_ead57434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-07-21T08:45:47Z",
+      "side": 1,
+      "message": "android/ lgtm with one optional comment.\n",
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41185d20_44b4c605",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/SamplePlayerBase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-07-21T08:45:47Z",
+      "side": 1,
+      "message": "optional: As the tast test will run only on P and later. You can set minSdkVersion\u003d\"28\" in AndroidManifest.xml instead of marking methods with @TargetApi.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "ea73462c51a1e13f1c05578e1589306e2fde35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
