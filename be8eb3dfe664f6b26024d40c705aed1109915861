@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "0d37f5c3_d1f8d593",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-21T07:19:48Z",
+      "side": 1,
+      "message": "Take a deeper look, the way shill and wpa_supplicant obtain the properties are quite different. So Property and its methods cannot be shared.",
+      "parentUuid": "ca0a046d_c1a14f39",
+      "revId": "be8eb3dfe664f6b26024d40c705aed1109915861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7effc2be_1fff141e",
         "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
         "patchSetId": 3
