@@ -46,6 +46,29 @@
       "revId": "a40e176afc83eda2440728d1370587cebd265b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6f7996_c9ae61ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:59:10Z",
+      "side": 0,
+      "message": "Should you mention these bugs in commit message?",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "a40e176afc83eda2440728d1370587cebd265b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
