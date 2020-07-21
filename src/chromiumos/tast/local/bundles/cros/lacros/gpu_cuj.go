@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/ui/ubertray"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
@@ -288,39 +289,13 @@ func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn fun
 	return nil
 }
 
-func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string) error {
-	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
-	params := ui.FindParams{
-		ClassName: "ash/StatusAreaWidgetDelegate",
-	}
-	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
-	}
-	defer statusArea.Release(ctx)
-
-	if err := statusArea.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click status area")
+func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, setting ubertray.QuickSetting, enable bool) error {
+	if err := ubertray.ToggleQuickSetting(ctx, tconn, setting, enable); err != nil {
+		return errors.Wrap(err, "failed to toggle quick setting")
 	}
 
-	// Find and click button in the Ubertray via UI.
-	params = ui.FindParams{
-		Name:      name,
-		ClassName: "FeaturePodIconButton",
-	}
-	nbtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find button")
-	}
-	defer nbtn.Release(ctx)
-
-	if err := nbtn.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click button")
-	}
-
-	// Close StatusArea.
-	if err := statusArea.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click status area")
+	if err := ubertray.Hide(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide ubertray")
 	}
 	return nil
 }
@@ -832,11 +807,11 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer audio.Unmute(ctx)
 
-	if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is off."); err != nil {
+	if err := toggleTraySetting(ctx, tconn, ubertray.QuickSettingDoNotDisturb, true); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)
 	}
 	defer func() {
-		if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is on."); err != nil {
+		if err := toggleTraySetting(ctx, tconn, ubertray.QuickSettingDoNotDisturb, false); err != nil {
 			s.Fatal("Failed to re-enable notifications: ", err)
 		}
 	}()
