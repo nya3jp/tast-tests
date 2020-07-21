@@ -69,6 +69,24 @@
       "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89db25c1_87fbd6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2020-07-21T00:10:16Z",
+      "side": 1,
+      "message": "This issue looks very like crbug.com/1042830, in which minimizing an ARC window is async operation, thus during its minimization, the ARC window is unactivatable, thus won\u0027t show up in overview. \nSo I think to avoid this problem, try to wait after DragToShowHomescreen() step until all windows states have changed to MINIMIZED.",
+      "parentUuid": "e94ab30e_0f556bbd",
+      "revId": "1465e0c8f40bd720be00d8615d4427c5d86fd409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
