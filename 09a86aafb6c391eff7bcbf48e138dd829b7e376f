@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adc9fa0e_a92fff97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-21T22:57:52Z",
+      "side": 1,
+      "message": "Adding information on how to generate defs.go file.\nI did not include the generated defs.go file, but used it to test policy.* tast tests.\n",
+      "revId": "09a86aafb6c391eff7bcbf48e138dd829b7e376f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
