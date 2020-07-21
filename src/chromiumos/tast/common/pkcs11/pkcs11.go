@@ -11,6 +11,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/uuid"
+
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -238,6 +240,73 @@ func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, 
 		certPath:    "",
 		objID:       objID,
 		slot:        slot,
+	}
+
+	return result, nil
+}
+
+// ImportPEMKeyAndCertBySlot imports key and cert of PEM format to the token specified by slot.
+// The object will have an ID of objID. It is OK for either privKey or cert to be empty if they are not needed.
+func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, privKey, cert, objID string, slot int) (*KeyInfo, error) {
+	if privKey == "" && cert == "" {
+		return nil, errors.New("nothing to import")
+	}
+
+	result := &KeyInfo{
+		keyPrefix:   "", // No keyPrefix, no file is left on disk.
+		privKeyPath: "", // Not needed by caller for now.
+		pubKeyPath:  "",
+		certPath:    "", // Not needed by caller for now.
+		objID:       objID,
+		slot:        slot,
+	}
+
+	if privKey != "" {
+		// Generate temp file path for the PEM to DER conversion.
+		keyPemPath := filepath.Join(scratchpadPath, uuid.New().String()+".pem")
+		defer p.runner.Run(ctx, "rm", "-f", keyPemPath)
+		keyDerPath := filepath.Join(scratchpadPath, uuid.New().String()+".der")
+		defer p.runner.Run(ctx, "rm", "-f", keyDerPath)
+
+		// Write out the pem file
+		if _, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("echo %q > %q", privKey, keyPemPath)); err != nil {
+			return nil, errors.Wrap(err, "failed to write key pem file")
+		}
+
+		// Convert the PEM file to DER file.
+		if msg, err := p.runner.Run(ctx, "openssl", "rsa", "-in", keyPemPath, "-out", keyDerPath, "-inform", "PEM", "-outform", "DER"); err != nil {
+			testing.ContextLogf(ctx, "OpenSSL failed to convert key pem to der: %q", msg)
+			return nil, errors.Wrap(err, "failed to convert pem to der")
+		}
+
+		// Import the object with p11_replay
+		if msg, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=privkey", "--path="+keyDerPath, "--id="+objID); err != nil {
+			testing.ContextLogf(ctx, "p11_replay failed to import key: %q", msg)
+			return nil, errors.Wrap(err, "failed to import object with p11_replay")
+		}
+	}
+
+	if cert != "" {
+		// Generate temp file path for the PEM to DER conversion.
+		certPemPath := filepath.Join(scratchpadPath, uuid.New().String()+".pem")
+		defer p.runner.Run(ctx, "rm", "-f", certPemPath)
+		certDerPath := filepath.Join(scratchpadPath, uuid.New().String()+".der")
+		defer p.runner.Run(ctx, "rm", "-f", certDerPath)
+
+		// Write out the pem file
+		if _, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("echo %q > %q", cert, certPemPath)); err != nil {
+			return nil, errors.Wrap(err, "failed to write key pem file")
+		}
+
+		// Convert the PEM file to DER file.
+		if _, err := p.runner.Run(ctx, "openssl", "x509", "-in", certPemPath, "-out", certDerPath, "-inform", "PEM", "-outform", "DER"); err != nil {
+			return nil, errors.Wrap(err, "failed to convert pem to der")
+		}
+
+		// Import the object with p11_replay
+		if _, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=cert", "--path="+certDerPath, "--id="+objID); err != nil {
+			return nil, errors.Wrap(err, "failed to import cert with p11_replay")
+		}
 	}
 
 	return result, nil
