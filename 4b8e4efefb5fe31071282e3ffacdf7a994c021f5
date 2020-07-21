@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4003a16_17d6ae27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-21T13:43:28Z",
+      "side": 1,
+      "message": "CL adding the policies for reference: https://chromium-review.googlesource.com/c/chromium/src/+/2283163",
+      "revId": "4b8e4efefb5fe31071282e3ffacdf7a994c021f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
