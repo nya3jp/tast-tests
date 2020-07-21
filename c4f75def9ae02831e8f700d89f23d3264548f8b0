@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64394296_86231b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-21T13:38:37Z",
+      "side": 1,
+      "message": "PTAL. We can completely remove the oppressive language from tast code once the new tests are stable and the policies are depreciated.",
+      "revId": "c4f75def9ae02831e8f700d89f23d3264548f8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
