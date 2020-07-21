@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a37c7810_0a12b8d2",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-21T08:14:48Z",
+      "side": 1,
+      "message": "Incomplete sentence",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff45d941_397d59cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-21T08:14:48Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually check the icon, just that the app is in the shelf, right? Wouldn\u0027t you need a screenshot test to check that the right icon is showing in the shelf? See http://crbug/1088393 for an example that this test wouldn\u0027t have caught that a person running the test manually might\u0027ve.\n\nAlso, this just checks terminal which is special. Is there a separate test to check a Linux app (which could also cover .desktop file integration)?",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
