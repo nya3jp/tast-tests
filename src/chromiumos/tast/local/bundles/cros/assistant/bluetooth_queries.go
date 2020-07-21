@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
@@ -105,22 +106,10 @@ func BluetoothQueries(ctx context.Context, s *testing.State) {
 
 		// Check Bluetooth ubertray button as well.
 		s.Log("Checking bluetooth ubertray pod button status")
-		params := ui.FindParams{
-			ClassName: "ash/StatusAreaWidgetDelegate",
-		}
-		statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
-			s.Fatal("Failed to open ubertray: ", err)
-		}
-		defer statusArea.Release(ctx)
-
-		if err := statusArea.LeftClick(ctx); err != nil {
-			s.Fatal("Failed to open ubertray: ", err)
-		}
-
-		btnName := fmt.Sprintf("Toggle Bluetooth. Bluetooth is %v", onOff)
-		if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: btnName}, 10*time.Second); err != nil {
-			s.Fatal("Bluetooth button (ubertray) was not toggled by the Assistant: ", err)
+		if btPodStatus, err := ash.QuickSettingEnabled(ctx, tconn, ash.Bluetooth); err != nil {
+			s.Fatal("Failed to get Bluetooth quick setting status: ", err)
+		} else if btPodStatus != status {
+			s.Fatal("Bluetooth button (ubertray) was not toggled by the Assistant")
 		}
 	}
 }
