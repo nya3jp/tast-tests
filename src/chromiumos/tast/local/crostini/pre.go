@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/crostini/lxd"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
@@ -352,31 +351,25 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
 		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 	}
-	logUITree := func() {
-		tree, err := ui.RootDebugInfo(ctx, p.tconn)
-		if err != nil {
-			tree = fmt.Sprintf("error getting ui tree: %v", err)
-		}
-		s.Log("logUITree: ", tree)
-	}
+
 	settings, err := cui.OpenSettings(ctx, p.tconn)
 	if err != nil {
-		logUITree()
+		cui.LogTree(ctx, p.tconn)
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 	installer, err := settings.OpenInstaller(ctx)
 	if err != nil {
-		logUITree()
+		cui.LogTree(ctx, p.tconn)
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 	if p.minDiskSize != 0 {
 		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			logUITree()
+			cui.LogTree(ctx, p.tconn)
 			s.Fatal("SetDiskSize error: ", err)
 		}
 	}
 	if err := installer.Install(ctx); err != nil {
-		logUITree()
+		cui.LogTree(ctx, p.tconn)
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 
@@ -385,7 +378,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	p.cont, err = vm.GetRunningContainer(ctx, p.cr.User())
+	if err := p.Connect(ctx); err != nil {
+		s.Fatal("Error connecting to running container: ", err)
+	}
 
 	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
 	if err = checkDaemonsRunning(ctx); err != nil {
@@ -413,6 +408,20 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	vm.Lock()
 	shouldClose = false
 	return ret
+}
+
+// Connect connects the precondition to a running VM/container.
+// If you shutdown and restart the VM you will need to call Connect again.
+func (p *preImpl) Connect(ctx context.Context) error {
+	var err error
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	return err
+}
+
+// Connect connects the precondition to a running VM/container.
+// If you shutdown and restart the VM you will need to call Connect again.
+func (p *PreData) Connect(ctx context.Context) error {
+	return p.Container.Connect(ctx, p.Chrome.User())
 }
 
 // Close is called after all tests involving this precondition have been run,
