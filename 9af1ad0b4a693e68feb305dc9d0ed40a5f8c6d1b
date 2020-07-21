@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7642c237_baf74067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-21T18:55:18Z",
+      "side": 1,
+      "message": "Now trying to wait for the windows to be minimized, it waits for five minutes and then times out. That mystifies me.\nhttps://paste.googleplex.com/4900924466135040",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
