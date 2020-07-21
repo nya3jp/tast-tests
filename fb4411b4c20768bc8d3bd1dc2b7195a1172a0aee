@@ -1,0 +1,555 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab2d265_cd9aad19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Hi Judy,\n\nThanks for your CL!\n\nNow it\u0027ll be much easier to review. I have some comments:",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6d88f6_500856d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "rename to add_files_to_linux_files.go",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8dd5e3_f1f84165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "it can be local const for function where it is used",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16165a99_c8dfb4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "nit: AddFilesToLinuxFiles",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac732b34_999b876f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Tests adding files to Linux files using a pre-built crostini image",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06345be_c6688397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Looks like there is a bad example of using Shorten context:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup\n\nThere are some good examples:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go;l\u003d36?q\u003dcleanupctx\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Fwilco%2F\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go;l\u003d45\n\n\nBasically, when you use Shorten, it creates new context with shorter deadline, so you may use deadline difference for proper cleanup.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9960481_6675a71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "where do you have these files? You need to put them into data/ folder and list them in \"Data\" field of your test: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#using-data-files-in-tests\n\n---\n\nOh i see that they are generated, but i\u0027d like if they will have different content/sizes and we actually validate contents.",
+      "range": {
+        "startLine": 78,
+        "startChar": 22,
+        "endLine": 78,
+        "endChar": 73
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91ac488_83182f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "I\u0027d like to check file contents as well.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c915e002_67ac155e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "let\u0027s split this function into 2:\n- createFiles\n- copyFilesToLinuxFiles\n\nIt will be much easier to understand what each function is doing and it increases probability to reuse function in other tests",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9b7dbf_107047a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "ctx",
+      "range": {
+        "startLine": 92,
+        "startChar": 36,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3f922b_74fe17fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "please create a separate variable \"path\" since you repeat it twice",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 71
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd068ebb_0593b518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "please wrap all errors in this function: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80c12b7_eab42c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "In theory there can be races, it\u0027s safe you wait for all files to appear. Also, testFiles can be empty 😊",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6055d51_71200373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Select all files.",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563f4ad5_3a5524cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Copy all files.",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a36b50_e0410804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Paste all files.",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7b59f3_f993417c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "blank line before",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "254ccf38_e9f5e72b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "same",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e6660a_d8a17968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "let\u0027s use fmt.Sprintf instead",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29475cc_516652c5",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Also, we probably interested to verify that we didn\u0027t copy other files or inserted some files multiple times.",
+      "range": {
+        "startLine": 712,
+        "startChar": 24,
+        "endLine": 712,
+        "endChar": 73
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5259cd_f6a3ca53",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Maybe rephrase a bit:\n\nGetFileList returns a list of file paths in the given path in the container.",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 14
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ba0ea5_8483a17a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "lists",
+      "range": {
+        "startLine": 731,
+        "startChar": 15,
+        "endLine": 731,
+        "endChar": 19
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2923143e_1eb6e227",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "Returns",
+      "range": {
+        "startLine": 732,
+        "startChar": 3,
+        "endLine": 732,
+        "endChar": 9
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d32c1bf_72c42fad",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "it\u0027s actally not a list, what format does it have? Please parse \"ls\" result and use []string instead",
+      "range": {
+        "startLine": 733,
+        "startChar": 67,
+        "endLine": 733,
+        "endChar": 82
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace25e2a_27a32a0a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T17:55:28Z",
+      "side": 1,
+      "message": "you don\u0027t expose this method, so you can rename it to getFileList",
+      "range": {
+        "startLine": 733,
+        "startChar": 20,
+        "endLine": 733,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
