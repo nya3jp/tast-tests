@@ -16,6 +16,23 @@
       "revId": "4b8e4efefb5fe31071282e3ffacdf7a994c021f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68427d6_11b711af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-21T15:35:00Z",
+      "side": 1,
+      "message": "Is the conflict in def.go related to this change, or can be done in a separate commit? If it is possible to handle most of these conflict separately, I would prefer that way (e.g. blaming def.go would more clear).",
+      "revId": "4b8e4efefb5fe31071282e3ffacdf7a994c021f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
