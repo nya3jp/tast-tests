@@ -16,6 +16,23 @@
       "revId": "9bd2b1dd23766bc0c3e83f04b66a494f57048707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cddbb67f_382667d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-21T18:00:30Z",
+      "side": 1,
+      "message": "LGTM without waiting shadow interviewer response since CL is trivial.",
+      "revId": "9bd2b1dd23766bc0c3e83f04b66a494f57048707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
