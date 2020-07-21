@@ -56,6 +56,30 @@
       "revId": "d8a9bcb74d480a2fd8b06f14f1d0e552ca092764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0bd9ad5_a6778e95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-21T06:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170309f3_23be7196",
+      "range": {
+        "startLine": 73,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "d8a9bcb74d480a2fd8b06f14f1d0e552ca092764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
