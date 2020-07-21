@@ -19,6 +19,42 @@
     },
     {
       "key": {
+        "uuid": "32faefb1_a62de551",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-21T10:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37c7810_0a12b8d2",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de37756b_04643b9f",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-21T10:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37c7810_0a12b8d2",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff45d941_397d59cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_hostname.go",
         "patchSetId": 1
@@ -30,6 +66,24 @@
       "writtenOn": "2020-07-21T08:14:48Z",
       "side": 1,
       "message": "This doesn\u0027t actually check the icon, just that the app is in the shelf, right? Wouldn\u0027t you need a screenshot test to check that the right icon is showing in the shelf? See http://crbug/1088393 for an example that this test wouldn\u0027t have caught that a person running the test manually might\u0027ve.\n\nAlso, this just checks terminal which is special. Is there a separate test to check a Linux app (which could also cover .desktop file integration)?",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749ac8ce_dc2fa7e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-21T10:48:45Z",
+      "side": 1,
+      "message": "Yes, this only check that the app is in the shelf. I\u0027m not aware that there is a way to compare picture in Tast. Manually test will be run anyway so I think it won\u0027t be missed if a wrong icon is used.\n\nAs for the second question, yes, there will be other test to check a Linux app. Refer to line 41 in https://docs.google.com/spreadsheets/d/19nlc8Hef4xSDqyuBzT1H-UjsmDMek13B-Q0fMtbgkqo/edit#gid\u003d863503094. I\u0027m working on it on other changes.",
+      "parentUuid": "ff45d941_397d59cb",
       "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
