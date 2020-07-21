@@ -33,6 +33,24 @@
       "revId": "4b8e4efefb5fe31071282e3ffacdf7a994c021f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3901aa55_7cbc4668",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-21T16:26:43Z",
+      "side": 1,
+      "message": "We need to change both the generator and the test to fix the issue. URLAllowlist exists both as an alias and as a new policy in Chrome. Theoretically it could be split into two CLs, but I don\u0027t see the benefit of blaming defs.go as it\u0027s a generated file.",
+      "parentUuid": "f68427d6_11b711af",
+      "revId": "4b8e4efefb5fe31071282e3ffacdf7a994c021f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
