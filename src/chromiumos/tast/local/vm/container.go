@@ -473,7 +473,7 @@ func (c *Container) GetFileList(ctx context.Context, path string) (fileList []st
 // CheckFileContent checks that the content of the specified file equals to the given string.
 // Returns error if fail to read content or the contest does not equal to the given string.
 func (c *Container) CheckFileContent(ctx context.Context, filePath, testString string) error {
-	content, err := c.readFile(ctx, filePath)
+	content, err := c.ReadFile(ctx, filePath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to cat the result %s", filePath)
 	}
@@ -483,8 +483,8 @@ func (c *Container) CheckFileContent(ctx context.Context, filePath, testString s
 	return nil
 }
 
-// readFile reads the content of file using command cat and returns it as a string.
-func (c *Container) readFile(ctx context.Context, filePath string) (content string, err error) {
+// ReadFile reads the content of file using command cat and returns it as a string.
+func (c *Container) ReadFile(ctx context.Context, filePath string) (content string, err error) {
 	cmd := c.Command(ctx, "cat", filePath)
 	result, err := cmd.Output()
 	if err != nil {
