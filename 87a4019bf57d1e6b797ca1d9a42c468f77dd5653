@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e74f0cff_33d0d63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "nit: could you use const?\nconst (\n  drive \u003d \"GoogleDrive\"\n  mntPath \u003d \"/mnt/chromeos\"\n)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc5575e_ee635ce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "nit/opional: fmt.Sprintf() may be simpler.\n\nfmt.Sprintf(\"New%d\", ...)",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 74
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f27f13_3c65f168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "hugenit: I\u0027d use s.Log(\"The new folder name is \", newfolder)",
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40909a1c_037481df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "nit/style: we often do not use article in the names in programming.\ncreateFolderInDrive()",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa530002_c580819d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\ncould you start with a small letter?\n\nI would write: \"Home directory is not empty: got %v\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc959da_0cafd93d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "huge nit: \"log in\" (two words)",
+      "range": {
+        "startLine": 161,
+        "startChar": 72,
+        "endLine": 161,
+        "endChar": 77
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccc4e25_47186f5f",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "maybe: \"WithGaiaLogin\"",
+      "range": {
+        "startLine": 161,
+        "startChar": 20,
+        "endLine": 161,
+        "endChar": 29
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9d1092_ca171aed",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba676bbf_d0951433",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "optional: In go, enum-like constant are often prefixed. Maybe: loginNonGaia, loginGaia",
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820506ff_66ce7559",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "loginType",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 10
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b53db9f_87860246",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T07:26:17Z",
+      "side": 1,
+      "message": "Could you share the code other than chrome.Auth()?\n\nopts :\u003d []chrome.Option{ chrome.ExtraArgs(\"--vmodule\u003dcrostini*\u003d1\") }\nif p.loginType \u003d\u003d gaia {\n  opts \u003d append(opts, chrome.Auth(\n    s.RequiredVar(...),\n    s.RequiredVar(...),\n    s.RequiredVar(...),\n  ))\n}\nvar err error\nif p,cr, err \u003d chrome.New(ctx, opt, opts...); err !\u003d nil {\n...",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 0
+      },
+      "revId": "87a4019bf57d1e6b797ca1d9a42c468f77dd5653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
