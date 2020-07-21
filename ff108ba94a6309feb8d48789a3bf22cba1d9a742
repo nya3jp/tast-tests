@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abb9252b_fe1ac5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-21T03:52:02Z",
+      "side": 1,
+      "message": "+1 (but I\u0027m not very familiar with Go/Tast)",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
