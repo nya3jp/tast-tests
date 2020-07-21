@@ -99,6 +99,23 @@
     },
     {
       "key": {
+        "uuid": "4326bb70_66d85854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T15:33:38Z",
+      "side": 1,
+      "message": "I think you\u0027d like to run the test on CI (otherwise you can run gtest directly).\nIf so, could you add Attr field to run it?",
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f10b496_83e13d25",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 1
