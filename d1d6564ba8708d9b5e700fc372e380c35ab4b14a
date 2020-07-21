@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ad3f40b_8d9002ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-21T16:34:59Z",
+      "side": 1,
+      "message": "LGTM % the minor comment.",
+      "revId": "d1d6564ba8708d9b5e700fc372e380c35ab4b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c3c274_7d509578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-21T16:34:59Z",
+      "side": 1,
+      "message": "Do you need to include the \"This is the implementation ...\" comment here? Also you should make it clear that this not only requests the roam, it also waits for it to happen.",
+      "revId": "d1d6564ba8708d9b5e700fc372e380c35ab4b14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
