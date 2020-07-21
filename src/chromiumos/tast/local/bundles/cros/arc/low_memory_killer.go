@@ -173,7 +173,12 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 			s.Fatal("Nothing was killed")
 			break
 		}
+
+		// Once available memory is below the device margin, consume memory more slowly.
 		portion := available / 2
+		if available < deviceCriticalMemoryMarginMB {
+			portion = available / 10
+		}
 		s.Logf("Consuming %dMB", portion)
 
 		const memoryEaterExecutable = "/usr/local/bin/memory-eater"
