@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cbdd482a_f73b7112",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-21T22:36:02Z",
+      "side": 1,
+      "message": "No, the \"A\" here refers to the currently-booted firmware. There has been no reboot since the beginning of the test, so we still expect \"A\" to be active, with \"B\" as the next fw to try. This reflects the behavior in Autotest.\n\nI realize that that is a little unclear. To clarify the behavior, I have updated CheckFWTries to return currentFW, nextFW, and nextFWTries.",
+      "parentUuid": "de129745_3c1bd3b7",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "650d0e9e_598365a3",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "0d4cb887_36a05b07",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-21T22:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650d0e9e_598365a3",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49b13900_08e3b448",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2020-07-20T22:01:24Z",
       "side": 1,
       "message": "Existing autotest code says if count is less than 0, it will be set to 15, so probably don\u0027t want to rule it out here.",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d415c393_fbd8084b",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-21T22:36:02Z",
+      "side": 1,
+      "message": "Can you clarify what lines you\u0027re looking at? I\u0027m looking at firmware_test.py, L1983-1984. What I see is slightly different:\n\n    if not count:\n        count \u003d count + 1\n\nIn any case, I saw that code in Autotest and deliberately chose not to mirror it. If someone passes in count\u003d0, and SetFWTries sets count to 1, then the system is not behaving predictably. I think that it is more user-friendly to disallow incorrect arguments.",
+      "parentUuid": "49b13900_08e3b448",
       "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "1c8d3422_a6701e0d",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-21T22:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d3047a8_edaac9a8",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9a94f2_ac15bcd4",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
@@ -101,6 +173,24 @@
       "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5975bf_002c972e",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-21T22:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9a94f2_ac15bcd4",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
