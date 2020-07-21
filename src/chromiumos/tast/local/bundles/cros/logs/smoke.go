@@ -6,7 +6,6 @@ package logs
 
 import (
 	"context"
-	"strings"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/systemlogs"
@@ -35,15 +34,12 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	var logs string
-	if logs, err = systemlogs.GetSystemLogs(ctx, tconn); err != nil {
-		s.Fatal("System logs not written: ", err)
+	const expectedKey = "CHROME VERSION"
+	result, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
+	if err != nil {
+		s.Fatal("Error getting system logs: ", err)
 	}
-	if logs == "" {
-		s.Fatal("System logs empty")
-	}
-	expectedKey := "CHROME VERSION"
-	if !strings.Contains(logs, expectedKey) {
-		s.Fatal("System logs missing: ", expectedKey)
+	if result == "" {
+		s.Fatal("System logs result empty")
 	}
 }
