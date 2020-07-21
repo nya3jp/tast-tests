@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6317911a_9f9ebc0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-21T17:30:33Z",
+      "side": 1,
+      "message": "Hello, I\u0027ve updated this CL according to the online discussion email thread that we had and the design doc written. Please help me review this change. Thank you.",
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
