@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -65,7 +66,9 @@ func varInt(s *testing.State, name string, defaultVal int) int {
 }
 
 func Restart(ctx context.Context, s *testing.State) {
-	cont := s.PreValue().(crostini.PreData).Container
+	pre := s.PreValue().(crostini.PreData)
+	cont := pre.Container
+	tconn := pre.TestAPIConn
 
 	numRestarts := varInt(s, "crostini.Restart.numRestarts", 2)
 
@@ -74,26 +77,37 @@ func Restart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get startup time: ", err)
 	}
 
+	terminal, err := ui.LaunchTerminal(ctx, tconn)
+	if err != nil {
+		ui.LogTree(ctx, tconn)
+		s.Fatal("Failed to lauch terminal: ", err)
+	}
+
 	for i := 0; i < numRestarts; i++ {
 		s.Logf("Restart #%d, startup time was %v", i+1, startupTime)
-		if err := cont.VM.Stop(ctx); err != nil {
-			s.Fatal("Failed to close VM: ", err)
+		if err := terminal.ShutdownCrostini(ctx); err != nil {
+			s.Fatal("Failed to shutdown crostini: ", err)
 		}
 
-		// While the VM is down, this command is expected to fail.
-		if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
-			s.Fatalf("Expected command to fail while the container was shut down, but got: %q", string(out))
-		} else {
-			s.Log("Received an expected error running a container command: ", err)
-		}
+		testing.Poll(ctx, func(ctx context.Context) error {
+			// While the VM is down, this command is expected to fail.
+			if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
+				return errors.Errorf("expected command to fail while the container was shut down, but got: %q", string(out))
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 		// Start the VM and container.
-		if err := cont.VM.Start(ctx); err != nil {
-			s.Fatal("Failed to start VM: ", err)
+		terminal, err = ui.LaunchTerminal(ctx, tconn)
+		if err != nil {
+			ui.LogTree(ctx, tconn)
+			s.Fatal("Failed to lauch terminal: ", err)
 		}
-		if err := cont.StartAndWait(ctx, s.OutDir()); err != nil {
-			s.Fatal("Failed to start container: ", err)
+
+		if err := (&pre).Connect(ctx); err != nil {
+			s.Fatal("Failed to connect to restarted container: ", err)
 		}
+		cont = pre.Container
 
 		// Compare start times.
 		newStartupTime, err := startTime(ctx, cont)
