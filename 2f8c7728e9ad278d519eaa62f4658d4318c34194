@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "134ab17c_20570c6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-21T11:17:09Z",
+      "side": 1,
+      "message": "This is part of test case: Basic commands (ls, cd, ps, vim, emacs), install apps (gedit, visual studio, eclipse, android studio), launch apps.\n\nThere is no \"bash\" in the output of command \"ps\".",
+      "revId": "2f8c7728e9ad278d519eaa62f4658d4318c34194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
