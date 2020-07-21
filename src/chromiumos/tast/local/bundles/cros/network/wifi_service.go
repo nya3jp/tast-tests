@@ -85,10 +85,10 @@ func (s *WifiService) reinitTestState(ctx context.Context, m *shill.Manager) err
 	if _, err := m.PushProfile(ctx, wifiTestProfileName); err != nil {
 		return errors.Wrap(err, "failed to push the test profile")
 	}
-	// Clean up wpa_supplicant blacklist in case some BSSID cannot be scanned.
+	// Clean up wpa_supplicant blocklist in case some BSSID cannot be scanned.
 	// See https://crrev.com/c/219844.
-	if err := wpacli.NewRunner(&cmd.LocalCmdRunner{}).ClearBlacklist(ctx); err != nil {
-		return errors.Wrap(err, "failed to clear wpa_supplicant blacklist")
+	if err := wpacli.NewRunner(&cmd.LocalCmdRunner{}).ClearBlocklist(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear wpa_supplicant blocklist")
 	}
 	return nil
 }
