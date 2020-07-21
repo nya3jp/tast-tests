@@ -16,6 +16,80 @@
       "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21973747_b9856b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T04:49:40Z",
+      "side": 1,
+      "message": "Per offline chat, could you:\n- Give it a try to remove this?\n- If it does not work, could you comment the reason here?",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa11486b_e4543789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T04:49:40Z",
+      "side": 1,
+      "message": "Looks like not a part of \"openWithReaderApp\" responsibility?\nDid you have a special reason you need to move to here?",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5832ff82_f5806e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T04:49:40Z",
+      "side": 1,
+      "message": "Surprisingly long. Is this need to wait so long? Or can this be shorter?\nIf the former, could you comment what takes such a long time to just wait for its file type?",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b10261_4e82091b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T04:49:40Z",
+      "side": 1,
+      "message": "to avoid calling this twice, could you run in defer stmt at L192?",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
