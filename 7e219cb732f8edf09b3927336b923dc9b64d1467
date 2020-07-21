@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfcf4ba3_3e7e2164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:16:07Z",
+      "side": 1,
+      "message": "According to the tastboard, it looks still failing/flaky?",
+      "revId": "7e219cb732f8edf09b3927336b923dc9b64d1467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
