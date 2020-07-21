@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d8982015_14e18c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-21T14:38:54Z",
+      "side": 1,
+      "message": "It didn\u0027t work.\nReason: Need to click on the file again to populate \u0027Open with ArcFileReaderTest\u0027.",
+      "parentUuid": "21973747_b9856b81",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa11486b_e4543789",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 8
@@ -47,6 +65,24 @@
       "writtenOn": "2020-07-21T04:49:40Z",
       "side": 1,
       "message": "Looks like not a part of \"openWithReaderApp\" responsibility?\nDid you have a special reason you need to move to here?",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914ab34c_1ca9779f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-21T14:38:54Z",
+      "side": 1,
+      "message": "It was moved to here when I needed to retry with polling.\nSure, I\u0027ve refactored it with 3 stages:\nopenFilesApp(), openWithReaderApp(), validateResult()",
+      "parentUuid": "aa11486b_e4543789",
       "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "a746f54b_d772d874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-21T14:38:54Z",
+      "side": 1,
+      "message": "Shortened to 30 sec.\nUsually it succeeded with one round (\u003c 1 sec).\nSometimes Drive FS didn\u0027t refresh the metadata immediately and it needed two rounds (\u003c 30 sec).",
+      "parentUuid": "5832ff82_f5806e11",
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06b10261_4e82091b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 8
@@ -81,6 +135,30 @@
       "writtenOn": "2020-07-21T04:49:40Z",
       "side": 1,
       "message": "to avoid calling this twice, could you run in defer stmt at L192?",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "ff108ba94a6309feb8d48789a3bf22cba1d9a742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de40fb64_1beed118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-07-21T14:38:54Z",
+      "side": 1,
+      "message": "Moved to defer statement.",
+      "parentUuid": "06b10261_4e82091b",
       "range": {
         "startLine": 199,
         "startChar": 3,
