@@ -22,6 +22,30 @@
       "revId": "81fb791549a6c1b44dbaf58ba3611ae7f09d4163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f6d39d_988591f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-21T20:37:57Z",
+      "side": 1,
+      "message": "Done.\n\nNot that I could think of - mainly because I can\u0027t tell why drag doesn\u0027t work immediately without waiting a moment.",
+      "parentUuid": "4355160c_da26e3c3",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 41
+      },
+      "revId": "81fb791549a6c1b44dbaf58ba3611ae7f09d4163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
