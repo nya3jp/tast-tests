@@ -8,11 +8,10 @@ import (
 	"bufio"
 	"context"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -41,20 +40,35 @@ const (
 	goldenImage = "scan_escl_ipp_golden.png"
 )
 
-// getIPPUSBXDPort scans r, which contains output from ippusbxd, for the port
-// that it connected to, and returns it.
-func getIPPUSBXDPort(r io.Reader) (int, error) {
-	reader := bufio.NewReader(r)
-	token, err := reader.ReadString('|')
+// findScanner runs lsusb in order to find the Bus and Device number for the USB
+// device with the VID and PID given in devInfo.
+func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (string, string, error) {
+	lsusb := testexec.CommandContext(ctx, "lsusb", "-d", fmt.Sprintf("%s:%s", devInfo.VID, devInfo.PID))
+	pipe, err := lsusb.StdoutPipe()
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to read from ippusbxd pipe")
+		return "", "", errors.Wrap(err, "failed to get lsusb output pipe")
 	}
-	// Trim off last character since it's the '|' delimiter.
-	port, err := strconv.Atoi(token[:len(token)-1])
+
+	if err := lsusb.Start(); err != nil {
+		return "", "", errors.Wrap(err, "failed to run lsusb")
+	}
+
+	reader := bufio.NewReader(pipe)
+	output, err := reader.ReadString(':')
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to parse port as integer")
+		return "", "", errors.Wrap(err, "failed to read from lsusb pipe")
 	}
-	return port, nil
+	// Trim off trailing ':'.
+	output = output[:len(output)-1]
+
+	tokens := strings.Split(output, " ")
+	if len(tokens) != 4 || tokens[0] != "Bus" || tokens[2] != "Device" {
+		return "", "", errors.Errorf("failed to parse output as Bus [bus-id] Device [device-id]: %s", output)
+	}
+
+	lsusb.Wait()
+
+	return tokens[1], tokens[3], nil
 }
 
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
@@ -93,26 +107,24 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		printer.Wait()
 	}()
 
-	s.Log("Setting up ipp-usb connection")
-	ippusbxd := testexec.CommandContext(ctx, "ippusbxd", "-v", devInfo.VID, "-m", devInfo.PID)
-	pipe, err := ippusbxd.StdoutPipe()
+	bus, device, err := findScanner(ctx, devInfo)
 	if err != nil {
-		s.Fatal("Failed to get ippusbxd stdout pipe: ", err)
+		s.Fatal("Failed to find scanner bus device: ", err)
 	}
 
-	if err := ippusbxd.Start(); err != nil {
-		s.Fatal("Failed to connect to printer with ippusbxd: ", err)
+	s.Log("Setting up ipp-usb connection")
+	ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device))
+
+	if err := ippusbBridge.Start(); err != nil {
+		s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
 	}
 	defer func() {
-		ippusbxd.Kill()
-		ippusbxd.Wait()
+		ippusbBridge.Kill()
+		ippusbBridge.Wait()
 	}()
 
-	port, err := getIPPUSBXDPort(pipe)
-	if err != nil {
-		s.Fatal("Failed to get ippusbxd port: ", err)
-	}
-	s.Log("Connected to virtual printer with ippusbxd")
+	port := 60000
+	s.Log("Connected to virtual printer with ippusb_bridge")
 
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ScanEsclIPP.")
 	if err != nil {
