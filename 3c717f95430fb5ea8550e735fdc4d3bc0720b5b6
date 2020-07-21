@@ -127,6 +127,30 @@
       "revId": "3c717f95430fb5ea8550e735fdc4d3bc0720b5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54b9c653_c4cbc50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-21T16:15:59Z",
+      "side": 1,
+      "message": "From what Yichen described, it seems that stadia web page could have the button created before the clicking logic is fully wired. I voted for testing.Poll instead of Sleep because it is tricky to get a proper sleep duration.",
+      "parentUuid": "b793ea73_0715e10c",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "3c717f95430fb5ea8550e735fdc4d3bc0720b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
