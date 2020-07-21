@@ -22,6 +22,30 @@
       "revId": "d39e781775d57b6271dcda3628cb4d1dc79462da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165098d5_877d8b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2020-07-21T11:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e4b89a_bf21278e",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "d39e781775d57b6271dcda3628cb4d1dc79462da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
