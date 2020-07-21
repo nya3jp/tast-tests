@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17684a9a_3a013357",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:47:32Z",
+      "side": 1,
+      "message": "Sorry for being later. As you found, I was OOO in these days.",
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a70130e_d4884d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:47:32Z",
+      "side": 1,
+      "message": "nit/style:\n\nlogs, err :\u003d systemlogs.GetSystemLogs(ctx, tconn)\nif err !\u003d nil {\n  ...\n\nis the common pattern.\n\nNote: |err| can be here in this case, because \"logs\" is a new variable.\ni.e., on the left side of :\u003d operator, at least one var name needs to be new.\nother vars will refer the ones defined previously, rather than creating a new variable and hide below.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84fbfcca_3aaad01d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:47:32Z",
+      "side": 1,
+      "message": "nit: const?",
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3ba876_44cf25df",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:47:32Z",
+      "side": 1,
+      "message": "https://golang.org/pkg/archive/zip/\n\nInstead, could you use the zip library in go, so that you don\u0027t need to work with external processes, and temporarily files?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
