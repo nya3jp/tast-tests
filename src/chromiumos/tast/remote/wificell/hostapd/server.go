@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"strings"
 	"sync"
 	"time"
 
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -135,7 +137,15 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	defer cancel()
 
 	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
-	cmd := s.host.Command(hostapdCmd, "-dd", "-t", "-K", s.confPath())
+	// TODO(crbug.com/1047146): Remove the env part after we drop the old crypto like MD5.
+	cmdStrs := []string{
+		// Envronment variables.
+		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
+		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
+		// hostapd command.
+		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
+	}
+	cmd := s.host.Command("sh", "-c", strings.Join(cmdStrs, " "))
 	// Prepare stdout/stderr log files.
 	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
