@@ -36,6 +36,69 @@
     },
     {
       "key": {
+        "uuid": "be1b1b05_93aa9ebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-21T02:17:41Z",
+      "side": 1,
+      "message": "LGTM with small nits. I\u0027m a tast shadow reviewer, so please also wait for Hidehiko\u0027s or Oleh\u0027s review.",
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09888c65_1f695136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-21T02:17:41Z",
+      "side": 1,
+      "message": "minor nit: is it possible that a test needs multiple extraArgs? i.e. []string instead of string.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343171bb_353469ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-21T02:17:41Z",
+      "side": 1,
+      "message": "nit: according to [1], probably CDMOEMCrypto? \n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f10b496_83e13d25",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 1
