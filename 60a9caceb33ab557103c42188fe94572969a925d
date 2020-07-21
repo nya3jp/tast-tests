@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ac3f3756_b3aab023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-21T23:23:11Z",
+      "side": 1,
+      "message": "Yeah, I found the \u0027if foo, err \u003d ... ; err !\u003d nil {} pattern somewhere and used it, but that seems to be problematic. We fixed some of them but missed this. Thanks for the explanation!",
+      "parentUuid": "7a70130e_d4884d94",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84fbfcca_3aaad01d",
         "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
         "patchSetId": 4
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "f0ecb66c_a1fe072f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-21T23:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84fbfcca_3aaad01d",
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef3ba876_44cf25df",
         "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
         "patchSetId": 4
@@ -70,6 +112,30 @@
       "writtenOn": "2020-07-21T16:47:32Z",
       "side": 1,
       "message": "https://golang.org/pkg/archive/zip/\n\nInstead, could you use the zip library in go, so that you don\u0027t need to work with external processes, and temporarily files?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "60a9caceb33ab557103c42188fe94572969a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7106617d_68de8b26",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-21T23:23:11Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t aware of that. I will look into it, but may actually use a different existing extension API that I wasn\u0027t aware of which might make this moot.",
+      "parentUuid": "ef3ba876_44cf25df",
       "range": {
         "startLine": 37,
         "startChar": 1,

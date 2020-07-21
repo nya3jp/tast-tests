@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54e90216_37afb753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-07-21T23:23:11Z",
+      "side": 1,
+      "message": "Thanks for the feedback. This landed before I saw it, so I\u0027ll address it in a follow-up.\n\nI also became aware of chrome.feedbackPrivate.getSystemInformation, which I will use instead\nof a custom autotestPrivate call that didn\u0027t land yet (oops).\n",
+      "revId": "86edd206fa31771e71fc08c1c9196345c428cca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
