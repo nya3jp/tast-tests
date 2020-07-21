@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e75c8bb7_660fe627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:13:55Z",
+      "side": 1,
+      "message": "Could you explain the background?\nAlso, nice to tied to a bug.",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97dc794_34604b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-21T16:13:55Z",
+      "side": 1,
+      "message": "This comment is no longer needed as N is gone?",
+      "range": {
+        "startLine": 131,
+        "startChar": 84,
+        "endLine": 131,
+        "endChar": 114
+      },
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
