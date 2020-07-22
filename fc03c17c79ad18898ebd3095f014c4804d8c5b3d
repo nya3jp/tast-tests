@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87a052e4_c644d685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-07-22T03:13:01Z",
+      "side": 1,
+      "message": "i don\u0027t really know the background.\ni was planning to reenable this test last week, but forgot it.\nand this error comes out that /run/camera is not found.\n\nsrc/platform2/login_manager/chrome_setup.cc:L364 should ensure it exists..\n\nbut file not exist is really not the test goal for the test. \n\nchecking existence is only for to prevent, file is renamed or moved, and renamed file may have bad labels and not checked by test.",
+      "parentUuid": "e75c8bb7_660fe627",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
