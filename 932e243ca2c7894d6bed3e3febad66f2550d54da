@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0384416e_f8f3c3fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-22T04:08:27Z",
+      "side": 1,
+      "message": "Test the username in Terminal window. The other commands like ps, cd, vim, emacs, and other linux apps will also be tested from Terminal window.",
+      "revId": "932e243ca2c7894d6bed3e3febad66f2550d54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
