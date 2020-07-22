@@ -36,6 +36,69 @@
     },
     {
       "key": {
+        "uuid": "a9fd5348_840b7014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "In generally, I would advise logging more throughout your test. It can be very helpful when tests fail in the lab. I find a lot of the times that I would add comments to describe what was happening in the tests, it would be better to just log the info instead using s.Log(\"\u003ctext the comment would have said anyway\u003e\") or testing.ContextLog(\"...\").",
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f945232_74d0061b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: specify chromeui as well to make the test very clear",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e302fe_2a49c4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "No need to specify chrome here since it is specified above in software deps. Same for L32.",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59738250_75b3a7bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
         "patchSetId": 1
@@ -53,6 +116,310 @@
         "endLine": 41,
         "endChar": 25
       },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4415c043_64b47099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709ef64a_9b470a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "All comments should be sentences and end in \u0027.\u0027\n\nAlso, for this specific comment, chrome login technically happens before the test even starts because of the precondition.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7edea146_b6dbd9a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Android",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090f1bb4_e4412111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: \"Failed to ...\" to be consistent with other error messages.",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59245941_7e08d5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Apps Heading",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ad641c_dc5c0729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: focus on",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 33
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c503f57_d9c8b18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Is this need? Can you just directly left click the heading?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ac7408_7b53a814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: focus on",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b6fca2_45b18048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Same here, is the FocusAndWait needed?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cd94fee_2f701aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Move this to L144 right before it is needed",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 99
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1c5311_18955931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "nit: For consistency, All of the button names should be in single quotes or none of them.",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 52
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585dedd4_00307388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Is there something you can do here to confirm the setting actually change and not just that the ui updated?",
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6453d81d_c25afd5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Nit: rewrite the backup section to be organized the same way as the location section. I think the location section is easier to read",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b72c80_5ef53191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-22T17:06:34Z",
+      "side": 1,
+      "message": "Same here as with backup: Is there something you can do here to confirm the setting actually change and not just that the ui updated?",
       "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
