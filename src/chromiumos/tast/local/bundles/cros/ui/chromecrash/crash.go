@@ -105,6 +105,9 @@ const (
 	// code path should be similar enough that we don't need separate tests for
 	// those process types.
 	GPUProcess
+	// BrokerByCmdline is similar to Broker, but finds a broker process by
+	// process command lines instead of reading /var/log/chrome/chrome.
+	BrokerByCmdline
 	// Broker indicates a process with --type=broker. Broker processes go through
 	// a special code path because they are forked directly.
 	Broker
@@ -120,6 +123,8 @@ func (ptype ProcessType) String() string {
 		return "GPUProcess"
 	case Broker:
 		return "Broker"
+	case BrokerByCmdline:
+		return "BrokerByCmdline"
 	default:
 		return "Unknown ProcessType " + strconv.Itoa(int(ptype))
 	}
@@ -371,6 +376,15 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 	switch ct.ptype {
 	case GPUProcess:
 		processes, err := chrome.GetGPUProcesses()
+		if err != nil {
+			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
+		}
+		if len(processes) == 0 {
+			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
+		}
+		return processes[0], nil
+	case BrokerByCmdline:
+		processes, err := chrome.GetBrokerProcesses()
 		if err != nil {
 			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 		}
