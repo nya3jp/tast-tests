@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "60dc169a_2c4c56cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T20:19:59Z",
+      "side": 1,
+      "message": "Oops, sorry!",
+      "parentUuid": "00c394e1_fee23078",
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1832b2d0_3934d52a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_delete.go",
         "patchSetId": 2
