@@ -16,6 +16,69 @@
       "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82e191bb_7eacbcb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-07-22T06:06:25Z",
+      "side": 1,
+      "message": "Looks good after typos fixed!",
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "323d0a14_adb81a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-07-22T06:06:25Z",
+      "side": 1,
+      "message": "typo: Perks",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139bbb81_f8ff6975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-07-22T06:06:25Z",
+      "side": 1,
+      "message": "typo: perks",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
