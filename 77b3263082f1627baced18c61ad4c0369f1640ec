@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "093cf281_caddd82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T21:34:08Z",
+      "side": 1,
+      "message": "yes, we prefer to use the AOSP source if available.\nHowever, in the past, we added some links to private repo when it was the only reference. This should be a last-resort thing.\n\ne.g:\nhttps://source.corp.google.com/search?q\u003dpi-arc-dev%20lang:go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "parentUuid": "2b97f3f8_5673a3ee",
+      "range": {
+        "startLine": 207,
+        "startChar": 26,
+        "endLine": 207,
+        "endChar": 32
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e40bc1ba_40a576e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3

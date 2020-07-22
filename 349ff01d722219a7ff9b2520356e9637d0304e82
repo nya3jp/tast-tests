@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "a2c928a2_aac99c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T21:34:08Z",
+      "side": 1,
+      "message": "nit:\nmove it close to where it is being used. e.g: to L180",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73a57610_ce05a973",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 5
@@ -53,6 +76,30 @@
       "writtenOn": "2020-07-22T20:55:24Z",
       "side": 1,
       "message": "Can you keep the previous Dp and Px capitalization?  I think they are usually written in lower-case (dp / px), and the first character is capitalized for the phrasing rule.",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4363930_9b89a0ec",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T21:34:08Z",
+      "side": 1,
+      "message": "I suggested in a previous comment to use \"DP\" or \"dp\".\n\nI know there are some acronyms that are allowed to skip the \"capitalize-all\" or \"don\u0027t-capitalize-all\" rule. But my impression is that DP and PX are not in that list. But I\u0027m not 100% sure.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "parentUuid": "a1cec1a4_cd4604c3",
       "range": {
         "startLine": 171,
         "startChar": 22,
