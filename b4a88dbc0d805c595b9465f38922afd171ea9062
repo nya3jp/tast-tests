@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29db53ea_c9b35a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-07-22T06:05:34Z",
+      "side": 1,
+      "message": "Basically LGTM! Just some confusion on my part :P",
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
