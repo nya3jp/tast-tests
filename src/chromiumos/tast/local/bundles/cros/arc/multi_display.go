@@ -650,7 +650,6 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateNormal, nil},
 		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
 	} {
 		for _, dir := range []struct {
