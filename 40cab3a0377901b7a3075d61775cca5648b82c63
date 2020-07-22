@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8b502ec_2e1a8487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:45:12Z",
+      "side": 1,
+      "message": "only some minor comments.",
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aba06ff_96714101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:45:12Z",
+      "side": 1,
+      "message": "Do we disconnect in this gRPC?\n\nAlso, the comment reminds me that we can probably move this CreateWatcher before RequestRoam so the BSSID PropertyChange should be captured and we can simply pw.Expect below? WDYT? The current logic also LGTM anyway.",
+      "range": {
+        "startLine": 761,
+        "startChar": 25,
+        "endLine": 761,
+        "endChar": 35
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e022c8_b85a8cdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:45:12Z",
+      "side": 1,
+      "message": "ap1.Config().SSID? If so, probably we can have a variable for it as it is used in several places.",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
