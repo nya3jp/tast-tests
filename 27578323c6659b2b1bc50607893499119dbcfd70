@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f850494_71eb6185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-07-22T01:55:36Z",
+      "side": 1,
+      "message": "@mukai Wow! Sorry to trouble you for fixing this issue. I should have fixed it by myself. Thank you so much!!!",
+      "revId": "27578323c6659b2b1bc50607893499119dbcfd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
