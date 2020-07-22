@@ -412,7 +412,8 @@ func (r *ChromeReader) Read() (*ChromeEntry, error) {
 }
 
 var (
-	chromeLinePattern = regexp.MustCompile(`^\[(?P<pid>\d+):\d+:\d{4}/\d{6}.\d{6}:(?P<severity>[^:]+):[^\]]+\] (?P<content>.*)\n$`)
+	chromeLinePattern       = regexp.MustCompile(`^\[(?P<pid>\d+):\d+:\d{4}/\d{6}.\d{6}:(?P<severity>[^:]+):[^\]]+\] (?P<content>.*)\n$`)
+	chromeSyslogLinePattern = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}Z (?P<severity>\S+) \S+?\[(?P<pid>\d+):\d+\]: \[\S+\] (?P<content>.*)\n$`)
 )
 
 // parseChromeLine parses a line in a Chrome-style messages file. Unlike
@@ -420,8 +421,25 @@ var (
 // ChromeEntry. Since Chrome log entries may have newlines in them, we expect that
 // some lines will be unparseable, and don't stop the file reading if we find
 // such lines.
+// Chrome will switch from a linux style timestamp and format to a
+// syslog compatible fomrat. This looks for a syslog match first, then tries
+// the older Chrome format.
 func parseChromeLine(line string) (*ChromeEntry, bool) {
-	ms := chromeLinePattern.FindStringSubmatch(line)
+	ms := chromeSyslogLinePattern.FindStringSubmatch(line)
+	if ms != nil {
+		pid, err := strconv.Atoi(ms[2])
+		if err != nil {
+			return nil, false
+		}
+
+		return &ChromeEntry{
+			Severity: ms[1],
+			PID:      pid,
+			Content:  ms[3],
+		}, true
+	}
+
+	ms = chromeLinePattern.FindStringSubmatch(line)
 	if ms == nil {
 		return nil, false
 	}

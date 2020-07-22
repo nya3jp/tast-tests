@@ -20,12 +20,15 @@ import (
 )
 
 const (
-	fakeLine1       = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
-	fakeLine2       = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
-	fakeLine3       = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
-	chromeFakeLine1 = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
-	chromeFakeLine2 = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
-	chromeFakeLine3 = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
+	fakeLine1             = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
+	fakeLine2             = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
+	fakeLine3             = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	chromeFakeLine1       = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
+	chromeFakeLine2       = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
+	chromeFakeLine3       = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
+	chromeSyslogFakeLine1 = "2019-12-12T16:03:19.316821Z VERBOSE1 chrome[9346:9346]: [tablet_mode_controller.cc(536)] lid\n"
+	chromeSyslogFakeLine2 = "2019-12-12T16:03:19.355476Z VERBOSE1 chrome[9419:1]: [breakpad_linux.cc(2079)] enabled\n"
+	chromeSyslogFakeLine3 = "2019-12-13T16:29:38.602368Z ERROR chrome[24195:24208]: [drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
 )
 
 var (
@@ -69,6 +72,21 @@ var (
 		Content:  "enabled",
 	}
 	chromeFakeEntry3 = &ChromeEntry{
+		Severity: "ERROR",
+		PID:      24195,
+		Content:  "ID 21692109949126656",
+	}
+	chromeSyslogFakeEntry1 = &ChromeEntry{
+		Severity: "VERBOSE1",
+		PID:      9346,
+		Content:  "lid",
+	}
+	chromeSyslogFakeEntry2 = &ChromeEntry{
+		Severity: "VERBOSE1",
+		PID:      9419,
+		Content:  "enabled",
+	}
+	chromeSyslogFakeEntry3 = &ChromeEntry{
 		Severity: "ERROR",
 		PID:      24195,
 		Content:  "ID 21692109949126656",
@@ -454,6 +472,11 @@ func TestChromeReaderRead(t *testing.T) {
 			name:   "ChromeParseWithExtraJunk",
 			writes: []string{chromeFakeLine1 + "Extra Line\n" + chromeFakeLine2 + "  Another\n" + chromeFakeLine3},
 			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "ChromeParseSyslogFormat",
+			writes: []string{chromeSyslogFakeLine1, chromeSyslogFakeLine2, chromeSyslogFakeLine3},
+			want:   []*ChromeEntry{chromeSyslogFakeEntry1, chromeSyslogFakeEntry2, chromeSyslogFakeEntry3},
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
