@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45b06517_ac4f5282",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-07-22T19:21:07Z",
+      "side": 0,
+      "message": "Happy to! Can you briefly explain how to do that, or point to some docs?\n\nI searched the tast docs that I know about for \"rvc\" and \"pi\" but didn\u0027t see anything about them.",
+      "parentUuid": "eeaecdc5_33a9e82d",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65472e1a_194bd875",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e5c6c9_ebed9fb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-07-22T19:21:07Z",
+      "side": 0,
+      "message": "Thanks for the quick review!",
+      "parentUuid": "65472e1a_194bd875",
+      "range": {
+        "startLine": 81,
+        "startChar": 56,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
