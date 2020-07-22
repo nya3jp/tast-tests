@@ -33,6 +33,29 @@
       "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7049574c_857ef70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-22T16:39:49Z",
+      "side": 1,
+      "message": "I guess the \"ChromeReader\" won\u0027t work because it only reports messages written after it is started: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/syslog/reader.go#359\n\nIt would be a little better to use the following pattern instead of grep: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go#264\n\nThe reason is that we should get better error messages on error (e.g., if the file doesn\u0027t exist).",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
