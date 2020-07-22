@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c2433d75_d9c1a67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T22:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c928a2_aac99c69",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73a57610_ce05a973",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 5
@@ -62,6 +86,30 @@
       "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb507e4_2af8ffcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T22:48:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73a57610_ce05a973",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "9ba03b52_5d1dda3d",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T22:48:35Z",
+      "side": 1,
+      "message": "This disagreement should not block my CL. Now I will just be consistent with the preexisting code, and you can make your own CL to do whatever you want about the capitalization.",
+      "parentUuid": "d4363930_9b89a0ec",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d80ae1c_ba97e849",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 5
@@ -132,6 +204,30 @@
       "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1638d2b0_74b17ef8",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T22:48:35Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "5d80ae1c_ba97e849",
+      "range": {
+        "startLine": 177,
+        "startChar": 22,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
