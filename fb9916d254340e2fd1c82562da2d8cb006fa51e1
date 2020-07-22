@@ -22,6 +22,30 @@
       "revId": "fb9916d254340e2fd1c82562da2d8cb006fa51e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13adf644_abb498ab",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T01:37:40Z",
+      "side": 1,
+      "message": "Yes, it does. I verified this by\n1. removing the Abort above, and see if the Wait below still return fast.\n2. checking the name of the process still matches.",
+      "parentUuid": "24035c33_b1e72c59",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 90
+      },
+      "revId": "fb9916d254340e2fd1c82562da2d8cb006fa51e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
