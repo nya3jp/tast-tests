@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "06d236c1_cff0a89b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "This CL looks abandoned. Can you update it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c4f389d_11780aec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -13,6 +36,115 @@
       "writtenOn": "2020-07-20T14:28:19Z",
       "side": 1,
       "message": "@Shuhei Takahashi, can you please revisit this review?\nThe dependent CL is on Cq-Depend list.",
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906c5edb_31fefd4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "Sorry I was ooo this week!\n",
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3fa543e_8d4ad158",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "Can you add a comment about how you decided this number?\n\nLet\u0027s say, in a few years later, we find that this test is occasionally failing because the sleep time can be up to +30ms. A non-expert engineer like me can\u0027t tell if it\u0027s just a flake or a real failure. In the former case they\u0027d want to increase the torelance number, but in the latter case they have to debug what\u0027s going on... and having logical explanation of how we set the threshold is helpful to determine which is the case.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7f50a2_157370fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "Started process must be Waited to release resources associated to cmd.\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/ssh#Cmd.Start\nhttps://godoc.org/os/exec#Cmd.Start\n\nMy recommendation is to return *ssh.Cmd from this function and use deferred statements to Wait.\n\n func doRemoteSleep(ctx context.Context, s *testing.State) *ssh.Cmd { ... }\n\n ...\n\n cmd :\u003d doRemoteSleep(ctx, s)\n defer cmd.Wait(ctx)\n defer cmd.Abort()\n\n ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "442163d5_f4f2af18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "Opened file must be closed.\n\n defer ptyFile.Close()",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b273d47a_3843524c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T06:02:22Z",
+      "side": 1,
+      "message": "This test always takes sleepDuration*sleepIterations even if it observes wrong timing in the middle of the test. In general it is good to design a test to report errors as soon as it sees one.\n\nHow about checking elapsed and calling s.Fatal here?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 38
+      },
       "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
