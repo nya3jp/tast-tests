@@ -16,10 +16,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -68,16 +67,13 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 
-	pointerController := pointer.NewMouseController(tconn)
-	defer pointerController.Close()
-
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait for low CPU usage: ", err)
+	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -109,7 +105,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer webContentsView.Release(ctx)
 
-	if err := pointer.Click(ctx, pointerController, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents)); err != nil {
+	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents), mouse.LeftButton); err != nil {
 		s.Fatal("Failed to click PIP button: ", err)
 	}
 
@@ -119,15 +115,27 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	workAreaTopLeft := info.WorkArea.TopLeft()
-	if s.Param().(bool) { // big PIP window
+	if s.Param().(bool) { // Branch for video.ChromePIPEnergyAndPower.big.
 		resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ImageButton"})
 		if err != nil {
 			s.Fatal("Failed to get PIP resize handle: ", err)
 		}
 		defer resizeHandle.Release(ctx)
 
-		if err := pointer.Drag(ctx, pointerController, resizeHandle.Location.CenterPoint(), workAreaTopLeft, time.Second); err != nil {
-			s.Fatal("Failed to drag PIP resize handle: ", err)
+		if err := mouse.Move(ctx, tconn, resizeHandle.Location.CenterPoint(), time.Second); err != nil {
+			s.Fatal("Failed to move mouse to PIP resize handle: ", err)
+		}
+		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+			s.Fatal("Failed to press left mouse button: ", err)
+		}
+		if err := mouse.Move(ctx, tconn, workAreaTopLeft, time.Second); err != nil {
+			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
+			}
+			s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
+		}
+		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			s.Fatal("Failed to release left mouse button: ", err)
 		}
 
 		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
@@ -153,7 +161,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 				s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindow.Location.Size(), maxHeight)
 			}
 		}
-	} else { // small PIP window
+	} else { // Branch for video.ChromePIPEnergyAndPower.small.
 		pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
 		if err != nil {
 			s.Fatal("Failed to get PIP window: ", err)
@@ -168,7 +176,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure that the PIP window will show no controls or resize shadows.
-	if err := pointerController.Move(ctx, workAreaTopLeft, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
+	if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
 		s.Fatal("Failed to move mouse: ", err)
 	}
 
@@ -178,6 +186,8 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer extraConn.Close()
 
+	// Wait for chrome://settings to be quiescent. We want data that we
+	// could extrapolate, as in a steady state that could last for hours.
 	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
 	}
@@ -188,8 +198,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err := timeline.StartRecording(ctx); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
-	if err := testing.Sleep(ctx, time.Minute); err != nil {
-		s.Fatal("Failed to wait a minute: ", err)
+	const timelineDuration = time.Minute
+	if err := testing.Sleep(ctx, timelineDuration); err != nil {
+		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
 	}
 	pv, err := timeline.StopRecording()
 	if err != nil {
