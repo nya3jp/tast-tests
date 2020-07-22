@@ -35,7 +35,7 @@ func LauncherSearchNativeApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	if err := launcher.SearchAndLaunch(ctx, tconn, apps.Settings.Name); err != nil {
 		s.Fatal("Failed to launch Settings: ", err)

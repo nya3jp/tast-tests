@@ -60,7 +60,7 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")

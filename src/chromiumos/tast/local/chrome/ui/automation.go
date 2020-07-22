@@ -519,14 +519,14 @@ func WaitUntilGone(ctx context.Context, tconn *chrome.TestConn, params FindParam
 
 // RootDebugInfo returns the chrome.automation root as a string.
 // If the JavaScript fails to execute, an error is returned.
-func RootDebugInfo(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+func RootDebugInfo(ctx context.Context, tconn *chrome.Conn) (string, error) {
 	var out string
 	err := tconn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'');", &out)
 	return out, err
 }
 
 // LogRootDebugInfo logs the chrome.automation root debug info to a file.
-func LogRootDebugInfo(ctx context.Context, tconn *chrome.TestConn, filename string) error {
+func LogRootDebugInfo(ctx context.Context, tconn *chrome.Conn, filename string) error {
 	debugInfo, err := RootDebugInfo(ctx, tconn)
 	if err != nil {
 		return err

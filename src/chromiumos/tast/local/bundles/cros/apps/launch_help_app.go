@@ -101,7 +101,7 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Verify HelpApp (aka Explore) launched in Clamshell mode only.
 	if err := assertHelpAppLaunched(ctx, s, tconn, cr, !isTabletMode); err != nil {

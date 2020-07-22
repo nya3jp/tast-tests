@@ -37,7 +37,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
 	params := ui.FindParams{
