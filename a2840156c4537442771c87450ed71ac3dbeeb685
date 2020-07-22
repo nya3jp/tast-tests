@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76608a79_fc63387f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-07-22T05:11:22Z",
+      "side": 1,
+      "message": "I was told to cc tast-owners to auto-distribute the test review load.",
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
