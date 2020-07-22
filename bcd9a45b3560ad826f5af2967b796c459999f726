@@ -16,6 +16,116 @@
       "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87537a74_a736b191",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/doc.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:55:12Z",
+      "side": 1,
+      "message": "\", a\"\nor\n\". It is a\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 45,
+        "endLine": 5,
+        "endChar": 54
+      },
+      "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f021c506_8234d203",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/doc.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:55:12Z",
+      "side": 1,
+      "message": "hosts",
+      "range": {
+        "startLine": 5,
+        "startChar": 24,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb59621_41cfabd8",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:55:12Z",
+      "side": 1,
+      "message": "Let\u0027s keep the line width in a reasonable value. Say between 80-120 lines. And the first line shall be a summary. How about:\n\n// NetCertStore contains the information to use TPM to store certificates/keys during the test.\n// Strictly speaking, ...",
+      "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b685d8b3_1b5e948b",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:55:12Z",
+      "side": 1,
+      "message": "Remember ending period. Same below.",
+      "range": {
+        "startLine": 25,
+        "startChar": 60,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4b2d51_410f4cc8",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:55:12Z",
+      "side": 1,
+      "message": "\u003e \"Keypair\" is a possible misspelling of \"Key pair\".\n\nPlease fix. \"KeyPair\"",
+      "parentUuid": "58f9fea8_f27e6a2e",
+      "range": {
+        "startLine": 178,
+        "startChar": 14,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "bcd9a45b3560ad826f5af2967b796c459999f726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
