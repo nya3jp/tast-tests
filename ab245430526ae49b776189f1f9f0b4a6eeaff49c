@@ -182,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "b4d67c3d_11f6887c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T08:50:20Z",
+      "side": 1,
+      "message": "i see. could you add TODO comment about it?\nI interpret \"yet\" means you will add this to CQ sometime in the future.",
+      "parentUuid": "3588008b_8abfa9da",
+      "revId": "ab245430526ae49b776189f1f9f0b4a6eeaff49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f10b496_83e13d25",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 1
