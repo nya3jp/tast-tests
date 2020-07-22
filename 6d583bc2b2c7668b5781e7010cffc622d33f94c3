@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4423ccab_d79f6c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "most of this function is quite similar to connectService. Not sure if we can somehow extract the common part of them.\n\nIf we ignore the time used in Connect call in connectService, we can merge the waiting part into a shared function that returns association time + configuration time.",
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab2fe02_a130485e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "All tests are in the same package, so it is possible for global const/var/func to collide. maybe prefix this with test name.\n\nOr, maybe ap2 can adopt ap1\u0027s SSID in the test body, as it seems ap1 and ap2 is using the same SSID? e.g.\n\n  ops :\u003d append([]hostapd.Option{hostapd.SSID(ap1.Config().SSID)}, param.apOpts2...)\n  tf.ConfigureAP(ctx, ops, param.secConfFac)",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68008eab_41798188",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "similar to the bssSSID comment. maybe roamParam or roamTestcase? (like simpleConnectTestcase)",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d0cbeb_c13a1b89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "add bug id? maybe b/161550825 is good enough.",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d84e2b7_9f20d05d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "ap1 is Deconfig-ed twice in the successful code path. It does not seem to be a problem now but probably good to avoid it if possible.\n\nOne way I can think of is add a early return \"if ap \u003d\u003d nil { return }\" in the beginning of this defer and assign ap1 to nil after you called DeconfigAP(ap1) below.",
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b3a781_5ee7b876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "probably worth a \"param :\u003d s.Param().(apConfiguration)\" in the beginning as this is used many times.",
+      "range": {
+        "startLine": 119,
+        "startChar": 36,
+        "endLine": 119,
+        "endChar": 45
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71664dbc_0fabc323",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "I think it\u0027s ap1 which gets de-configured?",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19bdb0f_18703b9a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T08:55:07Z",
+      "side": 1,
+      "message": "probably more like connection_time?",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 22
+      },
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
