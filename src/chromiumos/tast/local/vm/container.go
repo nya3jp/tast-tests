@@ -441,6 +441,31 @@ func (c *Container) GetFileList(ctx context.Context, path string) (fileList []st
 	return strings.Split(strings.TrimRight(string(result), "\r\n"), "\n"), nil
 }
 
+// CheckFileContent checks that the content of the specified file equals to the given string.
+// Returns error if fail to read content or the contest does not equal to the given string.
+func (c *Container) CheckFileContent(ctx context.Context, filePath, testString string) error {
+	content, err := c.readFile(ctx, filePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to cat the result %s", filePath)
+	}
+	if content != testString {
+		return errors.Wrapf(err, "want %s, got %s ", testString, content)
+	}
+	return nil
+}
+
+// readFile reads the content of file using command cat and returns it as a string.
+func (c *Container) readFile(ctx context.Context, filePath string) (content string, err error) {
+	cmd := c.Command(ctx, "cat", filePath)
+	result, err := cmd.Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to cat the content of %s", filePath)
+	}
+
+	// Trim the last new line which is extra.
+	return strings.TrimRight(string(result), "\n"), nil
+}
+
 // LinuxPackageInfo queries the container for information about a Linux package
 // file. The packageID returned corresponds to the package ID for an installed
 // package based on the PackageKit specification which is of the form
