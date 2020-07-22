@@ -16,6 +16,46 @@
       "revId": "27578323c6659b2b1bc50607893499119dbcfd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c23bd885_c375dd3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-22T19:36:53Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective % nit",
+      "revId": "27578323c6659b2b1bc50607893499119dbcfd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c70e6b9f_31fda848",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-22T19:36:53Z",
+      "side": 1,
+      "message": "nit: \"obtain\"",
+      "range": {
+        "startLine": 484,
+        "startChar": 37,
+        "endLine": 484,
+        "endChar": 44
+      },
+      "revId": "27578323c6659b2b1bc50607893499119dbcfd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
