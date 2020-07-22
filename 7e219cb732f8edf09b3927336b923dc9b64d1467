@@ -16,6 +16,24 @@
       "revId": "7e219cb732f8edf09b3927336b923dc9b64d1467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34787602_023107e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-07-22T03:09:29Z",
+      "side": 1,
+      "message": "only for the sudden new failure on /run/camera, to be ignored in previous CL.\ni was planning to reenable last week but i forgot it. and new failures suddenly come out for no clue.",
+      "parentUuid": "bfcf4ba3_3e7e2164",
+      "revId": "7e219cb732f8edf09b3927336b923dc9b64d1467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
