@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa14702_725a77e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-07-22T06:05:34Z",
+      "side": 1,
+      "message": "Is this checking that it is in the a11y tree or that it is not?",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa96229_57f4ebfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-07-22T06:05:34Z",
+      "side": 1,
+      "message": "perk is shown",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4fd068_66bec629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-07-22T06:05:34Z",
+      "side": 1,
+      "message": "What does this do?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
