@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "7d87b4c2_94f8252a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T18:03:39Z",
+      "side": 1,
+      "message": "LGTM with a nit.  Giving CR+2 in advance -- but please address Yen-lin\u0027s comment (my comment is not important, you can ignore it).",
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1832b2d0_3934d52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_delete.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T18:03:39Z",
+      "side": 1,
+      "message": "How long it is?  https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#formatting says basically it\u0027s great to avoid multi-lined logs as they\u0027re hard to read.\n\nI think it\u0027s fine if it is just a few lines, but if it\u0027s longer, maybe it\u0027s great to consider storing the diff into a file (e.g. ioutil.WriteFile(filepath.Join(s.OutDir(), \"diff\"), []byte(diff), 0644)).",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39384ee2_4a8b626e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_delete.go",
         "patchSetId": 2
