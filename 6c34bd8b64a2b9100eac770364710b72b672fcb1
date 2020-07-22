@@ -16,6 +16,115 @@
       "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe7133b6_de96533f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:43:21Z",
+      "side": 1,
+      "message": "+2 % nits, please, wait for rest of the reviewers who made comments.",
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89d21c6c_3e1720fe",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:43:21Z",
+      "side": 1,
+      "message": "ditto below: pem -\u003e PEM, end with period.",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba97f7ef_ce6b25be",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:43:21Z",
+      "side": 1,
+      "message": "huge nit: (ditto below)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 282,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 38
+      },
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a565fd_4346ee25",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:43:21Z",
+      "side": 1,
+      "message": "huge nit: pem -\u003e PEM, + end with period",
+      "range": {
+        "startLine": 296,
+        "startChar": 19,
+        "endLine": 296,
+        "endChar": 22
+      },
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540859ad_1cf3f71f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:43:21Z",
+      "side": 1,
+      "message": "huge nit: add period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 306,
+        "startChar": 37,
+        "endLine": 306,
+        "endChar": 38
+      },
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
