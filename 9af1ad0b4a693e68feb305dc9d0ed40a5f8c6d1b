@@ -34,6 +34,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "672cb193_a2174121",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T18:38:23Z",
+      "side": 1,
+      "message": "Actually the error message is different every time I run the test. See [1] and [2].\n\nAnyway, by adding code with LOG(ERROR), I have observed that during my Tast test, the function DragWindowFromShelfController::ScaleDownWindowAfterDrag is called for Settings but not for DeletionHelperActivity.\n\n[1] https://paste.googleplex.com/6557537744715776\n[2] https://paste.googleplex.com/5892951685201920",
+      "parentUuid": "741e1362_22a1cd58",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
