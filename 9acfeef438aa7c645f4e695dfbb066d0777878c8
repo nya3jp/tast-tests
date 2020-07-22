@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1cff87d2_9a3741ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-07-22T23:33:06Z",
+      "side": 1,
+      "message": "Might be easier to just say \"Exists checks whether the help app exists in the accessiblity tree.\" :)",
+      "parentUuid": "d5a077f0_4f14b784",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa96229_57f4ebfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
