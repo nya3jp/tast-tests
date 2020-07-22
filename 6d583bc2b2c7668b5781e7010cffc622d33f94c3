@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "49f62343_8f02541e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T09:37:25Z",
+      "side": 1,
+      "message": "cc chharry as he might want a similar gRPC as WaitForConnection in his test.",
+      "revId": "6d583bc2b2c7668b5781e7010cffc622d33f94c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4423ccab_d79f6c9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
