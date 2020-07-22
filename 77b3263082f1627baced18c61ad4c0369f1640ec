@@ -377,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "3a552e2b_986bbc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-22T18:59:21Z",
+      "side": 1,
+      "message": "Based on Kazuki Takise\u0027s calendar and time zone, we cannot expect to hear from him until next week. Can anyone else help?",
+      "parentUuid": "19530ace_7f7aa7e5",
+      "range": {
+        "startLine": 207,
+        "startChar": 26,
+        "endLine": 207,
+        "endChar": 32
+      },
+      "revId": "77b3263082f1627baced18c61ad4c0369f1640ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e40bc1ba_40a576e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 3
