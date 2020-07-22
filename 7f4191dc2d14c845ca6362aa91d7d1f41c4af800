@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff0a9437_7b919d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-22T04:33:44Z",
+      "side": 1,
+      "message": "nit: Just count[key]++ works.\nhttps://play.golang.org/p/jyny-44CB8y",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "7f4191dc2d14c845ca6362aa91d7d1f41c4af800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
