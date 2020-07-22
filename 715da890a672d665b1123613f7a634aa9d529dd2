@@ -16,6 +16,109 @@
       "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb259c86_cc3bce79",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:30:48Z",
+      "side": 1,
+      "message": "Please tell us the reason removing \"private\" in function name but keeping \"private\" here.",
+      "range": {
+        "startLine": 248,
+        "startChar": 83,
+        "endLine": 248,
+        "endChar": 90
+      },
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296a27fb_4d700893",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:30:48Z",
+      "side": 1,
+      "message": "The first sentence of function comment should be a summary of what the function is about; followed by a detailed elaboration. So the function\u0027s summary could be:\n\n// ImportPEMKeyAndCertBySlot imports key and cert of PEM format to the token specified by slot.\n// ...",
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed08ce7_888fd493",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:30:48Z",
+      "side": 1,
+      "message": ".pem ?",
+      "range": {
+        "startLine": 265,
+        "startChar": 68,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08df389_5efd91c3",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:30:48Z",
+      "side": 1,
+      "message": "Two questions:\n1. Is msg a multi-line string? Please avoid logging multi-line string.\n2. Since you already return error, any reason to log the same error?",
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73469acb_12382b41",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T03:30:48Z",
+      "side": 1,
+      "message": ".pem ?",
+      "range": {
+        "startLine": 290,
+        "startChar": 69,
+        "endLine": 290,
+        "endChar": 72
+      },
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
