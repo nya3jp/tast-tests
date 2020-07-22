@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "cf77fc26_cb8bf0b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-22T11:26:55Z",
+      "side": 1,
+      "message": "is this blank line intended?",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "ccef81e19eb4b2e1dee74a3db08ffedbfdcf0de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec43139b_22d97227",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 5
@@ -35,6 +58,29 @@
         "startChar": 1,
         "endLine": 336,
         "endChar": 17
+      },
+      "revId": "ccef81e19eb4b2e1dee74a3db08ffedbfdcf0de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2867c3e_15df1e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-07-22T11:26:55Z",
+      "side": 1,
+      "message": "strconv.ParseFloat\u0027s err object already includes the string, we don\u0027t need to repeat it here.",
+      "range": {
+        "startLine": 396,
+        "startChar": 66,
+        "endLine": 396,
+        "endChar": 78
       },
       "revId": "ccef81e19eb4b2e1dee74a3db08ffedbfdcf0de9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
