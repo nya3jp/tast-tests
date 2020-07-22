@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fde00d7_6b5da410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T20:55:24Z",
+      "side": 1,
+      "message": "Please",
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73a57610_ce05a973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T20:55:24Z",
+      "side": 1,
+      "message": "When verifying your test, please also run on the devices with smaller screen (e.g. krane) and larger screen (e.g. kohaku) to double-check those conditions are always satisfied.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cec1a4_cd4604c3",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T20:55:24Z",
+      "side": 1,
+      "message": "Can you keep the previous Dp and Px capitalization?  I think they are usually written in lower-case (dp / px), and the first character is capitalized for the phrasing rule.",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d80ae1c_ba97e849",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T20:55:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 177,
+        "startChar": 22,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
