@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "97dcf6e1_36bf0224",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-07-22T19:23:42Z",
+      "side": 0,
+      "message": "you should be able to flash your device with ARC RVC images.\nFor example hatch-arc-r, ever-arc-r, kukui-arc-r.\nThen you could pass your test on that devices.",
+      "parentUuid": "45b06517_ac4f5282",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65472e1a_194bd875",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
