@@ -16,6 +16,98 @@
       "revId": "7adb7d83efe49cc31c68e574a1ab277c23c248d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d310079_5492d1ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:43:38Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to name it as err.",
+      "range": {
+        "startLine": 23,
+        "startChar": 145,
+        "endLine": 23,
+        "endChar": 151
+      },
+      "revId": "7adb7d83efe49cc31c68e574a1ab277c23c248d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed8f5b47_1e5470b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:43:38Z",
+      "side": 1,
+      "message": "It is not for this CL, but netcertstore.NetCertStore does not sound like a great name.\nBased on the description in Effective Go (cf. https://golang.org/doc/effective_go.html#package-names), it would be netcert.Store.\n\nOr netcetstore.Store would be okay, but repeating the package name wouldn\u0027t make much sense.",
+      "range": {
+        "startLine": 23,
+        "startChar": 118,
+        "endLine": 23,
+        "endChar": 143
+      },
+      "revId": "7adb7d83efe49cc31c68e574a1ab277c23c248d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419c3a94_4512f90b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:43:38Z",
+      "side": 1,
+      "message": "This redefines \"retErr\" and hide the returned value. Please avoid the conflict with the return value.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "7adb7d83efe49cc31c68e574a1ab277c23c248d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b88a69_70bb5d56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:43:38Z",
+      "side": 1,
+      "message": "Also this is not for this CL but this interface looks confusing. Why not Cleanup method for a store instance?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "7adb7d83efe49cc31c68e574a1ab277c23c248d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
