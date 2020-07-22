@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "743560ce_bb12dd26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-22T22:08:58Z",
+      "side": 1,
+      "message": "argh, forgot hatch-arc-r-cq",
+      "revId": "9334f553b3f7b302a2d270b6a097eeb9bebf0920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
