@@ -77,7 +77,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Verify default input method
 	currentInputMethodID, err := vkb.GetCurrentInputMethod(ctx, tconn)

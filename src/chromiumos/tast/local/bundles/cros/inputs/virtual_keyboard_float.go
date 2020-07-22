@@ -43,7 +43,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)

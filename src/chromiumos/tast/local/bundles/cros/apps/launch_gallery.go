@@ -69,7 +69,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	isTabletEnabled := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletEnabled)

@@ -353,7 +353,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 	}
 	logUITree := func() {
-		tree, err := ui.RootDebugInfo(ctx, p.tconn)
+		tree, err := ui.RootDebugInfo(ctx, p.tconn.Conn)
 		if err != nil {
 			tree = fmt.Sprintf("error getting ui tree: %v", err)
 		}

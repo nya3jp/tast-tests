@@ -53,7 +53,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
 

@@ -39,7 +39,7 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Wait for What's New to be available in the list of all Chrome apps.
 	// Without this step, sometimes What's New will launch as a Chrome window instead of a PWA.

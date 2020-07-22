@@ -57,7 +57,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {

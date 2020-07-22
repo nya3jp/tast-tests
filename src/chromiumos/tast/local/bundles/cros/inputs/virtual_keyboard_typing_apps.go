@@ -49,7 +49,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	app := apps.Settings
 	s.Logf("Launching %s", app.Name)
