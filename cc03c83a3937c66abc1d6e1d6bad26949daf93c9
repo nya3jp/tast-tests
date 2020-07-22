@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8043de6_b156f256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T04:38:11Z",
+      "side": 1,
+      "message": "Thank you for review.\nOops, I had sent out the CL to CQ once with overlooking your suggestions, but CQ rejected it.\nNow they are addressed, and again I\u0027m submitting.",
+      "revId": "cc03c83a3937c66abc1d6e1d6bad26949daf93c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
