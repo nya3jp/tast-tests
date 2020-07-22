@@ -441,6 +441,16 @@ func (c *Container) GetFileList(ctx context.Context, path string) (fileList []st
 	return strings.Split(strings.TrimRight(string(result), "\r\n"), "\n"), nil
 }
 
+// ReadFile reads the content of file using command cat and returns it as a string.
+func (c *Container) ReadFile(ctx context.Context, filePath string) (content string, err error) {
+	cmd := c.Command(ctx, "cat", filePath)
+	result, err := cmd.Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to cat the content of %s", filePath)
+	}
+	return strings.TrimRight(string(result), "\r\n"), nil
+}
+
 // LinuxPackageInfo queries the container for information about a Linux package
 // file. The packageID returned corresponds to the package ID for an installed
 // package based on the PackageKit specification which is of the form
