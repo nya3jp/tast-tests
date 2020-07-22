@@ -16,6 +16,23 @@
       "revId": "baa700849378ede7d7354b9b15d90839f17a9703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6a80ed1_3f3e8019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-07-22T08:15:59Z",
+      "side": 1,
+      "message": "It\u0027s okay to me, but I don\u0027t think it\u0027s a good solution because DumpTreeError executes chrome.automation.getDesktop API, which needs `accessibilityFeatures.read` permission.\nchrome.TestConn has that permission.\nChromeVox connection (in arc a11y test) also has that permission.\nHowever chrome.Conn doesn\u0027t need to have that permission. chrome.Conn can be any kind of connection to a chrome extension.",
+      "revId": "baa700849378ede7d7354b9b15d90839f17a9703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
