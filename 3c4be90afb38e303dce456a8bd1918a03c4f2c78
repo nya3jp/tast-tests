@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca8e7a3c_5ccd130d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T23:30:26Z",
+      "side": 1,
+      "message": "LGTM. You don\u0027t have to move the pointer package back to the original location but this is also fine.",
+      "revId": "3c4be90afb38e303dce456a8bd1918a03c4f2c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
