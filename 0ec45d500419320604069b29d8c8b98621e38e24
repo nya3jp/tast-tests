@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6825cc78_0a3a8772",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-22T14:49:52Z",
+      "side": 1,
+      "message": "nya@ please check the ScreenLock test.\nxiyuan@ please check the QuickCheckCUJ test.\nI tried to run both tests before and after the change, and couldn\u0027t spot any difference.",
+      "revId": "0ec45d500419320604069b29d8c8b98621e38e24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
