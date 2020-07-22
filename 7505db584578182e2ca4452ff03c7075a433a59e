@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9636af83_0a3b0654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:21:30Z",
+      "side": 1,
+      "message": "LGTM with some nits. I\u0027m a shadow reviewer, so please also wait for Jun\u0027s review.",
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39384ee2_4a8b626e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_delete.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:21:30Z",
+      "side": 1,
+      "message": "nit: not sure if we need to distinguish \"os.IsNotExist(err)\" case from the other errors as the error message below says \"removed\"?\n\nThe err is printed so probably it\u0027s already verbose enough for debugging.",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d6513bb_1dbf77c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_delete.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T07:21:30Z",
+      "side": 1,
+      "message": "minor nit: remove this line?",
+      "revId": "7505db584578182e2ca4452ff03c7075a433a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
