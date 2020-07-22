@@ -40,7 +40,7 @@ func SMB(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	const smbConfigFile = "smb.conf"
 	if err := cont.PushFile(ctx, s.DataPath(smbConfigFile), "/tmp/smb.conf"); err != nil {

@@ -70,7 +70,7 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		capps, err := ash.ChromeApps(ctx, tconn)

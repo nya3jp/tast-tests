@@ -22,13 +22,13 @@ const (
 
 // DumpUITreeOnError dumps tree to 'ui_tree.txt', when the test fails.
 // Use DumpUITreeOnErrorToFile, if you want to specify the fileName.
-func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.TestConn) {
+func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.Conn) {
 	DumpUITreeOnErrorToFile(ctx, outDir, hasError, tconn, uiTreeFileName)
 }
 
 // DumpUITreeOnErrorToFile checks the given hasError function and dumps the whole UI tree data
 // into a file 'fileName' when the test fails. It does nothing when the test succeeds.
-func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.TestConn, fileName string) {
+func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.Conn, fileName string) {
 	if !hasError() {
 		return
 	}

@@ -45,7 +45,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn.Conn)
 
 	// Show a page with a text field that autofocuses. Turn off autocorrect as it
 	// can interfere with the test.
