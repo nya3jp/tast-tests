@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "20781d30_45691f84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-22T15:49:18Z",
+      "side": 1,
+      "message": "the purpose and the scale of this project makes me believe that it deserves a bug id. It will improve the traceability so in the future the readers can get more context.\nPlease check with wifi team if any existing suitable bug, or creating a new one.\nAnd please also so the same to other CLs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "6c34bd8b64a2b9100eac770364710b72b672fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5204549a_e173c56d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
