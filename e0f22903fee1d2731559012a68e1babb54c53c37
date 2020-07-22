@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f8ab914_e15eef62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "nit: 70 chars",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c575eb44_0d5a7140",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -16,6 +39,121 @@
       "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d14ee5ae_ac5d3aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "Some wording similar to \"from Peeking height to Half height\"?",
+      "range": {
+        "startLine": 28,
+        "startChar": 77,
+        "endLine": 28,
+        "endChar": 86
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636a3617_ddf04bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "nit: Assistant",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 28,
+        "endChar": 67
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047ba428_a3f03527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "Is the correct line width?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 63
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb936ce_7660958b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "Where do we trigger the expanding animation?",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a1137c_accfed83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-07-22T20:31:32Z",
+      "side": 1,
+      "message": "Can we extract this and reuse by the other Assistant Embedded UI perf test?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
