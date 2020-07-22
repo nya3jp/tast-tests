@@ -16,6 +16,63 @@
       "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d50b5ddb_d97e8b81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T08:35:52Z",
+      "side": 1,
+      "message": "LGTM with fix requests.",
+      "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd99b8a_3f097313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T08:35:52Z",
+      "side": 1,
+      "message": "nit: for consistency, let\u0027s name this ctx, too.",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec52ba4_61460e6a",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T08:35:52Z",
+      "side": 1,
+      "message": "style: To check as you commented explicitly,\n\nif router, err :\u003d s.Var(\"router\"); err \u003d\u003d nil \u0026\u0026 router !\u003d \"\" {\n  ...",
+      "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
