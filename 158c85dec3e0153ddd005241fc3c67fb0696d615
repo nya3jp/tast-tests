@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b70f86_e888b3c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-22T23:44:29Z",
+      "side": 1,
+      "message": "Hey Kevin! It feels good to finally mark this CL Verified. PTAL? Thanks much.",
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
