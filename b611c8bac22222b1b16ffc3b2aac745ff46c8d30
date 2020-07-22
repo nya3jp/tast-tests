@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27b50ed0_640a8778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-22T17:00:44Z",
+      "side": 1,
+      "message": "From a look at the failure logs, I don\u0027t think that this recurring failure is caused by this CL. Tastboard shows that the security.StatefulFiles test is flaking: http://tastboard/test/security.StatefulFiles\n\nSo, I\u0027m going to keep mashing CQ+2.",
+      "revId": "b611c8bac22222b1b16ffc3b2aac745ff46c8d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
