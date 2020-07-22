@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc654667_58f92689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T09:34:34Z",
+      "side": 1,
+      "message": "Hi reviewers, as advised I am moving launch_help_app_on_managed_device to a separate cl.",
+      "revId": "a9ed3377ff47adda6195e8891ccdaa1142e64587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
