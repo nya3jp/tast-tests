@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "785fbd20_7ef187af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-22T20:20:15Z",
+      "side": 1,
+      "message": "We can\u0027t quite do that, because of how it (in response to Ilja\u0027s suggestions) polls 5 times until it gets a correct screenshot.  But you\u0027re comment made me realize that for the perceptualdiff step, I should use s.Logf() instead of s.Errorf() and leave the decision of how to handle to the loop in testOneScreenshot().  I\u0027ve fixed this now.  (The other error cases in testScreenshotResult() are not related to the webgl having not yet responded to the keypress.)\n\nI suppose technically testOneScreenshot() does not need to itself return an error.  I only did that to skip the 2nd screenshot in the case the first one fails.",
+      "parentUuid": "efb5e0ba_e8168545",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6d52c4d_de4cd103",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 3
