@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5a077f0_4f14b784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T06:17:53Z",
+      "side": 1,
+      "message": "Sorry for confusing. I rephrased the wording. Is it clear now?",
+      "parentUuid": "3aa14702_725a77e3",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa96229_57f4ebfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0c7acc36_1a16b070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T06:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa96229_57f4ebfa",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a4fd068_66bec629",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-22T06:05:34Z",
       "side": 1,
       "message": "What does this do?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004e48bf_cc0e9d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T06:17:53Z",
+      "side": 1,
+      "message": "This script actually contains 2 test cases. s.Param() function fetches Val from Params in init(), and bool is to cast the type.",
+      "parentUuid": "5a4fd068_66bec629",
       "range": {
         "startLine": 46,
         "startChar": 1,
