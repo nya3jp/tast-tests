@@ -11,11 +11,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -125,13 +124,8 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 	}
 	defer cleanup(ctx)
 
-	app := apps.Help
-	s.Logf("Launching %s", app.Name)
-	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-		s.Fatalf("Failed to launch %s: %v", app.Name, err)
-	}
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-		s.Fatalf("%s did not appear in shelf after launch: %v", app.Name, err)
+	if err := helpapp.Launch(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch help app: ", err)
 	}
 
 	if err := assertHelpAppLaunched(ctx, s, tconn, cr, true); err != nil {
@@ -142,37 +136,31 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 // assertHelpAppLaunched asserts help app to be launched or not
 func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, isLaunched bool) error {
 	if isLaunched {
-		params := ui.FindParams{
-			Name: apps.Help.Name,
-			Role: ui.RoleTypeRootWebArea,
+		if err := helpapp.WaitForApp(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for HelpApp")
 		}
-
-		helpAppRootNode, err := ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "failed to launch help app")
-		}
-
 		// Collect loadTimeData once launched. This is for debugging purpose, so error ignored.
 		if err := logRuntimeData(ctx, s, cr); err != nil {
 			testing.ContextLog(ctx, "Failed to log runtime data: ", err)
 		}
 
-		// Find Overview tab to verify app rendering.
-		params = ui.FindParams{
-			Name: "Overview",
-			Role: ui.RoleTypeTab,
-		}
-		if _, err := helpAppRootNode.DescendantWithTimeout(ctx, params, 20*time.Second); err != nil {
-			return errors.Wrap(err, "failed to render help app")
-		}
-	} else {
-		isHelpAppLaunched, err := ui.Exists(ctx, tconn, ui.FindParams{Name: apps.Help.Name})
+		// Verify perk is shown to default consumer user.
+		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to check HelpApp existence")
+			s.Fatal("Failed to check perks visibility: ", err)
 		}
 
-		if isHelpAppLaunched {
-			return errors.New("Help app is launched in Tablet mode")
+		if !isPerkShown {
+			s.Fatal("Perk is not shown to a consumer user")
+		}
+	} else {
+		isAppLaunched, err := helpapp.Exists(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to verify help app existence: ", err)
+		}
+
+		if isAppLaunched {
+			s.Fatal("Help app should not be launched after oobe on a managed device")
 		}
 	}
 	return nil
