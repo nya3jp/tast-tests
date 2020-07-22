@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "4157ee26_c6f60070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T06:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323d0a14_adb81a56",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "139bbb81_f8ff6975",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 2
@@ -79,6 +103,30 @@
       "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2592dce7_550fd591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T06:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "139bbb81_f8ff6975",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "b4a88dbc0d805c595b9465f38922afd171ea9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
