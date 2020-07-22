@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -478,27 +479,39 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to obtain the list of the installed apps")
 	}
 
-	for {
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtgain the display info")
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
-			return errors.Wrap(err, "failed to get the scrollable shelf info")
+			return testing.PollBreak(errors.Wrap(err, "failed to get the scrollable shelf info"))
 		}
 
-		if info.IsOverflow {
-			break
+		// Finish if at least one icon's position is out of the screen. Do not use
+		// IsOverflow property here, there's a timing issue that it is overflowing
+		// at this point but gets re-layouted without overflow soon later.
+		// See also https://crbug.com/1105619.
+		if len(info.IconsBoundsInScreen) == 0 {
+			return errors.New("no icons found")
+		}
+		lastIconBounds := info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
+		if lastIconBounds.Right() > displayInfo.Bounds.Right() {
+			return nil
 		}
 
 		sum += batchNumber
 		if sum > len(installedApps) {
-			return errors.Errorf("got %d apps, want at least %d apps", len(installedApps), sum)
+			return testing.PollBreak(errors.Errorf("got %d apps, want at least %d apps", len(installedApps), sum))
 		}
 
 		for _, app := range installedApps[sum-batchNumber : sum] {
 			if err := PinApp(ctx, tconn, app.AppID); err != nil {
-				return errors.Wrapf(err, "failed to pin app %s", app.AppID)
+				return testing.PollBreak(errors.Wrapf(err, "failed to pin app %s", app.AppID))
 			}
 		}
-	}
-
-	return nil
+		return errors.New("still not overflow")
+	}, nil)
 }
