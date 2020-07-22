@@ -56,6 +56,23 @@
       "revId": "5f02232e6008170007d129bf78d01596d9bc3044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a346828a_5589dd8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-07-22T20:01:52Z",
+      "side": 1,
+      "message": "LGTM, thanks for catching this. I forgot to fix it back.",
+      "revId": "5f02232e6008170007d129bf78d01596d9bc3044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
