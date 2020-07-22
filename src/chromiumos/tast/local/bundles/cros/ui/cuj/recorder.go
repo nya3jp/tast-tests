@@ -83,10 +83,11 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
-	memDiff     *memoryDiffDataSource
-	timeline    *perf.Timeline
-	loadValues  []*perf.Values
-	displayInfo *DisplayInfo
+	memDiff          *memoryDiffDataSource
+	timeline         *perf.Timeline
+	loadValues       []*perf.Values
+	displayInfo      *DisplayInfo
+	frameDataTracker *FrameDataTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -131,11 +132,17 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
+	frameDataTracker, err := NewFrameDataTracker()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
+	}
+
 	r := &Recorder{
-		names:    make([]string, 0, len(configs)),
-		records:  make(map[string]*record, len(configs)+2),
-		memDiff:  memDiff,
-		timeline: timeline,
+		names:            make([]string, 0, len(configs)),
+		records:          make(map[string]*record, len(configs)+2),
+		memDiff:          memDiff,
+		timeline:         timeline,
+		frameDataTracker: frameDataTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -164,11 +171,23 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx c
 	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
 		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
 	}
+
 	displayInfo, err := NewDisplayInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display info")
 	}
 	r.displayInfo = displayInfo
+
+	if err := r.frameDataTracker.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start FrameDataTracker")
+	}
+	defer func() {
+		err := r.frameDataTracker.Stop(ctx, tconn)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
+		}
+	}()
+
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return errors.Wrap(err, "failed to start recording timeline data")
 	}
@@ -238,6 +257,7 @@ func (r *Recorder) Record(pv *perf.Values) error {
 	}
 
 	r.displayInfo.Record(pv)
+	r.frameDataTracker.Record(pv)
 
 	return nil
 }
