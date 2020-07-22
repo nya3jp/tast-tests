@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0dff1f2_4d9decf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-22T04:28:51Z",
+      "side": 1,
+      "message": "Run in Terminal window.",
+      "revId": "80b529c044b5089de2ee082331b4006baad75a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
