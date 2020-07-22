@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d8c42a_a392a62e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-07-22T18:19:06Z",
+      "side": 1,
+      "message": "I took a quick look at the cq failures and they don\u0027t immediately seem to be caused by this change. Re-rolling...",
+      "revId": "5f02232e6008170007d129bf78d01596d9bc3044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
