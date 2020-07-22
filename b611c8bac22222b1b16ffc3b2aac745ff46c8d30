@@ -16,6 +16,23 @@
       "revId": "b611c8bac22222b1b16ffc3b2aac745ff46c8d30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8233083a_5af9e22b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-22T19:46:19Z",
+      "side": 1,
+      "message": "This is like lower-stakes Cookie Clicker.",
+      "revId": "b611c8bac22222b1b16ffc3b2aac745ff46c8d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
