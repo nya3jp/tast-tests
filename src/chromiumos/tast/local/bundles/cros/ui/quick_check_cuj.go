@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -52,27 +53,6 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// lockState contains a subset of the state returned by chrome.autotestPrivate.loginStatus.
-	type lockState struct {
-		Locked bool `json:"isScreenLocked"`
-		Ready  bool `json:"isReadyForPassword"`
-	}
-
-	// waitStatus repeatedly calls chrome.autotestPrivate.loginStatus and passes the returned
-	// state to f until it returns true or timeout is reached. The last-seen state is returned.
-	waitStatus := func(f func(st lockState) bool, timeout time.Duration) (lockState, error) {
-		var st lockState
-		err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, &st); err != nil {
-				return err
-			} else if !f(st) {
-				return errors.New("wrong status")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: timeout})
-		return st, err
-	}
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -85,7 +65,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatalf("Typing %v failed: %v", accel, err)
 	}
 	s.Log("Waiting for Chrome to report that screen is locked")
-	if st, err := waitStatus(func(st lockState) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 
@@ -118,7 +98,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "typing correct password failed")
 		}
 		s.Log("Waiting for Chrome to report that screen is unlocked")
-		if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, goodAuthTimeout); err != nil {
+		if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, goodAuthTimeout); err != nil {
 			return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
 		}
 
