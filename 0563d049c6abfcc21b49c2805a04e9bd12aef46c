@@ -16,6 +16,80 @@
       "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba1bfa2d_c5d13243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:52:57Z",
+      "side": 1,
+      "message": "drive-by nits.",
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f57282_ce2bddc1",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:52:57Z",
+      "side": 1,
+      "message": "Based on Effective Go, this is not a great name. Why not just \"Store\"?",
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f87616e7_17a36875",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:52:57Z",
+      "side": 1,
+      "message": "Normally, New... function in Go would be a basic constructor function. This is not; this obtains the singleton instance (and create a new one if it does not exist). So I guess it should be named differently.\n\nGetOrCreate, or simply say Get might be okay. Combined with my suggestion above, it would be GetStore().",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd6ece7_c538184b",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T17:52:57Z",
+      "side": 1,
+      "message": "Similarly, this should be named as just \"Cleanup\", as this package won\u0027t have any other cleanups.\n\nI also recommend to make this as a cleanup method of the struct (i.e. func (s *Store) Cleanup(ctx context.Context)).",
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
