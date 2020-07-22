@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52a2b3b9_74d5716a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001841
+      },
+      "writtenOn": "2020-07-22T06:22:08Z",
+      "side": 1,
+      "message": "I added Exempt-From-Owner-Approval to bypass Tast reviewers review.",
+      "revId": "4a78b861b6418759e5ce77b6935715e205402101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
