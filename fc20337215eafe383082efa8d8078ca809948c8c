@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "e0933213_01bd7b01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T09:15:04Z",
+      "side": 1,
+      "message": "Hmm..., in this test, cleanup defer-s all use fullCtx directly so the rename might need to change the behavior of its context usage. I\u0027ll generate another CL to normalize the ctx usages in WiFi tests (including this change).",
+      "parentUuid": "9cd99b8a_3f097313",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cec52ba4_61460e6a",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 16
@@ -73,6 +97,24 @@
       "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bd0de9_2298fbfe",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-22T09:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cec52ba4_61460e6a",
+      "revId": "fc20337215eafe383082efa8d8078ca809948c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
