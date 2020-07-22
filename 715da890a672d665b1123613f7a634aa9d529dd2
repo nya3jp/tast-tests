@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f3c5087_b6a13438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-07-22T06:40:30Z",
+      "side": 1,
+      "message": "question: do we still keep this name?",
+      "range": {
+        "startLine": 7,
+        "startChar": 67,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "715da890a672d665b1123613f7a634aa9d529dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6317911a_9f9ebc0a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
