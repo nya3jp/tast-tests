@@ -16,6 +16,40 @@
       "revId": "8397f858df47a6c2ba85d9b7a48361e7754d67dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ed5e40_9a6e6a5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T03:02:37Z",
+      "side": 1,
+      "message": "Thank you for cleaning up!",
+      "revId": "8397f858df47a6c2ba85d9b7a48361e7754d67dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52dd142a_3c5fe9ee",
+        "filename": "src/chromiumos/tast/local/chrome/systemlogs/systemlogs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-22T03:02:37Z",
+      "side": 1,
+      "message": "huge nit: \"key\" (beginning with a small letter).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\noptional: Also, I\u0027d recommend %q instead of %s, just in case key is an empty string.",
+      "revId": "8397f858df47a6c2ba85d9b7a48361e7754d67dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
