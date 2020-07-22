@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "528510a2_2c34ff1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-22T12:45:50Z",
+      "side": 1,
+      "message": "Hello, I\u0027ve addressed the reviews, please help me review again. Thank you.",
+      "revId": "bd5424d3a83144ea09fb1313447b6a5c918f1674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eb1079f_09d69cd5",
         "filename": "src/chromiumos/tast/common/hwsec/home_files_helpers.go",
         "patchSetId": 1
@@ -30,6 +47,30 @@
       "writtenOn": "2020-07-15T21:28:27Z",
       "side": 1,
       "message": "could we have issues here if the content string has quotes in it? Should we escape it?",
+      "range": {
+        "startLine": 34,
+        "startChar": 66,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "bd5424d3a83144ea09fb1313447b6a5c918f1674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927f47f2_5a63f58c",
+        "filename": "src/chromiumos/tast/common/hwsec/home_files_helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-22T12:45:50Z",
+      "side": 1,
+      "message": "Seemed like %q already took care of it. I tried to add single quot (\u0027), double quote (\") and backslash (\\) in the content and it works fine.",
+      "parentUuid": "2eb1079f_09d69cd5",
       "range": {
         "startLine": 34,
         "startChar": 66,
