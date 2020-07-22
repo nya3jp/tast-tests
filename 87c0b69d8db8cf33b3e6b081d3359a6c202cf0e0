@@ -16,6 +16,46 @@
       "revId": "87c0b69d8db8cf33b3e6b081d3359a6c202cf0e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eff41cf3_d786c065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:33:44Z",
+      "side": 1,
+      "message": "+2 (please wait for Cici\u0027s review)",
+      "revId": "87c0b69d8db8cf33b3e6b081d3359a6c202cf0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22dfa8b0_9861736d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-22T15:33:44Z",
+      "side": 1,
+      "message": "huge nit: append period (.)",
+      "range": {
+        "startLine": 772,
+        "startChar": 34,
+        "endLine": 772,
+        "endChar": 35
+      },
+      "revId": "87c0b69d8db8cf33b3e6b081d3359a6c202cf0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
