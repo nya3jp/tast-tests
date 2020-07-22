@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d4055e08_8e78b1cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-07-22T20:18:41Z",
+      "side": 0,
+      "message": "Oh actually maybe I can use this opportunity to try out betty, seems like betty-arc-r is a supported option.",
+      "parentUuid": "44de5deb_4045ebbb",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65472e1a_194bd875",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
