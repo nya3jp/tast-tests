@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "2ec12cf5_dc27be48",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-22T23:10:18Z",
+      "side": 1,
+      "message": "Sure, sorry for missing comments. Then either is fine with me.",
+      "parentUuid": "9ba03b52_5d1dda3d",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "349ff01d722219a7ff9b2520356e9637d0304e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d80ae1c_ba97e849",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 5
