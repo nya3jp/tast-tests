@@ -122,6 +122,24 @@
       "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66bcd55e_77291b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-22T10:14:03Z",
+      "side": 1,
+      "message": "Just had a chat with bartfab@ and I was wrong about the robot account. The data is stored outside cryptohomes. The extra user is for managed guest sessions in our setup and can be deleted when performing integration tests. Sorry for causing confusion.",
+      "parentUuid": "0eb47289_4a339961",
+      "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
