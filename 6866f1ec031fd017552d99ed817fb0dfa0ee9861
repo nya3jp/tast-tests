@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae2f062e_7927826c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T11:08:48Z",
+      "side": 1,
+      "message": "Still +2. Thanks for the effort. Let\u0027s see if it works as expected in the lab.",
+      "revId": "6866f1ec031fd017552d99ed817fb0dfa0ee9861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddd586f0_890bc447",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T11:08:48Z",
+      "side": 1,
+      "message": "Ouch I didn\u0027t catch this...",
+      "revId": "6866f1ec031fd017552d99ed817fb0dfa0ee9861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
