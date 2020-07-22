@@ -16,6 +16,23 @@
       "revId": "2d1c281c7f6cf588f9f8a81f87d397071c77c50e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5c9b75b_0a2adfab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-22T02:24:43Z",
+      "side": 1,
+      "message": "This is trivial. Consider merging it after getting +2 by a Tast owner.",
+      "revId": "2d1c281c7f6cf588f9f8a81f87d397071c77c50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
