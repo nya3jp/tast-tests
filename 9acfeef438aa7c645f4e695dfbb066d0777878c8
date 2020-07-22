@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6fe9caa9_bd65c792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-22T23:38:48Z",
+      "side": 1,
+      "message": "Good suggestion. I have splitted the cl and chained them together. I am a bit afraid to break the relation by making changes to a dependent cl.I will fix this in https://crrev.com/c/2311982",
+      "parentUuid": "1cff87d2_9a3741ed",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "9acfeef438aa7c645f4e695dfbb066d0777878c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa96229_57f4ebfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
