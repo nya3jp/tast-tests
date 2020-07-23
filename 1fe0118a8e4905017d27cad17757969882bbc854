@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6039529b_126e03d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T07:15:56Z",
+      "side": 1,
+      "message": "some minor nitpicks.",
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56399b76_b3cb3243",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 6
@@ -30,6 +47,75 @@
       "writtenOn": "2020-07-23T07:01:57Z",
       "side": 1,
       "message": "Since the connect attempt was began before the function is called, placing start time marker at the beginning of the function looks better, though the measurement should be quite the same.",
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8ca9f8_6c68e6b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T07:15:56Z",
+      "side": 1,
+      "message": "nit: newline here to keep the format consistent?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca4a080_bebe877c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T07:15:56Z",
+      "side": 1,
+      "message": "nit: \"none\" is not quite informative. maybe just let this be the default case. i.e. empty Name and can be run with \"wifi.Roam\".",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b71fb1_4f7d65a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T07:15:56Z",
+      "side": 1,
+      "message": "minor nit: probably nice to have comment like \"ap1 is already deconfigured.\" for the case.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 9
+      },
       "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
