@@ -52,6 +52,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5b33559_e80fff14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2020-07-23T18:32:02Z",
+      "side": 1,
+      "message": "oh sorry, right, this function should only be called for the dragged window, not for other windows. But this function https://source.chromium.org/chromium/chromium/src/+/master:ash/wm/window_util.cc;drc\u003df56b5e1e538025dbd4f1a99ab53e09e2152501ac;l\u003d266?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F should be called for all windows, which cause the window state change from MAXIMIZED to MINIMIZED. \n\nwhat if you manually wait for a few seconds (just for testing) before going to overview, will this test pass?",
+      "parentUuid": "672cb193_a2174121",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
