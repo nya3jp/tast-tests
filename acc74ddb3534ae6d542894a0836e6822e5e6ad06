@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fff67eef_1a73acdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T18:40:55Z",
+      "side": 1,
+      "message": "Normalized the usage of context according to the CL: 2315518: \nRFC: tast-tests: wifi: Normalize the usage of context. | https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2315518",
+      "revId": "acc74ddb3534ae6d542894a0836e6822e5e6ad06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
