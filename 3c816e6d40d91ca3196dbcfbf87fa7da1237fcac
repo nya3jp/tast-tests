@@ -39,6 +39,30 @@
       "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c40677a_61693407",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T10:10:37Z",
+      "side": 1,
+      "message": "That works in a more implicit manner (and that\u0027s one option Yenlin proposed). If we want to use this approach, please leave a note in configureAP function comment:\n// Also note that the returned callback function use the passing unshortened ctx to perform the cleanup. \n\nMmm... now I\u0027m convinced. With this, line 77-82 becomes:\n\tctx, freq2g, deconfig2g, err :\u003d configureAP(ctx, ssid, channel2g)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to set up AP: \", err)\n\t}\n\tdefer deconfig2g()\n\nBTW, the cCTX in line 61 is still needed.",
+      "parentUuid": "05e11565_53c7a7c0",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
