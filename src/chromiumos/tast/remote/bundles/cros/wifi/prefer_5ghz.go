@@ -34,14 +34,14 @@ func init() {
 	})
 }
 
-func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
+func Prefer5Ghz(ctx context.Context, s *testing.State) {
 	tf := s.PreValue().(*wificell.TestFixture)
-	defer func() {
-		if err := tf.CollectLogs(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.CollectLogs(ctx); err != nil {
 			s.Log("Error collecting logs, err: ", err)
 		}
-	}()
-	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID.
@@ -73,17 +73,19 @@ func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
 		channel2g = 1
 		channel5g = 48
 	)
-	ctx, freq2g, deconfig2g, err := configureAP(ctx, ssid, channel2g)
+	sCtx, freq2g, deconfig2g, err := configureAP(ctx, ssid, channel2g)
 	if err != nil {
 		s.Fatal("Failed to set up AP: ", err)
 	}
-	defer deconfig2g(fullCtx)
+	defer deconfig2g(ctx)
+	ctx = sCtx
 
-	ctx, freq5g, deconfig5g, err := configureAP(ctx, ssid, channel5g)
+	sCtx, freq5g, deconfig5g, err := configureAP(ctx, ssid, channel5g)
 	if err != nil {
 		s.Fatal("Failed to set up AP: ", err)
 	}
-	defer deconfig5g(fullCtx)
+	defer deconfig5g(ctx)
+	ctx = sCtx
 	s.Log("AP setup done. Expecting the DUT to see the SSID on both 2.4GHz and 5GHz channels")
 
 	// Check SSID on both 2.4GHz and 5GHz channels.
@@ -98,15 +100,17 @@ func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
 	if _, err := tf.ConnectWifi(ctx, ssid, false, &base.Config{}); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func() {
-		if err := tf.DisconnectWifi(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
 		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ssid, err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	freqSignal, err := wifiSignal(ctx, tf, s.DUT(), ssid)
 	if err != nil {
