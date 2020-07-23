@@ -134,6 +134,30 @@
       "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c4029b_6db6d200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T01:07:50Z",
+      "side": 1,
+      "message": "Sure we don\u0027t have to (and shouldn\u0027t) do this here. Just proposing an idea.",
+      "parentUuid": "b48ac59e_6ab4bbd3",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
