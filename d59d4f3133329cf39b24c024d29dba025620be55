@@ -33,6 +33,69 @@
       "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8844cb98_69002c53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T08:13:01Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aecdb946_5095316d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T08:13:01Z",
+      "side": 1,
+      "message": "not related: it should be sudoWPACLI",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d11f095_7e53b388",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T08:13:01Z",
+      "side": 1,
+      "message": "I\u0027d like to change wpa_cli in the first place, because we still will have \"blacklist\" in codebase and it won\u0027t be consistent with mixing block and black in the same function.\n\nCan we change that tool?",
+      "range": {
+        "startLine": 48,
+        "startChar": 54,
+        "endLine": 48,
+        "endChar": 63
+      },
+      "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
