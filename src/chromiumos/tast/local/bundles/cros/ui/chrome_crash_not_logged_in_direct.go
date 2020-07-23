@@ -38,15 +38,6 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	// critical (non-informational) test.
 	// TODO(crbug.com/984807): Once ChromeCrashNotLoggedIn is no longer "informational",
 	// remove this test.
-	// We use crash.DevImage() here because this test still uses the testing
-	// command-line flags on crash_reporter to bypass metrics consent and such.
-	// Those command-line flags only work if the crash-test-in-progress does not
-	// exist.
-	if err := crash.SetUpCrashTest(ctx, crash.DevImage()); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest(ctx)
-
 	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, chromecrash.BreakpadDmp)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
@@ -59,6 +50,15 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
+
+	// We use crash.DevImage() here because this test still uses the testing
+	// command-line flags on crash_reporter to bypass metrics consent and such.
+	// Those command-line flags only work if the crash-test-in-progress does not
+	// exist.
+	if err := crash.SetUpCrashTest(ctx, crash.DevImage()); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest(ctx)
 
 	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)

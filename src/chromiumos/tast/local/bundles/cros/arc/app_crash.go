@@ -153,7 +153,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	// Wait files like com_android_settings_foo_bar.20200420.204845.664107.log in crashDir
 	base := strings.ReplaceAll(exampleApp, ".", "_") + `(?:_[[:alnum:]]+)*.\d{8}.\d{6}.\d+`
 	metaFileName := base + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, nil, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
 	if err != nil {
