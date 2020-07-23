@@ -16,6 +16,24 @@
       "revId": "d7f92925fda3b075a4d2dc8da409316129e6fd14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8285d504_857af94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiagameplaycuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-23T22:00:42Z",
+      "side": 1,
+      "message": "yes....",
+      "parentUuid": "981ea8fd_f45166ae",
+      "revId": "d7f92925fda3b075a4d2dc8da409316129e6fd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
