@@ -5,8 +5,11 @@
 package wificell
 
 import (
+	"bytes"
 	"context"
+	"crypto/rand"
 	"fmt"
+	"net"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -30,6 +33,9 @@ import (
 )
 
 const workingDir = "/tmp/tast-test/"
+
+const macBitLocal = 0x2
+const macBitMulticast = 0x1
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
@@ -315,19 +321,33 @@ func (r *Router) phy(ctx context.Context, channel int, t iw.IfType) (int, error)
 	if err != nil {
 		return 0, errors.Errorf("channel %d not available", channel)
 	}
+	// Try to find an idle phy which is suitable
 	for id, phy := range r.phys {
-		// Skip busy phys.
 		if r.isPhyBusy(id, t) {
 			continue
 		}
-		// Check channel support.
-		for _, b := range phy.Bands {
-			if _, ok := b.FrequencyFlags[freq]; ok {
-				return id, nil
-			}
+		if phySupportsFrequency(phy, freq) {
+			return id, nil
+		}
+	}
+	// Try to find any phy which is suitable, even a busy one
+	for id, phy := range r.phys {
+		if phySupportsFrequency(phy, freq) {
+			return id, nil
 		}
 	}
 	return 0, errors.Errorf("cannot find supported phy for channel=%d", channel)
+}
+
+// phySupportsFrequency returns true if any band of the given phy supports
+// the desired frequency.
+func phySupportsFrequency(phy *iw.Phy, freq int) bool {
+	for _, b := range phy.Bands {
+		if _, ok := b.FrequencyFlags[freq]; ok {
+			return true
+		}
+	}
+	return false
 }
 
 // netDev finds an available interface suitable for the given channel and type.
@@ -389,6 +409,9 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 	}
 	iface := nd.IfName
 	r.setIfaceBusy(iface)
+	if err := r.ensureUniqueMAC(ctx, nd); err != nil {
+		return nil, err
+	}
 
 	idx, err := r.reserveSubnetIdx()
 	if err != nil {
@@ -579,6 +602,49 @@ func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*
 	}
 	r.availIfaces[iface] = nd
 	return nd, nil
+}
+
+// ensureUniqueMAC reconfigures an interface's MAC address if needed to satisfy uniqueness
+// requirements.
+//
+// The Linux kernel does not allow multiple APs with the same BSSID on the same PHY (at least,
+// with some drivers). Hence, we want to ensure that the devs for a PHY have unique MAC addresses.
+//
+// Note that we do not attempt to make the MACs unique across PHYs, because some tests deliberately
+// create such scenarios.
+func (r *Router) ensureUniqueMAC(ctx context.Context, nd *iw.NetDev) error {
+	ourMAC, err := r.ipr.MAC(ctx, nd.IfName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get own MAC address")
+	}
+
+	// Determine whether any other in-use interface on the same PHY shares our MAC address
+	unique := true
+	for _, sib := range r.busyIfaces {
+		if sib.PhyNum != nd.PhyNum || sib.IfName == nd.IfName || sib.IfType == "monitor" {
+			continue
+		}
+		sibMAC, err := r.ipr.MAC(ctx, sib.IfName)
+		if err != nil {
+			return errors.Wrap(err, "failed to get sibling MAC address")
+		}
+		if bytes.Equal(sibMAC, ourMAC) {
+			unique = false
+			break
+		}
+	}
+
+	// When necessary, change the interface's MAC address to a unique one
+	if !unique {
+		randMAC := make(net.HardwareAddr, 6)
+		if _, err := rand.Read(randMAC); err != nil {
+			return errors.Wrap(err, "failed to generate random MAC address")
+		}
+		randMAC[0] = (randMAC[0] &^ macBitMulticast) | macBitLocal
+		return r.ipr.SetMAC(ctx, nd.IfName, randMAC)
+	}
+
+	return nil
 }
 
 // isPhyBusyAny returns if the phyID is occupied by a busy interface of any type.
