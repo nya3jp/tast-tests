@@ -53,7 +53,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// Exists checks if help app exists in accessibility tree or not.
+// Exists checks whether the help app exists in the accessiblity tree.
 func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return ui.Exists(ctx, tconn, helpRootNodeParams)
 }
