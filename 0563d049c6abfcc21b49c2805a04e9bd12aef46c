@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "f727338f_c7b4f8c6",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T01:38:19Z",
+      "side": 1,
+      "message": "I thought \"Get\" is a stop word in Golang. If it can be used in getting a singleton, that would be great.",
+      "parentUuid": "f87616e7_17a36875",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edd6ece7_c538184b",
         "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
         "patchSetId": 16
