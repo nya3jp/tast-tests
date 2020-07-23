@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ab86a169_2e591e59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "It\u0027s recommended to user mixedCaps in Go:\nhttps://golang.org/doc/effective_go.html#mixed-caps\n\n\nPlease either use LinuxFiles :)\n\nAlso, let\u0027s replace \"Add\" by \"Copy\" in test name to be more precise, because you actually copying files to \"Linux files\"",
+      "parentUuid": "58d95e4f_fd7263b4",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb8dd5e3_f1f84165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
         "patchSetId": 23
@@ -242,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4353b6ff_e9b6cb12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "You actually was very close in your patch, here is right way:\n\n```\n        cleanupCtx :\u003d ctx\t\n        ctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n\n\t// Open Files app.\n\tfilesApp, err :\u003d filesapp.Launch(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to open Files app: \", err)\n\t}\n\tdefer filesApp.Close(cleanupCtx)\n```\n\n\nMore info about context: https://blog.golang.org/context",
+      "parentUuid": "dc250d63_e7ce01b6",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9960481_6675a71d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
         "patchSetId": 23
@@ -289,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "dedf2a51_e1be459c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bec3650_f65f63e4",
+      "range": {
+        "startLine": 78,
+        "startChar": 22,
+        "endLine": 78,
+        "endChar": 73
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91ac488_83182f78",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
         "patchSetId": 23
@@ -333,6 +399,30 @@
       "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0eb5a35_32d32db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29a6932d_23f549d2",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -423,6 +513,30 @@
         "startChar": 36,
         "endLine": 92,
         "endChar": 44
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fdb6762_4cf784ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66ac0e6_8e673dc8",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 35
       },
       "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -1099,6 +1213,54 @@
       "side": 1,
       "message": "This func is used in other test, so I\u0027d like to keep it expose.",
       "parentUuid": "ace25e2a_27a32a0a",
+      "range": {
+        "startLine": 733,
+        "startChar": 20,
+        "endLine": 733,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa0ba9f_b781fe87",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "Such interface makes it harder to use. Also if you expect to use it in other places you will need to parse result in multiple places.",
+      "parentUuid": "9ba2ec36_81112eee",
+      "range": {
+        "startLine": 733,
+        "startChar": 67,
+        "endLine": 733,
+        "endChar": 82
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4b4867c_33e35fdb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "once it will be used somewhere else we can make in visible outside the package.",
+      "parentUuid": "5a82c8c0_1f52483f",
       "range": {
         "startLine": 733,
         "startChar": 20,

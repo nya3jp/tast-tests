@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7413492e_0e2efbbb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "please move function closer to other Container related functions in line 520",
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90190a8_2462f73d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "To be consistent with existing container functions (GetFile, PushFile), I guess it makes sense to add HasFile method",
+      "range": {
+        "startLine": 714,
+        "startChar": 20,
+        "endLine": 714,
+        "endChar": 40
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1285cb_b39c159e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "it\u0027s not correct way to check whether file exist or not.\n\nExample:\n\nfileList \u003d \"aaaaaaaa/bbbbbb, cccccccc/xxxxxxx\"\nfile \u003d \"a\"\n\nyour check will say us that file \"a\" exists, but it does not",
+      "range": {
+        "startLine": 723,
+        "startChar": 5,
+        "endLine": 723,
+        "endChar": 38
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100c5aa5_95ab4a07",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "nit: remove extra period",
+      "range": {
+        "startLine": 730,
+        "startChar": 77,
+        "endLine": 730,
+        "endChar": 78
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf65f79a_43c929e3",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:28:11Z",
+      "side": 1,
+      "message": "btw, there is another method called GetFile which does completely different, name is a bit confusing. Let\u0027s rename to getFileList",
+      "range": {
+        "startLine": 731,
+        "startChar": 20,
+        "endLine": 731,
+        "endChar": 28
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
