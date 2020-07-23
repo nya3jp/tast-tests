@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "afbab178_47597098",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T09:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99cbc0fd_82fe4a14",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20d7f2b3_56843456",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 1
@@ -88,6 +112,29 @@
       "side": 1,
       "message": "You mean deconfig2g use the ctx used to call configureAP? That\u0027s viable but it seems harder to read.",
       "parentUuid": "20d7f2b3_56843456",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8665a81_2f853878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T09:43:11Z",
+      "side": 1,
+      "message": "missed.",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 161,
+        "endChar": 50
+      },
       "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -143,6 +190,24 @@
       "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6592c22a_e2455f75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T09:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d187148d_7f1db289",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
