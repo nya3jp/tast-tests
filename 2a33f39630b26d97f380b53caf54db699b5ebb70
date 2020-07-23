@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "de6ea7d0_4667c1e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T03:19:28Z",
+      "side": 1,
+      "message": "mostly LGTM, but still some discussion in the gRPC part.",
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a59c97bd_f2227895",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -13,6 +30,23 @@
       "writtenOn": "2020-07-23T01:33:42Z",
       "side": 1,
       "message": "How about passing start time from the caller side? So for s.connectService() we can mark start time just before service.Connect() is called. And for s.WaitForConnection(), we can mark start time when calling waitForConnection().",
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc97ae1_f4d184f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T03:19:28Z",
+      "side": 1,
+      "message": "Oops..., I forgot that PropertyWatcher is created before Connect...\n\nWe\u0027ll have to get the current state and skip the two ExpectIn accordingly. But it might not be a good practice for the Connect case. (which should just start Watcher before the state change trigger)\n\nGiven the situation, I wonder if the original one might be better/simpler as WaitForConnection only needs IsConnected\u003dtrue. Dean@, WDYT?\n\nAlso, in parallel, I think chharry@ is looking at gRPC stream API which might make waiting signals in remote tests easier. (e.g. start PropertyWatch in testbody instead of in gRPC)",
       "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -35,6 +69,29 @@
         "startChar": 1,
         "endLine": 89,
         "endChar": 8
+      },
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eea8047_2094ae65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T03:19:28Z",
+      "side": 1,
+      "message": "nit: it\u0027s not a problem now as we only use param.apOpts2 once. But it might be safer to allocate a new slice like:\n\n  ops :\u003d append([]hostapd.Option{hostapd.SSID(ssid)}, param.apOpts2...)\n\nor\n\n  ops :\u003d append([]hostapd.Option(nil), param.apOpts2...)\n  ops \u003d append(ops, hostapd.SSID(ap1SSID))\n\nin case apOpts2 somehow overwrites SSID setting.",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 51
       },
       "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
