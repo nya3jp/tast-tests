@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "38c01bef_42812a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T00:48:47Z",
+      "side": 1,
+      "message": "I think moving it is better, so I dont have to check the currBSSID before pw.Expect.",
+      "parentUuid": "4aba06ff_96714101",
+      "range": {
+        "startLine": 761,
+        "startChar": 25,
+        "endLine": 761,
+        "endChar": 35
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07e022c8_b85a8cdb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 14
@@ -62,6 +86,30 @@
       "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f39c34_bb1a9266",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T00:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e022c8_b85a8cdb",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
