@@ -16,6 +16,24 @@
       "revId": "03212f87a51db5ef23178f37a1f9c139325f8449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aba0d442_7d86aa84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-23T08:04:56Z",
+      "side": 1,
+      "message": "A bigger one might increase flakiness.",
+      "parentUuid": "939af3d7_ac9abe10",
+      "revId": "03212f87a51db5ef23178f37a1f9c139325f8449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
