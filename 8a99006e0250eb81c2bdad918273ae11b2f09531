@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c060e4f_6ce4fff9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T08:41:09Z",
+      "side": 1,
+      "message": "Generally LGTM. Yenlin, please confirm.",
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e11cfab_66728210",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T08:41:09Z",
+      "side": 1,
+      "message": "a WiFi",
+      "range": {
+        "startLine": 16,
+        "startChar": 34,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7909e621_dda55f12",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T08:41:09Z",
+      "side": 1,
+      "message": "an event",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
