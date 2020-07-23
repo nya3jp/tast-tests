@@ -178,6 +178,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3fdaf6_0206f807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-23T20:07:38Z",
+      "side": 1,
+      "message": "Please refer the revision of ARC in ChromeOS, that matters much. The revision is seen in chrome://version.\n\ncrbug.com/1081974 was caused by a CL in Android (see #c17 in it), takise reverted that CL (see #c20). I don\u0027t remember how the referred chromium CL (#c23) is related to the bug.\n\nAlso, if that\u0027s the case, I believe this also reproduces on real use cases. Can you make sure that it also happens if you manually conduct the operation by your finger?",
+      "parentUuid": "0b539688_2dc86546",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
