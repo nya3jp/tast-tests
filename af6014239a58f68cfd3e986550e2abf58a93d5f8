@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "aaf4f9a1_e6fefc07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-23T17:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d014ad9_b7318d84",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c4f389d_11780aec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -130,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "3250c913_afce5888",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-23T17:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3fa543e_8d4ad158",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b7f50a2_157370fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 5
@@ -150,6 +198,30 @@
       "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e207318_fd30defe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-23T17:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7f50a2_157370fe",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c72e3a1b_b87e2f03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-23T17:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "442163d5_f4f2af18",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b273d47a_3843524c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 5
@@ -187,6 +283,30 @@
       "writtenOn": "2020-07-22T06:02:22Z",
       "side": 1,
       "message": "This test always takes sleepDuration*sleepIterations even if it observes wrong timing in the middle of the test. In general it is good to design a test to report errors as soon as it sees one.\n\nHow about checking elapsed and calling s.Fatal here?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 38
+      },
+      "revId": "af6014239a58f68cfd3e986550e2abf58a93d5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325fcd5c_7a06937f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-23T17:28:10Z",
+      "side": 1,
+      "message": "As I mentioned in another comment, one of the purposes of the test is to collect data about the measured intervals - stopping the test early would make it impossible. I thought that a good compromise would be to add a flag to tweak this behavior (I called it failEagerly) and I\u0027ve set the default to what you\u0027re suggesting. Is that ok?",
+      "parentUuid": "b273d47a_3843524c",
       "range": {
         "startLine": 99,
         "startChar": 2,
