@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7243b4ae_fe7eebc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-23T08:25:44Z",
+      "side": 1,
+      "message": "A bigger test might increase flakiness.",
+      "parentUuid": "8727bcdc_eaefd504",
+      "revId": "257fb6d5a7cbc8c4a932fd637d37721d8508b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d99c1f5c_9d580ff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "257fb6d5a7cbc8c4a932fd637d37721d8508b9f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6828f2f_7aa3780b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-23T08:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d99c1f5c_9d580ff9",
+      "revId": "257fb6d5a7cbc8c4a932fd637d37721d8508b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
