@@ -50,6 +50,24 @@
       "revId": "6071989be3dd19aa1447dbd23f4f12bf19b83b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa7fb6b_08aef766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-23T13:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b8f089_6d644228",
+      "revId": "6071989be3dd19aa1447dbd23f4f12bf19b83b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
