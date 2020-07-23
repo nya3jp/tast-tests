@@ -22,8 +22,8 @@ func NewRunner(c cmd.Runner) *Runner {
 	return &Runner{cmd: c}
 }
 
-// sudoWpacli returns a sudo command args that runs wpa_cli with args under sudo.
-func sudoWpacli(args ...string) []string {
+// sudoWPACLI returns a sudo command args that runs wpa_cli with args under sudo.
+func sudoWPACLI(args ...string) []string {
 	ret := []string{"-u", "wpa", "-g", "wpa", "wpa_cli"}
 	for _, arg := range args {
 		ret = append(ret, arg)
@@ -33,7 +33,7 @@ func sudoWpacli(args ...string) []string {
 
 // Ping runs "wpa_cli -i iface ping" command and expects to see PONG.
 func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWpacli("-i", iface, "ping")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("-i", iface, "ping")...)
 	if err != nil {
 		return cmdOut, errors.Wrapf(err, "failed running wpa_cli -i %s ping", iface)
 	}
@@ -45,7 +45,7 @@ func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
 
 // ClearBlacklist runs "wpa_cli blacklist clear" command.
 func (r *Runner) ClearBlacklist(ctx context.Context) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWpacli("blacklist", "clear")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("blacklist", "clear")...)
 	if err != nil {
 		return errors.Wrap(err, "failed running wpa_cli blacklist clear")
 	}
