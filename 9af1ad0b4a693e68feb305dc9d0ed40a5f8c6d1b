@@ -142,6 +142,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1790c9a2_f76a98e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-23T19:42:01Z",
+      "side": 1,
+      "message": "If so, that would be a bug on Android, it may fail to minimize the target window even though Ash requests it.  As Daisy said (and written in the comment), the window states for Android app windows are asynchronously updated.\n\nI\u0027ve met such a bug the other day (crbug.com/1081974). Which version of Android are you using? If you haven\u0027t re-imaged ChromeOS for a while, I think it\u0027s better to update to the latest version.",
+      "parentUuid": "5a7ef45b_a39ada19",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
