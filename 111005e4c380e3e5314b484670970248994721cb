@@ -16,6 +16,24 @@
       "revId": "111005e4c380e3e5314b484670970248994721cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0221ecc2_2c495a82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-23T16:31:25Z",
+      "side": 1,
+      "message": "+1 is enough. I just wanted to check with you if you are ok with the change in QuickCheckCUJ.go.",
+      "parentUuid": "52592a3c_c9af1fa7",
+      "revId": "111005e4c380e3e5314b484670970248994721cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
