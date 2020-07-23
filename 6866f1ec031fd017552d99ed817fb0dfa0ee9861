@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7ca74673_9b19c3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T02:42:44Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "6866f1ec031fd017552d99ed817fb0dfa0ee9861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddd586f0_890bc447",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go",
         "patchSetId": 17
