@@ -33,6 +33,46 @@
       "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e86a08_814841de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:38:21Z",
+      "side": 1,
+      "message": "Can you add callers into CL?",
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabc06a1_e3d90a4f",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T17:38:21Z",
+      "side": 1,
+      "message": "I didn\u0027t see example of usages ReadSpace when password is empty.\n\nAlso, it\u0027s good to have methods callers in the same CL.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
