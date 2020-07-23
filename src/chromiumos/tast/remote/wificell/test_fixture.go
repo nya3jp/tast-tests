@@ -522,6 +522,15 @@ func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, tim
 	return nil
 }
 
+// Reassociate triggers reassociation with the current AP and waits until it has reconnected or the timeout expires.
+func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout time.Duration) error {
+	_, err := tf.wifiClient.Reassociate(ctx, &network.ReassociateRequest{
+		InterfaceName: iface,
+		Timeout:       timeout.Nanoseconds(),
+	})
+	return err
+}
+
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*network.ConnectResponse, error) {
 	conf := ap.Config()

@@ -14,10 +14,17 @@ import (
 )
 
 const (
-	dbusInterfaceInterface = "fi.w1.wpa_supplicant1.Interface"
-	dbusInterfacePropBSSs  = "BSSs"
+	dbusInterfaceInterface         = "fi.w1.wpa_supplicant1.Interface"
+	dbusInterfaceMethodReassociate = "Reassociate"
+	dbusInterfacePropBSSs          = "BSSs"
 	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
+	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
+	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
+	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
+	DBusInterfaceStateAssociated = "associated"
+	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
+	DBusInterfaceStateCompleted = "completed"
 )
 
 // Interface is the object to interact with wpa_supplicant's
@@ -106,4 +113,9 @@ func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signa
 		SSID:  bSSID,
 		BSSID: bBSSID,
 	}, nil
+}
+
+// Reassociate calls the Reassociate method of the interface.
+func (iface *Interface) Reassociate(ctx context.Context) error {
+	return iface.dbus.Call(ctx, dbusInterfaceMethodReassociate).Err
 }
