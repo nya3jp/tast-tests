@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5141bee_e538ab4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-23T15:22:21Z",
+      "side": 1,
+      "message": "It can be used for toogle buttons as well (and maybe for radio buttons).",
+      "parentUuid": "200dd55a_922fe8a4",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "93c3cf7e555dddc877f7df823c4dc9b049169d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0472a07d_a362c638",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
