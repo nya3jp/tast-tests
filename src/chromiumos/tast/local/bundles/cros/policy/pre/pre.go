@@ -19,6 +19,16 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// Credentials used for authenticating the test user.
+const (
+	// Username is the username used for authenticating the test user.
+	Username = "tast-user@managedchrome.com"
+	// Password is the password used for authenticating the test user.
+	Password = "test0000"
+	// GaiaID is the GaiaID used for authenticating the test user.
+	GaiaID = "gaia-id"
+)
+
 // PreData is returned by the precondition and used by tests to
 // interact with Chrome and FakeDMS.
 type PreData struct { // NOLINT
@@ -87,7 +97,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"),
+		chrome.Auth(Username, Password, GaiaID),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
