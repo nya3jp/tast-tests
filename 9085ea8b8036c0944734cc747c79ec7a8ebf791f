@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d295b91f_2867c148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T08:43:49Z",
+      "side": 1,
+      "message": "Awesome. I also thought about this. Thanks for the improvement.",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20d7f2b3_56843456",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 1
