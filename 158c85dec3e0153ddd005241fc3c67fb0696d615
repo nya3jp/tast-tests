@@ -16,6 +16,69 @@
       "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cede5ca4_7d535394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-23T00:10:45Z",
+      "side": 1,
+      "message": "Taking me a bit to catch up on what is going on in this code.  Added a few quick comments that will speed my understanding.",
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37fa4d46_890dda89",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-23T00:10:45Z",
+      "side": 1,
+      "message": "This looks like the \"what\" instead of the \"why.\"  Consider explaining why you are plugging the servo USB stick into the RTS (may be good to use F20 terminology of RTS here instead of host, RTS will likely be less-likely to be misinterpreted).",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4d941f_039a9c58",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-23T00:10:45Z",
+      "side": 1,
+      "message": "Consider adding two things here, a comment as to the \"why?\" (something like \"Removing power from the DUT because foo) and a clarification on the error message as to the \"what\" (something like \"setting servo PD role to SNK (not supplying power to the DUT through the servo) before powering off the DUT.\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
