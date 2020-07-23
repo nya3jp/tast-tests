@@ -33,6 +33,24 @@
       "revId": "23b1ef74a6b1c25efaa4ecb2d69ad96b598307c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3172c0f0_43f56563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:27:46Z",
+      "side": 1,
+      "message": "The reason for not merging them is stated in the previous CL. Please review this CL again if you feel that the other CLs in this stack is stabilizing. Thank you.",
+      "parentUuid": "07f9ecc7_985abfd6",
+      "revId": "23b1ef74a6b1c25efaa4ecb2d69ad96b598307c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
