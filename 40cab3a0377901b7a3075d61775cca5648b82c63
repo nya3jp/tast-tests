@@ -158,6 +158,30 @@
       "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e8322e_76e77832",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T03:36:15Z",
+      "side": 1,
+      "message": "As the pattern of \"disconnect + delete\" is used quite often, it sounds good. It also reminds me that as we\u0027re adding roaming tests, the \"curServicePath\" might be another thing to fix. I can probably take a look when I got some time.",
+      "parentUuid": "30c4029b_6db6d200",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
