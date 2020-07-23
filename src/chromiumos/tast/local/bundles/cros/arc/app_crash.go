@@ -23,7 +23,7 @@ func init() {
 		Func:         AppCrash,
 		Desc:         "Test handling of a local app crash",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
@@ -33,10 +33,12 @@ func init() {
 		}, {
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"android_p", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 			Val:               crash.RealConsent,
 		}, {
 			Name:              "vm_mock_consent",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
 			Val:               crash.MockConsent,
 		}},
 	})
