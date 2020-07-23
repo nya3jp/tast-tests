@@ -23,19 +23,18 @@ func init() {
 	})
 }
 
-func DuplicateBSSID(fullCtx context.Context, s *testing.State) {
+func DuplicateBSSID(ctx context.Context, s *testing.State) {
 	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Error("Failed to tear down test fixture: ", err)
 		}
-	}()
-
-	ctx, cancel := tf.ReserveForClose(fullCtx)
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID. It returns a shortened
@@ -88,5 +87,4 @@ func DuplicateBSSID(fullCtx context.Context, s *testing.State) {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
 	}
-
 }

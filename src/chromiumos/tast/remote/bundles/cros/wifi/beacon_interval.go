@@ -7,9 +7,7 @@ package wifi
 import (
 	"context"
 	"strconv"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -38,7 +36,7 @@ func BeaconInterval(ctx context.Context, s *testing.State) {
 			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	// The value of beacon interval to be set in hostapd config
@@ -72,8 +70,7 @@ func BeaconInterval(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
 	}(ctx)
-	// Shorten a little bit for disconnect.
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
 
 	s.Log("Start verification")

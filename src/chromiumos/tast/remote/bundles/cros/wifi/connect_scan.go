@@ -79,7 +79,7 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	// Disable MAC randomization as we're filtering the packets with MAC address.
@@ -219,6 +219,8 @@ func connectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name s
 				collectFirstErr(errors.Wrapf(err, "failed to remove entries for ssid=%s", ap.Config().SSID))
 			}
 		}(ctx)
+		ctx, cancel = tf.ReserveForDisconnect(ctx)
+		defer cancel()
 
 		capturer, ok := tf.Capturer(ap)
 		if !ok {

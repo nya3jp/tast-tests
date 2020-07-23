@@ -210,6 +210,11 @@ func (tf *TestFixture) CollectLogs(ctx context.Context) error {
 	return tf.router.CollectLogs(ctx)
 }
 
+// ReserveForCollectLogs returns a shorter ctx and cancel function for tf.CollectLogs.
+func (tf *TestFixture) ReserveForCollectLogs(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, time.Second)
+}
+
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "tf.Close")
@@ -406,6 +411,11 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	}
 	tf.curServicePath = ""
 	return err
+}
+
+// ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
+func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // AssureDisconnect assures that the WiFi service has disconnected within timeout.

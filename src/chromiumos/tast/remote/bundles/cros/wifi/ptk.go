@@ -6,12 +6,10 @@ package wifi
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security/wpa"
-	"chromiumos/tast/ctxutil"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -47,7 +45,7 @@ func PTK(ctx context.Context, s *testing.State) {
 			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	apOps := []hostapd.Option{
@@ -69,15 +67,15 @@ func PTK(ctx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig ap: ", err)
 		}
 	}(ctx)
-
-	ctx, _ = tf.ReserveForDeconfigAP(ctx, ap)
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+	defer cancel()
 
 	s.Log("AP setup done; connecting")
 
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
@@ -85,7 +83,9 @@ func PTK(ctx context.Context, s *testing.State) {
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = tf.ReserveForDisconnect(ctx)
+	defer cancel()
 
 	s.Logf("Pinging with count=%d interval=%g second(s)", pingCount, pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
