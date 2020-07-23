@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6cef41ae_323fa25c",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-23T16:28:08Z",
+      "side": 1,
+      "message": "I don\u0027t think get is a stop word. It shouldn\u0027t be used for getters (so use Foo() method instead of GetFoo() method), but no other sayings to stop using it.  For singleton pattern, I\u0027ve seen some usages of GetInstance().\n\nHaving said that, my first comment wouldn\u0027t be justified much. New (or Create) would be fine too. Sorry for the confusion.",
+      "parentUuid": "68543275_ca0a389b",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "0563d049c6abfcc21b49c2805a04e9bd12aef46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edd6ece7_c538184b",
         "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
         "patchSetId": 16
