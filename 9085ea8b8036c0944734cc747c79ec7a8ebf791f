@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4961ba9c_f5de8c87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T08:05:07Z",
+      "side": 1,
+      "message": "Hi,\n\nThis is a CL to normalize the usage of context in WiFi tests. Any suggestion is welcomed.\n\nI think some changes in this CL is more personal preferences than real fixes but I guess it is still good to have the naming and code flow to be consistent. Feel free to leave comments if you have some concerns or think if the CL is an overkill.",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20d7f2b3_56843456",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T08:05:07Z",
+      "side": 1,
+      "message": "This is a case that the pattern cannot handle cleanly.\n\nOne alternative is to let the deconfig defer function use the ctx in the closure of configureAP  instead of taking ctx as parameter.",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39fc89f_99d1f0cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T08:05:07Z",
+      "side": 1,
+      "message": "Dean@, I\u0027m not sure if I overlook something. Is there a reason to not Disconnect here?",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
