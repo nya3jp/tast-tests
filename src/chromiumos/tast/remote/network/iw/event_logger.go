@@ -28,6 +28,7 @@ type EventType int
 const (
 	EventTypeDisconnect EventType = iota
 	EventTypeChanSwitch
+	EventTypeConnect
 	EventTypeUnknown
 )
 
@@ -168,6 +169,9 @@ func detectEventType(ev *Event) EventType {
 	}
 	if strings.Contains(ev.Message, "ch_switch_started_notify") {
 		return EventTypeChanSwitch
+	}
+	if strings.HasPrefix(ev.Message, "connected") {
+		return EventTypeConnect
 	}
 	return EventTypeUnknown
 }
