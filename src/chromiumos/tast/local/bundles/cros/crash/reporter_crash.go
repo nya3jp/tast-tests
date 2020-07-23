@@ -81,11 +81,6 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
-	if err != nil {
-		s.Fatal("Failed to get original crashes: ", err)
-	}
-
 	if err := setCorePatternCrashTest(ctx, true); err != nil {
 		s.Fatal(err, "failed to replace core pattern")
 	}
@@ -130,8 +125,7 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`,
 		`crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
-		oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

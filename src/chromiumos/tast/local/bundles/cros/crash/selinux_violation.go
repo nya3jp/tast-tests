@@ -65,11 +65,6 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
-	if err != nil {
-		s.Fatal("Failed to get original crashes: ", err)
-	}
-
 	// Restart anomaly detector to clear its cache of recently seen service
 	// failures and ensure this one is logged.
 	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
@@ -105,7 +100,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for crash files")
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		if err := saveSelinuxLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failed to save selinux log: ", err)
