@@ -160,6 +160,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b539688_2dc86546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-07-23T19:52:14Z",
+      "side": 1,
+      "message": "It is Android version 9, and I have re-imaged ChromeOS recently. As we discussed in email, the fix for crbug.com/1081974 never changed what happens when I run the test.",
+      "parentUuid": "1790c9a2_f76a98e5",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
