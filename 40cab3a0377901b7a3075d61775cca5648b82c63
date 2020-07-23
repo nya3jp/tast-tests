@@ -110,6 +110,30 @@
       "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b48ac59e_6ab4bbd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T01:06:37Z",
+      "side": 1,
+      "message": "Thanks for catching this. I\u0027m thinking if we shall have a reverse function of tf.ConnectWifiAP() which disconnect WiFi and delete the service entry. WDYT?",
+      "parentUuid": "07e022c8_b85a8cdb",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
