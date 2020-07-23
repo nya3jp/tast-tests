@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/hwsec/dictattack"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -25,37 +25,6 @@ func init() {
 		SoftwareDeps: []string{"tpm2"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
-}
-
-// getDAInfo is a simple utility function that calls GetDAInfo from both tpm_manager and cryptohome, and see if they match. If both succeeded and the results agree with each other, then err is nil.
-func getDAInfo(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinary, tpmManagerUtil *hwsec.UtilityTpmManagerBinary) (info *hwsec.DAInfo, returnedError error) {
-	// Get values from tpm_manager.
-	infoFromTpmManager, err := tpmManagerUtil.GetDAInfo(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get dictionary attack info from TpmManager")
-	}
-
-	// Get values from cryptohome.
-	infoFromCryptohome, err := cryptohomeUtil.GetDAInfo(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get dictionary attack info from cryptohome")
-	}
-
-	// Now check the values.
-	if infoFromCryptohome.Counter != infoFromTpmManager.Counter {
-		return nil, errors.Errorf("cryptohome (%d) and tpm_manager (%d) disagree on counter value", infoFromCryptohome.Counter, infoFromTpmManager.Counter)
-	}
-	if infoFromCryptohome.Threshold != infoFromTpmManager.Threshold {
-		return nil, errors.Errorf("cryptohome (%d) and tpm_manager (%d) disagree on threshold value", infoFromCryptohome.Threshold, infoFromTpmManager.Threshold)
-	}
-	if infoFromCryptohome.InEffect != infoFromTpmManager.InEffect {
-		return nil, errors.Errorf("cryptohome (%t) and tpm_manager (%t) disagree on in effect value", infoFromCryptohome.InEffect, infoFromTpmManager.InEffect)
-	}
-	if infoFromCryptohome.Remaining != infoFromTpmManager.Remaining {
-		return nil, errors.Errorf("cryptohome (%d) and tpm_manager (%d) disagree on remaining value", infoFromCryptohome.Remaining, infoFromTpmManager.Remaining)
-	}
-
-	return infoFromCryptohome, nil
 }
 
 // DictionaryAttackLockoutReset checks that get dictionary attack info and reset dictionary attack lockout works as expected.
@@ -93,7 +62,7 @@ func DictionaryAttackLockoutReset(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the counter is 0 right after resetting.
-	info, err := getDAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err := dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -136,7 +105,7 @@ func DictionaryAttackLockoutReset(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	info, err = getDAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err = dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -150,7 +119,7 @@ func DictionaryAttackLockoutReset(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter again, should be 0, and lockout shouldn't be in effect.
-	info, err = getDAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err = dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
