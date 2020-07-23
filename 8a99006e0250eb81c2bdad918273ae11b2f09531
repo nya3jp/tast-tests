@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "f39b0aa8_5999de98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-23T18:04:43Z",
+      "side": 1,
+      "message": "I\u0027ll give this an actual code review soon, but can you answer me this:\nis there any case in which using \u0027iw event\u0027 is *not* racy, per these notes?\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1041325#c8",
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e11cfab_66728210",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 3
