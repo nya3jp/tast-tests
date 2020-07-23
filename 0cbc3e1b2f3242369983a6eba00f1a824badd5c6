@@ -22,6 +22,30 @@
       "revId": "0cbc3e1b2f3242369983a6eba00f1a824badd5c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3835861c_88997fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-23T05:27:22Z",
+      "side": 1,
+      "message": "the directory is rwxr-xr-x \u003d 755, so we use NotMode(022) here.",
+      "parentUuid": "74233ae1_d4a16184",
+      "range": {
+        "startLine": 112,
+        "startChar": 121,
+        "endLine": 112,
+        "endChar": 134
+      },
+      "revId": "0cbc3e1b2f3242369983a6eba00f1a824badd5c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
