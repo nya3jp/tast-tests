@@ -182,6 +182,30 @@
       "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa0e724_c8cf2f8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T05:18:24Z",
+      "side": 1,
+      "message": "I agree with Yen-lin, having a function that does both would make the code look cleaner. Also, would prevent me of doing mistakes :)",
+      "parentUuid": "e8e8322e_76e77832",
+      "range": {
+        "startLine": 76,
+        "startChar": 109,
+        "endLine": 76,
+        "endChar": 117
+      },
+      "revId": "40cab3a0377901b7a3075d61775cca5648b82c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
