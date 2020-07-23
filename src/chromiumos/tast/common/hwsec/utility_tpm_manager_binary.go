@@ -89,6 +89,13 @@ func (u *UtilityTpmManagerBinary) WriteSpaceFromFile(ctx context.Context, index,
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "WriteSpace")
 }
 
+// ReadSpaceToFile reads the content of NVRAM space at index into the file outputFile, with password (if not empty).
+func (u *UtilityTpmManagerBinary) ReadSpaceToFile(ctx context.Context, index, outputFile, password string) (string, error) {
+	binaryMsg, err := u.binary.ReadSpace(ctx, index, outputFile, password)
+
+	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "ReadSpace")
+}
+
 // DAInfo contains the dictionary attack related information.
 type DAInfo struct {
 	// Counter is the dictionary attack lockout counter.
