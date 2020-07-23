@@ -863,6 +863,56 @@ func (s *WifiService) RequestRoam(ctx context.Context, req *network.RequestRoamR
 	return &empty.Empty{}, nil
 }
 
+// RequestReassociate requests DUT to reassociate with the current AP and waits until it has reconnected.
+// This is the implementation of network.WiFi/RequestReassociate gRPC.
+func (s *WifiService) RequestReassociate(ctx context.Context, req *network.RequestReassociateRequest) (*empty.Empty, error) {
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, req.InterfaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	// Create watcher for PropertiesChanged signal.
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalPropertiesChanged)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	// Trigger reassociate
+	if err := iface.Reassociate(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to call Reassociate method")
+	}
+
+	// Watch the PropertiesChanged signals looking for a state transition from
+	// not-associated to associated, until we hit the reassociate timeout.
+	awaitingDisconnect := true
+	ctx, cancel := context.WithTimeout(ctx, time.Duration(req.Timeout))
+	defer cancel()
+	for {
+		select {
+		case <-ctx.Done():
+			return &empty.Empty{}, errors.Wrap(ctx.Err(), "did not reassociate in time")
+		case sig := <-sw.Signals:
+			props := sig.Body[0].(map[string]dbus.Variant)
+			if val, ok := props["State"]; ok {
+				state := val.Value().(string)
+				assoc := state == "associated" || state == "completed"
+				if awaitingDisconnect && !assoc {
+					awaitingDisconnect = false
+				}
+				if !awaitingDisconnect && assoc {
+					return &empty.Empty{}, nil
+				}
+			}
+		}
+	}
+	return &empty.Empty{}, errors.New("should be unreachable")
+}
+
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
 // The original setting is returned for ease of restoring.
 func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRandomizeRequest) (*network.SetMACRandomizeResponse, error) {

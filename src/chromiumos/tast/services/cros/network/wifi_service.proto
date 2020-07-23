@@ -107,6 +107,10 @@ service WifiService {
   // SetDHCPProperties sets the DHCP properties in shill and returns the original
   // values.
   rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
+
+  // RequestReassociate requests DUT to reassociate with the current AP and
+  // waits until reassociation is complete.
+  rpc RequestReassociate (RequestReassociateRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -315,4 +319,9 @@ message SetDHCPPropertiesRequest {
 
 message SetDHCPPropertiesResponse {
   DHCPProperties props = 1;
+}
+
+message RequestReassociateRequest {
+  string interfaceName = 1;
+  int64 timeout = 2;
 }
