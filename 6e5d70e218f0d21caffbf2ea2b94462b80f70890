@@ -16,6 +16,24 @@
       "revId": "6e5d70e218f0d21caffbf2ea2b94462b80f70890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffce23fe_a7dd755f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-23T21:33:59Z",
+      "side": 1,
+      "message": "I just created a follow up change...I will delete CL:2306919 and upload it later...",
+      "parentUuid": "5ac43464_6aa42d77",
+      "revId": "6e5d70e218f0d21caffbf2ea2b94462b80f70890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
