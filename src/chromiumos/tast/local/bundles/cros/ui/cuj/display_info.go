@@ -35,8 +35,8 @@ func NewDisplayInfo(ctx context.Context, tconn *chrome.TestConn) (*DisplayInfo, 
 	}
 	return &DisplayInfo{
 		refreshRate: mode.RefreshRate,
-		width:       mode.Width,
-		height:      mode.Height,
+		width:       mode.WidthInNativePixels,
+		height:      mode.HeightInNativePixels,
 	}, nil
 }
 
