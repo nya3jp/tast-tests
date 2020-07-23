@@ -109,6 +109,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_save"), users("oobe_config_save"), groups("oobe_config_save"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), users("shill"), groups("shill"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/sound_card_init"), users("sound_card_init"), groups("sound_card_init"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), users("chronos", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), users("root"), groups("root"), chk.NotMode(077)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), users("root"), groups("policy-readers"), chk.Mode(0750)), // directory itself
