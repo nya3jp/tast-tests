@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f9310792_e1b6f6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T05:23:10Z",
+      "side": 1,
+      "message": "changed it back to the original implementation. look at the comment below.",
+      "parentUuid": "a59c97bd_f2227895",
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc97ae1_f4d184f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "3cbc73f2_d5eb6e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T05:23:10Z",
+      "side": 1,
+      "message": "I think for now the original implementation is better, Because the WaitForConnection will always have the trigger in testbody and in that case we should check the current state before pw.Expect.",
+      "parentUuid": "6450fbc3_12deee82",
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc5bad2b_a5abe617",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
         "patchSetId": 5
@@ -109,6 +145,30 @@
       "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8067bc1_e9ea8c0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T05:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc5bad2b_a5abe617",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 8
+      },
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +216,30 @@
       "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25b3530_c35994d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T05:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beb95f0b_b80aa317",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
