@@ -96,6 +96,54 @@
       "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecb66b3_6cf1308c",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T09:56:45Z",
+      "side": 1,
+      "message": "Found 36 files under third_party/wpa_supplicant-2.8 that contain blacklist. Brian, would it be a good idea to apply Inclusive Fix to wpa_supplicant repository?\n\nFor now, I leave a TODO with b/161915905 link.",
+      "parentUuid": "4d11f095_7e53b388",
+      "range": {
+        "startLine": 48,
+        "startChar": 54,
+        "endLine": 48,
+        "endChar": 63
+      },
+      "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74f2ba5_4615f2d4",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T09:56:45Z",
+      "side": 1,
+      "message": "Fixed in a separate CL: https://crrev.com/c/2315519",
+      "parentUuid": "aecdb946_5095316d",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "d59d4f3133329cf39b24c024d29dba025620be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
