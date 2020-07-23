@@ -950,3 +950,51 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 
 	return &empty.Empty{}, nil
 }
+
+// ExpectShillPropertyValues is a server-streaming method that waits for the
+// matched shill (property, [values]) pairs IN ORDER, and sends the waited
+// (property, value) pair back to the test server.
+// Note that an empty response (Key="") would be sent first after this method
+// is ready for waiting.
+func (s *WifiService) ExpectShillPropertyValues(req *network.ExpectShillPropertyValuesRequest, sender network.WifiService_ExpectShillPropertyValuesServer) error {
+	ctx := sender.Context()
+
+	// Spawn watcher before disabling and enabling.
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := sender.Send(&network.ExpectShillPropertyValuesResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send response")
+	}
+
+	for _, p := range req.Props {
+		var vals []interface{}
+		for _, sv := range p.Vals {
+			v, err := protoutil.FromShillVal(sv)
+			if err != nil {
+				return err
+			}
+			vals = append(vals, v)
+		}
+
+		val, err := pw.ExpectIn(ctx, p.Key, vals)
+		if err != nil {
+			return errors.Wrap(err, "failed to expect property")
+		}
+		shillVal, err := protoutil.ToShillVal(val)
+		if err != nil {
+			return err
+		}
+		if err := sender.Send(&network.ExpectShillPropertyValuesResponse{Key: p.Key, Val: shillVal}); err != nil {
+			return errors.Wrap(err, "failed to send response")
+		}
+	}
+	return nil
+}
