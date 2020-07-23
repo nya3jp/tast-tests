@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8dfb230b_8e2defaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-23T09:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ec2033_d9ea27c1",
+      "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29937ab4_e02eb7c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-23T08:17:43Z",
       "side": 1,
       "message": "1. Need to run apt update before apt install.\n2. Is installing vim part of the test? If not we can preinstall vim (or something that tests the same things) in test containers to avoid a network dependency in this test.",
+      "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1cb9a28_5e7d82e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-23T09:20:05Z",
+      "side": 1,
+      "message": "Installation is also part of the test.\nThere is another way to install the app, to download a .deb file in advance. However, vim has different .deb files for arm/amd. Downloading also increases the usage of disk on DUT. I thought DUTs in lab have network connection?",
+      "parentUuid": "29937ab4_e02eb7c5",
       "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
