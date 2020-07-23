@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "5da7f15c_e809e18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T11:56:29Z",
+      "side": 1,
+      "message": "My fault, sorry!",
+      "parentUuid": "a03b7afa_2605c098",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af61d843_6e20fd32",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
         "patchSetId": 2
@@ -136,6 +160,30 @@
       "side": 1,
       "message": "Um, no... The no_pin test expects \"printer_pin_print_lexmark_no_pin_golden.ps\" whereas the pin test expects \"printer_pin_print_lexmark_pin_golden.ps\". I checked the externals and they point to different files. The two tests should produce different output.",
       "parentUuid": "af61d843_6e20fd32",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cf12023_97dd0b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-23T11:56:29Z",
+      "side": 1,
+      "message": "Sorry for not being clear. I meant maybe it makes sense to rename this field to ExpectedFile. I didn\u0027t not that GoldenFile actually means ExpectedFile, now i know.",
+      "parentUuid": "cec92ebb_edebc706",
       "range": {
         "startLine": 45,
         "startChar": 4,
