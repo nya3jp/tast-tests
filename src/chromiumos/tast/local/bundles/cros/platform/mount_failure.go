@@ -167,7 +167,7 @@ func MountFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("No regexes to test against")
 	}
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, nil, wantFileRegs)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, wantFileRegs)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

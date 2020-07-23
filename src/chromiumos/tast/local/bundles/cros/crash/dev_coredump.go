@@ -44,12 +44,6 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	// Memorize existing crash files to distinguish new files from them.
-	existingFiles, err := crash.GetCrashes(crashDir)
-	if err != nil {
-		s.Fatal("Failed to get existing files from crash directory: ", err)
-	}
-
 	s.Log("Triggering a devcoredump by restarting wifi firmware")
 
 	// Use the find command to get the full path to the fw_restart file.
@@ -68,7 +62,6 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 
 	// Check that expected device coredump is copied to crash directory.
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		existingFiles,
 		[]string{`devcoredump_iwlwifi\.[0-9]{8}\.[0-9]{6}\.[0-9]*\.devcore`})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
