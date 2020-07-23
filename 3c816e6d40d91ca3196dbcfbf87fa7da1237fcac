@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb21b63b_c89e72a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-23T09:50:37Z",
+      "side": 1,
+      "message": "Thanks a lot!",
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e11565_53c7a7c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-23T09:50:37Z",
+      "side": 1,
+      "message": "IIUC, If we take no parameter here, then the following DeconfigAP would use the ctx at line 50, which is passed at line 77 and 84, right? So we don\u0027t ever need sCtx :D",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
