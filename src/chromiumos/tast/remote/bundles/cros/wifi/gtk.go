@@ -76,7 +76,7 @@ func GTK(ctx context.Context, s *testing.State) {
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := tf.DisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
@@ -84,7 +84,9 @@ func GTK(ctx context.Context, s *testing.State) {
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 	s.Log("Connected")
 
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
