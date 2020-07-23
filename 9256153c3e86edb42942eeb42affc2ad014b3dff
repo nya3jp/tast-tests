@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2e2e167_0676ac73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Hello, there\u0027s a major direction change with this CL. Previously, TPMv1.2 uses the same logic as TPMv2.0, that is, creating a new NVRAM space and generate DA event with it. After some discussion, it is decided that a new NVRAM space will not be created for TPMv1.2, instead, existing TPMv1.2 space (that wasn\u0027t available with TPMv2.0) will be used directly to generate the DA event.\n\nThe major implication is that, the initialization between the two version will be quite different, as one need to reset the TPM and get the ownership, while the other doesn\u0027t. Also, both test will be local.\n\nNote that I didn\u0027t combine the two test into one because the common logic is too sparsely distributed across the test. The initialization is different, the way DA counter is increased is differrent.",
+      "revId": "9256153c3e86edb42942eeb42affc2ad014b3dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

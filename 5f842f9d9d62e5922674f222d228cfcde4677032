@@ -82,6 +82,54 @@
     },
     {
       "key": {
+        "uuid": "7f5da80d_6edae2fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "I\u0027ve extracted what I can in the (newly added) previous CL.",
+      "parentUuid": "2d8af685_f0ee6555",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 79
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "667a0491_94cee56c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "I\u0027ve extracted what I can in the (newly added) previous CL.",
+      "parentUuid": "1cbbeb72_0d214c27",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 177
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3651c5ae_880eb720",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
@@ -102,6 +150,30 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab96f5d_bea1b1fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Need, but there\u0027s a change in direction for this test.",
+      "parentUuid": "3651c5ae_880eb720",
+      "range": {
+        "startLine": 18,
+        "startChar": 79,
+        "endLine": 18,
+        "endChar": 85
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +269,102 @@
     },
     {
       "key": {
+        "uuid": "30312a03_006090ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6606a1b6_78293142",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2845a102_8abfc785",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8baa60_cc6ba49f",
+      "range": {
+        "startLine": 33,
+        "startChar": 99,
+        "endLine": 33,
+        "endChar": 108
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42db67d5_0ea1ad53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe4f266_341796d7",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6c01a21_4e10c761",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8464a7_094d7d29",
+      "range": {
+        "startLine": 33,
+        "startChar": 124,
+        "endLine": 33,
+        "endChar": 197
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5d028ef_3fa6a172",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
@@ -211,6 +379,24 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4b278d_fdc4b8c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d028ef_3fa6a172",
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "ee0ee571_84be4d89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7c3289_78569e47",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe795225_6102f861",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
@@ -257,6 +467,30 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7942a477_a488a8fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe795225_6102f861",
+      "range": {
+        "startLine": 129,
+        "startChar": 22,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "fa993fa6_927afa71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ff01d1_296403b1",
+      "range": {
+        "startLine": 133,
+        "startChar": 60,
+        "endLine": 133,
+        "endChar": 68
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a212f15f_8227f003",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
@@ -297,6 +555,24 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8168655_7f2edcca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a212f15f_8227f003",
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -346,6 +622,54 @@
     },
     {
       "key": {
+        "uuid": "a595cc6e_239ea05f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef510eec_a2d4f574",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95b64b2b_16c22ddb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f7e367_fdcc484c",
+      "range": {
+        "startLine": 136,
+        "startChar": 29,
+        "endLine": 136,
+        "endChar": 38
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43d9a4d0_8d61bf1f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
@@ -366,6 +690,30 @@
       "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9f3851_8d708247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-23T16:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43d9a4d0_8d61bf1f",
+      "range": {
+        "startLine": 148,
+        "startChar": 43,
+        "endLine": 148,
+        "endChar": 50
+      },
+      "revId": "5f842f9d9d62e5922674f222d228cfcde4677032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
