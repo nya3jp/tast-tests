@@ -106,6 +106,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3e5fc9_20bab28b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-23T19:23:03Z",
+      "side": 1,
+      "message": "DragToShowHomescreen is not using test APIs. It generates certain series of gestures to cause that effect (drag up from the bottom and quickly finish the gesture).\nThis also works on another test (ui.TaskSwitchCUJ.tablet_mode).\n\nDoes that really call MinimizeAndHideWithoutAnimation?  I believe so but it would be great to confirm that. If it\u0027s not happening, that would mean that the generated gesture might be wrong. Seeing the touch points through --ash-touch-hud flag would be helpful to understand what\u0027s going on.",
+      "parentUuid": "93012be2_a3ce6379",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
