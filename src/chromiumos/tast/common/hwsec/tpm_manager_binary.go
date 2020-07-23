@@ -58,6 +58,15 @@ func (c *TpmManagerBinary) WriteSpace(ctx context.Context, index, file, password
 	return c.call(ctx, args...)
 }
 
+// ReadSpace calls "tpm_manager_client read_space".
+func (c *TpmManagerBinary) ReadSpace(ctx context.Context, index, file, password string) ([]byte, error) {
+	args := []string{"read_space", "--index=" + index, "--file=" + file}
+	if password != "" {
+		args = append(args, "--password="+password)
+	}
+	return c.call(ctx, args...)
+}
+
 // GetDAInfo calls "tpm_manager_client get_da_info".
 func (c *TpmManagerBinary) GetDAInfo(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "get_da_info")
