@@ -14,10 +14,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// NOTE: This test is largely similar to hwsec.DictionaryAttackLockoutResetTPM1 (a remote test), if change is
+// made to one, it is likely that the other have to be changed as well.
+// The referred test is specifically for TPMv1.2, while this test is for TPMv2.0.
+// Both versions of TPM is incompatible with each other and the available NVRAM index differs across the 2 versions.
+// Therefore, we need 2 versions of the test.
+// This version creates new NVRAM space because none of the TPMv2.0 index is guaranteed to exist and still
+// generates a dictionary attack event when read/write with incorrect auth value. Creating a new NVRAM space
+// is not feasible on TPMv1.2 because soft-clear is not available there yet and we don't want another reboot.
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DictionaryAttackLockoutReset,
-		Desc: "Verifies that dictionary attack counter functions correctly and can be reset",
+		Func: DictionaryAttackLockoutResetTPM2,
+		Desc: "Verifies that on TPMv2.0 devices, dictionary attack counter functions correctly and can be reset",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
@@ -27,8 +36,8 @@ func init() {
 	})
 }
 
-// DictionaryAttackLockoutReset checks that get dictionary attack info and reset dictionary attack lockout works as expected.
-func DictionaryAttackLockoutReset(ctx context.Context, s *testing.State) {
+// DictionaryAttackLockoutResetTPM2 checks that get dictionary attack info and reset dictionary attack lockout works as expected.
+func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
