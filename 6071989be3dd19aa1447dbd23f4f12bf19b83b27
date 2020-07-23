@@ -16,6 +16,40 @@
       "revId": "6071989be3dd19aa1447dbd23f4f12bf19b83b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eea7eb2_62279708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-23T09:49:11Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6071989be3dd19aa1447dbd23f4f12bf19b83b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98b8f089_6d644228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-23T09:49:11Z",
+      "side": 1,
+      "message": "Maybe log before locking and unlocking to help investigating issues.",
+      "revId": "6071989be3dd19aa1447dbd23f4f12bf19b83b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
