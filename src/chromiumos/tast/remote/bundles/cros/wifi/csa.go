@@ -83,8 +83,8 @@ func CSA(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to configure AP: ", err)
 	}
-	defer func(dCtx context.Context) {
-		if err := tf.DeconfigAP(dCtx, ap); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Error("Failed to deconfig AP: ", err)
 		}
 	}(ctx)
@@ -96,18 +96,21 @@ func CSA(ctx context.Context, s *testing.State) {
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func(dCtx context.Context) {
-		if err := tf.DisconnectWifi(dCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DisconnectWifi(ctx); err != nil {
 			// Do not fail on this error as we're triggering some
 			// disconnection in this test and the service can be
 			// inactive at this point.
 			s.Log("Failed to disconnect WiFi: ", err)
 		}
 		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(dCtx, req); err != nil {
+		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
 	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	s.Log("Connected")
 
 	// Assert connection.
