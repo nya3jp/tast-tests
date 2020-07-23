@@ -6,7 +6,6 @@ package policy
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -38,25 +37,25 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name           string
 		wantRestricted bool                           // wantRestricted is the wanted restriction state of the toggle button for the "Offer to save password" option.
-		wantChecked    bool                           // wantChecked is the wanted checked state of the toggle button for the "Offer to save password" option.
+		wantChecked    ui.CheckedState                // wantChecked is the wanted checked state of the toggle button for the "Offer to save password" option.
 		value          *policy.PasswordManagerEnabled // value is the value of the policy.
 	}{
 		{
 			name:           "unset",
 			wantRestricted: false,
-			wantChecked:    true,
+			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.PasswordManagerEnabled{Stat: policy.StatusUnset},
 		},
 		{
 			name:           "forced",
 			wantRestricted: true,
-			wantChecked:    true,
+			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.PasswordManagerEnabled{Val: true},
 		},
 		{
 			name:           "deny",
 			wantRestricted: true,
-			wantChecked:    false,
+			wantChecked:    ui.CheckedStateFalse,
 			value:          &policy.PasswordManagerEnabled{Val: false},
 		},
 	} {
@@ -95,24 +94,13 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 			defer tbNode.Release(ctx)
 
 			// Check the checked state of the toggle button.
-			if checked, err := tbNode.Attribute(ctx, "checked"); err != nil {
-				s.Fatal("Failed to get the checked attribute of the toggle button: ", err)
-			} else if checkedStr, ok := checked.(string); !ok {
-				s.Fatal("The checked attribute of the toggle button is not a string: ", checked)
-			} else if checkedStr != strconv.FormatBool(param.wantChecked) {
-				s.Errorf("Unexpected toggle button checked state: got %s; want %t", checkedStr, param.wantChecked)
+			if tbNode.Checked != param.wantChecked {
+				s.Errorf("Unexpected toggle button checked state: got %v; want %v", tbNode.Checked, param.wantChecked)
 			}
 
 			// Check the restriction setting of the toggle button.
-			if restriction, err := tbNode.Attribute(ctx, "restriction"); err != nil {
-				// The restriction attribute is optional. If it does not exists, the toggle button is not restricted.
-				if param.wantRestricted {
-					s.Errorf("Unexpected toggle button restriction: got false; want %t", param.wantRestricted)
-				}
-			} else if restrictionStr, ok := restriction.(string); !ok {
-				s.Fatal("The restriction attribute of the toggle button is not a string: ", restriction)
-			} else if restricted := (restrictionStr == "disabled" || restrictionStr == "readOnly"); restricted != param.wantRestricted {
-				s.Log("The restriction string is ", restrictionStr)
+			if restricted := (tbNode.Restriction == ui.RestrictionDisabled || tbNode.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
+				s.Logf("The restriction state is %q", tbNode.Restriction)
 				s.Errorf("Unexpected toggle button restriction: got %t; want %t", restricted, param.wantRestricted)
 			}
 		})

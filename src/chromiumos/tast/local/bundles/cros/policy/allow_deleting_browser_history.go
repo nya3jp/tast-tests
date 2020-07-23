@@ -6,7 +6,6 @@ package policy
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -38,25 +37,25 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name           string
 		wantRestricted bool                                // wantRestricted is the wanted restriction state of the checkboxes in Browsing history.
-		wantChecked    bool                                // wantChecked is the wanted checked state of the checkboxes in Browsing history.
+		wantChecked    ui.CheckedState                     // wantChecked is the wanted checked state of the checkboxes in Browsing history.
 		value          *policy.AllowDeletingBrowserHistory // value is the value of the policy.
 	}{
 		{
 			name:           "unset",
 			wantRestricted: false,
-			wantChecked:    true,
+			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.AllowDeletingBrowserHistory{Stat: policy.StatusUnset},
 		},
 		{
 			name:           "allow",
 			wantRestricted: false,
-			wantChecked:    true,
+			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.AllowDeletingBrowserHistory{Val: true},
 		},
 		{
 			name:           "deny",
 			wantRestricted: true,
-			wantChecked:    false,
+			wantChecked:    ui.CheckedStateFalse,
 			value:          &policy.AllowDeletingBrowserHistory{Val: false},
 		},
 	} {
@@ -141,24 +140,13 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 				defer cbNode.Release(ctx)
 
 				// Check the checked state of the checkbox.
-				if checked, err := cbNode.Attribute(ctx, "checked"); err != nil {
-					s.Fatalf("Failed to get the checked attribute of the %q checkbox in the %s tab: %v", cb.ref, cb.tab, err)
-				} else if checkedStr, ok := checked.(string); !ok {
-					s.Fatalf("The checked attribute of the %q checkbox is not a string: %v", cb.ref, checkedStr)
-				} else if checkedStr != strconv.FormatBool(param.wantChecked) {
-					s.Errorf("Unexpected %q checkbox checked state in the %s tab: got %s; want %t", cb.ref, cb.tab, checkedStr, param.wantChecked)
+				if cbNode.Checked != param.wantChecked {
+					s.Errorf("Unexpected %q checkbox checked state in the %s tab: got %v; want %v", cb.ref, cb.tab, cbNode.Checked, param.wantChecked)
 				}
 
 				// Check the restriction setting of the checkbox.
-				if restriction, err := cbNode.Attribute(ctx, "restriction"); err != nil {
-					// The restriction attribute is optional. If it does not exists, the checkbox is not restricted.
-					if param.wantRestricted {
-						s.Errorf("Unexpected %q checkbox restriction in the %s tab: got false; want %t", cb.ref, cb.tab, param.wantRestricted)
-					}
-				} else if restrictionStr, ok := restriction.(string); !ok {
-					s.Fatalf("The restriction attribute of the %q checkbox is not a string: %v", cb.ref, restriction)
-				} else if restricted := (restrictionStr == "disabled" || restrictionStr == "readOnly"); restricted != param.wantRestricted {
-					s.Log("The restriction attribute is: ", restrictionStr)
+				if restricted := (cbNode.Restriction == ui.RestrictionDisabled || cbNode.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
+					s.Logf("The restriction attribute is %q", cbNode.Restriction)
 					s.Errorf("Unexpected %q checkbox restriction in the %s tab: got %t; want %t", cb.ref, cb.tab, restricted, param.wantRestricted)
 				}
 			}
