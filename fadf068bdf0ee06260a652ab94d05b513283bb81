@@ -42,6 +42,70 @@
     },
     {
       "key": {
+        "uuid": "0b3bbbf9_235c2b63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T23:46:24Z",
+      "side": 1,
+      "message": "I think record the reassociation time as a performance metric is useful but I think pass/fail with logging the reassociation time is sufficent. WDYT dean@?",
+      "parentUuid": "347a19b0_cebea49a",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b71ea0f_feca2405",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T23:46:24Z",
+      "side": 1,
+      "message": "you can use the default config here:\nap, err :\u003d tf.DefaultOpenNetworkAP(tfCtx)",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 107
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8611100a_f397a60b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T23:46:24Z",
+      "side": 1,
+      "message": "you can use the function below to verify connection or run a ping to the AP here:\n        if err :\u003d tf.VerifyConnection(ctx, ap2); err !\u003d nil {\n\t\ts.Fatal(\"Failed to verify connection: \", err)\n\t}",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee92702b_57575e4d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -59,6 +123,47 @@
         "endLine": 121,
         "endChar": 18
       },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e540df6_4e664605",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T23:46:24Z",
+      "side": 1,
+      "message": "I have this CL for wpa_supplicant D-Bus interface. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2303647\n\nThen you can use a gRPC call that make use of this package.",
+      "parentUuid": "ee92702b_57575e4d",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c3b33e_bef87f66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-23T23:46:24Z",
+      "side": 1,
+      "message": "If you make use of the wpasupplicant package and implement a gRPC call. you can time the duration before triggering reassociation until getting associated in the property:\nState - s - (read)\nA state of the interface. Possible values are: return \"disconnected\", \"inactive\", \"scanning\", \"authenticating\", \"associating\", \"associated\", \"4way_handshake\", \"group_handshake\", \"completed\",\"unknown\".",
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
