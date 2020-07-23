@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd67b0e8_bca2d510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375432
+      },
+      "writtenOn": "2020-07-23T22:15:13Z",
+      "side": 1,
+      "message": "I\u0027ve translated the logic of network_WiFi_Reassociate to Tast and it appears to work. What\u0027s the next step here?",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "347a19b0_cebea49a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1375432
+      },
+      "writtenOn": "2020-07-23T22:15:13Z",
+      "side": 1,
+      "message": "Is it worthwhile to record the reassociation time as a performance metric, or should the test be purely a pass/fail setup?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee92702b_57575e4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1375432
+      },
+      "writtenOn": "2020-07-23T22:15:13Z",
+      "side": 1,
+      "message": "The equivalent autotest code devotes 400 lines to a \"running wpa_cli commands remotely\" abstraction layer (wpa_cli_proxy.py), which supports four different OS variants (Android / Brillo / ChromeOS / Cast) with different ways of invoking it.\n\nShould any of that abstraction be ported to Tast at this time, or is it acceptable to simply issue the appropriate ChromeOS wpa_cli command using the generic RemoteCmdRunner like I\u0027ve done here?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
