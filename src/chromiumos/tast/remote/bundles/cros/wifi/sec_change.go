@@ -6,11 +6,9 @@ package wifi
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wpa"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -30,19 +28,19 @@ func init() {
 	})
 }
 
-func SecChange(fullCtx context.Context, s *testing.State) {
+func SecChange(ctx context.Context, s *testing.State) {
 	tf := s.PreValue().(*wificell.TestFixture)
-	defer func() {
-		if err := tf.CollectLogs(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.CollectLogs(ctx); err != nil {
 			s.Log("Error collecting logs, err: ", err)
 		}
-	}()
-	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+	}(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	// setUpAndConnect sets up the WiFi AP and verifies the DUT can connect to it.
-	setUpAndConnect := func(fullCtx context.Context, options []hostapd.Option, fac security.ConfigFactory) (retErr error) {
-		fullCtx, st := timing.Start(fullCtx, "setUpAndConnect")
+	setUpAndConnect := func(ctx context.Context, options []hostapd.Option, fac security.ConfigFactory) (retErr error) {
+		ctx, st := timing.Start(ctx, "setUpAndConnect")
 		defer st.End()
 
 		// collectErr logs the given err and returns it if the returning
@@ -53,31 +51,33 @@ func SecChange(fullCtx context.Context, s *testing.State) {
 				retErr = err
 			}
 		}
-		ap, err := tf.ConfigureAP(fullCtx, options, fac)
+		ap, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			return errors.Wrap(err, "failed to configure ap")
 		}
-		defer func() {
+		defer func(ctx context.Context) {
 			s.Log("Deconfiguring AP")
-			if err := tf.DeconfigAP(fullCtx, ap); err != nil {
+			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				collectErr(errors.Wrap(err, "failed to deconfig ap"))
 			}
-		}()
-		ctx, cancel := tf.ReserveForDeconfigAP(fullCtx, ap)
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 		s.Log("AP setup done")
 
 		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 			return errors.Wrap(err, "failed to connect to WiFi")
 		}
-		defer func() {
+		defer func(ctx context.Context) {
 			s.Log("Disconnecting")
-			if err := tf.DisconnectWifi(fullCtx); err != nil {
+			if err := tf.DisconnectWifi(ctx); err != nil {
 				collectErr(errors.Wrap(err, "failed to disconnect"))
 			}
 			// Leave the profile entry as is, as we're going to verify
 			// the behavior with it in next call.
-		}()
+		}(ctx)
+		ctx, cancel = tf.ReserveForDisconnect(ctx)
+		defer cancel()
 		s.Log("Connected")
 
 		if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {

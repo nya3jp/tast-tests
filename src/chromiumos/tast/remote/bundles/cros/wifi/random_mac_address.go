@@ -51,56 +51,55 @@ func init() {
 	})
 }
 
-func RandomMACAddress(testCtx context.Context, s *testing.State) {
+func RandomMACAddress(ctx context.Context, s *testing.State) {
 	// Notice that this test aggressively scans all probe requests captured so when
 	// run in open air environment, it is very probable to fail due to the packets
 	// from other devices. (esp. the mac randomization disabled case)
 
 	tf := s.PreValue().(*wificell.TestFixture)
-	defer func(dCtx context.Context) {
-		if err := tf.CollectLogs(testCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.CollectLogs(ctx); err != nil {
 			s.Log("Error collecting logs, err: ", err)
 		}
-	}(testCtx)
-	testCtx, cancel := ctxutil.Shorten(testCtx, time.Second)
+	}(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	ap, err := tf.DefaultOpenNetworkAP(testCtx)
+	ap, err := tf.DefaultOpenNetworkAP(ctx)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
-	defer func(dCtx context.Context) {
-		if err := tf.DeconfigAP(dCtx, ap); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
-	}(testCtx)
-	testCtx, cancel = tf.ReserveForDeconfigAP(testCtx, ap)
+	}(ctx)
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
 	// Get the MAC address of WiFi interface.
-	iface, err := tf.ClientInterface(testCtx)
+	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
 		s.Fatal("Failed to get WiFi interface of DUT")
 	}
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
-	mac, err := ipr.MAC(testCtx, iface)
+	mac, err := ipr.MAC(ctx, iface)
 	if err != nil {
 		s.Fatal("Failed to get MAC of WiFi interface")
 	}
 
-	testOnce := func(fullCtx context.Context, s *testing.State, name string, enabled bool) {
-		resp, err := tf.WifiClient().SetMACRandomize(fullCtx, &network.SetMACRandomizeRequest{Enable: enabled})
+	testOnce := func(ctx context.Context, s *testing.State, name string, enabled bool) {
+		resp, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: enabled})
 		if err != nil {
 			s.Fatalf("Failed to set MAC randomization to %t: %v", enabled, err)
 		}
 		// Always restore the setting on leaving.
-		defer func(restore bool) {
-			if _, err := tf.WifiClient().SetMACRandomize(fullCtx, &network.SetMACRandomizeRequest{Enable: restore}); err != nil {
+		defer func(ctx context.Context, restore bool) {
+			if _, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: restore}); err != nil {
 				s.Errorf("Failed to restore MAC randomization setting back to %t: %v", restore, err)
 			}
-		}(resp.OldSetting)
-
-		ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+		}(ctx, resp.OldSetting)
+		ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 
 		// Wait current scan to be done if available to avoid possible scan started
@@ -181,7 +180,7 @@ func RandomMACAddress(testCtx context.Context, s *testing.State) {
 	}
 
 	for _, tc := range testcases {
-		if !s.Run(testCtx, tc.name, func(ctx context.Context, s *testing.State) {
+		if !s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.name, tc.enabled)
 		}) {
 			// Stop if any of the testcase failed.

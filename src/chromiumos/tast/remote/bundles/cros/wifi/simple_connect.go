@@ -514,7 +514,7 @@ func init() {
 	})
 }
 
-func SimpleConnect(fullCtx context.Context, s *testing.State) {
+func SimpleConnect(ctx context.Context, s *testing.State) {
 	ops := []wificell.TFOption{
 		wificell.TFCapture(true),
 	}
@@ -526,15 +526,17 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	}
 	// As we are not in precondition, we have fullCtx as both method context and
 	// daemon context.
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), ops...)
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Log("Failed to tear down test fixture, err: ", err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
+	defer cancel()
 
 	pv := perf.NewValues()
 	defer func() {
@@ -543,20 +545,17 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		}
 	}()
 
-	ctx, cancel := tf.ReserveForClose(fullCtx)
-	defer cancel()
-
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
-		ap, err := tf.ConfigureAP(fullCtx, options, fac)
+	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
+		ap, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
-		defer func() {
-			if err := tf.DeconfigAP(fullCtx, ap); err != nil {
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
-		}()
-		ctx, cancel := tf.ReserveForDeconfigAP(fullCtx, ap)
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 		s.Log("AP setup done")
 
@@ -564,15 +563,17 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
-		defer func() {
-			if err := tf.DisconnectWifi(fullCtx); err != nil {
+		defer func(ctx context.Context) {
+			if err := tf.DisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
 			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 			}
-		}()
+		}(ctx)
+		ctx, cancel = tf.ReserveForDisconnect(ctx)
+		defer cancel()
 		s.Log("Connected")
 
 		desc := ap.Config().PerfDesc()
