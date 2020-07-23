@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74233ae1_d4a16184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-07-23T04:52:04Z",
+      "side": 1,
+      "message": "Should we use Mode(0644) ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 121,
+        "endLine": 112,
+        "endChar": 134
+      },
+      "revId": "0cbc3e1b2f3242369983a6eba00f1a824badd5c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
