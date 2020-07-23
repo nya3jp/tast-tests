@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ef2bfb2_f5973cd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T03:21:04Z",
+      "side": 1,
+      "message": "Ending period.",
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df9f640_e96795eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T03:21:04Z",
+      "side": 1,
+      "message": "Column width: 72.",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea10226_2ffd0969",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T03:21:04Z",
+      "side": 1,
+      "message": "sections",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d705eaa4_25ffa2f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T03:21:04Z",
+      "side": 1,
+      "message": "whitespace after ,",
+      "range": {
+        "startLine": 10,
+        "startChar": 115,
+        "endLine": 10,
+        "endChar": 116
+      },
+      "revId": "a2840156c4537442771c87450ed71ac3dbeeb685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76608a79_fc63387f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
