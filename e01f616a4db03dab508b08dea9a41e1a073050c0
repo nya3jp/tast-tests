@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "4347ca7a_bed161ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-23T18:35:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7cf12023_97dd0b81",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "e01f616a4db03dab508b08dea9a41e1a073050c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e04f062_e66ba0a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
         "patchSetId": 2
