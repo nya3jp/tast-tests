@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "6450fbc3_12deee82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-23T04:14:13Z",
+      "side": 1,
+      "message": "For the usage in WaitForConnection, we\u0027ll still have to check the initial state as the trigger is in testbody (deconfig the first AP). But it is not needed for Connect case if we spawn watcher before Connect.",
+      "parentUuid": "696f532e_915e6239",
+      "revId": "2a33f39630b26d97f380b53caf54db699b5ebb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc5bad2b_a5abe617",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
         "patchSetId": 5
