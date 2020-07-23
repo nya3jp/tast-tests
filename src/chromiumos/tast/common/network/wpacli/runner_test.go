@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/errors"
 )
 
-func TestSudoWpacli(t *testing.T) {
+func TestSudoWPACLI(t *testing.T) {
 	testcases := []struct {
 		input  []string
 		expect []string
@@ -29,9 +29,9 @@ func TestSudoWpacli(t *testing.T) {
 		},
 	}
 	for _, tc := range testcases {
-		result := sudoWpacli(tc.input...)
+		result := sudoWPACLI(tc.input...)
 		if !reflect.DeepEqual(result, tc.expect) {
-			t.Errorf("sudoWpacli outputs differs; got %v, want %v", result, tc.expect)
+			t.Errorf("sudoWPACLI outputs differs; got %v, want %v", result, tc.expect)
 		}
 	}
 }
