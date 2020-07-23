@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8727bcdc_eaefd504",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-23T08:12:44Z",
+      "side": 1,
+      "message": "What\u0027s the overhead of having multiple small tests for 1.15.2 instead of one bigger \"can runs app in Crostini\" test that runs a few different commands in it? Since ultimately what we\u0027re testing is that the Crostini environment looks \u0027right\u0027, rather than the specific behaviour of cd/ps/etc, since they\u0027re just Debian gives us.\n\nOtherwise LGTM from a Crostini perspective, will let others more knowledgeable than me comment from a tast/golang perspective.",
+      "revId": "257fb6d5a7cbc8c4a932fd637d37721d8508b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d99c1f5c_9d580ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-23T08:12:44Z",
+      "side": 1,
+      "message": "Typo?",
+      "revId": "257fb6d5a7cbc8c4a932fd637d37721d8508b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
