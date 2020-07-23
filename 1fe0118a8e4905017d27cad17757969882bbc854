@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709cf818_276e72cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T07:01:57Z",
+      "side": 1,
+      "message": "a nit",
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56399b76_b3cb3243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T07:01:57Z",
+      "side": 1,
+      "message": "Since the connect attempt was began before the function is called, placing start time marker at the beginning of the function looks better, though the measurement should be quite the same.",
+      "revId": "1fe0118a8e4905017d27cad17757969882bbc854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
