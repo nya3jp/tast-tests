@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "63eed049_7b0130a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T09:01:51Z",
+      "side": 1,
+      "message": "You mean deconfig2g use the ctx used to call configureAP? That\u0027s viable but it seems harder to read.",
+      "parentUuid": "20d7f2b3_56843456",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39fc89f_99d1f0cd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab12008d_7d09d1ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-23T09:01:51Z",
+      "side": 1,
+      "message": "Thanks for the fix.",
+      "parentUuid": "f39fc89f_99d1f0cd",
+      "revId": "9085ea8b8036c0944734cc747c79ec7a8ebf791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
