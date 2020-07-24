@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c348270_6c1bca6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T10:04:57Z",
+      "side": 1,
+      "message": "+1 for tast style. I\u0027m a shadow reviewer, so please also wait for Brendan\u0027s and your teammate\u0027s review.",
+      "revId": "44418854b5a9bab7894f67bd8f4c1cc21959a390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
