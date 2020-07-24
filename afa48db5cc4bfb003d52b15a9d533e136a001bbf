@@ -16,6 +16,40 @@
       "revId": "afa48db5cc4bfb003d52b15a9d533e136a001bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "990fdd2e_1b8326d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T02:10:30Z",
+      "side": 1,
+      "message": "still LGTM.",
+      "revId": "afa48db5cc4bfb003d52b15a9d533e136a001bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afd67fff_27bc6c70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T02:10:30Z",
+      "side": 1,
+      "message": "My cl for TestFixture precondition (crrev.com/c/2142664) just landed. You may consider using it in the test, or maybe later. :)",
+      "revId": "afa48db5cc4bfb003d52b15a9d533e136a001bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
