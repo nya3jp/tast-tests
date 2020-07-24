@@ -277,6 +277,34 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}, nil
 }
 
+// SelectedService returns the object path of selected service of WiFi service.
+func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SelectedService")
+	defer st.End()
+
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+	servicePath, err := prop.GetObjectPath(shillconst.DevicePropertySelectedService)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get SelectedService")
+	}
+	// Handle a special case of no selected service.
+	// See: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/shill/doc/device-api.txt
+	if servicePath == "/" {
+		return nil, errors.New("no selected service")
+	}
+
+	return &network.SelectedServiceResponse{
+		ServicePath: string(servicePath),
+	}, nil
+}
+
 // Disconnect disconnects from a WiFi service.
 // This is the implementation of network.Wifi/Disconnect gRPC.
 func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (*empty.Empty, error) {
@@ -303,6 +331,13 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 		return nil, err
 	}
 	testing.ContextLog(ctx, "Disconnected")
+
+	if request.RemoveProfile {
+		if err := service.Remove(ctx); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove service profile of %v", service)
+		}
+	}
+
 	return &empty.Empty{}, nil
 }
 

@@ -68,8 +68,11 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	var servicePath string
+	if resp, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
+	} else {
+		servicePath = resp.ServicePath
 	}
 
 	apSSID := ap.Config().SSID
@@ -135,7 +138,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 
 	testing.ContextLogf(ctx, "Waiting %s for client to notice the missing AP", maxDisconnectTime)
 
-	if err := tf.AssureDisconnect(ctx, maxDisconnectTime); err != nil {
+	if err := tf.AssureDisconnect(ctx, servicePath, maxDisconnectTime); err != nil {
 		s.Fatalf("DUT: failed to disconnect in %s: %v", maxDisconnectTime, err)
 	}
 
