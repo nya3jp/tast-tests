@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb48dde4_a50dd081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-07-24T17:28:12Z",
+      "side": 1,
+      "message": "Thanks for taking a look. This should be the last of these PIN printing cls for a while. ",
+      "revId": "ab9337b738191aca2a1f21862aa329941442ccf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
