@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "8c7846c6_aa319441",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T20:04:43Z",
+      "side": 1,
+      "message": "This is a case study in how clear documentation begets good code. L76-78 actually weren\u0027t necessary at all. So, I removed them.",
+      "parentUuid": "37fa4d46_890dda89",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf4d941f_039a9c58",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 8
@@ -79,6 +103,30 @@
       "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706991ad_1cafaf42",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T20:04:43Z",
+      "side": 1,
+      "message": "Done, but did it in comments instead of the error message, mimicking the comment in Autotest:\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/faft/firmware_test.py;rcl\u003da2315b5648599037b4869ac5e13e657344173d06;l\u003d670",
+      "parentUuid": "bf4d941f_039a9c58",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "158c85dec3e0153ddd005241fc3c67fb0696d615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
