@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f8f8a65_8aef3da1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T08:29:37Z",
+      "side": 1,
+      "message": "The change mentioned in crrev.com/c/2278537. Some design requests for comment.",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa725666_289e30a5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T08:29:37Z",
+      "side": 1,
+      "message": "I think the concept of Disconnect is not for disconnecting from a specific AP but from current connection so it might not be reasonable to pass SSID in. (which is easier to use for roaming tests, I guess)\n\nHowever, this brings a problem to the API that if somehow the connection is lost or disconnect fails for some reason, the profile might not be removed. In the case, we can still depend on the Reinit/Close of TestFixture but less explicit.\n\nOne alternative is introducing a new set of functions like CleanDisconnectFromSSID(ctx, ssid) which will disconnect from the service with the given SSID and Disconnect call would fail if the specific service is not selected.\n\nWDYT?",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
