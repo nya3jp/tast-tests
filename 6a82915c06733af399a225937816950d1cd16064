@@ -16,6 +16,24 @@
       "revId": "6a82915c06733af399a225937816950d1cd16064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e17a30a_6723d11c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/check_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-24T22:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe54c5b_4b48cd43",
+      "revId": "6a82915c06733af399a225937816950d1cd16064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

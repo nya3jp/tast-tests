@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a344f1a6_eecaaa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-24T22:22:09Z",
+      "side": 1,
+      "message": "A bit confused about which sub-directories should be included. Some of them like - /android-data/data/data, /android-data/data/user_de, /android-data/data/media have content whose Selinux context differs frequently on multiple devices. \n\nNot sure excluding them here is the correct approach",
+      "revId": "6bc21f75cd01c18d8e8d0306a27698bd85e70c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
