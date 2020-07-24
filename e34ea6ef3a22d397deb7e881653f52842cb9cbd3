@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f424693e_331afa1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "Yes, my lead Matthew Warton has reviewed this. Thanks!",
+      "parentUuid": "62e7b325_cc6354b7",
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6847d4e1_e754609b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
         "patchSetId": 28
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "fb29d4c8_fd149116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6847d4e1_e754609b",
+      "range": {
+        "startLine": 27,
+        "startChar": 19,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d029d770_74993135",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
         "patchSetId": 28
@@ -70,6 +112,30 @@
       "writtenOn": "2020-07-24T12:57:43Z",
       "side": 1,
       "message": "I guess we can remove CheckFilesExistInDir function at all and just compare 2 lists:\n\n```\nfileList, err :\u003d cont.GetFileList(ctx, \".\")\nif err !\u003d nil {\n    s.Fatal(\"Failed to get files in home directory in container: \", err)\n}\n\nif !reflect.DeepEqual(fileList, testFiles) {\n    s.Errorf(\"Found unexpected files in Linux files; got %q, want %q\", fileList, testFiles)\n}\n```\n\n\nbtw, in you need to join strings, you can use strings.Join\nhttps://golang.org/pkg/strings/#Join",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfefcc4_4c49a5cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "I\u0027d like to leave this method because it has been used in other CLs already. In this case, the target folder should contains all the files. In other cases, the target folder may contain extra files or folders.",
+      "parentUuid": "d029d770_74993135",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -99,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "16beaf93_86784097",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "Refer to previous reply.",
+      "parentUuid": "53d572f6_c17b4971",
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "641c63b2_f94a0483",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 28
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "9748c3f2_b2cf6620",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641c63b2_f94a0483",
+      "range": {
+        "startLine": 438,
+        "startChar": 32,
+        "endLine": 438,
+        "endChar": 66
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b4604a7_f89dff49",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 28
@@ -142,6 +250,30 @@
       "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48af72f0_85962d01",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T13:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4604a7_f89dff49",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 442,
+        "endChar": 34
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
