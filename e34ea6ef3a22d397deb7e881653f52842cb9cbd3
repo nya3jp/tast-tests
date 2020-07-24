@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8c87d998_2bc9439b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T13:51:01Z",
+      "side": 1,
+      "message": "Ah, cool. I thought that Matthew is just a shadow reviewer.",
+      "parentUuid": "f424693e_331afa1d",
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6847d4e1_e754609b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
         "patchSetId": 28
@@ -136,6 +154,30 @@
       "side": 1,
       "message": "I\u0027d like to leave this method because it has been used in other CLs already. In this case, the target folder should contains all the files. In other cases, the target folder may contain extra files or folders.",
       "parentUuid": "d029d770_74993135",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d95423_d61be2b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T13:51:01Z",
+      "side": 1,
+      "message": "OK, but can we introduce this method in the CL where it will be used?",
+      "parentUuid": "8cfefcc4_4c49a5cc",
       "range": {
         "startLine": 95,
         "startChar": 0,
