@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -563,15 +562,11 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
-		defer func(ctx context.Context) {
-			if err := tf.DisconnectWifi(ctx); err != nil {
+		defer func(ctx context.Context, servicePath string) {
+			if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
-			}
-		}(ctx)
+		}(ctx, resp.ServicePath)
 		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 		s.Log("Connected")
