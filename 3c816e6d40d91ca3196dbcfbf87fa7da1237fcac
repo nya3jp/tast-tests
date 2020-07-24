@@ -87,6 +87,30 @@
       "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c461d0e9_eb86046f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T02:51:41Z",
+      "side": 1,
+      "message": "I have both version uploaded. The one Dean/Hsin-chen proposed is in PS3, and the one Arowa proposed is in PS4 (slightly modified to have deconfig taking ctx so the usage is more explicit).\n\nPros of PS3:\n- simpler in the testbody\nPros of PS4:\n- the context behavior is all explicit in the main test flow.\n\nWDYT? I think both looks fine to me.",
+      "parentUuid": "9f55cfbc_91de19c2",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
