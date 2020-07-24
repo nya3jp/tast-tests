@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a61e1fd0_22ab8f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:00:05Z",
+      "side": 1,
+      "message": "Is there any text on the screen we can use to verify that vim is actually running?",
+      "revId": "fec683171f5897ef35ad3916b9d7ee06a7a1ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

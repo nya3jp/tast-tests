@@ -69,6 +69,24 @@
       "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163f2518_b08af0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:00:05Z",
+      "side": 1,
+      "message": "DUTs have network connection, but most packages needed for test are pre-installed in the test container image in this script: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/container-guest-tools/lxd/lxd_test_setup.sh;drc\u003d559141204bcd0995bbf8b2aded81e2f286d3c35e\n\nThe tests also seem to run the install as a command in the test, but this is usually a no-op as the package is already installed.\n\nIf installing a package from network is a test case we want covered, perhaps we should install a (small) package in one test case, but the others might be better pre-installed.\n\nOne thing I worry about with this approach though is that pre-installing large apps (eg android studio/open office/gimp) will make the conatiner images much larger and may prevent any tests from running on boards with low disk space.",
+      "parentUuid": "b1cb9a28_5e7d82e9",
+      "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
