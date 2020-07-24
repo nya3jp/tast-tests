@@ -58,11 +58,11 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(finishFlagFilePath); err != nil {
-			return errors.Wrapf(err, "failed to read %s", finishFlagFilePath)
+			return errors.Wrapf(err, "failed to access finished flag file %s", finishFlagFilePath)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		s.Fatal("Failed to execute the TestList: ", err)
+		s.Fatal("Failed to execute the TestList or running Goofy: ", err)
 	}
 }
 
