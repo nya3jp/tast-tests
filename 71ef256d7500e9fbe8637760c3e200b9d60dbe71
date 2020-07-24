@@ -34,6 +34,24 @@
       "revId": "71ef256d7500e9fbe8637760c3e200b9d60dbe71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e41016c_a3011254",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T06:22:27Z",
+      "side": 1,
+      "message": "Thanks for the change. LGTM. Please let me know if you see any problem that might be related to Precondition.",
+      "parentUuid": "888074ec_07eeb05e",
+      "revId": "71ef256d7500e9fbe8637760c3e200b9d60dbe71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
