@@ -661,7 +661,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.DisconnectWifi(ctx); err != nil {
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
 		}(ctx)
