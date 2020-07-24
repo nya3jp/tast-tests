@@ -16,6 +16,40 @@
       "revId": "d07041cc416aeb5e75554732d3284f7702e5895f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c850398_5dc7ac79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:27:35Z",
+      "side": 1,
+      "message": "Please apply the current return order.",
+      "revId": "d07041cc416aeb5e75554732d3284f7702e5895f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876f4aed_d0e4baba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/netcertstore/netcertstore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:27:35Z",
+      "side": 1,
+      "message": "We don\u0027t need the named return here: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "revId": "d07041cc416aeb5e75554732d3284f7702e5895f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
