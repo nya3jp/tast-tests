@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5db2448_9e6bf81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-24T17:05:18Z",
+      "side": 1,
+      "message": "Is there a good spot to wrap this in a method? It looks like it is already used in two other tests and should probably wrapped in a single location, especially since it requires a speical struct.",
+      "range": {
+        "startLine": 83,
+        "startChar": 41,
+        "endLine": 83,
+        "endChar": 93
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419bca03_8d6b0e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-24T17:05:18Z",
+      "side": 1,
+      "message": "should this have some sort of timeout?",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 7
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c35a88_ecd82955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-24T17:05:18Z",
+      "side": 1,
+      "message": "Why are you using a virtual keyboard over just Keyboard?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1177acfd_d1f6a34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-24T17:05:18Z",
+      "side": 1,
+      "message": "should this have some sort of timeout?",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 7
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
