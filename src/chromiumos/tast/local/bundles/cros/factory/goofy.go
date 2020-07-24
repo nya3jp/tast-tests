@@ -26,6 +26,7 @@ func init() {
 		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
 		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
 		Attr:     []string{"group:mainline"},
+		Timeout:  3 * time.Minute,
 	})
 }
 
@@ -36,7 +37,6 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 	// above TestList configuration file.
 	const testListName = "generic_tast"
 	const finishFlagFilePath = "/tmp/tast_factory_test"
-	const timeout = 2 * time.Minute
 
 	ctx, cancel := ctxutil.Shorten(fullCtx, 30*time.Second)
 	defer cancel()
@@ -61,7 +61,7 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "failed to access finished flag file %s", finishFlagFilePath)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+	}, nil); err != nil {
 		s.Fatal("Failed to execute the TestList or running Goofy: ", err)
 	}
 }
