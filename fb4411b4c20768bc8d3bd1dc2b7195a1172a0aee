@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e67009af_36214bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab86a169_2e591e59",
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb8dd5e3_f1f84165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
         "patchSetId": 23
@@ -281,6 +299,30 @@
       "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46b4241_1cb6a74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/add_files_to_linuxfiles.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4353b6ff_e9b6cb12",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1261,6 +1303,54 @@
       "side": 1,
       "message": "once it will be used somewhere else we can make in visible outside the package.",
       "parentUuid": "5a82c8c0_1f52483f",
+      "range": {
+        "startLine": 733,
+        "startChar": 20,
+        "endLine": 733,
+        "endChar": 31
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de76fb84_044346bb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa0ba9f_b781fe87",
+      "range": {
+        "startLine": 733,
+        "startChar": 67,
+        "endLine": 733,
+        "endChar": 82
+      },
+      "revId": "fb4411b4c20768bc8d3bd1dc2b7195a1172a0aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa1adf2_91efd5d4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "It is used in copy_files_to_linux_files.go now to check no extra files have been copied to container.",
+      "parentUuid": "d4b4867c_33e35fdb",
       "range": {
         "startLine": 733,
         "startChar": 20,
