@@ -16,6 +16,92 @@
       "revId": "cea92f3541fc6e959b312f945247fb70f77418f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504cd7d2_6d3c3317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictattack/da_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:15:31Z",
+      "side": 1,
+      "message": "How about\n// DAInfo returns DAInfo only if the results from tpm_manager and cryptohome match.",
+      "revId": "cea92f3541fc6e959b312f945247fb70f77418f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ddc835_32ea7826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictattack/da_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:15:31Z",
+      "side": 1,
+      "message": "Let\u0027s shorten the variable names (Golang style):\ncryptohomeUtil -\u003e cryptohome\ntpmManagerUtil -\u003e tpmManager\nreturnedError -\u003e retErr\n\nAlso, this function does not need a named return. See https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "cea92f3541fc6e959b312f945247fb70f77418f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82171974_99b773e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictattack/da_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:15:31Z",
+      "side": 1,
+      "message": "infoTPMManager\nor infoT\n\nside note: Golang does not use camel case for abbreviation: e.g., parseURL not parseUrl. But if it is at the first character of a local variable, use lowercase: e.g., urlString, not uRLString.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "cea92f3541fc6e959b312f945247fb70f77418f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cc95f4_4301a849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictattack/da_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:15:31Z",
+      "side": 1,
+      "message": "infoCryptohome \nor \ninfoC\n\nI would prefer infoC",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "cea92f3541fc6e959b312f945247fb70f77418f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
