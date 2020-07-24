@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd4a6d05_f24e9acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2020-07-24T07:52:50Z",
+      "side": 1,
+      "message": "Just curious:\n\nDoes this timeout apply to entire test (3 minutes in total for entire test)?    Or this timeout is applied to each operation in the test individually?",
+      "revId": "963b6421f6e4837a2b52e63b2e3280ba31a90131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
