@@ -65,8 +65,11 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	var servicePath string
+	if resp, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
+	} else {
+		servicePath = resp.ServicePath
 	}
 
 	apSSID := ap.Config().SSID
@@ -78,6 +81,9 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 			// inactive at this point.
 			s.Log("Failed to disconnect WiFi (The service might have been already idle, as the test is triggering some disconnection): ", err)
 		}
+		// Explicitly delete service entries here because it could have
+		// no active service here so calling tf.CleanDisconnectWifi()
+		// would fail.
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(apSSID)}); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", apSSID, err)
 		}
@@ -132,7 +138,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 
 	testing.ContextLogf(ctx, "Waiting %s for client to notice the missing AP", maxDisconnectTime)
 
-	if err := tf.AssureDisconnect(ctx, maxDisconnectTime); err != nil {
+	if err := tf.AssureDisconnect(ctx, servicePath, maxDisconnectTime); err != nil {
 		s.Fatalf("DUT: failed to disconnect in %s: %v", maxDisconnectTime, err)
 	}
 }

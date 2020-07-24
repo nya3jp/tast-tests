@@ -278,9 +278,37 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}, nil
 }
 
+// SelectedService returns the object path of selected service of WiFi service.
+func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SelectedService")
+	defer st.End()
+
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+	servicePath, err := prop.GetObjectPath(shillconst.DevicePropertySelectedService)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get SelectedService")
+	}
+	// Handle a special case of no selected service.
+	// See: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/shill/doc/device-api.txt
+	if servicePath == "/" {
+		return nil, errors.New("no selected service")
+	}
+
+	return &network.SelectedServiceResponse{
+		ServicePath: string(servicePath),
+	}, nil
+}
+
 // Disconnect disconnects from a WiFi service.
 // This is the implementation of network.Wifi/Disconnect gRPC.
-func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (*empty.Empty, error) {
+func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (ret *empty.Empty, retErr error) {
 	ctx, st := timing.Start(ctx, "wifi_service.Disconnect")
 	defer st.End()
 
@@ -288,6 +316,21 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
 	}
+	defer func() {
+		// Try to remove profile even if Disconnect failed.
+		if !request.RemoveProfile {
+			return
+		}
+		if err := service.Remove(ctx); err != nil {
+			if retErr != nil {
+				testing.ContextLogf(ctx, "Failed to remove service profile of %v: %v", service, err)
+			} else {
+				ret = nil
+				retErr = errors.Wrapf(err, "failed to remove service profile of %v", service)
+			}
+		}
+	}()
+
 	// Spawn watcher before disconnect.
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
@@ -304,6 +347,7 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 		return nil, err
 	}
 	testing.ContextLog(ctx, "Disconnected")
+
 	return &empty.Empty{}, nil
 }
 
