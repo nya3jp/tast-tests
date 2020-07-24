@@ -9,6 +9,7 @@ import android.media.MediaRecorder;
 import android.util.Log;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 public class SampleRecorder {
@@ -58,7 +59,7 @@ public class SampleRecorder {
                 Log.i(Constant.TAG, String.format("recorder read %d bytes", result));
                 outStream.write(buffer.array(), 0, result);
                 elapsedMillis = System.currentTimeMillis() - startTime;
-                buffer.clear();
+                ((Buffer) buffer).clear();
             }
         } catch (Exception e) {
             throw new RuntimeException("Writing of recorded audio failed", e);
