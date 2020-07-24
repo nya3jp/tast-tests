@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "2c32b8fa_eba65d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T20:16:59Z",
+      "side": 1,
+      "message": "Hi Judy, can you please resolve this comment and simplify test.",
+      "parentUuid": "33d95423_d61be2b6",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d572f6_c17b4971",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 28
