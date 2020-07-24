@@ -97,18 +97,15 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expect a service with two WiFi frequencies: ", err)
 	}
 	s.Log("Verified. Asserting the connection")
-	if _, err := tf.ConnectWifi(ctx, ssid, false, &base.Config{}); err != nil {
+	resp, err := tf.ConnectWifi(ctx, ssid, false, &base.Config{})
+	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
+	defer func(ctx context.Context, servicePath string) {
+		if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ssid, err)
-		}
-	}(ctx)
+	}(ctx, resp.ServicePath)
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 

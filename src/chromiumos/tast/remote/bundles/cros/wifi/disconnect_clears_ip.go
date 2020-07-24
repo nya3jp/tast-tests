@@ -102,5 +102,4 @@ func DisconnectClearsIP(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 200 * time.Millisecond}); err != nil {
 		s.Fatal("Failed to clear the IP after WiFi disconnected: ", err)
 	}
-
 }

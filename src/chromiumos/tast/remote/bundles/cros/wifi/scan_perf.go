@@ -166,17 +166,15 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// DUT connecting to the AP.
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	resp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
+	defer func(ctx context.Context, servicePath string) {
+		if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 			s.Error("Failed to disconnect WiFi, err: ", err)
 		}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
-		}
-	}(ctx)
+	}(ctx, resp.ServicePath)
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 	s.Log("Connected")

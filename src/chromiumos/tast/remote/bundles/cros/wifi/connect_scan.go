@@ -207,18 +207,15 @@ func connectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name s
 		defer cancel()
 
 		testing.ContextLog(ctx, "Connecting to WiFi")
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+		resp, err := tf.ConnectWifiAP(ctx, ap)
+		if err != nil {
 			return nil, nil, err
 		}
-		defer func(ctx context.Context) {
-			if err := tf.DisconnectWifi(ctx); err != nil {
+		defer func(ctx context.Context, servicePath string) {
+			if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 				collectFirstErr(errors.Wrap(err, "failed to disconnect"))
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-				collectFirstErr(errors.Wrapf(err, "failed to remove entries for ssid=%s", ap.Config().SSID))
-			}
-		}(ctx)
+		}(ctx, resp.ServicePath)
 
 		capturer, ok := tf.Capturer(ap)
 		if !ok {
