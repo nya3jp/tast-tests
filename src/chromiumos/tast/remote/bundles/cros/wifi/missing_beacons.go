@@ -10,7 +10,6 @@ import (
 
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -65,23 +64,23 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	var servicePath string
+	if resp, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
+	} else {
+		servicePath = resp.ServicePath
 	}
 
 	apSSID := ap.Config().SSID
 
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
+	defer func(ctx context.Context, servicePath string) {
+		if err := tf.DisconnectWifiService(ctx, servicePath); err != nil {
 			// Do not fail on this error as we're triggering some
 			// disconnection in this test and the service can be
 			// inactive at this point.
 			s.Log("Failed to disconnect WiFi (The service might have been already idle, as the test is triggering some disconnection): ", err)
 		}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(apSSID)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", apSSID, err)
-		}
-	}(ctx)
+	}(ctx, servicePath)
 	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
 
@@ -132,7 +131,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 
 	testing.ContextLogf(ctx, "Waiting %s for client to notice the missing AP", maxDisconnectTime)
 
-	if err := tf.AssureDisconnect(ctx, maxDisconnectTime); err != nil {
+	if err := tf.AssureDisconnect(ctx, servicePath, maxDisconnectTime); err != nil {
 		s.Fatalf("DUT: failed to disconnect in %s: %v", maxDisconnectTime, err)
 	}
 }

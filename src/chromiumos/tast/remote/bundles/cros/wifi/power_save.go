@@ -15,7 +15,6 @@ import (
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -89,17 +88,15 @@ func PowerSave(ctx context.Context, s *testing.State) {
 	// TODO(b:158222331) Check if it is important to test switching
 	// the powersave ON before connecting to the AP.
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	resp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
+	defer func(ctx context.Context, servicePath string) {
+		if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 			s.Fatal("DUT: failed to disconnect WiFi: ", err)
 		}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
-		}
-	}(ctx)
+	}(ctx, resp.ServicePath)
 	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
 

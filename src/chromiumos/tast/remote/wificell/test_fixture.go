@@ -82,9 +82,8 @@ type TestFixture struct {
 	pcap          *Router
 	packetCapture bool
 
-	apID           int
-	curServicePath string
-	capturers      map[*APIface]*pcap.Capturer
+	apID      int
+	capturers map[*APIface]*pcap.Capturer
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -386,7 +385,6 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	if err != nil {
 		return nil, err
 	}
-	tf.curServicePath = response.ServicePath
 	return response, nil
 }
 
@@ -396,21 +394,53 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network
 	return tf.ConnectWifi(ctx, conf.SSID, conf.Hidden, conf.SecurityConfig)
 }
 
-// DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
-func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
-	if tf.curServicePath == "" {
-		return errors.New("the current WiFi service path is empty")
+func (tf *TestFixture) disconnectWifiService(ctx context.Context, servicePath string, removeProfile bool) error {
+	req := &network.DisconnectRequest{
+		ServicePath:   servicePath,
+		RemoveProfile: removeProfile,
 	}
-	ctx, st := timing.Start(ctx, "tf.DisconnectWifi")
+	if _, err := tf.wifiClient.Disconnect(ctx, req); err != nil {
+		return errors.Wrap(err, "failed to disconnect")
+	}
+	return nil
+}
+
+func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
+	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
 
-	var err error
-	req := &network.DisconnectRequest{ServicePath: tf.curServicePath}
-	if _, err2 := tf.wifiClient.Disconnect(ctx, req); err2 != nil {
-		err = errors.Wrap(err2, "failed to disconnect")
+	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to get selected service")
 	}
-	tf.curServicePath = ""
-	return err
+
+	// Note: It is possible that selected service changed after SelectService call,
+	// but we are usually in a stable state when calling this. If not, the Disconnect
+	// call will also fail and caller usually leaves hint for this.
+	// In Close and Reinit, we pop + remove related profiles so it should still be
+	// safe for next test if this case happened in clean up.
+	return tf.disconnectWifiService(ctx, resp.ServicePath, removeProfile)
+}
+
+// DisconnectWifi asks the DUT to disconnect from current WiFi service.
+func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, false)
+}
+
+// CleanDisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
+func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, true)
+}
+
+// DisconnectWifiService asks the DUT to disconnect from specified WiFi service.
+func (tf *TestFixture) DisconnectWifiService(ctx context.Context, servicePath string) error {
+	return tf.disconnectWifiService(ctx, servicePath, false)
+}
+
+// CleanDisconnectWifiService asks the DUT to disconnect from specified WiFi service and removes the configuration.
+// It is the inverse method of tf.Connect().
+func (tf *TestFixture) CleanDisconnectWifiService(ctx context.Context, servicePath string) error {
+	return tf.disconnectWifiService(ctx, servicePath, false)
 }
 
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
@@ -419,24 +449,29 @@ func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Contex
 }
 
 // AssureDisconnect assures that the WiFi service has disconnected within timeout.
-func (tf *TestFixture) AssureDisconnect(ctx context.Context, timeout time.Duration) error {
+func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string, timeout time.Duration) error {
 	req := &network.AssureDisconnectRequest{
-		ServicePath: tf.curServicePath,
+		ServicePath: servicePath,
 		Timeout:     timeout.Nanoseconds(),
 	}
 	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
 		return err
 	}
-	tf.curServicePath = ""
 	return nil
 }
 
-// QueryService queries shill service information.
+// QueryService queries shill information of selected service.
 func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
-	req := &network.QueryServiceRequest{
-		Path: tf.curServicePath,
+	var servicePath string
+	selectedSvcResp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get selected service")
 	}
+	servicePath = selectedSvcResp.ServicePath
 
+	req := &network.QueryServiceRequest{
+		Path: servicePath,
+	}
 	resp, err := tf.wifiClient.QueryService(ctx, req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the service information")

@@ -13,7 +13,6 @@ import (
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -72,18 +71,15 @@ func PTK(ctx context.Context, s *testing.State) {
 
 	s.Log("AP setup done; connecting")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	resp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
+	defer func(ctx context.Context, servicePath string) {
+		if err := tf.CleanDisconnectWifiService(ctx, servicePath); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
-		}
-	}(ctx)
+	}(ctx, resp.ServicePath)
 	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
 
