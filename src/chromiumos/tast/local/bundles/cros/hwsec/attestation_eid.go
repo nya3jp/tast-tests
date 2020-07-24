@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AttestationEID,
-		Desc:         "Verifies attestation-related functionality",
+		Desc:         "Verifies that enrollment ID is available",
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
@@ -30,6 +30,15 @@ func AttestationEID(ctx context.Context, s *testing.State) {
 	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
 	if err != nil {
 		s.Fatal("Utility creation error: ", err)
+	}
+	helper, err := hwseclocal.NewHelper(utility)
+	if err != nil {
+		s.Fatal("Local hwsec helper creation error: ", err)
+	}
+
+	// Enrollment ID depends on endorsement key, which can only be read when TPM is ready on TPMv1.2.
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		s.Fatal("Failed to ensure TPM readiness: ", err)
 	}
 
 	enc, err := utility.GetEnrollmentID(ctx)
