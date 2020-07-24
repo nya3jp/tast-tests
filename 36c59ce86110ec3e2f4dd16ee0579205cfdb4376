@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5184a31_05ecaca0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:56:59Z",
+      "side": 1,
+      "message": "Improved the method FocusMouseOnTerminalWindow to reduce flakiness.",
+      "revId": "36c59ce86110ec3e2f4dd16ee0579205cfdb4376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
