@@ -214,6 +214,24 @@
       "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21403664_1338abe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2020-07-24T00:05:27Z",
+      "side": 1,
+      "message": "I can\u0027t repro it on my caroline device and kukui device. \nMy caroline and kukui are both on Android version 9, caroline ARC version is 6654621, and kukui ARC version is 6670190.",
+      "parentUuid": "bc7807a5_58991d86",
+      "revId": "9af1ad0b4a693e68feb305dc9d0ed40a5f8c6d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
