@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f043335_42022a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "This is a great functionality milestone.  Just a few nits and more qs.",
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2115b318_f9a78d7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "This looks like an experimentally arrived-at constant, can you surface it as such (makes it easier for maintainers to modify if necessary), i.e. break it out as a constant?",
+      "range": {
+        "startLine": 93,
+        "startChar": 35,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28063227_d9cc546b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "This looks like an experimentally arrived-at constant, can you surface it as such (makes it easier for maintainers to modify if necessary), i.e. break it out as a constant?",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912af436_543a3d9c",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "RebootToMode now has the address of the config, but it doesn\u0027t seem to operate on it.  Am I missing where this gets used?",
+      "range": {
+        "startLine": 45,
+        "startChar": 69,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e48472_5d2b5ce9",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "here and elsewhere capitalize DUT",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74abced9_8c75bd5b",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "This looks like an experimentally arrived-at constant, can you surface it as such (makes it easier for maintainers to modify if necessary), i.e. break it out as a constant?",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc58458_2eed17b0",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-24T22:09:40Z",
+      "side": 1,
+      "message": "This looks like an experimentally arrived-at constant, can you surface it as such (makes it easier for maintainers to modify if necessary), i.e. break it out as a constant?",
+      "range": {
+        "startLine": 232,
+        "startChar": 46,
+        "endLine": 232,
+        "endChar": 59
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
