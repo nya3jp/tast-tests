@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "421dc2e0_997c810e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T02:16:12Z",
+      "side": 1,
+      "message": "My cl for TestFixture precondition (crrev.com/c/2142664) just landed. You may consider using it in the test, or maybe later. :)",
+      "revId": "71ef256d7500e9fbe8637760c3e200b9d60dbe71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
