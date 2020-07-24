@@ -16,6 +16,24 @@
       "revId": "04dd6f053853a190958d074caf43f30bfc5e90e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "057b1bba_46460e9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-24T16:01:20Z",
+      "side": 1,
+      "message": "Thanks for reminding! There are ~30 existing Tast tests using the word \"sanity\" currently, IMO we should have a one-time effort to migrate them together in a consistent manner.\n\nref: https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dSanity\u0026dep\u003d",
+      "parentUuid": "5f15e903_5afdbc87",
+      "revId": "04dd6f053853a190958d074caf43f30bfc5e90e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
