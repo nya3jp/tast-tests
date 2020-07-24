@@ -185,6 +185,30 @@
     },
     {
       "key": {
+        "uuid": "b88e560c_4ba96958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-07-24T10:31:17Z",
+      "side": 1,
+      "message": "I throw out an error here if it doesn\u0027t match anything (which indicates previous reboot isn\u0027t abnormal). The other 2 are ignored.",
+      "parentUuid": "d0a9245a_7f4a0dbe",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 17
+      },
+      "revId": "ccef81e19eb4b2e1dee74a3db08ffedbfdcf0de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2867c3e_15df1e45",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 5
