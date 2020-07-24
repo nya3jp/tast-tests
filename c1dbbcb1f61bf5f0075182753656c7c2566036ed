@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84a838d8_ce25a86c",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:54:44Z",
+      "side": 1,
+      "message": "Crostini Terminal app.",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 42
+      },
+      "revId": "c1dbbcb1f61bf5f0075182753656c7c2566036ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62af186b_15f7d4aa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/terminalapp/terminalapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:54:44Z",
+      "side": 1,
+      "message": "Does it make more sense for this to be in the crostini package? The installer ui code already lives there, and I added terminal code there in another change as well (not yet submitted) I don\u0027t think any other tests would need to use it?\n\nHappy to be persuaded either way.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "c1dbbcb1f61bf5f0075182753656c7c2566036ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

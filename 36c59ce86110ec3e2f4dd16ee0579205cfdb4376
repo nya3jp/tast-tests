@@ -16,6 +16,57 @@
       "revId": "36c59ce86110ec3e2f4dd16ee0579205cfdb4376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61d90e42_ea22604f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:54:44Z",
+      "side": 1,
+      "message": "Maybe comment that the condition being tested is in this function, otherwise it looks like nothing is being tested.\n\nPerhaps you should duplicate the check below as well in case the implementation of Launch changes in the future?",
+      "revId": "36c59ce86110ec3e2f4dd16ee0579205cfdb4376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9772c7f2_a5ba31f6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/terminalapp/terminalapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:54:44Z",
+      "side": 1,
+      "message": "The terminal displays this title before crostini has finished starting up.  This might lead to flakiness if you try to type into the terminal too early.\n\nPerhaps look for the prompt being displayed instead?",
+      "revId": "36c59ce86110ec3e2f4dd16ee0579205cfdb4376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de9e404_d1041037",
+        "filename": "src/chromiumos/tast/local/chrome/ui/terminalapp/terminalapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T01:54:44Z",
+      "side": 1,
+      "message": "Moving the mouse to the window is not enough to focus the window right?  Maybe either call FocusAndWait or otherwise click the mouse?",
+      "revId": "36c59ce86110ec3e2f4dd16ee0579205cfdb4376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
