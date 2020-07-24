@@ -105,6 +105,24 @@
       "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b00a407_f9cb1ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T03:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60b6be2a_41b79efb",
+      "revId": "49049bba1a31fa612d60e56daf4162c7b4bf8cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
