@@ -135,6 +135,30 @@
       "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0ee801_2384f852",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-24T18:46:34Z",
+      "side": 1,
+      "message": "I agree with Dean, returning the ap and deconfig2 is redundant and in the second example:\n        freq2g, deconfig2g, err :\u003d configureAP(ctx, ssid, channel2g)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to set up AP: \", err)\n\t}\n\tdefer deconfig2g()\n        ctx, cancel \u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n\nyou will have to specify the time because you are not using ReserveForDeconfigAP()",
+      "parentUuid": "3689099d_61ae359f",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
