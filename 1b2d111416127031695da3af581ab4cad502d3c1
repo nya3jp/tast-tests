@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ff86d43e_d1fb55f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd98d1ed_3dd64879",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edc41ce4_8e3c1595",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 5
@@ -62,6 +86,30 @@
       "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c6282c_81f73a9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edc41ce4_8e3c1595",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "bfa9a8dc_faf67272",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe26df8a_4a7afae4",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fc6e882_8e5b156d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 5
@@ -99,6 +171,24 @@
       "writtenOn": "2020-07-23T08:04:26Z",
       "side": 1,
       "message": "linkFailureFoundTS :\u003d linkFailureDetectedTS.Sub(linkFailureTS)",
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7cf88d_181c6d97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "I would prefer linkFailureTime since it is a duration but not a time stamp.",
+      "parentUuid": "8fc6e882_8e5b156d",
       "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "f03a6f9c_139e3cd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0586582b_da003ad6",
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3d8c51_9a6fd758",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 5
@@ -136,6 +244,24 @@
       "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131916cc_412979c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3d8c51_9a6fd758",
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +285,30 @@
       "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d54b52_cb25b6fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T02:30:59Z",
+      "side": 1,
+      "message": "Done. I think the function name \"findLinkFailure\" is really self-describable, thanks!",
+      "parentUuid": "834aed3f_0e943489",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 25
+      },
+      "revId": "1b2d111416127031695da3af581ab4cad502d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
