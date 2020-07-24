@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02eceda4_70af8963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-24T19:14:15Z",
+      "side": 1,
+      "message": "is there a reason you changed the order of this and removed the check for current BSSID? If you call RequestRoam and the device is already on the BSSID you\u0027re requesting to roam to, we\u0027ll end up timing out.",
+      "range": {
+        "startLine": 764,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 2
+      },
+      "revId": "4c10f22f0fb2428a95e256a6077232a0a5afc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
