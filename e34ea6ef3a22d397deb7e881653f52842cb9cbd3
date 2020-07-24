@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "817d5536_fb6ee1e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "LGTM % comments, thanks Judy!",
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6847d4e1_e754609b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "nit: copying",
+      "range": {
+        "startLine": 27,
+        "startChar": 19,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d029d770_74993135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "I guess we can remove CheckFilesExistInDir function at all and just compare 2 lists:\n\n```\nfileList, err :\u003d cont.GetFileList(ctx, \".\")\nif err !\u003d nil {\n    s.Fatal(\"Failed to get files in home directory in container: \", err)\n}\n\nif !reflect.DeepEqual(fileList, testFiles) {\n    s.Errorf(\"Found unexpected files in Linux files; got %q, want %q\", fileList, testFiles)\n}\n```\n\n\nbtw, in you need to join strings, you can use strings.Join\nhttps://golang.org/pkg/strings/#Join",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d572f6_c17b4971",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "from previous comment, please remove this function 😊",
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641c63b2_f94a0483",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "nit: please put ls %s in quotes:\n\nerrors.Wrapf(err, `failed to run \"ls %s\" in container`, path)",
+      "range": {
+        "startLine": 438,
+        "startChar": 32,
+        "endLine": 438,
+        "endChar": 66
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4604a7_f89dff49",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-24T12:57:43Z",
+      "side": 1,
+      "message": "why do you remove the last item?",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 442,
+        "endChar": 34
+      },
+      "revId": "e34ea6ef3a22d397deb7e881653f52842cb9cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
