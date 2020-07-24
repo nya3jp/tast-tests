@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1346f55f_fd9c6d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-07-24T05:19:19Z",
+      "side": 1,
+      "message": "If Sleep fails I am ok to die here.",
+      "parentUuid": "a0e8a8a6_8f777d09",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 10
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01b488a9_ea1c1c9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 3
@@ -140,6 +164,30 @@
       "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bde342_bdf2197a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-07-24T05:19:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47ea9e6b_7a7274bc",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 9
+      },
+      "revId": "840c0027716bb00432b585ff062f8cf85ab5a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
