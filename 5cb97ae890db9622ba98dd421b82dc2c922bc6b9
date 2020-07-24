@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86e8b4d4_a2f7fa0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-24T23:55:44Z",
+      "side": 1,
+      "message": "Good point, I added a \u0027login\u0027 package which we can use for this and future login utilities. I\u0027ll make a follow-up CL to refactor the other tests which use this method.",
+      "parentUuid": "e5db2448_9e6bf81c",
+      "range": {
+        "startLine": 83,
+        "startChar": 41,
+        "endLine": 83,
+        "endChar": 93
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "419bca03_8d6b0e09",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91eec511_63823ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-24T23:55:44Z",
+      "side": 1,
+      "message": "I added a 30 second timeout, since at least when I ran this test on a VM, these things took a bit of time.",
+      "parentUuid": "419bca03_8d6b0e09",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 7
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "be67c5d2_29e03c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-24T23:55:44Z",
+      "side": 1,
+      "message": "I based a lot of this on ui.LockScreen and carried it over without realizing haha. I changed it to use Keyboard, but actually it looks like there\u0027s a bug where \u0027isReadyForPassword\u0027 becomes true before the field is actually ready for keyboard input. VirtualKeyboard takes longer to start up, which was hiding the issue before.\n\nI filed a bug and added a to-do, and in the meantime added a check for the password field to appear in the UI, which seems to work as a readiness indicator.",
+      "parentUuid": "20c35a88_ecd82955",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1177acfd_d1f6a34f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bda6b45_08de248a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-24T23:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1177acfd_d1f6a34f",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 7
+      },
+      "revId": "5cb97ae890db9622ba98dd421b82dc2c922bc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
