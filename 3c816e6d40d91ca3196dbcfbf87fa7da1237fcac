@@ -111,6 +111,30 @@
       "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3689099d_61ae359f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:15:28Z",
+      "side": 1,
+      "message": "For PS4, as it returns AP object, the caller shall deconfig the AP and it is redundant that configureAP() returns a cleanup function.\n\nFor PS3, it looks simpler however it implies the defer function configureAP() returns uses the original ctx. This should be addressed in the comment. I\u0027ve left an example in a comment before:\n// Also note that the returned callback function use the passing unshortened ctx to perform the cleanup. \n\n\nI would prefer PS3.",
+      "parentUuid": "c461d0e9_eb86046f",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "3c816e6d40d91ca3196dbcfbf87fa7da1237fcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

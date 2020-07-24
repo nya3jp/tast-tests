@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85b8cae5_4567a2e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:15:28Z",
+      "side": 1,
+      "message": "Remember to update the comment if the approach is adopted.",
+      "revId": "f2c5143d0d89aeaa8f9049850149fe7f34edfc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ffcf6f_db696a6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:15:28Z",
+      "side": 1,
+      "message": "As long as the function returns APIface, it is no longer needed to return a deferFunc.",
+      "range": {
+        "startLine": 50,
+        "startChar": 70,
+        "endLine": 50,
+        "endChar": 86
+      },
+      "revId": "f2c5143d0d89aeaa8f9049850149fe7f34edfc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
