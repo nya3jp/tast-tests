@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "205adb6b_20f4f0d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "Please use the just landed Precondition pattern: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2142664",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347a19b0_cebea49a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -90,6 +107,52 @@
     },
     {
       "key": {
+        "uuid": "7f4d25a6_6f59f8dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "This should be an error if this is a performance test. Note that you can s.Fatal() in the main logic if the test should stop immediately. For the errors in defer function, we always use s.Error() to log the error and fail the test.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8224e88b_9faf11b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "Delete this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b71ea0f_feca2405",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -113,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "e0180ee5_72f0fb04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "For tfCtx, noted that after the cleanup, https://crrev.com/c/2315518, we\u0027ll use ctx as much as possible.",
+      "parentUuid": "1b71ea0f_feca2405",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 107
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8611100a_f397a60b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -124,6 +211,40 @@
       "writtenOn": "2020-07-23T23:46:24Z",
       "side": 1,
       "message": "you can use the function below to verify connection or run a ping to the AP here:\n        if err :\u003d tf.VerifyConnection(ctx, ap2); err !\u003d nil {\n\t\ts.Fatal(\"Failed to verify connection: \", err)\n\t}",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9983b75_6fd7ff3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "We might shorten ctx for too many seconds. For trivial operation like this one, one second for logger.Stop() should be sufficient.",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715e7028_8e47a571",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T03:33:55Z",
+      "side": 1,
+      "message": "First check if you can do this using shill (I guess not) or wpa_supllicant D-Bus interface.",
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
