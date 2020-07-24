@@ -16,6 +16,23 @@
       "revId": "c07462b07b9d3a330180f189a5d4d51b3d54fa13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f30b8ab_76c26c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T15:31:53Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective.",
+      "revId": "c07462b07b9d3a330180f189a5d4d51b3d54fa13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
