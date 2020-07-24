@@ -22,6 +22,30 @@
       "revId": "4c10f22f0fb2428a95e256a6077232a0a5afc2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5ed25f_bb5f79c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-24T20:42:08Z",
+      "side": 1,
+      "message": "I thought moving the pw watcher before RequestRoam would catch the roaming event and there is no need to check the current BSSID. Tbh, I didn\u0027t think about the case you mentiond. \nThe test checks which BSSID we are connected to before running RequestRoam() gRPC call, but as you said it\u0027s possible that it could have roamed to the roamToBSSID before the watcher is created. I will add the check for the current BSSID.",
+      "parentUuid": "02eceda4_70af8963",
+      "range": {
+        "startLine": 764,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 2
+      },
+      "revId": "4c10f22f0fb2428a95e256a6077232a0a5afc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
