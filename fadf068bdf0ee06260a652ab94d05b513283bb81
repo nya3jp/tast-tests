@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "83bec7c5_b64a3579",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T02:46:13Z",
+      "side": 1,
+      "message": "The original test measure reassociation time and set a 10 seconds threshold. So it is more like a function qualification test. Let\u0027s keep it as is (pass/fail).",
+      "parentUuid": "0b3bbbf9_235c2b63",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b71ea0f_feca2405",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -141,6 +165,30 @@
       "side": 1,
       "message": "I have this CL for wpa_supplicant D-Bus interface. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2303647\n\nThen you can use a gRPC call that make use of this package.",
       "parentUuid": "ee92702b_57575e4d",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cbe4bd_83e8fbb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T02:46:13Z",
+      "side": 1,
+      "message": "In Tast test, we first seek if there\u0027s high level abstraction/library to use. The preference:\n1. Golang native library\n2. Golang third-party library\n3. D-Bus interface, upper layer, e.g. shill\n4. D-Bus interface, lower layer, e.g. wpa_supplicant\n5. Linux command line tool, e.g. iw\n\nFor observing response, we first see if D-Bus event watcher has the event we expect to see. The last resort is to parse the log, but it is discouraged.\n\nFor this specific question, you can check if wpa_supplicant D-Bus interface provides what you need. If not and you want to use wpa_cli, you can expand \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/wpacli/runner.go?q\u003dwpa_cli\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F\n\ntips: you can search if there\u0027s any existing package doing the same / similar things here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/?g\u003d0",
+      "parentUuid": "5e540df6_4e664605",
       "range": {
         "startLine": 121,
         "startChar": 5,
