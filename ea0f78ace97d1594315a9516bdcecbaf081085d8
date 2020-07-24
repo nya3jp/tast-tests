@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "078175f9_6c330b43",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T02:05:51Z",
+      "side": 1,
+      "message": "you can\u0027t :\u003d into a struct member unfortunately",
+      "parentUuid": "1837a011_2842d858",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a0b0303_6e1fbaed",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9409563a_390cb5ba",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T02:05:51Z",
+      "side": 1,
+      "message": "It is big, but I only log it on failure/during debugging.",
+      "parentUuid": "6a0b0303_6e1fbaed",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7646f3a4_34a4137b",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2dd9312_fa731128",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-24T02:05:51Z",
+      "side": 1,
+      "message": "Many devices (eg eve) are folded into tablet mode in the lab to save space.  I have had problems with this before.\n\nIn this case, in tablet mode the shelf is not shown so we can\u0027t right click on the Terminal icon.  Hence this code temporarily forces the device out of tablet mode so we can shut down Crostini more easily.",
+      "parentUuid": "7646f3a4_34a4137b",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
