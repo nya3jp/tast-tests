@@ -111,6 +111,23 @@
     },
     {
       "key": {
+        "uuid": "107e05c5_243a2e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-07-24T17:05:31Z",
+      "side": 1,
+      "message": "Consider a less generic name, like |OpenToPeekingStatePerformance|.\nThis makes it less likely to collide with another test that expands the Assistant UI.",
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdb936ce_7660958b",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
         "patchSetId": 1
