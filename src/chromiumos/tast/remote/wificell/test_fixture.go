@@ -84,9 +84,8 @@ type TestFixture struct {
 	pcap          *Router
 	packetCapture bool
 
-	apID           int
-	curServicePath string
-	capturers      map[*APIface]*pcap.Capturer
+	apID      int
+	capturers map[*APIface]*pcap.Capturer
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
@@ -438,7 +437,6 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	if err != nil {
 		return nil, err
 	}
-	tf.curServicePath = response.ServicePath
 	return response, nil
 }
 
@@ -448,21 +446,38 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network
 	return tf.ConnectWifi(ctx, conf.SSID, conf.Hidden, conf.SecurityConfig)
 }
 
-// DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
-func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
-	if tf.curServicePath == "" {
-		return errors.New("the current WiFi service path is empty")
-	}
-	ctx, st := timing.Start(ctx, "tf.DisconnectWifi")
+func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
+	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
 
-	var err error
-	req := &network.DisconnectRequest{ServicePath: tf.curServicePath}
-	if _, err2 := tf.wifiClient.Disconnect(ctx, req); err2 != nil {
-		err = errors.Wrap(err2, "failed to disconnect")
+	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to get selected service")
 	}
-	tf.curServicePath = ""
-	return err
+
+	// Note: It is possible that selected service changed after SelectService call,
+	// but we are usually in a stable state when calling this. If not, the Disconnect
+	// call will also fail and caller usually leaves hint for this.
+	// In Close and Reinit, we pop + remove related profiles so it should still be
+	// safe for next test if this case happened in clean up.
+	req := &network.DisconnectRequest{
+		ServicePath:   resp.ServicePath,
+		RemoveProfile: removeProfile,
+	}
+	if _, err := tf.wifiClient.Disconnect(ctx, req); err != nil {
+		return errors.Wrap(err, "failed to disconnect")
+	}
+	return nil
+}
+
+// DisconnectWifi asks the DUT to disconnect from current WiFi service.
+func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, false)
+}
+
+// CleanDisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
+func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, true)
 }
 
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
@@ -471,24 +486,27 @@ func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Contex
 }
 
 // AssureDisconnect assures that the WiFi service has disconnected within timeout.
-func (tf *TestFixture) AssureDisconnect(ctx context.Context, timeout time.Duration) error {
+func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string, timeout time.Duration) error {
 	req := &network.AssureDisconnectRequest{
-		ServicePath: tf.curServicePath,
+		ServicePath: servicePath,
 		Timeout:     timeout.Nanoseconds(),
 	}
 	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
 		return err
 	}
-	tf.curServicePath = ""
 	return nil
 }
 
-// QueryService queries shill service information.
+// QueryService queries shill information of selected service.
 func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
-	req := &network.QueryServiceRequest{
-		Path: tf.curServicePath,
+	selectedSvcResp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get selected service")
 	}
 
+	req := &network.QueryServiceRequest{
+		Path: selectedSvcResp.ServicePath,
+	}
 	resp, err := tf.wifiClient.QueryService(ctx, req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the service information")
