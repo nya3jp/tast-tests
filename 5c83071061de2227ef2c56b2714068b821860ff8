@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8deaaadb_d6ff30c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T08:32:01Z",
+      "side": 1,
+      "message": "One more note: it might be better to separate the curServicePath part and Disconnect+DeleteProfile part, but I think the behavior/design is related so let\u0027s have them in a single CL for now.",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa725666_289e30a5",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
