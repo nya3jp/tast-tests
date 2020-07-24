@@ -16,6 +16,24 @@
       "revId": "963b6421f6e4837a2b52e63b2e3280ba31a90131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011f9cda_fc453d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-07-24T09:14:07Z",
+      "side": 1,
+      "message": "It\u0027s for the entire test, including installing and Goofy start/stop and polling.\nWe keep 30 secs for cleanup, so it will run 2.5 mins instead of 1.5 mins in this case.",
+      "parentUuid": "dd4a6d05_f24e9acb",
+      "revId": "963b6421f6e4837a2b52e63b2e3280ba31a90131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
