@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "85c0d512_db1a8ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Done. But, I should mention that in core Tast code, it is common to use hard-coded constants for PollOptions.Timeout:\n\nhttp://source/search?q\u003df:platform%2Ftast%2F%20PollOptions%20package:%5Echromeos_public$\u0026sq\u003d",
+      "parentUuid": "2115b318_f9a78d7e",
+      "range": {
+        "startLine": 93,
+        "startChar": 35,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28063227_d9cc546b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
         "patchSetId": 9
@@ -62,6 +86,30 @@
       "revId": "e4628534e617780f21b2b690227d04603b2f8160",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935915fa_9e142c82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28063227_d9cc546b",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "5eecda31_66034c87",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Oops, good catch. A previous draft used cfg for some timing info, but not anymore. This will be necessary for dev-mode transitions, but it is not needed for this PS.",
+      "parentUuid": "912af436_543a3d9c",
+      "range": {
+        "startLine": 45,
+        "startChar": 69,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86e48472_5d2b5ce9",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 9
@@ -108,6 +180,30 @@
       "revId": "e4628534e617780f21b2b690227d04603b2f8160",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa753f7_cb253ebb",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e48472_5d2b5ce9",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "260c2a43_4318f598",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74abced9_8c75bd5b",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 50
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bc58458_2eed17b0",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 9
@@ -154,6 +274,30 @@
       "revId": "e4628534e617780f21b2b690227d04603b2f8160",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1062a0ac_7c83bd29",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-24T23:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc58458_2eed17b0",
+      "range": {
+        "startLine": 232,
+        "startChar": 46,
+        "endLine": 232,
+        "endChar": 59
+      },
+      "revId": "e4628534e617780f21b2b690227d04603b2f8160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
