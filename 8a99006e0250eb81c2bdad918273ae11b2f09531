@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "0991b8c3_9fe6ab32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T03:33:52Z",
+      "side": 1,
+      "message": "Hmm... I guess no. Before we get any output from iw, we are just not able to determine it is ready or not. A solution would be starting iw in the beginning of the test and wait for at least a scan event before we do any AP/DUT setup, but also not that makes sense.",
+      "parentUuid": "f39b0aa8_5999de98",
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e11cfab_66728210",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 3
@@ -73,6 +91,30 @@
       "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19584102_246d7d17",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T03:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e11cfab_66728210",
+      "range": {
+        "startLine": 16,
+        "startChar": 34,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "a6c2f5e5_1ebb2467",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T03:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7909e621_dda55f12",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e7591ef_f0550476",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 3
@@ -113,6 +179,24 @@
       "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a2f53c_411053cf",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T03:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7591ef_f0550476",
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +220,30 @@
       "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3917ae_aa9e521c",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-24T03:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a7306_d2ab55a0",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 82
+      },
+      "revId": "8a99006e0250eb81c2bdad918273ae11b2f09531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
