@@ -16,6 +16,23 @@
       "revId": "5430208541aa09f4f95ed327d3e8b41d05f669e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "433cf803_30592912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-24T04:29:55Z",
+      "side": 1,
+      "message": "The interface is much better now. Thanks Jun\u0027s input.",
+      "revId": "5430208541aa09f4f95ed327d3e8b41d05f669e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
