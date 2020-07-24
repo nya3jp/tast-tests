@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/media/caps"
@@ -22,6 +23,7 @@ func init() {
 		// replace caps.BuiltinCamera with caps.BuiltinOrVividCamera.
 		// Same for other HAL3* tests.
 		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
+		Timeout:      4 * time.Minute,
 	})
 }
 
