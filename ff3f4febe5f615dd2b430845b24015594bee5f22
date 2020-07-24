@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "e8e5c671_be379ab3",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "I moved it to line 407 which is next to PushFile, GetFile. Line 520 is about running command in container. Please let me if I misunderstood you.",
+      "parentUuid": "7413492e_0e2efbbb",
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "441c7245_6c81d2c0",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "I changed the method name to CheckFilesExistInDir.\nI used a map to check whether a file exists in a file list. If I add HasFile method, I\u0027ll need to create a map every time calling this method. So I just check inside CheckFilesExistInDir. Does it make sense?",
+      "parentUuid": "f90190a8_2462f73d",
+      "range": {
+        "startLine": 714,
+        "startChar": 20,
+        "endLine": 714,
+        "endChar": 40
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c1285cb_b39c159e",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 26
@@ -53,6 +95,30 @@
       "writtenOn": "2020-07-23T17:28:11Z",
       "side": 1,
       "message": "it\u0027s not correct way to check whether file exist or not.\n\nExample:\n\nfileList \u003d \"aaaaaaaa/bbbbbb, cccccccc/xxxxxxx\"\nfile \u003d \"a\"\n\nyour check will say us that file \"a\" exists, but it does not",
+      "range": {
+        "startLine": 723,
+        "startChar": 5,
+        "endLine": 723,
+        "endChar": 38
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54155023_09c9e261",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Tried with a map.",
+      "parentUuid": "5c1285cb_b39c159e",
       "range": {
         "startLine": 723,
         "startChar": 5,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "228f2016_822ca40b",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100c5aa5_95ab4a07",
+      "range": {
+        "startLine": 730,
+        "startChar": 77,
+        "endLine": 730,
+        "endChar": 78
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf65f79a_43c929e3",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 26
@@ -108,6 +198,30 @@
       "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e670f93e_4617f816",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T00:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf65f79a_43c929e3",
+      "range": {
+        "startLine": 731,
+        "startChar": 20,
+        "endLine": 731,
+        "endChar": 28
+      },
+      "revId": "ff3f4febe5f615dd2b430845b24015594bee5f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
