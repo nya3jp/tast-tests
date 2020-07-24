@@ -68,6 +68,24 @@
       "revId": "afa48db5cc4bfb003d52b15a9d533e136a001bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c92e47b5_4b579869",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-24T06:23:12Z",
+      "side": 1,
+      "message": "LGTM. Thanks for the change.",
+      "parentUuid": "479bf725_5bc293cd",
+      "revId": "afa48db5cc4bfb003d52b15a9d533e136a001bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
