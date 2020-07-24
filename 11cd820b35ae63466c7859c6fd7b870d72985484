@@ -87,6 +87,24 @@
       "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20c980a_a982a0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-24T02:15:47Z",
+      "side": 1,
+      "message": "vim is not pre-installed and is a relatively small package.",
+      "parentUuid": "163f2518_b08af0a1",
+      "revId": "11cd820b35ae63466c7859c6fd7b870d72985484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
