@@ -50,6 +50,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217633be_fb95e7e7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-25T00:27:41Z",
+      "side": 1,
+      "message": "Maybe we can make Disconnect() return the SSID\u0026BSSID of the currentService it was connected too. This way we can check if it disconnected from the expected connection.\n\nAlso, I think CleanDisconnectFromSSID(ctx, ssid) is a good idea. However, it would fail if the DUT roamed to another ssid due to a scan.",
+      "parentUuid": "aa725666_289e30a5",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
