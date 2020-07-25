@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71df04be_cf396fdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-25T01:12:06Z",
+      "side": 1,
+      "message": "FYI: I reverted back to doing SDK version checks since the previous approach was causing flakiness in P tests. I\u0027m following the pattern discussed before for SetWindowState where activity.go is the one responsible for checking the sdk version and using ash for R.\n\nSDK checks for MoveWindow and ResizeWindow still need to be moved to activity.go so this is not yet ready to merge.",
+      "revId": "ae969fdcef2a36910b77f91762fe3606690762e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
