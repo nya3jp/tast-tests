@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b7c8b1_2baf757f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-25T00:49:44Z",
+      "side": 1,
+      "message": "Don\u0027t we need to use \u0027Pre: arc.Booted()\u0027 here? Otherwise, I guess this test might check the data directory that is not populated at all.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "60a7280b875fcd419ed3f9b70c162ca7cb1803dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab015dc9_8bd4d9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-25T00:49:44Z",
+      "side": 1,
+      "message": "This CL uses SELinux, Selinux, and SeLinux. Can you pick only one of them, maybe SELinux? (here and elsewhere)",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "60a7280b875fcd419ed3f9b70c162ca7cb1803dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8965b6_60a122eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-25T00:49:44Z",
+      "side": 1,
+      "message": "Can we use a character other than / as a separator? Then you don\u0027t have to escape each / character.\n\ne.g. \u0027s|/data|/home/.../data|g\u0027",
+      "revId": "60a7280b875fcd419ed3f9b70c162ca7cb1803dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285c9925_4c85dc2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-25T00:49:44Z",
+      "side": 1,
+      "message": "remove or uncomment?",
+      "revId": "60a7280b875fcd419ed3f9b70c162ca7cb1803dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
