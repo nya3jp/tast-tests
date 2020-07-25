@@ -7,12 +7,14 @@ package filesapp
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/input"
 )
 
 // DownloadPath is the location of Downloads for the user.
@@ -237,5 +239,90 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 		}
 	}
 
+	return nil
+}
+
+// OpenPath opens a folder.
+// Parameter path should be a path to the folder, e.g, Downloads > testfolder1 > subfolder > ...
+func (f *FilesApp) OpenPath(ctx context.Context, title string, path ...string) error {
+	if len(path) < 1 {
+		return errors.New("failed to verify the folder, should contain at least one folder, got 0")
+	}
+	// Open the directory in the navigation tree.
+	if err := f.OpenDir(ctx, path[0], title); err != nil {
+		return errors.Wrap(err, "failed to open Linux files")
+	}
+
+	// Open folders in the path.
+	for _, folder := range path[1:] {
+		if err := f.OpenFile(ctx, folder); err != nil {
+			return errors.Wrapf(err, "failed to open folder %s", folder)
+		}
+	}
+	return nil
+}
+
+// CheckFileDoesNotExist checks a file does not exist in a path.
+// Parameter path should be a path to the file, e.g, Downloads > testfolder1 > subfolder > ...
+// Return error if any occurs or the file exists in Linux files.
+func (f *FilesApp) CheckFileDoesNotExist(ctx context.Context, title, fileName string, path ...string) error {
+	// Open the directory in the navigation tree.
+	if err := f.OpenPath(ctx, title, path...); err != nil {
+		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
+	}
+
+	// Click Refresh.
+	if err := f.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+		return errors.Wrapf(err, "failed to click button Refresh on Files app %s ", fileName)
+	}
+
+	// Check the file has gone.
+	params := ui.FindParams{
+		Name: fileName,
+		Role: ui.RoleTypeStaticText,
+	}
+	if err := f.Root.WaitUntilDescendantGone(ctx, params, uiTimeout); err != nil {
+		return errors.Wrapf(err, "file %s still exists", fileName)
+	}
+	return nil
+}
+
+// RenameFile renames a file in a path.
+// Parameter path should be a path to the file, e.g, Downloads > testfolder1 > subfolder > ...
+func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName string, path ...string) error {
+	// Open the directory in the navigation tree.
+	if err := f.OpenPath(ctx, title, path...); err != nil {
+		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
+	}
+
+	// Right click and select rename.
+	if err := f.SelectContextMenu(ctx, oldName, Rename); err != nil {
+		return errors.Wrapf(err, "failed to select Rename in context menu for file %s in Linux files", oldName)
+	}
+
+	// Wait for rename text field.
+	params := ui.FindParams{
+		Role:  ui.RoleTypeTextField,
+		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeFocused: true},
+	}
+	if err := f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
+		return errors.Wrap(err, "failed finding rename input text field")
+	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	// Type the new name.
+	if err := keyboard.Type(ctx, newName); err != nil {
+		return errors.Wrapf(err, "failed to rename the file %s", oldName)
+	}
+
+	// Press Enter.
+	if err := keyboard.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrapf(err, "failed validating the new name of file %s: ", newName)
+	}
 	return nil
 }
