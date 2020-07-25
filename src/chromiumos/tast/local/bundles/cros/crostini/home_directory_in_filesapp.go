@@ -10,15 +10,12 @@ import (
 
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/linuxfiles"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-const (
-	filename        = "test.txt"
-	linuxfiles      = "Linux files"
-	filesLinuxfiles = "Files - " + linuxfiles
-)
+const filename = "test.txt"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -62,7 +59,7 @@ func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
 	}
 	defer fa.Root.Release(ctx)
 	// Check whether "Linux files" is listed through opening it.
-	if err = fa.OpenDir(ctx, linuxfiles, filesLinuxfiles); err != nil {
+	if err = fa.OpenDir(ctx, linuxfiles.LinuxFiles, linuxfiles.FilesLinuxFiles); err != nil {
 		s.Fatal("Failed to open Linux files: ", err)
 	}
 
@@ -71,7 +68,7 @@ func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create file in the container: ", err)
 	}
 	// Open "Linux files" to refresh.
-	if err = fa.OpenDir(ctx, linuxfiles, filesLinuxfiles); err != nil {
+	if err = fa.OpenDir(ctx, linuxfiles.LinuxFiles, linuxfiles.FilesLinuxFiless); err != nil {
 		s.Fatal("Failed to open Linux files after creating files inside container: ", err)
 	}
 	// Check the newly created file is listed in Linux files.
