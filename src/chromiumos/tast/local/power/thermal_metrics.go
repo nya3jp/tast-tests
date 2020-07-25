@@ -17,8 +17,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// listSysfsThermalSensors lists names and paths of thermal sensors which can be read through sysfs.
-func listSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
+// ListSysfsThermalSensors lists names and paths of thermal sensors which can be read through sysfs.
+func ListSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
 	// TODO(springerm): Remove ContextLogf()s after checking this function works on all platforms
 	thermalSensors := make(map[string]string)
 	const sysfsThermalPath = "/sys/class/thermal"
@@ -82,7 +82,7 @@ func NewSysfsThermalMetrics() *SysfsThermalMetrics {
 func (b *SysfsThermalMetrics) Setup(ctx context.Context, prefix string) error {
 	b.metrics = []ThermalMetric{}
 
-	thermalSensors, err := listSysfsThermalSensors(ctx)
+	thermalSensors, err := ListSysfsThermalSensors(ctx)
 	if err != nil {
 		return err
 	}
