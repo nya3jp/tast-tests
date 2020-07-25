@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "93d5c613_da92f289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-25T01:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e46daad3_26bd82e4",
+      "range": {
+        "startLine": 127,
+        "startChar": 34,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "d64b5b99d86748a5a232b3c43910ad0607cc8a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24376ef1_6ebd1c91",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiagameplaycuj.go",
         "patchSetId": 5
@@ -56,6 +80,24 @@
       "revId": "d64b5b99d86748a5a232b3c43910ad0607cc8a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed20403_a87871a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiagameplaycuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-25T01:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24376ef1_6ebd1c91",
+      "revId": "d64b5b99d86748a5a232b3c43910ad0607cc8a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
