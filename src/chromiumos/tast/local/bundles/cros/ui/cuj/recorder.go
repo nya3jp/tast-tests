@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -120,7 +119,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("Memory"),
-		power.NewSysfsThermalMetrics(),
+		newThermalDataSource(ctx),
 		memDiff,
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
