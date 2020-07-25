@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0497c3b2_01393967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-25T01:29:47Z",
+      "side": 1,
+      "message": "LGTM. I believe you will have to wait for my fix to be merged (https://chromium-review.googlesource.com/c/chromium/src/+/2310773). That will take a bit longer. Merged into chromium repo, and then need to wait for chromium uprev.\nI\u0027ll mark CR+2 when it\u0027s ready.",
+      "revId": "52c0a32d0bb760abfabd95d54bd17d05fc6908d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
