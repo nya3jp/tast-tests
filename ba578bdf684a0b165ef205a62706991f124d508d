@@ -90,6 +90,29 @@
       "revId": "ba578bdf684a0b165ef205a62706991f124d508d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc87ef9_e90c36c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-26T23:56:20Z",
+      "side": 1,
+      "message": "Optional: use testing.Poll instead?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "ba578bdf684a0b165ef205a62706991f124d508d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
