@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "632864e4_8c04e1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T23:06:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93ad7b94_34c60b11",
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cc0e1f1_70c8e3df",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -413,6 +431,30 @@
     },
     {
       "key": {
+        "uuid": "211ffd05_3622a109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T23:06:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "466fefa0_29c130a2",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bc310b7_84b56ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -442,6 +484,24 @@
       "side": 1,
       "message": "If one of the regexp didn\u0027t match a file, then the test would fail without removing the other files. \n\nI added a check/delete for the files in the case of failure. Otherwise, I can change:\ns.Fatal(\"Couldn\u0027t find expected files: \", err)\nto\ns.Error(\"Couldn\u0027t find expected files: \", err)\n\nWDYT?",
       "parentUuid": "7bc310b7_84b56ab9",
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d406e36_02961c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T23:06:37Z",
+      "side": 1,
+      "message": "Gotcha. I think it would be cleaner to defer RemoveAllFiles outside the error block. This removes duplicated code, allows you to insert other Fatals later without breaking anything, and avoids having nested scopes of \"err\".\n\nGenerally speaking, it is good practice to defer cleanup immediately after the creation of whatever needs cleaning.\n\n    files, err :\u003d crash.WaitForCrashFile(ctx, []string{crash.SystemCrashDir}, nil, expectedRegexes)\n    defer func() {\n        if err :\u003d crash.RemoveAllFiles(ctx, files); err !\u003d nil {\n            s.Error(\"Couldn\u0027t clean up files: \", err)\n        }\n    }()\n    if err !\u003d nil {\n        s.Fatal(\"Couldn\u0027t find expected files: \", err)",
+      "parentUuid": "fb9c914c_6a2d9e4c",
       "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

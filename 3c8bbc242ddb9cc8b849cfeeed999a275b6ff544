@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0003fa3_bd8dbad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T23:06:37Z",
+      "side": 1,
+      "message": "LGTM after my one remaining comment of changing file cleanup to a defer.",
+      "revId": "3c8bbc242ddb9cc8b849cfeeed999a275b6ff544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
