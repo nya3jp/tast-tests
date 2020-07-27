@@ -113,6 +113,30 @@
       "revId": "ba578bdf684a0b165ef205a62706991f124d508d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca212df3_81e7d039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-27T16:22:55Z",
+      "side": 1,
+      "message": "thanks, that comes out a bit more compact.  In the end I kept the sleep in the poll body, as without it you are pretty much guaranteed to fail in the first iteration, which adds noise to the log.",
+      "parentUuid": "dcc87ef9_e90c36c6",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "ba578bdf684a0b165ef205a62706991f124d508d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
