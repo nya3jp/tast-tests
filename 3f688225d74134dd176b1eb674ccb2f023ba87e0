@@ -22,6 +22,30 @@
       "revId": "3f688225d74134dd176b1eb674ccb2f023ba87e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7ab25e_6ad944ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-27T20:07:21Z",
+      "side": 1,
+      "message": "My understanding is that \"informational\" is a sub-attribute of \"group:mainline\".\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "parentUuid": "719fbb56_43c7f4bd",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "3f688225d74134dd176b1eb674ccb2f023ba87e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
