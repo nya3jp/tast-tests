@@ -68,6 +68,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4f30b7_0f64fa64",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-27T02:49:08Z",
+      "side": 1,
+      "message": "In my mind, we shall have an inverse method of tf.ConnectWifiAP(), which disconnect the current service and remove it. Of course we shall check if the current service to disconnect has the expected SSID and other property specified in the APIface object.\n\nFor roaming case, as the SSID is the same, so ClearDisconnectFromSSID() should be fine. The scene that the active service\u0027s SSID is different to what tf.Connect() specified could be the original service is disconnected for some reason and shill picks another connectable service to use.\n\nFor disconnect methods, I would suggest:\n\n// DisconnectWifi asks the DUT to disconnect from current WiFi service.\n// It returns the service path it is disconnected.\nfunc (tf *TestFixture) DisconnectWifi(ctx context.Context) (string, error)\n\n// DisconnectWifiService asks the DUT to disconnect from specified WiFi service and remove it.\n// It is the inverse method of tf.Connect().\nfunc (tf *TestFixture) DisconnectWifiService(ctx context.Context, servicePath string) error\n\nWith the method, tf.ConnectWifiAP and its cleanup method can be:\n\n\tif connResp, err :\u003d tf.ConnectWifiAP(ctx, ap); err !\u003d nil {\n\t\ts.Fatal(\"Failed to connect to WiFi: \", err)\n\t}\n\tdefer func(ctx context.Context) {\n\t\tif err :\u003d tf.DisconnectWifiService(ctx, connResp.ServicePath); err !\u003d nil {\n\t\t\ts.Error(\"Failed to disconnect WiFi: \", err)\n\t\t}\n\t}(ctx)",
+      "parentUuid": "217633be_fb95e7e7",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
