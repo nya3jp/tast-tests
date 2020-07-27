@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46cc460a_7a873838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160144
+      },
+      "writtenOn": "2020-07-27T22:55:43Z",
+      "side": 1,
+      "message": "It looks like this CL is causing this build failure: \n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1110128\n\nPlease take a look. ",
+      "revId": "b45c0946a393bd514f4b0104a4e4724a93161493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
