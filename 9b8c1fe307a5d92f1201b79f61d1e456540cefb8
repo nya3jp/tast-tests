@@ -16,6 +16,206 @@
       "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58c73f43_66a46cf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "The code does not build in the current state. Can you please check that you have uploaded the correct code?",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "183c15d2_34d7aa52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "nit: maybe 15 seconds for slower devices",
+      "range": {
+        "startLine": 57,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b6e1e09_7af58377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "nit const fileName \u003d \"testfile.txt\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a32926f_b624d0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "Don\u0027t you need to wait until the file is present in the Files app like below?",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00073621_49226f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "nit: maybe create a subtest for each case so it\u0027s easier to investigate failures\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/run.go",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a80151_92aaad8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "minor nit: also move creating the file into this function",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945d950b_028c6ff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 106,
+        "startChar": 20,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f1f5c9_bd0e1fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f82f95f_102485cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "minor nit: also move creating the file into this function",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05e1a5b_4c041979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T14:07:39Z",
+      "side": 1,
+      "message": "Where is this function defined?",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 44
+      },
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
