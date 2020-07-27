@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f1f632ce_d31b2677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-27T13:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e414a497_28524e59",
+      "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "028ec03b_7732a38e",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 6
@@ -50,6 +68,24 @@
       "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d65d0e_11aa0c5f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-27T13:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028ec03b_7732a38e",
+      "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
