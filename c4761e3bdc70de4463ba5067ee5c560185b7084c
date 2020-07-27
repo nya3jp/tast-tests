@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1793ff79_9d798f5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:36:23Z",
+      "side": 1,
+      "message": "Test content LGTM, leaving tast/go-specific comments to those who\u0027re more familiar than me.",
+      "revId": "c4761e3bdc70de4463ba5067ee5c560185b7084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15847c3a_c1e11c78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:36:23Z",
+      "side": 1,
+      "message": "LinuxFiles?",
+      "revId": "c4761e3bdc70de4463ba5067ee5c560185b7084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
