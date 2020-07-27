@@ -1,0 +1,15 @@
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+<resources>
+    <!--  Title of Main Activity [CHAR LIMIT=32] -->
+    <string name="app_name">ArcAudioTest</string>
+    <!--  Title of  TestOutputActivity [CHAR LIMIT=32] -->
+    <string name="title_activity_test_output">Playback</string>
+    <!--  Title of  TestInputActivity [CHAR LIMIT=32] -->
+    <string name="title_activity_test_input">Recording</string>
+    <!--  Title of  TestAECEffectActivity [CHAR LIMIT=32] -->
+    <string name="title_activity_test_aec">Recording With AEC</string>
+</resources>

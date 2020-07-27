@@ -12,7 +12,6 @@ import (
 // tests.
 func TestMetrics() []perf.TimelineDatasource {
 	return []perf.TimelineDatasource{
-		NewBatteryMetrics(2.0),
 		NewRAPLMetrics(),
 		NewRAPLPowerMetrics(),
 		NewSysfsBatteryMetrics(),

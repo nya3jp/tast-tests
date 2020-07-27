@@ -48,7 +48,8 @@ func getLastLine(s string) string {
 // UtilityCryptohomeBinary wraps and the functions of CryptohomeBinary and parses the outputs to
 // structured data.
 type UtilityCryptohomeBinary struct {
-	binary *CryptohomeBinary
+	binary               *CryptohomeBinary
+	cryptohomePathBinary *CryptohomePathBinary
 	// attestationAsyncMode enables the asynchronous communication between cryptohome and attestation sevice.
 	// Note that from the CryptohomeBinary, the command is always blocking.
 	attestationAsyncMode bool
@@ -60,7 +61,11 @@ func NewUtilityCryptohomeBinary(r CmdRunner) (*UtilityCryptohomeBinary, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &UtilityCryptohomeBinary{binary, true}, nil
+	cryptohomePathBinary, err := NewCryptohomePathBinary(r)
+	if err != nil {
+		return nil, err
+	}
+	return &UtilityCryptohomeBinary{binary, cryptohomePathBinary, true}, nil
 }
 
 // GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
@@ -928,4 +933,15 @@ func (u *UtilityCryptohomeBinary) GetAccountDiskUsage(ctx context.Context, usern
 
 	testing.ContextLogf(ctx, "Unexpected GetAccountDiskUsage output, got %q", msg)
 	return -1, errors.New("failed to parse GetAccountDiskUsage output")
+}
+
+// GetHomeUserPath retrieves the user specified by username's user home path.
+func (u *UtilityCryptohomeBinary) GetHomeUserPath(ctx context.Context, username string) (string, error) {
+	binaryMsg, err := u.cryptohomePathBinary.UserPath(ctx, username)
+	msg := string(binaryMsg)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
+		return "", errors.Wrap(err, "failure to call cryptohome-path user")
+	}
+	return strings.TrimSpace(msg), nil
 }

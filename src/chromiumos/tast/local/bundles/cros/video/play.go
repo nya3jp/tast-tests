@@ -198,6 +198,13 @@ func init() {
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
+		}, {
+			Name:              "vp9_2_hw_alt",
+			Val:               playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.vp9.2.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
+			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},
 	})
 }

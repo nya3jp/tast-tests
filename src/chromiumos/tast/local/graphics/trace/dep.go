@@ -8,11 +8,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// modelWhitelist is a list of model that is targeted to be able to reliably work in the lab for testing.
-var modelWhitelist = []string{"atlas", "eve", "drallion", "nocturne", "lulu"}
+// modelAllowlist is a list of model that is targeted to be able to reliably work in the lab for testing.
+var modelAllowlist = []string{"atlas", "eve", "drallion", "nocturne", "lulu"}
 
 // HwDepsStable is hardwareDeps condition that stable to run trace tests.
-var HwDepsStable = hwdep.D(hwdep.Model(modelWhitelist...))
+var HwDepsStable = hwdep.D(hwdep.Model(modelAllowlist...))
 
 // HwDepsUnstable is hardwareDeps condition that unstable to run trace tests.
-var HwDepsUnstable = hwdep.D(hwdep.SkipOnModel(modelWhitelist...))
+var HwDepsUnstable = hwdep.D(hwdep.SkipOnModel(modelAllowlist...))

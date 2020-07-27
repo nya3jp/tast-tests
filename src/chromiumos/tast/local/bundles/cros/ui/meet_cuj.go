@@ -180,7 +180,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	pv := perf.NewValues()
-	if err := recorder.Run(ctx, tconn, func() error {
+	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
 		if err := askToJoin.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
 		}

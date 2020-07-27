@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 const defaultTimeout = 15 * time.Second
@@ -52,7 +53,12 @@ func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 		return errors.Wrap(err, "failed to wait for launcher searchbox")
 	}
 	defer searchBox.Release(ctx)
-	if err := searchBox.LeftClick(ctx); err != nil {
+
+	condition := func(ctx context.Context) (bool, error) {
+		return ui.Exists(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"})
+	}
+	opts := testing.PollOptions{Timeout: defaultTimeout, Interval: 500 * time.Millisecond}
+	if err := searchBox.LeftClickUntil(ctx, condition, &opts); err != nil {
 		return errors.Wrap(err, "failed to click launcher searchbox")
 	}
 

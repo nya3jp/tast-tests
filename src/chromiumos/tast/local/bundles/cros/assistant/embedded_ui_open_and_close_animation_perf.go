@@ -68,7 +68,7 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 	if err := assistant.Enable(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Disable(ctx, tconn)
+	defer assistant.Cleanup(ctx, s, cr, tconn)
 
 	// Ensures the test only run under the clamshell mode.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
@@ -102,7 +102,7 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 		}
 
 		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
-			func() error {
+			func(ctx context.Context) error {
 				return openAndCloseEmbeddedUI(ctx, tconn)
 			},
 			"Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode",

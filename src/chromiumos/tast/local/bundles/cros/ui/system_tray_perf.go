@@ -73,7 +73,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 	defer collapseButton.Release(ctx)
 
 	// Toggle the collapsed state of the system tray.
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := collapseButton.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, "failed to click collapse button")
 		}

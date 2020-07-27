@@ -133,7 +133,8 @@ func APISendMessageToUI(ctx context.Context, s *testing.State) { // NOLINT
 
 	var vmResponse testMsg
 	if err := json.Unmarshal([]byte(reply.ResponseJsonMessage), &vmResponse); err != nil {
-		s.Fatal("Failed to unamrshal message: ", err)
+		s.Logf("Response JSON message: %q", reply.ResponseJsonMessage)
+		s.Fatal("Failed to unmarshal message: ", err)
 	}
 
 	if uiResponse != vmResponse {
