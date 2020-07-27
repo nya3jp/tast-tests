@@ -86,6 +86,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bb3d17_7e617e71",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-27T10:44:53Z",
+      "side": 1,
+      "message": "I have this pattern applied in the latest patch set and keep both CleanDisconnect and Disconnect so that DisconnectWifi and DisconnectWifiService will not have different behavior on cleaning profile.\n\nIt is kind of too verbose to me that every tests should catch the response of Connect and send it into Disconnect. WDYT?\n\nAlso, we don\u0027t yet have any caller of DisconnectWifi() so I\u0027m not sure if it will be useful to return the servicePath gets disconnected. I\u0027ll take a look and maybe rebase onto the Roam* tests.",
+      "parentUuid": "5e4f30b7_0f64fa64",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
