@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24321fbe_23f7bdbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T14:21:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "08f217be1ba205b9633a94d1de476562e9308d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1445ca5_527261b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T14:21:47Z",
+      "side": 1,
+      "message": "just curious: does it matter whether image is pre-built? Does crostini have access to GoogleDrive for other images?",
+      "range": {
+        "startLine": 30,
+        "startChar": 82,
+        "endLine": 30,
+        "endChar": 114
+      },
+      "revId": "08f217be1ba205b9633a94d1de476562e9308d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
