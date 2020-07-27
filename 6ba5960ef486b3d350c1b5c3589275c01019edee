@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "656ce34c_5b2f0997",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T07:11:39Z",
+      "side": 1,
+      "message": "Could you please add more details about why you are making the change?",
+      "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93b07137_1c72f1c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2020-07-27T07:02:56Z",
       "side": 1,
       "message": "Ah, some nits.",
+      "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c487e135_1c8a9691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T07:11:39Z",
+      "side": 1,
+      "message": ":LGTM % nits % nits from others",
       "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
