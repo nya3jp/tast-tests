@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69cb38d_8c07ac46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-27T21:36:13Z",
+      "side": 1,
+      "message": "Thanks, Arowa!",
+      "revId": "3fe48dd6bb6706acfb97f5e2c2cb888252980a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
