@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63d8884c_12ee0524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:42:06Z",
+      "side": 1,
+      "message": "Couple small comments otherwise test content LGTM, leaving tast/go-specific comments to those who\u0027re more familiar than me.",
+      "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e414a497_28524e59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:42:06Z",
+      "side": 1,
+      "message": "Nit: TODOs should have a username or a link to a tracking bug.",
+      "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028ec03b_7732a38e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:42:06Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t seem to match the code?",
+      "revId": "d747d3b010219e8a69feffc6d694a1458bba599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
