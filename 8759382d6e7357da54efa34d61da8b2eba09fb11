@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "64fc3a78_95c02639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:30:17Z",
+      "side": 1,
+      "message": "Can developer settings be enabled through adb or the android shell? Or even could when enable it when launching arc? If so other tests probably shouldn\u0027t enable developer mode in this way. I would say, for now this should probably stay local and another solution should be investigated if other tests only need developer mode and aren\u0027t testing ui.",
+      "parentUuid": "831b9802_32bd7d51",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1b7ab7_96951532",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 4
