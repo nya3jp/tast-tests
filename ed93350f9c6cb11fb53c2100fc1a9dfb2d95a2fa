@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "715e4214_10502b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-27T14:43:39Z",
+      "side": 1,
+      "message": "nit. IIRCC, this is not needed.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "ed93350f9c6cb11fb53c2100fc1a9dfb2d95a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fad7d5f_9d93725e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-27T14:43:39Z",
+      "side": 1,
+      "message": "cwd shouldn\u0027t be changed between line 72 and here. outputFile should be sufficient.",
+      "range": {
+        "startLine": 77,
+        "startChar": 49,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "ed93350f9c6cb11fb53c2100fc1a9dfb2d95a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bcfb87_6cd27c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-27T14:43:39Z",
+      "side": 1,
+      "message": "Personally, I recommend to start with \"Failed\"/\"Error\" to indicate the failure though tast framework doesn\u0027t enforce it. It helps the user to quickly identify the failures. It also consistent with all the other Fatal reasons in this test.\n\nHow about\ns.Fatal(\"Failed to get valid ps output: \", content)\n\nWDYT?",
+      "revId": "ed93350f9c6cb11fb53c2100fc1a9dfb2d95a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07da748_58527387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-07-27T14:43:39Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "ed93350f9c6cb11fb53c2100fc1a9dfb2d95a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
