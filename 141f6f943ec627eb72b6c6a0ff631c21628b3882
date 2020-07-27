@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1396e2b9_ca9e1a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-27T23:53:04Z",
+      "side": 1,
+      "message": "Verified bit is missing.",
+      "revId": "141f6f943ec627eb72b6c6a0ff631c21628b3882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
