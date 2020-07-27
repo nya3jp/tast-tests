@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cc0e1f1_70c8e3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-27T20:11:12Z",
+      "side": 1,
+      "message": "The mock consent / real consent split only exists to help us debug issues with metrics consent. For this test, it\u0027s probably not relevant. Feel free to remove the \"real_consent\" variant of the test and just use mock_consent unconditionally.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63241759_2ece7c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-27T20:11:12Z",
+      "side": 1,
+      "message": "This isn\u0027t actually necessary and the relevant parameter will soon be deleted; for now feel free to just pass \"nil\" instead to WaitForCrashFiles",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46830523_e2e0cfc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-07-27T20:11:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this error message is accurate; this stage isn\u0027t inducing the error, right?",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 48
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
