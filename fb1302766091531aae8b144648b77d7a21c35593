@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9316bec3_459e179b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f5c681_7e218f0c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a2c7402_27be0baa",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Hmm, graphics.DRM.* seems not using preconditions. Am I looking at a different file?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/drm.go\n\nPrecondition\u0027s point is to avoid lengthy setup process for every test. In this case setup is fairly fast (especially when the ui job is already stopped), so we don\u0027t need it.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions",
       "parentUuid": "01a21d8a_e9ffd5d2",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d591c67b_fcc78861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "graphics.DRM doesn\u0027t currently use preconditions; my thought was that since it has the same precondition as this one, I could (in a follow up) refactor graphics.DRM to use the same precondition as the one I defined here.\n\nBut since the setup is fast and simple, it sounds like it\u0027s not worth the effort. I\u0027ll remove the precondition from this file and just do the setup in the test body.\n\nOne side effect of not re-starting the ui job is there is now a delay when starting a test:\n\n2020/07/27 10:26:16 [09:26:14.375] Still waiting for important system services to be running\n2020/07/27 10:26:46 [09:26:44.375] Still waiting for important system services to be running\n2020/07/27 10:26:46 [09:26:44.387] Failed waiting for job debugd: context deadline exceeded; last error follows: status stop/waiting\n\nSeems debugd gets stopped/started along with ui, and (all?) tests wait to check if it\u0027s running in:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/ready/ready.go?l\u003d37\u0026rcl\u003d70dd57f5fe4507c0f9042793c2219f9ca601aca9",
+      "parentUuid": "147b3827_3b1bfe3e",
       "range": {
         "startLine": 19,
         "startChar": 17,
@@ -190,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "024548db_bc653faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "Ideally it would run on all devices, but I haven\u0027t tested in on ARM. I know there are some teams looking at running these tests on ARM, though.",
+      "parentUuid": "cf1098a9_228456fa",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f64954d_c99a9b21",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -201,6 +273,30 @@
       "writtenOn": "2020-07-02T10:16:29Z",
       "side": 1,
       "message": "We can set the per-param timeout to testing.Param.Timeout.",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f37c67a_69e8c97e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "This timeout is sort of arbitrary right now, but there\u0027s a good chance it could be tuned to be different per test.\n\nWhat\u0027s the recommended approach here? Should I just drop the per-test timeout and add it in when it\u0027s shown that it\u0027s needed?\n\nWhat\u0027s the interaction between the per-test timeout and the one set in line 80? It seems that the timeout for any given test case should be less than the overall timeout, and the sum of all the timeouts should not be less than the overall timeout.",
+      "parentUuid": "9f64954d_c99a9b21",
       "range": {
         "startLine": 74,
         "startChar": 4,
@@ -236,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "f048f663_f6f85515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fc91295_da4a2ab9",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9644225_04858b62",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -247,6 +367,30 @@
       "writtenOn": "2020-07-10T09:31:25Z",
       "side": 1,
       "message": "There is nothing we need to parse from the log files?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4f967d_ac5aafb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-07-27T16:48:56Z",
+      "side": 1,
+      "message": "For now I\u0027m not sure it\u0027s necessary. The return code will indicate if the test failed or not, and the logs can be inspected afterwards.\n\nWe can evaluate whether it\u0027s useful to parse a more detailed failure message out of the log and print that here instead.",
+      "parentUuid": "a9644225_04858b62",
       "range": {
         "startLine": 101,
         "startChar": 1,
