@@ -85,6 +85,24 @@
       "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4290e7a4_5a6f8a33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1315044
+      },
+      "writtenOn": "2020-07-27T23:16:28Z",
+      "side": 1,
+      "message": "Yes but it looks it still can achieve by \"immersive\" button. There is behavior definition on #53 for preN app. Thought it doesn\u0027t behavior correctly. (http://b/161704278)",
+      "parentUuid": "5d7f8784_9da898e5",
+      "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
