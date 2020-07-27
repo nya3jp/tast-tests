@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "4019d739_14862093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "This variable name is quite ambiguous. Can you please give it a name that more specifically describes its meaning?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c3a7c27_5fb437a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Would it be possible to set this up as a SoftwareDep? (Or HardwareDep, as the case may be?) That would allow you to skip the test rather than failing it.",
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cc0e1f1_70c8e3df",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -96,6 +136,52 @@
     },
     {
       "key": {
+        "uuid": "d92f6d51_1ee9aede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Consider setting this const up at the top with the other paths/regexes.",
+      "range": {
+        "startLine": 80,
+        "startChar": 27,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bc1493_f12e1f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Why is this called \"pat\"?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 4
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46830523_e2e0cfc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -140,6 +226,92 @@
       "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5095ec95_66e79ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Consider setting each of these three strings up at the top of the file below baseName.",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043b9dea_4bd51737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Do you need to run any verification on these files, or is it sufficient to see that WaitForCrashFiles returns?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc310b7_84b56ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Is there any chance that we\u0027ll need to remove these files, but fail fatally at L99? If so, then we should defer this cleanup step earlier, to ensure that it actually runs.",
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b7dfc5_cf271cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:36:44Z",
+      "side": 1,
+      "message": "Might want to make this an Error so that we don\u0027t ignore it later down the line.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 7
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
