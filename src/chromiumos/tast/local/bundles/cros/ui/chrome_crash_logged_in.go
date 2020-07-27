@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Checks that Chrome writes crash dumps while logged in",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "browser_breakpad",
 			Val: chromeCrashLoggedInParams{
@@ -37,6 +36,7 @@ func init() {
 				handler: chromecrash.Breakpad,
 				consent: crash.RealConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
 		}, {
 			Name: "browser_breakpad_mock_consent",
@@ -45,6 +45,7 @@ func init() {
 				handler: chromecrash.Breakpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
 			Name: "browser_crashpad",
@@ -53,6 +54,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "browser_crashpad_mock_consent",
@@ -61,6 +63,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad"},
 		}, {
 			Name: "gpu_process_breakpad",
@@ -77,6 +80,7 @@ func init() {
 				handler: chromecrash.Breakpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
 			Name: "gpu_process_crashpad",
@@ -85,6 +89,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "gpu_process_crashpad_mock_consent",
@@ -93,6 +98,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad"},
 		}, {
 			Name: "broker_breakpad_mock_consent",
@@ -101,6 +107,7 @@ func init() {
 				handler: chromecrash.Breakpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr: []string{"group:mainline", "informational"},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"breakpad", "gpu_sandboxing"},
 		}, {
@@ -110,6 +117,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr: []string{"group:mainline", "informational"},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"crashpad", "gpu_sandboxing"},
 		}},
