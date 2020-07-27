@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01428d92_29fa5e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T08:15:10Z",
+      "side": 1,
+      "message": "there is no need to sort already sorted list: [\"testfile1.txt\", \"testfile2.txt\", \"testfile3.txt\"].",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "8d1e45689da2f8e04761c758263ffdee20bd74e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c83aeb_b2fa11c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T08:15:10Z",
+      "side": 1,
+      "message": "There is no need to join on your own, Go can print array. Also please use Go style of errors with \"got\"/\"want\" words:\n\ns.Errorf(\"Found unexpected files in Linux files; got %q, want %q\", fileList, testFiles)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 199
+      },
+      "revId": "8d1e45689da2f8e04761c758263ffdee20bd74e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
