@@ -22,6 +22,30 @@
       "revId": "1edef8709b86a8d37be96da6e5885fc83811765f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c60132e_c757b6d7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_screen_backlight.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-07-27T04:46:51Z",
+      "side": 1,
+      "message": "This sysfs dir is created in backlight_class_init@kernel/drivers/video/backlight/backlight.c and it will be called when CONFIG_BACKLIGHT_CLASS_DEVICE kernel config is enabled. As far as I checked, devices without backlights also have this sysfs dir, but to make this test robust, I decided to ignore NotExist error here. Thanks!",
+      "parentUuid": "59a10607_b57dac96",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "1edef8709b86a8d37be96da6e5885fc83811765f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
