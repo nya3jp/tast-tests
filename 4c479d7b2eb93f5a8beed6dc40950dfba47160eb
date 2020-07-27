@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdbb0fe3_4db78518",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "We clear /home/chronos here. If we want to clear /home/.shadow according to the content of /home/chronos, we have to call cleanChromeShadowDir before this.",
+      "range": {
+        "startLine": 836,
+        "startChar": 2,
+        "endLine": 836,
+        "endChar": 26
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0aaf14_1ca69c30",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use \"continue\" to reduce the nest level of the normal code path.\n\n if !file.IsDir() {\n   continue\n }\n ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 871,
+        "startChar": 2,
+        "endLine": 871,
+        "endChar": 19
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28928d27_dde6d70a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "Let\u0027s log that we\u0027ve removed shadowName to make debugging easier.",
+      "range": {
+        "startLine": 878,
+        "startChar": 4,
+        "endLine": 878,
+        "endChar": 32
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19a568a_2e006c6f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "Can you use testexec.CommandContext instead? It has some addition to the standard os/exec suitable for Tast tests.",
+      "range": {
+        "startLine": 882,
+        "startChar": 10,
+        "endLine": 882,
+        "endChar": 22
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b502494d_d85ed44d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "This is a tricky condition... do you know when this happens even though we stopped the ui job in advance? What happens if we remove shadowName unconditionally?",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619aa907_a03aa07d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "Since we discard the output anyway, let\u0027s use cmd.Run() instead.",
+      "range": {
+        "startLine": 883,
+        "startChar": 20,
+        "endLine": 883,
+        "endChar": 34
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a504e618_0c0653a9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "Same here: let us log.",
+      "range": {
+        "startLine": 884,
+        "startChar": 4,
+        "endLine": 884,
+        "endChar": 19
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfda9887_2ebd6527",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T08:47:55Z",
+      "side": 1,
+      "message": "Let us also log that we did not delete the directory because it is in use.",
+      "range": {
+        "startLine": 886,
+        "startChar": 3,
+        "endLine": 886,
+        "endChar": 4
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
