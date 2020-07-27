@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "62ed6816_64c87fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-27T13:51:14Z",
+      "side": 1,
+      "message": "I\u0027m in favour of separating this CL and its user, because of go/small-cls. The method addition in this CL is in a library while the user is a test, so there\u0027s some differences there.\n\nIf it is still preferred that the 2 be together, I\u0027ll squash them.",
+      "parentUuid": "47e86a08_814841de",
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dabc06a1_e3d90a4f",
         "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
         "patchSetId": 1
@@ -98,6 +116,30 @@
       "writtenOn": "2020-07-23T17:38:21Z",
       "side": 1,
       "message": "I didn\u0027t see example of usages ReadSpace when password is empty.\n\nAlso, it\u0027s good to have methods callers in the same CL.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1f9973_42924b57",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-27T13:51:14Z",
+      "side": 1,
+      "message": "We don\u0027t have callers that use empty password for now.\n\nThe reason why the method caller (crrev/c//2299783) is in a different CL is because the CL is an entire new test, so I thought it makes sense to separate this CL out because we want small CLs.",
+      "parentUuid": "dabc06a1_e3d90a4f",
       "range": {
         "startLine": 64,
         "startChar": 0,
