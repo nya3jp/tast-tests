@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "0f167fb8_5334360e",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-27T20:42:55Z",
+      "side": 1,
+      "message": "This line: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/autotest/files/server/site_tests/firmware_FWtries/firmware_FWtries.py;l\u003d22?q\u003dfw_tries\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\n\nThere\u0027s no test for it in faft.  But I\u0027m saying if we wanted to have a test a tast that checks this behavior of chromeos, then raising an error here will prevent such a testcase.  This is more of a nit.",
+      "parentUuid": "d415c393_fbd8084b",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d3047a8_edaac9a8",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
