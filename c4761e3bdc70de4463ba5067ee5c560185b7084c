@@ -33,6 +33,24 @@
       "revId": "c4761e3bdc70de4463ba5067ee5c560185b7084c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14dd8524_ca87011d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-27T13:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15847c3a_c1e11c78",
+      "revId": "c4761e3bdc70de4463ba5067ee5c560185b7084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
