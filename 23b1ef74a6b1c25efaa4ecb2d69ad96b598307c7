@@ -51,6 +51,24 @@
       "revId": "23b1ef74a6b1c25efaa4ecb2d69ad96b598307c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb7aa36_38fe4f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-27T17:51:26Z",
+      "side": 1,
+      "message": "Just in case the reason is hard to find, I\u0027ve copied and paste it here:\n\"\"\"\nThe major implication is that, the initialization between the two version will be quite different, as one need to reset the TPM and get the ownership, while the other doesn\u0027t. Also, both test will be local.\n\nNote that I didn\u0027t combine the two test into one because the common logic is too sparsely distributed across the test. The initialization is different, the way DA counter is increased is differrent.\n\"\"\"",
+      "parentUuid": "3172c0f0_43f56563",
+      "revId": "23b1ef74a6b1c25efaa4ecb2d69ad96b598307c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
