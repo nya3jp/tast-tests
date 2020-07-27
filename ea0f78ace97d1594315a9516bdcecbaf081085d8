@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "48753504_60a1be17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:43:53Z",
+      "side": 1,
+      "message": "LGTM, but leaving more tast-/go- specific comments to those who know more than me.",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1837a011_2842d858",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
