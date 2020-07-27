@@ -140,6 +140,23 @@
       "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014593c5_373f3a64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-27T01:30:28Z",
+      "side": 1,
+      "message": "Victor, thank you for looking into this in more details, better safe than sorry. \nNya, Victor can you review the latest patch and let me know if this is more inline with\nwhat is needed?\nThe patch implements cleanup for /home/.shadow following the cleanup of /home/chronos.\n\nQuestion: should we had some logging to the test to \"capture\" the size\nof the file system /home/chronos and /home/.shadow at the begging and end of the test?\n \u003cmaybe this is already done by the tast framework?\u003e",
+      "revId": "bf31e0546ddd63c130ca1143c84bd83a37d97cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
