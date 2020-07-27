@@ -67,6 +67,24 @@
       "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d7f8784_9da898e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-27T23:10:53Z",
+      "side": 1,
+      "message": "Thanks for reviewing. To clarify, AFAIK, in R, both `pre-N` and `post-N with resazeableActivity\u003d\"false\"` are \"non-resizeable normal\", which cannot be in the restored state. e.g. We will hide maximized/restored button for non-resizeable activities.\n\nhttps://docs.google.com/presentation/d/1lIKgpIfvmXjIXa2JWNgi5HqQJEAJy57x5uudix9II4A/edit#slide\u003did.g5e43114c1d_0_146",
+      "parentUuid": "c5032bef_7264d434",
+      "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
