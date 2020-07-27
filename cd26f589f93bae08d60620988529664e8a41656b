@@ -16,6 +16,24 @@
       "revId": "cd26f589f93bae08d60620988529664e8a41656b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e91173e_6ba2b327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T20:24:44Z",
+      "side": 1,
+      "message": "The other test to perform is firmware.Config, for any board. I\u0027ve just done so, and thanks to your Cq-Depend line, it works. So, V+1.\n\nThanks for writing this CL. I\u0027ll update the fw-testing-configs README to reflect that it this sort of CL is currently needed, and I will look for a way to remove the need.",
+      "parentUuid": "e2078be2_b982f6e8",
+      "revId": "cd26f589f93bae08d60620988529664e8a41656b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
