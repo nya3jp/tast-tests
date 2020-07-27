@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4199e1c_f81d5d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-07-27T16:45:23Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to revert this.  Informational doesn\u0027t block anything, thus it\u0027s ok for the test to be flaky.  This is supposed to let you can see the actual results on all devices before making it a blocker.",
+      "revId": "512312d39374bb29107c825f505a14a6bcb16d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
