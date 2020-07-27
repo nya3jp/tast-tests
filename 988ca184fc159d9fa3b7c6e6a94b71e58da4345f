@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d60265f5_b627f64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-27T22:54:40Z",
+      "side": 1,
+      "message": "huh? You\u0027re comparing a value from the ServicePropertyState property with a key (ServicePropertyIsConnected). I believe this should always fail (State will never have a value of \"IsConnected\").\n\nYou probably should be checking ServicePropertyIsConnected at line 249, retrieving a Bool, not a String.\n\nOr, you could factor out connectService() and reuse parts of it, instead of reimplementing half of it.\n\nI\u0027m not sure which is better.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69747958_42a06777",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-27T22:54:40Z",
+      "side": 1,
+      "message": "\"that disappears\"?\n\nIt feels like the test naming could be improved too. This test (wifi.Roam) vs. the other one you\u0027re porting (wifi.RoamDbus) makes it sound like the only difference is something about DBus. In fact, the difference is that it\u0027s AP-initiated, by way of disappearing.\n\nMaybe we could change the name too, to \"RoamAPGone\" or something similar?",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e61238_bb8205f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-27T22:54:40Z",
+      "side": 1,
+      "message": "I\u0027d be happy enough to kill this test case, if we\u0027re ever looking at going on a diet.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
