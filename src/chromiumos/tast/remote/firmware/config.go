@@ -56,6 +56,7 @@ var configPlatforms = []string{
 	"cid",
 	"coral",
 	"cyan",
+	"dedede",
 	"dragonegg",
 	"drallion",
 	"edgar",
