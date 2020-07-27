@@ -13,12 +13,14 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -32,6 +34,9 @@ import (
 
 // The allowed packets loss percentage for the ping command.
 const pingLossThreshold float64 = 20
+
+// The allowed packets loss percentage for the arping command.
+const arpingLossThreshold float64 = 30
 
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
@@ -58,6 +63,9 @@ func TFCapture(b bool) TFOption {
 		tf.packetCapture = b
 	}
 }
+
+// TFServiceName is the service needed by TestFixture.
+const TFServiceName = "tast.cros.network.WifiService"
 
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
@@ -197,6 +205,11 @@ func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, co
 	return ctxutil.Shorten(ctx, 10*time.Second)
 }
 
+// CollectLogs downloads related log files to OutDir.
+func (tf *TestFixture) CollectLogs(ctx context.Context) error {
+	return tf.router.CollectLogs(ctx)
+}
+
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "tf.Close")
@@ -234,6 +247,15 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	}
 	// Do not close DUT, it'll be closed by the framework.
 	return firstErr
+}
+
+// Reinit reinitialize the TestFixture. This can be used in precondition or between
+// testcases to guarantee a cleaner state.
+func (tf *TestFixture) Reinit(ctx context.Context) error {
+	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to reinit DUT")
+	}
+	return nil
 }
 
 // getUniqueAPName returns an unique ID string for each AP as their name, so that related
@@ -451,6 +473,52 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 
 	if res.Loss > pingLossThreshold {
 		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	}
+
+	return nil
+}
+
+// ArpingFromDUT tests that DUT can send the broadcast packets to server.
+func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromDUT")
+	defer st.End()
+
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the client WiFi interface")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.dut.Conn())
+	res, err := runner.Arping(ctx, serverIP, iface, ops...)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
+	}
+
+	return nil
+}
+
+// ArpingFromServer tests that DUT can receive the broadcast packets from server.
+func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string, ops ...arping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.ArpingFromServer")
+	defer st.End()
+
+	addrs, err := tf.ClientIPv4Addrs(ctx)
+	if err != nil || len(addrs) == 0 {
+		return errors.Wrap(err, "failed to get the IP address")
+	}
+
+	runner := remotearping.NewRemoteRunner(tf.routerHost)
+	res, err := runner.Arping(ctx, addrs[0].String(), serverIface, ops...)
+	if err != nil {
+		return errors.Wrap(err, "arping failed")
+	}
+
+	if res.Loss > arpingLossThreshold {
+		return errors.Errorf("unexpected arping loss percentage: got %g%% want <= %g%%", res.Loss, arpingLossThreshold)
 	}
 
 	return nil

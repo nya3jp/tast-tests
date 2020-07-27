@@ -160,7 +160,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
+func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx context.Context) error) error {
 	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
 		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
 	}

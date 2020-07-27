@@ -433,7 +433,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.TestConn, act *arc.Acti
 	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
 
 	captionHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
-	bounds := coords.ConvertBoundsFromDpToPx(appWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := coords.ConvertBoundsFromDPToPX(appWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "ResizeWindow: The original window bound is %v, try to maximize it by drag inner hit-boxes", bounds)
 
 	// Waiting for hit-boxes UI ready.
@@ -595,7 +595,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.TestConn, act *arc.A
 			return errors.Wrap(err, "could not change the system shelf alignment")
 		}
 		// Convert two rectangle to same unit.
-		expectedShelfRectPX := coords.ConvertBoundsFromDpToPx(coords.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
+		expectedShelfRectPX := coords.ConvertBoundsFromDPToPX(coords.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
 		parsedShelfRectFromCallback, err := parseRectString(callbackMessage.WorkspaceInsetMsg.InsetBound, dispMode)
 		if err != nil {
 			return errors.Wrap(err, "failed to parse message")

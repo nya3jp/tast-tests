@@ -39,7 +39,7 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Disable(ctx, tconn)
+	defer assistant.Cleanup(ctx, s, cr, tconn)
 
 	// Run query to open the Settings window.
 	// assistant.SendTextQuery returns an error even when Settings launches successfully,

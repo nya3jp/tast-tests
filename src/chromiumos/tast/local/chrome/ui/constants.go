@@ -291,3 +291,22 @@ const (
 	EventTypeTreeChanged              EventType = "treeChanged"
 	EventTypeValueChanged             EventType = "valueChanged"
 )
+
+// CheckedState describes the checked state of a chrome.automation AutomationNode.
+type CheckedState string
+
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+const (
+	CheckedStateTrue  CheckedState = "true"
+	CheckedStateFalse CheckedState = "false"
+	CheckedStateMixed CheckedState = "mixed"
+)
+
+// RestrictionState describes the restriction state of a chrome.automation AutomationNode.
+type RestrictionState string
+
+// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+const (
+	RestrictionDisabled RestrictionState = "disabled"
+	RestrictionReadOnly RestrictionState = "readOnly"
+)

@@ -96,7 +96,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAny(tconn, func() error {
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAny(tconn, func(ctx context.Context) error {
 			// Create a shorter context to ensure the time to release the alt-key.
 			sctx, cancel := ctxutil.Shorten(ctx, 500*time.Millisecond)
 			defer cancel()

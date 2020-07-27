@@ -61,6 +61,12 @@ func LockCheckNetworkHook(ctx context.Context) (unlock func(), e error) {
 			return
 		}
 		defer func() {
+			// Update access and modification time, so
+			// check_ethernet.hook knows when we last released the
+			// lock.
+			if err = unix.Futimes(int(f.Fd()), nil); err != nil {
+				testing.ContextLogf(ctx, "Failed to update time %s: %v", checkNetworkLockPath, err)
+			}
 			if err = unix.Flock(int(f.Fd()), unix.LOCK_UN); err != nil {
 				testing.ContextLogf(ctx, "Failed to unlock %s: %v", checkNetworkLockPath, err)
 			}

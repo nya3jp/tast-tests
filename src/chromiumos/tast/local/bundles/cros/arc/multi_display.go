@@ -14,6 +14,8 @@ import (
 	"os"
 	"reflect"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -29,6 +31,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -43,12 +46,16 @@ const (
 	wmPkgMD = "org.chromium.arc.testapp.windowmanager24"
 	wmApkMD = "ArcWMTestApp_24.apk"
 
+	dispPkg = "org.chromium.arc.testapp.multidisplay"
+	dispApk = "ArcMultiDisplayTest.apk"
+
 	settingsPkgMD = "com.android.settings"
 	settingsActMD = ".Settings"
 
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+	resizeableConfigHandleActivity     = "org.chromium.arc.testapp.multidisplay.ResizeableActivity"
 )
 
 // Power state for displays.
@@ -63,7 +70,7 @@ const (
 	displayPowerInternalOnExternalOff displayPowerState = 3
 )
 
-type testFunc func(context.Context, *chrome.Chrome, *arc.ARC) error
+type testFunc func(context.Context, *testing.State, *chrome.Chrome, *arc.ARC) error
 type testEntry struct {
 	name string
 	fn   testFunc
@@ -80,7 +87,6 @@ var stableTestSet = []testEntry{
 	{"Remove and re-add displays", removeAddDisplay},
 }
 
-// TODO(b/159759425): Unify the stable/unstable test set once b/159759425 is resolved.
 var unstableTestSet = []testEntry{
 	// Based on http://b/129564108.
 	{"Launch activity on external display", launchActivityOnExternalDisplay},
@@ -88,6 +94,8 @@ var unstableTestSet = []testEntry{
 	{"Activity is visible when other is maximized", maximizeVisibility},
 	// Based on http://b/63773037 and http://b/140056612.
 	{"Relayout displays", relayoutDisplays},
+	// Based on http://b/130897153.
+	{"Remove and re-add displays", removeAddDisplay},
 	{"Drag a window between displays", dragWindowBetweenDisplays},
 }
 
@@ -127,6 +135,10 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
+	if err := a.Install(ctx, arc.APKPath(dispApk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -159,23 +171,21 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 	}
 
 	for idx, test := range testSet {
-		s.Logf("Running test %q", test.name)
-
-		// Log test result.
-		if err := test.fn(ctx, cr, a); err != nil {
+		if !runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
+			return test.fn(ctx, s, cr, a)
+		}) {
 			for _, info := range displayInfos {
 				path := fmt.Sprintf("%s/screenshot-multi-display-failed-test-%d-%q.png", s.OutDir(), idx, info.ID)
 				if err := screenshot.CaptureChromeForDisplay(ctx, cr, info.ID, path); err != nil {
 					s.Logf("Failed to capture screenshot for display ID %q: %v", info.ID, err)
 				}
 			}
-			s.Errorf("%q test failed: %v", test.name, err)
 		}
 	}
 }
 
 // launchActivityOnExternalDisplay launches the activity directly on the external display.
-func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -199,8 +209,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 		{"Launch resizeable activity on the external display", resizeableUnspecifiedActivityMD},
 		{"Launch unresizeable activity on the external display", nonResizeableUnspecifiedActivityMD},
 	} {
-		if err := func() error {
-			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
 			act, err := arc.NewActivity(a, wmPkgMD, test.actName)
 			if err != nil {
 				return err
@@ -213,15 +222,14 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 			defer act.Stop(ctx, tconn)
 
 			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
-		}(); err != nil {
-			return errors.Wrapf(err, "%q subtest failed", test.name)
-		}
+		})
 	}
+
 	return nil
 }
 
 // maximizeVisibility checks whether the window is visible on one display if another window is maximized on the other display.
-func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -298,7 +306,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		{"Maximize the activity on primary display", settingsAct, settingsPkgMD, wmPkgMD, wmWinInfo},
 		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsPkgMD, settingsWinInfo},
 	} {
-		if err := func() error {
+		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
 			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateMaximized); err != nil {
 				return err
 			}
@@ -311,16 +319,14 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 			}
 			// Reset maximized window to normal.
 			return ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateNormal)
-		}(); err != nil {
-			return errors.Wrapf(err, "subtest failed when: %q", test.name)
-		}
-
+		})
 	}
+
 	return nil
 }
 
 // relayoutDisplays checks whether the window moves position when relayout displays.
-func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -378,59 +384,55 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 		{"Windows are normal", ash.WindowStateNormal},
 		{"Windows are maximized", ash.WindowStateMaximized},
 	} {
-		testing.ContextLogf(ctx, "Setting windows to %q", test.windowState)
-
-		if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, test.windowState); err != nil {
-			return err
-		}
-		settingsWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
-		if err != nil {
-			return err
-		}
-
-		if err := ensureSetWindowState(ctx, tconn, wmPkgMD, test.windowState); err != nil {
-			return err
-		}
-		wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
-		if err != nil {
-			return err
-		}
-
-		// Relayout external display and make sure the windows will not move their positions or show black background.
-		for _, relayout := range []struct {
-			name   string
-			offset coords.Point
-		}{
-			{"Relayout external display to the left side of internal display", coords.NewPoint(-externalDisplayInfo.Bounds.Width, 0)},
-			{"Relayout external display to the right side of internal display", coords.NewPoint(internalDisplayInfo.Bounds.Width, 0)},
-			{"Relayout external display on top of internal display", coords.NewPoint(0, -externalDisplayInfo.Bounds.Height)},
-			{"Relayout external display on bottom of internal display", coords.NewPoint(0, internalDisplayInfo.Bounds.Height)},
-		} {
-			if err := func() error {
-				testing.ContextLogf(ctx, "Running %q", relayout.name)
-				p := display.DisplayProperties{BoundsOriginX: &relayout.offset.X, BoundsOriginY: &relayout.offset.Y}
-				if err := display.SetDisplayProperties(ctx, tconn, externalDisplayInfo.ID, p); err != nil {
-					return err
-				}
-				if err := ensureWindowStable(ctx, tconn, settingsPkgMD, settingsWindowInfo); err != nil {
-					return err
-				}
-				if err := ensureWindowStable(ctx, tconn, wmPkgMD, wmWindowInfo); err != nil {
-					return err
-				}
-				return ensureNoBlackBkg(ctx, cr, tconn)
-
-			}(); err != nil {
-				return errors.Wrapf(err, "subtest %q failed when %q", test.name, relayout.name)
+		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
+			if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, test.windowState); err != nil {
+				return err
 			}
-		}
+			settingsWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
+			if err != nil {
+				return err
+			}
+
+			if err := ensureSetWindowState(ctx, tconn, wmPkgMD, test.windowState); err != nil {
+				return err
+			}
+			wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+			if err != nil {
+				return err
+			}
+
+			// Relayout external display and make sure the windows will not move their positions or show black background.
+			for _, relayout := range []struct {
+				name   string
+				offset coords.Point
+			}{
+				{"Relayout external display to the left side of internal display", coords.NewPoint(-externalDisplayInfo.Bounds.Width, 0)},
+				{"Relayout external display to the right side of internal display", coords.NewPoint(internalDisplayInfo.Bounds.Width, 0)},
+				{"Relayout external display on top of internal display", coords.NewPoint(0, -externalDisplayInfo.Bounds.Height)},
+				{"Relayout external display on bottom of internal display", coords.NewPoint(0, internalDisplayInfo.Bounds.Height)},
+			} {
+				runOrFatal(ctx, s, relayout.name, func(ctx context.Context, s *testing.State) error {
+					p := display.DisplayProperties{BoundsOriginX: &relayout.offset.X, BoundsOriginY: &relayout.offset.Y}
+					if err := display.SetDisplayProperties(ctx, tconn, externalDisplayInfo.ID, p); err != nil {
+						return err
+					}
+					if err := ensureWindowStable(ctx, tconn, settingsPkgMD, settingsWindowInfo); err != nil {
+						return err
+					}
+					return ensureWindowStable(ctx, tconn, wmPkgMD, wmWindowInfo)
+				})
+			}
+
+			return nil
+		})
 	}
+
 	return nil
 }
 
 // removeAddDisplay checks whether the window moves to another display and shows inside of display.
 // After adding the display back without changing windows, it checks whether the window restores to the previous display.
-func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -498,7 +500,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 		return err
 	}
 
-	for _, removeAdd := range []struct {
+	type param struct {
 		name         string
 		power        displayPowerState
 		origDispInfo display.Info
@@ -506,13 +508,33 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 
 		moveAct     *arc.Activity
 		moveWinInfo *ash.Window
-	}{
-		// When removing internal display, the window on internal display will move to the external display.
-		{"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
-		// When removing external display, the window on external display will move to the internal display.
-		{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
-	} {
-		if err := func() error {
+	}
+	var prm []param
+	version, err := arc.SDKVersion()
+	if err != nil {
+		return err
+	}
+	if version >= arc.SDKR {
+		prm = []param{
+			// TODO(b/159759425): Disable as it causes Android system crash
+			// When removing internal display, the window on internal display will move to the external display.
+			// {"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
+			// TODO(b/161298024): Disable as it causes to change the android external display ID b/161298024
+			// When removing external display, the window on external display will move to the internal display.
+			// {"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
+		}
+		s.Logf("%q is skipped due to %s", "Remove and add internal display", "b/159759425")
+		s.Logf("%q is skipped due to %s", "Remove and add external display", "b/161298024")
+	} else {
+		prm = []param{
+			// When removing internal display, the window on internal display will move to the external display.
+			{"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
+			// When removing external display, the window on external display will move to the internal display.
+			{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
+		}
+	}
+	for _, removeAdd := range prm {
+		runOrFatal(ctx, s, removeAdd.name, func(ctx context.Context, s *testing.State) error {
 			// Remove one display and the window on the removed display should move to the other display.
 			if err := setDisplayPower(ctx, removeAdd.power); err != nil {
 				return err
@@ -565,15 +587,13 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 				return err
 			}
 			return ensureWinBoundsInDisplay(restoreWinBounds, removeAdd.origDispInfo.Bounds)
-		}(); err != nil {
-			return errors.Wrapf(err, "test removeAddDispaly failed when %q", removeAdd.name)
-		}
+		})
 	}
 	return nil
 }
 
 // dragWindowBetweenDisplays verifies the behavior of dragging an ARC window between displays.
-func dragWindowBetweenDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -612,84 +632,121 @@ func dragWindowBetweenDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 	defer m.Close()
 
 	for _, param := range []struct {
-		name     string
-		srcDisp  androidDisplayID
-		dstDisp  androidDisplayID
+		// Activity package and class.
+		pkg, activity string
+		// Initial state of the window being dragged.
 		winState ash.WindowStateType
-		activity string
+		// Expected config set to be changed.
+		wantCC []configChangeEvent
 	}{
-		{"move resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
-		{"move resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, resizeableUnspecifiedActivityMD},
-		{"move resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
-		{"move resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, resizeableUnspecifiedActivityMD},
-		{"move non-resizable normal window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable normal window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateNormal, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable maximized window internal to external", internalDisplayID, firstExternalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
-		{"move non-resizable maximized window external to internal", firstExternalDisplayID, internalDisplayID, ash.WindowStateMaximized, nonResizeableUnspecifiedActivityMD},
+		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateNormal, []configChangeEvent{{
+			handled: true,
+			density: true,
+		}}},
+		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateMaximized, []configChangeEvent{{
+			handled:            true,
+			density:            true,
+			screenSize:         true,
+			smallestScreenSize: true,
+			orientation:        true,
+		}}},
+		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateNormal, nil},
+		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
 	} {
-		testing.ContextLog(ctx, "Run subtest: ", param.name)
-		if err := func() error {
-			act, err := lunchActivity(ctx, tconn, a, wmPkgMD, param.activity, param.srcDisp)
-			if err != nil {
-				return err
-			}
-			defer act.close(ctx, tconn)
+		for _, dir := range []struct {
+			// Display where drag operation starts.
+			srcDisp androidDisplayID
+			// Display where drag operation ends.
+			dstDisp androidDisplayID
+		}{
+			{internalDisplayID, firstExternalDisplayID},
+			{firstExternalDisplayID, internalDisplayID},
+		} {
+			name := fmt.Sprintf(
+				"%s %s from %s to %s",
+				param.winState, simpleClassName(param.activity), dir.srcDisp.label(), dir.dstDisp.label())
+			runOrFatal(ctx, s, name, func(ctx context.Context, s *testing.State) error {
+				act, err := lunchActivity(ctx, tconn, a, param.pkg, param.activity, dir.srcDisp)
+				if err != nil {
+					return err
+				}
+				defer act.close(ctx, tconn)
 
-			if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
-				return err
-			}
+				if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+					return err
+				}
 
-			win, err := act.findWindow(ctx, tconn)
-			if err != nil {
-				return err
-			}
-
-			cursor := cursorOnDisplay{internalDisplayID}
-			defer cursor.moveTo(ctx, tconn, m, internalDisplayID, disp)
-			if err := cursor.moveTo(ctx, tconn, m, param.srcDisp, disp); err != nil {
-				return err
-			}
-
-			winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
-			if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
-				return err
-			}
-
-			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-				return err
-			}
-
-			if err := cursor.moveTo(ctx, tconn, m, param.dstDisp, disp); err != nil {
-				return err
-			}
-
-			dstDispBnds := disp.displayInfo(param.dstDisp).Bounds
-			dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
-			if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
-				return err
-			}
-
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-				return err
-			}
-
-			dstDispID := disp.displayInfo(param.dstDisp).ID
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				win, err := act.findWindow(ctx, tconn)
 				if err != nil {
 					return err
 				}
-				if win.DisplayID != dstDispID {
-					return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				return err
-			}
 
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "test dragWindowBetweenDisplays failed when %q", param.name)
+				cursor := cursorOnDisplay{internalDisplayID}
+				defer cursor.moveTo(ctx, tconn, m, internalDisplayID, disp)
+				if err := cursor.moveTo(ctx, tconn, m, dir.srcDisp, disp); err != nil {
+					return err
+				}
+
+				winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
+				if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
+					return err
+				}
+
+				if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+					return err
+				}
+
+				if err := cursor.moveTo(ctx, tconn, m, dir.dstDisp, disp); err != nil {
+					return err
+				}
+
+				dstDispBnds := disp.displayInfo(dir.dstDisp).Bounds
+				dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
+				if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
+					return err
+				}
+
+				if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+					return err
+				}
+
+				dstDispID := disp.displayInfo(dir.dstDisp).ID
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					win, err := act.findWindow(ctx, tconn)
+					if err != nil {
+						return err
+					}
+					if win.DisplayID != dstDispID {
+						return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+					}
+					return nil
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return err
+				}
+
+				if param.wantCC == nil {
+					// No cc to verify.
+					return nil
+				}
+
+				ccActs, err := queryConfigurationChanges(ctx, a)
+				if err != nil {
+					return err
+				}
+				if len(ccActs) > 1 {
+					return errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(ccActs))
+				}
+
+				var ccList []configChangeEvent
+				for _, c := range ccActs {
+					ccList = c
+				}
+				if !reflect.DeepEqual(ccList, param.wantCC) {
+					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
+				}
+
+				return nil
+			})
 		}
 	}
 
@@ -697,6 +754,75 @@ func dragWindowBetweenDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 }
 
 // Helper functions.
+
+// configChangeEvent is an entry of config change event.
+type configChangeEvent struct {
+	// True if config change is handled by Activity.
+	handled bool
+	// Config set.
+	screenSize, density, orientation, fontScale, smallestScreenSize bool
+}
+
+// URI for logged config changes.
+const configChangesURI = "content://org.chromium.arc.testapp.multidisplay/configChanges"
+
+// Parser for config changes.
+type configChangeParser struct {
+	pattern *regexp.Regexp
+}
+
+var ccParser = configChangeParser{regexp.MustCompile("Row: [0-9]+ activityId=([0-9]+), " +
+	"handled=(true|false), density=(true|false), " +
+	"fontScale=(true|false), orientation=(true|false), screenLayout=(?:true|false), " +
+	"screenSize=(true|false), smallestScreenSize=(true|false)")}
+
+// parse parses the output of `content query` command.
+func (parser *configChangeParser) parse(line string) (int32, configChangeEvent, error) {
+	s := parser.pattern.FindStringSubmatch(line)
+	if s == nil {
+		return 0, configChangeEvent{}, errors.Errorf("unexpected line format %q", line)
+	}
+
+	actID, err := strconv.ParseInt(s[1], 10, 32)
+	if err != nil {
+		return 0, configChangeEvent{}, err
+	}
+
+	var c configChangeEvent
+	for i, config := range []*bool{&c.handled, &c.density, &c.fontScale, &c.orientation, &c.screenSize, &c.smallestScreenSize} {
+		*config, err = strconv.ParseBool(s[i+2])
+		if err != nil {
+			return 0, configChangeEvent{}, err
+		}
+	}
+
+	return int32(actID), c, nil
+}
+
+// queryConfigurationChanges obtains the history of configuration change from test app.
+func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]configChangeEvent, error) {
+	bytes, err := a.Command(ctx, "content", "query", "--uri", configChangesURI).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	result := make(map[int32][]configChangeEvent)
+	lines := strings.Split(string(bytes), "\n")
+	for _, line := range lines {
+		if line == "" {
+			continue
+		}
+		// "No result found." taken from here: https://source.corp.google.com/android/frameworks/base/cmds/content/src/com/android/commands/content/Content.java;l=657
+		if line == "No result found." {
+			return make(map[int32][]configChangeEvent), nil
+		}
+		actID, c, err := ccParser.parse(line)
+		if err != nil {
+			return nil, err
+		}
+		result[actID] = append(result[actID], c)
+	}
+	return result, nil
+}
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
 func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName, dispID string) error {
@@ -1085,4 +1211,30 @@ func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestCon
 // string returns string representation of id.
 func (id androidDisplayID) string() string {
 	return fmt.Sprintf("%d", id)
+}
+
+// label returns display name of android ID.
+func (id androidDisplayID) label() string {
+	if id == internalDisplayID {
+		return "internal"
+	} else if id == firstExternalDisplayID {
+		return "external"
+	}
+	panic(fmt.Sprintf("invalid id %q", id))
+}
+
+var classNameReg = regexp.MustCompile("[^.]+$")
+
+// simpleClassName removes package from class name
+func simpleClassName(act string) string {
+	return classNameReg.FindString(act)
+}
+
+// runOrFatal runs body as subtest, then invokes s.Fatal if it returns an error
+func runOrFatal(ctx context.Context, s *testing.State, name string, body func(context.Context, *testing.State) error) bool {
+	return s.Run(ctx, name, func(ctx context.Context, s *testing.State) {
+		if err := body(ctx, s); err != nil {
+			s.Fatal("subtest failed: ", err)
+		}
+	})
 }

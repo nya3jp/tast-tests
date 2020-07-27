@@ -9,7 +9,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var chromePreWithVerboseConsent = chrome.NewPrecondition("verbose_logged_in", chrome.ExtraArgs(ChromeVerboseConsentFlags))
+
 // ChromePreWithVerboseConsent returns a precondition that will start chrome with the ChromeVerboseConsentFlags.
 func ChromePreWithVerboseConsent() testing.Precondition {
-	return chrome.NewPrecondition("verbose_logged_in", chrome.ExtraArgs(ChromeVerboseConsentFlags))
+	return chromePreWithVerboseConsent
 }

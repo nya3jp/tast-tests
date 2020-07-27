@@ -8,12 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -82,7 +81,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
 			s.Fatal("Failed to obtain the window list: ", err)
@@ -103,29 +102,15 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
-		testing.Sleep(ctx, time.Second*2)
-
-		return nil
-	},
-		"Ash.HotseatTransition.Drag.PresentationTime",
-		"Ash.HotseatTransition.Drag.PresentationTime.MaxLatency")
-	if err != nil {
-		s.Fatal("Failed to swipe or get histogram: ", err)
-	}
-
-	pv := perf.NewValues()
-	for _, h := range histograms {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
+			return errors.Wrap(err, "failed to wait")
 		}
 
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, mean)
-	}
+		return ash.SetOverviewModeAndWait(ctx, tconn, false)
+	},
+		"Ash.HotseatTransition.Drag.PresentationTime",
+		"Ash.HotseatTransition.Drag.PresentationTime.MaxLatency"),
+		perfutil.StoreLatency)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

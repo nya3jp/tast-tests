@@ -57,7 +57,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func() error {
+	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Snap the window to the left.
 		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventSnapLeft); err != nil {
 			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
