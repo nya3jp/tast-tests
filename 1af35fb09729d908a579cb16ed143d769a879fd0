@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1996426_8693c653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T21:01:47Z",
+      "side": 1,
+      "message": "nit: make this and the other string const.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8392358b_2d70a976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T21:01:47Z",
+      "side": 1,
+      "message": "super nit: I would end this file name with \".txt\" to keep it consistent with the other filename variable and remove the extension in the rename function or when passing it in.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9142af56_c771f40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T21:01:47Z",
+      "side": 1,
+      "message": "nit: this is slightly weird to read because you are using the variable newFileName and the string \"newfilename\". It looks like these could be the same value.\n\nMaybe put all filenames into a single constant block so they are all easily verifiable at a glance.",
+      "range": {
+        "startLine": 85,
+        "startChar": 60,
+        "endLine": 85,
+        "endChar": 97
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b0bee1e_eef88941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T21:01:47Z",
+      "side": 1,
+      "message": "Is this poll needed for anything? WaitUntilDescendantGone already polls.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 59
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f705ad_576ec17d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T21:01:47Z",
+      "side": 1,
+      "message": "nit: maybe complete rename or submit new name? This isn\u0027t really validating anything, just pressing enter.\n\nSame for the error message.",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 26
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
