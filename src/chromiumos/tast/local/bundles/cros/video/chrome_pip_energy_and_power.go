@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,7 +30,6 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
-		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4", "pip.html"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
