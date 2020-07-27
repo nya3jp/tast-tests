@@ -50,6 +50,23 @@
       "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5032bef_7264d434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1315044
+      },
+      "writtenOn": "2020-07-27T16:14:56Z",
+      "side": 1,
+      "message": "Sorry for missing this review because I had my another account logged in.\n\nI\u0027m ok with removing the nonresizeable activity since it\u0027s postN nonresizeable activity. (Pre-N app is considered as non-resizeable and normal in go/arc-wm-r#13.)",
+      "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
