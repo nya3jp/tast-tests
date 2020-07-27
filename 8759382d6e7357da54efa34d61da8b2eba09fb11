@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8367756c_752ca7ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-07-27T22:02:47Z",
+      "side": 1,
+      "message": "Renamed verify_settings_sanity.go to verify_settings.go. Made changes as requested. ",
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
