@@ -103,6 +103,24 @@
       "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbdd5c0b_f63c0313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-27T23:27:27Z",
+      "side": 1,
+      "message": "Could you give the spec number? It seems the page #53 is about default launch behavior for tablet mode so I guess we are talking about different spec (is it NC04?)\n\nWe have two nonresizeable groups \"nonresizable normal\" and \"nonresizable size-compat\". b/161704278 is about size-compat mode, which is for \"nonresizable size-compat\" group.",
+      "parentUuid": "4290e7a4_5a6f8a33",
+      "revId": "371445038a8e62777491d95624cf3ec4c71eca57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
