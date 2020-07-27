@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74b6b7f3_0510a37c",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-27T20:42:55Z",
+      "side": 1,
+      "message": "nit, currentFW \u003d\u003d \"\" case missing.",
+      "revId": "3a74f506c0db4b3313ad7dcbfea83ba35555fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
