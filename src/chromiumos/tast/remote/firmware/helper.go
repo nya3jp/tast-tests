@@ -6,6 +6,9 @@ package firmware
 
 import (
 	"context"
+	"strings"
+
+	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -16,8 +19,23 @@ import (
 
 // Helper tracks several firmware-related objects.
 type Helper struct {
+	// Board contains the DUT's board, as reported by the Platform RPC.
+	// Currently, this is based on /etc/lsb-release's CHROMEOS_RELEASE_BOARD.
+	Board string
+
+	// Config contains a variety of platform-specific attributes.
+	Config *Config
+
+	// ConfigDataDir is the full path to the data directory containing fw-testing-configs JSON files.
+	// Any tests using a Config should set ConfigDataDir to s.DataPath(firmware.ConfigDir).
+	ConfigDataDir string
+
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
+
+	// Model contains the DUT's model, as reported by the Platform RPC.
+	// Currently, this is based on cros_config / name.
+	Model string
 
 	// RPCClient is a direct client connection to the Tast gRPC server hosted on the DUT.
 	RPCClient *rpc.Client
@@ -82,4 +100,41 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) (err error) {
 	h.RPCClient = nil
 	h.RPCUtils = nil
 	return
+}
+
+// RequirePlatform fetches the DUT's board and model from RPC and caches them, unless they have already been cached.
+func (h *Helper) RequirePlatform(ctx context.Context) error {
+	if h.Board != "" {
+		return nil
+	}
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC utils")
+	}
+	platformResponse, err := h.RPCUtils.Platform(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "during Platform rpc")
+	}
+	h.Board = strings.ToLower(platformResponse.Board)
+	h.Model = strings.ToLower(platformResponse.Model)
+	return nil
+}
+
+// RequireConfig creates a firmware.Config, unless one already exists.
+func (h *Helper) RequireConfig(ctx context.Context) error {
+	if h.Config != nil {
+		return nil
+	}
+	if err := h.RequirePlatform(ctx); err != nil {
+		return errors.Wrap(err, "requiring DUT platform")
+	}
+	// ConfigDataDir comes from testing.State, so it needs to be manually set in advance.
+	if h.ConfigDataDir == "" {
+		return errors.New("cannot create firmware Config without first setting Helper's ConfigDataDir")
+	}
+	cfg, err := NewConfig(h.ConfigDataDir, h.Board, h.Model)
+	if err != nil {
+		return errors.Wrapf(err, "during NewConfig with board=%s, model=%s", h.Board, h.Model)
+	}
+	h.Config = cfg
+	return nil
 }
