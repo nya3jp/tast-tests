@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b2ff53c_778f8f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-07-27T11:34:04Z",
+      "side": 1,
+      "message": "Test content LGTM, leaving tast/go-specific comments to those who\u0027re more familiar than me.",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
