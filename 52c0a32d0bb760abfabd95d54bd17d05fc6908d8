@@ -34,6 +34,23 @@
       "revId": "52c0a32d0bb760abfabd95d54bd17d05fc6908d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b8fb88a_b3215982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-27T20:26:58Z",
+      "side": 1,
+      "message": "Giving CR+2 in advance.  Note that, even though the CL was merged into the Chromium repository, it is not yet in effect in ChromeOS as Chromium uprev hasn\u0027t happened yet.",
+      "revId": "52c0a32d0bb760abfabd95d54bd17d05fc6908d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
