@@ -16,6 +16,69 @@
       "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4660a5fc_8b02415c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-27T07:02:56Z",
+      "side": 1,
+      "message": "Ah, some nits.",
+      "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eae8c80f_f7503632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_eid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-27T07:02:56Z",
+      "side": 1,
+      "message": "How about \"Hwsec helper\". The word \"helper\" is too generic in log message. As a local variable, it is okay in Golang.",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334ea5d0_65bb2631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_eid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-27T07:02:56Z",
+      "side": 1,
+      "message": "TPM",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "6ba5960ef486b3d350c1b5c3589275c01019edee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
