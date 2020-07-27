@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c026270_ef70cfab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-27T22:59:48Z",
+      "side": 1,
+      "message": "This CL has a long (partially WIP) history. I recall Arowa was working through several flakiness bugs, some of which I made educated guesses at (e.g., using wpa_supplicant instead of iw), some were since fixed, somewhere in the revision history. Can I get a summary of those somewhere? Were they fundamental issues, or just relatively small things (e.g., typos, or do X before Y)?",
+      "revId": "35ea84f0ccb32a52066bad43c239e4b8f4b3a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aafbc2b7_ba8e3c8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-27T22:59:48Z",
+      "side": 1,
+      "message": "This pattern is flaky. See the discussion on:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2317111\n\nWe need a better (and uniform) strategy on handling roam scenarios, where we can\u0027t 100% guarantee that the client won\u0027t already be trying to roam based on other reasons (e.g., prefer one band or the other; seeing marginally better RSSI).",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "35ea84f0ccb32a52066bad43c239e4b8f4b3a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
