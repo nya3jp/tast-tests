@@ -22,6 +22,30 @@
       "revId": "0d20e7bcca6ab2976222163a2eb12d5cf7d3a837",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880d2aed_dc71bc1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-27T20:05:54Z",
+      "side": 1,
+      "message": "Like other tests, I added a check for Intel chips at the beggining of the test.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1913160\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go;l\u003d36?q\u003df:tast%20f:dev_Coredump\u0026ss\u003dchromiumos",
+      "parentUuid": "15240862_e1c7d14b",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "0d20e7bcca6ab2976222163a2eb12d5cf7d3a837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
