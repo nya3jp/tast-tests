@@ -16,6 +16,281 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25aea7b1_5c812f2a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "super nit: wrapping the errors in these delegator methods shouldn\u0027t be necessary. I would just return the call to the MoveWindowP and keep this slim.\n\nSame for other delegators.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 12
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81373a4_dfbc4690",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "You should probably add in the error return from L279 to L281 into this method.",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 97
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50266fe3_393233c3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Same here for this error state return",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 99
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36f3bbc_9598bc54",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "can we keep this as a method on activity to keep it consistent?\n\nie: func (ac *Activity) resizeWindowR(..)",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb8f2da_b05a9e8d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Instead of passing this in, can we directly call package name ourself? That is data local to the activity.",
+      "range": {
+        "startLine": 474,
+        "startChar": 80,
+        "endLine": 474,
+        "endChar": 94
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "795eba75_e7a30681",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "return setWindowStateP(...)\n\nSame in other branches",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 3
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01820c99_7be3509c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Same here, can you put this as a method on activity and get the pkgName from that.",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 20
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b963fd_21455ef1",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "This might want to be:\n\ndefer mouse.Release(..)\nreturn mouse.Move(...)\n\nI am still not sold on which way is best, but at least mouse is released between every test now.\nI guess the most correct would be defer a func that will try to release and return or log an error based on if their is already an error being returned.",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 51
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d31108_78fb831d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Why is this test add to this CL?",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99ce5f3_e2f59d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Why is this calling the P version specifically?",
+      "range": {
+        "startLine": 409,
+        "startChar": 15,
+        "endLine": 409,
+        "endChar": 26
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210fe57d_b349fd82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Why is this test add to this CL?",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1c72c4_0eb25b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Why specifically P?",
+      "range": {
+        "startLine": 142,
+        "startChar": 15,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb1d1c9_32205843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-27T23:17:05Z",
+      "side": 1,
+      "message": "Why is this test add to this CL?",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
