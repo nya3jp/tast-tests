@@ -16,6 +16,460 @@
       "revId": "c5a41def064d3ed9374453767f18161d989e4365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea4ce0bb_b66d42b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: Shouldn\u0027t it be \"Linux files\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 37,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ca7297_c2b19800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "it may not be enough to delete folder in Google Drive, let\u0027s save at least 30 seconds.",
+      "range": {
+        "startLine": 55,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09537e4_0577e2bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: Checking that GoogleDrive is not in the container by default",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daed3d83_74b5fca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "Please remove this log message, it\u0027s pretty fast operation. Otherwise we\u0027ll have a bunch of useless log messages:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b55911d4_a2d6ed37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: %q + use mntPath constant",
+      "range": {
+        "startLine": 60,
+        "startChar": 49,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbf0f4f_d1875345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: in the container",
+      "range": {
+        "startLine": 60,
+        "startChar": 66,
+        "endLine": 60,
+        "endChar": 75
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a7787f_a259cce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: let\u0027s use test name instead: NoAccessToDrive_%d",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fde3d8_555848a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "same: remove",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 94
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c24d91_6568dcb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "What do you mean here by \"in Chrome\"? Did you mean \"Files App\" here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 67,
+        "endLine": 93,
+        "endChar": 94
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49bf1f3_94d4e357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: \"in the container\" ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 26,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a2cb10_91a348bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "same: remove",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 94
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d3e06f_b597ee0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: in the container?",
+      "range": {
+        "startLine": 97,
+        "startChar": 63,
+        "endLine": 97,
+        "endChar": 75
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fd63fd_8cc91922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: newFolder",
+      "range": {
+        "startLine": 101,
+        "startChar": 112,
+        "endLine": 101,
+        "endChar": 121
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f42104e_02268f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "this is the same error message as in line 139",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da7e487_77fe04b8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: menuName",
+      "range": {
+        "startLine": 258,
+        "startChar": 68,
+        "endLine": 258,
+        "endChar": 76
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9e5079_3d96c21e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: itemName",
+      "range": {
+        "startLine": 282,
+        "startChar": 54,
+        "endLine": 282,
+        "endChar": 62
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956a7e88_de6b22b2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: deletes",
+      "range": {
+        "startLine": 295,
+        "startChar": 22,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289bfd28_726b6d72",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: add period at the end of comment",
+      "range": {
+        "startLine": 297,
+        "startChar": 50,
+        "endLine": 297,
+        "endChar": 56
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424b1812_1d43ecdf",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "nit: add blank line before",
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5f2c1d_d0c2f27d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T09:03:40Z",
+      "side": 1,
+      "message": "We have too methods that doing almost the same. In your previous CL i proposed to have FilterFilesByExistingInHomeDir instead:\n\n\nfunc (c *Container) FilterFilesByExistingInHomeDir(ctx context.Context, files ...string) ([]string, error)\n\nso, if result is empty --\u003e all files do not exist. if len(result) \u003d\u003d input(files) --\u003e all files are present\n\n------\nWDYT?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 0
+      },
+      "revId": "c5a41def064d3ed9374453767f18161d989e4365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
