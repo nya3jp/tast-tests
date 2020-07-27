@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab7b4ef_c466ee16",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "Can you enable -std\u003dc99 to use (relatively) modern C?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fdc178_c5aba79d",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "Strictly speaking, gettimeofday is not marked as async-signal-safe:\nhttps://man7.org/linux/man-pages/man7/signal-safety.7.html\n\nWhat do you think about using clock_gettime?\nhttps://man7.org/linux/man-pages/man2/clock_gettime.2.html",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aeef1f6_fa83ee60",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "Why don\u0027t you simply use localtime_r?",
+      "range": {
+        "startLine": 37,
+        "startChar": 43,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff29f1fa_c16ce821",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "nit: How about printing to stderr here as well?",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c78da0b1_074148d8",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "nit: Can you move these variable definitions to the first place where they are used? (assuming we enable -std\u003dc99)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d82cfa_4adff37b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "huge nit: const exe \u003d ...",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5f540e_b83b1d5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "huge nit: const suffix \u003d ...",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db644d5a_47e6fe86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "This defer must be after nil check:\n\n ptyFile, err :\u003d os.Open(pty)\n if err !\u003d nil { ... }\n defer ptyFile.Close()\n\nOtherwise, when err !\u003d nil, the deferred call is triggered and panic with nil receiver.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d14ca27_90d533c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-27T09:21:12Z",
+      "side": 1,
+      "message": "Currently the bound check logic is duplicated in two places (here and VerifyRemoteSleep), but we can consolidate the two.\n\nA test is considered failed when Error or Fatal is called one or more times. Difference of Error and Fatal is that Fatal aborts the test execution immediately while Error does not.\n\nSo we can call either one of Error/Fatal according to failEagerly here. Then you don\u0027t need to check the measure valued again in VerifyRemoteSleep.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
