@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "fc04a7be_e289eec7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-27T17:48:22Z",
+      "side": 1,
+      "message": "CL squashed into crrev.com/c/2299783/4",
+      "parentUuid": "c0f65579_4cf86cbc",
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dabc06a1_e3d90a4f",
         "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
         "patchSetId": 1
