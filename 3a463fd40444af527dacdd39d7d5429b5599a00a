@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0aa42d6a_f7eade8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-27T21:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc0e1f1_70c8e3df",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63241759_2ece7c34",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b1ef169a_e54ca422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-27T21:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63241759_2ece7c34",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46830523_e2e0cfc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ca46d2_de4175fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-27T21:33:24Z",
+      "side": 1,
+      "message": "Thanks for catching this. I changed the error message.",
+      "parentUuid": "46830523_e2e0cfc7",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 48
+      },
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
