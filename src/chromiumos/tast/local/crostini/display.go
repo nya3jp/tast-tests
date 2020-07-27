@@ -98,7 +98,7 @@ func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz co
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
 func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.TestConn) (factor float64, err error) {
-	err = tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getPrimaryDisplayScaleFactor)()`, &factor)
+	err = tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getPrimaryDisplayScaleFactor)()`, &factor)
 	return factor, err
 }
 
@@ -184,18 +184,10 @@ func RunWindowedApp(ctx context.Context, tconn *chrome.TestConn, cont *vm.Contai
 // CloseAllWindows closes all currently open windows by iterating over
 // the shelf icons and calling autotestPrivate.closeApp on each one.
 func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
-	expr := `
-new Promise((resolve, reject) => {
-	chrome.autotestPrivate.getShelfItems(items => {
-		for (item of items) {
-			chrome.autotestPrivate.closeApp(item.appId.toString(), () => {
-				if (chrome.runtime.lastError !== undefined) {
-					reject(chrome.runtime.lastError.message);
-				}
-			})
-		}
-		resolve();
-	})
-});`
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Eval(ctx, `(async () => {
+		  let items = await tast.promisify(chrome.autotestPrivate.getShelfItems)();
+		  await Promise.all(items.map(item =>
+		      tast.promisify(chrome.autotestPrivate.closeApp)(
+		          item.appId.toString())));
+		})()`, nil)
 }

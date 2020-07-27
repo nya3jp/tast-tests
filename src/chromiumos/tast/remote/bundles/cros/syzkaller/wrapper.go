@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/dut"
@@ -29,6 +30,7 @@ const startupScriptContents = `
 mount -o remount,rw -o exec /tmp
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
+ln -s /dev/dri/card0 /dev/i915
 `
 
 // dutConfig represents information related to the DUT configuration;
@@ -43,16 +45,17 @@ type dutConfig struct {
 }
 
 type syzkallerConfig struct {
-	Name      string    `json:"name"`
-	Target    string    `json:"target"`
-	Reproduce bool      `json:"reproduce"`
-	HTTP      string    `json:"http"`
-	Workdir   string    `json:"workdir"`
-	Syzkaller string    `json:"syzkaller"`
-	Type      string    `json:"type"`
-	SSHKey    string    `json:"sshkey"`
-	Procs     int       `json:"procs"`
-	DUTConfig dutConfig `json:"vm"`
+	Name           string    `json:"name"`
+	Target         string    `json:"target"`
+	Reproduce      bool      `json:"reproduce"`
+	HTTP           string    `json:"http"`
+	Workdir        string    `json:"workdir"`
+	Syzkaller      string    `json:"syzkaller"`
+	Type           string    `json:"type"`
+	SSHKey         string    `json:"sshkey"`
+	Procs          int       `json:"procs"`
+	DUTConfig      dutConfig `json:"vm"`
+	EnableSyscalls []string  `json:"enable_syscalls"`
 }
 
 func init() {
@@ -68,6 +71,7 @@ func init() {
 		// stopping. The overall test duration is 12 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.txt"},
 	})
 }
 
@@ -103,6 +107,20 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unable to create temp configfile: %v", err)
 	}
 
+	// Chmod the keyfile so that ssh connections do not fail due to
+	// open permissions.
+	sshKey := s.DataPath("testing_rsa")
+	if err := os.Chmod(sshKey, 0600); err != nil {
+		s.Fatalf("Unable to chmod sshkey to 0600: %v", err)
+	}
+
+	// Read enabled_syscalls.
+	enabledSyscalls, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.txt"))
+	if err != nil {
+		s.Fatalf("Unable to load enabled syscalls: %v", err)
+	}
+	s.Logf("Enabled syscalls: %v", enabledSyscalls)
+
 	// Create syzkaller configuration file.
 	// Generating reproducers is unlikely to work as :
 	// [1] Corpus is not shared across two runs of the test.
@@ -116,14 +134,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
-		SSHKey:    d.KeyFile(),
+		SSHKey:    sshKey,
 		Procs:     10,
 		DUTConfig: dutConfig{
 			Targets:       []string{d.HostName()},
 			TargetDir:     "/tmp",
-			TargetReboot:  false,
+			TargetReboot:  true,
 			StartupScript: startupScript,
 		},
+		EnableSyscalls: enabledSyscalls,
 	}
 
 	configFile, err := os.Create(filepath.Join(syzkallerTastDir, "config"))
@@ -151,7 +170,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	s.Logf("Starting syzkaller with logfile at %v", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
-	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10", "-debug")
+	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10")
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
 
@@ -207,4 +226,20 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir string) er
 	}
 
 	return nil
+}
+
+func loadEnabledSyscalls(fpath string) ([]string, error) {
+	contents, err := ioutil.ReadFile(fpath)
+	if err != nil {
+		return nil, err
+	}
+	var enabledSyscalls []string
+	for _, line := range strings.Split(string(contents), "\n") {
+		// Ignore comments and empty lines.
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		enabledSyscalls = append(enabledSyscalls, line)
+	}
+	return enabledSyscalls, nil
 }

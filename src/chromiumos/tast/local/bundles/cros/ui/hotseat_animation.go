@@ -9,9 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
@@ -142,7 +145,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 
 	// Collect metrics data from hiding hotseat by window creation.
 	histogramsName := []string{
@@ -154,39 +157,28 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			hiddenHomeButtonHistogram,
 			hiddenWidgetHistogram)
 	}
-	histogramGroup, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		const numWindows = 1
-		conns, err := ash.CreateWindows(ctx, tconn, cr, "", numWindows)
+	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+		conn, err := cr.NewConn(sctx, "", cdputil.WithNewWindow())
 		if err != nil {
-			return errors.Wrap(err, "failed to open browser windows: ")
+			return errors.Wrap(err, "failed to open browser window")
 		}
-		if err := conns.Close(); err != nil {
-			return errors.Wrap(err, "failed to close the connection to a browser window")
-		}
-
+		defer func() {
+			if err := conn.CloseTarget(ctx); err != nil {
+				s.Error("Failed to close a target: ", err)
+			}
+			if err := conn.Close(); err != nil {
+				s.Error("Failed to close a connection: ", err)
+			}
+		}()
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
 			return err
 		}
 
 		return nil
-	}, histogramsName...)
-	if err != nil {
-		s.Fatal("Failed to get mean histograms from hiding hotseat by window creation: ", err)
-	}
-
-	// Save metrics data from hiding hotseat by window creation.
-	for _, h := range histogramGroup {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name + ".WindowCreation",
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+	}, histogramsName...),
+		perfutil.StoreAll(perf.BiggerIsBetter, "percent", "WindowCreation"))
 
 	// Collect metrics data from entering/exiting overview.
 	histogramsName = []string{
@@ -207,14 +199,29 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			extendedWidgetHistogram,
 			shownWidgetHistogram)
 	}
-	histogramGroup, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-		// Add a new tab.
-		conn, err := cr.NewConn(ctx, ui.PerftestURL)
-		if err != nil {
-			return errors.Wrap(err, "cannot create a new tab")
-		}
-		conn.Close()
 
+	// Histograms for window activation.
+	windowActivationHistogramNames := map[string]bool{
+		hiddenHotseatHistogram:       true,
+		hiddenHotseatWidgetHistogram: true,
+	}
+	if s.Param().(hotseatTestType) == showNavigationWidget {
+		windowActivationHistogramNames[hiddenBackButtonHistogram] = true
+		windowActivationHistogramNames[hiddenHomeButtonHistogram] = true
+		windowActivationHistogramNames[hiddenWidgetHistogram] = true
+	}
+	for name := range windowActivationHistogramNames {
+		histogramsName = append(histogramsName, name)
+	}
+
+	// Add a new tab.
+	conn, err := cr.NewConn(ctx, ui.PerftestURL)
+	if err != nil {
+		s.Fatal("Failed to create a new tab: ", err)
+	}
+	conn.Close()
+
+	runner.RunMultiple(ctx, s, "", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
@@ -273,37 +280,6 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return err
 		}
 
-		return nil
-	}, histogramsName...)
-	if err != nil {
-		s.Fatal("Failed to get mean histogram from entering/exiting overview: ", err)
-	}
-
-	// Save metrics data from entering/exiting overview.
-	for _, h := range histogramGroup {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
-
-	// Collect metrics data from hiding hotseat by window activation.
-	histogramsName = []string{
-		hiddenHotseatHistogram,
-		hiddenHotseatWidgetHistogram}
-	if s.Param().(hotseatTestType) == showNavigationWidget {
-		histogramsName = append(histogramsName,
-			hiddenBackButtonHistogram,
-			hiddenHomeButtonHistogram,
-			hiddenWidgetHistogram)
-	}
-	histogramGroup, err = metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
 		// Verify the initial hotseat state before hiding.
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return err
@@ -344,27 +320,29 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, histogramsName...)
-	if err != nil {
-		s.Fatal("Failed to get mean histograms from hiding hotseat by window activation: ", err)
-	}
-
-	// Save metrics data from hiding hotseat by window activation.
-	for _, h := range histogramGroup {
-		mean, err := h.Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-		}
-
-		pv.Set(perf.Metric{
-			Name:      h.Name + ".WindowActivation",
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
+	}, histogramsName...),
+		func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
+			for _, hist := range hists {
+				mean, err := hist.Mean()
+				if err != nil {
+					return errors.Wrapf(err, "failed to get histogram for %s", hist.Name)
+				}
+				name := hist.Name
+				if windowActivationHistogramNames[hist.Name] {
+					name = name + ".WindowActivation"
+				}
+				testing.ContextLog(ctx, name, " = ", mean)
+				pv.Append(perf.Metric{
+					Name:      name,
+					Unit:      "percent",
+					Direction: perf.BiggerIsBetter,
+				}, mean)
+			}
+			return nil
+		})
 
 	// Save metrics data in file.
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data in file: ", err)
 	}
 }

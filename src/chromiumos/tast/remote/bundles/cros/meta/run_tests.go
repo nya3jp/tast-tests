@@ -127,15 +127,13 @@ func init() {
 func RunTests(ctx context.Context, s *testing.State) {
 	param := s.Param().(runTestsParam)
 	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
+	// TODO(crbug.com/1106601): Remove -build=false once ensuring that Tast CLI has been upgraded for all users.
 	flags := []string{
 		"-build=false",
 		"-resultsdir=" + resultsDir,
 		"-var=meta.LocalVars.var=" + localVarValue,
 		"-var=meta.RemoteVars.var=" + remoteVarValue,
 	}
-	// This test executes tast with -build=false to run already-installed copies of these helper tests.
-	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
-	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
 	stdout, _, err := tastrun.Run(ctx, s, "run", flags, param.tests)
 	if err != nil {
 		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")

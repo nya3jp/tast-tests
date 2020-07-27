@@ -25,21 +25,20 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"ARCAudioTest.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "playback",
 				Val: audio.TestParameters{
-					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
+					Class: "org.chromium.arc.testapp.arcaudiotest.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "playback_vm",
 				Val: audio.TestParameters{
-					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
+					Class: "org.chromium.arc.testapp.arcaudiotest.TestOutputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
 			},
@@ -47,7 +46,7 @@ func init() {
 				Name: "record",
 				Val: audio.TestParameters{
 					Permission: "android.permission.RECORD_AUDIO",
-					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
+					Class:      "org.chromium.arc.testapp.arcaudiotest.TestInputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
@@ -55,7 +54,7 @@ func init() {
 				Name: "record_vm",
 				Val: audio.TestParameters{
 					Permission: "android.permission.RECORD_AUDIO",
-					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
+					Class:      "org.chromium.arc.testapp.arcaudiotest.TestInputActivity",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
 			},
@@ -72,7 +71,7 @@ func AudioSanity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}
-	if err := atast.RunAppTest(ctx, s.DataPath(audio.Apk), param); err != nil {
+	if err := atast.RunAppTest(ctx, arc.APKPath(audio.Apk), param); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }

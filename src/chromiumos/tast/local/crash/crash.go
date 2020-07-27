@@ -236,6 +236,18 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 				}
 				if match {
+					// Wait for meta files to have "done=1".
+					if strings.HasSuffix(f, ".meta") {
+						var contents []byte
+						if contents, err = ioutil.ReadFile(f); err != nil {
+							return testing.PollBreak(errors.Wrap(err, "failed to read .meta file"))
+						}
+						if !strings.Contains(string(contents), "done=1") {
+							// Not there yet.
+							match = false
+							break
+						}
+					}
 					files[re] = append(files[re], f)
 					break
 				}

@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -22,9 +23,15 @@ func init() {
 		Desc:         "Test to handle SurfaceInsets not to exceed android window frame",
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -83,7 +90,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
@@ -91,22 +98,16 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for window state Normal: ", err)
 	}
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	}
+
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
 	}
-
-	arcDisplaySize, err := disp.Size(ctx)
-	if err != nil {
-		s.Fatal("Failed to get arc size: ", err)
-	}
-
-	arcCaptionHeight, err := disp.CaptionHeight(ctx)
-	if err != nil {
-		s.Fatal("Failed to get arc size: ", err)
-	}
-
-	tcc := tsw.NewTouchCoordConverter(arcDisplaySize)
+	tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
 
 	// Repeat twice to validate b/80441010.
 	for _, op := range []struct {
@@ -120,17 +121,12 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	} {
 		s.Logf("Pressing %q", op)
 
-		activityBounds, err := act.WindowBounds(ctx)
-		if err != nil {
-			s.Fatal("Failed to get window bounds: ", err)
-		}
-
 		// Touch lower edge of the restore/maximize button to validate that any surface does not cover the caption button.
 		// TODO(crbug.com/1005010) : Do not hard code the calculation of caption position below.
 		// Instead, we should get Chrome constants in real time.
 		buttonCoordX, buttonCoordY := tcc.ConvertLocation(coords.NewPoint(
-			activityBounds.Left+activityBounds.Width-arcCaptionHeight/2-arcCaptionHeight,
-			activityBounds.Top+arcCaptionHeight-arcCaptionHeight/10))
+			windowInfo.TargetBounds.Left+windowInfo.TargetBounds.Width-windowInfo.CaptionHeight/2-windowInfo.CaptionHeight,
+			windowInfo.TargetBounds.Top+windowInfo.CaptionHeight-windowInfo.CaptionHeight/10))
 
 		stw.Move(buttonCoordX, buttonCoordY)
 		stw.End()

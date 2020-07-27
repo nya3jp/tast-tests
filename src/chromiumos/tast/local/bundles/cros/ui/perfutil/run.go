@@ -30,7 +30,7 @@ type ScenarioFunc func(context.Context) ([]*metrics.Histogram, error)
 
 // RunAndWaitAll is a utility function to create ScenarioFunc which conducts
 // f with metrics.RunAndWaitAll.
-func RunAndWaitAll(tconn *chrome.TestConn, f func() error, names ...string) ScenarioFunc {
+func RunAndWaitAll(tconn *chrome.TestConn, f func(ctx context.Context) error, names ...string) ScenarioFunc {
 	return func(ctx context.Context) ([]*metrics.Histogram, error) {
 		return metrics.RunAndWaitAll(ctx, tconn, time.Second, f, names...)
 	}
@@ -38,7 +38,7 @@ func RunAndWaitAll(tconn *chrome.TestConn, f func() error, names ...string) Scen
 
 // RunAndWaitAny is a utility function to create ScenarioFunc which conducts
 // f with metrics.RunAndWaitAny.
-func RunAndWaitAny(tconn *chrome.TestConn, f func() error, names ...string) ScenarioFunc {
+func RunAndWaitAny(tconn *chrome.TestConn, f func(ctx context.Context) error, names ...string) ScenarioFunc {
 	return func(ctx context.Context) ([]*metrics.Histogram, error) {
 		return metrics.RunAndWaitAny(ctx, tconn, time.Second, f, names...)
 	}
@@ -103,7 +103,8 @@ func (r *Runner) Values() *Values {
 // reports an error. The name parameter is used for the prefix of subtest names
 // for calling scenario/store function and the prefix for the trace data file.
 // The name can be empty, in which case the runner uses default prefix values.
-func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) {
+// Returns false when it has an error.
+func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) bool {
 	runPrefix := name
 	if name == "" {
 		runPrefix = "run"
@@ -118,10 +119,10 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 				s.Fatal("Failed to store the histogram data: ", err)
 			}
 		}) {
-			return
+			return false
 		}
 	}
-	s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
+	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {

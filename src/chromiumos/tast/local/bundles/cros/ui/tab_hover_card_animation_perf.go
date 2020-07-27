@@ -90,7 +90,7 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 				s.Error("Failed to wait for system UI to be stabilized: ", err)
 			}
 
-			runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func() error {
+			runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				if err := mouse.Move(ctx, tconn, center, 0); err != nil {
 					return errors.Wrap(err, "failed to put the mouse to the center")
 				}

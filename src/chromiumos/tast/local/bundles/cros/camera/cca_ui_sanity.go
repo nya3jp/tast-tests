@@ -37,7 +37,6 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
 			Val:               ccaUISanityParams{},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "fake",
 			Val: ccaUISanityParams{
