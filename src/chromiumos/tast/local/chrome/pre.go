@@ -121,3 +121,32 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
 	}
 	p.cr = nil
 }
+
+
+
+var LoggedIn2 = testing.NewFunctionalPrecondition("chrome_logged_in_functional", time.Minute, func(ctx context.Context, s *testing.PreRunState) {
+	// ctx and s passed here are precondition-scoped.
+	cr, err := New(ctx)
+	if err != nil {
+		s.Fatal("Failed to login: ", err)
+	}
+	defer cr.Close(ctx)
+
+	Lock()
+	defer Unlock()
+
+	// RunTests accepts a value to be passed to tests as testing.State.PreValue and a callback to be called for each test.
+	// RunTests returns when all tests finish.
+	// RunTests must be called at most once. If it is not called, all tests depending on the precondition are considered failed.
+	s.RunTests(cr, func(ctx context.Context, s *testing.PreTestState) {
+		// ctx adn s passed here are test-scoped.
+		if err := cr.ResetState(ctx); err != nil {
+			s.Fatal("Failed to reset: ", err)
+		}
+
+		// RunTest runs a test.
+		// RunTest returns when a test finishes.
+		// RunTest must be called at most once. If it is not called, the corresponding test is considered failed.
+		s.RunTest()
+	})
+})
