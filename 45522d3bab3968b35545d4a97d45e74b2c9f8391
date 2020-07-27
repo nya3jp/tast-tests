@@ -105,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "c0f65579_4cf86cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T14:19:03Z",
+      "side": 1,
+      "message": "I agree about small CLs, but:\n\n\"The CL should include related test code.\" -- in our case, it looks like we should include caller.",
+      "parentUuid": "62ed6816_64c87fed",
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dabc06a1_e3d90a4f",
         "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
         "patchSetId": 1
@@ -140,6 +158,30 @@
       "side": 1,
       "message": "We don\u0027t have callers that use empty password for now.\n\nThe reason why the method caller (crrev/c//2299783) is in a different CL is because the CL is an entire new test, so I thought it makes sense to separate this CL out because we want small CLs.",
       "parentUuid": "dabc06a1_e3d90a4f",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "45522d3bab3968b35545d4a97d45e74b2c9f8391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1c3a8b_12258fce",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-27T14:19:03Z",
+      "side": 1,
+      "message": "for example, you may decide to abandon that CL and useless functionality will remain.\n\nAlso, reviewers don\u0027t see the whole picture :)",
+      "parentUuid": "8c1f9973_42924b57",
       "range": {
         "startLine": 64,
         "startChar": 0,
