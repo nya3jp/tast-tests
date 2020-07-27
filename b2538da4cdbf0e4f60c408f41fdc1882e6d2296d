@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c81350c3_875b0992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-07-27T17:49:33Z",
+      "side": 1,
+      "message": "Note: crrev.com/c/2315521 have been merged into this CL",
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
