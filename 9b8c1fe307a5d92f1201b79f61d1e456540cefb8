@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "07a717f8_e78a0c99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-27T15:10:03Z",
+      "side": 1,
+      "message": "Please use a Relation chain to make the code easier to find.",
+      "revId": "9b8c1fe307a5d92f1201b79f61d1e456540cefb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "183c15d2_34d7aa52",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
         "patchSetId": 1
