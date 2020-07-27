@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "9ac11520_cc074650",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-27T21:03:04Z",
+      "side": 1,
+      "message": "Gotcha. Let\u0027s add that in a separate CL. Here\u0027s an issue to track that: http://b/162258331",
+      "parentUuid": "0f167fb8_5334360e",
+      "revId": "ecda706968256db0101bca20d9a4c20e74cafa40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d3047a8_edaac9a8",
         "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
         "patchSetId": 1
