@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46ff87e_5c0abf0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-27T10:39:17Z",
+      "side": 1,
+      "message": "I think this is good to review now. Remove RFC prefix.",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
