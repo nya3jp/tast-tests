@@ -11,11 +11,11 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
@@ -66,7 +66,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 	}
 
-	pv := perf.NewValues()
+	runner := perfutil.NewRunner(cr)
 	for _, numWindows := range []int{1, 2} {
 		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
 		if err != nil {
@@ -96,53 +96,67 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait: ", err)
 		}
 
-		w0, err := ash.GetWindow(ctx, tconn, id0)
-		if err != nil {
-			s.Error("Failed to get windows: ", err)
-		}
-		bounds := w0.BoundsInRoot
+		suffix := fmt.Sprintf("%dwindows", numWindows)
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+			w0, err := ash.GetWindow(ctx, tconn, id0)
+			if err != nil {
+				s.Error("Failed to get windows: ", err)
+			}
+			bounds := w0.BoundsInRoot
 
-		start := coords.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height/2)
-		if len(ws) > 1 {
-			// For multiple windows; hover on the boundary, wait for the resize-handle
-			// to appear, and move onto the resize handle.
-			if err = mouse.Move(ctx, tconn, start, 0); err != nil {
-				s.Fatal("Failed to move the mouse: ", err)
+			start := coords.NewPoint(bounds.Right(), bounds.CenterY())
+			if len(ws) > 1 {
+				// For multiple windows; hover on the boundary, wait for the resize-handle
+				// to appear, and move onto the resize handle.
+				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+					return errors.Wrap(err, "failed to move the mouse")
+				}
+				// Waiting for the resize-handle to appear. TODO(mukai): find the right
+				// wait to see its visibility.
+				if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+					return errors.Wrap(err, "failed to wait")
+				}
+				// 20 DIP would be good enough to move the drag handle.
+				start.Y += 20
+				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+					return errors.Wrap(err, "failed to move the mouse")
+				}
+			} else {
+				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+					return errors.Wrap(err, "failed to move the mouse")
+				}
 			}
-			// Waiting for the resize-handle to appear. TODO(mukai): find the right
-			// wait to see its visibility.
-			if err = testing.Sleep(ctx, 3*time.Second); err != nil {
-				s.Fatal("Failed to wait: ", err)
-			}
-			// 20 DIP would be good enough to move the drag handle.
-			start.Y += 20
-			if err = mouse.Move(ctx, tconn, start, 0); err != nil {
-				s.Fatal("Failed to move the mouse: ", err)
-			}
-		}
-		end := coords.NewPoint(start.X-bounds.Width/4, start.Y)
-		hists, err := metrics.RunAndWaitAll(ctx, tconn, time.Second, func() error {
-			if err := mouse.Drag(ctx, tconn, start, end, time.Second*2); err != nil {
-				return errors.Wrap(err, "failed to drag")
-			}
-			return nil
-		}, "Ash.InteractiveWindowResize.TimeToPresent")
-		if err != nil {
-			s.Fatal("Failed to drag or get the histogram: ", err)
-		}
+			left := coords.NewPoint(start.X-bounds.Width/4, start.Y)
+			right := coords.NewPoint(start.X+bounds.Width/4, start.Y)
 
-		latency, err := hists[0].Mean()
-		if err != nil {
-			s.Fatalf("Failed to get mean for histogram %s: %v", hists[0].Name, err)
-		}
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("%s.%dwindows", hists[0].Name, numWindows),
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, latency)
+			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				return errors.Wrap(err, "failed to press the button")
+			}
+			released := false
+			defer func() {
+				if !released {
+					mouse.Release(ctx, tconn, mouse.LeftButton)
+				}
+			}()
+			if err := mouse.Move(ctx, tconn, left, time.Second/2); err != nil {
+				return errors.Wrap(err, "faeild to drag to the left")
+			}
+			if err := mouse.Move(ctx, tconn, right, time.Second); err != nil {
+				return errors.Wrap(err, "failed to drag to the right")
+			}
+			if err := mouse.Move(ctx, tconn, start, time.Second/2); err != nil {
+				return errors.Wrap(err, "failed to drag back to the start position")
+			}
+			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				return errors.Wrap(err, "failed to release the left button")
+			}
+			released = true
+			return testing.Sleep(ctx, time.Second)
+		}, "Ash.InteractiveWindowResize.TimeToPresent"),
+			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

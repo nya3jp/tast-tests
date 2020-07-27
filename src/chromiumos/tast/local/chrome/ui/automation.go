@@ -121,10 +121,12 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 type Node struct {
 	object         *chrome.JSObject
 	tconn          *chrome.TestConn
+	Checked        CheckedState       `json:"checked,omitempty"`
 	ClassName      string             `json:"className,omitempty"`
 	HTMLAttributes map[string]string  `json:"htmlAttributes,omitempty"`
 	Location       coords.Rect        `json:"location,omitempty"`
 	Name           string             `json:"name,omitempty"`
+	Restriction    RestrictionState   `json:"restriction,omitempty"`
 	Role           RoleType           `json:"role,omitempty"`
 	State          map[StateType]bool `json:"state,omitempty"`
 	Value          string             `json:"value,omitempty"`
@@ -163,6 +165,7 @@ func (n *Node) Update(ctx context.Context) error {
 			htmlAttributes: this.htmlAttributes,
 			location: this.location,
 			name: this.name,
+			restriction: this.restriction,
 			role: this.role,
 			state: this.state,
 			tooltip: this.tooltip,

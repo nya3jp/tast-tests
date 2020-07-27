@@ -153,7 +153,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "MinimizedTabletMode"
 			}
 
-			r.RunMultiple(ctx, s, fmt.Sprintf("%s-%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func() error {
+			r.RunMultiple(ctx, s, fmt.Sprintf("%s-%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}

@@ -70,9 +70,9 @@ func init() {
 func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 	fieldsMapping, err := requiredFields(ctx, s.DUT())
 	if err != nil {
-		s.Fatal("Cannot get GenericComponentValueWhitelists: ", err)
+		s.Fatal("Cannot get GenericComponentValueAllowlists: ", err)
 	}
-	s.Log("ComponentValueWhitelists:", fieldsMapping)
+	s.Log("ComponentValueAllowlists:", fieldsMapping)
 
 	messagesFromProbe, err := probe(ctx, s.DUT(), fieldsMapping)
 	if err != nil {
@@ -105,9 +105,9 @@ func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 	}
 }
 
-// requiredFields returns the whitelisted fields defined in
+// requiredFields returns the allowed fields defined in
 // /etc/hardware_verifier/hw_verification_spec.prototxt.  Probed results from
-// runtime_probe will remove fields that are not whitelisted so that it would
+// runtime_probe will remove fields that are not allowed so that it would
 // be identical with other sources.
 func requiredFields(ctx context.Context, dut *dut.DUT) (requiredFieldSet, error) {
 	fieldsMapping := make(requiredFieldSet)
@@ -121,9 +121,9 @@ func requiredFields(ctx context.Context, dut *dut.DUT) (requiredFieldSet, error)
 		return nil, err
 	}
 
-	for _, whitelist := range message.GenericComponentValueWhitelists {
-		category := strings.Title(whitelist.ComponentCategory.String())
-		for _, field := range whitelist.FieldNames {
+	for _, allowlist := range message.GenericComponentValueAllowlists {
+		category := strings.Title(allowlist.ComponentCategory.String())
+		for _, field := range allowlist.FieldNames {
 			if m, ok := fieldsMapping[category]; ok {
 				m.Add(field)
 			} else {
@@ -163,7 +163,7 @@ func trimFields(message *rppb.ProbeResult, fieldsMapping requiredFieldSet) (sort
 	if rmsg.Kind() != reflect.Struct {
 		return nil, errors.New("rmsg is not Struct type")
 	}
-	for category, whitelist := range fieldsMapping {
+	for category, allowlist := range fieldsMapping {
 		rcomponents := rmsg.FieldByName(category)
 		if rcomponents.Kind() != reflect.Slice {
 			return nil, errors.New("rcomponents is not Slice type")
@@ -202,7 +202,7 @@ func trimFields(message *rppb.ProbeResult, fieldsMapping requiredFieldSet) (sort
 					if field == nil {
 						return nil, errors.New("field is nil")
 					}
-					if !whitelist.Contains(field.GetName()) {
+					if !allowlist.Contains(field.GetName()) {
 						rvalues := rpvalues.Elem()
 						if rvalues.Kind() != reflect.Struct {
 							return nil, errors.New("rvalues is not Struct type")

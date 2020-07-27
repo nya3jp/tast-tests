@@ -190,6 +190,20 @@ func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn
 	return nil
 }
 
+// WaitForShelfAnimationComplete waits for 5 seconds to shelf animation complete.
+func WaitForShelfAnimationComplete(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		shelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if shelfInfo.IsShelfWidgetAnimating {
+			return errors.New("shelf is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
 // CompareCaption compares the activity caption buttons with the wanted one.
 // Returns nil only if they are equal.
 func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {

@@ -26,7 +26,7 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
@@ -123,10 +123,11 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), users("root", "chronos", "metrics", "shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0755)),           // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0644)),           // children
-		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),       // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)), // children
+		chk.NewPattern(chk.Path("encrypted/var/log/usbmon"), users("root", "tcpdump"), groups("root", "tcpdump"), chk.SkipChildren()), // only created by tests
+		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0755)),                      // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0644)),                      // children
+		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),                  // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)),            // children
 
 		chk.NewPattern(chk.Path("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.Mode(0770|os.ModeSetgid)), // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.NotMode(002)),             // children
@@ -224,6 +225,10 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("displaylink"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/log/displaylink"), users("displaylink"), groups("displaylink"), chk.NotMode(022), chk.SkipChildren()))
+	}
+
+	if _, err := user.Lookup("sound_card_init"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/sound_card_init"), users("sound_card_init"), groups("sound_card_init"), chk.NotMode(022)))
 	}
 
 	if moblab.IsMoblab() {

@@ -7,40 +7,23 @@ package arc
 import (
 	"context"
 	"encoding/json"
-	"math"
-	"sort"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/inputlatency"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
-
-type inputEvent struct {
-	// One of "KeyEvent", "MotionEvent", or "InputEvent".
-	Kind string `json:"type"`
-	// Time (in ms) that the event was sent by the kernel.
-	EventTime int64 `json:"eventTime"`
-	// RTC time that the event was sent by the kernel.
-	rtcEventTime int64
-	// Time (in ms) that the event was received by the app.
-	RecvTime int64 `json:"receiveTime"`
-	// RTC time that the event was received by the app.
-	RTCRecvTime int64 `json:"rtcReceiveTime"`
-	// Difference between eventTime and recvTime.
-	Latency int64 `json:"latency"`
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     KeyboardPerf,
 		Desc:     "Test ARC keyboard system performance",
 		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// TODO(wvk): Once clocks are synced between the host and guest, add
 		// support for ARCVM to this test (b/123416853).
 		SoftwareDeps: []string{"chrome", "android_p"},
@@ -111,31 +94,31 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Collecting results")
-	txt, err := waitForEvents(ctx, d, numEvents)
+	txt, err := inputlatency.WaitForEvents(ctx, d, numEvents)
 	if err != nil {
 		s.Fatal("Unable to wait for events: ", err)
 	}
-	var events []inputEvent
+	var events []inputlatency.InputEvent
 	if err := json.Unmarshal([]byte(txt), &events); err != nil {
 		s.Fatal("Could not unmarshal events from app: ", err)
 	}
 
-	// Add rtcEventTime to inputEvents. We assume the order and number of events in the log
+	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
 	// is the same as eventTimes.
 	if len(events) != len(eventTimes) {
 		s.Fatal("There are events missing from the log")
 	}
 	for i := range events {
-		events[i].rtcEventTime = eventTimes[i]
+		events[i].RTCEventTime = eventTimes[i]
 	}
 
-	mean, median, stdDev, max, min := calculateMetrics(events, func(i int) float64 {
+	mean, median, stdDev, max, min := inputlatency.CalculateMetrics(events, func(i int) float64 {
 		return float64(events[i].Latency)
 	})
 	s.Logf("Keyboard latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
 
-	rmean, rmedian, rstdDev, rmax, rmin := calculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RTCRecvTime - events[i].rtcEventTime)
+	rmean, rmedian, rstdDev, rmax, rmin := inputlatency.CalculateMetrics(events, func(i int) float64 {
+		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
 	})
 	s.Logf("Keyboard RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
 
@@ -148,55 +131,4 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
-}
-
-// calculateMetrics calculates mean, median, std dev, max and min for the given
-// input events. The function getValue should return the value of the element
-// corresponding to the given index.
-func calculateMetrics(events []inputEvent, getValue func(int) float64) (mean, median, stdDev, max, min float64) {
-	n := len(events)
-	sort.Slice(events, func(i, j int) bool { return getValue(i) < getValue(j) })
-	min = getValue(0)
-	max = getValue(n - 1)
-	median = getValue(n / 2)
-	sum := 0.
-	for i := range events {
-		sum += getValue(i)
-	}
-	mean = sum / float64(n)
-	stdSum := 0.
-	for i := range events {
-		stdSum += math.Pow(getValue(i)-mean, 2)
-	}
-	stdDev = math.Sqrt(stdSum / float64(n))
-	return
-}
-
-// waitForEvents polls until the counter in the app UI is equal to count, then
-// returns the input events from the helper app.
-func waitForEvents(ctx context.Context, d *ui.Device, count int) (string, error) {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_count"))
-		txt, err := v.GetText(ctx)
-		if err != nil {
-			return err
-		}
-		num, err := strconv.ParseInt(txt, 10, 64)
-		if err != nil {
-			return err
-		}
-		if num != int64(count) {
-			return errors.Errorf("unexpected event count; got %d, want %d", num, count)
-		}
-		return nil
-	}, nil); err != nil {
-		return "", err
-	}
-
-	v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_json"))
-	txt, err := v.GetText(ctx)
-	if err != nil {
-		return "", err
-	}
-	return txt, nil
 }

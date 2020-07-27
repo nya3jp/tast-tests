@@ -53,6 +53,11 @@ func NewSize(w, h int) Size {
 	return Size{Width: w, Height: h}
 }
 
+// String returns the string representation of Size.
+func (s Size) String() string {
+	return fmt.Sprintf("(%d x %d)", s.Width, s.Height)
+}
+
 // Rect represents a rectangular region.
 type Rect struct {
 	Left   int `json:"left"`
@@ -75,6 +80,26 @@ func NewRectLTRB(l, t, r, b int) Rect {
 // String returns the string representation of Rect.
 func (r Rect) String() string {
 	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
+}
+
+// Right returns the x-value of the right edge of the rectangle.
+func (r Rect) Right() int {
+	return r.Left + r.Width
+}
+
+// Bottom returns the y-value of the bottom edge of the rectangle.
+func (r Rect) Bottom() int {
+	return r.Top + r.Height
+}
+
+// CenterX returns the x-value of the center point of the rectangle.
+func (r Rect) CenterX() int {
+	return r.Left + r.Width/2
+}
+
+// CenterY returns the y-value of the center point of the rectangle.
+func (r Rect) CenterY() int {
+	return r.Top + r.Height/2
 }
 
 // TopLeft returns the location of the top left of the rectangle.
@@ -132,11 +157,23 @@ func (r Rect) WithOffset(dl, dt int) Rect {
 	return NewRect(r.Left+dl, r.Top+dt, r.Width, r.Height)
 }
 
-// ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
-func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
+// convertBounds is used by ConvertBoundsFromDPToPX and ConvertBoundsFromPXToDP.
+func convertBounds(bounds Rect, factor float64) Rect {
 	return Rect{
-		Left:   int(math.Round(float64(bounds.Left) * dsf)),
-		Top:    int(math.Round(float64(bounds.Top) * dsf)),
-		Width:  int(math.Round(float64(bounds.Width) * dsf)),
-		Height: int(math.Round(float64(bounds.Height) * dsf))}
+		Left:   int(math.Round(float64(bounds.Left) * factor)),
+		Top:    int(math.Round(float64(bounds.Top) * factor)),
+		Width:  int(math.Round(float64(bounds.Width) * factor)),
+		Height: int(math.Round(float64(bounds.Height) * factor))}
+}
+
+// ConvertBoundsFromDPToPX converts the given bounds in dips to pixels based on the given device
+// scale factor. The converted values of Left, Top, Width, and Height are rounded.
+func ConvertBoundsFromDPToPX(bounds Rect, dsf float64) Rect {
+	return convertBounds(bounds, dsf)
+}
+
+// ConvertBoundsFromPXToDP converts the given bounds in pixels to dips based on the given device
+// scale factor. The converted values of Left, Top, Width, and Height are rounded.
+func ConvertBoundsFromPXToDP(bounds Rect, dsf float64) Rect {
+	return convertBounds(bounds, 1.0/dsf)
 }

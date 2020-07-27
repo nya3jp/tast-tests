@@ -73,7 +73,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", windows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func() error {
+		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
 				if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
 					return errors.Wrap(err, "failed to rotate display")

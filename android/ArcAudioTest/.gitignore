@@ -1,0 +1,12 @@
+# ignore Android Studio files
+*.iml
+.idea
+.gradle
+gradle
+gradlew
+gradlew.bat
+local.properties
+build/
+.navigation
+captures/
+output.json

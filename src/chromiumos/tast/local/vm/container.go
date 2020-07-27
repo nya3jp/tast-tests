@@ -405,6 +405,42 @@ func (c *Container) GetFile(ctx context.Context, containerPath, localPath string
 	return c.sftpCommand(ctx, getCmd)
 }
 
+// CheckFilesExistInDir checks files exist in the given path in container.
+// Returns error if any file does not exist or any other error.
+func (c *Container) CheckFilesExistInDir(ctx context.Context, path string, files ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrap(err, "failed to list the content of home directory in container")
+	}
+
+	// Create a map.
+	set := make(map[string]struct{}, len(fileList))
+	for _, s := range fileList {
+		set[s] = struct{}{}
+	}
+
+	// Check each file exists in fileList.
+	for _, file := range files {
+		if _, ok := set[file]; !ok {
+			return errors.Errorf("failed to find %s in container", file)
+		}
+	}
+	return nil
+}
+
+// GetFileList returns a list of the files in the given path in the container.
+func (c *Container) GetFileList(ctx context.Context, path string) (fileList []string, err error) {
+	// Get files in the path in container.
+	cmd := c.Command(ctx, "ls", path)
+	result, err := cmd.Output()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to run 'ls %s' in container", path)
+	}
+
+	return strings.Split(strings.TrimRight(string(result), "\r\n"), "\n"), nil
+}
+
 // LinuxPackageInfo queries the container for information about a Linux package
 // file. The packageID returned corresponds to the package ID for an installed
 // package based on the PackageKit specification which is of the form
@@ -547,7 +583,7 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 
 // DumpLog dumps the logs from the container to a local output file named
 // container_log.txt in dir (typically the test's output dir).
-// It does this by executing journalctl in the container and grabbing the output.
+// It does this by executing croslog in the container and grabbing the output.
 func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	f, err := os.Create(filepath.Join(dir, "container_log.txt"))
 	if err != nil {
@@ -555,10 +591,7 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	}
 	defer f.Close()
 
-	// TODO(jkardatzke): Remove stripping off the color codes that show up in
-	// journalctl once crbug.com/888102 is fixed.
-	cmd := c.Command(ctx, "sh", "-c",
-		"sudo journalctl --no-pager | tr -cd '[:space:][:print:]'")
+	cmd := c.Command(ctx, "croslog", "--no-pager")
 	cmd.Stdout = f
 	return cmd.Run()
 }
