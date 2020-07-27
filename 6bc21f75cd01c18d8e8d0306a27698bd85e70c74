@@ -87,6 +87,24 @@
       "revId": "6bc21f75cd01c18d8e8d0306a27698bd85e70c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d92a7d7_1daf59fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-27T19:38:21Z",
+      "side": 1,
+      "message": "No, in fact got an additional mis-match for dalvik-cache dir.",
+      "parentUuid": "9c9056ad_3760c8f0",
+      "revId": "6bc21f75cd01c18d8e8d0306a27698bd85e70c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
