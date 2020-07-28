@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "851d0fce_7ab7c7e7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:00:11Z",
+      "side": 1,
+      "message": "Can you just put this directly in WaitForPasswordField? No need for it to be separate?\n\nAlso, can this be more specific? How do you know it this isn\u0027t the username text field for example?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4a7fbd_fd8f2c8a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:00:11Z",
+      "side": 1,
+      "message": "mention crbug/1109381 here so that other people will know the issue if they use this library.",
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1aa342_5fb49eb8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:00:11Z",
+      "side": 1,
+      "message": "nit: ReadyForPassword just to make it more specific since it may be ready for something else even if it is not ready for password.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87059a33_c644841f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:00:11Z",
+      "side": 1,
+      "message": "nit: This is probably more complex than it needs to be on the user side. I think it would be nicer to only look at the boolean fields and make an enum. Make the function call be:\n\nfunc WaitStatus(ctx context.Context, tconn *chrome.TestConn, statusType StatusType, wanted bool, timeout time.Duration) (Status, error)\n\nThen a call would be:\n\nlogin.WaitStatus(ctx, tconn, login.Ready, true, 30*time.Second)\nlogin.WaitStatus(ctx, tconn, login.Guest, false, 30*time.Second)\n\nThis may not be reasonable depending on how it is used in other places, but look into it. If most cases are simple, probably just switch it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242ad382_20fbce6c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:00:11Z",
+      "side": 1,
+      "message": "Can you update the other couple of tests that use this to autotestPrivate function to use this method?",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 85
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
