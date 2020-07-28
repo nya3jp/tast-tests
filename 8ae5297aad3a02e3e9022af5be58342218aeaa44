@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4345fa0c_82490f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-28T13:30:52Z",
+      "side": 1,
+      "message": "I planned to keep the change small, and make 2 smaller CLs, but there is not much going on in this CL, so I will add it here.",
+      "parentUuid": "6ea87cc8_a002df3c",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56b30321_89eba81b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba815bf_4af06f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-28T13:30:52Z",
+      "side": 1,
+      "message": "The change is needed in this CL, but in a different file.",
+      "parentUuid": "56b30321_89eba81b",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
