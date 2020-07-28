@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "463755b1_a6bfeb0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-28T06:58:07Z",
+      "side": 1,
+      "message": "The /run/camera directory would still be there and the /run/camera/camera3.sock is also being used to serve camera in PluginVM.\n\nIIRC we don\u0027t use /run/camera in ARC after the camera connection bootstrap is migrated to dbus. If the test is to check the files exist for ARC, maybe we could simply remove those lines?\n\n+hashimoto who just land the cleanup in ARC (http://ag/12139699).",
+      "parentUuid": "b49ac4e2_22e945b7",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
