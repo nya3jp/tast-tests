@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efa8b7e3_86e22fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-28T21:45:29Z",
+      "side": 1,
+      "message": "Note: The parent change was modified after design discussion in go/tast-fw-helper. That change affects PS3, as NewHelper() now takes s.RPCHint() as an argument.",
+      "revId": "08970eeb9a25260095bd3960fc9da6adf6895e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
