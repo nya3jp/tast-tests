@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4eb65666_836e61ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:03:58Z",
+      "side": 1,
+      "message": "I recognize that. I was just suggest that you start the const with the postfix and then remove it for the files app renaming. Just a choice of where you add/remove the postfix.",
+      "parentUuid": "dfde568a_29adbcc1",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "1af35fb09729d908a579cb16ed143d769a879fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9142af56_c771f40e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
         "patchSetId": 3
