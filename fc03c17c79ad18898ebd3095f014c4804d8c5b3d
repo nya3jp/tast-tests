@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "4491b379_a5b018b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-07-28T09:06:57Z",
+      "side": 1,
+      "message": "\u003e IIUC this test\u0027s purpose is to check the SELinux contexts of files and directories needed by ARC.\nyes, and no.\nyes: when the test was written while everything not related ARC is unconfined \u0026\u0026 unlabeled.\nno: after that, since we\u0027re not enabling SELinux for non-ARC boards, plus, arc-setup hacks file contexts. many post-browser check is also here.\n\nso i would prefer not to remove check, but add ignoreErros: true to allow skipping if it doesn\u0027t exist.",
+      "parentUuid": "0e0b48f5_e97d560e",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
