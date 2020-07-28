@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e69b5a_ca7f4484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab6e206_4cbba0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "Should this be run on test failure? If so, could you run in the defer statement at L66?",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4770206b_e0ccc5c3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "nit: unneeded.",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105ed1f9_d67357da",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "Sharing the global var with substitution is a bit risky as tast runs in multi thread manner (though, effectively it\u0027d look like single-threaded).\n\nCould you copy the uootFindParams, instead? Or, construct it directly here, instead?",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f10778_e359abe0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "So, if it is already launched, this won\u0027t launch the new app?\nCould you explicitly document it?\nAlso, nice to rename the function, like \"FindOrLaunch\"?\n\nAlternatively, you may be interested in terminating the existing app, to start the app from scratch.",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecabc58d_ae1eb93b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "In case of error in the following code, could you release \"app\"?",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5999978c_ad39f591",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "nit: userName+\"@penguin\"",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e50b05c_dd47c99e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T15:16:19Z",
+      "side": 1,
+      "message": "Root should be released even if \"exit\" command above fails?",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
