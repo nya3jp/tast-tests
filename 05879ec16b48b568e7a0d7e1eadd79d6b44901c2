@@ -33,6 +33,52 @@
       "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe719c3e_ce5b131f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-28T03:52:45Z",
+      "side": 1,
+      "message": "I think \"-2\" should be SIGINT, shouldn\u0027t we use SIGTERM/SIGKILL instead? If SIGINT is preferred, then we should update the comment to make it consistent.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b2c558_87938481",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-28T03:52:45Z",
+      "side": 1,
+      "message": "When will this error happens?",
+      "range": {
+        "startLine": 165,
+        "startChar": 12,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
