@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "25be51b4_7bd824d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-28T06:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480bed0e_3a5f9386",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "019dd857_aef65391",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
         "patchSetId": 8
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "47a26338_73c09a0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-28T06:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019dd857_aef65391",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b3074a7_a97850a4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
         "patchSetId": 8
@@ -103,6 +151,30 @@
       "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c92b8d_4e59cd72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-28T06:44:09Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "0b3074a7_a97850a4",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
