@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b35342bf_38ccec53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-28T02:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a4f42d_5761f01e",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "c8bec8850bb6fcc410b4cbdb11e4347edeacea5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d8b2f5_e7e10b3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c8bec8850bb6fcc410b4cbdb11e4347edeacea5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8791cc0_cdc8c013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-07-28T02:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d8b2f5_e7e10b3c",
+      "range": {
+        "startLine": 32,
+        "startChar": 27,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "c8bec8850bb6fcc410b4cbdb11e4347edeacea5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
