@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -83,7 +84,9 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find drag point: ", err)
 	}
 
-	if !newDragPoint.Equals(destinationPoint) {
+	// When release the window on a given location, the actual pixel it lands can be a tiny different.
+	// e.g. Drag vk and release at given location (e.g. 1016*762), it ends up at (1015, 762).
+	if math.Abs(float64(newDragPoint.X-destinationPoint.X)) > 3 || math.Abs(float64(newDragPoint.Y-destinationPoint.Y)) > 3 {
 		s.Errorf("Failed to drag float VK or it did not land at desired location. got: %v, want: %v", newDragPoint, destinationPoint)
 	}
 
