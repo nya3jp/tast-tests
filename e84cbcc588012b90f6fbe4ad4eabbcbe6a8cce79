@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "fc149310_000acdad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T05:19:27Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "e0a3a27f_86f00dc8",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee9238d5_a27cd247",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
         "patchSetId": 7
@@ -50,6 +68,24 @@
       "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83d2844_4ea1363c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T05:19:27Z",
+      "side": 1,
+      "message": "Done (+others I see).",
+      "parentUuid": "ee9238d5_a27cd247",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "1b5aced9_b573fbe6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T05:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9c8f13_9b91c196",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "349dc9b9_0f25eeb6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 7
@@ -84,6 +138,24 @@
       "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a2a254_47dbb10b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T05:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "349dc9b9_0f25eeb6",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
