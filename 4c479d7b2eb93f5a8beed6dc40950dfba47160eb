@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "68ee236e_01e70ce3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Added the suggested fixes.",
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdbb0fe3_4db78518",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -13,6 +30,30 @@
       "writtenOn": "2020-07-27T08:47:55Z",
       "side": 1,
       "message": "We clear /home/chronos here. If we want to clear /home/.shadow according to the content of /home/chronos, we have to call cleanChromeShadowDir before this.",
+      "range": {
+        "startLine": 836,
+        "startChar": 2,
+        "endLine": 836,
+        "endChar": 26
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ec3d66_78d08286",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "/home/.shadow [dir1, ...] that are not found in /home/chronos [\u0027u-$dir1\u0027,...] (see line 872)\nSo it is ok to remove all chronosDir first. \n\nFurther, if a directory is found in /home/.shadow and /home/chronos and it is not open in /home/chronos it is removed from /home/.shadow.",
+      "parentUuid": "bdbb0fe3_4db78518",
       "range": {
         "startLine": 836,
         "startChar": 2,
@@ -48,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "1ca60c63_0b2a21f7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef0aaf14_1ca69c30",
+      "range": {
+        "startLine": 871,
+        "startChar": 2,
+        "endLine": 871,
+        "endChar": 19
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28928d27_dde6d70a",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -68,6 +133,30 @@
       "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9e2b1c_1f054abd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28928d27_dde6d70a",
+      "range": {
+        "startLine": 878,
+        "startChar": 4,
+        "endLine": 878,
+        "endChar": 32
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +206,54 @@
     },
     {
       "key": {
+        "uuid": "083e5eac_8b4dbbe5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f19a568a_2e006c6f",
+      "range": {
+        "startLine": 882,
+        "startChar": 10,
+        "endLine": 882,
+        "endChar": 22
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f145f91b_21fa9959",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "If the directory is still open in /home/chronos, then we will fail deleting the corresponding directory in /home/.shadow. I saw that when trying to unconditionally remove the directory. The code here used to remove both the unopened directory in /home/chronos and /home/.shadow. Maybe we should do that \nagain.",
+      "parentUuid": "b502494d_d85ed44d",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619aa907_a03aa07d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -137,6 +274,30 @@
       "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19614b83_111340ef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "619aa907_a03aa07d",
+      "range": {
+        "startLine": 883,
+        "startChar": 20,
+        "endLine": 883,
+        "endChar": 34
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "5a680031_3ce5a7e8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a504e618_0c0653a9",
+      "range": {
+        "startLine": 884,
+        "startChar": 4,
+        "endLine": 884,
+        "endChar": 19
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfda9887_2ebd6527",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -183,6 +368,30 @@
       "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0daa8cc6_c8bb9740",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-28T09:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfda9887_2ebd6527",
+      "range": {
+        "startLine": 886,
+        "startChar": 3,
+        "endLine": 886,
+        "endChar": 4
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
