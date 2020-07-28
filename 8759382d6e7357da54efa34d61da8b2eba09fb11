@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "eb0eea0f_1e89369e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:11:02Z",
+      "side": 1,
+      "message": "This test is specifically testing the arc settings ui, so it should keep using the ui mode.\n\nEvery other test should not need to test the arc settings ui, so they should not do it through the ui if possible.\n\nI think for now, this should be totally good.",
+      "parentUuid": "131727de_1e57088d",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1b7ab7_96951532",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 4
