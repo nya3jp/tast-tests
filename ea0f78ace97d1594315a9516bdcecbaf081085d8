@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "c0ea09f2_6ac3d175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-28T00:09:49Z",
+      "side": 1,
+      "message": "Tast shadow review: LGTM % nits.",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32743559_06f194a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-28T00:09:49Z",
+      "side": 1,
+      "message": "Please handle all errors:\nhttps://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#handle-errors\n\nerr :\u003d testing.Poll( ... )\nif err !\u003d nil {\n   s.Fatal(...)\n}",
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1837a011_2842d858",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
@@ -121,6 +155,29 @@
       "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486d9dd4_82fe0951",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-28T00:09:49Z",
+      "side": 1,
+      "message": "Comment out of date?",
+      "range": {
+        "startLine": 564,
+        "startChar": 7,
+        "endLine": 564,
+        "endChar": 17
+      },
+      "revId": "ea0f78ace97d1594315a9516bdcecbaf081085d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
