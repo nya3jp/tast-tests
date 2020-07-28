@@ -104,6 +104,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e956e0_63933111",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:03:55Z",
+      "side": 1,
+      "message": "So you mean for now we don\u0027t have a use case that just disconnect a service without removing it from shill, right?\n\nIf so, we can just rename DisconnectWifiService as DisconnectWifi. My point is, as long as tf.ConnectWifi creates a shill service entry and connects it, we shall have an inverse function, like tf.DisconnectWifi, to revert what tf.ConnectWifi does.\n\nAbout the verbose return value of tf.ConnectWifi, if most of the case the DUT has only one service added and it is unlikely to disconnect from an unexpected service, we can make tf.DisconnectWifi easier. Then for special case that needs to specify the service path, use the verbose version, say tf.DisconnectWifiService.",
+      "parentUuid": "17bb3d17_7e617e71",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
