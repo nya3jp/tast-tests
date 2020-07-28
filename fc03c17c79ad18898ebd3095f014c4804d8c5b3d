@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "a6e15a85_4f814999",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-07-28T09:39:07Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m a bit confused by your logic.\nDo you mean this test should check the SELinux labels of all files and directories even if they are not related to ARC?\n\nNow ARC has nothing to do with /run/camera so I think it\u0027s better to do it somewhere else if we want to keep maintaining this check.\nHow about moving /run/camera check to selinux_files_system.go?\n\nFYI arc-setup stopped touching /run/camera in CL:2297119.",
+      "parentUuid": "4491b379_a5b018b8",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
