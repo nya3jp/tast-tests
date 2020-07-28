@@ -63,6 +63,30 @@
       "revId": "cf1fbab000f7539228d5dc0e4867e92746f4cd2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb292832_775389d2",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-28T22:08:49Z",
+      "side": 1,
+      "message": "Optional: I was thinking more so along the lines of the semantics of board and model (what they mean, not how they are acquired).\n\nSomething like (lifted from go/cros-unified-builds):\n\n\"Board - board overlay, corresponding to a build. For each board we need a builder. A board may support multiple models\"\n\n\"Model ‒ a single model in the market. It may or may not share design elements with other models, but we want to distinguish it from other models due to the physical design, OEM or ODM\"\n\n\nIdeally, we would point to some canonical definition of board and model in the docs repo so that a reader can quickly familiarize themselves with what board and model area all about.  Suspect those definitions might not be able to be found in the docs repo atm, so not something we need to pursue atm.",
+      "parentUuid": "2324897e_9497aecd",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "cf1fbab000f7539228d5dc0e4867e92746f4cd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
