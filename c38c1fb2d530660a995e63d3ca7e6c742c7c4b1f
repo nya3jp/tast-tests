@@ -33,6 +33,23 @@
       "revId": "c38c1fb2d530660a995e63d3ca7e6c742c7c4b1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40b25bf1_f495fe05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-28T07:45:08Z",
+      "side": 1,
+      "message": "Note that a property watcher is bound to a service, so we can\u0027t wait for the state changes of different services. In fact, it doesn\u0027t fit to my usage because I need to wait for an idle of current WiFi and then a connected of another WiFi service.",
+      "revId": "c38c1fb2d530660a995e63d3ca7e6c742c7c4b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
