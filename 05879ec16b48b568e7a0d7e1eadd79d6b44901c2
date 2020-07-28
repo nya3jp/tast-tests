@@ -127,6 +127,30 @@
       "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83073a34_4ac99e1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-07-28T04:37:05Z",
+      "side": 1,
+      "message": "Got it. Thanks for the explanation. I think it worth to have some comments to explain it. Can you copy the comments you wrote to the codes? Thanks.",
+      "parentUuid": "c64c2cf1_780e8914",
+      "range": {
+        "startLine": 165,
+        "startChar": 12,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
