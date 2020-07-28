@@ -13,8 +13,8 @@
 time_based
 runtime=5m
 
-ioengine=libaio
-iodepth=4
+;ioengine=libaio
+;iodepth=4
 
 readwrite=randrw
 ; 86,395 KiB (3,900 ios) Read  404 KiB (210 ios) Written

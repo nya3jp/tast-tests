@@ -66,11 +66,13 @@ main() {
       die "Unknown storage type: ${kind}"
   esac
 
+  sync
+  echo 3 > /proc/sys/vm/drop_caches
   fio \
        --directory="${mountpoint}" \
        --runtime=2m \
        --iodepth=16 \
-       --size=512M \
+       --size=1G \
        --direct=0 \
        --blocksize=4K \
        --output="${output}" \

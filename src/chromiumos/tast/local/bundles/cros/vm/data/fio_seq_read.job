@@ -7,6 +7,6 @@ time_based
 
 readwrite=read
 
-ioengine=libaio
-iodepth=1
-direct=1
+;ioengine=libaio
+;iodepth=1
+;direct=1

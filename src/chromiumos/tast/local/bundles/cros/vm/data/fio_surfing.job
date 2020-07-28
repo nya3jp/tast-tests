@@ -13,8 +13,8 @@ time_based
 numjobs=1
 runtime=5m
 
-ioengine=libaio
-iodepth=4
+;ioengine=libaio
+;iodepth=4
 ; fails
 
 readwrite=randrw
