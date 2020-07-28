@@ -199,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "e6916d8f_06e37209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-07-28T11:09:17Z",
+      "side": 1,
+      "message": "Could you update the descriptions of all selinux_files_*.go tests?\nselinux_files_arc.go says \"Checks SELinux labels on ARC-specific files on devices that support ARC\", but it totally contradicts with your explanation.\nAlso, selinux_files_system.go has chrome.LoggedIn() as its precondition and it contradicts with your explanation \"should only test files exist when system boot, before log-in\".\nselinux_files_non_arc.go says \"Checks SELinux labels on Chrome-specific files on devices that don\u0027t support ARC\", but according to your explanation this test runs on no board so we should remove this?\n\nYour concern about arc-setup sounds like YAGNI to me.\nWith ARCVM, we are moving away from arc-setup, and there is no plan to make /run/camera visible to ARC for foreseeable future.\n\n/run/camera/camera3.sock is created by chrome, but it already exists before login and cros_camera_service depends on it so I don\u0027t see any problem calling it a system file, but it depends on how you define a system file.\nIt\u0027d be helpful if you could put a clear guideline about which of selinux_files_*.go test covers what kind of files as comments or test descriptions.",
+      "parentUuid": "95fe7d89_aaaaac96",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
