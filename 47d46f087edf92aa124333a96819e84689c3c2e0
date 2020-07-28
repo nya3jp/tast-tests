@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4e96a66_ac5e55bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-28T23:18:49Z",
+      "side": 1,
+      "message": "LGTM. You might consider using a constant instead, in order to make similar changes easier in the future.",
+      "revId": "47d46f087edf92aa124333a96819e84689c3c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
