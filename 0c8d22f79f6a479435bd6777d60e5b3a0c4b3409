@@ -16,6 +16,23 @@
       "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16b41221_31abdeb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T08:24:33Z",
+      "side": 1,
+      "message": "The change in PS7 LGTM.",
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
