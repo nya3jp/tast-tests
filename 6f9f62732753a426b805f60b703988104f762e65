@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0ece2b1f_32a5ea60",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25aea7b1_5c812f2a",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 12
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f81373a4_dfbc4690",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 19
@@ -62,6 +86,30 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff6f2f2_95556d52",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f81373a4_dfbc4690",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 97
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "42f28789_b9dff669",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50266fe3_393233c3",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 99
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36f3bbc_9598bc54",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 19
@@ -102,6 +174,24 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11539947_666d2e99",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done. Did the same for moveWindowR too.",
+      "parentUuid": "f36f3bbc_9598bc54",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "1448825e_47c14a98",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb8f2da_b05a9e8d",
+      "range": {
+        "startLine": 474,
+        "startChar": 80,
+        "endLine": 474,
+        "endChar": 94
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "795eba75_e7a30681",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 19
@@ -148,6 +262,30 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c755b662_9a1a1c79",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795eba75_e7a30681",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 3
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "a6350ff0_4d606cb3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01820c99_7be3509c",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 20
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42b963fd_21455ef1",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 19
@@ -185,6 +347,30 @@
       "writtenOn": "2020-07-27T23:17:05Z",
       "side": 1,
       "message": "This might want to be:\n\ndefer mouse.Release(..)\nreturn mouse.Move(...)\n\nI am still not sold on which way is best, but at least mouse is released between every test now.\nI guess the most correct would be defer a func that will try to release and return or log an error based on if their is already an error being returned.",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 51
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f872649_b6c8dde1",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Made a change here. Is that what you meant? I think the goal is to always release even if the move fails BUT return the move error if it exists right? Otherwise return the release error",
+      "parentUuid": "42b963fd_21455ef1",
       "range": {
         "startLine": 735,
         "startChar": 1,
@@ -214,6 +400,24 @@
     },
     {
       "key": {
+        "uuid": "4eb19f5e_125643ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "What do you mean? Just need to pass in the extra argument to SetWindowState.",
+      "parentUuid": "24d31108_78fb831d",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f99ce5f3_e2f59d74",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 19
@@ -237,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "63ea8fe9_207d0f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "f99ce5f3_e2f59d74",
+      "range": {
+        "startLine": 409,
+        "startChar": 15,
+        "endLine": 409,
+        "endChar": 26
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "210fe57d_b349fd82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
         "patchSetId": 19
@@ -248,6 +476,24 @@
       "writtenOn": "2020-07-27T23:17:05Z",
       "side": 1,
       "message": "Why is this test add to this CL?",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a39ae0_30af1ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Same here",
+      "parentUuid": "210fe57d_b349fd82",
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -277,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "3a986500_196b450f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a1c72c4_0eb25b3e",
+      "range": {
+        "startLine": 142,
+        "startChar": 15,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcb1d1c9_32205843",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go",
         "patchSetId": 19
@@ -288,6 +558,24 @@
       "writtenOn": "2020-07-27T23:17:05Z",
       "side": 1,
       "message": "Why is this test add to this CL?",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad9b6f7_fd8b4e0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-07-28T19:57:24Z",
+      "side": 1,
+      "message": "Same here",
+      "parentUuid": "bcb1d1c9_32205843",
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
