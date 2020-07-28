@@ -16,6 +16,23 @@
       "revId": "04531f6ecc52fe20164ff7ede9dfc34d7fa69bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56489e33_061c2919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-07-28T11:30:16Z",
+      "side": 1,
+      "message": "Thank you for the explanation.\nThe suggested plan sgtm.",
+      "revId": "04531f6ecc52fe20164ff7ede9dfc34d7fa69bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
