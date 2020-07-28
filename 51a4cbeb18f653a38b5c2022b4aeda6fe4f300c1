@@ -16,6 +16,29 @@
       "revId": "51a4cbeb18f653a38b5c2022b4aeda6fe4f300c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ae1f5f1_7acc0b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-07-28T07:21:09Z",
+      "side": 1,
+      "message": "Instead of changing entire type of cvconn, how about temporary create TestConn here?\nDoing so, we can limit use of TestConn only this line.",
+      "range": {
+        "startLine": 251,
+        "startChar": 70,
+        "endLine": 251,
+        "endChar": 76
+      },
+      "revId": "51a4cbeb18f653a38b5c2022b4aeda6fe4f300c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
