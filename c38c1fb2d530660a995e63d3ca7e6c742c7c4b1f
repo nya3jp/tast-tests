@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b482e282_82e46076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:48:47Z",
+      "side": 1,
+      "message": "This ready Recv() is kind of implicit, might be nice to have a wrapper call on TestFixture when we\u0027re using this.",
+      "revId": "c38c1fb2d530660a995e63d3ca7e6c742c7c4b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f585c197_0bf99be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:48:47Z",
+      "side": 1,
+      "message": "Generally look nice. Thanks for the change! arowa@ please try if the interface is good for your use case.\n\n(I probably also need another one for wpasupplicant but I\u0027ll take a look later. :p)",
+      "revId": "c38c1fb2d530660a995e63d3ca7e6c742c7c4b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
