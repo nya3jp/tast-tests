@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6aa8650_042b38db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T05:24:12Z",
+      "side": 1,
+      "message": "LGTM, but let me forward to Shik for double check in this specific case.",
+      "revId": "04531f6ecc52fe20164ff7ede9dfc34d7fa69bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

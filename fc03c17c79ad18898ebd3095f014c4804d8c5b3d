@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "88be200b_640fccd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-28T05:24:12Z",
+      "side": 1,
+      "message": "Thanks.\n\nThere seems another place that creates the directory.\nsrc/platform2/vm_tools/init/vm_concierge.conf;l\u003d72\nAnd, the UID/GID does not seem to set there.\n\nAt least, I think the directory context should be aligned without race condition.\nShik, could you make sure the expected behavior?\nI understand /run/camera/camera*sock will be removed eventually, but not sure the /run/camera directory itself.",
+      "parentUuid": "87a052e4_c644d685",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
