@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bedb9756_f5678e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80c6d0b6_6c5c951e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "huge nit: Chrome",
+      "range": {
+        "startLine": 25,
+        "startChar": 80,
+        "endLine": 25,
+        "endChar": 86
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f48015_3e8f27f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "huge nit: Linux",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdb707e_554e917a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "nit:\n\n  const (\n    myFiles \u003d \"MyFiles\"\n    mntPath \u003d \"/mn/chromeos\"\n  )",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aaa3c52_4793f43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "nit:\n\n  const filename \u003d \"test.txt\"",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0415ce93_99c1a42d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 89,
+        "startChar": 47,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf3fc95_a7c7e8e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:16:15Z",
+      "side": 1,
+      "message": "nit: Home -\u003e home\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 86
+      },
+      "revId": "0a45143663bb8666267d58dfbc7e76e7077e5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
