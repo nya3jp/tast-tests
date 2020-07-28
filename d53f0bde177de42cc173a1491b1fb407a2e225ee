@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40b01d27_f0f84ef2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:17:58Z",
+      "side": 1,
+      "message": "Added chromiumos/tast/local/crostini/ui/linuxfiles and moved CheckFileDoesNotExist and RenameFile into it. This was inspired by comment https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2318587/3/src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go#133 ",
+      "revId": "d53f0bde177de42cc173a1491b1fb407a2e225ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
