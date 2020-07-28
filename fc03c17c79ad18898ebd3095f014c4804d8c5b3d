@@ -181,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "95fe7d89_aaaaac96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-07-28T10:18:58Z",
+      "side": 1,
+      "message": "\u003e How about moving /run/camera check to selinux_files_system.go?\nis there any guarantee that /run/camera is created at system boot.\ni guess no, since i saw vm_concierge init script is trying to mkdir /run/camera, also session_manager is also a known creator for the directory.\n\n\u003e Do you mean this test should check the SELinux labels of all files and directories even if they are not related to ARC?\nYes. The test is for \"post-ARC start\" not ARC-oriented. Security-purpose ARC-oriented SELinux test should be covered by CTS.\n\nAlso there\u0027s no such test to test \"files / processes started after browser login\" since at the beginning the test is designed to test everything matters after ARC starts, even it doesn\u0027t matter to ARC, same for SELinuxProcessesARC. This comes for a reason that \"not to login the system twice, with/without ARC\" for the same purpose of testing, to avoid unnecessary system login, that slows down overall tast run, suggested by someone else long ago.\n\nPlus it\u0027s important to ensure \"many labels is still shape after arc start\" since arc-setup hacks many SELinux file labels in bad ways. it\u0027s sure arc-setup doesn\u0027t hack /run/camera now, but there\u0027s no guarantee such things won\u0027t happen again (or for other not ARC-oriented files in this test) and may potentially break other enforced processes.\n\nAlso, the idea is not to introducing SELinux***Browser comes from the fact that no board with (selinux\u003denforced, arc\u003dfalse), log-in browser-only, and test duplicated things is waste of running time.\n\nSELinuxFilesSystem should only test files exist when system boot, before log-in.",
+      "parentUuid": "a6e15a85_4f814999",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
