@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27811e47_4e0ab254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-28T17:01:02Z",
+      "side": 1,
+      "message": "This looks a bit weird to me. I think you don\u0027t need \u0027\u0026\u0027 in this case (https://play.golang.org/p/B_gkv7R_GtI).\n\nIn case that the PreData keeps pointers and the method doesn\u0027t change the pointer itself (I think this is the case for it), the method does not have to be a pointer (func (p PreData) Connect(...) would work)",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bab0e1_e9922f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-28T17:01:02Z",
+      "side": 1,
+      "message": "Looks like pre.Container wouldn\u0027t be updated through Connect method. Is this really necessary?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8294c4bd_d1304f07",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-28T17:01:02Z",
+      "side": 1,
+      "message": "typically lengthy multi-lined logs are discouraged, cf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\u003e In all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\nI think the use of ui.LogRootDebugInfo() or faillog.DumpUITreeOnError would be helpful in this use case (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui/faillog#DumpUITreeOnError)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64e7c18f_8aaeb77a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-28T17:01:02Z",
+      "side": 1,
+      "message": "Is it necessary?  What is the expected way to shutdown crostini in tablet-UI?\n\nIn Tast tests, mouse devices are available on tablet-mode and emit events. Some UI components may ignore mouse though.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
