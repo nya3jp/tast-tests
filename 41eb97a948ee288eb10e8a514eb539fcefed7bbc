@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4de62439_10ccb390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-07-28T22:16:43Z",
+      "side": 1,
+      "message": "Merging this back to M85 to stop the test failures happening on that release branch:\n\nhttp://go/cros-automated-test-dashboard?f\u003dcreate_date:bt:2020-07-20,2020-07-27\u0026f\u003dtl:in:hugobenichi\u0026f\u003dtest_name_2:eq:tast.arc.IPv6Connectivity\n\nThis does not need TPM merge approval per the exemption guidelines here:\n\nhttp://go/cros-merge-exception\n\n5) Fixing a test on a release branch. Test must be proven to be working on ToT before merging in to a release branch.\n\nIn this case we\u0027re just disabling a test which will never pass.",
+      "revId": "41eb97a948ee288eb10e8a514eb539fcefed7bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
