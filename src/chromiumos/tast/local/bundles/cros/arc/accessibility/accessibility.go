@@ -100,7 +100,7 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // chromeVoxExtConn returns a connection to the ChromeVox extension's background page.
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
-func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
+func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (**chrome.Conn, error) {
 	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
 		return nil, err
@@ -118,7 +118,7 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, errors.Wrap(err, "failed to introduce tast library")
 	}
 
-	return extConn, nil
+	return &extConn, nil
 }
 
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
@@ -134,7 +134,7 @@ func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feat
 // waitForSpokenFeedbackReady enables spoken feedback.
 // A connection to the ChromeVox extension background page is returned, and this will be
 // closed by the calling function.
-func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.Conn, error) {
+func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (**chrome.Conn, error) {
 	// Wait until spoken feedback is enabled in Android side.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
@@ -153,7 +153,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 	}
 
 	// Poll until ChromeVox connection finishes loading.
-	if err := cvconn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+	if err := (*cvconn).WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
 	}
 
@@ -218,7 +218,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
-	defer cvconn.Close()
+	defer (*cvconn).Close()
 
 	s.Log("Installing and starting test app")
 	if err := a.Install(ctx, arc.APKPath(ApkName)); err != nil {
@@ -247,10 +247,12 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name+".txt")
+
+			// TODO(b/161864703): Use chrome.Conn instead of TestConn.
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{*cvconn}, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
-				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+				if err = WaitForFocusedNode(ctx, *cvconn, tconn, &ui.FindParams{
 					ClassName: TextView,
 					Name:      activity.Title,
 					Role:      ui.RoleTypeStaticText,
@@ -258,7 +260,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
 				}
 
-				return f(ctx, cvconn, tconn, activity)
+				return f(ctx, *cvconn, tconn, activity)
 			}(); err != nil {
 				// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
 				screenshotFilename := "screenshot-with-chromevox" + activity.Name + ".png"
