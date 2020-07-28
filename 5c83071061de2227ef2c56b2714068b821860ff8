@@ -140,6 +140,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4169abbf_31cdfd5b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:40:28Z",
+      "side": 1,
+      "message": "Got it. Let\u0027s have tf.DisconnectWifi and tf.CleanDisconnecWifi for disconnecting current service and use gRPC directly for the case that needs to disconnect from a specific service path.",
+      "parentUuid": "55a72ec3_c8ece7e0",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
