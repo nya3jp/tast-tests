@@ -85,6 +85,30 @@
       "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c889abb7_bcc8d193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-28T16:38:01Z",
+      "side": 1,
+      "message": "Just for clarification: filing a bug is last resort option. If there is already a way to wait for the needed condition, you should use the existing option instead of using `sleep`",
+      "parentUuid": "351d116e_10b3f8b0",
+      "range": {
+        "startLine": 750,
+        "startChar": 15,
+        "endLine": 750,
+        "endChar": 28
+      },
+      "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
