@@ -180,6 +180,30 @@
     },
     {
       "key": {
+        "uuid": "09209409_d8b055ec",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-28T04:54:51Z",
+      "side": 1,
+      "message": "Sounds good, just a bit confused about how to go about associating the Status struct with the proposed enum. I got something working by doing away with the struct and unpacking the json into a map, like:\n\n  type StatusType string\n  const (\n\tLoggedIn    StatusType \u003d \"isLoggedIn\"\n\tOwner       StatusType \u003d \"isOwner\"\n\t...\n  )\n  ...\n  var st map[StatusType]interface{}\n  tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, \u0026st)\n  // check if st[statusType] \u003d\u003d wanted\n\nThis gets it working in the way you described, but it seems better to use a struct to hold the output of EvalPromise since we explicitly know the fields and their types. I also got it working by adding an intermediate step to make a map out of the struct:\n  var st Status\n  tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, \u0026st)\n  map[StatusType]bool \u003d {\n    LoggedIn: st.LoggedIn,\n    Owner:    st.Owner,\n    ...\n  }\n  // check if stmap[statusType] \u003d\u003d wanted\n\nIt seems kind of convoluted, though. Is there a better way that I\u0027m missing?",
+      "parentUuid": "87059a33_c644841f",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "242ad382_20fbce6c",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
