@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
@@ -66,6 +67,21 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
 		return value
+	}
+
+	checkProperty := func(propertyNamePrefix string) bool {
+		// Returns true if the getprop command returns a non-empty string.
+		out, err := a.Command(ctx, "getprop").Output()
+		if err != nil {
+			s.Fatal("Failed to run getprop: ", err)
+		}
+		value := strings.TrimSpace(string(out))
+		for _, line := range strings.Split(value, "\n") {
+			if strings.HasPrefix(line, fmt.Sprintf("[%s", propertyNamePrefix)) {
+				return true
+			}
+		}
+		return false
 	}
 
 	// On each ARC boot, ARC detects its boot type (first boot, first boot after
@@ -133,6 +149,18 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		}
 		s.Fatalf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
 			firstAPILevel, expectedFirstAPILevel)
+	}
+
+	// Starting R, the images have ro.build.{system,system_ext,product,odm,vendor}.* properties
+	// by default to allow vendors to customize the values. ARC++ doesn't need the customization
+	// and removes all of them at build time. This verifies that the removal is done properly.
+	partitions := []string{"system", "system_ext", "product", "odm", "vendor"}
+	for _, partition := range partitions {
+		propertyNamePrefix := fmt.Sprintf("ro.build.%s.", partition)
+		exists := checkProperty(propertyNamePrefix)
+		if exists {
+			s.Fatalf("Property %s* still exists. Delete them during CrOS image build", propertyNamePrefix)
+		}
 	}
 }
 
