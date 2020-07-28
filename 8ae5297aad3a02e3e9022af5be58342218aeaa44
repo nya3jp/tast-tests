@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db80d683_08696ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-28T12:51:34Z",
+      "side": 1,
+      "message": "In the autotest version, there is a part where it puts the test device into idle mode, wakes it, and checks whether there is a lock screen. Should I add this part to the test as well in a separate commit?",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
