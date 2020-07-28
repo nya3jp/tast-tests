@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "370d6942_7e64da42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5549dab4_c325ed93",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f144392_3f3c35ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c78c3e8f_e90a991f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f144392_3f3c35ba",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d134b717_19c4d4b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb0b617_a7c4be7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d134b717_19c4d4b8",
+      "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "565c053a_f3513bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c43d04f7_d3fccf9f",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80481ddd_e56850e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
         "patchSetId": 3
@@ -108,6 +198,30 @@
       "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6861e658_a75c5e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-28T12:47:15Z",
+      "side": 1,
+      "message": "Moved to: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2318586/5..8/src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go\n\nBTW, I was forced to upload the changes in home_directory_filesapp.go here again otherwise linter complains. It will be reverted once https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2318586/ merged.",
+      "parentUuid": "80481ddd_e56850e9",
+      "range": {
+        "startLine": 133,
+        "startChar": 11,
+        "endLine": 133,
+        "endChar": 44
+      },
+      "revId": "38ed1c5d34c8704aa88416c2b6333ae6f53e52b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
