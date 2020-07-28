@@ -122,6 +122,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a72ec3_c8ece7e0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T03:27:46Z",
+      "side": 1,
+      "message": "\u003e So you mean for now we don\u0027t have a use case that just disconnect a service without removing it from shill, right?\n\nNo, I mean we don\u0027t yet have tests to roam from one service to another (which does not really know which service to disconnect when leaving and need [Clean]DisconnectWifi to get current service instead of [Clean]DisconnectWifiService).\n\nI think wifi.SecChange needs to disconnect without removing the profile entry so it will be a caller of DisconnectWifi[Service] (instead of CleanDisconnectWifi[Service]).\n\n\u003e Then for special case that needs to specify the service path, use the verbose version, say tf.DisconnectWifiService.\n\nHmm..., if so, then most usage will be [Clean]DisconnectWifi then I\u0027m thinking if the rest can just call the gRPC directly in the special cases. Let me try this in next PS.",
+      "parentUuid": "61e956e0_63933111",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
