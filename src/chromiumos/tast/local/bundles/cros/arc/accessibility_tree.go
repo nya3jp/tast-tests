@@ -168,7 +168,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	trees[accessibility.EditTextActivity.Name] = EditTextActivityTree
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
 
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		var appRoot *ui.Node
 		var err error
 		// Find the root node of Android application.

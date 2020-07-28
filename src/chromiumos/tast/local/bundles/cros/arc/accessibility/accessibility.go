@@ -71,7 +71,7 @@ const (
 
 // focusedNode returns the currently focused node of ChromeVox.
 // The returned node should be release by the caller.
-func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
+func focusedNode(ctx context.Context, cvconn, tconn *chrome.TestConn) (*ui.Node, error) {
 	obj := &chrome.JSObject{}
 	if err := cvconn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
 		return nil, err
@@ -100,7 +100,7 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // chromeVoxExtConn returns a connection to the ChromeVox extension's background page.
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
-func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
+func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.TestConn, error) {
 	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
 		return nil, err
@@ -118,7 +118,8 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, errors.Wrap(err, "failed to introduce tast library")
 	}
 
-	return extConn, nil
+	// TODO(b/161864703): Return chrome.Conn instead of TestConn.
+	return &chrome.TestConn{extConn}, nil
 }
 
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
@@ -134,7 +135,7 @@ func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feat
 // waitForSpokenFeedbackReady enables spoken feedback.
 // A connection to the ChromeVox extension background page is returned, and this will be
 // closed by the calling function.
-func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.Conn, error) {
+func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.TestConn, error) {
 	// Wait until spoken feedback is enabled in Android side.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
@@ -162,7 +163,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 
 // WaitForFocusedNode polls until the properties of the focused node matches the given params.
 // timeout specifies the timeout to use when polling.
-func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
+func WaitForFocusedNode(ctx context.Context, cvconn, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		focused, err := focusedNode(ctx, cvconn, tconn)
@@ -186,7 +187,7 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready. It requires an array activities containing the list of activities
 // to run the test cases over, and the currently running activity is passed as a string to f().
-func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f func(context.Context, *chrome.Conn, *chrome.TestConn, TestActivity) error) {
+func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f func(context.Context, *chrome.TestConn, *chrome.TestConn, TestActivity) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -247,7 +248,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name+".txt")
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, cvconn, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
 				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{

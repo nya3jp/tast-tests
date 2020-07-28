@@ -44,7 +44,7 @@ type axSpeechTestStep struct {
 }
 
 // speechLog obtains the speech log of ChromeVox.
-func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
+func speechLog(ctx context.Context, cvconn *chrome.TestConn) ([]string, error) {
 	// speechLog represents a log of accessibility speech.
 	type speechLog struct {
 		Text string `json:"textString_"`
@@ -97,7 +97,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
 	speechTestSteps := make(map[string][]axSpeechTestStep)
 	speechTestSteps[accessibility.MainActivity.Name] = MainActivityTestSteps
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		// Enable speech logging.
 		if err := cvconn.Eval(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`, nil); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")

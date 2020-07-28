@@ -56,7 +56,7 @@ func init() {
 
 // verifyLog gets the current ChromeVox log and checks that it matches with expected log.
 // Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest log.
-func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog, checkOnlyLatest bool) error {
+func verifyLog(ctx context.Context, cvconn *chrome.TestConn, expectedLog axEventLog, checkOnlyLatest bool) error {
 	var logs []axEventLog
 	if err := cvconn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
 		return errors.Wrap(err, "failed to get event logs")
@@ -81,7 +81,7 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog,
 	return nil
 }
 
-func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, cvconn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
 	if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
@@ -107,7 +107,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) error {
+func setupEventStreamLogging(ctx context.Context, cvconn *chrome.TestConn, activityName string, axEventTestSteps []axEventTestStep) error {
 	eventsSeen := make(map[string]bool)
 	var events []string
 	for _, test := range axEventTestSteps {
@@ -288,7 +288,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}
 	defer ew.Close()
 
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		testSteps := events[currentActivity.Name]
 		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps); err != nil {
 			return err
