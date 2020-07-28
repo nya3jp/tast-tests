@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98647264_a6cb5846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-28T00:03:58Z",
+      "side": 1,
+      "message": "super nit:\nconst (\n    ...\n)",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "90d8a9d995739d95d73f26a38b0faacb253e8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
