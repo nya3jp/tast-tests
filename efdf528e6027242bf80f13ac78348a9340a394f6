@@ -16,6 +16,93 @@
       "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04564b0f_77f865b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:19:02Z",
+      "side": 1,
+      "message": "Have some suggestion inline. Not sure if that makes the ctx life cycle clearer.",
+      "parentUuid": "a4e651a1_a8609693",
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "480bed0e_3a5f9386",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:19:02Z",
+      "side": 1,
+      "message": "pass ctx here in case later operation changes it.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019dd857_aef65391",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:19:02Z",
+      "side": 1,
+      "message": "func(ctx context.Context, password string) might be more explicit here. Imagine when you have some more set-up before the function call (not available now though), the deadline of this function should be given by caller.",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3074a7_a97850a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_guid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:19:02Z",
+      "side": 1,
+      "message": "I guess it will be clearer that the outer ctx is never changed if you use func(ctx context.Context) to shadow the parameter here and L122?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
