@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "67a527ef_d6a7443e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-07-28T22:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cbd2a47_d6ed529f",
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b9161ec_01659d92",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 4
@@ -56,6 +74,30 @@
       "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91704e52_0e9a8c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-07-28T22:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9161ec_01659d92",
+      "range": {
+        "startLine": 84,
+        "startChar": 22,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "3082c01b_6bb52cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-07-28T22:24:10Z",
+      "side": 1,
+      "message": "As mentioned, this test is to verify if UI navigation in and out of various Android Settings work as expected. \nI can work on a separate method to enable Developer Options via adb in local/arc package which can be used by other tests.",
+      "parentUuid": "eb0eea0f_1e89369e",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e1b7ab7_96951532",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 4
@@ -174,6 +240,30 @@
       "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c379390e_cfc4fcb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-07-28T22:24:10Z",
+      "side": 1,
+      "message": "I\u0027ll investigate further to verifying Backup ON functionality.",
+      "parentUuid": "8e1b7ab7_96951532",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
