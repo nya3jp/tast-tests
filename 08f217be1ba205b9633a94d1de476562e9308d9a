@@ -63,6 +63,30 @@
       "revId": "08f217be1ba205b9633a94d1de476562e9308d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e834c307_31345ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-28T12:37:48Z",
+      "side": 1,
+      "message": "So maybe we can remove this piece of description?",
+      "parentUuid": "dcb1912e_a5bcc988",
+      "range": {
+        "startLine": 30,
+        "startChar": 82,
+        "endLine": 30,
+        "endChar": 114
+      },
+      "revId": "08f217be1ba205b9633a94d1de476562e9308d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
