@@ -562,6 +562,24 @@
     },
     {
       "key": {
+        "uuid": "5b075077_b3827107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-28T16:59:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a86e72f_7acc5f9f",
+      "revId": "3a463fd40444af527dacdd39d7d5429b5599a00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3b7dfc5_cf271cae",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 6
