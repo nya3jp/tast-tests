@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "810a5c6b_524d1e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-28T03:17:27Z",
+      "side": 1,
+      "message": "So we don\u0027t actually click the user pod before typing the password. Can you add that to make this test a bit more explicit",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "851d0fce_7ab7c7e7",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -65,6 +88,52 @@
     },
     {
       "key": {
+        "uuid": "dfd92d04_9eda6676",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-28T03:17:27Z",
+      "side": 1,
+      "message": "What does this string contain?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd05fba8_b3819eb8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-28T03:17:27Z",
+      "side": 1,
+      "message": "Is there a better name for this?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87059a33_c644841f",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -81,6 +150,29 @@
         "startChar": 61,
         "endLine": 39,
         "endChar": 91
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49703043_b5fe9a15",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-28T03:17:27Z",
+      "side": 1,
+      "message": "Can you add another function just to get the status?",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 15
       },
       "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
