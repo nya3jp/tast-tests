@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8f72e79c_3230db23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-28T16:28:04Z",
+      "side": 1,
+      "message": "nit: can you add 1101928 bug?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "d4a5a5225637fdabf8038776ec88e7d0046010b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85c17361_f911a210",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -13,6 +36,23 @@
       "writtenOn": "2020-07-28T14:35:14Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "d4a5a5225637fdabf8038776ec88e7d0046010b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01f678c9_ea82dab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-28T16:28:04Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "d4a5a5225637fdabf8038776ec88e7d0046010b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
