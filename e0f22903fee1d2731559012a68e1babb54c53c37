@@ -88,6 +88,54 @@
     },
     {
       "key": {
+        "uuid": "fef90444_fc8fb186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-28T17:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14ee5ae_ac5d3aa3",
+      "range": {
+        "startLine": 28,
+        "startChar": 77,
+        "endLine": 28,
+        "endChar": 86
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f7b95ac_e5dfca7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-28T17:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636a3617_ddf04bdf",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 28,
+        "endChar": 67
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "047ba428_a3f03527",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
         "patchSetId": 1
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "7e49d46b_c1f36ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-28T17:57:00Z",
+      "side": 1,
+      "message": "Hmm I\u0027m not sure how to autoformat comments in go. I\u0027ll set this to 80 width.",
+      "parentUuid": "047ba428_a3f03527",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 63
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "107e05c5_243a2e6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
         "patchSetId": 1
@@ -125,6 +197,24 @@
       "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b395fe_b6c67fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-28T17:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107e05c5_243a2e6b",
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +238,30 @@
       "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e51f59d_613a395b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/expand_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-28T17:57:00Z",
+      "side": 1,
+      "message": "Changing the name of this to LauncherToPeekingAnimationPerf that it\u0027s going from hidden to Peeking.",
+      "parentUuid": "fdb936ce_7660958b",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "e0f22903fee1d2731559012a68e1babb54c53c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
