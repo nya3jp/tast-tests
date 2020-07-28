@@ -16,6 +16,74 @@
       "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0a3a27f_86f00dc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:28:34Z",
+      "side": 1,
+      "message": "How about having tf.ReserveForDisconnectWifi() so that user does not need to know how long it needs to reserve to call DisconnectWifi()?",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee9238d5_a27cd247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disable_enable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:28:34Z",
+      "side": 1,
+      "message": "Remove the blank line to group the three chunks together: \n\n// do something\n// defer clean it up\n// reserve ctx for the defer",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9c8f13_9b91c196",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:28:34Z",
+      "side": 1,
+      "message": "Remove the blank line.",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "349dc9b9_0f25eeb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T03:28:34Z",
+      "side": 1,
+      "message": "How about having tf.ReserveForCollectLogs() so that user does not need to know how long it needs to reserve to call tf.CollectLogs()?",
+      "revId": "e84cbcc588012b90f6fbe4ad4eabbcbe6a8cce79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
