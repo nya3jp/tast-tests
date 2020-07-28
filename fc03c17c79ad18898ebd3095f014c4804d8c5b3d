@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "1de87723_fd6a1d45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-07-28T07:59:26Z",
+      "side": 1,
+      "message": "It\u0027s a little bit special about SELinux*ARC test.\nIt only means check after ARC starts (since we don\u0027t have SELinux*Browser test, and we don\u0027t have SELinux-enforced board without ARC).\n\nI saw /run/camera is not removed for all boards yet (the test is only failing some boards). https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2297120 also only removes for hal v1.",
+      "parentUuid": "bc676276_df817796",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
