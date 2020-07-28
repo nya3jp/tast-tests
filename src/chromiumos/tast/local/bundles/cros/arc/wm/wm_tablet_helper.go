@@ -7,6 +7,7 @@ package wm
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -130,6 +131,125 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 		}(); err != nil {
 			return errors.Wrapf(err, "%q test failed", tc)
 		}
+	}
+
+	return nil
+}
+
+// TabletDisplaySizeChangeHelper runs test-cases for tablet display size change.
+func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
+	// Get the default display orientation and set it back after all test-cases are completed.
+	defaultOrientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+
+	for _, tc := range activityInfo {
+		if err := func() error {
+			if err := displaySizeChangeHelper(ctx, tconn, a, d, tc); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q test failed", tc)
+		}
+	}
+
+	return nil
+}
+
+// displaySizeChangeHelper runs display size change scenarios in tablet mode.
+func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Wait until display rotates to activities desired orientation. Undefined activities are following the previous activity orientation.
+	testing.Poll(ctx, func(ctx context.Context) error {
+		newDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if activityInfo.DesiredDO != newDO.Type {
+			return errors.Errorf("invalid display orientation, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+	// Get primary display info before zoom.
+	dispInfoBeforeZoom, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dispInfoBeforeZoom == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	displayID := dispInfoBeforeZoom.ID
+
+	appWindowInfoBeforeZoom, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if dispInfoBeforeZoom.WorkArea != appWindowInfoBeforeZoom.BoundsInRoot {
+		return errors.Errorf("invalid activity bounds, the activity must cover the display work area. got: %q, want: %q", appWindowInfoBeforeZoom.BoundsInRoot, dispInfoBeforeZoom.WorkArea)
+	}
+
+	displayZoomFactors := dispInfoBeforeZoom.AvailableDisplayZoomFactors
+	newZoom := 0.
+
+	for _, z := range displayZoomFactors {
+		if z > 1 {
+			newZoom = z
+			break
+		}
+	}
+	if newZoom == 0 {
+		return errors.Errorf("invalid AvailableDisplayZoomFactors: got %v; want array with at least one value different than '1'", displayZoomFactors)
+	}
+	if err := ChangeDisplayZoomFactor(ctx, tconn, displayID, newZoom); err != nil {
+		return err
+	}
+	defer ChangeDisplayZoomFactor(ctx, tconn, displayID, dispInfoBeforeZoom.DisplayZoomFactor)
+
+	appWindowInfoAfterZoom, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Get primary display info after display resolution change.
+	dispInfoAfterZoom, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dispInfoAfterZoom == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	if dispInfoAfterZoom.WorkArea != appWindowInfoAfterZoom.BoundsInRoot {
+		return errors.Errorf("invalid activity bounds, the activity must cover the display work area. got: %q, want: %q", appWindowInfoAfterZoom.BoundsInRoot, dispInfoAfterZoom.WorkArea)
+	}
+
+	// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient. Because of possible roundings, the difference is calculated that should be less than 0.01 to have up to 2 decimal points of precision.
+	if math.Abs(newZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > 0.01 {
+		return errors.Errorf("invalid DPIX ration after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
+	}
+	if math.Abs(newZoom-dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY) > 0.01 {
+		return errors.Errorf("invalid DPIY ration after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
 	}
 
 	return nil
