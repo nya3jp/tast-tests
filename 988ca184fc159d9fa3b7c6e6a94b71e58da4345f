@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e8e7030_835793f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-28T20:58:53Z",
+      "side": 1,
+      "message": "Thanks for catching this bug.\n\nI added a poll for the freq of the AP2 first. After that, I used connectService() to make sure that the service is connected, before reunning the VerifyConnection(). \n\nNote: I can\u0027t guarantee that the DUT is connected to AP2, if I don\u0027t wait for the freq of AP2 here. Sometimes the DUT would still be connected to the old AP1 and the WaitForConnection() Pass. I tried to add a WaitForDisconnection() before running this function but there is also a race that the DUT might have already disconnected before. \n\nAnother solution for this is using the Stream gRPC watcher impelemnted here.\nhttps://crrev.com/c/2320218\nSo I can monitor the state of the DUT before Deconfiguring AP1.",
+      "parentUuid": "d60265f5_b627f64f",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69747958_42a06777",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5356093b_3282e6fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-28T20:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69747958_42a06777",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "988ca184fc159d9fa3b7c6e6a94b71e58da4345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
