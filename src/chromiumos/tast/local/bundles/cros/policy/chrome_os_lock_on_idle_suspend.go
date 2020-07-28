@@ -11,14 +11,15 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PasswordManagerEnabled,
-		Desc: "Behavior of PasswordManagerEnabled policy, checking the correspoding toggle button states (restriction and checked) after setting the policy",
+		Func: ChromeOsLockOnIdleSuspend,
+		Desc: "Behavior of ChromeOsLockOnIdleSuspend policy, checking the correspoding toggle button states (restriction and checked) after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
@@ -29,34 +30,41 @@ func init() {
 	})
 }
 
-// PasswordManagerEnabled tests the PasswordManagerEnabled policy.
-func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
+// ChromeOsLockOnIdleSuspend tests the ChromeOsLockOnIdleSuspend policy.
+func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
+	// Open a keyboard device.
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open keyboard device: ", err)
+	}
+	defer keyboard.Close()
+
 	for _, param := range []struct {
 		name           string
-		wantRestricted bool                           // wantRestricted is the wanted restriction state of the toggle button for the "Show lock screen when waking from sleep" option.
-		wantChecked    ui.CheckedState                // wantChecked is the wanted checked state of the toggle button for the "Show lock screen when waking from sleep" option.
-		value          *policy.PasswordManagerEnabled // value is the value of the policy.
+		wantRestricted bool                              // wantRestricted is the wanted restriction state of the toggle button for the "Offer to save password" option.
+		wantChecked    ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button for the "Offer to save password" option.
+		value          *policy.ChromeOsLockOnIdleSuspend // value is the value of the policy.
 	}{
-		{
-			name:           "unset",
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.PasswordManagerEnabled{Stat: policy.StatusUnset},
-		},
 		{
 			name:           "forced",
 			wantRestricted: true,
 			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.PasswordManagerEnabled{Val: true},
+			value:          &policy.ChromeOsLockOnIdleSuspend{Val: true},
 		},
 		{
-			name:           "deny",
+			name:           "disabled",
 			wantRestricted: true,
 			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.PasswordManagerEnabled{Val: false},
+			value:          &policy.ChromeOsLockOnIdleSuspend{Val: false},
+		},
+		{
+			name:           "unset",
+			wantRestricted: false,
+			wantChecked:    ui.CheckedStateFalse,
+			value:          &policy.ChromeOsLockOnIdleSuspend{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -76,17 +84,30 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
-			// Open the password settings page where the affected toggle button can be found.
-			conn, err := cr.NewConn(ctx, "chrome://settings/passwords")
+			// Open the Security and sign-in page where the affected toggle button can be found.
+			conn, err := cr.NewConn(ctx, "chrome://os-settings/lockScreen")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}
 			defer conn.Close()
 
+			// The Security and sign-in page is password protected. It asks for the password in a dialog.
+			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
+				Role: ui.RoleTypeDialog,
+				Name: "Confirm your password",
+			}, 15*time.Second); err != nil {
+				s.Fatal("Waiting for password dialog failed: ", err)
+			}
+
+			// Type the password to unlock the lock screen settings page.
+			if err := keyboard.Type(ctx, pre.Password+"\n"); err != nil {
+				s.Fatal("Failed to type password: ", err)
+			}
+
 			// Find the toggle button node.
 			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeToggleButton,
-				Name: "Offer to save passwords",
+				Name: "Show lock screen when waking from sleep",
 			}, 15*time.Second)
 			if err != nil {
 				s.Fatal("Finding toggle button failed: ", err)
