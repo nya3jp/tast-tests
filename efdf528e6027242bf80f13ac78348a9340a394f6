@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e651a1_a8609693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-28T06:03:00Z",
+      "side": 1,
+      "message": "Hi reviewers, PTAL.\n\nPS8 follows the normalized context usage. A concern would be, the modification of ctx at line 104 and later are actually declarations, so the ctx at line 50 would never change and is used by line 72, 100, 104, 128, and 132. I think it is acceptable but a little bit implicit. WDYT?",
+      "revId": "efdf528e6027242bf80f13ac78348a9340a394f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
