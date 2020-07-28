@@ -158,6 +158,24 @@
       "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5574943_7c8b6967",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-28T06:34:46Z",
+      "side": 1,
+      "message": "PS6 adopted the proposal. PTAL.\n\nAlso, I changed the tests which expect disconnection to still call DeleteEntriesForSSID by themselves and fail if the operation has error.",
+      "parentUuid": "4169abbf_31cdfd5b",
+      "revId": "5c83071061de2227ef2c56b2714068b821860ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
