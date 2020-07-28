@@ -9,6 +9,6 @@ readwrite=randwrite
 randrepeat=0
 norandommap
 
-ioengine=libaio
-iodepth=1
-direct=1
+;ioengine=libaio
+;iodepth=1
+;direct=1
