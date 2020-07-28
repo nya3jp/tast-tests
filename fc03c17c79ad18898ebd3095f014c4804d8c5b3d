@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "0e0b48f5_e97d560e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-07-28T08:55:42Z",
+      "side": 1,
+      "message": "/run/camera exists on v3 boards, but it\u0027s for other components and ARC doesn\u0027t use it.\n\nIIUC this test\u0027s purpose is to check the SELinux contexts of files and directories needed by ARC.\nIn that sense, we can stop checking /run/camera in this test.",
+      "parentUuid": "1de87723_fd6a1d45",
+      "revId": "fc03c17c79ad18898ebd3095f014c4804d8c5b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97dc794_34604b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 1
