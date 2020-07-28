@@ -16,6 +16,41 @@
       "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ea87cc8_a002df3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-28T13:07:43Z",
+      "side": 1,
+      "message": "I\u0027d do this in this CL. It makes sense to test a much as possible.",
+      "parentUuid": "db80d683_08696ebd",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b30321_89eba81b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-28T13:07:43Z",
+      "side": 1,
+      "message": "Move to a separate CL.",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
