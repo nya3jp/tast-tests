@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f21facb_f4c9d90e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T11:46:07Z",
+      "side": 1,
+      "message": "a nit.",
+      "revId": "f9ea92d6f4038121ad4dba4ad2cf94d9ae2734fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a19b19_efc154bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-28T11:46:07Z",
+      "side": 1,
+      "message": "Adding a comment:\n// Explicitly delete service entries here because it could have no active service here so calling tf.CleanDisconnectWifi() would fail.",
+      "revId": "f9ea92d6f4038121ad4dba4ad2cf94d9ae2734fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
