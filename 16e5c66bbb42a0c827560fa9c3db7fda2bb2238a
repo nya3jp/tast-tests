@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddd91fb4_c44a7407",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-28T23:30:15Z",
+      "side": 1,
+      "message": "nit/style: Per https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Commit-messages, the one-line summary should be \u003c\u003d50 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 78
+      },
+      "revId": "16e5c66bbb42a0c827560fa9c3db7fda2bb2238a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7456e9_058b574c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-28T23:30:15Z",
+      "side": 1,
+      "message": "LGTM % nit ",
+      "revId": "16e5c66bbb42a0c827560fa9c3db7fda2bb2238a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
