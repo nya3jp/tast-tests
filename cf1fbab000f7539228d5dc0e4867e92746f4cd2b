@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e68045ee_5889df14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-28T17:04:25Z",
+      "side": 1,
+      "message": "Nice, I like how you cache the result.",
+      "revId": "cf1fbab000f7539228d5dc0e4867e92746f4cd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64841597_e1813dc4",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-07-28T17:04:25Z",
+      "side": 1,
+      "message": "Is there any canonical definition to point to what model means (same for board)?  If not, this is the best we can do.  If so, would be good to add a reference to it: here\u0027s an example suggestive of where precision on these terms can benefit maintenance efficiency: crrev.com/c/2148415.",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "cf1fbab000f7539228d5dc0e4867e92746f4cd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
