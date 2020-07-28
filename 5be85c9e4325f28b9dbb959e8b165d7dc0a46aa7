@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c9352e_22cf1005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-28T10:07:47Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5be85c9e4325f28b9dbb959e8b165d7dc0a46aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41afccba_6fc63c50",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-28T10:07:47Z",
+      "side": 1,
+      "message": "nit: log error\nSame below",
+      "range": {
+        "startLine": 902,
+        "startChar": 3,
+        "endLine": 902,
+        "endChar": 4
+      },
+      "revId": "5be85c9e4325f28b9dbb959e8b165d7dc0a46aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148f66a7_b9f8ba89",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-28T10:07:47Z",
+      "side": 1,
+      "message": "nit: check that there\u0027s no other unexpected error here (like context timeout).\n\nhttps://golang.org/pkg/os/exec/#ExitError",
+      "range": {
+        "startLine": 907,
+        "startChar": 23,
+        "endLine": 907,
+        "endChar": 33
+      },
+      "revId": "5be85c9e4325f28b9dbb959e8b165d7dc0a46aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
