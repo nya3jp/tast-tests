@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d85bf50_0b28b58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-07-28T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d73fc229_f210982b",
+      "revId": "3f688225d74134dd176b1eb674ccb2f023ba87e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "719fbb56_43c7f4bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 1
