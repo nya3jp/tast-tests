@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc322b1_9a9563bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-07-28T11:13:16Z",
+      "side": 1,
+      "message": "This adds the missing attribute \"crosbolt_perbuild\" to platform.BootPerf.\nPlease take a look. Thanks.",
+      "revId": "e2c42991dcb3525bec726c99c84add5f3a2f1c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
