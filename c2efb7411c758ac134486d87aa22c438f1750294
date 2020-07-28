@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "7bdb16fb_759a5318",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-07-28T19:10:14Z",
+      "side": 0,
+      "message": "OK, so I am unsure whether I set up the VM correctly, but in the meantime I was able to test on a real DUT, running the image from xbuddy://remote/eve-arc-r/latest-dev. Unfortunately I\u0027m getting an error that I am unsure how to solve, and maybe I\u0027m just making a silly mistake. The error come from when we are trying to run the org.chromium.arc.cachebuilder.Validator class:\n\n```\nError: A JNI error has occurred, please check your installation and try again\nException in thread \"main\" java.lang.UnsupportedClassVersionError: org/chromium/arc/cachebuilder/Validator has been compiled by a more recent version of the Java Runtime (class file version 53.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n```\n\nThe weird thing is, that since I\u0027m running the latest dev image, I\u0027m not sure why it doesn\u0027t have the same Java version that this test apparently needs. Do I need to downgrade the Java version in my chroot or something like that? Any advice would be appreciated.",
+      "parentUuid": "d4055e08_8e78b1cf",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65472e1a_194bd875",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
