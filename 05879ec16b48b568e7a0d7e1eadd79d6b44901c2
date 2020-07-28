@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a3a24b18_2a131498",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-28T04:15:47Z",
+      "side": 1,
+      "message": "Revise the comment to use term \"interrupt\" and \"close/closing\".",
+      "parentUuid": "fe719c3e_ce5b131f",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68b2c558_87938481",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
         "patchSetId": 7
@@ -70,6 +94,30 @@
       "writtenOn": "2020-07-28T03:52:45Z",
       "side": 1,
       "message": "When will this error happens?",
+      "range": {
+        "startLine": 165,
+        "startChar": 12,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "05879ec16b48b568e7a0d7e1eadd79d6b44901c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64c2cf1_780e8914",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-28T04:15:47Z",
+      "side": 1,
+      "message": "The logic here is ported from autotest:\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/camerabox_utils.py;rcl\u003d9d68af8a9c3a4ffe67bdb4a9301b51f3c7762951;l\u003d47\n\nIt will use grep to test if the \"Chart is ready\" appear in the log file. The grep use the exit code for telling the if the pattern is found. When the grep result in a non-zero exit code the |cryptossh.ExitError| will be emitted from\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/ssh/exec.go;rcl\u003def7c397379dd19b1e2559855669365207c119cc9;l\u003d102\nhttps://godoc.org/golang.org/x/crypto/ssh#Session.Run",
+      "parentUuid": "68b2c558_87938481",
       "range": {
         "startLine": 165,
         "startChar": 12,
