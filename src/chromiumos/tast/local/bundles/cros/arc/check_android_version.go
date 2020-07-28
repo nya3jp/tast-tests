@@ -56,7 +56,7 @@ func CheckAndroidVersion(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	whiteListMap := map[string]struct{}{
+	allowedBoardsListMap := map[string]struct{}{
 		// Board names(case-sensitive) can be added here
 		"betty-pi-arc":  {},
 		"betty":         {},
@@ -116,9 +116,9 @@ func CheckAndroidVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the abi property from DUT: ", err)
 	}
 
-	// Confirm that the board exists in whitelist
-	if _, exists := whiteListMap[boardName]; exists != true {
-		s.Logf("Board - %v must be white-listed to pass this test", boardName)
+	// Confirm that the board exists in allowedBoardsListMap
+	if _, exists := allowedBoardsListMap[boardName]; exists != true {
+		s.Logf("Board - %v must be explicitly allowed to pass this test", boardName)
 		s.Fatalf("Board is running %v kernel, but Android is %v", kernelVersion, abi)
 	}
 }
