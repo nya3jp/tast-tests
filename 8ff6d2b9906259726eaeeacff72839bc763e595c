@@ -16,6 +16,29 @@
       "revId": "8ff6d2b9906259726eaeeacff72839bc763e595c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2c5ad28_f333e53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-07-29T00:27:26Z",
+      "side": 1,
+      "message": "nit:\nsince \"tiny\" is an adjective, how about:\n- can have a tiny difference\nor\n- can be a little different\n?",
+      "range": {
+        "startLine": 87,
+        "startChar": 75,
+        "endLine": 87,
+        "endChar": 99
+      },
+      "revId": "8ff6d2b9906259726eaeeacff72839bc763e595c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
