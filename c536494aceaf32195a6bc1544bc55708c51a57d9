@@ -16,6 +16,40 @@
       "revId": "c536494aceaf32195a6bc1544bc55708c51a57d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c14465_8f16dd16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T07:23:27Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "c536494aceaf32195a6bc1544bc55708c51a57d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ea7f3da_30941f72",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T07:23:27Z",
+      "side": 1,
+      "message": "nit: also state that we are starting ui for debugd.",
+      "revId": "c536494aceaf32195a6bc1544bc55708c51a57d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
