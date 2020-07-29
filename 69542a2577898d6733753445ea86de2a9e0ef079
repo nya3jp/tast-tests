@@ -348,6 +348,30 @@
     },
     {
       "key": {
+        "uuid": "9d1b627b_149d46ac",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T15:52:49Z",
+      "side": 1,
+      "message": "Ah..., sorry for another iteration, but could you give it a try to make this a bit more stable?\n\nc.Command(ctx, \"ls\", \"-1\", path)  // to output one entry per line.\n\nthen,\n\nreturn strings.Split(files, \"\\r\\n\"), nil  // split lines.\n\n(if line terminator is just LF, strings.Split(files, \"\\n\") instead.)",
+      "parentUuid": "a8aa0805_06c7e380",
+      "range": {
+        "startLine": 465,
+        "startChar": 45,
+        "endLine": 465,
+        "endChar": 49
+      },
+      "revId": "69542a2577898d6733753445ea86de2a9e0ef079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f684f0d_9e3f7b82",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 15
