@@ -33,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
 		Params: []testing.Param{
 			{
 				Name: "es",
