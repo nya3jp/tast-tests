@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c103792_f21c4e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-07-29T01:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d7ddf7_32d7c55a",
+      "revId": "34b0c20df8c23efbd5071edf8faed8b243a52a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c2640be_39b1dec0",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-29T01:04:08Z",
       "side": 1,
       "message": "You need to exclude kernel that do not support fscrypt.\nFS_IOC_GET_ENCRYPTION_POLICY_EX is not defined until 5.4.\n\nYou can limit the test to certain kernel. See crrev.com/c/1939076 and 1939387 for instance.",
+      "revId": "34b0c20df8c23efbd5071edf8faed8b243a52a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e4b338_82e02c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-07-29T01:29:26Z",
+      "side": 1,
+      "message": "GetPolicy() falls back to FS_IOC_GET_ENCRYPTION_POLICY if not supported: see https://github.com/google/fscrypt/blob/master/metadata/policy.go#L162",
+      "parentUuid": "0c2640be_39b1dec0",
       "revId": "34b0c20df8c23efbd5071edf8faed8b243a52a63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
