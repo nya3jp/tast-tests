@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac407f0a_ed84542d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-07-29T20:53:45Z",
+      "side": 1,
+      "message": "Self review.",
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c531291_6a79d089",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-07-29T20:53:45Z",
+      "side": 1,
+      "message": "nit: fix wrapping.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d408ece_389ed646",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-07-29T20:53:45Z",
+      "side": 1,
+      "message": "\u003e \"boolen\" is a possible misspelling of \"boolean\".\n\nPlease fix.",
+      "parentUuid": "ecd2b27d_d68e9ac0",
+      "range": {
+        "startLine": 110,
+        "startChar": 48,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de5b42e_e2ae1496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-07-29T20:53:45Z",
+      "side": 1,
+      "message": "\u003e \"interation\" is a possible misspelling of \"iteration\" or \"interaction\".\n\nPlease fix.",
+      "parentUuid": "42551f52_e1075d70",
+      "range": {
+        "startLine": 93,
+        "startChar": 58,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
