@@ -16,6 +16,115 @@
       "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26c63b34_5013c3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:50:55Z",
+      "side": 1,
+      "message": "Let\u0027s use filepath.Join to construct file paths.",
+      "range": {
+        "startLine": 92,
+        "startChar": 38,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680eb354_b01e9b7f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:50:55Z",
+      "side": 1,
+      "message": "nit: I recommend %q instead of %s when we\u0027re not sure of the string content. It\u0027s more readable especially when a string is empty.\n\nWith %s:\n\n expect foo, got\n\nWith %q:\n\n expect \"foo\", got \"\"",
+      "range": {
+        "startLine": 452,
+        "startChar": 35,
+        "endLine": 452,
+        "endChar": 37
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1532d21a_818f02e2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:50:55Z",
+      "side": 1,
+      "message": "style: Please print in got-want order.\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0e8b15_071618fb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:50:55Z",
+      "side": 1,
+      "message": "\": \" is not needed.",
+      "range": {
+        "startLine": 452,
+        "startChar": 45,
+        "endLine": 452,
+        "endChar": 47
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabc5b05_1c660f1a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:50:55Z",
+      "side": 1,
+      "message": "Why do you strip \\r\\n? cat command does not append newline characters to the output, so if we observe newline characters, the file actually contains them. And this behavior is not mentioned in the comments of readFile and CheckFileContent.",
+      "range": {
+        "startLine": 464,
+        "startChar": 41,
+        "endLine": 464,
+        "endChar": 49
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
