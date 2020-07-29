@@ -16,6 +16,270 @@
       "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fa10c55_57646a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "Sorry for delay...\n",
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57288502_80d4aae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "In general I recommend doing things in Go code instead of using external processes for various reasons:\n\n- It is difficult to escape shell code correctly\n- Shell scripts are error-prone and hard to debug",
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984a9a35_6f8627d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "nit: We can avoid xargs by using -exec.\n\n find %s -exec matchpathcon -f %s -V {} +",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 70
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e7515e_580ba41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "I\u0027m afraid that it is difficult to debug verification failures because the output of matchpathcon is not saved. I recommend saving it first to a file in the output dir (obtained by testing.ContextOutDir), and reading the content to check the verification result.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4991502c_8bc6764a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "Use shutil.Escape.",
+      "range": {
+        "startLine": 74,
+        "startChar": 44,
+        "endLine": 74,
+        "endChar": 84
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02dd6371_2896a9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "It is possible that /data appears in a middle of a file path, e.g. \"/foo/bar/data/baz\". Do we want to match with them too?",
+      "range": {
+        "startLine": 74,
+        "startChar": 27,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3f8c39_34cde208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "nit: const replaceRawString \u003d ...",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea16e221_f2a73d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "I recommend writing this operation as a Go function. It should be not difficult.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34887d3a_286c94cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "What do you think about having a list of failing directories instead of passing directories? In this approach, new directories appearing in /data will be silently ignored.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bdc373_237fc079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "Use filepath.Join to construct file paths.",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1cd89b_868c5194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 132,
+        "startChar": 31,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c808ceca_f023ae68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T04:55:37Z",
+      "side": 1,
+      "message": "This code path is not hit when s.Fatal is called above. Please call os.Remove in a deferred statement.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
