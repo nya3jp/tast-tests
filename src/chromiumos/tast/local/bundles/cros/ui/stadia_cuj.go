@@ -99,6 +99,10 @@ func StadiaCUJ(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
+		// Exit the game.
+		if err := stadiacuj.ExitGame(ctx, kb, webview); err != nil {
+			s.Fatal("Failed to exit game: ", err)
+		}
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
