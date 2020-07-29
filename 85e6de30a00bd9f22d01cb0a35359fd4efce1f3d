@@ -16,6 +16,98 @@
       "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69b53adb_28e8f9ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:57:46Z",
+      "side": 1,
+      "message": "nit: const testFile \u003d ...",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba2b12a_52f0ccd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:57:46Z",
+      "side": 1,
+      "message": "Let\u0027s use filepath.Join to construct file paths.",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 49
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4345c3_eb3e687f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:57:46Z",
+      "side": 1,
+      "message": "Which apt mirror do we use? Is it served by Google or do we use public Debian mirrors? I\u0027m afraid that this test might be flaky if we access public Debian mirrors.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abad47b0_01fea9c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:57:46Z",
+      "side": 1,
+      "message": "Is it possible that err \u003d\u003d nil and result contains \"No such file or directory\"?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
