@@ -72,6 +72,11 @@ func Wait(ctx context.Context) error {
 		return errors.Wrapf(err, "failed waiting for %v job", systemServicesJob)
 	}
 
+	// Start the ui job if it is not running.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "failed to start ui: ", err)
+	}
+
 	// Make a best effort for important daemon jobs that start later, but just log errors instead of failing.
 	// We don't want to abort the whole test run if there's a bug in a daemon that prevents it from starting.
 	var daemonJobs = []string{
