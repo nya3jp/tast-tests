@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b35e7f_5e0c1a24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-29T22:03:17Z",
+      "side": 1,
+      "message": "LGTM from my side. I think you should also wait for the reply from Brendan to proceed.",
+      "revId": "f84813bdf95413effabffc2195d40c1234e1ce4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbbe27d8_7da723cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-29T22:03:17Z",
+      "side": 1,
+      "message": "nit: chrome is already in SoftwareDeps above, doesn\u0027t have to be in ExtraSoftwareDeps.",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "f84813bdf95413effabffc2195d40c1234e1ce4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
