@@ -139,9 +139,6 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 	ret := map[string]interface{}{
 		shillconst.ServicePropertyPassphrase: c.psk,
 	}
-	if c.ftMode&FTModePure > 0 {
-		ret[shillconst.ServicePropertyFTEnabled] = true
-	}
 	return ret, nil
 }
 
