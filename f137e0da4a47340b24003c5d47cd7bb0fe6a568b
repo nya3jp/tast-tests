@@ -39,6 +39,30 @@
       "revId": "f137e0da4a47340b24003c5d47cd7bb0fe6a568b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d979af1d_f7b90fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-29T23:20:40Z",
+      "side": 1,
+      "message": "Good catch! done",
+      "parentUuid": "2a9a9c53_9ab4add4",
+      "range": {
+        "startLine": 990,
+        "startChar": 18,
+        "endLine": 990,
+        "endChar": 19
+      },
+      "revId": "f137e0da4a47340b24003c5d47cd7bb0fe6a568b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
