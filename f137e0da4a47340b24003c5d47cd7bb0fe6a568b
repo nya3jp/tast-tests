@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "4166f972_9faefd47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T23:31:02Z",
+      "side": 1,
+      "message": "chances are that the device is not in 0-rotation degrees.\nbest is to get current rotation, and also the \"defer\" should also be:\n\n  defer rot.SetTo(originalRotation)",
+      "range": {
+        "startLine": 808,
+        "startChar": 84,
+        "endLine": 808,
+        "endChar": 85
+      },
+      "revId": "f137e0da4a47340b24003c5d47cd7bb0fe6a568b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7f7ea7_4c86b1b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T23:31:02Z",
+      "side": 1,
+      "message": "nit: describe the purpose of this struct",
+      "range": {
+        "startLine": 830,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 4
+      },
+      "revId": "f137e0da4a47340b24003c5d47cd7bb0fe6a568b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a9a9c53_9ab4add4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
