@@ -73,6 +73,11 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // ProfileBasicTest creates, pushes, and pops the profiles and asserts the
+  // connection states between those operations.
+  // This is the main body of the ProfileBasic test.
+  rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -198,4 +203,16 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+
+message ProfileBasicTestRequest {
+  // The configurations for connecting to a certain AP, as like ConnectRequest.
+  message Config {
+    bytes ssid = 1;
+    string security = 2;
+    string ip = 3;
+    map<string, ShillVal> shillprops = 4;
+  }
+  Config ap0 = 1;
+  Config ap1 = 2;
 }
