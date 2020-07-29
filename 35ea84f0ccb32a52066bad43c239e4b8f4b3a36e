@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33251820_d85e9144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-29T01:23:16Z",
+      "side": 1,
+      "message": "First of all, I just noticed that the autotest version is not running on veyron_speedy, veyron_jerry and always failing on veyron_mickey: https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard\u0026col\u003dbuild\u0026first_date\u003d2020-07-16\u0026last_date\u003d2020-07-29\u0026test\u003dnetwork_WiFi_RoamDbus\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nI could have been testing the code on a one of these boards.\n\nUsing wpa_supplicant to get the scan results didn\u0027t solve the problem. The test was still failing to roam. \n\nThe changes I did were changing the order in the function DiscoverBSSID() to check the BSSID first then run scan if it doesn\u0027t match. Also, fixing the bug in PS11 (returning nil at the end of the poll). These changes fixed the error in the logs:\nhttps://paste.googleplex.com/6551316149043200\n\nI ran this final patch on a rammus DUT for 50 times with no failure.",
+      "parentUuid": "7c026270_ef70cfab",
+      "revId": "35ea84f0ccb32a52066bad43c239e4b8f4b3a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aafbc2b7_ba8e3c8b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 19
@@ -39,6 +57,30 @@
       "revId": "35ea84f0ccb32a52066bad43c239e4b8f4b3a36e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4234daf0_5af0665d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-29T01:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aafbc2b7_ba8e3c8b",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "35ea84f0ccb32a52066bad43c239e4b8f4b3a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
