@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b62b8a7a_b23ebf2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-29T09:59:58Z",
+      "side": 1,
+      "message": "Brian, PTAL. The API problems of base CL has been fixed.",
+      "revId": "46b9e30b97987f2259f5a21ba5a2a4435cfa6805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
