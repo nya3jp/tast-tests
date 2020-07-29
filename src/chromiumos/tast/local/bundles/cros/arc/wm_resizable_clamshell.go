@@ -47,19 +47,24 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Func: wmRC01,
 		},
 		wm.TestCase{
-			// resizable/clamshell: resizable/clamshell: maximize portrait app (pillarbox)
+			// resizable/clamshell: maximize portrait app (pillarbox)
 			Name: "RC02_maximize_portrait",
 			Func: wmRC02,
 		},
 		wm.TestCase{
-			// resizable/clamshell: resizable/clamshell: user immerse portrait app (pillarbox)
+			// resizable/clamshell: user immerse portrait app (pillarbox)
 			Name: "RC04_user_immerse_portrait",
 			Func: wmRC04,
 		},
 		wm.TestCase{
-			// resizable/clamshell: resizable/clamshell: user immerse non-portrait app
+			// resizable/clamshell: user immerse non-portrait app
 			Name: "RC05_user_immerse_non_portrait",
 			Func: wmRC05,
+		},
+		wm.TestCase{
+			// resizable/clamshell: immerse via API ignored if windowed
+			Name: "RC06_immerse_via_API_ignored_if_windowed",
+			Func: wmRC06,
 		},
 	})
 }
@@ -288,6 +293,52 @@ func wmRC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		}(); err != nil {
 			return errors.Wrapf(err, "%q test failed", actName)
 		}
+	}
+	return nil
+}
+
+// wmRC06 covers resizable/clamshell: immerse via API ignored if windowed.
+// Expected behavior is defined in: go/arc-wm-r RC06: resizable/clamshell: immerse via API ignored if windowed.
+func wmRC06(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get window info before clicking on the immersive button.
+	originalWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Click on the immersive button.
+	if err := wm.UIClickImmersive(ctx, act, d); err != nil {
+		return err
+	}
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get window info after the immersive button is clicked.
+	windowInfoUIImmersive, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// There should be no changes on window bounds in root after clicking on the immersive button.
+	if originalWindowInfo.BoundsInRoot != windowInfoUIImmersive.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after UI immersive clicked. got: %q, want: %q", windowInfoUIImmersive.BoundsInRoot, originalWindowInfo.BoundsInRoot)
 	}
 	return nil
 }
