@@ -326,6 +326,30 @@
     },
     {
       "key": {
+        "uuid": "7f577b92_d86eacd5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T09:54:34Z",
+      "side": 1,
+      "message": "Hmm. my understanding is that you observed that unconditionally deleting cryptohome directories in /home/.shadow fails due to files still in use.\n\nHowever, IIUC, stopping the ui job is equivalent to user logout, and Chrome OS *must* render all encrypted user files unaccessible on logout (e.g. throwing away the user encryption key, dropping in-kernel file cache, ...). If that\u0027s not the case, it\u0027s a critical product bug.\n\nSo I\u0027d like to know the reason why it fails. Can you share error messages you see when you unconditionally delete user directories in /home/.shadow? I might be missing some edge cases (e.g. some files in /home/.shadow are unencrypted and still in use after logout?).",
+      "parentUuid": "a3888611_330780f1",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619aa907_a03aa07d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
