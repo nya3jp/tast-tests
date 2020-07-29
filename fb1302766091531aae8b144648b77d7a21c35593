@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4350fcba_41e3380e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:26:33Z",
+      "side": 1,
+      "message": "Tests being delayed for stopped ui job is not desirable. I filed crbug.com/1110559 and send a fix soon. Thanks for letting me know this issue!",
+      "parentUuid": "d591c67b_fcc78861",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bce9c5e_6dcf68d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "This timeout is sort of arbitrary right now, but there\u0027s a good chance it could be tuned to be different per test.\n\nWhat\u0027s the recommended approach here? Should I just drop the per-test timeout and add it in when it\u0027s shown that it\u0027s needed?\n\nWhat\u0027s the interaction between the per-test timeout and the one set in line 80? It seems that the timeout for any given test case should be less than the overall timeout, and the sum of all the timeouts should not be less than the overall timeout.",
       "parentUuid": "9f64954d_c99a9b21",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8691b20_529bc8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T02:26:33Z",
+      "side": 1,
+      "message": "For parameterized tests, either one of testing.Test.Timeout or testing.Param.Timeout can be set, but not both. If testing.Test.Timeout is set, it is used for all parameters. If testing.Param.Timeout is set, it is used for a particular parameter. Finally, if neither of them are set, the default timeout is used for all parameters.\n\nIn other words, think of parameterized tests as a convenient way to define multiple tests at once. For example, consider the following parameterized test definition:\n\n testing.AddTest(\u0026testing.Test{\n   Name: \"Test\",\n   Params: []testing.Param{\n     {Name: \"foo\", Timeout: 3*time.Second},\n     {Name: \"bar\", Timeout: 5*time.Second},\n   },\n })\n\nThis is semantically similar to the following two AddTest calls (while calling AddTest multiple times is forbidden actually):\n\n testing.AddTest(\u0026testing.Test{\n   Name: \"Test.foo\"\n   Timeout: 3*time.Second,\n })\n testing.AddTest(\u0026testing.Test{\n   Name: \"Test.bar\"\n   Timeout: 5*time.Second,\n })\n\nSo, my recommendation is to remove testing.Test.Timeout and set testing.Param.Timeout to all parameters.",
+      "parentUuid": "6f37c67a_69e8c97e",
       "range": {
         "startLine": 74,
         "startChar": 4,
