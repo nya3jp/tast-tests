@@ -16,6 +16,69 @@
       "revId": "d53f0bde177de42cc173a1491b1fb407a2e225ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8444402e_038c565c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-29T00:04:00Z",
+      "side": 1,
+      "message": "just some nit suggestions.",
+      "revId": "d53f0bde177de42cc173a1491b1fb407a2e225ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0eb8dd1_324fc2b1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-29T00:04:00Z",
+      "side": 1,
+      "message": "super nit: When these constants get used, the name is very long and redundant. Maybe change them to DirName and Title. So then it is linuxFiles.DirName and linuxFiles.Title",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "d53f0bde177de42cc173a1491b1fb407a2e225ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505abe63_0d8d5977",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-29T00:04:00Z",
+      "side": 1,
+      "message": "nit: can we move these methods to ui/filesapp and make them methods on the files app struct? That way other filesapp tests could use them as well. The only crositini specific part is opening a specific directory. Potentially just move opening the dir out of the functions or make it a parameter?\n\nIf you do move it, I would create a new keyboard in RenameFile as opposed to having the user pass one in.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "d53f0bde177de42cc173a1491b1fb407a2e225ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
