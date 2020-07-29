@@ -22,7 +22,7 @@ func init() {
 		},
 		Attr: []string{"group:mainline"},
 		// Only Atlas use override script, board developed later uses unibuild.
-		HardwareDeps: hwdep.D(hwdep.Platform("atlas")),
+		HardwareDeps: hwdep.D(hwdep.Model("atlas")),
 	})
 }
 
