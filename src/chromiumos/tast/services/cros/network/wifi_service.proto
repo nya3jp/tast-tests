@@ -91,6 +91,10 @@ service WifiService {
   // 2. ON_CHANGE: waits for the property changes to the expected values.
   // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
   rpc ExpectShillProperty(ExpectShillPropertyRequest) returns (stream ExpectShillPropertyResponse) {}
+
+  // SetDHCPProperties sets the DHCP properties in shill and returns the original
+  // values.
+  rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
 }
 
 message ConnectRequest {
@@ -257,4 +261,17 @@ message ExpectShillPropertyRequest {
 message ExpectShillPropertyResponse {
   string key = 1;
   ShillVal val = 2;
+}
+
+message DHCPProperties {
+  string vendor_class = 1;
+  string hostname = 2;
+}
+
+message SetDHCPPropertiesRequest {
+  DHCPProperties props = 1;
+}
+
+message SetDHCPPropertiesResponse {
+  DHCPProperties props = 1;
 }
