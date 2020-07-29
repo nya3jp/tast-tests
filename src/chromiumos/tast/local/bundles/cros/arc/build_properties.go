@@ -49,10 +49,6 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
-	vmEnabled, err := arc.VMEnabled()
-	if err != nil {
-		s.Fatalf("Failed to check if VM is enabled: %v: ", err)
-	}
 
 	getProperty := func(propertyName string) string {
 		var value string
@@ -69,7 +65,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		return value
 	}
 
-	listProperties := func() map[string]bool {
+	getAllPropertiesMap := func() map[string]bool {
 		// Returns a list of existing property names as a map.
 		out, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError)
 		if err != nil {
@@ -169,13 +165,9 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// Starting R, the images have ro.{system,system_ext,product,odm,vendor}.build.* properties
 	// by default to allow vendors to customize the values. ARC++ doesn't need the customization
 	// and uses the same value for all of them. This verifies that all properties share the same
-	// value.
-	partitions := []string{"system", "system_ext", "product"}
-	if vmEnabled {
-		// TODO(yusukes): Fix P's build_image and test these partitions on P too.
-		partitions = append(partitions, "odm", "vendor")
-	}
-	allProperties := listProperties()
+	// value. On P, the images have only ro.{system,vendor} ones.
+	partitions := []string{"system", "system_ext", "product", "odm", "vendor"}
+	allProperties := getAllPropertiesMap()
 	for property := range allProperties {
 		if !strings.HasPrefix(property, "ro.build.") {
 			continue
