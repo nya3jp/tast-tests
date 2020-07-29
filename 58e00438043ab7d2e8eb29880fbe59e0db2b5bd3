@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c8fce4b_2a7edf6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-07-29T01:30:04Z",
+      "side": 1,
+      "message": "+jrosenth since he is the owner of CL:*3133472",
+      "revId": "58e00438043ab7d2e8eb29880fbe59e0db2b5bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
