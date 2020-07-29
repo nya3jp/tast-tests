@@ -91,6 +91,11 @@ service WifiService {
   // 2. ON_CHANGE: waits for the property changes to the expected values.
   // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
   rpc ExpectShillProperty(ExpectShillPropertyRequest) returns (stream ExpectShillPropertyResponse) {}
+
+  // ProfileBasicTest is the main body of the ProfileBasic test, which creates,
+  // pushes, and pops the profiles and asserts the connection states between
+  // those operations.
+  rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -257,4 +262,16 @@ message ExpectShillPropertyRequest {
 message ExpectShillPropertyResponse {
   string key = 1;
   ShillVal val = 2;
+}
+
+message ProfileBasicTestRequest {
+  // The configuration for connecting to a certain AP, as like ConnectRequest.
+  message Config {
+    bytes ssid = 1;
+    string security = 2;
+    string ip = 3;
+    map<string, ShillVal> shill_props = 4;
+  }
+  Config ap0 = 1;
+  Config ap1 = 2;
 }
