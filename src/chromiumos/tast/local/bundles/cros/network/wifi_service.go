@@ -408,10 +408,6 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		return nil, err
 	}
 
-	ftEnabled, err := props.GetBool(shillconst.ServicePropertyFTEnabled)
-	if err != nil {
-		return nil, err
-	}
 	frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
 	if err != nil {
 		return nil, err
@@ -448,7 +444,6 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		Guid:        guid,
 		Wifi: &network.QueryServiceResponse_Wifi{
 			Bssid:         bssid,
-			FtEnabled:     ftEnabled,
 			Frequency:     uint32(frequency),
 			FrequencyList: uint16sToUint32s(frequencyList),
 			HexSsid:       hexSSID,
