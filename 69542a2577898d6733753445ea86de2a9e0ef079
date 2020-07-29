@@ -372,6 +372,30 @@
     },
     {
       "key": {
+        "uuid": "945120de_78a68923",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T23:54:49Z",
+      "side": 1,
+      "message": "Thanks a lot! Splitting with space does not work with file/folder name with space.\nBTW, there is always an empty string after splitting with \\n, that\u0027s why return fileList[:len(fileList)-1], nil.",
+      "parentUuid": "9d1b627b_149d46ac",
+      "range": {
+        "startLine": 465,
+        "startChar": 45,
+        "endLine": 465,
+        "endChar": 49
+      },
+      "revId": "69542a2577898d6733753445ea86de2a9e0ef079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f684f0d_9e3f7b82",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 15
