@@ -16,6 +16,23 @@
       "revId": "58e00438043ab7d2e8eb29880fbe59e0db2b5bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a0d611a_84fbbf94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-29T02:11:53Z",
+      "side": 1,
+      "message": "\"platform name\" is an internal identifier to mosys. we should kill that lever as it\u0027s not a stable identifier.",
+      "revId": "58e00438043ab7d2e8eb29880fbe59e0db2b5bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
