@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "4dba4a35_de262895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-29T01:20:59Z",
+      "side": 1,
+      "message": "Removed this comment line.",
+      "parentUuid": "39aa0c0b_f673628c",
+      "range": {
+        "startLine": 733,
+        "startChar": 55,
+        "endLine": 733,
+        "endChar": 56
+      },
+      "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee761656_16da5633",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e61e1b_ce73e43a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-29T01:20:59Z",
+      "side": 1,
+      "message": "Removed the comment line.",
+      "parentUuid": "ee761656_16da5633",
+      "range": {
+        "startLine": 749,
+        "startChar": 56,
+        "endLine": 749,
+        "endChar": 68
+      },
+      "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -109,6 +157,30 @@
       "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2729c060_dcddc992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-07-29T01:20:59Z",
+      "side": 1,
+      "message": "Turned the Sleep to testing.Poll to wait until the activity is moved to a different display.",
+      "parentUuid": "c889abb7_bcc8d193",
+      "range": {
+        "startLine": 750,
+        "startChar": 15,
+        "endLine": 750,
+        "endChar": 28
+      },
+      "revId": "fbebd28f9608c17ef231b6e2d9abdc295b5903cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
