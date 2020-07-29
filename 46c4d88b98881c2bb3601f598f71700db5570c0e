@@ -22,6 +22,30 @@
       "revId": "46c4d88b98881c2bb3601f598f71700db5570c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7035896_711f2c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-07-29T06:23:58Z",
+      "side": 1,
+      "message": "Done. Removed. Apologies that I just made the same change to apps as well. Let me know if you have any questions about it. I temporarily apply the same list to apps as well. Stealing from your idea, we will follow the same strategy, prompting to critical and then increase coverage.",
+      "parentUuid": "b412811e_40f8b67b",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "46c4d88b98881c2bb3601f598f71700db5570c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
