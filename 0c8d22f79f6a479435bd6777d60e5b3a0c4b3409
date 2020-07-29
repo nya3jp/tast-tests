@@ -50,6 +50,92 @@
       "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "080ab7fa_3ba58cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-29T04:01:14Z",
+      "side": 1,
+      "message": "Hmm, I find this test a bit awkward in a couple ways:\n\n1) we have to use an RPC call to get the current time, and\n2) we wait for both events together instead of waiting for them one by one.\n\nRegarding 1), how necessary is it that we need that level of precision for time? Why don\u0027t we just poll every second for the event we need so we have precision to within a second?\n\nRegarding 2), maybe I\u0027m missing something, but I feel like it would be more intuitive to first look for the failure event, and then for the connected event. Is there a reason we don\u0027t do this?",
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a083f2_4e62fb04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-29T04:01:14Z",
+      "side": 1,
+      "message": "nit: rm",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ef856c_70fd7692",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-29T04:01:14Z",
+      "side": 1,
+      "message": "nit: can we rename this linkFailureSec or linkFailureDuration or something so that we can rename linkFailureTS to linkFailureTime (not really a fan of TS)",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 16
+      },
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17d676ac_b35342b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-29T04:01:14Z",
+      "side": 1,
+      "message": "How about moving these to event_logger.go? I feel like these might come in handy in other tests.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
