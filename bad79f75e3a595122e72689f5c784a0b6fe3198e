@@ -239,6 +239,30 @@
       "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29fe6067_a68b632e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T10:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13e3c6cf_984f4c86",
+      "range": {
+        "startLine": 464,
+        "startChar": 41,
+        "endLine": 464,
+        "endChar": 49
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
