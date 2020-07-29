@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1f240ad3_20395f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T07:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c63b34_5013c3ce",
+      "range": {
+        "startLine": 92,
+        "startChar": 38,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "680eb354_b01e9b7f",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 7
@@ -105,6 +129,72 @@
     },
     {
       "key": {
+        "uuid": "bd20cb3a_8de1324a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T07:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1532d21a_818f02e2",
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce4b67f5_3d2ef5a8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T07:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "680eb354_b01e9b7f",
+      "range": {
+        "startLine": 452,
+        "startChar": 35,
+        "endLine": 452,
+        "endChar": 37
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa5851c4_4fe9fc95",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T07:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0e8b15_071618fb",
+      "range": {
+        "startLine": 452,
+        "startChar": 45,
+        "endLine": 452,
+        "endChar": 47
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cabc5b05_1c660f1a",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 7
@@ -116,6 +206,30 @@
       "writtenOn": "2020-07-29T02:50:55Z",
       "side": 1,
       "message": "Why do you strip \\r\\n? cat command does not append newline characters to the output, so if we observe newline characters, the file actually contains them. And this behavior is not mentioned in the comments of readFile and CheckFileContent.",
+      "range": {
+        "startLine": 464,
+        "startChar": 41,
+        "endLine": 464,
+        "endChar": 49
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13e3c6cf_984f4c86",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T07:17:11Z",
+      "side": 1,
+      "message": "without trim, got: \n2020/07/29 16:35:14 [16:35:14.456] Error at command_cd.go:94: Cd failed to take user into the newly created folder: expect /home/testuser/testFolder, got /home/testuser/testFolder",
+      "parentUuid": "cabc5b05_1c660f1a",
       "range": {
         "startLine": 464,
         "startChar": 41,
