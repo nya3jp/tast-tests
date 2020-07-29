@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b74c9982_b4c81319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-29T02:15:12Z",
+      "side": 1,
+      "message": "A nit.",
+      "revId": "7be6f8e2a58c1df6fa91d53f07e5ddf04a61512b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85bea1ef_89907ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-29T02:15:12Z",
+      "side": 1,
+      "message": "Ending period.\n\nAlso, allowedBoardsListMap is a variable name, we don\u0027t use a definite article, \"the\". So either\n// ... exists in allowedBoardsListMap.\nor \n// ... exists in the allowed boards list.",
+      "range": {
+        "startLine": 119,
+        "startChar": 41,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "7be6f8e2a58c1df6fa91d53f07e5ddf04a61512b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
