@@ -126,12 +126,11 @@ message QueryServiceRequest {
 message QueryServiceResponse {
   message Wifi {
     string bssid = 1;
-    bool ft_enabled = 2;
-    uint32 frequency = 3;
-    repeated uint32 frequency_list = 4;
-    string hex_ssid = 5;
-    bool hidden_ssid = 6;
-    uint32 phy_mode = 7;
+    uint32 frequency = 2;
+    repeated uint32 frequency_list = 3;
+    string hex_ssid = 4;
+    bool hidden_ssid = 5;
+    uint32 phy_mode = 6;
   }
   string name = 1;
   string device = 2;
