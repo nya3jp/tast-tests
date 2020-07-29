@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "fb6c698a_0209b6e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3e4eac_a62c92c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "policy",
+      "range": {
+        "startLine": 10,
+        "startChar": 86,
+        "endLine": 10,
+        "endChar": 96
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9cc7f1b_48cc93c6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -16,6 +62,138 @@
       "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c25fe12_a1cd7717",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a168ea02_03672e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "are you using this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e2e58c8_faabd95e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "nit: Fatalf(\"Failed to connect to %s: %v\", dbusName,",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500afdbf_b6a87b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "Fatal, the test should top if this happens if I understand correctly.",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bdaffe_c2d023ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c692862_f1683ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-29T14:32:50Z",
+      "side": 1,
+      "message": "Val defaults to false in go so you could leave this out. Keeping it does make the code more readable.",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 63
+      },
+      "revId": "359aa957eacbe6259784c59b3fa76d27e67bc556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
