@@ -39,6 +39,30 @@
       "revId": "8ff6d2b9906259726eaeeacff72839bc763e595c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84ee1362_38d27c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-07-29T00:42:27Z",
+      "side": 1,
+      "message": "I\u0027d suggest something like:\n\"When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.\ne.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).\"",
+      "parentUuid": "e2c5ad28_f333e53e",
+      "range": {
+        "startLine": 87,
+        "startChar": 75,
+        "endLine": 87,
+        "endChar": 99
+      },
+      "revId": "8ff6d2b9906259726eaeeacff72839bc763e595c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
