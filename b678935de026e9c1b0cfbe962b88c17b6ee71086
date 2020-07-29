@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a2bbae5_bfbd9da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-29T18:41:38Z",
+      "side": 1,
+      "message": "The doc says:\n\n                string WiFi.BSSID [readonly]\n\n                        (WiFi only) The BSSID of the associated AP.\n                        One can monitor this property for PropertyChanged\n                        signals to identify when roaming changes the\n                        current AP.\n\n\nBut that\u0027s misleading -- the property is also reported when not connected; it reports the \"representative\" BSS in that case. We should probably fix the documentation, but we should also be more stringent here, and make sure we\u0027re actually in a connected/associated state.\n\nBTW, you can easily see this with something like this:\n\n ### get fresh scan results\n /usr/local/lib/flimflam/test/start-scanning wifi\n ### wait a bit, then:\n connectivity show Services | grep \u0027WiFi\\.BSSID\u0027\n\nYou\u0027ll see plenty of non-connected networks reporting this property, if you\u0027re in open air.",
+      "range": {
+        "startLine": 773,
+        "startChar": 46,
+        "endLine": 773,
+        "endChar": 70
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a908c622_20746695",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 21
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "Ah, gotcha.",
       "parentUuid": "4c143e8c_bfb7aec7",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9798d52a_67bc2bf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-29T18:41:38Z",
+      "side": 1,
+      "message": "We could still throw an explicit Fail, if you want to call out the fact that the test is being run erroneously. (It could be nice to double-check that HardwareDeps/SoftwareDeps really match the actual SW feature flags. I\u0027m not sure that\u0027s required though.)",
+      "parentUuid": "0b37d213_b7e9e089",
       "range": {
         "startLine": 26,
         "startChar": 15,
