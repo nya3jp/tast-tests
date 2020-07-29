@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91509f99_f8f2bc2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T19:00:35Z",
+      "side": 1,
+      "message": "LGTM, but please wait for Brendan\u0027s",
+      "revId": "e4d89c0e29f9c5aef5b3d263e8aa59ee0b89e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
