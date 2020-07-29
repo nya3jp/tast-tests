@@ -434,6 +434,30 @@
       "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a17042_a80b3f3a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T22:01:30Z",
+      "side": 1,
+      "message": "Actually, I just noticed this CL from a couple days ago:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2313196\n\nI guess lockscreen.go is the right place for most of this stuff now, but we can still update their WaitStatus method to be a little more user-friendly.",
+      "parentUuid": "d50f580a_6bd4343c",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 85
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
