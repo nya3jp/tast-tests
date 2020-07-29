@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	localnet "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
+	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/network"
@@ -1026,4 +1027,225 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*network.GetCurrentTimeResponse, error) {
 	now := time.Now()
 	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
+}
+
+// expectServiceProperty sets up a properties watcher before calling f, and waits for the given property/value.
+func (*WifiService) expectServiceProperty(ctx context.Context, service *shill.Service, prop string, val interface{}, f func() error) (dbus.Sequence, error) {
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to create a service property watcher")
+	}
+	defer pw.Close(ctx)
+	if err := f(); err != nil {
+		return 0, err
+	}
+	for {
+		p, v, s, err := pw.Wait(ctx)
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to wait for property")
+		}
+		if p == prop && reflect.DeepEqual(v, val) {
+			return s, nil
+		}
+	}
+}
+
+// ProfileBasicTest is the main body of the ProfileBasic test, which creates, pushes, and pops the profiles and asserts the connection states between those operations.
+// This is the implementation of network.Wifi/ProfileBasicTest gRPC.
+func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.ProfileBasicTestRequest) (_ *empty.Empty, retErr error) {
+	const (
+		profileBottomName = "bottom"
+		profileTopName    = "top"
+
+		pingLossThreshold = 20.0
+	)
+
+	expectIdle := func(ctx context.Context, service *shill.Service, f func() error) (dbus.Sequence, error) {
+		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		defer cancel()
+		return s.expectServiceProperty(ctx, service, shillconst.ServicePropertyState, shillconst.ServiceStateIdle, f)
+	}
+	expectIsConnected := func(ctx context.Context, service *shill.Service, f func() error) (dbus.Sequence, error) {
+		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+		return s.expectServiceProperty(ctx, service, shillconst.ServicePropertyIsConnected, true, f)
+	}
+	connectAndPing := func(ctx context.Context, service *shill.Service, ap *network.ProfileBasicTestRequest_Config) error {
+		shillProps, err := protoutil.DecodeFromShillValMap(ap.ShillProps)
+		if err != nil {
+			return err
+		}
+		for k, v := range shillProps {
+			if err = service.SetProperty(ctx, k, v); err != nil {
+				return errors.Wrapf(err, "failed to set property %s to %v", k, v)
+			}
+		}
+		if _, _, err := s.connectService(ctx, service); err != nil {
+			return err
+		}
+
+		res, err := ping.NewLocalRunner().Ping(ctx, ap.Ip)
+		if err != nil {
+			return err
+		}
+		if res.Loss > pingLossThreshold {
+			return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+		}
+
+		return nil
+	}
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+
+	service0, err := s.discoverService(ctx, m, map[string]interface{}{
+		shillconst.ServicePropertyType:          shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID:   s.hexSSID(req.Ap0.Ssid),
+		shillconst.ServicePropertySecurityClass: req.Ap0.Security,
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover AP0")
+	}
+	service1, err := s.discoverService(ctx, m, map[string]interface{}{
+		shillconst.ServicePropertyType:          shillconst.TypeWifi,
+		shillconst.ServicePropertyWiFiHexSSID:   s.hexSSID(req.Ap1.Ssid),
+		shillconst.ServicePropertySecurityClass: req.Ap1.Security,
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to discover AP1")
+	}
+
+	if _, err := m.CreateProfile(ctx, profileBottomName); err != nil {
+		return nil, errors.Wrapf(err, "failed to create profile %q", profileBottomName)
+	}
+	defer func(ctx context.Context) {
+		// Ignore the error of popping profile since it may be popped during test.
+		m.PopProfile(ctx, profileBottomName)
+		if err := m.RemoveProfile(ctx, profileBottomName); err != nil {
+			if retErr != nil {
+				testing.ContextLogf(ctx, "Failed to remove profile %q and the test has already failed: %v", profileBottomName, err)
+			} else {
+				retErr = errors.Wrapf(err, "failed to remove profile %q", profileBottomName)
+			}
+		}
+	}(ctx)
+	if _, err := m.PushProfile(ctx, profileBottomName); err != nil {
+		return nil, errors.Wrapf(err, "failed to push profile %q", profileBottomName)
+	}
+
+	if err := connectAndPing(ctx, service0, req.Ap0); err != nil {
+		return nil, err
+	}
+
+	// We should lose the credentials if we pop the profile.
+	if _, err := expectIdle(ctx, service0, func() error {
+		return m.PopProfile(ctx, profileBottomName)
+	}); err != nil {
+		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for idle", profileBottomName)
+	}
+	// We should retrieve the credentials if we push the profile back.
+	if _, err := expectIsConnected(ctx, service0, func() error {
+		_, err := m.PushProfile(ctx, profileBottomName)
+		return err
+	}); err != nil {
+		return nil, errors.Wrapf(err, "failed to push profile %q and wait for isConnected", profileBottomName)
+	}
+
+	// Explicitly disconnect from AP0.
+	if _, err := expectIdle(ctx, service0, func() error {
+		return service0.Disconnect(ctx)
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to disconnect from AP0")
+	}
+
+	if _, err := m.CreateProfile(ctx, profileTopName); err != nil {
+		return nil, errors.Wrapf(err, "failed to create profile %q", profileTopName)
+	}
+	defer func(ctx context.Context) {
+		// Ignore the error of popping profile since it may be popped during test.
+		m.PopProfile(ctx, profileTopName)
+		if err := m.RemoveProfile(ctx, profileTopName); err != nil {
+			if retErr != nil {
+				testing.ContextLogf(ctx, "Failed to remove profile %q and the test has already failed: %v", profileTopName, err)
+			} else {
+				retErr = errors.Wrapf(err, "failed to remove profile %q", profileTopName)
+			}
+		}
+	}(ctx)
+
+	// The modification of the profile stack should clear the "explicitly disconnected"
+	// flag on all services and leads to a re-connecting.
+	if _, err := expectIsConnected(ctx, service0, func() error {
+		_, err := m.PushProfile(ctx, profileTopName)
+		return err
+	}); err != nil {
+		return nil, errors.Wrapf(err, "failed to push profile %q and wait for isConnected", profileTopName)
+	}
+
+	if err := connectAndPing(ctx, service1, req.Ap1); err != nil {
+		return nil, err
+	}
+
+	// Removing the entries of AP1 should cause a disconnecting to AP1 and then a reconnecting to AP0.
+	// Recording the sequence code of the Idle/IsConnected events helps us to determine the order.
+	var idleSeq, isConnectedSeq dbus.Sequence
+	if isConnectedSeq, err = expectIsConnected(ctx, service0, func() error {
+		var innerErr error
+		if idleSeq, innerErr = expectIdle(ctx, service1, func() error {
+			return s.removeMatchedEntries(ctx, m, map[string]interface{}{
+				shillconst.ServicePropertyWiFiHexSSID: s.hexSSID(req.Ap1.Ssid),
+				shillconst.ProfileEntryPropertyType:   shillconst.TypeWifi,
+			})
+		}); innerErr != nil {
+			return innerErr
+		}
+		return nil
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to remove entries of AP0 and wait for reconnect")
+	}
+	if idleSeq > isConnectedSeq {
+		return nil, errors.New("expected to get the Idle signal of AP0 before the IsConnected signal of AP1 but got an inverse order")
+	}
+
+	if err := connectAndPing(ctx, service1, req.Ap1); err != nil {
+		return nil, err
+	}
+
+	// Popping the current profile should be similar to the case above.
+	if isConnectedSeq, err = expectIsConnected(ctx, service0, func() error {
+		var innerErr error
+		if idleSeq, innerErr = expectIdle(ctx, service1, func() error {
+			return m.PopProfile(ctx, profileTopName)
+		}); innerErr != nil {
+			return innerErr
+		}
+		return nil
+	}); err != nil {
+		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for reconnect", profileTopName)
+	}
+	if idleSeq > isConnectedSeq {
+		return nil, errors.New("expected to get the Idle signal of AP0 before the IsConnected signal of AP1 but got an inverse order")
+	}
+
+	if _, err := m.PushProfile(ctx, profileTopName); err != nil {
+		return nil, errors.Wrapf(err, "failed to push profile %q", profileTopName)
+	}
+
+	// Explicitly disconnect from AP0.
+	if _, err := expectIdle(ctx, service0, func() error {
+		return service0.Disconnect(ctx)
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to disconnect from AP0")
+	}
+
+	// Verify that popping a profile which does not affect the service should also clear the service's "explicitly disconnected" flag.
+	if _, err := expectIsConnected(ctx, service0, func() error {
+		return m.PopProfile(ctx, profileTopName)
+	}); err != nil {
+		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for isConnected", profileTopName)
+	}
+
+	return &empty.Empty{}, nil
 }

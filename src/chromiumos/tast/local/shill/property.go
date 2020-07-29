@@ -145,21 +145,21 @@ func (pw *PropertiesWatcher) Close(ctx context.Context) error {
 }
 
 // Wait waits for "PropertyChanged" signal and updates corresponding property value.
-func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, error) {
+func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbus.Sequence, error) {
 	select {
 	case sig := <-pw.watcher.Signals:
 		if len(sig.Body) != 2 {
-			return "", nil, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
+			return "", nil, 0, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
 		}
 		if prop, ok := sig.Body[0].(string); !ok {
-			return "", nil, errors.Errorf("signal first argument must be a string: %v", sig.Body[0])
+			return "", nil, 0, errors.Errorf("signal first argument must be a string: %v", sig.Body[0])
 		} else if variant, ok := sig.Body[1].(dbus.Variant); !ok {
-			return "", nil, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
+			return "", nil, 0, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
 		} else {
-			return prop, variant.Value(), nil
+			return prop, variant.Value(), sig.Sequence, nil
 		}
 	case <-ctx.Done():
-		return "", nil, errors.Errorf("didn't receive PropertyChanged signal: %v", ctx.Err())
+		return "", nil, 0, errors.Errorf("didn't receive PropertyChanged signal: %v", ctx.Err())
 	}
 }
 
@@ -171,7 +171,7 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]in
 	unseen := len(props)
 
 	for unseen > 0 {
-		prop, val, err := pw.Wait(ctx)
+		prop, val, _, err := pw.Wait(ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to wait for any property: %q", props)
 		}

@@ -76,6 +76,11 @@ service WifiService {
 
   // GetCurrentTime returns the current local time in the given format.
   rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
+
+  // ProfileBasicTest is the main body of the ProfileBasic test, which creates,
+  // pushes, and pops the profiles and asserts the connection states between
+  // those operations.
+  rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -206,4 +211,16 @@ message ConfigureAndAssertAutoConnectResponse {
 message GetCurrentTimeResponse {
   int64 nowSecond = 1;
   int64 nowNanosecond = 2;
+}
+
+message ProfileBasicTestRequest {
+  // The configuration for connecting to a certain AP, as like ConnectRequest.
+  message Config {
+    bytes ssid = 1;
+    string security = 2;
+    string ip = 3;
+    map<string, ShillVal> shill_props = 4;
+  }
+  Config ap0 = 1;
+  Config ap1 = 2;
 }
