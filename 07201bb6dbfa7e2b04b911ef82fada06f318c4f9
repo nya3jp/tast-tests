@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4072c04a_c14f5c50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-07-29T07:35:12Z",
+      "side": 1,
+      "message": "Looks good to me, deferring to Tast Owners.",
+      "revId": "07201bb6dbfa7e2b04b911ef82fada06f318c4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
