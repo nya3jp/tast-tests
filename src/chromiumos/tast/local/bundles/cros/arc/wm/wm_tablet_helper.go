@@ -155,6 +155,111 @@ func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, 
 	return nil
 }
 
+// TabletImmerseViaAPI runs test-cases for immerse via API.
+func TabletImmerseViaAPI(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
+	// Get the default display orientation and set it back after all test-cases are completed.
+	defaultOrientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+
+	for _, tc := range activityInfo {
+		if err := tabletImmerseViaAPIHelper(ctx, tconn, a, d, tc); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// tabletImmerseViaAPIHelper clicks on immersive button on the activity and switch it back to normal and assert window bounds accordingly.
+func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Wait until display rotates to activities desired orientation. Undefined activities are following the previous activity orientation.
+	testing.Poll(ctx, func(ctx context.Context) error {
+		newDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if activityInfo.DesiredDO != newDO.Type {
+			return errors.Errorf("invalid display orientation, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+	// Get window info before clicking on the immersive button.
+	windowInfoBefore, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Click on the immersive button.
+	if err := UIClickImmersive(ctx, act, d); err != nil {
+		return err
+	}
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get window info after the immersive button is clicked.
+	windowInfoUIImmersive, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
+		return err
+	}
+	if err := CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, *windowInfoUIImmersive); err != nil {
+		return err
+	}
+
+	// Click on the normal button.
+	if err := UIClickNormal(ctx, act, d); err != nil {
+		return err
+	}
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
+		return err
+	}
+
+	windowInfoAfter, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// The display orientation shouldn't be changed after clicking on normal button.
+	newDO, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if activityInfo.DesiredDO != newDO.Type {
+		return errors.Errorf("invalid display orientation after normal button is clicked, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+	}
+
+	if windowInfoBefore.BoundsInRoot != windowInfoAfter.BoundsInRoot {
+		return errors.Errorf("invalid window bounds after click on the immersive button, got: %q, want: %q", windowInfoAfter.BoundsInRoot, windowInfoBefore.BoundsInRoot)
+	}
+
+	return nil
+}
+
 // displaySizeChangeHelper runs display size change scenarios in tablet mode.
 func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) (err error) {
 	// Start a new activity.
