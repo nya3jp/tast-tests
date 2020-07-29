@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9c3b2cc0_4b318655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T04:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b53adb_28e8f9ef",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ba2b12a_52f0ccd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
         "patchSetId": 5
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "8a2c135b_974d40ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T04:39:01Z",
+      "side": 1,
+      "message": "According to another comment in another CL, the running directory is always home directory, no need to specify. Thus make it simple.",
+      "parentUuid": "1ba2b12a_52f0ccd5",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 49
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba4345c3_eb3e687f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
         "patchSetId": 5
@@ -76,6 +124,30 @@
       "writtenOn": "2020-07-29T02:57:46Z",
       "side": 1,
       "message": "Which apt mirror do we use? Is it served by Google or do we use public Debian mirrors? I\u0027m afraid that this test might be flaky if we access public Debian mirrors.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8395f75d_3c3855d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T04:39:01Z",
+      "side": 1,
+      "message": "Public. Might need some time to setup a local apt server.\nVim is currently preinstalled.",
+      "parentUuid": "ba4345c3_eb3e687f",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -108,6 +180,30 @@
       "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35de00b7_8187823e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T04:39:01Z",
+      "side": 1,
+      "message": "No, changed.",
+      "parentUuid": "abad47b0_01fea9c6",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
