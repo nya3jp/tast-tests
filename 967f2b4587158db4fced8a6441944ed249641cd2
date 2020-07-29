@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1720e257_d91acea5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-29T18:56:09Z",
+      "side": 1,
+      "message": "I think Stadia side remembers so that it will ask you to confirm \u0027exit the old game?\u0027 before starting the new game.",
+      "parentUuid": "3fd9a54a_c2f752d1",
+      "revId": "967f2b4587158db4fced8a6441944ed249641cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf343e7f_fb8b2992",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
