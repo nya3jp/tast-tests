@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	localnet "chromiumos/tast/local/network"
@@ -950,4 +951,63 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// SetDHCPProperties sets DHCP properties in shill Manager and return the old values.
+func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHCPPropertiesRequest) (ret *network.SetDHCPPropertiesResponse, retErr error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	prop, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Manager properties")
+	}
+	// Ignore the error as by default, the map in DhcpProperties is empty and
+	// thus the property might not exist in GetProperties result.
+	// For shill, default values of the two properties are empty strings.
+	oldHostname, err := prop.GetString(shillconst.DHCPPropertyHostname)
+	if err != nil {
+		oldHostname = ""
+	}
+	oldVendor, err := prop.GetString(shillconst.DHCPPropertyVendorClass)
+	if err != nil {
+		oldVendor = ""
+	}
+
+	// Try to restore the original values if something goes wrong.
+	defer func(ctx context.Context) {
+		if retErr == nil {
+			// No need of restore.
+			return
+		}
+		if err := m.SetProperty(ctx, shillconst.DHCPPropertyHostname, oldHostname); err != nil {
+			testing.ContextLogf(ctx, "Failed to restore DHCP hostname to %q: %v", oldHostname, err)
+		}
+		if err := m.SetProperty(ctx, shillconst.DHCPPropertyVendorClass, oldVendor); err != nil {
+			testing.ContextLogf(ctx, "Failed to restore DHCP vendor class to %q: %v", oldVendor, err)
+		}
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+
+	hostname := req.Props.Hostname
+	if oldHostname != hostname {
+		if err := m.SetProperty(ctx, shillconst.DHCPPropertyHostname, hostname); err != nil {
+			return nil, errors.Wrapf(err, "failed to set DHCP hostname to %q", hostname)
+		}
+	}
+	vendor := req.Props.VendorClass
+	if oldVendor != vendor {
+		if err := m.SetProperty(ctx, shillconst.DHCPPropertyVendorClass, vendor); err != nil {
+			return nil, errors.Wrapf(err, "failed to set DHCP vendor class to %q", vendor)
+		}
+	}
+
+	return &network.SetDHCPPropertiesResponse{
+		Props: &network.DHCPProperties{
+			Hostname:    oldHostname,
+			VendorClass: oldVendor,
+		},
+	}, nil
 }

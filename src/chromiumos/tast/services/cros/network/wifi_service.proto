@@ -67,6 +67,9 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // SetDHCPProperties sets DHCP properties in shill and return the old values.
+  rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
 }
 
 message ConnectRequest {
@@ -184,4 +187,17 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message DHCPProperties {
+  string vendor_class = 1;
+  string hostname = 2;
+}
+
+message SetDHCPPropertiesRequest {
+  DHCPProperties props = 1;
+}
+
+message SetDHCPPropertiesResponse {
+  DHCPProperties props = 1;
 }
