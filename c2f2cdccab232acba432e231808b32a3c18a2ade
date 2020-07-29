@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "567c6d77_18245709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-07-29T17:42:28Z",
+      "side": 1,
+      "message": "LGTM, will +2 once niwa\u0027s comments are resolved.",
+      "revId": "c2f2cdccab232acba432e231808b32a3c18a2ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c327bd7a_5a928a1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 3
