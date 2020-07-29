@@ -96,6 +96,10 @@ service WifiService {
   // pushes, and pops the profiles and asserts the connection states between
   // those operations.
   rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
+
+  // SetDHCPProperties sets the DHCP properties in shill and returns the original
+  // values.
+  rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
 }
 
 message ConnectRequest {
@@ -275,4 +279,17 @@ message ProfileBasicTestRequest {
   }
   Config ap0 = 1;
   Config ap1 = 2;
+}
+
+message DHCPProperties {
+  string vendor_class = 1;
+  string hostname = 2;
+}
+
+message SetDHCPPropertiesRequest {
+  DHCPProperties props = 1;
+}
+
+message SetDHCPPropertiesResponse {
+  DHCPProperties props = 1;
 }

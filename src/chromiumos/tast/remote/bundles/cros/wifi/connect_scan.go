@@ -15,7 +15,7 @@ import (
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -107,7 +107,7 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 	}
 
 	apOps := s.Param().([]hostapd.Option)
-	pcapPath, apConf, err := connectAndCollectPcap(ctx, tf, "pcap", apOps)
+	pcapPath, apConf, err := wifiutil.ConnectAndCollectPcap(ctx, tf, "pcap", apOps)
 	if err != nil {
 		s.Fatal("Failed to collect packet: ", err)
 	}
@@ -175,61 +175,4 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
-}
-
-// connectAndCollectPcap sets up a WiFi AP and then asks DUT to connect.
-// The path to the packet file and the config of the AP is returned.
-// Note: This function assumes that TestFixture spawns Capturer for us.
-func connectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name string, apOps []hostapd.Option) (pcapPath string, apConf *hostapd.Config, err error) {
-	// As we'll collect pcap file after APIface and Capturer closed, run it
-	// in an inner function so that we can clean up easier with defer.
-	capturer, conf, err := func(ctx context.Context) (ret *pcap.Capturer, retConf *hostapd.Config, retErr error) {
-		collectFirstErr := func(err error) {
-			if retErr == nil {
-				ret = nil
-				retConf = nil
-				retErr = err
-			}
-			testing.ContextLog(ctx, "Error in connectAndCollectPcap: ", err)
-		}
-
-		testing.ContextLog(ctx, "Configuring WiFi to connect")
-		ap, err := tf.ConfigureAP(ctx, apOps, nil)
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to configure AP")
-		}
-		defer func(ctx context.Context) {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectFirstErr(errors.Wrap(err, "failed to deconfig AP"))
-			}
-		}(ctx)
-		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
-		defer cancel()
-
-		testing.ContextLog(ctx, "Connecting to WiFi")
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
-			return nil, nil, err
-		}
-		defer func(ctx context.Context) {
-			if err := tf.CleanDisconnectWifi(ctx); err != nil {
-				collectFirstErr(errors.Wrap(err, "failed to disconnect"))
-			}
-		}(ctx)
-		ctx, cancel = tf.ReserveForDisconnect(ctx)
-		defer cancel()
-
-		capturer, ok := tf.Capturer(ap)
-		if !ok {
-			return nil, nil, errors.New("cannot get the capturer from TestFixture")
-		}
-		return capturer, ap.Config(), nil
-	}(ctx)
-	if err != nil {
-		return "", nil, err
-	}
-	pcapPath, err = capturer.PacketPath(ctx)
-	if err != nil {
-		return "", nil, err
-	}
-	return pcapPath, conf, nil
 }
