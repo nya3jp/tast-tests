@@ -180,3 +180,13 @@ const (
 	ProfileEntryPropertyName = "Name"
 	ProfileEntryPropertyType = "Type"
 )
+
+// The common prefix of DHCP property keys in shill.
+const dhcpPropertyPrefix = "DHCPProperty."
+
+// DHCP property names defined in dhcp/dhcp_properties.cc.
+// These keys can be used in properties of both Manager or Service.
+const (
+	DHCPPropertyHostname    = dhcpPropertyPrefix + "Hostname"
+	DHCPPropertyVendorClass = dhcpPropertyPrefix + "VendorClass"
+)
