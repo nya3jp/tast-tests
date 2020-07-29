@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3aeff542_1193f37c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T05:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90e0f66_c2e4f176",
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef301165_3d7605b8",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 10
@@ -50,6 +68,24 @@
       "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9701c386_f588ecb8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T05:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef301165_3d7605b8",
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +109,30 @@
       "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226e85ee_5d21b04b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T05:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7819e0f9_00d93f44",
+      "range": {
+        "startLine": 103,
+        "startChar": 80,
+        "endLine": 103,
+        "endChar": 124
+      },
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

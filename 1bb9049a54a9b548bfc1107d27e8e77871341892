@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "39457058_b306cacc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T05:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17c4313_b2287a4c",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4770206b_e0ccc5c3",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7
