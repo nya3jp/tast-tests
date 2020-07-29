@@ -96,6 +96,7 @@ var unstableTestSet = []testEntry{
 	// Based on http://b/130897153.
 	{"Remove and re-add displays", removeAddDisplay},
 	{"Drag a window between displays", dragWindowBetweenDisplays},
+	{"Rotate display", rotateDisplay},
 }
 
 func init() {
@@ -762,17 +763,9 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					}
 				}
 
-				ccActs, err := queryConfigurationChanges(ctx, a)
+				ccList, err := queryConfigurationChanges(ctx, a)
 				if err != nil {
 					return err
-				}
-				if len(ccActs) > 1 {
-					return errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(ccActs))
-				}
-
-				var ccList []configChangeEvent
-				for _, c := range ccActs {
-					ccList = c
 				}
 				if !reflect.DeepEqual(ccList, param.wantCC) {
 					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
@@ -786,7 +779,129 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	return nil
 }
 
+// rotateDisplay verifies the behavior of rotating a display.
+func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	// Setup display layout.
+	disp, err := getInternalAndExternalDisplays(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	for _, param := range []struct {
+		displayID   androidDisplayID
+		windowState ash.WindowStateType
+		wantCC      []configChangeEvent
+	}{
+		{internalDisplayID, ash.WindowStateNormal, nil},
+		{internalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+			{handled: true, screenSize: true, orientation: true},
+		}},
+		{firstExternalDisplayID, ash.WindowStateNormal, nil},
+		{firstExternalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+			{handled: true, screenSize: true, orientation: true},
+		}},
+	} {
+		runOrFatal(
+			ctx,
+			s,
+			fmt.Sprintf("%s on %s display", param.windowState, param.displayID.label()),
+			func(ctx context.Context, s *testing.State) error {
+				act, err := lunchActivity(ctx, tconn, a, dispPkg, activityName(resizeable, handling), param.displayID)
+				if err != nil {
+					return err
+				}
+				defer act.close(ctx, tconn)
+
+				if err := act.setWindowState(ctx, tconn, param.windowState); err != nil {
+					return err
+				}
+
+				if err := deleteConfigurationChanges(ctx, a); err != nil {
+					return err
+				}
+
+				currentRot := currentRotation{ctx, tconn, disp.displayInfo(param.displayID).ID, 0}
+				if err := currentRot.read(); err != nil {
+					return err
+				}
+				defer currentRot.setTo(currentRot.degree)
+				if err := currentRot.setTo((currentRot.degree + 90) % 360); err != nil {
+					return err
+				}
+
+				ccList, err := queryConfigurationChanges(ctx, a)
+				if err != nil {
+					return err
+				}
+
+				if !reflect.DeepEqual(ccList, param.wantCC) {
+					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
+				}
+
+				return nil
+			})
+	}
+
+	return nil
+}
+
 // Helper functions.
+
+// currentRotation remembers the current display rotation so that it gets back
+// to the original rotation after sub-test completes.
+type currentRotation struct {
+	ctx    context.Context
+	tconn  *chrome.TestConn
+	id     string
+	degree int
+}
+
+// read reads the current display rotation via Chrome API.
+func (current *currentRotation) read() error {
+	info, err := display.GetInfo(current.ctx, current.tconn)
+	if err != nil {
+		return err
+	}
+
+	for _, i := range info {
+		if i.ID == current.id {
+			current.degree = i.Rotation
+			return nil
+		}
+	}
+
+	return errors.Errorf("display %s not found", current.id)
+}
+
+// setTo changes the display rotation and waits until the change is effective.
+func (current *currentRotation) setTo(degree int) error {
+	if current.degree == degree {
+		return nil
+	}
+
+	if err := display.SetDisplayProperties(
+		current.ctx, current.tconn, current.id,
+		display.DisplayProperties{Rotation: &degree}); err != nil {
+		return err
+	}
+
+	// Poll is required as completion of display.SetDisplayProperties does not
+	// ensure display.GetInfo returns new info.
+	return testing.Poll(current.ctx, func(ctx context.Context) error {
+		if err := current.read(); err != nil {
+			return testing.PollBreak(err)
+		}
+		if current.degree != degree {
+			return errors.Errorf("display rotation has not been updated: got %d; want %d", current.degree, degree)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
 
 // See go/arc-wm-r-spec for details.
 type resizeability int
@@ -878,12 +993,12 @@ func (parser *configChangeParser) parse(line string) (int32, configChangeEvent, 
 }
 
 // queryConfigurationChanges obtains the history of configuration change from test app.
-func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]configChangeEvent, error) {
+func queryConfigurationChanges(ctx context.Context, a *arc.ARC) ([]configChangeEvent, error) {
 	bytes, err := a.Command(ctx, "content", "query", "--uri", configChangesURI).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, err
 	}
-	result := make(map[int32][]configChangeEvent)
+	perAct := make(map[int32][]configChangeEvent)
 	lines := strings.Split(string(bytes), "\n")
 	for _, line := range lines {
 		if line == "" {
@@ -891,15 +1006,24 @@ func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]con
 		}
 		// "No result found." taken from here: https://source.corp.google.com/android/frameworks/base/cmds/content/src/com/android/commands/content/Content.java;l=657
 		if line == "No result found." {
-			return make(map[int32][]configChangeEvent), nil
+			return nil, nil
 		}
 		actID, c, err := ccParser.parse(line)
 		if err != nil {
 			return nil, err
 		}
-		result[actID] = append(result[actID], c)
+		perAct[actID] = append(perAct[actID], c)
 	}
-	return result, nil
+
+	if len(perAct) > 1 {
+		return nil, errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(perAct))
+	}
+
+	for _, cc := range perAct {
+		return cc, nil
+	}
+
+	return nil, nil
 }
 
 // deleteConfigurationChanges deletes recorded config changes.
