@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8c32d3_1ac185f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T21:56:37Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "a405cf92967b1890f95774604403c67074045baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c08606_b703ce8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T21:56:37Z",
+      "side": 1,
+      "message": "huge nit: remove empty space",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "a405cf92967b1890f95774604403c67074045baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765cac0b_3d13f551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-29T21:56:37Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "a405cf92967b1890f95774604403c67074045baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
