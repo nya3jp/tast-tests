@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "51707b97_96379b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T05:34:44Z",
+      "side": 1,
+      "message": "Hmm. While having a backup sounds fine, but \"apt update\" will always access apt mirrors and will make the test flakier.\n\nWe might want to install vim conditionally only when the vim package is not installed?",
+      "parentUuid": "9988fdd7_38f01b46",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "85e6de30a00bd9f22d01cb0a35359fd4efce1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abad47b0_01fea9c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
         "patchSetId": 5
