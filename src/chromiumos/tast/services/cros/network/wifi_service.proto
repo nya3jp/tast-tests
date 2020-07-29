@@ -103,6 +103,10 @@ service WifiService {
   // RequestRoam requests DUT to roam to the specified BSSID and waits until
   // the DUT has roamed.
   rpc RequestRoam (RequestRoamRequest) returns (google.protobuf.Empty) {}
+
+  // SetDHCPProperties sets the DHCP properties in shill and returns the original
+  // values.
+  rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
 }
 
 message ConnectRequest {
@@ -298,4 +302,17 @@ message RequestRoamRequest {
   string interfaceName = 1;
   string bssid = 2;
   int64 timeout = 3;
+}
+
+message DHCPProperties {
+  string vendor_class = 1;
+  string hostname = 2;
+}
+
+message SetDHCPPropertiesRequest {
+  DHCPProperties props = 1;
+}
+
+message SetDHCPPropertiesResponse {
+  DHCPProperties props = 1;
 }
