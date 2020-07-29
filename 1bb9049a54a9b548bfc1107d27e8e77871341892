@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "15522e5f_40e8af83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "This is part of the test in this specific test. Using defer in other cases.",
+      "parentUuid": "dab6e206_4cbba0b0",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86264bf4_0cce35a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2e69b5a_ca7f4484",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4770206b_e0ccc5c3",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7f1ec8de_db9f64c3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4770206b_e0ccc5c3",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105ed1f9_d67357da",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7
@@ -79,6 +145,24 @@
       "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26442f2b_8a36b21c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105ed1f9_d67357da",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "0863f22c_ea9f58aa",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "I changed it to launch directly. Actually, terminal app is not launched at the beginning.",
+      "parentUuid": "e8f10778_e359abe0",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecabc58d_ae1eb93b",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7
@@ -113,6 +215,24 @@
       "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cea2a94_d97fb428",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "If app is released here, Root won\u0027t be found anymore in following code. Close should be called and Root is then released.",
+      "parentUuid": "ecabc58d_ae1eb93b",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "dbc2ccb4_6634d664",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5999978c_ad39f591",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e50b05c_dd47c99e",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7
@@ -147,6 +285,24 @@
       "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045abde1_43e797b3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-29T02:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e50b05c_dd47c99e",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
