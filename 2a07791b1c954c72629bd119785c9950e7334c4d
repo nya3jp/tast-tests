@@ -16,6 +16,29 @@
       "revId": "2a07791b1c954c72629bd119785c9950e7334c4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbc90cc9_944cdc5b",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-29T16:52:25Z",
+      "side": 1,
+      "message": "You can name it \"store\". But \"netCertStore\" is also fine.",
+      "range": {
+        "startLine": 143,
+        "startChar": 63,
+        "endLine": 143,
+        "endChar": 75
+      },
+      "revId": "2a07791b1c954c72629bd119785c9950e7334c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
