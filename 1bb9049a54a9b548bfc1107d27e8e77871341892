@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "a17c4313_b2287a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/icon_and_username.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T04:14:59Z",
+      "side": 1,
+      "message": "Ok, could you make sure that the app is closed in the reset of Pre before starting the next test sharing the same pre, even if the test failed at L69?",
+      "parentUuid": "15522e5f_40e8af83",
+      "revId": "1bb9049a54a9b548bfc1107d27e8e77871341892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4770206b_e0ccc5c3",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 7

@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdae0a08_76784a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T04:14:59Z",
+      "side": 1,
+      "message": "LGTM with requests.",
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c90e0f66_c2e4f176",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T04:14:59Z",
+      "side": 1,
+      "message": "To be clear, I meant, \"app\" is leaked at L48, L58.\nIt should be Release\u0027ed in this function.",
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef301165_3d7605b8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T04:14:59Z",
+      "side": 1,
+      "message": "nit: could you handle error, too?\n\nif err :\u003d ta.Root.Update(ctx); err !\u003d nil {\n  return errors.Wrap(err, \"...\")\n}",
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7819e0f9_00d93f44",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-29T04:14:59Z",
+      "side": 1,
+      "message": "nit/optional: ta.Root.Role and ta.Root.ClassName looks better (if it works), in order to maintain those constants at one place.",
+      "range": {
+        "startLine": 103,
+        "startChar": 80,
+        "endLine": 103,
+        "endChar": 124
+      },
+      "revId": "7b8fe62df8950d5b795b34ecf61623d7e0fb7c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
