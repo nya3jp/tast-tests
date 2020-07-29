@@ -76,6 +76,10 @@ service WifiService {
 
   // GetCurrentTime returns the current local time in the given format.
   rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
+
+  // SetDHCPProperties sets DHCP properties in shill and returns the original
+  // values.
+  rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
 }
 
 message ConnectRequest {
@@ -206,4 +210,17 @@ message ConfigureAndAssertAutoConnectResponse {
 message GetCurrentTimeResponse {
   int64 nowSecond = 1;
   int64 nowNanosecond = 2;
+}
+
+message DHCPProperties {
+  string vendor_class = 1;
+  string hostname = 2;
+}
+
+message SetDHCPPropertiesRequest {
+  DHCPProperties props = 1;
+}
+
+message SetDHCPPropertiesResponse {
+  DHCPProperties props = 1;
 }
