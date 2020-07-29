@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a908c622_20746695",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-29T04:44:15Z",
+      "side": 1,
+      "message": "Is there a way to check for driver-based roaming like we do here: https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/network_WiFi_RoamFT/network_WiFi_RoamFT.py;l\u003d201",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
