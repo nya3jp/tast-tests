@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bba356c_0537f328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1169769
+      },
+      "writtenOn": "2020-07-29T03:54:14Z",
+      "side": 1,
+      "message": "Is there no plan to backport the kernel patches?  The fs-verity kernel patches apparently had to be backported to 4.19 and 4.14; won\u0027t the fscrypt kernel patches have to be backported for essentially the same reason?",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "d92129f85d14f413033dc53066e8aebda86289bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd794ff_8f22483b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1169769
+      },
+      "writtenOn": "2020-07-29T03:54:14Z",
+      "side": 1,
+      "message": "Unfortunately this won\u0027t work for v1, since FSCRYPT_POLICY_V1 is actually the numeric value 0 (due to a mistake in the original API), but EncryptionOptions in the Go tool uses literal 1 and 2 because it limits the FSCRYPT_POLICY_V1 quirk to the actual kernel API calls.  So you will need to use literal 1 and 2 here.",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "d92129f85d14f413033dc53066e8aebda86289bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
