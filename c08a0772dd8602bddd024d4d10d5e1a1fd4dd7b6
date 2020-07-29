@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc54b751_8b7fe9ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "Since there\u0027s only one user at this point, clicking the user pod doesn\u0027t do anything. I was thinking to add a similar test with 2 users, so we can test clicking between the user pods and making sure we sign in to the right one. Maybe a real GAIA user and the test user, so we can verify the wrong-password case by clicking on the test account\u0027s user pod and trying to sign in, and then click on the real user pod and sign in successfully.",
+      "parentUuid": "810a5c6b_524d1e8a",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "851d0fce_7ab7c7e7",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fa894f_49654dcb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "Done, also made it more specific by checking the name attribute. The password field\u0027s name attribute includes the username, so the new check should be useful for future tests that have multiple user pods on the login screen as well.",
+      "parentUuid": "851d0fce_7ab7c7e7",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,48 @@
     },
     {
       "key": {
+        "uuid": "ee0db05b_3afcc674",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1aa342_5fb49eb8",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "439f09d2_9065f4a3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4a7fbd_fd8f2c8a",
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd92d04_9eda6676",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "ee50d21c_174c6476",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure how it\u0027s used, it\u0027ll be either \u0027file\u0027, \u0027profile\u0027, or a number, according to the comment:\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/common/extensions/api/autotest_private.idl;l\u003d133;drc\u003ddd1bd07ba7b95cdbe6ea191ca8a1aace40528c69?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F",
+      "parentUuid": "dfd92d04_9eda6676",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd05fba8_b3819eb8",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -122,6 +236,30 @@
       "writtenOn": "2020-07-28T03:17:27Z",
       "side": 1,
       "message": "Is there a better name for this?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c3d48b_f8670968",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "\"WaitForStatus\" maybe?",
+      "parentUuid": "cd05fba8_b3819eb8",
       "range": {
         "startLine": 37,
         "startChar": 3,
@@ -204,6 +342,54 @@
     },
     {
       "key": {
+        "uuid": "c492eb9a_4933b07c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49703043_b5fe9a15",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c52dbce_c4008cb0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "I went with the second option, let me know if there\u0027s any better way to do things though.",
+      "parentUuid": "09209409_d8b055ec",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "242ad382_20fbce6c",
         "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
         "patchSetId": 3
@@ -224,6 +410,30 @@
       "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50f580a_6bd4343c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/login/login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-29T19:18:39Z",
+      "side": 1,
+      "message": "That\u0027s the plan, I\u0027ll do it in a follow-up CL.",
+      "parentUuid": "242ad382_20fbce6c",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 85
+      },
+      "revId": "c08a0772dd8602bddd024d4d10d5e1a1fd4dd7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
