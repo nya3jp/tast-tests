@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c0496f_31a0b304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1125664
+      },
+      "writtenOn": "2020-07-29T18:55:34Z",
+      "side": 1,
+      "message": "nit: names sounds a bit confusing, maybe isInExceptionMap?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "9453c6e1a55738909e0e83ce4dcc84604cbbb854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
