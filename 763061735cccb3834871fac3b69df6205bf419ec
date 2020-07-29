@@ -16,6 +16,24 @@
       "revId": "763061735cccb3834871fac3b69df6205bf419ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a91f125_8dea1d10",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-07-29T17:52:24Z",
+      "side": 1,
+      "message": "Done: in PS3, we capture the error, set RPCClient/RPCUtils to nil, and then return the error.",
+      "parentUuid": "6c342a2f_99969f6e",
+      "revId": "763061735cccb3834871fac3b69df6205bf419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
