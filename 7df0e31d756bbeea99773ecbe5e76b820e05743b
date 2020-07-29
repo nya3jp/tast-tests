@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a83add_bc69c186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T05:39:04Z",
+      "side": 1,
+      "message": "LGTM with a minor comment. Thanks!\n",
+      "revId": "7df0e31d756bbeea99773ecbe5e76b820e05743b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9fc1a24_82860dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-29T05:39:04Z",
+      "side": 1,
+      "message": "apt does not have a stable CLI interface (it prints a warning when it is run without tty). I recommend using apt-get instead.",
+      "range": {
+        "startLine": 139,
+        "startChar": 38,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "7df0e31d756bbeea99773ecbe5e76b820e05743b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
