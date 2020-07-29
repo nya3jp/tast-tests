@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c342a2f_99969f6e",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-07-29T17:27:41Z",
+      "side": 1,
+      "message": "nit, so when this errors out, could the state of the RPCClient be undefined?  If so, may want to null out the RPCClient so that subsequent calls to require can re-establish it.  Or alternatively, remember the error so that the helper can not be used again.",
+      "revId": "763061735cccb3834871fac3b69df6205bf419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
