@@ -70,13 +70,23 @@ func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (Q
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
 func SetHotwordEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
-	return setPrefValue(ctx, tconn, "settings.voice_interaction.hotword.enabled", enabled)
+	return setBoolPrefValue(ctx, tconn, "settings.voice_interaction.hotword.enabled", enabled)
 }
 
 // SetContextEnabled enables/disables the access to the screen context for Assistant.
 // This pref corresponds to the "Related Info" setting of Assistant.
 func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
-	return setPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
+	return setBoolPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
+}
+
+// DisableWarmerWelcome disables the warmer welcome feature triggered upon Assistant launching.
+func DisableWarmerWelcome(ctx context.Context, tconn *chrome.TestConn) error {
+	// The maximum times of warmer welcome can be triggered. Should be synced with value stored in
+	// |ash::assistant::ui::kWarmerWelcomesMaxTimesTriggered|.
+	const maxTimesTriggered = 3
+	// To disable the warmer welcome, we spoof that it has already been
+	// triggered too many times.
+	return setIntPrefValue(ctx, tconn, "ash.assistant.num_warmer_welcome_triggered", maxTimesTriggered)
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
@@ -97,9 +107,14 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// setPrefValue is a helper function to set value for Assistant related preferences.
-func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
+// setBoolPrefValue is a helper function to set boolen value for Assistant related preferences.
+func setBoolPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
+}
+
+// setIntPrefValue is a helper function to set int value for Assistant related preferences.
+func setIntPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, value int) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, value)
 }
 
 // VerboseLogging is a helper function passed into chrome.New which will:

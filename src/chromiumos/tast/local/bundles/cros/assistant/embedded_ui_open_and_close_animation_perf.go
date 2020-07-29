@@ -90,6 +90,12 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 		}
 	}()
 
+	// Disables warmer welcome as it will start an Assistant interation that will bring
+	// Launcher to the half state instead of peeking. See crbug:1108027.
+	if err := assistant.DisableWarmerWelcome(ctx, tconn); err != nil {
+		s.Fatal("Failed to disable warmer welcome for Assistant: ", err)
+	}
+
 	// We measure the open/close animation smoothness of the embedded UI with 0, 1 or 2
 	// browser windows in the background.
 	const maxNumOfWindows = 2
