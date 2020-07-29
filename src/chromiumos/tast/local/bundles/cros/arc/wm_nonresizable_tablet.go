@@ -36,6 +36,11 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 			Func: wmNT01,
 		},
 		wm.TestCase{
+			// non-resizable/tablet: immerse via API from maximized
+			Name: "NT_immerse_via_API_from_maximized",
+			Func: wmNT07,
+		},
+		wm.TestCase{
 			// non-resizable/tablet: hide Shelf
 			Name: "NT_hide_shelf",
 			Func: wmNT12,
@@ -58,6 +63,31 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, false)
+}
+
+// wmNT07 covers non-resizable/tablet: immerse via API from maximized.
+// Expected behavior is defined in: go/arc-wm-r NT07: non-resizable/tablet: immerse via API from maximized.
+func wmNT07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	ntActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletImmerseViaAPI(ctx, tconn, a, d, ntActivities)
 }
 
 // wmNT12 covers non-resizable/tablet: hide Shelf behavior.
