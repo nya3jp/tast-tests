@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"apps.LaunchHelpAppOnManagedDevice.enterprise_username", "apps.LaunchHelpAppOnManagedDevice.enterprise_password"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 		Params: []testing.Param{
 			{
 				Name: "oobe",
