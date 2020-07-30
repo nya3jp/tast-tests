@@ -16,6 +16,46 @@
       "revId": "6167d3ff8cbf7f180e9bade06d7c377065230975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c657dd39_8bccea6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-30T06:23:30Z",
+      "side": 1,
+      "message": "LGTM for style",
+      "revId": "6167d3ff8cbf7f180e9bade06d7c377065230975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e79688a_a7b147dd",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-30T06:23:30Z",
+      "side": 1,
+      "message": "nit: link to a bug here",
+      "range": {
+        "startLine": 199,
+        "startChar": 9,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "6167d3ff8cbf7f180e9bade06d7c377065230975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
