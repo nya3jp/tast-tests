@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "965f9005_b1d4639a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "This looks really great. There are a few nits remaining, but, it looks pretty much ready to submit.",
+      "revId": "c2b09819289a00a0eea4ceef2decd1d11897a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e793729f_05eec31a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "nit: name this firstErr and then in the defer change (err to firstErr) and (e to err)",
+      "range": {
+        "startLine": 726,
+        "startChar": 105,
+        "endLine": 726,
+        "endChar": 108
+      },
+      "revId": "c2b09819289a00a0eea4ceef2decd1d11897a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2e810e_d24cb029",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "nit: merge these lines",
+      "range": {
+        "startLine": 737,
+        "startChar": 2,
+        "endLine": 738,
+        "endChar": 15
+      },
+      "revId": "c2b09819289a00a0eea4ceef2decd1d11897a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a98db7f_7b2c5976",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "nit: add else that calls testing.ContextLog in case the error can not be returned",
+      "range": {
+        "startLine": 739,
+        "startChar": 3,
+        "endLine": 741,
+        "endChar": 4
+      },
+      "revId": "c2b09819289a00a0eea4ceef2decd1d11897a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f944e675_4abe0145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "super nit: this is only used once, just move this code to directly where it is called.",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 764,
+        "endChar": 1
+      },
+      "revId": "c2b09819289a00a0eea4ceef2decd1d11897a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -383,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "cbb5e182_4015fb3b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "Yes that is what I meant.",
+      "parentUuid": "2f872649_b6c8dde1",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 51
+      },
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d31108_78fb831d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
         "patchSetId": 19
@@ -415,6 +439,24 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d052dc2_479fc669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "Sorry about that, gerrit messed up the diff and some reason showed me that the entire file was new instead of just one line changing",
+      "parentUuid": "4eb19f5e_125643ee",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -497,6 +539,24 @@
       "revId": "6f9f62732753a426b805f60b703988104f762e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4436fea9_892f6f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T17:18:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "53a39ae0_30af1ea1",
+      "revId": "6f9f62732753a426b805f60b703988104f762e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
