@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a0afc76_e8fb26d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-30T20:25:48Z",
+      "side": 1,
+      "message": "let\u0027s also check to make sure reassociateDuration is positive",
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6653f3c4_60f8213f",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-30T20:25:48Z",
+      "side": 1,
+      "message": "Should have looked at this a little more closely during the initial review, but I\u0027m a little confused about this. Why does a ScanStart event alone indicate a link failure? Looking at the logic below, if we just see a ScanStart event and no Disconnect event, we\u0027ll still return a valid timestamp.",
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039a6ef7_b9f768ba",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-30T20:25:48Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 672,
+        "endChar": 32
+      },
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
