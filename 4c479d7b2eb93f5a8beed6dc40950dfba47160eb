@@ -350,6 +350,30 @@
     },
     {
       "key": {
+        "uuid": "f6368b25_eafe6e82",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-07-30T09:47:41Z",
+      "side": 1,
+      "message": "\u003e\u003e unconditionally deleting cryptohome directories in /home/.shadow\n\u003e\u003e fails due to files still in use.\nYes this is true if you do it before line #847. \nThe cleanChromeShadowDir() function as implemented handles that case without\nerror.\n\nI tested it manually by moving the call to cleanChromeShadowDir() at different\nlocation\nline #875, #853, #846\nThe implementation of cleanChromeShadowDir() allows the function to be call without requiring the ui job or the /home/chronos directory to be cleaned up.\n\nThere is no problem with the product.",
+      "parentUuid": "7f577b92_d86eacd5",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619aa907_a03aa07d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
