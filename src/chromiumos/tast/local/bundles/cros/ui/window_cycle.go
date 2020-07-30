@@ -128,6 +128,7 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 				if err := keyboard.Accel(ctx, "Tab"); err != nil {
 					s.Fatal("Failed to press Tab: ", err)
 				}
+				testing.Sleep(ctx, 200*time.Millisecond)
 
 				// Verify that the cycle window appears in the UI with the right number of windows
 				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}, 5*time.Second)
@@ -166,6 +167,7 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 					if err := keyboard.Accel(ctx, "Tab"); err != nil {
 						s.Fatal("Failed to press Tab: ", err)
 					}
+					testing.Sleep(ctx, 200*time.Millisecond)
 				}
 			}()
 
