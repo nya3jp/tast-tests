@@ -53,6 +53,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			Func: wmNC07,
 		},
 		wm.TestCase{
+			// non-resizable/clamshell: new activity follows root activity
+			Name: "NC_new_activity_follows_root_activity",
+			Func: wmNC09,
+		},
+		wm.TestCase{
 			// non-resizable/clamshell: hide shelf when app maximized
 			Name: "NC_hide_shelf_app_max",
 			Func: wmNC12,
@@ -174,6 +179,56 @@ func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	if windowInfoBefore.BoundsInRoot != windowInfoAfter.BoundsInRoot {
 		return errors.Errorf("invalid window bounds after click on the immersive button, got: %q, want: %q", windowInfoAfter.BoundsInRoot, windowInfoBefore.BoundsInRoot)
+	}
+
+	return nil
+}
+
+// wmNC09 covers non-resizable/clamshell: new activity follows root activity.
+// Expected behavior is defined in: go/arc-wm-r NC09: resizable/clamshell: new activity follows root activity.
+func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Start the activity
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get the root window info so it could be compared with child window.
+	rootWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if err := wm.UIClickLaunchActivity(ctx, act, d); err != nil {
+		return err
+	}
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	if nrActivities, err := wm.UINumberActivities(ctx, act, d); err != nil {
+		return err
+	} else if nrActivities != 2 {
+		return errors.Errorf("invalid number of activities: got %d; want 2", nrActivities)
+	}
+
+	childWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if rootWindowInfo.BoundsInRoot != childWindowInfo.BoundsInRoot {
+		return errors.Errorf("invalid child activity window bounds, got: %q, want: %q", childWindowInfo.BoundsInRoot, rootWindowInfo.BoundsInRoot)
 	}
 
 	return nil
