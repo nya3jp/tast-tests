@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "c42a7682_b4a4fb7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-30T08:30:27Z",
+      "side": 1,
+      "message": "Tast LGTM. Defer to xiaohuic@.",
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c531291_6a79d089",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
