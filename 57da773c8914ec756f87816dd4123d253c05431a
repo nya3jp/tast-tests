@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "d13ee4fa_9538df59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f63ce0_efb188df",
+      "range": {
+        "startLine": 18,
+        "startChar": 83,
+        "endLine": 18,
+        "endChar": 88
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7e0bee1_d50e28e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca6e991_d6410388",
+      "range": {
+        "startLine": 18,
+        "startChar": 100,
+        "endLine": 18,
+        "endChar": 101
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470ac1c0_fa985c04",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cdf50e7f_a7437d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "470ac1c0_fa985c04",
+      "range": {
+        "startLine": 33,
+        "startChar": 55,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ed86b11_95342dae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-30T20:31:54Z",
       "side": 1,
       "message": "you can replace this \"exception list\" with hardware dependencies. e.g:\n\n  HardwareDeps: hwdep.D(hwdep.SkipOnModel(\"eve\")),\n\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1f0cb1_e23bc397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Hardware dependencies seem to focus on selecting devices where to run the test? For this test,  still want to run the test on eve, and not skip it. \n\nJust to be sure, I think you thought I wanted to skip this test on eve??",
+      "parentUuid": "9ed86b11_95342dae",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c5e45880_7fe7d3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef042397_46c14810",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08fe2b76_5a6f06ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "e9d778c3_4bad087c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08fe2b76_5a6f06ae",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7ad0e13_c29b94e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "57da773c8914ec756f87816dd4123d253c05431a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c89fad5_160b7a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:12:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7ad0e13_c29b94e7",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
