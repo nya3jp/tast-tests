@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e93a7ec_3be518b8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-30T05:29:30Z",
+      "side": 1,
+      "message": "Just want to make sure: Could it become a problem when we add SimpleConnect into TestFixturePreWithCapture and runs multiple EAP tests with the same TestFixture (and the same NetCertStore)? e.g. taking too much space storing all certificates/keys?",
+      "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
