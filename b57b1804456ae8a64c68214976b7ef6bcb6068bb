@@ -16,6 +16,24 @@
       "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9852337e_bf62d9e0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-30T07:44:10Z",
+      "side": 1,
+      "message": "John said that he had tested installing 100+ cert/key and there is no problem. WPA-EAP and Dynamic WEP from the all server side tests install about 12 pairs of cert/key in total (counted briefly, not that sure), I guess it should be fine.",
+      "parentUuid": "9e93a7ec_3be518b8",
+      "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
