@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74483e93_5c2c20b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-30T01:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27811e47_4e0ab254",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8bab0e1_e9922f58",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e88925_37d832f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-30T01:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8bab0e1_e9922f58",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "27c24830_acf74f6c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-30T01:19:01Z",
+      "side": 1,
+      "message": "I use this heavily in local development, where trying to find an extra log file is much more difficult than just reading it off the tast logs.  I\u0027m not even sure where I would look on the device for this log file.\n\nin any case this is just preserving existing functionality that is already present in pre.go.  I will leave it in this change, let me know if you want me to open a bug to change it and remove the existing uses (also where to find the file after a test run).",
+      "parentUuid": "8294c4bd_d1304f07",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e7c18f_8aaeb77a",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4187765d_4402fab8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-30T01:19:01Z",
+      "side": 1,
+      "message": "The only way to shut down crostini is right click on the shelf icon for terminal and shutdown from the menu there.\n\nIt would be the same on tablet, but the shelf is hidden off the zcreen by default, and the UI mouse methods work by x,y coordinate so the shelf would have to be swiped up to show and then there is flakiness from animations and timeouts.\n\nThis is simpler, faster and should be less flaky.",
+      "parentUuid": "64e7c18f_8aaeb77a",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
