@@ -145,6 +145,13 @@ const (
 // for details about this pattern.
 type Option func(c *Chrome)
 
+// EnableWebAppInstall returns an Option that can be passed to enable web app auto-install after user login.
+// By default web app auto-install is disabled to reduce network traffic in test environment.
+// See https://crbug.com/1076660 for more details.
+func EnableWebAppInstall() Option {
+	return func(c *Chrome) { c.installWebApp = true }
+}
+
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func Auth(user, pass, gaiaID string) Option {
@@ -304,6 +311,7 @@ type Chrome struct {
 	deferLogin             bool
 	loginMode              loginMode
 	skipOOBEAfterLogin     bool // skip OOBE post user login
+	installWebApp          bool // auto install essential apps after user login
 	region                 string
 	policyEnabled          bool   // flag to enable policy fetch
 	dmsAddr                string // Device Management URL, or empty if using default
@@ -363,6 +371,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		keepState:          false,
 		loginMode:          fakeLogin,
 		skipOOBEAfterLogin: true,
+		installWebApp:      false,
 		region:             "us",
 		policyEnabled:      false,
 		enroll:             false,
@@ -745,6 +754,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if c.skipOOBEAfterLogin {
 		args = append(args, "--oobe-skip-postlogin")
+	}
+
+	if !c.installWebApp {
+		args = append(args, "--disable-features=DefaultWebAppInstallation")
 	}
 
 	if c.loginMode != gaiaLogin {
