@@ -75,11 +75,11 @@ var stablePipTests = []pipTestParams{
 	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
 	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
+	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
 }
 
 var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
-	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: enterPip},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
 }
 
@@ -480,11 +480,38 @@ func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *a
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
 func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get tablet mode")
+	}
+
+	initialWindowState := ash.WindowStateNormal
+	initialArcWindowState := arc.WindowStateNormal
+	if isTabletModeEnabled {
+		initialWindowState = ash.WindowStateMaximized
+		initialArcWindowState = arc.WindowStateMaximized
+	}
+
+	if err := pipAct.SetWindowState(ctx, tconn, initialArcWindowState); err != nil {
+		return errors.Wrap(err, "failed to set initial window state")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState); err != nil {
+		return errors.Wrap(err, "did not enter initial window state")
+	}
+
+	// Enter PIP via minimize.
+	if err := minimizePIP(ctx, tconn, pipAct); err != nil {
+		return errors.Wrap(err, "failed to minimize app into PIP")
+	}
+	if err := waitForPIPWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "Did not enter PIP mode")
+	}
+
 	if err := pressShelfIcon(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, ash.WindowStateMaximized)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState)
 }
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
