@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "e5b0a0fb_b5e13276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-30T20:25:48Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m still not convinced that that level of precision helps, but I suppose it doesn\u0027t hurt.",
+      "parentUuid": "8276d9ff_bff683a5",
+      "revId": "0c8d22f79f6a479435bd6777d60e5b3a0c4b3409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5a083f2_4e62fb04",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
         "patchSetId": 7
