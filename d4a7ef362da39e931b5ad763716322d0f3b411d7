@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cfc137_381584b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:35:28Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "d4a7ef362da39e931b5ad763716322d0f3b411d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3572f5ac_d16ae770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:35:28Z",
+      "side": 1,
+      "message": "huge nit: error messages should not start with Uppercase.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 858,
+        "startChar": 22,
+        "endLine": 858,
+        "endChar": 24
+      },
+      "revId": "d4a7ef362da39e931b5ad763716322d0f3b411d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
