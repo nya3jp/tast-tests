@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7c70da_e82dad6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-30T19:23:06Z",
+      "side": 1,
+      "message": "I rebased and moved the new lockscreen utils I added into lockscreen.go. I also back-tracked on the approach to make WaitState more user-friendly. The new approach was kind of messy when I tried to apply it to ui.ScreenLock (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go;l\u003d77;drc\u003d2be15322152e5d9320b9e473d185a8bdf3a1d6d4?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F). There wasn\u0027t a clean way to use the new function to do the follow-up check in that test, and I didn\u0027t want to change things around too much.\n\nThe pattern of passing in a function to wait for some condition seems to be pretty common anyways, so I think it\u0027s okay to stick to this way for now. Perhaps we can revisit changing it in the future.\n\n",
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
