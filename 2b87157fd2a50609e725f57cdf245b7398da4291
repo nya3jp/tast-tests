@@ -63,6 +63,30 @@
       "revId": "2b87157fd2a50609e725f57cdf245b7398da4291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845b2e83_3dfb2f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-07-30T00:54:01Z",
+      "side": 1,
+      "message": "Ah, sorry. Didn\u0027t notice that it\u0027s a merge.",
+      "parentUuid": "fabfb293_b758abf2",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "2b87157fd2a50609e725f57cdf245b7398da4291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
