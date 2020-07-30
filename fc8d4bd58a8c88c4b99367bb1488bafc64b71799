@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0263d0e4_472d9dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-07-30T21:14:36Z",
+      "side": 1,
+      "message": "It makes me sad to see us starting to write code like this and I would like to avoid it if at all possible.\n\nWhy is the next line of code not sufficient?\nui.FindWithTimeout()",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
