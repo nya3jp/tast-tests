@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "547bca1c_2bf3e0ba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T01:43:55Z",
+      "side": 1,
+      "message": "I am not necessarily sold on folder vs dir. To me, those mean the same thing, but I don\u0027t have a better name. Maybe path? or subDir?",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 245,
+        "endChar": 14
+      },
+      "revId": "f0cdf009571f446e8a0513ff4f517c69c944755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6139d9e_1f05a605",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T01:43:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just be folders, not folders[0]?",
+      "range": {
+        "startLine": 270,
+        "startChar": 37,
+        "endLine": 270,
+        "endChar": 47
+      },
+      "revId": "f0cdf009571f446e8a0513ff4f517c69c944755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bcb2a90_43e3566f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T01:43:55Z",
+      "side": 1,
+      "message": "Can you use the default ui timeout for the files app?",
+      "range": {
+        "startLine": 284,
+        "startChar": 55,
+        "endLine": 284,
+        "endChar": 69
+      },
+      "revId": "f0cdf009571f446e8a0513ff4f517c69c944755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d1cd5c_c109683f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T01:43:55Z",
+      "side": 1,
+      "message": "Same here on folders[0] vs folders",
+      "range": {
+        "startLine": 294,
+        "startChar": 37,
+        "endLine": 294,
+        "endChar": 47
+      },
+      "revId": "f0cdf009571f446e8a0513ff4f517c69c944755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c7d802_f52d712a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T01:43:55Z",
+      "side": 1,
+      "message": "Can you use the default ui timeout for the files app?",
+      "range": {
+        "startLine": 308,
+        "startChar": 57,
+        "endLine": 308,
+        "endChar": 71
+      },
+      "revId": "f0cdf009571f446e8a0513ff4f517c69c944755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
