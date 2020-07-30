@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf4ff0a2_abfe470f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-30T04:06:03Z",
+      "side": 1,
+      "message": "Hi tast-owners,\n\nThe CL hit error message \"no devserver is up\" error when downloading files from external:\nhttps://stainless.corp.google.com/search?first_date\u003d2020-07-24\u0026last_date\u003d2020-07-30\u0026owner\u003d\u0026builder_name\u003d\u0026master_builder_name\u003d\u0026branch\u003d\u0026suite\u003d%5Ecamerabox_facing%5C-back%24\u0026declared_name\u003d\u0026test\u003d%5Etast%5C.camera%5C.HAL3Remote%5C.device_back%24\u0026build\u003d%5ER86%5C-13377%5C.0%5C.0%24\u0026board\u003d\u0026model\u003d\u0026shard\u003d\u0026hostname\u003d\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003d\u0026retry\u003d\u0026task_reference_type\u003d\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026view\u003dlist\n\nIt is a known bug in tast framework?\nAny suggestion for solving this?\n",
+      "revId": "c1f13ba43369e8260712bf54263b3005e8f65c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
