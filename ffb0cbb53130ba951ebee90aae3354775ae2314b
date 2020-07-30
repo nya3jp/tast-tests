@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "423b8733_76af2023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-30T21:41:45Z",
+      "side": 1,
+      "message": "can you do t.animationData \u003d append(t.animationData, data...) to support multiple runs?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55d3a154_4b5cc054",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
         "patchSetId": 1
@@ -30,6 +53,52 @@
       "writtenOn": "2020-07-30T20:54:40Z",
       "side": 1,
       "message": "I only add the raw per-animation data collected since the actual TPS calc will be handled elsewhere.",
+      "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0cb675_f2527ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-30T21:41:45Z",
+      "side": 1,
+      "message": "You actually don\u0027t have to do this; nil is a valid value for an empty slice in Go (See https://tour.golang.org/moretypes/12 and https://tour.golang.org/moretypes/15)",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3856e21b_8c91886b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-30T21:41:45Z",
+      "side": 1,
+      "message": "Since Run can be called multiple times for Recorder, this looks like overwriting the instance.\nWhy not creating frameDataTracker instance in NewRecorder?  Then here would be just Start() -\u003e defer Stop() (similar to r.timeline)",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 38
+      },
       "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
