@@ -16,6 +16,24 @@
       "revId": "c1f13ba43369e8260712bf54263b3005e8f65c32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bb8aa6c_574de913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-30T04:57:51Z",
+      "side": 1,
+      "message": "From the log, it looks like there\u0027s really no living devserver but I\u0027m not sure if this is expected and if there\u0027s some fallback mechanism.\n\nRandomly sampled one log of critical-chrome, the devservers seem to be alive there. [1]\n\nI think you might ask this in tast-users instead for better visibility.\n\n[1] https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4db1d3f1979f6010/",
+      "parentUuid": "cf4ff0a2_abfe470f",
+      "revId": "c1f13ba43369e8260712bf54263b3005e8f65c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
