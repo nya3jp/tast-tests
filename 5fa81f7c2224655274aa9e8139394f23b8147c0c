@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c92fc4ee_d5f11dc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-30T03:24:06Z",
+      "side": 1,
+      "message": "Remove WiFi.FTEnabled property.",
+      "revId": "5fa81f7c2224655274aa9e8139394f23b8147c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
