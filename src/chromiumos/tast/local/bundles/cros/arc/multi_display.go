@@ -638,7 +638,8 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	)
 	for _, param := range []struct {
 		// Activity package and class.
-		pkg, activity string
+		resizeability        resizeability
+		configChangeHandling configChangeHandling
 		// Initial state of the window being dragged.
 		winState ash.WindowStateType
 		// Display where activity should be placed after the drag operation.
@@ -646,30 +647,30 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
+		{resizeable, handling, ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: true,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
+		{resizeable, handling, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            true,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
+		{resizeable, relaunching, ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: false,
 			density: true,
 		}}},
-		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
+		{resizeable, relaunching, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            false,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{dispPkg, activityName(nonResizeable, handling), ash.WindowStateMaximized, shouldNotMove, nil},
-		{dispPkg, activityName(sizeCompat, handling), ash.WindowStateMaximized, shouldNotMove, nil},
+		{nonResizeable, handling, ash.WindowStateMaximized, shouldNotMove, nil},
+		{sizeCompat, handling, ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
 		for _, dir := range []struct {
 			// Display where drag operation starts.
@@ -682,15 +683,16 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 		} {
 			name := fmt.Sprintf(
 				"%s %s from %s to %s",
-				param.winState, simpleClassName(param.activity), dir.srcDisp.label(), dir.dstDisp.label())
+				param.winState, testActivitySimpleName(param.resizeability, param.configChangeHandling), dir.srcDisp.label(), dir.dstDisp.label())
 			runOrFatal(ctx, s, name, func(ctx context.Context, s *testing.State) error {
-				act, err := lunchActivity(ctx, tconn, a, param.pkg, param.activity, dir.srcDisp)
-				if err != nil {
+				act := testappActivity{ctx, tconn, a, param.resizeability, param.configChangeHandling, nil}
+				defer act.close()
+
+				if err := act.launch(dir.srcDisp); err != nil {
 					return err
 				}
-				defer act.close(ctx, tconn)
 
-				if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+				if err := act.setWindowState(param.winState); err != nil {
 					return err
 				}
 
@@ -698,7 +700,7 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return err
 				}
 
-				win, err := act.findWindow(ctx, tconn)
+				win, err := act.findWindow()
 				if err != nil {
 					return err
 				}
@@ -736,7 +738,7 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 				wantDispID := disp.displayInfo(dir.dstDisp).ID
 
 				err = testing.Poll(ctx, func(ctx context.Context) error {
-					win, err := act.findWindow(ctx, tconn)
+					win, err := act.findWindow()
 					if err != nil {
 						return err
 					}
@@ -811,13 +813,16 @@ func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *
 			s,
 			fmt.Sprintf("%s on %s display", param.windowState, param.displayID.label()),
 			func(ctx context.Context, s *testing.State) error {
-				act, err := lunchActivity(ctx, tconn, a, dispPkg, activityName(resizeable, handling), param.displayID)
+				act := testappActivity{ctx, tconn, a, resizeable, handling, nil}
+				if err := act.launch(param.displayID); err != nil {
+					return err
+				}
 				if err != nil {
 					return err
 				}
-				defer act.close(ctx, tconn)
+				defer act.close()
 
-				if err := act.setWindowState(ctx, tconn, param.windowState); err != nil {
+				if err := act.setWindowState(param.windowState); err != nil {
 					return err
 				}
 
@@ -904,49 +909,24 @@ func (current *currentRotation) setTo(degree int) error {
 }
 
 // See go/arc-wm-r-spec for details.
-type resizeability int
+type resizeability string
 
 const (
 	// Resizeable
-	resizeable resizeability = iota
+	resizeable resizeability = "Resizeable"
 	// Non-resizeable
-	nonResizeable
+	nonResizeable resizeability = "NonResizeable"
 	// Non-resizeable + specifying orientation
-	sizeCompat
+	sizeCompat resizeability = "SizeCompat"
 )
 
 // Whether activity is expected to handle config changes, or it's going to relaunch.
-type configChangeHandling int
+type configChangeHandling string
 
 const (
-	handling configChangeHandling = iota
-	relaunching
+	handling    configChangeHandling = "Handling"
+	relaunching configChangeHandling = "Relaunching"
 )
-
-// activityName generates Activity name based on its properties.
-func activityName(r resizeability, c configChangeHandling) string {
-	var rs, cs string
-
-	if r == resizeable {
-		rs = "Resizeable"
-	} else if r == nonResizeable {
-		rs = "NonResizeable"
-	} else if r == sizeCompat {
-		rs = "SizeCompat"
-	} else {
-		panic("not reached")
-	}
-
-	if c == handling {
-		cs = "Handling"
-	} else if c == relaunching {
-		cs = "Relaunching"
-	} else {
-		panic("not reached")
-	}
-
-	return fmt.Sprintf("%s.%s%sActivity", dispPkg, rs, cs)
-}
 
 // configChangeEvent is an entry of config change event.
 type configChangeEvent struct {
@@ -1305,66 +1285,78 @@ func getInternalAndExternalDisplays(ctx context.Context, tconn *chrome.TestConn)
 	return result, err
 }
 
-// activity provides activity-related operations ensuring state changes complete when returning from the function.
-type activity struct {
-	activity    *arc.Activity
-	packageName string
-	className   string
+// testappActivity provides activity-related operations ensuring state changes complete when returning from the function.
+type testappActivity struct {
+	ctx           context.Context
+	tconn         *chrome.TestConn
+	a             *arc.ARC
+	resizeability resizeability
+	ccHandling    configChangeHandling
+	activity      *arc.Activity
 }
 
-// lunchActivity issues commands to launch an activity, then wait until launch completes.
-func lunchActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg, cls string, displayID androidDisplayID) (*activity, error) {
-	act, err := arc.NewActivity(a, pkg, cls)
-	if err != nil {
-		return nil, err
-	}
-
-	err = startActivityOnDisplay(ctx, a, tconn, pkg, cls, displayID)
-	if err != nil {
-		act.Close()
-		return nil, err
-	}
-
-	actOp := &activity{act, pkg, cls}
-	if err := ensureActivityReady(ctx, tconn, act); err != nil {
-		actOp.close(ctx, tconn)
-		return nil, err
-	}
-	return actOp, nil
+// activityName returns an activity class name including package name.
+func (act *testappActivity) activityName() string {
+	return fmt.Sprintf("%s.%s", dispPkg, testActivitySimpleName(act.resizeability, act.ccHandling))
 }
 
-// close cleans up internal resources of activity including stopping the activity.
-func (act *activity) close(ctx context.Context, tconn *chrome.TestConn) error {
-	act.activity.Close()
-	return act.activity.Stop(ctx, tconn)
+// testActivitySimpleName returns an activity class name without package name.
+func testActivitySimpleName(res resizeability, cc configChangeHandling) string {
+	return fmt.Sprintf("%s%sActivity", res, cc)
 }
 
-// setWindowState issues command to set window state, then wait until the new state is applied.
-func (act *activity) setWindowState(ctx context.Context, tconn *chrome.TestConn, state ash.WindowStateType) error {
-	err := ensureSetWindowState(ctx, tconn, act.packageName, state)
+// launch issues commands to launch an activity, then wait until launch completes.
+func (act *testappActivity) launch(displayID androidDisplayID) error {
+	innerAct, err := arc.NewActivity(act.a, dispPkg, act.activityName())
 	if err != nil {
 		return err
 	}
-	return ensureActivityReady(ctx, tconn, act.activity)
+
+	err = startActivityOnDisplay(act.ctx, act.a, act.tconn, dispPkg, act.activityName(), displayID)
+	if err != nil {
+		innerAct.Close()
+		return err
+	}
+	act.activity = innerAct
+
+	return ensureActivityReady(act.ctx, act.tconn, innerAct)
+}
+
+// close cleans up internal resources of activity including stopping the activity.
+func (act *testappActivity) close() error {
+	if act.activity == nil {
+		return nil
+	}
+	act.activity.Close()
+	if err := act.activity.Stop(act.ctx, act.tconn); err != nil {
+		return err
+	}
+	act.activity = nil
+	return nil
+}
+
+// setWindowState issues command to set window state, then wait until the new state is applied.
+func (act *testappActivity) setWindowState(state ash.WindowStateType) error {
+	return ensureSetWindowState(act.ctx, act.tconn, dispPkg, state)
 }
 
 // findWindow returns an only window which shares the same package name with activity.
-func (act *activity) findWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
-	windows, err := ash.GetAllWindows(ctx, tconn)
+func (act *testappActivity) findWindow() (*ash.Window, error) {
+	windows, err := ash.GetAllWindows(act.ctx, act.tconn)
 	if err != nil {
 		return nil, err
 	}
 	var win *ash.Window
 	for _, window := range windows {
-		if window.ARCPackageName == act.packageName {
+		if window.ARCPackageName == dispPkg {
 			if win != nil {
-				return nil, errors.Errorf("found multiple windows for %q", act.packageName)
+				return nil, errors.Errorf("found multiple windows for %q", dispPkg)
 			}
 			win = window
 		}
 	}
 	if win == nil {
-		return nil, errors.Errorf("window not found for %q", act.packageName)
+		return nil, errors.Errorf("window not found for %q", dispPkg)
 	}
 	return win, nil
 }
