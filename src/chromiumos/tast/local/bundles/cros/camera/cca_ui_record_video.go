@@ -162,7 +162,7 @@ func startRecording(ctx context.Context, app *cca.App) error {
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
 	}
-	if err := app.WaitForState(ctx, "recording", true); err != nil {
+	if err := app.WaitForState(ctx, "recording-duration", true); err != nil {
 		return errors.Wrap(err, "recording is not started")
 	}
 	return nil
