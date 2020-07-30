@@ -27,3 +27,10 @@ type TestOptions struct {
 	// InputMode indicates which input storage mode the unittest runs with.
 	InputMode InputStorageMode
 }
+
+// TestOptionsNew is the options for runNewAccelVideoTest.
+type TestOptionsNew struct {
+	WebMName string
+	JSONName string
+	Profile  videotype.CodecProfile
+}
