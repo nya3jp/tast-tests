@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482f659a_de569b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-30T01:23:37Z",
+      "side": 1,
+      "message": "Thanks! LGTM with comment.",
+      "revId": "ae489245a16925aabe04d3d8589f8b5f3431d784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5049e343_9a500052",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-30T01:23:37Z",
+      "side": 1,
+      "message": "could you comment that the last entry is always empty?\nOr, explicitly,\n\nif len(fileList) \u003e 0 \u0026\u0026 fileList[len(fileList) - 1] \u003d\u003d \"\" {\n  fileList \u003d fileList[:len(fileList) - 1]\n}",
+      "range": {
+        "startLine": 464,
+        "startChar": 1,
+        "endLine": 464,
+        "endChar": 39
+      },
+      "revId": "ae489245a16925aabe04d3d8589f8b5f3431d784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
