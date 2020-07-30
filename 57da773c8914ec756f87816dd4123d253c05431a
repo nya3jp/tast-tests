@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "59443aa9_1b085ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-07-30T21:44:25Z",
+      "side": 1,
+      "message": "Yes, this test is supposed to be temporary so that we don\u0027t accidentally ship an x86_64 device without arm64 support. \n\nBased on the idea 1 here - b/161395352#comment1, at the end of this, eventually exceptionMap should be empty.",
+      "parentUuid": "fcb6a41e_10468cb9",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef042397_46c14810",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
