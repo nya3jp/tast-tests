@@ -79,19 +79,32 @@ func init() {
 			Val: runTestsParam{
 				tests: []string{
 					"meta.LocalFiles",
-					"meta.RemoteFiles",
 				},
 				wantResults: []testResult{
 					{Name: "meta.LocalFiles"},
-					{Name: "meta.RemoteFiles"},
 				},
 				wantFiles: map[string]string{
 					"meta.LocalFiles/local_files_internal.txt": "This is an internal data file.\n",
 					"meta.LocalFiles/local_files_external.txt": "This is an external data file.\n",
-					"meta.RemoteFiles/remote_files_data.txt":   "This is a data file for a remote test.\n",
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
+		}, {
+			// TODO(crbug.com/1111251): Merge with the local test case after stabilization.
+			Name: "files_remote",
+			Val: runTestsParam{
+				tests: []string{
+					"meta.RemoteFiles",
+				},
+				wantResults: []testResult{
+					{Name: "meta.RemoteFiles"},
+				},
+				wantFiles: map[string]string{
+					"meta.RemoteFiles/remote_files_internal.txt": "This is an internal data file for remote tests.\n",
+					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
+				},
+			},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
