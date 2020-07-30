@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f53e9bbf_55ff41b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-07-30T07:33:33Z",
+      "side": 1,
+      "message": "I changed the function RequestRoam() to do the following:\n1- create a shill property watcher.\n2- RequestRoam.\n3- Poll for the Freq to equal expected AP2 freq (2.4GHz).\n4- Wait for service to be connected.\n5- Check the BSSID  of the service.\n\nI tested this logic for 100 time and it was stable. \n\nAlso, I am working on another solution. Because, we request roam inside the pw (we assume that the DUT is still connected to AP1 before requesting roam), then I can wait for the expected states of ServicePropertyState until it is connected. After that I can check the BSSID.",
+      "parentUuid": "5a2bbae5_bfbd9da3",
+      "range": {
+        "startLine": 773,
+        "startChar": 46,
+        "endLine": 773,
+        "endChar": 70
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a908c622_20746695",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 21
