@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a36c1171_3e20227a",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab7b4ef_c466ee16",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9fdc178_c5aba79d",
         "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af94357d_229fbd1b",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fdc178_c5aba79d",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ab17256_dc246fa8",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aeef1f6_fa83ee60",
+      "range": {
+        "startLine": 37,
+        "startChar": 43,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff29f1fa_c16ce821",
         "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534759df_90479da2",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff29f1fa_c16ce821",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f6f753b5_930f228e",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78da0b1_074148d8",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d82cfa_4adff37b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0cd8820_574cc0dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d82cfa_4adff37b",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7d8b0552_c67ca9ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5f540e_b83b1d5f",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db644d5a_47e6fe86",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 6
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "4c8696f2_9d560995",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db644d5a_47e6fe86",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d14ca27_90d533c1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 6
@@ -206,6 +398,30 @@
       "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99c9406_5b065d3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-30T13:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d14ca27_90d533c1",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "8780b6424d3180f4965cf10000484a824aa4a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
