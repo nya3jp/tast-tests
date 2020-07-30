@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aca6e991_d6410388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "huge nit: remove empty space",
+      "range": {
+        "startLine": 18,
+        "startChar": 100,
+        "endLine": 18,
+        "endChar": 101
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f63ce0_efb188df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "huge nit, style: arm -\u003e ARM",
+      "range": {
+        "startLine": 18,
+        "startChar": 83,
+        "endLine": 18,
+        "endChar": 88
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470ac1c0_fa985c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "huge nit: (here and below)\nend sentences with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 33,
+        "startChar": 55,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed86b11_95342dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "you can replace this \"exception list\" with hardware dependencies. e.g:\n\n  HardwareDeps: hwdep.D(hwdep.SkipOnModel(\"eve\")),\n\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef042397_46c14810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "huge nit, style: ABI ... and (append period at the end)",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08fe2b76_5a6f06ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "optional, nit, style:\n\nfor consistency perhaps renaming this as isX86_64Supported (?)",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ad0e13_c29b94e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:31:54Z",
+      "side": 1,
+      "message": "see comment above: you can skip this check by using HardwareDeps",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
