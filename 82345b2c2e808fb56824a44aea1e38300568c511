@@ -16,6 +16,69 @@
       "revId": "82345b2c2e808fb56824a44aea1e38300568c511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f920b69c_90fd1e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:43:33Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "82345b2c2e808fb56824a44aea1e38300568c511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a4c6b7e_4858e3f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:43:33Z",
+      "side": 1,
+      "message": "nit: add docstring describing what the func does",
+      "range": {
+        "startLine": 791,
+        "startChar": 5,
+        "endLine": 791,
+        "endChar": 22
+      },
+      "revId": "82345b2c2e808fb56824a44aea1e38300568c511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c160f0c5_9a2e5b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-07-30T20:43:33Z",
+      "side": 1,
+      "message": "huge nit: perhaps start with \"invalid\" or \"unexpected\" as in \"unexpected snapped window bounds...\"",
+      "range": {
+        "startLine": 845,
+        "startChar": 10,
+        "endLine": 845,
+        "endChar": 31
+      },
+      "revId": "82345b2c2e808fb56824a44aea1e38300568c511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
