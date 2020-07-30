@@ -22,6 +22,30 @@
       "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1701723_f551de4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-30T22:35:33Z",
+      "side": 1,
+      "message": "It\u0027s sufficient for locating the UI node, but the failure reason right now is that the cycle menu isn\u0027t appearing at all. It seems like the speed of key presses is related, so the sleep here is to make sure there\u0027s some time before the next Tab press later on. keyboard.Accel already includes a small delay (50ms) between key presses, but it doesn\u0027t seem to be quite enough for this use case.",
+      "parentUuid": "0263d0e4_472d9dab",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
