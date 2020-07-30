@@ -97,6 +97,7 @@ var unstableTestSet = []testEntry{
 	{"Remove and re-add displays", removeAddDisplay},
 	{"Drag a window between displays", dragWindowBetweenDisplays},
 	{"Rotate display", rotateDisplay},
+	{"Snapping", snappingOnDisplay},
 }
 
 func init() {
@@ -852,6 +853,73 @@ func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *
 			})
 	}
 
+	return nil
+}
+
+// snappingOnDisplay verifies snapping behavior (Alt + '['/']') on internal/external displays.
+func snappingOnDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	disp, err := getInternalAndExternalDisplays(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	defer keyboard.Close()
+
+	for _, dispID := range []androidDisplayID{internalDisplayID, firstExternalDisplayID} {
+		d := disp.displayInfo(dispID)
+		u := d.WorkArea.Width / 2
+		for _, state := range []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized} {
+			for _, param := range []struct {
+				name     string
+				accel    string
+				wantBnds coords.Rect
+			}{
+				{"left", "Alt+[", coords.Rect{Left: 0, Top: 0, Width: u, Height: d.WorkArea.Height}},
+				{"right", "Alt+]", coords.Rect{Left: u, Top: 0, Width: u, Height: d.WorkArea.Height}},
+			} {
+				runOrFatal(
+					ctx, s, fmt.Sprintf("%s window to %s on %s", state, param.name, dispID.label()),
+					func(ctx context.Context, s *testing.State) error {
+						act := testappActivity{ctx, tconn, a, resizeable, handling, nil}
+						defer act.close()
+
+						if err := act.launch(dispID); err != nil {
+							return err
+						}
+
+						if err := act.setWindowState(state); err != nil {
+							return err
+						}
+
+						if err := keyboard.Accel(ctx, param.accel); err != nil {
+							return err
+						}
+
+						return testing.Poll(ctx, func(ctx context.Context) error {
+							win, err := act.findWindow()
+							if err != nil {
+								return testing.PollBreak(err)
+							}
+							if !reflect.DeepEqual(win.BoundsInRoot, param.wantBnds) {
+								return errors.Errorf(
+									"unexpected snapped window bounds: got %+v; want %+v",
+									win.BoundsInRoot, param.wantBnds)
+							}
+							return nil
+						}, &testing.PollOptions{Timeout: time.Second})
+					})
+			}
+		}
+	}
 	return nil
 }
 
