@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "660a378b_b2344f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-30T03:13:49Z",
+      "side": 1,
+      "message": "LGTM with nits. Thanks!\n",
+      "revId": "5d73a8928dbd0682593e26d5230520ae75b995ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd5afb6d_566dc53c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-30T03:13:49Z",
+      "side": 1,
+      "message": "huge nit: Can you remove the extra space here?",
+      "range": {
+        "startLine": 452,
+        "startChar": 43,
+        "endLine": 452,
+        "endChar": 44
+      },
+      "revId": "5d73a8928dbd0682593e26d5230520ae75b995ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

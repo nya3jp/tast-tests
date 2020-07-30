@@ -195,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "1f8f3322_1fd945a4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-30T03:13:49Z",
+      "side": 1,
+      "message": "Looks not done? I really recommend %q. Note that it will print a newline character as \"\\n\", so it would have made the debugging easier.",
+      "parentUuid": "ce4b67f5_3d2ef5a8",
+      "range": {
+        "startLine": 452,
+        "startChar": 35,
+        "endLine": 452,
+        "endChar": 37
+      },
+      "revId": "bad79f75e3a595122e72689f5c784a0b6fe3198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cabc5b05_1c660f1a",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 7
