@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9750be4c_e7f92bd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-30T08:37:06Z",
+      "side": 1,
+      "message": "Decreased the range of rand to address error : tast-local-tests-cros-0.0.1-r3378: src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go:77:59: constant 10000000000 overflows int in https://ci.chromium.org/p/chromeos/builders/cq/kukui-cq/b8873371321515595968?.",
+      "revId": "04b3d90ed4b8d63f41e0fd3e2e1540d1d56ed169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
