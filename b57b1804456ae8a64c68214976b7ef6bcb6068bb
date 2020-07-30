@@ -34,6 +34,24 @@
       "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07dc64c_09b96c31",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-07-30T08:14:38Z",
+      "side": 1,
+      "message": "Ack. OK, thanks for checking. Then it looks good to me for now. If we have more client cert usage, we might request for cert/key removal function and clean it up somewhere after each tests.",
+      "parentUuid": "9852337e_bf62d9e0",
+      "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
