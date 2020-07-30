@@ -16,6 +16,46 @@
       "revId": "04b3d90ed4b8d63f41e0fd3e2e1540d1d56ed169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d6f2946_348a8039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-30T08:40:01Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "04b3d90ed4b8d63f41e0fd3e2e1540d1d56ed169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd68e61_ba43cab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_drive.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-30T08:40:01Z",
+      "side": 1,
+      "message": "optional: how about 1000000000 \u003d 10^9 to be fit 32 bits int?",
+      "range": {
+        "startLine": 77,
+        "startChar": 58,
+        "endLine": 77,
+        "endChar": 64
+      },
+      "revId": "04b3d90ed4b8d63f41e0fd3e2e1540d1d56ed169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
