@@ -312,6 +312,30 @@
       "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2790093a_5db2b3ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-30T18:21:11Z",
+      "side": 1,
+      "message": "Vaibhav, can you and a TODO here that links back to the bug for this test? As a later CL, we can look into checking for the change?\n\nTODO(b/159956557): Confirm that Backup status is changing when the button is clicked.",
+      "parentUuid": "b6730843_5a0c57da",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "8759382d6e7357da54efa34d61da8b2eba09fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
