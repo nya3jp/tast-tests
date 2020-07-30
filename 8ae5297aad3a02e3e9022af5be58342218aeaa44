@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2be4109c_4ab63e05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-07-30T07:40:18Z",
+      "side": 1,
+      "message": "It seems like suspending the OS and resuming it is a bit complicated, so I think it should be in a separate commit. The current state of this test can already catch some regressions.",
+      "parentUuid": "4345fa0c_82490f67",
+      "revId": "8ae5297aad3a02e3e9022af5be58342218aeaa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56b30321_89eba81b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
         "patchSetId": 2
