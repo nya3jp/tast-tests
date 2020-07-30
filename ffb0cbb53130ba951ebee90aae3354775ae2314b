@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d12ca3ae_67709f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-30T20:54:40Z",
+      "side": 1,
+      "message": "Needs to wait for 86.0.4217.0 (Autotest api change) to try and land this. So no hurry.",
+      "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55d3a154_4b5cc054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-30T20:54:40Z",
+      "side": 1,
+      "message": "I only add the raw per-animation data collected since the actual TPS calc will be handled elsewhere.",
+      "revId": "ffb0cbb53130ba951ebee90aae3354775ae2314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
