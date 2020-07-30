@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "2bd6dca9_18781d6b",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-07-30T17:41:05Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromium/src/+/2324801\n\nThe pref is going to be removed in the above CL. You may want to check if there will be an error if the pref is gone.",
+      "parentUuid": "6c531291_6a79d089",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "378d84ea728948ace361487cfec98d14d2bbc488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d408ece_389ed646",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 1
