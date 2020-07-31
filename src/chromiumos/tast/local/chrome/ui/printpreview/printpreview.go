@@ -58,6 +58,7 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
 	// Find and expand the destination list.
 	params := ui.FindParams{
+		Name: "Destination Save as PDF",
 		Role: ui.RoleTypePopUpButton,
 	}
 	destList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
@@ -68,22 +69,19 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 	if err := destList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click destination list")
 	}
-	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for destination list to expand")
-	}
 
-	// Select "See more..." to get the complete list of printers.
-	kb, err := input.Keyboard(ctx)
+	// Find and click the See more... menu item.
+	params = ui.FindParams{
+		Name: "See more destinations",
+		Role: ui.RoleTypeMenuItem,
+	}
+	seeMore, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the keyboard")
+		return errors.Wrap(err, "failed to find See more... menu item")
 	}
-	defer kb.Close()
-	if err := kb.Accel(ctx, "ctrl+alt+down"); err != nil {
-		return errors.Wrap(err, "failed to type end")
-	}
-	if err := kb.Accel(ctx, "enter"); err != nil {
-		return errors.Wrap(err, "failed to type enter")
+	defer seeMore.Release(ctx)
+	if err := seeMore.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click See more... menu item")
 	}
 
 	// Find and select the printer.
