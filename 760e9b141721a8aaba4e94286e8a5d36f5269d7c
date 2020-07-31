@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "899ad6e1_c80348e6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-31T19:28:55Z",
+      "side": 1,
+      "message": "\u003e \"acounts\" is a possible misspelling of \"accounts\".\n\nPlease fix.",
+      "parentUuid": "21ff1459_e82ec519",
+      "range": {
+        "startLine": 44,
+        "startChar": 88,
+        "endLine": 44,
+        "endChar": 95
+      },
+      "revId": "760e9b141721a8aaba4e94286e8a5d36f5269d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
