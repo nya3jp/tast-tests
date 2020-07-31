@@ -634,6 +634,17 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
+// RunMultiCommandsInSequence runs multiple commands in sequence.
+func (c *Container) RunMultiCommandsInSequence(ctx context.Context, cmds ...string) error {
+	for _, cmd := range cmds {
+		// Use bash -c to handl piping in commands.
+		if err := c.Command(ctx, "bash", "-c", cmd).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to run command %q", cmd)
+		}
+	}
+	return nil
+}
+
 // DumpLog dumps the logs from the container to a local output file named
 // container_log.txt in dir (typically the test's output dir).
 // It does this by executing croslog in the container and grabbing the output.
@@ -647,6 +658,14 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	cmd := c.Command(ctx, "croslog", "--no-pager")
 	cmd.Stdout = f
 	return cmd.Run()
+}
+
+// Reboot reboots the container using command.
+func (c *Container) Reboot(ctx context.Context) error {
+	if err := c.Command(ctx, "sudo", "systemctl", "reboot").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to shutdown container through running 'sudo systemctl reboot'")
+	}
+	return nil
 }
 
 // CreateDefaultContainer prepares a container in VM with default settings.
