@@ -12,12 +12,13 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"strings"
 	"syscall"
-	"testing"
+	gotesting "testing"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/testutil"
 )
 
@@ -63,7 +64,7 @@ func checkNonExistent(files ...string) error {
 	return nil
 }
 
-func TestSetUpAndTearDownCrashTest(t *testing.T) {
+func TestSetUpAndTearDownCrashTest(t *gotesting.T) {
 	tmpDir := testutil.TempDir(t)
 	defer os.RemoveAll(tmpDir)
 
@@ -91,10 +92,12 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	// Start a fake crash_sender process.
-	// Process name length must be up to TASK_COMM_LEN (16).
 	procName := fmt.Sprintf("test_%d", rand.Int31())
-	shell := fmt.Sprintf("echo -n %s > /proc/self/comm; sleep 5", procName)
-	cmd := exec.Command("sh", "-c", shell)
+	scriptPath := filepath.Join(tmpDir, procName)
+	if err := ioutil.WriteFile(scriptPath, []byte("#!/bin/sh\nsleep 30\n"), 0777); err != nil {
+		t.Fatalf("WriteFile: %v", err)
+	}
+	cmd := exec.Command(scriptPath)
 	if err := cmd.Start(); err != nil {
 		t.Fatalf("Failed to start fake crash_sender process: %v", err)
 	}
@@ -111,21 +114,12 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}()
 	defer func() { <-done }()
 
-	// Wait for the process name change to take effect.
-	for {
-		// We don't use gopsutil to get the process name here because it somehow
-		// caches the process name until it exits.
-		b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", cmd.Process.Pid))
-		if err != nil {
-			// In a race condition comm might not exist yet.
-			// We do not check os.IsNotExist here because reading /proc files
-			// might return random error code other than ENOENT (crbug.com/1042000#c9).
-			continue
-		}
-		name := strings.TrimRight(string(b), "\n")
-		if name == procName {
-			break
-		}
+	// Wait for the subprocess to appear.
+	if err := testing.Poll(context.Background(), func(ctx context.Context) error {
+		// Use pgrep, a twin of pkill used in the testee code.
+		return exec.Command("pgrep", "--exact", procName).Run()
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Millisecond}); err != nil {
+		t.Errorf("Failed to wait for fake crash_sender process: %v", err)
 	}
 
 	sp := setUpParams{
@@ -222,7 +216,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 }
 
-func TestSetUpAndTearDownReboot(t *testing.T) {
+func TestSetUpAndTearDownReboot(t *gotesting.T) {
 	tmpDir := testutil.TempDir(t)
 	defer os.RemoveAll(tmpDir)
 
@@ -316,7 +310,7 @@ func TestSetUpAndTearDownReboot(t *testing.T) {
 
 // TestSetUpAndTearDownCrashTestWithOldStash ensures that the crash_reporter
 // tests preserve files in an old stash directory that was not cleaned up.
-func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
+func TestSetUpAndTearDownCrashTestWithOldStash(t *gotesting.T) {
 	tmpDir := testutil.TempDir(t)
 	defer os.RemoveAll(tmpDir)
 
@@ -412,7 +406,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	}
 }
 
-func TestMoveAllCrashesTo(t *testing.T) {
+func TestMoveAllCrashesTo(t *gotesting.T) {
 	tmpDir := testutil.TempDir(t)
 	defer os.RemoveAll(tmpDir)
 	nonExistent := filepath.Join(tmpDir, "non_existent")
@@ -440,7 +434,7 @@ func TestMoveAllCrashesTo(t *testing.T) {
 	}
 }
 
-func TestFilterIn(t *testing.T) {
+func TestFilterIn(t *gotesting.T) {
 	tmpDir := testutil.TempDir(t)
 	defer os.RemoveAll(tmpDir)
 
