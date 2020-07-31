@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e33d59ea_ef64f583",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-31T19:21:06Z",
+      "side": 1,
+      "message": "I realized something else, it\u0027s possible that we kick off scans for reasons unrelated to the disconnect. I\u0027m not sure it\u0027s a good idea to consider the scan event time the time of link failure (and it doesn\u0027t look like autotest does this either). Is there a reason you do this? I\u0027m inclined to say we should get rid of it altogether.",
+      "revId": "39287b38caf13d3424d641dc285bd10eaeaed8e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
