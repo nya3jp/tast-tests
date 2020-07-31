@@ -48,6 +48,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/scanner"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
+	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
