@@ -204,6 +204,23 @@ func WaitForShelfAnimationComplete(ctx context.Context, tconn *chrome.TestConn) 
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
+// WaitForARCAppWindowState waits for conditions to make sure ARC App window is in correct state and animation finished.
+func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, windowState ash.WindowStateType, windowID int, isFrameVisible bool) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, Pkg24, windowState); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC App window state")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
+		return errors.Wrap(err, "failed to wait for window finish animating")
+	}
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.ID == windowID && w.IsFrameVisible == isFrameVisible
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for frame to get hidden")
+	}
+
+	return nil
+}
+
 // CompareCaption compares the activity caption buttons with the wanted one.
 // Returns nil only if they are equal.
 func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
@@ -221,6 +238,19 @@ func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string,
 			wantedCaption.String(), info.CaptionButtonVisibleStatus.String())
 	}
 	return nil
+}
+
+// WaitForDisplayOrientation waits for the display to rotate to the desired orientation.
+func WaitForDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredOrientation display.OrientationType) error {
+	rotationAngle := display.Rotate0
+	if desiredOrientation == display.OrientationPortraitPrimary {
+		rotationAngle = display.Rotate270
+	}
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the display info")
+	}
+	return display.WaitForDisplayRotation(ctx, tconn, info.ID, rotationAngle)
 }
 
 // RotateDisplay rotates the screen by the given rotation angle. It returns a cleanup function that should be called to restore the device rotation to the original state.

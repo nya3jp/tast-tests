@@ -46,7 +46,7 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 			if err := setDisplayOrientation(ctx, tconn, getOppositeDisplayOrientation(tc.DesiredDO)); err != nil {
 				return err
 			}
-			defer waitForDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+			defer WaitForDisplayOrientation(ctx, tconn, defaultOrientation.Type)
 
 			// Start the activity.
 			act, err := arc.NewActivity(a, Pkg24, tc.ActivityName)
@@ -435,18 +435,6 @@ func setDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredO
 	}
 
 	return nil
-}
-
-func waitForDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredOrientation display.OrientationType) error {
-	rotationAngle := display.Rotate0
-	if desiredOrientation == display.OrientationPortraitPrimary {
-		rotationAngle = display.Rotate270
-	}
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the display info")
-	}
-	return display.WaitForDisplayRotation(ctx, tconn, info.ID, rotationAngle)
 }
 
 // isPortraitRect returns true if width is greater than height.
