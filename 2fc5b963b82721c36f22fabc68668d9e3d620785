@@ -22,6 +22,30 @@
       "revId": "2fc5b963b82721c36f22fabc68668d9e3d620785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973792c5_891f2c4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-31T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74b38dd_854f4e65",
+      "range": {
+        "startLine": 141,
+        "startChar": 51,
+        "endLine": 141,
+        "endChar": 58
+      },
+      "revId": "2fc5b963b82721c36f22fabc68668d9e3d620785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
