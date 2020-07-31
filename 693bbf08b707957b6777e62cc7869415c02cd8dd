@@ -16,6 +16,23 @@
       "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ce1eebe_6a10a59d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T00:12:48Z",
+      "side": 1,
+      "message": "Tast owners: friendly ping?",
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
