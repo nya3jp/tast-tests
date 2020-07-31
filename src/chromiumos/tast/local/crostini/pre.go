@@ -168,6 +168,14 @@ func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 	return startedByDownloadBusterWithGaiaLoginPre
 }
 
+// StartedByArtifactDiskSize5G is similar to StartedByArtifact, but set disk size to 5G.
+func StartedByArtifactDiskSize5G() testing.Precondition { return startedByArtifactDiskSize5GPre }
+
+// StartedByDownloadBusterDiskSize5G is similar to StartedByDownloadBuster, but set disk size to 5G.
+func StartedByDownloadBusterDiskSize5G() testing.Precondition {
+	return startedByDownloadBusterDiskSize5GPre
+}
+
 type setupMode int
 
 const (
@@ -229,6 +237,21 @@ var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
 	mode:      download,
 	arch:      vm.DebianBuster,
 	loginType: loginGaia,
+}
+
+var startedByArtifactDiskSize5GPre = &preImpl{
+	name:        "crostini_started_by_artifact_disksize5g",
+	timeout:     chrome.LoginTimeout + 7*time.Minute,
+	mode:        artifact,
+	minDiskSize: 5 * cui.SizeGB, // Android Studio needs at least 5GB
+}
+
+var startedByDownloadBusterDiskSize5GPre = &preImpl{
+	name:        "crostini_started_by_download_buster_disksize5g",
+	timeout:     chrome.LoginTimeout + 10*time.Minute,
+	mode:        download,
+	arch:        vm.DebianBuster,
+	minDiskSize: 5 * cui.SizeGB, // Android Studio needs at least 5GB
 }
 
 // Implementation of crostini's precondition.
