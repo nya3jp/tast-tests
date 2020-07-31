@@ -16,6 +16,24 @@
       "revId": "60479aa6005ba5895945fff4e5d1026f4d1044ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da213b08_6989d7c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-31T05:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd348c18_862d9224",
+      "revId": "60479aa6005ba5895945fff4e5d1026f4d1044ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
