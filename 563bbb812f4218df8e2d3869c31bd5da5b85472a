@@ -1,0 +1,284 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfc2e355_78170973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "nit: keep the \u003cscript\u003e tags inside the body",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a598ff4_dcdf56cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d5db85_83f106c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "nit: H",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f4441c_3cd49684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "to make sure it does not",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 34
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb84cc2_81e7c9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "Does chrome always support WebGL?",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fedeb1ba_0f986cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "Fatal\n\nIf it does not make sense to continue the test after an error occured, use Fatal/Fatalf to stop the test. It reports the error in the same way and all defers are still executed.",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 9
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff9f1b1_ce6c7a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "nit: tests should not clean up the Chrome state at the end of a test. THis can be kept if you are planning to add more steps to the test in the future.",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c951297_517cbf8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "Fatal",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0110af4_fff778d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 10
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bacfd7_bbf28bbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 10
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5eabcc_c810de17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "please using testing.Poll to check that the prompt is gone. Sleeping introduces delays and is unreliable.",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45a0509_6813c041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "This would be more readable as a table driven test. In the future don\u0027t combine returning an error with using s.Error/s.Fatal, just use one of the approaches.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5746427_1bbe58a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "You don\u0027t need to sleep here. If the check fails it will simply be retried in a second anyway.",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c341ee49_d33ebf6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T14:36:11Z",
+      "side": 1,
+      "message": "nit: use errors.Wrap to not spam the log",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
