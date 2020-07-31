@@ -70,6 +70,30 @@
       "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9d9310c_40f8386e",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T08:15:53Z",
+      "side": 0,
+      "message": "We should avoid exermining error messages. Instead we can use chromiumos/tast/errors.Is to check if an error is the same as another error (unwrapping errors if necessary).\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#Is\n\nSo my recommendation is to update FindWindow (called by GetARCAppWindowInfo) to return a predefined error when a window is not found, e.g.\n\n var ErrWindowNotFound \u003d errors.New(\"window not found\")\n\n func FindWindow(...) (*Window, error) {\n   ...\n   // Window not found!\n   return nil, ErrWindowNotFound\n }\n\nand check error equality here:\n\n if _, err :\u003d ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName()); err !\u003d nil {\n   if args.ExpectStoppedOnTeardown \u0026\u0026 errors.Is(err, arc.ErrWindowNotFound) {\n     return nil\n   }\n   return err\n }",
+      "parentUuid": "b5afa94e_416cd7c5",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "f0864f1809eb3edbb7cdb9e1693069281d5abb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
