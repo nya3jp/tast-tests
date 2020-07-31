@@ -127,7 +127,7 @@ func WaitUntilBootComplete(ctx context.Context) error {
 
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  30 * time.Second,
+		Timeout:  60 * time.Second,
 		Interval: time.Second,
 	})
 }
