@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "81cf03b1_5b527b72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-31T14:33:15Z",
+      "side": 1,
+      "message": "QQ: crrev.com/c/2332101 needs to be landed first, correct?",
+      "revId": "104267b92cf62447fd36aab82c47925bf5f93f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49577d26_9f2a36e0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -16,6 +33,46 @@
       "revId": "104267b92cf62447fd36aab82c47925bf5f93f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5de5b7a8_dd5f8d63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-31T14:33:15Z",
+      "side": 1,
+      "message": "Contents look good, just two questions,.",
+      "revId": "104267b92cf62447fd36aab82c47925bf5f93f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f43f3fe4_82ca9306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-07-31T14:33:15Z",
+      "side": 1,
+      "message": "I don\u0027t see this test disabled. Do you mean we had to wait for the\nabove mentioned CL to land in Chrome (and be picked up) for this \ntest to start passing?\n\nIf we want to disable the test, we should remove the ExtraAttr line\n(or comment it out).",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "104267b92cf62447fd36aab82c47925bf5f93f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
