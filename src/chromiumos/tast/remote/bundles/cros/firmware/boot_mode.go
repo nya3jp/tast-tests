@@ -6,15 +6,9 @@ package firmware
 
 import (
 	"context"
-	"time"
-
-	"github.com/golang/protobuf/ptypes/empty"
 
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/remote/servo"
-	"chromiumos/tast/rpc"
-	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
 
@@ -38,56 +32,19 @@ func init() {
 	})
 }
 
-// rpcReconnectTimeout is the timeout to wait to reconnect to the RPC server after rebooting.
-const rpcReconnectTimeout = 3 * time.Minute
-
 func BootMode(ctx context.Context, s *testing.State) {
 	modes := s.Param().([]fwCommon.BootMode)
-
-	// Connect to the gRPC server on the DUT.
-	d := s.DUT()
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC: ", err)
-	}
-	// The identity of cl will change as the RPC client reconnects after each reboot.
-	// So, defer closing only the most up-to-date cl.
-	defer func() {
-		if cl != nil {
-			cl.Close(ctx)
-		}
-	}()
-	utils := fwpb.NewUtilsServiceClient(cl.Conn)
-
-	// Setup servo.
-	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	defer pxy.Close(ctx)
-	svo := pxy.Servo()
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.RequiredVar("servo"))
+	defer h.Close(ctx)
+	ms := firmware.NewModeSwitcher(h)
 
 	// Ensure that DUT starts in the initial mode.
-	if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Error during CurrentBootMode at beginning of test: ", err)
-	} else if fwCommon.BootModeFromProto[r.BootMode] != modes[0] {
-		s.Logf("At start of test, DUT is in %s mode. Rebooting to initial mode %s", fwCommon.BootModeFromProto[r.BootMode], modes[0])
-		if err = firmware.RebootToMode(ctx, d, svo, cl, modes[0]); err != nil {
+	if ok, err := ms.CheckBootMode(ctx, modes[0]); err != nil {
+		s.Fatal("Checking boot mode at beginning of test: ", err)
+	} else if !ok {
+		s.Logf("Setting up DUT to initial boot mode %s", modes[0])
+		if err = ms.RebootToMode(ctx, modes[0]); err != nil {
 			s.Fatalf("Failed to reboot to initial mode %s", modes[0])
-		}
-		s.Log("Reconnecting to RPC")
-		if err = testing.Poll(ctx, func(ctx context.Context) error {
-			var err error
-			cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
-			return err
-		}, &testing.PollOptions{Timeout: rpcReconnectTimeout}); err != nil {
-			s.Fatal("Reconnecting to RPC after reboot: ", err)
-		}
-		utils = fwpb.NewUtilsServiceClient(cl.Conn)
-		if r, err = utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
-			s.Fatalf("Error during CurrentBootMode after trying to reboot to %s: %+v", modes[0], err)
-		} else if fwCommon.BootModeFromProto[r.BootMode] != modes[0] {
-			s.Fatalf("DUT was in %s after trying to set-up initial mode %s", fwCommon.BootModeFromProto[r.BootMode], modes[0])
 		}
 	}
 
@@ -96,26 +53,8 @@ func BootMode(ctx context.Context, s *testing.State) {
 	for i := 0; i < len(modes)-1; i++ {
 		fromMode, toMode = modes[i], modes[i+1]
 		s.Logf("Beginning transition %d of %d: %s -> %s", i+1, len(modes)-1, fromMode, toMode)
-		if err := firmware.RebootToMode(ctx, d, svo, cl, toMode); err != nil {
-			s.Errorf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
-			break
-		}
-		// Reestablish RPC connection after reboot.
-		s.Log("Reconnecting to RPC")
-		if err = testing.Poll(ctx, func(ctx context.Context) error {
-			var err error
-			cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
-			return err
-		}, &testing.PollOptions{Timeout: rpcReconnectTimeout}); err != nil {
-			s.Fatal("Reconnecting to RPC after reboot: ", err)
-		}
-		utils = fwpb.NewUtilsServiceClient(cl.Conn)
-		if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
-			s.Errorf("Error during CurrentBootMode after transition from %s to %s: %+v", fromMode, toMode, err)
-			break
-		} else if fwCommon.BootModeFromProto[r.BootMode] != toMode {
-			s.Errorf("DUT was in %s after transition from %s to %s", fwCommon.BootModeFromProto[r.BootMode], fromMode, toMode)
-			break
+		if err := ms.RebootToMode(ctx, toMode); err != nil {
+			s.Fatalf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
 		}
 	}
 }
