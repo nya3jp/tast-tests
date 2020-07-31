@@ -37,8 +37,9 @@ var installWindowFindParams = ui.FindParams{
 
 // Image setup mode.
 const (
-	Artifact = "artifact"
-	Download = "download"
+	Artifact               = "artifact"
+	Download               = "download"
+	DownloadLargeContainer = "downloadLargeContainer"
 )
 
 // InstallationOptions is a struct contains parameters for Crostini installation.
@@ -178,13 +179,13 @@ func (p *Installer) Install(ctx context.Context) error {
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
 	// Prepare image.
 	switch iOptions.Mode {
-	case Download:
+	case Download, DownloadLargeContainer:
 		terminaImage, err = vm.DownloadStagingTermina(ctx)
 		if err != nil {
 			return "", "", errors.Wrap(err, "failed to download staging termina")
 		}
 
-		containerDir, err = vm.DownloadStagingContainer(ctx, iOptions.DebianVersion)
+		containerDir, err = vm.DownloadStagingContainer(ctx, iOptions.DebianVersion, iOptions.Mode == DownloadLargeContainer)
 		if err != nil {
 			return "", "", errors.Wrap(err, "failed to download staging container")
 		}
