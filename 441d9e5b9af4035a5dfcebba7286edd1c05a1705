@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8018b6b_487e9e34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-07-31T22:32:14Z",
+      "side": 1,
+      "message": "Pass-rate lgtm: http://shortn/_FKJFP8LF6Y\n\nIt would be interesting to see if the values provided by the Tast test are more consistent than autotest: http://shortn/_NMNHjQaUov",
+      "revId": "441d9e5b9af4035a5dfcebba7286edd1c05a1705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
