@@ -24,7 +24,7 @@ func init() {
 }
 
 func BlockingSync(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint())
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "")
 	defer h.Close(ctx)
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
