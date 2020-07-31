@@ -231,8 +231,12 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		s.Error("Failed when looking for expected Histogram diffs: ", err)
 	}
 
+	daemonStore, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Failed to get daemon-store directories: ", err)
+	}
 	if params.expectMissing {
-		files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
+		files, err := crash.WaitForCrashFiles(ctx, daemonStore,
 			[]string{"missed_crash.*.meta", "missed_crash.*.log.gz"})
 		if err != nil {
 			s.Fatal("Failed to wait for crash files: ", err)

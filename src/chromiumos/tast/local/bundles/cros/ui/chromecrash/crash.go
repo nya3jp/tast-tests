@@ -29,12 +29,8 @@ import (
 
 const (
 	// CryptohomePattern is a glob pattern that matches all of the cryptohome links
-	// inside of /home/chronos.
-	CryptohomePattern = "/home/chronos/u-*"
-
-	// CryptohomeCrashPattern is a glob pattern that matches any crash directory
-	// inside any user's cryptohome.
-	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
+	// inside of /run/daemon-store
+	CryptohomePattern = "/run/daemon-store/crash/*"
 
 	// TestModeSuccessfulFile is the special file that crash_sender creates if it
 	// successfully got the crash report. MUST MATCH kTestModeSuccessfulFile in
@@ -250,17 +246,11 @@ func verifyChromeConfFile(ctx context.Context) {
 }
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
-	// The crash subdirectory may not exist yet, so we can't just do
-	// filepath.Glob(CryptohomeCrashPattern) here. Instead, look for all cryptohomes
-	// and manually add a /crash on the end.
 	paths, err := filepath.Glob(CryptohomePattern)
 	if err != nil {
 		return nil, err
 	}
 
-	for i := range paths {
-		paths[i] = filepath.Join(paths[i], "crash")
-	}
 	return paths, nil
 }
 
