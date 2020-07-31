@@ -41,6 +41,11 @@ const (
 	ARCVMPath = "/opt/google/vms/android"
 )
 
+// DisableSyncFlags is the default flags for disabling ARC content sync when using GAIA acounts.
+func DisableSyncFlags() []string {
+	return []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+}
+
 // InstallType is the type of ARC (Container or VM) available on the device.
 type InstallType int
 
