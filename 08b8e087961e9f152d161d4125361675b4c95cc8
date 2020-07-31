@@ -56,6 +56,30 @@
       "revId": "08b8e087961e9f152d161d4125361675b4c95cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dc8884_d6e35392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-07-31T03:45:06Z",
+      "side": 1,
+      "message": "Yeah, gofmt doesn\u0027t care. I\u0027ll update it.",
+      "parentUuid": "82028081_58d1cf8d",
+      "range": {
+        "startLine": 142,
+        "startChar": 112,
+        "endLine": 142,
+        "endChar": 113
+      },
+      "revId": "08b8e087961e9f152d161d4125361675b4c95cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
