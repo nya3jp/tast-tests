@@ -509,6 +509,22 @@ func init() {
 					// Mix of ASCII and Unicode characters as SSID.
 					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
 				},
+			}, {
+				Name: "poc",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"0123456789abcdef",
+							wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+				},
 			},
 		},
 	})
