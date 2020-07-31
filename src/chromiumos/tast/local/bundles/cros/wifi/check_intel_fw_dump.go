@@ -45,7 +45,6 @@ func init() {
 func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	const (
 		iwlwifiDir       = "/sys/kernel/debug/iwlwifi"
-		crashDir         = "/var/spool/crash"
 		devCoreDumpName  = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`
 		metaDumpName     = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
 		logDumpName      = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.log`
@@ -95,12 +94,19 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to trigger a devcoredump: ", err)
 	}
 
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+
 	// Check that expected device coredump is copied to crash directory.
 	ctxForRemovingAllFiles := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 	s.Log("Waiting for {.devcore.gz, .meta, .log} files to be added to crash directory")
-	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
+	devCoreFiles, err := crash.WaitForCrashFiles(ctx, crashDirs,
 		[]string{devCoreDumpName, metaDumpName, logDumpName})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)

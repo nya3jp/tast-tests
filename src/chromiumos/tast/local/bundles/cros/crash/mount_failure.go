@@ -170,7 +170,13 @@ func MountFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("No regexes to test against")
 	}
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, wantFileRegs)
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, wantFileRegs)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

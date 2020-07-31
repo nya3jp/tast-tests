@@ -180,22 +180,21 @@ func GetCrashes(dirs ...string) ([]string, error) {
 }
 
 // GetCrashDir gives the path to the crash directory for given username.
-func GetCrashDir(username string) (string, error) {
-	if username == "root" || username == "crash" {
-		return SystemCrashDir, nil
-	}
-	p, err := filepath.Glob(userCrashDirs)
+func GetCrashDir(ctx context.Context, username string) (string, error) {
+	d, err := GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
-		// This only happens when userCrashDirs is malformed.
-		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
+		return "", errors.Wrap(err, "failed to get daemon store directories")
 	}
-	if len(p) == 0 {
+	if len(d) == 0 {
+		if username == "root" || username == "crash" {
+			return SystemCrashDir, nil
+		}
 		return LocalCrashDir, nil
 	}
-	if len(p) > 1 {
-		return "", errors.Errorf("Wrong number of users logged in; got %d, want 1 or 0", len(p))
+	if len(d) > 1 {
+		return "", errors.Errorf("Wrong number of users logged in; got %d, want 1 or 0", len(d))
 	}
-	return p[0], nil
+	return d[0], nil
 }
 
 // GetDaemonStoreCrashDirs gives the paths to the daemon store crash directories for the currently active sessions.

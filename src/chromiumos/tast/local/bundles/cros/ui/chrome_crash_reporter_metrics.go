@@ -232,7 +232,12 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 
 	if params.expectMissing {
-		files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
+		daemonStore, err := crash.GetDaemonStoreCrashDirs(ctx)
+		if err != nil {
+			s.Fatal("Failed to get daemon-store directories: ", err)
+		}
+
+		files, err := crash.WaitForCrashFiles(ctx, daemonStore,
 			[]string{"missed_crash.*.meta", "missed_crash.*.log.gz"})
 		if err != nil {
 			s.Fatal("Failed to wait for crash files: ", err)

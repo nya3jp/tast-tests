@@ -128,8 +128,14 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to induce iwlwifi error in fw_nmi: ", err)
 	}
 
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
 	s.Log("Waiting for files")
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes, crash.Timeout(60*time.Second))
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes, crash.Timeout(60*time.Second))
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

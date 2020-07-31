@@ -96,12 +96,18 @@ func SELinuxViolation(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
 	s.Log("Waiting for crash files")
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// Also make sure the crashes aren't in the system dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
 	// Only wait 5 seconds since we already saw the anomaly_detector
 	// skipping message and don't (necessarily) expect there to be any
 	// crashes.
 	// Wait for selinux files. These may include violations anomaly_detector
 	// *should* process (those whose contexts or comms contain "cros" or "minijail").
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes, crash.Timeout(5*time.Second))
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes, crash.Timeout(5*time.Second))
 	if err != nil {
 		var errNotFound *crash.RegexesNotFound
 		if !errors.As(err, &errNotFound) {

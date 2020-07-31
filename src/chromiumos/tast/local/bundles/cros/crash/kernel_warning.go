@@ -83,7 +83,15 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{baseName + `\.kcrash`,
 		baseName + `\.log\.gz`,
 		metaName}
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	if useConsent == crash.MockConsent {
+		// We might not be logged in, so also allow system crash dir.
+		crashDirs = append(crashDirs, crash.SystemCrashDir)
+	}
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

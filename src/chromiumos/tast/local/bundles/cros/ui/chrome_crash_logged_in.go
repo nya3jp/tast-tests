@@ -184,7 +184,7 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", params.ptype, err)
 	}
 
-	if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomeCrashPattern, files); err != nil {
+	if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomePattern, files); err != nil {
 		s.Errorf("Crash files weren't written to cryptohome after crashing the %s process: %v", params.ptype, err)
 		// So we've seen weird problems where the meta files get created but by the
 		// time 'newFiles, err := crash.GetCrashes(dirs...)' runs inside

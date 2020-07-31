@@ -102,8 +102,13 @@ func Seccomp(ctx context.Context, s *testing.State) {
 	}
 
 	pattern := fmt.Sprintf("crash_Seccomp_brk.*.%d.*", pid)
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
-		[]string{pattern})
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, []string{pattern})
 	if err != nil {
 		s.Fatal("Failed to wait for crash files: ", err)
 	}

@@ -106,8 +106,16 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
 	s.Log("Waiting for crash files")
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	if useConsent == crash.MockConsent {
+		// We might not be logged in, so also allow system crash dir.
+		crashDirs = append(crashDirs, crash.SystemCrashDir)
+	}
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes)
 	if err != nil {
 		if err := saveSelinuxLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failed to save selinux log: ", err)

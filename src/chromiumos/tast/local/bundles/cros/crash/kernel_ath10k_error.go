@@ -94,7 +94,14 @@ func KernelAth10kError(ctx context.Context, s *testing.State) {
 	removeFilesCtx := ctx
 	ctx, cancel = ctxutil.Shorten(removeFilesCtx, time.Second)
 	defer cancel()
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedAth10kRegexes, crash.Timeout(60*time.Second))
+
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedAth10kRegexes, crash.Timeout(60*time.Second))
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
