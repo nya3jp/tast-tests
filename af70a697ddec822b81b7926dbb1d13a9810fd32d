@@ -16,6 +16,24 @@
       "revId": "af70a697ddec822b81b7926dbb1d13a9810fd32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a2d68d_1d2d6783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-07-31T03:16:01Z",
+      "side": 1,
+      "message": "Based on what I am seeing in my investigations, all activities are under the same window, so the window ID is not changed when a new activity is created.\nWhen I am trying to call FindWindow() by looking for window IDs that are not equal to root window ID, it returns nil because new activities are also under the same window.\nThe goal here is to make sure a new activity doesn\u0027t change the window bounds, if it does, then GetARCAppWindowInfo() will return different bounds and the test will fail.\nPlease advise if you think this assumption is not reliable and we should find a better way.",
+      "parentUuid": "8fa3f7d9_1f9b8428",
+      "revId": "af70a697ddec822b81b7926dbb1d13a9810fd32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
