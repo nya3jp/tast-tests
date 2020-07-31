@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a6138a9_15e34176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-31T00:54:32Z",
+      "side": 1,
+      "message": "LGTM: One typo I just noticed though.",
+      "revId": "3af5d1426be6e3d02d5adaefa72e8dc99f5f7690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2f432c6_d8030fae",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-07-31T00:54:32Z",
+      "side": 1,
+      "message": "nit: folder",
+      "range": {
+        "startLine": 249,
+        "startChar": 78,
+        "endLine": 249,
+        "endChar": 83
+      },
+      "revId": "3af5d1426be6e3d02d5adaefa72e8dc99f5f7690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
