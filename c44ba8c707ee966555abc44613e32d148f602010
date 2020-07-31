@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "555dd416_04cd7e58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-07-31T02:06:44Z",
+      "side": 1,
+      "message": "Let\u0027s abandon this since we removed the new state in the latest PS of https://crrev.com/c/2329124?",
+      "revId": "c44ba8c707ee966555abc44613e32d148f602010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
