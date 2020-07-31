@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac54a0d0_46e4a41a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T20:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc65ee0_0bba6db8",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d55d17_87104ae3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a90b7218_022c23b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T20:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68d55d17_87104ae3",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "918e9b86_26f96729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T20:54:44Z",
+      "side": 1,
+      "message": "Currently the map is used in two ways actually:\n\n\tfor property :\u003d range allProperties {\n\t\tif !strings.HasPrefix(property, \"ro.build.\") {\n\t\t\tcontinue\n ...\n\t\t\tif !allProperties[propertyForPartition] {\n\nso I\u0027ll need to pass two prefixes (or the regex itself). In the next CL, I\u0027ll also process similar properties (ro.product and ro.\u003cpartition\u003e.product) in the same loop. To not make the prefix passing too complicated, I think I want to continue to get all properties.",
+      "parentUuid": "c4beeb25_9b31f610",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a03f801a_6d86b188",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 4
@@ -162,6 +234,30 @@
     },
     {
       "key": {
+        "uuid": "63833ced_e886e2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T20:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03f801a_6d86b188",
+      "range": {
+        "startLine": 74,
+        "startChar": 47,
+        "endLine": 74,
+        "endChar": 48
+      },
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "590c8484_3229f5d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 4
@@ -182,6 +278,30 @@
       "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1a1b9e_18371edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-07-31T20:54:44Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "590c8484_3229f5d7",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "693bbf08b707957b6777e62cc7869415c02cd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
