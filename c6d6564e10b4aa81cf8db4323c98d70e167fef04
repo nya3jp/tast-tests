@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4b20ee9_b33e96ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T09:21:45Z",
+      "side": 1,
+      "message": "LGTM with minor comments, thanks! I\u0027m not at all familiar with this area so please make sure to get a review from an expert as well.\n",
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da765cdd_d941c7e2",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T09:21:45Z",
+      "side": 1,
+      "message": "nit: Mind moving this to just before localtime_r?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722d3ed9_f94cd567",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T09:21:45Z",
+      "side": 1,
+      "message": "Does it make sense to pass CLOCK_MONOTONIC_RAW value to localtime_r? I thought that CLOCK_MONOTONIC_RAW is something like the number of seconds from the machine boot, so converting to datetime is not useful. I\u0027d rather simply print it as a number:\n\n snprintf(msg, sizeof(msg) - 1, \"%\" PRIu64 \".%09lu ping\\n\", (uint64_t)ts.tv_sec, ts.tv_nsec);",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
