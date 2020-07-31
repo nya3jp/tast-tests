@@ -122,6 +122,29 @@
     },
     {
       "key": {
+        "uuid": "b5a3b29e_5d7cfa71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T15:29:55Z",
+      "side": 1,
+      "message": "Similar to Python, Golang has back quote string to use:\n[backquote]--enable-hardware-overlays\u003d\"\"[backquote]\n\nhttps://www.digitalocean.com/community/tutorials/how-to-format-strings-in-go",
+      "range": {
+        "startLine": 161,
+        "startChar": 73,
+        "endLine": 161,
+        "endChar": 78
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fedeb1ba_0f986cad",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -162,6 +185,24 @@
     },
     {
       "key": {
+        "uuid": "7260b3d5_994f2f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T15:29:55Z",
+      "side": 1,
+      "message": "But the Chrome\u0027s parameter is not the default one. How about making it a Precondition if we see other tests that also needs a Chrome without hw overlay?",
+      "parentUuid": "aff9f1b1_ce6c7a38",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c951297_517cbf8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -178,6 +219,29 @@
         "startChar": 4,
         "endLine": 173,
         "endChar": 9
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0114321_aff6288a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T15:29:55Z",
+      "side": 1,
+      "message": "\"Failed ... : \"",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 17
       },
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -219,6 +283,30 @@
       "writtenOn": "2020-07-31T14:36:11Z",
       "side": 1,
       "message": "Fatalf",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 10
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e637bb_0b12101f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T15:29:55Z",
+      "side": 1,
+      "message": "In this case, \n\ns.Fatal(\"Failed ... : \", err)",
+      "parentUuid": "54bacfd7_bbf28bbf",
       "range": {
         "startLine": 196,
         "startChar": 4,
