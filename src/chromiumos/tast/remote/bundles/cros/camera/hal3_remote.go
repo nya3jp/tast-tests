@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
-		Data:         []string{"scene.pdf"},
+		Data:         []string{pre.DataChartScene().DataPath()},
 		Vars:         []string{"chart"},
 		Pre:          pre.DataChartScene(),
 		// For extra params, reference corresponding tests in:
