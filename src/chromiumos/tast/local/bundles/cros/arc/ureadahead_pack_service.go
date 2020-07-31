@@ -89,13 +89,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}()
 
-	chromeArgs := []string{
-		"--arc-force-show-optin-ui",
-		"--arc-disable-app-sync",
-		"--arc-disable-play-auto-install",
-		"--arc-disable-locale-sync",
-		"--arc-play-store-auto-update=off",
-		"--arc-disable-ureadahead"}
+	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui", "--arc-disable-ureadahead")
 
 	opts := []chrome.Option{
 		chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),

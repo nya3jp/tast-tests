@@ -43,9 +43,8 @@ func LauncherSearchAndroidApps(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("ui.LauncherSearchAndroidApps.username")
 	password := s.RequiredVar("ui.LauncherSearchAndroidApps.password")
 
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
-		chrome.ExtraArgs(args...))
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

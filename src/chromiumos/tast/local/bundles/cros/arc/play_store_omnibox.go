@@ -47,9 +47,8 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arc.PlayStoreOmnibox.password")
 
 	// Setup Chrome.
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
-		chrome.ExtraArgs(args...))
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
