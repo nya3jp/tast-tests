@@ -645,6 +645,17 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
+// RunMultiCommands runs multiple commands in order.
+func (c *Container) RunMultiCommands(ctx context.Context, cmds ...string) error {
+	for _, cmd := range cmds {
+		// Use bash -c to handl piping in commands.
+		if err := c.Command(ctx, "bash", "-c", cmd).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to run command %q", cmd)
+		}
+	}
+	return nil
+}
+
 // DumpLog dumps the logs from the container to a local output file named
 // container_log.txt in dir (typically the test's output dir).
 // It does this by executing croslog in the container and grabbing the output.
