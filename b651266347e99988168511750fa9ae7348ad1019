@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3b7197f_2e6122c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T08:07:18Z",
+      "side": 1,
+      "message": "could you check errors?\n\nif err :\u003d cryptohome.UnmountVault(...); err !\u003d nil {\n  s.Error(...)\n}\nif err :\u003d cryptohome.RemoveVault(...); err !\u003d nil {\n  s.Error(...)\n}",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "b651266347e99988168511750fa9ae7348ad1019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972acb45_a7ea4235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T08:07:18Z",
+      "side": 1,
+      "message": "nit; could you use \"got %d, want %d\", which is the common pattern used across Tast/Go.",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "b651266347e99988168511750fa9ae7348ad1019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
