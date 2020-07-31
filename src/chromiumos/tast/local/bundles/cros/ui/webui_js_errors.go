@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -37,7 +36,7 @@ func init() {
 // contains the line "upload_var_error_message=" followed by the
 // expectedErrorMessage and that the stack contains the expectedStackEntries in
 // the order given.
-func checkJavaScriptError(ctx, cleanupCtx context.Context, crashDir, outDir, expectedErrorMessage string,
+func checkJavaScriptError(ctx, cleanupCtx context.Context, crashDirs []string, outDir, expectedErrorMessage string,
 	expectedStackEntries []string) error {
 	const (
 		metaRegex  = `jserror\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
@@ -50,9 +49,9 @@ func checkJavaScriptError(ctx, cleanupCtx context.Context, crashDir, outDir, exp
 		expectedErrorMessagePrefix = "upload_var_error_message="
 	)
 
-	crashFileMap, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{metaRegex, stackRegex, logRegex})
+	crashFileMap, err := crash.WaitForCrashFiles(ctx, crashDirs, []string{metaRegex, stackRegex, logRegex})
 	if err != nil {
-		return errors.Wrapf(err, "WaitForCrashFiles failed for directory %s", crashDir)
+		return errors.Wrapf(err, "WaitForCrashFiles failed for directory %s", crashDirs)
 	}
 	defer crash.RemoveAllFiles(cleanupCtx, crashFileMap)
 
@@ -117,7 +116,7 @@ func checkJavaScriptError(ctx, cleanupCtx context.Context, crashDir, outDir, exp
 	return nil
 }
 
-func checkPageLoadError(ctx, cleanupCtx context.Context, crashDir, outDir string) error {
+func checkPageLoadError(ctx, cleanupCtx context.Context, crashDirs []string, outDir string) error {
 	testing.ContextLog(ctx, "Checking for crash files after bad page load")
 
 	const (
@@ -125,14 +124,14 @@ func checkPageLoadError(ctx, cleanupCtx context.Context, crashDir, outDir string
 		expectedFunction2    = "logsErrorDuringPageLoadOuter"
 		expectedErrorMessage = "WebUI JS Error: printing error on page load"
 	)
-	if err := checkJavaScriptError(ctx, cleanupCtx, crashDir, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
+	if err := checkJavaScriptError(ctx, cleanupCtx, crashDirs, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func checkLoggedError(ctx, cleanupCtx context.Context, crashDir, outDir string) error {
+func checkLoggedError(ctx, cleanupCtx context.Context, crashDirs []string, outDir string) error {
 	testing.ContextLog(ctx, "Checking for crash files after JavaScripts logs an error")
 
 	// Alt+L presses the "Log Error" button on chrome://webuijserror
@@ -151,14 +150,14 @@ func checkLoggedError(ctx, cleanupCtx context.Context, crashDir, outDir string) 
 		expectedErrorMessage = "WebUI JS Error: printing error on button click"
 	)
 
-	if err := checkJavaScriptError(ctx, cleanupCtx, crashDir, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
+	if err := checkJavaScriptError(ctx, cleanupCtx, crashDirs, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func checkUncaughtExceptionError(ctx, cleanupCtx context.Context, crashDir, outDir string) error {
+func checkUncaughtExceptionError(ctx, cleanupCtx context.Context, crashDirs []string, outDir string) error {
 	testing.ContextLog(ctx, "Checking for crash files after JavaScripts throws an unhandled exception")
 
 	// Alt+T presses the "Throw Uncaught Error" button on chrome://webuijserror
@@ -177,14 +176,14 @@ func checkUncaughtExceptionError(ctx, cleanupCtx context.Context, crashDir, outD
 		expectedErrorMessage = "Uncaught Error: WebUI JS Error: exception button clicked"
 	)
 
-	if err := checkJavaScriptError(ctx, cleanupCtx, crashDir, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
+	if err := checkJavaScriptError(ctx, cleanupCtx, crashDirs, outDir, expectedErrorMessage, []string{expectedFunction1, expectedFunction2}); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func checkUnhandledPromiseRejectionError(ctx, cleanupCtx context.Context, crashDir, outDir string) error {
+func checkUnhandledPromiseRejectionError(ctx, cleanupCtx context.Context, crashDirs []string, outDir string) error {
 	testing.ContextLog(ctx, "Checking for crash files after JavaScripts doesn't handle a promise rejection")
 
 	// Alt+P presses the "Unhandled Promise Rejection" button on chrome://webuijserror
@@ -202,7 +201,7 @@ func checkUnhandledPromiseRejectionError(ctx, cleanupCtx context.Context, crashD
 		expectedErrorMessage = "Uncaught (in promise) WebUI JS Error: The rejector always rejects!"
 	)
 
-	if err := checkJavaScriptError(ctx, cleanupCtx, crashDir, outDir, expectedErrorMessage, []string{expectedStack}); err != nil {
+	if err := checkJavaScriptError(ctx, cleanupCtx, crashDirs, outDir, expectedErrorMessage, []string{expectedStack}); err != nil {
 		return err
 	}
 
@@ -232,23 +231,21 @@ func WebUIJSErrors(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	user := cr.NormalizedUser()
-	path, err := cryptohome.UserPath(ctx, user)
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
-		s.Fatal("Couldn't get user path: ", err)
+		s.Fatal("Couldn't get daemon store dirs path: ", err)
 	}
-	crashDir := filepath.Join(path, "crash")
 
-	if err := checkPageLoadError(ctx, cleanupCtx, crashDir, s.OutDir()); err != nil {
+	if err := checkPageLoadError(ctx, cleanupCtx, crashDirs, s.OutDir()); err != nil {
 		s.Error("checkPageLoadError failed: ", err)
 	}
-	if err := checkLoggedError(ctx, cleanupCtx, crashDir, s.OutDir()); err != nil {
+	if err := checkLoggedError(ctx, cleanupCtx, crashDirs, s.OutDir()); err != nil {
 		s.Error("checkLoggedError failed: ", err)
 	}
-	if err := checkUncaughtExceptionError(ctx, cleanupCtx, crashDir, s.OutDir()); err != nil {
+	if err := checkUncaughtExceptionError(ctx, cleanupCtx, crashDirs, s.OutDir()); err != nil {
 		s.Error("checkUncaughtExceptionError failed: ", err)
 	}
-	if err := checkUnhandledPromiseRejectionError(ctx, cleanupCtx, crashDir, s.OutDir()); err != nil {
+	if err := checkUnhandledPromiseRejectionError(ctx, cleanupCtx, crashDirs, s.OutDir()); err != nil {
 		s.Error("checkUnhandledPromiseRejectionError failed: ", err)
 	}
 

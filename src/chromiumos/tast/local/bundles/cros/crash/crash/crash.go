@@ -128,6 +128,10 @@ func checkCrashDirectoryPermissions(path string) error {
 		}
 		expectedUser = "root"
 		expectedGroup = "crash-access"
+	} else if strings.HasPrefix(path, "/run/daemon-store/crash") || strings.HasPrefix(path, "/home/root") {
+		permittedModes[os.FileMode(0770)|os.ModeDir|os.ModeSetgid|os.ModeSticky] = struct{}{}
+		expectedUser = "crash"
+		expectedGroup = "crash-user-access"
 	} else {
 		permittedModes[os.ModeDir|os.FileMode(0770)|os.ModeSetgid] = struct{}{}
 		expectedUser = "chronos"
@@ -303,7 +307,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	crashDir, err := crash.GetCrashDir(opts.Username)
+	crashDir, err := crash.GetCrashDir(ctx, opts.Username)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
@@ -610,10 +614,16 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 // CleanCrashSpoolDirs removes all crash files in the crash spool directories,
 // produced artificially but not consumed during a test.
 func CleanCrashSpoolDirs(ctx context.Context, crasherPath string) error {
-	crashes, err := crash.GetCrashes(
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store dirs")
+	}
+	crashDirs = append(
+		crashDirs,
 		crash.SystemCrashDir,
 		crash.LocalCrashDir,
 		crash.UserCrashDir)
+	crashes, err := crash.GetCrashes(crashDirs...)
 	if err != nil {
 		return errors.Wrap(err, "failed to get crash file list")
 	}

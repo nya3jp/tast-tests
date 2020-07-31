@@ -16,7 +16,6 @@ import (
 
 const (
 	iwlwifiDir = "/sys/kernel/debug/iwlwifi"
-	crashDir   = "/var/spool/crash"
 )
 
 func init() {
@@ -69,8 +68,14 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for .devcore.gz file to be added to crash directory")
 
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
 	// Check that expected device coredump is copied to crash directory.
-	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
+	devCoreFiles, err := crash.WaitForCrashFiles(ctx, crashDirs,
 		[]string{devCoreDumpName, metaDumpName, logDumpName})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)

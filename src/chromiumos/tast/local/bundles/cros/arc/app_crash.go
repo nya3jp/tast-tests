@@ -70,10 +70,14 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like com_android_settings_foo_bar.20200420.204845.12345.664107.log in crash.UserCrashDir
+	// Wait files like com_android_settings_foo_bar.20200420.204845.12345.664107.log in the daemon-store directory
 	base := strings.ReplaceAll(exampleApp, ".", "_") + `(?:_[[:alnum:]]+)*.\d{8}\.\d{6}\.\d+\.\d+`
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
 	metaFileName := base + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
 	if err != nil {

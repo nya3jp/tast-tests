@@ -97,6 +97,15 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)
 
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	if useConsent == crash.MockConsent {
+		// We might not be logged in, so also allow system crash dir.
+		crashDirs = append(crashDirs, crash.SystemCrashDir)
+	}
+
 	for _, tt := range testParams {
 		s.Run(ctx, tt.name, func(sctx context.Context, ss *testing.State) {
 			failingServiceName := tt.servicePrefix + "failing-service"
@@ -120,7 +129,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 			logRegex := base + `\.\d{8}\.\d{6}\.\d+\.0\.log`
 			expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.\d+\.0\.meta`}
 
-			files, err := crash.WaitForCrashFiles(sctx, []string{crash.SystemCrashDir}, expectedRegexes)
+			files, err := crash.WaitForCrashFiles(sctx, crashDirs, expectedRegexes)
 			if err != nil {
 				ss.Fatal("Couldn't find expected files: ", err)
 			}

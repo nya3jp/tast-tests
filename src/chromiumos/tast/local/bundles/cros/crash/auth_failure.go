@@ -80,7 +80,15 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 	if err := daemonController.RestartTPMDaemons(ctx); err != nil {
 		s.Fatal("Failed to restart TPM daemons: ", err)
 	}
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedAuthFailureRegexes)
+
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedAuthFailureRegexes)
 	if err == nil {
 		if err := crash.MoveFilesToOut(ctx, s.OutDir(), files[crashAuthFailureMetaName]...); err != nil {
 			s.Error("Failed to save unexpected crashes: ", err)
@@ -101,7 +109,7 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 	removeFilesCtx := ctx
 	ctx, cancel = ctxutil.Shorten(removeFilesCtx, time.Second)
 	defer cancel()
-	files, err = crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedAuthFailureRegexes, crash.Timeout(time.Minute))
+	files, err = crash.WaitForCrashFiles(ctx, crashDirs, expectedAuthFailureRegexes, crash.Timeout(time.Minute))
 	if err != nil {
 		s.Fatal("Failed to find expected files: ", err)
 	}
