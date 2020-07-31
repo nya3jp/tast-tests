@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9553dddb_b67da847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccf75871_d22df36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "nit: stream -\u003e streamPromise, to make it more clear.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0a897f_6c7adffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "nit: End with a \u0027;\u0027. Think we prefer strict syntax and have a \u0027;\u0027 at the end for the following:\n\n  var someFunc \u003d function() {\n    // blah\n  };",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512670ba_cc7aeacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "nit: h264 -\u003e vp9 (or vp8), think it result in smaller file.",
+      "range": {
+        "startLine": 97,
+        "startChar": 33,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860ef8b1_b87584b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "nit: end with \u0027;\u0027",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c8fb82_0ea7a99b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "video/webm, to be consistent with what we use to create the MediaRecorder ?",
+      "range": {
+        "startLine": 121,
+        "startChar": 48,
+        "endLine": 121,
+        "endChar": 57
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d00082_007dd1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T22:37:17Z",
+      "side": 1,
+      "message": "nit: End with \u0027;\u0027",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 4
+      },
+      "revId": "f03d9ecaf7708050c16b17d5622e9e6d3b1bb2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
