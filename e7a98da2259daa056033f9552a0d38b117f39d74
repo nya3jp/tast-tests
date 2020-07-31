@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "940da604_4c3412d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T08:41:09Z",
+      "side": 1,
+      "message": "LGTM with misc comment.",
+      "revId": "e7a98da2259daa056033f9552a0d38b117f39d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0e9f973_3a08813b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T08:41:09Z",
+      "side": 1,
+      "message": "nit: \", want\" (comma or semicolon before want, and the present form) to be consistent with others.",
+      "range": {
+        "startLine": 81,
+        "startChar": 42,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "e7a98da2259daa056033f9552a0d38b117f39d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
