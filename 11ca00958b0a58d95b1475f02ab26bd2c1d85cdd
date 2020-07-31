@@ -104,6 +104,24 @@
       "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a6bfc8_d3f3e079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-31T22:05:36Z",
+      "side": 1,
+      "message": "Ah I see, thank you for explaining!",
+      "parentUuid": "9b23566d_73a8ee64",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
