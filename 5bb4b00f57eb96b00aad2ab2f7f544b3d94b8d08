@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "127529a4_a9fd4d41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T03:59:16Z",
+      "side": 0,
+      "message": "Do we own the copyright of this file? Otherwise can you please put this in a directory named \"third_party\"?\n\nExample:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/third_party/",
+      "revId": "5bb4b00f57eb96b00aad2ab2f7f544b3d94b8d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
