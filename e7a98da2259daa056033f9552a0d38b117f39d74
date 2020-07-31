@@ -39,6 +39,30 @@
       "revId": "e7a98da2259daa056033f9552a0d38b117f39d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9aefe8_4ef3caf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-07-31T16:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e9f973_3a08813b",
+      "range": {
+        "startLine": 81,
+        "startChar": 42,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "e7a98da2259daa056033f9552a0d38b117f39d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
