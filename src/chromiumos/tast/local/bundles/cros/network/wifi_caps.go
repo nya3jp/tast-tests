@@ -16,11 +16,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     WifiCaps,
-		Desc:     "Verifies DUT supports a minimum set of required protocols",
-		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		// TODO(crbug/1073579): move it back to CQ once we identify whether kip should have 11ac capabilities.
-		Attr:         []string{"group:mainline", "informational"},
+		Func:         WifiCaps,
+		Desc:         "Verifies DUT supports a minimum set of required protocols",
+		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
