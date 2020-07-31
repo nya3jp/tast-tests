@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fa3f7d9_1f9b8428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-07-31T01:45:44Z",
+      "side": 1,
+      "message": "In case there are multiple windows for a single package, I\u0027m afraid that ash.GetARCAppWindowInfo might not be ideal.  Rather ash.FindWindow would be better to avoid returning \"rootWindowInfo\" here;\n  childWindowInfo, err :\u003d ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.ARCPackageName \u003d\u003d wm.Pkg24 \u0026\u0026 w.ID !\u003d rootWindowInfo.ID })",
+      "revId": "af70a697ddec822b81b7926dbb1d13a9810fd32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
