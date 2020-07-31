@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a2adfc3_3fd133df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "If we place EventWatcher in iw package, we shall avoid name conflict for public/private struct.",
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "714b2346_de038df0",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "defines types of events captured by EventWatcher.",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a58b35c8_ccc1542e",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "from a WiFi",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acbc357_ea087899",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "To avoid name conflict within the same package, how about renaming it as eventWatcherConfig",
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95d8799_a1328f05",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "Same, EventWatcherOption",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a27280_bb2b1cf3",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-07-31T03:36:34Z",
+      "side": 1,
+      "message": "start starts the ...\n(The first word is the function name, which is a proper noun.)",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "4fae2ee52bf1a821d0a076734a49b3af354f6af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
