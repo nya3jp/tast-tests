@@ -32,6 +32,8 @@ const displayOutputLog = "/tmp/chart_service.log"
 type chartPre struct {
 	// name is the name of chart.
 	name string
+	// path is the chart path in source tree.
+	path string
 	// conn is the SSH connection to the chart device.
 	conn *ssh.Conn
 	// dir is the directory saving all chart files on chart tablet.
@@ -42,11 +44,11 @@ type chartPre struct {
 	prepared bool
 }
 
-func newDataChartPre(name string) *chartPre {
-	return &chartPre{name: name}
+func newDataChartPre(name, path string) *chartPre {
+	return &chartPre{name: name, path: path}
 }
 
-var dataChartScene = newDataChartPre("scene.pdf")
+var dataChartScene = newDataChartPre("default_scene", "third_party/scene.pdf")
 
 // DataChartScene returns test precondition for displaying scene.pdf on chart tablet.
 func DataChartScene() *chartPre {
@@ -55,6 +57,7 @@ func DataChartScene() *chartPre {
 
 func (p *chartPre) String() string         { return "chart_" + p.name }
 func (p *chartPre) Timeout() time.Duration { return 2 * time.Minute }
+func (p *chartPre) DataPath() string       { return p.path }
 
 // cleanupDisplayProcess cleans up running display chart process and saves process logs to outDir.
 func (p *chartPre) cleanupDisplayProcess(ctx context.Context, outDir string) (retErr error) {
@@ -135,7 +138,7 @@ func (p *chartPre) prepare(ctx context.Context, d *dut.DUT, altHostname, chartPa
 	}()
 
 	// Display chart on chart tablet.
-	chartHostPath := path.Join(p.dir, p.name)
+	chartHostPath := path.Join(p.dir, p.path)
 	if _, err := linuxssh.PutFiles(
 		ctx, p.conn, map[string]string{chartPath: chartHostPath}, linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrapf(err, "failed to send chart file in path %v to chart tablet", chartPath)
@@ -185,7 +188,7 @@ func (p *chartPre) Prepare(ctx context.Context, s *testing.PreState) interface{}
 		if hostname, ok := s.Var("chart"); ok {
 			altHostname = hostname
 		}
-		if err := p.prepare(ctx, s.DUT(), altHostname, s.DataPath(p.name), s.OutDir()); err != nil {
+		if err := p.prepare(ctx, s.DUT(), altHostname, s.DataPath(p.path), s.OutDir()); err != nil {
 			s.Fatal("Failed to prepare chart tablet: ", err)
 		}
 	}
