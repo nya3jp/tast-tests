@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "687f2fee_1eaa056b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-07-31T05:28:35Z",
+      "side": 1,
+      "message": "Removed per other comment.",
+      "parentUuid": "4fd71cbc_2f49d243",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "81a0191e5e4c65cf86684733f7eb9a4127b283c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e7c18f_8aaeb77a",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminal.go",
         "patchSetId": 2
