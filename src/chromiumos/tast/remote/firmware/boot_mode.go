@@ -15,11 +15,8 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	fwCommon "chromiumos/tast/common/firmware"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/servo"
-	"chromiumos/tast/rpc"
-	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
 
@@ -34,9 +31,25 @@ const (
 	reconnectTimeout = 3 * time.Minute
 )
 
+// ModeSwitcher enables booting the DUT into different firmware boot modes (normal, dev, rec).
+type ModeSwitcher struct {
+	Helper *Helper
+}
+
+// NewModeSwitcher creates a new ModeSwitcher. It relies on a firmware Helper to track dependent objects, such as servo and RPC client.
+func NewModeSwitcher(h *Helper) *ModeSwitcher {
+	return &ModeSwitcher{
+		Helper: h,
+	}
+}
+
 // CheckBootMode forwards to the CheckBootMode RPC to check whether the DUT is in a specified boot mode.
-func CheckBootMode(ctx context.Context, utils fwpb.UtilsServiceClient, bootMode fwCommon.BootMode) (bool, error) {
-	res, err := utils.CurrentBootMode(ctx, &empty.Empty{})
+func (ms *ModeSwitcher) CheckBootMode(ctx context.Context, bootMode fwCommon.BootMode) (bool, error) {
+	h := ms.Helper
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		return false, errors.Wrap(err, "requiring RPC utils")
+	}
+	res, err := h.RPCUtils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
 		return false, errors.Wrap(err, "calling CurrentBootMode rpc")
 	}
@@ -45,79 +58,86 @@ func CheckBootMode(ctx context.Context, utils fwpb.UtilsServiceClient, bootMode 
 
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client.
-func RebootToMode(ctx context.Context, d *dut.DUT, svo *servo.Servo, cl *rpc.Client, toMode fwCommon.BootMode) error {
-	if d == nil {
-		return errors.New("invalid nil pointer for DUT")
+func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode) error {
+	h := ms.Helper
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC utils")
 	}
-	if svo == nil {
-		return errors.New("invalid nil pointer for servo")
-	}
-
-	utils := fwpb.NewUtilsServiceClient(cl.Conn)
-	if _, err := utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "syncing DUT before reboot")
 	}
 
-	// Determine current boot mode
-	res, err := utils.CurrentBootMode(ctx, &empty.Empty{})
+	res, err := h.RPCUtils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "calling CurrentBootMode rpc")
 	}
 	fromMode := fwCommon.BootModeFromProto[res.BootMode]
 
 	// Kill RPC client connection before rebooting
-	cl.Close(ctx)
+	h.CloseRPCConnection(ctx)
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		if err := d.Reboot(ctx); err != nil {
+		if err := h.DUT.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "rebooting DUT")
 		}
-		return nil
 	case fwCommon.BootModeRecovery:
+		if err := h.RequireServo(ctx); err != nil {
+			return errors.Wrap(err, "requiring servo")
+		}
 		// In recovery boot, the locked EC RO doesn't support PD for most CrOS devices.
 		// The default servo v4 power role is SRC, making the DUT a SNK.
 		// Lack of PD makes CrOS unable to do the data role swap from UFP to DFP.
 		// As a result, the DUT can't see the USB disk and Ethernet dongle on Servo v4.
 		// This is a workaround to set Servo v4 as a SNK when using the USB disk for recovery boot.
-		if err := svo.SetV4Role(ctx, servo.V4RoleSnk); err != nil {
+		if err := h.Servo.SetV4Role(ctx, servo.V4RoleSnk); err != nil {
 			return errors.Wrap(err, "setting servo_v4 role to snk before powering off")
 		}
-		if err := poweroff(ctx, d, svo); err != nil {
+		if err := ms.poweroff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
-		// Servo must reveal the USB key to the DUT in order for the DUT to boot from USB.
-		if err := svo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+		// Servo must show the USB key to the DUT in order for the DUT to boot from USB.
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
 			return errors.Wrap(err, "setting usb mux state to DUT while DUT is off")
 		}
-		if err := svo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 			return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
 		}
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return d.WaitConnect(ctx)
+			return h.DUT.WaitConnect(ctx)
 		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT after booting to recovery")
 		}
-		return nil
 	default:
+		return errors.Errorf("unsupported firmware boot mode transition: %s to %s", fromMode, toMode)
 	}
-	return errors.Errorf("unsupported firmware boot mode transition: %s to %s", fromMode, toMode)
+	if ok, err := ms.CheckBootMode(ctx, toMode); err != nil {
+		return errors.Wrapf(err, "checking boot mode after reboot to %s", toMode)
+	} else if !ok {
+		return errors.Errorf("DUT was not in %s after RebootToMode", toMode)
+	}
+	testing.ContextLogf(ctx, "DUT is now in %s mode", toMode)
+	return nil
 }
 
 // poweroff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
-func poweroff(ctx context.Context, d *dut.DUT, svo *servo.Servo) error {
+func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
+	h := ms.Helper
+	if err := h.RequireServo(ctx); err != nil {
+		return errors.Wrap(err, "requiring servo")
+	}
 	testing.ContextLog(ctx, "Powering off DUT")
 	poweroffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
 	defer cancel()
-	d.Command("poweroff").Run(poweroffCtx) // ignore the error
+	h.DUT.Command("poweroff").Run(poweroffCtx) // ignore the error
 
 	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
 	defer cancel()
-	if err := d.WaitUnreachable(offCtx); err != nil {
+	if err := h.DUT.WaitUnreachable(offCtx); err != nil {
 		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
 	}
 	// Show servod that the power state has changed
-	svo.SetPowerState(ctx, servo.PowerStateOff)
+	h.Servo.SetPowerState(ctx, servo.PowerStateOff)
 	return nil
 }
