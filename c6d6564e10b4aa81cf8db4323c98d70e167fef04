@@ -62,6 +62,30 @@
       "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c94e184a_5f5af3b2",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2020-07-31T11:57:19Z",
+      "side": 1,
+      "message": "On the first sight _RAW seems a bit strange but this actually allows to take NTP and adjtime() out of equation. This will allow actually track time directly in hardware which is the whole point of this test in case NTP or systemtime will be modified while it is running.\n\nFrom what I assumed, the design of this test is not use the absolute values of those timestamps but rather should check for delta (first - last or between samples).",
+      "parentUuid": "722d3ed9_f94cd567",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
