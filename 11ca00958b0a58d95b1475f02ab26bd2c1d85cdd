@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b84c0c6_5623d51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T20:23:46Z",
+      "side": 1,
+      "message": "Not sure whether we need audio to record the test...",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6676cd3d_59da560f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T20:23:46Z",
+      "side": 1,
+      "message": "Mukai, do you think we should make test extension auto approved for this like our feedback extensions [1] or hotrod [2]? Saves the trouble invoke automation and clicking through the UI.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/media/capture_access_handler_base.cc;l\u003d326?q\u003disbuiltinex\u0026sq\u003d\u0026ss\u003dchromium\u0026originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\n[2] https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/media/capture_access_handler_base.cc;l\u003d307?q\u003disbuiltinex\u0026ss\u003dchromium\u0026originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e80015_73dcf328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T20:23:46Z",
+      "side": 1,
+      "message": "I think we need to have \"ondataavailable\" setup before mediaRecorder.start() and we should accumulate the data in a global variable (i.e. |chunks| in https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/ondataavailable). \n\nHere we should call mediaRecorder.stop() and in the onstop (\"stop\" event handler), do create the blob out of that global var with all data and write to file, then resolve the promise to return result to tast.",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
