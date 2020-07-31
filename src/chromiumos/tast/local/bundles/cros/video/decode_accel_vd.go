@@ -84,6 +84,18 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
+		}, {
+			Name:              "vp8_odd_dimension",
+			Val:               "test-25fps-321x241.vp8",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         []string{"test-25fps-321x241.vp8", "test-25fps-321x241.vp8.json"},
+		}, {
+			Name:              "vp9_odd_dimension",
+			Val:               "test-25fps-321x241.vp9",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         []string{"test-25fps-321x241.vp9", "test-25fps-321x241.vp9.json"},
 		}},
 	})
 }
