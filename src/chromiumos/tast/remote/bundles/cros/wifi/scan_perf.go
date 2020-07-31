@@ -27,7 +27,7 @@ func init() {
 		Desc:     "Measure BSS scan performance in various setup",
 		Contacts: []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
 		// TODO(b/158433447): Run in a group for wificell-dependent perf tests.
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 	})
