@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cb75bb75_23ff7901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc2e355_78170973",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a598ff4_dcdf56cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
         "patchSetId": 9
@@ -50,6 +68,24 @@
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17997e3_85b289f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a598ff4_dcdf56cd",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +135,54 @@
     },
     {
       "key": {
+        "uuid": "1ccd006f_3fd2acfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d5db85_83f106c6",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58c9412c_841f860e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f4441c_3cd49684",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 34
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb84cc2_81e7c9ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -119,6 +203,30 @@
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a3dd38_6cbc9797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "AFAIU, if it supports GLES2 (which the glbench executable that this CL is replacing uses), then it should support WebGL.",
+      "parentUuid": "cdb84cc2_81e7c9ec",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "0076200f_efc650d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a3b29e_5d7cfa71",
+      "range": {
+        "startLine": 161,
+        "startChar": 73,
+        "endLine": 161,
+        "endChar": 78
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fedeb1ba_0f986cad",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -165,6 +297,30 @@
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4793c652_fc4deff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fedeb1ba_0f986cad",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 9
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +423,54 @@
     },
     {
       "key": {
+        "uuid": "8706ebd6_0d308bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c951297_517cbf8c",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8628bf01_1c9fb17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0114321_aff6288a",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 17
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0110af4_fff778d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -337,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "8d6741f6_97d633f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e637bb_0b12101f",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 10
+      },
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5eabcc_c810de17",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -348,6 +576,24 @@
       "writtenOn": "2020-07-31T14:36:11Z",
       "side": 1,
       "message": "please using testing.Poll to check that the prompt is gone. Sleeping introduces delays and is unreliable.",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d3cfec_a0276d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Not sure how to poll for the disappearance of the fullscreen prompt.  However it is a consistent 5sec",
+      "parentUuid": "2c5eabcc_c810de17",
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -371,6 +617,24 @@
     },
     {
       "key": {
+        "uuid": "4b707015_5fd522de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c45a0509_6813c041",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5746427_1bbe58a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
@@ -382,6 +646,24 @@
       "writtenOn": "2020-07-31T14:36:11Z",
       "side": 1,
       "message": "You don\u0027t need to sleep here. If the check fails it will simply be retried in a second anyway.",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6430f075_4b9e5f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "I did try removing it, the drawback of that is that the log gets spammed with the output of perceptualdiff, which is distracting and makes it look like the test failed, which I think will confuse partners, etc, and add confusing noise to the log:\n\n2020/07/31 15:42:56 [15:42:56.135] Uncaptured output:\nField of view is 45.000000 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.200000\nThe Display\u0027s luminance is 100.000000 candela per meter squared\nConverting RGB to XYZ\nConstructing Laplacian Pyramids\nPerforming test\nFAIL: Images are visibly different\n4665 pixels are different",
+      "parentUuid": "d5746427_1bbe58a5",
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -402,6 +684,24 @@
       "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffc31d2_1749618c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2020-07-31T22:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c341ee49_d33ebf6b",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
