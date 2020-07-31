@@ -86,6 +86,24 @@
       "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b23566d_73a8ee64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T21:16:58Z",
+      "side": 1,
+      "message": "Sorry for not being clear. I mean we should define \"ondataavaiable\" handler where we call \"mediaRecorder.start()\" is called, instead of here.\n\nIf you look at the URL in my previous comments, it seems to me that \"ondataavailable\" will happen where there are enough data to deliver. It could happen before \"mediaRecorder.stop()\" is called. And we should have a global variable to hold the data when the event happens.",
+      "parentUuid": "aa549fc8_c94cab34",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
