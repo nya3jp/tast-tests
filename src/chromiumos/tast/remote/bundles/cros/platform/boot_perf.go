@@ -163,11 +163,6 @@ func ensureChromeLogin(ctx context.Context, s *testing.State, cl *rpc.Client) er
 		return errors.Wrap(err, "failed to close Chrome")
 	}
 
-	// Check that OOBE is completed after Chrome login.
-	if err := d.Conn().Command("/usr/bin/test", "-e", "/home/chronos/.oobe_completed").Run(ctx); err != nil {
-		return errors.Wrap(err, "OOBE is not completed after Chrome login")
-	}
-
 	return nil
 }
 
