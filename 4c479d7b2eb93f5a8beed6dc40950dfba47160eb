@@ -374,6 +374,30 @@
     },
     {
       "key": {
+        "uuid": "e1b8f482_cdddab6c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T09:05:54Z",
+      "side": 1,
+      "message": "Sorry, my last comment was misleading. I meant to ask, do we ever get an error if we unconditionally remove shadow directories *while* the ui job is stopped? (I thought we obviously get an error if we remove shadow directories while the ui job is running, so I failed to mention this precondition.) I suppose that we don\u0027t get an error as long as the ui job is stopped.\n\nSo now my understanding is that you want to design cleanChromeShadowDir so that it can be called at any timing, e.g. regardless of whether the ui job is running or not. But I\u0027m not sure if we should do that, for the following reasons:\n\n1. I\u0027m not sure if the proposed logic to detect if a cryptohome directory is still in use is correct. For example, IIUC, lsof does not find open file recursively, so even if \"lsof /path/to/dir\" returns no process, it is possible that some process has an open file /path/to/dir/another/file. Do you know if there\u0027s a guarantee that checking if /home/chronos/u-foo is open is sufficient to see if the whole cryptohome dir is in use?\n2. Nevertheless of trickiness in (1), the lsof code path is not used at all in the current change because restartSession is the only caller where the ui job is stopped. Unless we get another caller, the lsof code path only adds complexity to cleanChromeShadowDir. Do you have an immediate plan to call cleanChromeShadowDir from another place? I thought about calling it from Chrome.ResetState, but I don\u0027t think it\u0027s useful --- in ResetState there should be only one cryptohome that is in use, so cleanChromeShadowDir can delete no directory.",
+      "parentUuid": "f6368b25_eafe6e82",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619aa907_a03aa07d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
