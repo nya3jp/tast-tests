@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b1ff7c2_6f119603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_android_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-07-31T00:24:56Z",
+      "side": 1,
+      "message": "Are these pretty standard args to use for setting up tests that use the Play Store? At a glance, it\u0027s not super clear why each of them is needed.",
+      "revId": "18577c5bd3cf59623f617213783c7da88fe9a535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
