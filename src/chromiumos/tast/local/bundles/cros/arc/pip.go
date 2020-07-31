@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -76,11 +77,11 @@ var stablePipTests = []pipTestParams{
 	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
+	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
 }
 
 var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
-	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
 }
 
 func init() {
@@ -471,11 +472,41 @@ func minimizePIP(ctx context.Context, tconn *chrome.TestConn, pipAct *arc.Activi
 
 // testPIPExpandViaMenuTouch verifies that PIP window is properly expanded by touching menu.
 func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	if err := expandPIPViaMenuTouch(ctx, tconn, pipAct, dev, dispMode); err != nil {
+	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get tablet mode")
+	}
+
+	initialWindowState := arc.WindowStateNormal
+	if isTabletModeEnabled {
+		initialWindowState = arc.WindowStateMaximized
+	}
+
+	initialAshWindowState, err := initialWindowState.ToAshWindowState()
+	if err != nil {
+		return errors.Wrap(err, "failed to get ash window state")
+	}
+
+	if err := pipAct.SetWindowState(ctx, tconn, initialWindowState); err != nil {
+		return errors.Wrap(err, "failed to set initial window state")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState); err != nil {
+		return errors.Wrap(err, "did not enter initial window state")
+	}
+
+	// Enter PIP via minimize.
+	if err := minimizePIP(ctx, tconn, pipAct); err != nil {
+		return errors.Wrap(err, "failed to minimize app into PIP")
+	}
+	if err := waitForPIPWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "did not enter PIP mode")
+	}
+
+	if err := expandPIPViaMenuTouch(ctx, tconn, pipAct, dev, dispMode, initialAshWindowState); err != nil {
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, ash.WindowStateMaximized)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState)
 }
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
@@ -485,17 +516,20 @@ func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *a
 		return errors.Wrap(err, "failed to get tablet mode")
 	}
 
-	initialWindowState := ash.WindowStateNormal
-	initialArcWindowState := arc.WindowStateNormal
+	initialWindowState := arc.WindowStateNormal
 	if isTabletModeEnabled {
-		initialWindowState = ash.WindowStateMaximized
-		initialArcWindowState = arc.WindowStateMaximized
+		initialWindowState = arc.WindowStateMaximized
 	}
 
-	if err := pipAct.SetWindowState(ctx, tconn, initialArcWindowState); err != nil {
+	initialAshWindowState, err := initialWindowState.ToAshWindowState()
+	if err != nil {
+		return errors.Wrap(err, "failed to get ash window state")
+	}
+
+	if err := pipAct.SetWindowState(ctx, tconn, initialWindowState); err != nil {
 		return errors.Wrap(err, "failed to set initial window state")
 	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState); err != nil {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState); err != nil {
 		return errors.Wrap(err, "did not enter initial window state")
 	}
 
@@ -511,7 +545,7 @@ func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *a
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState)
 }
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
@@ -582,9 +616,26 @@ func testPIPAutoPIPNewChromeWindow(ctx context.Context, tconn *chrome.TestConn, 
 
 // helper functions
 
-// expandPIPViaMenuTouch injects touch events to the center of PIP window and expands PIP.
+// expandPIPViaMenuTouch expands PIP.
+func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
+		return errors.Wrap(err, "failed to get the SDK version")
+	}
+
+	switch sdkVer {
+	case arc.SDKP:
+		return expandPIPViaMenuTouchP(ctx, tconn, act, dev, dispMode, restoreWindowState)
+	case arc.SDKR:
+		return expandPIPViaMenuTouchR(ctx, tconn, restoreWindowState)
+	default:
+		return errors.Errorf("unsupported SDK version: %d", sdkVer)
+	}
+}
+
+// expandPIPViaMenuTouchP injects touch events to the center of PIP window and expands PIP.
 // The first touch event shows PIP menu and subsequent events expand PIP.
-func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func expandPIPViaMenuTouchP(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open touchscreen device")
@@ -628,10 +679,48 @@ func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, act *arc
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
 		}
-		if windowState != ash.WindowStateMaximized {
+		if windowState != restoreWindowState {
 			return errors.New("the window isn't expanded yet")
 		}
 
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+
+}
+
+// expandPIPViaMenuTouchR performs a mouse click to the center of PIP window and expands PIP.
+// After moving the mouse to the center of the PIP window it waits for a second so that the pip
+// menu appears and the expand icon can be clicked.
+func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restoreWindowState ash.WindowStateType) error {
+	window, err := getPIPWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not get PIP window bounds")
+	}
+
+	bounds := window.BoundsInRoot
+	if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Need to wait for the menu to appear.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return testing.PollBreak(err)
+		}
+		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+			return testing.PollBreak(err)
+		}
+		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			return testing.PollBreak(err)
+		}
+
+		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pipTestPkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+		}
+		if windowState != restoreWindowState {
+			return errors.New("the window isn't expanded yet")
+		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
 }
