@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "198d3099_61d06bdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-31T21:44:34Z",
+      "side": 1,
+      "message": "The failures were not caused by this CL.",
+      "revId": "d0d65445e403ccf4f08d9f9f85bd14a7f7f93739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
