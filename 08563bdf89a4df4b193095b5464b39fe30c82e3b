@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bcefac9_ab1b9fd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-07-31T17:22:46Z",
+      "side": 1,
+      "message": "Thanks for the review.\n\n86.0.4217.0 uprev\u0027d. CQ+2 this.",
+      "revId": "08563bdf89a4df4b193095b5464b39fe30c82e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
