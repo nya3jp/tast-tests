@@ -16,6 +16,24 @@
       "revId": "5bb4b00f57eb96b00aad2ab2f7f544b3d94b8d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b759a5_cb5a19cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-07-31T05:35:21Z",
+      "side": 0,
+      "message": "The chart comes from ISO 12233 test pattern. Android ITS also use same chart as their test scene:\nhttp://androidxref.com/9.0.0_r3/xref/cts/apps/CameraITS/tests/scene3/scene3.pdf",
+      "parentUuid": "127529a4_a9fd4d41",
+      "revId": "5bb4b00f57eb96b00aad2ab2f7f544b3d94b8d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
