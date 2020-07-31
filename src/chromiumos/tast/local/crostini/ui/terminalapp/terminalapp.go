@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/input"
 )
 
@@ -105,4 +106,56 @@ func (ta *TerminalApp) Close(ctx context.Context, keyboard *input.KeyboardEventW
 
 	// Wait for window to close.
 	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
+
+// CreateFileWithApp creates a file with an app command and types a string into it and save it in container.
+func (ta *TerminalApp) CreateFileWithApp(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cmd, appName, testString, uiString string) error {
+	// Open file through running the command of the app in Terminal.
+	if err := ta.RunCommand(ctx, keyboard, cmd); err != nil {
+		return errors.Wrapf(err, "failed to run command %q in Terminal window", cmd)
+	}
+
+	param := ui.FindParams{
+		Name: uiString,
+		Role: ui.RoleTypeWindow,
+	}
+
+	// Find the app window.
+	appWindow, err := ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the %s window", appName)
+	}
+
+	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the new window.
+	if err = mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to move to the center of the %s window", appName)
+	}
+
+	// Left click the app window.
+	if err = appWindow.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed left click on %s window", appName)
+	}
+
+	// Type test string into the new file.
+	if err = keyboard.Type(ctx, testString); err != nil {
+		return errors.Wrapf(err, "failed to type %q in %s window", testString, appName)
+	}
+
+	// Press ctrl+S to save the file.
+	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+S in %s window", appName)
+	}
+
+	// Press ctrl+W twice to exit window.
+	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+W in %s window", appName)
+	}
+	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+W in %s window", appName)
+	}
+
+	if err = ui.WaitUntilGone(ctx, tconn, param, 15*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to close %s window", appName)
+	}
+	return nil
 }
