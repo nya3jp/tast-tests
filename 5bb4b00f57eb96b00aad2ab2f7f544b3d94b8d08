@@ -34,6 +34,24 @@
       "revId": "5bb4b00f57eb96b00aad2ab2f7f544b3d94b8d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08910bf7_60fc39ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/scene.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-07-31T08:21:34Z",
+      "side": 0,
+      "message": "Ack, thanks!",
+      "parentUuid": "67b759a5_cb5a19cc",
+      "revId": "5bb4b00f57eb96b00aad2ab2f7f544b3d94b8d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
