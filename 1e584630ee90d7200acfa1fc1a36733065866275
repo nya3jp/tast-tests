@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b6d50021_b6568aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-31T15:48:27Z",
+      "side": 1,
+      "message": "Thanks. I noticed that presubmit checks were catching most of my formatting errors but I missed this one somehow.",
+      "parentUuid": "ae3a0753_b86ed553",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1313abb_b4f8dee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/launcher_to_peeking_animation_perf.go",
         "patchSetId": 13
@@ -62,6 +86,30 @@
       "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0967a24a_5dbeefa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/launcher_to_peeking_animation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-07-31T15:48:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1313abb_b4f8dee8",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
