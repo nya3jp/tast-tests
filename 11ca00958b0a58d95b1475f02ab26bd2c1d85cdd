@@ -50,6 +50,24 @@
       "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa549fc8_c94cab34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-07-31T20:55:16Z",
+      "side": 1,
+      "message": "If we call Start/Stop again, do we want to discard the formal screen record (should result include the formal screen record)?",
+      "parentUuid": "92e80015_73dcf328",
+      "revId": "11ca00958b0a58d95b1475f02ab26bd2c1d85cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
