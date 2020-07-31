@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4789e1cc_9ce3f493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T04:34:33Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae3a0753_b86ed553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T04:34:33Z",
+      "side": 1,
+      "message": "nit: C (capital)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1313abb_b4f8dee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/launcher_to_peeking_animation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-07-31T04:34:33Z",
+      "side": 1,
+      "message": "ditto: C (capital)",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "1e584630ee90d7200acfa1fc1a36733065866275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
