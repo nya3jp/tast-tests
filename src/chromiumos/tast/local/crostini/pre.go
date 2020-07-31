@@ -126,7 +126,6 @@ const ImageArtifact string = "crostini_guest_images.tar"
 //		...
 //	}
 type PreData struct {
-	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.TestConn
 	Container   *vm.Container
 	Keyboard    *input.KeyboardEventWriter
