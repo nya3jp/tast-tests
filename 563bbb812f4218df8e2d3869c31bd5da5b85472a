@@ -203,6 +203,24 @@
     },
     {
       "key": {
+        "uuid": "1e53b89a_0080b070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-07-31T15:34:49Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nOther tests need to restart Chrome anyway, no need to restart it here.",
+      "parentUuid": "7260b3d5_994f2f20",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c951297_517cbf8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
