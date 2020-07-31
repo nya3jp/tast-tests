@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -155,4 +156,50 @@ func (ta *TerminalApp) Exit(ctx context.Context, keyboard *input.KeyboardEventWr
 
 	// Wait for window to close.
 	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
+
+// LaunchApp launches an app by running a command in Terminal window.
+func (ta *TerminalApp) LaunchApp(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cmd, uiString string) (appWindow *ui.Node, err error) {
+	// Open file through running the command of the app in Terminal.
+	if err = ta.RunCommand(ctx, keyboard, cmd); err != nil {
+		return nil, errors.Wrapf(err, "failed to run command %q in Terminal window", cmd)
+	}
+
+	param := ui.FindParams{
+		Name: uiString,
+		Role: ui.RoleTypeWindow,
+	}
+
+	// Find the app window.
+	appWindow, err = ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the app window")
+	}
+
+	return appWindow, nil
+}
+
+// InputStringAndSave input a test string in the given app window and save.
+func (ta *TerminalApp) InputStringAndSave(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, appWindow *ui.Node, testString string) error {
+	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the app window.
+	if err := mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to move to the center of the app window")
+	}
+
+	// Left click the app window.
+	if err := appWindow.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed left click on the app window")
+	}
+
+	// Type test string into the new file.
+	if err := keyboard.Type(ctx, testString); err != nil {
+		return errors.Wrapf(err, "failed to type %q into the app window", testString)
+	}
+
+	// Press ctrl+S to save the file.
+	if err := keyboard.Accel(ctx, "ctrl+S"); err != nil {
+		return errors.Wrap(err, "failed to press ctrl+S on the app window")
+	}
+
+	return nil
 }
