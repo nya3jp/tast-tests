@@ -184,11 +184,18 @@ func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 	return startedByDownloadBusterWithGaiaLoginPre
 }
 
+// StartedByDownloadBusterLargeContainer is similar to StartedByDownloadBuster,
+// but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
+func StartedByDownloadBusterLargeContainer() testing.Precondition {
+	return startedByDownloadBusterLargeContainerPre
+}
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
+	downloadLargeContainer
 )
 
 type loginType int
@@ -245,6 +252,13 @@ var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
 	mode:          download,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
+}
+
+var startedByDownloadBusterLargeContainerPre = &preImpl{
+	name:          "crostini_started_by_download_buster_large_container",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          downloadLargeContainer,
+	debianVersion: vm.DebianBuster,
 }
 
 // Implementation of crostini's precondition.
@@ -397,6 +411,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			Mode:          cui.Download,
 			MinDiskSize:   p.minDiskSize,
 			DebianVersion: p.debianVersion,
+		}
+		if p.mode == downloadLargeContainer {
+			iOptions.Mode = cui.DownloadLargeContainer
 		}
 		if p.mode == artifact {
 			iOptions.Mode = cui.Artifact
