@@ -744,3 +744,25 @@ func dragWithPause(ctx context.Context, tconn *chrome.TestConn, from, to coords.
 	}()
 	return mouse.Move(ctx, tconn, to, t)
 }
+
+// ToAshWindowState returns equivalent ash WindowStateType for the arc WindowState.
+func (s WindowState) ToAshWindowState() (ash.WindowStateType, error) {
+	switch s {
+	case WindowStateNormal:
+		return ash.WindowStateNormal, nil
+	case WindowStateMaximized:
+		return ash.WindowStateMaximized, nil
+	case WindowStateFullscreen:
+		return ash.WindowStateFullscreen, nil
+	case WindowStateMinimized:
+		return ash.WindowStateMinimized, nil
+	case WindowStatePrimarySnapped:
+		return ash.WindowStateLeftSnapped, nil
+	case WindowStateSecondarySnapped:
+		return ash.WindowStateRightSnapped, nil
+	case WindowStatePIP:
+		return ash.WindowStatePIP, nil
+	default:
+		return ash.WindowStateNormal, errors.Errorf("unknown window state: %d", s)
+	}
+}
