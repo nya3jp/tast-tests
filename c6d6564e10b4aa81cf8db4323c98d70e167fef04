@@ -86,6 +86,30 @@
       "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fc8f28_f48fd8f0",
+        "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-07-31T14:36:38Z",
+      "side": 1,
+      "message": "I believe Shuhei\u0027s point is that representing deltas in a format that resembles an absolute date (instead of secs.usecs or just usecs) might give the future reader a wrong idea about the code.\n\nlocaltime(_r) is there because this code was earlier using gettimeofday, which made sense in this context. I think following Shuhei\u0027s advice here is the right thing to do.",
+      "parentUuid": "c94e184a_5f5af3b2",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
