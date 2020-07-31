@@ -7,6 +7,7 @@ package terminalapp
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,7 +15,11 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
+	"chromiumos/tast/testing"
 )
 
 const uiTimeout = 15 * time.Second
@@ -49,18 +54,64 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*Term
 		return nil, errors.Wrap(err, "failed to find Terminal icon on shelf")
 	}
 
-	// It takes a few seconds to start the Terminal, it is ready when the prefix of the command line is displayed.
-	// The prefix is static text "username@penguin"
-	params := ui.FindParams{
-		Name: userName + "@penguin",
-		Role: ui.RoleTypeStaticText,
+	terminalApp := &TerminalApp{tconn: tconn, Root: app}
+	return terminalApp, terminalApp.waitForPrompt(ctx, userName)
+}
+
+func (ta *TerminalApp) waitForPrompt(ctx context.Context, userName string) error {
+	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: userName + "@penguin: ~"}, 90*time.Second).
+		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, uiTimeout).
+		WithNamef("Terminal.waitForPrompt()")
+	return uig.Do(ctx, ta.tconn, waitForPrompt)
+}
+
+// shutdownCrostini shuts down crostini by right clicking on the terminal app shelf icon.
+func (ta *TerminalApp) shutdownCrostini(ctx context.Context) error {
+	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
+	if err != nil {
+		return errors.Wrap(err, "Unable to switch out of tablet mode")
 	}
-	if err := app.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
-		app.Release(ctx)
-		return nil, errors.Wrapf(err, "failed to find input area %s", userName)
+	defer revert(ctx)
+
+	shutdown := uig.Steps(
+		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Terminal"}, uiTimeout).RightClick(),
+		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Shut down Linux (Beta)"}, uiTimeout).LeftClick(),
+	).WithNamef("TerminalApp.shutdownCrostini()")
+	return uig.Do(ctx, ta.tconn, shutdown)
+}
+
+// RestartCrostini shuts down Crostini and launch and exit the Terminal window.
+func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
+	if err := ta.shutdownCrostini(ctx); err != nil {
+		return errors.Wrap(err, "failed to shutdown crostini")
 	}
 
-	return &TerminalApp{tconn: tconn, Root: app}, nil
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		// While the VM is down, this command is expected to fail.
+		if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
+			return errors.Errorf("expected command to fail while the container was shut down, but got: %q", string(out))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	if err != nil {
+		return errors.Wrap(err, "VM failed to stop: ")
+	}
+
+	// Start the VM and container.
+	ta, err = Launch(ctx, ta.tconn, strings.Split(userName, "@")[0])
+	if err != nil {
+		return errors.Wrap(err, "failed to lauch terminal")
+	}
+
+	if err := cont.Connect(ctx, userName); err != nil {
+		return errors.Wrap(err, "failed to connect to restarted container")
+	}
+
+	if err := ta.Close(ctx, keyboard); err != nil {
+		return errors.Wrap(err, "failed to close Terminal app")
+	}
+
+	return nil
 }
 
 // FocusMouseOnTerminalWindow gets focus on the Terminal window.
@@ -105,4 +156,56 @@ func (ta *TerminalApp) Close(ctx context.Context, keyboard *input.KeyboardEventW
 
 	// Wait for window to close.
 	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
+
+// CreateFileWithApp creates a file with an app command and types a string into it and save it in container.
+func (ta *TerminalApp) CreateFileWithApp(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cmd, appName, testString, uiString string) error {
+	// Open file through running the command of the app in Terminal.
+	if err := ta.RunCommand(ctx, keyboard, cmd); err != nil {
+		return errors.Wrapf(err, "failed to run command %q in Terminal window", cmd)
+	}
+
+	param := ui.FindParams{
+		Name: uiString,
+		Role: ui.RoleTypeWindow,
+	}
+
+	// Find the app window.
+	appWindow, err := ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the %s window", appName)
+	}
+
+	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the new window.
+	if err = mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to move to the center of the %s window", appName)
+	}
+
+	// Left click the app window.
+	if err = appWindow.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed left click on %s window", appName)
+	}
+
+	// Type test string into the new file.
+	if err = keyboard.Type(ctx, testString); err != nil {
+		return errors.Wrapf(err, "failed to type %q in %s window", testString, appName)
+	}
+
+	// Press ctrl+S to save the file.
+	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+S in %s window", appName)
+	}
+
+	// Press ctrl+W twice to exit window.
+	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+W in %s window", appName)
+	}
+	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return errors.Wrapf(err, "failed to press ctrl+W in %s window", appName)
+	}
+
+	if err = ui.WaitUntilGone(ctx, tconn, param, 15*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to close %s window", appName)
+	}
+	return nil
 }
