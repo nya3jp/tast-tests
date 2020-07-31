@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "758e75cd_5dd9836f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-31T04:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0afc76_e8fb26d6",
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6653f3c4_60f8213f",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2289d88d_934c220c",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-31T04:29:55Z",
+      "side": 1,
+      "message": "You are right. A scan start event alone does not indicate a link failure. Fixed.",
+      "parentUuid": "6653f3c4_60f8213f",
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9861ee6a_e8ee1586",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-07-31T04:29:55Z",
+      "side": 1,
+      "message": "Oh, thanks for catching this.",
+      "parentUuid": "039a6ef7_b9f768ba",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 672,
+        "endChar": 32
+      },
+      "revId": "17c87a198b344b22cb5cc56e319f6919940864f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
