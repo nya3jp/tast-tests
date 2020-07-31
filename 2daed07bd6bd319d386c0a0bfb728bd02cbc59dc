@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc8fc39e_c8e6394b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-31T11:23:49Z",
+      "side": 1,
+      "message": "Added \"\\n\" to verification string since vim automatically add a new line to a file if there no one.",
+      "revId": "2daed07bd6bd319d386c0a0bfb728bd02cbc59dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
