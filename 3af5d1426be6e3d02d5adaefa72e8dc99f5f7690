@@ -39,6 +39,30 @@
       "revId": "3af5d1426be6e3d02d5adaefa72e8dc99f5f7690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590ac19c_136f3f77",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-07-31T01:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f432c6_d8030fae",
+      "range": {
+        "startLine": 249,
+        "startChar": 78,
+        "endLine": 249,
+        "endChar": 83
+      },
+      "revId": "3af5d1426be6e3d02d5adaefa72e8dc99f5f7690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
