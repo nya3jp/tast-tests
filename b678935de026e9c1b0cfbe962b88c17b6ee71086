@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "27016cb0_abd8a8a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-31T02:41:18Z",
+      "side": 1,
+      "message": "\u003e 3- Poll for the Freq to equal expected AP2 freq (2.4GHz).\n\nI\u0027m not really a fan of that. Frequency is very much an indirect measure of what we\u0027re testing. Also, I\u0027d avoid polling when we can help it.\n\n\u003e (we assume that the DUT is still connected to AP1 before requesting roam),\n\nThat\u0027s probably not a great assumption. It\u0027s pretty implementation specific how we choose to roam. It\u0027s quite possible to already be in the middle of a roam \"naturally,\" because wpa_supplicant thinks the other BSS has better throughput/signal/etc.\n\n\u003e then I can wait for the expected states of ServicePropertyState until it is connected. After that I can check the BSSID.\n\nIs it possible to wait until both conditions match?",
+      "parentUuid": "f53e9bbf_55ff41b3",
+      "range": {
+        "startLine": 773,
+        "startChar": 46,
+        "endLine": 773,
+        "endChar": 70
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a908c622_20746695",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 21
