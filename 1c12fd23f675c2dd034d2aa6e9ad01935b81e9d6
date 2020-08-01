@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f13fc01b_ea012ea5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-01T13:54:52Z",
+      "side": 1,
+      "message": "Why do we need separate tests for P and R?\nCan we just use one of them (probably R version) for both?",
+      "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
