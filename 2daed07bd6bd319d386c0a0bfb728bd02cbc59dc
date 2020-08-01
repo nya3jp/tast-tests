@@ -33,6 +33,23 @@
       "revId": "2daed07bd6bd319d386c0a0bfb728bd02cbc59dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ab48983_cf649e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-01T09:50:50Z",
+      "side": 1,
+      "message": "The failures were not caused by this CL.",
+      "revId": "2daed07bd6bd319d386c0a0bfb728bd02cbc59dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
