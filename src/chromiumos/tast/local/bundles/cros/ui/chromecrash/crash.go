@@ -72,24 +72,15 @@ const (
 // GetExtraArgs gives the list of arguments we should pass via chrome.ExtraArgs into the
 // chrome.New() function.
 func GetExtraArgs(handler CrashHandler, consentType crash.ConsentType) []string {
-	switch handler {
-	case Breakpad:
-		switch consentType {
-		case crash.MockConsent:
-			return []string{vModuleFlag, "--no-enable-crashpad", "--enable-crash-reporter-for-testing"}
-		case crash.RealConsent:
-			return []string{vModuleFlag, "--no-enable-crashpad"}
-		default:
-			panic(fmt.Sprintf("unknown ConsentType %d", consentType))
-		}
-	case Crashpad:
-		// The crashpad library doesn't care about consent (at least on ChromeOS);
-		// it passes all crashes along to crash_reporter and lets crash_reporter
-		// decide on consent.
-		return []string{vModuleFlag, "--enable-crashpad"}
-	default:
-		panic(fmt.Sprintf("unknown CrashHandler %d", handler))
+	// Breakpad needs an extra argument to do mock consent. Crashpad doesn't care
+	// about consent (at least on ChromeOS); it passes all crashes along to
+	// crash_reporter and lets crash_reporter decide on consent. So we don't need
+	// any extra arguments if the crash handler is Crashpad.
+	if handler == Breakpad && consentType == crash.MockConsent {
+		return []string{vModuleFlag, "--enable-crash-reporter-for-testing"}
 	}
+
+	return []string{vModuleFlag}
 }
 
 // ProcessType is an enum listed the types of Chrome processes we can kill.
