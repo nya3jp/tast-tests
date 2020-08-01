@@ -38,6 +38,29 @@ func init() {
 	})
 }
 
+// createPropertiesMatcher returns a function that takes 3 strings and checks if Android properties are set up correctly.
+// The returned function first gets a value of the referenceProperty, then for each partition, gets a value of the variant
+// of the referenceProperty. For example, when referenceProperty is "ro.build.X", prefixToReplace is "ro.build.",
+// replacementFormat is "ro.%s.build.", and partitions is ["P1", "P2"], the returned function checks if the value of
+// "ro.build.X" is equal to "ro.P1.build.X" and "ro.P2.build.X".
+func createPropertiesMatcher(s *testing.State, allProperties map[string]bool, partitions []string, getProperty func(string) string) func(string, string, string) {
+	return func(referenceProperty, prefixToReplace, replacementFormat string) {
+		referenceValue := getProperty(referenceProperty)
+		for _, partition := range partitions {
+			// Generate the property name to check. For example, when referenceProperty is ro.build.X, prefixToReplace is ro.build.,
+			// and replacementFormat is ro.%s.build., propertyForPartition will be ro.<partition>.build.X.
+			propertyForPartition := strings.Replace(referenceProperty, prefixToReplace, fmt.Sprintf(replacementFormat, partition), 1)
+			if !allProperties[propertyForPartition] {
+				// The partition doesn't have the referenceProperty equivalent.
+				continue
+			}
+			if valueForPartition := getProperty(propertyForPartition); valueForPartition != referenceValue {
+				s.Errorf("Unexpected %v property: got %q; want %q (%v)", propertyForPartition, valueForPartition, referenceValue, referenceProperty)
+			}
+		}
+	}
+}
+
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
 		propertyBootType      = "ro.vendor.arc_boot_type"
@@ -162,33 +185,23 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Starting R, the images have ro.{system,system_ext,product,odm,vendor,bootimage}.{build,product}.*
-	// properties by default to allow vendors to customize the values. ARC++ doesn't need the
-	// customization and uses the same value for all of them. This verifies that all properties
-	// share the same value. On P, the images have only ro.{system,vendor,bootimage} ones.
 	partitions := []string{"system", "system_ext", "product", "odm", "vendor", "bootimage"}
 	allProperties := getAllPropertiesMap()
+	propertiesMatcher := createPropertiesMatcher(s, allProperties, partitions, getProperty)
+
+	// Starting R, the images have ro.[property.]{system,system_ext,product,odm,vendor,bootimage}.*
+	// properties by default to allow vendors to customize the values. ARC doesn't need the
+	// customization and uses the same value for all of them. This verifies that all properties
+	// share the same value. On P, the images have only ro.{system,vendor,bootimage} ones.
 	for property := range allProperties {
-		for _, category := range []string{"build", "product"} {
-			prefix := fmt.Sprintf("ro.%s.", category)
-			if !strings.HasPrefix(property, prefix) {
-				continue
-			}
-			value := getProperty(property)
-			for _, partition := range partitions {
-				propertyForPartition := strings.Replace(property, prefix, fmt.Sprintf("ro.%s.%s.", partition, category), 1)
-				if strings.HasPrefix(propertyForPartition, "ro.product.product.") {
-					// TODO(yusukes): Syncing ro.product.<partition>.X with ro.product.X is not implemented yet.
-					continue
-				}
-				if !allProperties[propertyForPartition] {
-					// ro.{build,product}.X exists, but ro.<partition>.{build,product}.X doesn't.
-					continue
-				}
-				if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
-					s.Errorf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
-				}
-			}
+		if prefix := "ro.build."; strings.HasPrefix(property, prefix) {
+			// Verify that ro.build.X has the same value as ro.<partition>.build.X.
+			propertiesMatcher(property, prefix, "ro.%s.build.")
+		} else if prefix := "ro.product."; strings.HasPrefix(property, prefix) {
+			// Verify that ro.product.X has the same value as ro.<partition>.product.X.
+			propertiesMatcher(property, prefix, "ro.%s.product.")
+			// Verify that ro.product.X has the same value as ro.product.<partition>.X.
+			propertiesMatcher(property, prefix, "ro.product.%s.")
 		}
 	}
 }
