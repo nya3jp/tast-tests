@@ -6,14 +6,20 @@ package hardware
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
-	"chromiumos/tast/local/upstart"
+	//	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+)
+
+const (
+	tracingPath = "/sys/kernel/debug/tracing"
 )
 
 func init() {
@@ -30,10 +36,18 @@ func init() {
 }
 
 func SensorRing(ctx context.Context, s *testing.State) {
-	s.Log("Restarting ui job to so sensors are not claimed by ARC")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to restart ui job: ", err)
+
+	//	s.Log("Restarting ui job to so sensors are not claimed by ARC")
+	//	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+	//		s.Fatal("Failed to restart ui job: ", err)
+	//	}
+
+	// Collect trace data.
+	tracingOnPath := filepath.Join(tracingPath, "tracing_on")
+	if err := ioutil.WriteFile(tracingOnPath, []byte("1"), 0644); err != nil {
+		s.Fatal("Cannot enable tracing: ", err)
 	}
+	defer ioutil.WriteFile(tracingOnPath, []byte("0"), 0644)
 
 	dutSensors, err := iio.GetSensors()
 	if err != nil {
@@ -119,14 +133,36 @@ func validate(rs []*iio.SensorReading, start, end time.Duration, sn *iio.Sensor,
 	}
 
 	last := start
+	count := 0
 	for ix, sr := range rs {
 		if sr.Timestamp < last {
+			tracingOnPath := filepath.Join(tracingPath, "trace")
+			ioutil.WriteFile(tracingOnPath, []byte("0"), 0644)
 			s.Errorf("Timestamp out of order for %v %v at index %v: got %v; want >= %v",
 				sn.Location, sn.Name, ix, sr.Timestamp, last)
 		}
 
+		if count > 10 {
+			if sr.Timestamp < last+time.Duration(300e9/sn.MaxFrequency) {
+				tracingOnPath := filepath.Join(tracingPath, "trace")
+				ioutil.WriteFile(tracingOnPath, []byte("0"), 0644)
+				s.Errorf("Too little time between samples: index %v: got %v after %v",
+					ix, sr.Timestamp, last)
+			}
+
+			if sr.Timestamp > last+time.Duration(3000e9/sn.MaxFrequency) {
+				tracingOnPath := filepath.Join(tracingPath, "trace")
+				ioutil.WriteFile(tracingOnPath, []byte("0"), 0644)
+				s.Errorf("Too much time between samples: index %v: got %v after %v",
+					ix, sr.Timestamp, last)
+			}
+		}
+
 		last = sr.Timestamp
+		count++
 		if sr.Timestamp > end {
+			tracingOnPath := filepath.Join(tracingPath, "trace")
+			ioutil.WriteFile(tracingOnPath, []byte("0"), 0644)
 			s.Errorf("Timestamp in future for %v %v at index %v: got %v; want <= %v",
 				sn.Location, sn.Name, ix, sr.Timestamp, end)
 		}
