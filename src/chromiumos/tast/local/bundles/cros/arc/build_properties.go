@@ -177,10 +177,6 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			value := getProperty(property)
 			for _, partition := range partitions {
 				propertyForPartition := strings.Replace(property, prefix, fmt.Sprintf("ro.%s.%s.", partition, category), 1)
-				if strings.HasPrefix(propertyForPartition, "ro.product.product.") {
-					// TODO(yusukes): Syncing ro.product.<partition>.X with ro.product.X is not implemented yet.
-					continue
-				}
 				if !allProperties[propertyForPartition] {
 					// ro.{build,product}.X exists, but ro.<partition>.{build,product}.X doesn't.
 					continue
@@ -188,6 +184,25 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 				if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
 					s.Fatalf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
 				}
+			}
+		}
+	}
+
+	// Similarly, verify that ro.product.<partition>.X has the same value as ro.product.X.
+	for property := range allProperties {
+		prefix := "ro.product."
+		if !strings.HasPrefix(property, prefix) {
+			continue
+		}
+		value := getProperty(property)
+		for _, partition := range partitions {
+			propertyForPartition := strings.Replace(property, prefix, prefix+partition, 1)
+			if !allProperties[propertyForPartition] {
+				// ro.product.X exists, but ro.product.<partition>.X doesn't.
+				continue
+			}
+			if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
+				s.Fatalf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
 			}
 		}
 	}
