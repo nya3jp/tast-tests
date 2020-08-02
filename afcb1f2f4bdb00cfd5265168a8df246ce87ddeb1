@@ -50,6 +50,23 @@
       "revId": "afcb1f2f4bdb00cfd5265168a8df246ce87ddeb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22648470_8a937ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-02T23:12:24Z",
+      "side": 1,
+      "message": "It was the hardware problem.",
+      "revId": "afcb1f2f4bdb00cfd5265168a8df246ce87ddeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
