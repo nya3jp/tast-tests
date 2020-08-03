@@ -32,21 +32,15 @@ type TabletLaunchActivityInfo struct {
 
 // TabletDefaultLaunchHelper runs tablet default lunch test-cases by given activity names.
 func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo, isResizable bool) error {
-	// Get the default display orientation and set it back after all test-cases are completed.
-	defaultOrientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer RotateDisplay(ctx, tconn, display.RotateAny)
-
-	// 2 Test-cases for activities with specified orientation.
+	// Test-cases for activities with specified orientation.
 	for _, tc := range activityInfo {
 		if err := func() error {
 			// Set the display to the opposite orientation, so when activity starts, the display should adjust itself to match with activity's desired orientation.
 			if err := setDisplayOrientation(ctx, tconn, getOppositeDisplayOrientation(tc.DesiredDO)); err != nil {
 				return err
 			}
-			defer waitForDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+			// Need to clear the orientation set by setDisplayOrientation.
+			defer clearDisplayRotation(ctx, tconn)
 
 			// Start the activity.
 			act, err := arc.NewActivity(a, Pkg24, tc.ActivityName)
@@ -118,7 +112,6 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 	if primaryDisplayInfo == nil {
 		return errors.New("failed to find primary display info")
 	}
-	defer RotateDisplay(ctx, tconn, display.RotateAny)
 
 	for _, tc := range activityInfo {
 		if err := func() error {
@@ -136,12 +129,7 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 
 // TabletDisplaySizeChangeHelper runs test-cases for tablet display size change.
 func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
-	// Get the default display orientation and set it back after all test-cases are completed.
-	defaultOrientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+	defer clearDisplayRotation(ctx, tconn)
 
 	for _, tc := range activityInfo {
 		if err := func() error {
@@ -266,6 +254,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 			return err
 		}
 	}
+	defer clearDisplayRotation(ctx, tconn)
 
 	// Start the activity.
 	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
@@ -367,6 +356,8 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 	if err := setDisplayOrientation(ctx, tconn, orientation); err != nil {
 		return err
 	}
+	// Need to clear the orientation of setDisplayOrientation.
+	defer clearDisplayRotation(ctx, tconn)
 
 	// Start undefined activity.
 	act, err := arc.NewActivity(a, Pkg24, unActName)
@@ -437,16 +428,14 @@ func setDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredO
 	return nil
 }
 
-func waitForDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredOrientation display.OrientationType) error {
-	rotationAngle := display.Rotate0
-	if desiredOrientation == display.OrientationPortraitPrimary {
-		rotationAngle = display.Rotate270
-	}
+// clearDisplayRotation clears the display rotation and resets to the default
+// auto-rotation status in tablet mode.
+func clearDisplayRotation(ctx context.Context, tconn *chrome.TestConn) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the display info")
+		return errors.Wrap(err, "failed to get the primary display info")
 	}
-	return display.WaitForDisplayRotation(ctx, tconn, info.ID, rotationAngle)
+	return display.SetDisplayRotationSync(ctx, tconn, info.ID, display.RotateAny)
 }
 
 // isPortraitRect returns true if width is greater than height.
