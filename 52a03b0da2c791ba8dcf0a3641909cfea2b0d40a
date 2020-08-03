@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e176378_211bb70d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-03T13:13:46Z",
+      "side": 1,
+      "message": "Looping back here, since Kalvin stopped running this test on 4.4 Kernels, the flake rate has gone to zero in the past two weeks. All failures are precondition failures starting chrome: https://tastboard.corp.google.com/test/printer.PrintUSB",
+      "revId": "52a03b0da2c791ba8dcf0a3641909cfea2b0d40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
