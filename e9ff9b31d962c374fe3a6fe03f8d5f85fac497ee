@@ -22,6 +22,30 @@
       "revId": "e9ff9b31d962c374fe3a6fe03f8d5f85fac497ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128ebaf1_d77b0a29",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-03T09:40:48Z",
+      "side": 1,
+      "message": "Sure, let me do so!",
+      "parentUuid": "b3453d1f_743a96a4",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "e9ff9b31d962c374fe3a6fe03f8d5f85fac497ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
