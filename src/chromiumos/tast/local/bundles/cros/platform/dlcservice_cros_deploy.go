@@ -9,7 +9,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/platform/dlc"
+	dlctest "chromiumos/tast/local/bundles/cros/platform/dlc"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +31,7 @@ func DLCServiceCrosDeploy(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure %s running: %v", dlc.JobName, err)
 	}
 
-	info := dlc.Info{ID: dlc.TestID1, Package: dlc.TestPackage}
+	info := dlc.Info{ID: dlctest.TestID1, Package: dlctest.TestPackage}
 	if err := dlc.Cleanup(ctx, info); err != nil {
 		s.Fatal("Initial cleanup failed: ", err)
 	}
@@ -42,31 +43,31 @@ func DLCServiceCrosDeploy(ctx context.Context, s *testing.State) {
 	}()
 
 	// Copy test DLC into dlcservice cache location. Let cleanup handle cache dir cleanup.
-	cachePath := filepath.Join(dlc.CacheDir, dlc.TestID1, dlc.TestPackage)
-	for _, slot := range []string{dlc.SlotA, dlc.SlotB} {
+	cachePath := filepath.Join(dlc.CacheDir, dlctest.TestID1, dlctest.TestPackage)
+	for _, slot := range []string{dlctest.SlotA, dlctest.SlotB} {
 		cacheSlotPath := filepath.Join(cachePath, slot)
-		if err := os.MkdirAll(cacheSlotPath, dlc.DirPerm); err != nil {
+		if err := os.MkdirAll(cacheSlotPath, dlctest.DirPerm); err != nil {
 			s.Fatal("Failed to make cache directory: ", err)
 		}
-		if err := dlc.CopyFile(filepath.Join(dlc.TestDir, dlc.TestID1, dlc.TestPackage, dlc.ImageFile),
-			filepath.Join(cacheSlotPath, dlc.ImageFile), dlc.FilePerm); err != nil {
+		if err := dlctest.CopyFileWithPermissions(filepath.Join(dlctest.TestDir, dlctest.TestID1, dlctest.TestPackage, dlctest.ImageFile),
+			filepath.Join(cacheSlotPath, dlctest.ImageFile), dlctest.FilePerm); err != nil {
 			s.Fatal("Failed to copy test to cache: ", err)
 		}
 	}
-	if err := dlc.ChownContentsToDlcservice(filepath.Join(dlc.CacheDir, dlc.TestID1)); err != nil {
+	if err := dlctest.ChownContentsToDlcservice(filepath.Join(dlc.CacheDir, dlctest.TestID1)); err != nil {
 		s.Fatal("Failed to chown: ", err)
 	}
 
 	// Restart dlcservice.
-	if err := dlc.RestartUpstartJobAndWait(ctx, dlc.JobName, dlc.ServiceName); err != nil {
+	if err := upstart.RestartJobAndWaitForService(ctx, dlc.JobName, dlc.ServiceName); err != nil {
 		s.Fatal("Failed to restart dlcservice: ", err)
 	}
 
 	// Test DLC is deployed now, so install it without a Omaha URL.
-	if err := dlc.Install(ctx, dlc.TestID1, ""); err != nil {
+	if err := dlc.Install(ctx, dlctest.TestID1, ""); err != nil {
 		s.Fatal("Install failed: ", err)
 	}
-	if err := dlc.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), "install_cros_deploy", dlc.TestID1); err != nil {
+	if err := dlctest.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), "install_cros_deploy", dlctest.TestID1); err != nil {
 		s.Fatal("DumpAndVerifyInstalledDLCs failed: ", err)
 	}
 }
