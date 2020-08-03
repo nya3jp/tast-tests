@@ -39,6 +39,30 @@
       "revId": "83b2c7e603bf1fa99fe926594caa36e9af7d7f32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702b18f8_cf4cc56d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-03T18:52:55Z",
+      "side": 1,
+      "message": "Actually I had that in mind and next CL was supposed to use this function. But I will refactor it once it\u0027s ready. I made the changes as you suggested, please take a look.",
+      "parentUuid": "f809ac2a_4928d059",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "83b2c7e603bf1fa99fe926594caa36e9af7d7f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
