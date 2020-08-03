@@ -193,13 +193,6 @@ const (
 // are passed, or the display rotation ends up with a different rotation from
 // the specified one.
 func WaitForDisplayRotation(ctx context.Context, tconn *chrome.TestConn, dispID string, rot RotationAngle) error {
-	// Right now autotestPrivate.waitForDisplayRotation can't wait for "any" type.
-	// Thus it waits for the default 0 rotation, but it may fail when it is placed
-	// in an unexpected orientation physically.
-	// TODO(b/161253230): remove this after the fix is made in chromium.
-	if rot == RotateAny {
-		rot = Rotate0
-	}
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(%q, %q).then((success) => {
 		    if (!success)
