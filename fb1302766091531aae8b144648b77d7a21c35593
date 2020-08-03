@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "2af517cd_98869b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-08-03T22:30:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "4350fcba_41e3380e",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bce9c5e_6dcf68d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
@@ -354,6 +378,30 @@
       "revId": "fb1302766091531aae8b144648b77d7a21c35593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb047f2_7eeda9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-08-03T22:30:01Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c8691b20_529bc8fd",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
