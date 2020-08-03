@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "743fd7a9_e98d95fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-03T17:35:10Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "83b2c7e603bf1fa99fe926594caa36e9af7d7f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f809ac2a_4928d059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-03T17:35:10Z",
+      "side": 1,
+      "message": "could you inline the immerseViaAPIHelper? It seems that nobody is calling it except this function.\n\nIf you plan to call this function from a future CL, then it is better to do this \"refactor\" once you have that CL ready.",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "83b2c7e603bf1fa99fe926594caa36e9af7d7f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
