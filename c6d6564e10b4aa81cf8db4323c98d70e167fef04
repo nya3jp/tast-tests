@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a37afdf5_d5efcf8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2020-08-03T08:27:56Z",
+      "side": 1,
+      "message": "Shuhei, the C program was also reviewed on on https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2304729\nWe just moved those reviewed sourced to \"tast\" as it is more appropriate place.\n\n@Kalin do you want to add someone to this review?",
+      "parentUuid": "c4b20ee9_b33e96ac",
+      "revId": "c6d6564e10b4aa81cf8db4323c98d70e167fef04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da765cdd_d941c7e2",
         "filename": "helpers/local/hardware.VerifyRemoteSleep.timersignal.c",
         "patchSetId": 7
