@@ -670,6 +670,24 @@
     },
     {
       "key": {
+        "uuid": "3f1203e0_32c10c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-03T06:40:00Z",
+      "side": 1,
+      "message": "You should only log the error if polling stopped due to timeout.",
+      "parentUuid": "6430f075_4b9e5f33",
+      "revId": "563bbb812f4218df8e2d3869c31bd5da5b85472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c341ee49_d33ebf6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 9
