@@ -16,6 +16,86 @@
       "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d2cb0e_1f1656f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-03T22:49:56Z",
+      "side": 1,
+      "message": "personally, I don\u0027t like the idea of using global variables (stored in window object).\nYou could use chrome.JSObject to bind an object with a Golang entity. Please refer to EventWatcher implementation for how to handle JSObject (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ui/watcher.go#27).",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 105
+      },
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190f0bb3_3eec5682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-03T22:49:56Z",
+      "side": 1,
+      "message": "you don\u0027t need anonymous function wrapping.",
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0388abb5_b4b615df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-03T22:49:56Z",
+      "side": 1,
+      "message": "Use Eval instead of EvalPromise -- EvalPromise was deprecated.",
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75541a17_0d957440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-03T22:49:56Z",
+      "side": 1,
+      "message": "I think it\u0027s better to simply pass a filepath, the caller can use through filepath.Join(s.OutDir(), \"filename\")",
+      "range": {
+        "startLine": 141,
+        "startChar": 75,
+        "endLine": 141,
+        "endChar": 105
+      },
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
