@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d71198cb_c6f18d77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-03T17:12:09Z",
+      "side": 1,
+      "message": "Thank you Hidehiko!",
+      "revId": "8f6cd26813c5defd4e27b3465679487c67a55271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

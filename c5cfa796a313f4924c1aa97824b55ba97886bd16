@@ -33,6 +33,24 @@
       "revId": "c5cfa796a313f4924c1aa97824b55ba97886bd16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8c2af3_766e2088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-03T17:12:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93713fc7_322f570f",
+      "revId": "c5cfa796a313f4924c1aa97824b55ba97886bd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
