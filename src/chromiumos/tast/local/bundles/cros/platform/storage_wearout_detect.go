@@ -7,7 +7,7 @@ package platform
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/platform/storage"
+	"chromiumos/tast/common/storage"
 	"chromiumos/tast/testing"
 )
 
