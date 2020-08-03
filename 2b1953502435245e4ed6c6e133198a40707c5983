@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6a2870e_f3cbbe4b",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-03T22:59:59Z",
+      "side": 1,
+      "message": "As mentioned in the design doc comments, adding methods directly to Helper will end up being unmanageable as more functionality is added.  Instead, please create a new type (for instance ModeHelper) and add methods to it, similar to how other tast libraries work (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/hwsec/helpers_remote.go;l\u003d25)",
+      "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a10bd03_bc6cb69d",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-03T22:59:59Z",
+      "side": 1,
+      "message": "Define and use a ServerHostPortDefault (empty string) constant.",
+      "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
