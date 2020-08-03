@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "ebd761b2_b8c9b506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-08-03T18:32:54Z",
+      "side": 1,
+      "message": "Ahh #2 seems to work I\u0027ll refactor this to fit that format",
+      "parentUuid": "d5782477_58651fcc",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec32a872_f74e9a67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 2
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "I\u0027d like to be consistent across all tests",
       "parentUuid": "1e0770c8_afa7767c",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0ee811_8e0793e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-08-03T18:32:54Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "80b0073c_712aa8ac",
       "range": {
         "startLine": 30,
         "startChar": 1,
@@ -302,6 +350,30 @@
       "side": 1,
       "message": "Do you want to submit this commented code in the repository? If so, you may create a separate CL with these changes and submit once this functionality will be ready",
       "parentUuid": "15694d6f_6ce707f7",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dee680d_27942607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-08-03T18:32:54Z",
+      "side": 1,
+      "message": "Hm I can do that but wouldn\u0027t it be better to just submit the commented code so that if someone else sees it they\u0027ll also be able to uncomment it when it\u0027s ready?",
+      "parentUuid": "9f24ed1c_99af931f",
       "range": {
         "startLine": 79,
         "startChar": 0,
