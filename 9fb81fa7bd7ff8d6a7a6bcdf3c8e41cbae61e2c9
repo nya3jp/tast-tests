@@ -383,6 +383,30 @@
       "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5177e92_5bcdea3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-03T18:54:56Z",
+      "side": 1,
+      "message": "Nope. Commented code adds no value, it only confuses people.",
+      "parentUuid": "1dee680d_27942607",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "9fb81fa7bd7ff8d6a7a6bcdf3c8e41cbae61e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
