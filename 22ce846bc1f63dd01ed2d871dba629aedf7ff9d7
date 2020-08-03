@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6901d8dc_dab119e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-03T08:55:11Z",
+      "side": 1,
+      "message": "Removing Tast reviewers who haven\u0027t responded.\n",
+      "revId": "22ce846bc1f63dd01ed2d871dba629aedf7ff9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d6f09ab_b1e8a053",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/windowmanagertest.html",
         "patchSetId": 10
