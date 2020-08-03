@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1b4644_5e0ee488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-03T23:30:24Z",
+      "side": 1,
+      "message": "Don\u0027t we need to do the same here? w.State \u003d\u003d ash.WindowStateMaximized?",
+      "revId": "061c1e0e4721e5f98634a30052b4b022c4563713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4b8195_1faf49d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-03T23:30:24Z",
+      "side": 1,
+      "message": "To make it consistent with the rest of the code, we can have ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal) and WaitWindowFinishAnimating() right after SetTabletModeEnabled() and before this WaitForCondition() just like the way it is when tablet mode is enabled. In that case you can ignore my question on line 87.",
+      "revId": "061c1e0e4721e5f98634a30052b4b022c4563713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
