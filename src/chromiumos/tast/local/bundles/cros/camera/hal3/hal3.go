@@ -203,8 +203,16 @@ func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
 	report, err := t.Run(ctx)
 	if err != nil {
 		if report != nil {
-			for _, name := range report.FailedTestNames() {
+			failedTests := report.FailedTestNames()
+			for _, name := range failedTests {
 				testing.ContextLog(ctx, "Failed test: ", name)
+			}
+
+			numFailed := len(failedTests)
+			if numFailed == 1 {
+				err = errors.Errorf("%s failed", failedTests[0])
+			} else if numFailed > 1 {
+				err = errors.Errorf("%s and %d more tests failed", failedTests[0], numFailed-1)
 			}
 		}
 		return errors.Wrap(err, "failed to run cros_camera_test")
