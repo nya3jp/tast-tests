@@ -398,6 +398,30 @@
     },
     {
       "key": {
+        "uuid": "ffeca0e6_4d6f8abb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-08-03T01:59:24Z",
+      "side": 1,
+      "message": "ok, I will remove the code.\nI moved the code directly in the function since we only have one instance of the cleanup and it must be done after the ui job is stopped and after chronos is cleaned up.",
+      "parentUuid": "e1b8f482_cdddab6c",
+      "range": {
+        "startLine": 882,
+        "startChar": 24,
+        "endLine": 882,
+        "endChar": 37
+      },
+      "revId": "4c479d7b2eb93f5a8beed6dc40950dfba47160eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619aa907_a03aa07d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
