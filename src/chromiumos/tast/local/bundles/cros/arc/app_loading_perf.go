@@ -80,14 +80,10 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
-	// TODO(b/153866893): Reevaluate weights for different tests.
 	weightsDict := map[string]float64{
 		"memory":  0.5,
 		"file":    1.5,
-		"network": 2.0,
-		// TODO(b/160667636): Below tests still need to be implemented.
-		"opengl": 1.0,
-		"ui":     1.0,
+		"network": 4.0,
 	}
 
 	finalPerfValues := perf.NewValues()
