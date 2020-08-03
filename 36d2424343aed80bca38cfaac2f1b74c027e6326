@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fc7493_fc61665d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-03T15:24:19Z",
+      "side": 1,
+      "message": "Could you handle error?\nstyle: go strongly prefers shorter name. How about:\n\nb, err :\u003d testexec.CommandContext(...\nif err !\u003d nil {\n  ...\n}\n\nout :\u003d string(b)",
+      "revId": "36d2424343aed80bca38cfaac2f1b74c027e6326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24462896_5687e74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-03T15:24:19Z",
+      "side": 1,
+      "message": "nit/style: rather than assignment, could you return the value?\n\nreturn tokens[1], tokens[3], nil\n\nThe name mapping with the named return value can be doable by engs.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 7
+      },
+      "revId": "36d2424343aed80bca38cfaac2f1b74c027e6326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
