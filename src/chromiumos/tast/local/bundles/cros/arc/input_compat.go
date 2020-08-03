@@ -26,9 +26,15 @@ func init() {
 		Desc:         "Checks input compatibility for M and games working",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
