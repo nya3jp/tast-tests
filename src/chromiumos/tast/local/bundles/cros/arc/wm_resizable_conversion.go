@@ -106,7 +106,7 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.ID == windowID && w.IsFrameVisible == true
+		return w.ID == windowID && w.IsFrameVisible == true && w.State == ash.WindowStateNormal
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for frame to become visible")
 	}
