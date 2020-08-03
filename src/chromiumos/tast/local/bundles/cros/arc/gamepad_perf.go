@@ -25,9 +25,15 @@ func init() {
 		Desc:         "Test ARC gamepad system performance",
 		Contacts:     []string{"arc-performance@google.com", "ruanc@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "android_p"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      2 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
