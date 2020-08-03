@@ -32,33 +32,43 @@ type TabletLaunchActivityInfo struct {
 
 // TabletDefaultLaunchHelper runs tablet default lunch test-cases by given activity names.
 func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo, isResizable bool) error {
-	// Get the default display orientation and set it back after all test-cases are completed.
-	defaultOrientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer RotateDisplay(ctx, tconn, display.RotateAny)
-
-	// 2 Test-cases for activities with specified orientation.
+	// Test-cases for activities with specified orientation.
 	for _, tc := range activityInfo {
-		if err := func() error {
+		if err := func() (err error) {
 			// Set the display to the opposite orientation, so when activity starts, the display should adjust itself to match with activity's desired orientation.
 			if err := setDisplayOrientation(ctx, tconn, getOppositeDisplayOrientation(tc.DesiredDO)); err != nil {
 				return err
 			}
-			defer waitForDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+			// Need to clear the orientation set by setDisplayOrientation.
+			defer func() {
+				if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+					if err == nil {
+						err = clearErr
+					} else {
+						testing.ContextLog(ctx, "Failed to clear display rotation: ", clearErr)
+					}
+				}
+			}()
 
 			// Start the activity.
-			act, err := arc.NewActivity(a, Pkg24, tc.ActivityName)
-			if err != nil {
-				return err
+			act, newActivityErr := arc.NewActivity(a, Pkg24, tc.ActivityName)
+			if newActivityErr != nil {
+				return newActivityErr
 			}
 			defer act.Close()
 
 			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
-			defer act.Stop(ctx, tconn)
+			defer func() {
+				if stopErr := act.Stop(ctx, tconn); stopErr != nil {
+					if err == nil {
+						err = stopErr
+					} else {
+						testing.ContextLog(ctx, "Failed to stop the activity: ", stopErr)
+					}
+				}
+			}()
 
 			if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
@@ -118,7 +128,6 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 	if primaryDisplayInfo == nil {
 		return errors.New("failed to find primary display info")
 	}
-	defer RotateDisplay(ctx, tconn, display.RotateAny)
 
 	for _, tc := range activityInfo {
 		if err := func() error {
@@ -135,13 +144,16 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 }
 
 // TabletDisplaySizeChangeHelper runs test-cases for tablet display size change.
-func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
-	// Get the default display orientation and set it back after all test-cases are completed.
-	defaultOrientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
+func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) (err error) {
+	defer func() {
+		if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+			if err == nil {
+				err = clearErr
+			} else {
+				testing.ContextLog(ctx, "Failed to clear display rotation: ", err)
+			}
+		}
+	}()
 
 	for _, tc := range activityInfo {
 		if err := func() error {
@@ -158,18 +170,26 @@ func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, 
 }
 
 // displaySizeChangeHelper runs display size change scenarios in tablet mode.
-func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
+func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) (err error) {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
-	if err != nil {
-		return err
+	act, newActivityErr := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	if newActivityErr != nil {
+		return newActivityErr
 	}
 	defer act.Close()
 
 	if err := act.Start(ctx, tconn); err != nil {
 		return err
 	}
-	defer act.Stop(ctx, tconn)
+	defer func() {
+		if stopErr := act.Stop(ctx, tconn); stopErr != nil {
+			if err == nil {
+				err = stopErr
+			} else {
+				testing.ContextLog(ctx, "Failed to stop the activity: ", stopErr)
+			}
+		}
+	}()
 
 	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return err
@@ -254,11 +274,11 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 }
 
 // showHideShelfHelper runs shelf show/hide scenarios per activity on tablet.
-func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo, pdID string) error {
+func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo, pdID string) (err error) {
 	// Get initial shelf behavior to make sure it is never hide.
-	initSB, err := ash.GetShelfBehavior(ctx, tconn, pdID)
-	if err != nil {
-		return err
+	initSB, initErr := ash.GetShelfBehavior(ctx, tconn, pdID)
+	if initErr != nil {
+		return initErr
 	}
 	if initSB != ash.ShelfBehaviorNeverAutoHide {
 		// Set shelf behavior to never auto hide for test's initial state.
@@ -266,18 +286,35 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 			return err
 		}
 	}
+	defer func() {
+		if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+			if err == nil {
+				err = clearErr
+			} else {
+				testing.ContextLog(ctx, "Failed to clear display rotation: ", clearErr)
+			}
+		}
+	}()
 
 	// Start the activity.
-	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
-	if err != nil {
-		return err
+	act, newActivityErr := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	if newActivityErr != nil {
+		return newActivityErr
 	}
 	defer act.Close()
 
 	if err := act.Start(ctx, tconn); err != nil {
 		return err
 	}
-	defer act.Stop(ctx, tconn)
+	defer func() {
+		if stopErr := act.Stop(ctx, tconn); stopErr != nil {
+			if err == nil {
+				err = stopErr
+			} else {
+				testing.ContextLog(ctx, "Failed to stop the activity: ", stopErr)
+			}
+		}
+	}()
 
 	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return err
@@ -362,11 +399,21 @@ func getOppositeDisplayOrientation(orientation display.OrientationType) display.
 }
 
 // checkUnspecifiedActivityInTabletMode makes sure that the display orientation won't change for an activity with unspecified orientation.
-func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, orientation display.OrientationType, unActName string) error {
+func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, orientation display.OrientationType, unActName string) (err error) {
 	// Set the display orientation.
 	if err := setDisplayOrientation(ctx, tconn, orientation); err != nil {
 		return err
 	}
+	// Need to clear the orientation of setDisplayOrientation.
+	defer func() {
+		if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+			if err == nil {
+				err = clearErr
+			} else {
+				testing.ContextLog(ctx, "Failed to clear display rotation: ", clearErr)
+			}
+		}
+	}()
 
 	// Start undefined activity.
 	act, err := arc.NewActivity(a, Pkg24, unActName)
@@ -437,16 +484,14 @@ func setDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredO
 	return nil
 }
 
-func waitForDisplayOrientation(ctx context.Context, tconn *chrome.TestConn, desiredOrientation display.OrientationType) error {
-	rotationAngle := display.Rotate0
-	if desiredOrientation == display.OrientationPortraitPrimary {
-		rotationAngle = display.Rotate270
-	}
+// clearDisplayRotation clears the display rotation and resets to the default
+// auto-rotation status in tablet mode.
+func clearDisplayRotation(ctx context.Context, tconn *chrome.TestConn) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the display info")
+		return errors.Wrap(err, "failed to get the primary display info")
 	}
-	return display.WaitForDisplayRotation(ctx, tconn, info.ID, rotationAngle)
+	return display.SetDisplayRotationSync(ctx, tconn, info.ID, display.RotateAny)
 }
 
 // isPortraitRect returns true if width is greater than height.
