@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e678422_39fb5ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-03T14:31:39Z",
+      "side": 1,
+      "message": "could you use named return value since both VID and PID are typed \"string\"?",
+      "range": {
+        "startLine": 45,
+        "startChar": 67,
+        "endLine": 45,
+        "endChar": 88
+      },
+      "revId": "1e510ab7d21b393e7a4089f519f7839422aa9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1ddb6d_8b803f39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-03T14:31:39Z",
+      "side": 1,
+      "message": "Could you read from the Output()?\n\nout, err :\u003d testexec.CommandContext(ctx, \"lsusb\", ...).Output(testexec.DumpLogOnError)\nif err !\u003d nil {\n  ...\n}\n\n... text processing of out ...\n\n\nCurrently, process handling does not look working as expected.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "1e510ab7d21b393e7a4089f519f7839422aa9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c98a191_17203054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-03T14:31:39Z",
+      "side": 1,
+      "message": "nit: const.\n\nCould you add brief comment where this value comes from?",
+      "revId": "1e510ab7d21b393e7a4089f519f7839422aa9405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
