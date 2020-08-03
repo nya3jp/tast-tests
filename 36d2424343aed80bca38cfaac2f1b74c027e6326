@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a2aaf425_7e469419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-03T16:30:30Z",
+      "side": 1,
+      "message": "Missed that, fixed error handling.\n\nSwitched to shorter variable names.",
+      "parentUuid": "45fc7493_fc61665d",
+      "revId": "36d2424343aed80bca38cfaac2f1b74c027e6326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24462896_5687e74d",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "36d2424343aed80bca38cfaac2f1b74c027e6326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a8ef03_8408c5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-03T16:30:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "24462896_5687e74d",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 7
+      },
+      "revId": "36d2424343aed80bca38cfaac2f1b74c027e6326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
