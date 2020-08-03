@@ -28,15 +28,21 @@ func init() {
 		Desc:         "Measures energy and power usage of ARC++ PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "small",
-			Val:  false,
+			Name:              "small",
+			Val:               false,
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "big",
-			Val:  true,
+			Name:              "big",
+			Val:               true,
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "small_vm",
+			Val:               false,
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
