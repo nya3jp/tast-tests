@@ -16,6 +16,23 @@
       "revId": "5e944c2a689d8538122d06910029dcb64ba42a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73e3ac54_4fca4ac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-03T17:09:15Z",
+      "side": 1,
+      "message": "Banon bug: https://b.corp.google.com/issues/151956009\n\nWe\u0027ve had a \"bad\" Banon before -- have we found any pattern to these bad DUTs, or do we just have to notice these one by one?\n\nYou also have a Hatch DUT failing.",
+      "revId": "5e944c2a689d8538122d06910029dcb64ba42a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
