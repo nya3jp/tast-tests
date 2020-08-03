@@ -67,6 +67,23 @@
       "revId": "2daed07bd6bd319d386c0a0bfb728bd02cbc59dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f5d24ab_ac987070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-03T01:14:58Z",
+      "side": 1,
+      "message": "Please add \"Disallow-Recycled-Builds: kukui-arc-r-cq\" to your CL commit message, then try again.",
+      "revId": "2daed07bd6bd319d386c0a0bfb728bd02cbc59dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
