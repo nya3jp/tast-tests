@@ -22,6 +22,30 @@
       "revId": "d783f52ce2cf6d1b2874a0767ce8a58256b12e1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710a9977_b574c3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-03T23:56:06Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2334856",
+      "parentUuid": "33d87fd5_0d119364",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "d783f52ce2cf6d1b2874a0767ce8a58256b12e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
