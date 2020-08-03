@@ -34,6 +34,24 @@
       "revId": "39287b38caf13d3424d641dc285bd10eaeaed8e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d3c7d4_7a20637d",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-08-03T22:13:54Z",
+      "side": 1,
+      "message": "It looks like using the scan start event is an old wpa_supplicant thing, and they introduced the \"newer wpa_supplicant\" change here: https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/250840/. I\u0027m not sure exactly what this wpa_supplicant change was, but we are certainly way past 2.3 so we can probably get rid of the legacy code path now.\n\nRegardless, I think it still makes more sense to consider reassociation time the time from disconnect to connected.",
+      "parentUuid": "2c9c9926_ed46a214",
+      "revId": "39287b38caf13d3424d641dc285bd10eaeaed8e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
