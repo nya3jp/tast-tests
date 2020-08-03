@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "650bb95d_7c434289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-03T03:48:20Z",
+      "side": 1,
+      "message": "Ping Brian, PTAL.",
+      "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e93a7ec_3be518b8",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 13
