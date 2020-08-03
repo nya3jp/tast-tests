@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "664b4c99_174c3735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-03T08:27:35Z",
+      "side": 1,
+      "message": "LGTM\nShould http://crbug.com/1101860 bug be reopened?",
+      "revId": "f2baa5881bb1bce2038dad32c567b03f26336d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
