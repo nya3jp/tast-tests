@@ -9,7 +9,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/platform/dlc"
+	dlctest "chromiumos/tast/local/bundles/cros/platform/dlc"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -30,45 +31,45 @@ func DLCServicePreloading(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure %s running: %v", dlc.JobName, err)
 	}
 
-	if err := dlc.Cleanup(ctx, dlc.Info{ID: dlc.TestID2, Package: dlc.TestPackage}); err != nil {
+	if err := dlc.Cleanup(ctx, dlc.Info{ID: dlctest.TestID2, Package: dlctest.TestPackage}); err != nil {
 		s.Fatal("Initial cleanup failed: ", err)
 	}
 	// Deferred cleanup to always end with no test DLC installations.
 	defer func() {
-		if err := dlc.Cleanup(ctx, dlc.Info{ID: dlc.TestID2, Package: dlc.TestPackage}); err != nil {
+		if err := dlc.Cleanup(ctx, dlc.Info{ID: dlctest.TestID2, Package: dlctest.TestPackage}); err != nil {
 			s.Error("Ending cleanup failed: ", err)
 		}
 	}()
 
 	// Make sure that the test DLC is not installed using GetInstalled DBus method.
-	dlcListOutputs, err := dlc.GetInstalled(ctx)
+	dlcListOutputs, err := dlctest.GetInstalled(ctx)
 	if err != nil {
 		s.Fatal("GetInstall failed: ", err)
 	}
 	for _, dlcListOutput := range dlcListOutputs {
-		if dlcListOutput.ID == dlc.TestID2 {
-			s.Fatal("Not continuing as ", dlc.TestID2, " is already installed.")
+		if dlcListOutput.ID == dlctest.TestID2 {
+			s.Fatal("Not continuing as ", dlctest.TestID2, " is already installed.")
 		}
 	}
 
 	// Place test DLC into the preload path. Let cleanup deal with preload cleanup.
-	preloadPath := filepath.Join(dlc.PreloadDir, dlc.TestID2, dlc.TestPackage)
+	preloadPath := filepath.Join(dlc.PreloadDir, dlctest.TestID2, dlctest.TestPackage)
 	if err := os.MkdirAll(preloadPath, 0755); err != nil {
 		s.Fatal("Failed to make preload directory: ", err)
 	}
-	if err := dlc.CopyFile(filepath.Join(dlc.TestDir, dlc.TestID2, dlc.TestPackage, dlc.ImageFile),
-		filepath.Join(preloadPath, dlc.ImageFile), 0644); err != nil {
+	if err := dlctest.CopyFileWithPermissions(filepath.Join(dlctest.TestDir, dlctest.TestID2, dlctest.TestPackage, dlctest.ImageFile),
+		filepath.Join(preloadPath, dlctest.ImageFile), 0644); err != nil {
 		s.Fatal("Failed to copy file: ", err)
 	}
-	if err := dlc.ChownContentsToDlcservice(filepath.Join(dlc.PreloadDir, dlc.TestID2)); err != nil {
+	if err := dlctest.ChownContentsToDlcservice(filepath.Join(dlc.PreloadDir, dlctest.TestID2)); err != nil {
 		s.Fatal("Failed to chown: ", err)
 	}
 
 	// Test DLC is preloaded now, so install it without a Omaha URL.
-	if err := dlc.Install(ctx, dlc.TestID2, ""); err != nil {
+	if err := dlc.Install(ctx, dlctest.TestID2, ""); err != nil {
 		s.Fatal("Install failed: ", err)
 	}
-	if err := dlc.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), "install_preload_allowed", dlc.TestID2); err != nil {
+	if err := dlctest.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), "install_preload_allowed", dlctest.TestID2); err != nil {
 		s.Fatal("DumpAndVerifyInstalledDLCs failed: ", err)
 	}
 }

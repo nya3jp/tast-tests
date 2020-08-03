@@ -9,8 +9,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/platform/dlc"
+	dlctest "chromiumos/tast/local/bundles/cros/platform/dlc"
 	"chromiumos/tast/local/bundles/cros/platform/nebraska"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -55,15 +56,15 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 	// Restart update-engine to pick up the new prefs.
 	s.Logf("Restarting %s job", updateEngineJob)
-	dlc.RestartUpstartJobAndWait(ctx, updateEngineJob, updateEngineServiceName)
+	upstart.RestartJobAndWaitForDbusService(ctx, updateEngineJob, updateEngineServiceName)
 
 	// Initial cleanup to always start with no test DLC installations.
-	if err := dlc.Cleanup(ctx, dlc.Info{ID: dlc.TestID1, Package: dlc.TestPackage}); err != nil {
+	if err := dlc.Cleanup(ctx, dlc.Info{ID: dlctest.TestID1, Package: dlctest.TestPackage}); err != nil {
 		s.Fatal("Initial cleanup failed: ", err)
 	}
 	// Deferred cleanup to always end with no test DLC installations.
 	defer func() {
-		if err := dlc.Cleanup(ctx, dlc.Info{ID: dlc.TestID1, Package: dlc.TestPackage}); err != nil {
+		if err := dlc.Cleanup(ctx, dlc.Info{ID: dlctest.TestID1, Package: dlctest.TestPackage}); err != nil {
 			s.Error("Ending cleanup failed: ", err)
 		}
 	}()
@@ -81,7 +82,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	dump := func(ctx context.Context, s *testing.State, tag string, ids ...string) {
-		if err := dlc.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), tag, ids...); err != nil {
+		if err := dlctest.DumpAndVerifyInstalledDLCs(ctx, s.OutDir(), tag, ids...); err != nil {
 			s.Fatal("Dump failed: ", err)
 		}
 	}
@@ -99,21 +100,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 			defer n.Stop(s, "single-dlc")
 
 			// Install single DLC.
-			install(ctx, s, dlc.TestID1, n.URL)
-			dump(ctx, s, "install_single", dlc.TestID1)
+			install(ctx, s, dlctest.TestID1, n.URL)
+			dump(ctx, s, "install_single", dlctest.TestID1)
 
 		}()
 
 		// Install already installed DLC when Nebraska/Omaha is down with empty url.
-		install(ctx, s, dlc.TestID1, "")
-		dump(ctx, s, "install_already_installed_no_url", dlc.TestID1)
+		install(ctx, s, dlctest.TestID1, "")
+		dump(ctx, s, "install_already_installed_no_url", dlctest.TestID1)
 
 		// Purge DLC after installing.
-		purge(ctx, s, dlc.TestID1)
+		purge(ctx, s, dlctest.TestID1)
 		dump(ctx, s, "purge_after_installing")
 
 		// Purge already purged DLC.
-		purge(ctx, s, dlc.TestID1)
+		purge(ctx, s, dlctest.TestID1)
 		dump(ctx, s, "purge_already_purged")
 	})
 
@@ -130,21 +131,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 			defer n.Stop(s, "reboot-mimic-dlc")
 
 			// Install DLC.
-			install(ctx, s, dlc.TestID1, n.URL)
-			dump(ctx, s, "reboot_install_before_reboot", dlc.TestID1)
+			install(ctx, s, dlctest.TestID1, n.URL)
+			dump(ctx, s, "reboot_install_before_reboot", dlctest.TestID1)
 		}()
 
 		// Restart dlcservice to mimic a device reboot.
 		s.Logf("Restarting %s job", dlc.JobName)
-		dlc.RestartUpstartJobAndWait(ctx, dlc.JobName, dlc.ServiceName)
+		upstart.RestartJobAndWaitForDbusService(ctx, dlc.JobName, dlc.ServiceName)
 
 		// Install DLC after mimicking a reboot. Pass an empty url so
 		// Nebraska/Omaha aren't hit.
-		install(ctx, s, dlc.TestID1, "")
-		dump(ctx, s, "install_after_reboot", dlc.TestID1)
+		install(ctx, s, dlctest.TestID1, "")
+		dump(ctx, s, "install_after_reboot", dlctest.TestID1)
 
 		// Purge DLC after mimicking a reboot.
-		purge(ctx, s, dlc.TestID1)
+		purge(ctx, s, dlctest.TestID1)
 		dump(ctx, s, "purge_after_reboot")
 	})
 }
