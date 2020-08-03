@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "909c459b_d044a972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-03T15:33:34Z",
+      "side": 1,
+      "message": "Hi Yury, This APK contains fixes for MemoryTest Stability issues.  Here are new test logs: http://go/paste/4540513929658368.  ",
+      "revId": "df3d034345d64e0f8a7e455d55ea889e14844c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
