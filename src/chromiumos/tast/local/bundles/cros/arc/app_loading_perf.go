@@ -80,19 +80,15 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
-	// TODO(b/153866893): Reevaluate weights for different tests.
 	weightsDict := map[string]float64{
-		"memory":  0.5,
-		"file":    1.5,
-		"network": 2.0,
-		// TODO(b/160667636): Below tests still need to be implemented.
-		"opengl": 1.0,
-		"ui":     1.0,
+		"memory":  0.1,
+		"file":    6.5,
+		"network": 5.2,
+		"opengl":  4.0,
 	}
 
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
-	// TODO(b/153866893): Add more tests as soon as the APK class names / tests are also added.
 	tests := []struct {
 		name   string
 		prefix string
@@ -105,6 +101,9 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}, {
 		name:   "NetworkTest",
 		prefix: "network",
+	}, {
+		name:   "OpenGLTest",
+		prefix: "opengl",
 	}}
 
 	config := apploading.TestConfig{
@@ -114,7 +113,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		OutDir:               s.OutDir(),
 	}
 
-	var finalScore float64
+	var totalScore float64
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
@@ -130,17 +129,17 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to obtain weight value for test: ", config.Prefix)
 		}
 		score *= weight
-		finalScore += score
+		totalScore += score
 	}
 
 	finalPerfValues.Set(
 		perf.Metric{
-			Name:      "final_score",
-			Unit:      "points",
+			Name:      "total_score",
+			Unit:      "mbps",
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
-		}, finalScore)
-	s.Logf("Finished all tests with score: %.2f", finalScore)
+		}, totalScore)
+	s.Logf("Finished all tests with total score: %.2f", totalScore)
 
 	s.Log("Uploading perf metrics")
 
