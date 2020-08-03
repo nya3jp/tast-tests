@@ -16,6 +16,29 @@
       "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "990553d3_12f33e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-03T17:41:13Z",
+      "side": 1,
+      "message": "please, move the `switch` inside the expandPIPViaMenuTouch() func.\n\ne.g:\n\n  func expandPIPViaMenuTouch() {\n    if P:\n        expandPIPViaMenuTouchP()\n    if R:\n        expandPIPViaMenuTouchR()\n    else\n       error\n  }",
+      "range": {
+        "startLine": 502,
+        "startChar": 1,
+        "endLine": 518,
+        "endChar": 2
+      },
+      "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
