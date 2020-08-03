@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe9f83d_8773463b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-08-03T18:13:00Z",
+      "side": 1,
+      "message": "Thanks! But due to inconsistent timestamp between host and client on ARCVM(http://b/123416853), we are working on workaround for these input perf tests. So this test is only for ARC_P currently.",
+      "revId": "673f1ebbce8e8191f05f3e84f51eefcae1be76be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
