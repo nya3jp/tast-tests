@@ -16,6 +16,63 @@
       "revId": "2fdfcee875748e420f5d9cd24f1e8420ccbb2f3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e8bd5a0_d2eeb948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-03T09:02:56Z",
+      "side": 1,
+      "message": "Thanks the code is much simpler now.\n",
+      "revId": "2fdfcee875748e420f5d9cd24f1e8420ccbb2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5e850d6_fef02492",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-03T09:02:56Z",
+      "side": 1,
+      "message": "huge nit: What do you think about deleting shadow dirs before session.ClearDeviceOwnership so that clearing /home/.shadow is next to clearing /home/chronos?",
+      "revId": "2fdfcee875748e420f5d9cd24f1e8420ccbb2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05edc16f_64c65b7a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-03T09:02:56Z",
+      "side": 1,
+      "message": "Can we even skip this check? Above we have removed all files under /home/chronos, so this check usually returns os.ErrNotExist.",
+      "range": {
+        "startLine": 900,
+        "startChar": 3,
+        "endLine": 900,
+        "endChar": 72
+      },
+      "revId": "2fdfcee875748e420f5d9cd24f1e8420ccbb2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
