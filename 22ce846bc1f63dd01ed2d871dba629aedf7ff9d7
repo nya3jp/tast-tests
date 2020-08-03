@@ -472,6 +472,23 @@
     },
     {
       "key": {
+        "uuid": "c4215aaa_7311a430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-03T06:40:00Z",
+      "side": 1,
+      "message": "You need to either rewrite this as a table driven test (preferred) or stop using s.Error/s.Fatal in the function and just return the error.",
+      "revId": "22ce846bc1f63dd01ed2d871dba629aedf7ff9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dd727b6_3110a6ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 10
