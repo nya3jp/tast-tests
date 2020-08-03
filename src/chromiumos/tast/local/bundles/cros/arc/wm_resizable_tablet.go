@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Verifies that Window Manager resizable tablet use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_vm", "chrome"},
+		SoftwareDeps: []string{"android_vm", "chrome", "tablet_mode"},
 		Pre:          arc.Booted(),
 		Timeout:      8 * time.Minute,
 	})
