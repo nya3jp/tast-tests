@@ -17,26 +17,19 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 // Dlcservice related constants.
 const (
 	CacheDir    = "/var/cache/dlc"
-	DirPerm     = 0755
-	FilePerm    = 0644
-	ImageFile   = "dlc.img"
 	JobName     = "dlcservice"
 	LibDir      = "/var/lib/dlcservice/dlc"
 	PreloadDir  = "/mnt/stateful_partition/var_overlay/cache/dlc-images"
 	ServiceName = "org.chromium.DlcService"
-	SlotA       = "dlc_a"
-	SlotB       = "dlc_b"
-	TestDir     = "/usr/local/dlc"
-	TestID1     = "test1-dlc"
-	TestID2     = "test2-dlc"
-	TestPackage = "test-package"
 	User        = "dlcservice"
 )
 
@@ -137,42 +130,10 @@ func checkPerms(parmsPath string) error {
 	return nil
 }
 
-// verifyDlcContent verifies that the contents of the DLC have valid file
-// hashes and file permissions.
-func verifyDlcContent(path, id string) error {
-	rootMounts, err := getRootMounts(path, id)
-	if err != nil {
-		return err
-	}
-	if len(rootMounts) == 0 {
-		return errors.Errorf("no root mounts exist for %v", id)
-	}
-	for _, rootMount := range rootMounts {
-		if err := filepath.Walk(rootMount, func(path string, info os.FileInfo, err error) error {
-			switch filepath.Ext(path) {
-			case ".sum":
-				if err := checkSHA2Sum(path); err != nil {
-					return errors.Wrap(err, "check sum failed")
-				}
-				break
-			case ".perms":
-				if err := checkPerms(path); err != nil {
-					return errors.Wrap(err, "permissions check failed")
-				}
-				break
-			}
-			return nil
-		}); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-// listDlcs is a helper to call into dlcservice_util for `--list` option and
+// ListDlcs is a helper to call into dlcservice_util for `--list` option and
 // will dump the output at the given path in json format. If the path already
 // exists, it will return an error.
-func listDlcs(ctx context.Context, path string) error {
+func ListDlcs(ctx context.Context, path string) error {
 	// Path already exists.
 	if _, err := os.Stat(path); err == nil {
 		return errors.Wrapf(err, "file already exists at: %v", path)
@@ -189,23 +150,6 @@ func listDlcs(ctx context.Context, path string) error {
 	return nil
 }
 
-// DumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
-// via dlcservice_util command.
-func DumpAndVerifyInstalledDLCs(ctx context.Context, dumpPath, tag string, ids ...string) error {
-	testing.ContextLog(ctx, "Asking dlcservice for installed DLC modules")
-	f := tag + ".log"
-	path := filepath.Join(dumpPath, f)
-	if err := listDlcs(ctx, path); err != nil {
-		return err
-	}
-	for _, id := range ids {
-		if err := verifyDlcContent(path, id); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 // GetInstalled uses the dlcservice_util to get the installed DLCs.
 // Will return an error when failing to retrieve and parse the output.
 func GetInstalled(ctx context.Context) ([]ListOutput, error) {
@@ -216,8 +160,8 @@ func GetInstalled(ctx context.Context) ([]ListOutput, error) {
 	}
 	path := filepath.Join(d, "tmp_get_installed")
 	defer os.Remove(path)
-	// listDlcs needs a non-existent file.
-	if err := listDlcs(ctx, path); err != nil {
+	// ListDlcs needs a non-existent file.
+	if err := ListDlcs(ctx, path); err != nil {
 		return nil, err
 	}
 	m, err := dlcList(path)
@@ -274,6 +218,54 @@ func Cleanup(ctx context.Context, infos ...Info) error {
 	}
 	if err := RestartUpstartJobAndWait(ctx, JobName, ServiceName); err != nil {
 		return errors.Wrap(err, "failed to restart dlcservice")
+	}
+	return nil
+}
+
+// RestartUpstartJobAndWait restarts the given job and waits for it to come up.
+func RestartUpstartJobAndWait(ctx context.Context, job, serviceName string) error {
+	// Restart job.
+	if err := upstart.RestartJob(ctx, job); err != nil {
+		return errors.Wrapf(err, "failed to restart %s", job)
+	}
+
+	// Wait for service to be ready.
+	if bus, err := dbusutil.SystemBus(); err != nil {
+		return errors.Wrap(err, "failed to connect to the message bus")
+	} else if err := dbusutil.WaitForService(ctx, bus, serviceName); err != nil {
+		return errors.Wrapf(err, "failed to wait for D-Bus service %s", serviceName)
+	}
+	return nil
+}
+
+// VerifyDlcContent verifies that the contents of the DLC have valid file
+// hashes and file permissions.
+func VerifyDlcContent(path, id string) error {
+	rootMounts, err := getRootMounts(path, id)
+	if err != nil {
+		return err
+	}
+	if len(rootMounts) == 0 {
+		return errors.Errorf("no root mounts exist for %v", id)
+	}
+	for _, rootMount := range rootMounts {
+		if err := filepath.Walk(rootMount, func(path string, info os.FileInfo, err error) error {
+			switch filepath.Ext(path) {
+			case ".sum":
+				if err := checkSHA2Sum(path); err != nil {
+					return errors.Wrap(err, "check sum failed")
+				}
+				break
+			case ".perms":
+				if err := checkPerms(path); err != nil {
+					return errors.Wrap(err, "permissions check failed")
+				}
+				break
+			}
+			return nil
+		}); err != nil {
+			return err
+		}
 	}
 	return nil
 }
