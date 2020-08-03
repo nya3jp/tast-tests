@@ -55,7 +55,7 @@ var keyInfo = []struct {
 	direction: perf.BiggerIsBetter,
 }, {
 	suffixes:  []string{"_score"},
-	unitName:  "points",
+	unitName:  "mbps",
 	direction: perf.BiggerIsBetter,
 }, {
 	suffixes:  []string{"_page_faults", "_page_reclaims", "_context_switches"},
