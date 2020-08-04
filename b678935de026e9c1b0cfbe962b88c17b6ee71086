@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d2d73b5d_f2101f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-04T03:02:15Z",
+      "side": 1,
+      "message": "I change the code, so now it does the fllowing:\n1- Connect to AP1.\n2- Setup a property watcher to make sure the DUT doesn\u0027t disconnect and go to \"idle\" state. Also, verify that the following expected props are received in order:\n    A) State \u003d configuration.\n    B) State \u003d connected.\n    C) BSSID \u003d AP2 BSSID. checks the prop before waiting for change.\n3- Configure AP2.\n4- Waite for AP2 to be on the BSS table.\n5- Send a request to roam.\n6- Wait for expected props in the pw.\n7- Verify connection with AP2.",
+      "parentUuid": "27016cb0_abd8a8a4",
+      "range": {
+        "startLine": 773,
+        "startChar": 46,
+        "endLine": 773,
+        "endChar": 70
+      },
+      "revId": "b678935de026e9c1b0cfbe962b88c17b6ee71086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a908c622_20746695",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 21
