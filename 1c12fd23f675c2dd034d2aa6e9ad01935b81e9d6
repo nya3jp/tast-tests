@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8898ef8e_126b5d7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-04T21:05:41Z",
+      "side": 1,
+      "message": "Using the mouse to expand doesn\u0027t work very well in P, tests become flaky. I wasn\u0027t able to track down exactly why they do though, the test fails to enter PIP after the first time if the mouse is used to expand. \n\nSo something like:\n1. Test run with (tablet\u003dfalse, maPIP\u003dtrue) - passes\n2. Test run again with (tablet\u003dfalse, maPIP\u003dfalse)\n3. Test run again with (tablet\u003dtrue, maPIP\u003dtrue)\n4. Test run again with (tablet\u003dtrue, maPIP\u003dfalse)\n\nIt\u0027ll fail in any one of 2,3 or 4. It fails to enter PIP via minimize (there\u0027s a visible glitch actually, the window is maximized but with a small margin between the top and left edges of the screen, and on the right edge goes offscreen).",
+      "parentUuid": "f13fc01b_ea012ea5",
+      "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990553d3_12f33e8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b0cb54_823fba9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-04T21:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990553d3_12f33e8e",
+      "range": {
+        "startLine": 502,
+        "startChar": 1,
+        "endLine": 518,
+        "endChar": 2
+      },
+      "revId": "1c12fd23f675c2dd034d2aa6e9ad01935b81e9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
