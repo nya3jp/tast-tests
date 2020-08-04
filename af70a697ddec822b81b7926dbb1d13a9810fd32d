@@ -34,6 +34,24 @@
       "revId": "af70a697ddec822b81b7926dbb1d13a9810fd32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "812ed2b5_cd918fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-04T00:17:50Z",
+      "side": 1,
+      "message": "Oh, so it is in a same window -- i.e. in the same activity stack. Sorry I misunderstood the condition.",
+      "parentUuid": "04a2d68d_1d2d6783",
+      "revId": "af70a697ddec822b81b7926dbb1d13a9810fd32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
