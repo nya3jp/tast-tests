@@ -210,6 +210,14 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
 					return errors.New("failed to arrange clamshell split view with empty overview grid")
 				}
+				// Disable automation features explicitly, so that further operations
+				// won't be affected by accessibility events. This is potentially
+				// dangerous as there's no way to re-enable it, but that is acceptable
+				// here because automation features are no longer used in this tests.
+				// See https://crbug.com/1096719 and https://crbug.com/1111137.
+				if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+					return errors.Wrap(err, "failed to disable the automation feature")
+				}
 				return nil
 			}},
 			// 9 windows, including 1 on the extra virtual desk from the "SingleWindow" case.
