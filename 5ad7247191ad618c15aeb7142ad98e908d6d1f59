@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "82390b3e_e3e4ef12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-04T18:09:50Z",
+      "side": 1,
+      "message": "hi mukai, navigator.mediaDevices.getDisplayMedia() returns a promise and waits for users to share the screen, since we are using automation API in our golang code, I am not sure how can we get and bind media stream in golang before clicking UI.\n\nfor example: \n\n// // it will go to click share button and won\u0027t get stuck here\n// expr :\u003d \u0027streamPromise \u003d navigator.mediaDevices.getDisplayMedia({video:true});\u0027\n// if err :\u003d tconn.Eval(ctx, expr, nil); err !\u003d nil {...}\n\nstreamPromise :\u003d \u0026chrome.JSObject{}\nexpr :\u003d \u0027return navigator.mediaDevices.getDisplayMedia({video:true});\u0027\n// it will be stuck here and never go to click share button\nif err :\u003d tconn.Eval(ctx, expr, streamPromise); err !\u003d nil {...}\n\n// clicking desktop and clicking share button here\nmediaview, err :\u003d ...\ndesktopView,err :\u003d ...\nshareButton, err :\u003d ...\n\ndo we have alternative approaches?",
+      "parentUuid": "d9d2cb0e_1f1656f2",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 105
+      },
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "190f0bb3_3eec5682",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 14
