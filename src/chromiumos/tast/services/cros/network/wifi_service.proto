@@ -39,6 +39,9 @@ service WifiService {
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
 
+  // GetHardwareAddr returns the HardwareAddr for the network interface.
+  rpc GetHardwareAddr(GetHardwareAddrRequest) returns (GetHardwareAddrResponse) {}
+
   // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
   rpc ExpectWifiFrequencies(ExpectWifiFrequenciesRequest) returns (google.protobuf.Empty) {}
 
@@ -199,6 +202,14 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message GetHardwareAddrRequest {
+  string interfaceName = 1;
+}
+
+message GetHardwareAddrResponse {
+  string hw_addr = 1;
 }
 
 message ExpectWifiFrequenciesRequest {

@@ -758,6 +758,16 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	return &ret, nil
 }
 
+// GetHardwareAddr returns the HardwareAddr for the network interface.
+func (s *WifiService) GetHardwareAddr(ctx context.Context, iface *network.GetHardwareAddrRequest) (*network.GetHardwareAddrResponse, error) {
+	ifaceObj, err := net.InterfaceByName(iface.InterfaceName)
+	if err != nil {
+		return nil, err
+	}
+
+	return &network.GetHardwareAddrResponse{HwAddr: ifaceObj.HardwareAddr.String()}, nil
+}
+
 // RequestScans requests shill to trigger active scans on WiFi devices,
 // and waits until at least req.Count scans are done.
 func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScansRequest) (*empty.Empty, error) {
