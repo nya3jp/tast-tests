@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c847a4be_46edf6db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "This looks a lot closer to the right thing. It has a lot of new mechanics, so new stuff to work out, but it\u0027s getting there.\n\nI\u0027d prefer not retaining the CR+2\u0027s that are already here, because a lot has changed since they reviewed it.",
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2da377c9_d8e95013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "You don\u0027t document these either here or in the proto definition. Please do so for one or both.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 48,
+        "endLine": 1107,
+        "endChar": 153
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ada58e_0dc1ce67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "this is interesting, and I think it looks nice. I sorta preferred it as a separate CL though [1], so we can focus on these separately:\n(a) making sure this RPC method is useful and flexible\n(b) making sure the RoamDBus test logic is sound\n\nBut if it makes it easier this way (e.g., regenerating the proto files), I guess that can be OK, as long as the original reviewers take another look.\n\n[1] Like Hsin-chen did here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2320218",
+      "range": {
+        "startLine": 1107,
+        "startChar": 22,
+        "endLine": 1107,
+        "endChar": 47
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb59177_7d6cc0db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "if it\u0027s not \"found\u003d\u003dtrue\", do we really want to continue to wait? At least for the BSSID case that you\u0027re using, I don\u0027t think so -- we\u0027d rather fail immediately, because we\u0027re not on the correct BSS.\n\nIt doesn\u0027t help that \u0027Check\u0027 is undocumented, so I don\u0027t know what you *intend* it to mean :)",
+      "range": {
+        "startLine": 1171,
+        "startChar": 3,
+        "endLine": 1171,
+        "endChar": 4
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368b6b8a_d8591686",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "wording seems a little awkward here. Is this supposed to be two separate phrases, like \"failed; got unexpected...\"? Or just drop the \"failed\", and it\u0027s \"got unexpected...\"?",
+      "range": {
+        "startLine": 228,
+        "startChar": 35,
+        "endLine": 228,
+        "endChar": 45
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377d3d23_1f6cf7df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "Jerry is not Broadcom, and it\u0027s passing today. Remove from this list.",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43debd01_0f39216e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "I believe this is pointless when you\u0027re still initiating scans at line 192. Bgscan is also super infrequent and shouldn\u0027t be very relevant. I\u0027d suggest removing this.\n\n(Matthew could get away with this in Autotest, because he wasn\u0027t initiating scans via wpa_supplicant / shill -- but we don\u0027t want to do that in Tast.)",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775b24a2_69175bbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "kill this blank line (unless gofmt tells you otherwise, for some reason)",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8fdcfdd_6d7dcfb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "this doesn\u0027t make sense -- you\u0027re putting a Service state as a value for BSSID? It\u0027s definitely true that\u0027s \"not expected\", but the statement doesn\u0027t really make much sense as a test condition. If Shill is mixing up its property types that much, we have bigger problems.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f731a6_502a8157",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "BTW, I don\u0027t think you really need to change anything here (the bug is in wpa_supplicant, I think), but as noted on Matthew\u0027s RoamFT CL, this might actually initiate a second roam, if we are already roaming naturally (e.g., at ~line 192). If so, that roam could be happening after ~L219, possibly disrupting VerifyConnection.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 77
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a03cdbc7_07d0d511",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "matched",
+      "range": {
+        "startLine": 211,
+        "startChar": 20,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e69385_2a084cad",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 28
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "trailing whitespace here and elsewhere. did the linter/formatter not complain?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9e04c0_f83b76a3",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 28
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-04T23:04:20Z",
+      "side": 1,
+      "message": "is this really a \"pair\" now? It has potentially many values, as well as an extra \u0027check\u0027 property (although I don\u0027t know what \u0027check\u0027 is supposed to mean)\n\nMaybe \"Entry\" or \"Expectation\"?",
+      "range": {
+        "startLine": 234,
+        "startChar": 10,
+        "endLine": 234,
+        "endChar": 14
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
