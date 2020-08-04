@@ -76,7 +76,7 @@ func DuplicateBSSID(ctx context.Context, s *testing.State) {
 	}
 
 	for _, ap := range aps {
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+		if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 			s.Errorf("Failed to connect to WiFi SSID %s: %v", ap.Config().SSID, err)
 			continue
 		}

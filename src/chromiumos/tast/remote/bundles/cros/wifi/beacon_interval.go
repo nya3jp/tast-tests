@@ -57,7 +57,7 @@ func BeaconInterval(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	s.Log("Connecting to WiFi")
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {

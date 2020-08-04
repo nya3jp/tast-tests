@@ -54,7 +54,7 @@ func DisconnectClearsIP(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("AP setup done")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {

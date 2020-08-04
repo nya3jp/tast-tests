@@ -60,7 +60,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("Test fixture setup done; connecting the DUT to the AP")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
