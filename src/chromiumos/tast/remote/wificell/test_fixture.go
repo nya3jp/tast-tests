@@ -423,6 +423,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	if err != nil {
 		return nil, err
 	}
+
 	propsEnc, err := protoutil.EncodeToShillValMap(props)
 	if err != nil {
 		return nil, err
