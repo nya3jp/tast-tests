@@ -405,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "496cdf36_4cdc8749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-04T10:16:51Z",
+      "side": 1,
+      "message": "Seems like you didn\u0027t set testing.Param.Timeout? Without it, the default timeout (2min) is used. Note that it\u0027s different from testing.Param.Val.timeout.",
+      "parentUuid": "6bb047f2_7eeda9bc",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fc91295_da4a2ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
