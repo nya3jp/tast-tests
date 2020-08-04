@@ -116,11 +116,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideo(),
 		}, {
-			Name:              "vp9_2_hw",
-			Val:               playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
-			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp9.2.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
+			Name:      "vp9_2_hw",
+			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			// VP9 Profile 2 is only supported by the direct Video Decoder.
+			ExtraSoftwareDeps: []string{"cros_video_decoder", caps.HWDecodeVP9_2},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "vp9_hw_hdr",
@@ -199,11 +200,14 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
-			Name:              "vp9_2_hw_alt",
-			Val:               playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
-			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp9.2.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
+			Name:      "vp9_2_hw_alt",
+			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			// VP9 Profile 2 is only supported by the direct Video Decoder so we only
+			// want to run this case if that is not enabled by default, i.e. if the
+			// platform is configured to use the legacy video decoder by default.
+			ExtraSoftwareDeps: []string{"legacy_video_decoder", caps.HWDecodeVP9_2},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},
 	})
