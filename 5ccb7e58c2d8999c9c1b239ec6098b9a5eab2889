@@ -22,6 +22,30 @@
       "revId": "5ccb7e58c2d8999c9c1b239ec6098b9a5eab2889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74514077_db33b1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-08-04T08:14:44Z",
+      "side": 1,
+      "message": "It would be super long in some cases and make the alert email hard to read imo. I think listing the first failed test case is a reasonable trade-off to make the error message concise and informative. The full list is still available in the log.",
+      "parentUuid": "4d4c836a_cab6b1fd",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 83
+      },
+      "revId": "5ccb7e58c2d8999c9c1b239ec6098b9a5eab2889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
