@@ -24,7 +24,7 @@ func init() {
 			"mutexlox@chromium.org",
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
