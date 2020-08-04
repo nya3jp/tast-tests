@@ -51,6 +51,24 @@
       "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1a6fa06_0552b800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-04T23:24:32Z",
+      "side": 1,
+      "message": "Sounds good, note that in their current location other tast test were prevented from using them (\"import of chromiumos/tast/local/bundles/cros/platform/dlc is only allowed from chromiumos/tast/local/bundles/cros/platform or its descendant\")\n\nThis CL now moves them to a location where they can be used more broadly.\n\nPTAL",
+      "parentUuid": "33adb0bc_ed13c266",
+      "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
