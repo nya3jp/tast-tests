@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc5184cb_18656161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-04T18:33:45Z",
+      "side": 1,
+      "message": "Retrying dry run:\nAll 4 infra failures were \"clean up overlayfs mounts.unmount overlay workspace\" which doesn\u0027t seem related\n\nTest failures were \"timed out waiting for available DUT\"",
+      "revId": "37dd5d8a14fd3a15e99671166fdca56f9ec80bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
