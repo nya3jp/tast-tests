@@ -120,6 +120,12 @@ const (
 	ForceBatteryDischarge
 )
 
+// TestVal is used to parameterize tests based on BatteryDischargeMode
+type TestVal struct {
+	SetupOption BatteryDischargeMode
+	Val         interface{}
+}
+
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
 func PowerTest(ctx context.Context, c *chrome.TestConn, option BatteryDischargeMode) (CleanupCallback, error) {

@@ -30,15 +30,50 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
-			Name: "noarc",
-			Pre:  chrome.LoggedIn(),
+			Name:              "noarc",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.ForceBatteryDischarge,
+			},
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.ForceBatteryDischarge,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "noarc_nobatterymetrics",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.NoBatteryDischarge,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})

@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -48,6 +49,19 @@ func init() {
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: setup.TestVal{
+				SetupOption: setup.NoBatteryDischarge,
+			},
 		}},
 		Timeout: 15 * time.Minute,
 	})
