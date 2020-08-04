@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c56fd904_1ee3ac22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-04T03:45:04Z",
+      "side": 1,
+      "message": "I change the code, so now it does the fllowing:\n1- Connect to AP1 and verify connection.\n2- Setup a property watcher to verify that the following expected props changes are received in order:\n    A) State \u003d configuration.\n    B) State \u003d connected.\n    C) BSSID \u003d AP2 BSSID. checks the prop before waiting for change.\n3- Configure AP2.\n4- Deconfigure AP1.\n5- Wait for expected props in the pw.\n6- Verify connection with AP2.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
