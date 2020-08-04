@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae91f43_9ac8759c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-04T19:21:02Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "fd54a3addc426686a7bbe83b83b2753f8daaa34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d60c641_adf712a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-04T19:21:02Z",
+      "side": 1,
+      "message": "The diff is a bit difficult to digest, but these lines are effectively the only change.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "fd54a3addc426686a7bbe83b83b2753f8daaa34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc7e0c9_7186f451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-04T19:21:02Z",
+      "side": 1,
+      "message": "..and this hack will be removed in the next CL.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "fd54a3addc426686a7bbe83b83b2753f8daaa34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
