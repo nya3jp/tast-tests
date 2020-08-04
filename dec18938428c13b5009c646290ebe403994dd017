@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3274800_b316b207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-04T16:48:25Z",
+      "side": 1,
+      "message": "Based on https://tastboard.corp.google.com/test/ui.ChromeLoginGAIA, guado/rikku are still flaky and zork devices started failing recently.\nDo you know if they\u0027re fixed already?",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
