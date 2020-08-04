@@ -16,6 +16,92 @@
       "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f4b24e_9140e863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-04T14:31:13Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c196f31d_7155d368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-04T14:31:13Z",
+      "side": 1,
+      "message": "nit, optional: remove this part of the comment since this is implied.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce79a65e_6430a684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-04T14:31:13Z",
+      "side": 1,
+      "message": "huge nit, append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 52,
+        "startChar": 149,
+        "endLine": 52,
+        "endChar": 150
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6eaa654_2ee164eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-04T14:31:13Z",
+      "side": 1,
+      "message": "optional: remove this part of the comment since it implied",
+      "range": {
+        "startLine": 52,
+        "startChar": 84,
+        "endLine": 52,
+        "endChar": 128
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
