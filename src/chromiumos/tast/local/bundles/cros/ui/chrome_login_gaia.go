@@ -25,7 +25,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Vars: []string{
 			"ui.ChromeLoginGAIA.user",
