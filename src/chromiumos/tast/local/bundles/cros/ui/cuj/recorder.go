@@ -25,7 +25,7 @@ const (
 	groupOther      metricGroup = ""
 )
 
-const checkInterval = 300 * time.Millisecond
+const checkInterval = time.Second
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
