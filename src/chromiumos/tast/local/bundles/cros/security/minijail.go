@@ -305,7 +305,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		{
 			name:  "tmpfs",
 			cmd:   "stat -f /tmp -c %T", // the %T here is a format string to print the FS type
-			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/local", "c/usr/bin", "c/tmp"),
+			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/lib64", "c/usr/local", "c/usr/bin", "c/tmp"),
 			args: []string{
 				"-b", "/bin,/bin",
 				"-b", "/lib,/lib",
@@ -316,7 +316,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 				"-t",
 				"-v",
 			},
-			args64: []string{"-b", "/lib64,/lib64"},
+			args64: []string{"-b", "/lib64,/lib64", "-b", "/usr/lib64,/usr/lib64"},
 			check:  checkRegexp("^tmpfs\n$"),
 		},
 		{
