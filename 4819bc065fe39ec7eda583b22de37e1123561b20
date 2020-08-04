@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d28764c4_cb9c6140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-04T03:18:10Z",
+      "side": 1,
+      "message": "I can only do Code-Review +1, you may want to add Oshima as another reviewer.",
+      "revId": "4819bc065fe39ec7eda583b22de37e1123561b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
