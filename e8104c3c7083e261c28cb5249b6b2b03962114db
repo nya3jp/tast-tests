@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e2e2c81_7a1d107b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-04T07:39:14Z",
+      "side": 1,
+      "message": "Changed the structure of the test to skip running it on known devices with x86_64 supported and ARM64 not supported",
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
