@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a386ef63_3f98db6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-04T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c196f31d_7155d368",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce79a65e_6430a684",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 4
@@ -102,6 +126,54 @@
       "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ff7c67_6919c61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-04T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce79a65e_6430a684",
+      "range": {
+        "startLine": 52,
+        "startChar": 149,
+        "endLine": 52,
+        "endChar": 150
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb2b0ac5_4a9e2b03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-04T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6eaa654_2ee164eb",
+      "range": {
+        "startLine": 52,
+        "startChar": 84,
+        "endLine": 52,
+        "endChar": 128
+      },
+      "revId": "e8104c3c7083e261c28cb5249b6b2b03962114db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
