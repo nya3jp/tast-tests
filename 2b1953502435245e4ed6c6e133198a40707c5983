@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "587902b4_08809022",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-04T23:49:02Z",
+      "side": 1,
+      "message": "Yea I\u0027m worried about boot_mode may need to keep internal states in the future.  But if that isn\u0027t the case, then adding methods to helper is fine.",
+      "parentUuid": "52ef86a2_4c094313",
+      "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a10bd03_bc6cb69d",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
