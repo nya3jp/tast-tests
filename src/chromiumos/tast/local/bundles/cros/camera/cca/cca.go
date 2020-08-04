@@ -121,7 +121,7 @@ var (
 	MirrorButton = UIComponent{"mirror button", []string{"#toggle-mirror"}}
 	// ModeSelector is selection bar for different capture modes.
 	ModeSelector = UIComponent{"mode selector", []string{"#modes-group"}}
-	// SettingsButton is button for opening master setting menu.
+	// SettingsButton is button for opening primary setting menu.
 	SettingsButton = UIComponent{"settings", []string{"#open-settings"}}
 	// SwitchDeviceButton is button for switching camera device.
 	SwitchDeviceButton = UIComponent{"switch device button", []string{"#switch-device"}}
@@ -130,7 +130,7 @@ var (
 	// VideoPauseResumeButton is button for pausing or resuming video recording.
 	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
 
-	// SettingsBackButton is back button for closing master setting menu.
+	// SettingsBackButton is back button for closing primary setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
 		"#view-settings .menu-header button"}}
 	// GridSettingBackButton is back button for closing grid setting menu.

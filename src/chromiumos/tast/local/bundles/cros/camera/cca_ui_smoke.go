@@ -14,14 +14,14 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type ccaUISanityParams struct {
+type ccaUISmokeParams struct {
 	useFakeDeviceInChrome bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUISanity,
-		Desc:         "Sanity test for Chrome Camera App",
+		Func:         CCAUISmoke,
+		Desc:         "Smoke test for Chrome Camera App",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
@@ -30,17 +30,17 @@ func init() {
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			Pre:               chrome.LoggedIn(),
-			Val:               ccaUISanityParams{},
+			Val:               ccaUISmokeParams{},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
-			Val:               ccaUISanityParams{},
+			Val:               ccaUISmokeParams{},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "fake",
-			Val: ccaUISanityParams{
+			Val: ccaUISmokeParams{
 				useFakeDeviceInChrome: true,
 			},
 			// TODO(crbug.com/1050732): Remove this once the unknown crash on
@@ -50,10 +50,10 @@ func init() {
 	})
 }
 
-func CCAUISanity(ctx context.Context, s *testing.State) {
+func CCAUISmoke(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 
-	if s.Param().(ccaUISanityParams).useFakeDeviceInChrome {
+	if s.Param().(ccaUISmokeParams).useFakeDeviceInChrome {
 		var err error
 		cr, err = chrome.New(ctx, chrome.ExtraArgs(
 			"--use-fake-ui-for-media-stream",
