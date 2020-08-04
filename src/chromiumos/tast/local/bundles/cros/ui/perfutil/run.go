@@ -5,9 +5,10 @@
 package perfutil
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -139,12 +140,19 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		if err != nil {
 			s.Fatal("Failed to marshal the tracing data: ", err)
 		}
-		filename := "trace.data"
+		filename := "trace.data.gz"
 		if name != "" {
 			filename = name + "-" + filename
 		}
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filename), data, 0644); err != nil {
-			s.Fatal("Failed to save the trace file: ", err)
+		file, err := os.OpenFile(filepath.Join(s.OutDir(), filename), os.O_CREATE|os.O_RDWR, 0644)
+		if err != nil {
+			s.Fatal("Failed to open the trace file: ", err)
+		}
+		defer file.Close()
+		writer := gzip.NewWriter(file)
+		defer writer.Close()
+		if _, err := writer.Write(data); err != nil {
+			s.Fatal("Failed to write the data: ", err)
 		}
 	})
 }
