@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ccf7e11_f325d530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-04T23:24:33Z",
+      "side": 1,
+      "message": "I think that the real issue is likely that the alt tab menu hasn\u0027t managed to close between iterations of the for loop and then it finally closes when you are trying to open the menu and doesn\u0027t open again. Based on the errors that this test is currently returning, I don\u0027t think these sleeps are directly addressing the issue.",
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0263d0e4_472d9dab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 1
@@ -43,6 +60,70 @@
         "endLine": 131,
         "endChar": 44
       },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038b1345_1e7b2742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-04T23:24:33Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this wait is needed. The ones below makes sense because keys are being pressed back to back. At this point the key has already been pressed and we are waiting for the menu anyway. Waiting longer shouldn\u0027t do anything.",
+      "parentUuid": "b1701723_f551de4c",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f1cab8_3b05293e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-04T23:24:33Z",
+      "side": 1,
+      "message": "Not sure why you want to add this sleep either. Nothing fails at this part of the test. The failure is always when trying to open the alt tab menu again. Since the target window is always selected, this isn\u0027t failing. Otherwise we would see the \"Window (ID: %v) not focused after cycling to it: %v\" error messages on stainless:\n\nhttps://stainless.corp.google.com/search?view\u003dcluster\u0026first_date\u003d2020-07-29\u0026last_date\u003d2020-08-04\u0026test\u003d%5Etast%5C.ui%5C.WindowCycle%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 45
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9ae867_e0320149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-04T23:24:33Z",
+      "side": 1,
+      "message": "Can we add a check for the alt tab menu being closed at this point. I am wondering if at some point it manages to stay open between iterations and then causes the next iteration to fail.\n\nThat or you can add it to the beginning of the for loop before trying to open the menu.",
       "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
