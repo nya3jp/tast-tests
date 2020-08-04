@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc19e732_9adecc5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-04T22:18:46Z",
+      "side": 1,
+      "message": "There\u0027s some reordering that isn\u0027t described by the commit description. I think this CL could be as small as replacing an s.Fatal with a return.",
+      "revId": "c6f8755d89ca508bc52f1a8fb38683abc645047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "373af12c_e41a7896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-04T22:18:46Z",
+      "side": 1,
+      "message": "I think it would be clearer if you removed this block from the surrounding block:\n\n    adapters, err :\u003d bluetooth.Adapters(ctx)\n    if err !\u003d nil {\n        s.Fatal(\"Unable to get Bluetooth adapters: \", err)\n    }\n\n    // If there are no adapters, there is no output to verify.\n    if len(adapters) \u003d\u003d 0 {\n        return\n    }\n\n    if len(records) \u003c 2 {\n        s.Fatalf(\"Wrong number of output lines: got %d, want 2\", len(records))\n    }\n\nIn fact, I think that the current code will fail at L60 (accessing adapters[0]) if len(records)\u003d\u003d2 and len(adapters)\u003d\u003d0.",
+      "revId": "c6f8755d89ca508bc52f1a8fb38683abc645047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
