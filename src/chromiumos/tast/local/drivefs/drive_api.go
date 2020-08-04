@@ -90,6 +90,23 @@ func CreateDriveAPI(ctx context.Context, cr *chrome.Chrome, oauthCredentials str
 	}, nil
 }
 
+// CreateBlankGoogleDoc creates a google doc with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *DriveAPI) CreateBlankGoogleDoc(ctx context.Context, fileName string, dirPath []string) error {
+	doc := &drive.File{
+		MimeType: "application/vnd.google-apps.document",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	_, err := d.Service.Files.Create(doc).Do()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ServeAuthCodeRoute returns a http.Handler like function with state and auth code channel closed over.
 func ServeAuthCodeRoute(ctx context.Context, state string, authCodeChan chan string) func(rw http.ResponseWriter, req *http.Request) {
 	return func(rw http.ResponseWriter, req *http.Request) {
