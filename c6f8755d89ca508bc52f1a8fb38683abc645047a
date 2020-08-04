@@ -68,6 +68,24 @@
       "revId": "c6f8755d89ca508bc52f1a8fb38683abc645047a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129494ea_27c3b8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-04T22:38:47Z",
+      "side": 1,
+      "message": "I split the checks out to be a bit more distinct. Let me know if it looks better or not.",
+      "parentUuid": "25a41114_a9dd6d40",
+      "revId": "c6f8755d89ca508bc52f1a8fb38683abc645047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
