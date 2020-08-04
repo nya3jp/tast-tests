@@ -713,6 +713,24 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 	return ret, nil
 }
 
+// ClientHardwareAddr returns the HardwareAddr for the network interface.
+func (tf *TestFixture) ClientHardwareAddr(ctx context.Context) (string, error) {
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+	}
+
+	netIface := &network.GetHardwareAddrRequest{
+		InterfaceName: iface,
+	}
+	resp, err := tf.WifiClient().GetHardwareAddr(ctx, netIface)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get the HardwareAddr")
+	}
+
+	return resp.HwAddr, nil
+}
+
 // AssertNoDisconnect runs the given routine and verifies that no disconnection event
 // is captured in the same duration.
 func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
