@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c91872b7_51c5801b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-04T15:23:28Z",
+      "side": 1,
+      "message": "oka@ -- PTAL since you\u0027re the reviewer for the previous CL.\n\nOthers FYI",
+      "revId": "557f9f33b9850d7a05d88b17a8dd9155566f2b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
