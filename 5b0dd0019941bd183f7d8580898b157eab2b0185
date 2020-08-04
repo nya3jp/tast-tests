@@ -39,6 +39,23 @@
       "revId": "5b0dd0019941bd183f7d8580898b157eab2b0185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6df77b2_611a88bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-08-04T23:01:54Z",
+      "side": 1,
+      "message": "tast-owners@ PTAL\nmcasas@ Thanks for the quick review!",
+      "revId": "5b0dd0019941bd183f7d8580898b157eab2b0185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
