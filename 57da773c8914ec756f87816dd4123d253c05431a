@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "7d001166_8a8d54da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-04T07:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e58e5bec_3dd8efb8",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "57da773c8914ec756f87816dd4123d253c05431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef042397_46c14810",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
         "patchSetId": 2
