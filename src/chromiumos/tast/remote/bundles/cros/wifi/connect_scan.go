@@ -207,7 +207,7 @@ func connectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name s
 		defer cancel()
 
 		testing.ContextLog(ctx, "Connecting to WiFi")
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+		if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 			return nil, nil, err
 		}
 		defer func(ctx context.Context) {
