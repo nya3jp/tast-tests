@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75fb397f_b1dd56d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-04T00:14:58Z",
+      "side": 1,
+      "message": "I\u0027m fine with this change but I\u0027m not sure if this is the expected change. I don\u0027t think the resize handle should be gone.\n\nAlso, the linked bug does not say about that as far as I checked risan\u0027s comment.",
+      "revId": "c2ffddea281ae78366c40ce1e330c5562a5ccb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
