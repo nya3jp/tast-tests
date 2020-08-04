@@ -142,7 +142,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		return manager.WaitForServiceProperties(ctx, map[string]interface{}{
 			shillconst.ServicePropertyType:        "ethernet",
 			shillconst.ServicePropertyIsConnected: true,
-		}, 8*time.Second)
+		}, 15*time.Second)
 	}()
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
