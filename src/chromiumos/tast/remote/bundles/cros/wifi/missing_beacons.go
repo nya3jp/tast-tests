@@ -66,7 +66,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var servicePath string
-	if resp, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if resp, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	} else {
 		servicePath = resp.ServicePath

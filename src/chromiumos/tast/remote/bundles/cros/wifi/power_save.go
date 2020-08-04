@@ -88,7 +88,7 @@ func PowerSave(ctx context.Context, s *testing.State) {
 	// TODO(b:158222331) Check if it is important to test switching
 	// the powersave ON before connecting to the AP.
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
