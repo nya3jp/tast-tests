@@ -52,6 +52,24 @@
       "revId": "39287b38caf13d3424d641dc285bd10eaeaed8e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0729cc_62cb7a76",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-04T02:59:00Z",
+      "side": 1,
+      "message": "Done. Use only the time of disconnect event as the end/start time of link failure/reassociate time.",
+      "parentUuid": "a2d3c7d4_7a20637d",
+      "revId": "39287b38caf13d3424d641dc285bd10eaeaed8e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
