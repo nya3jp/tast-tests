@@ -27,6 +27,7 @@ import (
 
 const (
 	hostapdCmd = "hostapd"
+	hostapdCli = "/usr/bin/hostapd_cli"
 )
 
 // KillAll kills all running hostapd on host, useful for environment setup/cleanup.
@@ -229,6 +230,15 @@ func (s *Server) Close(ctx context.Context) error {
 	if err := s.host.Command("rm", s.confPath()).Run(ctx); err != nil {
 		return errors.Wrap(err, "failed to remove config")
 	}
+	return nil
+}
+
+// DeauthClient deauthentictaes client with specified mac address.
+func (s *Server) DeauthClient(ctx context.Context, clientMac string) error {
+	if err := s.host.Command(hostapdCli, fmt.Sprintf("-p%s", s.ctrlPath()), "deauthenticate", clientMac).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to deauthenticate client with mac address %s", clientMac)
+	}
+
 	return nil
 }
 

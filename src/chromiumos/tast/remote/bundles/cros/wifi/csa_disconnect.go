@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -19,19 +20,34 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	primaryChannel = 64
+	alterChannel   = 36
+	bssid          = "00:11:22:33:44:55"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        CSA,
-		Desc:        "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func:        CSADisconnect,
+		Desc:        "Verifies that DUT can still connect to the AP when it is disconnected right after receiving a CSA message. This is to make sure the MAC 80211 queues are not stuck after those two events",
+		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
+		Params: []testing.Param{
+			{
+				Name: "client",
+				Val:  true,
+			}, {
+				Name: "router",
+				Val:  false,
+			},
+		},
 	})
 }
 
-func CSA(ctx context.Context, s *testing.State) {
+func CSADisconnect(ctx context.Context, s *testing.State) {
 	// Note: Not all clients support CSA, but they generally should at least try
 	// to disconnect from the AP which is what the test expects to see.
 
@@ -74,48 +90,58 @@ func CSA(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	apOps := []hostapd.Option{
-		hostapd.Mode(hostapd.Mode80211nMixed),
-		hostapd.Channel(64),
-		hostapd.HTCaps(hostapd.HTCapHT20),
+	connectAP := func(ctx context.Context, channel int) (context.Context, *wificell.APIface, func(context.Context), error) {
+		s.Logf("Setting up the AP on channel %d", channel)
+		apOps := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(bssid)}
+		ap, err := tf.ConfigureAP(ctx, apOps, nil)
+		if err != nil {
+			return ctx, nil, nil, err
+		}
+
+		configProps := map[string]interface{}{
+			shillconst.ServicePropertyAutoConnect: false,
+		}
+
+		if _, err := tf.ConnectWifiAP(ctx, ap, configProps); err != nil {
+			return ctx, nil, nil, err
+		}
+
+		// Assert connection.
+		if err := tf.VerifyConnection(ctx, ap); err != nil {
+			s.Fatal("Failed to verify connection: ", err)
+		}
+
+		sCtx, cancelD := tf.ReserveForDeconfigAP(ctx, ap)
+		rCtx, cancelC := ctxutil.Shorten(sCtx, 5*time.Second)
+		deferFunc := func(ctx context.Context) {
+			cancelC()
+			if err := tf.DisconnectWifi(ctx); err != nil {
+				// Do not fail on this error as we're triggering some
+				// disconnection in this test and the service can be
+				// inactive at this point.
+				s.Log("Failed to disconnect WiFi: ", err)
+			}
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
+				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
+			}
+
+			cancelD()
+			s.Logf("Deconfiguring the AP on channel %d", channel)
+			if err := tf.DeconfigAP(ctx, ap); err != nil {
+				s.Error("Failed to deconfig AP: ", err)
+			}
+		}
+
+		return rCtx, ap, deferFunc, nil
 	}
-	ap, err := tf.ConfigureAP(ctx, apOps, nil)
+
+	rCtx1, ap, disconnect1, err := connectAP(ctx, primaryChannel)
 	if err != nil {
-		s.Fatal("Failed to configure AP: ", err)
+		s.Fatal("Failed to set up and connect AP: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DeconfigAP(ctx, ap); err != nil {
-			s.Error("Failed to deconfig AP: ", err)
-		}
-	}(ctx)
-	s.Log("AP setup done")
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
-	defer cancel()
-
-	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
-		s.Fatal("Failed to connect to WiFi: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.DisconnectWifi(ctx); err != nil {
-			// Do not fail on this error as we're triggering some
-			// disconnection in this test and the service can be
-			// inactive at this point.
-			s.Log("Failed to disconnect WiFi: ", err)
-		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
-		}
-	}(ctx)
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	s.Log("Connected")
-
-	// Assert connection.
-	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
-		s.Fatal("Failed to ping from DUT: ", err)
-	}
+	defer disconnect1(ctx)
+	ctx = rCtx1
 
 	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
 	if err != nil {
@@ -135,14 +161,16 @@ func CSA(ctx context.Context, s *testing.State) {
 	}
 	defer evLog.Stop(ctx)
 
+	disconnDetected := false
 	const maxRetry = 5
-	const alterChannel = 36
 	// Action frame might be lost, give it some retries.
 	for i := 0; i < maxRetry; i++ {
 		s.Logf("Try sending channel switch frame %d", i)
+
 		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alterChannel); err != nil {
 			s.Fatal("Failed to send channel switch frame: ", err)
 		}
+
 		// The frame might need some time to reach DUT, poll for a few seconds.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// TODO(b/154879577): Find some way to know if DUT supports
@@ -152,6 +180,7 @@ func CSA(ctx context.Context, s *testing.State) {
 				return nil
 			}
 			if len(evLog.EventsByType(iw.EventTypeDisconnect)) > 0 {
+				disconnDetected = true
 				s.Log("Client disconnection detected")
 				return nil
 			}
@@ -160,9 +189,32 @@ func CSA(ctx context.Context, s *testing.State) {
 			Timeout:  3 * time.Second,
 			Interval: 200 * time.Millisecond,
 		}); err == nil {
-			// Verified, return.
-			return
+			// Verified, break.
+			break
 		}
 	}
-	s.Fatal("Client failed to disconnect or switch channel")
+
+	if !disconnDetected {
+		if s.Param().(bool) {
+			// Client initiated disconnect.
+			if err := tf.DisconnectWifi(ctx); err != nil {
+				s.Fatal("Failed to disconnect WiFi: ", err)
+			}
+		} else {
+			// Router initiated disconnect.
+			if err := tf.Router().DeauthenticateClient(ctx, ap, bssid); err != nil {
+				s.Fatal("Failed to disconnect WiFi: ", err)
+			}
+			if err := tf.AssureDisconnect(ctx, 20*time.Second); err != nil {
+				s.Fatalf("DUT: failed to disconnect in %s: %v", 20*time.Second, err)
+			}
+		}
+	}
+	s.Log("Client Disconnetcted")
+
+	_, _, disconnect2, err := connectAP(ctx, alterChannel)
+	if err != nil {
+		s.Fatal("Failed to set up and connect AP: ", err)
+	}
+	disconnect2(ctx)
 }
