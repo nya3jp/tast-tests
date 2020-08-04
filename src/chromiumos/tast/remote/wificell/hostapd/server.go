@@ -232,6 +232,24 @@ func (s *Server) Close(ctx context.Context) error {
 	return nil
 }
 
+// DeauthClient deauthentictaes client with specified mac address.
+func (s *Server) DeauthClient(ctx context.Context, clientMac string) error {
+	if err := s.host.Command("/usr/sbin/hostapd_cli", "deauthenticate", clientMac).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to deauthenticate client with mac address %s", clientMac)
+	}
+
+	return nil
+}
+
+// SendCSA sends CSA from AP.
+func (s *Server) SendCSA(ctx context.Context, freq int) error {
+	if err := s.host.Command("/usr/sbin/hostapd_cli", "chan_switch", "5", fmt.Sprintf("%d", freq), "ht").Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send CSA with freq %d", freq)
+	}
+
+	return nil
+}
+
 // Interface returns the interface used by the hostapd.
 func (s *Server) Interface() string {
 	return s.iface

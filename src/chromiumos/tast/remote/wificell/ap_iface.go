@@ -155,6 +155,16 @@ func (h *APIface) stop(ctx context.Context) error {
 	return retErr
 }
 
+// deauthenticateClient deauthentictaes client with specified mac address.
+func (h *APIface) deauthenticateClient(ctx context.Context, clientMac string) error {
+	return h.hostapd.DeauthClient(ctx, clientMac)
+}
+
+// sendCSA sends CSA from AP.
+func (h *APIface) sendCSA(ctx context.Context, freq int) error {
+	return h.hostapd.SendCSA(ctx, freq)
+}
+
 // configureIface configures the interface which we're providing services on.
 func (h *APIface) configureIface(ctx context.Context) error {
 	var retErr error

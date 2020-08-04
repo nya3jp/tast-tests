@@ -65,7 +65,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
 
