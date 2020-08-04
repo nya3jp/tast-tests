@@ -154,11 +154,12 @@ func Minijail(ctx context.Context, s *testing.State) {
 		return testCase{
 			name:  name,
 			cmd:   cmd,
-			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/local", "c/tmp-rw", "c/tmp-ro", "tmp"),
+			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/lib64", "c/usr/local", "c/tmp-rw", "c/tmp-ro", "tmp"),
 			args: append([]string{
 				"-b", "/bin,/bin",
 				"-b", "/lib,/lib",
 				"-b", "/usr/lib,/usr/lib",
+				"-b", "/usr/lib64,/usr/lib64",
 				"-b", "/usr/local,/usr/local",
 				"-b", "%T/tmp,/tmp-rw,1",
 				"-b", "%T/tmp,/tmp-ro",
