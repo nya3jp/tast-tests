@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "718518b5_9c00b7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-08-04T10:37:27Z",
+      "side": 1,
+      "message": "Hi Greg, thanks for the suggestion in https://crrev.com/c/2315475, here is the renaming CL :)",
+      "revId": "a6443e75d11893bd411517049385ccdb12c2cbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
