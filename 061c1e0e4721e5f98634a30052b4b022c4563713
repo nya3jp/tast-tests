@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64f0ef92_cb3392b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-04T01:18:38Z",
+      "side": 1,
+      "message": "I think that\u0027s not necessary, as ash.WaitForARCAppWindowState above (line 80) checks/waits the window state already.",
+      "parentUuid": "1a1b4644_5e0ee488",
+      "revId": "061c1e0e4721e5f98634a30052b4b022c4563713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e4b8195_1faf49d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "061c1e0e4721e5f98634a30052b4b022c4563713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc64a0c_9d68145b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-04T01:18:38Z",
+      "side": 1,
+      "message": "Good idea! Done.",
+      "parentUuid": "9e4b8195_1faf49d6",
+      "revId": "061c1e0e4721e5f98634a30052b4b022c4563713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
