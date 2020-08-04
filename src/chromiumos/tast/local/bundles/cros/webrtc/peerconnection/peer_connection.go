@@ -130,6 +130,11 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecTy
 			if implementation == "unknown" {
 				return errors.New("getStats() didn't fill in the codec implementation (yet)")
 			}
+			// "ExternalEncoder" is the default value for encoder implementations
+			// before filling the actual one, see b/162764016.
+			if codecType == Encoding && implementation == "ExternalEncoder" {
+				return errors.New("getStats() didn't fill in the encoder implementation (yet)")
+			}
 			return nil
 		}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout})
 
