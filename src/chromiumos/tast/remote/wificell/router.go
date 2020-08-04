@@ -433,6 +433,11 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 	return err
 }
 
+// DeauthenticateClient deauthentictaes client with specified mac address.
+func (r *Router) DeauthenticateClient(ctx context.Context, h *APIface, clientMac string) error {
+	return h.deauthenticateClient(ctx, clientMac)
+}
+
 // StartCapture starts a packet capturer.
 // After getting a Capturer instance, c, the caller should call r.StopCapture(ctx, c) at the end,
 // and use the shortened ctx (provided by r.ReserveForStopCapture(ctx, c)) before r.StopCapture()

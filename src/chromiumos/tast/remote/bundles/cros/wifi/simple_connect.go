@@ -651,7 +651,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			}
 		}(ctx)
 
-		resp, err := tf.ConnectWifiAP(ctx, ap)
+		resp, err := tf.ConnectWifiAP(ctx, ap, nil)
 		if err != nil {
 			if expectedFailure {
 				s.Log("Failed to connect to WiFi as expected")

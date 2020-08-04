@@ -69,7 +69,7 @@ func GTK(ctx context.Context, s *testing.State) {
 
 	s.Log("AP setup done")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
