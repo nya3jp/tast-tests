@@ -53,6 +53,15 @@ var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen",
 	chromeUseHwDecoderForSmallResolutions,
 	chrome.ExtraArgs("--enable-features=UseHDRTransferFunction"))
 
+// ChromeCompositedVideo returns a precondition equal to ChromeVideo but also
+// disabling hardware overlays entirely to force video to be composited.
+func ChromeCompositedVideo() testing.Precondition { return chromeCompositedVideoPre }
+
+var chromeCompositedVideoPre = chrome.NewPrecondition("compositedVideo",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chrome.ExtraArgs("--enable-hardware-overlays=\"\""))
+
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
 // "fake webcam"), see https://webrtc.org/testing/.
