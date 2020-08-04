@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc1b3935_2154bf53",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-04T17:17:29Z",
+      "side": 1,
+      "message": "I don\u0027t recall this discussion from the design doc, although I do recall a similar discussion about not maintaining state-variables at the Helper level.\n\nThe remote HWSec Helper you linked does have functional methods, like h.EnsureTPMIsReset and h.Reboot. These are very similar to what we see here. I believe the CmdRunnerRemote that you linked serves the specific purpose of allowing the common HWSec Helper to use a generic CmdRunner interface across both local and remote packages.\n\nI haven\u0027t yet explored an actual implementation of a ModeSwitcher type. Thinking abstractly, I think it might have the opposite effect of adding unnecessary complexity. I will code up a prototype and upload it as a new patch set, and we\u0027ll see how it looks.",
+      "parentUuid": "e6a2870e_f3cbbe4b",
+      "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a10bd03_bc6cb69d",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-03T22:59:59Z",
       "side": 1,
       "message": "Define and use a ServerHostPortDefault (empty string) constant.",
+      "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b396aa1_3d4f303b",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-04T17:17:29Z",
+      "side": 1,
+      "message": "If I understand correctly, you are suggesting that a firmware test which doesn\u0027t use Servo should explicitly reference the ServoHostPortDefault, such as the following:\n\n    h :\u003d NewHelper(s.DUT(), s.RPCHint(), firmware.ServoHostPortDefault)\n\nIs that correct?\n\nI disagree here: I think that \"\" is less verbose, clearly an empty value, and doesn\u0027t risk confusion with terms like servo.Default().",
+      "parentUuid": "2a10bd03_bc6cb69d",
       "revId": "2b1953502435245e4ed6c6e133198a40707c5983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
