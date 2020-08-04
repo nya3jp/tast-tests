@@ -39,10 +39,6 @@ func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
-	if len(records) < 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2+", len(records))
-	}
-
 	// Verify the headers are correct.
 	want := []string{"name", "address", "powered", "num_connected_devices"}
 	got := records[0]
@@ -54,6 +50,14 @@ func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Unable to get Bluetooth adapters: ", err)
+	}
+
+	if len(records) < 2 {
+		if len(adapters) == 0 {
+			// If there are no adapters, there is no output to verify.
+			return
+		}
+		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
 	}
 
 	if len(adapters) != 1 {
