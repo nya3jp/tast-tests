@@ -50,7 +50,7 @@ func DisableEnable(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("AP setup done")
 
-	connRes, err := tf.ConnectWifiAP(ctx, ap)
+	connRes, err := tf.ConnectWifiAP(ctx, ap, nil)
 	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}

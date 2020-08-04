@@ -65,7 +65,7 @@ func SecChange(ctx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+		if _, err := tf.ConnectWifiAP(ctx, ap, nil); err != nil {
 			return errors.Wrap(err, "failed to connect to WiFi")
 		}
 		defer func(ctx context.Context) {
