@@ -47,10 +47,20 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		deviceMarginSysFile          = "/sys/kernel/mm/chromeos-low_mem/margin"
 	)
 
+	prevMargin, err := ioutil.ReadFile(deviceMarginSysFile)
+	if err != nil {
+		s.Fatalf("Unable to read %q: %v", deviceMarginSysFile, err)
+	}
 	margin := fmt.Sprintf("%d %d", deviceCriticalMemoryMarginMB, deviceModerateMemoryMarginMB)
 	if err := ioutil.WriteFile(deviceMarginSysFile, []byte(margin), 0644); err != nil {
 		s.Fatalf("Unable to set low-memory margin to %q in file %s: %v", margin, deviceMarginSysFile, err)
 	}
+	defer func() {
+		// Restore previous device margin
+		if err := ioutil.WriteFile(deviceMarginSysFile, prevMargin, 0644); err != nil {
+			s.Fatalf("Unable to restore low-memory margin to %q: %v", string(prevMargin), err)
+		}
+	}()
 
 	s.Log("Starting browser instance")
 	cr, err := chrome.New(ctx,
