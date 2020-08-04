@@ -16,6 +16,23 @@
       "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3fa213b_ddb17a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-08-04T16:08:27Z",
+      "side": 1,
+      "message": "Is it possible to leverage: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/dlc/dlcservice_util.go;l\u003d243\n\nWhich wraps a lot of the functionalities of dlcservice_util already?",
+      "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
