@@ -33,6 +33,24 @@
       "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33adb0bc_ed13c266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-08-04T16:15:37Z",
+      "side": 1,
+      "message": "+1000\n\nPlease, let\u0027s not reinvent the wheel! :)",
+      "parentUuid": "e3fa213b_ddb17a53",
+      "revId": "7f8d06a4ad9c76f3960110c674ef656b0ea2b61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
