@@ -24,6 +24,9 @@ type PreData struct {
 
 	// The API connection to the Test extension, reused by tests
 	TestAPIConn *chrome.TestConn
+
+	// The DriveAPI singleton
+	DriveAPI *DriveAPI
 }
 
 // NewPrecondition creates a new drivefs precondition for tests that need different logins.
@@ -52,6 +55,7 @@ type preImpl struct {
 	mountPath string // The path where Drivefs is mounted
 	cr        *chrome.Chrome
 	tconn     *chrome.TestConn
+	driveAPI  *DriveAPI
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -114,6 +118,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	p.tconn = tconn
 
+	jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
+
+	// Perform Drive API authentication
+	driveAPI, err := CreateDriveAPI(ctx, p.cr, jsonCredentials)
+	if err != nil {
+		s.Fatal("Failed creating a DriveAPI instance: ", err)
+	}
+	p.driveAPI = driveAPI
+
 	// Lock Chrome and make sure deferred function does not run cleanup.
 	chrome.Lock()
 	shouldClose = false
@@ -135,12 +148,13 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.mountPath, p.tconn}
+	return PreData{p.cr, p.mountPath, p.tconn, p.driveAPI}
 }
 
 // cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	p.tconn = nil
+	p.driveAPI = nil
 	p.mountPath = ""
 
 	if p.cr != nil {
