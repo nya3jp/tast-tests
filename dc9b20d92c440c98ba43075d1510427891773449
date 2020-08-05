@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8be408ef_08075bf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T14:10:26Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "dc9b20d92c440c98ba43075d1510427891773449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b931c0a_962e77f7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -13,6 +36,23 @@
       "writtenOn": "2020-08-05T13:32:14Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "dc9b20d92c440c98ba43075d1510427891773449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a468924_156db722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T14:10:26Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "dc9b20d92c440c98ba43075d1510427891773449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
