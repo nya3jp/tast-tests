@@ -50,6 +50,24 @@
       "revId": "37dd5d8a14fd3a15e99671166fdca56f9ec80bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dadc2520_0c1ce157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-05T00:34:12Z",
+      "side": 1,
+      "message": "I think this does? In my testing, cyan previously ran both crashpad and breakpad variants; it now skips the breakpad variants.\n\nSee, for example, this CLs trybot run.  https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4dd1b999e523e610/ is on octopus and the breakpad variants are skipped.",
+      "parentUuid": "1c2f2760_616a8b8b",
+      "revId": "37dd5d8a14fd3a15e99671166fdca56f9ec80bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
