@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9847b390_db81e5bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-05T19:07:09Z",
+      "side": 1,
+      "message": "Nice! ",
+      "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f982363_8e01f3ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 2
