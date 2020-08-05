@@ -39,7 +39,7 @@ func waitForWindowActiveAndFinishAnimating(ctx context.Context, tconn *chrome.Te
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// WindowCycle verifies that we can cycle through open windows using Alt+Tab and Alt+Shift+Tab
+// WindowCycle verifies that we can cycle through open windows using Alt+Tab and Alt+Shift+Tab.
 func WindowCycle(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -47,7 +47,7 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Launch the apps for the test
+	// Launch the apps for the test.
 	checkApps := []apps.App{apps.Chrome, apps.Files, apps.Settings}
 	for _, app := range checkApps {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
@@ -99,10 +99,13 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	// Index of the window we'll cycle to
+	// Index of the window we'll cycle to.
 	var target int
 
-	// Cycle forwards (Alt + Tab) and backwards (Alt + Shift + Tab)
+	// Params for the window cycle menu.
+	cycleMenuParams := ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}
+
+	// Cycle forwards (Alt + Tab) and backwards (Alt + Shift + Tab).
 	for _, direction := range []string{"forward", "backward"} {
 		s.Log("Cycle direction: ", direction)
 		// Press 'tab' 1, 2, 3, and 4 times to verify cycling behavior.
@@ -110,7 +113,12 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		// cycling behavior since 4 tab presses will cycle back around.
 		for i := 0; i < 4; i++ {
 			func() {
-				// Open cycle window and get app order
+				// Make sure the cycle menu isn't open already before we try to alt+tab.
+				if err := ui.WaitUntilGone(ctx, tconn, cycleMenuParams, 5*time.Second); err != nil {
+					s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
+				}
+
+				// Open cycle window and get app order.
 				if err := keyboard.AccelPress(ctx, "Alt"); err != nil {
 					s.Fatal("Failed to long press Alt: ", err)
 				}
@@ -129,14 +137,14 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to press Tab: ", err)
 				}
 
-				// Verify that the cycle window appears in the UI with the right number of windows
-				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}, 5*time.Second)
+				// Verify that the cycle window appears in the UI with the right number of windows.
+				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, cycleMenuParams, 5*time.Second)
 				if err != nil {
 					s.Fatal("Failed to get Alt+Tab cycle menu: ", err)
 				}
 				defer cycleWindow.Release(ctx)
 
-				// Check that there are 3 windows in the cycle menu
+				// Check that there are 3 windows in the cycle menu.
 				openApps, err := cycleWindow.Descendants(ctx, ui.FindParams{
 					Role:  ui.RoleTypeWindow,
 					State: map[ui.StateType]bool{ui.StateTypeFocusable: true},
