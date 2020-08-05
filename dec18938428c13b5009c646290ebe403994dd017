@@ -16,6 +16,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4913454_7f4b6427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-05T06:09:51Z",
+      "side": 1,
+      "message": "I know there are bugs filed to fix that: crbug.com/1109176 and crbug.com/1112273. How far they are from solving them - I don\u0027t know.",
+      "parentUuid": "f3274800_b316b207",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
