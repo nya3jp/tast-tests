@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "e2b2acab_59b8fd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml/ml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T01:26:41Z",
+      "side": 1,
+      "message": "I don\u0027t think \"slice\" is necessary, because it is already string slice. Ditto for all others.",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281b48a3_a4801605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml/ml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T01:26:41Z",
+      "side": 1,
+      "message": "nit: to be aligned the name with below, toFind?",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0d81de_b0317054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml/ml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T01:26:41Z",
+      "side": 1,
+      "message": "to minimize the interface, could you avoid passing testing.State?\nInstead, could you pass the output path directly?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d quote \u003d\u003d\n... Avoid passing testing.State when it’s not actually necessary:\n\nIf a function just needs the output directory, pass a path.\n...\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad7617c8_78e05eff",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
         "patchSetId": 2
@@ -63,6 +132,23 @@
       "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "484276e8_ea63ba96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T01:26:41Z",
+      "side": 1,
+      "message": "Clar: How long is the stdout/stderr?\nIf it is short, that\u0027s fine, but if it\u0027s very long, it may be worth logging only on error.",
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
