@@ -4,6 +4,7 @@
 
 package org.chromium.arc.testapp.arcaudiotest;
 
+import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
 
@@ -40,6 +41,10 @@ public abstract class SamplePlayerBase {
 
     public void setPerformanceMode(int performanceMode) {
         mTrackBuilder.setPerformanceMode(performanceMode);
+    }
+
+    public void setAudioAttributes(AudioAttributes attributes) {
+        mTrackBuilder.setAudioAttributes(attributes);
     }
 
     public void play(long duration_millis) throws Exception {
