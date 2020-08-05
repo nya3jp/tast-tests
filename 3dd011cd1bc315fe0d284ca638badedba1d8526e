@@ -103,6 +103,30 @@
       "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f02cd6a_c3998921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T17:07:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a34518e7_1764bdd9",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
