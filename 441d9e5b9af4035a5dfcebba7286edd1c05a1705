@@ -16,6 +16,41 @@
       "revId": "441d9e5b9af4035a5dfcebba7286edd1c05a1705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47fa2095_7e40830a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T03:20:26Z",
+      "side": 1,
+      "message": "Request for a +2 blessing.",
+      "revId": "441d9e5b9af4035a5dfcebba7286edd1c05a1705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0abb121_d85b8946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T03:20:26Z",
+      "side": 1,
+      "message": "Crosbolt does not collect logs generated from suite:wifi_func_tast. Let\u0027s observe the tast.wifi.ScanPerf graph after it is run in suite:wifi_perf.",
+      "parentUuid": "e8018b6b_487e9e34",
+      "revId": "441d9e5b9af4035a5dfcebba7286edd1c05a1705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
