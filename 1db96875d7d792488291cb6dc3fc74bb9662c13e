@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4cdb9674_aa9d587e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:37:23Z",
+      "side": 1,
+      "message": "LGTM, don\u0027t forget to also get CR+1 from another test owner.",
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f735cc1_e7742366",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 4
