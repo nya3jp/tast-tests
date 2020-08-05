@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "712f96be_926645b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-05T22:46:12Z",
+      "side": 1,
+      "message": "Thanks, addressed.\n\nGabor or Katherine, could you +1/+2 again? The +1 Gabor gave me was not sticky.\n",
+      "revId": "780abc71542b18fdcfe0a60bd70b90db437ad405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
