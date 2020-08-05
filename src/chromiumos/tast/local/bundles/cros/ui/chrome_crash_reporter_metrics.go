@@ -148,9 +148,15 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err = crash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 		s.Fatal("Could not restart anomaly detector: ", err)
 	}
+	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
+	defer func(ctx context.Context) {
+		if err := crash.RestartAnomalyDetector(ctx); err != nil {
+			s.Error("Could not restart anomaly detector: ", err)
+		}
+	}(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -213,5 +219,16 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 
 	if err != nil {
 		s.Error("Failed when looking for expected Histogram diffs: ", err)
+	}
+
+	if params.expectMissing {
+		files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
+			[]string{"missed_crash.*.meta", "missed_crash.*.log.gz"})
+		if err != nil {
+			s.Fatal("Failed to wait for crash files: ", err)
+		}
+		if err := crash.RemoveAllFiles(ctx, files); err != nil {
+			s.Log("Couldn't clean up files: ", err)
+		}
 	}
 }
