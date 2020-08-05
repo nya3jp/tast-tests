@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbdc2786_82a7b542",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T02:21:24Z",
+      "side": 1,
+      "message": "Let\u0027s try this out instead of the sleeps and see how it goes",
+      "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
