@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b197d042_b2638034",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-05T04:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53abe08c_d783842a",
+      "range": {
+        "startLine": 91,
+        "startChar": 132,
+        "endLine": 91,
+        "endChar": 137
+      },
+      "revId": "b57b1804456ae8a64c68214976b7ef6bcb6068bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e93a7ec_3be518b8",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 13
