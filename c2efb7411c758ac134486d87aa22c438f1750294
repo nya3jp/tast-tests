@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "1d222cb2_8204bbbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-05T01:08:51Z",
+      "side": 0,
+      "message": "Could you please submit at least your second fix at L81?\nThanks",
+      "parentUuid": "7bdb16fb_759a5318",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65472e1a_194bd875",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 2
