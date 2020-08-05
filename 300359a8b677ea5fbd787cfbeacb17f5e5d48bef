@@ -33,6 +33,91 @@
       "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "494185d5_d49e9e79",
+        "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T17:12:49Z",
+      "side": 1,
+      "message": "Clar: will this be used in other DLC related tests, too?\nThe functions below are to control DLC, while this is something assertion of the testing condition, so could be test specific.\nIf that\u0027s the case, I\u0027d recommend to keep this under bundles/cros.",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b134f9d5_0f1195f7",
+        "filename": "src/chromiumos/tast/local/dlc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T17:12:49Z",
+      "side": 1,
+      "message": "I\u0027d recommend to keep this under bundles/cros, because conceptually the utilities in this file is almost independent from dlc.",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77356b3_9cf344b5",
+        "filename": "src/chromiumos/tast/local/dlc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T17:12:49Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a part of dlc library. Could you keep this in the per category library (i.e. under cros/platform/dlc/...).\n\nor, can this be replaced by src/platform/tast/src/chromiumos/tast/fsutil/fsutil.go?",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0379438f_1c8be650",
+        "filename": "src/chromiumos/tast/local/dlc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T17:12:49Z",
+      "side": 1,
+      "message": "ditto.\n\nIt looks up DLC user, but other than that it is generic file system operation.",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6f6858_45ea4ff0",
+        "filename": "src/chromiumos/tast/local/dlc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-05T17:12:49Z",
+      "side": 1,
+      "message": "ditto. This looks like just a specific to the testing, and independent from dlc.",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
