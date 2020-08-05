@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"context"
@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
@@ -22,16 +23,44 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrostiniFiles,
+		Func:         Files,
 		Desc:         "Checks that crostini files integration works including sshfs, shared folders, backup",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Params: []testing.Param{
+			{
+				Name:              "artifact",
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+			},
+			{
+				Name:              "artifact_unstable",
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:      "download_stretch",
+				Pre:       crostini.StartedByDownloadStretch(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:      "download_buster",
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
-func CrostiniFiles(ctx context.Context, s *testing.State) {
+func Files(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to log in: ", err)
@@ -47,19 +76,6 @@ func CrostiniFiles(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
-	}
-	s.Log("Waiting for crostini to install (typically ~ 3 mins) and mount sshfs dir ", sshfsMountDir)
-	if err = tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.runCrostiniInstaller(() => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(new Error(chrome.runtime.lastError.message));
-		     }
-		   });
-		 })`, nil); err != nil {
-		s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
 	}
 
 	s.Log("Testing SSHFS Mount")
