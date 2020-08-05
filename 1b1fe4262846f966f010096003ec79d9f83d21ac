@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e29872c0_56cfc777",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-05T05:45:36Z",
+      "side": 1,
+      "message": "The auth code is a one-time authorization code that is exchanged for the OAuth token, you can\u0027t reuse it and it is short lived.",
+      "parentUuid": "67f6db9f_1c5dc82a",
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee8eb8a_b6ad2587",
         "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
         "patchSetId": 7
@@ -50,6 +68,24 @@
       "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c9875c_89fcd5e9",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-05T05:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee8eb8a_b6ad2587",
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "201171bd_4ca60a25",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-05T05:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddaf33ab_9c4a4a47",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18f953d4_0f3836a6",
         "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
         "patchSetId": 7
@@ -96,6 +156,30 @@
       "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594c678f_5f3d842b",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-05T05:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f953d4_0f3836a6",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
