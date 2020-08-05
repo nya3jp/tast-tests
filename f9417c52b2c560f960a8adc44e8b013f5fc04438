@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "d0b5257d_b9c06dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T14:12:36Z",
+      "side": 1,
+      "message": "Please include the bug here as a ToDo. Short link: crbug.com/1113188",
+      "parentUuid": "3d89ab98_34f7d6a7",
+      "revId": "f9417c52b2c560f960a8adc44e8b013f5fc04438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10e320ae_972fa06b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 1
