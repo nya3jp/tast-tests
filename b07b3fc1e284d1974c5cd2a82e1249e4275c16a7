@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6a131400_66f877e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-05T08:42:56Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e43d4b7_e2e16832",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 2
