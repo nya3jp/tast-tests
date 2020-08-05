@@ -339,6 +339,9 @@ func (n *Node) DescendantExists(ctx context.Context, params FindParams) (bool, e
 	return exists, nil
 }
 
+// ErrNodeDoesNotExist is returned when the node is not found.
+var ErrNodeDoesNotExist = errors.New("node does not exist")
+
 // WaitUntilDescendantExists checks if a descendant node exists repeatedly until the timeout.
 // If the timeout is hit or the JavaScript fails to execute, an error is returned.
 func (n *Node) WaitUntilDescendantExists(ctx context.Context, params FindParams, timeout time.Duration) error {
@@ -348,7 +351,7 @@ func (n *Node) WaitUntilDescendantExists(ctx context.Context, params FindParams,
 			return testing.PollBreak(err)
 		}
 		if !exists {
-			return errors.New("node does not exist")
+			return ErrNodeDoesNotExist
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
