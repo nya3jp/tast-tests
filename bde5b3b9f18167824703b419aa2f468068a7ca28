@@ -16,6 +16,57 @@
       "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7c3af0d_9f718000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-05T23:38:06Z",
+      "side": 1,
+      "message": "lgtm, once comments are addressed.",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5864804_52554671",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-05T23:38:06Z",
+      "side": 1,
+      "message": "It is redundant to make this a ModeSwitcher method and also pass in the dut and servo.  Choose between func or method, I\u0027d prefer func since it\u0027s private, but up to you.",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9784cb01_1b0fff69",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-05T23:38:06Z",
+      "side": 1,
+      "message": "nit, should put all the requires at the beginning to fail early.",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
