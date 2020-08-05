@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4069bc8_5b6dab97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T01:41:25Z",
+      "side": 1,
+      "message": "I\u0027m up to give it a shot and see if waiting for the cycle menu to close solves things. My guess was that either the initial Alt or Tab keypress wasn\u0027t going through, so I wanted to see if slowing down the key presses changed anything. Hard to figure out what\u0027s going on, though, since I\u0027ve never managed to repro the issue locally. I\u0027ll try to add a wait for the menu to close in another CL and we can see if that fixes it.",
+      "parentUuid": "3ccf7e11_f325d530",
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0263d0e4_472d9dab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 1
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "b685c232_8db424bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T01:41:25Z",
+      "side": 1,
+      "message": "My thinking was to add some time after every key press just in case. If the cycle menu appears quickly after this, the next key press would be back to back with this one. It\u0027s true that we\u0027re not seeing that happen at the moment, though, so I guess we don\u0027t need this for now.",
+      "parentUuid": "038b1345_1e7b2742",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f1cab8_3b05293e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 1
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "d50175fa_05f55023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T01:41:25Z",
+      "side": 1,
+      "message": "The possibility I was considering here was if the Alt key press doesn\u0027t go through at the beginning of the next loop due to insufficient time after the last Tab press here. I could have added it to the end of the loop or before pressing Alt at the beginning, but it seemed more consistent to just sleep after each key press for a little bit. I\u0027ll try your suggestion first to wait for the cycle menu to close, though.",
+      "parentUuid": "09f1cab8_3b05293e",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 45
+      },
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b9ae867_e0320149",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 1
@@ -127,6 +193,24 @@
       "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba07e1a_8fffdc2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T01:41:25Z",
+      "side": 1,
+      "message": "Sure, let\u0027s try it out.",
+      "parentUuid": "3b9ae867_e0320149",
+      "revId": "fc8d4bd58a8c88c4b99367bb1488bafc64b71799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
