@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "99b06865_55c9162f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T14:15:10Z",
+      "side": 1,
+      "message": "After offline chat with Gabor, this was unclear. Please test that the policy is in effect, not just that the settings page has been updated.\n\nBy using the js API for geolocation you should be able to determine if it\u0027s enabled or not.\n\nhttps://www.w3schools.com/html/html5_geolocation.asp\nhttps://developer.mozilla.org/en-US/docs/Web/API/Permissions_API/Using_the_Permissions_API\n\nYou can use the ui package to check if the user permission check is working (or add a TODO for later).",
+      "parentUuid": "ad37b0b7_e282b620",
+      "revId": "f9417c52b2c560f960a8adc44e8b013f5fc04438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1059f023_73fc031f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 1
