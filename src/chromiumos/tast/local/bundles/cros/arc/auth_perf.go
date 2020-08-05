@@ -27,10 +27,12 @@ import (
 )
 
 type testParam struct {
-	username     string
-	password     string
-	resultSuffix string
-	chromeArgs   []string
+	username string
+	password string
+	// maxErrorBootCount is the number of maximum allowed boot errors.
+	maxErrorBootCount int
+	resultSuffix      string
+	chromeArgs        []string
 }
 
 func init() {
@@ -50,33 +52,37 @@ func init() {
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				username:     "arc.AuthPerf.unmanaged_username",
-				password:     "arc.AuthPerf.unmanaged_password",
-				resultSuffix: "",
+				username:          "arc.AuthPerf.unmanaged_username",
+				password:          "arc.AuthPerf.unmanaged_password",
+				maxErrorBootCount: 1,
+				resultSuffix:      "",
 			},
 		}, {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:     "arc.AuthPerf.unmanaged_username",
-				password:     "arc.AuthPerf.unmanaged_password",
-				resultSuffix: "",
+				username:          "arc.AuthPerf.unmanaged_username",
+				password:          "arc.AuthPerf.unmanaged_password",
+				maxErrorBootCount: 3,
+				resultSuffix:      "",
 			},
 		}, {
 			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				username:     "arc.AuthPerf.managed_username",
-				password:     "arc.AuthPerf.managed_password",
-				resultSuffix: "_managed",
+				username:          "arc.AuthPerf.managed_username",
+				password:          "arc.AuthPerf.managed_password",
+				maxErrorBootCount: 1,
+				resultSuffix:      "_managed",
 			},
 		}, {
 			Name:              "managed_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:     "arc.AuthPerf.managed_username",
-				password:     "arc.AuthPerf.managed_password",
-				resultSuffix: "_managed",
+				username:          "arc.AuthPerf.managed_username",
+				password:          "arc.AuthPerf.managed_password",
+				maxErrorBootCount: 3,
+				resultSuffix:      "_managed",
 			},
 		}},
 		Vars: []string{
@@ -105,14 +111,12 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	const (
 		// successBootCount is the number of passing ARC boots to collect results.
 		successBootCount = 10
-
-		// maxErrorBootCount is the number of maximum allowed boot errors.
-		maxErrorBootCount = 1
 	)
 
 	param := s.Param().(testParam)
 	username := s.RequiredVar(param.username)
 	password := s.RequiredVar(param.password)
+	maxErrorBootCount := param.maxErrorBootCount
 
 	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 
@@ -254,14 +258,18 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 
 	startTime := time.Now()
 
-	// Opt in.
+	// Opt in. From performance perspective, optin longer than 90 seconds is failure.
+	// This also aligned with global 20 minute timeout.
+	shorterCtx, cancel := context.WithTimeout(ctx, 90*time.Second)
+	defer cancel()
+
 	s.Log("Waiting for ARC opt-in flow to complete")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	if err := optin.Perform(shorterCtx, cr, tconn); err != nil {
 		return v, err
 	}
 
 	s.Log("Waiting for Play Store window to be shown")
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(shorterCtx, tconn); err != nil {
 		return v, err
 	}
 
