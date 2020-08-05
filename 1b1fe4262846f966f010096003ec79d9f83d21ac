@@ -16,6 +16,86 @@
       "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67f6db9f_1c5dc82a",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-05T05:10:59Z",
+      "side": 1,
+      "message": "I wonder if we can just save this auth code in the vars and use it instead of going the full flow every time?",
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee8eb8a_b6ad2587",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-05T05:10:59Z",
+      "side": 1,
+      "message": "Do we need to handle this at all? Isn\u0027t 500 good enough?",
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddaf33ab_9c4a4a47",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-05T05:10:59Z",
+      "side": 1,
+      "message": "nit: I think this could be combined into one block for clarity:\n\nif state correct do something\nelse fall through to 500",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f953d4_0f3836a6",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-05T05:10:59Z",
+      "side": 1,
+      "message": "Element. It doesn\u0027t save much typing anyway and it will be more clear.",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "1b1fe4262846f966f010096003ec79d9f83d21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
