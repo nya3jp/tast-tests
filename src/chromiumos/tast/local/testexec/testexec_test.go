@@ -100,6 +100,66 @@ func TestAutoCollect(t *gotesting.T) {
 	if strings.Contains(cmd.log.String(), "bar") {
 		t.Errorf("CombinedOutput: log %q contains %q", cmd.log.String(), "bar")
 	}
+
+	cmd = CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2")
+	if _, _, err := cmd.SeparatedOutput(); err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(cmd.log.String(), "foo") {
+		t.Errorf("SeparatedOutput: log %q contains %q", cmd.log.String(), "foo")
+	}
+	if strings.Contains(cmd.log.String(), "bar") {
+		t.Errorf("SeparatedOutput: log %q contains %q", cmd.log.String(), "bar")
+	}
+}
+
+func TestOutput(t *gotesting.T) {
+	b, err := CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2").Output()
+	if err != nil {
+		t.Error(err)
+	} else {
+		s := string(b)
+		if !strings.Contains(s, "foo") {
+			t.Errorf("Output: %q does not contain %q", s, "foo")
+		}
+		if strings.Contains(s, "bar") {
+			t.Errorf("Output: %q contains %q", s, "bar")
+		}
+	}
+
+	b, err = CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2").CombinedOutput()
+	if err != nil {
+		t.Error(err)
+	} else {
+		s := string(b)
+		if !strings.Contains(s, "foo") {
+			t.Errorf("CombinedOutput: %q does not contain %q", s, "foo")
+		}
+		if !strings.Contains(s, "bar") {
+			t.Errorf("CombinedOutput: %q does not contain %q", s, "bar")
+		}
+	}
+
+	bo, be, err := CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2").SeparatedOutput()
+	if err != nil {
+		t.Error(err)
+	} else {
+		so := string(bo)
+		if !strings.Contains(so, "foo") {
+			t.Errorf("SeparatedOutput: stdout %q does not contain %q", so, "foo")
+		}
+		if strings.Contains(so, "bar") {
+			t.Errorf("SeparatedOutput: stdout %q contains %q", so, "bar")
+		}
+
+		se := string(be)
+		if strings.Contains(se, "foo") {
+			t.Errorf("SeparatedOutput: stderr %q contains %q", se, "foo")
+		}
+		if !strings.Contains(se, "bar") {
+			t.Errorf("SeparatedOutput: stderr %q does not contain %q", se, "bar")
+		}
+	}
 }
 
 func TestGetWaitStatus(t *gotesting.T) {
