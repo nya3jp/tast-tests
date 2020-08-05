@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dd8565e_84bde0f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-05T06:44:14Z",
+      "side": 1,
+      "message": "Rebased and fixed the conflicts. Note that the iw event watcher CL (https://crrev.com/c/2301611) has merged.",
+      "revId": "2301503793b44893d3c66a499b438f5069d3fc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
