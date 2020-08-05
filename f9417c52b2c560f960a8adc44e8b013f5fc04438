@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "bf9ac65f_0a99f8ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T08:01:24Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "f9417c52b2c560f960a8adc44e8b013f5fc04438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d03c688_29d7e105",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 1
@@ -64,6 +81,29 @@
       "writtenOn": "2020-08-05T07:27:31Z",
       "side": 1,
       "message": "I think it\u0027s a good time to introduce helpers to check the settings page for state",
+      "revId": "f9417c52b2c560f960a8adc44e8b013f5fc04438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e320ae_972fa06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T08:01:24Z",
+      "side": 1,
+      "message": "Find the toggle button node.",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 51
+      },
       "revId": "f9417c52b2c560f960a8adc44e8b013f5fc04438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
