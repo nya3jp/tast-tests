@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c96f9c_7e498ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-05T23:31:24Z",
+      "side": 1,
+      "message": "Thanks Joel!",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e099ea0d_a31afd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-05T23:31:24Z",
+      "side": 1,
+      "message": "You don\u0027t need these extraattr\u0027s as the overall test is marked informational above",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279df130_52bae861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-05T23:31:24Z",
+      "side": 1,
+      "message": "This is in the precondition data as well.",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
