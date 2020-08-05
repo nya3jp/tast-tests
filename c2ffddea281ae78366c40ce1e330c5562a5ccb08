@@ -16,6 +16,24 @@
       "revId": "c2ffddea281ae78366c40ce1e330c5562a5ccb08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e957a8a_d5df882c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-05T17:08:13Z",
+      "side": 1,
+      "message": "linben sent me the following email message about the Android PIP resize handle:\n\nWe haven\u0027t added it back in yet because of some blocking changes that we need in frameworks/base but are too late to land by now.\n\nI have CLs uploaded but they basically can\u0027t land until we cut `rvc-arc` branch, the true ARC R release branch.",
+      "parentUuid": "75fb397f_b1dd56d9",
+      "revId": "c2ffddea281ae78366c40ce1e330c5562a5ccb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

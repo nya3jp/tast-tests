@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452b55b0_ddd73bea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-05T17:08:13Z",
+      "side": 1,
+      "message": "Ben Lin, when we get the Android PIP resize handle back, it will be nice if it has the android:contentDescription attribute set to something reasonably descriptive. Can you please make that happen? Look at the code that I am deleting in the present CL, and I think you will see what I mean.",
+      "revId": "45faf5bbf5d410bf37e35f479dd10bb07ee7d553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
