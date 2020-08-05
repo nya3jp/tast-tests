@@ -33,6 +33,23 @@
       "revId": "45faf5bbf5d410bf37e35f479dd10bb07ee7d553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d0a283d_d760a378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2020-08-05T17:31:50Z",
+      "side": 1,
+      "message": "I am OK with the implementation (it\u0027s always going to be the corner anyways) as long as it passes on P and R. Which I am wondering, is this passing on R? Corner-dragging resize isn\u0027t in R yet either, I think.",
+      "revId": "45faf5bbf5d410bf37e35f479dd10bb07ee7d553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
