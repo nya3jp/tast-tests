@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6c32cda_c76e8eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-05T15:35:25Z",
+      "side": 1,
+      "message": "No, cros_healthd prints out a line of headers even when no adapter is returned.",
+      "parentUuid": "4f735cc1_e7742366",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cdd257a_ce697803",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6cf37a_b0543d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-05T15:35:25Z",
+      "side": 1,
+      "message": "It\u0027s tied to this fix.",
+      "parentUuid": "8cdd257a_ce697803",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
