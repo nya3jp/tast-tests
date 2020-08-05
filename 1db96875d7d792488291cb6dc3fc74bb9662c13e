@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a9632bc_92d6d01b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-05T15:36:54Z",
+      "side": 1,
+      "message": "Thanks, Greg!",
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f735cc1_e7742366",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 4
