@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e14f382_40e1c8a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T08:19:47Z",
+      "side": 1,
+      "message": "LGTM for style % question. Please wait for Miriam to review.",
+      "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c73e112_3547be57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T08:19:47Z",
+      "side": 1,
+      "message": "Does EnsureJobRunning make more sense here? Is the fact that the service is not running a failure?",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
