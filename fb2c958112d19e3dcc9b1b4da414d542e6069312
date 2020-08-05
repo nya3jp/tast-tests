@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba70937d_71c8b71c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "Can be omitted.",
+      "range": {
+        "startLine": 956,
+        "startChar": 51,
+        "endLine": 956,
+        "endChar": 58
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05d9d92_8ef2fedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "returns",
+      "range": {
+        "startLine": 956,
+        "startChar": 63,
+        "endLine": 956,
+        "endChar": 69
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd28003_375cda75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "a Manager",
+      "range": {
+        "startLine": 960,
+        "startChar": 49,
+        "endLine": 960,
+        "endChar": 56
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f41caa_0004fa88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "the Manager\u0027s",
+      "range": {
+        "startLine": 964,
+        "startChar": 46,
+        "endLine": 964,
+        "endChar": 53
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6db804b_a86d5549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "How about:\n// We expect that the two properties below could be not there yet. If that\u0027s the case, the default value is set as an empty string.",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 968,
+        "endChar": 70
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c10076c_72327f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "Revert the DHCP properties if something goes wrong.",
+      "range": {
+        "startLine": 978,
+        "startChar": 4,
+        "endLine": 978,
+        "endChar": 63
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8b978f_d61891bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "request",
+      "range": {
+        "startLine": 27,
+        "startChar": 101,
+        "endLine": 27,
+        "endChar": 117
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2152db3_e4db47b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "Use tf.ReserveForCollectLogs()",
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3997a30_131a9932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "the WiFi",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616a096c_b3b9b7ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "Can you comment here why you expect opt.Data \u003d\u003d three zero-bytes?",
+      "range": {
+        "startLine": 145,
+        "startChar": 35,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741e2341_277bf8c0",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-05T04:54:31Z",
+      "side": 1,
+      "message": "returns the original values.",
+      "range": {
+        "startLine": 71,
+        "startChar": 57,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
