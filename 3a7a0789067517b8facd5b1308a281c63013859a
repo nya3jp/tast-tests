@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c1436e9_7b5bec60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-05T06:38:19Z",
+      "side": 1,
+      "message": "Please use a data dependency for this instead so we don\u0027t have to rely on the network during the test",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 133
+      },
+      "revId": "3a7a0789067517b8facd5b1308a281c63013859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942664a8_48e66cc7",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-05T06:38:19Z",
+      "side": 1,
+      "message": "Please use the existing StartedTraceVM precondition instead of proliferating more conditions.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "3a7a0789067517b8facd5b1308a281c63013859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
