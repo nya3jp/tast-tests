@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "06893548_9bed224b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-05T00:20:28Z",
+      "side": 1,
+      "message": "You can use goroutine to do them in parallel.\n  go func() {\n    mediaview, err :\u003d ...\n    ...\n  }()\n  if err :\u003d tconn.Eval(ctx, \"navigator.mediaDevices.getDisplayMedia(...)\" nil); err !\u003d nil {\n    ...\n  }\n\n\nBut my point of this comment is storing them into window object. You can return a Javascript object with methods of your choice, i.e.\n  expr \u003d `{\n    mediaRecorder: null,\n    streamPromise: null,\n    chunks \u003d [],\n    start() {\n      this.mediaRecorder \u003d ...\n    }\n  }`\n  obj :\u003d \u0026chrome.JSObject{}\n  if err :\u003d tconn.Eval(ctx, expr, obj); err !\u003d nil {\n    ...\n  }\n\nThat way the data doesn\u0027t use the window object (the global variables) of the Javascript runtime.",
+      "parentUuid": "82390b3e_e3e4ef12",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 105
+      },
+      "revId": "5ad7247191ad618c15aeb7142ad98e908d6d1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "190f0bb3_3eec5682",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 14
