@@ -16,6 +16,52 @@
       "revId": "af95e53a97819c20712e1f711079456e705b6e1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd35c6bb_19c2aced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-08-05T01:35:27Z",
+      "side": 1,
+      "message": "fmt.Sprintf(\"ro.product.%s\", partition) would be easier to digest the code?\n(Also it\u0027s consistent with L179)",
+      "range": {
+        "startLine": 199,
+        "startChar": 61,
+        "endLine": 199,
+        "endChar": 77
+      },
+      "revId": "af95e53a97819c20712e1f711079456e705b6e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839e3938_f6ffc18c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-08-05T01:35:27Z",
+      "side": 1,
+      "message": "So now we check\n  L181: ro.product.x \u003d\u003d ro.\u003cpartition\u003e.product.x\n  L201: ro.product.X \u003d\u003d ro.product.\u003cpartition\u003e.x\nright?\n\nThis part is a bit confusing to digest, \nhow about adding some more comment,\nor doing refactoring like this?\n(I would also be happy to take on the refactoring work.) \n\n// Starting R, the images have ro....\n// ....\nfor property :\u003d range allProperties {\n  if strings.HasPrefix(property, \"ro.build.\") {\n    // verify that ro.\u003cpartition\u003e.build.X has the same value as ro.build.X.\n    verifyRoPartitionProp(\"build\", property)\n  }\n  if strings.HasPrefix(property, \"ro.product.\") {\n    // verify that ro.\u003cpartition\u003e.product.X has the same value as ro.product.X.\n    verifyRoPartitionProp(\"product\", property)\n\n    // verify that ro.product.\u003cpartition\u003e.X has the same value as ro.product.X.\n    verifyRoProductPartitionProp(property)\n  }\n}",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 65
+      },
+      "revId": "af95e53a97819c20712e1f711079456e705b6e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
