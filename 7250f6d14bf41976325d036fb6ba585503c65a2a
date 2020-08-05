@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "8d35a07d_6597a04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T14:24:09Z",
+      "side": 1,
+      "message": "use a new window, not the settings page. And move it either above or below checking the settings page.\n\nnit: add a comment",
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb0c4ae9_d2e215f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 4
@@ -47,6 +64,24 @@
       "writtenOn": "2020-08-05T14:12:36Z",
       "side": 1,
       "message": "Change it into an Error of Fatal, with a more informative message.",
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db372e6_bd713a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-05T14:24:09Z",
+      "side": 1,
+      "message": "This should only work for allow. From what I see in the docs you need to create a promise from the callbacks to get the actual result.\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition",
+      "parentUuid": "eb0c4ae9_d2e215f1",
       "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
