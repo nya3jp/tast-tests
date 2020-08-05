@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a7a8af4_50370855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-05T05:30:27Z",
+      "side": 1,
+      "message": "Changed the way to call CheckFileDoesNotExist according to the changes in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2318586.",
+      "revId": "06f65098d21fe63251b73e2fae5c8112734b56d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
