@@ -34,6 +34,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "419e50c7_5078c39c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-05T16:54:59Z",
+      "side": 1,
+      "message": "Sorry to say this but I believe making the test critical should be done *after* all such problems are resolved and the test gets stably passing (the guideline is passing consistently for 20 builds go/tast-add-tests#step-4_remove-attribute-to-make-it-run-on-infra).\nAlthough this guideline is not an absolute rule, it looks to me that the current status of ui.ChromeLoginGAIA is far from this condition, so I can\u0027t approve.\n\nPlease let me know once it\u0027s ready.",
+      "parentUuid": "e4913454_7f4b6427",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
