@@ -16,6 +16,63 @@
       "revId": "22c50fc0becf3c6be853215f0360f303491dceee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7facfd3e_74346fe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T09:00:34Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "22c50fc0becf3c6be853215f0360f303491dceee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10601ae6_3e3ce3a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T09:00:34Z",
+      "side": 1,
+      "message": "I see some P related comment got deleted. If it is useful, can you expand the function doc string with pre R info?",
+      "revId": "22c50fc0becf3c6be853215f0360f303491dceee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee7bd12e_af73127f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-05T09:00:34Z",
+      "side": 1,
+      "message": "Although it was done in the previous commit, can you rename this funtion, so it is clear that it returns with a map? The list part makes it confusing to read the `range` below.",
+      "range": {
+        "startLine": 170,
+        "startChar": 18,
+        "endLine": 170,
+        "endChar": 32
+      },
+      "revId": "22c50fc0becf3c6be853215f0360f303491dceee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
