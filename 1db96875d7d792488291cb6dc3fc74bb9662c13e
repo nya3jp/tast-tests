@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f735cc1_e7742366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:30:08Z",
+      "side": 1,
+      "message": "If cros_healthd reports no adapters, wouldn\u0027t that correspond to len(records) \u003d\u003d 0?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdd257a_ce697803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:30:08Z",
+      "side": 1,
+      "message": "I see that on master, we require records to be 2+, whereas you\u0027ve change it here to be \u003d\u003d2. Is that change tied to the main change of this CL, or is it a separate fix? If it\u0027s separate, then I recommend moving it into a separate CL, just in case one or the other needs to be reverted.",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "1db96875d7d792488291cb6dc3fc74bb9662c13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
