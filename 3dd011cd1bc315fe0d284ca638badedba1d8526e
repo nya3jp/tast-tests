@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "d43b0e4d_2872c66a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-08-05T09:46:56Z",
+      "side": 1,
+      "message": "Thank you! LGTM.",
+      "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc7a73a_2767897f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-08-05T09:46:56Z",
+      "side": 1,
+      "message": "nit: Could you add the link to the bug for reference of the context?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 124
+      },
+      "revId": "3dd011cd1bc315fe0d284ca638badedba1d8526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c73e112_3547be57",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
         "patchSetId": 3
