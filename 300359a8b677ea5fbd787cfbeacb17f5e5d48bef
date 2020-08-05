@@ -16,6 +16,23 @@
       "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63ee4af8_5b21f131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-08-05T16:05:46Z",
+      "side": 1,
+      "message": "LGTM, still needs owner approval",
+      "revId": "300359a8b677ea5fbd787cfbeacb17f5e5d48bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
