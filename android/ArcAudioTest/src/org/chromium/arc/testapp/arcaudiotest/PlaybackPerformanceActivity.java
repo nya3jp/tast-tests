@@ -8,6 +8,7 @@ import static org.chromium.arc.testapp.arcaudiotest.Constant.TAG;
 
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
 import android.os.Bundle;
@@ -53,6 +54,12 @@ public class PlaybackPerformanceActivity extends MainActivity {
                     AudioFormat.CHANNEL_OUT_STEREO,
                     fd);
             player.setPerformanceMode(mPerformanceMode);
+            // Using any usage other than USAGE_MEDIA to prevent the performance mode from being
+            // automatically change from PERFORMANCE_MODE_NONE to PERFORMANCE_MODE_POWER_SAVING
+            // by AudioTrack.
+            player.setAudioAttributes(new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .build());
             mThread = new SamplePlayerThread(player, mDurationSecond * 1000);
             mThread.start();
         } catch (Exception e) {
