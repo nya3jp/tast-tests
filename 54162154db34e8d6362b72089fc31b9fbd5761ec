@@ -50,6 +50,24 @@
       "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645256f3_c5b391ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-05T23:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f982363_8e01f3ec",
+      "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
