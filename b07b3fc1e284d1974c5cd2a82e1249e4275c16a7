@@ -16,6 +16,52 @@
       "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e43d4b7_e2e16832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-05T03:10:17Z",
+      "side": 1,
+      "message": "Tast-owners: The diff is a bit difficult to digest, but these lines are effectively the only change.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4989d7c_6d4ef35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-05T03:10:17Z",
+      "side": 1,
+      "message": "..and this hack will be removed in the next CL.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
