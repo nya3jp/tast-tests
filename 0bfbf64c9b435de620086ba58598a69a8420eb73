@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a5d709_af062404",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-05T17:24:31Z",
+      "side": 1,
+      "message": "Since it is in drivefs package, it\u0027s apparent it is Drive.  Thinking about the naming guideline of effective go (https://golang.org/doc/effective_go.html#package-names), maybe it is just called as Client or APIClient.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "0bfbf64c9b435de620086ba58598a69a8420eb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410a2f77_425a3ad1",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-05T17:24:31Z",
+      "side": 1,
+      "message": "Looks like a quite tricky code path to activate the oauth token for the API access.\n\nWhy not simply using the credentials.json approach?\nOnce the data is there, it can be created through google.CredentialsFromJSON -\u003e oauth2.NewClient(ctx, credentials.TokenSource).\n\nI\u0027ve done a similar thing at https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/common/bond/bond.go#55\n\nI\u0027ve found a similar guideline as https://developers.google.com/drive/api/v3/quickstart/go",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "0bfbf64c9b435de620086ba58598a69a8420eb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009fe1d8_b4f08d1f",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-05T17:24:31Z",
+      "side": 1,
+      "message": "Prepare is called on every test case, so this indicates driveAPI is recreated for every test case. Is it intentional?  I think you should reuse it as far as possible, by enclosing if p.driveAPI \u003d\u003d nil { ... }",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "0bfbf64c9b435de620086ba58598a69a8420eb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
