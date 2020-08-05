@@ -309,6 +309,30 @@
       "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769e1983_f1eb08e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-05T17:48:06Z",
+      "side": 0,
+      "message": "NP! Thank you for tackling this problem",
+      "parentUuid": "e3e5c6c9_ebed9fb5",
+      "range": {
+        "startLine": 81,
+        "startChar": 56,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "c2efb7411c758ac134486d87aa22c438f1750294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
