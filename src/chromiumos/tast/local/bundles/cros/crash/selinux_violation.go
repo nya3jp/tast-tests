@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -73,6 +74,11 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)
+
+	// Make sure that auditd is running since anomaly-detector reads audit.log written by auditd to monitor selinux violations. crbug.com/1113078
+	if err := upstart.CheckJob(ctx, "auditd"); err != nil {
+		s.Fatal("Auditd is not running: ", err)
+	}
 
 	// Generate an audit event by creating a file inside markerDirectory
 	s.Log("Generating audit event")
