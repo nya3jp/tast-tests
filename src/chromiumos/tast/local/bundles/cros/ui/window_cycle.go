@@ -102,6 +102,9 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// Index of the window we'll cycle to
 	var target int
 
+	// Params for the window cycle menu
+	cycleMenuParams := ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}
+
 	// Cycle forwards (Alt + Tab) and backwards (Alt + Shift + Tab)
 	for _, direction := range []string{"forward", "backward"} {
 		s.Log("Cycle direction: ", direction)
@@ -110,6 +113,11 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		// cycling behavior since 4 tab presses will cycle back around.
 		for i := 0; i < 4; i++ {
 			func() {
+				// Make sure the cycle menu isn't open already before we try to alt+tab
+				if err := ui.WaitUntilGone(ctx, tconn, cycleMenuParams, 5*time.Second); err != nil {
+					s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
+				}
+
 				// Open cycle window and get app order
 				if err := keyboard.AccelPress(ctx, "Alt"); err != nil {
 					s.Fatal("Failed to long press Alt: ", err)
@@ -130,7 +138,7 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 				}
 
 				// Verify that the cycle window appears in the UI with the right number of windows
-				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}, 5*time.Second)
+				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, cycleMenuParams, 5*time.Second)
 				if err != nil {
 					s.Fatal("Failed to get Alt+Tab cycle menu: ", err)
 				}
