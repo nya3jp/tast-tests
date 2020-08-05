@@ -59,6 +59,53 @@
     },
     {
       "key": {
+        "uuid": "8123aa2c_08bb02ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:36:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e43d4b7_e2e16832",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0f99c3_6dab5ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:36:14Z",
+      "side": 1,
+      "message": "Just double-checking—this is intended to be \"ro.product.product.\", and not \"ro.product.partition.\"?",
+      "range": {
+        "startLine": 180,
+        "startChar": 59,
+        "endLine": 180,
+        "endChar": 66
+      },
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4989d7c_6d4ef35c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 2
@@ -79,6 +126,30 @@
       "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1408c4a_ddf6e020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-05T15:36:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4989d7c_6d4ef35c",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "b07b3fc1e284d1974c5cd2a82e1249e4275c16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
