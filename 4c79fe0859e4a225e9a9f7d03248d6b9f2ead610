@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f895c7dd_f738920c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-05T08:34:10Z",
+      "side": 1,
+      "message": "Is CreateFileWithApp generic enough to use for any app like the name suggests or specific to gedit? The 2x C-w shortcut seems specific.",
+      "revId": "4c79fe0859e4a225e9a9f7d03248d6b9f2ead610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9aefe1a_da5cfc26",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-05T08:34:10Z",
+      "side": 1,
+      "message": "Is this going to leave us in a bad state? mwarton\u0027s been busy removing all the test code that bypasses the UI to start/stop Crostini and AFAIK we don\u0027t make any guarantees or test what happens around rebooting the container.\n\n`defer pkill -9 gedit` would work if you only care about killing off gedit?",
+      "revId": "4c79fe0859e4a225e9a9f7d03248d6b9f2ead610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
