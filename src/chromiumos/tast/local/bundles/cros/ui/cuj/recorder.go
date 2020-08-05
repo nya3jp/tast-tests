@@ -116,10 +116,10 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
-	memDiff := newMemoryDiffDataSource("Memory.Diff")
+	memDiff := newMemoryDiffDataSource("RAM.Diff")
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
-		load.NewMemoryUsageSource("Memory"),
+		load.NewMemoryUsageSource("RAM"),
 		newThermalDataSource(ctx),
 		memDiff,
 	}
