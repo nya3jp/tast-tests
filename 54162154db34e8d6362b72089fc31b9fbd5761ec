@@ -16,6 +16,23 @@
       "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f982363_8e01f3ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-05T18:49:58Z",
+      "side": 1,
+      "message": "nit: comments should be end in periods. Also, can you add periods to the other comments while you are at it?",
+      "revId": "54162154db34e8d6362b72089fc31b9fbd5761ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
