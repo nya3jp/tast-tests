@@ -22,10 +22,10 @@ type PreData struct {
 	// The path that DriveFS has mounted at.
 	MountPath string
 
-	// The API connection to the Test extension, reused by tests
+	// The API connection to the Test extension, reused by tests.
 	TestAPIConn *chrome.TestConn
 
-	// The DriveAPI singleton
+	// The DriveAPI singleton.
 	DriveAPI *DriveAPI
 }
 
@@ -120,7 +120,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
 
-	// Perform Drive API authentication
+	// Perform Drive API authentication.
 	driveAPI, err := CreateDriveAPI(ctx, p.cr, jsonCredentials)
 	if err != nil {
 		s.Fatal("Failed creating a DriveAPI instance: ", err)
@@ -151,7 +151,7 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	return PreData{p.cr, p.mountPath, p.tconn, p.driveAPI}
 }
 
-// cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil
+// cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil.
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	p.tconn = nil
 	p.driveAPI = nil

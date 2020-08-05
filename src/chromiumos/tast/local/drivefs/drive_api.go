@@ -40,11 +40,11 @@ func CreateDriveAPI(ctx context.Context, cr *chrome.Chrome, oauthCredentials str
 	ts := httptest.NewServer(http.HandlerFunc(handler))
 	defer ts.Close()
 
-	// Generate the oauth consent URL
+	// Generate the oauth consent URL.
 	config.RedirectURL = ts.URL
 	authURL := config.AuthCodeURL(state)
 
-	// Start a renderer and navigate to the oauth consent URL
+	// Start a renderer and navigate to the oauth consent URL.
 	conn, err := cr.NewConn(ctx, authURL)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to navigate to auth url: %s", authURL)
@@ -69,7 +69,7 @@ func CreateDriveAPI(ctx context.Context, cr *chrome.Chrome, oauthCredentials str
 
 	authCode := <-authCodeChan
 
-	// Exchange the supplied oauth credentials and auth code for oauth token
+	// Exchange the supplied oauth credentials and auth code for oauth token.
 	token, err := config.Exchange(ctx, authCode)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to exchange the auth code")
@@ -116,4 +116,26 @@ func waitAndClickElement(ctx context.Context, conn *chrome.Conn, jsExpr string) 
 	}
 
 	return nil
+}
+
+// CreateBlankGoogleDoc creates a google doc with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *DriveAPI) CreateBlankGoogleDoc(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	doc := &drive.File{
+		MimeType: "application/vnd.google-apps.document",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	file, err := d.Service.Files.Create(doc).Do()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return file, nil
+}
+
+// RemoveFileByID removes the file by supplied fileID.
+func (d *DriveAPI) RemoveFileByID(ctx context.Context, fileID string) error {
+	return d.Service.Files.Delete(fileID).Do()
 }
