@@ -6,6 +6,7 @@ package wificell
 
 import (
 	"context"
+	"io"
 	"math/rand"
 	"net"
 	"strconv"
@@ -745,4 +746,85 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 	}
 	currentTime := time.Unix(res.NowSecond, res.NowNanosecond)
 	return currentTime, nil
+}
+
+// ShillServiceProperty holds a shill service property with it's expected and unexpected values.
+type ShillServiceProperty struct {
+	Property         string
+	ExpectedValues   []interface{}
+	UnexpectedValues []interface{}
+	Method           network.ExpectShillServicePropertyRequest_CheckMethod
+}
+
+// ExpectShillServiceProperty is a wrapper for the streaming gRPC call ExpectShillServiceProperty.
+// It takes an array of ShillServiceProperty and a shill service path. It returns a function that
+// waites for the expected property changes.
+func (tf *TestFixture) ExpectShillServiceProperty(ctx context.Context, objectPath string, props []*ShillServiceProperty) (func() error, error) {
+	var expectedProps []*network.ExpectShillServicePropertyRequest_Criterion
+	for _, prop := range props {
+		var anyOfVals []*network.ShillVal
+		for _, shillState := range prop.ExpectedValues {
+			state, err := protoutil.ToShillVal(shillState)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			anyOfVals = append(anyOfVals, state)
+		}
+
+		var noneOfVals []*network.ShillVal
+		for _, shillState := range prop.UnexpectedValues {
+			state, err := protoutil.ToShillVal(shillState)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			noneOfVals = append(noneOfVals, state)
+		}
+
+		shillPropReqCriterion := &network.ExpectShillServicePropertyRequest_Criterion{
+			Key:    prop.Property,
+			AnyOf:  anyOfVals,
+			NoneOf: noneOfVals,
+			Method: prop.Method,
+		}
+		expectedProps = append(expectedProps, shillPropReqCriterion)
+	}
+
+	req := &network.ExpectShillServicePropertyRequest{
+		ObjectPath: objectPath,
+		Props:      expectedProps,
+	}
+
+	stream, err := tf.WifiClient().ExpectShillServiceProperty(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	ready, err := stream.Recv()
+	if err != nil || ready.Key != "" {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Get the expected properties and values.
+	waitForProperties := func() error {
+		for {
+			resp, err := stream.Recv()
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				return errors.Wrap(err, "failed to get the expected properties")
+			}
+			// Now we get the matched state change in resp.
+			stateVal, err := protoutil.FromShillVal(resp.Val)
+			if err != nil {
+				return errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			testing.ContextLogf(ctx, "The current WiFi service %s: %v", resp.Key, stateVal)
+		}
+
+		return nil
+	}
+
+	return waitForProperties, nil
 }
