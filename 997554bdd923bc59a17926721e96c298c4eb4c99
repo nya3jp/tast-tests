@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d0d64877_472a540a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-06T18:14:31Z",
+      "side": 1,
+      "message": "No problem, thanks for the feedback!",
+      "parentUuid": "c44ba341_b2ba8a82",
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88ffede8_fc015eb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
         "patchSetId": 6
@@ -56,6 +74,30 @@
       "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e6a0639_1ea845cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-06T18:14:31Z",
+      "side": 1,
+      "message": "The use here is for controlling the timing of the defer statement, to make sure we close the first Chrome session before opening the next one (or if something goes wrong).",
+      "parentUuid": "88ffede8_fc015eb7",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "09cc6bc0_f918885c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-06T18:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9482f3e5_bfa0786c",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3715d389_1df9711e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
         "patchSetId": 6
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "3993cf53_9f71017c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-06T18:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3715d389_1df9711e",
+      "range": {
+        "startLine": 82,
+        "startChar": 79,
+        "endLine": 82,
+        "endChar": 92
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cc31f4a_f0ddfd68",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
         "patchSetId": 6
@@ -125,6 +215,30 @@
       "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98fdf7f8_ddb13fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-06T18:14:31Z",
+      "side": 1,
+      "message": "Added a function to shelf.go for checking if the shelf exists.",
+      "parentUuid": "4cc31f4a_f0ddfd68",
+      "range": {
+        "startLine": 106,
+        "startChar": 63,
+        "endLine": 106,
+        "endChar": 72
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
