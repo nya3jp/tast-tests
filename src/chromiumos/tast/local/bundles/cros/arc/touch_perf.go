@@ -119,6 +119,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 	if err := json.Unmarshal([]byte(txt), &events); err != nil {
 		s.Fatal("Could not unmarshal events from app: ", err)
 	}
+	events = events[:len(events)-2]
 
 	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
 	// is the same as eventTimes.
