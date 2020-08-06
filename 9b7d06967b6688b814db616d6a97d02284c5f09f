@@ -16,6 +16,52 @@
       "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc7ce0f_d51c965f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-08-06T02:38:56Z",
+      "side": 1,
+      "message": "why we need this dependency?",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c783c1_f2944a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-08-06T02:38:56Z",
+      "side": 1,
+      "message": "nit: put ExtraData and Val field together since they are highly related.",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
