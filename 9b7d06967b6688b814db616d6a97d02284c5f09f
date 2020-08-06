@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d86cc11a_b5caa643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-08-06T03:06:22Z",
+      "side": 1,
+      "message": "Maybe we want to confirm that the basics (seccomp policy, etc.) are working on ARM before enabling it?",
+      "parentUuid": "cdc7ce0f_d51c965f",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9c783c1_f2944a9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
         "patchSetId": 7
