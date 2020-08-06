@@ -51,6 +51,7 @@ func init() {
 func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	// Clean up the home directory in the end.
 	defer func() {
