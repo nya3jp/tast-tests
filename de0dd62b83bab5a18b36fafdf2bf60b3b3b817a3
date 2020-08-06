@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8e06575_ec840652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-08-06T08:41:11Z",
+      "side": 1,
+      "message": "Yamaguchi-san, PTAL.\n\nHidehiko-san, PTAL if you have a time.\n\nThanks.",
+      "revId": "de0dd62b83bab5a18b36fafdf2bf60b3b3b817a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
