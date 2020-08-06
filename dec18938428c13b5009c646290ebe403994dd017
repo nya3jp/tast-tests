@@ -88,6 +88,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6033d035_6a476815",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-06T00:45:57Z",
+      "side": 1,
+      "message": "Well, the test is as stable as it could, given its nature - after all it\u0027s a real \"go type in password and wait for google to sign you in\". But it\u0027s a baseline for a few other tests already in CQ, which assume this functionality working.\n\nLooks like rikku and guado somehow are enterprise-enrolled devices (some of them?) which breaks OOBE flow:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1101611#c3\n\nSo the fix would be unenrolling those devices. It has nothing to do with the test really.",
+      "parentUuid": "b4707352_59b05088",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
