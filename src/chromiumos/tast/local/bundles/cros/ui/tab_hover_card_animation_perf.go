@@ -111,7 +111,7 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 				perfutil.StoreSmoothness)
 		})
 	}
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }

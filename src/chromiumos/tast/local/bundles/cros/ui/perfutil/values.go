@@ -6,7 +6,10 @@
 package perfutil
 
 import (
+	"context"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/testing"
 )
 
 // Values keeps the reporting values for multiple runs.
@@ -33,7 +36,7 @@ func (v *Values) Append(metric perf.Metric, value float64) {
 }
 
 // Values creates a new perf.Values for its data points.
-func (v *Values) Values() *perf.Values {
+func (v *Values) Values(ctx context.Context) *perf.Values {
 	pv := perf.NewValues()
 
 	for name, metric := range v.metrics {
@@ -65,17 +68,22 @@ func (v *Values) Values() *perf.Values {
 				minIndex = i
 			}
 		}
+		var sum float64
+		var count int
 		for i, v := range vs {
 			if len(vs) < 3 || (i != maxIndex && i != minIndex) {
 				pv.Append(otherMetric, v)
+				sum += v
+				count++
 			}
 		}
+		testing.ContextLogf(ctx, "Average %s = %v", name, sum/float64(count))
 	}
 	return pv
 }
 
 // Save is a shortcut of Values().Save(outdir). Helpful when the test does not
 // have to combine with other data points.
-func (v *Values) Save(outdir string) error {
-	return v.Values().Save(outdir)
+func (v *Values) Save(ctx context.Context, outdir string) error {
+	return v.Values(ctx).Save(outdir)
 }

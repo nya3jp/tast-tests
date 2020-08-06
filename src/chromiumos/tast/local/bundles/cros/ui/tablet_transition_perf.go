@@ -87,7 +87,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		"Ash.TabletMode.AnimationSmoothness.Exit"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

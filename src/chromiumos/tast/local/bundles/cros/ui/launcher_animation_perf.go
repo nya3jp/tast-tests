@@ -34,8 +34,8 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      3 * time.Minute,
+		//		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Timeout: 3 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
 			Pre: ash.LoggedInWith100DummyApps(),
@@ -206,7 +206,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
 		}
 	}
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
