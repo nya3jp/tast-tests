@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
@@ -30,7 +31,6 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
@@ -61,6 +61,14 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the display information: ", err)
+	} else if !connected {
+		// We can't use hwdep.InternalDisplay() to exclude this pattern for now, as
+		// some devices are excluded incorrectly. See https://crbug.com/1098846.
+		s.Log("No physical displays found; UI performance tests require it")
+		return
 	}
 
 	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)

@@ -35,7 +35,6 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Pre: ash.LoggedInWith100DummyApps(),
@@ -54,6 +53,14 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the display information: ", err)
+	} else if !connected {
+		// We can't use hwdep.InternalDisplay() to exclude this pattern for now, as
+		// some devices are excluded incorrectly. See https://crbug.com/1098846.
+		s.Log("No physical displays found; UI performance tests require it")
+		return
+	}
 
 	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
 

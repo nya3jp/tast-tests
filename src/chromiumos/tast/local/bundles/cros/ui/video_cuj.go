@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
@@ -26,7 +27,6 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -36,7 +36,6 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
@@ -61,6 +60,14 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the display information: ", err)
+	} else if !connected {
+		// We can't use hwdep.InternalDisplay() to exclude this pattern for now, as
+		// some devices are excluded incorrectly. See https://crbug.com/1098846.
+		s.Log("No physical displays found; UI performance tests require it")
+		return
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)

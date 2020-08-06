@@ -14,13 +14,13 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,7 +33,6 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          ash.LoggedInWith100DummyApps(),
 		Params: []testing.Param{
 			{
@@ -271,6 +270,14 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the display information: ", err)
+	} else if !connected {
+		// We can't use hwdep.InternalDisplay() to exclude this pattern for now, as
+		// some devices are excluded incorrectly. See https://crbug.com/1098846.
+		s.Log("No physical displays found; UI performance tests require it")
+		return
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	defer ui.WaitForLocationChangeCompleted(ctx, tconn)

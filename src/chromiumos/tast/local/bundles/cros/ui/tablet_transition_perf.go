@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -35,6 +36,14 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the display information: ", err)
+	} else if !connected {
+		// We can't use hwdep.InternalDisplay() to exclude this pattern for now, as
+		// some devices are excluded incorrectly. See https://crbug.com/1098846.
+		s.Log("No physical displays found; UI performance tests require it")
+		return
 	}
 
 	const numWindows = 8
