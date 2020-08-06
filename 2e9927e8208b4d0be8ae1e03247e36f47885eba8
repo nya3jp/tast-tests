@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95b3c08a_a727249a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-06T15:17:21Z",
+      "side": 1,
+      "message": "Currently errors are ignored. Could you capture them for better invetigation in case of failure?\n\ndefer func() {\n  if err :\u003d cont.Cleanup(...); err !\u003d nil {\n    s.Error(...)\n  }\n}()",
+      "revId": "2e9927e8208b4d0be8ae1e03247e36f47885eba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
