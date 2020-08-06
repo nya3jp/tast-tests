@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "82b34d08_7ba5aa0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-06T01:21:33Z",
+      "side": 1,
+      "message": "What if I remove informational from Attr:, and add it to all of these.  My hope is to get artifact non-information asap, and I think it is easier transition.",
+      "parentUuid": "e099ea0d_a31afd90",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "279df130_52bae861",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a7792e_b84d759d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-06T01:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279df130_52bae861",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
