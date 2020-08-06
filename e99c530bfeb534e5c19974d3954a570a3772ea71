@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa123cf0_0a4adfa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-06T01:12:30Z",
+      "side": 1,
+      "message": "reading the CL description the first time, it was a little unclear to me what this was referring to. Maybe replace this bullet point with something like: \"RotateAny mode was made a valid argument to chrome.autotestPrivate.waitForDisplayRotation() in chromium:\u003cCL Number\u003e. This CL updates the tests to use this feature.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec30ebd_78074f91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-06T01:12:30Z",
+      "side": 1,
+      "message": "I don\u0027t really understand what this sentence is saying.\n\nMy understanding is that you could probably replace these last two bullet points with:\n\"Limit Window Manager conversion tests to only running on tablet devices by requiring tablet_mode software dep.\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116e467d_907c2ffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-06T01:12:30Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % comments about commit message.",
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
