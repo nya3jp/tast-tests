@@ -40,6 +40,8 @@ const (
 
 // Info contains information about a storage device.
 type Info struct {
+	// Name of the storage device.
+	Name string
 	// Device contains the underlying hardware device type.
 	Device Type
 	// Failing contains a final assessment that the device failed or will fail soon.
@@ -71,30 +73,38 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 	}
 
 	var lifeStatus LifeStatus
+	var name string
 	switch deviceType {
 	case EMMC:
 		lifeStatus, err = parseDeviceHealtheMMC(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse eMMC health")
 		}
+		name = parseDeviceNameEMMC(lines)
 	case NVMe:
 		lifeStatus, err = parseDeviceHealthNVMe(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
+		name = parseDeviceNameNVMe(lines)
 	case SSD:
 		lifeStatus, err = parseDeviceHealthSSD(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse SSD health")
 		}
+		name = parseDeviceNameSATA(lines)
 	default:
 		return nil, errors.Errorf("parsing device health for type %v is not supported", deviceType)
 	}
 
-	return &Info{Device: deviceType, Status: lifeStatus}, nil
+	return &Info{Name: name, Device: deviceType, Status: lifeStatus}, nil
 }
 
 var (
+	// nameDetectEMMC detects the name of a eMMC-based device using a regex.
+	nameDetectEMMC = regexp.MustCompile(`\s*name\s+\|\s(?P<param>\S+).*`)
+	// nameDetectNVMeSATA detects the name of a NVMe and SATA-based device using a regex.
+	nameDetectNVMeSATA = regexp.MustCompile(`\s*Serial Number:\s+(?P<param>\S+).*`)
 	// nvmeDetect detects if storage device is NVME using a regex.
 	// Example NVMe SMART text: "   SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)"
 	nvmeDetect = regexp.MustCompile(`\s*SMART.*NVMe Log`)
@@ -153,6 +163,42 @@ func parseDeviceType(outLines []string) (Type, error) {
 	}
 
 	return 0, errors.New("failed to detect a device type")
+}
+
+// parseDeviceNameEMMC searches outlines for eMMC-based storage device name.
+func parseDeviceNameEMMC(outLines []string) string {
+	for _, line := range outLines {
+		match := nameDetectEMMC.FindStringSubmatch(line)
+		if match != nil {
+			return match[1]
+		}
+	}
+
+	return "EMMC"
+}
+
+// parseDeviceNameNVMe searches outlines for NVMe-based storage device name.
+func parseDeviceNameNVMe(outLines []string) string {
+	for _, line := range outLines {
+		match := nameDetectNVMeSATA.FindStringSubmatch(line)
+		if match != nil {
+			return match[1]
+		}
+	}
+
+	return "NVME"
+}
+
+// parseDeviceNameSATA searches outlines for SATA-based SSD storage device name.
+func parseDeviceNameSATA(outLines []string) string {
+	for _, line := range outLines {
+		match := nameDetectNVMeSATA.FindStringSubmatch(line)
+		if match != nil {
+			return match[1]
+		}
+	}
+
+	return "SATA"
 }
 
 // parseDeviceHealtheMMC analyzes eMMC for indications of failure. For additional information,
