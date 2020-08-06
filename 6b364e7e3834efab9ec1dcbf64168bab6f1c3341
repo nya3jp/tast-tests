@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d595b24b_34866804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-06T00:45:53Z",
+      "side": 1,
+      "message": "Thanks Brendan, looks like a nice improvement to me. LGTM % tricium nits.",
+      "revId": "6b364e7e3834efab9ec1dcbf64168bab6f1c3341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
