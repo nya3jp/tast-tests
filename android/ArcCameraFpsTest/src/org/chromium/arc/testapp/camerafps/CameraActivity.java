@@ -27,12 +27,18 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME";
     private static final String ACTION_GET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM";
+    private static final String ACTION_GET_HISTOGRAM_SENSOR =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM_SENSOR";
     private static final String ACTION_GET_LAST_SNAPSHOT_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_LAST_SNAPSHOT_TIME";
+    private static final String ACTION_GET_LATENCY_HISTOGRAM =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_LATENCY_HISTOGRAM";
     private static final String ACTION_GET_NUM_FRAMES =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES";
     private static final String ACTION_GET_NUM_DROPPED_FRAMES =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES";
+    private static final String ACTION_GET_NUM_DROPPED_FRAMES_SENSOR =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES_SENSOR";
     private static final String ACTION_GET_PREVIEW_RESOLUTIONS =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_RESOLUTIONS";
     private static final String ACTION_GET_PREVIEW_SIZE =
@@ -90,13 +96,23 @@ public class CameraActivity extends Activity {
                                 setResultData(Long.toString(mCameraFragment.getCameraOpenTime()));
                                 break;
                             case ACTION_GET_HISTOGRAM:
-                                setResultData(mHistogram.getHistogramString());
+                                setResultData(mHistogram.getHistogramJavaString());
+                                break;
+                            case ACTION_GET_HISTOGRAM_SENSOR:
+                                setResultData(mHistogram.getHistogramSensorString());
+                                break;
+                            case ACTION_GET_LATENCY_HISTOGRAM:
+                                setResultData(mHistogram.getLatencyHistogramString());
                                 break;
                             case ACTION_GET_NUM_FRAMES:
                                 setResultData(Long.toString(mHistogram.getNumFrames()));
                                 break;
                             case ACTION_GET_NUM_DROPPED_FRAMES:
-                                setResultData(Long.toString(mHistogram.getNumDroppedFrames()));
+                                setResultData(Long.toString(mHistogram.getNumDroppedFramesJava()));
+                                break;
+                            case ACTION_GET_NUM_DROPPED_FRAMES_SENSOR:
+                                setResultData(Long.toString(
+                                        mHistogram.getNumDroppedFramesSensor()));
                                 break;
                             case ACTION_GET_PREVIEW_RESOLUTIONS:
                                 setResultData(mCameraFragment.getPreviewResolutions());
@@ -170,9 +186,12 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_GET_CAMERA_CLOSE_TIME);
         filter.addAction(ACTION_GET_CAMERA_OPEN_TIME);
         filter.addAction(ACTION_GET_HISTOGRAM);
+        filter.addAction(ACTION_GET_HISTOGRAM_SENSOR);
         filter.addAction(ACTION_GET_LAST_SNAPSHOT_TIME);
+        filter.addAction(ACTION_GET_LATENCY_HISTOGRAM);
         filter.addAction(ACTION_GET_NUM_FRAMES);
         filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES);
+        filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES_SENSOR);
         filter.addAction(ACTION_GET_PREVIEW_RESOLUTIONS);
         filter.addAction(ACTION_GET_PREVIEW_SIZE);
         filter.addAction(ACTION_GET_RECORDING_RESOLUTIONS);
