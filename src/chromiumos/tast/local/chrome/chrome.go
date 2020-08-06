@@ -426,25 +426,25 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 			for _, e := range cryptohome.CheckDeps(ctx) {
 				testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
 			}
-			return nil, err
+			return nil, errors.Wrap(err, "failed to check cryptohome service")
 		}
 	}
 
 	if err := c.PrepareExtensions(ctx); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 
 	if err := c.restartChromeForTesting(ctx); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
 	var err error
 	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
-		return nil, c.chromeErr(err)
+		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
 	if c.loginMode != noLogin && !c.keepState {
 		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
 		}
 	}
 
