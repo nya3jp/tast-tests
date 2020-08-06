@@ -270,6 +270,7 @@ func init() {
 }
 
 func CopyPaste(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	pre := s.PreValue().(crostini.PreData)
 	param := s.Param().(testParameters)
 	tconn := pre.TestAPIConn

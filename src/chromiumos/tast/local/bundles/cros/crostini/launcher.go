@@ -243,6 +243,7 @@ func init() {
 }
 
 func Launcher(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	conf := s.Param().(launcherTestConfig)
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn

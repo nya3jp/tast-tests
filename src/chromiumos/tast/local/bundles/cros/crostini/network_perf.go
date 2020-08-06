@@ -144,6 +144,7 @@ func (dir connDirection) metricName(name string) string {
 }
 
 func NetworkPerf(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	// TODO(cylee): Consolidate similar util function in other test files.

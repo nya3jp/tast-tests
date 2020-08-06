@@ -67,6 +67,7 @@ func varInt(s *testing.State, name string, defaultVal int) int {
 }
 
 func Restart(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
 	tconn := pre.TestAPIConn

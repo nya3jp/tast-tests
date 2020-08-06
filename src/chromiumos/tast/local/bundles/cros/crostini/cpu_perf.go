@@ -48,6 +48,7 @@ func init() {
 }
 
 func CPUPerf(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	perfValues := perf.NewValues()

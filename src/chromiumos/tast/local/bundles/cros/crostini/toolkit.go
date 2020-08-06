@@ -124,6 +124,7 @@ func init() {
 }
 
 func Toolkit(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	conf := s.Param().(toolkitConfig)
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome

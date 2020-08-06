@@ -49,6 +49,7 @@ func init() {
 }
 
 func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
 

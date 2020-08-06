@@ -31,6 +31,7 @@ func init() {
 // VimCompile downloads the VM image from the staging bucket, i.e. it emulates the setup-flow that a user has.
 // It compiles vim multiple times and captures the average amount of time taken to compile it.
 func VimCompile(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	const (
 		numberOfIterations = 3 // numberOfIterations is set to the number of times vim is to be compiled.
 		configureVim       = "cd /home/testuser/vim/src && ./configure"

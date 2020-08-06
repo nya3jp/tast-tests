@@ -38,6 +38,7 @@ func init() {
 }
 
 func RunWithARC(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	// First ensure crostini works in isolation by running a simple test.
 	cont := s.PreValue().(crostini.PreData).Container
 	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {

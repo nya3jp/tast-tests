@@ -70,6 +70,7 @@ func init() {
 }
 
 func DisplayDensity(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := pre.Container

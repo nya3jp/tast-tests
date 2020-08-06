@@ -49,6 +49,7 @@ func init() {
 }
 
 func PackageInstallUninstall(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 	filePath := "/home/testuser/package.deb"
 

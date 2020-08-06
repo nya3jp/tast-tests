@@ -49,6 +49,7 @@ func init() {
 }
 
 func PackageInfo(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 	const filePath = "/home/testuser/package.deb"
 

@@ -46,6 +46,7 @@ func init() {
 }
 
 func SharedFontFiles(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
 
