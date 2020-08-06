@@ -113,6 +113,21 @@ func init() {
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP9},
 			Pre:               pre.ChromeCameraPerfWithVP9VaapiEncoder(),
+		}, {
+			Name:              "vp8_dec_alt",
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP8", simulcast: false},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
+		}, {
+			Name:              "vp9_dec_alt",
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9", simulcast: false},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
+		}, {
+			Name:              "h264_dec_alt",
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "H264", simulcast: false},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
 		}},
 	})
 }

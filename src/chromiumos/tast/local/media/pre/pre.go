@@ -63,6 +63,19 @@ var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
 	chromeUseHwDecoderForSmallResolutions,
 	chromeFakeWebcamArgs)
 
+// ChromeVideoWithFakeWebcamAndAlternateVideoDecoder returns a precondition
+// equal to ChromeVideoWithFakeWebcam above, and using the alternative video
+// decoder (see ChromeAlternateVideoDecoder comments).
+func ChromeVideoWithFakeWebcamAndAlternateVideoDecoder() testing.Precondition {
+	return chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre
+}
+
+var chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre = chrome.NewPrecondition("videoWithFakeWebcamAndAlternateVideoDecoder",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chromeFakeWebcamArgs,
+	chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
+
 // ChromeVideoWithFakeWebcamAndVP9VaapiEncoder returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with VA-API VP9 hardware encoder enabled.
 // TODO(crbug.com/811912): remove when this is enabled by default.
