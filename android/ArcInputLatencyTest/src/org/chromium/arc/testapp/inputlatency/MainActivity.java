@@ -37,7 +37,35 @@ public class MainActivity extends Activity {
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
     private Float mLastMouseX = null;
     private Float mLastMouseY = null;
-    private Button mClrBtn;
+    private Button mClrBtn, mFinishBtn;
+
+    // Finish trace and save the events as JSON to TextView UI.
+    private void finishTrace() {
+        // Serialize events to JSON
+        mExecutor.submit(
+            () -> {
+              JSONArray arr = new JSONArray();
+              try {
+                for (ReceivedEvent ev : mRecvEvents) {
+                  arr.put(ev.toJSON());
+                }
+                String json = arr.toString();
+                int len = arr.length();
+                runOnUiThread(() -> setEvents(json, len));
+              } catch (JSONException e) {
+                  Log.e(TAG, "Unable to serialize events to JSON: " + e.getMessage());
+              }
+            });
+    }
+
+    private void clearUI() {
+        mRecvEvents.clear();
+        mAdapter.notifyDataSetChanged();
+        mExecutor.submit(
+            () -> {
+              runOnUiThread(() -> setEvents("", 0));
+            });
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,17 +75,36 @@ public class MainActivity extends Activity {
         ((ListView) findViewById(R.id.event_list)).setAdapter(mAdapter);
         mEvents = findViewById(R.id.event_json);
         mCount = findViewById(R.id.event_count);
+        mFinishBtn = findViewById(R.id.finish_btn);
         mClrBtn = findViewById(R.id.clear_btn);
+
+        mFinishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              finishTrace();
+            }
+        });
+
+        mFinishBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+              // Remove touch event from uiAutomator click().
+              if(mRecvEvents != null && mRecvEvents.size() >= 1){
+                mRecvEvents.remove(mRecvEvents.size() - 1);
+                mAdapter.notifyDataSetChanged();
+                mExecutor.submit(
+                    () -> {
+                      runOnUiThread(() -> setEvents("", mRecvEvents.size()));
+                    });
+              }
+              return false;
+              }
+          });
 
         mClrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mRecvEvents.clear();
-                mAdapter.notifyDataSetChanged();
-                mExecutor.submit(
-                    () -> {
-                        runOnUiThread(() -> setEvents("", 0));
-                    });
+                clearUI();
             }
         });
     }
@@ -128,7 +175,7 @@ public class MainActivity extends Activity {
     private void traceEvent(ReceivedEvent recv) {
         // Android may sometimes send duplicate MotionEvent events with the same coordinates
         // and action as the last event. Discard these events.
-        if (recv.type == "MouseEvent") {
+        if (recv.source == "Mouse") {
             MotionEvent event = (MotionEvent) recv.event;
             if ((mLastMouseX != null && mLastMouseY != null)
                     && mLastMouseX.equals(event.getX(0))
@@ -139,26 +186,20 @@ public class MainActivity extends Activity {
             mLastMouseX = event.getX(0);
             mLastMouseY = event.getY(0);
         }
+        // Ignore TouchScreen event that is ACTION_CANCEL
+        if (recv.source == "Touchscreen" && recv.action == "ACTION_CANCEL") {
+            return;
+        }
 
+        Log.v(TAG, recv.toString());
         mRecvEvents.add(recv);
         mAdapter.notifyDataSetChanged();
 
-        // Serialize events to JSON
+        // Record the event numbers.
         mExecutor.submit(
-                () -> {
-                    JSONArray arr = new JSONArray();
-                    try {
-                        for (ReceivedEvent ev : mRecvEvents) {
-                            arr.put(ev.toJSON());
-                        }
-                        String json = arr.toString();
-                        int len = arr.length();
-                        runOnUiThread(() -> setEvents(json, len));
-
-                    } catch (JSONException e) {
-                        Log.e(TAG, "Unable to serialize events to JSON: " + e.getMessage());
-                    }
-                });
+            () -> {
+              runOnUiThread(() -> setEvents("", mRecvEvents.size()));
+            });
     }
 
     private void setEvents(String json, Integer count) {
