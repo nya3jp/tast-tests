@@ -76,6 +76,17 @@ service WifiService {
 
   // GetCurrentTime returns the current local time in the given format.
   rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
+
+  // ExpectShillProperty, a streaming gRPC, expects a list of property criteria in order.
+  // When a property's value is expected, it responds the property's (key, value) pair. 
+  // The method sends an empty response as the property watcher is set. A property matching
+  // criterion consists of a property name, a list of expected values, a list of excluded
+  // values, and a "check" flag. We say a criterion is met iff the property value is in one
+  // of the expected values and not in any of the excluded values. If the property value is
+  // one of the excluded values, the method fails immediately. If the "check" flag is set,
+  // the method checks if the criterion are met without waiting for property change. So if
+  // none of the expected value is matched, the method fails.
+  rpc ExpectShillProperty(ExpectShillPropertyRequest) returns (stream ExpectShillPropertyResponse) {}
 }
 
 message ConnectRequest {
@@ -206,4 +217,35 @@ message ConfigureAndAssertAutoConnectResponse {
 message GetCurrentTimeResponse {
   int64 nowSecond = 1;
   int64 nowNanosecond = 2;
+}
+
+message ExpectShillPropertyRequest {
+  enum Check {
+    // Check if the property value is expected and wait for
+    // property change if it is not expected.
+    BEFORE = 0;
+    // Check for property change only.
+    AFTER = 1;
+    // Check if the property value is expected without waiting
+    // for property change.
+    CURRENT = 2;
+  }
+
+  message Entry {
+    // The shill property name.
+    string key = 1;
+    // The expected property values.
+    repeated ShillVal any_of = 2;
+    // The unexpected property values.
+    repeated ShillVal none_of = 3;
+    Check check_type = 4;
+  }
+
+  string service_path = 1;
+  repeated Entry props = 2;
+}
+
+message ExpectShillPropertyResponse {
+  string key = 1;
+  ShillVal val = 2;
 }
