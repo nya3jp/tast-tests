@@ -60,6 +60,9 @@ func CommandCd(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// Clean up the home directory in the end.
+	defer cont.Cleanup(cleanupCtx, ".")
+
 	userName := strings.Split(cr.User(), "@")[0]
 
 	// Open Terminal app.
