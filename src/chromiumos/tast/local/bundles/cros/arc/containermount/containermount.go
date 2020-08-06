@@ -83,6 +83,29 @@ func sdcardMounts() ([]sysutil.MountInfo, error) {
 	return ret, nil
 }
 
+// passthroughMounts returns a list of mount point info for mount-passthrough daemons' namespace.
+func passthroughMounts(ctx context.Context, ppid int) ([]sysutil.MountInfo, error) {
+	pidMinijailRaw, err := testexec.CommandContext(ctx, "pgrep", "-P", strconv.Itoa(ppid), "minijail0").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	pidMinijailStr := strings.TrimSpace(string(pidMinijailRaw))
+	_, err = strconv.Atoi(pidMinijailStr)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse PID: %s", out)
+	}
+	// "mount-passthrou" is trancated to 16 bytes.
+	pidTargetRaw, err := testexec.CommandContext(ctx, "pgrep", "-P", pidStrMinijail, "mount-passthrou").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	pidTarget, err := strconv.Atoi(strings.TrimSpace(string(pidTargetRaw)))
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse PID: %s", pidTargetRaw)
+	}
+	return sysutil.MountInfoForPID(pidTarget)
+}
+
 // mountPassthroughMounts returns a list of mount point info for
 // mount-passthrough daemons. Currently there are 8 mount-passthrough daemon
 // jobs for MyFiles and removable media.
@@ -108,7 +131,7 @@ func mountPassthroughMounts(ctx context.Context) ([]sysutil.MountInfo, error) {
 			testing.ContextLogf(ctx, "%s is not running, skipped", job)
 			continue
 		}
-		mounts, err := sysutil.MountInfoForPID(pid)
+		mounts, err := passthroughMounts(ctx, pid)
 		if err != nil {
 			return nil, err
 		}
