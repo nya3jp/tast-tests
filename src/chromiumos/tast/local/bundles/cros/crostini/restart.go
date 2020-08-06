@@ -70,6 +70,7 @@ func Restart(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
 	tconn := pre.TestAPIConn
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

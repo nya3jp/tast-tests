@@ -43,6 +43,7 @@ func RunWithARC(ctx context.Context, s *testing.State) {
 	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
