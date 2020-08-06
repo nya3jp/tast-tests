@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ce8e8fd_33064d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-06T12:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d727def1_387310cd",
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d35a07d_6597a04b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 4
@@ -50,6 +68,24 @@
       "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f25220_35a396de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-06T12:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d35a07d_6597a04b",
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d569ca6d_694b13ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-06T12:16:23Z",
+      "side": 1,
+      "message": "For allow I created the promise, for the other cases I pass an empty function in order to trigger the allow dialog.",
+      "parentUuid": "eb0c4ae9_d2e215f1",
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52a409f0_9aa36e10",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 4
@@ -111,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "d0fe5370_298bf414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-06T12:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a409f0_9aa36e10",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c76dd27_dde9f936",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 4
@@ -131,6 +209,30 @@
       "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342396cc_1301ea88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-06T12:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c76dd27_dde9f936",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "7250f6d14bf41976325d036fb6ba585503c65a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
