@@ -1021,3 +1021,100 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 		}
 	}
 }
+
+// ExpectShillPropertyValues is a server-streaming method that waits for the
+// matched shill (property, [expectedValues], [notExpextedValues]) pairs IN ORDER.
+// The method waites for the property to equal one of the expected values, and sends
+// the waited (property, value) pair back to the test server. The method fails if the
+// property changes to one of the not expected values. If the check flag is true for
+// a property, then the method checks the current property value and does not wait for
+// change. Note that an empty response (Key="") would be sent first after this method
+// is ready for waiting.
+func (s *WifiService) ExpectShillPropertyValues(req *network.ExpectShillPropertyValuesRequest, sender network.WifiService_ExpectShillPropertyValuesServer) error {
+	ctx := sender.Context()
+
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return errors.Wrap(err, "failed to create a service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := sender.Send(&network.ExpectShillPropertyValuesResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send a response")
+	}
+
+	for _, p := range req.Props {
+		var expectedVals []interface{}
+		for _, sv := range p.AnyOf {
+			v, err := protoutil.FromShillVal(sv)
+			if err != nil {
+				return err
+			}
+			expectedVals = append(expectedVals, v)
+		}
+
+		var notExpectedVals []interface{}
+		for _, sv := range p.NoneOf {
+			v, err := protoutil.FromShillVal(sv)
+			if err != nil {
+				return err
+			}
+			notExpectedVals = append(notExpectedVals, v)
+		}
+
+		// Check the current value of the property.
+		if p.Check {
+			props, err := service.GetProperties(ctx)
+			if err != nil {
+				return err
+			}
+			val, err := props.GetString(p.Key)
+			if err != nil {
+				return err
+			}
+
+			for _, ev := range notExpectedVals {
+				if val == ev {
+					return errors.Errorf("unexpected property (%s) value: got %s, want %v", p.Key, val, expectedVals)
+				}
+			}
+
+			found := false
+			for _, ev := range expectedVals {
+				if val == ev {
+					found = true
+					break
+				}
+			}
+			if found {
+				shillVal, err := protoutil.ToShillVal(val)
+				if err != nil {
+					return err
+				}
+				if err := sender.Send(&network.ExpectShillPropertyValuesResponse{Key: p.Key, Val: shillVal}); err != nil {
+					return errors.Wrap(err, "failed to send response")
+				}
+				continue
+			} else {
+				return errors.Errorf("unexpected property (%s) value: got %s, want %v", p.Key, val, expectedVals)
+			}
+		}
+
+		val, err := pw.ExpectNotExpectIn(ctx, p.Key, expectedVals, notExpectedVals)
+		if err != nil {
+			return errors.Wrap(err, "failed to expect property")
+		}
+		shillVal, err := protoutil.ToShillVal(val)
+		if err != nil {
+			return err
+		}
+		if err := sender.Send(&network.ExpectShillPropertyValuesResponse{Key: p.Key, Val: shillVal}); err != nil {
+			return errors.Wrap(err, "failed to send response")
+		}
+	}
+	return nil
+}
