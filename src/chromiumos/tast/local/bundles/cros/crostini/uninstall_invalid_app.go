@@ -38,6 +38,7 @@ func init() {
 }
 
 func UninstallInvalidApp(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	err := cont.UninstallPackageOwningFile(ctx, "bad")

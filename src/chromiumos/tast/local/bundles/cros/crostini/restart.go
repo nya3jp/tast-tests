@@ -65,6 +65,7 @@ func varInt(s *testing.State, name string, defaultVal int) int {
 }
 
 func Restart(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	numRestarts := varInt(s, "crostini.Restart.numRestarts", 2)

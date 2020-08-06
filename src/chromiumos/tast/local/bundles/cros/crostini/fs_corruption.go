@@ -199,6 +199,7 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 
 // FsCorruption sets up the VM and then introduces corruption into its disk to check that this is detected correctly.
 func FsCorruption(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	data := s.PreValue().(crostini.PreData)
 	cr := data.Chrome
 

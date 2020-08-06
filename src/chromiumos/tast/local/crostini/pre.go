@@ -283,6 +283,46 @@ func checkDaemonsRunning(ctx context.Context) error {
 	return nil
 }
 
+func (p *preImpl) grabLXCLogs(ctx context.Context) {
+	vm, err := vm.GetRunningVM(ctx, p.cr.User())
+	if err != nil {
+		testing.ContextLog(ctx, "No running VM, possibly we failed before staring the VM")
+		return
+	}
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		testing.ContextLog(ctx, "Failed to get name of directory")
+		return
+	}
+
+	testing.ContextLog(ctx, "Creating file")
+	path := filepath.Join(dir, "crostini_vm_logs.txt")
+	f, err := os.Create(path)
+	if err != nil {
+		testing.ContextLog(ctx, "Error creating file: ", err)
+		return
+	}
+	defer f.Close()
+
+	f.WriteString("lxc info and lxc.log:\n")
+	cmd := vm.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd LXD_CONF=/mnt/stateful/lxd_conf lxc info penguin --show-log")
+	cmd.Stdout = f
+	cmd.Stderr = f
+	err = cmd.Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Error getting lxc logs: ", err)
+	}
+
+	f.WriteString("\n\nconsole.log:\n")
+	cmd = vm.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd  LXD_CONF=/mnt/stateful/lxd_conf lxc console penguin --show-log")
+	cmd.Stdout = f
+	cmd.Stderr = f
+	err = cmd.Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Error getting boot logs: ", err)
+	}
+}
+
 // Called by tast before each test is run. We use this method to initialize
 // the precondition data, or return early if the precondition is already
 // active.
@@ -303,11 +343,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}
 
-	// If initialization fails, this defer is used to clean-up the partially-initialized pre.
+	// If initialization fails, this defer is used to clean-up the partially-initialized pre
+	// and copies over lxc + container boot logs.
 	// Stolen verbatim from arc/pre.go
 	shouldClose := true
 	defer func() {
 		if shouldClose {
+			p.grabLXCLogs(ctx)
 			p.cleanUp(ctx, s)
 		}
 	}()
@@ -480,9 +522,6 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	}
 
 	if p.cont != nil {
-		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Log("Failure dumping container log: ", err)
-		}
 		if err := vm.StopConcierge(ctx); err != nil {
 			s.Log("Failure stopping concierge: ", err)
 		}

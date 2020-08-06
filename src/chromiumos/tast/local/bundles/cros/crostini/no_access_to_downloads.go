@@ -51,6 +51,7 @@ func init() {
 }
 
 func NoAccessToDownloads(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	// Use a shortened context for test operations to reserve time for cleanup.

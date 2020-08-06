@@ -51,6 +51,7 @@ func init() {
 }
 
 func LaunchBrowser(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	cont := pre.Container

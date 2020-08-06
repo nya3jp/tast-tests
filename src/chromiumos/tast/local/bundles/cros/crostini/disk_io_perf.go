@@ -231,6 +231,7 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 
 // DiskIOPerf runs disk IO performance tests by running the tool "fio".
 func DiskIOPerf(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	testing.ContextLog(ctx, "Installing fio")

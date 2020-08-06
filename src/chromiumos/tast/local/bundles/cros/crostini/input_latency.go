@@ -74,6 +74,7 @@ type cleanupFunc func() error
 // socket server sends a response back to host. We then subtract the timestamp host receives
 // the response by (RTT time)/2 as an estimation to key arrival time on guest.
 func InputLatency(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	cont := s.PreValue().(crostini.PreData).Container
 
 	perfValues := perf.NewValues()

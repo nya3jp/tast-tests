@@ -232,9 +232,6 @@ func (c *Container) start(ctx context.Context) error {
 // before returning. The directory dir may be used to store logs on failure.
 func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 	if err := c.SetUpUser(ctx); err != nil {
-		if err := c.DumpLog(ctx, dir); err != nil {
-			testing.ContextLog(ctx, "Failure dumping container log: ", err)
-		}
 		return err
 	}
 
@@ -632,21 +629,6 @@ func DefaultContainerCommand(ctx context.Context, ownerID string, vshArgs ...str
 // container.
 func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
-}
-
-// DumpLog dumps the logs from the container to a local output file named
-// container_log.txt in dir (typically the test's output dir).
-// It does this by executing croslog in the container and grabbing the output.
-func (c *Container) DumpLog(ctx context.Context, dir string) error {
-	f, err := os.Create(filepath.Join(dir, "container_log.txt"))
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	cmd := c.Command(ctx, "croslog", "--no-pager")
-	cmd.Stdout = f
-	return cmd.Run()
 }
 
 // CreateDefaultContainer prepares a container in VM with default settings.

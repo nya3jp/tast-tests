@@ -52,6 +52,7 @@ func init() {
 }
 
 func CommandVim(ctx context.Context, s *testing.State) {
+	defer crostini.RunCrostiniPostTest(ctx, s)
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
