@@ -112,40 +112,47 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for PIP window: ", err)
 	}
 
+	resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ImageButton"})
+	if err != nil {
+		s.Fatal("Failed to get PIP resize handle: ", err)
+	}
+	defer resizeHandle.Release(ctx)
+
+	if err := mouse.Move(ctx, tconn, resizeHandle.Location.CenterPoint(), time.Second); err != nil {
+		s.Fatal("Failed to move mouse to PIP resize handle: ", err)
+	}
+	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		s.Fatal("Failed to press left mouse button: ", err)
+	}
+	bigPIP := s.Param().(bool)
 	workAreaTopLeft := info.WorkArea.TopLeft()
-	if s.Param().(bool) { // Branch for video.ChromePIPEnergyAndPower.big.
-		resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ImageButton"})
-		if err != nil {
-			s.Fatal("Failed to get PIP resize handle: ", err)
-		}
-		defer resizeHandle.Release(ctx)
-
-		if err := mouse.Move(ctx, tconn, resizeHandle.Location.CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to PIP resize handle: ", err)
-		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to press left mouse button: ", err)
-		}
-		if err := mouse.Move(ctx, tconn, workAreaTopLeft, time.Second); err != nil {
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-				s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
-			}
-			s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
-		}
+	var resizeEnd coords.Point
+	if bigPIP {
+		resizeEnd = workAreaTopLeft
+	} else {
+		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
+	}
+	if err := mouse.Move(ctx, tconn, resizeEnd, time.Second); err != nil {
 		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to release left mouse button: ", err)
+			s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
 		}
+		s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
+	}
+	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		s.Fatal("Failed to release left mouse button: ", err)
+	}
 
-		if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
-		}
+	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
+	}
 
-		pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
-		if err != nil {
-			s.Fatal("Failed to get PIP window: ", err)
-		}
-		defer pipWindow.Release(ctx)
+	pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
+	if err != nil {
+		s.Fatal("Failed to get PIP window: ", err)
+	}
+	defer pipWindow.Release(ctx)
 
+	if bigPIP {
 		maxWidth := info.WorkArea.Width / 2
 		maxHeight := info.WorkArea.Height / 2
 		// Expect the PIP window to have either the maximum width or the maximum
@@ -159,13 +166,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 				s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindow.Location.Size(), maxHeight)
 			}
 		}
-	} else { // Branch for video.ChromePIPEnergyAndPower.small.
-		pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
-		if err != nil {
-			s.Fatal("Failed to get PIP window: ", err)
-		}
-		defer pipWindow.Release(ctx)
-
+	} else {
 		// The minimum size of a Chrome PIP window is 260x146. The aspect ratio of the
 		// video is 4x3, and so the minimum width 260 corresponds to a height of 195.
 		if pipWindow.Location.Width != 260 || pipWindow.Location.Height != 195 {
