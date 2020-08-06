@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5784f332_033c3a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-08-06T17:13:27Z",
+      "side": 1,
+      "message": "Unrelated failures (infra failures, and \"failed to install chromeos-base/midis-0.0.1-r1085\").",
+      "revId": "05f2d423959c8980fad8e6952a76bda605837332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
