@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28c0ea8b_da3c9825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-06T10:29:16Z",
+      "side": 1,
+      "message": "As I replied in this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2331829. Using external data might cause the DUT running out of space. We plan to create container with larger space and have the apps preinstalled.",
+      "parentUuid": "7c1436e9_7b5bec60",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 133
+      },
+      "revId": "3a7a0789067517b8facd5b1308a281c63013859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "942664a8_48e66cc7",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3a7a0789067517b8facd5b1308a281c63013859a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c916917_84ba5725",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-06T10:29:16Z",
+      "side": 1,
+      "message": "Thanks. StartedTraceVM could be used as artifact. Leave the download buster.",
+      "parentUuid": "942664a8_48e66cc7",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "3a7a0789067517b8facd5b1308a281c63013859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
