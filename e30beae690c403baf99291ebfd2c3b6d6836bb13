@@ -79,6 +79,29 @@
       "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70691694_de3992ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-06T12:59:29Z",
+      "side": 1,
+      "message": "You can do it one line:\nelse if d :\u003d !errors.Is(err, ui.ErrNodeDoesNotExist); param.wantAsk !\u003d d {",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
