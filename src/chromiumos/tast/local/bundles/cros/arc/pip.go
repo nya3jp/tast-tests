@@ -70,7 +70,7 @@ type pipTestParams struct {
 	initMethod initializationType
 }
 
-var stablePipTests = []pipTestParams{
+var pipTests = []pipTestParams{
 	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
 	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
 	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip},
@@ -79,9 +79,6 @@ var stablePipTests = []pipTestParams{
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
-}
-
-var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 }
 
@@ -95,19 +92,11 @@ func init() {
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Val:               stablePipTests,
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "unstable",
-			Val:               unstablePipTests,
+			Val:               pipTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               stablePipTests,
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "vm_unstable",
-			Val:               unstablePipTests,
+			Val:               pipTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -193,14 +182,11 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get display mode: ", err)
 	}
 
-	// TODO(b:162267844) There are still some tests not yet working in tablet mode. Remove these checks once R is fully working.
-	tabletModes := []bool{false}
+	tabletModes := []bool{false, true}
 	enableMultiActivityPIP := []bool{true, false}
-
-	if sdkVer, err := arc.SDKVersion(); err != nil {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
 		s.Fatal("Failed to get the SDK version: ", err)
-	} else if sdkVer != arc.SDKR {
-		tabletModes = append(tabletModes, true)
 	}
 
 	// Run all subtests twice. First, with tablet mode disabled. And then, with it enabled.
@@ -212,7 +198,12 @@ func PIP(ctx context.Context, s *testing.State) {
 
 		// There are two types of PIP: single activity PIP and multi activity PIP. Run each test with both types by default.
 		for _, multiActivityPIP := range enableMultiActivityPIP {
-			s.Logf("Running tests with multi activity PIP enabled=%t", multiActivityPIP)
+			if !multiActivityPIP && tabletMode && sdkVer == arc.SDKR {
+				// TODO(b:156685602) There are still some tests not yet working in tablet mode. Remove these checks once R is fully working.
+				continue
+			}
+
+			s.Logf("Running tests with tablet mode enabled=%t and MAPIP enabled=%t", tabletMode, multiActivityPIP)
 			for idx, test := range s.Param().([]pipTestParams) {
 				testing.ContextLog(ctx, "About to run test: ", test.name)
 
@@ -222,6 +213,14 @@ func PIP(ctx context.Context, s *testing.State) {
 					}
 
 					must(pipAct.Start(ctx, tconn))
+
+					if multiActivityPIP {
+						// Wait for pipAct to finish settling on top of the base activity. Minimize could be called before on the base activity
+						// otherwise.
+						if err := testing.Sleep(ctx, time.Second); err != nil {
+							s.Fatal("Failed to sleep waiting for MAPIP: ", err)
+						}
+					}
 				}
 
 				if test.initMethod == enterPip {
@@ -693,17 +692,18 @@ func expandPIPViaMenuTouchP(ctx context.Context, tconn *chrome.TestConn, act *ar
 // After moving the mouse to the center of the PIP window it waits for a second so that the pip
 // menu appears and the expand icon can be clicked.
 func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restoreWindowState ash.WindowStateType) error {
-	window, err := getPIPWindow(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-
-	bounds := window.BoundsInRoot
-	if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
-		return err
-	}
-
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := getPIPWindow(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get PIP window bounds"))
+		}
+
+		bounds := window.BoundsInRoot
+
+		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
+			return testing.PollBreak(err)
+		}
+
 		// Need to wait for the menu to appear.
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return testing.PollBreak(err)
@@ -715,15 +715,11 @@ func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restore
 			return testing.PollBreak(err)
 		}
 
-		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pipTestPkgName)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
-		}
-		if windowState != restoreWindowState {
-			return errors.New("the window isn't expanded yet")
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, restoreWindowState); err != nil {
+			return errors.Wrap(err, "did not expand to restore window state")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 500 * time.Millisecond})
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
