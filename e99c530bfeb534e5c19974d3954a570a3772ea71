@@ -62,6 +62,63 @@
       "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb431ec7_c21762a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-06T16:48:04Z",
+      "side": 1,
+      "message": "If display.GetOrientation returns an error, then with this patch set, that error will not be returned to the test. Is that OK, or should the test handle the error?\n\nDitto L257, L360.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db88b92_12ca70f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-06T16:48:04Z",
+      "side": 1,
+      "message": "See L132",
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0158e460_fd38141e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-06T16:48:04Z",
+      "side": 1,
+      "message": "See L132",
+      "revId": "e99c530bfeb534e5c19974d3954a570a3772ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
