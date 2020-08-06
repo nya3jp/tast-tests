@@ -52,7 +52,7 @@ func TabLoadingAnimationPerf(ctx context.Context, s *testing.State) {
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		conn, err := cr.NewConn(ctx, server.URL+"/tab_loading_test.html")
 		if err != nil {
-			s.Fatal("Failed to open a testing page", err)
+			s.Fatal("Failed to open a testing page: ", err)
 		}
 		defer conn.Close()
 		defer conn.CloseTarget(ctx)
@@ -61,7 +61,7 @@ func TabLoadingAnimationPerf(ctx context.Context, s *testing.State) {
 		"Chrome.Tabs.AnimationSmoothness.TabLoading"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }

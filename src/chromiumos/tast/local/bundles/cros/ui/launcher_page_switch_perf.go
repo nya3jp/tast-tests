@@ -261,7 +261,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix),
 		perfutil.StoreLatency)
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }
