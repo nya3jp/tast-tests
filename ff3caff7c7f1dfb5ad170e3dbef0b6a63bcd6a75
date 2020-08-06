@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2489ded1_30a0a189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-06T15:06:17Z",
+      "side": 1,
+      "message": "nit: you can keep the dir name, and instead, introduce the alias as follows:\n\ndlctest \"chromiumos/tast/local/bundles/cros/platform/dlc\"",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280c0c8a_bfe7a850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-06T15:06:17Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend CopyFileWithPermissions.",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a334056_da8be430",
+        "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-06T15:06:17Z",
+      "side": 1,
+      "message": "This is independent from DLC.\nMaybe moving to dbusutil package, probably with renaming to something like RestartAndWaitForService() ?\nThere\u0027s similar patterns in Tast tests in other categories, too.",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e057aef_3914ac9b",
+        "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-06T15:06:17Z",
+      "side": 1,
+      "message": "Is there a plan to use this from non platform category tests?",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
