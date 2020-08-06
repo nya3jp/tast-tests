@@ -16,6 +16,115 @@
       "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c44ba341_b2ba8a82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-06T01:39:00Z",
+      "side": 1,
+      "message": "Apologies for getting back to this late. Added some comments since CQ is terrible ",
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88ffede8_fc015eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-06T01:39:00Z",
+      "side": 1,
+      "message": "I asked this before but can\u0027t remember (sorry). What is the func in go for?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9482f3e5_bfa0786c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-06T01:39:00Z",
+      "side": 1,
+      "message": "Comments end in period",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3715d389_1df9711e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-06T01:39:00Z",
+      "side": 1,
+      "message": "this comment is out of date now",
+      "range": {
+        "startLine": 82,
+        "startChar": 79,
+        "endLine": 82,
+        "endChar": 92
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc31f4a_f0ddfd68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-06T01:39:00Z",
+      "side": 1,
+      "message": "Seems brittle to have this defined in a random login test instead of shelf.go",
+      "range": {
+        "startLine": 106,
+        "startChar": 63,
+        "endLine": 106,
+        "endChar": 72
+      },
+      "revId": "997554bdd923bc59a17926721e96c298c4eb4c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
