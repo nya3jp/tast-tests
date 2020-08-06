@@ -9,8 +9,13 @@ package org.chromium.arc.testapp.camerafps;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
 import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.os.SystemClock;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 class CaptureCallbackHistogram extends CaptureCallback {
 
@@ -19,14 +24,20 @@ class CaptureCallbackHistogram extends CaptureCallback {
     // Frame considered dropped if it is more than 50% late.
     private static final float FRAME_DROP_FACTOR = 1.5f;
 
-    // Histogram of duration between two frames.
-    private int[] histogram = new int[HISTOGRAM_MAX];
-    // Last reocrded frame timestamp.
-    private long mLastTimeStamp = 0;
+    // Histogram of duration (ms) between two frames (Java callback).
+    private int[] mHistogramJava = new int[HISTOGRAM_MAX];
+    // Histogram of duration (ms) between two frames (sensor timestamps).
+    private int[] mHistogramSensor = new int[HISTOGRAM_MAX];
+    // Last recorded frame timestamp (Java callback time).
+    private long mLastTimeStampJava = 0;
+    // Last recorded frame timestamp (sensor timestamp).
+    private long mLastTimeStampSensor = 0;
     // Total number of frames.
     private long mNumFrames = 0;
-    // Total number of dropped frames.
-    private long mNumDroppedFrames = 0;
+    // Total number of dropped frames (Java callback).
+    private long mNumDroppedFramesJava = 0;
+    // Total number of dropped frames (based on sensor timestamps).
+    private long mNumDroppedFramesSensor = 0;
     // Target frame duration in milliseconds, i.e., time between two frames.
     // Default: 30 FPS -> 33 ms
     private int mTargetFrameDuration = 33;
@@ -36,17 +47,39 @@ class CaptureCallbackHistogram extends CaptureCallback {
     private long mNumSnapshots = 0;
     // Time it took (in ms) to take the last snapshot.
     private long mLastSnapshotTime = -1;
+    // Histogram of pipeline latency (ns).
+    private Map<Long, Integer> mPipelineLatencyHistogram = new HashMap<Long, Integer>();
 
-    // Get histogram as string.
-    public String getHistogramString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < HISTOGRAM_MAX - 1; ++i) {
-            sb.append(histogram[i]);
-            sb.append(", ");
+    private String buildHistogramString(int[] histogram) {
+        String result;
+        synchronized(histogram) {
+            result = Arrays.toString(histogram);
         }
-        sb.append(histogram[HISTOGRAM_MAX - 1]);
-        sb.append("]");
+        return result;
+    }
+
+    // Get Java callback duration histogram as string.
+    public String getHistogramJavaString() {
+        return buildHistogramString(mHistogramJava);
+    }
+
+    // Get duration histogram based on sensor timestamps as string.
+    public String getHistogramSensorString() {
+        return buildHistogramString(mHistogramSensor);
+    }
+
+    public String getLatencyHistogramString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        synchronized(mPipelineLatencyHistogram) {
+            for (Map.Entry<Long, Integer> entry : mPipelineLatencyHistogram.entrySet()) {
+                sb.append(entry.getKey());
+                sb.append(": ");
+                sb.append(entry.getValue());
+                sb.append(", ");
+            }
+        }
+        sb.append("}");
         return sb.toString();
     }
 
@@ -54,8 +87,12 @@ class CaptureCallbackHistogram extends CaptureCallback {
         return mNumFrames;
     }
 
-    public long getNumDroppedFrames() {
-        return mNumDroppedFrames;
+    public long getNumDroppedFramesJava() {
+        return mNumDroppedFramesJava;
+    }
+
+    public long getNumDroppedFramesSensor() {
+        return mNumDroppedFramesSensor;
     }
 
     // Returns the time it took to take a snapshot on average.
@@ -78,39 +115,93 @@ class CaptureCallbackHistogram extends CaptureCallback {
         mLastSnapshotTime = time;
     }
 
+    // Add a Java callback timestamp to the histogram.
+    private void recordJavaTimeStamp(long timeStampJava) {
+        if (mLastTimeStampJava == 0) {
+            mLastTimeStampJava = timeStampJava;
+        } else {
+            // Convert nanoseconds to milliseconds.
+            int duration = (int) (timeStampJava - mLastTimeStampJava) / 1000000;
+            mLastTimeStampJava = timeStampJava;
+
+            synchronized(mHistogramJava) {
+                if (duration < HISTOGRAM_MAX - 1) {
+                    mHistogramJava[duration]++;
+                } else {
+                    mHistogramJava[HISTOGRAM_MAX - 1]++;
+                }
+            }
+
+            if (mTargetFrameDuration > 0 && duration > FRAME_DROP_FACTOR * mTargetFrameDuration) {
+                mNumDroppedFramesJava++;
+            }
+        }
+    }
+
+    // Add a sensor timestamp to the histogram.
+    private void recordSensorTimeStamp(long timeStampSensor) {
+        if (mLastTimeStampSensor == 0) {
+            mLastTimeStampSensor = timeStampSensor;
+        } else {
+            // Convert nanoseconds to milliseconds.
+            int duration = (int) (timeStampSensor - mLastTimeStampSensor) / 1000000;
+            mLastTimeStampSensor = timeStampSensor;
+
+            synchronized(mHistogramSensor) {
+                if (duration < HISTOGRAM_MAX - 1) {
+                    mHistogramSensor[duration]++;
+                } else {
+                    mHistogramSensor[HISTOGRAM_MAX - 1]++;
+                }
+            }
+
+            // Sensor timestamps are in nanoseconds.
+            if (mTargetFrameDuration > 0 && duration > FRAME_DROP_FACTOR * mTargetFrameDuration) {
+                mNumDroppedFramesSensor++;
+            }
+        }
+    }
+
     // Callback is fired when a frame arrives.
     @Override
     public void onCaptureCompleted(
             CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
         mNumFrames++;
 
-        if (mLastTimeStamp == 0) {
-            mLastTimeStamp = SystemClock.elapsedRealtime();
-        } else {
-            int duration = (int) (SystemClock.elapsedRealtime() - mLastTimeStamp);
-            mLastTimeStamp = SystemClock.elapsedRealtime();
+        // Record Java callback timestamp.
+        long timeStampJava = SystemClock.elapsedRealtimeNanos();
+        recordJavaTimeStamp(timeStampJava);
 
-            if (duration < HISTOGRAM_MAX - 1) {
-                histogram[duration]++;
+        // Record sensor callback timestamp.
+        long timeStampSensor = result.get(CaptureResult.SENSOR_TIMESTAMP);
+        recordSensorTimeStamp(timeStampSensor);
+
+        // Compute pipeline latency and add to histogram.
+        // TODO(b/160650453): Latency histogram values on ARCVM will be shifted by fixed offset
+        // until host-guest timestamp issues are resolved.
+        synchronized(mPipelineLatencyHistogram) {
+            long latency = (timeStampJava - timeStampSensor) / 1000000;
+            if (!mPipelineLatencyHistogram.containsKey(latency)) {
+                mPipelineLatencyHistogram.put(latency, 1);
             } else {
-                histogram[HISTOGRAM_MAX - 1]++;
-            }
-
-            if (mTargetFrameDuration > 0 && duration > FRAME_DROP_FACTOR * mTargetFrameDuration) {
-                mNumDroppedFrames++;
+                mPipelineLatencyHistogram.put(latency, mPipelineLatencyHistogram.get(latency) + 1);
             }
         }
     }
 
     // Reset histogram to all zeros.
     public void resetHistogram() {
-        histogram = new int[HISTOGRAM_MAX];
-        mLastTimeStamp = 0;
-        mNumDroppedFrames = 0;
+        mHistogramJava = new int[HISTOGRAM_MAX];
+        mHistogramSensor = new int[HISTOGRAM_MAX];
+        mLastTimeStampJava = 0;
+        mLastTimeStampSensor = 0;
+        mNumDroppedFramesJava = 0;
+        mNumDroppedFramesSensor = 0;
         mNumFrames = 0;
         mSnapshotTimeSum = 0;
         mNumSnapshots = 0;
         mLastSnapshotTime = -1;
+        mPipelineLatencyHistogram = new HashMap<Long, Integer>();
     }
 
     public void setTargetFrameDuration(int duration) {
