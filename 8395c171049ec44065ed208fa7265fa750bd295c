@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eb665aa_308462c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-06T08:43:58Z",
+      "side": 1,
+      "message": "Do we want to download videos on device as well? Will that be useful?",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "8395c171049ec44065ed208fa7265fa750bd295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
