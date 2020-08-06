@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff586056_eb153b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-06T21:51:23Z",
+      "side": 1,
+      "message": "Just wondering -- also maybe I asked already in the previous CL -- but I want to confirm that PiP windows are not in ash.GetAllWindows()?\n\nIf possible, use of ash.GetAllWindows() + check of TargetBounds might be better.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 29
+      },
+      "revId": "02ecb32717af356d8e518c529a1e1bcb8ae1ab50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
