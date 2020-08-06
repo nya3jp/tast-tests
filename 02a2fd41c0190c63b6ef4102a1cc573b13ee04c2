@@ -16,6 +16,52 @@
       "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27964f38_b0e89b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-08-06T02:43:22Z",
+      "side": 1,
+      "message": "I guess we don\u0027t add these attributes for vm test because it\u0027s not enabled by default?\nIf so, please add a TODO to describe that we will add it later.",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195c62d1_759e8c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-08-06T02:43:22Z",
+      "side": 1,
+      "message": "nit: Put ExtraData and Val field together.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
