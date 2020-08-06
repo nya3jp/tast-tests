@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
+	"sort"
 	"strings"
 
 	"github.com/godbus/dbus"
@@ -446,6 +448,23 @@ func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string,
 		if _, ok := set[file]; ok {
 			return errors.Errorf("failed to find %s in container", file)
 		}
+	}
+	return nil
+}
+
+// CheckFileListEqual checks file list in the given path in container equals to an list.
+// This method does not recognize whether it is a folder or a file.
+func (c *Container) CheckFileListEqual(ctx context.Context, path string, expectList ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list the content of %s in container", path)
+	}
+
+	sort.Strings(expectList)
+	sort.Strings(fileList)
+	if !reflect.DeepEqual(expectList, fileList) {
+		return errors.Wrapf(err, "failed to verify files in %s in container, want %q, got %q", path, expectList, fileList)
 	}
 	return nil
 }
