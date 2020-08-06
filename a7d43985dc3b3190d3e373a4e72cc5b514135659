@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3ef09f1_8d92e123",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-06T02:49:57Z",
+      "side": 1,
+      "message": "nit: under the specific path",
+      "range": {
+        "startLine": 497,
+        "startChar": 33,
+        "endLine": 497,
+        "endChar": 35
+      },
+      "revId": "a7d43985dc3b3190d3e373a4e72cc5b514135659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
