@@ -307,12 +307,20 @@ func (ac *Activity) moveWindowP(ctx context.Context, to coords.Point, t time.Dur
 // moveWindowR only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
 // moveWindowR performs the movement using a mouse drag.
 func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t time.Duration, toBounds, fromBounds coords.Rect) error {
-	windowState, err := ash.GetARCAppWindowState(ctx, tconn, ac.PackageName())
+	windowStates, err := ash.GetAllARCAppWindowStates(ctx, tconn, ac.PackageName())
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
-		return errors.Errorf("cannot move window in state %s", windowState)
+
+	supportsMove := false
+	for _, windowState := range windowStates {
+		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
+			supportsMove = true
+			break
+		}
+	}
+	if !supportsMove {
+		return errors.New("move window only supports Normal and PIP windows")
 	}
 
 	// We'll drag the window from the top-left quadrant.
@@ -425,12 +433,24 @@ func (ac *Activity) resizeWindowP(ctx context.Context, border BorderType, to coo
 // resizeWindowR only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
 // resizeWindowR performs the resizing using a mouse drag.
 func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, border BorderType, to coords.Point, t time.Duration) error {
-	windowState, err := ash.GetARCAppWindowState(ctx, tconn, ac.PackageName())
+	windowStates, err := ash.GetAllARCAppWindowStates(ctx, tconn, ac.PackageName())
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
-		return errors.Errorf("cannot resize window in state %s", windowState)
+
+	supportsMove := false
+	hasPIPWindow := false
+	for _, windowState := range windowStates {
+		if windowState == ash.WindowStatePIP {
+			hasPIPWindow = true
+		}
+		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
+			supportsMove = true
+			break
+		}
+	}
+	if !supportsMove {
+		return errors.New("resize window only supports Normal and PIP windows")
 	}
 
 	// Default value: center of window.
@@ -438,7 +458,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
-	if windowState == ash.WindowStatePIP {
+	if hasPIPWindow {
 		borderOffset = borderOffsetForPIP
 	}
 
