@@ -718,3 +718,8 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 	return nil
 }
+
+// GetServicePath returns the current service path.
+func (tf *TestFixture) GetServicePath(ctx context.Context) string {
+	return tf.curServicePath
+}
