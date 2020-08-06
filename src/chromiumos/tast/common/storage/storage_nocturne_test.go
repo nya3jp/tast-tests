@@ -320,6 +320,7 @@ Command Enabled [CMDQ_MODE_EN]: 0x00
 	}
 
 	exp := &Info{
+		Name:   "hDEaP3",
 		Device: EMMC,
 		Status: Healthy,
 	}
