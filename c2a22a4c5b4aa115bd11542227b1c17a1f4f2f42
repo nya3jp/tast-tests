@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "be20d645_26891514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-06T01:24:15Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "82b34d08_7ba5aa0c",
+      "revId": "c2a22a4c5b4aa115bd11542227b1c17a1f4f2f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "279df130_52bae861",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
         "patchSetId": 2
