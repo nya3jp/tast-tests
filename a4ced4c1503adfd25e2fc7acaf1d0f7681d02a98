@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc3c1a9_73759f01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:43:49Z",
+      "side": 1,
+      "message": "\u003e \"propery\" is a possible misspelling of \"property\" or \"properly\".\n\nPlease fix.",
+      "parentUuid": "259c88ec_c8058202",
+      "range": {
+        "startLine": 11,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "a4ced4c1503adfd25e2fc7acaf1d0f7681d02a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c3b1602_6f7c3578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:43:49Z",
+      "side": 1,
+      "message": "\u003e \"Expexted\" is a possible misspelling of \"Expected\".\n\nPlease fix.",
+      "parentUuid": "f4541f74_2c8d22ac",
+      "range": {
+        "startLine": 1026,
+        "startChar": 50,
+        "endLine": 1026,
+        "endChar": 58
+      },
+      "revId": "a4ced4c1503adfd25e2fc7acaf1d0f7681d02a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
