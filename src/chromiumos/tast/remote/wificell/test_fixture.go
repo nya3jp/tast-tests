@@ -6,6 +6,7 @@ package wificell
 
 import (
 	"context"
+	"io"
 	"math/rand"
 	"net"
 	"strconv"
@@ -717,4 +718,83 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	return nil
+}
+
+// ShillProperty .
+type ShillProperty struct {
+	Property         string
+	ExpectedValues   []string
+	UnexpectedValues []string
+	Check            bool
+}
+
+// ExpectShillProperty returns the current service path.
+func (tf *TestFixture) ExpectShillProperty(ctx context.Context, props []*ShillProperty) (func() error, error) {
+	var expectedProps []*network.ExpectShillPropertyRequest_Entry
+	for _, prop := range props {
+		var anyOfVals []*network.ShillVal
+		for _, shillState := range prop.ExpectedValues {
+			state, err := protoutil.ToShillVal(shillState)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			anyOfVals = append(anyOfVals, state)
+		}
+
+		var noneOfVals []*network.ShillVal
+		for _, shillState := range prop.UnexpectedValues {
+			state, err := protoutil.ToShillVal(shillState)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			noneOfVals = append(noneOfVals, state)
+		}
+
+		shillPropReqEntry := &network.ExpectShillPropertyRequest_Entry{
+			Key:    prop.Property,
+			AnyOf:  anyOfVals,
+			NoneOf: noneOfVals,
+			Check:  prop.Check,
+		}
+		expectedProps = append(expectedProps, shillPropReqEntry)
+	}
+
+	req := &network.ExpectShillPropertyRequest{
+		ServicePath: tf.curServicePath,
+		Props:       expectedProps,
+	}
+
+	stream, err := tf.WifiClient().ExpectShillProperty(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	ready, err := stream.Recv()
+	if err != nil || ready.Key != "" {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Get the expected properties and values.
+	waitForProperties := func() error {
+		for {
+			resp, err := stream.Recv()
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				return errors.Wrap(err, "failed to get the expected properties")
+			}
+			// Now we get the mathced state change in resp.
+			stateVal, err := protoutil.FromShillVal(resp.Val)
+			if err != nil {
+				return errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			testing.ContextLogf(ctx, "The current WiFi service %s: %s", resp.Key, stateVal)
+		}
+
+		return nil
+	}
+
+	return waitForProperties, nil
 }
