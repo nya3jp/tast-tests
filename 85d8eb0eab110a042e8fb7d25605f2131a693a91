@@ -65,6 +65,54 @@
     },
     {
       "key": {
+        "uuid": "d4374d43_661315b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2da377c9_d8e95013",
+      "range": {
+        "startLine": 1107,
+        "startChar": 48,
+        "endLine": 1107,
+        "endChar": 153
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3633500_819bd7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "I have a seperate cl now: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2340984",
+      "parentUuid": "d8ada58e_0dc1ce67",
+      "range": {
+        "startLine": 1107,
+        "startChar": 22,
+        "endLine": 1107,
+        "endChar": 47
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb59177_7d6cc0db",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 28
@@ -76,6 +124,30 @@
       "writtenOn": "2020-08-04T23:04:20Z",
       "side": 1,
       "message": "if it\u0027s not \"found\u003d\u003dtrue\", do we really want to continue to wait? At least for the BSSID case that you\u0027re using, I don\u0027t think so -- we\u0027d rather fail immediately, because we\u0027re not on the correct BSS.\n\nIt doesn\u0027t help that \u0027Check\u0027 is undocumented, so I don\u0027t know what you *intend* it to mean :)",
+      "range": {
+        "startLine": 1171,
+        "startChar": 3,
+        "endLine": 1171,
+        "endChar": 4
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ac887c_1c7241dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "My intention was to check the property value before waiting for change, but as you said for the BSSID case we want to just check the value of the BSSID. I changed it to fail if the BSSID is not equal to the expected value.",
+      "parentUuid": "cdb59177_7d6cc0db",
       "range": {
         "startLine": 1171,
         "startChar": 3,
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "09e86395_69930435",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "368b6b8a_d8591686",
+      "range": {
+        "startLine": 228,
+        "startChar": 35,
+        "endLine": 228,
+        "endChar": 45
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "377d3d23_1f6cf7df",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 28
@@ -131,6 +227,30 @@
       "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4ee193_53d440ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377d3d23_1f6cf7df",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "7b94f5ad_53b454fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43debd01_0f39216e",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "775b24a2_69175bbb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 28
@@ -180,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "2fc0fd7e_303f90fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "775b24a2_69175bbb",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8fdcfdd_6d7dcfb4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 28
@@ -191,6 +359,30 @@
       "writtenOn": "2020-08-04T23:04:20Z",
       "side": 1,
       "message": "this doesn\u0027t make sense -- you\u0027re putting a Service state as a value for BSSID? It\u0027s definitely true that\u0027s \"not expected\", but the statement doesn\u0027t really make much sense as a test condition. If Shill is mixing up its property types that much, we have bigger problems.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc162697_2145aa8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "That\u0027s true, I think because both of them are strings that\u0027s why it didn\u0027t complain. I changed this to empty. []*network.ShillVal{}",
+      "parentUuid": "d8fdcfdd_6d7dcfb4",
       "range": {
         "startLine": 160,
         "startChar": 0,
@@ -249,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "8563bc0f_13a839b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03cdbc7_07d0d511",
+      "range": {
+        "startLine": 211,
+        "startChar": 20,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06e69385_2a084cad",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 28
@@ -272,6 +488,30 @@
     },
     {
       "key": {
+        "uuid": "6b579950_a156280b",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 28
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "It didn\u0027t, I will check why that happend.",
+      "parentUuid": "06e69385_2a084cad",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce9e04c0_f83b76a3",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 28
@@ -292,6 +532,30 @@
       "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69c3f44_1bb1f8fd",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 28
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9e04c0_f83b76a3",
+      "range": {
+        "startLine": 234,
+        "startChar": 10,
+        "endLine": 234,
+        "endChar": 14
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

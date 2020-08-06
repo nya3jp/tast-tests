@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "318f2cdd_b96780d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-06T19:51:47Z",
+      "side": 1,
+      "message": "I moved the implementation of the gRPC call \"ExpectShillPropertyValues\" to a seperate cl:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2340984",
+      "revId": "c34f18230a6689d312ea0db97407ab3c222b83a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
