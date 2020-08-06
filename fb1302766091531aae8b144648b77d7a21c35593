@@ -453,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "f7f5b583_09086d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-06T08:52:45Z",
+      "side": 1,
+      "message": "Yes, you can remove testing.Param.Val.timeout. Then you don\u0027t need to call context.WithTimeout by yourself because ctx passed to the test function has the timeout specified by testing.Param.Timeout. Of course, this also means that now the time to stop ui and create a file is counted for the timeout, but they\u0027re fairly short operations that should finish in seconds.",
+      "parentUuid": "aea536e2_f6e85001",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fc91295_da4a2ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
