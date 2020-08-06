@@ -106,6 +106,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f10be08_631a3ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-06T00:52:23Z",
+      "side": 1,
+      "message": "Except the fact it can detect such problems, of course.\n\nI guess some devices were donated to the lab after being used in corp without a proper wipe.",
+      "parentUuid": "6033d035_6a476815",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
