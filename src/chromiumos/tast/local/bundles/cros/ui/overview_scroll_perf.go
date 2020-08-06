@@ -112,7 +112,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

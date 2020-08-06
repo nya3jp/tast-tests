@@ -96,7 +96,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.Window.AnimationSmoothness.Snap"), perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

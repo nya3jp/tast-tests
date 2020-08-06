@@ -369,7 +369,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", drag.l+"."+suffix))
 	}
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
