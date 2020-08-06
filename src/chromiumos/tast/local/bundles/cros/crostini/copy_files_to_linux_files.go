@@ -62,6 +62,9 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// Clean up the home directory in the end.
+	defer cont.Cleanup(cleanupCtx, ".")
+
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {

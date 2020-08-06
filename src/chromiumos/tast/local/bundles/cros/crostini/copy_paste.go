@@ -275,6 +275,9 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 	tconn := pre.TestAPIConn
 	cont := pre.Container
 
+	// Clean up the home directory in the end.
+	defer cont.Cleanup(ctx, ".")
+
 	s.Log("Installing GTK3 dependencies")
 	cmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
