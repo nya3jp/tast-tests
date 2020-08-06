@@ -87,6 +87,7 @@ No Errors Logged
 	}
 
 	exp := &Info{
+		Name:   "S3VBNY0J708174",
 		Device: NVMe,
 		Status: Healthy,
 	}
