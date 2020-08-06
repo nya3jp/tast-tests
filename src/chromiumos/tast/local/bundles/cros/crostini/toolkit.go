@@ -129,6 +129,7 @@ func Toolkit(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := pre.Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	dataPath := filepath.Join("/", "home", "testuser", conf.data)
 	if err := cont.PushFile(ctx, s.DataPath(conf.data), dataPath); err != nil {

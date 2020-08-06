@@ -111,18 +111,6 @@ func (vm *VM) DiskSize() (uint64, error) {
 	return vm.diskSize, nil
 }
 
-func (vm *VM) vmCommand(ctx context.Context, args ...string) *testexec.Cmd {
-	args = append([]string{
-		"--vm_name=" + vm.name,
-		"--owner_id=" + vm.Concierge.ownerID,
-		"--"},
-		args...)
-	cmd := testexec.CommandContext(ctx, "vsh", args...)
-
-	cmd.Stdin = &bytes.Buffer{}
-	return cmd
-}
-
 // Start launches the VM.
 func (vm *VM) Start(ctx context.Context) error {
 	diskPath, err := vm.Concierge.startTerminaVM(ctx, vm)
@@ -137,7 +125,7 @@ func (vm *VM) Start(ctx context.Context) error {
 	}
 	vm.diskSize = diskSize
 
-	cmd := vm.vmCommand(ctx, "grep", "CHROMEOS_RELEASE_VERSION=", "/etc/lsb-release")
+	cmd := vm.Command(ctx, "grep", "CHROMEOS_RELEASE_VERSION=", "/etc/lsb-release")
 	if output, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		testing.ContextLog(ctx, "Failed to get VM image version")
 	} else {

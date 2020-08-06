@@ -84,6 +84,8 @@ func init() {
 func GPUEnabled(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	expectedDevice := s.Param().(string)
+	defer crostini.RunCrostiniPostTest(ctx, cont)
+
 	cmd := cont.Command(ctx, "sh", "-c", "glxinfo -B | grep Device:")
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("Failed to run %q: %v", shutil.EscapeSlice(cmd.Args), err)

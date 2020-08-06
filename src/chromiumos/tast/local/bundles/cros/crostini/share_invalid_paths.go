@@ -48,6 +48,7 @@ func init() {
 
 func ShareInvalidPaths(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
+	defer crostini.RunCrostiniPostTest(ctx, pre.Container)
 
 	userData := filepath.Join("/home/user", pre.Container.VM.Concierge.GetOwnerID())
 	downloads := filepath.Join(userData, "MyFiles/Downloads")
