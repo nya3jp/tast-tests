@@ -90,7 +90,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency"),
 		perfutil.StoreLatency)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

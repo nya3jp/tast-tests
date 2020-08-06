@@ -157,7 +157,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			"Apps.StateTransition.Drag.PresentationTime.ClamshellMode"),
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

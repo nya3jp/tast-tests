@@ -352,7 +352,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		})
 
 	// Save metrics data in file.
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data in file: ", err)
 	}
 }

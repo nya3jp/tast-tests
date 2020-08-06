@@ -52,7 +52,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		"Ash.Desks.AnimationSmoothness.DeskRemoval"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

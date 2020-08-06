@@ -168,7 +168,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := r.Values().Save(s.OutDir()); err != nil {
+	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
