@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "586935fd_131ce6c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-08-06T23:19:18Z",
+      "side": 1,
+      "message": "Thank you for reviewing this. But let me abandon this since we decided to go with another approach: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2340833\n",
+      "revId": "de0dd62b83bab5a18b36fafdf2bf60b3b3b817a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dcdaeca_48d183ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 1
