@@ -20,7 +20,9 @@ public class ReceivedEvent {
     public Long rtcReceiveTime;
     public Long eventTime;
     public Long latency;
-    public String type;
+    public String source;
+    public String code;
+    public String action;
 
     public ReceivedEvent(InputEvent event, Long receiveTime, Long rtcReceiveTime) {
         // Note that on ARC++, eventTime is the same as the original (host) kernel
@@ -32,32 +34,62 @@ public class ReceivedEvent {
         this.rtcReceiveTime = rtcReceiveTime;
         this.latency = receiveTime - eventTime;
 
+        switch (event.getSource()) {
+            case InputDevice.SOURCE_KEYBOARD:
+                source = "Keyboard";
+                break;
+            case InputDevice.SOURCE_JOYSTICK:
+                source = "Joystick";
+                break;
+            case InputDevice.SOURCE_GAMEPAD:
+                source = "Gamepad";
+                break;
+            case InputDevice.SOURCE_MOUSE:
+                source = "Mouse";
+                break;
+            case InputDevice.SOURCE_STYLUS:
+                source = "Stylus";
+                break;
+            case InputDevice.SOURCE_TOUCHPAD:
+                source = "Touchpad";
+                break;
+            case InputDevice.SOURCE_TOUCHSCREEN:
+                source = "Touchscreen";
+                break;
+            default:
+                source = "UnsupportedSource";
+        }
+
         if (event instanceof KeyEvent) {
-            type = "KeyEvent";
+            code = KeyEvent.keyCodeToString(((KeyEvent)event).getKeyCode());
+            action = actionToString(((KeyEvent)event).getAction());
         } else if (event instanceof MotionEvent) {
-            if (event.isFromSource(InputDevice.SOURCE_JOYSTICK)) {
-                type = "JoystickEvent";
-            } else if (event.isFromSource(InputDevice.SOURCE_GAMEPAD)) {
-                type = "GamepadEvent";
-            } else if (event.isFromSource(InputDevice.SOURCE_MOUSE)) {
-                type = "MouseEvent";
-            } else if (event.isFromSource(InputDevice.SOURCE_STYLUS)) {
-                type = "StylusEvent";
-            } else if (event.isFromSource(InputDevice.SOURCE_TOUCHPAD)) {
-                type = "TouchpadEvent";
-            } else if (event.isFromSource(InputDevice.SOURCE_TOUCHSCREEN)) {
-                type = "TouchscreenEvent";
-            } else {
-                type = "UnsupportedMotionEvent";
-            }
+            code = source;
+            action = MotionEvent.actionToString(((MotionEvent)event).getAction());
         } else {
-            type = "InputEvent";
+            code = "UnsupportedEvent";
+            action = "UnsupportedEvent";
+        }
+    }
+
+    private String actionToString(int action) {
+        switch (action) {
+            case KeyEvent.ACTION_DOWN:
+                return "ACTION_DOWN";
+            case KeyEvent.ACTION_UP:
+                return "ACTION_UP";
+            case KeyEvent.ACTION_MULTIPLE:
+                return "ACTION_MULTIPLE";
+            default:
+                return Integer.toString(action);
         }
     }
 
     public JSONObject toJSON() throws JSONException {
         return new JSONObject()
-                .put("type", type)
+                .put("source", source)
+                .put("code", code)
+                .put("action", action)
                 .put("eventTime", eventTime)
                 .put("receiveTime", receiveTime)
                 .put("rtcReceiveTime", rtcReceiveTime)
@@ -67,6 +99,7 @@ public class ReceivedEvent {
     @Override
     public String toString() {
         return String.format(
-                "%s:%d:%d:%d:%d", type, eventTime, receiveTime, rtcReceiveTime, latency);
+                "%s:%s:%s:%d:%d:%d:%d",
+                source, code, action, eventTime, receiveTime, rtcReceiveTime, latency);
     }
 }
