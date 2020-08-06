@@ -39,5 +39,7 @@ func init() {
 
 func VerifyAppX11(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
+	defer crostini.RunCrostiniPostTest(ctx, pre.Container)
+
 	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.X11DemoConfig())
 }

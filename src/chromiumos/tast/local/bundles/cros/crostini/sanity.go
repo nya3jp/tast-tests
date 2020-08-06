@@ -53,6 +53,8 @@ func init() {
 
 func Sanity(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
+
 	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}

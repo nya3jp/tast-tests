@@ -50,6 +50,7 @@ func init() {
 
 func AudioSanity(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 	s.Log("List alsa output devices")
 	if err := cont.Command(ctx, "aplay", "-l").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to list alsa output devices: ", err)

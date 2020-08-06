@@ -45,6 +45,7 @@ func Webserver(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	cont := pre.Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	const expectedWebContent = "nothing but the web"
 
