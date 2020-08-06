@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "a11ecf86_8e305dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-08-06T16:11:34Z",
+      "side": 1,
+      "message": "I think it\u0027s more confusing to keep this separate from `package dlc`\nIt creates two places to look for/add dlc related utilities too.\n\nMakes sense to put this in \"src/chromiumos/tast/local/dlc\" as `package dlc`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "280c0c8a_bfe7a850",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
         "patchSetId": 3
