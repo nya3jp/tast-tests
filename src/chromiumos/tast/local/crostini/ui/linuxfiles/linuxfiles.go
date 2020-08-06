@@ -5,7 +5,7 @@
 // Package linuxfiles supports actions on Linux files on Files app.
 package linuxfiles
 
-// Linux files name in Files app
+// Linux files directory name and title in Files app.
 const (
 	DirName = "Linux files"
 	Title   = "Files - " + DirName
