@@ -52,6 +52,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a02bfb9f_e1d8521a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-06T00:01:54Z",
+      "side": 1,
+      "message": "In this particular case the issue is with those boards, not with the test, and I don\u0027t think it\u0027s a good reason to delay a test catching regressions exactly like this not to be enabled. Maybe there should be a guideline for adding boards to CQ too, to ensure they are passing all the tests before being added. After all, if you look at stainless, zork doesn\u0027t pass 1/3 of all tests every time, while \"normal\" failure rate is under 10%\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard\u0026col\u003dbuild\u0026first_date\u003d2020-07-30\u0026last_date\u003d2020-08-05\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "419e50c7_5078c39c",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
