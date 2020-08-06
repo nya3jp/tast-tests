@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
+	"sort"
 	"strings"
 
 	"github.com/godbus/dbus"
@@ -453,6 +455,23 @@ func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string,
 	return nil
 }
 
+// CheckFileListEqual checks file list in the given path in container equals to an list.
+// This method does not recognize whether it is a folder or a file.
+func (c *Container) CheckFileListEqual(ctx context.Context, path string, expectList ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list the content of %s in container", path)
+	}
+
+	sort.Strings(expectList)
+	sort.Strings(fileList)
+	if !reflect.DeepEqual(expectList, fileList) {
+		return errors.Wrapf(err, "failed to verify files in %s in container, want %q, got %q", path, expectList, fileList)
+	}
+	return nil
+}
+
 // GetFileList returns a list of the files in the given path in the container.
 func (c *Container) GetFileList(ctx context.Context, path string) (fileList []string, err error) {
 	// Get files in the path in container.
@@ -492,6 +511,20 @@ func (c *Container) ReadFile(ctx context.Context, filePath string) (content stri
 	}
 
 	return string(result), nil
+}
+
+// Cleanup removes all the files under the specific path.
+func (c *Container) Cleanup(ctx context.Context, path string) error {
+	list, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get file list of %s in container: ", path)
+	}
+	for _, file := range list {
+		if err := c.Command(ctx, "rm", "-rf", file).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to delete %s in %s", file, path)
+		}
+	}
+	return nil
 }
 
 // LinuxPackageInfo queries the container for information about a Linux package
