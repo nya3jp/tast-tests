@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2605f02_ca8b66a5",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-06T21:54:42Z",
+      "side": 1,
+      "message": "Very nitpicking, usually use \u0027new\u0027 for constructor functions. NewAPIClient() might be more idiomatic in Go -- but it\u0027s okay to keep it.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "b0b431f3c39570fe3d16c7637939da47c14958da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
