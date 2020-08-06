@@ -415,3 +415,46 @@ func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName strin
 	}
 	return nil
 }
+
+// SelectDirectoryContextMenuItem right clicks the specified directory in the navigation tree and selects the specified context menu item.
+// An error is returned if dir is not found or right click fails.
+func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, menuItem string) error {
+	// Select dirName in the directory tree.
+	params := ui.FindParams{
+		Name: dirName,
+		Role: ui.RoleTypeTreeItem,
+	}
+	dir, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find %s in the navigation tree", dirName)
+	}
+	defer dir.Release(ctx)
+
+	// Within the subtree, click the row to navigate to the location.
+	params = ui.FindParams{
+		Name: dirName,
+		Role: ui.RoleTypeStaticText,
+	}
+
+	dirRow, err := dir.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find text %s in the navigation tree", dirName)
+	}
+	defer dirRow.Release(ctx)
+
+	if err := dirRow.RightClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to right click %s", dirName)
+	}
+
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
+	// Left click menuItem.
+	if err := f.LeftClickItem(ctx, menuItem, ui.RoleTypeMenuItem); err != nil {
+		return errors.Wrapf(err, "failed to click %s in context menu", menuItem)
+	}
+
+	return nil
+}
