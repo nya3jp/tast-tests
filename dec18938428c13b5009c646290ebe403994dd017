@@ -70,6 +70,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4707352_59b05088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-06T00:19:01Z",
+      "side": 1,
+      "message": "Basically informational should be removed after we confirm it is stable enough. Failures can be ignored if it\u0027s not related to the issue. You\u0027re right about zork, the boards seems really problematic. So we can ignore their failures.\n\nStill I think flakiness of rikku and guado is related to this test and I worry about that. It\u0027s better to be addressed before making it critical.",
+      "parentUuid": "a02bfb9f_e1d8521a",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
