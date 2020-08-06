@@ -16,6 +16,149 @@
       "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea3f80f5_53636324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "a service property watcher",
+      "range": {
+        "startLine": 1030,
+        "startChar": 46,
+        "endLine": 1030,
+        "endChar": 65
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c114f2_1bbd7448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "property",
+      "range": {
+        "startLine": 1074,
+        "startChar": 44,
+        "endLine": 1074,
+        "endChar": 54
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a092e1e_9823f784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "Awesome. Nested property watcher.",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4399438c_19a12730",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "Use Precondition?",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e21c3cbe_be2c8883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "The Autotest version uses the same channel for AP1 and AP2. Does that make the test running in a different way?",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1887e890_45ae9751",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "configuration",
+      "range": {
+        "startLine": 209,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 23
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007baee5_7f742c51",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T10:18:33Z",
+      "side": 1,
+      "message": "shill_props",
+      "range": {
+        "startLine": 214,
+        "startChar": 26,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
