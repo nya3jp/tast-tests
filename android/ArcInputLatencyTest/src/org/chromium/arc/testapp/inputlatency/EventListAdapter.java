@@ -30,7 +30,9 @@ class EventListAdapter extends BaseAdapter {
         if (view == null)
             view = LayoutInflater.from(mContext).inflate(R.layout.event_list_item, null);
         final ReceivedEvent item = getItem(position);
-        ((TextView) view.findViewById(R.id.event_type)).setText(item.type);
+        ((TextView) view.findViewById(R.id.source)).setText(item.source);
+        ((TextView) view.findViewById(R.id.code)).setText(item.code);
+        ((TextView) view.findViewById(R.id.action)).setText(item.action);
         ((TextView) view.findViewById(R.id.event_time)).setText(item.eventTime.toString());
         ((TextView) view.findViewById(R.id.app_time)).setText(item.receiveTime.toString());
         ((TextView) view.findViewById(R.id.latency)).setText(item.latency.toString());

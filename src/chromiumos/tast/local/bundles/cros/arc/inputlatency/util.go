@@ -75,9 +75,25 @@ func WaitForEvents(ctx context.Context, d *ui.Device, count int) (string, error)
 		return "", err
 	}
 
-	v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_json"))
-	txt, err := v.GetText(ctx)
-	if err != nil {
+	// Click finish button to generate JSON data.
+	finishBtn := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/finish_btn"))
+	if err := finishBtn.Click(ctx); err != nil {
+		return "", err
+	}
+
+	var txt string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_json"))
+		var err error
+		txt, err = v.GetText(ctx)
+		if err != nil {
+			return err
+		}
+		if txt == "" {
+			return errors.New("waiting for generate JSON data")
+		}
+		return nil
+	}, nil); err != nil {
 		return "", err
 	}
 	return txt, nil

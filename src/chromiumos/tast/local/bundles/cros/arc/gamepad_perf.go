@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"encoding/json"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -79,6 +80,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait until CPU idle: ", err)
@@ -99,9 +101,24 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		if err := v.Click(ctx); err != nil {
 			return errors.Wrap(err, "failed to click clear button")
 		}
-		txt, err := inputlatency.WaitForEvents(ctx, d, 0)
-		if err != nil || txt != "" {
-			return errors.Wrap(err, "failed to wait for empty event")
+
+		// Check whether events are cleared.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_count"))
+			txt, err := v.GetText(ctx)
+			if err != nil {
+				return err
+			}
+			num, err := strconv.ParseInt(txt, 10, 64)
+			if err != nil {
+				return err
+			}
+			if num != 0 {
+				return errors.Errorf("failed to clean events; got %d, want 0", num)
+			}
+			return nil
+		}, nil); err != nil {
+			return err
 		}
 		return nil
 	}
@@ -115,9 +132,6 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		var events []inputlatency.InputEvent
 		if err := json.Unmarshal([]byte(txt), &events); err != nil {
 			return errors.Wrap(err, "could not ummarshal events from app")
-		}
-		if len(events) != len(*eventTimes) {
-			return errors.Errorf("failed to get required event length: got %d; wanted %d", len(events), len(*eventTimes))
 		}
 
 		// Assign event RTC time.

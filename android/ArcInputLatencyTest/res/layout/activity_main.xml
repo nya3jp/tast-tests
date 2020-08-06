@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
         android:divider="@android:drawable/divider_horizontal_bright" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +39,11 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="0" />
+            <Button
+                android:id="@+id/finish_btn"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="finish trace"/>
             <Button
                 android:id="@+id/clear_btn"
                 android:layout_height="wrap_content"
