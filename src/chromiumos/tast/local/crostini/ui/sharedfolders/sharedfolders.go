@@ -1,0 +1,237 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package sharedfolders provides support for sharing folders with Crostini.
+package sharedfolders
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/crostini/ui/settings"
+)
+
+// Folder sharing strings.
+const (
+	ManageLinuxSharing = "Manage Linux Sharing"
+	shareWithLinux     = "Share with Linux"
+	DialogName         = "Share folder with Linux"
+	MountPath          = "/mnt/chromeos"
+	MountFolderMyFiles = "MyFiles"
+	MountPathMyFiles   = MountPath + "/" + MountFolderMyFiles
+)
+
+// Strings for sharing My files.
+const (
+	MyFilesMsg = "Give Linux apps permission to modify files in the My files folder"
+	MyFiles    = "My files"
+)
+
+const uiTimeout = 15 * time.Second
+
+// ShareConfirmDialog represents the confirm dialog of sharing folder.
+type ShareConfirmDialog struct {
+	dialogNode   *ui.Node
+	msgNode      *ui.Node
+	okButton     *ui.Node
+	cancelButton *ui.Node
+}
+
+// ShareToastNotification represents the toast notification of sharing folder.
+type ShareToastNotification struct {
+	toastNode    *ui.Node
+	msgNode      *ui.Node
+	manageButton *ui.Node
+}
+
+// SharedFolders provides support for actions and records on shared folders.
+type SharedFolders struct {
+	Folders map[string]struct{}
+}
+
+func findShareConfirmDialog(ctx context.Context, tconn *chrome.TestConn, msg string) (scd *ShareConfirmDialog, err error) {
+	// Find the dialog, confirmation message, Cancel and OK button.
+	dialog, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: DialogName, Role: ui.RoleTypeDialog}, uiTimeout)
+	if err != nil {
+		return scd, errors.Wrap(err, "failed to find confirmation dialog")
+	}
+
+	msgNd, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: msg, Role: ui.RoleTypeStaticText}, uiTimeout)
+	if err != nil {
+		defer dialog.Release(ctx)
+		return scd, errors.Wrap(err, "failed to find confirmation message")
+	}
+
+	ok, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}, uiTimeout)
+	if err != nil {
+		defer dialog.Release(ctx)
+		defer msgNd.Release(ctx)
+		return scd, errors.Wrap(err, "failed to find button OK in confimration dialog")
+	}
+
+	cancel, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Cancel", Role: ui.RoleTypeButton}, uiTimeout)
+	if err != nil {
+		defer dialog.Release(ctx)
+		defer msgNd.Release(ctx)
+		defer ok.Release(ctx)
+		return scd, errors.Wrap(err, "failed to find button Cancel in confimration dialog")
+	}
+
+	return &ShareConfirmDialog{dialogNode: dialog, msgNode: msgNd, okButton: ok, cancelButton: cancel}, nil
+}
+
+// ClickOK clicks OK on the confirm dialog and return an instance of ShareToastNotification.
+func (scd *ShareConfirmDialog) ClickOK(ctx context.Context, tconn *chrome.TestConn) (toast *ShareToastNotification, err error) {
+	if err := scd.okButton.LeftClick(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to click OK")
+	}
+	return findShareToastNotification(ctx, tconn)
+}
+
+// ClickCancel clicks Cancel on the confirm dialog.
+func (scd *ShareConfirmDialog) ClickCancel(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := scd.cancelButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Cancel")
+	}
+
+	// Make sure that there is no sharing toast notification.
+	toast, err := findShareToastNotification(ctx, tconn)
+	if err == nil {
+		defer toast.Release(ctx)
+		return errors.New("toast notification is displayed unexpectedly after clicking button Cancel")
+	}
+	return nil
+}
+
+// Release releases all nodes on confirm dialog.
+func (scd *ShareConfirmDialog) Release(ctx context.Context) {
+	defer scd.cancelButton.Release(ctx)
+	defer scd.okButton.Release(ctx)
+	defer scd.msgNode.Release(ctx)
+	defer scd.dialogNode.Release(ctx)
+}
+
+func findShareToastNotification(ctx context.Context, tconn *chrome.TestConn) (toast *ShareToastNotification, err error) {
+	// Find the toast notification, message and button Manage.
+	toastNd, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "container", Role: ui.RoleTypeAlert}, uiTimeout)
+	if err != nil {
+		return toast, errors.Wrap(err, "failed to find toast nofication")
+	}
+
+	msg, err := toastNd.DescendantWithTimeout(ctx, ui.FindParams{Name: "1 folder shared with Linux", Role: ui.RoleTypeStaticText}, uiTimeout)
+	if err != nil {
+		defer toastNd.Release(ctx)
+		return toast, errors.Wrap(err, "failed to find toast message")
+	}
+
+	manage, err := toastNd.DescendantWithTimeout(ctx, ui.FindParams{Name: "Manage", Role: ui.RoleTypeButton}, uiTimeout)
+	if err != nil {
+		defer toastNd.Release(ctx)
+		defer msg.Release(ctx)
+		return toast, errors.Wrap(err, "failed to find button Manage in toast notification")
+	}
+	return &ShareToastNotification{toastNode: toastNd, msgNode: msg, manageButton: manage}, nil
+}
+
+// ClickManage clicks Manage on toast notification.
+func (toast *ShareToastNotification) ClickManage(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location on Files app")
+	}
+
+	if err := toast.manageButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click button Manage")
+	}
+
+	return nil
+}
+
+// Release releases all nodes on toast notification.
+func (toast *ShareToastNotification) Release(ctx context.Context) {
+	defer toast.manageButton.Release(ctx)
+	defer toast.msgNode.Release(ctx)
+	defer toast.toastNode.Release(ctx)
+}
+
+// NewSharedFolders creates and returns a new Sharefolders instance.
+func NewSharedFolders() *SharedFolders {
+	return &SharedFolders{Folders: make(map[string]struct{})}
+}
+
+// ShareMyFiles tests sharing My files.
+func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, msg string) (scd *ShareConfirmDialog, err error) {
+	if _, ok := sf.Folders[MyFiles]; ok {
+		return nil, errors.New("My files has already been shared with Linux")
+	}
+	sf.Folders[MyFiles] = struct{}{}
+
+	// Right click My files and select Share with Linux.
+	if err = filesApp.SelectDirectoryContextMenuItem(ctx, MyFiles, shareWithLinux); err != nil {
+		return nil, errors.Wrapf(err, "failed to click %q on My files ", shareWithLinux)
+	}
+
+	return findShareConfirmDialog(ctx, tconn, msg)
+}
+
+// Unshare unshares folders from Linux.
+func (sf *SharedFolders) Unshare(ctx context.Context, tconn *chrome.TestConn, folders ...string) error {
+	s, err := settings.Open(ctx, tconn, settings.SettingsLinux, settings.ManageShareFolders)
+	if err != nil || s == nil {
+		return errors.Wrap(err, "failed to find Manage shared folders")
+	}
+	defer s.Close(ctx)
+
+	for _, folder := range folders {
+		if _, ok := sf.Folders[MyFiles]; !ok {
+			return errors.Errorf("%s has not been shared with Linux", folder)
+		}
+		delete(sf.Folders, folder)
+		if err := s.UnshareFolder(ctx, tconn, folder); err != nil {
+			return errors.Wrapf(err, "failed to unshare %s", folder)
+		}
+	}
+
+	return nil
+}
+
+// CheckNoSharedFolders checks there are no folders listed in the Managed shared folders page.
+func (sf *SharedFolders) CheckNoSharedFolders(ctx context.Context, tconn *chrome.TestConn) error {
+	s, err := settings.Open(ctx, tconn, settings.SettingsLinux, settings.ManageShareFolders)
+	if err != nil || s == nil {
+		return errors.Wrap(err, "failed to find Manage shared folders")
+	}
+	defer s.Close(ctx)
+
+	shareFoldersList, err := settings.GetLinuxSharedFolders(ctx, tconn, settings.SettingsMSF)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the shared folders list")
+	}
+	if len(shareFoldersList) != 0 {
+		return errors.Errorf("failed to verify the shared folders list: want[], got %s", shareFoldersList)
+	}
+	return nil
+}
+
+// UnshareAll unshares all shared folders.
+func (sf *SharedFolders) UnshareAll(ctx context.Context, tconn *chrome.TestConn) error {
+	folders := make([]string, len(sf.Folders))
+	i := 0
+	for folder := range sf.Folders {
+		folders[i] = folder
+		i++
+	}
+	if err := sf.Unshare(ctx, tconn, folders...); err != nil {
+		return errors.Wrap(err, "failed to unshare all shared folders")
+	}
+
+	if err := sf.CheckNoSharedFolders(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to verify that the shared folder list is empty")
+	}
+
+	return nil
+}
