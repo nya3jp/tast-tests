@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ab5c9eb6_032de4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-06T21:56:20Z",
+      "side": 1,
+      "message": "That was patch set 2, i was asked to separate the two.\n\nPlease hidehiko@ confirm which we prefer: locality/isolation.",
+      "parentUuid": "a11ecf86_8e305dfc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "280c0c8a_bfe7a850",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
         "patchSetId": 3
