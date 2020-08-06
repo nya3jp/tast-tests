@@ -124,6 +124,24 @@
       "revId": "dec18938428c13b5009c646290ebe403994dd017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06905be_26c51ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-06T01:01:40Z",
+      "side": 1,
+      "message": "Okay so that is actually an infra issue that some units are left in enterprise-enrolled status. Sigh.\n\nThen it is good to go. I wonder if it is worthwhile to exclude guado and rikku explicitly for now through hardware dependencies (hwdep.Model)... but maybe not so much worthwhile.",
+      "parentUuid": "4f10be08_631a3ecc",
+      "revId": "dec18938428c13b5009c646290ebe403994dd017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
