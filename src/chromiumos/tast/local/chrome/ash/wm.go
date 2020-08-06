@@ -242,6 +242,13 @@ func GetARCAppWindowInfo(ctx context.Context, tconn *chrome.TestConn, pkgName st
 	})
 }
 
+// GetAllARCAppWindowsInfo queries into Ash and returns all of the ARC windows info.
+func GetAllARCAppWindowsInfo(ctx context.Context, tconn *chrome.TestConn, pkgName string) ([]*Window, error) {
+	return FindAllWindows(ctx, tconn, func(window *Window) bool {
+		return window.ARCPackageName == pkgName
+	})
+}
+
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
 func GetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string) (WindowStateType, error) {
 	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
@@ -249,6 +256,18 @@ func GetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 		return WindowStateNormal, err
 	}
 	return window.State, nil
+}
+
+// GetAllARCAppWindowStates gets all the Chrome side window states of the ARC app windows with pkgName.
+func GetAllARCAppWindowStates(ctx context.Context, tconn *chrome.TestConn, pkgName string) (windowStates []WindowStateType, err error) {
+	windows, err := GetAllARCAppWindowsInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return windowStates, err
+	}
+	for _, window := range windows {
+		windowStates = append(windowStates, window.State)
+	}
+	return windowStates, nil
 }
 
 // WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
@@ -422,6 +441,20 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 		}
 	}
 	return nil, ErrWindowNotFound
+}
+
+// FindAllWindows returns the Chrome windows with which the given predicate returns true.
+func FindAllWindows(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (matchingWindows []*Window, err error) {
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get all windows")
+	}
+	for _, window := range windows {
+		if predicate(window) {
+			matchingWindows = append(matchingWindows, window)
+		}
+	}
+	return matchingWindows, nil
 }
 
 // ConnSource is an interface which allows new chrome.Conn connections to be created.
