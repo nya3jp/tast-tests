@@ -36,6 +36,97 @@
     },
     {
       "key": {
+        "uuid": "85e59dcd_2be50af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Reviewed except the test body.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1392467a_e767a023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Update the comment as it connects to a WiFi service when needConn is set.\n\nMmm.. I would rename the function as \"expectConnected\".\n\n// expectConnected expects a WiFi service is connected.\n// If needConn is set, it also invokes service.Connect().\n// The time used for association and configuration is returned when success.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95468c06_8ee83ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "I have a question: what if the service is already connected and needConn is set?\nCan pw detect the state change in this case?",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65532f04_e21258cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "// When the service\u0027s connect operation is taken place before the function is called, the service may already be connected. Check first as pw cannot detect the service\u0027s state change in this case.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d210d314_37b97a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Does that mean \"match any\"? Please describe in the comment.",
+      "range": {
+        "startLine": 1045,
+        "startChar": 29,
+        "endLine": 1045,
+        "endChar": 35
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b33b5c80_bb40f680",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 20
@@ -59,6 +150,80 @@
     },
     {
       "key": {
+        "uuid": "bac71c84_1d609385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "a service\n\nsame below.",
+      "range": {
+        "startLine": 1055,
+        "startChar": 44,
+        "endLine": 1055,
+        "endChar": 51
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e33e70_6f12bc6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "We may omit the line.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267c3da5_6dbf9daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Do you forget to check notExpectedValue?",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa7fcf4_d900c43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Can we shortcut on the first found case? Or we need to exam all expectedVals and return the latest matched one? Note that the behavior should be addressed in gRPC method comment.",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82a18023_7d24da5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 20
@@ -75,6 +240,52 @@
         "startChar": 4,
         "endLine": 1112,
         "endChar": 9
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0a79bc_ec75da9b",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "The current naming is fine. However, would you consider ExpectInExclude or ExpectBut ?",
+      "range": {
+        "startLine": 215,
+        "startChar": 29,
+        "endLine": 215,
+        "endChar": 46
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788cee96_4255209e",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "How about renaming expected and notExpected to anyOf and noneOf, respectively?",
+      "range": {
+        "startLine": 215,
+        "startChar": 81,
+        "endLine": 215,
+        "endChar": 89
       },
       "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -128,6 +339,29 @@
     },
     {
       "key": {
+        "uuid": "2c00a31b_2552a81a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "How about ExpectShillProperty?",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ce7662c_99bd726b",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 20
@@ -144,6 +378,70 @@
         "startChar": 10,
         "endLine": 211,
         "endChar": 14
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f895b19_d32fc7e8",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 20
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "I think it is okay as it is prefixed by \"ExpectShillPropertyValuesRequest\".\n\nOr perhaps \"KeyValues\".",
+      "parentUuid": "9ce7662c_99bd726b",
+      "range": {
+        "startLine": 211,
+        "startChar": 10,
+        "endLine": 211,
+        "endChar": 14
+      },
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ff5dfe_113f39f6",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 20
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "What\u0027s the meaning of expecting multiple values? Match any of them? Please explain it in comment.\n\nAfter reading pw.ExpectNotExpectIn(), I have an idea: how about renaming expectedVals and notExpectedVals as \"any_of\" and \"none_of\", respectively? It is more self-explanatory.\n\nUse CamelCase (with an initial capital) for message names – for example, SongServerRequest. Use underscore_separated_names for field names (including oneof field and extension names) – for example, song_name.\nhttps://developers.google.com/protocol-buffers/docs/style#message_and_field_names",
+      "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1efd8c_08d0040a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 20
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-06T04:24:06Z",
+      "side": 1,
+      "message": "Please elaborate what does \"check\" mean?",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 16
       },
       "revId": "d1d5242fae774d5724c474880984874d7e41c78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
