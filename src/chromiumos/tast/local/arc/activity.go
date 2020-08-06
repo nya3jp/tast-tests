@@ -311,7 +311,9 @@ func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t t
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
+	// If a multi-activity PIP app was minimized, the window state of the PIP's app package could return minimized as there is still one
+	// activity minimized running alongside the PIP activity.
+	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateMinimized && windowState != ash.WindowStateNormal {
 		return errors.Errorf("cannot move window in state %s", windowState)
 	}
 
@@ -429,7 +431,9 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
+	// If a multi-activity PIP app was minimized, the window state of the PIP's app package could return minimized as there is still one
+	// activity minimized running alongside the PIP activity.
+	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateMinimized && windowState != ash.WindowStateNormal {
 		return errors.Errorf("cannot resize window in state %s", windowState)
 	}
 
