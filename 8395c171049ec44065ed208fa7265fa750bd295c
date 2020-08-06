@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "46706486_c8d8496a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-06T16:19:06Z",
+      "side": 1,
+      "message": "We need a ScreenRecorder.Release method to clean this up to avoid holding it indefinitely and prevent JS garbage collect it.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/jsobject.go;l\u003d17?q\u003dchrome.JSObject\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "revId": "8395c171049ec44065ed208fa7265fa750bd295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1cac44_8d21e45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-06T16:19:06Z",
+      "side": 1,
+      "message": "I would use |this| instead of |videoRecorder|.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "8395c171049ec44065ed208fa7265fa750bd295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5eb665aa_308462c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 17
@@ -13,6 +53,30 @@
       "writtenOn": "2020-08-06T08:43:58Z",
       "side": 1,
       "message": "Do we want to download videos on device as well? Will that be useful?",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "8395c171049ec44065ed208fa7265fa750bd295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f26f585_335a3443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-06T16:19:06Z",
+      "side": 1,
+      "message": "I don\u0027t think it is necessary.",
+      "parentUuid": "5eb665aa_308462c8",
       "range": {
         "startLine": 60,
         "startChar": 6,
