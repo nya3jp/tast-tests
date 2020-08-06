@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7604f79_5f5412c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-08-06T08:07:40Z",
+      "side": 1,
+      "message": "Logic looks good to me. My comments may be inappropriate since I\u0027m not familiar with reviewing Java so please follow tast-owners\u0027 review.",
+      "revId": "3da3f278d532ac51d8af1edc704220e073cf81dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b22c4dc9_fc172713",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-08-06T08:07:40Z",
+      "side": 1,
+      "message": "mHistogramJava is better because other related names of vars have a suffix \"Java\" (or extracting those variables and functions to update/stringify the histogram into a nested class may be better?)",
+      "revId": "3da3f278d532ac51d8af1edc704220e073cf81dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "649c16f3_66bf548c",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-08-06T08:07:40Z",
+      "side": 1,
+      "message": "getHistogramString and getHistogramSensorString looks doing almost the same thing.\nHow about extracting the logic to generate a string of histogram to another function?",
+      "revId": "3da3f278d532ac51d8af1edc704220e073cf81dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc079dbc_fbc4e86f",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-08-06T08:07:40Z",
+      "side": 1,
+      "message": "How about extracting the logic above and bottom into another function? This can improve readability.",
+      "revId": "3da3f278d532ac51d8af1edc704220e073cf81dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
