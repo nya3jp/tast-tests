@@ -491,6 +491,20 @@ func (c *Container) ReadFile(ctx context.Context, filePath string) (content stri
 	return string(result), nil
 }
 
+// Cleanup removes all the files under the specific path.
+func (c *Container) Cleanup(ctx context.Context, path string) error {
+	list, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get file list of %s in container: ", path)
+	}
+	for _, file := range list {
+		if err := c.Command(ctx, "rm", "-rf", file).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to delete %s in %s", file, path)
+		}
+	}
+	return nil
+}
+
 // LinuxPackageInfo queries the container for information about a Linux package
 // file. The packageID returned corresponds to the package ID for an installed
 // package based on the PackageKit specification which is of the form

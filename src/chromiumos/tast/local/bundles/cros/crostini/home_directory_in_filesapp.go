@@ -52,6 +52,13 @@ func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
 
+	// Clean up the home directory in the end.
+	defer func() {
+		if err := cont.Cleanup(ctx, "."); err != nil {
+			s.Error("Failed to remove all files in home directory in the container: ", err)
+		}
+	}()
+
 	// Open Files app.
 	fa, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
