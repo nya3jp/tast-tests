@@ -46,6 +46,30 @@
       "revId": "d783f52ce2cf6d1b2874a0767ce8a58256b12e1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a915b68_ae0924f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-06T17:12:18Z",
+      "side": 1,
+      "message": "arc.PIPEnergyAndPower.big relies on ARC PIP resize functionality which is not currently working. You can enable arc.PIPEnergyAndPower.big in ARCVM R when the ARC PIP resize functionality has been fixed.",
+      "parentUuid": "710a9977_b574c3c9",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "d783f52ce2cf6d1b2874a0767ce8a58256b12e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
