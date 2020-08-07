@@ -69,6 +69,24 @@
       "revId": "4c79fe0859e4a225e9a9f7d03248d6b9f2ead610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88291dac_7e28a986",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-07T03:22:41Z",
+      "side": 1,
+      "message": "Done.\nRestart crostini in the end through shutdown on shelf and launch terminal again.",
+      "parentUuid": "51370f4d_cd1db2d5",
+      "revId": "4c79fe0859e4a225e9a9f7d03248d6b9f2ead610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
