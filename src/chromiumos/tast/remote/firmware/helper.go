@@ -28,9 +28,9 @@ type Helper struct {
 	// Config contains a variety of platform-specific attributes.
 	Config *Config
 
-	// ConfigDataDir is the full path to the data directory containing fw-testing-configs JSON files.
-	// Any tests using a Config should set ConfigDataDir to s.DataPath(firmware.ConfigDir).
-	ConfigDataDir string
+	// configDataDir is the full path to the data directory containing fw-testing-configs JSON files.
+	// Any tests requiring a Config should set configDataDir to s.DataPath(firmware.ConfigDir) during NewHelper.
+	configDataDir string
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
@@ -60,8 +60,9 @@ type Helper struct {
 
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
-func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, servoHostPort string) *Helper {
+func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, configDataDir, servoHostPort string) *Helper {
 	return &Helper{
+		configDataDir: configDataDir,
 		DUT:           d,
 		rpcHint:       rpcHint,
 		servoHostPort: servoHostPort,
@@ -151,11 +152,11 @@ func (h *Helper) RequireConfig(ctx context.Context) error {
 	if err := h.RequirePlatform(ctx); err != nil {
 		return errors.Wrap(err, "requiring DUT platform")
 	}
-	// ConfigDataDir comes from testing.State, so it needs to be manually set in advance.
-	if h.ConfigDataDir == "" {
-		return errors.New("cannot create firmware Config without first setting Helper's ConfigDataDir")
+	// configDataDir comes from testing.State, so it needs to be passed during NewHelper.
+	if h.configDataDir == "" {
+		return errors.New("cannot create firmware Config with a null Helper.configDataDir")
 	}
-	cfg, err := NewConfig(h.ConfigDataDir, h.Board, h.Model)
+	cfg, err := NewConfig(h.configDataDir, h.Board, h.Model)
 	if err != nil {
 		return errors.Wrapf(err, "during NewConfig with board=%s, model=%s", h.Board, h.Model)
 	}
