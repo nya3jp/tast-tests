@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa2e76c_3c005539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Rather than assuming what is there at the start of the test, can you check it before sharing, check that after sharing it is the same + myfiles, then check after unsharing that it goes back to what it was?\n\nThat will prevent this test from breaking if more default shares are added in the future.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa934733_aec8ab77",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Can you rename this SelectDirectoryContextMenuItem?\n\nI think it is more clear, and the name is then in the same order as the parameters (and UI actions)",
+      "range": {
+        "startLine": 421,
+        "startChar": 19,
+        "endLine": 421,
+        "endChar": 41
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d956427_d7eb3568",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "you need to Release dirRow?",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2058db13_dcc9eb89",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Is this function necessary?\n\nSelectDirectoryContextMenuItem(ctx, \"My files\", \"Share\") seems clear to me.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e112bd_0077b66b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Doesn\u0027t LeftClick do the move internally?  Why do you need another mouse.Move call here?",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17553cb6_815de1a9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "There is a lot of Linux specific code in this file.  Can we have the main settings code in this file, but the linux specific code in a different file (preferably in the Crostini directories)?\n\nConceptually it could be:\n\ns :\u003d settingsApp.LaunchAndFind()\nls :\u003d s.OpenLinuxSettings()\n\nwith the LinuxSettings object and all the linux specific code living under Crostini somewhere.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec4b091_9091bdd6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Should these functions be methods of the settings app?  I think the flow should be:\ns :\u003d settingsapp.LaunchAndFind()\ns.GetLinuxSharedFolders()\ns.UnshareFoldersFromLinux()\n...\ns.Close()",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c849f7cf_79fb283a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Should there be a LinuxSharedFolders struct?\n\nfolders :\u003d crostinisettings.LinuxSharedFolders()\nentries :\u003d folders.List()\nfolders.Share(\"Myfiles\")\nfolders.Unshare(\"Myfiles\")",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eecbd11_5908862d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "Need to release OKButton, please check all of them in this change (or change to using uig which will do it for you)",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3062a496_800bfcf6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "You can\u0027t wrap a nil error, errors.New would be better.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88df2ebc_a03a8be9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "It is not clear what OK button you are talking about here",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42abb5c_3793fef8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "there are a lot of arguments and functionality in this function.  I feel like a better API would make this clearer and remove the need some of these functions.\n\neg:\nfilesApp.SelectDirectoryContextMenuItem(ctx, MyFiles, ShareWithLinux)\nd :\u003d sharingdialog.Find() // should verify all the pieces are there\nif confirm {\n  d.ClickOK()\n} else {\n  d.ClickCancel()\n  return\n}\na :\u003d d.FindAlert()\nif clickManage {\n a.ClickManage()\n}\n\nI think we might need \"page objects\" for each distinct window or alert that we are dealing with.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d41bf952_4757d3ac",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T05:57:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be in the container API.\n\nGetFileList() is already present, checking that two lists are equal should be part of the test case (or possibly a generic utility function)",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
