@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "38c48aaa_8e15d059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-07T15:43:46Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s just test allow and deny in that case.",
+      "parentUuid": "c5e88102_c166d129",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c89c2aa_d151e082",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 5
@@ -142,6 +166,24 @@
       "side": 1,
       "message": "I tried, but it doesn\u0027t work with about:blank. I get an error that it only works with secure origins.",
       "parentUuid": "5b1febb8_24a82cf9",
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "025ec435_68b2ec5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-07T15:43:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1ca1121_f0404312",
       "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
