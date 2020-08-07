@@ -82,6 +82,11 @@ func MediaSessionGainTransient(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to abandon audio focus in android: ", err)
 		}
 
+		s.Log("Waiting for focus change")
+		if err := arcmedia.WaitForAndroidAudioFocusChange(ctx, d, arcmedia.AudioFocusGainTransient); err != nil {
+			s.Fatal("Failed to wait for audio focus change: ", err)
+		}
+
 		s.Log("Checking that Chrome is still playing")
 		if state, err := conn.State(ctx); err != nil {
 			s.Fatal("Failed to get audio state: ", err)
