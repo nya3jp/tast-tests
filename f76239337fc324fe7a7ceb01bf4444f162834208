@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "86b10383_e26cc045",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-07T23:53:09Z",
+      "side": 1,
+      "message": "you can add me back when it\u0027s not a draft",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0828c17_8389e555",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
