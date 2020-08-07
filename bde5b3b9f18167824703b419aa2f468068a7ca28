@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "388b29d0_11c3b331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-07T15:40:50Z",
+      "side": 1,
+      "message": "Thank you, Andrew!",
+      "parentUuid": "b7c3af0d_9f718000",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5864804_52554671",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "8c2f6aec_9ff87281",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-07T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5864804_52554671",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9784cb01_1b0fff69",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 3
@@ -67,6 +103,24 @@
       "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a85f274_88f47725",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-07T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9784cb01_1b0fff69",
+      "revId": "bde5b3b9f18167824703b419aa2f468068a7ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
