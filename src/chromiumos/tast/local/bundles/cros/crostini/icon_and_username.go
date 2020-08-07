@@ -65,7 +65,7 @@ func IconAndUsername(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		// Exiting Terminal app.
-		if err := terminalApp.Close(cleanupCtx, keyboard); err != nil {
+		if err := terminalApp.Exit(cleanupCtx, keyboard); err != nil {
 			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	}()

@@ -75,7 +75,7 @@ func CommandCd(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
 
-	defer terminalApp.Close(cleanupCtx, keyboard)
+	defer terminalApp.Exit(cleanupCtx, keyboard)
 
 	// Create a test folder.
 	folderName := "testFolder"

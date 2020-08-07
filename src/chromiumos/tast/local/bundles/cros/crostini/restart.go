@@ -7,12 +7,13 @@ package crostini
 import (
 	"context"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -70,6 +71,8 @@ func Restart(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
 	tconn := pre.TestAPIConn
+	cr := pre.Chrome
+	keyboard := pre.Keyboard
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -80,36 +83,17 @@ func Restart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get startup time: ", err)
 	}
 
-	terminal, err := ui.LaunchTerminal(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
-	}
+	userName := strings.Split(cr.User(), "@")[0]
 
 	for i := 0; i < numRestarts; i++ {
-		s.Logf("Restart #%d, startup time was %v", i+1, startupTime)
-		if err := terminal.ShutdownCrostini(ctx); err != nil {
-			s.Fatal("Failed to shutdown crostini: ", err)
-		}
-
-		err := testing.Poll(ctx, func(ctx context.Context) error {
-			// While the VM is down, this command is expected to fail.
-			if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
-				return errors.Errorf("expected command to fail while the container was shut down, but got: %q", string(out))
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-		if err != nil {
-			s.Fatal("VM failed to stop: ", err)
-		}
-
-		// Start the VM and container.
-		terminal, err = ui.LaunchTerminal(ctx, tconn)
+		terminalApp, err := terminalapp.Launch(ctx, tconn, userName)
 		if err != nil {
 			s.Fatal("Failed to lauch terminal: ", err)
 		}
 
-		if err := pre.Connect(ctx); err != nil {
-			s.Fatal("Failed to connect to restarted container: ", err)
+		s.Logf("Restart #%d, startup time was %v", i+1, startupTime)
+		if err := terminalApp.RestartCrostini(ctx, keyboard, cont, cr.User()); err != nil {
+			s.Fatal("Failed to restart crostini: ", err)
 		}
 
 		// Compare start times.
