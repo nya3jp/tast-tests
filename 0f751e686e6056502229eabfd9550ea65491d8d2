@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f74cbb7c_c7deb3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-07T17:27:02Z",
+      "side": 1,
+      "message": "Do you think you could add a method either in the ash or arc library to convert between the two different types of window state? I think that will make it more readable here.\n\nI think it may have to be in arc due to circular dependencies if you go the other way.",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 47
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "517e0132_aa6846ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-07T17:27:02Z",
+      "side": 1,
+      "message": "nit: This return should never get reach and should be removable.",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 11
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289b962f_c6c0a37c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-07T17:27:02Z",
+      "side": 1,
+      "message": "nit: If the test fails to sleep, that should probably use testing.PollBreak(). Same for some of the other errors if they are expected to never occur.",
+      "range": {
+        "startLine": 703,
+        "startChar": 10,
+        "endLine": 703,
+        "endChar": 13
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
