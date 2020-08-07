@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d9219a5_fcde543e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-07T10:30:50Z",
+      "side": 1,
+      "message": "I think these app testing CL might take a while to get merged since currently we do not have a field to set hardware dependency on DUT\u0027s disk size (contacting the infra team now). So move the changes on reboot to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2342431.",
+      "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
