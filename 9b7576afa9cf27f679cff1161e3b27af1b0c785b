@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c31f1f8_e70b7956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:16:31Z",
+      "side": 1,
+      "message": "Mostly nits",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd5efef_e9a73d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:16:31Z",
+      "side": 1,
+      "message": "nice summary!",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f4b92ef_982d0590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:16:31Z",
+      "side": 1,
+      "message": "nit: this looks like a boilerplate and appears multiple times in this CL (and we\u0027ve seen on elsewhere). Maybe it is worthwhile to add a helper function in wm package. I think the interface would be wm.WaitForARCAppWindow(ctx, tconn, pkgName, windowState, frameVisible)",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da23c181_0d968238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:16:31Z",
+      "side": 1,
+      "message": "Please check the result of testing.Poll.",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a9526c_ae945817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:16:31Z",
+      "side": 1,
+      "message": "maybe it is worthwhile to use display.WaitForDisplayRotation?  I\u0027m thinking to remove it in another CL, but it should be preserved if you need it.",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
