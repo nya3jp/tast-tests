@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c5e88102_c166d129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-07T14:18:43Z",
+      "side": 1,
+      "message": "The behaviour of getCurrentPosition is a little bit odd if an allow dialog is opened. If this is the case the timeout you give the function is just ignored and it will wait forever causing the test to run into context.DeadlineExceeded.\nThis is however only the case for the first call that opens the dialog, subsequent calls honor the timeout.\nAs for the unset and ask cases the dialog is the interesting part I\u0027m just triggering the dialog with the call to getCurrentPosition. Otherwise I could just make two calls to getCurrentPosition, the first to trigger the dialog and the second to get the return value, but that seems kinda hacky.\nFor the allow and deny cases, where no dialog is opened, I check for the error.",
+      "parentUuid": "4f258170_2c2a3255",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c89c2aa_d151e082",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 5
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "1012c6b4_e33007e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-07T14:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c89c2aa_d151e082",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 77
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1febb8_24a82cf9",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 5
@@ -79,6 +127,24 @@
       "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ca1121_f0404312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-07T14:18:43Z",
+      "side": 1,
+      "message": "I tried, but it doesn\u0027t work with about:blank. I get an error that it only works with secure origins.",
+      "parentUuid": "5b1febb8_24a82cf9",
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +168,30 @@
       "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da36f34_d35b7849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-07T14:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70691694_de3992ea",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
