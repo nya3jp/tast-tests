@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "4029284b_a6920bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-07T17:07:41Z",
+      "side": 1,
+      "message": "Java LGTM.",
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae403db0_beeff14b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
         "patchSetId": 7
@@ -115,6 +132,29 @@
         "startChar": 32,
         "endLine": 96,
         "endChar": 37
+      },
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16113d85_b9d70540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-07T17:07:41Z",
+      "side": 1,
+      "message": "If this is supposed to be temporary, please add a TODO with a tracking bug to remove it.",
+      "range": {
+        "startLine": 157,
+        "startChar": 49,
+        "endLine": 157,
+        "endChar": 111
       },
       "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
