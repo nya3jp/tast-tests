@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "734fc258_49dceed8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:53:04Z",
+      "side": 1,
+      "message": "This is the commit message, not golang\nhttps://chromium.googlesource.com/chromium/src/+/master/docs/contributing.md#uploading-a-change-for-review",
+      "parentUuid": "fffd72ec_8454a79d",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea4da795_551aa5f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
