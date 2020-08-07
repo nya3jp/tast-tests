@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "288eb29a_f7334697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-07T19:34:21Z",
+      "side": 1,
+      "message": "Retrying since clock_gettime has been added to amd64 seccomp policies. This may prevent the strange vmtest failure we were seeing.",
+      "revId": "6070f90dc7f28f9a1f7ce2e57bf7bc8899653803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
