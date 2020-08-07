@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a59b2e0d_78dfbd22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-07T01:13:44Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I haven\u0027t spent much time on this lately as I\u0027ve been busy working on the Gale image uprev.\n\nI can definitely use the wpa_supplicant\u0027s D-Bus interface to trigger reassociation, but I haven\u0027t yet investigated whether it could be done via Shill instead, or whether we can get the disconnect/reconnect event timing without parsing the log (although this one seems quite likely since the events of interest are just Disconnected/Reconnected).",
+      "parentUuid": "329454e1_7eee7a06",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "205adb6b_20f4f0d2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
