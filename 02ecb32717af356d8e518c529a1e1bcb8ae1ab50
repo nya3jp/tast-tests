@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5519521f_8a7be48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-07T18:58:37Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "02ecb32717af356d8e518c529a1e1bcb8ae1ab50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff586056_eb153b6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
         "patchSetId": 1
@@ -150,6 +167,30 @@
       "side": 1,
       "message": "I have investigated by adding code with LOG(ERROR), and I still say the PIP window has the NON_APP type and that is why it is excluded. The window cycle list is irrelevant because the function in question is BuildAppWindowList, not BuildWindowForCycleList.",
       "parentUuid": "fd653629_316f2016",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 29
+      },
+      "revId": "02ecb32717af356d8e518c529a1e1bcb8ae1ab50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80ce3eee_4c4dfb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-07T18:58:37Z",
+      "side": 1,
+      "message": "Thank you for investigation. In that case, it\u0027s not WAI. ChromePIP window is a part of browser stuff, so it should either have BROWSER or maybe new type, but should not be NON_APP.",
+      "parentUuid": "ae797f64_9c40dc0a",
       "range": {
         "startLine": 149,
         "startChar": 0,
