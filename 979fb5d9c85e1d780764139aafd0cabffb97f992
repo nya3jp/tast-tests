@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2f193eca_625dcacb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-08-07T06:25:04Z",
+      "side": 1,
+      "message": "The recent all hand announced not to use whitelist/blacklist.\nThe code in at this scope. \n\nref: go/coil\nall hand: https://docs.google.com/presentation/d/15ZZJeIDlO1DJ5eW5BQBUYttSrjTXK6N73PKrF1s1HQM/edit#slide\u003did.g8b4f791acb_0_0",
+      "parentUuid": "ca0e2297_7cbc07de",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607dafe7_0faa9503",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
