@@ -325,7 +325,7 @@ func WaitAndroidInit(ctx context.Context) error {
 	// process started.
 	const prop = "net.tcp.default_init_rwnd"
 	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
-		return errors.Wrapf(err, "Android init did not come up: %s not set", prop)
+		return errors.Wrap(err, "Android init did not come up")
 	}
 	return nil
 }
