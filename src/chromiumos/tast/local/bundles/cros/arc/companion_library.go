@@ -476,9 +476,10 @@ func testResizeWindow(ctx context.Context, tconn *chrome.TestConn, act *arc.Acti
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc window info"))
 		}
+		// Since Swipe component of tast is flaky, it is enough that verify any edge is dragged successfully.
 		const epsilon = 2
-		if !isSimilarRect(appWindow.BoundsInRoot, dispInfo.WorkArea, epsilon) {
-			return errors.Errorf("resize window doesn't have the expected bounds yet; got %v, want %v", appWindow.BoundsInRoot, dispInfo.WorkArea)
+		if !isOneEdgeSimilarRect(appWindow.BoundsInRoot, dispInfo.WorkArea, epsilon) {
+			return errors.Errorf("resize window bounds doesn't any similar edge yet; got %v, want %v", appWindow.BoundsInRoot, dispInfo.WorkArea)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
@@ -1492,4 +1493,9 @@ func abs(num int) int {
 // isSimilarRect compares two rectangle whether their similar by epsilon.
 func isSimilarRect(lhs, rhs coords.Rect, epsilon int) bool {
 	return abs(lhs.Left-rhs.Left) <= epsilon && abs(lhs.Width-rhs.Width) <= epsilon && abs(lhs.Top-rhs.Top) <= epsilon && abs(lhs.Height-rhs.Height) <= epsilon
+}
+
+// isOneEdgeSimilarRect compare two rectangle whether they have at least one edgs similar by epsilon.
+func isOneEdgeSimilarRect(lhs, rhs coords.Rect, epsilon int) bool {
+	return abs(lhs.Left-rhs.Left) <= epsilon || abs(lhs.Width-rhs.Width) <= epsilon || abs(lhs.Top-rhs.Top) <= epsilon || abs(lhs.Height-rhs.Height) <= epsilon
 }
