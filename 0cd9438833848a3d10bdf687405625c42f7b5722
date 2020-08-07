@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1b34cdc_ac9ab2f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Wrap lines at 72 chars",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4da795_551aa5f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Judy, like I mentioned this morning, I am so glad that you have done a test like this.\n\nThis is a very big scope to have interactions with FilesApp, SettingsApp, container, etc and I think you\u0027ve done a great job.\n\nI am worried that this CL is very large at 600+ lines.  I don\u0027t mind to continue to review as it is, but I think it might end up being quite slow to review and converge.  I think it would be overall faster to try and break this up.  Maybe you can do:\n\n1/ Test to check FilesApp context menu shows \u0027Share with Linux\u0027.\n2/ Test to look at SettingsApp and verify the list of shared files (empty to start I guess)\n3/ Add logic to remove a share from the SettingsApp - probably can\u0027t incorporate that in a test until the end\n4/ Test to verify ShareConfirmDialog\n5/ Test to click share, validate container, and unshare.\n\nMatthew, do you have thoughts about splitting this up?  Like I said, I can go either way, but my experience has always been that the time to get a CL reviewed and submitted grows non-linearly with the size.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d05de325_8581c102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "toast notification",
+      "range": {
+        "startLine": 22,
+        "startChar": 70,
+        "endLine": 22,
+        "endChar": 85
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c03f40_9464211e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "I would name this file \u0027share_files.go\u0027 since I expect we can add more tests than just sharing My files.  And this function can be ShareFiles.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8507a54c_cca471d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "toast",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "caa2e76c_3c005539",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
         "patchSetId": 3
@@ -13,6 +116,52 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "Rather than assuming what is there at the start of the test, can you check it before sharing, check that after sharing it is the same + myfiles, then check after unsharing that it goes back to what it was?\n\nThat will prevent this test from breaking if more default shares are added in the future.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc4e38c_d3c52612",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "selects one of the context menu items",
+      "range": {
+        "startLine": 419,
+        "startChar": 95,
+        "endLine": 419,
+        "endChar": 130
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88201351_9eaa2c6f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "or right click fails.",
+      "range": {
+        "startLine": 420,
+        "startChar": 44,
+        "endLine": 420,
+        "endChar": 70
+      },
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +219,23 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "Is this function necessary?\n\nSelectDirectoryContextMenuItem(ctx, \"My files\", \"Share\") seems clear to me.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd533347_d2f2fa07",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "This function is called FindOrLaunch, but it seems to always launch, but never attempt find first.",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -144,6 +310,46 @@
     },
     {
       "key": {
+        "uuid": "915bf0cf_05695e6c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "MountFolderMyFiles\n\nAlso other vars ...MyFiles... rather than ...Myfiles...",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0d9157_dc8ecdf6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Maybe the function could be called CheckShareConfirmDialog to be consistent in tense with CheckShareToast below.\n\nI prefer the name clickOK rather than confirmShare (similar to clickManage used below)",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eecbd11_5908862d",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -161,6 +367,29 @@
     },
     {
       "key": {
+        "uuid": "d23ca72f_b74a4ae2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Should this be \u0027okButton\u0027",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3062a496_800bfcf6",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -172,6 +401,40 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "You can\u0027t wrap a nil error, errors.New would be better.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d5ba08_6ec91afb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "I think it makes more sense to check the positive sense of confirmShare and then click OK, and I think you should validate that the dialog closes regardless of which button is clicked.\n\n  if confirmShare {\n    if err :\u003d OKButton.LeftClick ...\n  } else {\n    if err :\u003d cancelButton.LeftClick ...\n  }\n\n  // Ensure the dialog has closed.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4bbdd4_7271fb26",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "// CheckShareToast checks the content of the sharing toast and clicks Manage if clickManage is true.",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -212,6 +475,109 @@
     },
     {
       "key": {
+        "uuid": "0a3e1c7d_777a05b7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Maybe refer to the variable name here \u0027expectFolders\u0027.",
+      "range": {
+        "startLine": 168,
+        "startChar": 95,
+        "endLine": 168,
+        "endChar": 108
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb81456_f5789ba3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "It looks like all callers are currently setting this to false.  Maybe you can leave this out for now and add it later if needed.\n\nCould you always call FindOrLaunch for settings?",
+      "range": {
+        "startLine": 171,
+        "startChar": 79,
+        "endLine": 171,
+        "endChar": 91
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0781eff0_e611b384",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "I think it is fine to name this folders, or at least we usually use past tense such as expectedFolders",
+      "range": {
+        "startLine": 171,
+        "startChar": 98,
+        "endLine": 171,
+        "endChar": 111
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3128becb_1a5ffd61",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "Here you are closing the settings page when this function didn\u0027t open it, but above you are not closing it when this function does open it.  I think it should be the other way around.  This line should be above, but not here.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03434b4_c96f0f9c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "If you have a utility function for comparing lists, then it can be used here.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d41bf952_4757d3ac",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 3
@@ -223,6 +589,41 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "I don\u0027t think this should be in the container API.\n\nGetFileList() is already present, checking that two lists are equal should be part of the test case (or possibly a generic utility function)",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b945c023_3988d91c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "I agree that it is not ideal for this to be part of the container API, however it is similar to CheckFileExistsInDir and CheckFileDoesNotExistInDir just above.\n\nI think the ideal would be to move them all out of container and have them as utility functions such as CheckListsMatch, CheckListContains, CheckListDoesNotContain if such functions don\u0027t already exist somewhere handy.\n\nOtherwise I would name this function:\n\n// CheckDirMatches checks that the given path contains exactly the files specified.\nfunc (c *Container) CheckDirMatches(ctx context.Context, path string, files ...string) error {",
+      "parentUuid": "d41bf952_4757d3ac",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb57b8a8_1cec52a4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-07T07:11:18Z",
+      "side": 1,
+      "message": "I would name this Delete or Remove.  Or maybe DeletPathRecursively to match the name in chromium base.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:base/files/file_util.h;l\u003d70-82;drc\u003d5b286379df562bb587795537c7e6b8aa553a07d0",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
