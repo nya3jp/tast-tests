@@ -33,6 +33,121 @@
       "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3790b145_ae9d6420",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-07T08:35:28Z",
+      "side": 1,
+      "message": "Don\u0027t we need to guard access to the array by synchronized as you do for mPipelineLatencyHistogram?",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f11b8226_e1b87246",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-07T08:35:28Z",
+      "side": 1,
+      "message": "optional: Using |Arrays.toString| is probably simpler if the output format is okay for you.",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80ca598_76cf994f",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-07T08:35:28Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 126,
+        "startChar": 23,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abe7b31_0b99e1bb",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-07T08:35:28Z",
+      "side": 1,
+      "message": "nit: timestamp?",
+      "range": {
+        "startLine": 170,
+        "startChar": 32,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32567eea_e90573e7",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-07T08:35:28Z",
+      "side": 1,
+      "message": "qq: Why does this have to be in nanoseconds? It seems that this value is always used after converting to milliseconds. I guess it\u0027s to be aligned with the other timestamp?",
+      "range": {
+        "startLine": 171,
+        "startChar": 29,
+        "endLine": 171,
+        "endChar": 63
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
