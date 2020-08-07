@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "839c0eba_e410aa9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-07T09:00:43Z",
+      "side": 1,
+      "message": "The change itself LGTM.\nRegarding the whole function, I feel like there should some error handling, as there can be some errors in one of the 3 checks, and the function can return false even if the device is a legacy device.\n\nAs I saw this function is only used at 2 places, so it shouln\u0027t be a lot of extra work to modify the function to return with an error as well (in a separate CL).\n\nI feel it would be hard to find the root of the flakiness the lack of error handling can cause here. ",
+      "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
