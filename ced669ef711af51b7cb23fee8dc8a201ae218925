@@ -66,6 +66,46 @@
     },
     {
       "key": {
+        "uuid": "f759124f_d00bc70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-07T17:16:16Z",
+      "side": 1,
+      "message": "I think these two comments can be combined",
+      "range": {
+        "startLine": 1047,
+        "startChar": 0,
+        "endLine": 1048,
+        "endChar": 50
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ac5524_10667048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-07T17:16:16Z",
+      "side": 1,
+      "message": "I think you can add comment here to match the other gRPC calls here:\n// This is the implementation of network.Wifi/ProfileBasicTest gRPC.",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58c114f2_1bbd7448",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
