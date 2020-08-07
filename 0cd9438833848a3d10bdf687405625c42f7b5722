@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fffd72ec_8454a79d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T07:28:33Z",
+      "side": 1,
+      "message": "There is no hard limit in go style, but see go/gocomments#line-length",
+      "parentUuid": "b1b34cdc_ac9ab2f9",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea4da795_551aa5f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-07T07:11:18Z",
       "side": 1,
       "message": "Judy, like I mentioned this morning, I am so glad that you have done a test like this.\n\nThis is a very big scope to have interactions with FilesApp, SettingsApp, container, etc and I think you\u0027ve done a great job.\n\nI am worried that this CL is very large at 600+ lines.  I don\u0027t mind to continue to review as it is, but I think it might end up being quite slow to review and converge.  I think it would be overall faster to try and break this up.  Maybe you can do:\n\n1/ Test to check FilesApp context menu shows \u0027Share with Linux\u0027.\n2/ Test to look at SettingsApp and verify the list of shared files (empty to start I guess)\n3/ Add logic to remove a share from the SettingsApp - probably can\u0027t incorporate that in a test until the end\n4/ Test to verify ShareConfirmDialog\n5/ Test to click share, validate container, and unshare.\n\nMatthew, do you have thoughts about splitting this up?  Like I said, I can go either way, but my experience has always been that the time to get a CL reviewed and submitted grows non-linearly with the size.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67a89716_1c5b4946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T07:28:33Z",
+      "side": 1,
+      "message": "Mainly I would like to see page objects representing the different screens with a straightforward API.  \n\nI agree this change is very large and hard to review, but I think it would be substantially shorter with:\n1. break up into page objects\n2. use uig where appropriate",
+      "parentUuid": "ea4da795_551aa5f9",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
