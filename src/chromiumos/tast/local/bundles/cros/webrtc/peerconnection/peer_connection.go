@@ -19,16 +19,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CodecType is the type of codec to verify hardware acceleration for.
-type CodecType int
+// VerifyHWAcceleratorMode is the type of codec to verify hardware acceleration for.
+type VerifyHWAcceleratorMode int
 
 const (
-	// Encoding refers to WebRTC hardware accelerated video encoding.
-	Encoding CodecType = iota
-	// Decoding refers to WebRTC hardware accelerated video decoding.
-	Decoding
-	// DontCare means it doesn't matter if WebRTC uses any accelerated video.
-	DontCare
+	// VerifyHWEncoderUsed refers to WebRTC hardware accelerated video encoding.
+	VerifyHWEncoderUsed VerifyHWAcceleratorMode = iota
+	// VerifyHWDecoderUsed refers to WebRTC hardware accelerated video decoding.
+	VerifyHWDecoderUsed
+	// NoVerifyHWAcceleratorUsed means it doesn't matter if WebRTC uses any accelerated video.
+	NoVerifyHWAcceleratorUsed
+)
+
+const (
 
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
 	LoopbackFile = "loopback_peerconnection.html"
@@ -38,8 +41,8 @@ const (
 )
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
-// CodecType codec is hardware accelerated if profile is not DontCare.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, codecType CodecType, profile string, simulcast bool) error {
+// VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -64,8 +67,8 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	if codecType != DontCare {
-		if err := checkForCodecImplementation(ctx, conn, codecType, simulcast); err != nil {
+	if verifyMode != NoVerifyHWAcceleratorUsed {
+		if err := checkForCodecImplementation(ctx, conn, verifyMode, simulcast); err != nil {
 			return errors.Wrap(err, "checkForCodecImplementation() failed")
 		}
 	}
@@ -73,10 +76,10 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 }
 
 // checkForCodecImplementation parses the RTCPeerConnection and verifies that it
-// is using hardware acceleration for codecType. This method uses the
+// is using hardware acceleration for verifyMode. This method uses the
 // RTCPeerConnection getStats() API [1].
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
-func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecType CodecType, isSimulcast bool) error {
+func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyMode VerifyHWAcceleratorMode, isSimulcast bool) error {
 	// See [1] and [2] for the statNames to use here. The values are browser
 	// specific, for Chrome, "ExternalDecoder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
 	// means that WebRTC is using hardware acceleration and anything else
@@ -91,7 +94,7 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecTy
 	peerConnectionName := "localPeerConnection"
 	expectedImplementation := "EncodeAccelerator"
 
-	if codecType == Decoding {
+	if verifyMode == VerifyHWDecoderUsed {
 		statName = "decoderImplementation"
 		peerConnectionName = "remotePeerConnection"
 		expectedImplementation = "ExternalDecoder"
@@ -132,7 +135,7 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecTy
 			}
 			// "ExternalEncoder" is the default value for encoder implementations
 			// before filling the actual one, see b/162764016.
-			if codecType == Encoding && implementation == "ExternalEncoder" {
+			if verifyMode == VerifyHWEncoderUsed && implementation == "ExternalEncoder" {
 				return errors.New("getStats() didn't fill in the encoder implementation (yet)")
 			}
 			return nil
@@ -146,7 +149,7 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecTy
 	if !strings.Contains(implementation, expectedImplementation) {
 		return errors.Errorf("expected implementation not found, got %v, looking for %v", implementation, expectedImplementation)
 	}
-	if codecType == Encoding && isSimulcast && !strings.HasPrefix(implementation, SimulcastAdapterName) {
+	if verifyMode == VerifyHWEncoderUsed && isSimulcast && !strings.HasPrefix(implementation, SimulcastAdapterName) {
 		return errors.Errorf("simulcast adapter not found, got %v, looking for %v", implementation, SimulcastAdapterName)
 	}
 
