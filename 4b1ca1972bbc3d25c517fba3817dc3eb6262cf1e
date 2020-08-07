@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b657cc2_18b32682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-07T15:41:14Z",
+      "side": 1,
+      "message": "You shouldn\u0027t make a different request depending on the response you expect. As the policy might not work, you should make a universal request that works for both responses.",
+      "revId": "4b1ca1972bbc3d25c517fba3817dc3eb6262cf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
