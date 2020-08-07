@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "e0920e2c_601b5c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3f80f5_53636324",
+      "range": {
+        "startLine": 1030,
+        "startChar": 46,
+        "endLine": 1030,
+        "endChar": 65
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58c114f2_1bbd7448",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fc1b45_f13bc94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c114f2_1bbd7448",
+      "range": {
+        "startLine": 1074,
+        "startChar": 44,
+        "endLine": 1074,
+        "endChar": 54
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "ce4d3398_aef4a0d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4399438c_19a12730",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e21c3cbe_be2c8883",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_basic.go",
         "patchSetId": 4
@@ -110,6 +176,24 @@
       "writtenOn": "2020-08-06T10:18:33Z",
       "side": 1,
       "message": "The Autotest version uses the same channel for AP1 and AP2. Does that make the test running in a different way?",
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb626ab9_a0963fc4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/profile_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "I guess no. This test aims to verify whether the DUT correctly loses/recovers the credentials of the protected WiFi. The difference of channel or protocol should not affect.",
+      "parentUuid": "e21c3cbe_be2c8883",
       "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "48539671_e70325cb",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1887e890_45ae9751",
+      "range": {
+        "startLine": 209,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 23
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "007baee5_7f742c51",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 4
@@ -159,6 +267,30 @@
       "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991dbfd8_5aa4b2d1",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T07:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007baee5_7f742c51",
+      "range": {
+        "startLine": 214,
+        "startChar": 26,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "ced669ef711af51b7cb23fee8dc8a201ae218925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
