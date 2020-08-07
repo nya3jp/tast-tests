@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "ac7ca1c1_74497a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-07T16:35:23Z",
+      "side": 1,
+      "message": "chromiumos/tast/local/bundles/cros/platform/dlc/... is accessible only from platform.* tests. chromium/tast/local/dlc/ can be accessed from tests in other categories, too.\n\nIt is for maintenance. The library under the cros/platform/ can be changed as platform.* tests like, but we should be more careful on local/dlc.\n\nThe content of this file is very specific to the some tests in platform.*, and I don\u0027t think we\u0027d move them into local/dlc.",
+      "parentUuid": "ab5c9eb6_032de4d6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "280c0c8a_bfe7a850",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
         "patchSetId": 3
