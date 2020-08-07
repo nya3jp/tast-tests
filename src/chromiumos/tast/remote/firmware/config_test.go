@@ -23,6 +23,7 @@ const (
 	myGrandparentName = "mygrandparent"
 	myModelName       = "mymodel"
 	myOtherModelName  = "myothermodel"
+	withECBatteryName = "withECBattery"
 )
 
 // In order to tell more easily where each value is obtained from, each mock config sets all integer fields to the same value.
@@ -64,6 +65,12 @@ var mockData = map[string][]byte{
 		"usb_plug": %d,
 		"confirm_screen": %d
 	}`, myGrandparentName, myGrandparentValue, myGrandparentValue)),
+	withECBatteryName: []byte(fmt.Sprintf(`{
+		"platform": %q,
+		"ec_capability": [
+			%q
+		]
+	}`, withECBatteryName, ECBattery)),
 }
 
 // setupMockData creates a temporary directory containing .json files for each platform in mockData.
@@ -165,5 +172,33 @@ func TestNewConfigModelOverride(t *testing.T) {
 	cfg, err = NewConfig(mockConfigDir, myBoardName, myOtherModelName)
 	if cfg.FirmwareScreen != myBoardValue {
 		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, myModelValue)
+	}
+}
+
+// TestHasECCapability exercises HasECCapability to verify that we can check whether a Config contains a certain EC capability.
+func TestHasECCapability(t *testing.T) {
+	mockConfigDir, err := setupMockData(t)
+	defer os.RemoveAll(mockConfigDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Test a platform that does not define any ec_capability
+	cfg, err := NewConfig(mockConfigDir, myBoardName, "")
+	if err != nil {
+		t.Fatalf("Creating config for platform %s: %+v", myBoardName, err)
+	}
+	if cfg.HasECCapability(ECBattery) {
+		t.Fatalf("Platform %q: HasECCapability(ECBattery) returned True; want False", myBoardName)
+	}
+	// Test a platform that defines some ec_capabilities
+	cfg, err = NewConfig(mockConfigDir, withECBatteryName, "")
+	if err != nil {
+		t.Fatalf("Creating config for platform %s: %+v", withECBatteryName, err)
+	}
+	if !cfg.HasECCapability(ECBattery) {
+		t.Fatalf("Platform %q: HasECCapability(ECBattery) returned False; want True", withECBatteryName)
+	}
+	if cfg.HasECCapability(ECPECI) {
+		t.Fatalf("Platform %q: HasECCapability(ECPECI) returned True; want False", withECBatteryName)
 	}
 }
