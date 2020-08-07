@@ -290,7 +290,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		return errors.Wrap(err, "establishing connection")
 	}
 
-	hwAccelUsed := checkForCodecImplementation(ctx, conn, Decoding, false /*isSimulcast*/) == nil
+	hwAccelUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
 	if enableHWAccel {
 		if !hwAccelUsed {
 			return errors.New("hardware encoding accelerator wasn't used")
