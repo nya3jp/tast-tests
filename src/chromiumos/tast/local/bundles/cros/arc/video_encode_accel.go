@@ -15,7 +15,17 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// deviceBlocklist is the list of devices we want to disable these tests on.
+var deviceBlocklist = []string{
+	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
+	"elm",
+	"elm_kernelnext",
+	"hana",
+	"hana_kernelnext",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -24,6 +34,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(deviceBlocklist...)),
 		Pre:          arc.BootedWithVideoLogging(),
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
