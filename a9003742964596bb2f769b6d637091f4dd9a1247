@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee59041b_2c6fd83d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-07T09:31:03Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Since this CL is rather small, I change it in this CL. PTAL, thanks!",
+      "parentUuid": "839c0eba_e410aa9f",
+      "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30c079e4_235150e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f503262_0fec3445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-07T09:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c079e4_235150e2",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
