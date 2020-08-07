@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "9832a499_b8501b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-07T19:08:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f4b92ef_982d0590",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da23c181_0d968238",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
         "patchSetId": 2
@@ -76,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "d98348c7_86fabba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-07T19:08:11Z",
+      "side": 1,
+      "message": "Poll removed and wm.WaitForDisplayOrientation() replaced.",
+      "parentUuid": "da23c181_0d968238",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a9526c_ae945817",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
         "patchSetId": 2
@@ -90,6 +132,24 @@
       "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c199c6cc_edafde3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-07T19:08:11Z",
+      "side": 1,
+      "message": "WaitForDisplayOrientation() method moved from wm_tablet_helper.go to wm_manager_helper.go.",
+      "parentUuid": "77a9526c_ae945817",
+      "revId": "9b7576afa9cf27f679cff1161e3b27af1b0c785b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
