@@ -23,10 +23,9 @@ func init() {
 }
 
 func Config(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigDir), "")
 	defer h.Close(ctx)
 
-	h.ConfigDataDir = s.DataPath(firmware.ConfigDir)
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to create firmware config: ", err)
 	}
