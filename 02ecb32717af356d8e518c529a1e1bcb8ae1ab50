@@ -70,6 +70,30 @@
       "revId": "02ecb32717af356d8e518c529a1e1bcb8ae1ab50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6ab8479_40e1088e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-07T16:48:27Z",
+      "side": 1,
+      "message": "Actually the logic does not specifically check for PIP; it checks if the value of the aura::client::kAppType property is ash::AppType::NON_APP (see [1]). Anyway I believe Jun Mukai wants to avoid any changes to the Autotest API.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:ash/wm/mru_window_tracker.cc;drc\u003d03299fe4f29d1f306a1ff4eea2c780ab825bf4e0;l\u003d212",
+      "parentUuid": "0e745f6b_236d947a",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 29
+      },
+      "revId": "02ecb32717af356d8e518c529a1e1bcb8ae1ab50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
