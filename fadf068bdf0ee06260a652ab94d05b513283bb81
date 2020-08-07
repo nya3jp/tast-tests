@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "518e1c2f_6449f95d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T02:36:38Z",
+      "side": 1,
+      "message": "Thanks for the heads up.",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "205adb6b_20f4f0d2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
