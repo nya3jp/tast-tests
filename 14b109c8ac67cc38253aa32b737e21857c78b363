@@ -46,6 +46,30 @@
       "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acf01659_4e2bebfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-07T01:42:24Z",
+      "side": 1,
+      "message": "Can we just run this on a subset of devices with large disks? I suspect we\u0027re going to have to do something like that eventually anyway.\n\nPre-installing things in the test container won\u0027t help with disk issues, you\u0027ll still have a copy of the application pulled in as a tast data dependency and copied into the VM. If anything it might make things worse.",
+      "parentUuid": "dc5b5a50_564949ad",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 105
+      },
+      "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
