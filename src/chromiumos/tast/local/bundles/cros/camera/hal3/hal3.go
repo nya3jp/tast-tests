@@ -68,6 +68,12 @@ func IsV1Legacy(ctx context.Context) bool {
 		return true
 	}
 
+	// For legacy devices which does not have ARC, they do not have
+	// camera_chracteristics.conf as well.
+	if _, err := os.Stat("/etc/camera/camera_characteristics.conf"); os.IsNotExist(err) {
+		return true
+	}
+
 	// For non-unibuild, we can check if 'v1device' presents in the config file
 	// '/etc/camera/camera_chracteristics.conf'.
 	if config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf"); err == nil {
