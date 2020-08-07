@@ -33,6 +33,92 @@
       "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3f042f2_0a4d2bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-07T04:16:07Z",
+      "side": 1,
+      "message": "Go lgtm modulo comments.\nPlease get Java reviewed.",
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae403db0_beeff14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-07T04:16:07Z",
+      "side": 1,
+      "message": "IME\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\nSame for other occurances in idents.",
+      "range": {
+        "startLine": 28,
+        "startChar": 19,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6321985d_099e09be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-07T04:16:07Z",
+      "side": 1,
+      "message": "; want %q\n\nPlease avoid punctuation in the middle of an error message. \"want\" instead of \"expected\" is commonly used. https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\nSame for others.",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 50
+      },
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e227da4c_2723df4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pre_ime_key_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-07T04:16:07Z",
+      "side": 1,
+      "message": "preImeKeyLabel\n\nI\u0027d identify the field name to distinguish errors. cf. https://g3doc.corp.google.com/go/g3doc/readability/review-test-comments.md?cl\u003dhead\n\nSame for others.",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "91fbfb38c19aef355b703d9b34ba13ad29a5169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
