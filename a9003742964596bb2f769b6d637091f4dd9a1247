@@ -16,6 +16,29 @@
       "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c079e4_235150e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-08-07T09:05:32Z",
+      "side": 1,
+      "message": "huge nit: after a second thought, I think we could check the err here instead of calling Stat().",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "a9003742964596bb2f769b6d637091f4dd9a1247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
