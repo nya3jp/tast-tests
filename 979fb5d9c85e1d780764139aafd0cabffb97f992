@@ -16,6 +16,40 @@
       "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea203206_7e91edaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-08-07T03:19:24Z",
+      "side": 1,
+      "message": "IIRC \"kernelnext\" boards are specified using \"-\", i.e. \"elm-kernelnext\"?",
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923fc5b5_d3adfa3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-08-07T03:19:24Z",
+      "side": 1,
+      "message": "I think we also have hana-kernelnext.",
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
