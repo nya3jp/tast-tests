@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "49c0ff5e_9c67e3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T03:25:34Z",
+      "side": 1,
+      "message": "Can we please make a new hardwaredep for maybe CrostiniPowerful or something?  This should just have a few boards that are fast enough/large enough disk to run these packages.  (lets start with eve and hatch, and we can scale out from there).",
+      "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c552dd_c44a47ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T03:25:34Z",
+      "side": 1,
+      "message": "Why the scale argument?",
+      "range": {
+        "startLine": 85,
+        "startChar": 75,
+        "endLine": 85,
+        "endChar": 86
+      },
+      "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b3e5bb3_668d24a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
         "patchSetId": 1
@@ -70,6 +110,53 @@
       "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e7e98a0_f0fab479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T03:25:34Z",
+      "side": 1,
+      "message": "The plan is to make a third container version largedisktest or something.  This would have eclipse/android studio/vscode/etc preinstalled.  And yes, it should only be running on a limited set of boards with both the disk space and performance to run these tools.",
+      "parentUuid": "acf01659_4e2bebfc",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 105
+      },
+      "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56fd16d8_4966f141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-07T03:25:34Z",
+      "side": 1,
+      "message": "Is all of this really necessary to install Eclipse?  it seems like more trouble than most users will go to...",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "14b109c8ac67cc38253aa32b737e21857c78b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
