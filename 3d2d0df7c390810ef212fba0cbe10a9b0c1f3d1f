@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f29f9ce_1d6ed949",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T22:54:50Z",
+      "side": 1,
+      "message": "It\u0027s expected as there\u0027s two windows in chrome (one minimized, one in PIP) and GetARCAppWindowState returns info on the first one, which happens to be minimized.\n\nFigured I\u0027d make it more robust and actually check all of the windows under that package to see if any is PIP or Normal.",
+      "parentUuid": "64edba27_5ce8b50a",
+      "range": {
+        "startLine": 434,
+        "startChar": 4,
+        "endLine": 435,
+        "endChar": 58
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbc877a5_f1208507",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e68bc462_e48b383a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T22:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc877a5_f1208507",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "314f74b4_16af6587",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-08-07T17:10:15Z",
       "side": 1,
       "message": "Any chance you can poll for something instead?\n\nAlso, testing.Sleep returns an error. It should be handled.",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383cf039_e8763a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T22:54:50Z",
+      "side": 1,
+      "message": "Not that I know of unless there\u0027s a way to check whether a specific activity is visible",
+      "parentUuid": "314f74b4_16af6587",
       "range": {
         "startLine": 215,
         "startChar": 6,
@@ -91,6 +163,30 @@
       "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed91dd4d_b124121f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T22:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35d6f76_3ec33904",
+      "range": {
+        "startLine": 686,
+        "startChar": 3,
+        "endLine": 686,
+        "endChar": 61
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
