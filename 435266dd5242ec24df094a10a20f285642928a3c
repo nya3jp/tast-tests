@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75c87fcf_1b2d0d5d",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-07T20:38:37Z",
+      "side": 1,
+      "message": "Woah, sorry I missed this before the +2.  No I don\u0027t think we should add ModeSwitcher to Helper.  It should be ModeSwitcher contains reference to Helper, and tests will create a Helper first then use that to create a ModeSwither.  Right now for every method added to ModeSwitcher, you need to have a pass through method in Helper.",
+      "revId": "435266dd5242ec24df094a10a20f285642928a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
