@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "234ce167_a1fe5e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-07T14:50:29Z",
+      "side": 1,
+      "message": "pwang@ pure renaming CL, PTAL\n\nOthers FYI",
+      "revId": "55cbbd59048505b7dfdd1bcf6f0ab9769e39277d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
