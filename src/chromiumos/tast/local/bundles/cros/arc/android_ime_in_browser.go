@@ -51,25 +51,6 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg
 	return "", errors.Errorf("%s not found in the list", pkg)
 }
 
-func isKeyboardShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	// Check if keyboard is shown by checking if it has children.
-	keyboard, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "ArcVirtualKeyboardContainer"})
-	if err != nil {
-		return false, err
-	}
-	defer keyboard.Release(ctx)
-
-	children, err := keyboard.Descendants(ctx, chromeui.FindParams{})
-	if err != nil {
-		return false, err
-	}
-	defer children.Release(ctx)
-	if len(children) == 0 {
-		return false, nil
-	}
-	return true, nil
-}
-
 func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	const (
 		apk         = "ArcInputMethodTest.apk"
@@ -167,12 +148,14 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Showing the virtual keyboard")
+	var keyboard *chromeui.Node
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if shown, err := isKeyboardShown(ctx, tconn); err != nil {
-			return testing.PollBreak(err)
-		} else if shown {
+		var err error
+		keyboard, err = chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "ExoInputMethodSurface"})
+		if err == nil {
 			return nil
 		}
+
 		// Repeatedly call showVirtualKeyboardIfEnabled until isKeyboardShown returns true.
 		// Usually it requires only one call of showVirtualKeyboardIfEnabled, but on rare occasions it requires
 		// multiple ones e.g. the function was called right in the middle of IME switch.
@@ -183,25 +166,18 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
-
-	info, err := dev.GetInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get device info: ", err)
-	}
+	defer keyboard.Release(ctx)
 
 	// You can only type "a" from the test IME.
 	const expected = "aaaa"
 
 	s.Log("Trying to press the button in ARC Test IME")
 	for i := 0; i < len(expected); i++ {
-		if dev.WaitForIdle(ctx, time.Minute); err != nil {
-			s.Fatal("Failed to wait for idle: ", err)
-		}
-
-		// Click on the left bottom directly, as the virtual keyboard is not visible to UIAutomator.
-		// Subtract 1 from the height, as [0, DisplayHeight - 1] is valid y range.
-		if err := dev.Click(ctx, 0, info.DisplayHeight-1); err != nil {
-			s.Fatal("Failed to click: ", err)
+		// It is better to press the keyboard from chromeui instead of UIAutomator for two reasons:
+		// - IME is not accessible from UIAutomator, so we're forced to use UiDevice.click.
+		// - chromeui can provide test coverage for window input region.
+		if err := keyboard.LeftClick(ctx); err != nil {
+			s.Fatal("Failed to left click the keyboard")
 		}
 	}
 
