@@ -34,7 +34,7 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	modes := s.Param().([]fwCommon.BootMode)
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.RequiredVar("servo"))
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", s.RequiredVar("servo"))
 	defer h.Close(ctx)
 	ms := firmware.NewModeSwitcher(h)
 
