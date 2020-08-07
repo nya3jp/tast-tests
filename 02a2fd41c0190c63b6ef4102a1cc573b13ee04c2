@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d0253948_bceab0e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T01:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27964f38_b0e89b1a",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "195c62d1_759e8c6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel_perf.go",
         "patchSetId": 5
@@ -62,6 +86,30 @@
       "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759c901e_f2242f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T01:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195c62d1_759e8c6e",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "02a2fd41c0190c63b6ef4102a1cc573b13ee04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
