@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca0e2297_7cbc07de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T05:52:08Z",
+      "side": 1,
+      "message": "Thanks for the comment Aka! Blacklist/whitelist is the correct terminology commonly used for this:\nhttps://source.corp.google.com/search?q\u003dblacklist\n\nI found some references to \"blocklist\" in our code, but those are definitely not commonly used.",
+      "parentUuid": "776edd37_a27c4cdb",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607dafe7_0faa9503",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +83,23 @@
       "writtenOn": "2020-08-07T02:54:19Z",
       "side": 1,
       "message": "Can you take a look? Thanks!",
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3dd0ab7_c9ab484f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T05:52:08Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
       "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
