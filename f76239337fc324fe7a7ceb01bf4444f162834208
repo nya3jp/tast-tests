@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "665f8b5d_f186d6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "property %q:",
+      "range": {
+        "startLine": 1082,
+        "startChar": 38,
+        "endLine": 1082,
+        "endChar": 58
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575a9eeb_ddd014c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "want any of",
+      "range": {
+        "startLine": 1082,
+        "startChar": 67,
+        "endLine": 1082,
+        "endChar": 71
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f636e8a_35bbfea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "We may define a inner function:\nfoundIn :\u003d func(v string, vs []string) bool {\n  for _, ev :\u003d range vs {\n    if v \u003d\u003d ev {\n      return true\n    }\n  }\n  return false\n}\n\nAnd in line 1088 and 1093 can be:\nif foundIn(val, notExpectedvals) {...}\nif foundIn(val, expectedVals) {...}",
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5ccda7_b99bec27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "Remove the trailing else so that it implies the p.Check block must return.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 5,
+        "endLine": 1104,
+        "endChar": 4
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0782f2c_ff9f0921",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "values (anyOf)",
+      "range": {
+        "startLine": 213,
+        "startChar": 74,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422bf763_ff43cb22",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "values (noneOf).",
+      "range": {
+        "startLine": 214,
+        "startChar": 79,
+        "endLine": 214,
+        "endChar": 85
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb00142_7272c1a3",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "How about:\n// ExpectShillProperty, a streaming gRPC, expects a list of property criteria in order. When a property\u0027s value is expected, it responds the property\u0027s (key, value) pair. The method sends an empty response as the property watcher is set.\n// A property matching criterion consists of a property name, a list of expected values, a list of excluded values, and a \"check\" flag. We say a criterion is met iff the property value is in one of the expected values and not in any of the excluded values. If the property value is one of the excluded values, the method fails immediately. \n// If the \"check\" flag is set, the method checks if the criterion are met without waiting for property change. So if none of the expected value is matched, the method fails.\n\nI have a question: is the \"check\" mechanism is what we want? Can the method handle the case that a property may meet the criterion before or after property watcher is set?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ccc0f0_001fd79d",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-07T04:26:24Z",
+      "side": 1,
+      "message": "If it fails to check, the function then waits for property change. So how about:\n\n// If set, it checks if the property value is expected without waiting for property change.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 27
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
