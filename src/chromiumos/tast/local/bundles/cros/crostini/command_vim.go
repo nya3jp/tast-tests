@@ -76,7 +76,7 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-	defer terminalApp.Close(cleanupCtx, keyboard)
+	defer terminalApp.Exit(cleanupCtx, keyboard)
 
 	// Install vim in container.
 	if err := installVimInContainer(ctx, cont); err != nil {
