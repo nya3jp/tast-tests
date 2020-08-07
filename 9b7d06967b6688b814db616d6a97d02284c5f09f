@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "58923d05_b12c6c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T01:45:05Z",
+      "side": 1,
+      "message": "The tests are currently disabled by default. In the past we used the attribute \"disabled\" for this, but that changed and now a test is disabled if it doesn\u0027t have any \"Attr\" field.\n\nThe encoder is currently not functional yet as the virtio encode device is still under review: crrev.com/c/2167311. But the aim of this CL is to reduce the amount of CLs required to cherry pick to run and test the encoder. Enabling the tests by default will be done in a future follow-up CL.\n\n\"amd64\" is used to only enable the tests on x86. But as the tests are currently disabled by default this is not really necessary, so I removed it again.",
+      "parentUuid": "d86cc11a_b5caa643",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9c783c1_f2944a9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
         "patchSetId": 7
@@ -86,6 +110,30 @@
       "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffced89_395e1242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T01:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c783c1_f2944a9b",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "9b7d06967b6688b814db616d6a97d02284c5f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
