@@ -65,7 +65,7 @@ func CommandPs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-	defer terminalApp.Close(cleanupCtx, keyboard)
+	defer terminalApp.Exit(cleanupCtx, keyboard)
 
 	outputFile := "test.txt"
 	// Run command ps in Terminal window, redirect the output to a file for check.
