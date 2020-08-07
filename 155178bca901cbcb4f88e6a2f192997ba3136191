@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8e532a90_1cc17998",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-08-07T19:21:47Z",
+      "side": 1,
+      "message": "src/chromiumos/tast/remote/ is for tests that run on the workstation. You probably want\nsrc/chromiumos/tast/local/\n\nSee:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/README.md",
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acec6a58_c673b50c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
         "patchSetId": 1
@@ -37,6 +54,29 @@
       "writtenOn": "2020-08-07T17:44:23Z",
       "side": 1,
       "message": "5.9, not 5.8. Since the actual LSM changes are going in 5.9",
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbcb79c_63a6543a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-08-07T19:21:47Z",
+      "side": 1,
+      "message": "This is going to run on the workstation rather than on the Chrome OS device (unless you move this test from remote to local).",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 33
+      },
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
