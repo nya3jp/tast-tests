@@ -51,6 +51,24 @@
       "revId": "ebed3ab2246fc8b2f228e17946e5f811ecda94bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b48cf65b_d877e8e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-07T18:11:55Z",
+      "side": 1,
+      "message": "It usually takes a build or 2 to update.",
+      "parentUuid": "3ec270d3_2c10d1c3",
+      "revId": "ebed3ab2246fc8b2f228e17946e5f811ecda94bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
