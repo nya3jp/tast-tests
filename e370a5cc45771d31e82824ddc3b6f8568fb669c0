@@ -16,6 +16,23 @@
       "revId": "e370a5cc45771d31e82824ddc3b6f8568fb669c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "782d9915_25a723e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-07T09:01:35Z",
+      "side": 1,
+      "message": "One future suggestion: we can use Builder pattern for SamplePlayerBase. But it\u0027s a parent class, we\u0027ll need more changes in both SamplePlayerBase and SamplePlayerBytes.",
+      "revId": "e370a5cc45771d31e82824ddc3b6f8568fb669c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
