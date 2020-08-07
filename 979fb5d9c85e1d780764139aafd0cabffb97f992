@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d08407a8_6f9fbdad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-07T07:21:37Z",
+      "side": 1,
+      "message": "Thanks for the heads-up Aka! Seems I missed the memo :-)",
+      "parentUuid": "2f193eca_625dcacb",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "607dafe7_0faa9503",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
