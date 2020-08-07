@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb59f97c_92f0ab93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T21:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74cbb7c_c7deb3ae",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 47
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517e0132_aa6846ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "de5e4ed9_4c0ff4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T21:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "517e0132_aa6846ea",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 11
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289b962f_c6c0a37c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e1073b_10d5644c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-07T21:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289b962f_c6c0a37c",
+      "range": {
+        "startLine": 703,
+        "startChar": 10,
+        "endLine": 703,
+        "endChar": 13
+      },
+      "revId": "0f751e686e6056502229eabfd9550ea65491d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
