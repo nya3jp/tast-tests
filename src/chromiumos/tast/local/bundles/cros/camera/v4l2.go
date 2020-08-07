@@ -122,7 +122,12 @@ func getTestList(ctx context.Context) (string, error) {
 		return "", err
 	}
 
-	if hasV3 && !hal3.IsV1Legacy(ctx) {
+	isV1, err := hal3.IsV1Legacy(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	if hasV3 && !isV1 {
 		return "halv3", nil
 	}
 
