@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0828c17_8389e555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T04:29:49Z",
+      "side": 1,
+      "message": "The value we are expecting may not be a string, e.g., the value of IsConnected property is boolean.",
+      "range": {
+        "startLine": 1075,
+        "startChar": 21,
+        "endLine": 1075,
+        "endChar": 30
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7f8292_b421fc91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T04:29:49Z",
+      "side": 1,
+      "message": "reflect.DeepEqual",
+      "range": {
+        "startLine": 1081,
+        "startChar": 7,
+        "endLine": 1081,
+        "endChar": 16
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "665f8b5d_f186d6d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -59,6 +105,52 @@
       "writtenOn": "2020-08-07T04:26:24Z",
       "side": 1,
       "message": "We may define a inner function:\nfoundIn :\u003d func(v string, vs []string) bool {\n  for _, ev :\u003d range vs {\n    if v \u003d\u003d ev {\n      return true\n    }\n  }\n  return false\n}\n\nAnd in line 1088 and 1093 can be:\nif foundIn(val, notExpectedvals) {...}\nif foundIn(val, expectedVals) {...}",
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bd34a7_4e012713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T04:29:49Z",
+      "side": 1,
+      "message": "reflect.DeepEqual",
+      "range": {
+        "startLine": 1088,
+        "startChar": 7,
+        "endLine": 1088,
+        "endChar": 16
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd21bf3_0fa7df36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T04:29:49Z",
+      "side": 1,
+      "message": "nit: Omit the unnecessary else.\n\nAlso, I would recommend using `if !found` because \"found\" is more likely to be a normal routine.\n\nhttps://golang.org/doc/effective_go.html#if",
+      "range": {
+        "startLine": 1102,
+        "startChar": 5,
+        "endLine": 1102,
+        "endChar": 9
+      },
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +219,29 @@
         "startChar": 79,
         "endLine": 214,
         "endChar": 85
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88cf5ab_0dcb204e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-07T04:29:49Z",
+      "side": 1,
+      "message": "[]interface{}\nThe values of shill property are not restricted in string.",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 26
       },
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
