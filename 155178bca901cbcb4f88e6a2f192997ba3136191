@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acec6a58_c673b50c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-08-07T17:32:15Z",
+      "side": 1,
+      "message": "\u003e \"kerenl\" is a possible misspelling of \"kernel\".\n\nPlease fix.",
+      "parentUuid": "08a91f81_0572393f",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 28
+      },
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0828854_d95d59fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-08-07T17:32:15Z",
+      "side": 1,
+      "message": "This modifies the rootfs. For this to work it needs to be remounted read-write. I think we probably want to avoid that if possible. Was this done in the autotest version?",
+      "range": {
+        "startLine": 242,
+        "startChar": 8,
+        "endLine": 242,
+        "endChar": 97
+      },
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
