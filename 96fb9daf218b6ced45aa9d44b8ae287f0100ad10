@@ -16,6 +16,29 @@
       "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f02a978_d05e1da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:37:16Z",
+      "side": 1,
+      "message": "How unstable it is?  I\u0027m afraid that the new code could allow the wrong behavior of not-resizing from one edge.  Can\u0027t we deal with simply increasing the epsilon?",
+      "range": {
+        "startLine": 479,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 19
+      },
+      "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
