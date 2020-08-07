@@ -16,6 +16,218 @@
       "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "822546f4_9100a310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "Looking good, thanks!  Left some nit comments.",
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b557923_8e90b1fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "You can store tconn as a field here, so that all methods don\u0027t have to receive tconn.",
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3713137f_46339547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "with removing all use of this variable, you can now remove this definition and things will be much simplified (you can remove (function() { ... }())",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ac3bd0_77f4a099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "\"this\" can be used here",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4165d78_90682eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "this.streamPromise.then(...) \n\nor use async?\n  start: async function() {\n    this.chunks \u003d [];\n    let stream \u003d await this.streamPromise;\n    this.recorder \u003d new MediaRecorder(stream, ...);\n    ...\n  }",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c5851e_beab6415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c363f12_33ee8eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0a87b6_7954aab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "simply \"return this.stop();\" should be fine?",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 111
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d8a0e39_d57625d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "nit: tconn is not necessary?",
+      "range": {
+        "startLine": 151,
+        "startChar": 51,
+        "endLine": 151,
+        "endChar": 73
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9930a62e_0d93acd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-07T17:48:54Z",
+      "side": 1,
+      "message": "Maybe you should have a check of\n  if r.isRecording {\n    r.Stop(ctx)\n  }",
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
