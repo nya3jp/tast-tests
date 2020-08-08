@@ -96,6 +96,17 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in the shelf: ", err)
 	}
 
+	// Establish a Chrome connection to the Settings app and wait for it to finish loading.
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
+	if err != nil {
+		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
+	}
+	defer settingsConn.Close()
+
+	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
+	}
+
 	// Find the "Advanced" heading and associated button.
 	advHeadingParams := ui.FindParams{
 		Role: ui.RoleTypeHeading,
@@ -107,7 +118,7 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 	}
 	defer advHeading.Release(ctx)
 
-	advBtn, err := advHeading.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton}, 5*time.Second)
+	advBtn, err := advHeading.DescendantWithTimeout(ctx, ui.FindParams{Name: "Advanced"}, 5*time.Second)
 	if err != nil {
 		s.Fatal("Waiting to find Advanced button failed: ", err)
 	}
@@ -124,7 +135,7 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 
 	// Click the Advanced button to expand the section
 	// We need to focus the button first so it will be clickable
-	if err := advBtn.FocusAndWait(ctx, 5*time.Second); err != nil {
+	if err := advBtn.FocusAndWait(ctx, 10*time.Second); err != nil {
 		s.Fatal("Failed to call focus() on the Advanced button: ", err)
 	}
 
