@@ -96,6 +96,8 @@ const (
 	CompressedLogExt = ".log.gz"
 	// DevCoredumpExt is an extension for device coredump files.
 	DevCoredumpExt = ".devcore"
+	// ECCrashExt is an extension for ec crash dumps
+	ECCrashExt = ".eccrash"
 
 	// ChromeVerboseConsentFlags provides the flags to enable verbose logging about consent.
 	ChromeVerboseConsentFlags = "--vmodule=stats_reporting_controller=1,autotest_private_api=1"
@@ -126,6 +128,7 @@ func isCrashFile(filename string) bool {
 		CompressedTxtExt,
 		CompressedLogExt,
 		DevCoredumpExt,
+		ECCrashExt,
 	}
 	for _, ext := range knownExts {
 		if strings.HasSuffix(filename, ext) {
