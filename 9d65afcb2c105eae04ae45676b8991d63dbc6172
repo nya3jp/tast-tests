@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "623dc85a_d310fd5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:25:42Z",
+      "side": 1,
+      "message": "Confirmed this at first by adding a 5sec sleep right after opening the app, and adding the document.readyState check fixed it on the really bad boards.",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "9d65afcb2c105eae04ae45676b8991d63dbc6172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8ecca00_ad49251d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
