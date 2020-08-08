@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ecca00_ad49251d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:24:35Z",
+      "side": 1,
+      "message": "I have the repeat-test script set to run overnight, so I\u0027ll have the stats by Monday :) Seems like this should fix it, though. The Settings Chrome connection code is used in another test and I have a WIP CL to add a Settings module (crrev.com/c/2343996) but it needs a bit more work. Figure we can try to get this in first and see how things go.",
+      "revId": "9d65afcb2c105eae04ae45676b8991d63dbc6172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
