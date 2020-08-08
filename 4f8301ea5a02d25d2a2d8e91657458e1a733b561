@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31c87d22_42f4ad94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "Could you guys take a first pass at this before I add the other test owners? I left some comments of my own on some parts I wasn\u0027t quite sure about, would definitely appreciate your feedback there 😊",
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b632f94_b5fb07e7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "I debated adding timeout arguments to the functions in the module, but decided against it in the end for two reasons:\n1. No one seems to care about the timeouts so far, it\u0027s just 10 seconds everywhere for all UI find/wait operations.\n2. Timeout argument becomes less meaningful when composing functions like in ShowUbertray - we do a FindWithTimeout and a WaitUntilExists, both of which require timeouts. I guess we could wrap both of them up by changing the context deadline if we wanted?\n\nIn any case, I just used this universal timeout here so callers don\u0027t need to worry about it. What do you guys think?",
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130ddcf1_5a02866f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "Would it be best to make these share a common prefix so it\u0027s easier to find them with code completion/intellisense?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246acc40_773e80ab",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "I moved this function here, too, since it highlights that there is some flakiness with Ubertray interaction, and provides the most sure-fire way to open the Ubertray. It would be great to get rid of it at some point, though, but I\u0027m not sure how to go about it. Do we need to push for someone on the dev team to add something to autotestPrivate?",
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae0856e_f6cc9fa0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "I don\u0027t feel great about this lol, but it\u0027s the only option at the moment AFAIK. Is there an effective channel for bringing up these testability improvements? Just file a bug with the Ubertray lead and follow up periodically? I\u0027ve been working on setting up the chromium repo and dev environment when I have time here and there so I can look into these things myself, but I think it\u0027ll take me a while to get familiar enough to make any sort of contribution there.",
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06eed685_cce0a761",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "I\u0027d actually prefer to have this function wait, but apps currently imports ash, so it\u0027s not possible right now due to the circular dependency. I don\u0027t think apps needs to import ash, though - it\u0027s only using it to get the list of installed apps from Chrome, and those methods might be better off in the apps package anyways. Maybe that\u0027s something for a future CL, though.",
+      "range": {
+        "startLine": 202,
+        "startChar": 75,
+        "endLine": 203,
+        "endChar": 100
+      },
+      "revId": "4f8301ea5a02d25d2a2d8e91657458e1a733b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

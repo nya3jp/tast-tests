@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cda188e5_53cf9760",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ubertray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 1,
+      "message": "\u003e \"discernable\" is a possible misspelling of \"discernible\".\n\nPlease fix.",
+      "parentUuid": "c05bc02c_7a801660",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "da6ef0345e130cfa269c5ed017f408868fddfc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

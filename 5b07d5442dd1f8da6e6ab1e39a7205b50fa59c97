@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64af2afc_c3eb8a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 0,
+      "message": "One concern is that this old method essentially has a built-in 1 second sleep. I got rid of that in the new module, but it could possibly expose some flakiness that the sleep was covering up. I ran the test a few times and it doesn\u0027t seem to be timing-sensitive, lots of stuff happens before the Ubertray is opened. Still, it was something I was slightly worried about.",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 678,
+        "endChar": 2
+      },
+      "revId": "5b07d5442dd1f8da6e6ab1e39a7205b50fa59c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212e2c3d_ffeb612a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-08T09:10:34Z",
+      "side": 0,
+      "message": "This basically is a 1-second sleep in the old function, but I\u0027ve done away with it in the new module. I\u0027m a little worried that this could have been covering up some flakiness, and removing it will expose it. I don\u0027t think it will really affect this test, though, since it doesn\u0027t open the Ubertray immediately after the test starts, but it was something I was a bit worried about.",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 677,
+        "endChar": 12
+      },
+      "revId": "5b07d5442dd1f8da6e6ab1e39a7205b50fa59c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
