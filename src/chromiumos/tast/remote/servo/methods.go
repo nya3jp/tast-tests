@@ -25,6 +25,7 @@ const (
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
+	ECUARTCmd            StringControl = "ec_uart_cmd"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -258,4 +259,9 @@ func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
 		return nil
 	}
 	return s.SetString(ctx, V4Role, string(value))
+}
+
+// RunECCommand runs the given command on the EC on the device.
+func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, ECUARTCmd, cmd)
 }
