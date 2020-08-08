@@ -8,11 +8,10 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/settingsapp"
 	"chromiumos/tast/testing"
 )
 
@@ -83,17 +82,10 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings button still present after clicking it repeatedly: ", err)
 	}
 
-	// Wait for Settings app to open by checking if it's in the shelf.
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
-		s.Fatal("Settings app did not appear in the shelf: ", err)
+	// Wait for Settings app to open.
+	settingsApp, err := settingsapp.Launch(ctx, tconn, cr, false)
+	if err != nil {
+		s.Fatal("Failed waiting for the Settings app to open: ", err)
 	}
-
-	// Confirm that the Settings app is open by checking for the "Settings" heading.
-	params = ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Settings",
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
-		s.Fatal("Waiting for Settings app heading failed: ", err)
-	}
+	defer settingsApp.Close(ctx)
 }

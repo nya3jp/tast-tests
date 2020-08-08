@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/settingsapp"
 	"chromiumos/tast/testing"
 )
 
@@ -58,38 +59,19 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find What's New in the available Chrome apps: ", err)
 	}
 
-	// Launch the Settings app and wait for it to open
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
+	// Launch the Settings app.
+	settingsApp, err := settingsapp.Launch(ctx, tconn, cr, true)
+	if err != nil {
 		s.Fatal("Failed to launch the Settings app: ", err)
 	}
+	defer settingsApp.Close(ctx)
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
-		s.Fatal("Settings app did not appear in the shelf: ", err)
+	// Launch What's New from the Settings app.
+	if err := settingsApp.LaunchWhatsNew(ctx); err != nil {
+		s.Fatal("Failed to launch What's New: ", err)
 	}
 
-	// Establish a Chrome connection to the Settings app and wait for it to finish loading
-	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
-	if err != nil {
-		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
-	}
-	defer settingsConn.Close()
-
-	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
-	}
-
-	// Launch What's New using the Settings page JS functions. The same JS is tied to the UI link's on-click property.
-	if err := settingsConn.Eval(ctx,
-		"settings.AboutPageBrowserProxyImpl.getInstance().launchReleaseNotes()",
-		nil); err != nil {
-		s.Fatal("Failed to run Javascript to launch What's New: ", err)
-	}
-
-	// Wait for What's New to open by checking in the shelf, and looking for something via UI
-	if err := ash.WaitForApp(ctx, tconn, apps.WhatsNew.ID); err != nil {
-		s.Fatal("What's New did not appear in the shelf: ", err)
-	}
-
+	// In addition to the launch checks performed by settingsApp.LaunchWhatsNew, also check for something in the UI.
 	// The large text at the top of the page seems like a natural choice since it's easily
 	// recognizable and unlikely to change frequently. It would be better to have a
 	// successful launch indicator that didn't rely on a string, though.
