@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b613bac0_2036b01e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86b10383_e26cc045",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0828c17_8389e555",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5d4f0ea4_18172356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0828c17_8389e555",
+      "range": {
+        "startLine": 1075,
+        "startChar": 21,
+        "endLine": 1075,
+        "endChar": 30
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f7f8292_b421fc91",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b01e8c_ce14a0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f7f8292_b421fc91",
+      "range": {
+        "startLine": 1081,
+        "startChar": 7,
+        "endLine": 1081,
+        "endChar": 16
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "63eeda96_11c8fcb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665f8b5d_f186d6d1",
+      "range": {
+        "startLine": 1082,
+        "startChar": 38,
+        "endLine": 1082,
+        "endChar": 58
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3776d011_62eb6e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "575a9eeb_ddd014c1",
+      "range": {
+        "startLine": 1082,
+        "startChar": 67,
+        "endLine": 1082,
+        "endChar": 71
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f636e8a_35bbfea3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -131,6 +251,24 @@
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c60da45_25f9a241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f636e8a_35bbfea3",
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "a933e1c0_ebecbf2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bd34a7_4e012713",
+      "range": {
+        "startLine": 1088,
+        "startChar": 7,
+        "endLine": 1088,
+        "endChar": 16
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd21bf3_0fa7df36",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
@@ -177,6 +339,30 @@
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f3880b_762870a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd21bf3_0fa7df36",
+      "range": {
+        "startLine": 1102,
+        "startChar": 5,
+        "endLine": 1102,
+        "endChar": 9
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "413fcbea_6efd8062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa5ccda7_b99bec27",
+      "range": {
+        "startLine": 1102,
+        "startChar": 5,
+        "endLine": 1104,
+        "endChar": 4
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0782f2c_ff9f0921",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 4
@@ -223,6 +433,30 @@
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb34d769_93b8cbed",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0782f2c_ff9f0921",
+      "range": {
+        "startLine": 213,
+        "startChar": 74,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "ec03984f_db741354",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422bf763_ff43cb22",
+      "range": {
+        "startLine": 214,
+        "startChar": 79,
+        "endLine": 214,
+        "endChar": 85
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b88cf5ab_0dcb204e",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "244d8fef_6cb5c229",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b88cf5ab_0dcb204e",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 26
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cb00142_7272c1a3",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 4
@@ -283,6 +565,30 @@
       "writtenOn": "2020-08-07T04:26:24Z",
       "side": 1,
       "message": "How about:\n// ExpectShillProperty, a streaming gRPC, expects a list of property criteria in order. When a property\u0027s value is expected, it responds the property\u0027s (key, value) pair. The method sends an empty response as the property watcher is set.\n// A property matching criterion consists of a property name, a list of expected values, a list of excluded values, and a \"check\" flag. We say a criterion is met iff the property value is in one of the expected values and not in any of the excluded values. If the property value is one of the excluded values, the method fails immediately. \n// If the \"check\" flag is set, the method checks if the criterion are met without waiting for property change. So if none of the expected value is matched, the method fails.\n\nI have a question: is the \"check\" mechanism is what we want? Can the method handle the case that a property may meet the criterion before or after property watcher is set?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09bae3c2_bdfab884",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "In the roaming case, we wait for the property to be connected, then we check the current value of the BSSID. we don\u0027t want to wait for it to change because the connected propery could change as well.\n\nThe current implementation does not handle the case that a property may meet the criterion before or after property watcher is set. To cover this case, the method should check the current property value then wait for property change if the current value doesn\u0027t match. \n\nIIUC, I think we have the following cases:\n1- Wait for property change after pw is set (covered)\n2- Check the current property value without waiting for property change (covered)\n3- Check If the propert value is expected and waite for property change if it is not (not covered).\n\nI changed check to CheckType enum to cover all the cases. WDYT?",
+      "parentUuid": "0cb00142_7272c1a3",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -315,6 +621,30 @@
       "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4296876b_b8fc74bc",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-08T03:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ccc0f0_001fd79d",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 27
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
