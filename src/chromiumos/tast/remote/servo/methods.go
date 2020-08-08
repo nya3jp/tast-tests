@@ -259,3 +259,13 @@ func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
 	}
 	return s.SetString(ctx, V4Role, string(value))
 }
+
+// SetEcRegexp sets the given regexp as expected output for the next command.
+func (s *Servo) SetEcRegexp(ctx context.Context, value string) error {
+	return s.run(ctx, newCall("set", "ec_uart_regexp", value))
+}
+
+// RunEcCommand runs the given command on the EC on the device.
+func (s *Servo) RunEcCommand(ctx context.Context, cmd string) error {
+	return s.run(ctx, newCall("set", "ec_uart_cmd", cmd))
+}
