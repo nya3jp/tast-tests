@@ -96,6 +96,17 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in the shelf: ", err)
 	}
 
+	// Establish a Chrome connection to the Settings app and wait for it to finish loading.
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
+	if err != nil {
+		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
+	}
+	defer settingsConn.Close()
+
+	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
+	}
+
 	// Find the "Advanced" heading and associated button.
 	advHeadingParams := ui.FindParams{
 		Role: ui.RoleTypeHeading,
