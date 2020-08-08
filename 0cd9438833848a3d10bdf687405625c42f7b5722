@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "97dbf46a_60d47066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "The reason I use this relatively complete case of sharing is to have an overview of the structure of the types, objects, methods and relationships.\n\nI used uig which helps me reduces lots of lines. Then I added several types for the page objects and APIs, which add the lines back. Incidentally, the line numbers of PS4 is exactly the same as that of PS3.",
+      "parentUuid": "67a89716_1c5b4946",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d05de325_8581c102",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
         "patchSetId": 3
@@ -110,6 +128,30 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12bc0ca1_0c9f1b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d05de325_8581c102",
+      "range": {
+        "startLine": 22,
+        "startChar": 70,
+        "endLine": 22,
+        "endChar": 85
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "d95e6e70_58bc96a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Yes, we are having other sharing tests. I\u0027d prefer to rename this one to share_files_toast.go because I\u0027ve got share_files_cancel.go and share_files_ok.go on the way.",
+      "parentUuid": "e6c03f40_9464211e",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8507a54c_cca471d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
         "patchSetId": 3
@@ -159,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "8662e65e_c2f94d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8507a54c_cca471d3",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa2e76c_3c005539",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
         "patchSetId": 3
@@ -173,6 +263,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3fd9a9_f567510c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "I have another test checking that, will upload another cl.",
+      "parentUuid": "caa2e76c_3c005539",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -199,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "950f024c_f712077a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc4e38c_d3c52612",
+      "range": {
+        "startLine": 419,
+        "startChar": 95,
+        "endLine": 419,
+        "endChar": 130
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88201351_9eaa2c6f",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 3
@@ -219,6 +351,30 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43fb8ba7_9df8303d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88201351_9eaa2c6f",
+      "range": {
+        "startLine": 420,
+        "startChar": 44,
+        "endLine": 420,
+        "endChar": 70
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -245,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "b8894821_bbc54788",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa934733_aec8ab77",
+      "range": {
+        "startLine": 421,
+        "startChar": 19,
+        "endLine": 421,
+        "endChar": 41
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d956427_d7eb3568",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 3
@@ -259,6 +439,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb76a42_61e75eab",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d956427_d7eb3568",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +477,24 @@
     },
     {
       "key": {
+        "uuid": "26035d8a_5bbc97e4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2058db13_dcc9eb89",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd533347_d2f2fa07",
         "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
         "patchSetId": 3
@@ -293,6 +509,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6585ef10_933b6737",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "OpenSettings finds.",
+      "parentUuid": "cd533347_d2f2fa07",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -313,6 +547,24 @@
     },
     {
       "key": {
+        "uuid": "c8b265e6_7903fc84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done. Removed, using uig.",
+      "parentUuid": "08e112bd_0077b66b",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17553cb6_815de1a9",
         "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
         "patchSetId": 3
@@ -327,6 +579,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abbfac1_9fa63f10",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "You are right. Move the whole package to crostini.",
+      "parentUuid": "17553cb6_815de1a9",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +617,24 @@
     },
     {
       "key": {
+        "uuid": "126fab7f_ab53ca4b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "I made the methods global because there is no way to bring the files app to the front if leave settings app open.",
+      "parentUuid": "0ec4b091_9091bdd6",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c849f7cf_79fb283a",
         "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
         "patchSetId": 3
@@ -358,6 +646,24 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "Should there be a LinuxSharedFolders struct?\n\nfolders :\u003d crostinisettings.LinuxSharedFolders()\nentries :\u003d folders.List()\nfolders.Share(\"Myfiles\")\nfolders.Unshare(\"Myfiles\")",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88e906c_5850108d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Make the sharing target (My files, Downloads, play files, Drive, shared drives) a parameter might be a bit complicated because they have different behaviours. \nI\u0027d like to make it like this:\ntype SharedFolders struct {\nfolders map[string]struct{}\n}\nshareFolders.ShareMyFiles() - for My files\nshareFolders.ShareDrive() - for My drive and share drives\nshareFolders.ShareFolders(path ...string) - for the rest, there is no confirmation dialog for them.\n\nBtw, I put this truct in linuxfiles because sharing folders starts from files app. Maybe this part should be in a separate package? \n\nThoughts?",
+      "parentUuid": "c849f7cf_79fb283a",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -387,6 +693,30 @@
     },
     {
       "key": {
+        "uuid": "3e57f722_e88f5a5a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915bf0cf_05695e6c",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac0d9157_dc8ecdf6",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -401,6 +731,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb7d14f_946117b7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac0d9157_dc8ecdf6",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -444,6 +792,48 @@
     },
     {
       "key": {
+        "uuid": "e38feef4_5cee729d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23ca72f_b74a4ae2",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bfe7175_338c0a9f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eecbd11_5908862d",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3062a496_800bfcf6",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -458,6 +848,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2da7146_75354d74",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3062a496_800bfcf6",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -478,6 +886,24 @@
     },
     {
       "key": {
+        "uuid": "5ebd6c6c_e2fa184b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d5ba08_6ec91afb",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4bbdd4_7271fb26",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -492,6 +918,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38aba93_8bec15a2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4bbdd4_7271fb26",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -512,6 +956,24 @@
     },
     {
       "key": {
+        "uuid": "1940a7ed_4df86cd4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88df2ebc_a03a8be9",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e42abb5c_3793fef8",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -523,6 +985,24 @@
       "writtenOn": "2020-08-07T05:57:12Z",
       "side": 1,
       "message": "there are a lot of arguments and functionality in this function.  I feel like a better API would make this clearer and remove the need some of these functions.\n\neg:\nfilesApp.SelectDirectoryContextMenuItem(ctx, MyFiles, ShareWithLinux)\nd :\u003d sharingdialog.Find() // should verify all the pieces are there\nif confirm {\n  d.ClickOK()\n} else {\n  d.ClickCancel()\n  return\n}\na :\u003d d.FindAlert()\nif clickManage {\n a.ClickManage()\n}\n\nI think we might need \"page objects\" for each distinct window or alert that we are dealing with.",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b43768dd_d6880de1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Created two struct for confirmation dialog and toast notification. I\u0027d prefer to leave methods CheckShareConfirmDialog and CheckShareToast since they would be used by other share test, like share drive.",
+      "parentUuid": "e42abb5c_3793fef8",
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -549,6 +1029,30 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d4ff1f_e8dd782a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3e1c7d_777a05b7",
+      "range": {
+        "startLine": 168,
+        "startChar": 95,
+        "endLine": 168,
+        "endChar": 108
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -598,6 +1102,54 @@
     },
     {
       "key": {
+        "uuid": "46bf01fb_5ff4957f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "I have other tests like clicking cancel / ok when on confirm dialog, these tests are setting this true.\n\nI\u0027ve changed the settings struct.",
+      "parentUuid": "0bb81456_f5789ba3",
+      "range": {
+        "startLine": 171,
+        "startChar": 79,
+        "endLine": 171,
+        "endChar": 91
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6a129fb_f8c26fac",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0781eff0_e611b384",
+      "range": {
+        "startLine": 171,
+        "startChar": 98,
+        "endLine": 171,
+        "endChar": 111
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3128becb_1a5ffd61",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -615,6 +1167,24 @@
     },
     {
       "key": {
+        "uuid": "78e98433_a30d33ac",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Changed.",
+      "parentUuid": "3128becb_1a5ffd61",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a03434b4_c96f0f9c",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -629,6 +1199,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b350cdf3_ad21bc92",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Add a util package. Let me move  CheckListContains, CheckListDoesNotContain to this package in other CL.",
+      "parentUuid": "a03434b4_c96f0f9c",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -667,6 +1255,42 @@
     },
     {
       "key": {
+        "uuid": "c8bad6cb_b8981bc8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "I added another package. Please let me move CheckListContains, CheckListDoesNotContain into the util in another cl.",
+      "parentUuid": "b945c023_3988d91c",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "814f2527_99b56bb5",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b945c023_3988d91c",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb57b8a8_1cec52a4",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 3
@@ -681,6 +1305,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f59f34_2e979770",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-08T14:13:30Z",
+      "side": 1,
+      "message": "Sorry, this method does not belong to this CL.",
+      "parentUuid": "bb57b8a8_1cec52a4",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
