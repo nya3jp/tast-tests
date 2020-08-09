@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b13d5d37_bc523316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-09T23:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2489ded1_30a0a189",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11ecf86_8e305dfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
         "patchSetId": 3
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "652cbba8_849b17bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-09T23:30:34Z",
+      "side": 1,
+      "message": "resolving based on the preference of the tast owners",
+      "parentUuid": "ac7ca1c1_74497a68",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "280c0c8a_bfe7a850",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
         "patchSetId": 3
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "5a53ad98_e10a00b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlctest/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-09T23:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "280c0c8a_bfe7a850",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a334056_da8be430",
         "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
         "patchSetId": 3
@@ -130,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "b40cf901_fce6e9dc",
+        "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-09T23:30:34Z",
+      "side": 1,
+      "message": "Done, though moved to local/upstart as it seems more like an extension of that package\u0027s utility.",
+      "parentUuid": "4a334056_da8be430",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e057aef_3914ac9b",
         "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
         "patchSetId": 3
@@ -144,6 +228,24 @@
       "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c45661_703958b2",
+        "filename": "src/chromiumos/tast/local/dlc/dlcservice_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-09T23:30:34Z",
+      "side": 1,
+      "message": "moved to platform/dlc",
+      "parentUuid": "0e057aef_3914ac9b",
+      "revId": "ff3caff7c7f1dfb5ad170e3dbef0b6a63bcd6a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
