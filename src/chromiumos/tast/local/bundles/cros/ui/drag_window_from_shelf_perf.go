@@ -79,7 +79,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
+		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 		// Clear the overview mode state so that the next drag can enter into the
