@@ -16,6 +16,69 @@
       "revId": "7611dd632ee8e97f0e57c54f1ab6c7cc1e753ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2d1bd5_79076201",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-09T16:04:48Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "7611dd632ee8e97f0e57c54f1ab6c7cc1e753ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce0c9197_5429f00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-09T16:04:48Z",
+      "side": 1,
+      "message": "In Golang, we prefer defining variables in the if-block if it is unused outside of the if-block. \n\nThough err is defined in line 134 and re-assigning it here does not affect the whole logic, I think it is better to follow the style like line 145 does.",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "7611dd632ee8e97f0e57c54f1ab6c7cc1e753ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9586d46_fa680bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-09T16:04:48Z",
+      "side": 1,
+      "message": "It is better to have ctx as parameter and pass the current ctx here:\n\ndefer func(ctx context.Context) {\n  ...\n}(ctx)\n\nThe reason to use the pattern is that it is robust to the potential ctx changes after the line. Also, it is an existing pattern, givinging ctx on defer call, just like line 143.",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "7611dd632ee8e97f0e57c54f1ab6c7cc1e753ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
