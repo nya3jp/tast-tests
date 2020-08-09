@@ -363,7 +363,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait fullscreen exit")
 			}
 
-			if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
+			if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to DragToShowOverview")
 			}
 
@@ -389,7 +389,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 		s.Log("Switch back to fullscreen video")
 		if tabletMode {
-			if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
+			if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to DragToShowOverview")
 			}
 
