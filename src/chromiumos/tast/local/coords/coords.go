@@ -122,6 +122,11 @@ func (r Rect) BottomRight() Point {
 	return Point{X: r.Left + r.Width, Y: r.Top + r.Height}
 }
 
+// BottomCenter returns the center location of the bottom edge of the rectangle.
+func (r Rect) BottomCenter() Point {
+	return Point{X: r.Left + r.Width/2, Y: r.Top + r.Height}
+}
+
 // CenterPoint returns the location of the center of the rectangle.
 func (r Rect) CenterPoint() Point {
 	return Point{X: r.Left + r.Width/2, Y: r.Top + r.Height/2}

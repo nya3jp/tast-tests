@@ -552,7 +552,7 @@ func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Wi
 
 // DragToShowOverview shows overview by dragging up, pausing for the gesture to be recognized, then ending the gesture.
 // Note that this action only works in tablet mode.
-func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+func DragToShowOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
 	if inTabletMode, err := TabletModeEnabled(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to get tablet-mode status")
 	} else if !inTabletMode {
@@ -566,16 +566,30 @@ func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw
 		return errors.Wrap(err, "there must be at least one window to go to overview")
 	}
 
-	startX := width / 2
-	startY := height - 1
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "unable to get display info")
+	}
 
-	endX := startX
-	endY := height / 2
+	tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
+	if err != nil {
+		return errors.Wrap(err, "unable to create touch coordinate converter")
+	}
+
+	// Make gesture duration sufficiently long for window drag not to be recognized as a gesture to the home screen.
+	duration := time.Duration(displayInfo.Bounds.Height/3) * time.Millisecond
+
+	start := displayInfo.Bounds.BottomCenter()
+	startX, startY := tcc.ConvertLocation(start)
+
+	end := displayInfo.Bounds.CenterPoint()
+	endX, endY := tcc.ConvertLocation(end)
 
 	testing.ContextLog(ctx, "Dragging from the bottom slowly to open overview")
-	if err := stw.Swipe(ctx, startX, startY, endX, endY, 500*time.Millisecond); err != nil {
+	if err := stw.Swipe(ctx, startX, startY-1, endX, endY, duration); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
+
 	// Wait with the swipe paused so the overview mode gesture is recognized. Use 1 second because this is roughly the amount of time it takes for the 'swipe up and hold' overview gesture to trigger.
 	const pauseDuration = time.Second
 	if err := testing.Sleep(ctx, pauseDuration); err != nil {

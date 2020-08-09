@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -221,14 +222,25 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	conn.Close()
 
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info")
+	}
+
+	tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
+	if err != nil {
+		s.Fatal("Failed to generate touch coord converter")
+	}
+
 	runner.RunMultiple(ctx, s, "", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
+		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
+		touchPoint := coords.NewPoint(displayInfo.Bounds.Width/20, displayInfo.Bounds.Height/20)
 		// Enter home launcher from overview by gesture tap.
-		pressX := tsw.Width() / 20
-		pressY := tsw.Height() / 20
+		pressX, pressY := tcc.ConvertLocation(touchPoint)
+
 		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY+5, 200*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to tap")
 		}
@@ -242,13 +254,19 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return err
 		}
 
-		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
+		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
-		// Enter in-app mode from overview by gesture tap.
-		pressX = tsw.Width() / 3
-		pressY = tsw.Height() / 3
+		// Enter in-app mode from overview by tapping within an overview window bounds.
+		window, err := ash.FindFirstWindowInOverview(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "no overview window found")
+		}
+
+		touchPoint = window.OverviewInfo.Bounds.CenterPoint()
+		pressX, pressY = tcc.ConvertLocation(touchPoint)
+
 		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to tap")
 		}
@@ -263,11 +281,13 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		// Enter home launcher from in-app mode by gesture swipe up from shelf.
-		startX := tsw.Width() / 2
-		startY := tsw.Height() - 1
-		endX := startX
-		endY := tsw.Height() / 2
-		if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
+		start := displayInfo.Bounds.BottomCenter()
+		startX, startY := tcc.ConvertLocation(start)
+
+		end := displayInfo.Bounds.CenterPoint()
+		endX, endY := tcc.ConvertLocation(end)
+
+		if err := stw.Swipe(ctx, startX, startY-1, endX, endY, 200*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to swipe")
 		}
 		if err := stw.End(); err != nil {
@@ -292,16 +312,6 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 		if len(scrollableShelfInfo.IconsBoundsInScreen) == 0 {
 			return errors.New("failed to activate a window: got 0 shelf icons; expect at least one shelf icon")
-		}
-
-		// Obtain the coordinate converter from the touch screen writer.
-		displayInfo, err := display.GetInternalInfo(ctx, tconn)
-		if err != nil {
-			return err
-		}
-		tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
-		if err != nil {
-			return err
 		}
 
 		// Tap on the shelf icon to activate a window to hide the hotseat.

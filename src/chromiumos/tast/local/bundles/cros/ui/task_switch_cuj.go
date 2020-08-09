@@ -133,7 +133,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		stw := tc.EventWriter()
 		tsew := tc.Touchscreen()
 		setOverviewModeAndWait = func(ctx context.Context) error {
-			return ash.DragToShowOverview(ctx, tsew.Width(), tsew.Height(), stw, tconn)
+			return ash.DragToShowOverview(ctx, tsew, stw, tconn)
 		}
 		openAppList = func(ctx context.Context) error {
 			return ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn)
