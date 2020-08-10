@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e563e283_0a908dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T08:39:44Z",
+      "side": 1,
+      "message": "I added a go routine to click the allow button in the dialog. That way all cases can be tested the same way.",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "cd462c9e_8855ed65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T08:39:44Z",
+      "side": 1,
+      "message": "I think I found a way to test now all cases sensibly.",
+      "parentUuid": "38c48aaa_8e15d059",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "e30beae690c403baf99291ebfd2c3b6d6836bb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c89c2aa_d151e082",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 5
