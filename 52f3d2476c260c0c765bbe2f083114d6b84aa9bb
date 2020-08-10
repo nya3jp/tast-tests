@@ -142,6 +142,30 @@
       "revId": "52f3d2476c260c0c765bbe2f083114d6b84aa9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca7e5741_bafa381e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-10T08:58:05Z",
+      "side": 1,
+      "message": "Oh, I see. Thanks for the explanation.",
+      "parentUuid": "89755ec2_a667736d",
+      "range": {
+        "startLine": 91,
+        "startChar": 35,
+        "endLine": 91,
+        "endChar": 111
+      },
+      "revId": "52f3d2476c260c0c765bbe2f083114d6b84aa9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
