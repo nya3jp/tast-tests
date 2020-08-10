@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ca29c1f_b4d5fd54",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T04:07:43Z",
+      "side": 1,
+      "message": "clickShelfMenuItem might be better?",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "c58b86c04d4d4101a5f05b2c86181a764cffbba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c56d2f_deb7c3f9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T04:07:43Z",
+      "side": 1,
+      "message": "Maybe rename this to Exit to give a hint it isn\u0027t a normal app close?",
+      "range": {
+        "startLine": 149,
+        "startChar": 23,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "c58b86c04d4d4101a5f05b2c86181a764cffbba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
