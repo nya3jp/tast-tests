@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "222b148d_ce74c34b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T13:52:23Z",
+      "side": 1,
+      "message": "LGTM, but let\u0027s wait for Gabor to review as well.",
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
