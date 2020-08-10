@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "0417a687_48299671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba70937d_71c8b71c",
+      "range": {
+        "startLine": 956,
+        "startChar": 51,
+        "endLine": 956,
+        "endChar": 58
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e8f5fdb_fc37e94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05d9d92_8ef2fedf",
+      "range": {
+        "startLine": 956,
+        "startChar": 63,
+        "endLine": 956,
+        "endChar": 69
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dd28003_375cda75",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1be816f_b7e94c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd28003_375cda75",
+      "range": {
+        "startLine": 960,
+        "startChar": 49,
+        "endLine": 960,
+        "endChar": 56
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c1696f80_bc97c160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f41caa_0004fa88",
+      "range": {
+        "startLine": 964,
+        "startChar": 46,
+        "endLine": 964,
+        "endChar": 53
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6db804b_a86d5549",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3c84c0_0787fcd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6db804b_a86d5549",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 968,
+        "endChar": 70
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "27df4c3e_fbb5453c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c10076c_72327f85",
+      "range": {
+        "startLine": 978,
+        "startChar": 4,
+        "endLine": 978,
+        "endChar": 63
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f8b978f_d61891bd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 2
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "355e9e04_bde5cd34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f8b978f_d61891bd",
+      "range": {
+        "startLine": 27,
+        "startChar": 101,
+        "endLine": 27,
+        "endChar": 117
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2152db3_e4db47b3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 2
@@ -177,6 +345,24 @@
       "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b78f15_f5e56670",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2152db3_e4db47b3",
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "c22c87d7_d9eae542",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3997a30_131a9932",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "616a096c_b3b9b7ef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 2
@@ -214,6 +424,30 @@
       "writtenOn": "2020-08-05T04:54:31Z",
       "side": 1,
       "message": "Can you comment here why you expect opt.Data \u003d\u003d three zero-bytes?",
+      "range": {
+        "startLine": 145,
+        "startChar": 35,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd915c5c_2600c1ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "It\u0027s a single byte 0x03 for the type. It\u0027s also mentioned in the head of the code block \"Filter DHCP Request (Type \u003d 3)\". I guess it\u0027s enough?\n\nOr, do you think we should also filter the case that \"len(opt.Data) !\u003d 1\" and have another error for it? which will have the condition here more intuitive e.g. \"opt.Data[0] \u003d\u003d 3\".",
+      "parentUuid": "616a096c_b3b9b7ef",
       "range": {
         "startLine": 145,
         "startChar": 35,
@@ -246,6 +480,30 @@
       "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65bfd9ce_f81cd85e",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T03:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "741e2341_277bf8c0",
+      "range": {
+        "startLine": 71,
+        "startChar": 57,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
