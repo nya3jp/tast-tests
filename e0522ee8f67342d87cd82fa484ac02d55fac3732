@@ -16,6 +16,24 @@
       "revId": "e0522ee8f67342d87cd82fa484ac02d55fac3732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8475821_acb0e732",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-10T11:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f29657da_e7958a84",
+      "revId": "e0522ee8f67342d87cd82fa484ac02d55fac3732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
