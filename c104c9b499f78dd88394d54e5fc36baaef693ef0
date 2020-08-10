@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "28366526_b628c162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T05:23:22Z",
+      "side": 1,
+      "message": "I have a question, the 90 seconds timeout is replaced by uiTimeout, which is 30 seconds. What does it mean \"longer timeout on reset test?\" How can it fix the test by shortening the \"waiting UI prompt\" timeout?",
+      "revId": "c104c9b499f78dd88394d54e5fc36baaef693ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2dff008_ddb74207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T05:23:22Z",
+      "side": 1,
+      "message": "seconds",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "c104c9b499f78dd88394d54e5fc36baaef693ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b540568_15164f4d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
