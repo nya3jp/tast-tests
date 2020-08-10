@@ -50,6 +50,23 @@
       "revId": "595ec81fbe258004785ccfa696f2dca4b23e99e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da2aade4_9e2d9b1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T20:54:56Z",
+      "side": 1,
+      "message": "LGTM. You can also ask tast-owners@ so that one of the owners will be assigned automatically.",
+      "revId": "595ec81fbe258004785ccfa696f2dca4b23e99e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
