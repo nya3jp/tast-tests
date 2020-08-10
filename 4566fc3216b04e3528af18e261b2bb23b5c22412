@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "6b066c50_a10b76c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "No, but I need to start the routine before calling Eval as Eval will block until I\u0027ve clicked the button.",
+      "parentUuid": "3a298d0a_37dc853c",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "732f19cc_1f670090",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -73,6 +91,30 @@
       "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57ecc53_e68d1f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732f19cc_1f670090",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "32e709e2_dd947962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "Not needed anymore.",
+      "parentUuid": "30ec8c24_800f03ec",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 13
+      },
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7df2a0e6_1f5fb9d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -110,6 +176,24 @@
       "writtenOn": "2020-08-10T08:48:18Z",
       "side": 1,
       "message": "nit: move code to the html page as a function and just call it here. It will make the test much more readable.",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8dcd05_383097c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "I tried doing that. Maybe I\u0027m missing something essential, but I couldn\u0027t find a way to do that. However I found comments stating that you cannot call functions in html files from the developer console and I assume with Eval only the same things work that work in the console.",
+      "parentUuid": "7df2a0e6_1f5fb9d6",
       "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "9fc7123a_7d9268e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc1d39de_e25ac168",
+      "range": {
+        "startLine": 137,
+        "startChar": 72,
+        "endLine": 137,
+        "endChar": 76
+      },
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15ce8347_adc0d7bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -162,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "df97bf29_f37ed889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "I removed that check as it seemed out of scope as the test should just test if the policy sets the permission correctly. Adding the check we would then also test if the geolocation actually works, which probably is (or at least should) be tested in its own test.",
+      "parentUuid": "15ce8347_adc0d7bf",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e65419fd_f5ce8362",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -173,6 +305,24 @@
       "writtenOn": "2020-08-10T08:48:18Z",
       "side": 1,
       "message": "Does this block while the allow dialog is shown?\n\nIf yes, please comment on why you used the goroutine.",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d451143e_b98bd2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T09:49:51Z",
+      "side": 1,
+      "message": "Yes, as stated above Eval will block here if the dialog is shown until one of the buttons is clicked. That\u0027s why I used the goroutine to click on the Allow button as soon as the dialog appears.",
+      "parentUuid": "e65419fd_f5ce8362",
       "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
