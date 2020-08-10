@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "41931f53_22e9f1c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T06:29:19Z",
+      "side": 1,
+      "message": "Yes, this is correct.\n\nThe first timeout is the time for the terminal window to appear\n\nThe second timeout is the time for the \"starting crostini\" status message to finish and the terminal prompt to appear.\n\nThe first should be 30 seconds, the second should be 90 seconds, but they were reversed in the submitted code.",
+      "parentUuid": "b188c31c_49dff8f5",
+      "revId": "c104c9b499f78dd88394d54e5fc36baaef693ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b540568_15164f4d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
