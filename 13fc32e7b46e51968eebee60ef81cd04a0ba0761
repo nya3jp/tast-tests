@@ -80,6 +80,30 @@
       "revId": "13fc32e7b46e51968eebee60ef81cd04a0ba0761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f85384f_c940df15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T08:21:29Z",
+      "side": 1,
+      "message": "I see, it certanly complicates things. I was thinking about errors like a problem in executing the command itself (e.g. timeout), or that the cros_config script cannot be run. But parsing the error msg might be unnecessarily complicated compared to the low probability of such error.\nI am marking my question as resolved.",
+      "parentUuid": "43f284ab_3fcbce9a",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "13fc32e7b46e51968eebee60ef81cd04a0ba0761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
