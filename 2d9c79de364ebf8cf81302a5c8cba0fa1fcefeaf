@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e3730f0_b8cb8d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T21:19:52Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64ec584_c1a87c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T21:19:52Z",
+      "side": 1,
+      "message": "nit: Just \"return {...};\". Would it work?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b95f34_79cae2c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T21:19:52Z",
+      "side": 1,
+      "message": "nit: End with \u0027;\u0027 since this is technically a statement of function call.\ni.e.\n\n  (function() {})();",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
