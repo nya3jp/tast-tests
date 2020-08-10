@@ -16,6 +16,24 @@
       "revId": "2388de5ae4e6080606d6bb6c61ac42565321d667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac38613_1fd061c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T18:56:49Z",
+      "side": 1,
+      "message": "Oops I forgot to remove this... this was just for validating everything is going well..",
+      "parentUuid": "7f938bbb_42d2898b",
+      "revId": "2388de5ae4e6080606d6bb6c61ac42565321d667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -330,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "9226ae79_10da5cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T18:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "214a1917_4c56d7ca",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a87b6_7954aab2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 19
@@ -422,6 +446,30 @@
       "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161e0ec9_7ce2b651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T18:56:49Z",
+      "side": 1,
+      "message": "Since it works so I think JSObject.Call handles this so let\u0027s keep it simple here?",
+      "parentUuid": "a808fa6e_4875081a",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 111
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
