@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "e8b86432_50771151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:46:10Z",
+      "side": 1,
+      "message": "It is fine to implement a full solution to understand what is needed for the code. \n I also usually do this.  But it is faster to send reviews in multiple smaller CLs.",
+      "parentUuid": "97dbf46a_60d47066",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d05de325_8581c102",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_myfiles_alert.go",
         "patchSetId": 3
