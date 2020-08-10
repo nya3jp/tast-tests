@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdc9ff09_75743dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-10T23:54:36Z",
+      "side": 1,
+      "message": "This change is a sibling of https://crrev.com/c/2219052.",
+      "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
