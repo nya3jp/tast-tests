@@ -19,6 +19,155 @@
     },
     {
       "key": {
+        "uuid": "4ca877b4_629eec7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "range": {
+        "startLine": 1025,
+        "startChar": 48,
+        "endLine": 1025,
+        "endChar": 68
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c2563a_a4980f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "Please sync the comment with the proto one. Or we shall just say, refer to the proto comment.",
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2877cb8e_fea2dcf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "How about \"excludedVals\"?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 6,
+        "endLine": 1071,
+        "endChar": 21
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002764c5_178b2708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "Move this before the outmost for-loop, line 1061. And it would be nice to add a short comment for readability.",
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bef8cee_512859c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "criterion.",
+      "range": {
+        "startLine": 1114,
+        "startChar": 65,
+        "endLine": 1114,
+        "endChar": 73
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeed5661_318c013a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65c8726_dacf72ff",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "For CheckMethod, it has three methods:\n1. CHECK_ONLY: checks if the criterion is met.\n2. ON_CHANGE: waits for the property changes to the expected values.\n3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property\u0027s value is met.",
+      "range": {
+        "startLine": 86,
+        "startChar": 63,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91ca15b2_22a1ff40",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 7
@@ -35,6 +184,76 @@
         "startChar": 0,
         "endLine": 235,
         "endChar": 3
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e42e16_66fe6994",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "I would prefer using enum. However, please consider the following name:\n\n// Criterion checking methods.\nenum CheckMethod {\n  // Check if the property value is expected; if not, wait until it is expected.\n  CHECK_WAIT \u003d 1;\n  // Check on property change.\n  ON_CHANGE \u003d 2;\n  // Check if the property value is expected.\n  CHECK_ONLY \u003d 3;\n}",
+      "parentUuid": "91ca15b2_22a1ff40",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 3
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9691d995_cb7dee40",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "How about naming it Criterion",
+      "range": {
+        "startLine": 237,
+        "startChar": 10,
+        "endLine": 237,
+        "endChar": 15
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f84891_5867eac9",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "CheckMethod method \u003d 4;",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 21
       },
       "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
