@@ -141,6 +141,12 @@ func (f *FilesApp) OpenDrive(ctx context.Context) error {
 	return f.OpenDir(ctx, "Google Drive", "Files - My Drive")
 }
 
+// OpenLinuxFiles opens the Linux files folder in the Files App.
+// An error is returned if Linux files is not found or does not open.
+func (f *FilesApp) OpenLinuxFiles(ctx context.Context) error {
+	return f.OpenDir(ctx, "Linux files", "Files - Linux files")
+}
+
 // file returns a ui.Node that references the specified file.
 // An error is returned if the timeout is hit.
 func (f *FilesApp) file(ctx context.Context, filename string, timeout time.Duration) (*ui.Node, error) {
@@ -172,6 +178,28 @@ func (f *FilesApp) WaitForFile(ctx context.Context, filename string, timeout tim
 	}
 	defer file.Release(ctx)
 	return nil
+}
+
+// WaitForFileGone waits for a file to not be visible.
+// An error is returned if the timeout is hit.
+func (f *FilesApp) WaitForFileGone(ctx context.Context, filename string, timeout time.Duration) error {
+	// Limit overall timeout for function.
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	// Get the Files App listBox.
+	filesBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, timeout)
+	if err != nil {
+		return err
+	}
+	defer filesBox.Release(ctx)
+
+	// Wait until the file is gone.
+	params := ui.FindParams{
+		Name: filename,
+		Role: ui.RoleTypeStaticText,
+	}
+	return filesBox.WaitUntilDescendantGone(ctx, params, timeout)
 }
 
 // SelectFile selects a file by clicking on it.
