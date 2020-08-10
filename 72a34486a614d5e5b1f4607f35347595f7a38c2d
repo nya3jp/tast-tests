@@ -33,6 +33,24 @@
       "revId": "72a34486a614d5e5b1f4607f35347595f7a38c2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f871dc3_baea16ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_geolocation_setting_index.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T13:33:10Z",
+      "side": 1,
+      "message": "Now it\u0027s working. No idea what was wrong last Friday when I tried to do it.",
+      "parentUuid": "3fae40ac_a986ff55",
+      "revId": "72a34486a614d5e5b1f4607f35347595f7a38c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
