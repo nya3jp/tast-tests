@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "48456c21_621ea0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "By the way, I tried this locally but I\u0027ve got an error saying setting \u0027onstop\u0027 to a null. Maybe some part of Javascript code could be broken due to some suggestions we made incorrectly?  Could you re-check the behavior?  Sorry if some of my comments led this...",
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d64ec584_c1a87c64",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -42,6 +59,92 @@
     },
     {
       "key": {
+        "uuid": "a3c3855b_ca81b5b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "I think you should return here.\n  return this.streamPromise.then(...)",
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e0f1a3_cb8af46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "You can simply use an arrow function;\n  ondataavailable \u003d (e) \u003d\u003e { this.chunks.push(e.data); };\n\nthat way \"this\" refers to the outside of the scope.",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d23aee5_31a215b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "Please avoid var in JavaScript as far as possible, use let instead.",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4b0879_9ebaef90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "ditto: use of arrow function would be cleaner.",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93b95f34_79cae2c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -58,6 +161,29 @@
         "startChar": 3,
         "endLine": 72,
         "endChar": 5
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a61a03_6b4311cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "Combined with my comment above, this should be \"return this.start()\" too.  That way the Call can wait for the promise to finish.",
+      "range": {
+        "startLine": 126,
+        "startChar": 55,
+        "endLine": 126,
+        "endChar": 68
       },
       "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

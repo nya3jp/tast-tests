@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "c83aaf26_9c877552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-10T21:34:41Z",
+      "side": 1,
+      "message": "That\u0027s due to kinda ambiguity of JavaScript. To make it an Object literal, it will have to be \"({ chunks: [], ... })\"",
+      "parentUuid": "79be9f5f_c9612233",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19ac3bd0_77f4a099",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 19
