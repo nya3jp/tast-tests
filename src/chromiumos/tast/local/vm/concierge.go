@@ -245,7 +245,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) 
 	}
 
 	vm.ContextID = resp.VmInfo.Cid
-	vm.seneschalHandle = uint32(resp.VmInfo.SeneschalServerHandle)
+	vm.seneschalHandle = resp.VmInfo.SeneschalServerHandle
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", vm.name, resp.VmInfo.Cid, resp.VmInfo.Pid)
 
@@ -267,6 +267,26 @@ func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
 	}
 
 	testing.ContextLogf(ctx, "Shut down VM %q", vm.name)
+	return nil
+}
+
+func (c *Concierge) getVMInfo(ctx context.Context, vm *VM) error {
+	resp := &vmpb.GetVmInfoResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".GetVmInfo",
+		&vmpb.GetVmInfoRequest{
+			Name:    vm.name,
+			OwnerId: vm.Concierge.ownerID,
+		}, resp); err != nil {
+		return err
+	}
+
+	if !resp.GetSuccess() {
+		return errors.New("failed to get VM info")
+	}
+
+	vm.ContextID = resp.VmInfo.Cid
+	vm.seneschalHandle = resp.VmInfo.SeneschalServerHandle
+
 	return nil
 }
 
