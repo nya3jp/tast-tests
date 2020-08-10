@@ -28,6 +28,10 @@ func RunCrostiniPostTest(ctx context.Context, cont *vm.Container) {
 		return
 	}
 	trySaveContainerLogs(ctx, dir, cont)
+
+	if err := cont.Cleanup(cleanupCtx, "."); err != nil {
+		testing.ContextLog(ctx, "Failed to remove all files in home directory in the container: ", err)
+	}
 }
 
 // When we run trySaveContainerLogs we only want to capture logs since we last
