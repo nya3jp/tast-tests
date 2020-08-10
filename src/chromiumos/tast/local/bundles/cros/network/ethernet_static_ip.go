@@ -139,10 +139,14 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		ctx, st := timing.Start(ctx, "waitForEthernetService")
 		defer st.End()
 
+		// Wait for Connected Ethernet service. We wait 60 seconds for
+		// DHCP negotiation since some DUTs will end up retrying DHCP
+		// discover/request, and this can often take 15-30 seconds
+		// depending on the number of retries.
 		return manager.WaitForServiceProperties(ctx, map[string]interface{}{
 			shillconst.ServicePropertyType:        "ethernet",
 			shillconst.ServicePropertyIsConnected: true,
-		}, 15*time.Second)
+		}, 60*time.Second)
 	}()
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
