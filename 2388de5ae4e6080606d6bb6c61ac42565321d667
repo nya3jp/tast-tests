@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f938bbb_42d2898b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T17:18:12Z",
+      "side": 1,
+      "message": "I think we are not downloading it on device.\n\nIf we do want it, use \".webm\" as file name extension rather than \".mp4\".",
+      "revId": "2388de5ae4e6080606d6bb6c61ac42565321d667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

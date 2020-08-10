@@ -306,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "214a1917_4c56d7ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T17:18:12Z",
+      "side": 1,
+      "message": "Drive by, think we could do \".bind(this)\" on the stop handler to make |this| correct.\ni.e.\n\n  this.recorder.onstop \u003d function() {\n    var blob \u003d new Block(this.chunks, , {\u0027type\u0027: \u0027video/webm\u0027});\n    ...\n  }.bind(this);",
+      "parentUuid": "6c06ebb6_b55fb19c",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a0a87b6_7954aab2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 19
@@ -350,6 +374,30 @@
       "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8d5ba6_f67c3647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-10T17:18:12Z",
+      "side": 1,
+      "message": "I think the previous version that has \"await\" is more correct.\n\nDo we get correct data in |result|? I mean this.stop() returns a Promise. Would JSObject.call correctly waits for it to resolve then unmarshall the value to |result| ?",
+      "parentUuid": "72e84ed9_83d6edc3",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 111
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
