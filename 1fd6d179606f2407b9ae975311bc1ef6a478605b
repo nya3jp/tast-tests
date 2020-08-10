@@ -16,6 +16,138 @@
       "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c33b7598_4ed54d10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7767cfa0_539cd642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "nit: nodeName is ...",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4478b6d7_bc74484c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "This error message is odd for me. I have a hard time associating a renderer with a page opening.",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5c744a_0dbe08aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "nit: Move this to the next line.",
+      "range": {
+        "startLine": 110,
+        "startChar": 71,
+        "endLine": 110,
+        "endChar": 74
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e53baa8_55d89808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "nit: In the ui.FindWithTimeout below, the params variable is definded in the function. Please modify either of them.",
+      "range": {
+        "startLine": 116,
+        "startChar": 48,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb6829d_b1ea7554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-10T14:35:47Z",
+      "side": 1,
+      "message": "nit: I had to read the HTML file again to realize that it is a error code. Please add a comment, or use a little more verbose name to help the reader.",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 9
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
