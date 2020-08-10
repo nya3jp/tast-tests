@@ -83,7 +83,9 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 	}
 	filepath.Walk("/home", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			if !os.IsNotExist(err) {
+			if os.IsPermission(err) {
+				s.Logf("Ignoring permission error when walk home directory at %v: %v", path, err)
+			} else if !os.IsNotExist(err) {
 				s.Errorf("Failed to walk home directory at %v: %v", path, err)
 			}
 			return nil
