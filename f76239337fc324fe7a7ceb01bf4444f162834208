@@ -601,6 +601,30 @@
     },
     {
       "key": {
+        "uuid": "a2157f34_6478a28b",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T09:51:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Please refer to my comment regarding enum Check in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2340984/4..7/src/chromiumos/tast/services/cros/network/wifi_service.proto#235",
+      "parentUuid": "09bae3c2_bdfab884",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "f76239337fc324fe7a7ceb01bf4444f162834208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30ccc0f0_001fd79d",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 4
