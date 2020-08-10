@@ -12,11 +12,11 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -29,15 +29,22 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
+		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
 	})
 }
 
 func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.NoLogin())
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.NoLogin(), chrome.LoadSigninProfileExtension(s.RequiredVar("inputs.signinProfileTestExtensionManifestKey")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
@@ -59,79 +66,38 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 	defer gaiaConn.Close()
 
-	kconn, err := vkb.UIConn(ctx, cr)
+	const (
+		inputElementCSSLocator = "#identifierId"
+		testEmail              = "test@gmail.com"
+	)
+
+	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Email or phone"}, 20*time.Second)
 	if err != nil {
-		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
+		s.Fatal("Failed to find user name input: ", err)
 	}
-	defer kconn.Close()
+	defer element.Release(ctx)
 
-	if err = inputField(ctx, kconn, gaiaConn, "#identifierId", []string{"t", "e", "s", "t", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"}, "test@gmail.com"); err != nil {
-		s.Error("Failed to input identifierId with vk in user login: ", err)
+	if err := element.LeftClick(ctx); err != nil {
+		s.Fatal("Failed to click the input element: ", err)
 	}
-}
 
-func inputField(ctx context.Context, kconn, gaiaConn *chrome.Conn, cssSelector string, keys []string, expectedValue string) error {
-	// Wait for document to load and input field to appear.
+	s.Log("Wait for virtual keyboard shown up")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	}
+
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		"!!document.activeElement && document.querySelector(%q)===document.activeElement", cssSelector)); err != nil {
-		return errors.Wrapf(err, "failed to wait for document ready or %q element", cssSelector)
+		"!!document.activeElement && document.querySelector(%q)===document.activeElement", inputElementCSSLocator)); err != nil {
+		s.Fatalf("Failed to wait for document ready or %q element: %v", inputElementCSSLocator, err)
 	}
 
-	// Original view port size without virtual keyboard
-	originalViewPortSize, err := getViewPortSize(ctx, gaiaConn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get viewport size")
+	if err := vkb.TapKeys(ctx, tconn, strings.Split(testEmail, "")); err != nil {
+		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
-
-	//TODO(b/159748349): Tap input field to trigger virtual keyboard rather than JS function.
-	if err := kconn.Eval(ctx, "chrome.inputMethodPrivate.showInputView()", nil); err != nil {
-		return errors.Wrap(err, "failed to show virtual keyboard via JS")
-	}
-
-	// Wait for viewport shrink vertically because of vk showing up.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newViewPort, err := getViewPortSize(ctx, gaiaConn)
-
-		if err != nil {
-			return errors.Wrap(err, "failed to get viewport size")
-		}
-
-		if newViewPort.Height >= originalViewPortSize.Height {
-			return errors.Errorf(`original viewport size: %v; latest viewport size: %v`, originalViewPortSize, newViewPort)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
-		return errors.Wrap(err, "viewport does not shrink in height after touching input field to show virtual keyboard")
-	}
-
-	// Tap keys sequentially to input
-	vkb.TapKeysJS(ctx, kconn, keys)
 
 	// Wait for the text field to have the correct contents
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		`document.querySelector(%q).value === %q`, cssSelector, expectedValue)); err != nil {
-		return errors.Wrap(err, "failed to get the contents of the text field")
+		`document.querySelector(%q).value === %q`, inputElementCSSLocator, testEmail)); err != nil {
+		s.Fatal("Failed to validate the contents of the text field: ", err)
 	}
-
-	return nil
-}
-
-func getViewPortSize(ctx context.Context, conn *chrome.Conn) (coords.Size, error) {
-	var vpSize coords.Size
-	if err := conn.Eval(ctx, `(function() {
-		  return {'height': window.innerHeight, 'width': window.innerWidth};
-	  })()`, &vpSize); err != nil {
-		return vpSize, errors.Wrap(err, "failed to get viewport size")
-	}
-	return vpSize, nil
-}
-
-func getScreenSize(ctx context.Context, conn *chrome.Conn) (coords.Size, error) {
-	var screenSize coords.Size
-	if err := conn.Eval(ctx, `(function() {
-		  return {'height': screen.height, 'width': screen.width};
-	  })()`, &screenSize); err != nil {
-		return screenSize, errors.Wrap(err, "failed to get viewport size")
-	}
-	return screenSize, nil
 }
