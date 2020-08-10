@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "6431bd29_3f8da503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T15:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7767cfa0_539cd642",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4478b6d7_bc74484c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 10
@@ -79,6 +103,30 @@
       "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06486ec7_12bbe30f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T15:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4478b6d7_bc74484c",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "1f68420e_13b85f1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T15:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5c744a_0dbe08aa",
+      "range": {
+        "startLine": 110,
+        "startChar": 71,
+        "endLine": 110,
+        "endChar": 74
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e53baa8_55d89808",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 10
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "59cd2f21_4f6b71d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T15:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e53baa8_55d89808",
+      "range": {
+        "startLine": 116,
+        "startChar": 48,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adb6829d_b1ea7554",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 10
@@ -148,6 +244,30 @@
       "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf4fd49_f4c5f314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T15:04:56Z",
+      "side": 1,
+      "message": "I also prefer more verbose variable names but I also got comments before that you aren\u0027t supposed to use long variable names in go, especially if their use scope is small.",
+      "parentUuid": "adb6829d_b1ea7554",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 9
+      },
+      "revId": "1fd6d179606f2407b9ae975311bc1ef6a478605b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
