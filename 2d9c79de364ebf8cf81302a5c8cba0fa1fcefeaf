@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "40eeb58d_f3dd106f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64ec584_c1a87c64",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3c3855b_ca81b5b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -73,6 +97,24 @@
       "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd98a717_33ba6cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3c3855b_ca81b5b8",
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "b6511f41_9379401d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e0f1a3_cb8af46a",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d23aee5_31a215b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -119,6 +185,30 @@
       "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ce63f7_65257768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d23aee5_31a215b9",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "e590ceaa_71185446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4b0879_9ebaef90",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93b95f34_79cae2c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -168,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "49dad1bc_394c8845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93b95f34_79cae2c3",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17a61a03_6b4311cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 21
@@ -179,6 +317,30 @@
       "writtenOn": "2020-08-10T21:34:41Z",
       "side": 1,
       "message": "Combined with my comment above, this should be \"return this.start()\" too.  That way the Call can wait for the promise to finish.",
+      "range": {
+        "startLine": 126,
+        "startChar": 55,
+        "endLine": 126,
+        "endChar": 68
+      },
+      "revId": "2d9c79de364ebf8cf81302a5c8cba0fa1fcefeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389d73e2_aefa69a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T23:41:53Z",
+      "side": 1,
+      "message": "\"return this.start()\" would stuck at screen area picker... while \"this.start()\" works fine.",
+      "parentUuid": "17a61a03_6b4311cb",
       "range": {
         "startLine": 126,
         "startChar": 55,
