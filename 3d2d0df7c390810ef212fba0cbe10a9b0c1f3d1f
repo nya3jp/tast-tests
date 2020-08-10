@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "05e55288_1550e932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-10T16:33:59Z",
+      "side": 1,
+      "message": "I don\u0027t think there is currently a way to do it by activity but it can be done by window name. I saw someone suggest putting activity name in the window name if you have control of the app.",
+      "parentUuid": "383cf039_e8763a48",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b35d6f76_3ec33904",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3

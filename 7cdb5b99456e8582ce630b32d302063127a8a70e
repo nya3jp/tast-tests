@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71e53689_9190d123",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-10T16:33:59Z",
+      "side": 1,
+      "message": "Will this work how you expect if there is a normal window and a pip window? It looks like it will be order dependent(ie [pipWindow, normalWindow] vs [normalWindow, pipWindow]).",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 3
+      },
+      "revId": "7cdb5b99456e8582ce630b32d302063127a8a70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e2301f8_d9297ce5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-10T16:33:59Z",
+      "side": 1,
+      "message": "nit: For this and the methods added below, we might want to try to change the name to something that is more distinct. Maybe add the word \"all\" or something similar.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 25
+      },
+      "revId": "7cdb5b99456e8582ce630b32d302063127a8a70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
