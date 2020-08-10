@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b0d8a1d_d7b8b67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:42:06Z",
+      "side": 1,
+      "message": "failed to run visual studio code?  the install was the previous step",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "024277c9a242368a99f2485d2fd5d6692932a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
