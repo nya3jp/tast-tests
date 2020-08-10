@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f7db10b2_0a02d1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T12:51:52Z",
+      "side": 1,
+      "message": "Ah, that\u0027s what I was missing 😊. The solution make sense.",
+      "parentUuid": "828fa380_14153a79",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "732f19cc_1f670090",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
