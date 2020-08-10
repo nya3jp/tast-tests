@@ -34,8 +34,8 @@ func LaunchTerminal(ctx context.Context, tconn *chrome.TestConn) (*Terminal, err
 }
 
 func (t *Terminal) waitForPrompt(ctx context.Context) error {
-	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "testuser@penguin: ~"}, 90*time.Second).
-		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, uiTimeout).
+	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "testuser@penguin: ~"}, uiTimeout).
+		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 90*time.Second).
 		WithNamef("Terminal.waitForPrompt()")
 	return uig.Do(ctx, t.tconn, waitForPrompt)
 }
