@@ -141,6 +141,12 @@ func (f *FilesApp) OpenDrive(ctx context.Context) error {
 	return f.OpenDir(ctx, "Google Drive", "Files - My Drive")
 }
 
+// OpenLinuxFiles opens the Linux files folder in the Files App.
+// An error is returned if Linux files is not found or does not open.
+func (f *FilesApp) OpenLinuxFiles(ctx context.Context) error {
+	return f.OpenDir(ctx, "Linux files", "Files - Linux files")
+}
+
 // file returns a ui.Node that references the specified file.
 // An error is returned if the timeout is hit.
 func (f *FilesApp) file(ctx context.Context, filename string, timeout time.Duration) (*ui.Node, error) {
@@ -278,6 +284,38 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 			return errors.Wrapf(err, "failed to click %s in context menu", menuName)
 		}
 	}
+	return nil
+}
+
+// CreateFolder creates a new folder named |dirName| in the current directory.
+func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *input.KeyboardEventWriter) error {
+	timeout := 15 * time.Second
+
+	err := uig.Do(ctx, f.tconn, f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, timeout).FocusAndWait(timeout).RightClick(ctx))
+	if err != nil {
+		return errors.Wrap(err, "failed to open listbox context menu")
+	}
+
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
+	// Left click menuItem.
+	if err := f.LeftClickItem(ctx, menuName, NewFolder); err != nil {
+		return errors.Wrapf(err, "failed to click %s in context menu", NewFolder)
+	}
+
+	// Type the new name.
+	if err := keyboard.Type(ctx, dirName); err != nil {
+		return errors.Wrapf(err, "failed to type the file name %s", dirName)
+	}
+
+	// Press Enter.
+	if err := keyboard.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrapf(err, "failed validating the name of file %s: ", dirName)
+	}
+
 	return nil
 }
 
