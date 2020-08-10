@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f211cd0_2525ba35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-10T05:41:32Z",
+      "side": 1,
+      "message": "I just to want to check whether the hwdep works or not. I set HardwareDeps: hwdep.D(hwdep.Platform(\"hatch\", \"eve\", \"atlas\", \"nami\")), why so many boards are tested?",
+      "revId": "a946a03d47cc611461ef87478540fa897a122e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
