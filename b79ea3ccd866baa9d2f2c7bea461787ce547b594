@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6c80404_a6c4d547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:39:02Z",
+      "side": 1,
+      "message": "Why do you need to click the top left?",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cefa0e5_e6bf8d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:39:02Z",
+      "side": 1,
+      "message": "Optional: should this be made into a general FocusWindow function?",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c60814_6f7a69fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:39:02Z",
+      "side": 1,
+      "message": "Why do you need to click the bottom right?",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
