@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c14179f_ea752e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-10T04:15:45Z",
+      "side": 1,
+      "message": "Generally LGTM.",
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91ca15b2_22a1ff40",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-10T04:15:45Z",
+      "side": 1,
+      "message": "What do you think if we use two booleans \"needs_wait\" and \"needs_check\" instead? Would it be more readable?\nI have no strong opinion, current version LGTM.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 3
+      },
+      "revId": "d1f41a9179776c36881b03972868c788c947eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
