@@ -270,6 +270,26 @@ func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
 	return nil
 }
 
+func (c *Concierge) getVMInfo(ctx context.Context, vm *VM) error {
+	resp := &vmpb.GetVmInfoResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".GetVmInfo",
+		&vmpb.GetVmInfoRequest{
+			Name:    vm.name,
+			OwnerId: vm.Concierge.ownerID,
+		}, resp); err != nil {
+		return err
+	}
+
+	if !resp.GetSuccess() {
+		return errors.New("failed to get VM info")
+	}
+
+	vm.ContextID = resp.VmInfo.Cid
+	vm.seneschalHandle = uint32(resp.VmInfo.SeneschalServerHandle)
+
+	return nil
+}
+
 // GetOwnerID returns the cryptohome hash for the logged-in user.
 func (c *Concierge) GetOwnerID() string {
 	return c.ownerID
