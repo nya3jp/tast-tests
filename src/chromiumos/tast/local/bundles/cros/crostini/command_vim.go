@@ -64,13 +64,6 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	// Clean up the home directory in the end.
-	defer func() {
-		if err := cont.Cleanup(cleanupCtx, "."); err != nil {
-			s.Error("Failed to remove all files in home directory in the container: ", err)
-		}
-	}()
-
 	userName := strings.Split(cr.User(), "@")[0]
 
 	// Open Terminal app.

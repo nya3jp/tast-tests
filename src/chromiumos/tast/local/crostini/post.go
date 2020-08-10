@@ -22,6 +22,10 @@ func RunCrostiniPostTest(ctx context.Context, cont *vm.Container) {
 		testing.ContextLog(ctx, "No active container")
 		return
 	}
+	if err := cont.Cleanup(ctx, "."); err != nil {
+		testing.ContextLog(ctx, "Failed to remove all files in home directory in the container: ", err)
+	}
+
 	dir, ok := testing.ContextOutDir(ctx)
 	if !ok || dir == "" {
 		testing.ContextLog(ctx, "Failed to get name of directory")

@@ -277,13 +277,6 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 	cont := pre.Container
 	defer crostini.RunCrostiniPostTest(ctx, cont)
 
-	// Clean up the home directory in the end.
-	defer func() {
-		if err := cont.Cleanup(ctx, "."); err != nil {
-			s.Error("Failed to remove all files in home directory in the container: ", err)
-		}
-	}()
-
 	s.Log("Installing GTK3 dependencies")
 	cmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
