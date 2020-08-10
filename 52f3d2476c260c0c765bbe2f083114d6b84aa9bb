@@ -46,6 +46,30 @@
       "revId": "52f3d2476c260c0c765bbe2f083114d6b84aa9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b8a2e0_338fe587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-10T07:59:41Z",
+      "side": 1,
+      "message": "Split works for space if you didn\u0027t specify the separator. \n\n\"If sep is empty, Split splits after each UTF-8 sequence.\"\nhttps://golang.org/pkg/strings/#Split",
+      "parentUuid": "87fc5bcc_ef9025f4",
+      "range": {
+        "startLine": 91,
+        "startChar": 35,
+        "endLine": 91,
+        "endChar": 111
+      },
+      "revId": "52f3d2476c260c0c765bbe2f083114d6b84aa9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
