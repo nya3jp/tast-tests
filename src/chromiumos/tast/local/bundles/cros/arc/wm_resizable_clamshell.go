@@ -71,6 +71,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "RC07_immerse_via_API_from_maximized_portrait",
 			Func: wmRC07,
 		},
+		wm.TestCase{
+			// resizable/clamshell: immerse via API from maximized non-portrait
+			Name: "RC08_immerse_via_API_from_maximized_non_portrait",
+			Func: wmRC08,
+		},
 	})
 }
 
@@ -348,11 +353,35 @@ func wmRC06(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	return nil
 }
 
-// wmRC07 covers resizable/clamshell: immerse via API from maximized.
-// Expected behavior is defined in: go/arc-wm-r RC07: resizable/clamshell: immerse via API from maximized.
+// wmRC07 covers resizable/clamshell: immerse via API from maximized portrait.
+// Expected behavior is defined in: go/arc-wm-r RC07: resizable/clamshell: immerse via API from maximized portrait.
 func wmRC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	return immerseViaAPIHelper(ctx, tconn, a, d, wm.ResizablePortraitActivity)
+}
+
+// wmRC08 covers resizable/clamshell: immerse via API from maximized non-portrait.
+// Expected behavior is defined in: go/arc-wm-r RC08: resizable/clamshell: immerse via API from maximized non-portrait.
+func wmRC08(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, actName := range []string{
+		wm.ResizableLandscapeActivity,
+		wm.ResizableUnspecifiedActivity,
+	} {
+		if err := func() error {
+			if err := immerseViaAPIHelper(ctx, tconn, a, d, actName); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q test failed", actName)
+		}
+	}
+	return nil
+}
+
+// immerseViaAPIHelper used to run immerse via API from maximized by activity name.
+func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
