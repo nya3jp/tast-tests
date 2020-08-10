@@ -68,13 +68,6 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	// Clean up the home directory in the end.
-	defer func() {
-		if err := cont.Cleanup(cleanupCtx, "."); err != nil {
-			s.Error("Failed to remove all files in home directory in the container: ", err)
-		}
-	}()
-
 	const fileName = "testfile.txt"
 
 	s.Run(ctx, "delete_from_linuxfiles", func(ctx context.Context, s *testing.State) {
