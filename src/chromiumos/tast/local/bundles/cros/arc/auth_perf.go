@@ -148,15 +148,21 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 			len(playStoreShownTimes)+1, successBootCount)
 
 		v, err := bootARC(ctx, s, cr, tconn)
+		logcatName := ""
+		if err == nil {
+			// Append Play Store shown time in ms for quick reference.
+			logcatName = fmt.Sprintf("logcat_ok_%d.log", int(v.playStoreShownTime))
+		} else {
+			logcatName = fmt.Sprintf("logcat_error_%d.log", errorCount)
+		}
+		logcatFilePath := filepath.Join(s.OutDir(), logcatName)
+		if err := dumpLogcat(ctx, logcatFilePath); err != nil {
+			s.Log("Failed to dump logcat: ", err)
+		}
 		if err != nil {
 			errorCount++
-			logcatFilePath := filepath.Join(s.OutDir(), fmt.Sprintf("logcat_error_%d.log", errorCount))
-			s.Logf("Error found during the ARC boot: %v - dumping logcat to %s",
+			s.Logf("Error found during the ARC boot: %v - logcat was dumped to %s",
 				err, logcatFilePath)
-
-			if err := dumpLogcat(ctx, logcatFilePath); err != nil {
-				s.Log("Failed to dump logcat: ", err)
-			}
 
 			if errorCount > maxErrorBootCount {
 				s.Fatalf("Too many(%d) ARC boot errors", errorCount)
