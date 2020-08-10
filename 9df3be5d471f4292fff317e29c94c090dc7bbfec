@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3366c4c4_17c3f63e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-08-10T22:29:14Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d expect it to end up with the same value in most cases, but I think the mental model is a bit clearer, at least to me\n\nThough, the primary reason for it is to make the tests work with  --force-device-scale-factor (which makes testing large/small screen sizes a bit easier)",
+      "parentUuid": "146c956d_c7762a38",
+      "revId": "9df3be5d471f4292fff317e29c94c090dc7bbfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9b3271_c82d4a0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7c75a684_cf097ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-08-10T22:29:14Z",
+      "side": 1,
+      "message": "just something I did for debugging (and then forgot to change it back) It shouldn\u0027t make too much difference either way",
+      "parentUuid": "9a9b3271_c82d4a0c",
+      "range": {
+        "startLine": 244,
+        "startChar": 43,
+        "endLine": 244,
+        "endChar": 61
+      },
+      "revId": "9df3be5d471f4292fff317e29c94c090dc7bbfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5460b136_2789acc9",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2020-08-10T21:16:15Z",
       "side": 1,
       "message": "I guess you intended Height here?  IIRC this is a gesture from the swipe-up from the bottom of the screen, width wouldn\u0027t be related.",
+      "range": {
+        "startLine": 580,
+        "startChar": 46,
+        "endLine": 580,
+        "endChar": 51
+      },
+      "revId": "9df3be5d471f4292fff317e29c94c090dc7bbfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cdf40b_930845fc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-08-10T22:29:14Z",
+      "side": 1,
+      "message": "d\u0027oh. good catch\n\n(the scroll velocity I was getting on Chrome side makes much more sense now, can\u0027t believe I missed this :) )",
+      "parentUuid": "5460b136_2789acc9",
       "range": {
         "startLine": 580,
         "startChar": 46,
