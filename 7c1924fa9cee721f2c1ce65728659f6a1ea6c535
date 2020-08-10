@@ -16,6 +16,69 @@
       "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a76e73f_d6db2d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:35:07Z",
+      "side": 1,
+      "message": "failed to run gedit? installation was the previous step.",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f089615c_023ead4f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:35:07Z",
+      "side": 1,
+      "message": "This function seems very specific to GEdit, is there any other app that this exact sequence would work with?  If not, please rename it to gedit.CreateFile.  This will simplify the arguments and make the code more focused.\n\nIf it is more generic, it may need to be broken up into more functions, 4 string arguments with very specific and unclear requirements seems unmanageable.",
+      "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911d421f_3520b9cb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T13:35:07Z",
+      "side": 1,
+      "message": "is Commands a good enough name?  RunMultiCommandsInSequence seems too long.  At least dropping InSequence is probably a good idea.",
+      "range": {
+        "startLine": 635,
+        "startChar": 20,
+        "endLine": 635,
+        "endChar": 46
+      },
+      "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
