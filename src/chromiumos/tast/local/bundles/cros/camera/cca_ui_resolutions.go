@@ -11,6 +11,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -24,14 +25,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// resolutionType is different capture resolution type.
-type resolutionType string
-
-const (
-	photoResolution resolutionType = "photo"
-	videoResolution                = "video"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIResolutions,
@@ -41,6 +34,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc_camera3", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
+		// Default timeout (i.e. 2 minutes) is not enough for some devices to
+		// exercise all resolutions on all cameras.
+		Timeout: 5 * time.Minute,
 	})
 }
 
@@ -109,20 +105,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			return errors.Wrap(err, "failed to switch to photo mode")
 		}
-		rs, err := app.GetPhotoResolutions(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get photo resolution")
-		}
-		for i, r := range rs {
-			// CCA UI will filter out photo resolutions of megapixels < 0.1 i.e. megapixels 0.0
-			if r.Width*r.Height < 100000 {
-				continue
-			}
-			testing.ContextLogf(ctx, "Switch to photo %dx%d resolution", r.Width, r.Height)
-			if err := switchResolution(ctx, app, photoResolution, facing, i); err != nil {
-				return errors.Wrapf(err, "failed to switch to photo resolution %dx%d", r.Width, r.Height)
-			}
-
+		return iterateResolutions(ctx, app, cca.PhotoResolution, facing, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
@@ -157,8 +140,8 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if c.Width != or.Width || c.Height != or.Height {
 				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", c.Width, c.Height, or.Width, or.Height)
 			}
-		}
-		return nil
+			return nil
+		})
 	})
 }
 
@@ -205,16 +188,7 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			return errors.Wrap(err, "failed to switch to video mode")
 		}
-		rs, err := app.GetVideoResolutions(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get video resolution")
-		}
-		for i, r := range rs {
-			testing.ContextLogf(ctx, "Switch to %dx%d video resolution", r.Width, r.Height)
-			if err := switchResolution(ctx, app, videoResolution, facing, i); err != nil {
-				return errors.Wrapf(err, "failed to switch to video resolution %dx%d", r.Width, r.Height)
-			}
-
+		return iterateResolutions(ctx, app, cca.VideoResolution, facing, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
@@ -239,18 +213,15 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if vr.Width != or.Width || vr.Height != or.Height {
 				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", vr.Width, vr.Height, r.Width, r.Height)
 			}
-		}
-		return nil
+			return nil
+		})
 	})
 }
 
-// switchResolution toggles the i'th resolution of specified capture resolution of specified camera facing.
-func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, facing cca.Facing, index int) error {
-	testing.ContextLogf(ctx, "Switch to %v th %v facing %v resolution", index, facing, rt)
-
-	openSetting := func(name, selector string) error {
-		testing.ContextLogf(ctx, "Open %q view", name)
-		if err := app.ClickWithSelector(ctx, selector); err != nil {
+// iterateResolutions toggles through all |rt| resolutions in camera |facing| setting menu and calls |onSwitched| with the toggled resolution.
+func iterateResolutions(ctx context.Context, app *cca.App, rt cca.ResolutionType, facing cca.Facing, onSwitched func(r cca.Resolution) error) error {
+	openSetting := func(name string, openButton cca.UIComponent) error {
+		if err := app.Click(ctx, openButton); err != nil {
 			return err
 		}
 		if active, err := app.GetState(ctx, name); err != nil {
@@ -262,7 +233,6 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 	}
 
 	closeSetting := func(name string) {
-		testing.ContextLogf(ctx, "Close %q view", name)
 		back := (map[string]cca.UIComponent{
 			"view-settings":                  cca.SettingsBackButton,
 			"view-resolution-settings":       cca.ResolutionSettingBackButton,
@@ -272,59 +242,79 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 		app.Click(ctx, back)
 	}
 
-	if err := openSetting("view-settings", "#open-settings"); err != nil {
-		return err
-	}
-	defer closeSetting("view-settings")
-
-	if err := openSetting("view-resolution-settings", "#settings-resolution"); err != nil {
-		return err
-	}
-	defer closeSetting("view-resolution-settings")
-
-	fname, ok := (map[cca.Facing]string{
-		cca.FacingBack:     "back",
-		cca.FacingFront:    "front",
-		cca.FacingExternal: "external",
-	})[facing]
-	if !ok {
-		return errors.Errorf("cannot switch resolution of unsuppport facing %v", facing)
-	}
-
-	view := fmt.Sprintf("view-%s-resolution-settings", rt)
-
-	settingSelector := fmt.Sprintf("#settings-%s-%sres", fname, rt)
-	if facing == cca.FacingExternal {
-		id, err := app.GetDeviceID(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get device id of external camera")
-		}
-		settingSelector = fmt.Sprintf("button[aria-describedby='%s-%sres-desc']", id, rt)
-	}
-	if err := openSetting(view, settingSelector); err != nil {
-		return err
-	}
-	defer closeSetting(view)
-
-	optionUI := cca.PhotoResolutionOption
-	if rt == videoResolution {
-		optionUI = cca.VideoResolutionOption
-	}
-
-	if checked, err := app.IsCheckedWithIndex(ctx, optionUI, index); err != nil {
-		return err
-	} else if checked {
-		testing.ContextLogf(ctx, "%d th resolution option is already checked", index)
-	} else {
-		if err := app.TriggerConfiguration(ctx, func() error {
-			testing.ContextLogf(ctx, "Checking with %d th resolution option", index)
-			if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
-				return errors.Wrap(err, "failed to click on resolution item")
+	noMoreOption := errors.New("no more options")
+	for index := 0; true; index++ {
+		if r, err := (func() (*cca.Resolution, error) {
+			if err := openSetting("view-settings", cca.SettingsButton); err != nil {
+				return nil, err
 			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "camera configuration failed after switching resolution")
+			defer closeSetting("view-settings")
+
+			if err := openSetting("view-resolution-settings", cca.ResolutionSettingButton); err != nil {
+				return nil, err
+			}
+			defer closeSetting("view-resolution-settings")
+
+			view := fmt.Sprintf("view-%s-resolution-settings", rt)
+			if btn, err := app.InnerResolutionSettingButton(ctx, facing, rt); err != nil {
+				return nil, err
+			} else if err := openSetting(view, *btn); err != nil {
+				return nil, err
+			}
+			defer closeSetting(view)
+
+			optionUI := cca.PhotoResolutionOption
+			if rt == cca.VideoResolution {
+				optionUI = cca.VideoResolutionOption
+			}
+
+			if count, err := app.CountUI(ctx, optionUI); err != nil {
+				return nil, err
+			} else if count <= index {
+				return nil, noMoreOption
+			}
+
+			value, err := app.AttributeWithIndex(ctx, optionUI, index, "data-width")
+			if err != nil {
+				return nil, err
+			}
+			width, err := strconv.Atoi(value)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to convert width value %v to int", width)
+			}
+			value, err = app.AttributeWithIndex(ctx, optionUI, index, "data-height")
+			if err != nil {
+				return nil, err
+			}
+			height, err := strconv.Atoi(value)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to convert height value %v to int", height)
+			}
+
+			testing.ContextLogf(ctx, "Switch to %v facing %v resolution %dx%d", facing, rt, width, height)
+			if checked, err := app.IsCheckedWithIndex(ctx, optionUI, index); err != nil {
+				return nil, err
+			} else if checked {
+				testing.ContextLogf(ctx, "%d th resolution option is already checked", index)
+			} else if err := app.TriggerConfiguration(ctx, func() error {
+				testing.ContextLogf(ctx, "Checking with %d th resolution option", index)
+				if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
+					return errors.Wrap(err, "failed to click on resolution item")
+				}
+				return nil
+			}); err != nil {
+				return nil, errors.Wrap(err, "camera configuration failed after switching resolution")
+			}
+
+			return &cca.Resolution{Width: width, Height: height}, nil
+		})(); err == noMoreOption {
+			break
+		} else if err != nil {
+			return err
+		} else if err := onSwitched(*r); err != nil {
+			return err
 		}
 	}
+
 	return nil
 }
