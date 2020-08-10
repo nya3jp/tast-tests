@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0716fa54_cae5afe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734fc258_49dceed8",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea4da795_551aa5f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -328,6 +346,30 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b461bb81_68cc5fb8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "current tense: ... and selects one of the ...",
+      "parentUuid": "950f024c_f712077a",
+      "range": {
+        "startLine": 419,
+        "startChar": 95,
+        "endLine": 419,
+        "endChar": 130
+      },
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

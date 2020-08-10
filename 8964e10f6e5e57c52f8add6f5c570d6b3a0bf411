@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a098241f_cc3e2e40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "the sharing toast",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61493484_359f3b45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Manage",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f08cc9_a0a7f633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Is there a particular reason to set size to 1?  I wouldn\u0027t bother specifying size since it will likely end up allocating a small buffer (8) regardless.",
+      "range": {
+        "startLine": 69,
+        "startChar": 76,
+        "endLine": 69,
+        "endChar": 79
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48309d6_7b4b5de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "sharedFolders",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2372b8_ae45f9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "With only 1 function, which is only used once (and one other time commented out), I wouldn\u0027t bother having a dedicated package and function for this.\n\nBut if you do, I suggest to have it as:\n\n  // ListsMatch returns whether lists have the same contents, allowing for different order.\n  func ListsMatch(a []string, b ...string) bool {\n\n\nor:\n\n  // CheckListsMatch returns error if lists do not have the same contents, allow for different order.\n  func CheckListsMatch(a []string, b ...string) error {",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 74
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "194301e2_1f271841",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "// SelectDirectoryContextMenuItem right clicks the specified directory in the navigation tree and selects the specified context menu item.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 140
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f99fb18_aa546900",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Files app has a few different menus which are always in the DOM but usually hidden.  I\u0027m not so familiar with how the automation API works, but usually I would first validate that #directory-tree-context-menu:not([hidden]) exists, and then navigate within it to find the selected menu item to click.",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c3c55e_163d40cd",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "I don\u0027t think any of this code relates to linuxfiles.\n\nIt seems to have a mix of ui components from filesapp and settings.\n\nMaybe code can split between chrome/ui/filesapp/filesapp.go and chrome/ui/settings/settings.go, and then SharedFolders could be in crostini/ui/sharedfolders.go",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c5b267_36a7bd9b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "I don\u0027t see these being used",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047b77ef_f39662f4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "the Settings app.",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 75
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1b33b1_de01647e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Move Settings and OpenSettings from crostini/ui/installer.go and have it only in this file.\n\nOpenInstaller can take an instance of Settings as a param.",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59e7fe3_4e987257",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Should this be a member function of Settings?",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ed8970_bdcd7a0a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Is this normal to have a call to sleep?  This usually results in flakiness.",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b996d4_a146e536",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-10T07:43:47Z",
+      "side": 1,
+      "message": "Should this be a member function of Settings?",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
