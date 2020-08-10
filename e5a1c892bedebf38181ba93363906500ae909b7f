@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ebdfff98_83cf8b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T02:54:52Z",
+      "side": 1,
+      "message": "Improve is not very descriptive, perhaps: merge duplicate implementations of terminalapp code?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "e5a1c892bedebf38181ba93363906500ae909b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ab140d7_c3952110",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -16,6 +39,23 @@
       "revId": "e5a1c892bedebf38181ba93363906500ae909b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b90b01_afbbd5ae",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-10T02:54:52Z",
+      "side": 1,
+      "message": "Why is the terminal closed by typing the command?  Wouldn\u0027t it be better just to close it using the apps.Close function?  This won\u0027t work if the current command hasn\u0027t finished/the container hasn\u0027t started up yet.",
+      "revId": "e5a1c892bedebf38181ba93363906500ae909b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
