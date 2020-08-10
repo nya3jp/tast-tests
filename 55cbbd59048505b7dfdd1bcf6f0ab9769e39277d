@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "8f1e39bd_22c4dae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T07:38:21Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "55cbbd59048505b7dfdd1bcf6f0ab9769e39277d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bbbdc23_e2f40100",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
         "patchSetId": 2
@@ -47,6 +64,23 @@
       "writtenOn": "2020-08-10T03:44:44Z",
       "side": 1,
       "message": "optional: It might be better to start a new const ( block here as these are not related to the iota above.",
+      "revId": "55cbbd59048505b7dfdd1bcf6f0ab9769e39277d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5393dc_9c79bf90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T07:38:21Z",
+      "side": 1,
+      "message": "nit: document member",
       "revId": "55cbbd59048505b7dfdd1bcf6f0ab9769e39277d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
