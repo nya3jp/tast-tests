@@ -121,12 +121,7 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 	defer RotateDisplay(ctx, tconn, display.RotateAny)
 
 	for _, tc := range activityInfo {
-		if err := func() error {
-			if err := showHideShelfHelper(ctx, tconn, a, d, tc, primaryDisplayInfo.ID); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
+		if err := showHideShelfHelper(ctx, tconn, a, d, tc, primaryDisplayInfo.ID); err != nil {
 			return errors.Wrapf(err, "%q test failed", tc)
 		}
 	}
@@ -144,16 +139,10 @@ func TabletDisplaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, 
 	defer setDisplayOrientation(ctx, tconn, defaultOrientation.Type)
 
 	for _, tc := range activityInfo {
-		if err := func() error {
-			if err := displaySizeChangeHelper(ctx, tconn, a, d, tc); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
+		if err := displaySizeChangeHelper(ctx, tconn, a, d, tc); err != nil {
 			return errors.Wrapf(err, "%q test failed", tc)
 		}
 	}
-
 	return nil
 }
 
