@@ -16,6 +16,63 @@
       "revId": "dd9eb7d873019e1e7b3c978e78cf77c221abb558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f5590d3_fbd7a23f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "nit: add a comment explaining why you are starting the goroutine.",
+      "revId": "dd9eb7d873019e1e7b3c978e78cf77c221abb558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e6fa61_dc64a388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "nit: also send an error in this case to be consistent.",
+      "revId": "dd9eb7d873019e1e7b3c978e78cf77c221abb558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d13255_8ea4f522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "maybe Error, checking the js result and the settings page should be able to continue.",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "dd9eb7d873019e1e7b3c978e78cf77c221abb558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

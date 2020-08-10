@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "3c289439_53b7ea32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "Is the UI node available before calling the js function? I don\u0027t think it has the allow button before running the eval.\n\nThe current implementation is running for me as well, but it might be racy. You need to add a testing.Poll to repeatedly search for the dialog for ~10 seconds.",
+      "parentUuid": "6b066c50_a10b76c2",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "732f19cc_1f670090",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -200,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "ddc989ae_85d1f22d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "Odd, I used to call js functions from the console (but not from tast). Did you define it as a global ?",
+      "parentUuid": "0b8dcd05_383097c6",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc1d39de_e25ac168",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -294,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "960fbaf3_493c5382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df97bf29_f37ed889",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e65419fd_f5ce8362",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -326,6 +386,24 @@
       "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b25dece_b23d41ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-10T10:22:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d451143e_b98bd2f3",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
