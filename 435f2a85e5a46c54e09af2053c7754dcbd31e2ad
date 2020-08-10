@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7add974_4daffdd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-10T06:37:57Z",
+      "side": 1,
+      "message": "Having some problems with the new 8021x tests when verifying. But the tests also failed without this CL. As the failure does not seem to be related to Precondition, start the review in parallel.",
+      "revId": "435f2a85e5a46c54e09af2053c7754dcbd31e2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
