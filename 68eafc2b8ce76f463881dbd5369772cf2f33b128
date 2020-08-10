@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bcb6289_357fdebf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T14:22:47Z",
+      "side": 1,
+      "message": "This may violate the rule: \"Params should be a literal since test registration should be declarative.\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n\nLet\u0027s discuss in Tast-users group.",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bf86ce_0ca469fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T14:22:47Z",
+      "side": 1,
+      "message": "Yenlin\u0027s https://crrev.com/c/2331656 makes SimpleConnect to use Precondition to set up TestFixture. Please sync with him if the Precondition works with PEAP/TTLS cases.",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd52cc41_4f26d8aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-10T14:22:47Z",
+      "side": 1,
+      "message": "Remove the blank line.",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 0
+      },
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
