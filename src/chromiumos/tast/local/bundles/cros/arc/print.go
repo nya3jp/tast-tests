@@ -61,7 +61,7 @@ func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	// Wait for the loading text to be removed to indicate print preview is no
 	// longer loading.
-	if err := ui.WaitUntilGone(ctx, tconn, params, 10*time.Second); err != nil {
+	if err := ui.WaitUntilGone(ctx, tconn, params, 30*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for loading text to be removed")
 	}
 	// Check if print preview failed.
