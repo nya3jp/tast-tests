@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "828fa380_14153a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T12:38:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t the FindWithTimout() function already have the polling built in? From the description it tries to find the node until the timeout is reached.",
+      "parentUuid": "3c289439_53b7ea32",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "732f19cc_1f670090",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
         "patchSetId": 7
@@ -233,6 +251,24 @@
       "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e6e70a_b313d41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-10T12:38:45Z",
+      "side": 1,
+      "message": "That was the solution, I had the function in the body before.",
+      "parentUuid": "ddc989ae_85d1f22d",
+      "revId": "4566fc3216b04e3528af18e261b2bb23b5c22412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
