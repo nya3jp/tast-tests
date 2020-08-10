@@ -64,8 +64,11 @@ func GetRunningVM(ctx context.Context, user string) (*VM, error) {
 		return nil, err
 	}
 	vm := NewDefaultVM(c, false, 0)
-	// Do a dbus call to get VM info.
-	return vm, err
+	err = c.getVMInfo(ctx, vm)
+	if err != nil {
+		return nil, err
+	}
+	return vm, nil
 }
 
 // CreateDefaultVM prepares a VM with default settings either the live or
