@@ -139,6 +139,8 @@ var (
 	// TimerSettingBackButton is back button for closing timer setting menu.
 	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
 		"#view-timer-settings .menu-header button"}}
+	// ResolutionSettingButton is button for opening resolution setting menu.
+	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
 	// ResolutionSettingBackButton is back button for closing resolution setting menu.
 	ResolutionSettingBackButton = UIComponent{"resolution setting back button", []string{
 		"#view-resolution-settings .menu-header button"}}
@@ -156,6 +158,16 @@ var (
 	// VideoResolutionOption is option for each available video capture resolution.
 	VideoResolutionOption = UIComponent{"video resolution option", []string{
 		"#view-video-resolution-settings input"}}
+)
+
+// ResolutionType is different capture resolution type.
+type ResolutionType string
+
+const (
+	// PhotoResolution represents photo resolution type.
+	PhotoResolution ResolutionType = "photo"
+	// VideoResolution represents video resolution type.
+	VideoResolution = "video"
 )
 
 type errorLevel string
@@ -898,6 +910,41 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 	return nil
 }
 
+// CountUI returns the number of ui element.
+func (a *App) CountUI(ctx context.Context, ui UIComponent) (int, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to count number of %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return 0, wrapError(err)
+	}
+	var number int
+	if err := a.conn.Call(ctx, &number, `(selector) => document.querySelectorAll(selector).length`, selector); err != nil {
+		return 0, wrapError(err)
+	}
+	return number, nil
+}
+
+// AttributeWithIndex returns the attr attribute of the index th ui.
+func (a *App) AttributeWithIndex(ctx context.Context, ui UIComponent, index int, attr string) (string, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to get %v attribute of %v th %v", attr, index, ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return "", wrapError(err)
+	}
+	var value string
+	if err := a.conn.Call(
+		ctx, &value,
+		`(selector, index, attr) => document.querySelectorAll(selector)[index].getAttribute(attr)`,
+		selector, index, attr); err != nil {
+		return "", wrapError(err)
+	}
+	return value, nil
+}
+
 // ConfirmResult clicks the confirm button or the cancel button according to the given isConfirmed.
 func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
 	if err := a.WaitForState(ctx, "review-result", true); err != nil {
@@ -1261,4 +1308,30 @@ func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(c
 // Focus sets focus on CCA App window.
 func (a *App) Focus(ctx context.Context) error {
 	return a.conn.Eval(ctx, "Tast.focusWindow()", nil)
+}
+
+// InnerResolutionSettingButton returns button for opening rt resolution setting of facing camera.
+func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, rt ResolutionType) (*UIComponent, error) {
+	fname, ok := (map[Facing]string{
+		FacingBack:     "back",
+		FacingFront:    "front",
+		FacingExternal: "external",
+	})[facing]
+	if !ok {
+		return nil, errors.Errorf("cannot get resolution of unsuppport facing %v", facing)
+	}
+
+	name := fmt.Sprintf("%v camera %v resolution settings button", fname, rt)
+	ariaPrefix := fname
+	if facing == FacingExternal {
+		// Assumes already switched to target external camera.
+		id, err := a.GetDeviceID(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get device id of external camera")
+		}
+		ariaPrefix = string(id)
+	}
+	selector := fmt.Sprintf("button[aria-describedby='%s-%sres-desc']", ariaPrefix, rt)
+
+	return &UIComponent{name, []string{selector}}, nil
 }
