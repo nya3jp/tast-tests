@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "a808fa6e_4875081a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-10T18:06:46Z",
+      "side": 1,
+      "message": "Yeah we get correct result somehow. I agree that await function is more safe?",
+      "parentUuid": "2d8d5ba6_f67c3647",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 111
+      },
+      "revId": "da7f7e56361deb06f6d12a3d19df9d112ff804c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d8a0e39_d57625d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 19
