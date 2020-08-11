@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3be8352e_1be6c413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-11T18:39:17Z",
+      "side": 1,
+      "message": "Done. Good catch, thanks!",
+      "parentUuid": "2fbb1a21_9f201c44",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "3682fee1689ea906f2961f48428de294a60532ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7db58e6f_1e4f1b23",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3682fee1689ea906f2961f48428de294a60532ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2003d08_ebe957c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-11T18:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db58e6f_1e4f1b23",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "3682fee1689ea906f2961f48428de294a60532ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
