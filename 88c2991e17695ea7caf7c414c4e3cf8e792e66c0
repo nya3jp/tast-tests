@@ -34,6 +34,24 @@
       "revId": "88c2991e17695ea7caf7c414c4e3cf8e792e66c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bb61f83_3f3d3a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:47:18Z",
+      "side": 1,
+      "message": "Thanks for quick reply!\n\nCan you please create a bug to fix it?\nSo, we will have TODO in Tast code with a bug reference",
+      "parentUuid": "ef086c1c_e3fb20d9",
+      "revId": "88c2991e17695ea7caf7c414c4e3cf8e792e66c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
