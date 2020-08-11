@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7ee3e75_924d654d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-11T00:57:02Z",
+      "side": 1,
+      "message": "Patchset 4 seems to have reverted the updates to the commit message.",
+      "revId": "d27419369d7f849b3aeed9c237bd3fb3c4fd42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
