@@ -1,0 +1,102 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d53b72_77ff552d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:01:31Z",
+      "side": 1,
+      "message": "Why do you have to use the physical keyboard for this?",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3ae032_f67b9b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:01:31Z",
+      "side": 1,
+      "message": "spelling: virtual",
+      "range": {
+        "startLine": 23,
+        "startChar": 47,
+        "endLine": 23,
+        "endChar": 54
+      },
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f98af5e_e1453e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:01:31Z",
+      "side": 1,
+      "message": "Optional: It might help to put an individual user contact as well for on-calls to ping directly if there is a problem with the test.",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c0e39c_df25e94f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:01:31Z",
+      "side": 1,
+      "message": "\u003e \"virutal\" is a possible misspelling of \"virtual\".\n\nPlease fix.",
+      "parentUuid": "8fe7b7f3_353717cd",
+      "range": {
+        "startLine": 32,
+        "startChar": 56,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939aa1b5_9fc13713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:01:31Z",
+      "side": 1,
+      "message": "Are there any other tests with these arguments?  Should you make a precondition?",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
