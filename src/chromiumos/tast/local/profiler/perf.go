@@ -177,18 +177,18 @@ func parseStatFile(path string) (float64, error) {
 	if m == nil {
 		return 0, errors.New("error finding cycles")
 	}
-	cycles, cyclesErr := strconv.ParseInt(m[1], 0, 64)
-	if cyclesErr != nil {
-		return 0, errors.Wrap(cyclesErr, "error parsing cycles")
+	cycles, err := strconv.ParseInt(m[1], 0, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "error parsing cycles")
 	}
 
 	m = secondsRegexp.FindStringSubmatch(s)
 	if m == nil {
 		return 0, errors.New("error finding seconds")
 	}
-	seconds, secondsErr := strconv.ParseFloat(m[1], 64)
-	if secondsErr != nil {
-		return 0, errors.Wrap(secondsErr, "error parsing seconds")
+	seconds, err := strconv.ParseFloat(m[1], 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "error parsing seconds")
 	}
 
 	cyclesPerSecond := float64(cycles) / seconds
