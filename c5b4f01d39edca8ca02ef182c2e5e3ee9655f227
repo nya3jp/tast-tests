@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0eff3795_42a3e9e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-11T22:02:54Z",
+      "side": 1,
+      "message": "Hi everyone\n\nIs there any more work that this CL needs?  I\u0027m currently blocked on submitting a tast test pending this CL\u0027s resolution.",
+      "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
