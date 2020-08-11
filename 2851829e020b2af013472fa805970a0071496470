@@ -16,6 +16,24 @@
       "revId": "2851829e020b2af013472fa805970a0071496470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d020e082_db1d5966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-08-11T04:20:36Z",
+      "side": 1,
+      "message": "From what I\u0027ve seen, I usually see something like 3-4 seconds after the first try, then 7-8 seconds after the second try, then 15ish seconds after the third (but I\u0027ve never seen it fail on the third try). I\u0027ll add a comment.\n\nHonestly, I\u0027m not too sure how normal this is, and it\u0027s certainly interesting that the behavior is consistent wrt the particular board. I\u0027d have to dig into this to tell you more though.\n\nDHCP usually isn\u0027t given a chance to come up since we immediately tear everything down, but I put a sleep before that and DHCP does indeed come up.",
+      "parentUuid": "515c3f69_c7097301",
+      "revId": "2851829e020b2af013472fa805970a0071496470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
