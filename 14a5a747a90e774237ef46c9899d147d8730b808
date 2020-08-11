@@ -16,6 +16,98 @@
       "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48994375_9dd66671",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:22:13Z",
+      "side": 1,
+      "message": "Can you please include resp.GetFailureReason() ?",
+      "range": {
+        "startLine": 284,
+        "startChar": 9,
+        "endLine": 284,
+        "endChar": 44
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4917ad64_6dd0f4d1",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:22:13Z",
+      "side": 1,
+      "message": "Why do we convert uint64 to uint32?\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/cros_system_api/dbus/vm_concierge/concierge_service.proto;l\u003d79?q\u003dseneschal_server_handle\u0026sq\u003d",
+      "range": {
+        "startLine": 288,
+        "startChar": 22,
+        "endLine": 288,
+        "endChar": 63
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95668be_7dd77530",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:22:13Z",
+      "side": 1,
+      "message": "nit: \n\nif err \u003d c.getVMInfo(ctx, vm); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad77d519_9e396dc1",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:22:13Z",
+      "side": 1,
+      "message": "nit: maybe reverse words: %q VM",
+      "range": {
+        "startLine": 69,
+        "startChar": 56,
+        "endLine": 69,
+        "endChar": 61
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
