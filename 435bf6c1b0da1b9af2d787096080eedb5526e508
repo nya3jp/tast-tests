@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc00fc30_e18612c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-11T19:45:28Z",
+      "side": 1,
+      "message": "There\u0027s a chance this is a little overengineered (would have to go back to look at what usages you\u0027ve built up on top), but it does look reasonably generic. Thanks!",
+      "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3ecbc59_8a98e406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-11T19:45:28Z",
+      "side": 1,
+      "message": "I\u0027m realizing there\u0027s a lot of implicit assumption in here that you\u0027re specifically talking about Service properties (in both this API and the TestFixture wrapper), but it\u0027s not super clear in the documentation or naming. (This is a \u0027WifiService\u0027 method, but the \u0027Service\u0027 in that name refers to gRPC, not shill\u0027s Service.)\n\nUnless we think we\u0027ll ever want a similar API for other shill objects (e.g., Device?), that\u0027s probably fine. But maybe include that in the method description?",
+      "range": {
+        "startLine": 1075,
+        "startChar": 3,
+        "endLine": 1075,
+        "endChar": 22
+      },
+      "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14047deb_765d8407",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-11T19:45:28Z",
+      "side": 1,
+      "message": "matched",
+      "range": {
+        "startLine": 818,
+        "startChar": 21,
+        "endLine": 818,
+        "endChar": 28
+      },
+      "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
