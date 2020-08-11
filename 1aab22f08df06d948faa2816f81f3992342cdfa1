@@ -16,6 +16,259 @@
       "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d901904f_003237d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "I really recommend writing this function without starting an external subprocess. It\u0027s easier than doing shell escapes correctly.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c273f34_4d10d8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Wrong escape; single quotes are not needed.",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c0ab2c_27743984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "This can be done without \"sh -c\". Then you can avoid dealing with escapes.",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faec8034_87abc4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Since matchpathcon prints one line per each file, it seems sufficient to check that all lines ends with \"verified.\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d7c3c1_7edd1a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "nit: filepath.Join inserts a slash between components, so it\u0027s more usual to write this as:\n\n dataDirPath :\u003d filepath.Join(\"/home/.shadow\", ownerID, \"mount/root/android-data/data\")",
+      "range": {
+        "startLine": 121,
+        "startChar": 44,
+        "endLine": 121,
+        "endChar": 59
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e690c242_1e6e5e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Let\u0027s include err in the message for diagnosis.",
+      "range": {
+        "startLine": 124,
+        "startChar": 51,
+        "endLine": 124,
+        "endChar": 57
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c424c37_68fd506f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "If you don\u0027t need values, you can use 0-byte struct{} type.\n\n skipDirSet :\u003d map[string]struct{}{\n   \"data\": {},\n   \"media\": {},\n   \"user_de\": {},\n }",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2508930_3f744756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "s.OutDir always succeeds.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5405dba_293bdb09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "s/exists \u003d\u003d true/exists/",
+      "range": {
+        "startLine": 139,
+        "startChar": 42,
+        "endLine": 139,
+        "endChar": 58
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f876df_1ffaeaf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "outDir is an absolute path. It\u0027s not meaningful after the test because files are copied out of the DUT.\n\nMy recommendation is to write the error message like:\n\n s.Fatalf(\"SELinux verification error: %v (see %s for matchpathcon output)\", err, matchPathConFileName)",
+      "range": {
+        "startLine": 144,
+        "startChar": 65,
+        "endLine": 144,
+        "endChar": 71
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14bba1f_3f22fb17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Do you want to use Error instead of Fatal to report multiple errors?",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

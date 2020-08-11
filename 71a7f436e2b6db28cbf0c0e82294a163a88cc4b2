@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "9ae2eaf1_2817236b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Let me repeat this comment. Even in PS11 I see a wrong escape. Getting escaping done correctly is difficult. Please try to write code in Go, not in shell scripts.",
+      "parentUuid": "80da7596_63927764",
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "984a9a35_6f8627d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 5
@@ -350,6 +368,30 @@
       "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5e2739_9b622bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T07:39:51Z",
+      "side": 1,
+      "message": "Not done.",
+      "parentUuid": "d2b8dfe5_24450c67",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
