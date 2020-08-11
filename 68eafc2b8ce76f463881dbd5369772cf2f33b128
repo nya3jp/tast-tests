@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5f83686_d434fea7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:10:03Z",
+      "side": 1,
+      "message": "Let\u0027s wait for the discussion of whether Val can be defined that way. https://groups.google.com/a/chromium.org/g/tast-users/c/oOv2N12MQLU",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bcb6289_357fdebf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 10
@@ -54,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "7b3890f4_97f42b30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:10:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd2f5126_934c066a",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd52cc41_4f26d8aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 10
@@ -98,6 +133,30 @@
       "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b1c877_225df7e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:10:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e5ea480_6a28f681",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 0
+      },
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
