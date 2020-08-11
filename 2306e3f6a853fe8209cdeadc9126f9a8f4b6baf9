@@ -52,6 +52,24 @@
       "revId": "2306e3f6a853fe8209cdeadc9126f9a8f4b6baf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1d675c_0cd06cf4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-08-11T19:59:23Z",
+      "side": 0,
+      "message": "That still sounds like a cause to me, like, \"Android init did not come up because an initial property was not set\". My first reaction would be to find the property and figure out why it wasn\u0027t set but it probably shouldn\u0027t be. Is it bad to be verbose? \"% property not set which shows Android init did not come up\"",
+      "parentUuid": "fc8443d1_1defe9a4",
+      "revId": "2306e3f6a853fe8209cdeadc9126f9a8f4b6baf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
