@@ -33,6 +33,24 @@
       "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fa5879_cc662930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T08:15:38Z",
+      "side": 1,
+      "message": "Now Greg is a proper reviewer. :)\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/OWNERS",
+      "parentUuid": "ca7c17a0_fc668f2f",
+      "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
