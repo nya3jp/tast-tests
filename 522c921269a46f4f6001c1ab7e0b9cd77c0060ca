@@ -34,6 +34,52 @@
       "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad41b7d_6d883181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-11T17:14:50Z",
+      "side": 1,
+      "message": "nit: I checked pre.InputCriticalModels but kukui and octopus are board names, not model names. I think it won\u0027t match to any devices.",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80834f2d_b4190bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-11T17:14:50Z",
+      "side": 1,
+      "message": "As far as I tried, this part is not necessary.  SInce vkb already type \"help\" and enter, it already opens the help app.\nThe enter key created by physical keyboard will be handled by the help app, but the test code doesn\u0027t verify it at all.\n\nIf you need to verify the physical keyboard, I guess you should do something else. For example, press ctrl-w and then verify that the help app is closed?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
