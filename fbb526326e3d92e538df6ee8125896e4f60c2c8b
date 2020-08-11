@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1efce23_ee70e97d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "If you want to use pcap, use wificell.TestFixturePreWithCapture() instead.",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acb3b47_25f40fa4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Then it creates",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca37be2_9f78ceff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "After receiving the roam command, shill sends",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219fe282_5eb0a261",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "The test expects that",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f97481_1e254463",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "within",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65db215e_ef775f38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "ctx, cancel :\u003d tf.ReserveForCollectLogs(ctx)",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5cf20c_c381ac04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Remove the blank line as the following ctx shortener is for the above deferred task.",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b0096f_12feb2cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Remove the blank line as the below deferred task is for reverting tf.ConnectWifiAP.",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a735d33e_3301c207",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "tf.ReserveForDisconnect(ctx)",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae7ed92_a4924794",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Shall we omit assigning the default value, e.g. empty list?",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d55f318_5ab40c5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93cc697c_568d1b57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "Remove the  blank line as the ctx shortener below is for the above deferred task.",
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185d1d10_0e7e9628",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:01:41Z",
+      "side": 1,
+      "message": "D-Bus",
+      "range": {
+        "startLine": 145,
+        "startChar": 52,
+        "endLine": 145,
+        "endChar": 56
+      },
+      "revId": "fbb526326e3d92e538df6ee8125896e4f60c2c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
