@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf6a3fc_4a172b5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-11T19:56:21Z",
+      "side": 1,
+      "message": "I would just say block. IMHO",
+      "range": {
+        "startLine": 13,
+        "startChar": 32,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "b4d6fb67685c6a3c5e020235317e05336fdaadf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
