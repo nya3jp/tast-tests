@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06f2cf3e_678a789d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T01:14:41Z",
+      "side": 1,
+      "message": "A bug recently raised https://crbug.com/1103298 on neither physical keyboard nor virtual keyboard work in guest mode. This test is intention to check both inputs in guest mode.",
+      "parentUuid": "22d53b72_77ff552d",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df3ae032_f67b9b0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "f81b7971_418ff3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T01:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3ae032_f67b9b0e",
+      "range": {
+        "startLine": 23,
+        "startChar": 47,
+        "endLine": 23,
+        "endChar": 54
+      },
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f98af5e_e1453e06",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c362c47_6a6aa6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T01:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f98af5e_e1453e06",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "add8e4e6_c720945e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T01:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c0e39c_df25e94f",
+      "range": {
+        "startLine": 32,
+        "startChar": 56,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "939aa1b5_9fc13713",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
         "patchSetId": 1
@@ -94,6 +178,24 @@
       "writtenOn": "2020-08-11T01:01:31Z",
       "side": 1,
       "message": "Are there any other tests with these arguments?  Should you make a precondition?",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f09fc3_1d5b3133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T01:14:41Z",
+      "side": 1,
+      "message": "This is the only input test so far in guest mode. Also we do not have intention to add more tests so far.",
+      "parentUuid": "939aa1b5_9fc13713",
       "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
