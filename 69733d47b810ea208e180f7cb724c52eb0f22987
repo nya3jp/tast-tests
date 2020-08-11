@@ -33,6 +33,24 @@
       "revId": "69733d47b810ea208e180f7cb724c52eb0f22987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fdd656e_79c48313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T18:51:11Z",
+      "side": 1,
+      "message": "you are welcome and thanks for the help and review.",
+      "parentUuid": "3c2626f7_cc506ef5",
+      "revId": "69733d47b810ea208e180f7cb724c52eb0f22987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
