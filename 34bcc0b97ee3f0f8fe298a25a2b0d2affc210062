@@ -217,6 +217,24 @@
       "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f319b907_d6ac7e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:45:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70f09fc3_1d5b3133",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
