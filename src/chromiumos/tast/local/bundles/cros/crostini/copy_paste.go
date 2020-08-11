@@ -292,6 +292,12 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 	// Add the names of the backends used by each part of the test to differentiate the data used by each test run.
 	copiedData := fmt.Sprintf("%v to %v %s", param.Copy.gdkBackend, param.Paste.gdkBackend, utf8Data)
 
+	s.Log("Generating fontconfig cache")
+	fcCmd := cont.Command(ctx, "fc-cache")
+	if err := fcCmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to generate fontconfig cache: ", err)
+	}
+
 	// The copy event happens at some indeterminate time after the
 	// copy applet receives a key press. To be sure we get that event
 	// we have to start listening for it before that point.
