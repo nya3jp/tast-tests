@@ -16,6 +16,23 @@
       "revId": "f564eb3f4102ff5db345d5c6842ff4d17fe776f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92cbcf7a_5b54a165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T03:59:39Z",
+      "side": 1,
+      "message": "+2 for Tast shadow review as well",
+      "revId": "f564eb3f4102ff5db345d5c6842ff4d17fe776f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
