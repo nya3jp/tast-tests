@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ce1d2ead_69ff7bed",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-11T13:36:58Z",
+      "side": 1,
+      "message": "This response doesn\u0027t include a failure reason",
+      "parentUuid": "48994375_9dd66671",
+      "range": {
+        "startLine": 284,
+        "startChar": 9,
+        "endLine": 284,
+        "endChar": 44
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4917ad64_6dd0f4d1",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1db748_d6d2a412",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-11T13:36:58Z",
+      "side": 1,
+      "message": "The seneschal interface consistantly uses uint32 for the handle. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform2/system_api/dbus/seneschal/seneschal_service.proto;l\u003d94?q\u003dhandle\n\nI\u0027m not sure why concierge converts that to uint64, but we need to cast back at some point and this seems like a good place.",
+      "parentUuid": "4917ad64_6dd0f4d1",
+      "range": {
+        "startLine": 288,
+        "startChar": 22,
+        "endLine": 288,
+        "endChar": 63
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "66f7bfbc_24283c41",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-11T13:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95668be_7dd77530",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad77d519_9e396dc1",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -108,6 +180,30 @@
       "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe57bcb_59e4735c",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-11T13:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad77d519_9e396dc1",
+      "range": {
+        "startLine": 69,
+        "startChar": 56,
+        "endLine": 69,
+        "endChar": 61
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
