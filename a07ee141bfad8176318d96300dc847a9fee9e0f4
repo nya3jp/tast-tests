@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "444a6d62_a8aeaec5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "Default value is 0, so you will collect perf stat for pid 0 if you won\u0027t provide Pid. Are you OK with it?\n\nAre there some example, where you provide specific Pid? If no, I propose to remove Pid for now and capture all processes.\n\n\nAlso, you can use *int instead and you must explicitly pass it, but still I see only -1 usa case.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d37d855_e8850aba",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "Can you please add brief comment what it does and what returns?",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0655d83_5a954d0b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "Please use ioutil.ReadFile to read data from file, it\u0027s much simpler\n\nhttps://golang.org/pkg/io/ioutil/#ReadFile",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6f4922_c77f012d",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "it won\u0027t be needed once you will read the whole file with ioutil.ReadFile",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510baba9_65ecfd9d",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "why not (p *perf) handleStatOnly() error ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 28
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1964ce_e7bcb529",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1705090_5eacc94a",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be TestParseStatFile?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e316cb_45014a8b",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "please add blank line before",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a4b664a_d89424b3",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T16:40:52Z",
+      "side": 1,
+      "message": "nit: Unexpected cycles per second: got %#v; want %#v",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
