@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cd2f5126_934c066a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-11T00:13:04Z",
+      "side": 1,
+      "message": "I suggested the changes here. The reason is that PEAP testcase has a much longer timeout so we can waste much time if something hangs in NewTestFixture. precondition.Prepare will have its own context deadline so the changes can be dropped when precondition is applied. I think it is just a minor conflict so probably good to have the changes reviewed in parallel and rebase when either one is merged.\n\nFor the security setting + precondtion part, I think I already discussed with hsin-chen and we think it should be OK for now. If we find some interference between tests, we can also try to do some more handling in TestFixture.Reinit.",
+      "parentUuid": "02bf86ce_0ca469fb",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd52cc41_4f26d8aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 10
