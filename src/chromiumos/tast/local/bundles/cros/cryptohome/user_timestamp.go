@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
@@ -64,7 +65,15 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get user hash")
 		}
 
-		if _, err := os.Stat(filepath.Join(shadow, hash, timestampFile)); err != nil {
+		// The update user activity timestamp action is not mandatory, so we perform it after
+		// CryptohomeMount() returns, in the background. We need to add a poll for the
+		// timestamp file to give it more time to complete.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := os.Stat(filepath.Join(shadow, hash, timestampFile)); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "timestamp file not found")
 		}
 
