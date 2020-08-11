@@ -14,6 +14,16 @@ Notes for adding a new policy:
       partial description only) will have to overwrite the schema parsing here.
     - device policies which have unique field setups may need to be handled
       here.
+
+Generating a new defs.go file:
+ Use policy_templates.json from chromium to generate the file.
+ Use a CL to checkin the updated file.
+
+ Assuming chromiumos and chromium are checkouts for their respective
+ projects you need to run:
+  > PT=chromium/src/components/policy/resources/policy_templates.json
+  > cd chromiumos/src/platform/tast-tests/src/chromiumos/tast/common/policy/gen
+  > ./policy_tast_struct_creator.py --policy_templates ${PT}
 """
 
 import argparse

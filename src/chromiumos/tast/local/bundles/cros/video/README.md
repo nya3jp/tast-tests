@@ -273,6 +273,11 @@ screenshot (using the CLI tool) and analyze the captured image to check the
 color of a few interesting pixels. The test videos are re-used from the
 [Canvas tests](#canvas-tests).
 
+There are two variations: *_hw and *_composited_hw. The *_hw tests only run on
+devices that support NV12 overlays (see `hwdep.SupportsNV12Overlays()`. The
+*_composited_hw tests don't have this restriction: they force hardware overlays
+off so that they have to be composited.
+
 The pixels we check are the centers of each of the four rectangles of the test
 video and the four corners of the video (plus some padding to ignore some
 artifacts which are acceptable).

@@ -40,7 +40,7 @@ const (
 	// When the drag-move sequence is started, the gesture controller might miss a few pixels before it finally
 	// recognizes it as a drag-move gesture. This is specially true for PIP windows.
 	// The value varies depending on acceleration/speed of the gesture. 35 works for our purpose.
-	missedByGestureControllerDP = 35
+	missedByGestureControllerDP = 50
 )
 
 type borderType int
@@ -52,6 +52,37 @@ const (
 	bottom
 )
 
+type initializationType uint
+
+const (
+	doNothing initializationType = iota
+	startActivity
+	enterPip
+)
+
+type pipTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *arc.Activity, *ui.Device, *display.DisplayMode) error
+
+type pipTestParams struct {
+	name       string
+	fn         pipTestFunc
+	initMethod initializationType
+}
+
+var stablePipTests = []pipTestParams{
+	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
+	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
+	{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
+	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
+	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
+	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
+	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
+}
+
+var unstablePipTests = []pipTestParams{
+	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
+	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIP,
@@ -62,9 +93,19 @@ func init() {
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
+			Val:               stablePipTests,
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "unstable",
+			Val:               unstablePipTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			Val:               stablePipTests,
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "vm_unstable",
+			Val:               unstablePipTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -150,40 +191,29 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get display mode: ", err)
 	}
 
+	// TODO(b:162267844) There are still some tests not yet working in tablet mode. Remove these checks once R is fully working.
+	tabletModes := []bool{false}
+	enableMultiActivityPIP := []bool{true, false}
+
+	if sdkVer, err := arc.SDKVersion(); err != nil {
+		s.Fatal("Failed to get the SDK version: ", err)
+	} else if sdkVer != arc.SDKR {
+		tabletModes = append(tabletModes, true)
+	}
+
 	// Run all subtests twice. First, with tablet mode disabled. And then, with it enabled.
-	for _, tabletMode := range []bool{false, true} {
+	for _, tabletMode := range tabletModes {
 		s.Logf("Running tests with tablet mode enabled=%t", tabletMode)
 		if err := ash.SetTabletModeEnabled(ctx, tconn, tabletMode); err != nil {
 			s.Fatalf("Failed to set tablet mode enabled to %t: %v", tabletMode, err)
 		}
 
 		// There are two types of PIP: single activity PIP and multi activity PIP. Run each test with both types by default.
-		for _, multiActivityPIP := range []bool{false, true} {
+		for _, multiActivityPIP := range enableMultiActivityPIP {
+			s.Logf("Running tests with multi activity PIP enabled=%t", multiActivityPIP)
+			for idx, test := range s.Param().([]pipTestParams) {
+				testing.ContextLog(ctx, "About to run test: ", test.name)
 
-			type initializationType uint
-			const (
-				doNothing initializationType = iota
-				startActivity
-				enterPip
-			)
-
-			type testFunc func(context.Context, *chrome.TestConn, *arc.ARC, *arc.Activity, *ui.Device, *display.DisplayMode) error
-
-			for idx, test := range []struct {
-				name       string
-				fn         testFunc
-				initMethod initializationType
-			}{
-				{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
-				{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
-				{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
-				{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
-				{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
-				{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
-				{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
-				{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: enterPip},
-				{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
-			} {
 				if test.initMethod == startActivity || test.initMethod == enterPip {
 					if multiActivityPIP {
 						must(maPIPBaseAct.Start(ctx, tconn))
@@ -195,8 +225,13 @@ func PIP(ctx context.Context, s *testing.State) {
 				if test.initMethod == enterPip {
 					// Make the app PIP via minimize.
 					// We have some other ways to PIP an app, but for now this is the most reliable.
-					must(pipAct.SetWindowState(ctx, arc.WindowStateMinimized))
-					must(waitForPIPWindow(ctx, tconn))
+					testing.ContextLog(ctx, "Test requires PIP initial state, entering PIP via minimize")
+					if err := minimizePIP(ctx, tconn, pipAct); err != nil {
+						s.Fatal("Failed to minimize app into PIP: ", err)
+					}
+					if err := waitForPIPWindow(ctx, tconn); err != nil {
+						s.Fatal("Did not enter PIP mode: ", err)
+					}
 				}
 
 				if err := test.fn(ctx, tconn, a, pipAct, dev, dispMode); err != nil {
@@ -204,7 +239,7 @@ func PIP(ctx context.Context, s *testing.State) {
 					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 						s.Log("Failed to capture screenshot: ", err)
 					}
-					s.Errorf("%s test with tablet mode(%t) failed: %v", test.name, tabletMode, err)
+					s.Errorf("%s test with tablet mode(%t) and multi-activity(%t) failed: %v", test.name, tabletMode, multiActivityPIP, err)
 				}
 
 				must(pipAct.Stop(ctx, tconn))
@@ -220,13 +255,16 @@ func PIP(ctx context.Context, s *testing.State) {
 // It does that by drag-moving that PIP window horizontally 3 times and verifying that the position is correct.
 func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	const (
-		movementDuration = time.Second
+		movementDuration = 2 * time.Second
 		totalMovements   = 3
 	)
 
 	missedByGestureControllerPX := int(math.Round(missedByGestureControllerDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: missedByGestureControllerPX = ", missedByGestureControllerPX)
 
+	if err := waitForPIPWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for PIP window")
+	}
 	window, err := getPIPWindow(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
@@ -236,10 +274,11 @@ func testPIPMove(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct
 
 	deltaX := dispMode.WidthInNativePixels / (totalMovements + 1)
 	for i := 0; i < totalMovements; i++ {
-		newBounds := origBounds
-		newBounds.Left -= deltaX * (i + 1)
-		testing.ContextLogf(ctx, "Moving PIP window to %d,%d", newBounds.Left, newBounds.Top)
-		if err := pipAct.MoveWindow(ctx, coords.NewPoint(newBounds.Left, newBounds.Top), movementDuration); err != nil {
+		newWindow, err := getPIPWindow(ctx, tconn)
+		movedBounds := coords.ConvertBoundsFromDPToPX(newWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
+		newBounds := movedBounds
+		newBounds.Left -= deltaX
+		if err := pipAct.MoveWindow(ctx, tconn, movementDuration, newBounds, movedBounds); err != nil {
 			return errors.Wrap(err, "could not move PIP window")
 		}
 
@@ -268,7 +307,7 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 
 	testing.ContextLog(ctx, "Resizing window to x=0, y=0")
 	// Resizing PIP to x=0, y=0, but it should stop once it reaches its max size.
-	if err := pipAct.ResizeWindow(ctx, arc.BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+	if err := pipAct.ResizeWindow(ctx, tconn, arc.BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
 		return errors.Wrap(err, "could not resize PIP window")
 	}
 
@@ -298,7 +337,6 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 			return errors.Wrap(err, "the maximum size of the PIP window must be half of the display width")
 		}
 	}
-
 	return nil
 }
 
@@ -313,6 +351,9 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.TestConn, a *ar
 
 	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Status Area is hidden.
 
+	if err := waitForPIPWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for PIP window")
+	}
 	window, err := getPIPWindow(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
@@ -363,9 +404,10 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc
 		return errors.Wrap(err, "could not get PIP window")
 	}
 	origBounds := coords.ConvertBoundsFromDPToPX(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	destBounds := coords.NewRect(origBounds.Left, 0, origBounds.Width, origBounds.Height)
 
 	// Move the PIP window upwards as much as possible to avoid possible interaction with shelf.
-	if err := act.MoveWindow(ctx, coords.NewPoint(origBounds.Left, 0), time.Second); err != nil {
+	if err := act.MoveWindow(ctx, tconn, time.Second, destBounds, origBounds); err != nil {
 		return errors.Wrap(err, "could not move PIP window")
 	}
 	missedByGestureControllerPX := int(math.Round(missedByGestureControllerDP * dispMode.DeviceScaleFactor))
@@ -409,7 +451,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc
 // testPIPAutoPIPMinimize verifies that minimizing an auto-PIP window will trigger PIP.
 func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	// TODO(edcourtney): Test minimize via shelf icon, keyboard shortcut (alt-minus), and caption.
-	if err := pipAct.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
+	if err := minimizePIP(ctx, tconn, pipAct); err != nil {
 		return errors.Wrap(err, "failed to set window state to minimized")
 	}
 
@@ -417,6 +459,13 @@ func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		return errors.Wrap(err, "did not enter PIP")
 	}
 
+	return nil
+}
+
+func minimizePIP(ctx context.Context, tconn *chrome.TestConn, pipAct *arc.Activity) error {
+	if err := pipAct.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
+		return errors.Wrap(err, "failed to set window state to minimized")
+	}
 	return nil
 }
 
@@ -431,11 +480,38 @@ func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.TestConn, a *a
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
 func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get tablet mode")
+	}
+
+	initialWindowState := ash.WindowStateNormal
+	initialArcWindowState := arc.WindowStateNormal
+	if isTabletModeEnabled {
+		initialWindowState = ash.WindowStateMaximized
+		initialArcWindowState = arc.WindowStateMaximized
+	}
+
+	if err := pipAct.SetWindowState(ctx, tconn, initialArcWindowState); err != nil {
+		return errors.Wrap(err, "failed to set initial window state")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState); err != nil {
+		return errors.Wrap(err, "did not enter initial window state")
+	}
+
+	// Enter PIP via minimize.
+	if err := minimizePIP(ctx, tconn, pipAct); err != nil {
+		return errors.Wrap(err, "failed to minimize app into PIP")
+	}
+	if err := waitForPIPWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "did not enter PIP mode")
+	}
+
 	if err := pressShelfIcon(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, ash.WindowStateMaximized)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWindowState)
 }
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
@@ -457,7 +533,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the window will have an initial maximized state.
-	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+	if err := settingAct.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
 		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
 	}
 

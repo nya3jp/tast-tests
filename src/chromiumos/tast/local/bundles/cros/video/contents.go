@@ -30,6 +30,7 @@ func init() {
 			Val:               "still-colors-360p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -38,6 +39,7 @@ func init() {
 			Val:               "still-colors-720x480-cropped-to-640x360.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -45,6 +47,7 @@ func init() {
 			Val:               "still-colors-480p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -52,6 +55,7 @@ func init() {
 			Val:               "still-colors-720p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -59,10 +63,48 @@ func init() {
 			Val:               "still-colors-1080p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:              "h264_360p_composited_hw",
+			Val:               "still-colors-360p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeCompositedVideo(),
+		}, {
+			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
+			Name:              "h264_360p_exotic_crop_composited_hw",
+			Val:               "still-colors-720x480-cropped-to-640x360.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeCompositedVideo(),
+		}, {
+			Name:              "h264_480p_composited_hw",
+			Val:               "still-colors-480p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeCompositedVideo(),
+		}, {
+			Name:              "h264_720p_composited_hw",
+			Val:               "still-colors-720p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeCompositedVideo(),
+		}, {
+			Name:              "h264_1080p_composited_hw",
+			Val:               "still-colors-1080p.h264.mp4",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeCompositedVideo(),
 		}},
-		// TODO(andrescj): add tests for VP8 and VP9. Also, test forcing HW overlays off.
+		// TODO(andrescj): add tests for VP8 and VP9.
+		// TODO(andrescj): for non-composited tests, check that overlays were used.
 	})
 }
 

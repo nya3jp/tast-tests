@@ -15,7 +15,6 @@ import (
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -32,54 +31,52 @@ func init() {
 
 const dtimPeriod = 5
 
-func PowerSave(fullCtx context.Context, s *testing.State) {
+func PowerSave(ctx context.Context, s *testing.State) {
 	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Error("Failed to tear down test fixture: ", err)
 		}
-	}()
-
-	tfCtx, cancel := tf.ReserveForClose(fullCtx)
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
 
-	ap, err := tf.ConfigureAP(tfCtx, []hostapd.Option{
+	ap, err := tf.ConfigureAP(ctx, []hostapd.Option{
 		hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48),
 		hostapd.HTCaps(hostapd.HTCapHT20), hostapd.DTIMPeriod(dtimPeriod)}, nil)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
-	defer func() {
-		if err := tf.DeconfigAP(tfCtx, ap); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
-	}()
-	psCtx, cancel := tf.ReserveForDeconfigAP(tfCtx, ap)
+	}(ctx)
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	iface, err := tf.ClientInterface(psCtx)
+	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
 		s.Fatal("DUT: failed to get the client interface: ", err)
 	}
 
 	iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
 
-	psMode, err := iwr.PowersaveMode(psCtx, iface)
+	psMode, err := iwr.PowersaveMode(ctx, iface)
 	if err != nil {
 		s.Fatal("DUT: failed to get the powersave mode of the WiFi interface: ", err)
 	}
 
-	defer func() {
-		if err := iwr.SetPowersaveMode(psCtx, iface, psMode); err != nil {
+	defer func(ctx context.Context) {
+		if err := iwr.SetPowersaveMode(ctx, iface, psMode); err != nil {
 			s.Errorf("DUT: failed to set the powersave mode %t: %v", psMode, err)
 		}
-	}()
-
-	ctx, cancel := ctxutil.Shorten(psCtx, 2*time.Second)
+	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
 	if psMode {
@@ -94,14 +91,13 @@ func PowerSave(fullCtx context.Context, s *testing.State) {
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
-	defer func() {
-		if err := tf.DisconnectWifi(ctx); err != nil {
-			s.Fatal("DUT: failed to disconnect WiFi: ", err)
+	defer func(ctx context.Context) {
+		if err := tf.CleanDisconnectWifi(ctx); err != nil {
+			s.Error("DUT: failed to disconnect WiFi: ", err)
 		}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
-		}
-	}()
+	}(ctx)
+	ctx, cancel = tf.ReserveForDisconnect(ctx)
+	defer cancel()
 
 	// TODO(b:158222331) Make sure there is no background
 	// service that also toggles the powersave mode.
@@ -142,7 +138,6 @@ func PowerSave(fullCtx context.Context, s *testing.State) {
 	if err := tf.PingFromServer(ctx); err != nil {
 		s.Fatal("Failed to ping from the Server: ", err)
 	}
-
 }
 
 // setPowersaveMode sets the powersave mode and verifies its new value.

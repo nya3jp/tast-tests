@@ -17,7 +17,7 @@ func init() {
 		Func:         WifiCaps80211ac,
 		Desc:         "Verifies DUT supports required 802.11ac capabilities",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 	})

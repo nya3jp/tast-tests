@@ -25,7 +25,7 @@ public class TestOutputActivity extends MainActivity {
                     AudioFormat.CHANNEL_OUT_STEREO,
                     fd);
             Log.d(Constant.TAG, "start playing sound");
-            player.play();
+            player.play(5000);
             Log.d(Constant.TAG, "finish playing sound");
             markAsPassed();
         } catch (Exception e) {

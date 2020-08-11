@@ -6,10 +6,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.chromium.arc.testapp.multidisplay">
     <application android:allowBackup="false" android:label="@string/app_name">
-        <activity android:name=".ResizeableActivity"
+        <activity android:name=".ResizeableHandlingActivity"
                   android:resizeableActivity="true"
-                  android:label="ResizeableActivity"
+                  android:label="ResizeableHandlingActivity"
                   android:configChanges="density|fontScale|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ResizeableRelaunchingActivity"
+            android:resizeableActivity="true"
+            android:label="ResizeableRelaunchingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NonResizeableHandlingActivity"
+            android:resizeableActivity="false"
+            android:label="NonResizeableActivity"
+            android:configChanges="density|fontScale|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SizeCompatHandlingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:label="NonResizeablePortraitActivity"
+            android:configChanges="density|fontScale|orientation|screenLayout|screenSize|smallestScreenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

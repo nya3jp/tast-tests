@@ -16,10 +16,12 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
@@ -82,9 +84,11 @@ type TestFixture struct {
 	pcap          *Router
 	packetCapture bool
 
-	apID           int
-	curServicePath string
-	capturers      map[*APIface]*pcap.Capturer
+	apID      int
+	capturers map[*APIface]*pcap.Capturer
+
+	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
+	netCertStore *netcertstore.Store
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -95,6 +99,33 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
 	return ssh.New(ctx, &sopt)
+}
+
+// setupNetCertStore sets up tf.netCertStore for EAP-related tests.
+func (tf *TestFixture) setupNetCertStore(ctx context.Context) error {
+	if tf.netCertStore != nil {
+		// Nothing to do if it was set up.
+		return nil
+	}
+
+	runner, err := hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return err
+	}
+	tf.netCertStore, err = netcertstore.CreateStore(ctx, runner)
+	return err
+}
+
+// resetNetCertStore nullifies tf.netCertStore.
+func (tf *TestFixture) resetNetCertStore(ctx context.Context) error {
+	if tf.netCertStore == nil {
+		// Nothing to do if it was not set up.
+		return nil
+	}
+
+	err := tf.netCertStore.Cleanup(ctx)
+	tf.netCertStore = nil
+	return err
 }
 
 // NewTestFixture creates a TestFixture.
@@ -210,12 +241,22 @@ func (tf *TestFixture) CollectLogs(ctx context.Context) error {
 	return tf.router.CollectLogs(ctx)
 }
 
+// ReserveForCollectLogs returns a shorter ctx and cancel function for tf.CollectLogs.
+func (tf *TestFixture) ReserveForCollectLogs(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, time.Second)
+}
+
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "tf.Close")
 	defer st.End()
 
 	var firstErr error
+
+	if err := tf.resetNetCertStore(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
+	}
+
 	if tf.pcap != nil && tf.pcap != tf.router {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
@@ -285,6 +326,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 	}
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
+		return nil, err
+	}
+
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost, tf.router.workDir()); err != nil {
 		return nil, err
 	}
 
@@ -363,6 +408,17 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
+	// Setup the NetCertStore only for EAP-related tests.
+	if secConf.NeedsNetCertStore() {
+		if err := tf.setupNetCertStore(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to set up the NetCertStore")
+		}
+
+		if err := secConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
+			return nil, errors.Wrap(err, "failed to install client credentials")
+		}
+	}
+
 	props, err := secConf.ShillServiceProperties()
 	if err != nil {
 		return nil, err
@@ -381,7 +437,6 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	if err != nil {
 		return nil, err
 	}
-	tf.curServicePath = response.ServicePath
 	return response, nil
 }
 
@@ -391,42 +446,67 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network
 	return tf.ConnectWifi(ctx, conf.SSID, conf.Hidden, conf.SecurityConfig)
 }
 
-// DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
-func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
-	if tf.curServicePath == "" {
-		return errors.New("the current WiFi service path is empty")
-	}
-	ctx, st := timing.Start(ctx, "tf.DisconnectWifi")
+func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
+	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
 
-	var err error
-	req := &network.DisconnectRequest{ServicePath: tf.curServicePath}
-	if _, err2 := tf.wifiClient.Disconnect(ctx, req); err2 != nil {
-		err = errors.Wrap(err2, "failed to disconnect")
+	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to get selected service")
 	}
-	tf.curServicePath = ""
-	return err
+
+	// Note: It is possible that selected service changed after SelectService call,
+	// but we are usually in a stable state when calling this. If not, the Disconnect
+	// call will also fail and caller usually leaves hint for this.
+	// In Close and Reinit, we pop + remove related profiles so it should still be
+	// safe for next test if this case happened in clean up.
+	req := &network.DisconnectRequest{
+		ServicePath:   resp.ServicePath,
+		RemoveProfile: removeProfile,
+	}
+	if _, err := tf.wifiClient.Disconnect(ctx, req); err != nil {
+		return errors.Wrap(err, "failed to disconnect")
+	}
+	return nil
+}
+
+// DisconnectWifi asks the DUT to disconnect from current WiFi service.
+func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, false)
+}
+
+// CleanDisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
+func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, true)
+}
+
+// ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
+func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // AssureDisconnect assures that the WiFi service has disconnected within timeout.
-func (tf *TestFixture) AssureDisconnect(ctx context.Context, timeout time.Duration) error {
+func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string, timeout time.Duration) error {
 	req := &network.AssureDisconnectRequest{
-		ServicePath: tf.curServicePath,
+		ServicePath: servicePath,
 		Timeout:     timeout.Nanoseconds(),
 	}
 	if _, err := tf.wifiClient.AssureDisconnect(ctx, req); err != nil {
 		return err
 	}
-	tf.curServicePath = ""
 	return nil
 }
 
-// QueryService queries shill service information.
+// QueryService queries shill information of selected service.
 func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
-	req := &network.QueryServiceRequest{
-		Path: tf.curServicePath,
+	selectedSvcResp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get selected service")
 	}
 
+	req := &network.QueryServiceRequest{
+		Path: selectedSvcResp.ServicePath,
+	}
 	resp, err := tf.wifiClient.QueryService(ctx, req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the service information")
@@ -655,4 +735,14 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	return nil
+}
+
+// CurrentClientTime returns the current time on DUT.
+func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error) {
+	res, err := tf.WifiClient().GetCurrentTime(ctx, &empty.Empty{})
+	if err != nil {
+		return time.Time{}, errors.Wrap(err, "failed to get the current DUT time")
+	}
+	currentTime := time.Unix(res.NowSecond, res.NowNanosecond)
+	return currentTime, nil
 }

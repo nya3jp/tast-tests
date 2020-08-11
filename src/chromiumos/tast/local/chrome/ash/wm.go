@@ -80,6 +80,9 @@ const (
 	CaptionButtonCount
 )
 
+// ErrWindowNotFound is returned when window is failed to be found.
+var ErrWindowNotFound = errors.New("failed to find window")
+
 // String returns the CaptionButtonStatus string representation.
 func (c *CaptionButtonStatus) String() string {
 	ret := ""
@@ -418,7 +421,7 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 			return window, nil
 		}
 	}
-	return nil, errors.New("failed to find window")
+	return nil, ErrWindowNotFound
 }
 
 // ConnSource is an interface which allows new chrome.Conn connections to be created.

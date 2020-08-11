@@ -22,6 +22,7 @@ Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
 	}
 
 	exp := &Info{
+		Name:   "EMMC",
 		Device: EMMC,
 		Status: Healthy,
 	}
@@ -44,6 +45,7 @@ Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x0A]
 	}
 
 	exp := &Info{
+		Name:   "EMMC",
 		Device: EMMC,
 		Status: Failing,
 	}
@@ -77,6 +79,7 @@ func TestParseGetStorageInfoOutputSimpleHealthyNVMe(t *testing.T) {
 	}
 
 	exp := &Info{
+		Name:   "NVME",
 		Device: NVMe,
 		Status: Healthy,
 	}
@@ -98,6 +101,7 @@ func TestParseGetStorageInfoOutputSimpleFailingNVMe(t *testing.T) {
 	}
 
 	exp := &Info{
+		Name:   "NVME",
 		Device: NVMe,
 		Status: Failing,
 	}
@@ -123,6 +127,7 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 	}
 
 	exp := &Info{
+		Name:   "SATA",
 		Device: SSD,
 		Status: Healthy,
 	}
@@ -148,6 +153,7 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 	}
 
 	exp := &Info{
+		Name:   "SATA",
 		Device: SSD,
 		Status: Failing,
 	}
@@ -186,6 +192,7 @@ Page  Offset Size        Value Flags Description
 	}
 
 	exp := &Info{
+		Name:   "SATA",
 		Device: SSD,
 		Status: Healthy,
 	}
@@ -224,6 +231,7 @@ Page  Offset Size        Value Flags Description
 	}
 
 	exp := &Info{
+		Name:   "SATA",
 		Device: SSD,
 		Status: Failing,
 	}

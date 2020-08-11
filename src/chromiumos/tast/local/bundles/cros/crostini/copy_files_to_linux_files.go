@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -61,6 +62,13 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// Clean up the home directory in the end.
+	defer func() {
+		if err := cont.Cleanup(cleanupCtx, "."); err != nil {
+			s.Error("Failed to remove all files in home directory in the container: ", err)
+		}
+	}()
+
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
@@ -92,26 +100,13 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to copy test files to Linux files: ", err)
 	}
 
-	// Check the files exist in container.
-	if err := cont.CheckFilesExistInDir(ctx, ".", testFiles...); err != nil {
-		s.Fatal("Failed to test copying files to Linux files: ", err)
-	}
-
-	// Compare the number of files in Linux files and that in home directory in container to make sure that no extra file is copied.
+	// Check the file list in home directory is equal to the copied file list.
 	fileList, err := cont.GetFileList(ctx, ".")
 	if err != nil {
 		s.Fatal("Failed to get files in home directory in container: ", err)
 	}
-	if len(testFiles) != len(fileList) {
-		filesInLinuxfiles := ""
-		for _, f := range testFiles {
-			filesInLinuxfiles = fmt.Sprintf("%s %s", filesInLinuxfiles, f)
-		}
-		filesInContainer := ""
-		for _, f := range fileList {
-			filesInContainer = fmt.Sprintf("%s %s", filesInContainer, f)
-		}
-		s.Fatalf("File lists in Linux files and home directory in container do not equal: files in Linux files are %s, files in container are %s", filesInLinuxfiles, filesInContainer)
+	if !reflect.DeepEqual(testFiles, fileList) {
+		s.Fatalf("Found unexpected files in Linux files; got %q, want %q", fileList, testFiles)
 	}
 }
 

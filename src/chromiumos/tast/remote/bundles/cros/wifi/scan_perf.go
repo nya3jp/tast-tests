@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
@@ -26,7 +27,7 @@ func init() {
 		Desc:     "Measure BSS scan performance in various setup",
 		Contacts: []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
 		// TODO(b/158433447): Run in a group for wificell-dependent perf tests.
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 	})
@@ -39,35 +40,34 @@ const (
 	bgFullScanTimeout          = 15 * time.Second
 )
 
-func ScanPerf(fullCtx context.Context, s *testing.State) {
+func ScanPerf(ctx context.Context, s *testing.State) {
 	var tfOps []wificell.TFOption
 	if router, _ := s.Var("router"); router != "" {
 		tfOps = append(tfOps, wificell.TFRouter(router))
 	}
 
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), tfOps...)
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Error("Failed to tear down test fixture: ", err)
 		}
-	}()
-
-	tfCtx, cancel := tf.ReserveForClose(fullCtx)
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
 
-	ap, err := tf.DefaultOpenNetworkAP(tfCtx)
+	ap, err := tf.DefaultOpenNetworkAP(ctx)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
-	defer func() {
-		if err := tf.DeconfigAP(tfCtx, ap); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
-	}()
-	ctx, cancel := tf.ReserveForDeconfigAP(tfCtx, ap)
+	}(ctx)
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 	s.Log("AP setup done")
 
@@ -155,22 +155,26 @@ func ScanPerf(fullCtx context.Context, s *testing.State) {
 	if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: "none"}); err != nil {
 		s.Fatal("Unable to stop the DUT's WiFi bgscan: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		s.Log("Restore the DUT's WiFi background scan to ", method.Method)
 		if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: method.Method}); err != nil {
 			s.Errorf("Failed to restore the DUT's bgscan method to %s: %v", method.Method, err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
 
 	// DUT connecting to the AP.
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
-	defer func() {
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ap.Config().SSID, err)
+	defer func(ctx context.Context) {
+		if err := tf.CleanDisconnectWifi(ctx); err != nil {
+			s.Error("Failed to disconnect WiFi, err: ", err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = tf.ReserveForDisconnect(ctx)
+	defer cancel()
 	s.Log("Connected")
 
 	if duration, err := pollTimedScan(ctx, nil, bgFullScanTimeout, pollTimeout); err != nil {

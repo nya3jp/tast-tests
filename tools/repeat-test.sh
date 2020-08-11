@@ -62,6 +62,7 @@ then
   exit 1
 fi
 
+failures=0
 for i in $(seq 1 "${repetitions}")
 do
   echo "* Starting execution ${i}"
@@ -74,8 +75,10 @@ do
     if [[ -n "${stop_on_error}" ]]
     then
       echo "* Stopping tests due to first error (-s option was specified)."
+      echo "* Test failed on repetition ${i} out of ${repetitions}."
       break
     else
+      ((failures++))
       cat <<EOF
 * If you tried to stop the tests using Ctrl+C, you should press Ctrl+C again
 * in quick succession to stop the tests.
@@ -95,3 +98,7 @@ EOF
   fi
 done
 
+if [[ -z "${stop_on_error}" ]]
+then
+  echo "* Test failed ${failures} times out of ${repetitions}."
+fi

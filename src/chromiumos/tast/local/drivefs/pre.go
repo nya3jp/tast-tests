@@ -22,8 +22,11 @@ type PreData struct {
 	// The path that DriveFS has mounted at.
 	MountPath string
 
-	// The API connection to the Test extension, reused by tests
+	// The API connection to the Test extension, reused by tests.
 	TestAPIConn *chrome.TestConn
+
+	// The APIClient singleton.
+	APIClient *APIClient
 }
 
 // NewPrecondition creates a new drivefs precondition for tests that need different logins.
@@ -52,6 +55,7 @@ type preImpl struct {
 	mountPath string // The path where Drivefs is mounted
 	cr        *chrome.Chrome
 	tconn     *chrome.TestConn
+	APIClient *APIClient
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -63,8 +67,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
-	// If mountPath exists, check if Drive has stabilized and return early if it has.
-	if p.mountPath != "" {
+	// If mountPath exists and API client is not nil, check if Drive has stabilized and return early if it has.
+	if p.mountPath != "" && p.APIClient != nil {
 		mountPath, err := WaitForDriveFs(ctx, p.cr.User())
 		if err != nil {
 			s.Log("Failed waiting for DriveFS to stabilize: ", err)
@@ -114,6 +118,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	p.tconn = tconn
 
+	jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
+
+	// Perform Drive API authentication.
+	APIClient, err := CreateAPIClient(ctx, p.cr, jsonCredentials)
+	if err != nil {
+		s.Fatal("Failed creating a APIClient instance: ", err)
+	}
+	p.APIClient = APIClient
+
 	// Lock Chrome and make sure deferred function does not run cleanup.
 	chrome.Lock()
 	shouldClose = false
@@ -135,12 +148,13 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.mountPath, p.tconn}
+	return PreData{p.cr, p.mountPath, p.tconn, p.APIClient}
 }
 
-// cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil
+// cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil.
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	p.tconn = nil
+	p.APIClient = nil
 	p.mountPath = ""
 
 	if p.cr != nil {

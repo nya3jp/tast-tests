@@ -36,7 +36,7 @@ func init() {
 		Pre:          pre.User,
 		Params: []testing.Param{
 			{
-				// TODO(crbug.com/1101928): remove once blocklist is stable.
+				// TODO(crbug.com/1101928): remove once URLBlacklist is no longer supported.
 				Name: "blacklist",
 				Val: []blocklistTestTable{
 					{
@@ -96,7 +96,7 @@ func init() {
 				},
 			},
 			{
-				// TODO(crbug.com/1101928): remove once allowlist is stable.
+				// TODO(crbug.com/1101928): remove once URLWhitelist is no longer supported.
 				Name: "whitelist",
 				Val: []blocklistTestTable{
 					{

@@ -37,7 +37,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 		Params: []testing.Param{{
 			Val: testParameters{
 				tabletMode: false,

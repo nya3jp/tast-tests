@@ -106,3 +106,38 @@ func PressKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string
 	}
 	return nil
 }
+
+// HoldKeyInGame holds a key for a given duration. Holding keys (especially arrow keys) is very common in
+// video game playing.
+func HoldKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string, duration time.Duration) error {
+	if err := kb.AccelPress(ctx, s); err != nil {
+		return errors.Wrap(err, "failed to long press the key")
+	}
+	if err := testing.Sleep(ctx, duration); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+	if err := kb.AccelRelease(ctx, s); err != nil {
+		return errors.Wrap(err, "failed to release the key")
+	}
+	return nil
+}
+
+// ExitGame holds esc key and exits the game.
+func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.Node) error {
+	if err := HoldKeyInGame(ctx, kb, "esc", 2*time.Second); err != nil {
+		return errors.Wrap(err, "failed to hold the sec key")
+	}
+	exitButton, err := webpage.DescendantWithTimeout(ctx, ui.FindParams{Name: "Exit game", Role: ui.RoleTypeButton}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the exit button")
+	}
+	defer exitButton.Release(ctx)
+	if err := exitButton.FocusAndWait(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to focus on the exit button")
+	}
+	if err := exitButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the exit button")
+	}
+	return nil
+}
+

@@ -107,9 +107,8 @@ func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC) (bool, error) {
 }
 
 func PlayStorePersistent(ctx context.Context, s *testing.State) {
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

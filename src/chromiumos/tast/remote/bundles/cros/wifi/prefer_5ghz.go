@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"sort"
 	"strings"
-	"time"
 
 	"chromiumos/tast/common/wifi/security/base"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -34,20 +32,21 @@ func init() {
 	})
 }
 
-func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
+func Prefer5Ghz(ctx context.Context, s *testing.State) {
 	tf := s.PreValue().(*wificell.TestFixture)
-	defer func() {
-		if err := tf.CollectLogs(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.CollectLogs(ctx); err != nil {
 			s.Log("Error collecting logs, err: ", err)
 		}
-	}()
-	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+	}(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID.
-	// It returns a shorten ctx, the channel's mapping frequency, a callback to deconfigure the AP and an error object.
+	// It returns a shorten ctx, the channel's mapping frequency, a callback to deconfigure the AP run
+	// with the input ctx, and an error object.
 	// Note that it directly used s and tf from the outer scope.
-	configureAP := func(ctx context.Context, ssid string, channel int) (context.Context, int, func(context.Context), error) {
+	configureAP := func(ctx context.Context, ssid string, channel int) (context.Context, int, func(), error) {
 		freq, err := hostapd.ChannelToFrequency(channel)
 		if err != nil {
 			return ctx, 0, nil, err
@@ -58,8 +57,9 @@ func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
 		if err != nil {
 			return ctx, freq, nil, err
 		}
-		sCtx, _ := tf.ReserveForDeconfigAP(ctx, ap)
-		deferFunc := func(ctx context.Context) {
+		sCtx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
+		deferFunc := func() {
+			cancel()
 			s.Logf("Deconfiguring the AP on freq %d", freq)
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig AP: ", err)
@@ -77,13 +77,13 @@ func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up AP: ", err)
 	}
-	defer deconfig2g(fullCtx)
+	defer deconfig2g()
 
 	ctx, freq5g, deconfig5g, err := configureAP(ctx, ssid, channel5g)
 	if err != nil {
 		s.Fatal("Failed to set up AP: ", err)
 	}
-	defer deconfig5g(fullCtx)
+	defer deconfig5g()
 	s.Log("AP setup done. Expecting the DUT to see the SSID on both 2.4GHz and 5GHz channels")
 
 	// Check SSID on both 2.4GHz and 5GHz channels.
@@ -98,15 +98,13 @@ func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
 	if _, err := tf.ConnectWifi(ctx, ssid, false, &base.Config{}); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
-	defer func() {
-		if err := tf.DisconnectWifi(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.CleanDisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
-		req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ssid)}
-		if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
-			s.Errorf("Failed to remove entries for ssid=%s: %v", ssid, err)
-		}
-	}()
+	}(ctx)
+	ctx, cancel = tf.ReserveForDisconnect(ctx)
+	defer cancel()
 
 	freqSignal, err := wifiSignal(ctx, tf, s.DUT(), ssid)
 	if err != nil {

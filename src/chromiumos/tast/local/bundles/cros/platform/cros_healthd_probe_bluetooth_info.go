@@ -39,21 +39,20 @@ func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
-	if len(records) < 2 {
-		s.Fatalf("Wrong number of output lines: got %d; want 2+", len(records))
-	}
-
-	// Verify the headers are correct.
-	want := []string{"name", "address", "powered", "num_connected_devices"}
-	got := records[0]
-	if !reflect.DeepEqual(want, got) {
-		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
-	}
-
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Unable to get Bluetooth adapters: ", err)
+	}
+
+	// If cros_healthd and D-Bus both report no adapters, there is no output to
+	// verify.
+	if len(records) == 1 && len(adapters) == 0 {
+		return
+	}
+
+	if len(records) != 2 {
+		s.Fatalf("Wrong number of output lines: got %d; want 2", len(records))
 	}
 
 	if len(adapters) != 1 {
@@ -72,6 +71,13 @@ func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 
 	if btAdapter.powered, err = adapter.Powered(ctx); err != nil {
 		s.Fatal("Unable to get powered property value: ", err)
+	}
+
+	// Verify the headers are correct.
+	want := []string{"name", "address", "powered", "num_connected_devices"}
+	got := records[0]
+	if !reflect.DeepEqual(want, got) {
+		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
 	}
 
 	// Verify the values are correct.

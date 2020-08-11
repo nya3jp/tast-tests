@@ -5,8 +5,20 @@
 // Package pre contains preconditions for apps tests
 package pre
 
-// ExcludeModels is list of models are not supposed to run apps tests.
-var ExcludeModels = []string{
-	// Platform kevin64. It's the experimental board to verify arm64 user land.
-	"kevin64",
+// AppsCriticalModels is a shortlist of boards aiming to run critical essential apps tests.
+var AppsCriticalModels = []string{
+	// Top VK usage board in 2020 -- convertible, ARM.
+	"hana",
+	// Another top board -- convertible, x64.
+	"snappy",
+	// Not much usage, but very small tablet.
+	"kukui",
+	// Convertible chromebook, top usage in 2018 and 2019.
+	"cyan",
+	// Random boards on the top boards for VK list.
+	"octopus",
+	"kefka",
+	"coral",
+	// VM used for basic development.
+	"betty",
 }

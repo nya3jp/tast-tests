@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -96,16 +97,12 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 		defer activity.Close()
 
 		// Check if the app is still running.
-		isRunning, err := activity.IsRunning(ctx)
+		_, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName())
 		if err != nil {
-			return err
-		}
-
-		if !isRunning {
-			if !args.ExpectStoppedOnTeardown {
-				return errors.Errorf("activity %q was no longer running at teardown (crash?)", activityName)
+			if args.ExpectStoppedOnTeardown && errors.Is(err, ash.ErrWindowNotFound) {
+				return nil
 			}
-			return nil
+			return err
 		}
 
 		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)

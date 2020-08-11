@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
@@ -13,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -58,14 +58,32 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 				return err
 			}
 			value = strings.TrimSpace(string(out))
-			if value == "" {
-				return errors.New("getprop returned an empty string")
-			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
 		return value
+	}
+
+	getAllPropertiesMap := func() map[string]bool {
+		// Returns a list of existing property names as a map.
+		out, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Log("Failed to read properties: ", err)
+		}
+		properties := make(map[string]bool)
+		// Trying to match:
+		//   [ro.build.version.preview_sdk]: [0]
+		//   [ro.build.version.release]: [9]
+		re := regexp.MustCompile(`\[([^\]]+)\]: .*`)
+		for _, line := range strings.Split(string(out), "\n") {
+			property := re.FindStringSubmatch(line)
+			if len(property) < 2 {
+				continue
+			}
+			properties[property[1]] = true
+		}
+		return properties
 	}
 
 	// On each ARC boot, ARC detects its boot type (first boot, first boot after
@@ -133,6 +151,45 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		}
 		s.Fatalf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
 			firstAPILevel, expectedFirstAPILevel)
+	}
+
+	// Verify that these important properties without a partition name still exist.
+	propertySuffixes := []string{"fingerprint", "id", "tags", "version.incremental"}
+	for _, propertySuffix := range propertySuffixes {
+		property := fmt.Sprintf("ro.build.%s", propertySuffix)
+		if value := getProperty(property); value == "" {
+			s.Fatalf("property %v is not set", property)
+		}
+	}
+
+	// Starting R, the images have ro.{system,system_ext,product,odm,vendor}.{build,product}.*
+	// properties by default to allow vendors to customize the values. ARC++ doesn't need the
+	// customization and uses the same value for all of them. This verifies that all properties
+	// share the same value. On P, the images have only ro.{system,vendor} ones.
+	partitions := []string{"system", "system_ext", "product", "odm", "vendor"}
+	allProperties := getAllPropertiesMap()
+	for property := range allProperties {
+		for _, category := range []string{"build", "product"} {
+			prefix := fmt.Sprintf("ro.%s.", category)
+			if !strings.HasPrefix(property, prefix) {
+				continue
+			}
+			value := getProperty(property)
+			for _, partition := range partitions {
+				propertyForPartition := strings.Replace(property, prefix, fmt.Sprintf("ro.%s.%s.", partition, category), 1)
+				if strings.HasPrefix(propertyForPartition, "ro.product.product.") {
+					// TODO(yusukes): Syncing ro.product.<partition>.X with ro.product.X is not implemented yet.
+					continue
+				}
+				if !allProperties[propertyForPartition] {
+					// ro.{build,product}.X exists, but ro.<partition>.{build,product}.X doesn't.
+					continue
+				}
+				if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
+					s.Fatalf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
+				}
+			}
+		}
 	}
 }
 

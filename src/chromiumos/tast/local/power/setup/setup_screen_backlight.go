@@ -6,6 +6,9 @@ package setup
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"path"
 	"strconv"
 	"strings"
 
@@ -52,8 +55,40 @@ func setBacklightBrightness(ctx context.Context, brightness uint) error {
 	return nil
 }
 
+// listBacklightPaths lists paths of backlights in sysfs
+func listBacklightPaths() ([]string, error) {
+	const sysfsBacklightPath = "/sys/class/backlight"
+	files, err := ioutil.ReadDir(sysfsBacklightPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			// Ignore NotExist error since /sys/class/backlight may not exist
+			return nil, nil
+		}
+		return nil, errors.Wrap(err, "failed to read sysfs dir")
+	}
+	var backlightPaths []string
+	for _, file := range files {
+		devPath := path.Join(sysfsBacklightPath, file.Name())
+		backlightPaths = append(backlightPaths, devPath)
+	}
+	return backlightPaths, nil
+}
+
 // SetBacklightLux sets the screen backlight to a brightness in lux.
 func SetBacklightLux(ctx context.Context, lux uint) (CleanupCallback, error) {
+	backlightPaths, err := listBacklightPaths()
+	if err != nil {
+		return nil, err
+	}
+	if len(backlightPaths) == 0 {
+		testing.ContextLog(ctx, "Skipping setting screen backlight brightness since there are no backlights")
+		return nil, nil
+	}
+	// TODO(hikarun): Remove listing backlights after checking this logic works on all platforms
+	testing.ContextLogf(ctx, "%v backlights found:", len(backlightPaths))
+	for _, path := range backlightPaths {
+		testing.ContextLog(ctx, path)
+	}
 	prevBrightness, err := backlightBrightness(ctx)
 	if err != nil {
 		return nil, err

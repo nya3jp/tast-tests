@@ -20,19 +20,33 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// PerformanceMode equals to AudioTrack::PERFORMANCE_MODE definition.
+type PerformanceMode uint64
+
+const (
+	// PerformanceModeNone equals to AudioTrack::PERFORMANCE_MODE_NONE
+	PerformanceModeNone PerformanceMode = iota
+	// PerformanceModeLowLatency equals to AudioTrack::PERFORMANCE_MODE_LOW_LATENCY
+	PerformanceModeLowLatency
+	// PerformanceModePowerSaving equals to AudioTrack::PERFORMANCE_MODE_POWER_SAVING
+	PerformanceModePowerSaving
+)
+
 // TestParameters holds the ARC audio tast parameters.
 type TestParameters struct {
-	Permission string
-	Class      string
+	Permission      string
+	Class           string
+	PerformanceMode PerformanceMode
 }
 
 const (
 	// Apk is the testing App.
 	Apk = "ARCAudioTest.apk"
-	pkg = "org.chromium.arc.testapp.arcaudiotest"
+	// Pkg is the package name the testing App.
+	Pkg = "org.chromium.arc.testapp.arcaudiotest"
 
 	// UI IDs in the app.
-	idPrefix              = pkg + ":id/"
+	idPrefix              = Pkg + ":id/"
 	resultID              = idPrefix + "test_result"
 	logID                 = idPrefix + "test_result_log"
 	verifyUIResultTimeout = 20 * time.Second
@@ -287,12 +301,12 @@ func NewARCAudioTast(ctx context.Context, a *arc.ARC, cr *chrome.Chrome) (*ARCAu
 
 func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) (*arc.Activity, error) {
 	if param.Permission != "" {
-		if err := t.arc.Command(ctx, "pm", "grant", pkg, param.Permission).Run(testexec.DumpLogOnError); err != nil {
+		if err := t.arc.Command(ctx, "pm", "grant", Pkg, param.Permission).Run(testexec.DumpLogOnError); err != nil {
 			return nil, errors.Wrap(err, "failed to grant permission")
 		}
 	}
 
-	act, err := arc.NewActivity(t.arc, pkg, param.Class)
+	act, err := arc.NewActivity(t.arc, Pkg, param.Class)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create activity")
 	}

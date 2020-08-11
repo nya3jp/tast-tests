@@ -34,8 +34,12 @@ func init() {
 			"group:mainline",
 			"informational",
 		},
-		Pre:  pre.DriveFsStarted,
-		Vars: []string{"filemanager.user", "filemanager.password"},
+		Pre: pre.DriveFsStarted,
+		Vars: []string{
+			"filemanager.user",
+			"filemanager.password",
+			"filemanager.drive_credentials",
+		},
 	})
 }
 

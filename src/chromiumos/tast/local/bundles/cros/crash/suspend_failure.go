@@ -34,11 +34,6 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
-	if err != nil {
-		s.Fatal("Failed to get original crashes: ", err)
-	}
-
 	// Restart anomaly detector to clear its cache of recently seen suspend
 	// failures and ensure this one is logged.
 	if err := crash.RestartAnomalyDetector(ctx); err != nil {
@@ -85,7 +80,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.0\.log`,
 		`suspend_failure\.\d{8}\.\d{6}\.0\.meta`}
 
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

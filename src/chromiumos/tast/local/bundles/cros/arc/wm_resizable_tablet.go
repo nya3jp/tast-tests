@@ -35,6 +35,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			Name: "RT_default_launch_behavior",
 			Func: wmRT01,
 		},
+		wm.TestCase{
+			// resizable/tablet: display size change
+			Name: "RT_display_size_change",
+			Func: wmRT15,
+		},
 	})
 }
 
@@ -53,4 +58,29 @@ func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, true)
+}
+
+// wmRT15 covers resizable/tablet: display size change.
+// Expected behavior is defined in: go/arc-wm-r RT15: resizable/tablet: display size change.
+func wmRT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	ntActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
 }

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/services/cros/network"
@@ -26,42 +27,43 @@ func init() {
 	})
 }
 
-func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
+func DisconnectClearsIP(ctx context.Context, s *testing.State) {
 	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Log("Failed to tear down test fixture: ", err)
 		}
-	}()
-
-	tfCtx, cancel := tf.ReserveForClose(fullCtx)
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
 
-	ap, err := tf.DefaultOpenNetworkAP(tfCtx)
+	ap, err := tf.DefaultOpenNetworkAP(ctx)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
-	defer func() {
-		if err := tf.DeconfigAP(tfCtx, ap); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
-	}()
-	ctx, cancel := tf.ReserveForDeconfigAP(tfCtx, ap)
+	}(ctx)
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 	s.Log("AP setup done")
 
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 		s.Fatal("DUT: failed to connect to WiFi: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}); err != nil {
 			s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
 	s.Log("Connected")
 
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
@@ -85,10 +87,10 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 
 	// Wait for IP to be cleared.
 	s.Log("Disconnected. Wait for the IP address to be cleared")
-	wCtx, st := timing.Start(ctx, "waitIPGone")
+	ctx, st := timing.Start(ctx, "waitIPGone")
 	defer st.End()
-	if err := testing.Poll(wCtx, func(wCtx context.Context) error {
-		addr, err := tf.ClientIPv4Addrs(wCtx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		addr, err := tf.ClientIPv4Addrs(ctx)
 		if err != nil {
 			s.Fatal("DUT: failed to get the IP address: ", err)
 		}
@@ -99,5 +101,4 @@ func DisconnectClearsIP(fullCtx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 200 * time.Millisecond}); err != nil {
 		s.Fatal("Failed to clear the IP after WiFi disconnected: ", err)
 	}
-
 }

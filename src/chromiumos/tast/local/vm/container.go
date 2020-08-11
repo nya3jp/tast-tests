@@ -101,38 +101,35 @@ func Unlock() {
 	locked = false
 }
 
-// newContainer returns a Container instance with a cicerone connection.
-// Note that it assumes cicerone is up and running.
-func newContainer(ctx context.Context, vmInstance *VM, containerName, userName string) (*Container, error) {
-	c := Container{
-		VM:            vmInstance,
-		containerName: containerName,
-		username:      userName,
-	}
+// newContainer returns a Container instance.
+// You must call Connect() to connect to the VM and Cicerone.
+func newContainer(ctx context.Context, containerName, userName string) *Container {
 	if locked {
 		panic("Do not create a new Container while a container precondition is active")
 	}
-	var err error
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, err
+	return &Container{
+		containerName: containerName,
+		username:      userName,
 	}
-	return &c, nil
 }
 
 // DefaultContainer returns a container object with default settings.
-func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
-	return newContainer(ctx, vmInstance, DefaultContainerName, testContainerUsername)
+func DefaultContainer(ctx context.Context, user string) (*Container, error) {
+	c := newContainer(ctx, DefaultContainerName, testContainerUsername)
+	return c, c.Connect(ctx, user)
 }
 
-// GetRunningContainer returns a Container struct for a currently running container.
-// This is useful when the container was started by some other means, eg the installer.
-// Will return an error if no container is currently running.
-func GetRunningContainer(ctx context.Context, user string) (*Container, error) {
+// Connect connects the container to the running VM and cicerone instances.
+func (c *Container) Connect(ctx context.Context, user string) error {
 	vm, err := GetRunningVM(ctx, user)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return DefaultContainer(ctx, vm)
+	c.VM = vm
+	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
+		return err
+	}
+	return nil
 }
 
 // ArchitectureAlias returns the alias subpath of the chosen container
@@ -429,16 +426,83 @@ func (c *Container) CheckFilesExistInDir(ctx context.Context, path string, files
 	return nil
 }
 
+// CheckFileDoesNotExistInDir checks files do not exist in the given path in container.
+// Return error if any file exists or any other error.
+func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string, files ...string) error {
+	// Get file list in the path in container.
+	fileList, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list the content of %s in container", path)
+	}
+
+	// Create a map.
+	set := make(map[string]struct{}, len(fileList))
+	for _, s := range fileList {
+		set[s] = struct{}{}
+	}
+
+	// Check each file exists in fileList.
+	for _, file := range files {
+		if _, ok := set[file]; ok {
+			return errors.Errorf("failed to find %s in container", file)
+		}
+	}
+	return nil
+}
+
 // GetFileList returns a list of the files in the given path in the container.
 func (c *Container) GetFileList(ctx context.Context, path string) (fileList []string, err error) {
 	// Get files in the path in container.
-	cmd := c.Command(ctx, "ls", path)
-	result, err := cmd.Output()
+	result, err := c.Command(ctx, "ls", "-1", path).Output()
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to run 'ls %s' in container", path)
 	}
+	fileList = strings.Split(string(result), "\n")
 
-	return strings.Split(strings.TrimRight(string(result), "\r\n"), "\n"), nil
+	// Delete the last empty item if it is there.
+	if len(fileList) > 0 && fileList[len(fileList)-1] == "" {
+		fileList = fileList[:len(fileList)-1]
+	}
+
+	return fileList, nil
+}
+
+// CheckFileContent checks that the content of the specified file equals to the given string.
+// Returns error if fail to read content or the contest does not equal to the given string.
+func (c *Container) CheckFileContent(ctx context.Context, filePath, testString string) error {
+	content, err := c.ReadFile(ctx, filePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to cat the result %s", filePath)
+	}
+	if content != testString {
+		return errors.Wrapf(err, "want %s, got %q", testString, content)
+	}
+	return nil
+}
+
+// ReadFile reads the content of file using command cat and returns it as a string.
+func (c *Container) ReadFile(ctx context.Context, filePath string) (content string, err error) {
+	cmd := c.Command(ctx, "cat", filePath)
+	result, err := cmd.Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to cat the content of %s", filePath)
+	}
+
+	return string(result), nil
+}
+
+// Cleanup removes all the files under the specific path.
+func (c *Container) Cleanup(ctx context.Context, path string) error {
+	list, err := c.GetFileList(ctx, path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get file list of %s in container: ", path)
+	}
+	for _, file := range list {
+		if err := c.Command(ctx, "rm", "-rf", file).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to delete %s in %s", file, path)
+		}
+	}
+	return nil
 }
 
 // LinuxPackageInfo queries the container for information about a Linux package
@@ -596,13 +660,13 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	return cmd.Run()
 }
 
-// CreateDefaultContainer prepares a container in VM with default settings.
-// The vmInstance should be initialized and ready for a container to be created.
+// CreateDefaultContainer prepares a container in a running VM with default settings.
+// user is the user that is running the VM.
 // The directory dir may be used to store logs on failure. If the container
 // type is Tarball, then artifactPath must be specified with the path to the
 // tarball containing the termina VM and container. Otherwise, artifactPath
 // is ignored. Caller may wish to stop the VM if an error is returned.
-func CreateDefaultContainer(ctx context.Context, vmInstance *VM, t ContainerType, dir string) (*Container, error) {
+func CreateDefaultContainer(ctx context.Context, user string, t ContainerType, dir string) (*Container, error) {
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
 	if err != nil {
 		return nil, err
@@ -610,7 +674,7 @@ func CreateDefaultContainer(ctx context.Context, vmInstance *VM, t ContainerType
 	// Always close the InstallLinuxPackageProgress watcher regardless of success.
 	defer created.Close(ctx)
 
-	c, err := DefaultContainer(ctx, vmInstance)
+	c, err := DefaultContainer(ctx, user)
 	if err != nil {
 		return nil, err
 	}
@@ -619,11 +683,11 @@ func CreateDefaultContainer(ctx context.Context, vmInstance *VM, t ContainerType
 	}
 	// Container is being created, wait for signal.
 	createdSig := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", c.containerName, vmInstance.name)
+	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", c.containerName, c.VM.name)
 	if err := waitForDBusSignal(ctx, created, nil, createdSig); err != nil {
 		return nil, errors.Wrap(err, "failed to get LxdContainerCreatedSignal")
 	}
-	if createdSig.GetVmName() != vmInstance.name {
+	if createdSig.GetVmName() != c.VM.name {
 		return nil, errors.Errorf("unexpected container creation signal for VM %q", createdSig.GetVmName())
 	} else if createdSig.GetContainerName() != c.containerName {
 		return nil, errors.Errorf("unexpected container creation signal for container %q", createdSig.GetContainerName())

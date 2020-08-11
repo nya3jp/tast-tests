@@ -45,11 +45,6 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
-	if err != nil {
-		s.Fatal("Failed to get original crashes: ", err)
-	}
-
 	if err := crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
@@ -75,7 +70,7 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{baseName + `\.kcrash`,
 		baseName + `\.log\.gz`,
 		metaName}
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

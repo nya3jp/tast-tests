@@ -175,6 +175,9 @@ type RotationAngle string
 
 // Rotation values as defined in: https://cs.chromium.org/chromium/src/out/Debug/gen/chrome/common/extensions/api/autotest_private.h
 const (
+	// RotateAny represents the auto-rotation to the device angle. Valid only in
+	// tablet mode.
+	RotateAny RotationAngle = "RotateAny"
 	// Rotate0 represents rotation angle 0.
 	Rotate0 RotationAngle = "Rotate0"
 	// Rotate90 represents rotation angle 90.
@@ -185,11 +188,33 @@ const (
 	Rotate270 RotationAngle = "Rotate270"
 )
 
+// WaitForDisplayRotation waits for the display rotation animation. If it is not
+// animating, it returns immediately. Returns an error if incorrect parameters
+// are passed, or the display rotation ends up with a different rotation from
+// the specified one.
+func WaitForDisplayRotation(ctx context.Context, tconn *chrome.TestConn, dispID string, rot RotationAngle) error {
+	// Right now autotestPrivate.waitForDisplayRotation can't wait for "any" type.
+	// Thus it waits for the default 0 rotation, but it may fail when it is placed
+	// in an unexpected orientation physically.
+	// TODO(b/161253230): remove this after the fix is made in chromium.
+	if rot == RotateAny {
+		rot = Rotate0
+	}
+	expr := fmt.Sprintf(
+		`tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(%q, %q).then((success) => {
+		    if (!success)
+		      throw new Error("failed to wait for display rotation");
+		})`, dispID, rot)
+	return tconn.EvalPromise(ctx, expr, nil)
+}
+
 // SetDisplayRotationSync rotates the display to a certain angle and waits until the rotation animation finished.
 // c must be a connection with both system.display and autotestPrivate permissions.
 func SetDisplayRotationSync(ctx context.Context, tconn *chrome.TestConn, dispID string, rot RotationAngle) error {
 	var rotInt int
 	switch rot {
+	case RotateAny:
+		rotInt = -1
 	case Rotate0:
 		rotInt = 0
 	case Rotate90:
@@ -207,12 +232,7 @@ func SetDisplayRotationSync(ctx context.Context, tconn *chrome.TestConn, dispID 
 		return errors.Wrapf(err, "failed to set rotation to %d", rotInt)
 	}
 
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(%q, %q).then((success) => {
-		    if (!success)
-		      throw new Error("failed to wait for display rotation");
-		})`, dispID, rot)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return WaitForDisplayRotation(ctx, tconn, dispID, rot)
 }
 
 // OrientationType represents a display orientation.

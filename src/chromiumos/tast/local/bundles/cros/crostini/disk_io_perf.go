@@ -34,9 +34,9 @@ func init() {
 		Desc:         "Tests Crostini Disk IO Performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:      30 * time.Minute,
+		Timeout:      60 * time.Minute,
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
-		Pre:          crostini.StartedByArtifact(),
+		Pre:          crostini.StartedTraceVM(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{

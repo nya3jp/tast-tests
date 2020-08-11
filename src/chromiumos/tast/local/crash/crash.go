@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/session"
-	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
 
@@ -196,11 +195,10 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 	return ret, nil
 }
 
-// WaitForCrashFiles waits for each regex in regexes to match a file in dirs that is not also in oldFiles.
+// WaitForCrashFiles waits for each regex in regexes to match a file in dirs.
 // One might use it by
-// 1. Getting a list of already-extant files in a directory.
-// 2. Doing some operation that will create new files in that directory (e.g. inducing a crash).
-// 3. Calling this method to wait for the expected files to appear.
+// 1. Doing some operation that will create new files in that directory (e.g. inducing a crash).
+// 2. Calling this method to wait for the expected files to appear.
 // On success, WaitForCrashFiles returns a map from a regex to a list of files that matched that regex.
 // If any regex was not matched, instead returns an error.
 //
@@ -208,7 +206,7 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 //   * Remove matching files that they expect to generate
 //   * Leave matching files they do not expect to generate
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
-func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (map[string][]string, error) {
+func WaitForCrashFiles(ctx context.Context, dirs, regexes []string) (map[string][]string, error) {
 	var files map[string][]string
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
@@ -219,7 +217,6 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 			}
 			newFiles = append(newFiles, dirFiles...)
 		}
-		diffFiles := set.DiffStringSlice(newFiles, oldFiles)
 
 		// Reset files each time the poll function is invoked, to avoid
 		// repeatedly adding the same file
@@ -229,7 +226,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 		var missing []string
 		for _, re := range regexes {
 			match := false
-			for _, f := range diffFiles {
+			for _, f := range newFiles {
 				var err error
 				match, err = regexp.MatchString(re, f)
 				if err != nil {
@@ -257,7 +254,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 			}
 		}
 		if len(missing) != 0 {
-			return errors.Errorf("no file matched %s (found %s)", strings.Join(missing, ", "), strings.Join(diffFiles, ", "))
+			return errors.Errorf("no file matched %s (found %s)", strings.Join(missing, ", "), strings.Join(newFiles, ", "))
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 15 * time.Second})

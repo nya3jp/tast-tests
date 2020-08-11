@@ -67,6 +67,18 @@ service WifiService {
   // This is useful when the test sets some parameters regarding scans and wants
   // to avoid noices due to not yet ended scans.
   rpc WaitScanIdle(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ConfigureAndAssertAutoConnect configures the matched shill service and then
+  // waits for the IsConnected property becomes true.
+  // Note that this function does not attempt to connect; it waits for auto
+  // connect instead.
+  rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // GetCurrentTime returns the current local time in the given format.
+  rpc GetCurrentTime(google.protobuf.Empty) returns (GetCurrentTimeResponse) {}
+
+  // SelectedService returns the object path of selected service of WiFi service.
+  rpc SelectedService(google.protobuf.Empty) returns (SelectedServiceResponse) {}
 }
 
 message ConnectRequest {
@@ -107,6 +119,7 @@ message ConnectResponse {
 
 message DisconnectRequest {
   string service_path = 1;
+  bool remove_profile = 2;
 }
 
 message DeleteEntriesForSSIDRequest {
@@ -120,12 +133,11 @@ message QueryServiceRequest {
 message QueryServiceResponse {
   message Wifi {
     string bssid = 1;
-    bool ft_enabled = 2;
-    uint32 frequency = 3;
-    repeated uint32 frequency_list = 4;
-    string hex_ssid = 5;
-    bool hidden_ssid = 6;
-    uint32 phy_mode = 7;
+    uint32 frequency = 2;
+    repeated uint32 frequency_list = 3;
+    string hex_ssid = 4;
+    bool hidden_ssid = 5;
+    uint32 phy_mode = 6;
   }
   string name = 1;
   string device = 2;
@@ -135,6 +147,7 @@ message QueryServiceResponse {
   bool visible = 6;
   bool is_connected = 7;
   Wifi wifi = 8;
+  string guid = 9;
 }
 
 message GetInterfaceResponse {
@@ -184,4 +197,21 @@ message SetMACRandomizeRequest {
 
 message SetMACRandomizeResponse {
   bool old_setting = 1;
+}
+
+message ConfigureAndAssertAutoConnectRequest {
+  map<string, ShillVal> props = 1;
+}
+
+message ConfigureAndAssertAutoConnectResponse {
+  string path = 1;
+}
+
+message GetCurrentTimeResponse {
+  int64 nowSecond = 1;
+  int64 nowNanosecond = 2;
+}
+
+message SelectedServiceResponse {
+  string service_path = 1;
 }

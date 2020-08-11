@@ -87,7 +87,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	}
 
 	// Set the activity to Restored.
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the activity to Normal: ", err)
 	}
 
@@ -96,7 +96,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 	}
 
 	// Set the activity to Maximized, but don't wait for the activity to be idle as we are interested in its transient state.
-	if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
 		s.Fatal("Failed to set the activity to Maximized: ", err)
 	}
 

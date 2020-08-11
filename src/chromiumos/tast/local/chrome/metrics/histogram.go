@@ -287,6 +287,10 @@ func (r *Recorder) wait(ctx context.Context, tconn *chrome.TestConn, mode waitMo
 
 	var diffs []*Histogram
 	err := testing.Poll(ctx, func(ctx context.Context) error {
+		allNames := make(map[string]bool, len(names))
+		for _, name := range names {
+			allNames[name] = true
+		}
 		s, err := GetHistograms(ctx, tconn, names)
 		if err != nil {
 			return err
@@ -301,12 +305,17 @@ func (r *Recorder) wait(ctx context.Context, tconn *chrome.TestConn, mode waitMo
 		for _, diff := range diffs {
 			if len(diff.Buckets) != 0 {
 				cnt++
+				delete(allNames, diff.Name)
 			}
 		}
 
 		if mode == waitAll {
 			if cnt != len(s) {
-				return errors.New("not all histogram changed")
+				missingNames := make([]string, 0, len(allNames))
+				for name := range allNames {
+					missingNames = append(missingNames, name)
+				}
+				return errors.Errorf("not all histogram changed, missing %v", missingNames)
 			}
 		} else {
 			if cnt == 0 {

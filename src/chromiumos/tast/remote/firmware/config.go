@@ -20,12 +20,33 @@ import (
 // ModeSwitcherType represents which methods the platform uses for switching between DUT boot modes.
 type ModeSwitcherType string
 
-// Currently, there are exactly three possible values for ModeSwitcherType.
+// Currently, there are exactly four possible values for ModeSwitcherType.
 const (
 	JetStreamSwitcher        ModeSwitcherType = "jetstream_switcher"
 	KeyboardDevSwitcher      ModeSwitcherType = "keyboard_dev_switcher"
 	MenuSwitcher             ModeSwitcherType = "menu_switcher"
 	TabletDetachableSwitcher ModeSwitcherType = "tablet_detachable_switcher"
+)
+
+// ECCapability represents one feature that the EC can control.
+type ECCapability string
+
+// These are the ECCapabilities currently described in fw-testing-configs.
+const (
+	ECADCECTemp      ECCapability = "adc_ectemp"
+	ECARM            ECCapability = "arm"
+	ECBattery        ECCapability = "battery"
+	ECCBI            ECCapability = "cbi"
+	ECCharging       ECCapability = "charging"
+	ECDoubleBoot     ECCapability = "doubleboot"
+	ECKeyboard       ECCapability = "keyboard"
+	ECLid            ECCapability = "lid"
+	ECPECI           ECCapability = "peci"
+	ECSmartUSBCharge ECCapability = "smart_usb_charge"
+	ECThermal        ECCapability = "thermal"
+	ECUSB            ECCapability = "usb"
+	ECUSBPDUART      ECCapability = "usbpd_uart"
+	ECX86            ECCapability = "x86"
 )
 
 // ConfigDir is the basename of the directory within remote/firmware/data/ which contains the JSON files.
@@ -162,6 +183,7 @@ func ConfigDatafiles() []string {
 type Config struct {
 	Platform             string                     `json:"platform"`
 	Parent               string                     `json:"parent"`
+	ECCapability         []ECCapability             `json:"ec_capability"`
 	ModeSwitcherType     ModeSwitcherType           `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool                       `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool                       `json:"rec_button_dev_switch"`
@@ -240,4 +262,14 @@ func NewConfig(configDataDir, board, model string) (*Config, error) {
 		}
 	}
 	return &cfg, nil
+}
+
+// HasECCapability checks whether cfg has a certain ECCapability.
+func (cfg *Config) HasECCapability(ecc ECCapability) bool {
+	for _, capability := range cfg.ECCapability {
+		if ecc == capability {
+			return true
+		}
+	}
+	return false
 }

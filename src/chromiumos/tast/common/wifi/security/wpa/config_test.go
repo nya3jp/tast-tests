@@ -282,8 +282,7 @@ func TestGet(t *testing.T) {
 				"wpa_key_mgmt":   "WPA-PSK FT-PSK",
 			},
 			verifyShill: map[string]interface{}{
-				"Passphrase":     "chromeos",
-				"WiFi.FTEnabled": true,
+				"Passphrase": "chromeos",
 			},
 		},
 	} {

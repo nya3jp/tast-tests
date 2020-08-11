@@ -26,8 +26,8 @@ func init() {
 	})
 }
 
-func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Container, elapsedTime time.Duration, err error) {
-	cont, err = vm.DefaultContainer(ctx, vmInstance)
+func createNewContainer(ctx context.Context, user string) (cont *vm.Container, elapsedTime time.Duration, err error) {
+	cont, err = vm.DefaultContainer(ctx, user)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -121,7 +121,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		// Create default container for the initial run.
 		if cont == nil {
 			s.Log("Creating default container")
-			cont, timing.containerCreate, err = createNewContainer(ctx, vmInstance)
+			cont, timing.containerCreate, err = createNewContainer(ctx, cr.User())
 			if err != nil {
 				s.Fatal("Failed to set up default container: ", err)
 			}

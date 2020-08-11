@@ -247,7 +247,9 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name+".txt")
+
+			// TODO(b/161864703): Use chrome.Conn instead of TestConn.
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn}, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
 				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{

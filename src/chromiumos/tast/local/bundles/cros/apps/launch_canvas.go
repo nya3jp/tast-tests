@@ -30,13 +30,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 	})
 }
 
 // LaunchCanvas verifies launching Canvas after OOBE
 func LaunchCanvas(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.EnableWebAppInstall())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

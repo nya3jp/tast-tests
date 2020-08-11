@@ -106,7 +106,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer webview.Release(ctx)
 
-	enter, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Enter meeting code"}, timeout)
+	// Assume that the meeting code is the only textfield in the webpage.
+	enter, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeTextField}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find the meeting code: ", err)
 	}

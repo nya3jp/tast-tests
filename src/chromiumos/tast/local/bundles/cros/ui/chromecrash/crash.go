@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/set"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -73,24 +72,15 @@ const (
 // GetExtraArgs gives the list of arguments we should pass via chrome.ExtraArgs into the
 // chrome.New() function.
 func GetExtraArgs(handler CrashHandler, consentType crash.ConsentType) []string {
-	switch handler {
-	case Breakpad:
-		switch consentType {
-		case crash.MockConsent:
-			return []string{vModuleFlag, "--no-enable-crashpad", "--enable-crash-reporter-for-testing"}
-		case crash.RealConsent:
-			return []string{vModuleFlag, "--no-enable-crashpad"}
-		default:
-			panic(fmt.Sprintf("unknown ConsentType %d", consentType))
-		}
-	case Crashpad:
-		// The crashpad library doesn't care about consent (at least on ChromeOS);
-		// it passes all crashes along to crash_reporter and lets crash_reporter
-		// decide on consent.
-		return []string{vModuleFlag, "--enable-crashpad"}
-	default:
-		panic(fmt.Sprintf("unknown CrashHandler %d", handler))
+	// Breakpad needs an extra argument to do mock consent. Crashpad doesn't care
+	// about consent (at least on ChromeOS); it passes all crashes along to
+	// crash_reporter and lets crash_reporter decide on consent. So we don't need
+	// any extra arguments if the crash handler is Crashpad.
+	if handler == Breakpad && consentType == crash.MockConsent {
+		return []string{vModuleFlag, "--enable-crash-reporter-for-testing"}
 	}
+
+	return []string{vModuleFlag}
 }
 
 // ProcessType is an enum listed the types of Chrome processes we can kill.
@@ -105,6 +95,9 @@ const (
 	// code path should be similar enough that we don't need separate tests for
 	// those process types.
 	GPUProcess
+	// BrokerByCmdline is similar to Broker, but finds a broker process by
+	// process command lines instead of reading /var/log/chrome/chrome.
+	BrokerByCmdline
 	// Broker indicates a process with --type=broker. Broker processes go through
 	// a special code path because they are forked directly.
 	Broker
@@ -120,6 +113,8 @@ func (ptype ProcessType) String() string {
 		return "GPUProcess"
 	case Broker:
 		return "Broker"
+	case BrokerByCmdline:
+		return "BrokerByCmdline"
 	default:
 		return "Unknown ProcessType " + strconv.Itoa(int(ptype))
 	}
@@ -378,6 +373,15 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
 		}
 		return processes[0], nil
+	case BrokerByCmdline:
+		processes, err := chrome.GetBrokerProcesses()
+		if err != nil {
+			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
+		}
+		if len(processes) == 0 {
+			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
+		}
+		return processes[0], nil
 	case Broker:
 		for {
 			entry, err := ct.logReader.Read()
@@ -407,11 +411,11 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 }
 
 // waitForMetaFile waits for a .meta file corresponding to the given pid to appear
-// in one of the directories. Any file that matches a name in oldFiles is ignored.
+// in one of the directories.
 // Return nil if the file is found.
-func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
+func waitForMetaFile(ctx context.Context, pid int, dirs []string) error {
 	ending := fmt.Sprintf(`.*\.%d\.meta`, pid)
-	results, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
+	results, err := crash.WaitForCrashFiles(ctx, dirs, []string{ending})
 	if err != nil {
 		return errors.Wrap(err, "error waiting for .meta file")
 	}
@@ -426,12 +430,12 @@ func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) erro
 }
 
 // waitForBreakpadDmpFile waits for a .dmp file corresponding to the given pid
-// to appear in one of the directories. Any file that matches a name in oldFiles
-// is ignored. Return nil if the file is found.
-func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
+// to appear in one of the directories.
+// Return nil if the file is found.
+func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs []string) error {
 	const fileName = `chromium-.*-minidump-.*\.dmp`
 	err := testing.Poll(ctx, func(c context.Context) error {
-		files, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{fileName})
+		files, err := crash.WaitForCrashFiles(ctx, dirs, []string{fileName})
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "error waiting for .dmp file"))
 		}
@@ -468,7 +472,7 @@ func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs, oldFiles []strin
 
 // killNonBrowser implements the killing heart of KillAndGetCrashFiles for any
 // process type OTHER than the root Browser type.
-func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs, oldFiles []string) error {
+func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error {
 	testing.ContextLog(ctx, "Hunting for a ", ct.ptype)
 	var toKill process.Process
 	// It's possible that the root browser process just started and hasn't created
@@ -519,12 +523,12 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs, oldFiles []stri
 	switch ct.waitFor {
 	case MetaFile:
 		testing.ContextLog(ctx, "Waiting for meta file to appear")
-		if err = waitForMetaFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
+		if err = waitForMetaFile(ctx, int(toKill.Pid), dirs); err != nil {
 			return errors.Wrap(err, "failed waiting for target to write crash meta files")
 		}
 	case BreakpadDmp:
 		testing.ContextLog(ctx, "Waiting for dmp file to appear")
-		if err = waitForBreakpadDmpFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
+		if err = waitForBreakpadDmpFile(ctx, int(toKill.Pid), dirs); err != nil {
 			return errors.Wrap(err, "failed waiting for target to write crash dmp files")
 		}
 	case NoCrashFile:
@@ -615,17 +619,13 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 		return nil, err
 	}
 	dirs = append(dirs, crash.DefaultDirs()...)
-	oldFiles, err := crash.GetCrashes(dirs...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get original crashes")
-	}
 
 	if ct.ptype == Browser {
 		if err = killBrowser(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to kill Browser process")
 		}
 	} else {
-		if err = ct.killNonBrowser(ctx, dirs, oldFiles); err != nil {
+		if err = ct.killNonBrowser(ctx, dirs); err != nil {
 			return nil, errors.Wrapf(err, "failed to kill Chrome %s", ct.ptype)
 		}
 	}
@@ -634,15 +634,14 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get new crashes")
 	}
-	newCrashFiles := set.DiffStringSlice(newFiles, oldFiles)
-	for _, p := range newCrashFiles {
+	for _, p := range newFiles {
 		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
 	}
 
 	// Delete all crash files produced during this test: https://crbug.com/881638
-	deleteFiles(ctx, newCrashFiles)
+	deleteFiles(ctx, newFiles)
 
-	return newCrashFiles, nil
+	return newFiles, nil
 }
 
 // KillCrashpad kills all crashpad_handler processes running in the system. It
