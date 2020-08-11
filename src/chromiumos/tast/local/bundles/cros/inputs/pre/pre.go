@@ -23,3 +23,12 @@ var InputsCriticalModels = []string{
 	// VM used for basic development.
 	"betty",
 }
+
+// InputsTabletModels is a shortlist of physical tablet models to run critical inputs tests.
+var InputsTabletModels = []string{
+	"krane",
+	"dru",
+	"dumo",
+	"kukui",
+	"nocturne",
+}
