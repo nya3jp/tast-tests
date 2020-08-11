@@ -5,10 +5,15 @@
 package profiler
 
 import (
+	"bufio"
 	"context"
+	"os"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"syscall"
 
+	perfpkg "chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/sysutil"
@@ -21,7 +26,10 @@ import (
 // perf supports gathering profiler data using the
 // command "perf" with the perfType ("stat" or "record") specified.
 type perf struct {
-	cmd *testexec.Cmd
+	cmd    *testexec.Cmd
+	opts   *PerfOpts
+	outDir string
+	pv     *perfpkg.Values
 }
 
 // PerfType represents the type of perf that the users
@@ -34,13 +42,26 @@ const (
 	PerfRecord PerfType = iota
 	// PerfStat runs "perf stat record -a" on the DUT.
 	PerfStat
+	// PerfStatOnly runs "perf stat -a" on the DUT.
+	PerfStatOnly
 )
+
+const perfRecordFileName = "perf_record.data"
+const perfStatFileName = "perf_stat.data"
+const perfStatOnlyFileName = "perf_stat_only.data"
 
 // PerfOpts represents options for running perf.
 type PerfOpts struct {
 	// Type indicates the type of profiler running ("record" or "stat").
 	// The default is PerfRecord.
 	Type PerfType
+
+	// Used in PerfStatOnly.
+	// Indicate the target process. Set to -1 to capture all processes.
+	Pid int
+
+	// Perf value to be written to crosbolt.
+	PerfValue *perfpkg.Values
 }
 
 // Perf creates a Profiler instance that constructs the profiler.
@@ -66,7 +87,7 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 		return nil, errors.Errorf("running perf on %s is disabled (crbug.com/996728)", u.Machine)
 	}
 
-	cmd, err := getCmd(ctx, outDir, opts.Type)
+	cmd, err := getCmd(ctx, outDir, opts.Type, opts.Pid)
 	if err != nil {
 		return nil, err
 	}
@@ -93,20 +114,100 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 
 	success = true
 	return &perf{
-		cmd: cmd,
+		cmd:    cmd,
+		opts:   opts,
+		outDir: outDir,
+		pv:     opts.PerfValue,
 	}, nil
 }
 
-func getCmd(ctx context.Context, outDir string, perfType PerfType) (*testexec.Cmd, error) {
-	outputPath := filepath.Join(outDir, "perf.data")
+func getCmd(ctx context.Context, outDir string, perfType PerfType, pid int) (*testexec.Cmd, error) {
 	switch perfType {
 	case PerfRecord:
+		outputPath := filepath.Join(outDir, perfRecordFileName)
 		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
 	case PerfStat:
+		outputPath := filepath.Join(outDir, perfStatFileName)
 		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
+	case PerfStatOnly:
+		outputPath := filepath.Join(outDir, perfStatOnlyFileName)
+		if pid == -1 {
+			return testexec.CommandContext(ctx, "perf", "stat", "-a", "-e", "cycles", "--output", outputPath), nil
+		}
+		return testexec.CommandContext(ctx, "perf", "stat", "-a", "-p", strconv.Itoa(pid), "-e", "cycles", "--output", outputPath), nil
 	default:
 		return nil, errors.New("invalid perf type")
 	}
+}
+
+func parseStatFile(path string) (float64, error) {
+	cyclesRegexp := regexp.MustCompile(`^\s+(\d+)\s+cycles`)
+	secondsRegexp := regexp.MustCompile(`^\s+(\d+\.?[\d+]*)\s+seconds time elapsed`)
+
+	file, err := os.Open(path)
+	defer file.Close()
+
+	if err != nil {
+		return 0, errors.Wrap(err, "error opening file")
+	}
+
+	var cycles int64 = -1
+	var seconds = -1.0
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		l := scanner.Text()
+
+		m := cyclesRegexp.FindStringSubmatch(l)
+		if m != nil {
+			cycles, err = strconv.ParseInt(m[1], 0, 64)
+			if err != nil {
+				return 0, errors.Wrap(err, "error parsing cycles")
+			}
+			continue
+		}
+
+		m = secondsRegexp.FindStringSubmatch(l)
+		if m != nil {
+			seconds, err = strconv.ParseFloat(m[1], 64)
+			if err != nil {
+				return 0, errors.Wrap(err, "error parsing seconds")
+			}
+			continue
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return 0, errors.Wrap(err, "error in scanning perf stat output")
+	}
+
+	if cycles == -1 || seconds == -1 {
+		return 0, errors.Wrap(err, "failed to parse perf stat output")
+	}
+
+	cyclesPerSecond := float64(cycles) / seconds
+
+	return cyclesPerSecond, nil
+
+}
+
+func handleStatOnly(p *perf) error {
+	perfPath := filepath.Join(p.outDir, perfStatOnlyFileName)
+
+	cyclesPerSecond, err := parseStatFile(perfPath)
+
+	if err != nil {
+		return errors.Wrap(err, "error parsing stat file")
+	}
+
+	// Append one measurement to PerfValue.
+	p.pv.Append(perfpkg.Metric{
+		Name:      "cras_cycles_per_second",
+		Unit:      "cycles",
+		Direction: perfpkg.SmallerIsBetter,
+		Multiple:  true,
+	}, cyclesPerSecond)
+
+	return nil
 }
 
 // end interrupts the perf command and ends the recording of perf.data.
@@ -118,6 +219,11 @@ func (p *perf) end() error {
 	// instead of refusing the error.
 	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
+	}
+	if p.opts.Type == PerfStatOnly {
+		if err := handleStatOnly(p); err != nil {
+			return errors.Wrap(err, "failed to handle perf stat only result")
+		}
 	}
 	return nil
 }
