@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "ce7842e7_779dcf69",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:52:50Z",
+      "side": 1,
+      "message": "This moment is unclear. Before submitting CL, I would like to clarify why there are different types and whether it\u0027s safe to cast back to uint32. Otherwise, we may have \"very interested\" time debugging a problem.",
+      "parentUuid": "ce1db748_d6d2a412",
+      "range": {
+        "startLine": 288,
+        "startChar": 22,
+        "endLine": 288,
+        "endChar": 63
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f95668be_7dd77530",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -157,6 +181,30 @@
       "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eae5e319_61d75d41",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:52:50Z",
+      "side": 1,
+      "message": "my fault, the canonical way is to use \":\u003d\" instead of \"\u003d\" (sorry for my copy-paste error). So can you please change it?",
+      "parentUuid": "66f7bfbc_24283c41",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
