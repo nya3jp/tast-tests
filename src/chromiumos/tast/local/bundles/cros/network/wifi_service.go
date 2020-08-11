@@ -1668,7 +1668,45 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 	}); err != nil {
 		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for isConnected", profileTopName)
 	}
+	return &empty.Empty{}, nil
+}
 
+// GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+func (s *WifiService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*network.GetWifiEnabledResponse, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	prop, err := manager.GetProperties(ctx)
+	technologies, err := prop.GetStrings(shillconst.ManagerPropertyEnabledTechnologies)
+
+	for _, t := range technologies {
+		if t == string(shill.TechnologyWifi) {
+			return &network.GetWifiEnabledResponse{Enabled: true}, nil
+		}
+	}
+	return &network.GetWifiEnabledResponse{Enabled: false}, nil
+}
+
+// SetWifiEnabled persistently enables/disables Wifi via shill.
+func (s *WifiService) SetWifiEnabled(ctx context.Context, request *network.SetWifiEnabledRequest) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	_, err = shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+	}
+	if request.Enabled {
+		if err := manager.EnableTechnology(ctx, shill.TechnologyWifi); err != nil {
+			return nil, errors.Wrap(err, "could not enable wifi via shill")
+		}
+		return &empty.Empty{}, nil
+	}
+	if err := manager.DisableTechnology(ctx, shill.TechnologyWifi); err != nil {
+		return nil, errors.Wrap(err, "could not disable wifi via shill")
+	}
 	return &empty.Empty{}, nil
 }
 
