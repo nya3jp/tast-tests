@@ -33,10 +33,6 @@ func init() {
 			ExtraData:         []string{crostini.ImageArtifact},
 			ExtraHardwareDeps: crostini.CrostiniUnstable,
 		}, {
-			Name:    "download_stretch",
-			Pre:     crostini.StartedByDownloadStretch(),
-			Timeout: 10 * time.Minute,
-		}, {
 			Name:    "download_buster",
 			Pre:     crostini.StartedByDownloadBuster(),
 			Timeout: 10 * time.Minute,
