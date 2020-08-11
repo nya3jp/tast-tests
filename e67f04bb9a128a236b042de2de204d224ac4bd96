@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a5cc21_2b6c40e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-08-11T08:12:44Z",
+      "side": 1,
+      "message": "Soon I would like to get this running automatically hey lol",
+      "revId": "e67f04bb9a128a236b042de2de204d224ac4bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
