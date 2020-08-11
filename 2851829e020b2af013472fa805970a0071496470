@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "515c3f69_c7097301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-11T00:36:48Z",
+      "side": 1,
+      "message": "what\u0027s the actual measured time for 2 retries? I\u0027m curious how much other stuff might be affected by this. (e.g., check_ethernet only does about a 30-second backoff I think) Could maybe use a comment too, since it\u0027s not quite obvious at first glance what we need to wait 60 seconds for.\n\nand dare I ask: is this something we should consider \"normal\", or is this something we should press on? e.g., is the lab DHCP server behaving badly, or maybe our DUT Ethernet is actually stuck? I know some of this might be a little hard to answer; I\u0027m just curious if you have thoughts or opinions, from looking at DUTs.\n\n(did you check that DHCP does indeed come up correctly after the test, but just outside our timeout?)",
+      "revId": "2851829e020b2af013472fa805970a0071496470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
