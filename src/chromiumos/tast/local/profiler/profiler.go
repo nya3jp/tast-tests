@@ -24,8 +24,19 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// Output holds the output of a profiler.
+type Output struct {
+	Props map[string]interface{}
+}
+
+// OutputNull returns a default value for Output.
+// This is used when a profiler does not need to output metrics.
+func OutputNull() Output {
+	return Output{Props: map[string]interface{}{}}
+}
+
 type instance interface {
-	end() error
+	end() (Output, error)
 }
 
 // Profiler is a function construct a profiler instance
@@ -62,14 +73,20 @@ func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf,
 	return &rp, nil
 }
 
-// End terminates all the profilers currently running.
-func (p *RunningProf) End() error {
+// End terminates all the profilers currently running and returns output of each profiler in an array of Output.
+func (p *RunningProf) End() ([]Output, error) {
 	// Ends all profilers, return the first error encountered.
 	var firstErr error
+	var res []Output
 	for _, prof := range *p {
-		if err := prof.end(); err != nil && firstErr == nil {
-			firstErr = err
+		if output, err := prof.end(); err != nil {
+			if firstErr == nil {
+				firstErr = err
+			}
+			res = append(res, OutputNull())
+		} else {
+			res = append(res, output)
 		}
 	}
-	return firstErr
+	return res, firstErr
 }

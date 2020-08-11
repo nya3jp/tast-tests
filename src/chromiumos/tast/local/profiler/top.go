@@ -107,19 +107,19 @@ func newTop(ctx context.Context, outDir string, opts *TopOpts) (instance, error)
 }
 
 // end interrupts the top command and ends the recording of top.data.
-func (t *top) end() error {
+func (t *top) end() (Output, error) {
 	// Interrupt the cmd to stop recording.
 	t.cmdTop.Signal(syscall.SIGINT)
 	errTop := t.cmdTop.Wait()
 	errAwk := t.cmdAwk.Wait()
 	if errClose := t.out.Close(); errClose != nil {
-		return errors.Wrap(errClose, "failed closing output file")
+		return OutputNull(), errors.Wrap(errClose, "failed closing output file")
 	}
 	if errTop != nil {
-		return errors.Wrap(errTop, "failed waiting for the command 'top' to exit")
+		return OutputNull(), errors.Wrap(errTop, "failed waiting for the command 'top' to exit")
 	}
 	if errAwk != nil {
-		return errors.Wrap(errAwk, "failed waiting for the command 'awk' to exit")
+		return OutputNull(), errors.Wrap(errAwk, "failed waiting for the command 'awk' to exit")
 	}
-	return nil
+	return OutputNull(), nil
 }
