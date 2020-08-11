@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "580ebabb_a15ea777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T06:17:57Z",
+      "side": 1,
+      "message": "Hands off for WiFi Reviewers\u0027 blessing.",
+      "revId": "69733d47b810ea208e180f7cb724c52eb0f22987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c2626f7_cc506ef5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T06:17:57Z",
+      "side": 1,
+      "message": "The expected property change steps is much clear now. Thanks for your hard work.",
+      "revId": "69733d47b810ea208e180f7cb724c52eb0f22987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
