@@ -115,6 +115,12 @@ service WifiService {
   // has reconnected or the timeout (in nanoseconds) expires.
   rpc Reassociate (ReassociateRequest) returns (google.protobuf.Empty) {}
 
+  // GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+  rpc GetWifiEnabled(google.protobuf.Empty) returns (GetWifiEnabledResponse) {}
+
+  // SetWifiEnabled persistently enables/disables Wifi via shill.
+  rpc SetWifiEnabled(SetWifiEnabledRequest) returns (google.protobuf.Empty) {}
+
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
 }
@@ -346,6 +352,14 @@ message SetDHCPPropertiesResponse {
 message ReassociateRequest {
   string interface_name = 1;
   int64 timeout = 2;
+}
+
+message GetWifiEnabledResponse{
+    bool enabled = 1;
+}
+
+message SetWifiEnabledRequest{
+    bool enabled = 1;
 }
 
 message WaitForBSSIDRequest {
