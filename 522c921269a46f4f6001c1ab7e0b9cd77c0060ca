@@ -16,6 +16,24 @@
       "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d7d823_3d02d51e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-11T05:14:33Z",
+      "side": 1,
+      "message": "Yes. The list is from http://b/161415599",
+      "parentUuid": "caad22c2_62a72abf",
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
