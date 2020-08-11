@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecf1eb0f_e7045ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-11T13:52:50Z",
+      "side": 1,
+      "message": "Hi Chirantan,\n\nLooks like you introduced seneschal_server_handle field in VmInfo proto message. It\u0027s a bit unclear why it have uint64 type and StartServerResponse has uint32 type. Can you please help us understand whether it\u0027s safe to cast to uint32 or even change seneschal_server_handle type to uint32.\n\nHere is your CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/system_api/+/1123685/\n\nThanks!",
+      "revId": "88c2991e17695ea7caf7c414c4e3cf8e792e66c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
