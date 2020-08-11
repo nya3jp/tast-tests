@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "facf78b7_9be84724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T23:33:43Z",
+      "side": 1,
+      "message": "Thanks for catching this, I changed the comment to it takes service path and changed the call name to: \nExpectShillServiceProperty.\nThe struct name to:\nShillServiceProperty.\n\nI think we can change the name to \u0027ExpectShillProperty\u0027 and \u0027ShillProperty\u0027 if we modified it to use it with other shill objects if needed. WDYT?",
+      "parentUuid": "c5b11d42_78430744",
+      "range": {
+        "startLine": 1075,
+        "startChar": 78,
+        "endLine": 1075,
+        "endChar": 88
+      },
+      "revId": "2d62b346b3a500bbb6861f6507ca18ce3d54b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af01f012_d37c4c25",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "2d62b346b3a500bbb6861f6507ca18ce3d54b4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7e2772_6c5c75eb",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T23:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af01f012_d37c4c25",
+      "range": {
+        "startLine": 83,
+        "startChar": 80,
+        "endLine": 83,
+        "endChar": 90
+      },
+      "revId": "2d62b346b3a500bbb6861f6507ca18ce3d54b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
