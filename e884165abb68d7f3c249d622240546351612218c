@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42798474_5ae1204d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T06:00:22Z",
+      "side": 1,
+      "message": "Some nits. Hands off for WiFi-reviewers\u0027 blessing.",
+      "revId": "e884165abb68d7f3c249d622240546351612218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26828185_9053003b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T06:00:22Z",
+      "side": 1,
+      "message": "; false otherwise.",
+      "range": {
+        "startLine": 1060,
+        "startChar": 63,
+        "endLine": 1060,
+        "endChar": 89
+      },
+      "revId": "e884165abb68d7f3c249d622240546351612218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87d9704_4f433693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T06:00:22Z",
+      "side": 1,
+      "message": "the property does not meet the criterion.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 54,
+        "endLine": 1118,
+        "endChar": 106
+      },
+      "revId": "e884165abb68d7f3c249d622240546351612218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
