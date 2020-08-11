@@ -508,6 +508,30 @@
     },
     {
       "key": {
+        "uuid": "28cc8088_066d2ca3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-11T02:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ce9b207_c9f7bdc6",
+      "range": {
+        "startLine": 145,
+        "startChar": 35,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "fb2c958112d19e3dcc9b1b4da414d542e6069312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741e2341_277bf8c0",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 2
