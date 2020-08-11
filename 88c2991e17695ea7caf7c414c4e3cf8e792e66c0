@@ -16,6 +16,24 @@
       "revId": "88c2991e17695ea7caf7c414c4e3cf8e792e66c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef086c1c_e3fb20d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-08-11T16:21:48Z",
+      "side": 1,
+      "message": "seneschal itself uses a 32-bit value for the handle: https://source.corp.google.com/chromeos_public/src/platform2/vm_tools/seneschal/service.h;l\u003d92\n\nSo that field being a u64 is a bug. I guess in c++ this never shows up as an error due to implicit casting?",
+      "parentUuid": "ecf1eb0f_e7045ac1",
+      "revId": "88c2991e17695ea7caf7c414c4e3cf8e792e66c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
