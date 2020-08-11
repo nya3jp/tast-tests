@@ -268,6 +268,30 @@
       "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e7c42d2_4034f70e",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-08-11T04:25:13Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "6315f570_97072035",
+      "range": {
+        "startLine": 171,
+        "startChar": 29,
+        "endLine": 171,
+        "endChar": 63
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
