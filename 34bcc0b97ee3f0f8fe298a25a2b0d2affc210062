@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aea6f2c5_9e3f6749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-11T01:21:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "06f2cf3e_678a789d",
+      "revId": "34bcc0b97ee3f0f8fe298a25a2b0d2affc210062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3ae032_f67b9b0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
         "patchSetId": 1
