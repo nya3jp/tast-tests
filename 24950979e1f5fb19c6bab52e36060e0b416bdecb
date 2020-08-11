@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "85cf579a_bd78edaa",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-08-11T03:09:38Z",
+      "side": 1,
+      "message": "Added it for consistency.\n\nActually, it is not really necessary. It doesn\u0027t matter if we an update to the array. The critical section was important for the other histogram because its underlying data structure is a hash map and I occasionally saw an exception when the map was modified while iterating over its contents.",
+      "parentUuid": "3790b145_ae9d6420",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f11b8226_e1b87246",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
         "patchSetId": 3
@@ -79,6 +103,30 @@
       "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a735c6_89c3e570",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-08-11T03:09:38Z",
+      "side": 1,
+      "message": "Nice, I didn\u0027t know that this one exists.",
+      "parentUuid": "f11b8226_e1b87246",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "09f3c671_026601da",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-08-11T03:09:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d80ca598_76cf994f",
+      "range": {
+        "startLine": 126,
+        "startChar": 23,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5abe7b31_0b99e1bb",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
         "patchSetId": 3
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "2d076622_bc29da9c",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-08-11T03:09:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5abe7b31_0b99e1bb",
+      "range": {
+        "startLine": 170,
+        "startChar": 32,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32567eea_e90573e7",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
         "patchSetId": 3
@@ -148,6 +244,30 @@
       "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6315f570_97072035",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-08-11T03:09:38Z",
+      "side": 1,
+      "message": "This is mostly for consistency issues. (The sensor timestamp is also in nanoseconds.) Also, I think in future we may want to measure the latency in a more fine grained unit, e.g., microseconds. At the moment, the reported latency values are incorrect on ARCVM due to b/160650453.",
+      "parentUuid": "32567eea_e90573e7",
+      "range": {
+        "startLine": 171,
+        "startChar": 29,
+        "endLine": 171,
+        "endChar": 63
+      },
+      "revId": "24950979e1f5fb19c6bab52e36060e0b416bdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
