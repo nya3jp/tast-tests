@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
@@ -64,7 +65,12 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get user hash")
 		}
 
-		if _, err := os.Stat(filepath.Join(shadow, hash, timestampFile)); err != nil {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := os.Stat(filepath.Join(shadow, hash, timestampFile)); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "timestamp file not found")
 		}
 
