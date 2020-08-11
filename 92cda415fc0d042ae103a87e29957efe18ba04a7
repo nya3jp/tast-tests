@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5a5cba8_5fe62237",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-11T08:16:56Z",
+      "side": 1,
+      "message": "sorry for the late review.",
+      "revId": "92cda415fc0d042ae103a87e29957efe18ba04a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05c049e5_5ee2a1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-11T08:16:56Z",
+      "side": 1,
+      "message": "I was kind of worried about that the first watcher is not consuming signals before the second one gets its expected value. I had the impression that they might block each other, but the current DeliverSignal in godbus seems OK. Probably I didn\u0027t update my understanding of godbus for a while. :P",
+      "range": {
+        "startLine": 1193,
+        "startChar": 42,
+        "endLine": 1196,
+        "endChar": 65
+      },
+      "revId": "92cda415fc0d042ae103a87e29957efe18ba04a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
