@@ -73,6 +73,9 @@ service WifiService {
   // Note that this function does not attempt to connect; it waits for auto
   // connect instead.
   rpc ConfigureAndAssertAutoConnect(ConfigureAndAssertAutoConnectRequest) returns (ConfigureAndAssertAutoConnectResponse) {}
+
+  // SetWifiStatus persistently enables/disables Wifi via shill.
+  rpc SetWifiStatus(SetWifiStatusRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -199,4 +202,8 @@ message ConfigureAndAssertAutoConnectRequest {
 
 message ConfigureAndAssertAutoConnectResponse {
   string path = 1;
+}
+
+message SetWifiStatusRequest{
+    bool status = 1;
 }

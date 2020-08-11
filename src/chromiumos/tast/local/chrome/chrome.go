@@ -199,6 +199,12 @@ func GuestLogin() Option {
 	}
 }
 
+// DisableNoStartupWindow returns an Option that can be passed to new to prevent
+// the startup window from being disabled.
+func DisableNoStartupWindow() Option {
+	return func(c *Chrome) { c.disableNoStartWin = true }
+}
+
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
 	return func(c *Chrome) {
@@ -300,6 +306,7 @@ type Chrome struct {
 	user, pass, gaiaID     string // login credentials
 	normalizedUser         string // user with domain added, periods removed, etc.
 	parentUser, parentPass string // unicorn parent login credentials
+	disableNoStartWin      bool   // flag to disable --no-startup-window
 	keepState              bool
 	deferLogin             bool
 	loginMode              loginMode
@@ -734,10 +741,13 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
-		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
+	}
+
+	if !c.disableNoStartWin {
+		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 	}
 	if c.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
