@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f2294b91_17c8ac4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T23:47:56Z",
+      "side": 1,
+      "message": "I removed \"Service\".",
+      "parentUuid": "0d8545b2_0c55ae68",
+      "range": {
+        "startLine": 1075,
+        "startChar": 78,
+        "endLine": 1075,
+        "endChar": 88
+      },
+      "revId": "2d62b346b3a500bbb6861f6507ca18ce3d54b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af01f012_d37c4c25",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 13
