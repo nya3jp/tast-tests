@@ -22,9 +22,11 @@ func init() {
 }
 
 func BluetoothToggle(ctx context.Context, s *testing.State) {
+	s.Fatal(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))
 	cr, err := chrome.New(
 		ctx,
 		chrome.NoLogin(),
+		chrome.KeepState(),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 	)
 	if err != nil {

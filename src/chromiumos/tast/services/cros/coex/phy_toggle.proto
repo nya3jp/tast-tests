@@ -1,0 +1,23 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.coex;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/coex";
+
+service PhyToggle{
+  //test
+  rpc AssertIfUp(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  //test
+  rpc BringIfUp(Credentials) returns (google.protobuf.Empty) {}
+  //test
+  rpc ChangeBluetooth(Credentials) returns (google.protobuf.Empty) {}
+}
+message Credentials{
+    string req = 1;
+}
