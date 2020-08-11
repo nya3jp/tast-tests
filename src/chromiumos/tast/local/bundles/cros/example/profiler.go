@@ -31,7 +31,10 @@ func Profiler(ctx context.Context, s *testing.State) {
 
 	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
 	if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
-		profs = append(profs, profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}))
+		profs = append(profs, profiler.Perf(profiler.PerfStatRecordOpts()))
+
+		// Get CPU cycle count for all processes.
+		profs = append(profs, profiler.Perf(profiler.PerfStatOpts(profiler.PerfAllProcs)))
 	}
 
 	p, err := profiler.Start(ctx, s.OutDir(), profs...)
@@ -40,8 +43,12 @@ func Profiler(ctx context.Context, s *testing.State) {
 	}
 
 	defer func() {
-		if err := p.End(); err != nil {
-			s.Fatal("Failure in ending the profiler: ", err)
+		if allOutputs, err := p.End(); err != nil {
+			s.Error("Failure in ending the profiler: ", err)
+		} else {
+			// The output of PerfStat profiler in index 3 is a profiler.Output.
+			// Values in it can be accessed by Props, which is a map[string]interface{}
+			s.Log("All CPU cycle count per second: ", allOutputs[3].Props["cyclesPerSecond"])
 		}
 	}()
 
