@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "91b8e85c_e66c4fa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-11T07:15:37Z",
+      "side": 1,
+      "message": "any progress?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02c027ef_5682f13b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
         "patchSetId": 1
