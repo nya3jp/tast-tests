@@ -51,6 +51,24 @@
       "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1604bbc3_e01d82a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-11T21:43:36Z",
+      "side": 1,
+      "message": "Ah, apologies - thanks for letting me know. I assumed too much by reading an old thread.",
+      "parentUuid": "b8fa5879_cc662930",
+      "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
