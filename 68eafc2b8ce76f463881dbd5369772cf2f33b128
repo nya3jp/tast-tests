@@ -74,6 +74,30 @@
       "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5ea480_6a28f681",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-11T02:54:39Z",
+      "side": 1,
+      "message": "I left a blank line because there are two functions below and I meant they are both helper functions of tunneled1x tests.",
+      "parentUuid": "cd52cc41_4f26d8aa",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 0
+      },
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
