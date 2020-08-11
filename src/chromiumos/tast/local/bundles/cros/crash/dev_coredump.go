@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -25,12 +26,28 @@ func init() {
 		Contacts:     []string{"briannorris@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
+		// TODO(crbug.com/1070299): Remove the below hard-coded devices
+		// and use Intel WiFi dependency when wifi hardware
+		// dependencies are implemented.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob",
+			"elm",
+			"grunt",
+			"hana",
+			"akemi", // hatch (akemi)
+			"jacuzzi",
+			"kevin",
+			"kukui",
+			"blooglet", // octopus (blooget)
+			"scarlet",
+			"veyron_fievel",
+			"veyron_mickey",
+			"veyron_tiger",
+			"ezkinil",
+			"trembyle")),
 	})
 }
 
 func DevCoredump(ctx context.Context, s *testing.State) {
-	// TODO(crbug.com/950346): Remove the below check and add dependency on Intel WiFi
-	// when hardware dependencies are implemented.
 	// Verify that DUT has Intel WiFi.
 	if _, err := os.Stat(iwlwifiDir); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
