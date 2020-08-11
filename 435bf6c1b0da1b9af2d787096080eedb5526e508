@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "af3d57bf_df4e2e20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T21:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ecbc59_8a98e406",
+      "range": {
+        "startLine": 1075,
+        "startChar": 3,
+        "endLine": 1075,
+        "endChar": 22
+      },
+      "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14047deb_765d8407",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 12
@@ -62,6 +86,30 @@
       "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dadc75e_84d21987",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T21:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14047deb_765d8407",
+      "range": {
+        "startLine": 818,
+        "startChar": 21,
+        "endLine": 818,
+        "endChar": 28
+      },
+      "revId": "435bf6c1b0da1b9af2d787096080eedb5526e508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
