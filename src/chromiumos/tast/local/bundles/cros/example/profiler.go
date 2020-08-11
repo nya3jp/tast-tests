@@ -31,7 +31,7 @@ func Profiler(ctx context.Context, s *testing.State) {
 
 	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
 	if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
-		profs = append(profs, profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}))
+		profs = append(profs, profiler.Perf(profiler.GetPerfStatRecordOpts()))
 	}
 
 	p, err := profiler.Start(ctx, s.OutDir(), profs...)
@@ -40,7 +40,7 @@ func Profiler(ctx context.Context, s *testing.State) {
 	}
 
 	defer func() {
-		if err := p.End(); err != nil {
+		if _, err := p.End(); err != nil {
 			s.Fatal("Failure in ending the profiler: ", err)
 		}
 	}()
