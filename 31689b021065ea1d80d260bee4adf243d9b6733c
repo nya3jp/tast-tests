@@ -33,6 +33,23 @@
       "revId": "31689b021065ea1d80d260bee4adf243d9b6733c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e46d8_8ecbf74f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T06:59:19Z",
+      "side": 1,
+      "message": "I agree it\u0027s a bit confusing. Thanks for the change!",
+      "revId": "31689b021065ea1d80d260bee4adf243d9b6733c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

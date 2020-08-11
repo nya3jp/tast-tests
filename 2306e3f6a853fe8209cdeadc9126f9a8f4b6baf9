@@ -34,6 +34,24 @@
       "revId": "2306e3f6a853fe8209cdeadc9126f9a8f4b6baf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8443d1_1defe9a4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-11T06:59:19Z",
+      "side": 0,
+      "message": "how about \"Android init did not come up: an initial property was not set\" ?",
+      "parentUuid": "6b214abd_0b3766ac",
+      "revId": "2306e3f6a853fe8209cdeadc9126f9a8f4b6baf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
