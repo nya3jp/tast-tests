@@ -1397,6 +1397,26 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 	}); err != nil {
 		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for isConnected", profileTopName)
 	}
+}
 
+// SetWifiStatus persistently enables/disables Wifi across reboots via shill.
+func (s *WifiService) SetWifiStatus(ctx context.Context, request *network.SetWifiStatusRequest) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	_, err = shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+	}
+	if request.Status {
+		if err := manager.EnableTechnology(ctx, shill.TechnologyWifi); err != nil {
+			return nil, errors.Wrap(err, "could not enable wifi via shill")
+		}
+		return &empty.Empty{}, nil
+	}
+	if err := manager.DisableTechnology(ctx, shill.TechnologyWifi); err != nil {
+		return nil, errors.Wrap(err, "could not disable wifi via shill")
+	}
 	return &empty.Empty{}, nil
 }

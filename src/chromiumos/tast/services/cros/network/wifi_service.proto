@@ -96,6 +96,9 @@ service WifiService {
   // pushes, and pops the profiles and asserts the connection states between
   // those operations.
   rpc ProfileBasicTest(ProfileBasicTestRequest) returns (google.protobuf.Empty) {}
+
+  // SetWifiStatus persistently enables/disables Wifi via shill.
+  rpc SetWifiStatus(SetWifiStatusRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -274,4 +277,8 @@ message ProfileBasicTestRequest {
   }
   Config ap0 = 1;
   Config ap1 = 2;
+}
+
+message SetWifiStatusRequest{
+    bool status = 1;
 }
