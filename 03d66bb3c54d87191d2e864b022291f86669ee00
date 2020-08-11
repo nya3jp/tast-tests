@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8a057_5900c8df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-11T19:50:35Z",
+      "side": 1,
+      "message": "The DUT roam only if there was bgscan, before requesting roam and the roamToAP shows up in the scan results. Otherwise, the test fails for the following reason:\n\u003e DEBUG wpa_supplicant[889]: wpas_dbus_handler_roam[dbus] 00:11:22:33:44:56\n\u003e DEBUG wpa_supplicant[889]: wpas_dbus_handler_roam[dbus] Target AP not found from BSS table\n\nI thought the DiscoverBSSID() solved the roaming issue (because it was running fine on the DUTs I was leasing), but it didn\u0027t. The DiscoverBSSID() runs scans and waits for the BSSID to show up in the scan results in wpa_supplicant. It seems there should be something else that I need to wait for before requestion roam.\n\nLogs for pass and fail cases: https://paste.googleplex.com/4535378692276224\n\nChanging this CL to WIP, and I will conitnue investigating this issue. ",
+      "revId": "03d66bb3c54d87191d2e864b022291f86669ee00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
