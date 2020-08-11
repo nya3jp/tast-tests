@@ -16,6 +16,23 @@
       "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca7c17a0_fc668f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-11T00:00:39Z",
+      "side": 1,
+      "message": "Moving Greg (shadow reviewer) to CC - gwsq to re-roll reviewer...",
+      "revId": "9e21b110134dde42282e5a33bf1f32eafc74e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
