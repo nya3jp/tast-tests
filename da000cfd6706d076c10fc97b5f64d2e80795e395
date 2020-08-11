@@ -692,6 +692,30 @@
     },
     {
       "key": {
+        "uuid": "fdda06e1_c498df8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-11T09:37:12Z",
+      "side": 1,
+      "message": "btw, I\u0027d inline this function.",
+      "parentUuid": "f2c1d58b_cdd6ad72",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "da000cfd6706d076c10fc97b5f64d2e80795e395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acdde64c_cf0da848",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 4
