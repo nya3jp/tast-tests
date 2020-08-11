@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e3ce81_0dffe8c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-11T22:56:13Z",
+      "side": 1,
+      "message": "Note: must wait until crrev.com/c/2350659 is landed on ChromeOS.",
+      "revId": "609350148fc07783d25e53f2f3d358c1fffcd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
