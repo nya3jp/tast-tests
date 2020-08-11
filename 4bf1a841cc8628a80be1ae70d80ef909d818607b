@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a28c0787_da07ea83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-11T00:57:02Z",
+      "side": 1,
+      "message": "LGTM % Commit message",
+      "revId": "4bf1a841cc8628a80be1ae70d80ef909d818607b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b688aa86_d9dc4ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-11T00:57:02Z",
+      "side": 1,
+      "message": "optional: I think it would be simpler if testing.ContextLog was always called, and we dropped the else. i.e.\n\ntesting.ContextLog(....)\nif err \u003d\u003d nil {\n   err \u003d clearErr\n}\n\nDitto for cases below.",
+      "revId": "4bf1a841cc8628a80be1ae70d80ef909d818607b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
