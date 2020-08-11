@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0d8545b2_0c55ae68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-11T23:35:25Z",
+      "side": 1,
+      "message": "The names are all getting a bit long -- I\u0027m fine with or without \"Service\" in the names. The comments are nice though.\n\nThe latest LGTM.",
+      "parentUuid": "facf78b7_9be84724",
+      "range": {
+        "startLine": 1075,
+        "startChar": 78,
+        "endLine": 1075,
+        "endChar": 88
+      },
+      "revId": "2d62b346b3a500bbb6861f6507ca18ce3d54b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af01f012_d37c4c25",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 13
