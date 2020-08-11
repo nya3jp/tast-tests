@@ -145,6 +145,13 @@ const (
 // for details about this pattern.
 type Option func(c *Chrome)
 
+// EnableWebAppInstall returns an Option that can be passed to enable web app auto-install after user login.
+// By default web app auto-install is disabled to reduce network traffic in test environment.
+// See https://crbug.com/1076660 for more details.
+func EnableWebAppInstall() Option {
+	return func(c *Chrome) { c.installWebApp = true }
+}
+
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func Auth(user, pass, gaiaID string) Option {
@@ -304,6 +311,7 @@ type Chrome struct {
 	deferLogin             bool
 	loginMode              loginMode
 	skipOOBEAfterLogin     bool // skip OOBE post user login
+	installWebApp          bool // auto install essential apps after user login
 	region                 string
 	policyEnabled          bool   // flag to enable policy fetch
 	dmsAddr                string // Device Management URL, or empty if using default
@@ -363,6 +371,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		keepState:          false,
 		loginMode:          fakeLogin,
 		skipOOBEAfterLogin: true,
+		installWebApp:      false,
 		region:             "us",
 		policyEnabled:      false,
 		enroll:             false,
@@ -417,25 +426,25 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 			for _, e := range cryptohome.CheckDeps(ctx) {
 				testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
 			}
-			return nil, err
+			return nil, errors.Wrap(err, "failed to check cryptohome service")
 		}
 	}
 
 	if err := c.PrepareExtensions(ctx); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 
 	if err := c.restartChromeForTesting(ctx); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
 	var err error
 	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
-		return nil, c.chromeErr(err)
+		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
 	if c.loginMode != noLogin && !c.keepState {
 		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
 		}
 	}
 
@@ -526,7 +535,6 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
 		firstErr = err
 	}
-
 	return firstErr
 }
 
@@ -747,6 +755,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		args = append(args, "--oobe-skip-postlogin")
 	}
 
+	if !c.installWebApp {
+		args = append(args, "--disable-features=DefaultWebAppInstallation")
+	}
+
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	} else {
@@ -862,6 +874,27 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 				testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
 			} else {
 				testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
+			}
+		}
+
+		// Delete files from shadow directory.
+		const shadowDir = "/home/.shadow"
+		shadowFiles, err := ioutil.ReadDir(shadowDir)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+		}
+		for _, file := range shadowFiles {
+			if !file.IsDir() {
+				continue
+			}
+			// Only look for chronos file with names matching u-*.
+			chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+			shadowName := filepath.Join(shadowDir, file.Name())
+			// Remove the shadow directory if it does not have a corresponding chronos directory.
+			if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+				if err := os.RemoveAll(shadowName); err != nil {
+					testing.ContextLogf(ctx, "Failed to remove %q: %v", shadowName, err)
+				}
 			}
 		}
 

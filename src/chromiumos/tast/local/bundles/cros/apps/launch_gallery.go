@@ -35,7 +35,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 		Data:         []string{testFile},
 		Params: []testing.Param{
 			{

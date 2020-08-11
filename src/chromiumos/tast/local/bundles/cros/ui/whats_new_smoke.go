@@ -28,13 +28,17 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 
 // WhatsNewSmoke tests that we can open the What's New PWA from the Settings app entry point.
 func WhatsNewSmoke(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.EnableWebAppInstall())
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)

@@ -5,83 +5,57 @@
 package iw
 
 import (
-	"bufio"
 	"context"
-	"io"
-	"math"
-	"regexp"
-	"strconv"
-	"strings"
 	"sync"
 	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
-// EventType is the classified type of captured Event from EventLogger.
-type EventType int
-
-// EventType enums.
-const (
-	EventTypeDisconnect EventType = iota
-	EventTypeChanSwitch
-	EventTypeUnknown
-)
-
-// Event is the structure to store one event from "iw event".
-type Event struct {
-	Type      EventType
-	Timestamp time.Time
-	Interface string
-	Message   string
-}
-
-// EventLogger captures events on wifi interface with "iw event".
+// EventLogger captures events on a WiFi interface with "iw event".
 type EventLogger struct {
-	lock   sync.RWMutex
-	done   chan struct{}
-	dut    *dut.DUT
-	cmd    *ssh.Cmd
-	events []*Event
+	lock    sync.RWMutex
+	done    chan struct{}
+	events  []*Event
+	watcher *EventWatcher
 }
 
 // NewEventLogger creates and starts a new EventLogger.
-func NewEventLogger(ctx context.Context, dut *dut.DUT) (*EventLogger, error) {
+func NewEventLogger(ctx context.Context, dut *dut.DUT, ops ...EventWatcherOption) (*EventLogger, error) {
 	e := &EventLogger{
-		dut:  dut,
 		done: make(chan struct{}),
 	}
-	if err := e.start(ctx); err != nil {
-		return nil, err
-	}
-	return e, nil
-}
-
-// start the "iw event" process and parser routine in background.
-func (e *EventLogger) start(ctx context.Context) error {
-	e.cmd = e.dut.Command("iw", "event", "-t")
-	r, err := e.cmd.StdoutPipe()
+	ew, err := NewEventWatcher(ctx, dut, ops...)
 	if err != nil {
-		return err
+		return nil, errors.New("failed to create an event watcher")
 	}
-	if err := e.cmd.Start(ctx); err != nil {
-		return err
-	}
+	e.watcher = ew
 	go func() {
 		defer close(e.done)
-		e.parse(ctx, r)
+		for {
+			ev, err := e.watcher.Wait(ctx)
+			if err != nil {
+				if err != ErrWatcherClosed {
+					testing.ContextLog(ctx, "Unexpected error from EventWatcher: ", err)
+				}
+				return
+			}
+			func() {
+				e.lock.Lock()
+				defer e.lock.Unlock()
+				e.events = append(e.events, ev)
+			}()
+		}
 	}()
-	return nil
+	return e, nil
 }
 
 // Stop the EventLogger.
 func (e *EventLogger) Stop(ctx context.Context) error {
-	e.cmd.Abort()
-	e.cmd.Wait(ctx) // Ignore the error due to abort.
-	<-e.done        // Wait the bg routine to end.
+	e.watcher.Stop(ctx)
+	<-e.done // Wait for the bg routine to end.
 	return nil
 }
 
@@ -108,66 +82,20 @@ func (e *EventLogger) EventsByType(et EventType) []*Event {
 	return ret
 }
 
-// parse output of "iw event" from reader.
-func (e *EventLogger) parse(ctx context.Context, r io.Reader) {
-	scanner := bufio.NewScanner(r)
-	for scanner.Scan() {
-		line := scanner.Text()
-		ev, err := parseEvent(line)
-		if err != nil {
-			testing.ContextLogf(ctx, "error parsing event, err=%s", err.Error())
-			continue
-		}
-		func() {
-			e.lock.Lock()
-			defer e.lock.Unlock()
-			e.events = append(e.events, ev)
-		}()
+// DisconnectTime finds the first disconnect event and returns the time.
+func (e *EventLogger) DisconnectTime() (time.Time, error) {
+	disconnectEvs := e.EventsByType(EventTypeDisconnect)
+	if len(disconnectEvs) == 0 {
+		return time.Time{}, errors.New("disconnect event not found")
 	}
+	return disconnectEvs[0].Timestamp, nil
 }
 
-// Format of event from iw: "<time>: <interface>[ <phy id>]: <message>"
-// time: epoch time in second to 6 decimal places
-// interface: "wdev 0x{idhex}"|"{ifname}"
-// phy id: "(phy #{phyid})"
-var eventRE = regexp.MustCompile(`\s*(\d+(?:\.\d+)?): ((?:\w+)|(?:wdev \w+))(?: \(phy #\d+\))?: (\w.*)`)
-
-// parseEvent parses a single line from "iw event" into Event object.
-func parseEvent(line string) (*Event, error) {
-	m := eventRE.FindStringSubmatch(line)
-	if len(m) != 4 {
-		return nil, errors.Errorf("not a event: %s", line)
+// ConnectedTime finds the first connected event and returns the time.
+func (e *EventLogger) ConnectedTime() (time.Time, error) {
+	connectedEvs := e.EventsByType(EventTypeConnected)
+	if len(connectedEvs) == 0 {
+		return time.Time{}, errors.New("connected event not found")
 	}
-	t, err := strconv.ParseFloat(m[1], 64)
-	if err != nil {
-		return nil, errors.Wrapf(err, "expect timestamp as a float, actual: %q", m[1])
-	}
-	// Convert epoch time to time.Time.
-	d, f := math.Modf(t)
-	nsecMultiplier := float64(time.Second / time.Nanosecond)
-	ts := time.Unix(int64(d), int64(f*nsecMultiplier))
-	ev := &Event{
-		Timestamp: ts,
-		Interface: m[2],
-		Message:   m[3],
-	}
-	ev.Type = detectEventType(ev)
-	return ev, nil
-}
-
-// detectEventType identifies the type of the Event object.
-func detectEventType(ev *Event) EventType {
-	if strings.HasPrefix(ev.Message, "disconnected") {
-		return EventTypeDisconnect
-	}
-	if strings.HasPrefix(ev.Message, "Deauthenticated") {
-		return EventTypeDisconnect
-	}
-	if ev.Message == "Previous authentication no longer valid" {
-		return EventTypeDisconnect
-	}
-	if strings.Contains(ev.Message, "ch_switch_started_notify") {
-		return EventTypeChanSwitch
-	}
-	return EventTypeUnknown
+	return connectedEvs[0].Timestamp, nil
 }

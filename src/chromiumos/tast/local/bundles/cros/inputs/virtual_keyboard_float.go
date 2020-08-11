@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -27,7 +28,7 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.ExcludeModels...)),
+		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
 	})
 }
 
@@ -83,7 +84,9 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find drag point: ", err)
 	}
 
-	if !newDragPoint.Equals(destinationPoint) {
+	// When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.
+	// e.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).
+	if math.Abs(float64(newDragPoint.X-destinationPoint.X)) > 3 || math.Abs(float64(newDragPoint.Y-destinationPoint.Y)) > 3 {
 		s.Errorf("Failed to drag float VK or it did not land at desired location. got: %v, want: %v", newDragPoint, destinationPoint)
 	}
 

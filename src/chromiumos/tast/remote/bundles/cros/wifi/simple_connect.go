@@ -9,10 +9,14 @@ import (
 	"fmt"
 	"strings"
 
+	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -23,7 +27,9 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac security.ConfigFactory
+	secConfFac      security.ConfigFactory
+	pingOps         []ping.Option
+	expectedFailure bool
 }
 
 func init() {
@@ -509,12 +515,90 @@ func init() {
 					// Mix of ASCII and Unicode characters as SSID.
 					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
 				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
+				Name:      "8021xwep",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: dynamicwep.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							dynamicwep.ClientCACert(eapCert1.CACert),
+							dynamicwep.ClientCred(eapCert1.ClientCred),
+							dynamicwep.RekeyPeriod(10),
+						),
+						pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
+				Name:      "8021xwpa",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+					},
+					{
+						// Failure due to lack of CACert on client.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to unmatched CACert.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert2.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Should succeed if we specify that we have no CACert.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCred(eapCert1.ClientCred),
+							wpaeap.NotUseSystemCAs(),
+						),
+					},
+					{
+						// Failure due to wrong certificate chain on client.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert2.ClientCred),
+						),
+						expectedFailure: true,
+					},
+					{
+						// Failure due to expired cert on server.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpaeap.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ExpiredServerCred,
+							wpaeap.ClientCACert(eapCert1.CACert),
+							wpaeap.ClientCred(eapCert1.ClientCred),
+						),
+						expectedFailure: true,
+					},
+				},
 			},
 		},
 	})
 }
 
-func SimpleConnect(fullCtx context.Context, s *testing.State) {
+func SimpleConnect(ctx context.Context, s *testing.State) {
 	ops := []wificell.TFOption{
 		wificell.TFCapture(true),
 	}
@@ -526,15 +610,17 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	}
 	// As we are not in precondition, we have fullCtx as both method context and
 	// daemon context.
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), ops...)
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
 			s.Log("Failed to tear down test fixture, err: ", err)
 		}
-	}()
+	}(ctx)
+	ctx, cancel := tf.ReserveForClose(ctx)
+	defer cancel()
 
 	pv := perf.NewValues()
 	defer func() {
@@ -543,36 +629,47 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		}
 	}()
 
-	ctx, cancel := tf.ReserveForClose(fullCtx)
-	defer cancel()
-
-	testOnce := func(fullCtx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory) {
-		ap, err := tf.ConfigureAP(fullCtx, options, fac)
+	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
+		ap, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
-		defer func() {
-			if err := tf.DeconfigAP(fullCtx, ap); err != nil {
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
-		}()
-		ctx, cancel := tf.ReserveForDeconfigAP(fullCtx, ap)
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 		s.Log("AP setup done")
 
-		resp, err := tf.ConnectWifiAP(ctx, ap)
-		if err != nil {
-			s.Fatal("Failed to connect to WiFi, err: ", err)
-		}
-		defer func() {
-			if err := tf.DisconnectWifi(fullCtx); err != nil {
-				s.Error("Failed to disconnect WiFi, err: ", err)
-			}
+		// Some tests may fail as expected at following ConnectWifiAP(). In that case entries should still be deleted properly.
+		defer func(ctx context.Context) {
 			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 			}
-		}()
+		}(ctx)
+
+		resp, err := tf.ConnectWifiAP(ctx, ap)
+		if err != nil {
+			if expectedFailure {
+				s.Log("Failed to connect to WiFi as expected")
+				// If we expect to fail, then this test is already done.
+				return
+			}
+			s.Fatal("Failed to connect to WiFi, err: ", err)
+		}
+		defer func(ctx context.Context) {
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
+				s.Error("Failed to disconnect WiFi, err: ", err)
+			}
+		}(ctx)
+		ctx, cancel = tf.ReserveForDisconnect(ctx)
+		defer cancel()
+		if expectedFailure {
+			s.Fatal("Expected to fail to connect to WiFi, but it was successful")
+		}
 		s.Log("Connected")
 
 		desc := ap.Config().PerfDesc()
@@ -596,7 +693,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			Direction: perf.SmallerIsBetter,
 		}, float64(resp.ConfigurationTime)/1e9)
 		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx, ap.ServerIP().String())
+			return tf.PingFromDUT(ctx, ap.ServerIP().String(), pingOps...)
 		}
 
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
@@ -622,7 +719,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
@@ -656,6 +753,12 @@ func wep104KeysHidden() []string {
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
 }
+
+// EAP certs/keys for EAP tests.
+var (
+	eapCert1 = certificate.TestCert1()
+	eapCert2 = certificate.TestCert2()
+)
 
 // byteSequenceStr generates a string from the slice of bytes in [start, end].
 // Both start and end are included in the result string.

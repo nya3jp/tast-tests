@@ -7,7 +7,7 @@
 package org.chromium.arc.testapp.multidisplay;
 
 /**
- * Activity which is marked as resizeable.
+ * Activity which is marked as non-resizeable.
  */
-public class ResizeableActivity extends BaseActivity {
+public class NonResizeableHandlingActivity extends BaseActivity {
 }

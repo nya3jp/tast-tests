@@ -6,7 +6,6 @@ package graphics
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
@@ -92,51 +91,37 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	}
 
 	profile := s.Param().(string)
-	peerConnectionCode := fmt.Sprintf(`new Promise((resolve, reject) => {
-			var pc1 = new RTCPeerConnection();
-			var pc2 = new RTCPeerConnection();
+	if err := conn.Call(ctx, nil, `(profile) => new Promise(async (resolve, reject) => {
+		  let pc1 = new RTCPeerConnection();
+		  let pc2 = new RTCPeerConnection();
 
-			pc1.onicecandidate = e => pc2.addIceCandidate(e.candidate).catch(reject);
-			pc2.onicecandidate = e => pc1.addIceCandidate(e.candidate).catch(reject);
-			pc2.ontrack = e => {
-				let remoteVideo = document.getElementById('remoteVideo');
-				remoteVideo.srcObject = e.streams[0];
-				resolve();
-			};
+		  pc1.onicecandidate = e => pc2.addIceCandidate(e.candidate).catch(reject);
+		  pc2.onicecandidate = e => pc1.addIceCandidate(e.candidate).catch(reject);
+		  pc2.ontrack = e => {
+		    let remoteVideo = document.getElementById('remoteVideo');
+		    remoteVideo.srcObject = e.streams[0];
+		    resolve();
+		  };
 
-			const offerOptions = {
-				offerToReceiveAudio: 1,
-				offerToReceiveVideo: 1
-			};
-			const constraints = {
-				audio: false,
-				video: {
-					mandatory: {
-						minWidth : 1920,
-						maxWidth : 1920,
-						minHeight : 1080,
-						maxHeight : 1080
-					}
-				}
-			};
-
-			navigator.mediaDevices.getUserMedia(constraints)
-			.then(stream => stream.getTracks().forEach(track => pc1.addTrack(track, stream)))
-			.then(() => pc1.createOffer(offerOptions))
-			.then(offer => {
-				const profile = %q;
-				if (profile) {
-					offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
-				}
-				pc1.setLocalDescription(offer)
-			})
-			.then(() => pc2.setRemoteDescription(pc1.localDescription))
-			.then(() => pc2.createAnswer())
-			.then(offer => pc2.setLocalDescription(offer))
-			.then(() => pc1.setRemoteDescription(pc2.localDescription))
-			.catch(reject);
-		});`, profile)
-	if err := conn.EvalPromise(ctx, peerConnectionCode, nil); err != nil {
+		  try {
+		    let stream = await navigator.mediaDevices.getUserMedia({
+		      audio: false,
+		      video: { width: 1920, height: 1080 }
+		    });
+		    stream.getTracks().forEach(track => pc1.addTrack(track, stream));
+		    let offer1 = await pc1.createOffer();
+		    if (profile) {
+		      offer1.sdp = setSdpDefaultVideoCodec(offer1.sdp, profile, false, "");
+		    }
+		    await pc1.setLocalDescription(offer1);
+		    await pc2.setRemoteDescription(pc1.localDescription);
+		    let offer2 = await pc2.createAnswer();
+		    await pc2.setLocalDescription(offer2);
+		    await pc1.setRemoteDescription(pc2.localDescription);
+		  } catch (e) {
+		    reject(e);
+		  }
+		})`, profile); err != nil {
 		s.Fatal("RTCPeerConnection establishment failed: ", err)
 	}
 

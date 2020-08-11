@@ -9,8 +9,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/rpc"
-	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/testing"
 )
 
@@ -25,15 +24,13 @@ func init() {
 }
 
 func BlockingSync(ctx context.Context, s *testing.State) {
-	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC: ", err)
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", "")
+	defer h.Close(ctx)
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		s.Fatal("Requiring RPC utils: ", err)
 	}
-	defer cl.Close(ctx)
-	utils := fwpb.NewUtilsServiceClient(cl.Conn)
 
-	if _, err := utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Error during BlockingSync: ", err)
+	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("During BlockingSync: ", err)
 	}
 }

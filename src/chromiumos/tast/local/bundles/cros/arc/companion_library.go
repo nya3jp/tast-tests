@@ -201,7 +201,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
 	s.Log("Running Window shadow")
-	if err := setWindowStateSync(ctx, shadowAct, arc.WindowStateNormal); err != nil {
+	if err := setWindowStateSync(ctx, tconn, shadowAct, arc.WindowStateNormal); err != nil {
 		s.Fatal("Could not set window normal state: ", err)
 	}
 	if err := testWindowShadow(ctx, cr, tconn, shadowAct, d); err != nil {
@@ -228,7 +228,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Fatal("Could not stop resize activity: ", err)
 		}
 	}()
-	if err := setWindowStateSync(ctx, resizeAct, arc.WindowStateNormal); err != nil {
+	if err := setWindowStateSync(ctx, tconn, resizeAct, arc.WindowStateNormal); err != nil {
 		s.Fatal("Could not set window normal state: ", err)
 	}
 	if err := testResizeWindow(ctx, tconn, resizeAct, d); err != nil {
@@ -244,7 +244,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 	)
 
 	// Change the window to normal state for display the shadow out of edge.
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
 		return errors.Wrap(err, "could not set window state to normal")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -791,7 +791,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.TestConn, act *arc.Act
 func testDeviceMode(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
-	if err := setWindowStateSync(ctx, act, arc.WindowStateNormal); err != nil {
+	if err := setWindowStateSync(ctx, tconn, act, arc.WindowStateNormal); err != nil {
 		return errors.Wrap(err, "failed to set window normal state before testing device mode change")
 	}
 	for _, test := range []struct {
@@ -951,7 +951,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the setting window will have an initial maximized state.
-	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+	if err := settingAct.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
 		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, settingPkgName, ash.WindowStateMaximized); err != nil {
@@ -1395,8 +1395,8 @@ func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, is
 }
 
 // setWindowStateSync returns after the window state changed as expected.
-func setWindowStateSync(ctx context.Context, act *arc.Activity, state arc.WindowState) error {
-	if err := act.SetWindowState(ctx, state); err != nil {
+func setWindowStateSync(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, state arc.WindowState) error {
+	if err := act.SetWindowState(ctx, tconn, state); err != nil {
 		return errors.Wrap(err, "could not set window state")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {

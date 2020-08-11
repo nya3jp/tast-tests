@@ -30,6 +30,12 @@ const (
 	// of skipping those crashes in user_collector in favor of letting ChromeCollector
 	// handle them.) This behavior change will mess up several crash tests.
 	collectChromeCrashFile = "/mnt/stateful_partition/etc/collect_chrome_crashes"
+
+	// rebootPersistenceCount is the number of reboots across which the
+	// mock-consent and crash-test-in-progress files should persist, in
+	// case the DUT reboots multiple times during the test. It is only used
+	// when the RebootingTest option is passed.
+	rebootPersistenceCount = "4"
 )
 
 // ConsentType is to be used for parameters to tests, to allow them to determine
@@ -389,10 +395,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		}
 		if p.rebootTest {
 			mockConsentPersistent := filepath.Join(p.rebootPersistDir, mockConsentFile)
-			// Initialize consent file with contents of "2" so that
-			// it stays across 2 reboots if they happen in the
-			// middle of the test.
-			if err := ioutil.WriteFile(mockConsentPersistent, []byte("2"), 0644); err != nil {
+			if err := ioutil.WriteFile(mockConsentPersistent, []byte(rebootPersistenceCount), 0644); err != nil {
 				return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPersistent)
 			}
 		}
@@ -411,10 +414,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 
 	if p.rebootTest {
 		filePath = filepath.Join(p.rebootPersistDir, crashTestInProgressFile)
-		// Initialize in-progress file with contents of "2" so that it
-		// stays across 2 reboots if they happen in the middle of the
-		// test.
-		if err := ioutil.WriteFile(filePath, []byte("2"), 0644); err != nil {
+		if err := ioutil.WriteFile(filePath, []byte(rebootPersistenceCount), 0644); err != nil {
 			return errors.Wrapf(err, "could not create %v", filePath)
 		}
 	}

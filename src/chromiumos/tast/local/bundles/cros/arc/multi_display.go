@@ -55,7 +55,6 @@ const (
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
-	resizeableConfigHandleActivity     = "org.chromium.arc.testapp.multidisplay.ResizeableActivity"
 )
 
 // Power state for displays.
@@ -97,6 +96,7 @@ var unstableTestSet = []testEntry{
 	// Based on http://b/130897153.
 	{"Remove and re-add displays", removeAddDisplay},
 	{"Drag a window between displays", dragWindowBetweenDisplays},
+	{"Rotate display", rotateDisplay},
 }
 
 func init() {
@@ -631,27 +631,45 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
+	type shouldMoveFlag bool
+	const (
+		shouldMove    shouldMoveFlag = true
+		shouldNotMove shouldMoveFlag = false
+	)
 	for _, param := range []struct {
 		// Activity package and class.
 		pkg, activity string
 		// Initial state of the window being dragged.
 		winState ash.WindowStateType
+		// Display where activity should be placed after the drag operation.
+		shouldMove shouldMoveFlag
 		// Expected config set to be changed.
 		wantCC []configChangeEvent
 	}{
-		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateNormal, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: true,
 			density: true,
 		}}},
-		{dispPkg, resizeableConfigHandleActivity, ash.WindowStateMaximized, []configChangeEvent{{
+		{dispPkg, activityName(resizeable, handling), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
 			handled:            true,
 			density:            true,
 			screenSize:         true,
 			smallestScreenSize: true,
 			orientation:        true,
 		}}},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateNormal, nil},
-		{wmPkgMD, nonResizeableUnspecifiedActivityMD, ash.WindowStateMaximized, nil},
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateNormal, shouldMove, []configChangeEvent{{
+			handled: false,
+			density: true,
+		}}},
+		{dispPkg, activityName(resizeable, relaunching), ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
+			handled:            false,
+			density:            true,
+			screenSize:         true,
+			smallestScreenSize: true,
+			orientation:        true,
+		}}},
+		{dispPkg, activityName(nonResizeable, handling), ash.WindowStateMaximized, shouldNotMove, nil},
+		{dispPkg, activityName(sizeCompat, handling), ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
 		for _, dir := range []struct {
 			// Display where drag operation starts.
@@ -673,6 +691,10 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 				defer act.close(ctx, tconn)
 
 				if err := act.setWindowState(ctx, tconn, param.winState); err != nil {
+					return err
+				}
+
+				if err := deleteConfigurationChanges(ctx, a); err != nil {
 					return err
 				}
 
@@ -710,36 +732,40 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 					return err
 				}
 
-				dstDispID := disp.displayInfo(dir.dstDisp).ID
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
+				sourceDispID := disp.displayInfo(dir.srcDisp).ID
+				wantDispID := disp.displayInfo(dir.dstDisp).ID
+
+				err = testing.Poll(ctx, func(ctx context.Context) error {
 					win, err := act.findWindow(ctx, tconn)
 					if err != nil {
 						return err
 					}
-					if win.DisplayID != dstDispID {
-						return errors.Errorf("activity is not moved to destination display: got %s; want %s", win.DisplayID, dstDispID)
+					if win.DisplayID == wantDispID {
+						return nil
 					}
-					return nil
-				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-					return err
+					if win.DisplayID == sourceDispID {
+						return &activityStayingError{win.DisplayID}
+					}
+					return testing.PollBreak(errors.Errorf("Display is moved to unexpected display: got %s; want %s", win.DisplayID, wantDispID))
+				}, &testing.PollOptions{Timeout: 2 * time.Second})
+
+				if param.shouldMove {
+					if err != nil {
+						return err
+					}
+				} else {
+					if err == nil {
+						return errors.New("Activity is unexpectedly moved to the destination display")
+					}
+					var notMoved *activityStayingError
+					if !errors.As(err, &notMoved) {
+						return err
+					}
 				}
 
-				if param.wantCC == nil {
-					// No cc to verify.
-					return nil
-				}
-
-				ccActs, err := queryConfigurationChanges(ctx, a)
+				ccList, err := queryConfigurationChanges(ctx, a)
 				if err != nil {
 					return err
-				}
-				if len(ccActs) > 1 {
-					return errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(ccActs))
-				}
-
-				var ccList []configChangeEvent
-				for _, c := range ccActs {
-					ccList = c
 				}
 				if !reflect.DeepEqual(ccList, param.wantCC) {
 					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
@@ -753,7 +779,174 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	return nil
 }
 
+// rotateDisplay verifies the behavior of rotating a display.
+func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	// Setup display layout.
+	disp, err := getInternalAndExternalDisplays(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	for _, param := range []struct {
+		displayID   androidDisplayID
+		windowState ash.WindowStateType
+		wantCC      []configChangeEvent
+	}{
+		{internalDisplayID, ash.WindowStateNormal, nil},
+		{internalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+			{handled: true, screenSize: true, orientation: true},
+		}},
+		{firstExternalDisplayID, ash.WindowStateNormal, nil},
+		{firstExternalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+			{handled: true, screenSize: true, orientation: true},
+		}},
+	} {
+		runOrFatal(
+			ctx,
+			s,
+			fmt.Sprintf("%s on %s display", param.windowState, param.displayID.label()),
+			func(ctx context.Context, s *testing.State) error {
+				act, err := lunchActivity(ctx, tconn, a, dispPkg, activityName(resizeable, handling), param.displayID)
+				if err != nil {
+					return err
+				}
+				defer act.close(ctx, tconn)
+
+				if err := act.setWindowState(ctx, tconn, param.windowState); err != nil {
+					return err
+				}
+
+				if err := deleteConfigurationChanges(ctx, a); err != nil {
+					return err
+				}
+
+				currentRot := currentRotation{ctx, tconn, disp.displayInfo(param.displayID).ID, 0}
+				if err := currentRot.read(); err != nil {
+					return err
+				}
+				defer currentRot.setTo(currentRot.degree)
+				if err := currentRot.setTo((currentRot.degree + 90) % 360); err != nil {
+					return err
+				}
+
+				ccList, err := queryConfigurationChanges(ctx, a)
+				if err != nil {
+					return err
+				}
+
+				if !reflect.DeepEqual(ccList, param.wantCC) {
+					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
+				}
+
+				return nil
+			})
+	}
+
+	return nil
+}
+
 // Helper functions.
+
+// currentRotation remembers the current display rotation so that it gets back
+// to the original rotation after sub-test completes.
+type currentRotation struct {
+	ctx    context.Context
+	tconn  *chrome.TestConn
+	id     string
+	degree int
+}
+
+// read reads the current display rotation via Chrome API.
+func (current *currentRotation) read() error {
+	info, err := display.GetInfo(current.ctx, current.tconn)
+	if err != nil {
+		return err
+	}
+
+	for _, i := range info {
+		if i.ID == current.id {
+			current.degree = i.Rotation
+			return nil
+		}
+	}
+
+	return errors.Errorf("display %s not found", current.id)
+}
+
+// setTo changes the display rotation and waits until the change is effective.
+func (current *currentRotation) setTo(degree int) error {
+	if current.degree == degree {
+		return nil
+	}
+
+	if err := display.SetDisplayProperties(
+		current.ctx, current.tconn, current.id,
+		display.DisplayProperties{Rotation: &degree}); err != nil {
+		return err
+	}
+
+	// Poll is required as completion of display.SetDisplayProperties does not
+	// ensure display.GetInfo returns new info.
+	return testing.Poll(current.ctx, func(ctx context.Context) error {
+		if err := current.read(); err != nil {
+			return testing.PollBreak(err)
+		}
+		if current.degree != degree {
+			return errors.Errorf("display rotation has not been updated: got %d; want %d", current.degree, degree)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// See go/arc-wm-r-spec for details.
+type resizeability int
+
+const (
+	// Resizeable
+	resizeable resizeability = iota
+	// Non-resizeable
+	nonResizeable
+	// Non-resizeable + specifying orientation
+	sizeCompat
+)
+
+// Whether activity is expected to handle config changes, or it's going to relaunch.
+type configChangeHandling int
+
+const (
+	handling configChangeHandling = iota
+	relaunching
+)
+
+// activityName generates Activity name based on its properties.
+func activityName(r resizeability, c configChangeHandling) string {
+	var rs, cs string
+
+	if r == resizeable {
+		rs = "Resizeable"
+	} else if r == nonResizeable {
+		rs = "NonResizeable"
+	} else if r == sizeCompat {
+		rs = "SizeCompat"
+	} else {
+		panic("not reached")
+	}
+
+	if c == handling {
+		cs = "Handling"
+	} else if c == relaunching {
+		cs = "Relaunching"
+	} else {
+		panic("not reached")
+	}
+
+	return fmt.Sprintf("%s.%s%sActivity", dispPkg, rs, cs)
+}
 
 // configChangeEvent is an entry of config change event.
 type configChangeEvent struct {
@@ -800,12 +993,12 @@ func (parser *configChangeParser) parse(line string) (int32, configChangeEvent, 
 }
 
 // queryConfigurationChanges obtains the history of configuration change from test app.
-func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]configChangeEvent, error) {
+func queryConfigurationChanges(ctx context.Context, a *arc.ARC) ([]configChangeEvent, error) {
 	bytes, err := a.Command(ctx, "content", "query", "--uri", configChangesURI).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, err
 	}
-	result := make(map[int32][]configChangeEvent)
+	perAct := make(map[int32][]configChangeEvent)
 	lines := strings.Split(string(bytes), "\n")
 	for _, line := range lines {
 		if line == "" {
@@ -813,15 +1006,29 @@ func queryConfigurationChanges(ctx context.Context, a *arc.ARC) (map[int32][]con
 		}
 		// "No result found." taken from here: https://source.corp.google.com/android/frameworks/base/cmds/content/src/com/android/commands/content/Content.java;l=657
 		if line == "No result found." {
-			return make(map[int32][]configChangeEvent), nil
+			return nil, nil
 		}
 		actID, c, err := ccParser.parse(line)
 		if err != nil {
 			return nil, err
 		}
-		result[actID] = append(result[actID], c)
+		perAct[actID] = append(perAct[actID], c)
 	}
-	return result, nil
+
+	if len(perAct) > 1 {
+		return nil, errors.Errorf("there must be at most one activity generating config changes: got %d; want 1", len(perAct))
+	}
+
+	for _, cc := range perAct {
+		return cc, nil
+	}
+
+	return nil, nil
+}
+
+// deleteConfigurationChanges deletes recorded config changes.
+func deleteConfigurationChanges(ctx context.Context, a *arc.ARC) error {
+	return a.Command(ctx, "content", "delete", "--uri", configChangesURI).Run(testexec.DumpLogOnError)
 }
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
@@ -1237,4 +1444,14 @@ func runOrFatal(ctx context.Context, s *testing.State, name string, body func(co
 			s.Fatal("subtest failed: ", err)
 		}
 	})
+}
+
+// activityStayingError warns the activity keeps staying at the original display.
+type activityStayingError struct {
+	displayID string
+}
+
+// Error is for error interface.
+func (e *activityStayingError) Error() string {
+	return fmt.Sprintf("activity still stays at the source display %s", e.displayID)
 }

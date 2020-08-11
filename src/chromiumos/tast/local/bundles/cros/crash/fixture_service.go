@@ -92,7 +92,7 @@ func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_servi
 		return nil, errors.Wrap(err, "boot_collector did not complete")
 	}
 
-	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), []string(nil), req.GetRegexes())
+	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), req.GetRegexes())
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to wait for crash files: ", err)
 		return nil, errors.Wrap(err, "failed to wait for crash files")

@@ -4,56 +4,51 @@
 
 package org.chromium.arc.testapp.arcaudiotest;
 
-import android.media.AudioManager;
+import android.media.AudioFormat;
 import android.media.AudioTrack;
-import android.util.Log;
 
 public abstract class SamplePlayerBase {
 
-    private final int mSampleRate;
-    private final int mEncoding;
-    private final int mChannelConfig;
     protected int mOffset = 0;
     protected AudioTrack mTrack;
     private int mBlockSize = 512;
+    protected AudioTrack.Builder mTrackBuilder;
+    private boolean mStop = false;
+
+    public synchronized void setStop(boolean stop) {
+        mStop = stop;
+    }
+
+    public synchronized boolean getStop() {
+        return mStop;
+    }
 
     SamplePlayerBase(int sampleRate, int encoding, int channelConfig) {
-        mSampleRate = sampleRate;
-        mEncoding = encoding;
-        mChannelConfig = channelConfig;
+        int bufferSize =
+            AudioTrack.getMinBufferSize(sampleRate, channelConfig, encoding) * 3; // plenty big
+        mTrackBuilder = new AudioTrack.Builder();
+        mTrackBuilder.setAudioFormat(new AudioFormat.Builder()
+            .setEncoding(encoding)
+            .setSampleRate(sampleRate)
+            .setChannelMask(channelConfig)
+            .build());
+        mTrackBuilder.setBufferSizeInBytes(bufferSize);
     }
 
     // Use abstract write to handle byte[] or short[] data.
     protected abstract int writeBlock(int numSamples);
 
-    private AudioTrack createAudioTrack(int sampleRate, int encoding, int channelConfig) {
-        int minBufferSize = AudioTrack.getMinBufferSize(sampleRate, channelConfig, encoding);
-        Log.i(Constant.TAG, String.format("getMinBufferSize = %d", minBufferSize));
-        int bufferSize = minBufferSize * 3; // plenty big
-        AudioTrack track =
-            new AudioTrack(
-                AudioManager.STREAM_MUSIC,
-                sampleRate,
-                channelConfig,
-                encoding,
-                bufferSize,
-                AudioTrack.MODE_STREAM);
-        Log.i(
-            Constant.TAG,
-            String.format(
-                "track created using rate = %d, encoding = 0x%08x",
-                mSampleRate, mEncoding));
-        return track;
+    public void setPerformanceMode(int performanceMode) {
+        mTrackBuilder.setPerformanceMode(performanceMode);
     }
 
-    public void play() throws Exception {
-        final long TEST_DURATION_MILLIS = 5000;
-        mTrack = createAudioTrack(mSampleRate, mEncoding, mChannelConfig);
+    public void play(long duration_millis) throws Exception {
+        mTrack = mTrackBuilder.build();
         try {
             mTrack.play();
             long elapsedMillis = 0;
             long startTime = System.currentTimeMillis();
-            while (elapsedMillis < TEST_DURATION_MILLIS) {
+            while (elapsedMillis < duration_millis && !getStop()) {
                 writeBlock(mBlockSize);
                 elapsedMillis = System.currentTimeMillis() - startTime;
             }

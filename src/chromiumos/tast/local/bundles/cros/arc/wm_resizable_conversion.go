@@ -105,6 +105,12 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to disable tablet mode")
 	}
 
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to wait for the window to be normal state")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
+		return err
+	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.ID == windowID && w.IsFrameVisible == true
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {

@@ -17,7 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/crostini/lxd"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
@@ -158,11 +158,28 @@ func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 // with ARCEnabled() option.
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
+// StartedByArtifactWithGaiaLogin is similar to StartedByArtifact, but will log in Chrome with Gaia
+// with Auth() option.
+func StartedByArtifactWithGaiaLogin() testing.Precondition { return startedByArtifactWithGaiaLoginPre }
+
+// StartedByDownloadBusterWithGaiaLogin is similar to StartedByDownloadBuster, but will log in Chrome with Gaia
+// with Auth() option.
+func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
+	return startedByDownloadBusterWithGaiaLoginPre
+}
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
+)
+
+type loginType int
+
+const (
+	loginNonGaia loginType = iota
+	loginGaia
 )
 
 var startedByArtifactPre = &preImpl{
@@ -199,6 +216,21 @@ var startedARCEnabledPre = &preImpl{
 	arcEnabled: true,
 }
 
+var startedByArtifactWithGaiaLoginPre = &preImpl{
+	name:      "crostini_started_by_artifact_gaialogin",
+	timeout:   chrome.LoginTimeout + 7*time.Minute,
+	mode:      artifact,
+	loginType: loginGaia,
+}
+
+var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
+	name:      "crostini_started_by_download_buster_gaialogin",
+	timeout:   chrome.LoginTimeout + 10*time.Minute,
+	mode:      download,
+	arch:      vm.DebianBuster,
+	loginType: loginGaia,
+}
+
 // Implementation of crostini's precondition.
 type preImpl struct {
 	name        string               // Name of this precondition (for logging/uniqueing purposes).
@@ -211,6 +243,7 @@ type preImpl struct {
 	tconn       *chrome.TestConn
 	cont        *vm.Container
 	keyboard    *input.KeyboardEventWriter
+	loginType   loginType
 }
 
 // Interface methods for a testing.Precondition.
@@ -289,10 +322,19 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
+	opts := []chrome.Option{opt, chrome.ExtraArgs("--vmodule=crostini*=1")}
+	if p.loginType == loginGaia {
+		opts = append(opts, chrome.Auth(
+			s.RequiredVar("crostini.gaiaUsername"),
+			s.RequiredVar("crostini.gaiaPassword"),
+			s.RequiredVar("crostini.gaiaID"),
+		), chrome.GAIALogin())
+	}
 	var err error
-	if p.cr, err = chrome.New(ctx, opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
+	if p.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
+
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
@@ -352,31 +394,23 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
 		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 	}
-	logUITree := func() {
-		tree, err := ui.RootDebugInfo(ctx, p.tconn)
-		if err != nil {
-			tree = fmt.Sprintf("error getting ui tree: %v", err)
-		}
-		s.Log("logUITree: ", tree)
-	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
+
 	settings, err := cui.OpenSettings(ctx, p.tconn)
 	if err != nil {
-		logUITree()
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 	installer, err := settings.OpenInstaller(ctx)
 	if err != nil {
-		logUITree()
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 	if p.minDiskSize != 0 {
 		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			logUITree()
 			s.Fatal("SetDiskSize error: ", err)
 		}
 	}
 	if err := installer.Install(ctx); err != nil {
-		logUITree()
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 
@@ -385,7 +419,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	p.cont, err = vm.GetRunningContainer(ctx, p.cr.User())
+	if err := p.Connect(ctx); err != nil {
+		s.Fatal("Error connecting to running container: ", err)
+	}
 
 	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
 	if err = checkDaemonsRunning(ctx); err != nil {
@@ -413,6 +449,20 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	vm.Lock()
 	shouldClose = false
 	return ret
+}
+
+// Connect connects the precondition to a running VM/container.
+// If you shutdown and restart the VM you will need to call Connect again.
+func (p *preImpl) Connect(ctx context.Context) error {
+	var err error
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	return err
+}
+
+// Connect connects the precondition to a running VM/container.
+// If you shutdown and restart the VM you will need to call Connect again.
+func (p *PreData) Connect(ctx context.Context) error {
+	return p.Container.Connect(ctx, p.Chrome.User())
 }
 
 // Close is called after all tests involving this precondition have been run,

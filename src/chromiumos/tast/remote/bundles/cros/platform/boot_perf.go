@@ -40,7 +40,7 @@ func init() {
 		Func:         BootPerf,
 		Desc:         "Boot performance test",
 		Contacts:     []string{"chinglinyu@chromium.org"},
-		Attr:         []string{"group:crosbolt"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
@@ -161,11 +161,6 @@ func ensureChromeLogin(ctx context.Context, s *testing.State, cl *rpc.Client) er
 
 	if _, err := client.CloseChrome(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to close Chrome")
-	}
-
-	// Check that OOBE is completed after Chrome login.
-	if err := d.Conn().Command("/usr/bin/test", "-e", "/home/chronos/.oobe_completed").Run(ctx); err != nil {
-		return errors.Wrap(err, "OOBE is not completed after Chrome login")
 	}
 
 	return nil

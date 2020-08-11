@@ -40,6 +40,14 @@
                 <category android:name="android.intent.category.CATEGORY_DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/title_activity_test_perf_playback"
+            android:name=".PlaybackPerformanceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.PERF_PLAYBACK" />
+                <category android:name="android.intent.category.CATEGORY_DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

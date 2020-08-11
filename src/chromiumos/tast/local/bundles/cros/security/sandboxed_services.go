@@ -87,7 +87,6 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"mtpd", "mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"tlsdated", "tlsdate", "tlsdate", restrictCaps},
 		{"tlsdated-setter", "root", "root", noNewPrivs | seccomp},
-		{"lid_touchpad_helper", "root", "root", 0},
 		{"thermal.sh", "root", "root", 0},
 		{"daisydog", "watchdog", "watchdog", pidNS | mntNS | restrictCaps | noNewPrivs},
 		{"permission_broker", "devbroker", "root", restrictCaps | noNewPrivs},

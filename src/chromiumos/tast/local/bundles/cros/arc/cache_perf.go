@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
@@ -159,7 +160,7 @@ func performIteration(ctx context.Context, s *testing.State) (normalTime, skipAl
 // reports time elapsed from enabling ARC and Play Store is finally shown.
 func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (time.Duration, float64, error) {
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
-	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 
 	switch mode {
 	case cacheNormal:

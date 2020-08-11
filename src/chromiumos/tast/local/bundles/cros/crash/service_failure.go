@@ -100,11 +100,6 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		s.Run(ctx, tt.name, func(sctx context.Context, ss *testing.State) {
 			failingServiceName := tt.servicePrefix + "failing-service"
 
-			oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
-			if err != nil {
-				ss.Fatal("Failed to get original crashes: ", err)
-			}
-
 			// Restart anomaly detector to clear its cache of recently seen service
 			// failures and ensure this one is logged.
 			if err := crash.RestartAnomalyDetectorWithSendAll(sctx, true); err != nil {
@@ -124,7 +119,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 			logRegex := base + `\.\d{8}\.\d{6}\.0\.log`
 			expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
-			files, err := crash.WaitForCrashFiles(sctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
+			files, err := crash.WaitForCrashFiles(sctx, []string{crash.SystemCrashDir}, expectedRegexes)
 			if err != nil {
 				ss.Fatal("Couldn't find expected files: ", err)
 			}

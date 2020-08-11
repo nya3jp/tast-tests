@@ -79,13 +79,14 @@ const (
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
 	ServicePropertyVisible        = "Visible"
+	ServicePropertyAutoConnect    = "AutoConnect"
+	ServicePropertyGUID           = "GUID"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase        = "Passphrase"
 	ServicePropertySecurityClass     = "SecurityClass"
 	ServicePropertySSID              = "SSID"
 	ServicePropertyWiFiBSSID         = "WiFi.BSSID"
-	ServicePropertyFTEnabled         = "WiFi.FTEnabled"
 	ServicePropertyWiFiFrequency     = "WiFi.Frequency"
 	ServicePropertyWiFiFrequencyList = "WiFi.FrequencyList"
 	ServicePropertyWiFiHexSSID       = "WiFi.HexSSID"

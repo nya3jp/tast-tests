@@ -278,9 +278,37 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}, nil
 }
 
+// SelectedService returns the object path of selected service of WiFi service.
+func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SelectedService")
+	defer st.End()
+
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+	servicePath, err := prop.GetObjectPath(shillconst.DevicePropertySelectedService)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get SelectedService")
+	}
+	// Handle a special case of no selected service.
+	// See: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/shill/doc/device-api.txt
+	if servicePath == "/" {
+		return nil, errors.New("no selected service")
+	}
+
+	return &network.SelectedServiceResponse{
+		ServicePath: string(servicePath),
+	}, nil
+}
+
 // Disconnect disconnects from a WiFi service.
 // This is the implementation of network.Wifi/Disconnect gRPC.
-func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (*empty.Empty, error) {
+func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (ret *empty.Empty, retErr error) {
 	ctx, st := timing.Start(ctx, "wifi_service.Disconnect")
 	defer st.End()
 
@@ -288,6 +316,21 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
 	}
+	defer func() {
+		// Try to remove profile even if Disconnect failed.
+		if !request.RemoveProfile {
+			return
+		}
+		if err := service.Remove(ctx); err != nil {
+			if retErr != nil {
+				testing.ContextLogf(ctx, "Failed to remove service profile of %v: %v", service, err)
+			} else {
+				ret = nil
+				retErr = errors.Wrapf(err, "failed to remove service profile of %v", service)
+			}
+		}
+	}()
+
 	// Spawn watcher before disconnect.
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
@@ -304,6 +347,7 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 		return nil, err
 	}
 	testing.ContextLog(ctx, "Disconnected")
+
 	return &empty.Empty{}, nil
 }
 
@@ -408,10 +452,6 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		return nil, err
 	}
 
-	ftEnabled, err := props.GetBool(shillconst.ServicePropertyFTEnabled)
-	if err != nil {
-		return nil, err
-	}
 	frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
 	if err != nil {
 		return nil, err
@@ -432,6 +472,10 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 	if err != nil {
 		return nil, err
 	}
+	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	if err != nil {
+		return nil, err
+	}
 
 	return &network.QueryServiceResponse{
 		Name:        name,
@@ -441,9 +485,9 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 		State:       state,
 		Visible:     visible,
 		IsConnected: isConnected,
+		Guid:        guid,
 		Wifi: &network.QueryServiceResponse_Wifi{
 			Bssid:         bssid,
-			FtEnabled:     ftEnabled,
 			Frequency:     uint32(frequency),
 			FrequencyList: uint16sToUint32s(frequencyList),
 			HexSsid:       hexSSID,
@@ -950,4 +994,80 @@ func (s *WifiService) DisableEnableTest(ctx context.Context, request *network.Di
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// ConfigureAndAssertAutoConnect configures the matched shill service and then waits for the IsConnected property becomes true.
+// Note that this function does not attempt to connect; it waits for auto connect instead.
+func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
+	request *network.ConfigureAndAssertAutoConnectRequest) (*network.ConfigureAndAssertAutoConnectResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	props, err := protoutil.DecodeFromShillValMap(request.Props)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to decode shill properties")
+	}
+	servicePath, err := m.ConfigureService(ctx, props)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to configure service")
+	}
+	testing.ContextLog(ctx, "Configured service; start scanning")
+
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create property watcher")
+	}
+	defer pw.Close(ctx)
+
+	// Service may become connected between ConfigureService and CreateWatcher, we would lose the property changing event of IsConnected then.
+	// Checking once after creating watcher should be good enough since we expect that the connection should not disconnect without our attempt.
+	p, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	isConnected, err := p.GetBool(shillconst.ServicePropertyIsConnected)
+	if err != nil {
+		return nil, err
+	}
+	if isConnected {
+		return &network.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
+	}
+
+	done := make(chan error, 1)
+	// Wait for bg routine to end.
+	defer func() { <-done }()
+	// Notify the bg routine to end if we return early.
+	bgCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	go func(ctx context.Context) {
+		defer close(done)
+		done <- pw.Expect(ctx, shillconst.ServicePropertyIsConnected, true)
+	}(bgCtx)
+
+	// Request a scan every 200ms until the background routine catches the IsConnected signal.
+	for {
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			return nil, errors.Wrap(err, "failed to request scan")
+		}
+		select {
+		case err := <-done:
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to wait for IsConnected property becoming true")
+			}
+			return &network.ConfigureAndAssertAutoConnectResponse{Path: string(servicePath)}, nil
+		case <-time.After(200 * time.Millisecond):
+		}
+	}
+}
+
+// GetCurrentTime returns the current local time in the given format.
+func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*network.GetCurrentTimeResponse, error) {
+	now := time.Now()
+	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
 }

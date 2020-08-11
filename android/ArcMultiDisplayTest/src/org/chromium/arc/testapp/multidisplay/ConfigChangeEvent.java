@@ -73,11 +73,20 @@ public class ConfigChangeEvent {
    * @return ConfigChangeEvent which records onConfigurationChanged
    */
   public static ConfigChangeEvent handled(Configuration old, Configuration current) {
+    return forDiff(true, old, current);
+  }
+
+  public static ConfigChangeEvent relaunched(Configuration old, Configuration current) {
+    return forDiff(false, old, current);
+  }
+
+  private static ConfigChangeEvent forDiff(
+      boolean handled, Configuration old, Configuration current) {
     final int diff = old.diff(current);
-    Log.d(TAG, String.format("handled diff:%s\nold:%s\ncurrent:%s",
+    Log.d(TAG, String.format("handled=%b diff:%s\nold:%s\ncurrent:%s", handled,
         configurationDiffToString(diff), old, current));
     return new ConfigChangeEvent(
-        true,
+        handled,
         (diff & ActivityInfo.CONFIG_DENSITY) != 0,
         (diff & ActivityInfo.CONFIG_FONT_SCALE) != 0,
         (diff & ActivityInfo.CONFIG_ORIENTATION) != 0,

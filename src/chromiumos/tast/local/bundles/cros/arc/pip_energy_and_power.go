@@ -94,7 +94,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	defer act.Stop(ctx, tconn)
 
 	// The test activity enters PIP mode in onUserLeaveHint().
-	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
 		s.Fatal("Failed to minimize app: ", err)
 	}
 

@@ -104,7 +104,7 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Triggered a crash in the VM")
 
-	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{},
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths,
 		[]string{`vm_crash.*\.meta`,
 			`vm_crash.*\.dmp`,
 			`vm_crash.*\.proclog`})

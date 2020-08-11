@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"android_p", "selinux", "chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -128,7 +128,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/run/arc/host_generated/default.prop", context: "rootfs", ignoreErrors: true}, // Android labels, bind-mount into ARC. TODO: Remove. Should not be present post Android R.
 		{path: "/run/arc/sdcard", context: "(tmpfs|storage_file)"},
 		{path: "/run/arc/shared_mounts", context: "tmpfs"},
-		{path: "/run/camera", context: "(camera_dir|camera_socket)"}, // N or below is camera_socket
+		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true}, // N or below is camera_socket
 		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/camera/camera3.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},

@@ -769,3 +769,25 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 	}
 	return "", errors.Errorf("no %s key found in %s", crosReleaseBoardKey, lsbReleasePath)
 }
+
+// ChangeAPIfaceSubnetIdx restarts the dhcp server with a different subnet index.
+// Note that a call of StopAPIface is still needed on failure.
+func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr error) {
+	oldIdx := h.subnetIdx
+	newIdx, err := r.reserveSubnetIdx()
+	if err != nil {
+		return errors.Wrap(err, "failed to reserve a new subnet index")
+	}
+	defer func() {
+		// On failure, the subnetIdx of h will not change so we should free the new
+		// index here and let the old index be freed in the future StopAPIface call.
+		if retErr != nil {
+			r.freeSubnetIdx(newIdx)
+		} else {
+			r.freeSubnetIdx(oldIdx)
+		}
+	}()
+
+	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
+	return h.changeSubnetIdx(ctx, newIdx)
+}

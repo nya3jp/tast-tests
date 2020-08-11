@@ -16,10 +16,12 @@ import android.os.CancellationSignal;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.ArrayMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.stream.Collectors;
 
 /**
  * Content provider which provides information to Tast test.
@@ -112,8 +114,14 @@ public class TestApiProvider extends ContentProvider {
   }
 
   @Override
-  public int delete(Uri uri, String s, String[] strings) {
-    return 0;
+  public int delete(Uri uri, String where, String[] whereArgs) {
+    if (where != null || whereArgs != null) {
+      throw new UnsupportedOperationException();
+    }
+    final long count = BaseActivity.getConfigChangeEvents().values().stream().mapToLong(
+        Collection::size).sum();
+    BaseActivity.getConfigChangeEvents().clear();
+    return (int) count;
   }
 
   @Override

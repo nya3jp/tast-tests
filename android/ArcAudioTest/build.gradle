@@ -28,7 +28,7 @@ android {
 
     defaultConfig {
         applicationId "org.chromium.arc.testapp.arcaudiotest"
-        minSdkVersion 16   //AcousticEchoCanceler required sdk version 16.
+        minSdkVersion 28   //Tast test will run only on P and later.
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

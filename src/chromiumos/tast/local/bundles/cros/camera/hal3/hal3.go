@@ -61,21 +61,24 @@ func ArcCameraUID() (int, error) {
 
 // IsV1Legacy returns true if current device is used to run camera HAL v1 but
 // now run camera HAL v3 as external devices.
-func IsV1Legacy(ctx context.Context) bool {
+func IsV1Legacy(ctx context.Context) (bool, error) {
 	// For unibuild, we can determine if a device is v1 legacy by checking
 	// 'legacy-usb' under path '/camera' in cros_config.
 	if out, err := testexec.CommandContext(ctx, "cros_config", "/camera", "legacy-usb").Output(); err == nil && string(out) == "true" {
-		return true
+		return true, nil
 	}
 
 	// For non-unibuild, we can check if 'v1device' presents in the config file
 	// '/etc/camera/camera_chracteristics.conf'.
-	if config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf"); err == nil {
-		if strings.Contains(string(config), "v1device") {
-			return true
-		}
+	config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf")
+	if os.IsNotExist(err) {
+		// For legacy devices which do not have ARC, they do not have
+		// camera_chracteristics.conf either.
+		return true, nil
+	} else if err != nil {
+		return false, errors.Wrap(err, "failed to read camera_characteristics.conf")
 	}
-	return false
+	return strings.Contains(string(config), "v1device"), nil
 }
 
 // getRecordingParams gets the recording parameters from the media profile in
@@ -95,9 +98,14 @@ func getRecordingParams(ctx context.Context) (string, error) {
 	}
 
 	var supportConstantFrameRate int
-	if !IsV1Legacy(ctx) {
+	isV1, err := IsV1Legacy(ctx)
+	if err != nil {
+		return "", err
+	}
+	if !isV1 {
 		supportConstantFrameRate = 1
 	}
+
 	seen := make(map[string]struct{})
 	var params []string
 	for _, cprof := range settings.CamcorderProfiles {

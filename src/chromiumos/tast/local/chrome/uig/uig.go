@@ -263,7 +263,7 @@ func (a *Action) FocusAndWait(timeout time.Duration) *Action {
 
 // Find finds a descendant of the node it is called on.
 func (a *Action) Find(params ui.FindParams) *Action {
-	name := fmt.Sprintf("%s.Find(%v)", a.String(), params)
+	name := fmt.Sprintf("%s.Find(%+v)", a.String(), params)
 	return &Action{
 		name: name,
 		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
@@ -283,12 +283,12 @@ func (a *Action) Find(params ui.FindParams) *Action {
 
 // Find is a shortcut for uig.Root().Find(...).
 func Find(params ui.FindParams) *Action {
-	return Root().Find(params).WithNamef("uig.Find(%v)", params)
+	return Root().Find(params).WithNamef("uig.Find(%+v)", params)
 }
 
 // FindWithTimeout finds a descendant of the node it is called on. It returns an error if the timeout expires.
 func (a *Action) FindWithTimeout(params ui.FindParams, timeout time.Duration) *Action {
-	name := fmt.Sprintf("%s.Find(%v)", a.String(), params)
+	name := fmt.Sprintf("%s.FindWithTimeout(%+v, %v)", a.String(), params, timeout)
 	return &Action{
 		name: name,
 		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
@@ -308,7 +308,7 @@ func (a *Action) FindWithTimeout(params ui.FindParams, timeout time.Duration) *A
 
 // FindWithTimeout is a shortcut for uig.Root().FindWithTimeout(...).
 func FindWithTimeout(params ui.FindParams, timeout time.Duration) *Action {
-	return Root().FindWithTimeout(params, timeout).WithNamef("uig.FindWithTimeout(%v, %v)", params, timeout)
+	return Root().FindWithTimeout(params, timeout).WithNamef("uig.FindWithTimeout(%+v, %v)", params, timeout)
 }
 
 // WaitUntilDescendantExists waits until a given node is found as a descendant
@@ -316,7 +316,7 @@ func FindWithTimeout(params ui.FindParams, timeout time.Duration) *Action {
 //
 // If the timeout expires while the node does not exist it will return error.
 func (a *Action) WaitUntilDescendantExists(params ui.FindParams, timeout time.Duration) *Action {
-	name := fmt.Sprintf("%s.WaitUntilDescendantExists(%v, %v)", a.String(), params, timeout)
+	name := fmt.Sprintf("%s.WaitUntilDescendantExists(%+v, %v)", a.String(), params, timeout)
 	return &Action{
 		name: name,
 		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
@@ -336,7 +336,7 @@ func (a *Action) WaitUntilDescendantExists(params ui.FindParams, timeout time.Du
 
 // WaitUntilDescendantExists is a shortcut for uig.Root().WaitUntilDescendantExists(...)
 func WaitUntilDescendantExists(params ui.FindParams, timeout time.Duration) *Action {
-	return Root().WaitUntilDescendantExists(params, timeout).WithNamef("uig.WaitUntilDescendantExists(%v, %v)", params, timeout)
+	return Root().WaitUntilDescendantExists(params, timeout).WithNamef("uig.WaitUntilDescendantExists(%+v, %v)", params, timeout)
 }
 
 // WaitUntilDescendantGone waits until a given node can no longer be found as a descendant
@@ -344,7 +344,7 @@ func WaitUntilDescendantExists(params ui.FindParams, timeout time.Duration) *Act
 //
 // If the timeout expires while the node still exists it will return error.
 func (a *Action) WaitUntilDescendantGone(params ui.FindParams, timeout time.Duration) *Action {
-	name := fmt.Sprintf("%s.WaitUntilDescendantGone(%v, %v)", a.String(), params, timeout)
+	name := fmt.Sprintf("%s.WaitUntilDescendantGone(%+v, %v)", a.String(), params, timeout)
 	return &Action{
 		name: name,
 		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
@@ -364,7 +364,7 @@ func (a *Action) WaitUntilDescendantGone(params ui.FindParams, timeout time.Dura
 
 // WaitUntilDescendantGone is a shortcut for uig.Root().WaitUntilDescendantGone(...)
 func WaitUntilDescendantGone(params ui.FindParams, timeout time.Duration) *Action {
-	return Root().WaitUntilDescendantGone(params, timeout).WithNamef("uig.WaitUntilDescendantGone(%v, %v)", params, timeout)
+	return Root().WaitUntilDescendantGone(params, timeout).WithNamef("uig.WaitUntilDescendantGone(%+v, %v)", params, timeout)
 }
 
 // Root gets the root node of the context this graph is being executed in.  This is typically the

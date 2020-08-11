@@ -79,7 +79,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
-	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
 		s.Fatal("Could not maximize test app: ", err)
 	}
 
