@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fbb1a21_9f201c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-11T18:34:58Z",
+      "side": 1,
+      "message": "I don\u0027t think hatch(akemi) is failing consistently, just one time for a different reason",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "3682fee1689ea906f2961f48428de294a60532ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db58e6f_1e4f1b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-11T18:34:58Z",
+      "side": 1,
+      "message": "// zork (ezkinil)\n// zork (trembyle)\n\njust to be consistent?",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "3682fee1689ea906f2961f48428de294a60532ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
