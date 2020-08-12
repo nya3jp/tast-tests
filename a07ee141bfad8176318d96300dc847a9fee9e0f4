@@ -100,6 +100,30 @@
     },
     {
       "key": {
+        "uuid": "46572590_7cb38444",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:02:54Z",
+      "side": 1,
+      "message": "Maybe I should pass a container to PerfOpts so that in the end the test can get metrics from that container, and use that ?",
+      "parentUuid": "7748ed32_d7e130a9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d59f4f7_7801e54f",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
