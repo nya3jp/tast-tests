@@ -6,9 +6,6 @@ package apps
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
@@ -116,6 +113,7 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Logf("Ensure tablet mode enabled(%v)", isTabletMode)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
@@ -139,10 +137,6 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		if err := helpapp.WaitForApp(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to wait for HelpApp")
 		}
-		// Collect loadTimeData once launched. This is for debugging purpose, so error ignored.
-		if err := logRuntimeData(ctx, s, cr); err != nil {
-			testing.ContextLog(ctx, "Failed to log runtime data: ", err)
-		}
 
 		// Verify perk is shown to default consumer user.
 		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
@@ -162,45 +156,6 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		if isAppLaunched {
 			s.Fatal("Help app should not be launched after oobe on a managed device")
 		}
-	}
-	return nil
-}
-
-// logRuntimeData logs the window.loadTimeData() info to a file.
-func logRuntimeData(ctx context.Context, s *testing.State, cr *chrome.Chrome) error {
-	const (
-		logFileName = "loadTimeData.json"
-		helpAppURL  = "chrome-untrusted://help-app/app.html"
-	)
-	helpConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(helpAppURL))
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to help app")
-	}
-
-	if err := helpConn.WaitForExprFailOnErrWithTimeout(ctx, "window.loadTimeData", 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for loadTimeData")
-	}
-
-	var loadTimeData string
-	if err := helpConn.Eval(ctx, `
-		(function(){
-			try{
-				var loadTimeData = window.loadTimeData;
-				if(loadTimeData){
-					return JSON.stringify(loadTimeData)
-				}
-				return "error: loadTimeData is undefined."
-			}catch(e){
-				return e.message
-			}})()`, &loadTimeData); err != nil {
-		return errors.Wrap(err, "failed to get loadTimeData")
-	}
-
-	file := filepath.Join(s.OutDir(), logFileName)
-	testing.ContextLogf(ctx, "Write loadTimeData into file: %s", file)
-
-	if err := ioutil.WriteFile(file, []byte(loadTimeData), 0644); err != nil {
-		return errors.Wrapf(err, "failed to write loadTimeData into file %s", file)
 	}
 	return nil
 }
