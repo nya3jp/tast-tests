@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "59636f33_203a90e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:16:17Z",
+      "side": 1,
+      "message": "Do you think it makes sense to fold creating a file/folder in files app into that test, or should it be kept seperate?",
+      "parentUuid": "6bce4c21_55929b92",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a111c849_2c55c8b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2020-08-12T03:14:19Z",
       "side": 1,
       "message": "Focus on the listbox before right click.",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1597fc6e_86d2caf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:16:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be a part of SelectContextMenu?",
+      "parentUuid": "a111c849_2c55c8b1",
       "range": {
         "startLine": 92,
         "startChar": 9,
@@ -137,6 +185,30 @@
       "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cdfb50_dd2bedaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c13e304f_431fd166",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "f5256b66_cbe337e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dfc59ad6_9a1f9939",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe5d73b3_65ffe7ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
         "patchSetId": 1
@@ -206,6 +302,30 @@
       "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8e04ae_d543d44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe5d73b3_65ffe7ed",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
