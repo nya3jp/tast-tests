@@ -1580,6 +1580,11 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 	return len(targets) != 0, nil
 }
 
+// FindAllTargets returns the information of all available targets.
+func (c *Chrome) FindAllTargets(ctx context.Context) ([]*target.Info, error) {
+	return c.devsess.FindTargets(ctx, nil)
+}
+
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
