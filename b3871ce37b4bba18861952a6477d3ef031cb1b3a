@@ -33,6 +33,167 @@
       "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5171f742_de8106d6",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "please merge with previous const block",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7a90a8_b60b91c7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "please put everything under var block\n\nvar (\n...\n)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73119b7d_d7a331ee",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "please put variables declaration closer to the first usage, actually you won\u0027t need to declare them after applying my next comment about handling error first",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0be6e6_adadc72b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "please don\u0027t do that",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b0612b_052a5f31",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "if noCyclesRegexp.FindString(s) !\u003d \"\" {\n\n}",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 11
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbf22d7_452907d1",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "there is no error related",
+      "range": {
+        "startLine": 187,
+        "startChar": 24,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027f942a_5c098de3",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "handle error first:\n\nm :\u003d cyclesRegexp.FindStringSubmatch(s)\nif m \u003d\u003d nil {\n    return 0, errors.Error(\"no cycles\")\n}\ncycles, err :\u003d strconv.ParseInt(m[1], 0, 64)\nif err !\u003d nil {\n    return 0, errors.Wrap(err, \"error parsing cycles\")\n}",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
