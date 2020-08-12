@@ -22,6 +22,30 @@
       "revId": "15a417440a695d7fbe5f8875f5dc85d1eddefe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae27e473_678b2c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-12T23:02:10Z",
+      "side": 0,
+      "message": "Discussed offline. We have alternative ways to collect such kind of data. e.g. Borrow a device from skylab and run tests on it. Thanks for the comment anyway.",
+      "parentUuid": "f89e9277_6d1d3686",
+      "range": {
+        "startLine": 173,
+        "startChar": 17,
+        "endLine": 173,
+        "endChar": 53
+      },
+      "revId": "15a417440a695d7fbe5f8875f5dc85d1eddefe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
