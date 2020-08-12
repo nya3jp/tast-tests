@@ -945,6 +945,24 @@
     },
     {
       "key": {
+        "uuid": "7af3f89b_b8c21709",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T14:49:43Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand how to define the type for output. should I use Interface for PerfOutput, and PerfStatOutput is an implementation of PerfOutput?\n\nIf we only care about some metrics, we can probably define PerfOutput, and inside it, we use a map to hold some keys and values. Different profiler can store whatever they want into the map in PerfOutput. Test can retrieve the values as needed.\nIf in the future we find map is not enough, we can add more containers into PerfOutput struct. WDYT?\n\nThanks!",
+      "parentUuid": "d79c66c4_dd460bd7",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
