@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "c1b41b49_2f1856d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Hi Oleh and Patrick, thanks a lot for reviewing the patch in detail.\nI will fix them in the next patchset.",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cafe5bde_8374773b",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -47,6 +64,30 @@
       "writtenOn": "2020-08-12T01:00:30Z",
       "side": 1,
       "message": "comment out of date?",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb21981_6d31dec7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cafe5bde_8374773b",
       "range": {
         "startLine": 55,
         "startChar": 48,
@@ -82,6 +123,30 @@
     },
     {
       "key": {
+        "uuid": "1b314907_172467fa",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "In the CL that needs perf stat, I actually only care about cycle spent on specific process (CRAS) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2289457/6.\n\nI will use *int and force user to pass it. Maybe I should remove -1 case ?",
+      "parentUuid": "444a6d62_a8aeaec5",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95de39aa_21e12568",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -93,6 +158,24 @@
       "writtenOn": "2020-08-12T01:00:30Z",
       "side": 1,
       "message": "It seems like this option is only used when the PerfType is PerfStatOnly. If so, can you note that in the comment here? Moreover, it seems like this option is mandatory for PerfStatOnly. Given handleStatOnly will panic if p.pv \u003d\u003d nil, maybe the constructor should check this has been set if PerfType is PerfStatOnly, and error otherwise.",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79b2f0e_ec92ff1a",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Thanks for the great suggestion.",
+      "parentUuid": "95de39aa_21e12568",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "e0ea8a43_0e4c15fa",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d37d855_e8850aba",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffbbdedd_7aff7535",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -133,6 +234,24 @@
     },
     {
       "key": {
+        "uuid": "b75ff17d_b75e780f",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffbbdedd_7aff7535",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0655d83_5a954d0b",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -144,6 +263,30 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "Please use ioutil.ReadFile to read data from file, it\u0027s much simpler\n\nhttps://golang.org/pkg/io/ioutil/#ReadFile",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13abea0d_eb2ac133",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.",
+      "parentUuid": "c0655d83_5a954d0b",
       "range": {
         "startLine": 147,
         "startChar": 0,
@@ -179,6 +322,30 @@
     },
     {
       "key": {
+        "uuid": "1592c0bb_85689f45",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba6f4922_c77f012d",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "510baba9_65ecfd9d",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -190,6 +357,30 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "why not (p *perf) handleStatOnly() error ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 28
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5dd808_643bf426",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Totally agree!",
+      "parentUuid": "510baba9_65ecfd9d",
       "range": {
         "startLine": 193,
         "startChar": 5,
@@ -219,6 +410,24 @@
     },
     {
       "key": {
+        "uuid": "79d579cd_cd79ab16",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b1964ce_e7bcb529",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
@@ -230,6 +439,30 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "Shouldn\u0027t it be TestParseStatFile?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0e9d65_629bb8de",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Yes I should fix this in the next patchset.",
+      "parentUuid": "a1705090_5eacc94a",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -259,6 +492,24 @@
     },
     {
       "key": {
+        "uuid": "983fd059_1d05fbe0",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29e316cb_45014a8b",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e8d3b8a_d62fc68d",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
@@ -282,6 +533,30 @@
     },
     {
       "key": {
+        "uuid": "e08ac724_411533c7",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Agree that I should use that!",
+      "parentUuid": "4e8d3b8a_d62fc68d",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a4b664a_d89424b3",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
@@ -293,6 +568,30 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "nit: Unexpected cycles per second: got %#v; want %#v",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6892fa00_55b67aaa",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T02:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a4b664a_d89424b3",
       "range": {
         "startLine": 50,
         "startChar": 12,
