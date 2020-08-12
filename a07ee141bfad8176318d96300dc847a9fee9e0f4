@@ -963,6 +963,24 @@
     },
     {
       "key": {
+        "uuid": "8e552dab_1e0789f3",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T14:50:57Z",
+      "side": 1,
+      "message": "the key of the map would be string, and the value would be float64. I think this would suffice for general perf usage.",
+      "parentUuid": "7af3f89b_b8c21709",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
