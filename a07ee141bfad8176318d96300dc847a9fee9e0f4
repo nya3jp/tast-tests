@@ -927,6 +927,24 @@
     },
     {
       "key": {
+        "uuid": "d79c66c4_dd460bd7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T11:01:41Z",
+      "side": 1,
+      "message": "This also works. If we need other types, we can make it a variant data type. I don\u0027t think extending PerfOpts for storing the result a good abstraction. We can create a separate parameter for the output, e.g.\n\noutput :\u003d profiler.PerfStatOutput{}\nprofiler.Perf(\u0026profiler.PerfOpts{Type: profiler.PerfStat}, \u0026output)\n\nWDYT?",
+      "parentUuid": "7fb10ba4_956eaaf4",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
