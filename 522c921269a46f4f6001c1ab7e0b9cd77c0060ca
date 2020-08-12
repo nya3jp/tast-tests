@@ -176,6 +176,30 @@
       "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d36da79_bc635dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-12T22:41:49Z",
+      "side": 1,
+      "message": "You are right. I did misunderstand your message. Fixed. Thanks for clarification.",
+      "parentUuid": "fab9edc7_ae02813b",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
