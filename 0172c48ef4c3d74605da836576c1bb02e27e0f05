@@ -39,6 +39,30 @@
       "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea90c2f_197c8ac5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/debugging/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-12T22:41:49Z",
+      "side": 1,
+      "message": "Done. Removed the debugging file. But I still suggest to have such kind of functions built-in. For new starters, sometimes hard to understand what the target to connect or what is a11y identifier should be used.",
+      "parentUuid": "a7a302b2_567eb4be",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
