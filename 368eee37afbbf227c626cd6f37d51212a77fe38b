@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "914a0409_8818c1f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-12T00:48:19Z",
+      "side": 1,
+      "message": "lgtm % minor issue/question",
+      "revId": "368eee37afbbf227c626cd6f37d51212a77fe38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c56f1fd3_4a38e1c9",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-12T00:48:19Z",
+      "side": 1,
+      "message": "i dont think the tast team likes passing this out of tests.\n\nCan you just pass PreData.Container?",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "368eee37afbbf227c626cd6f37d51212a77fe38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
