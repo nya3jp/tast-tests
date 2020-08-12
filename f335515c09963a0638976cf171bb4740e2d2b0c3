@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28cdb625_b1a37d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "nit: as the arg parameter in CommandContext is variadic, you can remove []string{ } .",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847a90f1_fb52c657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "You can remove param names.",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 196,
+        "endChar": 65
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "167f4276_09487274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "s/validate/escape/ ?",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ffa906_907bacca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "nit: I\u0027d use regexp.\n\nregexp.MustCompile(`[[\\]\u003c\u003e{} ]`).ReplaceAllString(name, \"_\")\n\ndemo: https://play.golang.org/p/g6jnfw6PutO",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 95
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d85ba4a_6411078b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "Could you return error from suspend?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e3034d_dff9080e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-12T05:09:56Z",
+      "side": 1,
+      "message": "Important: I\u0027m still wondering if rebooting is a valid operation here.\nI might be missing something, but it seems it reboots the DUT on which the test itself is running, which is not allowed.\nIf you really need to reboot the DUT, you should write remote tast tests.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/overview.md#Remote-tests",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
