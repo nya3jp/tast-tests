@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fadc7ed_0e6a7308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-12T00:01:20Z",
+      "side": 1,
+      "message": "Hi reviewers,\n\nAfter discussion with inputs team, we agree that virtual keyboard should be primarily tested on tablet devices, and should not use any extra force flags for enabling vk which is not close to real user experience. \n\nI did some changes after approval:\n1. Add a shortlist of common used market tablet devices.\n2. Remove `--enable-virtual-keyboard` and `--force-tablet-mode` from test setup.",
+      "revId": "a2e9f8e15146e4f648e0daf68e5ce1be2168539d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
