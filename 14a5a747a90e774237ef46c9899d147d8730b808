@@ -232,6 +232,30 @@
     },
     {
       "key": {
+        "uuid": "21d1c9c5_da0ebaa5",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T09:17:18Z",
+      "side": 1,
+      "message": "I was able to use :\u003d, please take a look on the example:\nhttps://play.golang.org/p/gzSj559zkg4\n\nAre you getting compile errors if you use :\u003d ?",
+      "parentUuid": "9358d9fe_ad3d1d68",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad77d519_9e396dc1",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
