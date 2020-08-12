@@ -124,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "0c816463_9f3033ad",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T10:32:19Z",
+      "side": 1,
+      "message": "The original design assumed that the user may inspect the profiler outputs manually (e.g. for debugging purpose, or use other tools to inspect the profile) and didn\u0027t expect tests to parse the results. Since this is a new requirement for a test to be able to process the profiler output, we may add a new abstraction that processes the output.\nThe original flow: start, (code to profile), end\nThe new flow: start, (code to profile), end, output (or other names for it).\n\nThe requirements of the new phase are:\n1. It need to be optional. Tests that don\u0027t need to process output can skip this phase.\n2. The interface can accommodate different data types from different profilers. The bottom line is interface{}. I don\u0027t know if we can do better than this.",
+      "parentUuid": "46572590_7cb38444",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d59f4f7_7801e54f",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -837,6 +861,24 @@
       "side": 1,
       "message": "I have the same question as above. What interface would you recommend for profiler to expose ? Currently it only has End() function for a list of profilers. If possible we can pass metrics name when setting perf, but having a separated function to get perf metrics seems better.",
       "parentUuid": "b9331e42_94b6ce15",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23155ba_3264c36e",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T10:32:19Z",
+      "side": 1,
+      "message": "As above, we can add a new phase for processing the result. The caller getting the result can use type assertions to safely cast the result.\n\n// Profiled code.\n\ndefer func(){\n  if err :\u003d p.End(); err !\u003d nil {/* handle error */}\n\n  // GetResult() returns an array of profiler output instances or nil if the corresponding profiler doesn\u0027t output.\n  if res :\u003d p.GetOutput(); res !\u003d nil {\n    for r :\u003d range res {\n      statOutput, ok :\u003d r.(PerfStatOutput)\n      if ok {\n         // use output of perf stat.\n      }\n    }\n  }\n}()",
+      "parentUuid": "025fef47_dadfda7e",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
