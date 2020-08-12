@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "fef6876d_34272b59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T06:18:31Z",
+      "side": 1,
+      "message": "It looks like we already have tests for renaming and deleting?",
+      "parentUuid": "13ee9481_8408b8d1",
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bce4c21_55929b92",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
         "patchSetId": 1
