@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f89e9277_6d1d3686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-08-12T22:44:03Z",
+      "side": 0,
+      "message": "An alternative if you want to keep this is to just log the contents of \nchrome-untrusted://help-app/strings.js - this is the loadtimedata.\n\nCould still be useful to have around as we keep running into debugging issues with the loadtimedata causing unexpected behaviour on some boards.",
+      "range": {
+        "startLine": 173,
+        "startChar": 17,
+        "endLine": 173,
+        "endChar": 53
+      },
+      "revId": "15a417440a695d7fbe5f8875f5dc85d1eddefe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
