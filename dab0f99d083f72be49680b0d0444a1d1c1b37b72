@@ -124,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "8bf45174_975958da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-12T17:19:29Z",
+      "side": 1,
+      "message": "Got it. Thanks!\n\nExpanded the comment to mention these explicitly.",
+      "parentUuid": "c25c6b7e_4ec0f291",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb907ad_d0a66975",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
         "patchSetId": 5
