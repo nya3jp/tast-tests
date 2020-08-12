@@ -909,6 +909,24 @@
     },
     {
       "key": {
+        "uuid": "7fb10ba4_956eaaf4",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T10:39:50Z",
+      "side": 1,
+      "message": "How about assuming End() already handle the output, and let test access the value through PerfOpts after End()?\nCurrently I am using a float64 to hold Value. If some perf metrics needs to get more value, like an array of float64, I am not sure how to deal with that.",
+      "parentUuid": "e23155ba_3264c36e",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
