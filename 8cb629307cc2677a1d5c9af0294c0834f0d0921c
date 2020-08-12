@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae59ce9_d20b0195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-12T19:48:44Z",
+      "side": 1,
+      "message": "Scheduled dry-run to be sure it does not break other tests (exceeding deadlines?)",
+      "revId": "8cb629307cc2677a1d5c9af0294c0834f0d0921c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
