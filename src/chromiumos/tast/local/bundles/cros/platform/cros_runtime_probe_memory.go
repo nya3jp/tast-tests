@@ -6,12 +6,9 @@ package platform
 
 import (
 	"context"
-	"encoding/json"
 	"sort"
-	"strings"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
 	"chromiumos/tast/testing"
 )
@@ -30,61 +27,20 @@ func init() {
 	})
 }
 
-// memoryNames will extract the model and memory names (prefixed with
-// "hwid_component:dram/") from autotest_host_info_labels var which is a json
-// string of list of cros-labels.  After collecting memory names, this function
-// will return a counter counting each name.  Since we need the model name for
-// component group, here we return it as well.
-func memoryNames(jsonStr string) (map[string]int, string, error) {
-	const (
-		memoryPrefix = "hwid_component:dram/"
-		modelPrefix  = "model:"
-	)
-	var labels []string
-	if err := json.Unmarshal([]byte(jsonStr), &labels); err != nil {
-		return nil, "", err
-	}
-	// Filter labels with prefix and trim them.
-	// Also find the model name of this DUT.
-	var names []string
-	var model string
-	for _, label := range labels {
-		if strings.HasPrefix(label, memoryPrefix) {
-			label := strings.TrimPrefix(label, memoryPrefix)
-			names = append(names, label)
-		} else if strings.HasPrefix(label, modelPrefix) {
-			model = strings.TrimPrefix(label, modelPrefix)
-		}
-	}
-	if len(model) == 0 {
-		return nil, "", errors.New("no model found")
-	}
-
-	count := make(map[string]int)
-	for _, label := range names {
-		key := model + "_" + label
-		if _, ok := count[key]; ok {
-			count[key]++
-		} else {
-			count[key] = 1
-		}
-	}
-
-	return count, model, nil
-}
-
 // CrosRuntimeProbeMemory checks if the memory names in cros-label are
 // consistent with probed names from runtime_probe.
 func CrosRuntimeProbeMemory(ctx context.Context, s *testing.State) {
+	const category = "dram"
 	labelsStr, ok := s.Var("autotest_host_info_labels")
 	if !ok {
 		s.Fatal("No memory labels")
 	}
 
-	count, model, err := memoryNames(labelsStr)
+	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, []string{category})
+	labels := mapping[category]
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
-	} else if len(count) == 0 {
+	} else if len(labels) == 0 {
 		s.Fatal("No memory labels")
 	}
 
@@ -100,29 +56,20 @@ func CrosRuntimeProbeMemory(ctx context.Context, s *testing.State) {
 	probedMemoryComponents := result.GetDram()
 
 	for _, component := range probedMemoryComponents {
-		name := component.GetName()
-		if info := component.GetInformation(); info != nil {
-			if compGroup := info.GetCompGroup(); compGroup != "" {
-				name = model + "_" + compGroup
-			}
-		}
-		if name == "generic" {
-			s.Log("Skip known generic probe result")
-		} else {
-			s.Log("Probed memory: ", name)
-			if _, exists := count[name]; !exists {
-				s.Fatalf("Unexpected memory %v is probed", name)
-			}
-			count[name]--
-			if count[name] == 0 {
-				delete(count, name)
+		result, name := runtimeprobe.DecreaseComponentCount(labels, model, component)
+		s.Logf("Probed %s: %s", category, name)
+		if !result {
+			if name == "generic" {
+				s.Logf("Skip known generic %s probe result", category)
+			} else {
+				s.Fatalf("Unexpected %s %q is probed", category, name)
 			}
 		}
 	}
 
-	if len(count) > 0 {
-		unprobedMemory := make([]string, 0, len(count))
-		for k := range count {
+	if len(labels) > 0 {
+		unprobedMemory := make([]string, 0, len(labels))
+		for k := range labels {
 			unprobedMemory = append(unprobedMemory, k)
 		}
 		sort.Strings(unprobedMemory)
