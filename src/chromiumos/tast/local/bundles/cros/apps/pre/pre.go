@@ -11,12 +11,14 @@ var AppsCriticalModels = []string{
 	"hana",
 	// Another top board -- convertible, x64.
 	"snappy",
-	// Not much usage, but very small tablet.
-	"kukui",
+	// Kukui family, not much usage, but very small tablet.
+	"kodama",
+	"krane",
 	// Convertible chromebook, top usage in 2018 and 2019.
 	"cyan",
 	// Random boards on the top boards for VK list.
-	"octopus",
+	"bobba360",
+	"bobba",
 	"kefka",
 	"coral",
 	// VM used for basic development.
