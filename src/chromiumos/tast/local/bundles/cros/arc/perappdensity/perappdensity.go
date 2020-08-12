@@ -26,6 +26,8 @@ const (
 	Setprop = "/system/bin/setprop"
 	// DensitySetting is the settings string for allowing density changes.
 	DensitySetting = "persist.sys.enable_application_zoom"
+	// DensityApk is the name of the apk used in these tests.
+	DensityApk = "ArcPerAppDensityTest.apk"
 )
 
 // DensityChange is a struct containing information to perform density changes.
