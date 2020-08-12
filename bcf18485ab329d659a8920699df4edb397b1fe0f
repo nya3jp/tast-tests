@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70bfc016_0fbbecac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T01:10:39Z",
+      "side": 0,
+      "message": "This is a newly introduced test which was recently fixed, so we should leave the stretch version in place",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "bcf18485ab329d659a8920699df4edb397b1fe0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3081513f_c1a544b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T01:10:39Z",
+      "side": 0,
+      "message": "Same for this one",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "bcf18485ab329d659a8920699df4edb397b1fe0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9dc6ca_bdcc9df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/no_access_to_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T01:10:39Z",
+      "side": 0,
+      "message": "And this one",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "bcf18485ab329d659a8920699df4edb397b1fe0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a8fb4e_597367a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T01:10:39Z",
+      "side": 0,
+      "message": "+1 to removing this one though",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "bcf18485ab329d659a8920699df4edb397b1fe0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97bdbd8_1551ab85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/shared_font_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T01:10:39Z",
+      "side": 0,
+      "message": "This one isn\u0027t new, but it did get fixed recently",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "bcf18485ab329d659a8920699df4edb397b1fe0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
