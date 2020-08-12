@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "5aabca4f_eeb2ee8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T01:23:18Z",
+      "side": 1,
+      "message": "+1 for tast style from shadow reviewer.",
+      "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a678071_3e24a9c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
         "patchSetId": 5
