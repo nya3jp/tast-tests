@@ -361,6 +361,30 @@
     },
     {
       "key": {
+        "uuid": "08827dac_0f6ec991",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-12T20:18:20Z",
+      "side": 1,
+      "message": "Yeah, I guess this is good approach. This is kind of functional options pattern: https://medium.com/@dreissenzahn/functional-options-in-go-35279f535c6#:~:text\u003dFunctional%20options%20are%20an%20idiomatic,and%20the%20design%20of%20options.\n\nPlease remove Get* prefixes due to Go code style: https://golang.org/doc/effective_go.html#Getters",
+      "parentUuid": "e821f999_ba30c823",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95de39aa_21e12568",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
