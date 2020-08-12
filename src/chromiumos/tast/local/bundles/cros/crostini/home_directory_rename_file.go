@@ -100,7 +100,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 // testRenameFileFromLinuxFiles first renames a file in Linux file then checks it is also renamed in container.
 func testRenameFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, keyboard *input.KeyboardEventWriter, fileName, newFileName string) error {
 	// Rename a file in Linux files.
-	if err := filesApp.RenameFile(ctx, linuxfiles.Title, fileName, newFileName, linuxfiles.DirName); err != nil {
+	if err := filesApp.RenameFile(ctx, keyboard, linuxfiles.Title, fileName, newFileName, linuxfiles.DirName); err != nil {
 		return errors.Wrapf(err, "failed to rename file %s", fileName)
 	}
 
