@@ -16,6 +16,24 @@
       "revId": "e6af4263f1a5fb415b61e41b984a87e4c3d7372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "906f8123_dc2c9193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T21:26:19Z",
+      "side": 1,
+      "message": "I believe that package should be supplied through dev-go/gapi-drive package (https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/dev-go/gapi-drive/gapi-drive-0.0.1.ebuild).\n\nI believe update_chroot installs that into your chroot environment.",
+      "parentUuid": "42d3e497_7940c421",
+      "revId": "e6af4263f1a5fb415b61e41b984a87e4c3d7372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
