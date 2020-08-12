@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c43e2d3_6dd33942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-12T07:24:14Z",
+      "side": 1,
+      "message": "tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b5d20b24f680ad97328031c0d6920d98280c341c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd210fd_258cca05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-12T07:24:14Z",
+      "side": 1,
+      "message": "nit: \"to fail\" or \"failure\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "b5d20b24f680ad97328031c0d6920d98280c341c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d04446e6_ba57502b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-12T07:24:14Z",
+      "side": 1,
+      "message": "nit: anymore",
+      "range": {
+        "startLine": 9,
+        "startChar": 93,
+        "endLine": 9,
+        "endChar": 101
+      },
+      "revId": "b5d20b24f680ad97328031c0d6920d98280c341c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022adab0_c7af1207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-12T07:24:14Z",
+      "side": 1,
+      "message": "nit: Collecting",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "b5d20b24f680ad97328031c0d6920d98280c341c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcf1118_31507964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-12T07:24:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b5d20b24f680ad97328031c0d6920d98280c341c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
