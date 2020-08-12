@@ -16,6 +16,40 @@
       "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e35d9e7e_2d64c67f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-12T15:29:44Z",
+      "side": 1,
+      "message": "LGTM with one request. Sorry for delay (I was OOO).",
+      "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0059face_f988d59a",
+        "filename": "src/chromiumos/tast/local/upstart/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-12T15:29:44Z",
+      "side": 1,
+      "message": "nit: upstart also has the concept \"service\", but the word \"Service\" used here is D-Bus service.\n\nTo be clear, could you rename file and method to dbus.go and RestartJobAndWaitForDBusService?",
+      "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
