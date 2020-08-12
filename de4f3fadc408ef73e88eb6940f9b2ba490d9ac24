@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd07c59f_20585bdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-12T05:06:42Z",
+      "side": 1,
+      "message": "I don\u0027t think that this CL would cause tast.platform.DriveFfs to fail; however, I am surprised to see the three tests being promoted here failing in the tast VM.\n\nI\u0027m assuming that this is the same issue Fletcher observed in the promotion of printer.PrintIPPUSB:\n  kdlee@penguin:~$ grep -H --color\u003dalways -n \"lpadmin.\\+sig\" ./*.txt \n  ./copies-supported-messages.txt:99:2020-08-12T03:20:15.078718+00:00 WARNING crash_reporter[5893]: [user] Received crash notification for lpadmin[5872] sig 31, user 269 group 7 (developer build - not testing - always dumping)\n  ./copies-unsupported-messages.txt:233:2020-08-12T03:22:12.992972+00:00 WARNING crash_reporter[6303]: [user] Received crash notification for lpadmin[6266] sig 31, user 269 group 7 (developer build - not testing - always dumping)\n  ./no-copies-messages.txt:101:2020-08-12T03:24:08.430703+00:00 WARNING crash_reporter[6717]: [user] Received crash notification for lpadmin[6682] sig 31, user 269 group 7 (developer build - not testing - always dumping)\n\nSo I\u0027ll also try forcibly re-building to incorporate the speculative fix.",
+      "revId": "de4f3fadc408ef73e88eb6940f9b2ba490d9ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
