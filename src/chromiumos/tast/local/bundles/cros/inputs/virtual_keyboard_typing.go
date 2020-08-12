@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardTyping,
 		Desc:         "Checks that the virtual keyboard works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
 		Timeout:      5 * time.Minute,

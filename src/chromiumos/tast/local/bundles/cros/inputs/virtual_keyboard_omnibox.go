@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOmnibox,
 		Desc:         "Checks that the virtual keyboard appears when clicking on the omnibox",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
