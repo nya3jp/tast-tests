@@ -16,6 +16,29 @@
       "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7a302b2_567eb4be",
+        "filename": "src/chromiumos/tast/local/chrome/ui/debugging/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:21:31Z",
+      "side": 1,
+      "message": "We discourage multi-lined log (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting)\n\u003e In all cases, please avoid multiline strings since they make logs difficult to read.\n\nIt is indeed helpful when you debug locally. I do something like s.Log(ui.RootDebugInfo(ctx, tconn)) several times, but it should not be in the committed code.\n\nAlso, there\u0027s already faillog.DumpUITreeOnError: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui/faillog#DumpUITreeOnError",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
