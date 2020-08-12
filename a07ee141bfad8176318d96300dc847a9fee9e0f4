@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "7748ed32_d7e130a9",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Great suggestion. Do you want me to expose a Output() method on profiler RunningProf ? I am not sure how to add that properly because profiler package only expose a RunningProf by calling Start. And in the end it stops all the profilers by calling End. In my case, I only want one of the profiler\u0027s output. Could you please recommend an API to suit my use case ?",
+      "parentUuid": "52575d99_089ea251",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d59f4f7_7801e54f",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b357d31_fbfc1cfd",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Yes good idea.",
+      "parentUuid": "1d59f4f7_7801e54f",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -146,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "163b086a_921060b5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eb21981_6d31dec7",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "444a6d62_a8aeaec5",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -193,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "e821f999_ba30c823",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Thinking about this again, I guess maybe using a function like GetPerfStatOpts, GetPerfRecordOpts will look cleaner. I could not find a best practice for this kind of usage (some argument is needed depending on another argument). Please let me know if I am doing this right.  Thanks!",
+      "parentUuid": "1b314907_172467fa",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95de39aa_21e12568",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -228,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "807f2fc4_300fdbb2",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "In the new patchset I use GetPerfStatOpts and check pv and pid \u003c\u003d 0 case. Also, I drop the usage of not passing pid because there is no user for that.",
+      "parentUuid": "b79b2f0e_ec92ff1a",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f37db2a4_3abb401b",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -242,6 +356,24 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00dfe262_27a34d9c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Good idea. Thanks!",
+      "parentUuid": "f37db2a4_3abb401b",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -280,6 +412,24 @@
     },
     {
       "key": {
+        "uuid": "f5ace84c_6a07505c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ea8a43_0e4c15fa",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffbbdedd_7aff7535",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -312,6 +462,24 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7d6fca_7a352dc1",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done. I need to remove ^ in the beginning when parsing the result of ReadFile.",
+      "parentUuid": "b75ff17d_b75e780f",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -362,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "ceea17e0_b058d104",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "It is indeed much simpler. Thanks!",
+      "parentUuid": "13abea0d_eb2ac133",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "826da2cb_fa038670",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -376,6 +568,24 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a80081e_a242bd0c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Good idea, I will add this and unittest.",
+      "parentUuid": "826da2cb_fa038670",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -426,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "0b4e12a4_8bb47717",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1592c0bb_85689f45",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "510baba9_65ecfd9d",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -473,6 +707,30 @@
     },
     {
       "key": {
+        "uuid": "b05cc122_d828f1e1",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5dd808_643bf426",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 28
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b1964ce_e7bcb529",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -508,6 +766,24 @@
     },
     {
       "key": {
+        "uuid": "e98a7e11_67fd61de",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d579cd_cd79ab16",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9331e42_94b6ce15",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -519,6 +795,24 @@
       "writtenOn": "2020-08-12T06:44:15Z",
       "side": 1,
       "message": "This should be done in the test, not in the profiler library. Emitting a metric that is only used in some test(s) breaks the software layering and is a leakage of implementation details. Another test could also profile CPU cycles but isn\u0027t related to cras. This will be awkward getting a metric of cras.",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025fef47_dadfda7e",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "I have the same question as above. What interface would you recommend for profiler to expose ? Currently it only has End() function for a list of profilers. If possible we can pass metrics name when setting perf, but having a separated function to get perf metrics seems better.",
+      "parentUuid": "b9331e42_94b6ce15",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -572,6 +866,30 @@
     },
     {
       "key": {
+        "uuid": "ed7e8106_61d45385",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0e9d65_629bb8de",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29e316cb_45014a8b",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
@@ -604,6 +922,24 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0a6215_36c3b644",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983fd059_1d05fbe0",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -654,6 +990,30 @@
     },
     {
       "key": {
+        "uuid": "8ccfd637_272dc667",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08ac724_411533c7",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a4b664a_d89424b3",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
@@ -698,6 +1058,30 @@
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43471a8_94b87dc0",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6892fa00_55b67aaa",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
