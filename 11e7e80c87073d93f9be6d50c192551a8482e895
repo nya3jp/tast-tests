@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "b6c784b9_352a3e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:44:55Z",
+      "side": 1,
+      "message": "It is a very nitpicking comment, but theoretically, ctx can be already expired, when the test fails due to timeout. That happens when the test got stuck as unexpected situation occurs.\n\nIf that\u0027s very unlikely, or it\u0027s okay not to run postprocess on such case, this is good enough.\nHowever, if you want to care about such situation, maybe it is better to secure the time to run this postprocess.  This can be done with ctxutil.Shorten:\n  defer crostini.RunCrostiniPostTest(ctx, cont)\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n  defer cancel()\n  ...\n\nThat way, crostini.RunCrostiniPostTest will refer to the original timeout, and the test code below will refer to the new ctx whose timeout is 10 seconds shorter. So even when the test main scenario fails due to timeout, crostini.RunCrostiniPostTest still has 10 seconds to conduct the postporocess (I picked up this \"10 seconds\" randomly -- please modify it).\n\nThis applies to all the test files you edited.\n\nAgain this is a bit lengthy and can complicate the code.  If that\u0027s not a big concern, the current code is fine.",
+      "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6789417_fcfb7ecc",
         "filename": "src/chromiumos/tast/local/crostini/post.go",
         "patchSetId": 3
