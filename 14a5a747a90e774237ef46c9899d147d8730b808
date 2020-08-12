@@ -208,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "9358d9fe_ad3d1d68",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T02:20:51Z",
+      "side": 1,
+      "message": "That won\u0027t work in this case because err is already defined",
+      "parentUuid": "eae5e319_61d75d41",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "14a5a747a90e774237ef46c9899d147d8730b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad77d519_9e396dc1",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
