@@ -385,7 +385,7 @@ func (f *FilesApp) CheckFileDoesNotExist(ctx context.Context, title, fileName st
 
 // RenameFile renames a file in a path.
 // Parameter path should be a path to the file, e.g, Downloads > testfolder1 > subfolder > ...
-func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName string, path ...string) error {
+func (f *FilesApp) RenameFile(ctx context.Context, keyboard *input.KeyboardEventWriter, title, oldName, newName string, path ...string) error {
 	// Open the directory in the navigation tree.
 	if err := f.OpenPath(ctx, title, path...); err != nil {
 		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
@@ -404,12 +404,6 @@ func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName strin
 	if err := f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
 		return errors.Wrap(err, "failed finding rename input text field")
 	}
-
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get keyboard")
-	}
-	defer keyboard.Close()
 
 	// Type the new name.
 	if err := keyboard.Type(ctx, newName); err != nil {
