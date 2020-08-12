@@ -53,6 +53,52 @@
     },
     {
       "key": {
+        "uuid": "52575d99_089ea251",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T06:44:15Z",
+      "side": 1,
+      "message": "The profiler library shouldn\u0027t need to depend on perfpkg. This library should define its own output data type (e.g. cycles and duration, or a key-value map to be generic and flexible for future extensions.) and have the test using this library emit the test metrics using the returned result.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d59f4f7_7801e54f",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T06:44:15Z",
+      "side": 1,
+      "message": "nit: please also rename this to something like PerfStatRecord to clearly distinguish it from PerfStatOnly. Having PerfStat and PerfStatOnly is confusing to readers without comments.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cafe5bde_8374773b",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -182,6 +228,23 @@
     },
     {
       "key": {
+        "uuid": "f37db2a4_3abb401b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T06:44:15Z",
+      "side": 1,
+      "message": "We can just pack and pass the parameters (i.e. passing *PerfOpts) so we won\u0027t need to expand the parameter list in the future when there are more to add (and some parameters might be optional to make the situation more complicated).",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d37d855_e8850aba",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -293,6 +356,23 @@
         "endLine": 153,
         "endChar": 0
       },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826da2cb_fa038670",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T06:44:15Z",
+      "side": 1,
+      "message": "perf stat doesn\u0027t always return a valid number cycles. For example, it can output the following:\n\n Performance counter stats for process id \u00278235\u0027:\n\n     \u003cnot counted\u003e      cycles                                                      \n\n       1.542183197 seconds time elapsed\n\nin my tests. Though it will be caught in this error, but it would be better that we separate this error out.",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -422,6 +502,23 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "8b1964ce_e7bcb529",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9331e42_94b6ce15",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-12T06:44:15Z",
+      "side": 1,
+      "message": "This should be done in the test, not in the profiler library. Emitting a metric that is only used in some test(s) breaks the software layering and is a leakage of implementation details. Another test could also profile CPU cycles but isn\u0027t related to cras. This will be awkward getting a metric of cras.",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
