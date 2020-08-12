@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "c80fe3b6_efa12152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:16:08Z",
+      "side": 1,
+      "message": "Indeed this is confusing, actually it confuses me a lot too.  I don\u0027t know good references for boards/models.",
+      "parentUuid": "61f4f2cf_4f263897",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80834f2d_b4190bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
         "patchSetId": 2
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "vkb types keyboard in searchbox and the ENTER key is used to launch help app.",
       "parentUuid": "80834f2d_b4190bdd",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "522c921269a46f4f6001c1ab7e0b9cd77c0060ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab9edc7_ae02813b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:16:08Z",
+      "side": 1,
+      "message": "I\u0027m afraid that you misunderstood my comment. I meant there are 2 enter keys in this test, and 2nd one is not verified.\n\nThe current code is vkb.TapKeysJS(ctx, kconn, append(strings.Split(\"help\", \"\"), \"enter\")). This means vkb already types the enter key. As far as I tried locally, this enter key is transmit to the search box and opens the help app.\n\nThen the test code creates *another* enter key from physical keyboard.\n\nBecause test just verifies the existence of help app, it only verifies the first enter key.  The second enter key may be created but the test does not verify it at all.",
+      "parentUuid": "8f6a5b21_1e1f8538",
       "range": {
         "startLine": 60,
         "startChar": 0,
