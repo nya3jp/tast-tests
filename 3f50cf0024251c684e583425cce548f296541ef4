@@ -51,6 +51,24 @@
       "revId": "3f50cf0024251c684e583425cce548f296541ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ed3dcb_bb1b8833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-12T17:01:07Z",
+      "side": 1,
+      "message": "Not a clue, though that could be the problem. I reserved a device using:\n\n$ skylab lease-dut -model eve -dims \u0027label-servo_state\u003dWORKING\u0027\n\nis that the right way to get a DUT with a servo? Is there some other command you\u0027ve been able to use more successfully?",
+      "parentUuid": "1b84b7e3_07258af5",
+      "revId": "3f50cf0024251c684e583425cce548f296541ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
