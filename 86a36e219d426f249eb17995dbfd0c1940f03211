@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8db0dd32_8d1460f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T02:29:16Z",
+      "side": 1,
+      "message": "I think some CLs are already merged. You can try if they\u0027re enough (maybe in another CL).",
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e1a4e2c_249107d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T02:29:16Z",
+      "side": 1,
+      "message": "Now we have tf.ReserveForCollectLogs for this.",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975e745b_7a11442c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T02:29:16Z",
+      "side": 1,
+      "message": "nit: maybe you can use the new CleanDisconnectWifi here.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650f3a97_c576a7a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T02:29:16Z",
+      "side": 1,
+      "message": "Now we have tf.ReserveForDisconnect.",
+      "range": {
+        "startLine": 120,
+        "startChar": 15,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6281518a_d3edf878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T02:29:16Z",
+      "side": 1,
+      "message": "nit: remove the empty line?",
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
