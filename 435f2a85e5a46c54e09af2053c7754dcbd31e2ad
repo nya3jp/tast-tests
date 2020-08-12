@@ -34,6 +34,41 @@
       "revId": "435f2a85e5a46c54e09af2053c7754dcbd31e2ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10bb2124_be52b9d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T01:30:20Z",
+      "side": 1,
+      "message": "For the failure I had, no, as the failure is \u0027failed to set up the NetCertStore\u0027. Once it is created, the later tests will not set it up again. Also, it does not make later tests without NetCertStore fail.\n\nI think if we really find some tests leaving dirty state to later tests , we can fix it and make Reinit between tests more thorough.\n\nFWIW, I recently find some problem in successive connection to networks with different security setting. (b/161648841) Precondition might \u0027break\u0027 some tests if it hits similiar problems.",
+      "parentUuid": "729a8aae_9d92b3cb",
+      "revId": "435f2a85e5a46c54e09af2053c7754dcbd31e2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e66f338b_c53d64aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-12T01:30:20Z",
+      "side": 1,
+      "message": "Verified in my local setup.",
+      "revId": "435f2a85e5a46c54e09af2053c7754dcbd31e2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
