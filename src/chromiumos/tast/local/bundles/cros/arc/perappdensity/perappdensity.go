@@ -26,6 +26,8 @@ const (
 	Setprop = "/system/bin/setprop"
 	// DensitySetting is the settings string for allowing density changes.
 	DensitySetting = "persist.sys.enable_application_zoom"
+	// DensityApk is the name of the apk used in these tests.
+	DensityApk = "ArcPerAppDensityTest.apk"
 )
 
 // DensityChange is a struct containing information to perform density changes.
@@ -61,6 +63,7 @@ func CountBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int
 		}
 		gotPixelCount := screenshot.CountPixels(img, color.Black)
 		diff := math.Abs(float64(wantPixelCount-gotPixelCount) / float64(wantPixelCount))
+
 		if diff > 0.01 {
 			return errors.Errorf("wrong number of black pixels, got: %d, want: %d", gotPixelCount, wantPixelCount)
 		}
