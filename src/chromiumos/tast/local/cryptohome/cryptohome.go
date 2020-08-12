@@ -262,27 +262,25 @@ func WaitForUserMount(ctx context.Context, user string) error {
 func CreateVault(ctx context.Context, user, password string) error {
 	testing.ContextLogf(ctx, "Creating vault mount for user %q", user)
 
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(
-			ctx, "cryptohome", "--action=mount_ex",
-			"--user="+user, "--password="+password,
-			"--async", "--create", "--key_label=bar")
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			return err
-		}
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=mount_ex",
+		"--user="+user, "--password="+password,
+		"--create", "--key_label=bar")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return err
+	}
 
-		// TODO(crbug.com/690994): Remove this additional call to
-		// UserHash when crbug.com/690994 is fixed.
-		hash, err := UserHash(ctx, user)
-		if err != nil {
-			return err
-		}
-		if _, err := os.Stat(filepath.Join(shadowRoot, hash)); err != nil {
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second})
+	// TODO(crbug.com/690994): Remove this additional call to
+	// UserHash when crbug.com/690994 is fixed.
+	hash, err := UserHash(ctx, user)
+	if err != nil {
+		return err
+	}
+	if _, err := os.Stat(filepath.Join(shadowRoot, hash)); err != nil {
+		return err
+	}
+	return nil
 
 	if err != nil {
 		return errors.Wrapf(err, "failed to create vault for %s", user)
