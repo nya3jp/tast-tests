@@ -16,6 +16,29 @@
       "revId": "a2e9f8e15146e4f648e0daf68e5ce1be2168539d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7a2e239_6f00c7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-08-12T01:00:58Z",
+      "side": 1,
+      "message": "Not quite sure whether Tast provide any args/dimension that let tests only run on tablet cros device without keyboard attached (e.g Google Pixel Slate Keyboard on Nocturne)",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "a2e9f8e15146e4f648e0daf68e5ce1be2168539d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
