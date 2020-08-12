@@ -136,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "0f4b5504_5beee8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T07:03:41Z",
+      "side": 1,
+      "message": "Okay, I\u0027ve completely re-written this to expand on that test instead of making a new one.",
+      "parentUuid": "59636f33_203a90e0",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a111c849_2c55c8b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
         "patchSetId": 1
