@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1d4c3735_e80db237",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-12T04:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e1a4e2c_249107d1",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975e745b_7a11442c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
         "patchSetId": 27
@@ -62,6 +86,30 @@
       "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bd696b_ef92a25f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-12T04:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975e745b_7a11442c",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "cd64a8ba_dd224fab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-12T04:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650f3a97_c576a7a0",
+      "range": {
+        "startLine": 120,
+        "startChar": 15,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6281518a_d3edf878",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
         "patchSetId": 27
@@ -102,6 +174,24 @@
       "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bde622bf_84e45fee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-12T04:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6281518a_d3edf878",
+      "revId": "86a36e219d426f249eb17995dbfd0c1940f03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
