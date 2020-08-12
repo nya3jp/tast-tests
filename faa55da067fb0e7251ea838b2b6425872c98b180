@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdf3abb6_23332cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:05:04Z",
+      "side": 1,
+      "message": "Hi,\n\nWith fresh eyes I\u0027ve noticed something. Glad you can address these comments. Keeping CR+2 as it is probably not a big deal.",
+      "revId": "faa55da067fb0e7251ea838b2b6425872c98b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948f8251_e799294a",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:05:04Z",
+      "side": 1,
+      "message": "Could you also put the comment for why \"get-state\" is used instead of \"devices\"?  It would help future readers.",
+      "range": {
+        "startLine": 92,
+        "startChar": 29,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "faa55da067fb0e7251ea838b2b6425872c98b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b351f0_573dfdfc",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:05:04Z",
+      "side": 1,
+      "message": "personally I prefer to strip spaces, i.e. strings.TrimSpaces(string(out)) !\u003d \"device\".",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "faa55da067fb0e7251ea838b2b6425872c98b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9acba8c_68e48b9f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-12T17:05:04Z",
+      "side": 1,
+      "message": "since this does not set the Timeout and the body of testing.Poll never calls PollBreak, the only chance of failures of this testing.Poll would be the timeout of the context.\n\nThat means, once this testing.Poll fails, \"ctx\" should be expired already, and so the fallback below (adb connect -\u003e check) should always fail to run.\n\nI think it is better to limit the timeout here.",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "faa55da067fb0e7251ea838b2b6425872c98b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
