@@ -190,6 +190,21 @@ type Window struct {
 
 var defaultPollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
+var stateToWmTypes = map[WindowStateType]WMEventType{
+	WindowStateNormal:       WMEventNormal,
+	WindowStateMinimized:    WMEventMinimize,
+	WindowStateMaximized:    WMEventMaximize,
+	WindowStateFullscreen:   WMEventFullscreen,
+	WindowStateLeftSnapped:  WMEventSnapLeft,
+	WindowStateRightSnapped: WMEventSnapRight,
+}
+
+// WMEventTypeForState returns the WMEventType to turn a window into the given
+// state.
+func WMEventTypeForState(state WindowStateType) WMEventType {
+	return stateToWmTypes[state]
+}
+
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state.
 func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
