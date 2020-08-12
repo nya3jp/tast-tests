@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/ocr/phototest_20200813.tif",
+  "size": 38668,
+  "sha256sum": "d2241a1eb6d6cd2eb6544b8e228c2862c852b7467d16ed636caa32179b780692"
+}

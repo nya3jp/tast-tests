@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/ocr/phototest_golden_20200813.pdf",
+  "size": 7744,
+  "sha256sum": "c2190a995d3f5c81a753324b8ddefe505aeef0c7350ecfc07945586b1a687063"
+}
