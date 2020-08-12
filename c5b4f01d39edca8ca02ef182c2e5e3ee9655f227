@@ -50,6 +50,24 @@
       "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd04f71_2551ab09",
+        "filename": "src/chromiumos/tast/local/upstart/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-12T22:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0059face_f988d59a",
+      "revId": "c5b4f01d39edca8ca02ef182c2e5e3ee9655f227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
