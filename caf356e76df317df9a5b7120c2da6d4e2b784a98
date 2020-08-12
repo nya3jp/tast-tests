@@ -33,6 +33,179 @@
       "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a62133b_5801384c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "Marked in comments.",
+      "parentUuid": "1d0f600e_380e1226",
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13ee9481_8408b8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "Suggest to rename files_app.go to home_directory_rename/delete_folder.go to align with existing test.",
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bce4c21_55929b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "This part has been covered in this test: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go;bpv\u003d0",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a111c849_2c55c8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "Focus on the listbox before right click.",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13e304f_431fd166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "There is a method RenameFile in filesapp.go.",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d6fc2c_7516a743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "You might need to refresh before checking.",
+      "range": {
+        "startLine": 111,
+        "startChar": 9,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfc59ad6_9a1f9939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "RenameFile in filesapp.go",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5d73b3_65ffe7ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-12T03:14:19Z",
+      "side": 1,
+      "message": "Suggest to split this into two tests: deleting folder and renaming folder because deleting folder does not depend on renaming folder.",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
