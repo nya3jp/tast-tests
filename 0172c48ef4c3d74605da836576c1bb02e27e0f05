@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6815a88a_bffe12d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-12T07:47:45Z",
+      "side": 1,
+      "message": "Hi reviewers, I added a print function to console log ui trees and targets, which is very handy for debugging purpose.",
+      "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
