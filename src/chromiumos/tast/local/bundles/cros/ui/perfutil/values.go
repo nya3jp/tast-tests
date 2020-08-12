@@ -6,7 +6,11 @@
 package perfutil
 
 import (
+	"context"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Values keeps the reporting values for multiple runs.
@@ -32,6 +36,22 @@ func (v *Values) Append(metric perf.Metric, value float64) {
 	v.values[name] = append(v.values[name], value)
 }
 
+func minMaxIndices(vs []float64) (minIndex, maxIndex int) {
+	max := vs[0]
+	min := vs[0]
+	for i, v := range vs {
+		if v > max {
+			max = v
+			maxIndex = i
+		}
+		if v < min {
+			min = v
+			minIndex = i
+		}
+	}
+	return minIndex, maxIndex
+}
+
 // Values creates a new perf.Values for its data points.
 func (v *Values) Values() *perf.Values {
 	pv := perf.NewValues()
@@ -51,20 +71,7 @@ func (v *Values) Values() *perf.Values {
 		otherMetric.Variant = "average"
 		otherMetric.Multiple = true
 
-		max := vs[0]
-		min := vs[0]
-		maxIndex := 0
-		minIndex := 0
-		for i, v := range vs {
-			if v > max {
-				max = v
-				maxIndex = i
-			}
-			if v < min {
-				min = v
-				minIndex = i
-			}
-		}
+		minIndex, maxIndex := minMaxIndices(vs)
 		for i, v := range vs {
 			if len(vs) < 3 || (i != maxIndex && i != minIndex) {
 				pv.Append(otherMetric, v)
@@ -72,6 +79,54 @@ func (v *Values) Values() *perf.Values {
 		}
 	}
 	return pv
+}
+
+// Verify verifies the stored values with the numbers in expects and returns a
+// list of misses of the expectations. If no problem, it will return empty.
+func (v *Values) Verify(ctx context.Context, expects map[string]float64) []error {
+	var errs []error
+	for name, metric := range v.metrics {
+		vs := v.values[name]
+		if len(vs) == 0 {
+			continue
+		}
+		exp, ok := expects[name]
+		if !ok {
+			testing.ContextLogf(ctx, "Skipping %s", name)
+			continue
+		}
+		var sum float64
+		var count int
+		if len(vs) < 3 {
+			count = len(vs)
+			for _, v := range vs {
+				sum += v
+			}
+		} else {
+			minIndex, maxIndex := minMaxIndices(vs)
+			for i, v := range vs {
+				if i != minIndex && i != maxIndex {
+					sum += v
+					count++
+				}
+			}
+		}
+		avg := sum / float64(count)
+		var isGood bool
+		var operator string
+		if metric.Direction == perf.BiggerIsBetter {
+			isGood = exp <= avg
+			operator = ">="
+		} else {
+			isGood = avg <= exp
+			operator = "<="
+		}
+		if !isGood {
+			errs = append(errs, errors.Errorf(
+				"%s: got %v want %s%v", name, avg, operator, exp))
+		}
+	}
+	return errs
 }
 
 // Save is a shortcut of Values().Save(outdir). Helpful when the test does not

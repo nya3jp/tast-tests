@@ -22,8 +22,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Runs provides the number of iteration for a perftest conducts.
-const Runs = 10
+// DefaultRuns provides the default number of iteration for a perftest conducts.
+const DefaultRuns = 10
 
 // ScenarioFunc is the function to conduct the test operation and returns the
 // metric value.
@@ -84,13 +84,15 @@ func StoreLatency(ctx context.Context, pv *Values, hists []*metrics.Histogram) e
 
 // Runner is an entity to manage multiple runs of the test scenario.
 type Runner struct {
-	cr *chrome.Chrome
-	pv *Values
+	cr         *chrome.Chrome
+	pv         *Values
+	Runs       int
+	RunTracing bool
 }
 
 // NewRunner creates a new instance of Runner.
 func NewRunner(cr *chrome.Chrome) *Runner {
-	return &Runner{cr: cr, pv: NewValues()}
+	return &Runner{cr: cr, pv: NewValues(), Runs: DefaultRuns, RunTracing: true}
 }
 
 // Values returns the values in the runner.
@@ -110,7 +112,7 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 	if name == "" {
 		runPrefix = "run"
 	}
-	for i := 0; i < Runs; i++ {
+	for i := 0; i < r.Runs; i++ {
 		if !s.Run(ctx, fmt.Sprintf("%s-%d", runPrefix, i), func(ctx context.Context, s *testing.State) {
 			hists, err := scenario(ctx)
 			if err != nil {
@@ -122,6 +124,9 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		}) {
 			return false
 		}
+	}
+	if !r.RunTracing {
+		return true
 	}
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
