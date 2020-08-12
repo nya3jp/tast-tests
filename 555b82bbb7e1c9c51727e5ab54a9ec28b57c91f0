@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f504c7_764f8259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-12T06:07:21Z",
+      "side": 1,
+      "message": "Added subtest 8021xwpa to verify that DUT can roam between two WPA-EAP APs in full view of it.",
+      "revId": "555b82bbb7e1c9c51727e5ab54a9ec28b57c91f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
