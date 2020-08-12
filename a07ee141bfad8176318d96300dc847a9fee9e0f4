@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "b9839919_c65cb3a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:00:30Z",
+      "side": 1,
+      "message": "Tast Shadow Review.",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cafe5bde_8374773b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:00:30Z",
+      "side": 1,
+      "message": "comment out of date?",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "444a6d62_a8aeaec5",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -42,6 +82,23 @@
     },
     {
       "key": {
+        "uuid": "95de39aa_21e12568",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:00:30Z",
+      "side": 1,
+      "message": "It seems like this option is only used when the PerfType is PerfStatOnly. If so, can you note that in the comment here? Moreover, it seems like this option is mandatory for PerfStatOnly. Given handleStatOnly will panic if p.pv \u003d\u003d nil, maybe the constructor should check this has been set if PerfType is PerfStatOnly, and error otherwise.",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d37d855_e8850aba",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -53,6 +110,23 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "Can you please add brief comment what it does and what returns?",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbbdedd_7aff7535",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:00:30Z",
+      "side": 1,
+      "message": "nit/optional: These variables could be promoted to the top of the file and treated as constants.\n\nvar cyclesRegexp \u003d regexp.MustCompile(`^\\s+(\\d+)\\s+cycles`)\nvar secondsRegexp \u003d regexp.MustCompile(`^\\s+(\\d+\\.?[\\d+]*)\\s+seconds time elapsed`)",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -179,6 +253,29 @@
       "writtenOn": "2020-08-11T16:40:52Z",
       "side": 1,
       "message": "please add blank line before",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8d3b8a_d62fc68d",
+        "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:00:30Z",
+      "side": 1,
+      "message": "clar: Is there any reason you use cmp.Equal here? Why not:\nif math.Abs(expected - cyclesPerSecond) \u003e\u003d 1e-6 {\n\n}",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 4
+      },
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
