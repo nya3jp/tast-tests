@@ -16,6 +16,69 @@
       "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec813cc_91704c7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-12T00:00:21Z",
+      "side": 1,
+      "message": "Highlighting the deficiences, but given hwdeps are still quite some way off, LGTM for now.",
+      "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a678071_3e24a9c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-12T00:00:21Z",
+      "side": 1,
+      "message": "I believe this can be either Realtek or Intel.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdb907ad_d0a66975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-12T00:00:21Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "dab0f99d083f72be49680b0d0444a1d1c1b37b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
