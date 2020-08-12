@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0309e5f_9e4fbbf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28cdb625_b1a37d37",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "847a90f1_fb52c657",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f57463_6632be55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "847a90f1_fb52c657",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 196,
+        "endChar": 65
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5c400d73_b9f7d701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "167f4276_09487274",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80ffa906_907bacca",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75aa65af_44430d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80ffa906_907bacca",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 95
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ecc24afa_0212a833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d85ba4a_6411078b",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46e3034d_dff9080e",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2020-08-12T05:09:56Z",
       "side": 1,
       "message": "Important: I\u0027m still wondering if rebooting is a valid operation here.\nI might be missing something, but it seems it reboots the DUT on which the test itself is running, which is not allowed.\nIf you really need to reboot the DUT, you should write remote tast tests.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/overview.md#Remote-tests",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "f335515c09963a0638976cf171bb4740e2d2b0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676961e6_636dca42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-12T06:14:38Z",
+      "side": 1,
+      "message": "The Suspend works as follows:\n- if powerd_dbus_suspend doesn\u0027t work, we first try to restart just the powerd (line 49).\n- if restart powerd fails, the whole test should fail, but at this time, the DUT might stuck already, so I\u0027m restarting it from client, since remote connection is most probably also lost (hence remote reboot won\u0027t work). I\u0027m aware that client reboot effectively stops the test, but at this point I have no choice but to try and reboot the system from client - most DUTs won\u0027t have servo attached, so if the DUT is stuck and I don\u0027t reboot it from client, the test will time out.",
+      "parentUuid": "46e3034d_dff9080e",
       "range": {
         "startLine": 53,
         "startChar": 0,
