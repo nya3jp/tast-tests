@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1909de1_ead31bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-12T01:02:32Z",
+      "side": 1,
+      "message": "Looks like this one still needs to be updated.",
+      "revId": "8f67defc946282d049857da9cf583dde66186a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
