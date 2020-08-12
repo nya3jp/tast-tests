@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d204e16_9b0f081d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-12T09:02:54Z",
+      "side": 1,
+      "message": "Thanks for reviewing the patch!",
+      "revId": "b3871ce37b4bba18861952a6477d3ef031cb1b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
