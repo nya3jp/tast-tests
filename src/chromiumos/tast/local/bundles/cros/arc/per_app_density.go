@@ -27,8 +27,6 @@ func init() {
 	})
 }
 
-const perAppDensityApk = "ArcPerAppDensityTest.apk"
-
 func PerAppDensity(ctx context.Context, s *testing.State) {
 	const (
 		packageName = "org.chromium.arc.testapp.perappdensitytest"
@@ -46,7 +44,7 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 		s.Fatal("Error obtaining initial display density: ", err)
 	}
 
-	if err := perappdensity.SetUpApk(ctx, a, perAppDensityApk); err != nil {
+	if err := perappdensity.SetUpApk(ctx, a, perappdensity.DensityApk); err != nil {
 		s.Fatal("Failed to setup perAppDensityApk: ", err)
 	}
 	defer arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.DensitySetting, "false").Run(testexec.DumpLogOnError)
