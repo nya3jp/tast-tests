@@ -33,6 +33,24 @@
       "revId": "3f50cf0024251c684e583425cce548f296541ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b84b7e3_07258af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-12T10:16:21Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t see servod running on the labstation. Is it correct?\n\n % ssh chromeos6-row4-rack17-labstation1.cros netstat -tnlp\n Warning: Permanently added \u0027chromeos6-row4-rack17-labstation1.cros.corp.google.com\u0027 (RSA) to the list of known hosts.\n Active Internet connections (only servers)\n Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    \n tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1252/sshd           \n tcp6       0      0 :::22                   :::*                    LISTEN      1252/sshd",
+      "parentUuid": "e1f31182_e40a9ed0",
+      "revId": "3f50cf0024251c684e583425cce548f296541ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
