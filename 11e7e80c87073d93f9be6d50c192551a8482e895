@@ -16,6 +16,29 @@
       "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6789417_fcfb7ecc",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-12T07:16:25Z",
+      "side": 1,
+      "message": "What happens to this if the container gets restarted?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
