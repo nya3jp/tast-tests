@@ -16,6 +16,23 @@
       "revId": "de4f3fadc408ef73e88eb6940f9b2ba490d9ac24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7589bf_3bf2a1b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-12T17:45:12Z",
+      "side": 1,
+      "message": "Fletcher pointed out that his fix only addresses the clock_gettime syscall for CUPS - not for lpadmin, which is what\u0027s failing here. I had trouble symbolizing the dump, but here\u0027s the legwork:\n\n  Thread 0 (crashed)\n   0  linux-gate.so + 0xb7f\n  ...\n  (cr) ((7f61474...)) kdlee@golftangoindia ~/trunk/src/scripts $ objdump -d /build/amd64-generic/lib/modules/4.14.191-16230-g4240e2e4019d/vdso/vdso64.so.dbg/linux-gate.so | grep \"b7f\"\n   8dd:   0f 84 9c 02 00 00       je     b7f \u003c__vdso_clock_gettime@@LINUX_2.6+0x2ef\u003e\n   aa4:   0f 84 d5 00 00 00       je     b7f \u003c__vdso_clock_gettime@@LINUX_2.6+0x2ef\u003e\n   b73:   75 0a                   jne    b7f \u003c__vdso_clock_gettime@@LINUX_2.6+0x2ef\u003e\n   b7f:   48 83 c4 08             add    $0x8,%rsp",
+      "revId": "de4f3fadc408ef73e88eb6940f9b2ba490d9ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
