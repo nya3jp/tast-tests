@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42d3e497_7940c421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-08-12T21:12:06Z",
+      "side": 1,
+      "message": "I believe this change is causing me a failure to build the hardware.MemCheck test, specifically because the `google.golang.org/api/drive/v3` library wasn\u0027t found.\n\nIf this library was imported already, I can\u0027t find it :/ I just did a full repo sync earlier today, but maybe some repository needs to be updated to master rather than stable for me to see it. Unfortunately, I can\u0027t find where any api/drive directory is imported into the source tree, so I don\u0027t know which thing to upgrade to stable. Any advice would be appreciated.",
+      "revId": "e6af4263f1a5fb415b61e41b984a87e4c3d7372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
