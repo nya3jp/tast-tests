@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "fd4fd549_8f074809",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T08:21:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a422c7d5_e1217dea",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13cd0674_9ca03269",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
         "patchSetId": 1

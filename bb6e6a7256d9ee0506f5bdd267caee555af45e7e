@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "58714b04_59d1867f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T08:21:38Z",
+      "side": 1,
+      "message": "I doubt if it is overkill. The likelihood of getting the same random SSID should be fairly low. Also, here it expects no change on AP0 and AP1\u0027s connection identifiers, respectively. Here AP0\u0027s SSID must be different. So does AP1\u0027s.",
+      "parentUuid": "7a89c202_6736fa79",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "bb6e6a7256d9ee0506f5bdd267caee555af45e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85fe076a_53cf9342",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 2
