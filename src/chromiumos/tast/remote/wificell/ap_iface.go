@@ -221,3 +221,31 @@ func (h *APIface) changeSubnetIdx(ctx context.Context, newIdx byte) (retErr erro
 	h.dhcpd = ds
 	return nil
 }
+
+// ChangeSSID changes the SSID without changing other settings, such as IP address and interface.
+// On failure, a call of stop is still needed to deconfigure the dhcp server and the WiFi interface.
+func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
+	if h.stopped || h.hostapd == nil {
+		return errors.New("hostapd is not running")
+	}
+
+	if err := h.hostapd.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to stop hostapd")
+	}
+	h.hostapd = nil
+
+	// hostapd will attempt to set the interface up and would fail if it is already up.
+	ipr := remote_ip.NewRemoteRunner(h.host)
+	if err := ipr.SetLinkDown(ctx, h.iface); err != nil {
+		return err
+	}
+
+	h.config.SSID = ssid
+	hs, err := hostapd.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.config)
+	if err != nil {
+		return errors.Wrap(err, "failed to start hostapd")
+	}
+	h.hostapd = hs
+
+	return nil
+}
