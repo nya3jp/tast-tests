@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e222ee28_c69efa98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T07:53:15Z",
+      "side": 1,
+      "message": "Generally LGTM.",
+      "revId": "bb6e6a7256d9ee0506f5bdd267caee555af45e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a89c202_6736fa79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T07:53:15Z",
+      "side": 1,
+      "message": "nit: Although there\u0027s only little chance that they got the same random SSID, I wonder if it might be better to manually assign two different SSIDs. (The problem is also available for the initial 2 services)\n\nI see in Autotest, there\u0027s some checking on the random SSIDs but not very thorough.",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "bb6e6a7256d9ee0506f5bdd267caee555af45e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85fe076a_53cf9342",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T07:53:15Z",
+      "side": 1,
+      "message": "Not quite sure if we should use this ChangeSSID function or let the caller of ConfigureAP decide the DHCP setting so they can just reconfigure another set of services (but then the parameter list of ConfigureAP will become longer and probably need some \u0027options\u0027)\n\nIn any case, the current version looks good enough to me.",
+      "revId": "bb6e6a7256d9ee0506f5bdd267caee555af45e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
