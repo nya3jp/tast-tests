@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4591d665_e1a405f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-08-13T23:49:53Z",
+      "side": 1,
+      "message": "thank you for fixing this",
+      "revId": "4c84d8a3148fdb03f3117f5dce83dffac49f39ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd982431_4766ba3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
