@@ -19,6 +19,80 @@
     },
     {
       "key": {
+        "uuid": "30677200_8a4a329f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-13T23:49:37Z",
+      "side": 1,
+      "message": "Tast Shadow Review: Looks like lots of eyeballs have looked at this code already. Only a few additional things I think are worth mentioning. LGTM % nits.",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a3edd84_9efe772e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-13T23:49:37Z",
+      "side": 1,
+      "message": "s.Fatal() does not return, so please drop the else case.\nSee: go/gocomments#indent-error-flow",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325dc45c_11418573",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-13T23:49:37Z",
+      "side": 1,
+      "message": "Now that methods are defined below to create PerfOpts objects, perhaps its fields no longer have to be public? (may require updating other dependencies of this code). The PerfType enumation might also be made private.",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a63a109_f8c08ccc",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-13T23:49:37Z",
+      "side": 1,
+      "message": "optional: If someone is using this method to generate a PerfOpts, they might not have seen what PerfStat means from the comment above. Perhaps inline the description from PerfStat above, \"PerfStatOpts creates a PerfOpts for running \"perf stat -a\" on the DUT.\n\nDitto for comments on other Perf....Opts methods below.",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ed9553e_e91477ae",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 6
