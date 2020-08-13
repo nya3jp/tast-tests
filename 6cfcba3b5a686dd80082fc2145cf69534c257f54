@@ -39,6 +39,30 @@
       "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b24607_8d1a5720",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-13T22:25:09Z",
+      "side": 1,
+      "message": "I modeled this logic after faft code.\n\nWouldn\u0027t filtering them out prevent testing scenarios involving those if the need ever arises? Besides, it would be hard to keep the code here and that doc (and also the actual implementation) in sync due to this tight coupling.",
+      "parentUuid": "d3115062_5a82176f",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
