@@ -22,6 +22,30 @@
       "revId": "981408f4fef4cf7a772c1662064f38783f44b597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85635e23_d512b7c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-13T18:26:35Z",
+      "side": 1,
+      "message": "I agree with you, I gave it 1 min timeout.",
+      "parentUuid": "2f1761b7_2d597d88",
+      "range": {
+        "startLine": 152,
+        "startChar": 45,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "981408f4fef4cf7a772c1662064f38783f44b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
