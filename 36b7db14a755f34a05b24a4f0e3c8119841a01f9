@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0473c5_ac5b3a98",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T18:29:21Z",
+      "side": 0,
+      "message": "I was wrong, we need to use --async. See https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/175594/\n\nWhat async does is preventing the bus from being held: See https://linux.die.net/man/1/dbus-binding-tool :\n\"\"\"\"org.freedesktop.DBus.GLib.Async\"\nThis annotation marks the method implementation as an asynchronous function, which does not return a response straight away but will send the response at some later point to complete the call. This is used to implement non-blocking services where method calls can take time.\"\"\"\"",
+      "revId": "36b7db14a755f34a05b24a4f0e3c8119841a01f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7727de_eaa33df4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T18:29:21Z",
+      "side": 0,
+      "message": "This is an invalid comment. From the python file, we are calling user_hash outside and inside the retry loop. Here we are only calling it inside the loop.",
+      "revId": "36b7db14a755f34a05b24a4f0e3c8119841a01f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf31ce0_12882b6b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T18:29:21Z",
+      "side": 0,
+      "message": "As in src/third_party/autotest/files/client/cros/cryptohome.py, the scope of the poll should only be for waiting for the vault to be ready, not retrying cryptohome command.",
+      "revId": "36b7db14a755f34a05b24a4f0e3c8119841a01f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
