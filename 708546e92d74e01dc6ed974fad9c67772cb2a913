@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b3fcad4_9093f135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-08-13T04:35:31Z",
+      "side": 1,
+      "message": "nit: Maybe use %q here to emphasize the name.",
+      "range": {
+        "startLine": 66,
+        "startChar": 28,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "708546e92d74e01dc6ed974fad9c67772cb2a913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467de2ae_98423259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-08-13T04:35:31Z",
+      "side": 1,
+      "message": "groups",
+      "range": {
+        "startLine": 63,
+        "startChar": 42,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "708546e92d74e01dc6ed974fad9c67772cb2a913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8121e2d_b2868cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-08-13T04:35:31Z",
+      "side": 1,
+      "message": "https://play.golang.org/p/jyny-44CB8y `mapping[category][key]++` just works",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "708546e92d74e01dc6ed974fad9c67772cb2a913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
