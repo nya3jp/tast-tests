@@ -33,6 +33,24 @@
       "revId": "6d21cfee2eb629bbaf6920eccf583aeeaad72d8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a596aaf7_c1976246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2020-08-13T01:17:26Z",
+      "side": 1,
+      "message": "Ricardo, okay, noted and thank you",
+      "parentUuid": "719a6269_c785562f",
+      "revId": "6d21cfee2eb629bbaf6920eccf583aeeaad72d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b55f8b9f_93f64193",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2020-08-13T01:17:26Z",
+      "side": 1,
+      "message": "HI Keiichi, yes we would like to be able to run all those 10 and I can submit changes for them as well.",
+      "parentUuid": "4ac2e727_f3372086",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46fc7fcf_1e0dbf48",
         "filename": "/COMMIT_MSG",
         "patchSetId": 15
@@ -64,6 +82,24 @@
       "writtenOn": "2020-07-10T10:26:08Z",
       "side": 1,
       "message": "I think this topic must be discussed with Miguel (mcasas@) and his video team as other video tests such as video.Play.*h264* depend on \"chrome_internal\".\nLet me add him and remove Tast reviewers who were manually added.",
+      "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a452d23_812aaca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2020-08-13T01:17:26Z",
+      "side": 1,
+      "message": "Yes, and we can successfully build with USE\u003dchrome_media but not chrome_internal (as intended) hence the request.",
+      "parentUuid": "f3ae1ffd_84e4546c",
       "revId": "6a7b2bc278b690940d9b22f6b944b29856941e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
