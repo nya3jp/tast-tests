@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "0bb974c0_0f31f097",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-13T18:12:16Z",
+      "side": 1,
+      "message": "I think maybe disabling bgscan and autoconnect could help mitigate the chances of roaming.",
+      "parentUuid": "511e143e_401b1dcf",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "bb6e6a7256d9ee0506f5bdd267caee555af45e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85fe076a_53cf9342",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 2
