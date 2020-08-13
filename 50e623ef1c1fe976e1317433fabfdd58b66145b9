@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c69dd2_f9ae1c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-08-13T11:21:32Z",
+      "side": 1,
+      "message": "This is not super accurate. The legacy v1 devices with built-in USB camera but not ARC will not have camera_characteristics.conf either. The v3 stack will treat them as external camera, but things like Autotest capability will still labeled with \"builtin_usb_camera\".",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "50e623ef1c1fe976e1317433fabfdd58b66145b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
