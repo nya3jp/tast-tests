@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc7ec906_f3d45947",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-13T18:41:50Z",
+      "side": 1,
+      "message": "OK this is ready now. I spent some time finding a better way to determine quick setting toggle status from the pod icons, and it\u0027s much less awkward now.",
+      "revId": "d779d680652facbce8b7e5db12298e418a41c4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "653155d1_794a00b5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-13T18:41:50Z",
+      "side": 1,
+      "message": "It would be less brittle to match this in a case-insensitive way, but it\u0027s not possible right now due to the Javascript regex format that chrome.automation uses and how automation.go interacts with that.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 92
+      },
+      "revId": "d779d680652facbce8b7e5db12298e418a41c4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
