@@ -22,6 +22,29 @@
       "revId": "f6b23f60e9dc3bf55ced18f6ffa26c0082953f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6164bebf_1f607a36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-13T04:04:09Z",
+      "side": 1,
+      "message": "Usually rebooting the DUT in local tests is unexpected. But in this case it sounds okay, because it\u0027s solely to avoid disturbing other tests.\n\nBut can you make following changes to make the intent clear?\n\n1. Add a comment that you know that rebooting the DUT in local tests is unusual, but we have to reboot the DUT to avoid going into suspend while other tests are running.\n2. After running reboot, wait indefinitely to make sure that the next test never runs before reboot. For example:\n\n if err :\u003d testexec.CommandContext(ctx, \"reboot\").Run(testexec.DumpLogOnError); err !\u003d nil {\n   testing.ContextLog(...)\n }\n var ch \u003c-chan struct{}\n \u003c-ch // wait for reboot indefinitely",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "f6b23f60e9dc3bf55ced18f6ffa26c0082953f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
