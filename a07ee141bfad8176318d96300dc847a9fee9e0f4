@@ -385,6 +385,30 @@
     },
     {
       "key": {
+        "uuid": "9edcb664_80bdc5ad",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T08:39:02Z",
+      "side": 1,
+      "message": "Thanks for the pointer!",
+      "parentUuid": "08827dac_0f6ec991",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95de39aa_21e12568",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1

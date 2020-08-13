@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "327aee86_3bd8a896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T08:39:02Z",
+      "side": 1,
+      "message": "Thanks for taking another look!",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db167e7e_111a3690",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
         "patchSetId": 4
