@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "8deba20e_0b18ea73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-13T06:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607dafe7_0faa9503",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73b57824_fa126442",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -177,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "7bb15d49_91b3c9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-13T06:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50bff510_4f6db792",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea203206_7e91edaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
         "patchSetId": 1
@@ -194,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "666360b8_4acde000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-13T06:49:36Z",
+      "side": 1,
+      "message": "The minus sign is not allowed, so I had to use an underscore.\n\ne.g.:\nhttps://source.corp.google.com/chromium_infra/go/src/infra/cmd/stable_version2/internal/cmd/validateconfig/internal/querygs/allowlist.go;l\u003d20",
+      "parentUuid": "ea203206_7e91edaf",
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923fc5b5_d3adfa3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
         "patchSetId": 1
@@ -208,6 +274,24 @@
       "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11283477_db021342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-13T06:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "923fc5b5_d3adfa3d",
+      "revId": "979fb5d9c85e1d780764139aafd0cabffb97f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
