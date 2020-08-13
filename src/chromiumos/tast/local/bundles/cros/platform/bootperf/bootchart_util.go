@@ -32,7 +32,10 @@ func getRootPartition(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed in getting the root partition")
 	}
 
-	re := regexp.MustCompile(`dev/.*\dp(\d+)`)
+	// Sample output of "rootdev -s": /dev/nvme0p3, /dev/mmcblk0p3, /dev/sda3
+	// Capture the ending numerical part, followed by a newline, of the output.
+	// Reference: init of $ROOTDEV_PARTITION in src/platform/vboot_reference/scripts/image_signing/make_dev_ssd.sh.
+	re := regexp.MustCompile(`.*\D(\d+)\s*$`)
 	groups := re.FindStringSubmatch(string(out))
 	if len(groups) != 2 {
 		return "", errors.Errorf("failed to parse root partition from %s", out)
