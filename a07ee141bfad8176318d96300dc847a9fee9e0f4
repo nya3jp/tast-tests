@@ -1005,6 +1005,24 @@
     },
     {
       "key": {
+        "uuid": "b0e1440b_1cf2511b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T03:06:01Z",
+      "side": 1,
+      "message": "It seems that I can use map[string]interface{} which is also used in many other packages in tast.",
+      "parentUuid": "8e552dab_1e0789f3",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
