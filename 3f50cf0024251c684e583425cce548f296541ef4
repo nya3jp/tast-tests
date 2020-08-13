@@ -69,6 +69,24 @@
       "revId": "3f50cf0024251c684e583425cce548f296541ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc53670_d8707b04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-13T10:25:09Z",
+      "side": 1,
+      "message": "Hmm. I looked at swarming and also host_info_store, but the servo address you mentioned looks correct. Can you contact some infra folk?",
+      "parentUuid": "c6ed3dcb_bb1b8833",
+      "revId": "3f50cf0024251c684e583425cce548f296541ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
