@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02a96952_3e61fc85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-13T23:21:51Z",
+      "side": 1,
+      "message": "This just verifies that we _don\u0027t_ find the bad signature in the file. Should it also verify that we _do_ find a good one?",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 4
+      },
+      "revId": "a0dabc729d253fbe9e6a518321eb030e1fa23e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
