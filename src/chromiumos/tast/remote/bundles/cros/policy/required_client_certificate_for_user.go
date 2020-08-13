@@ -22,8 +22,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RequiredClientCertificateForDevice,
-		Desc: "Behavior of RequiredClientCertificateForDevice policy",
+		Func: RequiredClientCertificateForUser,
+		Desc: "Behavior of RequiredClientCertificateForUser policy, check if a certificate is issued when the policy is set",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
@@ -35,7 +35,7 @@ func init() {
 	})
 }
 
-func RequiredClientCertificateForDevice(ctx context.Context, s *testing.State) {
+func RequiredClientCertificateForUser(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
@@ -59,13 +59,14 @@ func RequiredClientCertificateForDevice(ctx context.Context, s *testing.State) {
 
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicy(&policy.AttestationEnabledForDevice{Val: true})
-	pb.AddPolicy(&policy.RequiredClientCertificateForDevice{
+	pb.AddPolicy(&policy.AttestationEnabledForUser{Val: true})
+	pb.AddPolicy(&policy.RequiredClientCertificateForUser{
 
-		Val: []*policy.RequiredClientCertificateForDeviceValue{
+		Val: []*policy.RequiredClientCertificateForUserValue{
 			{
-				CertProfileId:        "cert_profile_device_1",
+				CertProfileId:        "cert_profile_user_1",
 				KeyAlgorithm:         "rsa",
-				Name:                 "Cert Profile Device 1",
+				Name:                 "Cert Profile User 1",
 				PolicyVersion:        "policy_version_1",
 				RenewalPeriodSeconds: 60 * 60 * 24 * 365,
 			},
@@ -88,10 +89,10 @@ func RequiredClientCertificateForDevice(ctx context.Context, s *testing.State) {
 
 	prc := ps.NewClientCertificateServiceClient(cl.Conn)
 
-	// Device certificates will be placed in the first free slot which is 0.
+	// Device certificates will be placed in slot 0, user certificates will take the next free slot which is 1.
 	if _, err := prc.TestClientCertificateIsInstalled(ctx, &ps.TestClientCertificateIsInstalledRequest{
-		Slot: "0",
+		Slot: "1",
 	}); err != nil {
-		s.Fatal("Failed to set RequiredClientCertificateForDevice policy: ", err)
+		s.Fatal("Failed to set RequiredClientCertificateForUser policy: ", err)
 	}
 }
