@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "0cfdb4c9_6e51a3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T09:58:16Z",
+      "side": 1,
+      "message": "Oh, there is one error in this regex: \\w matches [a-zA-Z0-9] so could match digits.",
+      "parentUuid": "afedf1c2_0482e12d",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "0daadfac44a522b45d80c956aee9670cfa56aeb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5e2bdd6_5a3c80cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
