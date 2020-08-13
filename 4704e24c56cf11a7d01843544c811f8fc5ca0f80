@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d369d1e_bf1faa47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T10:20:27Z",
+      "side": 1,
+      "message": "LGTM with one nit. Thanks for making the change.",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "527aaaa5_5b9d425b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T10:20:27Z",
+      "side": 1,
+      "message": "nit: please wrap this part in a function to denote that this is for processing the output.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
