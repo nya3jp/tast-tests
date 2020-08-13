@@ -39,6 +39,30 @@
       "revId": "0daadfac44a522b45d80c956aee9670cfa56aeb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4603dfb9_a7f59682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T09:15:49Z",
+      "side": 1,
+      "message": "Yes. The eventual state is waiting.\n`initctl status bootchart` outputs \"bootchart stop/waiting\" after it stopped.",
+      "parentUuid": "b5e2bdd6_5a3c80cb",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 34
+      },
+      "revId": "0daadfac44a522b45d80c956aee9670cfa56aeb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
