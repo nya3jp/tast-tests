@@ -29,7 +29,11 @@ import (
 	"chromiumos/tast/timing"
 )
 
-const workingDir = "/tmp/tast-test/"
+const (
+	// Autotest may be used on these routers too, and if it failed to clean up, we may be out of space in /tmp.
+	autotestWorkdirGlob = "/tmp/autotest-*"
+	workingDir          = "/tmp/tast-test/"
+)
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
@@ -214,6 +218,12 @@ func (r *Router) initialize(ctx, daemonCtx context.Context) error {
 		return err
 	}
 	r.board = board
+
+	// Clean up Autotest working dir, in case we're out of space.
+	// NB: we need 'sh' to handle the glob.
+	if err := r.host.Command("sh", "-c", strings.Join([]string{"rm", "-rf", autotestWorkdirGlob}, " ")).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to remove workdir %q", autotestWorkdirGlob)
+	}
 
 	// Set up working dir.
 	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
