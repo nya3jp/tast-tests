@@ -63,6 +63,30 @@
       "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08e73679_03f86355",
+        "filename": "src/chromiumos/tast/local/chrome/ui/debugging/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-13T01:47:41Z",
+      "side": 1,
+      "message": "Not very clear what type of function you\u0027re suggesting... ui.RootDebugInfo() should be good enough and for local debugging purpose, s.Log(ui.RootDebugInfo()) is actually fine.",
+      "parentUuid": "cea90c2f_197c8ac5",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0172c48ef4c3d74605da836576c1bb02e27e0f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
