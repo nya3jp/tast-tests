@@ -6,7 +6,10 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
+	"path"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -147,6 +150,25 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 			s.Log("Failed to save messages log")
 		}
 		s.Fatal("Failed to find crash files: " + err.Error())
+	}
+
+	// Verify that expected signature for kernel crashes is non-zero
+	for _, match := range res.Matches {
+		if !strings.HasSuffix(match.Regex, ".meta") {
+			continue
+		}
+		s.Log("Checking signature line for non-zero")
+		if err := d.GetFile(cleanupCtx, match.Files[0],
+			filepath.Join(s.OutDir(), path.Base(match.Files[0]))); err != nil {
+			s.Log("Failed to save meta file")
+		} else if f, err := ioutil.ReadFile(filepath.Join(s.OutDir(), path.Base(match.Files[0]))); err != nil {
+			s.Error("Failed to read meta file", match.Files[0])
+		} else {
+			badSigRegexp := regexp.MustCompile("sig=kernel-.+-00000000")
+			if badSigRegexp.Match(f) {
+				s.Error("Couldn't find unique signature in meta file ", match.Files[0])
+			}
+		}
 	}
 
 	// Also remove the bios log if it was created.
