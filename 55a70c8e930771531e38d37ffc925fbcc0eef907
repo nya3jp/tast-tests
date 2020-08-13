@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39381996_ad1e0287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T09:53:40Z",
+      "side": 1,
+      "message": "One simpler alternative might be like \"fmt.Sprintf(\"TAST_TEST_[AFTER|BEFORE]_%d\", i)\" if you don\u0027t mind having the same SSID in every run of this test. (Or you can still use that as prefix for RandomSSID)\n\nBut the current version also looks good to me.",
+      "revId": "55a70c8e930771531e38d37ffc925fbcc0eef907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
