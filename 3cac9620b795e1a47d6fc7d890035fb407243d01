@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da4ca90_3842345d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2020-08-13T23:19:32Z",
+      "side": 1,
+      "message": "deferring to Cici, adding Ricardo for future reference as well.",
+      "revId": "3cac9620b795e1a47d6fc7d890035fb407243d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
