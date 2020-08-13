@@ -51,6 +51,23 @@
       "revId": "de4f3fadc408ef73e88eb6940f9b2ba490d9ac24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f914fb27_fa8ecdbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-08-13T18:06:28Z",
+      "side": 1,
+      "message": "Retrying CQ with speculative seccomp fix (https://crrev.com/c/2352617) landed and the Disallowed-Recycled-Builds footer still in effect.",
+      "revId": "de4f3fadc408ef73e88eb6940f9b2ba490d9ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
