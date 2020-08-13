@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41ec9563_7a1000ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "First round of review.",
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ade90e2_685811f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "I would suggest moving these into CSADisconnect function as all tests are in the same package. i.e. global const/var names may collide.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d976f39_cbf411a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "I guess the deferFunc can use the closure context? e.g. sCtx for DisconnectWifi and ctx for DeconfigAP. And then you can remove retCtx.",
+      "range": {
+        "startLine": 149,
+        "startChar": 25,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6cade60_a430501c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "Just curious, as we discussed if chan_switch in hostapd_cli might help. Did you encounter any problems with hostapd_cli?",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 42
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa7d931_0bf7dc04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "You can name this as ctx directly.",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 156,
+        "endChar": 16
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f034836_a3100f44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "I\u0027m not really sure if you should wait for this. Took a quick glance at the bug b/35536903#comment99 linked from crbug.com/408370. It looks like a race condition of channel switch and deauth. So if you wait until the channel switched, it might not be able to trigger the behavior that this test aims.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b59b9b5_0e6e3e83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "I think the original test is trying the same test on the alternate channel (5 times in total). I guess you might also need to do the similar thing in a loop?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 25
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3868d7a2_9ddd90a3",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "Not sure if it is simpler to export this function so that we don\u0027t need the wrapper in router. \n\nI think this function will not change the resources maintained by Router object so it makes sense to be called as a method of APIface.",
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16562fbf_79e73155",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "probably CLI as it\u0027s abbrev. of command line interface?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9982e9_05ab0fc9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T05:21:45Z",
+      "side": 1,
+      "message": "Given that we have more optional parameters here, I wonder if we need something like ConnectOption here to make the interface cleaner.\n\ne.g. ConnectWifiAP(ctx, ap, nil, nil) is kind of hard to know what the two nil-s mean.\n\nAlso, if this pattern is selected, it might be better the separate the change in another CL so you won\u0027t have diff-s in other test files when adding CSADisconnect.",
+      "range": {
+        "startLine": 407,
+        "startChar": 107,
+        "endLine": 407,
+        "endChar": 141
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
