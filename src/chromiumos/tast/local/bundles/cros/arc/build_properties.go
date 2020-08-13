@@ -186,7 +186,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 					continue
 				}
 				if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
-					s.Fatalf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
+					s.Errorf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
 				}
 			}
 		}
