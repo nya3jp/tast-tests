@@ -1041,6 +1041,24 @@
     },
     {
       "key": {
+        "uuid": "1f42c02a_4c05cc39",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T06:35:35Z",
+      "side": 1,
+      "message": "After some discussion with paulhsia, I modified my solution and RunningProf.End() return value so a PerfOutput type will be returned. PerfOutput type is a struct containing Prop which is a map[string]interface{}. I think this is a better solution than passing in the container of result. Test does not need to worry about mistakenly used the result value during perf running time. Test can only takes the result after perf End() so it is more robust. Test, however, need to takes care of getting the correct output from the correct perf in the RunningProf arrray.",
+      "parentUuid": "50c1cddd_f0b26678",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
