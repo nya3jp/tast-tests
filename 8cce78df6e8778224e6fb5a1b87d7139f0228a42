@@ -70,6 +70,30 @@
       "revId": "8cce78df6e8778224e6fb5a1b87d7139f0228a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac8897d_e767ba16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-13T02:11:41Z",
+      "side": 1,
+      "message": "It was already done, please see patchset 3. Thank you.",
+      "parentUuid": "c793c94f_819d0692",
+      "range": {
+        "startLine": 369,
+        "startChar": 12,
+        "endLine": 374,
+        "endChar": 5
+      },
+      "revId": "8cce78df6e8778224e6fb5a1b87d7139f0228a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
