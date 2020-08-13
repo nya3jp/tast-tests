@@ -51,6 +51,42 @@
       "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d4f4135_5704489d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-13T02:33:02Z",
+      "side": 1,
+      "message": "\u003e Thanks for the fix.\n\nThanks for the review!\n\n\u003e Didn\u0027t notice that Autotest does not clean it up in teardown.\n\nIt does if it terminates normally, but not if it is terminated unexpectedly. network_WiFi_Manual (for local usage), for one, runs forever and must be manually killed. But I\u0027ve seen lab cells get into similar state, if developers lease one and don\u0027t clean up after themselves nicely. And technically, test jobs can be aborted at any time.",
+      "parentUuid": "8da547bd_0d973aa4",
+      "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "931dc233_59f0fba2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-13T02:33:02Z",
+      "side": 1,
+      "message": "*shrug*\nIt\u0027s the kind of thing I don\u0027t have time to pursue. Maybe if it happens more often.",
+      "parentUuid": "6e20eeb6_c7856829",
+      "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
