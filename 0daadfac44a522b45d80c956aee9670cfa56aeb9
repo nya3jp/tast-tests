@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd130dd3_25dff87e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T09:05:30Z",
+      "side": 1,
+      "message": "This fixes flakes and perm-failures w.r.t. bootchart in the test.\nPTAL. Thanks.",
+      "revId": "0daadfac44a522b45d80c956aee9670cfa56aeb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
