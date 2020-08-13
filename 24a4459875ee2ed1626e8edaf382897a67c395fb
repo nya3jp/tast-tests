@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7049c954_bdf9034e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ocr/generate_searchable_pdf_from_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-08-13T17:18:16Z",
+      "side": 1,
+      "message": "add project-bolton@google.com if you can.",
+      "revId": "24a4459875ee2ed1626e8edaf382897a67c395fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
