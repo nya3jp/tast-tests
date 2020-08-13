@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae007955_f9e284ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-08-13T00:20:22Z",
+      "side": 1,
+      "message": "Was OOO yesterday. CL LGTM!",
+      "revId": "6a0f39c8961ded261c679c4f3f0cc44d3ea9c4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
