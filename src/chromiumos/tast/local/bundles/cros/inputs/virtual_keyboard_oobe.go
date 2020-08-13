@@ -18,17 +18,16 @@ import (
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOOBE,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
+		HardwareDeps: pre.InputsStableModels,
 	})
 }
 
