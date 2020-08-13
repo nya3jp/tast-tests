@@ -162,11 +162,11 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Starting R, the images have ro.{system,system_ext,product,odm,vendor}.{build,product}.*
+	// Starting R, the images have ro.{system,system_ext,product,odm,vendor,bootimage}.{build,product}.*
 	// properties by default to allow vendors to customize the values. ARC++ doesn't need the
 	// customization and uses the same value for all of them. This verifies that all properties
-	// share the same value. On P, the images have only ro.{system,vendor} ones.
-	partitions := []string{"system", "system_ext", "product", "odm", "vendor"}
+	// share the same value. On P, the images have only ro.{system,vendor,bootimage} ones.
+	partitions := []string{"system", "system_ext", "product", "odm", "vendor", "bootimage"}
 	allProperties := getAllPropertiesMap()
 	for property := range allProperties {
 		for _, category := range []string{"build", "product"} {
