@@ -87,6 +87,7 @@ type Recorder struct {
 	loadValues       []*perf.Values
 	displayInfo      *DisplayInfo
 	frameDataTracker *FrameDataTracker
+	zramInfoTracker  *ZramInfoTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -136,12 +137,18 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
+	zramInfoTracker, err := NewZramInfoTracker()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
+	}
+
 	r := &Recorder{
 		names:            make([]string, 0, len(configs)),
 		records:          make(map[string]*record, len(configs)+2),
 		memDiff:          memDiff,
 		timeline:         timeline,
 		frameDataTracker: frameDataTracker,
+		zramInfoTracker:  zramInfoTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -184,6 +191,16 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx c
 		err := r.frameDataTracker.Stop(ctx, tconn)
 		if err != nil {
 			testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
+		}
+	}()
+
+	if err := r.zramInfoTracker.Start(ctx); err != nil {
+		return errors.Wrap(err, "failed to start ZramInfoTracker")
+	}
+	defer func() {
+		err := r.zramInfoTracker.Stop(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to stop ZramInfoTracker: ", err)
 		}
 	}()
 
@@ -257,6 +274,7 @@ func (r *Recorder) Record(pv *perf.Values) error {
 
 	r.displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
+	r.zramInfoTracker.Record(pv)
 
 	return nil
 }

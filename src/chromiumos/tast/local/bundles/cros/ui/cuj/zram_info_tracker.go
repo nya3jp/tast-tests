@@ -1,0 +1,109 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package cuj
+
+import (
+	"context"
+	"os"
+	"strconv"
+	"strings"
+
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
+)
+
+const (
+	swapScriptPath = "/usr/share/cros/init/swap.sh"
+	zramDevPath    = "/dev/zram0"
+	zramMmStatPath = "/sys/block/zram0/mm_stat"
+)
+
+// ZramInfoTracker is a helper to collect zram info.
+type ZramInfoTracker struct {
+	hasZram    bool
+	memUsedMax float64
+}
+
+// NewZramInfoTracker creates a new instance of ZramInfoTracker. If zram is not
+// used on the device, hasZram flag is set to false and makes track a no-op.
+func NewZramInfoTracker() (*ZramInfoTracker, error) {
+	hasZram := false
+
+	if fi, err := os.Stat(zramDevPath); err == nil {
+		m := fi.Mode() &^ 07777
+		hasZram = m == os.ModeDevice
+	}
+
+	return &ZramInfoTracker{
+		hasZram: hasZram,
+	}, nil
+}
+
+// Start indicates that the zram tracking should start. It restarts swap service
+// to clear mm_stat existed in zram device to ensure a clean state.
+func (t *ZramInfoTracker) Start(ctx context.Context) error {
+	if !t.hasZram {
+		return nil
+	}
+
+	// Reset mm_stat by restarting the swap service.
+	if err := testexec.CommandContext(ctx,
+		swapScriptPath, "stop").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to stop swap service")
+	}
+
+	if err := testexec.CommandContext(ctx,
+		swapScriptPath, "start").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to stop swap service")
+	}
+
+	return nil
+}
+
+// Stop indicates that the zram tracking should stop. It reads the current
+// mm_stat and store relevant info.
+func (t *ZramInfoTracker) Stop(ctx context.Context) error {
+	if !t.hasZram {
+		return nil
+	}
+
+	out, err := testexec.CommandContext(ctx,
+		"cat", zramMmStatPath).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to dump zram mm_stat")
+	}
+
+	// File /sys/block/zram<id>/mm_stat
+	//
+	// The stat file represents device's mm statistics. It consists of a single
+	// line of text and contains the stats separated by whitespace. "mm_used_max"
+	// is the 5th field.
+	//
+	// mem_used_max     the maximum amount of memory zram have consumed to
+	//                  store the data
+	//
+	// See https://www.kernel.org/doc/html/latest/admin-guide/blockdev/zram.html
+	memUsedMax, err := strconv.ParseFloat(strings.Fields(string(out))[4], 64)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse signal strength field")
+	}
+	t.memUsedMax = memUsedMax
+
+	return nil
+}
+
+// Record stores the collected data into pv for further processing.
+func (t *ZramInfoTracker) Record(pv *perf.Values) {
+	if !t.hasZram {
+		return
+	}
+
+	pv.Set(perf.Metric{
+		Name:      "TPS.ZRAM.Max",
+		Unit:      "bytes",
+		Direction: perf.SmallerIsBetter,
+	}, float64(t.memUsedMax))
+}
