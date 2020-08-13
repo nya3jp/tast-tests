@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecab39bf_4877e1b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "In general LGTM, but with comments.",
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b19d608c_9d6b9f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "it\u0027s not really obvious that 0 means All. Maybe we can introduce new boolean field in perf options: allProcesses?\n\nAlso, you will have two methods: PerfStatForPID, PerfStatForAll. In this CL, you will introduce only PerfStatForAll and in the following you will add PerfStatForPID.",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc68de6_90b27ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "Don\u0027t use s.Fatal in defer statement, because you won\u0027t be able to run other defer statements. Use s.Error instead",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc6d7df_b26fc6b3",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "nit: it should be PID\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e33691_630d6c13",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "nit: it can simply be opts.Type",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 20
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b062b3_ef0e56e7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "same: opts.Pid",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49a079d_bffbf950",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "please specify *opts.Type, so it\u0027ll be easier to debug issue",
+      "range": {
+        "startLine": 157,
+        "startChar": 26,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf53bf6f_b37789e5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "btw, do we really need this regexp? sorry if i missed some discussion",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 18
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5fd7c4_a369f3e9",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "nit: I guess we should not mention \"error\" word in error, it\u0027s obvious that it\u0027s error :)\n\nWhat about: \"no cycles in file\" / \"no cycles in perf stat\" ?",
+      "range": {
+        "startLine": 173,
+        "startChar": 24,
+        "endLine": 173,
+        "endChar": 41
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2399dd8_7b077304",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "nit: same\nwhat about \"failed to parse cycles\" ?",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798bf918_d9e71ffc",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "nit: failed parse stat file",
+      "range": {
+        "startLine": 204,
+        "startChar": 41,
+        "endLine": 204,
+        "endChar": 64
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a29b2cc_c2330bfa",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-13T10:16:13Z",
+      "side": 1,
+      "message": "same: fail fast\n\n```\nif p.opts.Type !\u003d PerfStat {\n  OutputNull(), nil\n}\n\nres, err :\u003d p.handleStat()\nif err !\u003d nil {\n  return OutputNull(), errors.Wrap(err, \"failed to handle perf stat result\")\n}\nreturn res, nil\n```",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 0
+      },
+      "revId": "30dbd3cb4002fa33f995e9b15a8b4ad5ead1f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
