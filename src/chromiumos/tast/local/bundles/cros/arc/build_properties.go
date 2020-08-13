@@ -124,7 +124,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	deviceRegexp := regexp.MustCompile(`^([^-]+).*_(cheets|bertha)$`)
 	match := deviceRegexp.FindStringSubmatch(device)
 	if match == nil {
-		s.Fatalf("%v property is %q; should have _cheets or _bertha suffix",
+		s.Errorf("%v property is %q; should have _cheets or _bertha suffix",
 			propertyDevice, device)
 	}
 	device = match[1]
@@ -149,7 +149,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
 			s.Log("Failed to dump properties: ", err)
 		}
-		s.Fatalf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
+		s.Errorf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
 			firstAPILevel, expectedFirstAPILevel)
 	}
 
@@ -158,7 +158,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	for _, propertySuffix := range propertySuffixes {
 		property := fmt.Sprintf("ro.build.%s", propertySuffix)
 		if value := getProperty(property); value == "" {
-			s.Fatalf("property %v is not set", property)
+			s.Errorf("property %v is not set", property)
 		}
 	}
 
@@ -186,7 +186,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 					continue
 				}
 				if valueForPartition := getProperty(propertyForPartition); valueForPartition != value {
-					s.Fatalf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
+					s.Errorf("Unexpected %v property: got %q; want %q", propertyForPartition, valueForPartition, value)
 				}
 			}
 		}
