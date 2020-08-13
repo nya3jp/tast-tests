@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5718926_089bd1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/libvda_decode.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-08-13T11:01:55Z",
+      "side": 1,
+      "message": "I think you can remove this comment (and all other similar comments), as the new dependency name is self-explanatory.\nThese comments were added because the reason why \"chrome_internal\" is needed here was unclear.",
+      "revId": "b6e2a931ca80d42bb13441d98d29956235828961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147434ed_52987c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/libvda_decode.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-08-13T11:01:55Z",
+      "side": 1,
+      "message": "\"proprietary_codecs\"?",
+      "range": {
+        "startLine": 29,
+        "startChar": 50,
+        "endLine": 29,
+        "endChar": 79
+      },
+      "revId": "b6e2a931ca80d42bb13441d98d29956235828961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
