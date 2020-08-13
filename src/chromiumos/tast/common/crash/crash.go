@@ -21,5 +21,5 @@ const (
 // ExpectedCorePattern is the content of core_pattern file that is expected to
 // be written by crash_reporter at initialization.
 func ExpectedCorePattern() string {
-	return fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%e", CrashReporterPath)
+	return fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%f", CrashReporterPath)
 }
