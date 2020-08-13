@@ -2,6 +2,224 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b67f195_732c17c7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "splling: menuItem",
+      "range": {
+        "startLine": 421,
+        "startChar": 80,
+        "endLine": 421,
+        "endChar": 89
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98a39cc_9f54054b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "You need a Release method for this struct and shareToastNotification.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b373a3a7_defa3d56",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "You can\u0027t ignore the return value, you need to Release it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9d3966_c398acf0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "this should be done in a Release function.  Putting it here means you can only call the function once. Also, assuming the dialog is closed by this click, the cancel button will not be  released.\n\nsimilar in the clickCancel function.",
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860681a0_b952f234",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "Need to release this.  Alternatively you could use uig.GetNode for this whole function.",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04a3205_aa7674f6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "what happens if you don\u0027t call ClickManage?  the button is never released.",
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db70fe6f_d00000cc",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "spelling: mouse",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae5860e_ec039ef7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "Check doesn\u0027t sound like any action is taken, maybe DismissShareConfirmDialog instead?",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a1f5bf_0d1a5b95",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "Again, the clicking of the manage button is not clear from the name.",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 20
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075f5621_9d65753c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-13T06:23:50Z",
+      "side": 1,
+      "message": "nit: Window?",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b4f1fc7_f9281cd9",
         "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolers.go",
         "patchSetId": 6
