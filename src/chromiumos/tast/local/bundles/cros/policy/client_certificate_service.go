@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"strconv"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -33,14 +34,14 @@ type ClientCertificateService struct { // NOLINT
 // TestClientCertificateIsInstalled uses the command line to poll for all
 // installed certificates and returns when the correct one is found without an
 // error or returns with an error if the certificate wasn't found after 60s.
-func (c *ClientCertificateService) TestClientCertificateIsInstalled(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *ClientCertificateService) TestClientCertificateIsInstalled(ctx context.Context, req *pb.TestClientCertificateIsInstalledRequest) (*empty.Empty, error) {
 
 	// Wait until the certificate is installed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 
-		// The argument --slot 0 is for the system slot which will have
-		// ID 0 as it is loaded first
-		out, err := testexec.CommandContext(ctx, "pkcs11-tool", "--module", "/usr/lib64/libchaps.so", "--slot", "0", "--list-objects").Output()
+		// The argument --slot is for the system slot which will have
+		// the certificate.
+		out, err := testexec.CommandContext(ctx, "pkcs11-tool", "--module", "/usr/lib64/libchaps.so", "--slot", strconv.Itoa(int(req.Slot)), "--list-objects").Output()
 		if err != nil {
 			return errors.Wrap(err, "failed to get certificate list")
 		}
