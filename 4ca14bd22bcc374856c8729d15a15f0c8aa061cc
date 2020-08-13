@@ -16,6 +16,24 @@
       "revId": "4ca14bd22bcc374856c8729d15a15f0c8aa061cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e02acd8_58a85b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-13T03:19:24Z",
+      "side": 1,
+      "message": "The issue I described is still the case, so I suspect they just weren\u0027t aware of it",
+      "parentUuid": "363e8069_8d0fb9c2",
+      "revId": "4ca14bd22bcc374856c8729d15a15f0c8aa061cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
