@@ -22,6 +22,30 @@
       "revId": "13dd6e01270c07a39a946ed46ba88de1315919e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d51a2de1_fac5b3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T10:57:41Z",
+      "side": 1,
+      "message": "Right, we need a non-digit \\D before the numeric part to make it capture the whole numerical part.",
+      "parentUuid": "7e6d30b2_e0b6f2c2",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "13dd6e01270c07a39a946ed46ba88de1315919e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
