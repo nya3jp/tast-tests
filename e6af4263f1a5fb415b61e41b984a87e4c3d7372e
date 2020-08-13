@@ -34,6 +34,24 @@
       "revId": "e6af4263f1a5fb415b61e41b984a87e4c3d7372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "227d506f_f3e859e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-08-13T00:39:21Z",
+      "side": 1,
+      "message": "Thanks for the link for reference, and the advice about update_chroot! Seems to have fixed it for me.",
+      "parentUuid": "906f8123_dc2c9193",
+      "revId": "e6af4263f1a5fb415b61e41b984a87e4c3d7372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
