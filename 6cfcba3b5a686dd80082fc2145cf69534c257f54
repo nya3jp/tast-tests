@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb06a326_c38a94f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-13T21:01:19Z",
+      "side": 1,
+      "message": "It seems reasonable to do string parsing of crossystem output. +cc VBOOT maintainer in case there are plans to expose structured output from crossystem, or if there is some canonical way to get to crossystem output (over something like dbus or through healthd).",
+      "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3115062_5a82176f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-13T21:01:19Z",
+      "side": 1,
+      "message": "I think it will be best to filter out the \"specific-use fields\" enumerated at docs/os_config.md.",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
