@@ -28,6 +28,23 @@ const (
 	ECUARTCmd            StringControl = "ec_uart_cmd"
 )
 
+// A OnOffControl accepts either "on" or "off" as a value.
+type OnOffControl string
+
+// These controls accept only "on" and "off" as values.
+const (
+	RecMode OnOffControl = "rec_mode"
+)
+
+// An OnOffValue is a string value that would be accepted by an OnOffControl.
+type OnOffValue string
+
+// These are the values used by OnOff controls.
+const (
+	Off OnOffValue = "off"
+	On  OnOffValue = "on"
+)
+
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
 type KeypressControl StringControl
 
@@ -264,4 +281,19 @@ func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	return s.SetString(ctx, ECUARTCmd, cmd)
+}
+
+// ToggleOffOn turns a switch off and on again.
+func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
+	delay := 100 * time.Millisecond
+	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, delay); err != nil {
+		return err
+	}
+	if err := s.SetString(ctx, StringControl(ctrl), string(On)); err != nil {
+		return err
+	}
+	return nil
 }

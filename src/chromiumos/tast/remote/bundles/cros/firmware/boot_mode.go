@@ -27,6 +27,9 @@ func init() {
 		}, {
 			Name: "rec",
 			Val:  []fwCommon.BootMode{fwCommon.BootModeNormal, fwCommon.BootModeRecovery, fwCommon.BootModeNormal},
+		}, {
+			Name: "dev",
+			Val:  []fwCommon.BootMode{fwCommon.BootModeNormal, fwCommon.BootModeDev, fwCommon.BootModeNormal},
 		}},
 		Vars: []string{"servo"},
 	})
@@ -34,9 +37,12 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	modes := s.Param().([]fwCommon.BootMode)
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", s.RequiredVar("servo"))
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigDir), s.RequiredVar("servo"))
 	defer h.Close(ctx)
-	ms := firmware.NewModeSwitcher(h)
+	ms, err := firmware.NewModeSwitcher(ctx, h)
+	if err != nil {
+		s.Fatal("creating mode switcher: ", err)
+	}
 
 	// Ensure that DUT starts in the initial mode.
 	if ok, err := h.Reporter.CheckBootMode(ctx, modes[0]); err != nil {
