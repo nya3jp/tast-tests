@@ -14,5 +14,9 @@ option go_package = "chromiumos/tast/services/cros/policy";
 // The installed certificate is hard coded in policy_testserver.py and thus this service tries to
 // match the known issuer name "TastTest"
 service ClientCertificateService {
-  rpc TestClientCertificateIsInstalled(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc TestClientCertificateIsInstalled(TestClientCertificateIsInstalledRequest) returns (google.protobuf.Empty) {}
+}
+
+message TestClientCertificateIsInstalledRequest {
+  int32 Slot = 1;
 }
