@@ -197,6 +197,121 @@
     },
     {
       "key": {
+        "uuid": "2f3f7758_d3457aa4",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "MAC",
+      "range": {
+        "startLine": 236,
+        "startChar": 54,
+        "endLine": 236,
+        "endChar": 57
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04facdb0_3603ad85",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "deauthenticates",
+      "range": {
+        "startLine": 236,
+        "startChar": 16,
+        "endLine": 236,
+        "endChar": 31
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa824c6a_cecd1d4c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "the client",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112352dd_174a3709",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "Similiar to \"hostapdCLI\", name it as \"clientMAC\" as MAC is an abbreviation of media access control address.",
+      "range": {
+        "startLine": 237,
+        "startChar": 51,
+        "endLine": 237,
+        "endChar": 60
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b871c8_0d9e7749",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "MAC",
+      "range": {
+        "startLine": 239,
+        "startChar": 65,
+        "endLine": 239,
+        "endChar": 68
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9982e9_05ab0fc9",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 8
@@ -208,6 +323,30 @@
       "writtenOn": "2020-08-13T05:21:45Z",
       "side": 1,
       "message": "Given that we have more optional parameters here, I wonder if we need something like ConnectOption here to make the interface cleaner.\n\ne.g. ConnectWifiAP(ctx, ap, nil, nil) is kind of hard to know what the two nil-s mean.\n\nAlso, if this pattern is selected, it might be better the separate the change in another CL so you won\u0027t have diff-s in other test files when adding CSADisconnect.",
+      "range": {
+        "startLine": 407,
+        "startChar": 107,
+        "endLine": 407,
+        "endChar": 141
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e99e802e_88c448a0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T06:15:14Z",
+      "side": 1,
+      "message": "Agree to apply Option pattern in a separate CL.",
+      "parentUuid": "3d9982e9_05ab0fc9",
       "range": {
         "startLine": 407,
         "startChar": 107,
