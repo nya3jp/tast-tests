@@ -22,6 +22,30 @@
       "revId": "50e623ef1c1fe976e1317433fabfdd58b66145b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f921fa_4c63021d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-13T11:31:49Z",
+      "side": 1,
+      "message": "I also found it inaccurate so I just uploaded a patch set to fix it. :P\nPlease take another look, thanks!",
+      "parentUuid": "73c69dd2_f9ae1c8e",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "50e623ef1c1fe976e1317433fabfdd58b66145b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
