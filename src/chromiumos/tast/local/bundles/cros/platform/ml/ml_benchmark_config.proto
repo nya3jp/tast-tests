@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package ml;
+
+// This is a subset of the same protobuf inside
+// platform2/ml_benchmark/benchmark_config.proto
+// Only the results message is duplicated here to parse
+// the results.
+
+enum BenchmarkReturnStatus {
+  OK = 0;
+  INCORRECT_CONFIGURATION = 1;
+  INITIALIZATION_FAILED = 2;
+  BENCHMARK_TIMED_OUT = 3;
+  RUNTIME_ERROR = 4;
+}
+
+message BenchmarkResults {
+  BenchmarkReturnStatus status = 1;
+  string results_message = 2;
+  float total_accuracy = 3;
+  // originally, test drivers only outputs the average latency
+  // This has been modified to output latencies at different percentiles
+  int64 average_latency_in_us = 4 [deprecated = true];
+  // For new code, use this instead, which allows us to output 50th and 90th
+  // Percentile latencies
+  map<int32, int64> percentile_latencies_in_us = 5;
+}
