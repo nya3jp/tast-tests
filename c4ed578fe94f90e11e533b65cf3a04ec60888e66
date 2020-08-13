@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "9572bb46_c1930ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T09:24:45Z",
+      "side": 1,
+      "message": "I added the usage of PerfStat in this example test, and explain the usage of output value in the comment. I did not show the type in code because I used :\u003d.",
+      "parentUuid": "db167e7e_111a3690",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2835effd_c886eb38",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 4
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "626bebb7_6fa08d52",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T09:24:45Z",
+      "side": 1,
+      "message": "Sounds good. I rename it to ProfilerOutput and move it to profiler.go.\nThen repo hook suggested me to rename it to Output so I ended up using Output and OutputNull.",
+      "parentUuid": "2835effd_c886eb38",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9aca622_df6cda24",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 4
@@ -84,6 +120,24 @@
       "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b289ae2_77f98413",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-13T09:24:45Z",
+      "side": 1,
+      "message": "I see! Thanks!",
+      "parentUuid": "b9aca622_df6cda24",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
