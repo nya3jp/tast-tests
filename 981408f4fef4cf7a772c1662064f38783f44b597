@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f1761b7_2d597d88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-13T02:16:41Z",
+      "side": 1,
+      "message": "I wonder: do we want a timeout for this that isn\u0027t the \"whole test\" timeout? e.g., if the whole test is given X minutes, we probably don\u0027t want to be waiting here for several minutes in a failing case -- we could probably declare a failure if we can\u0027t configure and roam in about ~1 minute or so? (Autotest gave a default of 30 seconds for \"wait_for_connection\", but we\u0027re also including AP setup here.)\n\nI\u0027m curious if others have thoughts -- perhaps I\u0027m making up a non-issue, if we really just intend to hit the default timeout case for test conditions like this.",
+      "range": {
+        "startLine": 152,
+        "startChar": 45,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "981408f4fef4cf7a772c1662064f38783f44b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
