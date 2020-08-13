@@ -46,10 +46,10 @@ const (
 	cpuSharesARCForeground = 1024
 )
 
-// getCPUCgroupShares retrieves the current value for cpu.shares for the container.
-func getCPUCgroupShares(ctx context.Context, s *testing.State) (int, error) {
+// cpuCgroupShares retrieves the current value for cpu.shares for the container.
+func cpuCgroupShares(path string) (int, error) {
 	// Read from a file that indicates the relative amount of CPU this cgroup gets when there's contention.
-	b, err := ioutil.ReadFile(s.Param().(string))
+	b, err := ioutil.ReadFile(path)
 	if err != nil {
 		return 0, err
 	}
@@ -61,6 +61,9 @@ func getCPUCgroupShares(ctx context.Context, s *testing.State) (int, error) {
 }
 
 func Cgroups(ctx context.Context, s *testing.State) {
+	// Path to cpu.shares.
+	path := s.Param().(string)
+
 	const pkgName = "com.android.settings"
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU())
 	if err != nil {
@@ -100,7 +103,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 
 	// Check shares after ARC window is up and in the foreground.
-	share, err := getCPUCgroupShares(ctx, s)
+	share, err := cpuCgroupShares(path)
 	if err != nil {
 		s.Fatal("Failed to get ARC CPU shares value: ", err)
 	}
@@ -117,12 +120,20 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMinimized); err != nil {
 		s.Fatal("Failed to wait for activity to become Minimized: ", err)
 	}
-	share, err = getCPUCgroupShares(ctx, s)
-	if err != nil {
-		s.Fatal("Failed to get ARC CPU shares value: ", err)
-	}
+
 	// TODO(b/152733335): Fix and remove this in ARCVM.
-	if s.Param().(string) == "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares" && share != cpuSharesARCBackground {
-		s.Fatal("Unexpected ARC CPU shares value after minimize: ", share)
+	if path == "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares" {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			share, err = cpuCgroupShares(path)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if share != cpuSharesARCBackground {
+				return errors.Errorf("unexpected ARC CPU shares: got %d, want %d", share, cpuSharesARCBackground)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+			s.Error("Failed to verify cpu.shares after minimize: ", err)
+		}
 	}
 }
