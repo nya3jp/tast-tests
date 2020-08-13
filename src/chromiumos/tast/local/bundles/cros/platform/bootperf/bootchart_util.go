@@ -32,7 +32,9 @@ func getRootPartition(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed in getting the root partition")
 	}
 
-	re := regexp.MustCompile(`dev/.*\dp(\d+)`)
+	// Sample output of "rootdev -s": /dev/nvme0p3, /dev/mmcblk0p3, /dev/sda3
+	// Capture the ending numerical part separated by a word character.
+	re := regexp.MustCompile(`^/dev/.*\w(\d+)\s*$`)
 	groups := re.FindStringSubmatch(string(out))
 	if len(groups) != 2 {
 		return "", errors.Errorf("failed to parse root partition from %s", out)
