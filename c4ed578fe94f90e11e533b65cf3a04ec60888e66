@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f73b1d6c_64eb5f80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T08:37:23Z",
+      "side": 1,
+      "message": "Thanks for the revision, this version is close with some nits.",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db167e7e_111a3690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T08:37:23Z",
+      "side": 1,
+      "message": "Please don\u0027t ignore the result in the example. It makes readers reading the example confused as what this return value does. An array of struct containing a map isn\u0027t that trivial to use.\n\nWe should at least catch the returned value using a variable of explicit type to show what type it is and comment on how to use it.",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2835effd_c886eb38",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T08:37:23Z",
+      "side": 1,
+      "message": "nit: the name PerfOutput makes it tied to linux perf. This makes it awkward for top and vmstat profilers. We may:\n1) rename to a more neutral one like ProfilerOutput if we\u0027d like to use it in top and vmstat\n2) have RunningProf.End() return []interface{}, where each element can hold an object of any type. This way, you may return nil in top and vmstat and don\u0027t need to construct a null object.",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9aca622_df6cda24",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T08:37:23Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need different variables |cyclesErr| and |secondsErr| as long as the LHS of :\u003d operator declares a new variable.",
+      "revId": "c4ed578fe94f90e11e533b65cf3a04ec60888e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
