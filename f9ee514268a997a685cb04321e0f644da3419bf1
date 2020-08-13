@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dafaf935_e46db6c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ba80ae_0a48850a",
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458317f1_57f0715d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "67f92a84_ce9c9ed6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe0df6d_e2972470",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e439323_c81f6712",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
         "patchSetId": 1
@@ -93,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "7823a97b_ed2d2457",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e439323_c81f6712",
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c5ff20e_2aeff4e6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
         "patchSetId": 1
@@ -104,6 +164,24 @@
       "writtenOn": "2020-08-13T13:32:06Z",
       "side": 1,
       "message": "Is this required?",
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7235cd_ceb56df7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "yes, without it the issuing of the certificate will fail.",
+      "parentUuid": "5c5ff20e_2aeff4e6",
       "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -133,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "c2aa12eb_f1d235dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3039f99f_fe86e259",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32eebccf_a4b825e5",
         "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
         "patchSetId": 1
@@ -144,6 +246,30 @@
       "writtenOn": "2020-08-13T13:32:06Z",
       "side": 1,
       "message": "Does it make more sense to use an int here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "f9ee514268a997a685cb04321e0f644da3419bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203e62e6_8e5d32f2",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 1,
+      "message": "I think the slots should only be numerical values so an integer could be used here but it needs to be converted to a string anyway. I think both options would make sense I just chose string so I don\u0027t need to do a conversion.",
+      "parentUuid": "32eebccf_a4b825e5",
       "range": {
         "startLine": 21,
         "startChar": 2,

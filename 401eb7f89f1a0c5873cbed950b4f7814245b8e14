@@ -16,6 +16,24 @@
       "revId": "401eb7f89f1a0c5873cbed950b4f7814245b8e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3e526c_028f35a3",
+        "filename": "src/chromiumos/tast/services/cros/policy/client_certificate_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-13T15:26:36Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5d269f21_05619c0d",
+      "revId": "401eb7f89f1a0c5873cbed950b4f7814245b8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
