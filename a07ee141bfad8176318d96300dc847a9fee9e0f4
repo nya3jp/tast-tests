@@ -1023,6 +1023,24 @@
     },
     {
       "key": {
+        "uuid": "50c1cddd_f0b26678",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T03:28:42Z",
+      "side": 1,
+      "message": "Yes, this is a generic solution for returning keyed values. Or you may also return interface{} that can be cast to any data type. Both look good to me.",
+      "parentUuid": "b0e1440b_1cf2511b",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1705090_5eacc94a",
         "filename": "src/chromiumos/tast/local/profiler/perf_test.go",
         "patchSetId": 1
