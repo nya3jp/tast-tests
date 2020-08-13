@@ -27,6 +27,9 @@ func init() {
 		}, {
 			Name: "rec",
 			Val:  []fwCommon.BootMode{fwCommon.BootModeNormal, fwCommon.BootModeRecovery, fwCommon.BootModeNormal},
+		}, {
+			Name: "dev",
+			Val:  []fwCommon.BootMode{fwCommon.BootModeNormal, fwCommon.BootModeDev, fwCommon.BootModeNormal},
 		}},
 		Vars: []string{"servo"},
 	})
@@ -34,17 +37,20 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	modes := s.Param().([]fwCommon.BootMode)
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", s.RequiredVar("servo"))
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigDir), s.RequiredVar("servo"))
 	defer h.Close(ctx)
-	ms := firmware.NewModeSwitcher(h)
+	ms, err := firmware.NewModeSwitcher(ctx, h)
+	if err != nil {
+		s.Fatal("creating mode switcher: ", err)
+	}
 
 	// Ensure that DUT starts in the initial mode.
-	if ok, err := h.Reporter.CheckBootMode(ctx, modes[0]); err != nil {
+	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		s.Fatal("Checking boot mode at beginning of test: ", err)
-	} else if !ok {
-		s.Logf("Setting up DUT to initial boot mode %s", modes[0])
+	} else if curr != modes[0] {
+		s.Logf("DUT started in boot mode %s. Setting up initial boot mode %s", curr, modes[0])
 		if err = ms.RebootToMode(ctx, modes[0]); err != nil {
-			s.Fatalf("Failed to reboot to initial mode %s", modes[0])
+			s.Fatalf("Failed to reboot to initial mode %s: %+v", modes[0], err)
 		}
 	}
 
