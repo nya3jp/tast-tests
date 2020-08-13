@@ -16,6 +16,23 @@
       "revId": "3cac9620b795e1a47d6fc7d890035fb407243d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1de7f18_937c9843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-08-13T23:22:35Z",
+      "side": 1,
+      "message": "LGTM. But my +2 is not powerful enough and ricardoq@ is ooo. I will add tast owners.",
+      "revId": "3cac9620b795e1a47d6fc7d890035fb407243d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
