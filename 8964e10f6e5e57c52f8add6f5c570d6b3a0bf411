@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "c42d54f9_6409c0cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T11:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0385cf7_ea2902fa",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 74
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "194301e2_1f271841",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 4
@@ -404,6 +428,24 @@
       "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1d3b68_af86f262",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T11:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0394e126_6c000514",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -639,6 +681,24 @@
       "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edc6e6f_a727f266",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T11:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3249f46_fe8dd29f",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
