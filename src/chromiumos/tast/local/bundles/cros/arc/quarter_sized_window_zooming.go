@@ -21,7 +21,6 @@ func init() {
 		Func:         QuarterSizedWindowZooming,
 		Desc:         "Check quarter-sized window zooming feature is working properly",
 		Contacts:     []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 	})
