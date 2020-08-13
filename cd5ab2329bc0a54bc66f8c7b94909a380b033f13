@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5f3d1c4_1bf070fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a19c20_c9493343",
+      "range": {
+        "startLine": 20,
+        "startChar": 63,
+        "endLine": 20,
+        "endChar": 151
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbf99c5_bbdef50e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-13T05:46:21Z",
       "side": 1,
       "message": "If you need pCap, please use testFixturePreWithCapture().",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a422c7d5_e1217dea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "No I don\u0027t. The \"pcap\" below is needed even if we\u0027re using TestFixturePre().",
+      "parentUuid": "fdbf99c5_bbdef50e",
       "range": {
         "startLine": 24,
         "startChar": 24,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "775e42b4_944df836",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ce55b3_460e0993",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9008afb4_3d910060",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13cd0674_9ca03269",
+      "range": {
+        "startLine": 53,
+        "startChar": 30,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27daec75_fa6a174b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
         "patchSetId": 1
@@ -108,6 +204,24 @@
       "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f215aa9_b6fa24ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Actually, it\u0027s really fast (\u003c 100ms).\nThis polling always successes at the first try because QueryService calls SelectedService first and that\u0027s enough for shill to resolve the race condition.",
+      "parentUuid": "27daec75_fa6a174b",
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "c5963dbb_c6f4d438",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25bc7b9_b8af87f2",
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d513f7c_f3b41237",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
         "patchSetId": 1
@@ -142,6 +274,24 @@
       "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ffaa96_42cf1c88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d513f7c_f3b41237",
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "78283662_4f05c7e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef26a91f_e56b5412",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f60630cd_f242444b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
         "patchSetId": 1
@@ -188,6 +362,30 @@
       "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17dfca5_d7cebbc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connection_identifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T06:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60630cd_f242444b",
+      "range": {
+        "startLine": 115,
+        "startChar": 43,
+        "endLine": 115,
+        "endChar": 52
+      },
+      "revId": "cd5ab2329bc0a54bc66f8c7b94909a380b033f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
