@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a2b69e92_7d73e551",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-13T05:14:51Z",
+      "side": 1,
+      "message": "Quoted from a Tast Owner\u0027s comment:\nFor now, please try to avoid non-literal test metadata (not limited to testing.Param but also testing.Test) because they make test metadata harder to read for humans. \n\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/oOv2N12MQLU",
+      "parentUuid": "7bcb6289_357fdebf",
+      "revId": "68eafc2b8ce76f463881dbd5369772cf2f33b128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02bf86ce_0ca469fb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 10
