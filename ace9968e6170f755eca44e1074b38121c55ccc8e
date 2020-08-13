@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4f1fc7_f9281cd9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-13T04:18:10Z",
+      "side": 1,
+      "message": "filename should be sharedfolders.go (missing a \u0027d\u0027)",
+      "revId": "ace9968e6170f755eca44e1074b38121c55ccc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

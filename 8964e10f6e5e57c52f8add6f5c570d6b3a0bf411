@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "e0385cf7_ea2902fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-13T04:18:10Z",
+      "side": 1,
+      "message": "That is ok if you think this package will grow, but I do think \u0027CheckListsMatch\u0027 is a better name.",
+      "parentUuid": "a15beafe_8af8624d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 74
+      },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "194301e2_1f271841",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 4
@@ -360,6 +384,23 @@
         "endLine": 6,
         "endChar": 18
       },
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0394e126_6c000514",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-13T04:18:10Z",
+      "side": 1,
+      "message": "All the code you have added to this file should be in sharedfolders.go.  \n\nThis file is for code that acts on \u0027Linux files\u0027.  The code that is added is currently acting on \u0027My files\u0027, but it is generally about shared folders.",
       "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -530,6 +571,24 @@
     },
     {
       "key": {
+        "uuid": "3012f248_5769c5e7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-13T04:18:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "074f278a_71413571",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8ed8970_bdcd7a0a",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 4
@@ -559,6 +618,24 @@
       "side": 1,
       "message": "This is not normal.\nAccording to local test results. without sleeping most times it went to line 130 all though no error while I was manually looking at it with my eyes. I guess it because UI takes a bit time to render and the code runs faster than that. Alternative way?",
       "parentUuid": "e8ed8970_bdcd7a0a",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3249f46_fe8dd29f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-13T04:18:10Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not so familiar and I don\u0027t have any suggestions.  @mwarton?",
+      "parentUuid": "d12e290d_4080c687",
       "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
