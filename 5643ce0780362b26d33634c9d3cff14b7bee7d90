@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b6741a4_6bfffc49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Recommend to rename the test to home_directory_create_folder.go",
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "539fec0d_27925756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 80,
+        "startChar": 81,
+        "endLine": 80,
+        "endChar": 92
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f602590_d3396ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "It is creating a folder in Linux files, right? If it is, please rename it to testCreateFolderFromLinuxFiles",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a93e65_6ac30e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "newFileName was sent as a parameter in line 80, but not defined here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 139,
+        "endLine": 89,
+        "endChar": 140
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ffaedd_c02c2970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "nit: might not need () since there is only one const?",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f92ea5_aad36bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "The name is a bit weird if it is creating a folder.",
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a21209_6ee83ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Please include the folder name in the error msg.",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67eb887e_2a4314f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Please include the folder name in the error msg.",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49fba562_a53667c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Creating a file inside container has been covered here https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/home_directory_in_filesapp.go;bpv\u003d0. I would recommend to test create folder from container which has not been covered.",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 32
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8094630_52746de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Please refresh before checking.",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a45332_99fb356c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "uiTimeout has been defined as a const in this package.",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 8
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec6ed12_0633887e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right way to use uig.Do. Type *uig.Action is needed as a parameter. These are all *ui.Node, in addition, node.DescendantWithTimeout returns two results instead of one.",
+      "range": {
+        "startLine": 292,
+        "startChar": 29,
+        "endLine": 292,
+        "endChar": 150
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

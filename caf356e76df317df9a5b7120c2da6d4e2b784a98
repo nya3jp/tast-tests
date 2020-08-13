@@ -160,6 +160,54 @@
     },
     {
       "key": {
+        "uuid": "d4498dfd_4ca41fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f4b5504_5beee8af",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f297bc_699b46d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f4b5504_5beee8af",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a111c849_2c55c8b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
         "patchSetId": 1
@@ -204,6 +252,30 @@
       "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e59407a_0b3157fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-13T00:11:37Z",
+      "side": 1,
+      "message": "Ah, yes, it is, my bad. I thought it is right click on the list box.",
+      "parentUuid": "1597fc6e_86d2caf8",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "caf356e76df317df9a5b7120c2da6d4e2b784a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
