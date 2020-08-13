@@ -16,6 +16,41 @@
       "revId": "7541c64a017b036fdc06484a80827eda7f971cf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53f3365_0a031d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T18:28:47Z",
+      "side": 1,
+      "message": "I was wrong, see crrev.com/c/2351368",
+      "parentUuid": "3d469330_b3d0b3ee",
+      "revId": "7541c64a017b036fdc06484a80827eda7f971cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe34ccf3_03c0e439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T18:28:47Z",
+      "side": 1,
+      "message": "From service.cc:\n2860     // Update user activity timestamp to be able to detect old users.\n2861     // This action is not mandatory, so we perform it after\n2862     // CryptohomeMount() returns, in background.\n2863     user_mount-\u003eUpdateCurrentUserActivityTimestamp(0);",
+      "revId": "7541c64a017b036fdc06484a80827eda7f971cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
