@@ -165,6 +165,7 @@ message QueryServiceResponse {
   bool is_connected = 7;
   Wifi wifi = 8;
   string guid = 9;
+  int32 connection_id = 10;
 }
 
 message GetInterfaceResponse {

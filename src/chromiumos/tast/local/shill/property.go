@@ -108,6 +108,19 @@ func (p *Properties) GetUint16s(prop string) ([]uint16, error) {
 	return ret, nil
 }
 
+// GetInt32 returns the property value as int32.
+func (p *Properties) GetInt32(prop string) (int32, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(int32)
+	if !ok {
+		return 0, errors.Errorf("property %s is not an int32: %q", prop, value)
+	}
+	return ret, nil
+}
+
 // GetObjectPath returns the DBus ObjectPath of the given property name.
 func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
 	value, err := p.Get(prop)
