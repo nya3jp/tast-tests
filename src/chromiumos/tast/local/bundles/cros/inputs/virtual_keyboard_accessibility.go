@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -21,9 +20,9 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.InputsCriticalModels...)),
+		HardwareDeps: pre.InputsStableModels,
 	})
 }
 

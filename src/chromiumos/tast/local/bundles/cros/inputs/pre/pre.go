@@ -5,9 +5,9 @@
 // Package pre contains preconditions for inputs tests.
 package pre
 
-// InputsCriticalModels is a shortlist of boards aiming to run critical inputs tests.
-// More information refers to http://b/161415599.
-var InputsCriticalModels = []string{
+import "chromiumos/tast/testing/hwdep"
+
+var stableModels = []string{
 	// Top VK usage board in 2020 -- convertible, ARM.
 	"hana",
 	// Another top board -- convertible, x64.
@@ -25,3 +25,10 @@ var InputsCriticalModels = []string{
 	// VM used for basic development.
 	"betty",
 }
+
+// InputsStableModels is a shortlist of models aiming to run critical inputs tests.
+// More information refers to http://b/161415599.
+var InputsStableModels = hwdep.D(hwdep.Model(stableModels...))
+
+// InputsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
+var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(stableModels...))
