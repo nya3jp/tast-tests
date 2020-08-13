@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "31662f4f_a7bf0a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-08-13T06:03:52Z",
+      "side": 1,
+      "message": "Done. PTAL.",
+      "parentUuid": "b8777cc7_e75db560",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "f6b23f60e9dc3bf55ced18f6ffa26c0082953f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7b5ced_d10f2f6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 6
