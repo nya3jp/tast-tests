@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49c93253_28a9c14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-13T03:41:10Z",
+      "side": 1,
+      "message": "Rebased and fix the conflicts.\nDean, is this CL ok to merge or does it still need another owner\u0027s review?",
+      "revId": "face7738927561940659eb15215e48f25edf6a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
