@@ -21,10 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         QuarterSizedWindowZooming,
-		Desc:         "Check quarter-sized window zooming feature is working properly",
-		Contacts:     []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     QuarterSizedWindowZooming,
+		Desc:     "Check quarter-sized window zooming feature is working properly",
+		Contacts: []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
+		// Disable test until it can be fixed: https://crbug.com/1038163
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 	})
