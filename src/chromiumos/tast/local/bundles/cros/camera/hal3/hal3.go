@@ -72,8 +72,26 @@ func IsV1Legacy(ctx context.Context) (bool, error) {
 	// '/etc/camera/camera_chracteristics.conf'.
 	config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf")
 	if os.IsNotExist(err) {
-		// For legacy devices which do not have ARC, they do not have
-		// camera_chracteristics.conf either.
+		// The device does not have camera_characteristics.conf. Which might
+		// because:
+		// 1. It only has MIPI built-in cameras. (=> V3)
+		// 2. It is a legacy device which run v1 camera stack before. (V1Legacy)
+		// To distinguish these two cases, we can check if there is any other
+		// camera HAL rather than USB camera HAL installed.
+		//
+		// TODO(b/163436311): Use cros_config to distinguish these two cases
+		// after we are able to get counts for USB/MIPI cameras respectively.
+		cameraHALPaths, err := filepath.Glob(cameraHALGlobPattern)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to get camera HALs paths")
+		}
+
+		for _, path := range cameraHALPaths {
+			name := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+			if name != "usb" {
+				return false, nil
+			}
+		}
 		return true, nil
 	} else if err != nil {
 		return false, errors.Wrap(err, "failed to read camera_characteristics.conf")
