@@ -16,6 +16,41 @@
       "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8da547bd_0d973aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T02:25:36Z",
+      "side": 1,
+      "message": "Thanks for the fix. Didn\u0027t notice that Autotest does not clean it up in teardown.",
+      "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e20eeb6_c7856829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-13T02:25:36Z",
+      "side": 1,
+      "message": "Oops... Took a quick look at https://groups.google.com/a/google.com/g/gwsq-users but didn\u0027t see similar problems being reported. Not sure if we can find logs of gwsq somewhere...",
+      "parentUuid": "d9653771_1867a4bd",
+      "revId": "da28a7830b203d1f2405f6696a12d727b404ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
