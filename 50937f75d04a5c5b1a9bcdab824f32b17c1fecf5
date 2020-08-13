@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79dbd913_206577f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_edid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-08-13T04:38:48Z",
+      "side": 1,
+      "message": "nit: %q to emphasize the name",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "50937f75d04a5c5b1a9bcdab824f32b17c1fecf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
