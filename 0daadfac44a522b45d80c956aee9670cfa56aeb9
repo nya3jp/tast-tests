@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "afedf1c2_0482e12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/bootchart_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-13T09:43:45Z",
+      "side": 1,
+      "message": "The equivalent regex in go is `.*(\\d+)$`, but that won\u0027t work because we still need to put \\s* to consume the ending newline of the output.",
+      "parentUuid": "dc879c73_18e5783d",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "0daadfac44a522b45d80c956aee9670cfa56aeb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5e2bdd6_5a3c80cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
