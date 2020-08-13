@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df5a015_f5ab2fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-13T23:15:01Z",
+      "side": 1,
+      "message": "When I tried locally with a nocturne device, this actually fails to click the button. Maybe it is still during an animation of mediaview.  Maybe it is nicer to have a wait around line 88; like ui.WaitForLocationChanged()?",
+      "revId": "2940e8afc3af796e0d2ecce942ffabc9f8c4f43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1c7ed5a_19c9fe75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-13T23:15:01Z",
+      "side": 1,
+      "message": "Looks like the result is in the data format (data:video/webm;base64,....).  Keeping it or storing this into a file is not very helpful.  I think Go script should decode the base64 data into binary through https://golang.org/pkg/encoding/base64/",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "2940e8afc3af796e0d2ecce942ffabc9f8c4f43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
