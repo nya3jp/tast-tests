@@ -46,6 +46,30 @@
       "revId": "8cce78df6e8778224e6fb5a1b87d7139f0228a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c793c94f_819d0692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-13T01:58:36Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think this is very helpful, but indeed it is consistent with others, and wmRC05 is doing this style already.\n\nTo be clear, my suggestion is:\n  for _, actName :\u003d range []string {\n    wm.ResizableLandscapeActivity,\n    wm.ResizableUnspecifiedActivity,\n  } {\n    if err :\u003d immersiveViaAPIHelper(ctx, tconn, a, d, actName); err !\u003d nil {\n      return errors.Wrap(err, \"%q test failed\", actName)\n    }\n  }\n  return nil\n\nI still think it\u0027s clearer, but it\u0027s up to you.",
+      "parentUuid": "a7cbbe93_8405a1d7",
+      "range": {
+        "startLine": 369,
+        "startChar": 12,
+        "endLine": 374,
+        "endChar": 5
+      },
+      "revId": "8cce78df6e8778224e6fb5a1b87d7139f0228a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
