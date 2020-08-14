@@ -138,6 +138,30 @@
       "revId": "aeef3aa526727223b117c447b145139bb2e586ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87cc0348_e3d4e901",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2020-08-14T20:12:42Z",
+      "side": 1,
+      "message": "No! It is about my CL: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1116379 which caused test degradation + may cause degradation of creating new user",
+      "parentUuid": "3607372c_37cd31f1",
+      "range": {
+        "startLine": 285,
+        "startChar": 34,
+        "endLine": 285,
+        "endChar": 36
+      },
+      "revId": "aeef3aa526727223b117c447b145139bb2e586ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
