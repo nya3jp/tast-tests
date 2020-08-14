@@ -122,6 +122,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 		load.NewMemoryUsageSource("RAM"),
 		newThermalDataSource(ctx),
 		memDiff,
+		newCPUMaxFreqSource(),
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
