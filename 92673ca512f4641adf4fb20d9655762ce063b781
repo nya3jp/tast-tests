@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4882fc7c_5e2b58be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T00:45:18Z",
+      "side": 1,
+      "message": "LGTM.\n\nbobba360, which is added to the Criticalboards recently, seems good for its first run. Lets gather a few more results.\nhttps://cros-health-prod.googleplex.com/test/inputs.VirtualKeyboardSystemLanguages.es",
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b17c8fcc_72d3fc38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T00:45:18Z",
+      "side": 1,
+      "message": "It looks like none of the tests are using this? Am I missing something?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
