@@ -63,6 +63,30 @@
       "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e460bc_a3aefc3c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:15:22Z",
+      "side": 1,
+      "message": "From YAGNI perspective, would prefer we only expose when the need arises (have test authors explicitly add to an allowlist).  It will force test authors to be thoughtful about what they depend on.\n\nWhat about an allow list for keys that are in-use or immediately planned: since our initial exercise in the project is to confirm parallel capabilities to FAFTSetup, what about an allowlist of just mainfw_type to start with?",
+      "parentUuid": "d8b24607_8d1a5720",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
