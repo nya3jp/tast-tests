@@ -15,13 +15,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
-
-var quickSettingsParams ui.FindParams = ui.FindParams{
-	ClassName: "BubbleFrameView",
-}
 
 const uiTimeout = 10 * time.Second
 
@@ -126,32 +123,33 @@ func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Dur
 	return nil
 }
 
-// SettingPod represents the name of a setting pod in Quick Settings.
-// These names are contained in the Name attribute of the automation node
-// for the corresponding pod icon button, so they can be used to find the
-// buttons in the UI.
-type SettingPod string
+// PodIconParams generates ui.FindParams for the specified quick setting pod.
+func PodIconParams(setting SettingPod) (ui.FindParams, error) {
+	// The network pod cannot be easily found by its Name attribute in both logged-in and lock screen states.
+	// Instead, find it by its unique ClassName.
+	if setting == SettingPodNetwork {
+		return ui.FindParams{ClassName: "NetworkFeaturePodButton"}, nil
+	}
 
-// List of quick setting names, derived from the corresponding pod icon button node names.
-// Character case in the names should exactly match the pod icon button node Name attribute.
-const (
-	SettingPodBluetooth    SettingPod = "Bluetooth"
-	SettingPodDoNotDisturb SettingPod = "Do not disturb"
-	SettingPodNightLight   SettingPod = "Night Light"
-	SettingPodNetwork      SettingPod = "network"
-)
-
-// findPodButton finds the UI node corresponding to the specified quick setting pod icon button.
-func findPodButton(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (*ui.Node, error) {
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
 	r, err := regexp.Compile(string(setting))
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to compile regexp for %v pod icon name attribute", setting)
+		return ui.FindParams{}, errors.Wrapf(err, "failed to compile regexp for %v pod icon name attribute", setting)
 	}
 	podParams := ui.FindParams{
 		ClassName:  "FeaturePodIconButton",
 		Attributes: map[string]interface{}{"name": r},
+	}
+
+	return podParams, nil
+}
+
+// findPodButton finds the UI node corresponding to the specified quick setting pod icon button.
+func findPodButton(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (*ui.Node, error) {
+	podParams, err := PodIconParams(setting)
+	if err != nil {
+		return nil, err
 	}
 
 	pod, err := ui.FindWithTimeout(ctx, tconn, podParams, uiTimeout)
@@ -237,6 +235,37 @@ func ToggleSetting(ctx context.Context, tconn *chrome.TestConn, setting SettingP
 	return nil
 }
 
+// IsPodRestricted checks if a pod icon is restricted and unable to be used on the lock screen.
+func IsPodRestricted(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (bool, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer cleanup(ctx)
+
+	var pod *ui.Node
+
+	// Network is a special case, its usual name is not included in the Name attribute when it's
+	// restricted on the lock screen. Its parent element has a distinct class name we can use to find it instead.
+	if setting == SettingPodNetwork {
+		networkPod, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "NetworkFeaturePodButton"}, uiTimeout)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to find parent element of network button")
+		}
+		defer networkPod.Release(ctx)
+		pod, err = networkPod.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeToggleButton}, uiTimeout)
+	} else {
+		pod, err = findPodButton(ctx, tconn, setting)
+	}
+
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to find the %v pod icon node", setting)
+	}
+	defer pod.Release(ctx)
+
+	return pod.Restriction == ui.RestrictionDisabled, nil
+}
+
 // OpenSettingsApp will launch the Settings app by clicking on the Settings icon and wait
 // for its icon to appear in the shelf. Quick Settings will be opened if not already shown.
 func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
@@ -272,4 +301,51 @@ func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// LockScreen locks the screen.
+func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
+	lockBtn, err := ui.FindWithTimeout(ctx, tconn, LockBtnParams, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find lock button")
+	}
+	defer lockBtn.Release(ctx)
+
+	if err := lockBtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click lock button")
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, uiTimeout); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
+	}
+
+	return nil
+
+}
+
+// NotificationsHidden checks that the 'Notifications are hidden' label appears and that no notifications are visible.
+func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer cleanup(ctx)
+
+	// Wait for the 'Notifications are hidden' label at the top of Quick Settings.
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "NotificationHiddenView"}, uiTimeout); err != nil {
+		return false, errors.Wrap(err, "failed to find notifications hidden view")
+	}
+
+	// Also check that no notifications are shown in the UI.
+	exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Notification Center", ClassName: "Widget"})
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if notification node exists")
+	}
+	return exists, nil
 }
