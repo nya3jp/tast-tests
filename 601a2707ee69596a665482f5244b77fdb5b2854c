@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70215b8b_0e0a5b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-14T08:00:56Z",
+      "side": 1,
+      "message": "+1 for tast style from shadow reviewer. Please also wait for Hidehiko\u0027s review.",
+      "revId": "601a2707ee69596a665482f5244b77fdb5b2854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
