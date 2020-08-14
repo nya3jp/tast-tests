@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffda7d8e_ec69ffc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-14T22:56:41Z",
+      "side": 1,
+      "message": "Basically we are targeting the Chrome/Chromium cq which only has kevin/eve. If we had more devices a failure would break the CrOS cq.",
+      "parentUuid": "b33900ca_f878efd5",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "681335dc_8943b1ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -57,6 +81,23 @@
       "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387fa5c2_8b1ec79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-14T22:56:41Z",
+      "side": 1,
+      "message": "Yes, people landing video changes in Chromium + Chromium Sheriffs + ChromeOS gardeners would be the main audience for watching these tests. Now I have the suspicion that we may also have to watch them, but I don\u0027t really see this happening.\n\nStainless looks good. The kevin result is there. Don\u0027t understand why Chrome had issues building for eve.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild\u0026col\u003dboard_model\u0026first_date\u003d2020-07-18\u0026last_date\u003d2020-08-14\u0026test\u003dvideo.DecodeAccel.h264\u0026board\u003dkevin%7Ceve\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n",
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
