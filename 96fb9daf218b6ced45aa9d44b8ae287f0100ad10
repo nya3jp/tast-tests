@@ -63,6 +63,30 @@
       "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba839069_6ce7ee84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-14T17:31:46Z",
+      "side": 1,
+      "message": "That sounds strange to me. The test scenario tries to resize all edges of the window, and accepts some are failing?  Basically, dragging from an edge shouldn\u0027t fail.  Do you know why that happens?  Is this happening on real environment or is this only for tests?  Are there any tracking issues for the failures of dragging edges?\n\nIf the code path is exactly same, why does this test repeat resizing 4 times?  Can\u0027t it be 2 times?",
+      "parentUuid": "7ec73e4f_a7360674",
+      "range": {
+        "startLine": 479,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 19
+      },
+      "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
