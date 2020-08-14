@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31d5eeaf_abc62f61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-14T19:03:38Z",
+      "side": 1,
+      "message": "Here is my CL that attempts to prevent issues like https://b.corp.google.com/issues/161902990 from happening.\n\nSome notes:\nI am considering moving the tests into the wifi package, but I\u0027m waiting on some more feedback before I do that.\n\nThere is also a one line change in chrome.go that is necessary for my persistence test to work. I will have to upload another patchset to have this change not impact other tests.",
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
