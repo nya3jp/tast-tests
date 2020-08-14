@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfcd1288_50212d04",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:15:22Z",
+      "side": 1,
+      "message": "There\u0027s some overlap with deviceRemovable in src/chromiumos/tast/local/firmware/utils.go.  My first thought is that since it\u0027s something that benefits from having one canonical way of doing things, reporters seems indeed like the right place for it.   Can you look if it\u0027s possible to use reporters in utils.go (actually using it there should be separate cl, we should identify the path to resolve the duplication though, like a TODO to convert to a method).",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ea2dc3_92f7dc7f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:15:22Z",
+      "side": 1,
+      "message": "Suspect this may be unnecessary (i.e. consider just using rDevNameStripper.ReplaceAllString() directly).",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760e1cb7_82cbecba",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:15:22Z",
+      "side": 1,
+      "message": "Here and elsewhere: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
