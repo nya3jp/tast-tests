@@ -33,6 +33,29 @@
       "revId": "857ec142d01f59dabd7222708e8bc1c80f6aa1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d898cb1_6d472665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-14T20:48:10Z",
+      "side": 1,
+      "message": "nit: If this is planned to get enabled eventually, add a TODO() with tracking bug.",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "857ec142d01f59dabd7222708e8bc1c80f6aa1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
