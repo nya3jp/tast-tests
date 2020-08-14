@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9195a164_096b1cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-08-14T08:37:47Z",
+      "side": 1,
+      "message": "lgtm w/ one nit\n\nNote: Please mark review comments as \"Done\" once you address them in a new patchset",
+      "revId": "cdf3c9f4aa423bbc73f1e85271d51790c9991114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cedf95f8_70061e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-08-14T08:37:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 40,
+        "startChar": 54,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "cdf3c9f4aa423bbc73f1e85271d51790c9991114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
