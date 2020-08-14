@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "f9731011_1d364b96",
+        "filename": "src/chromiumos/tast/local/printing/document/compare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-14T19:23:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "611248b7_384b5504",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "067c00a9bb896fcae45cde6c846c8c2bc338e81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5cb2775_d071e462",
         "filename": "src/chromiumos/tast/local/printing/document/compare.go",
         "patchSetId": 2
