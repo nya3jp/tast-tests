@@ -17,10 +17,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PerAppDensity,
-		Desc:         "Checks that density can be changed with Android applications",
-		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     PerAppDensity,
+		Desc:     "Checks that density can be changed with Android applications",
+		Contacts: []string{"sarakato@chromium.org", "arc-eng@google.com"},
+		// TODO(b/150909711): Enable this test after fix.
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
