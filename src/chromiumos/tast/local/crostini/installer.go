@@ -2,12 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package ui contains functions to interact with the ChromeOS parts of the crostini UI.
-// This is primarily the settings and the installer.
-package ui
+package crostini
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -18,7 +17,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -206,4 +208,130 @@ func (p *Installer) Install(ctx context.Context) error {
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
 			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
+}
+
+func startLxdServer(ctx context.Context, p *PreImpl, artifactPath string) (server *lxd.Server, terminaImage, addr string, err error) {
+	containerDir := ""
+
+	// Prepare image.
+	switch p.Mode {
+	case Download:
+		terminaImage, err = vm.DownloadStagingTermina(ctx)
+		if err != nil {
+			return nil, "", "", errors.Wrap(err, "failed to download staging termina")
+		}
+
+		containerDir, err = vm.DownloadStagingContainer(ctx, p.Arch)
+		if err != nil {
+			return nil, "", "", errors.Wrap(err, "failed to download staging container")
+		}
+
+	case Artifact:
+		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
+		if err != nil {
+			return nil, "", "", errors.Wrap(err, "failed to extract termina: ")
+		}
+
+		containerDir, err = vm.ExtractContainer(ctx, p.Cr.User(), artifactPath)
+		if err != nil {
+			return nil, "", "", errors.Wrap(err, "failed to extract container: ")
+		}
+	default:
+		return nil, "", "", errors.Errorf("unrecognized mode: %q", p.Mode)
+	}
+
+	server, err = lxd.NewServer(ctx, containerDir)
+	if err != nil {
+		return nil, "", "", errors.Wrap(err, "failed to create lxd image server")
+	}
+	addr, err = server.ListenAndServe(ctx)
+	if err != nil {
+		return nil, "", "", errors.Wrap(err, "failed to start lxd image server")
+	}
+
+	return server, terminaImage, addr, nil
+}
+
+// InstallCrostini prepares image and installs Crostini from UI.
+func InstallCrostini(ctx context.Context, p *PreImpl, artifactPath string) error {
+
+	server, terminaImage, addr, err := startLxdServer(ctx, p, artifactPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to start lxd server")
+	}
+	defer server.Shutdown(ctx)
+
+	testing.ContextLog(ctx, "Installing crostini")
+
+	url := "http://" + addr + "/"
+	if err := p.Tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.ImageServerURLComponentName, url), nil); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+	}
+
+	vm.MountComponent(ctx, terminaImage)
+	if err := p.Tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+	}
+
+	// Install Crostini from Settings.
+	settings, err := OpenSettings(ctx, p.Tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Settings")
+	}
+	installer, err := settings.OpenInstaller(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch crostini installation from Settings")
+	}
+	if p.MinDiskSize != 0 {
+		if err := installer.SetDiskSize(ctx, p.MinDiskSize); err != nil {
+			return errors.Wrap(err, "failed to set disk size in installation dialog")
+		}
+	}
+	if err := installer.Install(ctx); err != nil {
+		return errors.Wrap(err, "failed to install Crostini from UI")
+	}
+
+	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
+	if err = checkDaemonsRunning(ctx); err != nil {
+		return errors.Wrap(err, "failed to check VM host daemons state")
+	}
+
+	return nil
+}
+
+func expectDaemonRunning(ctx context.Context, name string) error {
+	goal, state, _, err := upstart.JobStatus(ctx, name)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get status of job %q", name)
+	}
+	if goal != upstart.StartGoal {
+		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
+	}
+	if state != upstart.RunningState {
+		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
+	}
+	return nil
+}
+
+func checkDaemonsRunning(ctx context.Context) error {
+	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vm_concierge")
+	}
+	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vm_cicerone")
+	}
+	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for seneschal")
+	}
+	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for patchpanel")
+	}
+	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vmlog_forwarder")
+	}
+	return nil
 }

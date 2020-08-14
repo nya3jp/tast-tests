@@ -17,12 +17,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/crostini/lxd"
-	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -30,7 +26,7 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// UnstableModels is list of models that are too flaky for the CQ. Use the standard tast
+// UnstableModels is list of Models that are too flaky for the CQ. Use the standard tast
 // criteria at go/tast-add-test to judge whether it should be on the CQ.
 var UnstableModels = []string{
 	// Platform auron
@@ -170,9 +166,10 @@ func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 
 type setupMode int
 
+// Setup mode.
 const (
-	artifact setupMode = iota
-	download
+	Artifact setupMode = iota
+	Download
 )
 
 type loginType int
@@ -182,120 +179,91 @@ const (
 	loginGaia
 )
 
-var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    artifact,
+var startedByArtifactPre = &PreImpl{
+	Name:     "crostini_started_by_artifact",
+	TimeoutD: chrome.LoginTimeout + 7*time.Minute,
+	Mode:     Artifact,
 }
 
-var startedByDownloadStretchPre = &preImpl{
-	name:    "crostini_started_by_download_stretch",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianStretch,
+var startedByDownloadStretchPre = &PreImpl{
+	Name:     "crostini_started_by_download_stretch",
+	TimeoutD: chrome.LoginTimeout + 10*time.Minute,
+	Mode:     Download,
+	Arch:     vm.DebianStretch,
 }
 
-var startedByDownloadBusterPre = &preImpl{
-	name:    "crostini_started_by_download_buster",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianBuster,
+var startedByDownloadBusterPre = &PreImpl{
+	Name:     "crostini_started_by_download_buster",
+	TimeoutD: chrome.LoginTimeout + 10*time.Minute,
+	Mode:     Download,
+	Arch:     vm.DebianBuster,
 }
 
-var startedTraceVMPre = &preImpl{
-	name:        "crostini_started_trace_vm",
-	timeout:     chrome.LoginTimeout + 10*time.Minute,
-	mode:        artifact,
-	minDiskSize: 16 * cui.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
+var startedTraceVMPre = &PreImpl{
+	Name:        "crostini_started_trace_vm",
+	TimeoutD:    chrome.LoginTimeout + 10*time.Minute,
+	Mode:        Artifact,
+	MinDiskSize: 16 * SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
-var startedARCEnabledPre = &preImpl{
-	name:       "crostini_started_arc_enabled",
-	timeout:    chrome.LoginTimeout + 10*time.Minute,
-	mode:       artifact,
-	arcEnabled: true,
+var startedARCEnabledPre = &PreImpl{
+	Name:       "crostini_started_arc_enabled",
+	TimeoutD:   chrome.LoginTimeout + 10*time.Minute,
+	Mode:       Artifact,
+	ArcEnabled: true,
 }
 
-var startedByArtifactWithGaiaLoginPre = &preImpl{
-	name:      "crostini_started_by_artifact_gaialogin",
-	timeout:   chrome.LoginTimeout + 7*time.Minute,
-	mode:      artifact,
-	loginType: loginGaia,
+var startedByArtifactWithGaiaLoginPre = &PreImpl{
+	Name:      "crostini_started_by_artifact_gaialogin",
+	TimeoutD:  chrome.LoginTimeout + 7*time.Minute,
+	Mode:      Artifact,
+	LoginType: loginGaia,
 }
 
-var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
-	name:      "crostini_started_by_download_buster_gaialogin",
-	timeout:   chrome.LoginTimeout + 10*time.Minute,
-	mode:      download,
-	arch:      vm.DebianBuster,
-	loginType: loginGaia,
+var startedByDownloadBusterWithGaiaLoginPre = &PreImpl{
+	Name:      "crostini_started_by_download_buster_gaialogin",
+	TimeoutD:  chrome.LoginTimeout + 10*time.Minute,
+	Mode:      Download,
+	Arch:      vm.DebianBuster,
+	LoginType: loginGaia,
 }
 
-// Implementation of crostini's precondition.
-type preImpl struct {
-	name        string               // Name of this precondition (for logging/uniqueing purposes).
-	timeout     time.Duration        // Timeout for completing the precondition.
-	mode        setupMode            // Where (download/build artifact) the container image comes from.
-	arch        vm.ContainerArchType // Architecture/distribution of the container image.
-	arcEnabled  bool                 // Flag for whether Arc++ should be available (as well as crostini).
-	minDiskSize uint64               // The minimum size of the VM image in bytes. 0 to use default disk size.
-	cr          *chrome.Chrome
-	tconn       *chrome.TestConn
-	cont        *vm.Container
-	keyboard    *input.KeyboardEventWriter
-	loginType   loginType
+// PreImpl is the implementation of crostini's precondition.
+type PreImpl struct {
+	Name        string               // Name of this precondition (for logging/uniqueing purposes).
+	TimeoutD    time.Duration        // Timeout for completing the precondition.
+	Mode        setupMode            // Where (download/build artifact) the container image comes from.
+	Arch        vm.ContainerArchType // Architecture/distribution of the container image.
+	ArcEnabled  bool                 // Flag for whether Arc++ should be available (as well as crostini).
+	MinDiskSize uint64               // The minimum size of the VM image in bytes. 0 to use default disk size.
+	Cr          *chrome.Chrome
+	Tconn       *chrome.TestConn
+	Cont        *vm.Container
+	Keyboard    *input.KeyboardEventWriter
+	LoginType   loginType
 }
 
 // Interface methods for a testing.Precondition.
-func (p *preImpl) String() string         { return p.name }
-func (p *preImpl) Timeout() time.Duration { return p.timeout }
+// String returns the name of the precondition.
+func (p *PreImpl) String() string { return p.Name }
 
-func expectDaemonRunning(ctx context.Context, name string) error {
-	goal, state, _, err := upstart.JobStatus(ctx, name)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get status of job %q", name)
-	}
-	if goal != upstart.StartGoal {
-		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
-	}
-	if state != upstart.RunningState {
-		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
-	}
-	return nil
-}
+// Timeout returns the time out value of the precondition.
+func (p *PreImpl) Timeout() time.Duration { return p.TimeoutD }
 
-func checkDaemonsRunning(ctx context.Context) error {
-	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
-		return err
-	}
-	return nil
-}
-
+// Prepare prepares the precondition.
 // Called by tast before each test is run. We use this method to initialize
 // the precondition data, or return early if the precondition is already
 // active.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
-	ctx, st := timing.Start(ctx, "prepare_"+p.name)
+func (p *PreImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
+	ctx, st := timing.Start(ctx, "prepare_"+p.Name)
 	defer st.End()
 
-	if p.cont != nil {
-		if err := SimpleCommandWorks(ctx, p.cont); err != nil {
+	if p.Cont != nil {
+		if err := SimpleCommandWorks(ctx, p.Cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
-			p.cont = nil
+			p.Cont = nil
 			p.Close(ctx, s)
-		} else if err := p.cr.Responded(ctx); err != nil {
+		} else if err := p.Cr.Responded(ctx); err != nil {
 			s.Log("Precondition unsatisfied: Chrome is unresponsive: ", err)
 			p.Close(ctx, s)
 		} else {
@@ -308,12 +276,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			p.cleanUp(ctx, s)
+			p.cleanUp(ctx, s.OutDir())
 		}
 	}()
 
 	opt := chrome.ARCDisabled()
-	if p.arcEnabled {
+	if p.ArcEnabled {
 		opt = chrome.ARCEnabled()
 	}
 
@@ -323,94 +291,24 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	opts := []chrome.Option{opt, chrome.ExtraArgs("--vmodule=crostini*=1")}
-	if p.loginType == loginGaia {
+	if p.LoginType == loginGaia {
 		opts = append(opts, chrome.Auth(
-			s.RequiredVar("crostini.gaiaUsername"),
+			s.RequiredVar("crostini.gaiaUserName"),
 			s.RequiredVar("crostini.gaiaPassword"),
 			s.RequiredVar("crostini.gaiaID"),
 		), chrome.GAIALogin())
 	}
 	var err error
-	if p.cr, err = chrome.New(ctx, opts...); err != nil {
+	if p.Cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 
-	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
+	if p.Tconn, err = p.Cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	terminaImage := ""
-	containerDir := ""
-
-	switch p.mode {
-	case download:
-		terminaImage, err = vm.DownloadStagingTermina(ctx)
-		if err != nil {
-			s.Fatal("Failed to download staging termina: ", err)
-		}
-
-		containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
-		if err != nil {
-			s.Fatal("Failed to download staging container: ", err)
-		}
-
-	case artifact:
-		artifactPath := s.DataPath(ImageArtifact)
-		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract termina: ", err)
-		}
-
-		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract container: ", err)
-		}
-	default:
-		s.Fatal("Unrecognized mode: ", p.mode)
-	}
-
-	server, err := lxd.NewServer(ctx, containerDir)
-	if err != nil {
-		s.Fatal("Error creating lxd image server: ", err)
-	}
-	addr, err := server.ListenAndServe(ctx)
-	if err != nil {
-		s.Fatal("Error starting lxd image server: ", err)
-	}
-	defer server.Shutdown(ctx)
-
-	s.Log("Installing crostini")
-
-	url := "http://" + addr + "/"
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.ImageServerURLComponentName, url), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	vm.MountComponent(ctx, terminaImage)
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
-
-	settings, err := cui.OpenSettings(ctx, p.tconn)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	installer, err := settings.OpenInstaller(ctx)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	if p.minDiskSize != 0 {
-		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			s.Fatal("SetDiskSize error: ", err)
-		}
-	}
-	if err := installer.Install(ctx); err != nil {
+	// Install Crostini.
+	if err := InstallCrostini(ctx, p, s.DataPath(ImageArtifact)); err != nil {
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 
@@ -423,12 +321,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Error connecting to running container: ", err)
 	}
 
-	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
-	if err = checkDaemonsRunning(ctx); err != nil {
-		s.Fatal("VM host daemons in an unexpected state: ", err)
-	}
-
-	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+	if p.Keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
@@ -436,7 +329,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// are executing the tests and cause failures due to resource contention.
 	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
 		s.Log("Disabling service: ", t)
-		cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
+		cmd := p.Cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
 		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
 			s.Fatalf("Failed to stop %s timer: %v", t, err)
@@ -453,9 +346,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 // Connect connects the precondition to a running VM/container.
 // If you shutdown and restart the VM you will need to call Connect again.
-func (p *preImpl) Connect(ctx context.Context) error {
+func (p *PreImpl) Connect(ctx context.Context) error {
 	var err error
-	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	p.Cont, err = vm.DefaultContainer(ctx, p.Cr.User())
 	return err
 }
 
@@ -468,59 +361,69 @@ func (p *PreData) Connect(ctx context.Context) error {
 // Close is called after all tests involving this precondition have been run,
 // (or failed to be run if the precondition itself fails). Unlocks Chrome's and
 // the container's constructors.
-func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
-	ctx, st := timing.Start(ctx, "close_"+p.name)
+func (p *PreImpl) Close(ctx context.Context, s *testing.PreState) {
+	ctx, st := timing.Start(ctx, "close_"+p.Name)
 	defer st.End()
 
 	vm.Unlock()
 	chrome.Unlock()
-	p.cleanUp(ctx, s)
+	p.cleanUp(ctx, s.OutDir())
+}
+
+// CloseInTest does the same things in Close. It is called in a test.
+func (p *PreImpl) CloseInTest(ctx context.Context, dir string) {
+	ctx, st := timing.Start(ctx, "close_"+p.Name)
+	defer st.End()
+
+	vm.Unlock()
+	chrome.Unlock()
+	p.cleanUp(ctx, dir)
 }
 
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
-func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
-	if p.keyboard != nil {
-		if err := p.keyboard.Close(); err != nil {
-			s.Log("Failure closing keyboard: ", err)
+func (p *PreImpl) cleanUp(ctx context.Context, dir string) {
+	if p.Keyboard != nil {
+		if err := p.Keyboard.Close(); err != nil {
+			testing.ContextLogf(ctx, "Failure closing keyboard: %q", err)
 		}
-		p.keyboard = nil
+		p.Keyboard = nil
 	}
 
-	if p.cont != nil {
-		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Log("Failure dumping container log: ", err)
+	if p.Cont != nil {
+		if err := p.Cont.DumpLog(ctx, dir); err != nil {
+			testing.ContextLogf(ctx, "Failure dumping container log: %q", err)
 		}
 		if err := vm.StopConcierge(ctx); err != nil {
-			s.Log("Failure stopping concierge: ", err)
+			testing.ContextLogf(ctx, "Failure stopping concierge: %q", err)
 		}
-		p.cont = nil
+		p.Cont = nil
 	}
 	// It is always safe to unmount the component, which just posts some
 	// logs if it was never mounted.
 	vm.UnmountComponent(ctx)
 	if err := vm.DeleteImages(); err != nil {
-		s.Log("Error deleting images: ", err)
+		testing.ContextLogf(ctx, "Error deleting images: %q", err)
 	}
 
 	// Nothing special needs to be done to close the test API connection.
-	p.tconn = nil
+	p.Tconn = nil
 
-	if p.cr != nil {
-		if err := p.cr.Close(ctx); err != nil {
-			s.Log("Failure closing chrome: ", err)
+	if p.Cr != nil {
+		if err := p.Cr.Close(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failure closing chrome: %q", err)
 		}
-		p.cr = nil
+		p.Cr = nil
 	}
 }
 
 // buildPreData is a helper method that resets the machine state in
 // advance of building the precondition data for the actual tests.
-func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData {
-	if err := p.cr.ResetState(ctx); err != nil {
+func (p *PreImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData {
+	if err := p.Cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+	return PreData{p.Cr, p.Tconn, p.Cont, p.Keyboard}
 }
 
 // reportDiskUsage logs a report of the current disk usage.

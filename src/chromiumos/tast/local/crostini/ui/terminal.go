@@ -18,6 +18,8 @@ import (
 
 const terminalAppID = "fhicihalidkgcimdmhpohldehjmcabcf"
 
+const uiTimeout = 30 * time.Second
+
 // Terminal represents the crostini terminal app.
 type Terminal struct {
 	tconn *chrome.TestConn
