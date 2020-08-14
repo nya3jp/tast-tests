@@ -477,6 +477,30 @@
     },
     {
       "key": {
+        "uuid": "41391ef4_f3bb8991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-08-14T17:01:53Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Done.",
+      "parentUuid": "f7f5b583_09086d98",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "fb1302766091531aae8b144648b77d7a21c35593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fc91295_da4a2ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 2
