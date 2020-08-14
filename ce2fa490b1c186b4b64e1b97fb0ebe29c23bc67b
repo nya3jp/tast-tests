@@ -16,6 +16,23 @@
       "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "458aeb77_7fcecfeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-08-14T16:16:44Z",
+      "side": 1,
+      "message": "You technically removed one size check in RVC test. Look at |launchBoundsThreshold| in L77 and it\u0027s used to make sure the size isn\u0027t shrinking.",
+      "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
