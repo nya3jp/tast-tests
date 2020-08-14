@@ -132,6 +132,24 @@
       "revId": "76758fa16e117425957022dc4d0e6f0bc4f40cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682a2985_b5a6d0be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-14T09:11:14Z",
+      "side": 1,
+      "message": "Yes, they can. A subtest including setupNetCertStore takes less than 40 seconds on my DUT. Actually, they have only about 28 seconds (16 min / 34 tests) in average in TTLS test.",
+      "parentUuid": "d5d12c41_584f5252",
+      "revId": "76758fa16e117425957022dc4d0e6f0bc4f40cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
