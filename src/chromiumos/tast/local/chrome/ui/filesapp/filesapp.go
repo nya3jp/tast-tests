@@ -194,6 +194,19 @@ func (f *FilesApp) OpenFile(ctx context.Context, filename string) error {
 	return file.DoubleClick(ctx)
 }
 
+// WaitAndOpenFile waits for the supplied timeout duration then double clicks the file.
+func (f *FilesApp) WaitAndOpenFile(ctx context.Context, filename string, timeout time.Duration) error {
+	if err := f.WaitForFile(ctx, filename, timeout); err != nil {
+		return err
+	}
+
+	if err := f.OpenFile(ctx, filename); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // OpenQuickView opens the QuickView menu for a file.
 func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 	file, err := f.file(ctx, filename, uiTimeout)
