@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad15cfb_c6e0c1c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-08-14T17:00:52Z",
+      "side": 1,
+      "message": "The failure in auron_paine on 13402 appears to have a been a widespread problem on that build, not related to this test.",
+      "revId": "7e31c94f39ff5d9f38da2b3592849f367d5dfcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
