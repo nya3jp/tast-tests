@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f301c576_d72a52ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "It is looking very close to done to me.",
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93216be6_f4ae14ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "crbug.com/1112190 is fixed, so this code should be ok to uncomment",
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7939c3_9c38f066",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "// UnshareFolder removes a shared folder by clicking the remove icon.\n\nCould the 2nd line be:\n// Settings must be open at the Linux Manage Shared Folders page.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 76
+      },
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551f99c2_3c922cbf",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "I know Matt suggested to change this name from CheckShareConfirmDialog.  Can I suggest the name \u0027ClickShareConfirmDialog\u0027.  To me, dismiss makes me think that you will always click cancel.",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e8f798_d81220de",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "Similar to above, I think ClickShareToast is a better name.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 22
+      },
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0394603a_58281a68",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "ShareMyFiles",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8aa4d1_15da6939",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T05:47:20Z",
+      "side": 1,
+      "message": "I think this logic would be better at the end of UnshareAll, or as a dedicated function.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "57e4265c64f9e80b0fd208b7c7e649e43e081d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
