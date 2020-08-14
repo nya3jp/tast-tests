@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -135,23 +136,34 @@ type SettingPod string
 // List of quick setting names, derived from the corresponding pod icon button node names.
 // Character case in the names should exactly match the pod icon button node Name attribute.
 const (
-	SettingPodBluetooth    SettingPod = "Bluetooth"
-	SettingPodDoNotDisturb SettingPod = "Do not disturb"
-	SettingPodNightLight   SettingPod = "Night Light"
-	SettingPodNetwork      SettingPod = "network"
+	SettingPodBluetooth     SettingPod = "Bluetooth"
+	SettingPodDoNotDisturb  SettingPod = "Do not disturb"
+	SettingPodNightLight    SettingPod = "Night Light"
+	SettingPodNetwork       SettingPod = "network"
+	SettingPodAccessibility SettingPod = "accessibility"
 )
 
-// findPodButton finds the UI node corresponding to the specified quick setting pod icon button.
-func findPodButton(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (*ui.Node, error) {
+// PodIconParams generates ui.FindParams for the specified quick setting pod.
+func PodIconParams(setting SettingPod) (ui.FindParams, error) {
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
 	r, err := regexp.Compile(string(setting))
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to compile regexp for %v pod icon name attribute", setting)
+		return ui.FindParams{}, errors.Wrapf(err, "failed to compile regexp for %v pod icon name attribute", setting)
 	}
 	podParams := ui.FindParams{
 		ClassName:  "FeaturePodIconButton",
 		Attributes: map[string]interface{}{"name": r},
+	}
+
+	return podParams, nil
+}
+
+// findPodButton finds the UI node corresponding to the specified quick setting pod icon button.
+func findPodButton(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (*ui.Node, error) {
+	podParams, err := PodIconParams(setting)
+	if err != nil {
+		return nil, err
 	}
 
 	pod, err := ui.FindWithTimeout(ctx, tconn, podParams, uiTimeout)
@@ -237,6 +249,71 @@ func ToggleSetting(ctx context.Context, tconn *chrome.TestConn, setting SettingP
 	return nil
 }
 
+// IsPodRestricted checks if a pod icon is restricted and unable to be used on the lock screen.
+func IsPodRestricted(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (bool, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer cleanup(ctx)
+
+	var pod *ui.Node
+
+	// Network is a special case, its usual name is not included in the Name attribute when it's
+	// restricted on the lock screen. Its parent element has a distinct class name we can use to find it instead.
+	if setting == SettingPodNetwork {
+		networkPod, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "NetworkFeaturePodButton"}, uiTimeout)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to find parent element of network button")
+		}
+		defer networkPod.Release(ctx)
+		pod, err = networkPod.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeToggleButton}, uiTimeout)
+	} else {
+		pod, err = findPodButton(ctx, tconn, setting)
+	}
+
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to find the %v pod icon node", setting)
+	}
+	defer pod.Release(ctx)
+
+	if pod.Restriction == ui.RestrictionDisabled {
+		return true, nil
+	}
+	return false, nil
+}
+
+// SignoutBtnParams are the UI params for the 'Sign out' Quick Settings button.
+var SignoutBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	Name:      "Sign out",
+	ClassName: "SignOutButton",
+}
+
+// ShutdownBtnParams are the UI params for the shutdown button in Quick Settings.
+var ShutdownBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Shut down",
+	ClassName: "TopShortcutButton",
+}
+
+// LockBtnParams are the UI params for Quick Settings' lock button.
+var LockBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Lock",
+	ClassName: "TopShortcutButton",
+}
+
+// SettingsBtnParams are the UI params for the Quick Settings' setting button.
+var SettingsBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Settings",
+	ClassName: "TopShortcutButton",
+}
+
+// CollapseBtnParams are the UI params for the collapse button, which collapses and expands Quick Settings.
+var CollapseBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "CollapseButton",
+}
+
 // OpenSettingsApp will launch the Settings app by clicking on the Settings icon and wait
 // for its icon to appear in the shelf. Quick Settings will be opened if not already shown.
 func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
@@ -272,4 +349,75 @@ func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// LockScreen locks the screen.
+func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
+	lockBtn, err := ui.FindWithTimeout(ctx, tconn, LockBtnParams, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find lock button")
+	}
+	defer lockBtn.Release(ctx)
+
+	if err := lockBtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click lock button")
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, uiTimeout); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
+	}
+
+	return nil
+
+}
+
+// AreNotificationsHidden checks that the 'Notifications are hidden' label appears and that no notifications are visible.
+func AreNotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer cleanup(ctx)
+
+	// Wait for the 'Notifications are hidden' label at the top of Quick Settings.
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "NotificationHiddenView"}, uiTimeout); err != nil {
+		return false, errors.Wrap(err, "failed to find notifications hidden view")
+	}
+
+	// Also check that no notifications are shown in the UI.
+	exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Notification Center", ClassName: "Widget"})
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if notification node exists")
+	}
+	return exists, nil
+}
+
+// VolumeSliderParams are the UI params for the Quick Settings volume slider.
+var VolumeSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Volume",
+	ClassName: "Slider",
+}
+
+// BrightnessSliderParams are the UI params for the Quick Settings brightness slider.
+var BrightnessSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Brightness",
+	ClassName: "Slider",
+}
+
+// DateViewParams are the UI params for the Quick Settings date/time display.
+var DateViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "DateView",
+}
+
+// BatteryViewParams are the UI params for the Quick Settings date/time display.
+var BatteryViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeLabelText,
+	ClassName: "BatteryView",
 }
