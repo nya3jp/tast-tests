@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "77604d0a_f8b11961",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-14T17:32:14Z",
+      "side": 1,
+      "message": "I\u0027m relying on the \u0027f\u0027 being declared in the scope of the conditionals. Now I\u0027ll have to declare that in the scope of the loop.",
+      "parentUuid": "1b049ec9_24025249",
+      "revId": "0997bf82293e2173cd3c776955db6416ed023522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0025b55d_5fe832ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 3
