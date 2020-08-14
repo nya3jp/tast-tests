@@ -197,6 +197,30 @@
     },
     {
       "key": {
+        "uuid": "f54c4527_80c6ac7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-14T04:14:52Z",
+      "side": 1,
+      "message": "Sorry, just realised that that one has been deleted. I suggest we do not mix folder and files in one test.",
+      "parentUuid": "49fba562_a53667c9",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 32
+      },
+      "revId": "5643ce0780362b26d33634c9d3cff14b7bee7d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8094630_52746de9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
         "patchSetId": 2
