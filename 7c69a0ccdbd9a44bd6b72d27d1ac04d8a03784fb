@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681335dc_8943b1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-14T01:40:45Z",
+      "side": 1,
+      "message": "I will take a closer look at the dashboards a bit later. But the goal is to run this in the Chrome/Chromium cq. Are there any objections with respect to new decoders etc?",
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
