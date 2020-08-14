@@ -41,14 +41,11 @@ func init() {
 			"jacuzzi",
 			"kevin",
 			"kukui",
-			"blooglet", // octopus (blooglet)
 			"scarlet",
 			"veyron_fievel",
 			"veyron_mickey",
 			"veyron_tiger",
-			"ezkinil",  // zork (ezkinil)
-			"trembyle", // zork (trembyle)
-		)),
+		), hwdep.SkipOnModel("blooglet", "ezkinil", "trembyle")),
 	})
 }
 
