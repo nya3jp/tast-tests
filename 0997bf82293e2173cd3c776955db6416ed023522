@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1b049ec9_24025249",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-14T17:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75594330_4a19e0a2",
+      "revId": "0997bf82293e2173cd3c776955db6416ed023522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0025b55d_5fe832ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 3
@@ -47,6 +65,30 @@
       "writtenOn": "2020-08-14T16:29:58Z",
       "side": 1,
       "message": "To make debugging easier, can you please use separate if statements and log messages for both of these, and move the file to s.OutDir() if matching fails (so that we have the full file available when debugging)?",
+      "range": {
+        "startLine": 169,
+        "startChar": 6,
+        "endLine": 169,
+        "endChar": 54
+      },
+      "revId": "0997bf82293e2173cd3c776955db6416ed023522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5464e19_5086c7ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-14T17:27:52Z",
+      "side": 1,
+      "message": "I can split it. What do you mean collect the file? The test now copies it over with d.GetFile() and then reads the file contents here. Should that be reading the file on the DUT somehow and running the regex remotely? I couldn\u0027t figure out how that should work.",
+      "parentUuid": "0025b55d_5fe832ee",
       "range": {
         "startLine": 169,
         "startChar": 6,
