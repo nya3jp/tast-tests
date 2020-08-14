@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "75594330_4a19e0a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-14T16:54:59Z",
+      "side": 1,
+      "message": "I suggest using continue (similar to early-return) here instead of these else-if and else clauses, because the last else block is the normal path and the others are error paths. It would also spare the indent by 1 block.",
+      "revId": "0997bf82293e2173cd3c776955db6416ed023522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0025b55d_5fe832ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 3
