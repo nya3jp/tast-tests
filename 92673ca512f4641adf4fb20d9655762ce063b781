@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ca725c5_fece1356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-14T01:01:33Z",
+      "side": 1,
+      "message": "Thanks for following up. These tests are not newly added. More context here, we used to run tests on all boards, however they are flaky from time to time on a couple of boards prevents promotion. After discussed with Eng team, we decided to start with a few keyboards to avoid noise. So this would be safe to submit.",
+      "parentUuid": "4882fc7c_5e2b58be",
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17c8fcc_72d3fc38",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-14T00:45:18Z",
       "side": 1,
       "message": "It looks like none of the tests are using this? Am I missing something?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac805910_39f9740b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-14T01:01:33Z",
+      "side": 1,
+      "message": "Yes. We decided not to run these tests on non-critical models at the moment. But I remained this code structure so that we will use it when add new boards. Do you want me to remove this variable and add it back when using it.",
+      "parentUuid": "b17c8fcc_72d3fc38",
       "range": {
         "startLine": 34,
         "startChar": 4,
