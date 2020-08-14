@@ -33,6 +33,41 @@
       "revId": "609350148fc07783d25e53f2f3d358c1fffcd74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d498c6_68d24ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-14T07:38:22Z",
+      "side": 1,
+      "message": "Maybe add the dependency in Cq-Dpend?",
+      "parentUuid": "56e3ce81_0dffe8c8",
+      "revId": "609350148fc07783d25e53f2f3d358c1fffcd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79811862_c187e611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-14T07:38:22Z",
+      "side": 1,
+      "message": "From the commit message, I think you want to enable this testcase, right?\n\nThen, I guess you need to add \u0027ExtraAttr: []string{\"group:mainline\"}\u0027? (probably also \"informational\")",
+      "revId": "609350148fc07783d25e53f2f3d358c1fffcd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
