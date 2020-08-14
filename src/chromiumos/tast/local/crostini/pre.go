@@ -17,12 +17,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/crostini/lxd"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -244,44 +241,12 @@ type preImpl struct {
 	cont        *vm.Container
 	keyboard    *input.KeyboardEventWriter
 	loginType   loginType
+	iOptions    *cui.InstallationOptions
 }
 
 // Interface methods for a testing.Precondition.
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
-
-func expectDaemonRunning(ctx context.Context, name string) error {
-	goal, state, _, err := upstart.JobStatus(ctx, name)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get status of job %q", name)
-	}
-	if goal != upstart.StartGoal {
-		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
-	}
-	if state != upstart.RunningState {
-		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
-	}
-	return nil
-}
-
-func checkDaemonsRunning(ctx context.Context) error {
-	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
-		return err
-	}
-	return nil
-}
 
 func (p *preImpl) grabLXCLogs(ctx context.Context) {
 	vm, err := vm.GetRunningVM(ctx, p.cr.User())
@@ -381,117 +346,34 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	terminaImage := ""
-	containerDir := ""
-
-	switch p.mode {
-	case download:
-		terminaImage, err = vm.DownloadStagingTermina(ctx)
-		if err != nil {
-			s.Fatal("Failed to download staging termina: ", err)
-		}
-
-		containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
-		if err != nil {
-			s.Fatal("Failed to download staging container: ", err)
-		}
-
-	case artifact:
-		artifactPath := s.DataPath(ImageArtifact)
-		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract termina: ", err)
-		}
-
-		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract container: ", err)
-		}
-	default:
-		s.Fatal("Unrecognized mode: ", p.mode)
+	// Install Crostini.
+	iOptions := &cui.InstallationOptions{
+		UserName:    p.cr.User(),
+		Mode:        cui.Artifact,
+		MinDiskSize: p.minDiskSize,
+		Arch:        p.arch,
 	}
-
-	server, err := lxd.NewServer(ctx, containerDir)
-	if err != nil {
-		s.Fatal("Error creating lxd image server: ", err)
+	if p.mode == download {
+		iOptions.Mode = cui.Download
+	} else {
+		iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
 	}
-	addr, err := server.ListenAndServe(ctx)
-	if err != nil {
-		s.Fatal("Error starting lxd image server: ", err)
-	}
-	defer server.Shutdown(ctx)
-
-	s.Log("Installing crostini")
-
-	url := "http://" + addr + "/"
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.ImageServerURLComponentName, url), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	vm.MountComponent(ctx, terminaImage)
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
-
-	settings, err := cui.OpenSettings(ctx, p.tconn)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	installer, err := settings.OpenInstaller(ctx)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	if p.minDiskSize != 0 {
-		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			s.Fatal("SetDiskSize error: ", err)
-		}
-	}
-	if err := installer.Install(ctx); err != nil {
+	if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 
-	// Report disk size again after successful install.
-	if err := reportDiskUsage(ctx); err != nil {
-		s.Log("Failed to gather disk usage: ", err)
-	}
-
-	if err := p.Connect(ctx); err != nil {
-		s.Fatal("Error connecting to running container: ", err)
-	}
-
-	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
-	if err = checkDaemonsRunning(ctx); err != nil {
-		s.Fatal("VM host daemons in an unexpected state: ", err)
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	if err != nil {
+		s.Fatal("Failed to connect to running container: ", err)
 	}
 
 	if p.keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
-	// Stop the apt-daily systemd timers since they may end up running while we
-	// are executing the tests and cause failures due to resource contention.
-	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
-		s.Log("Disabling service: ", t)
-		cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			s.Fatalf("Failed to stop %s timer: %v", t, err)
-		}
-	}
-
-	// If the wayland backend is used, the fonctconfig cache will be
-	// generated the first time the app starts. On a low-end device, this
-	// can take a long time and timeout the app executions below.
-	s.Log("Generating fontconfig cache")
-	fcCmd := p.cont.Command(ctx, "fc-cache")
-	if err := fcCmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to generate fontconfig cache: ", err)
+	// Report disk size again after successful install.
+	if err := reportDiskUsage(ctx); err != nil {
+		s.Log("Failed to gather disk usage: ", err)
 	}
 
 	ret := p.buildPreData(ctx, s)
@@ -500,14 +382,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	vm.Lock()
 	shouldClose = false
 	return ret
-}
-
-// Connect connects the precondition to a running VM/container.
-// If you shutdown and restart the VM you will need to call Connect again.
-func (p *preImpl) Connect(ctx context.Context) error {
-	var err error
-	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
-	return err
 }
 
 // Connect connects the precondition to a running VM/container.

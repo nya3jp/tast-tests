@@ -8,6 +8,7 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -18,7 +19,11 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +41,21 @@ const (
 )
 
 const uiTimeout = 30 * time.Second
+
+// Image setup mode.
+const (
+	Artifact = "artifact"
+	Download = "download"
+)
+
+// InstallationOptions is a struct contains parameters for Crostini installation.
+type InstallationOptions struct {
+	UserName          string
+	Mode              string
+	ImageArtifactPath string
+	MinDiskSize       uint64
+	Arch              vm.ContainerArchType
+}
 
 // Settings is a page object for the Crostini section of the settings app.
 type Settings struct {
@@ -92,6 +112,17 @@ func (p *Settings) OpenInstaller(ctx context.Context) (*Installer, error) {
 		uig.Steps(
 			uig.Retry(2, uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
 			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Next"}, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
+}
+
+// Close closes the Settings app.
+func (p *Settings) Close(ctx context.Context) error {
+	// Close the Settings App.
+	if err := apps.Close(ctx, p.tconn, apps.Settings.ID); err != nil {
+		return errors.Wrap(err, "failed to close Settings app")
+	}
+
+	// Wait for the window to close.
+	return ui.WaitUntilGone(ctx, p.tconn, ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}, time.Minute)
 }
 
 func parseDiskSizeString(str string) (uint64, error) {
@@ -206,4 +237,170 @@ func (p *Installer) Install(ctx context.Context) error {
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
 			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
+}
+
+func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
+	// Prepare image.
+	switch iOptions.Mode {
+	case Download:
+		terminaImage, err = vm.DownloadStagingTermina(ctx)
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to download staging termina")
+		}
+
+		containerDir, err = vm.DownloadStagingContainer(ctx, iOptions.Arch)
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to download staging container")
+		}
+
+	case Artifact:
+		terminaImage, err = vm.ExtractTermina(ctx, iOptions.ImageArtifactPath)
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to extract termina: ")
+		}
+
+		containerDir, err = vm.ExtractContainer(ctx, iOptions.UserName, iOptions.ImageArtifactPath)
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to extract container: ")
+		}
+	default:
+		return "", "", errors.Errorf("unrecognized mode: %q", iOptions.Mode)
+	}
+	return containerDir, terminaImage, nil
+}
+
+func startLxdServer(ctx context.Context, containerDir string) (server *lxd.Server, addr string, err error) {
+	server, err = lxd.NewServer(ctx, containerDir)
+	if err != nil {
+		return nil, "", errors.Wrap(err, "failed to create lxd image server")
+	}
+	addr, err = server.ListenAndServe(ctx)
+	if err != nil {
+		return nil, "", errors.Wrap(err, "failed to start lxd image server")
+	}
+
+	return server, addr, nil
+}
+
+// InstallCrostini prepares image and installs Crostini from UI.
+func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *InstallationOptions) error {
+	// Setup lxd server.
+	containerDir, terminaImage, err := prepareImages(ctx, iOptions)
+	if err != nil {
+		return errors.Wrap(err, "failed to prepare image")
+	}
+	server, addr, err := startLxdServer(ctx, containerDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to start lxd server")
+	}
+	defer server.Shutdown(ctx)
+
+	testing.ContextLog(ctx, "Installing crostini")
+
+	url := "http://" + addr + "/"
+	if err := tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.ImageServerURLComponentName, url), nil); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+	}
+
+	vm.MountComponent(ctx, terminaImage)
+	if err := tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+	}
+
+	// Install Crostini from Settings.
+	settings, err := OpenSettings(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Settings")
+	}
+	defer settings.Close(ctx)
+
+	installer, err := settings.OpenInstaller(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch crostini installation from Settings")
+	}
+	if iOptions.MinDiskSize != 0 {
+		if err := installer.SetDiskSize(ctx, iOptions.MinDiskSize); err != nil {
+			return errors.Wrap(err, "failed to set disk size in installation dialog")
+		}
+	}
+	if err := installer.Install(ctx); err != nil {
+		return errors.Wrap(err, "failed to install Crostini from UI")
+	}
+
+	// Get the container.
+	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to running container")
+	}
+
+	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
+	if err = checkDaemonsRunning(ctx); err != nil {
+		return errors.Wrap(err, "failed to check VM host daemons state")
+	}
+
+	if err := stopAptDaily(ctx, cont); err != nil {
+		return errors.Wrap(err, "failed to stop apt-daily")
+	}
+
+	// If the wayland backend is used, the fonctconfig cache will be
+	// generated the first time the app starts. On a low-end device, this
+	// can take a long time and timeout the app executions below.
+	testing.ContextLog(ctx, "Generating fontconfig cache")
+	if err := cont.Command(ctx, "fc-cache").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to generate fontconfig cache")
+	}
+
+	return nil
+}
+
+func expectDaemonRunning(ctx context.Context, name string) error {
+	goal, state, _, err := upstart.JobStatus(ctx, name)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get status of job %q", name)
+	}
+	if goal != upstart.StartGoal {
+		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
+	}
+	if state != upstart.RunningState {
+		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
+	}
+	return nil
+}
+
+func checkDaemonsRunning(ctx context.Context) error {
+	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vm_concierge")
+	}
+	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vm_cicerone")
+	}
+	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for seneschal")
+	}
+	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for patchpanel")
+	}
+	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for vmlog_forwarder")
+	}
+	return nil
+}
+
+// stopAptDaily stops apt-daily systemd.
+func stopAptDaily(ctx context.Context, cont *vm.Container) error {
+	// Stop the apt-daily systemd timers since they may end up running while we
+	// are executing the tests and cause failures due to resource contention.
+	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
+		testing.ContextLogf(ctx, "Disabling service: %s", t)
+		cmd := cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
+		if err := cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			return errors.Wrapf(err, "failed to stop %s timer: %v", t, err)
+		}
+	}
+	return nil
 }
