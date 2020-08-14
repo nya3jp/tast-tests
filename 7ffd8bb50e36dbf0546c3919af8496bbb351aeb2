@@ -16,6 +16,46 @@
       "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee662ee_aa28510e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-14T17:19:30Z",
+      "side": 1,
+      "message": "I\u0027m a bit nervous here; so it shortly stops the swap service and then start it again, which could potentially remove the data in the swap memory; are there any side effects for that?",
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a130bd2_f5c4106e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-14T17:19:30Z",
+      "side": 1,
+      "message": "I\u0027m now a bit more caring about the naming of metrics :-)\nto be consistent with the namings in the design document (saying \"max MB in z-swap during the test\"), this would be TPS.RAM.Zswap.Max?  Any thoughts?",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
