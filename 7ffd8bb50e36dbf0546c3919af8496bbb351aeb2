@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bc46150_735439cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T18:19:38Z",
+      "side": 1,
+      "message": "Swap restart removed.",
+      "parentUuid": "5c9c9f52_8364037d",
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee662ee_aa28510e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
         "patchSetId": 1
