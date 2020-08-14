@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "8d8398cc_d893282d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-14T18:16:58Z",
+      "side": 1,
+      "message": "Tast LGTM.",
+      "revId": "aeef3aa526727223b117c447b145139bb2e586ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e5e32e5_5e29339b",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -88,6 +105,30 @@
       "side": 1,
       "message": "I added a performance test that includes user creation, but it\u0027s pretty noisy unfortunately.\n\nhttps://crosbolt.googleplex.com/time_series/tast.cryptohome.AutomaticCleanupManyUsers.20_users?tab\u003dtime_series\u0026sku_filter\u003dkefka_intel_celeron_n3060_2GB%7Ckefka_intel_celeron_n3060_2GB.kernelnext\u0026suite\u003dcrosbolt_nightly\u0026test\u003dtast.cryptohome.AutomaticCleanupManyUsers.20_users",
       "parentUuid": "0e5e32e5_5e29339b",
+      "range": {
+        "startLine": 285,
+        "startChar": 34,
+        "endLine": 285,
+        "endChar": 36
+      },
+      "revId": "aeef3aa526727223b117c447b145139bb2e586ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3607372c_37cd31f1",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-14T18:16:58Z",
+      "side": 1,
+      "message": "Roman, do you ask whether Victor CL will slowdown user creation? If so, it will not, it only increase timeout for running some command.",
+      "parentUuid": "879884d3_fa23a0c5",
       "range": {
         "startLine": 285,
         "startChar": 34,
