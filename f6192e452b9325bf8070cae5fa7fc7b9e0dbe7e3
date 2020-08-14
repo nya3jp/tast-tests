@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cade51d8_89439f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-14T01:19:43Z",
+      "side": 1,
+      "message": "\u003e Patch Set 6:\n\u003e \n\u003e I will be out until July 6th, we can continue then.\n\nHi Ilja, can I proceed with this CL? Thanks!",
+      "revId": "f6192e452b9325bf8070cae5fa7fc7b9e0dbe7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eae0d056_a8199f16",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 6
