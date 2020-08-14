@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "d12c844b_f510f82b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-08-14T13:25:44Z",
+      "side": 1,
+      "message": "Replace myself with zuan@ since I\u0027m no longer in the hwsec team.",
+      "revId": "aeef3aa526727223b117c447b145139bb2e586ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e5e32e5_5e29339b",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
