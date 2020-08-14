@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b18ed267_971f4d47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-14T18:28:19Z",
+      "side": 1,
+      "message": "I am not sure this should be part of CL description.\n\njust curious: why do you need refactor it?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1569ec90_5ed04540",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -33,6 +56,23 @@
       "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a902e1c_c4bedb8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-14T18:28:19Z",
+      "side": 1,
+      "message": "LGTM, but please resolve other comment and wait approval from Garfield :)\n\nThanks!",
+      "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
