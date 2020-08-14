@@ -104,6 +104,20 @@ func (s *Settings) ensureOpen(ctx context.Context) error {
 	return nil
 }
 
+// OpenInstaller clicks the "Turn on" Linux button to open the Crostini installer.
+//
+// It also clicks next to skip the information screen.  An ui.Installer
+// page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
+func (s *Settings) OpenInstaller(ctx context.Context) error {
+	if err := s.ensureOpen(ctx); err != nil {
+		return errors.Wrap(err, "error in OpenInstaller()")
+	}
+	return uig.Do(ctx, s.tconn,
+		uig.Steps(
+			uig.Retry(2, uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
+			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Next"}, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
+}
+
 // Close closes the Settings App.
 func (s *Settings) Close(ctx context.Context) error {
 	// Close the Settings App.
