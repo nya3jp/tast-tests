@@ -46,6 +46,30 @@
       "revId": "d8cbb84c140b2418c31d106826efd9622ca928f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128b4956_5d44da70",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-14T10:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2b8b67_75121fcc",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 89
+      },
+      "revId": "d8cbb84c140b2418c31d106826efd9622ca928f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
