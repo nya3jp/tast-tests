@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "7bf81ca9_a9972d24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-14T04:28:14Z",
+      "side": 1,
+      "message": "For security tests in SimpleConnect, as there are already several testcases with 11g, I think it might be good to have the initial CL with 11g and update them altogether later. So that we can have a better version boundary if some new failures are found.\n\nOne reason that I haven\u0027t updated the old security tests is that my wifi.SecChange fails with 11n + WPA on grunt. So, I\u0027m not very confident with the change until recent finding in b/161648841.",
+      "parentUuid": "42e58659_bb2bb4bf",
+      "revId": "76758fa16e117425957022dc4d0e6f0bc4f40cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca54a982_146f08a6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
