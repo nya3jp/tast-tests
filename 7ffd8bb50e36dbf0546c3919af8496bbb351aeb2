@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7ef8a0a6_902427d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T17:47:50Z",
+      "side": 1,
+      "message": "I read some more code [1]. So reset mem_used_max is resetting it to the current mem_used_total, not resetting to 0.\n\nIn this case, it seems to me that we should use the diff rather than the absolute value. The zram being used before our tests run is kind of random. We could capture two values, mem_used_max after reset at the start of test and mem_used_max after the test.\n\nWe could then remove this scary code to swapoff -\u003e swapon. WDYT?\n\n[1] https://source.corp.google.com/chromeos_public/src/third_party/kernel/v4.19/drivers/block/zram/zram_drv.c;l\u003d277?q\u003dmem_used_max\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "parentUuid": "9be38079_0ff148cc",
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a130bd2_f5c4106e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
         "patchSetId": 1
