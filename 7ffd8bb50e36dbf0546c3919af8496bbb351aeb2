@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "9be38079_0ff148cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T17:36:12Z",
+      "side": 1,
+      "message": "Swapoff could be a big deal and lead to kernel panic if we don\u0027t have enough memory to hold the data.\n\nIf it does not explode, it could take some time to move the data. But it should be okay in our case since we are moving within memory. I have seen zram hold 1G data and swapoff takes about 2s.\n\nThe intention is to reset the \"mem_used_max\" counter. So far this is the only way that I found working.",
+      "parentUuid": "6ee662ee_aa28510e",
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a130bd2_f5c4106e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2020-08-14T17:19:30Z",
       "side": 1,
       "message": "I\u0027m now a bit more caring about the naming of metrics :-)\nto be consistent with the namings in the design document (saying \"max MB in z-swap during the test\"), this would be TPS.RAM.Zswap.Max?  Any thoughts?",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "7ffd8bb50e36dbf0546c3919af8496bbb351aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a092f97d_dfaee46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T17:36:12Z",
+      "side": 1,
+      "message": "Zswap is not good since it is a real thing that applies compression for swapping. It could be used on some devices that does not use zram. swap.sh [1] has some reference of it. I don\u0027t actually know what are the criteria to use it.\n\nBack here, maybe we should still use \"Zram\"? Something like \"TPS.RAM.Zram.Max\" ?\n\n[1] https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/swap-init/files/init/swap.sh;l\u003d361",
+      "parentUuid": "6a130bd2_f5c4106e",
       "range": {
         "startLine": 105,
         "startChar": 14,
