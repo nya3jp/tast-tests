@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab5dda7_971f0ab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-14T17:04:25Z",
+      "side": 1,
+      "message": "You should not click CR+2 by yourself as it makes no sense.",
+      "revId": "2ecc64eaaf2843395c4820cba84f4b3901c1275a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
