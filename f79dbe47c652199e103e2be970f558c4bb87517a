@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "163f5470_d20c18b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-14T08:50:56Z",
+      "side": 0,
+      "message": "Do you not want to call the new function here? If so, please add a line to the commit message on why you don\u0027t need this part here anymore.",
+      "revId": "f79dbe47c652199e103e2be970f558c4bb87517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
