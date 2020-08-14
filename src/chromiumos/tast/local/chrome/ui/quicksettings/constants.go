@@ -1,0 +1,85 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package quicksettings
+
+import "chromiumos/tast/local/chrome/ui"
+
+// quickSettingsParams are the parameters to find the Quick Settings area in the UI.
+var quickSettingsParams ui.FindParams = ui.FindParams{
+	ClassName: "BubbleFrameView",
+}
+
+// SignoutBtnParams are the UI params for the 'Sign out' Quick Settings button.
+var SignoutBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	Name:      "Sign out",
+	ClassName: "SignOutButton",
+}
+
+// ShutdownBtnParams are the UI params for the shutdown button in Quick Settings.
+var ShutdownBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Shut down",
+	ClassName: "TopShortcutButton",
+}
+
+// LockBtnParams are the UI params for Quick Settings' lock button.
+var LockBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Lock",
+	ClassName: "TopShortcutButton",
+}
+
+// SettingsBtnParams are the UI params for the Quick Settings' setting button.
+var SettingsBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Settings",
+	ClassName: "TopShortcutButton",
+}
+
+// CollapseBtnParams are the UI params for the collapse button, which collapses and expands Quick Settings.
+var CollapseBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "CollapseButton",
+}
+
+// VolumeSliderParams are the UI params for the Quick Settings volume slider.
+var VolumeSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Volume",
+	ClassName: "Slider",
+	Role:      ui.RoleTypeSlider,
+}
+
+// BrightnessSliderParams are the UI params for the Quick Settings brightness slider.
+var BrightnessSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Brightness",
+	ClassName: "Slider",
+	Role:      ui.RoleTypeSlider,
+}
+
+// DateViewParams are the UI params for the Quick Settings date/time display.
+var DateViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "DateView",
+}
+
+// BatteryViewParams are the UI params for the Quick Settings date/time display.
+var BatteryViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeLabelText,
+	ClassName: "BatteryView",
+}
+
+// SettingPod represents the name of a setting pod in Quick Settings.
+// These names are contained in the Name attribute of the automation node
+// for the corresponding pod icon button, so they can be used to find the
+// buttons in the UI.
+type SettingPod string
+
+// List of quick setting names, derived from the corresponding pod icon button node names.
+// Character case in the names should exactly match the pod icon button node Name attribute.
+const (
+	SettingPodBluetooth     SettingPod = "Bluetooth"
+	SettingPodDoNotDisturb  SettingPod = "Do not disturb"
+	SettingPodNightLight    SettingPod = "Night Light"
+	SettingPodNetwork       SettingPod = "network"
+	SettingPodAccessibility SettingPod = "accessibility"
+)
