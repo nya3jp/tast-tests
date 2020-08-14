@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f1ddeb41_520add28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-14T00:06:01Z",
+      "side": 1,
+      "message": "I think it\u0027s fine, from memory when we time out it\u0027s usually in the precondition not during a test. If we don\u0027t collect logs they\u0027ll be part of the next test, which isn\u0027t ideal, but nothing breaks so I\u0027d rather keep it simple until we need the complexity.",
+      "parentUuid": "b6c784b9_352a3e00",
+      "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6789417_fcfb7ecc",
         "filename": "src/chromiumos/tast/local/crostini/post.go",
         "patchSetId": 3
@@ -56,6 +74,30 @@
       "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a91b3a5_996f13d8",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-14T00:06:01Z",
+      "side": 1,
+      "message": "Or even more interestingly, if the container gets wiped and a new one created, since we don\u0027t reset between precondition runs either.\n\nOfficially there are no guarantees about anything, from playing around and from a quick read of code + bug reports there seems to be a timestamp, so it picks back up. I tested restarting, between preconditions, manually rm -f journal files.\n\nThere is apparently an issue if the clock gets set back in time it might stop showing any logs until time catches up, but I don\u0027t think that\u0027ll be an issue during our test runs.",
+      "parentUuid": "a6789417_fcfb7ecc",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "11e7e80c87073d93f9be6d50c192551a8482e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
