@@ -77,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "2cdd1486_d2bbd8ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-14T04:30:52Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Let\u0027s keep using 11g for now.",
+      "parentUuid": "7bf81ca9_a9972d24",
+      "revId": "76758fa16e117425957022dc4d0e6f0bc4f40cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca54a982_146f08a6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
