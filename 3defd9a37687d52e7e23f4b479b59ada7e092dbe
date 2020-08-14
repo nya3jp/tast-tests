@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cbdd4995_921ed51b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:23:47Z",
+      "side": 1,
+      "message": "Sorry for the multiple round of comments, threw on two more nits while still thinking about this change.",
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfcd1288_50212d04",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 2
@@ -41,6 +58,52 @@
         "startChar": 5,
         "endLine": 106,
         "endChar": 43
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ce594b_eef859bb",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:23:47Z",
+      "side": 1,
+      "message": "return.  Nit to nudge toward paradigm shift of not thinking about exceptions.",
+      "range": {
+        "startLine": 45,
+        "startChar": 92,
+        "endLine": 45,
+        "endChar": 97
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ffefb40_fb5bece6",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-14T17:23:47Z",
+      "side": 1,
+      "message": "Let\u0027s capture what I think is intent, something like:  Reporters intends to be a collection of canonical way for tests to obtain low-level information about a DUT.",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 38
       },
       "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
