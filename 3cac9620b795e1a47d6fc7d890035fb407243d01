@@ -33,6 +33,23 @@
       "revId": "3cac9620b795e1a47d6fc7d890035fb407243d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c227edb5_fcace884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-14T04:45:10Z",
+      "side": 1,
+      "message": "Could you add TODO to revive this with the bug ID?",
+      "revId": "3cac9620b795e1a47d6fc7d890035fb407243d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
