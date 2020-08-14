@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c86e6f3_f2085d74",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-14T06:57:29Z",
+      "side": 1,
+      "message": "CheckNoSharedFolders (plural)\n\n// CheckNoSharedFolders checks there are no folders listed in the Managed shared folders page.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 89
+      },
+      "revId": "d8cbb84c140b2418c31d106826efd9622ca928f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
