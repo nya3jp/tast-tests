@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f627091_3a042c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-14T02:52:17Z",
+      "side": 1,
+      "message": "Rebased. Note that yenlin\u0027s precondition CL has merge, no need to shorten the timeout of NewTestFixture.",
+      "revId": "76758fa16e117425957022dc4d0e6f0bc4f40cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
