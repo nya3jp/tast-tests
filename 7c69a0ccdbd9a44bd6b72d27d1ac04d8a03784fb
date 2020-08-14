@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b33900ca_f878efd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-08-14T05:24:04Z",
+      "side": 1,
+      "message": "nit: Explain why eve and kevin in the description.",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "681335dc_8943b1ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -16,6 +39,24 @@
       "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7522978_e34d5c34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-08-14T05:24:04Z",
+      "side": 1,
+      "message": "Ilja: no concerns from me. This wouldn\u0027t apply to the new VideoDecoder that we\u0027re trying to finish launching because that\u0027s covered by video.DecodeAccelVD. That said, the media team is touching the old VDA for Linux, so this might catch regressions there earlier.\n\nOne question though: since we have eve and kevin on the Chromium CQ, does that mean that the Chrome sheriff will be in charge of reverting bad CLs? Will a bad CL still hold a Chrome uprev, though?",
+      "parentUuid": "681335dc_8943b1ff",
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
