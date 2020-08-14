@@ -16,6 +16,69 @@
       "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aac54b2_efeadf44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-14T20:42:00Z",
+      "side": 1,
+      "message": "+ stevenjb in case he has any thoughts on UI-poking tests\n\n--\n\nRegarding the \"coex\" package: it really seems like you\u0027re implementing two separate sets of functionality; stuff that toggles Bluetooth (and happens to require UI, because the BT platform has no support for persistence) and stuff that toggles WiFi (and does not actually need UI, but you\u0027re using it...just to mirror BT?). I\u0027d think those could easily just go in separate packages (and RPC services as needed).\n\nRelated: you\u0027re not *really* checking that WiFi works; would it not make sense to use the wifi_service RPC service, set up an AP, and connect/ping? Those are all easily supported by the wificell package and the wifi_service RPC bundle. And to that end, I think it would make sense to put the WiFi-related services in wifi_service, not a coex service.",
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63ade6ca_0cfb8efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-14T20:42:00Z",
+      "side": 1,
+      "message": "😄",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd6b548_b79af883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-14T20:42:00Z",
+      "side": 1,
+      "message": "While it\u0027s cool you can poke around the UI, I\u0027m not a fan of doing that when Shill does this for you, and after all, you really don\u0027t intend to be testing the UI trays -- you just care about the platform-level state.\n\nAll the UI is doing is calling \u0027DisableTechnology string:\"wifi\"\u0027, which persists the \u0027Powered\u003dfalse\u0027 to the profile. So you could replace this all with:\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/shill#Manager.DisableTechnology\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/shill#Manager.EnableTechnology",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
