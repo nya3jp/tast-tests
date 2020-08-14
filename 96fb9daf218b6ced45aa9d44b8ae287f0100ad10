@@ -39,6 +39,30 @@
       "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec73e4f_a7360674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-08-14T07:13:10Z",
+      "side": 1,
+      "message": "Unstable means sometimes the swipe component can\u0027t actually do \"swipe \u0026 drag\" on ARC window. \n\nIn this test case, as long as any edge is dragged successful, it is considered successful. Because all edge invoke the same API.",
+      "parentUuid": "7f02a978_d05e1da2",
+      "range": {
+        "startLine": 479,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 19
+      },
+      "revId": "96fb9daf218b6ced45aa9d44b8ae287f0100ad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
