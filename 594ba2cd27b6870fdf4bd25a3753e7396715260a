@@ -50,6 +50,29 @@
       "revId": "594ba2cd27b6870fdf4bd25a3753e7396715260a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3efdab33_661bb9ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-14T08:10:16Z",
+      "side": 1,
+      "message": "This is a bit scary because we use err assigned 10 lines above. Can we name it differently, e.g. bootErr?",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 8
+      },
+      "revId": "594ba2cd27b6870fdf4bd25a3753e7396715260a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
