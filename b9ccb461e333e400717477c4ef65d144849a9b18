@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a72610be_03a9d029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T19:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61be3f3a_8743ad92",
+      "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0fd2318_3c529eae",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f540c587_e04178a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-14T19:09:44Z",
+      "side": 1,
+      "message": "SG. Done.",
+      "parentUuid": "f0fd2318_3c529eae",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
