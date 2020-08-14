@@ -51,6 +51,7 @@ func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	p := perf.NewValues()
 	p.Set(marginMetric, float64(margin))
 	c := memory.NewChromeOSAllocator()
+	defer c.FreeAll()
 	const epsilon = 5 // We want to be consistently under the critical margin, so make the target available just inside.
 	allocated, err := c.AllocateUntil(
 		ctx,
