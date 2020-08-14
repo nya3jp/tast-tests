@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "20cc8750_c832a3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-14T19:07:32Z",
+      "side": 1,
+      "message": "I tried ui.WaitForLocationChangeCompleted and it got stuck with mediaview forever (WaitForLocationChangeCompleted said it had 4 events and they never completed). Did it fail to click the desktop option or fail to click the share button?",
+      "parentUuid": "2df5a015_f5ab2fb3",
+      "revId": "2940e8afc3af796e0d2ecce942ffabc9f8c4f43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1c7ed5a_19c9fe75",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 23
