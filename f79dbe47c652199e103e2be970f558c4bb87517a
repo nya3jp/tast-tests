@@ -16,6 +16,47 @@
       "revId": "f79dbe47c652199e103e2be970f558c4bb87517a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1aa9291_fb6321b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-08-14T16:19:45Z",
+      "side": 0,
+      "message": "He just moved the relevant logic to a new test. That new test will just run by itself.\n\nHowever he did remove one check from the old test.",
+      "parentUuid": "163f5470_d20c18b5",
+      "revId": "f79dbe47c652199e103e2be970f558c4bb87517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4dabb1_5938e894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-08-14T16:19:45Z",
+      "side": 0,
+      "message": "More specifically you removed the first check in pkgPhoneSize.",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 61
+      },
+      "revId": "f79dbe47c652199e103e2be970f558c4bb87517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
