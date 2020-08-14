@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "dc2dc3fe_2df4eb51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T09:02:32Z",
+      "side": 1,
+      "message": "LGTM % the comment below",
+      "revId": "cdf3c9f4aa423bbc73f1e85271d51790c9991114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e24794_2d29e3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T09:02:32Z",
+      "side": 1,
+      "message": "remove.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "cdf3c9f4aa423bbc73f1e85271d51790c9991114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cedf95f8_70061e9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
         "patchSetId": 23
