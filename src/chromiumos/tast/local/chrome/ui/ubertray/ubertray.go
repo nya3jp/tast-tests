@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -131,26 +132,37 @@ type QuickSetting string
 // List of quick setting names, derived from the corresponding pod icon button node names.
 // Character case in the names should exactly match the pod icon button node Name attribute.
 const (
-	QuickSettingBluetooth    QuickSetting = "Bluetooth"
-	QuickSettingDoNotDisturb QuickSetting = "Do not disturb"
-	QuickSettingNightLight   QuickSetting = "Night Light"
-	QuickSettingNetwork      QuickSetting = "network"
+	QuickSettingBluetooth     QuickSetting = "Bluetooth"
+	QuickSettingDoNotDisturb  QuickSetting = "Do not disturb"
+	QuickSettingNightLight    QuickSetting = "Night Light"
+	QuickSettingNetwork       QuickSetting = "network"
+	QuickSettingAccessibility QuickSetting = "accessibility"
 )
 
-// findQuickSettingPod finds the UI node corresponding to the specified quick setting pod icon.
-func findQuickSettingPod(ctx context.Context, tconn *chrome.TestConn, setting QuickSetting) (*ui.Node, error) {
+// PodIconParams generates ui.FindParams for the specified quick setting pod.
+func PodIconParams(setting QuickSetting) (ui.FindParams, error) {
+	var params ui.FindParams
+
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
 	r, err := regexp.Compile(string(setting))
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to compile regexp for pod icon name attribute")
+		return params, errors.Wrap(err, "failed to compile regexp for pod icon name attribute")
 	}
 	attributes := map[string]interface{}{
 		"name": r,
 	}
-	podParams := ui.FindParams{
-		ClassName:  "FeaturePodIconButton",
-		Attributes: attributes,
+
+	params.ClassName = "FeaturePodIconButton"
+	params.Attributes = attributes
+	return params, nil
+}
+
+// findQuickSettingPod finds the UI node corresponding to the specified quick setting pod icon.
+func findQuickSettingPod(ctx context.Context, tconn *chrome.TestConn, setting QuickSetting) (*ui.Node, error) {
+	podParams, err := PodIconParams(setting)
+	if err != nil {
+		return nil, err
 	}
 
 	pod, err := ui.FindWithTimeout(ctx, tconn, podParams, uiTimeout)
@@ -204,6 +216,94 @@ func ToggleQuickSetting(ctx context.Context, tconn *chrome.TestConn, setting Qui
 	return nil
 }
 
+// IsPodRestricted checks if a pod icon is restricted and unable to be used on the lock screen.
+func IsPodRestricted(ctx context.Context, tconn *chrome.TestConn, setting QuickSetting) (bool, error) {
+	if err := Show(ctx, tconn); err != nil {
+		return false, err
+	}
+
+	var pod *ui.Node
+	var err error
+
+	// Network is a special case, its usual name is not included in the Name attribute when it's
+	// restricted on the lock screen. Its parent element has a distinct class name we can use to find it instead.
+	if setting == QuickSettingNetwork {
+		networkPod, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "NetworkFeaturePodButton"}, uiTimeout)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to find parent element of network button")
+		}
+		defer networkPod.Release(ctx)
+		pod, err = networkPod.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeToggleButton}, uiTimeout)
+	} else {
+		pod, err = findQuickSettingPod(ctx, tconn, setting)
+	}
+
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to find the %v pod icon node", setting)
+	}
+	defer pod.Release(ctx)
+
+	if pod.Restriction == ui.RestrictionDisabled {
+		return true, nil
+	}
+	return false, nil
+}
+
+// SignoutBtnParams are the UI params for the 'Sign out' ubertray button.
+var SignoutBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	Name:      "Sign out",
+	ClassName: "SignOutButton",
+}
+
+// ShutdownBtnParams are the UI params for the shutdown button in the ubertray.
+var ShutdownBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Shut down",
+	ClassName: "TopShortcutButton",
+}
+
+// LockBtnParams are the UI params for the ubertray's lock button.
+var LockBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Lock",
+	ClassName: "TopShortcutButton",
+}
+
+// SettingsBtnParams are the UI params for the ubertray's setting button.
+var SettingsBtnParams ui.FindParams = ui.FindParams{
+	Name:      "Settings",
+	ClassName: "TopShortcutButton",
+}
+
+// CollapseBtnParams are the UI params for the collapse button, which collapses and expands the Ubertray.
+var CollapseBtnParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "CollapseButton",
+}
+
+// clickUntilGone clicks the UI node with the given params until it goes away,
+// indicating that it has successfully been clicked. Used here for clicking the
+// ubertray's top shortcut buttons, since they are not always clickable
+// immediately after opening the ubertray.
+// TODO(crbug/1099502): once top shortcut button clickability can be determined
+// from the UI node, replace this method with single click actions.
+func clickUntilGone(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the specified node")
+	}
+
+	condition := func(ctx context.Context) (bool, error) {
+		exists, err := ui.Exists(ctx, tconn, params)
+		return !exists, err
+	}
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
+	if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
+		return errors.Wrap(err, "node still present after clicking")
+	}
+
+	return nil
+}
+
 // OpenSettings will launch the Settings app by clicking on the Settings
 // icon in the Ubertray and wait for its icon to appear in the shelf.
 // The Ubertray will be opened if not already shown.
@@ -212,25 +312,8 @@ func OpenSettings(ctx context.Context, tconn *chrome.TestConn) error {
 		return err
 	}
 
-	params := ui.FindParams{
-		Name:      "Settings",
-		ClassName: "TopShortcutButton",
-	}
-
-	settingsBtn, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find ubertray settings button")
-	}
-
-	// Try clicking the Settings button until it goes away, indicating the click was received.
-	// todo(crbug/1099502): determine when this is clickable, and just click it once.
-	condition := func(ctx context.Context) (bool, error) {
-		exists, err := ui.Exists(ctx, tconn, params)
-		return !exists, err
-	}
-	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
-	if err := settingsBtn.LeftClickUntil(ctx, condition, &opts); err != nil {
-		return errors.Wrap(err, "settings button still present after clicking")
+	if err := clickUntilGone(ctx, tconn, SettingsBtnParams); err != nil {
+		return err
 	}
 
 	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
@@ -238,4 +321,65 @@ func OpenSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// LockScreen locks the screen.
+func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := Show(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := clickUntilGone(ctx, tconn, LockBtnParams); err != nil {
+		return err
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, uiTimeout); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
+	}
+
+	return nil
+
+}
+
+// AreNotificationsHidden checks that the 'Notifications are hidden' label appears and that no notifications are visible.
+func AreNotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	if err := Show(ctx, tconn); err != nil {
+		return false, err
+	}
+
+	// Wait for the 'Notifications are hidden' label at the top of the ubertray.
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "NotificationHiddenView"}, uiTimeout); err != nil {
+		return false, errors.Wrap(err, "failed to find notifications hidden view")
+	}
+
+	// Also check that no notifications are shown in the UI.
+	exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Notification Center", ClassName: "Widget"})
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if notification node exists")
+	}
+	return exists, nil
+}
+
+// VolumeSliderParams are the UI params for the ubertray volume slider.
+var VolumeSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Volume",
+	ClassName: "Slider",
+}
+
+// BrightnessSliderParams are the UI params for the ubertray brightness slider.
+var BrightnessSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Brightness",
+	ClassName: "Slider",
+}
+
+// DateViewParams are the UI params for the ubertray date/time display.
+var DateViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "DateView",
+}
+
+// BatteryViewParams are the UI params for the ubertray date/time display.
+var BatteryViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeLabelText,
+	ClassName: "BatteryView",
 }
