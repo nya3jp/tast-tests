@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f536dd_69fa66bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-14T08:35:07Z",
+      "side": 1,
+      "message": "Though shadow reviewer is assigned I preemptively +2ed given the simplicity of the change.\n",
+      "revId": "8576d926d1158c2bca8e8a8149c9c6726f1bd46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
