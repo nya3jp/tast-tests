@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "dbd2f0f5_84890ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-14T03:45:31Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "1c66dd69_18713fdf",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 93
+      },
+      "revId": "df2e682bc8f6c11805a2635ada0031c22b750c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ce7e0b5_00d7813a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 5
@@ -255,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "4b08d73f_e5a55ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-14T03:45:31Z",
+      "side": 1,
+      "message": "Ah, got it, thanks. Done.",
+      "parentUuid": "36c540b7_6b4b3c8a",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 42
+      },
+      "revId": "df2e682bc8f6c11805a2635ada0031c22b750c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eb262e8_75427b85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 5
@@ -299,6 +347,30 @@
       "revId": "df2e682bc8f6c11805a2635ada0031c22b750c4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40dce985_8903ab70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-14T03:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b557592c_c38f5bd4",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 42
+      },
+      "revId": "df2e682bc8f6c11805a2635ada0031c22b750c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
