@@ -138,7 +138,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 			s.Error("Couldn't find expected string in meta file: ", err)
 			if err := d.GetFile(cleanupCtx, match.Files[0],
 				filepath.Join(s.OutDir(), path.Base(match.Files[0]))); err != nil {
-				s.Log("Failed to get messages log")
+				s.Log("Failed to get meta file")
 			}
 		}
 	}
