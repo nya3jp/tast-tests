@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "40bfb866_944ae3bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T01:45:29Z",
+      "side": 1,
+      "message": "Looking at stainless[1], bobba360 is promising. Not sure why it is not reflected on tastboard.\n\n\n[1] https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2020-07-18\u0026last_date\u003d2020-08-14\u0026test\u003d%5Etast%5C.inputs%5C.\u0026build\u003dR86\u0026model\u003d%5Ebobba360%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "2ca725c5_fece1356",
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17c8fcc_72d3fc38",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
         "patchSetId": 4
@@ -81,6 +99,30 @@
       "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46add77e_5588faa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-14T01:45:29Z",
+      "side": 1,
+      "message": "Remain the code structure sounds good to me. Just curious.",
+      "parentUuid": "ac805910_39f9740b",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "92673ca512f4641adf4fb20d9655762ce063b781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
