@@ -16,6 +16,46 @@
       "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61be3f3a_8743ad92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-14T18:38:22Z",
+      "side": 1,
+      "message": "Start/Stop could be invoked multiple times for a single test case; possibly t.memUsedMaxEnd \u003d math.Max(t.memUsedMaxEnd, memUsedMax) ?",
+      "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fd2318_3c529eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-14T18:38:22Z",
+      "side": 1,
+      "message": "we want to track the max use of track -- having start/end might sound confusing. I think we can always use the value at the end; that is usually the max value during the test.  In case memUsedMaxStart \u003d\u003d memUsedMaxEnd at Stop(), maybe we could produce a log message.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "b9ccb461e333e400717477c4ef65d144849a9b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
