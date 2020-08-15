@@ -377,6 +377,119 @@ func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
 
 }
 
+// IsCollapsed checks if Quick Settings is collapsed or expanded.
+func IsCollapsed(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	// Collapsed state can be determined by the presence of sliders and pod icon labels.
+	volumeSlider, err := ui.Exists(ctx, tconn, VolumeSliderParams)
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if volume slider exists")
+	}
+
+	brightnessSlider, err := ui.Exists(ctx, tconn, BrightnessSliderParams)
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if brightness slider exists")
+	}
+
+	podIconLabels, err := ui.Exists(ctx, tconn, ui.FindParams{ClassName: "FeaturePodLabelButton"})
+	if err != nil {
+		return false, errors.Wrap(err, "failed checking if pod icon labels exist")
+	}
+
+	if volumeSlider && brightnessSlider && podIconLabels {
+		return false, nil
+	}
+	if !volumeSlider && !brightnessSlider && !podIconLabels {
+		return true, nil
+	}
+	return false, errors.Errorf(
+		"unable to determine if ubertray is collapsed or expanded; volume shown: %v, brightness shown: %v, pod labels shown: %v",
+		volumeSlider, brightnessSlider, podIconLabels,
+	)
+}
+
+// ToggleCollapsed toggles between Quick Settings' collapsed and expanded states.
+// Callers should defer expanding Quick Settings to restore the initial state
+// between tests, otherwise the collapsed state will persist between tests.
+func ToggleCollapsed(ctx context.Context, tconn *chrome.TestConn) error {
+	initialState, err := IsCollapsed(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed initial collapsed state check")
+	}
+
+	resizeBtn, err := ui.FindWithTimeout(ctx, tconn, CollapseBtnParams, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ubertray collapse/expand button")
+	}
+	defer resizeBtn.Release(ctx)
+
+	// Wait for the resize to finish by polling for the ubertray rect's height to stop changing.
+	ubertraySize, err := Rect(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed getting initial ubertray size")
+	}
+	initialSize := ubertraySize
+
+	if err := resizeBtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the ubertray collapse button")
+	}
+
+	resizeDone := func(ctx context.Context) error {
+		currentSize, err := Rect(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if currentSize.Height == initialSize.Height {
+			return errors.New("ubertray resizing hasn't started yet")
+		}
+		if currentSize.Height != ubertraySize.Height {
+			ubertraySize = currentSize
+			return errors.New("ubertray still resizing")
+		}
+		return nil
+	}
+
+	if err := testing.Poll(ctx, resizeDone, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: uiTimeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for expand/collapse animation to complete")
+	}
+
+	finalState, err := IsCollapsed(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed collapsed state check after clicking the button")
+	}
+
+	if initialState == finalState {
+		return errors.Errorf("ubertray collapse state was not toggled; collapsed state remained %v", initialState)
+	}
+
+	return nil
+}
+
+// Collapse collapses Quick Settings, or does nothing if it's already collapsed.
+// Callers should defer expanding Quick Settings to restore the initial state
+// between tests, otherwise the collapsed state will persist between tests.
+func Collapse(ctx context.Context, tconn *chrome.TestConn) error {
+	collapsed, err := IsCollapsed(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if collapsed {
+		return nil
+	}
+	return ToggleCollapsed(ctx, tconn)
+}
+
+// Expand expands Quick Settings, or does nothing if it's already expanded.
+func Expand(ctx context.Context, tconn *chrome.TestConn) error {
+	collapsed, err := IsCollapsed(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if !collapsed {
+		return nil
+	}
+	return ToggleCollapsed(ctx, tconn)
+}
+
 // AreNotificationsHidden checks that the 'Notifications are hidden' label appears and that no notifications are visible.
 func AreNotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	cleanup, err := ensureVisible(ctx, tconn)
