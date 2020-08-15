@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2eccf092_137b9154",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-08-15T04:01:23Z",
+      "side": 1,
+      "message": "That makes sense.\n\nI would like it to be on the description or as a comment in the code just as a reminder of why we chose these two specific boards.",
+      "parentUuid": "ffda7d8e_ec69ffc3",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "7c69a0ccdbd9a44bd6b72d27d1ac04d8a03784fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "681335dc_8943b1ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
