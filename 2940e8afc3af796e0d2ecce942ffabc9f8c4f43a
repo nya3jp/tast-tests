@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e8e25dc3_c50ca384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-15T01:10:05Z",
+      "side": 1,
+      "message": "Ooh, hmm. It didn\u0027t happen on my environment -- I\u0027m not sure why it happened on your environment.\n\nIf that\u0027s the case, I guess simply waiting for 1 or 2 seconds (testing.Sleep(ctx, time.Second)) might be good enough, but please leave comments for why sleep.",
+      "parentUuid": "20cc8750_c832a3f7",
+      "revId": "2940e8afc3af796e0d2ecce942ffabc9f8c4f43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1c7ed5a_19c9fe75",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
         "patchSetId": 23
