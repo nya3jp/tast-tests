@@ -49,14 +49,15 @@ func init() {
 			// Crostini
 			"sidereal@google.com",
 			"cros-containers-dev@google.com",
-			// Monitoring and forensics
+			// Telemetry
 			"mutexlox@google.com",
 			"cros-telemetry@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      10 * time.Minute,
-		Pre:          crostini.StartedByDownloadBuster(),
+		// TODO(https://crbug.com/1040272): Fix this test and reenable it.
+		Attr:    []string{},
+		Timeout: 10 * time.Minute,
+		Pre:     crostini.StartedByDownloadBuster(),
 	})
 }
 
