@@ -102,6 +102,24 @@
       "revId": "b5bf2d8e630877665d7d39636532bebc4cf1a088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fc2185_de1f7b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-08-17T08:19:54Z",
+      "side": 1,
+      "message": "It was because the test assumed there was always an US keyboard while the scarlet unit didn\u0027t.",
+      "parentUuid": "3ae8d11e_3288e8af",
+      "revId": "b5bf2d8e630877665d7d39636532bebc4cf1a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
