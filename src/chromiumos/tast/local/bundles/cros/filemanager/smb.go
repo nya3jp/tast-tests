@@ -27,7 +27,6 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Timeout:      7 * time.Minute,
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Data:         []string{"smb.conf", crostini.ImageArtifact},
@@ -127,18 +126,12 @@ func SMB(ctx context.Context, s *testing.State) {
 
 func setupSambaShare(ctx context.Context, cont *vm.Container) error {
 	setupCommands := []string{
-		"echo 'samba-common samba-common/workgroup string WORKGROUP' | sudo debconf-set-selections",
-		"echo 'samba-common samba-common/dhcp boolean false' | sudo debconf-set-selections",
-		"echo 'samba-common samba-common/do_debconf boolean false' | sudo debconf-set-selections",
-		"sudo apt -y install samba",
 		"sudo mkdir -p /pub/guestshare",
 		"echo 'test file contents' | sudo tee /pub/guestshare/test.txt",
 		"sudo chown -R nobody:nogroup /pub/guestshare",
 		"sudo chmod 0770 /pub/guestshare",
-		"sudo useradd -d /home/smbuser -m smbuser",
-		"echo 'password' > sudo smbpasswd -s -a smbuser",
 		"sudo cp -f /tmp/smb.conf /etc/samba/",
-		"sudo service smbd start",
+		"sudo service smbd restart",
 	}
 
 	for _, cmd := range setupCommands {
