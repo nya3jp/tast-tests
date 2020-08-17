@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77c7a4d9_81878a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-17T19:13:40Z",
+      "side": 1,
+      "message": "The DiscoverBSSID() was only checking the BSSID, so sometimes it was wrongly passing when the bss from the previous test is found. That causes the roaming to fail, because the bss is still not in the table.\n\nI modyfied the function to check for both BSSID and SSID, to make sure that we find the correct roamToBSS in the table. I tested that and it works fine.\n\nThe PS39 go through all the BSSs in the bss table to check if the bss is found.\nThe PS40 it does an initial check in the BSSs (in case the signal was already sent), then waites for the \"BSSAdded\" signal.\n\nI also considered finding the Network first then checking the BSSs inside it, but IIUC I don\u0027t think the supplicant D-Bus API allows for that.\nhttps://w1.fi/wpa_supplicant/devel/dbus.html",
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
