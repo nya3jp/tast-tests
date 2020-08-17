@@ -66,6 +66,57 @@
     },
     {
       "key": {
+        "uuid": "15f7fc4e_6018f813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-17T07:38:28Z",
+      "side": 1,
+      "message": "Worth noting the bug here: crbug.com/1112246",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74770584_e95132f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-17T07:38:28Z",
+      "side": 1,
+      "message": "nit: Consider UUID in case several DUTs do this simultaneously (I know, very unlikely, but...)",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf515cc7_275ae641",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-08-17T07:38:28Z",
+      "side": 1,
+      "message": "This function doesn\u0027t seem to be used. It its inclusion intentional?",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "329130d3_c1529835",
         "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
         "patchSetId": 12
