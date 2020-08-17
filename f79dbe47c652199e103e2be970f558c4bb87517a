@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "617b8881_31ef8580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-17T08:17:48Z",
+      "side": 0,
+      "message": "I see, thanks. In this case I think there should be a comment that this is only a half of the RC01 test, and refer to the new test. In the specification (https://docs.google.com/document/d/1WIrUw5F-M7atqQH4LVszfr-JrKkrkVwjhhmbT_QN8iI/edit#heading\u003dh.64ufpcp3ywx4) this test is linked, so it would be nice, if the other part of the test could be found in a straightforward way.",
+      "parentUuid": "f1aa9291_fb6321b6",
+      "revId": "f79dbe47c652199e103e2be970f558c4bb87517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb4dabb1_5938e894",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
