@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "098444e6_2aac5cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-17T08:45:59Z",
+      "side": 1,
+      "message": "Yes, from my understanding, the current fields of these elements are like:\n\n[Button on built-in cameras]\nid: settings-[facing]-[rt]res\naria-describedby: [facing]-[rt]res-desc\n\n[Button for external cameras]\nid: [not set]\naria-describedby: [id]-[rt]res-desc\n\nSo basically we just replace the facing with the device [id] for external cameras.\n\nI would prefer using same rule but different strings to query the elements for different cameras in order to reduce its complexity.",
+      "parentUuid": "1b9c9239_5c3e18bb",
+      "range": {
+        "startLine": 1325,
+        "startChar": 1,
+        "endLine": 1333,
+        "endChar": 2
+      },
+      "revId": "76f80afa2dce4fcfd3df829662dcd683b3ec5d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e18da15_00564594",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 3
