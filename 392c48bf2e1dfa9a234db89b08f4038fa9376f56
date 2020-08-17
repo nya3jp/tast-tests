@@ -16,6 +16,46 @@
       "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f41ca3a6_a99361ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-08-17T06:53:41Z",
+      "side": 1,
+      "message": "I wonder if it makes sense for these vars declarations to somehow live in the precondition considering they are only used there. Not a big deal for now though.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329130d3_c1529835",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-08-17T06:53:41Z",
+      "side": 1,
+      "message": "Do you know if this function completely deletes or just moves to trash?",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
