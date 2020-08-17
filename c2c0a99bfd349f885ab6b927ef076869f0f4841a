@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0672af11_877c22d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-08-17T07:11:47Z",
+      "side": 1,
+      "message": "lgtm\nMadhulika, please click \"Resolved\" at review comments you addressed next time.",
+      "revId": "c2c0a99bfd349f885ab6b927ef076869f0f4841a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
