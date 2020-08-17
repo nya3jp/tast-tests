@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a3f4c8_eabd8afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-17T14:45:26Z",
+      "side": 1,
+      "message": "Thank you for using inclusive language, per go/coil :)",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "d5c17f76c0b9069831005238e9d5ff533c235a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3c289ae_395cf82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-17T14:45:26Z",
+      "side": 1,
+      "message": "Per go/tast-writing:\n\n    New mainline tests should have the informational attribute\n\nPlease add the \"informational\" attr, and we\u0027ll promote it to critical after it has been proven to be stable for 20 builds. Thanks!",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "d5c17f76c0b9069831005238e9d5ff533c235a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
