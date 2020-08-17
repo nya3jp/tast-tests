@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1ae93258_4129bbf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-17T07:16:40Z",
+      "side": 1,
+      "message": "Unfortunately the way it sources these vars is on a per test basis, https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#secret-variables definitely will end up being lots of duplication as more tests follow this pattern",
+      "parentUuid": "f41ca3a6_a99361ef",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "329130d3_c1529835",
         "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
         "patchSetId": 12
@@ -56,6 +80,24 @@
       "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572355a3_ce6551be",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-17T07:16:40Z",
+      "side": 1,
+      "message": "This is the underlying API call that is made, https://developers.google.com/drive/api/v3/reference/files/delete \"Permanently deletes a file owned by the user without moving it to the trash\"",
+      "parentUuid": "329130d3_c1529835",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
