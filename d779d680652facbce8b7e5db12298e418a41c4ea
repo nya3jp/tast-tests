@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "c585cdf0_9683b078",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-17T21:18:56Z",
+      "side": 1,
+      "message": "Interesting. I will leave it up to you. Weird that a parent node works, but the child doesn\u0027t. I think how it is currently is probably fine for now.",
+      "parentUuid": "20ab4909_12f493d0",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "d779d680652facbce8b7e5db12298e418a41c4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9c1df37_6ca594ad",
         "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
         "patchSetId": 6
@@ -348,6 +372,30 @@
       "side": 1,
       "message": "Sure let\u0027s set something up on Monday. As a quick summary, though, I wanted to do a case-insensitive regex like \"(?i)bluetooth\", but chrome.automation uses javascript regex which doesn\u0027t accept flags in the expression. Instead it has to be like \"/bluetooth/i\". automation.go doesn\u0027t support adding that flag at the moment though.\n\nI guess I could do something like \"[Bb]luetooth\" maybe? We can chat about it on GVC",
       "parentUuid": "e8ab4361_d1fd415d",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 92
+      },
+      "revId": "d779d680652facbce8b7e5db12298e418a41c4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2cf6b8_66eb4a0f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-17T21:18:56Z",
+      "side": 1,
+      "message": "Ahh, I see. I will have to look into if there are any easy workarounds.",
+      "parentUuid": "e730ea8d_e04c5729",
       "range": {
         "startLine": 132,
         "startChar": 0,

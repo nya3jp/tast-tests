@@ -16,6 +16,52 @@
       "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efac7b1a_a97d23e7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-17T21:18:56Z",
+      "side": 1,
+      "message": "Can this be ensureVisible instead? It will get the current state. If shown, it will do nothing and return a function that does nothing. If hidden, it can show the ui and return a cleanup function that hides the the ui.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2789bc3_28c9717c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-17T21:18:56Z",
+      "side": 1,
+      "message": "I don\u0027t think that this necessarily needs to return a cleanup function. I think that most of the time this can just be called alone in a test. Also, returning a function that calls itself just leads to messier code.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
