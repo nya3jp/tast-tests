@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3e016b9_fee6f832",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformance/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-17T23:25:27Z",
+      "side": 1,
+      "message": "nit: private and plz put it after static final ..",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "a673c0ffca5d6fc60831fbb68cdf391be962d8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94eb6782_776205ee",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformance/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-17T23:25:27Z",
+      "side": 1,
+      "message": "nit: final Random",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "a673c0ffca5d6fc60831fbb68cdf391be962d8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252b23f3_71eacb9b",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformance/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-17T23:25:27Z",
+      "side": 1,
+      "message": "nit: final or inline at L50. Also please check other code where final applies.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "a673c0ffca5d6fc60831fbb68cdf391be962d8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6117150_dd6e6255",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformance/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-17T23:25:27Z",
+      "side": 1,
+      "message": "Can we have some callback from Transition.\nWould this apply?\nhttps://developer.android.com/reference/android/transition/Transition.TransitionListener#onTransitionEnd(android.transition.Transition)",
+      "range": {
+        "startLine": 80,
+        "startChar": 42,
+        "endLine": 80,
+        "endChar": 59
+      },
+      "revId": "a673c0ffca5d6fc60831fbb68cdf391be962d8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
