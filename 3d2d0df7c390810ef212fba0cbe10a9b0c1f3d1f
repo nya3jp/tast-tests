@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "a546f9a0_a4a4d85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:19:09Z",
+      "side": 1,
+      "message": "just a *guess*: \nnot sure whether dumpsys shows that info... in any case since we might not be using dumpsys in R, perhaps we can add that kind of info in the new \"dumpsys for R\".",
+      "parentUuid": "05e55288_1550e932",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b35d6f76_3ec33904",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
