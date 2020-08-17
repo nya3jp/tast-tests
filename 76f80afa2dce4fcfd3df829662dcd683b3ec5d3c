@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b9c9239_5c3e18bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-08-17T08:29:06Z",
+      "side": 1,
+      "message": "Checked the existing CCA codebase, the format of |id| and |aria-describedby| between built-in camera and external camera are different.",
+      "parentUuid": "a2c181b3_aace6aaa",
+      "range": {
+        "startLine": 1325,
+        "startChar": 1,
+        "endLine": 1333,
+        "endChar": 2
+      },
+      "revId": "76f80afa2dce4fcfd3df829662dcd683b3ec5d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e18da15_00564594",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "76f80afa2dce4fcfd3df829662dcd683b3ec5d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a6efc6_ba0a0eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-08-17T08:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e18da15_00564594",
+      "range": {
+        "startLine": 221,
+        "startChar": 97,
+        "endLine": 221,
+        "endChar": 107
+      },
+      "revId": "76f80afa2dce4fcfd3df829662dcd683b3ec5d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
