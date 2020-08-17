@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e51c661_43b5d0bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:42:04Z",
+      "side": 1,
+      "message": "Could we move this into Params as ExtraSoftwareDeps?\n\nThen playback (capture) could get audio_playback (audio_record) only",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21682873_4d5e61ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:42:04Z",
+      "side": 1,
+      "message": "if outputDevName, err:\u003d ...; err !\u003d nil {\n\n}",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 25
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c49cac_d6698677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:42:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "867025b9_0124eaab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:42:04Z",
+      "side": 1,
+      "message": "if p, err :\u003d ..., ; err !\u003d nil {\n\n}",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
