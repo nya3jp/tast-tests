@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "57226be1_5a117131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/tab_loading_test.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-17T18:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d99f9c2_aae773cb",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "605d1f31508e4df8212d695751b097d34f71d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "162ace4e_d3799316",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_loading_animation_perf.go",
         "patchSetId": 4
@@ -56,6 +80,24 @@
       "revId": "605d1f31508e4df8212d695751b097d34f71d903",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49a967b_c41aad87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_loading_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-17T18:00:19Z",
+      "side": 1,
+      "message": "I thought it was fine to open 10 tabs.. Yeah we should do conn.CloseTarget.",
+      "parentUuid": "162ace4e_d3799316",
+      "revId": "605d1f31508e4df8212d695751b097d34f71d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
