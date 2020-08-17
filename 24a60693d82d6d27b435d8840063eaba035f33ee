@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7decc834_b4330d7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:12:55Z",
+      "side": 1,
+      "message": "+2 % nit (wait for Yury review)",
+      "revId": "24a60693d82d6d27b435d8840063eaba035f33ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b5ebd41_b638e1ec",
+        "filename": "android/ArcAnimationPerformanceTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:12:55Z",
+      "side": 1,
+      "message": "nit: perhaps a misspell of \"test\" ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "24a60693d82d6d27b435d8840063eaba035f33ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cc0491_41d6dac6",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformancetast/MainActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:12:55Z",
+      "side": 1,
+      "message": "nit, ditto above: test ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "24a60693d82d6d27b435d8840063eaba035f33ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d09623_c10a0eef",
+        "filename": "android/ArcAnimationPerformanceTest/src/org/chromium/arc/testapp/animationperformancetast/MainActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:12:55Z",
+      "side": 1,
+      "message": "optional, nit:\n\nyou can remove the comment \"in ms\", and rename this const to SHUFFLE_PERIOD_MS",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "24a60693d82d6d27b435d8840063eaba035f33ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
