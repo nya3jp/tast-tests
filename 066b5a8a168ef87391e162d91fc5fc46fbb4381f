@@ -16,6 +16,29 @@
       "revId": "066b5a8a168ef87391e162d91fc5fc46fbb4381f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6352d013_a7ce0824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-17T17:07:12Z",
+      "side": 1,
+      "message": "I see two different approaches for this \"-2\".\n\na) Probably the more robust solution:\n\nremove these two extra events in Java so that the JSON that you receive always contains the correct events.\n\nb) If for some reason a) is not possible, but I\u0027d avoid this approach if a) is possible.\n\n  move the \"-2\" to util.go and define it as a const. e.g:\n\n  const ExtraJSONEvents \u003d -2",
+      "range": {
+        "startLine": 136,
+        "startChar": 31,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "066b5a8a168ef87391e162d91fc5fc46fbb4381f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
