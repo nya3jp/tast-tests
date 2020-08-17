@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c347ea9e_6435775c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-17T03:44:07Z",
+      "side": 1,
+      "message": "General perspective: Have you considered the feasibility of integrating this analysis with the tast linter? There are a bunch of analyses in this directory:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast-lint/check/golint.go",
+      "revId": "dcf5f1950f599801fd7a62fd37ad14552ff3dfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
