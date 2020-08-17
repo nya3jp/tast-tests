@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bc0f688_70556de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-17T23:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b502f22_702ea7f5",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "742112f3_28a1fecb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-17T22:48:39Z",
       "side": 1,
       "message": "Can this just use the chrome.LoggedIn precondition?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c284cf32_d245c8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-17T23:16:07Z",
+      "side": 1,
+      "message": "All other inputs test needs a flag --enable-virtual-keyboard to force enable vk to start testing. This test is very special, it must not have this flag. And the IME should be default to US/en. Using precondition in inputs testing is very likely to ruin the environment.",
+      "parentUuid": "742112f3_28a1fecb",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3b47d21b_90681869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-17T23:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed2dd24_88326eb1",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9957a620_93152634",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3772cf0b_d9b95bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-17T23:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9957a620_93152634",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ea6b980_90f5e69b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-08-17T22:48:39Z",
       "side": 1,
       "message": "This form of waiting seems kinda strange. Is there anything else you could possibly check or poll for?\n\nIf not, what about shortening the context to a few seconds and then calling WaitUntilShown and ensuring that it fails?\n\nIf none of the above works, and you would like to stick with what you currently have. You should deal with the error returned testing.Sleep(), and the call to testing.Sleep should be at the beginning of the for loop.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647e57cd_db3d2bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-17T23:16:07Z",
+      "side": 1,
+      "message": "Yes, it is strange. I replaced it with polling. Does it look good to you now?",
+      "parentUuid": "3ea6b980_90f5e69b",
       "range": {
         "startLine": 106,
         "startChar": 1,
