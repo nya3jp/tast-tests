@@ -71,6 +71,75 @@
     },
     {
       "key": {
+        "uuid": "9127b7ae_01b53717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:47:11Z",
+      "side": 1,
+      "message": "Should we\n\nif param.Playback {\n    line 100-104\n    if outputDevName \u003d\u003d \"\" {\n        return error.New(...)\n    }\n}\n\ninstead?\n\nTo avoid unnecessary device finding.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 3
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749177ad_1a48137e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:47:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afec7137_935d2771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:47:11Z",
+      "side": 1,
+      "message": "Should handle the err first.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "867025b9_0124eaab",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 12
@@ -87,6 +156,29 @@
         "startChar": 0,
         "endLine": 164,
         "endChar": 2
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e805d510_64766ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-17T03:47:11Z",
+      "side": 1,
+      "message": "Move these into getRunningtDevice?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 52
       },
       "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
