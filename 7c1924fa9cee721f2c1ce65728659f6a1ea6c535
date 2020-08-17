@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "cf2f8c16_248a4571",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-17T03:01:58Z",
+      "side": 1,
+      "message": "I made some change to it. PTAL.",
+      "parentUuid": "d203c635_057a456c",
+      "revId": "7c1924fa9cee721f2c1ce65728659f6a1ea6c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "911d421f_3520b9cb",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
