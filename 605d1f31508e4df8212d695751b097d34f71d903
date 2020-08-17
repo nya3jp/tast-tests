@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c974c3d_59466155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-17T17:05:48Z",
+      "side": 1,
+      "message": "lgtm % nits\n",
+      "revId": "605d1f31508e4df8212d695751b097d34f71d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d99f9c2_aae773cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/tab_loading_test.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-17T17:05:48Z",
+      "side": 1,
+      "message": "nit: I\u0027d call this SECOND_IN_MILLIS",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "605d1f31508e4df8212d695751b097d34f71d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "162ace4e_d3799316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_loading_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-17T17:05:48Z",
+      "side": 1,
+      "message": "Do we also need to close the tab \"defer conn.CloseTarget();\" ? Otherwise, we would open like 10 browser windows.",
+      "revId": "605d1f31508e4df8212d695751b097d34f71d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
