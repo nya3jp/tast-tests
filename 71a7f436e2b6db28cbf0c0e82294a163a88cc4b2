@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "95112988_6ba9f679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Still waiting to see if the 1 (sh -c) can be removed. Waiting for your suggestion.",
+      "parentUuid": "9ae2eaf1_2817236b",
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "984a9a35_6f8627d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 5
@@ -383,6 +401,30 @@
       "side": 1,
       "message": "Not done.",
       "parentUuid": "d2b8dfe5_24450c67",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "71a7f436e2b6db28cbf0c0e82294a163a88cc4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bea1b5_40bf530f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Made the function - createSELinuxPolicyFile. Please let me know if you meant something else.",
+      "parentUuid": "5c5e2739_9b622bea",
       "range": {
         "startLine": 72,
         "startChar": 0,

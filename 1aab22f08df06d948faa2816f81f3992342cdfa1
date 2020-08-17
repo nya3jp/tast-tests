@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3159fec6_c9d70d36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d901904f_003237d3",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c273f34_4d10d8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "efcbb173_f8c40d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c273f34_4d10d8f0",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28c0ab2c_27743984",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -76,6 +124,30 @@
       "writtenOn": "2020-08-11T07:39:51Z",
       "side": 1,
       "message": "This can be done without \"sh -c\". Then you can avoid dealing with escapes.",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b72704c_cb2e23de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Tried with this and few similar ones, but couldn\u0027t make it work. Any idea where I might be wrong?\n\nmatchPathConOutput, err :\u003d testexec.CommandContext(ctx, \"find\", \"directoryPath\", \"-exec\", \"matchpathcon\", \"-f\", dataDirFileContexts, \"-V\", \"{}\", \"\\\\;\")",
+      "parentUuid": "28c0ab2c_27743984",
       "range": {
         "startLine": 75,
         "startChar": 32,
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "84fccde1_c0b7c474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faec8034_87abc4c0",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37d7c3c1_7edd1a42",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -131,6 +227,30 @@
       "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3142d4e_21b67357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d7c3c1_7edd1a42",
+      "range": {
+        "startLine": 121,
+        "startChar": 44,
+        "endLine": 121,
+        "endChar": 59
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "fb86b9b4_19fddc1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e690c242_1e6e5e2f",
+      "range": {
+        "startLine": 124,
+        "startChar": 51,
+        "endLine": 124,
+        "endChar": 57
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c424c37_68fd506f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -177,6 +321,30 @@
       "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c968efd7_b9b77d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c424c37_68fd506f",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "6fa4ccf7_1849d19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2508930_3f744756",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5405dba_293bdb09",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -214,6 +406,30 @@
       "writtenOn": "2020-08-11T07:39:51Z",
       "side": 1,
       "message": "s/exists \u003d\u003d true/exists/",
+      "range": {
+        "startLine": 139,
+        "startChar": 42,
+        "endLine": 139,
+        "endChar": 58
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9850c28_84acce28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Not sure, what you meant here. Did you mean to replace the condition with \"exists\" only ?",
+      "parentUuid": "a5405dba_293bdb09",
       "range": {
         "startLine": 139,
         "startChar": 42,
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "e766e96e_62b0dbda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f876df_1ffaeaf3",
+      "range": {
+        "startLine": 144,
+        "startChar": 65,
+        "endLine": 144,
+        "endChar": 71
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c14bba1f_3f22fb17",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -260,6 +500,30 @@
       "writtenOn": "2020-08-11T07:39:51Z",
       "side": 1,
       "message": "Do you want to use Error instead of Fatal to report multiple errors?",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f99a373_6bf5f689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-17T08:58:34Z",
+      "side": 1,
+      "message": "No, my intention was to stop the execution and display the error. Did you mean to return error from here?",
+      "parentUuid": "c14bba1f_3f22fb17",
       "range": {
         "startLine": 145,
         "startChar": 5,
