@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/linuxfiles"
@@ -78,6 +79,11 @@ func HomeDirectoryInFilesapp(ctx context.Context, s *testing.State) {
 	// Open "Linux files" to refresh.
 	if err = fa.OpenDir(ctx, linuxfiles.DirName, linuxfiles.Title); err != nil {
 		s.Fatal("Failed to open Linux files after creating files inside container: ", err)
+	}
+
+	// Click Refresh.
+	if err := fa.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+		s.Fatal("Failed to click button Refresh on Files app: ", err)
 	}
 	// Check the newly created file is listed in Linux files.
 	if err = fa.WaitForFile(ctx, filename, 10*time.Second); err != nil {

@@ -438,10 +438,10 @@ func (c *Container) CheckFileDoesNotExistInDir(ctx context.Context, path string,
 		set[s] = struct{}{}
 	}
 
-	// Check each file exists in fileList.
+	// Check each file does not exist in fileList.
 	for _, file := range files {
 		if _, ok := set[file]; ok {
-			return errors.Errorf("failed to find %s in container", file)
+			return errors.Errorf("unexpectedly found %s in container", file)
 		}
 	}
 	return nil

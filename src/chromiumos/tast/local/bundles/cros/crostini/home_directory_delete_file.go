@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/linuxfiles"
@@ -65,6 +66,13 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
+	// Clean up the home directory in the end.
+	defer func() {
+		if err := cont.Cleanup(cleanupCtx, "."); err != nil {
+			s.Error("Failed to remove all files in home directory in the container: ", err)
+		}
+	}()
+
 	const fileName = "testfile.txt"
 
 	s.Run(ctx, "delete_from_linuxfiles", func(ctx context.Context, s *testing.State) {
@@ -118,6 +126,11 @@ func testDeleteFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 	// Open "Linux files".
 	if err := filesApp.OpenDir(ctx, linuxfiles.DirName, linuxfiles.Title); err != nil {
 		return errors.Wrap(err, "failed to open Linux files after creating files in the container")
+	}
+
+	// Click Refresh.
+	if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+		return errors.Wrap(err, "failed to click button Refresh on Files app")
 	}
 
 	// Check the newly created file is listed in Linux files.
