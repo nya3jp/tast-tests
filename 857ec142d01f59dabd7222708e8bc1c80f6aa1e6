@@ -56,6 +56,30 @@
       "revId": "857ec142d01f59dabd7222708e8bc1c80f6aa1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a859d34_c8cd7ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-17T03:21:41Z",
+      "side": 1,
+      "message": "Currently there are no immediately plans yet to enable HW encoding on hana and elm. This blocklist was created to stop the test from failing, after which we can close b/142514178. When we have concrete plans to enable the ARC++ HW encoder on hana and elm I\u0027ll add a tracking bug here.",
+      "parentUuid": "3d898cb1_6d472665",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "857ec142d01f59dabd7222708e8bc1c80f6aa1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
