@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "3a1227b3_fd6a50e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-17T08:22:43Z",
+      "side": 1,
+      "message": "Added it in as a TODO once push notifications have been fixed, to have a smaller refresh period.",
+      "parentUuid": "15f7fc4e_6018f813",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74770584_e95132f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
         "patchSetId": 12
@@ -100,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "7973534d_1298b3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-17T08:22:43Z",
+      "side": 1,
+      "message": "Seems there is no built in UUID support, so settled on the math/rand library appended at the end of the file name.",
+      "parentUuid": "74770584_e95132f0",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf515cc7_275ae641",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 12
@@ -114,6 +150,24 @@
       "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7679d6a0_af55fefa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-08-17T08:22:43Z",
+      "side": 1,
+      "message": "Well this is embarrassing, this was an attempt to verify that Google Docs open up in Chrome (which would automate 2 manual tests) but I did not finish up the rest of it. I\u0027ve removed it to avoid bloating this CL, but will raise it in a further CL.",
+      "parentUuid": "bf515cc7_275ae641",
+      "revId": "392c48bf2e1dfa9a234db89b08f4038fa9376f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
