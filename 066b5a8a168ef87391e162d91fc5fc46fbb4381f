@@ -39,6 +39,30 @@
       "revId": "066b5a8a168ef87391e162d91fc5fc46fbb4381f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66dfa1f6_d70babef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-08-17T22:27:25Z",
+      "side": 1,
+      "message": "Fix it with option a.",
+      "parentUuid": "6352d013_a7ce0824",
+      "range": {
+        "startLine": 136,
+        "startChar": 31,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "066b5a8a168ef87391e162d91fc5fc46fbb4381f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
