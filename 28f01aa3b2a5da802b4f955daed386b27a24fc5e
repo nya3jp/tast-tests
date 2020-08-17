@@ -16,6 +16,24 @@
       "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f070e96d_27b12b3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-17T09:30:12Z",
+      "side": 1,
+      "message": "short answer, I don\u0027t think it\u0027s necessary to check ctrl+/- behaviour here.\n\nit\u0027s a bit complicated, but although the underlying implementations are quite similar, ctrl+/- and uniform scale factor are two different features. A quick explanation:\n\n1. (a bit controversial), but ctrl +/- gives the user control as to how the app is displayed. And users may try to do this for apps which have already been optimised (or not) for their device (by the developer). (as such, there has been ongoing debate as to whether ctrl +/- feature should exist in the first place)\n\n2. uniform scale factor hard codes a specific scale factor that should be applied to all apps, and not controlled by user or developer. (the number was decided by UX to be 1.25, but could have a different number).",
+      "parentUuid": "a7331449_1036e765",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
