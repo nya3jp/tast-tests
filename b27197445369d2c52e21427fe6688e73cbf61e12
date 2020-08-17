@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbf268d0_4b4b4bfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-17T07:48:56Z",
+      "side": 1,
+      "message": "Restructured the Tast test to upload data to CrOSBolt\n\nUnfortunately I couldn\u0027t find a good place to put the generated protobuf definitions, any help on this side would be appreciated.\n\nPTAL",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
