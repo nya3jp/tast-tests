@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4138d9de_31c81864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ocr/generate_searchable_pdf_from_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-18T14:09:20Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 24
+      },
+      "revId": "0fd7b0b096859ce2c7813094916c3649e7b82ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b52f88_fdbeb7ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ocr/generate_searchable_pdf_from_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-18T14:09:20Z",
+      "side": 1,
+      "message": "Could you inline this?\ntestexec.CommandContext(ctx, \"ocr_tool\", \"--input..., \"--output..., ...)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "0fd7b0b096859ce2c7813094916c3649e7b82ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
