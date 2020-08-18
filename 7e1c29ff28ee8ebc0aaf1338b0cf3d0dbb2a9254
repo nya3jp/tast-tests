@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b485af65_7abc6444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-18T19:22:18Z",
+      "side": 1,
+      "message": "arc.Booted is in the default mode, it can be in tablet mode on tablet devices like krane. This is necessary for the clamshell mode tests.\n\nBy using arc.Booted on both states, we can share the precondition and that helps reducing the total test duration. We could use arc.BootedInTabletMode() for tablet-case, but I believe this approach is cleaner.",
+      "parentUuid": "b0b8fc7d_0a4b713d",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76fe008b_0d745fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
