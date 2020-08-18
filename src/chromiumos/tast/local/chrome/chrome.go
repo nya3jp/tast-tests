@@ -761,8 +761,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
-	} else {
-		args = append(args, "--enable-features=GaiaActionButtons")
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
