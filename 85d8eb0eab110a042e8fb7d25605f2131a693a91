@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "069387b3_367dceb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T01:27:26Z",
+      "side": 1,
+      "message": "(marking resolved)",
+      "parentUuid": "e4ac887c_1c7241dc",
+      "range": {
+        "startLine": 1171,
+        "startChar": 3,
+        "endLine": 1171,
+        "endChar": 4
+      },
+      "revId": "85d8eb0eab110a042e8fb7d25605f2131a693a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368b6b8a_d8591686",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 28
