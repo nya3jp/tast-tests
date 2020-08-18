@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5514c2_66d62a40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-18T21:12:23Z",
+      "side": 1,
+      "message": "LGTM, but wondering if this matters.  As far as I checked the test log (https://stainless.corp.google.com/search?test\u003d%5Etast%5C.arc%5C.PIPEnergyAndPower%5C.big%24\u0026exclude_cts\u003dtrue\u0026exclude_non_release\u003dtrue\u0026view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2020-08-12\u0026last_date\u003d2020-08-18), the test passes on tablet devices like krane or scarlet.  I also tried on a local nocturne device with detaching the internal keyboard, and it looks working as expected.",
+      "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
