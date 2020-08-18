@@ -16,6 +16,213 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb3b326_1c79a118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027d like to duplicate protobuf definition.\nHow about introducing a new ebuild package that generates go bindings from platform2/ml_benchmark/proto/benchmark_config.proto, and letting Tast depend on it?",
+      "parentUuid": "dbf268d0_4b4b4bfe",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea5f734_1e1dee29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "style:\n\nconst (\n  workspacePath \u003d ...\n  outputFilename \u003d ...\n)",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c10e837_bf3ec668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "IIUC, in case of non-zero status code, it wouldn\u0027t make sense to run the verification below. Could you terminate the test in this case?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 62
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cbcb32_ee39c175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "Could you either:\n- use redirect?\n  logFile, err :\u003d os.Open(...)\n  if err !\u003d nil {\n    ...\n  }\n  defer logFile.Close()\n\n  cmd :\u003d testexec.CommandContext(...)\n  cmd.Stdout \u003d logFile\n  cmd.Stderr \u003d logFile\n  if err :\u003d cmd.Run(); err !\u003d nil {\n    ...\n  }\n\n  out, err :\u003d ioutil.ReadFile(...)\n  if err !\u003d nil {\n    ...\n  }\n\n  In this case, considering the logFile defer, nice to be wrapped by a function, IMHO.\n\n- or, use CombinedOutput()\n  b, err :\u003d testexec.CommandContext(...).CombinedOutput()\n  // Dump to the file regardless of the command exit status.\n  if werr :\u003d ioutil.WriteFile(...); werr !\u003d nil {\n    if err \u003d nil {\n      err \u003d werr\n    } else {\n      s.Log(...)  // Log werr, because go does not support multiple errors.\n    }\n  }\n  if err !\u003d nil {\n    ...\n  }\n  out :\u003d string(b)\n  ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699c9bc1_40fe5337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "searching on the combind output is fragile, because logs could be interlaced.\nIn which are ERROR/FATAL terms expected to be found?",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05f7ebc_d3a3f896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "style:\n- could you use s.Fatal instead of s.Error + return, and\n- pass multiple arguments, instead of concatenating with + operator?\n\ns.Fatal(\"Encountered an error within the logs; see \", logFilename)\n\nditto for below.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 8
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c2e50b_440a9a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "nit/style:\n- could you use \":\u003d\"\n\nresultsPath :\u003d filepath.Join(...)\n\nditto for below.",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33cac1c9_aec9b832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "style: go prefers shorter name. Maybe just \"result\"?\nAlso, you can declare the struct rather than the pointer to the struct here.\n\nvar result ml.BenchmarkResults\nif err :\u003d proto.Unmarshal(..., \u0026result); err !\u003d nil {\n  ...\n}",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89095be_32d8200b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "huge nit: no empty line is needed.",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8039b0_2df308c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "style: In go, unless it is measurably critical, it is ok to copy, if it is simpler like this case.",
+      "range": {
+        "startLine": 104,
+        "startChar": 18,
+        "endLine": 104,
+        "endChar": 61
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
