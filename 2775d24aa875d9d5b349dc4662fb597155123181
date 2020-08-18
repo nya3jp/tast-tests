@@ -16,6 +16,46 @@
       "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8a52c65_b0db6e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:08:04Z",
+      "side": 1,
+      "message": "Although iw event has some problems, the change along looks good to me.",
+      "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d135340_065610c2",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:08:04Z",
+      "side": 1,
+      "message": "Oops, missed in previous CL. This should be ErrWatcherClosed.",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

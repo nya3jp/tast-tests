@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4695e109_4aea4129",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/link_monitor_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:08:04Z",
+      "side": 0,
+      "message": "nit: Not sure if we should also remove this function (and ConnectedTime) as future caller of this should also consider using Watcher instead.",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "d29593ced56898f6d0df995b99a60ea085718c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
