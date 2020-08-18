@@ -443,6 +443,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}
 
+	// If the wayland backend is used, the fonctconfig cache will be
+	// generated the first time the app starts. On a low-end device, this
+	// can take a long time and timeout the app executions below.
+	s.Log("Generating fontconfig cache")
+	fcCmd := p.cont.Command(ctx, "fc-cache")
+	if err := fcCmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to generate fontconfig cache: ", err)
+	}
+
 	ret := p.buildPreData(ctx, s)
 
 	chrome.Lock()
