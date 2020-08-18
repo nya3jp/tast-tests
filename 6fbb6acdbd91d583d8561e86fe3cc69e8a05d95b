@@ -16,6 +16,23 @@
       "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1ee9c26_ff0c61f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-18T18:34:14Z",
+      "side": 1,
+      "message": "To clarify the branch point is not a great time to do this, as we often get regressions before branching. Also no Chrome uprev in the last 5 days and the last release builds looking dodgy. Maybe wait with landing after we get the branch and Chrome uprev?",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
