@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f662736_d0b51802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-18T00:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae48b947_d8da0b22",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "5efe92364cc17c64e278ad729206e904fb0b3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e696da7_a61508c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5efe92364cc17c64e278ad729206e904fb0b3adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2cfe382_3da93df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-18T00:15:03Z",
+      "side": 1,
+      "message": "Increased timeout to 10s.",
+      "parentUuid": "6e696da7_a61508c1",
+      "range": {
+        "startLine": 115,
+        "startChar": 68,
+        "endLine": 115,
+        "endChar": 83
+      },
+      "revId": "5efe92364cc17c64e278ad729206e904fb0b3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
