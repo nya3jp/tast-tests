@@ -132,6 +132,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	}{
 		{"current_config.fb", pathMustExist},
 		{"current_fileapks.pb", pathMustExist},
+		{"current_features.fb", pathMustExist},
 		{"stored_modulesets.pb", pathMustExist},
 		{"current_modules_init.pb", pathMustNotExist},
 	} {
