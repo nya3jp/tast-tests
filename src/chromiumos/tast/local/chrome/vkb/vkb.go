@@ -24,12 +24,12 @@ const ImePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
+	return tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
 }
 
 // HideVirtualKeyboard forces the virtual keyboard to be hidden.
 func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
+	return tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
 }
 
 // VirtualKeyboard returns a reference to chrome.automation API AutomationNode of virtual keyboard.
@@ -43,21 +43,11 @@ func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, err
 // SetCurrentInputMethod sets the current input method used by the virtual
 // keyboard.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMethod string) error {
-	if err := tconn.EvalPromise(ctx, fmt.Sprintf(`
-		new Promise((resolve, reject) => {
-			chrome.autotestPrivate.setWhitelistedPref(
-				'settings.language.preload_engines', %[1]q, () => {
-					chrome.inputMethodPrivate.setCurrentInputMethod(%[1]q, () => {
-						if (chrome.runtime.lastError) {
-							reject(chrome.runtime.lastError.message);
-						} else {
-							resolve();
-						}
-					});
-				}
-			);
-		})
-		`, ImePrefix+inputMethod), nil); err != nil {
+	if err := tconn.Call(ctx, nil, `async (ime) => {
+		await tast.promisify(chrome.autotestPrivate.setWhitelistedPref)(
+		    'settings.language.preload_engines', ime);
+		await tast.promisify(chrome.inputMethodPrivate.setCurrentInputMethod)(ime);
+	}`, ImePrefix+inputMethod); err != nil {
 		return errors.Wrapf(err, "failed to set current input method: %q", inputMethod)
 	}
 
@@ -73,16 +63,12 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMet
 // GetCurrentInputMethod returns the current input method id used by the virtual
 // keyboard.
 func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string, error) {
-	var inputMethodID string
-	if err := tconn.Eval(ctx, `new Promise(function(resolve, reject) {
-		chrome.inputMethodPrivate.getCurrentInputMethod(function(id) {
-			  resolve(id);
-	});
-  })`, &inputMethodID); err != nil {
-		return inputMethodID, errors.Wrap(err, "failed to get current input method")
+	var id string
+	if err := tconn.Call(ctx, &id, `tast.promisify(chrome.inputMethodPrivate.getCurrentInputMethod)`); err != nil {
+		return "", errors.Wrap(err, "failed to get current input method")
 	}
 
-	return strings.TrimPrefix(inputMethodID, ImePrefix+":"), nil
+	return strings.TrimPrefix(id, ImePrefix+":"), nil
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
@@ -227,12 +213,11 @@ func FindKeyNode(ctx context.Context, tconn *chrome.TestConn, keyName string) (*
 // TapKeyJS simulates a tap event on the middle of the specified key via javascript. The key can
 // be any letter of the alphabet, "space" or "backspace".
 func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
-	return kconn.Eval(ctx, fmt.Sprintf(`
-	(() => {
+	return kconn.Call(ctx, nil, `(key) => {
 		// Multiple keys can have the same aria label but only one is visible.
-		const keys = document.querySelectorAll('[aria-label=%[1]q]')
+		const keys = document.querySelectorAll('[aria-label=' + key + ']')
 		if (!keys) {
-			throw new Error('Key %[1]q not found. No element with aria-label %[1]q.');
+			throw new Error('Key ' + key + ' not found. No element with aria-label ' + key +'.');
 		}
 		for (const key of keys) {
 			const rect = key.getBoundingClientRect();
@@ -246,9 +231,8 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 			key.dispatchEvent(new Event('pointerup'));
 			return;
 		}
-		throw new Error('Key %[1]q not clickable. Found elements with aria-label %[1]q, but they were not visible.');
-	})()
-	`, key), nil)
+		throw new Error('Key ' + key + ' not clickable. Found elements with aria-label ' + key + ', but they were not visible.');
+	}`, key)
 }
 
 // SetFloatingMode changes virtual keyboard to floating/dock layout.
