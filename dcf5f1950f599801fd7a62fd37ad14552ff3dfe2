@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eebfad47_48d75824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-18T06:31:45Z",
+      "side": 1,
+      "message": "I could, those seem like general checks owned by the tast team however so figured it\u0027d be cleaner to have our own standalone check. This is very Crostini-specific.",
+      "parentUuid": "c347ea9e_6435775c",
+      "revId": "dcf5f1950f599801fd7a62fd37ad14552ff3dfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bf7eeb8_16c3b501",
         "filename": "tools/run_crostini_lint.sh",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "dcf5f1950f599801fd7a62fd37ad14552ff3dfe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac158dc9_a262e64a",
+        "filename": "tools/run_crostini_lint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-18T06:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf7eeb8_16c3b501",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "dcf5f1950f599801fd7a62fd37ad14552ff3dfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
