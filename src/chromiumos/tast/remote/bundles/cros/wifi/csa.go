@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
 	remoteiw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
@@ -129,11 +128,11 @@ func CSA(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.Router().ReserveForCloseFrameSender(ctx)
 	defer cancel()
 
-	evLog, err := iw.NewEventLogger(ctx, s.DUT())
+	ew, err := iw.NewEventWatcher(ctx, s.DUT())
 	if err != nil {
-		s.Fatal("Failed to start iw.EventLogger: ", err)
+		s.Fatal("Failed to start iw.EventWatcher: ", err)
 	}
-	defer evLog.Stop(ctx)
+	defer ew.Stop(ctx)
 
 	const maxRetry = 5
 	const alterChannel = 36
@@ -143,26 +142,21 @@ func CSA(ctx context.Context, s *testing.State) {
 		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alterChannel); err != nil {
 			s.Fatal("Failed to send channel switch frame: ", err)
 		}
-		// The frame might need some time to reach DUT, poll for a few seconds.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// TODO(b/154879577): Find some way to know if DUT supports
-			// channel switch, and only wait for the proper event.
-			if len(evLog.EventsByType(iw.EventTypeChanSwitch)) > 0 {
-				s.Log("Channel switch detected")
-				return nil
-			}
-			if len(evLog.EventsByType(iw.EventTypeDisconnect)) > 0 {
-				s.Log("Client disconnection detected")
-				return nil
-			}
-			return errors.New("no disconnection or channel switch detected")
-		}, &testing.PollOptions{
-			Timeout:  3 * time.Second,
-			Interval: 200 * time.Millisecond,
-		}); err == nil {
-			// Verified, return.
-			return
+		// The frame might need some time to reach DUT, wait for a few seconds.
+		wCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		// TODO(b/154879577): Find some way to know if DUT supports
+		// channel switch, and only wait for the proper event.
+		_, err := ew.WaitByType(wCtx, iw.EventTypeChanSwitch, iw.EventTypeDisconnect)
+		if err == context.DeadlineExceeded {
+			// Retry if deadline exceeded.
+			continue
 		}
+		if err != nil {
+			s.Fatal("Failed to wait for iw event: ", err)
+		}
+		// Channel switch or client disconnection detected, test passed.
+		return
 	}
 	s.Fatal("Client failed to disconnect or switch channel")
 }
