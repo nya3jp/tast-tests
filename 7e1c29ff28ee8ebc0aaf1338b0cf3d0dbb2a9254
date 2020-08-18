@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0bcc6dfb_4e01a7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-18T19:42:26Z",
+      "side": 1,
+      "message": "I would put this immediately before the first use of it (line 133), and then put a blank line above it to separate ensuring clamshell/tablet from establishing tconn.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0b8fc7d_0a4b713d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -49,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "072f61d7_4c39a044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-18T19:42:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b485af65_7abc6444",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76fe008b_0d745fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -69,6 +116,30 @@
       "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d71ab2_d77523c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-18T19:42:26Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "76fe008b_0d745fc1",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
