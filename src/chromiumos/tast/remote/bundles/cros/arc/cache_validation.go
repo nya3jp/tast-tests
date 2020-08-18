@@ -95,7 +95,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create global temp dir: ", err)
 	}
 
-	defer os.RemoveAll(tempDir)
+	//defer os.RemoveAll(tempDir)
 
 	url, err := generateJarURL(ctx, d, propertyFile, buildBranch)
 	if err != nil {
@@ -135,7 +135,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
 		}
-		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
+		//defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
 
 		newCacheFile := filepath.Join(response.TargetDir, response.PackagesCacheName)
 		genCacheFile := filepath.Join(response.TargetDir, response.GeneratedPackagesCacheName)
@@ -194,8 +194,10 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Validating GMS Core cache")
+	// Note, vdex and odex are not guarented to be the same even if produced from the same sources.
 	if err := saveOutput(filepath.Join(s.OutDir(), "app_chimera.diff"),
 		testexec.CommandContext(ctx, "diff", "--recursive", "--no-dereference",
+			"--exclude=*.odex", "--exclude=*.vdex",
 			filepath.Join(withCacheDir, "app_chimera"),
 			filepath.Join(withoutCacheDir, "app_chimera"))); err != nil {
 		s.Error("Error validating app_chimera folders: ", err)
@@ -208,11 +210,15 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	javaClass := "org.chromium.arc.cachebuilder.Validator"
 
 	s.Log("Validating Packages cache")
-	if err := exec.Command("java", "-cp", jarPath, javaClass, "--source", withCache, "--reference", withoutCache, "--dynamic-validate", "yes").Run(); err != nil {
-		s.Fatal("Failed to validate withCache against withoutCache: ", err)
+	if out, err := exec.Command("gsutil", "copy", url, jarPath).CombinedOutput(); err != nil {
+		s.Fatal(errors.Wrapf(err, "failed to download from %s : %q", url, out))
 	}
 
-	if err := exec.Command("java", "-cp", jarPath, javaClass, "--source", withoutCache, "--reference", genCache, "--dynamic-validate", "no").Run(); err != nil {
-		s.Fatal("Failed to validate withoutCache against generated: ", err)
+	if out, err := exec.Command("java", "-cp", jarPath, javaClass, "--source", withCache, "--reference", withoutCache, "--dynamic-validate", "yes").CombinedOutput(); err != nil {
+		s.Fatal(errors.Wrapf(err, "failed to validate withCache against withoutCache : %q", out))
+	}
+
+	if out, err := exec.Command("java", "-cp", jarPath, javaClass, "--source", withoutCache, "--reference", genCache, "--dynamic-validate", "no").CombinedOutput(); err != nil {
+		s.Fatal(errors.Wrapf(err, "failed to validate withoutCache against generated : %q", out))
 	}
 }
