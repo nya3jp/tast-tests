@@ -69,6 +69,919 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f467a404_59e7fde9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Two high-level thoughts:\n\n1. This is quite a large CL. I think it would be helpful to break it into smaller CL\u0027s.\n\n2. I think this test might be better handled as a local test, because it doesn\u0027t rely on any remote functionality.",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c46ec3eb_439c4af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "No, not a Tast owner, just a Tast reviewer. The typical workflow is that it needs to be reviewed by two people:\n\n1. A test-owner. We usually use tast-fw-library-reviewers@, but Kevin\u0027s CR+1 suffices.\n2. A Tast reviewer. We usually use tast-reviewers@, but my CR will suffice.\n\nCheck out go/tast-reviews for more info.",
+      "parentUuid": "b24e58a4_6de1036e",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a16822_0143d91a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "AFAICT, this test doesn\u0027t actually depend on the UtilsService.",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f54e426_debca162",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Per \"Effective Go\", it is typical to remove the unnecessary `else`:\n\n    bootType, err :\u003d r.BootedDevice(ctx)\n    if err !\u003d nil {\n        s.Fatal(...)\n    }\n    s.Log(...)\n\nref: http://go/effective-go#if:\n\n    In the Go libraries, you\u0027ll find that when an if statement doesn\u0027t flow into the next statement—that is, the body ends in break, continue, goto, or return—the unnecessary else is omitted.\n\n    f, err :\u003d os.Open(name)\n    if err !\u003d nil {\n        return err\n    }\n    codeUsing(f)",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9817987f_2dc40b31",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Go code tends to prefer short variable names. Due to the static typing of Go, we can avoid the Hungarian notation:\n\n    const (\n        NormalInternalSig    BootedDeviceType \u003d \"normal mode booted from internal device, signature verified kernel key\"\n        DeveloperInternalSig BootedDeviceType \u003d ...\n        ...\n    )",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914df8f7_1127686f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this refers to, could you add a comment?",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d37d9b_b15426a4",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this refers to, could you add a comment?",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6d1ece_66ee3bfa",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I recommend defining this constant within isTargetHosted, since it\u0027s only used in that context.\n\n    func isTargetHosted(ctx, r *reporter) (bool, err) {\n        const targetHostedFile \u003d \"/etc/lsb-release\"\n    }",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94169316_0ceb21f1",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As mentioned elsewhere, please remove the unnecessary `else` clauses, per Effective Go.\n\n    cs, err :\u003d r.Crossystem(ctx, ...)\n    if err !\u003d nil {\n        return \"\", err\n    }\n    rootPart, err :\u003d getRootPartition(ctx, r)\n    if err !\u003d nil {\n        ...\n    }\n    ...\n    return bootedDevice, nil",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bec2aa1_e4a5444f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As elsewhere, please remove the unnecessary `else` clauses, per Effective Go.\n\n    res, err :\u003d r.CommandLines(ctx, \"rootdev\", \"-s\")\n    if err !\u003d nil {\n        return \"\", errors.Wrap(err, ...)\n    }\n    if len(res) \u003d\u003d 0 || res[0] \u003d\u003d \"\" {\n        return \"\", errors.New(...)\n    }\n    return res[0], nil",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b96c264_b5729068",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this would compile. res[0] returns a byte, whereas \"\" is a string. In any case, I don\u0027t think it would ever be true. Could you remove this condition?",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c77af35_9037ae29",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As elsewhere, please remove unnecessary `else` clauses.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c65ecb0_0010c170",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "We already have a function for this in the local firmware package, tast-tests/src/chromiumos/tast/local/firmware/utils.go\u0027s deviceRemovable().",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07af9df6_2bbab2fc",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As elsewhere, please remove unnecessary `else` clauses.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b8bd0f_015e2bf9",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As elsewhere, please remove unnecessary `else` clauses.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1de429_ac153856",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "\"Type\" is a little ambiguous here. Could you change it to CrossystemName or CrossystemKey?",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4853f2_8d238578",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "nit: These are keys, not values.",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7de8701a_6f732166",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "As mentioned in booted_device.go, I think we can skip the type-name here:\n\n    const (\n        MainfwType CrossystemType \u003d \"mainfw_type\"\n        KernvfyKey CrossystemType \u003d \"\"kernkey_vfy\"\n    )",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08e83ad_8e88adef",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Should this say KernkeyVfy?",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b9a2e94_86267f00",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Please change to a Godoc-style comment.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abea2006_fb9178e5",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Change to `err`",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dedf5118_8dffca3c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Change to `err`",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad916f9_b8f5d47c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Please change to a Godoc-style comment.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963f878b_87a1144b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "This is backward from the idiomatic way:\n\n    if err !\u003d nil {\n        return \"\", err\n    }\n    return string(res), nil\n\nThis ordering is helpful in case we ever want to add additional logic after processing err.",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e174f3f7_87526a09",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Can you find a more descriptive name here? (Disregard if you take my following idea instead.)",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bcd5f24_03dd0d39",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I think you can prevent the need for two separate maps by just returning a full map, even for unknown crossystem types:\n\n    csMap :\u003d make(map[CrossystemType]string)\n    for _, line :\u003d range outputLines {\n        ...\n        csMap[CrossystemType(m1)] \u003d m2\n    }\n    return csMap, nil",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b42a1ad_53ffb220",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "nit/style: I recommend clarifying \"failed to parse crossystem line %q\"",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f474a0e0_49828351",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "FindStringSubmatch already returns a []string, so m[1] and m[2] don\u0027t need to be re-cast to strings.",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6cabd3b_580ef947",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I recommend more semantically meaningful values here, such as key/val.\n\n    key, val :\u003d string(m[1]), string(m[2])",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc83a9d_00c3cf2b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I would avoid asserting the return-type(s) here, just in case it\u0027s ever useful to break this standard. We might want to export a function with \u003cinformation1\u003e, \u003cinformation2\u003e, err; or a function where no error is possible.",
+      "range": {
+        "startLine": 5,
+        "startChar": 105,
+        "endLine": 5,
+        "endChar": 142
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6130a54f_3ddbd46e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "nit: typo, \"successfully\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 58,
+        "endLine": 6,
+        "endChar": 70
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e4ec4f_5c46eb9e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "How would you feel about creating a separate file for these CLI operations (CatFile, CatFileLines, Command, CommandLines)? Similar to FAFT\u0027s os_interface.go. I think it might be helpful. Maybe files.go, but that doesn\u0027t quite capture the idea of commands... Thoughts?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "115eb37c_2aa10529",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I recommend exporting this type (i.e., Reporter), so that functions outside of this package can accept a Reporter as an argument.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db152c2_5a64f68b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Per go/tast-writing#Documentation, this method should be documented by a Godoc-style comment. Godoc-style comments are full sentences which begin with the name of the function/method/variable being described.\n\n    // CatFileLines parses file contents by line, and reports the list of lines.\n\nref: https://blog.golang.org/godoc",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0c72d1e_214a136e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "CatFile already returns a string, so no need to re-cast here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d330cc4_e3c08348",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Please change to a Godoc-style comment.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7b8fab_65fdc90d",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "r.Command already returns a string, so no need to re-cast here.",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28661f8c_c22a39a9",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Please change to a Godoc-style comment.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7eff250_1ab9c38b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "Please change to a Godoc-style comment.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4241b1a1_527bb855",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "In the context of Tast, the \"Command\" method typically returns a Cmd object, as you have in L54, below. So it\u0027s a little strange to see Command actually returning stdout. Could you rename to something like CommandOutput?",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a474901c_4b9f510f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "I think you can skip the Conn() here:\n\n    res, err :\u003d r.d.Command(format, args...).Output(ctx)",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7545ea14_07bf434c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-18T21:36:40Z",
+      "side": 1,
+      "message": "More succinct here to use bytes.TrimSuffix:\n\n    res \u003d bytes.TrimSuffix(res, []byte(\"\\n\"))\n    // OR:\n    res \u003d bytes.TrimSuffix(res, []byte{\u0027\\n\u0027})\n\nYou might also check out bytes.HasSuffix:\n\n    if bytes.HasSuffix(res, []byte(\"\\n\")) {\n    // OR:\n    if bytes.HasSuffix(res, []byte{\u0027\\n\u0027}) {\n        return ...\n    }\n\nref: https://golang.org/pkg/bytes/#TrimSuffix, https://golang.org/pkg/bytes/#HasSuffix\n\nSimilar functions for operating on strings exist in the \"strings\" package: strings.HasSuffix, strings.TrimSuffix.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
