@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Files,
-		Desc:         "Checks that crostini files integration works including backup and FilesApp watch",
+		Desc:         "Check crostini FilesApp file watchers",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
@@ -68,8 +68,6 @@ func Files(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get user hash: ", err)
 	}
 
-	s.Log("Testing backup and restore")
-	testBackupRestore(ctx, s, tconn, ownerID)
 	s.Log("Testing filesapp watch")
 	testFilesAppWatch(ctx, s, tconn, ownerID)
 }
@@ -80,74 +78,6 @@ func createFileInContainer(ctx context.Context, s *testing.State, ownerID, fileN
 		cmd.DumpLog(ctx)
 		s.Fatalf("Failed to write file %v in container: %v", fileName, err)
 	}
-}
-
-func verifyFileInContainer(ctx context.Context, s *testing.State, ownerID, path, content string) {
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "cat", path)
-	if out, err := cmd.Output(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Errorf("Failed to run cat %v: %v", path, err)
-	} else if string(out) != content {
-		s.Errorf("%v contains %q; want %q", path, out, content)
-	}
-}
-
-func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID, path string) {
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", "[ -f "+path+" ]")
-	if err := cmd.Run(); err == nil {
-		s.Errorf("File %v unexpectedly exists", path)
-	}
-}
-
-func testBackupRestore(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ownerID string) {
-	const (
-		testFileName    = "backup.txt"
-		testFileContent = "backup"
-	)
-
-	createFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
-	if err := vm.ShrinkDefaultContainer(ctx, ownerID); err != nil {
-		s.Fatal("Failed to shrink container for backup: ", err)
-	}
-
-	s.Log("Waiting for crostini to backup (typically ~ 2 mins)")
-	if err := tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.exportCrostini('backup.tar.gz', () => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(new Error(chrome.runtime.lastError.message));
-		     }
-		   });
-		 })`, nil); err != nil {
-		s.Fatal("Running autotestPrivate.exportCrostini failed: ", err)
-	}
-
-	// Delete the file.
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "rm", testFileName)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatalf("Failed to delete file %v in container: %v", testFileName, err)
-	}
-	verifyFileNotInContainer(ctx, s, ownerID, testFileName)
-
-	// Restore container and verify file is back.
-	s.Log("Waiting for crostini to restore (typically ~ 1 min)")
-	if err := tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.importCrostini('backup.tar.gz', () => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(new Error(chrome.runtime.lastError.message));
-		     }
-		   });
-		 })`, nil); err != nil {
-		s.Fatal("Running autotestPrivate.importCrostini failed: ", err)
-	}
-
-	verifyFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
 }
 
 func testFilesAppWatch(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ownerID string) {
