@@ -222,7 +222,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	}
 
 	// Ensure that the right number of files is selected.
-	testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Select all mounted files.
 		if err := ew.Accel(ctx, "ctrl+A"); err != nil {
 			s.Fatal("Failed selecting files with Ctrl+A: ", err)
@@ -241,7 +241,9 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 			return errors.New("expected selection label still not found")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second})
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		s.Fatal("Cannot check that the right number of files is selected: ", err)
+	}
 
 	// Copy.
 	if err := ew.Accel(ctx, "ctrl+C"); err != nil {
@@ -276,6 +278,11 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	// Validate the new directory name.
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Fatal("Failed validating the name of the new directory: ", err)
+	}
+
+	// Wait for the input field to disappear.
+	if err := files.Root.WaitUntilDescendantGone(ctx, params, 15*time.Second); err != nil {
+		s.Fatal("Failed waiting for input field to disappear: ", err)
 	}
 
 	// Enter the new directory.
@@ -336,6 +343,11 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		s.Fatal("Failed opening menu item: ", err)
 	}
 
+	// Wait for location change events to be propagated (b/161438238).
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location change completed: ", err)
+	}
+
 	// Zip selection.
 	params := ui.FindParams{
 		Name: "Zip selection",
@@ -354,7 +366,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 	zipArchiverExtensionID := "dmboannefpncccogfdikhmhpmdnddgoe"
 
 	// Wait until the Zip Archiver notification exists.
-	testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ns, err := ash.VisibleNotifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
@@ -366,13 +378,15 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 			}
 		}
 		return errors.New("notification does not exist")
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		s.Fatal("Failed to find Zip archiver zipping notification: ", err)
+	}
 
 	// Start timer for zipping operation.
 	startTime := time.Now()
 
 	// Wait until the Zip Archiver notification disappears.
-	testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ns, err := ash.VisibleNotifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
@@ -384,7 +398,9 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute})
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to wait for the Zip archiver zipping notification to disappear: ", err)
+	}
 
 	// Return duration.
 	return float64(time.Since(startTime).Milliseconds())
