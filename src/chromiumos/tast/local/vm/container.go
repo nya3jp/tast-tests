@@ -488,6 +488,11 @@ func (c *Container) WriteFile(ctx context.Context, filePath, fileContent string)
 	return nil
 }
 
+// RemoveAll removes a path from the container's file system using 'rm -rf'.
+func (c *Container) RemoveAll(ctx context.Context, path string) error {
+	return c.Command(ctx, "sudo", "rm", "-rf", path).Run(testexec.DumpLogOnError)
+}
+
 // ReadFile reads the content of file using command cat and returns it as a string.
 func (c *Container) ReadFile(ctx context.Context, filePath string) (content string, err error) {
 	cmd := c.Command(ctx, "cat", filePath)
