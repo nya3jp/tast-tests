@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5e1d42b_60108147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T23:56:14Z",
+      "side": 1,
+      "message": "this is just \u0027return checkSig(sig)\u0027\n\nBut I realized: this logic is wrong. We only want to fail on *errors*, but you\u0027ll also fail if you happen to see some other BSS in the meantime, right (line 293)? So this checkSig() probably needs to return a bool (match/no-match) and error (unexpected), and we just skip the signal if it\u0027s a non-match.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 15
+      },
+      "revId": "350a442bb167767b0b68dfab56df8c1411395c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
