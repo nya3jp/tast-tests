@@ -51,6 +51,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b24e58a4_6de1036e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T20:00:38Z",
+      "side": 1,
+      "message": "Does this need to be reviewed by tast-owners?  All the changes are in firmware.",
+      "parentUuid": "4314a8cb_a0303e87",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
