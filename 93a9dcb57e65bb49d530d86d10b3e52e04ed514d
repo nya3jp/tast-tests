@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0600febd_13c532a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-18T17:37:39Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "93a9dcb57e65bb49d530d86d10b3e52e04ed514d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f87471a_d56fd24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-18T17:37:39Z",
+      "side": 1,
+      "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 372,
+        "startChar": 21,
+        "endLine": 372,
+        "endChar": 22
+      },
+      "revId": "93a9dcb57e65bb49d530d86d10b3e52e04ed514d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
