@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "643e386e_6b520e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T16:42:26Z",
+      "side": 1,
+      "message": "Moving Joel to reviewer to see if it\u0027s ok to parse crossystem values as strings, and will we have to worry about structured output in the near future.",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
