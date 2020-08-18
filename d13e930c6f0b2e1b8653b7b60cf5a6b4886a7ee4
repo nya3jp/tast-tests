@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0162926d_9552f4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T23:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4581a0f0_c4900066",
+      "range": {
+        "startLine": 261,
+        "startChar": 43,
+        "endLine": 261,
+        "endChar": 47
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc287ae1_68be7f47",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 42
@@ -62,6 +86,30 @@
       "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8670997e_4d066a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T23:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc287ae1_68be7f47",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 14
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "e423801f_ae825abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T23:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ba3ec1_ac061fb7",
+      "range": {
+        "startLine": 286,
+        "startChar": 29,
+        "endLine": 286,
+        "endChar": 35
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406d0a97_14d52ffd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 42
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "cda14a85_c11802f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T23:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406d0a97_14d52ffd",
+      "range": {
+        "startLine": 288,
+        "startChar": 54,
+        "endLine": 288,
+        "endChar": 71
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4b5047a_4f82474d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 42
@@ -131,6 +227,30 @@
       "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d0707f_85022bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T23:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b5047a_4f82474d",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 56
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
