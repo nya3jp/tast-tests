@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "e98999b4_aae745cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-18T08:56:54Z",
+      "side": 1,
+      "message": "Update the comments of NewEventLogger and NewEventWatcher to address the issue.",
+      "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d135340_065610c2",
         "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
         "patchSetId": 2
@@ -56,6 +73,30 @@
       "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa72eca_8e9f3f82",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-18T08:56:54Z",
+      "side": 1,
+      "message": "Nice catch!",
+      "parentUuid": "6d135340_065610c2",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
