@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "33e16cf6_fb1f1061",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-18T17:47:39Z",
+      "side": 1,
+      "message": "Please address comment by Jorge, otherwise, LGTM.",
+      "revId": "dcfe25a1afbf1acc11e0bd01d229f87efccaacb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27edfc59_305cbeaa",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 2
