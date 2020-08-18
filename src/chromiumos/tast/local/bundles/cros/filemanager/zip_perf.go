@@ -278,6 +278,11 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		s.Fatal("Failed validating the name of the new directory: ", err)
 	}
 
+	// Wait for the input field to disappear.
+	if err := files.Root.WaitUntilDescendantGone(ctx, params, 15*time.Second); err != nil {
+		s.Fatal("Failed waiting for input field to disappear: ", err)
+	}
+
 	// Enter the new directory.
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Fatal("Failed navigating to the new directory: ", err)
@@ -334,6 +339,12 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 	// Open menu item.
 	if err := filesBox.RightClick(ctx); err != nil {
 		s.Fatal("Failed opening menu item: ", err)
+	}
+
+	// Wait for right-click menu to update. The UI is updated asynchronously after fetching file actions from the backend, which might explain why some test
+	// failures where the "Delete" menu item is clicked instead of "Zip selection".
+	if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep while waiting for right-click menu to update: ", err)
 	}
 
 	// Zip selection.
