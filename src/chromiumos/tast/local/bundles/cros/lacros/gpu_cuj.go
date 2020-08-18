@@ -722,6 +722,19 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
+func waitForStableEnvironment(ctx context.Context) error {
+	// Wait for CPU to cool down.
+	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		return errors.Wrap(err, "failed to wait for CPU to cool down")
+	}
+
+	// Wait for quiescent state.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+	return nil
+}
+
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
@@ -740,9 +753,8 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 		return errors.Wrap(err, "failed to connect to test API")
 	}
 
-	// Wait for quiescent state.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed waiting for CPU to become idle")
+	if err := waitForStableEnvironment(ctx); err != nil {
+		return err
 	}
 
 	connURL, err := l.NewConn(ctx, invoc.page.url)
@@ -790,9 +802,8 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 		return errors.Wrap(err, "failed to connect to test API")
 	}
 
-	// Wait for quiescent state.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed waiting for CPU to become idle")
+	if err := waitForStableEnvironment(ctx); err != nil {
+		return err
 	}
 
 	connURL, err := pd.Chrome.NewConn(ctx, invoc.page.url)
