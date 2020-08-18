@@ -474,7 +474,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 
 	vm.Unlock()
 	chrome.Unlock()
-	p.cleanUp(ctx, s)
+	//p.cleanUp(ctx, s)
 }
 
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
