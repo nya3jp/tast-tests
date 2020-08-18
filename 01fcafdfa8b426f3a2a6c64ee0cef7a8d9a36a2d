@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd8b1ab4_5ee618b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-18T08:49:38Z",
+      "side": 1,
+      "message": "I split this into 4 separate CLs to be simpler.",
+      "revId": "01fcafdfa8b426f3a2a6c64ee0cef7a8d9a36a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
