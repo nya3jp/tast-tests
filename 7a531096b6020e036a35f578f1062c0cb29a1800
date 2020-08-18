@@ -16,6 +16,23 @@
       "revId": "7a531096b6020e036a35f578f1062c0cb29a1800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca17cb18_aca10b09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-18T08:04:09Z",
+      "side": 1,
+      "message": "LGTM (sorry I had missed that patch before).",
+      "revId": "7a531096b6020e036a35f578f1062c0cb29a1800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
