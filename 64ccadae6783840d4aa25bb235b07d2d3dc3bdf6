@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bedc108_57f7e966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-18T03:10:20Z",
+      "side": 1,
+      "message": "It is a bit unintuitive to me that we keep incrementing the index until we exceed the bound which is unchanged during the test.\n\nCan we open \"view-settings\", \"view-resolution-settings\", \"view-%s-resolution-settings\" for once, query the elements by the selector and have a loop to check all the attributes? We might be able to return the elements in a JSObject and also the amount of elements to the Tast side. Therefore we don\u0027t need to introduce |noMoreOption|.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 32
+      },
+      "revId": "64ccadae6783840d4aa25bb235b07d2d3dc3bdf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
