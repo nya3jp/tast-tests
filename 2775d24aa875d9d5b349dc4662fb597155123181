@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15f6dcc0_31138dae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-18T06:51:34Z",
+      "side": 1,
+      "message": "Change iw Event/WaitByType to accepting multiple types.",
+      "revId": "2775d24aa875d9d5b349dc4662fb597155123181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
