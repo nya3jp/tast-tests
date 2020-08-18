@@ -16,6 +16,109 @@
       "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87fc1fbd_303f9a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-18T23:51:12Z",
+      "side": 1,
+      "message": "leave a TODO to change the test name once these tests replace the old video encoder test.",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f025c739_9d925364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-18T23:51:12Z",
+      "side": 1,
+      "message": "Should we add the \"_i420\" suffix to the test name? I guess this is no longer needed since the nv12 test is now a separate testcase?",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c672a4_212a2419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-18T23:51:12Z",
+      "side": 1,
+      "message": "Add these as \"Attr\" at the top of the testcase, no need to define these for each test is they same the same.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "051da71e_373f25c5",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-18T23:51:12Z",
+      "side": 1,
+      "message": "I\u0027m happy we can finally get rid of the long and unreadable \"StreamParams\" such as \"puppets-320x180.nv12.yuv:320:180:1:out1.h264:100000:30\"! :-)",
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267e7de7_fb1e7ac2",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-18T23:51:12Z",
+      "side": 1,
+      "message": "Maybe we can move this to the accel_video_new.go file so we can remove the test_options.go file later if we remove the old tests. It feels a bit unnecessary to have a test_options.go for a small struct like this, and I would rather keep it close to the function that needs it.",
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
