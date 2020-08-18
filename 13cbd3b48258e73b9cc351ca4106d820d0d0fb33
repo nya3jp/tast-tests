@@ -16,6 +16,24 @@
       "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15c73e30_361a3d7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-08-18T21:17:47Z",
+      "side": 1,
+      "message": "Mouse input in tablet mode works but does not represent a real workflow. I think it is at least objectionable enough to justify the present CL.",
+      "parentUuid": "ae5514c2_66d62a40",
+      "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
