@@ -405,6 +405,16 @@ var metricMap = map[string]struct {
 		direction: perf.SmallerIsBetter,
 		uma:       true,
 	},
+	"Graphics.Smoothness.Jank.Compositor.Universal": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.Universal": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
 	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
