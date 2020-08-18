@@ -6,87 +6,60 @@ package webrtc
 
 import (
 	"context"
-	"net/http"
-	"net/http/httptest"
-	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
+	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MediaRecorder,
-		Desc: "Verifies the MediaRecorder API",
+		Desc: "Verifies that MediaRecorder uses video encode acceleration",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
 		},
-		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Data:         []string{"media_recorder.html", "media_recorder.js"},
-		Pre:          pre.ChromeVideoWithFakeWebcam(),
-		Timeout:      3 * time.Minute,
+		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"loopback_media_recorder.html"},
+		Params: []testing.Param{{
+			Name:      "h264",
+			Val:       videotype.H264,
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name:              "vp8",
+			Val:               videotype.VP8,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name:      "vp9",
+			Val:       videotype.VP9,
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			// TODO(crbug.com/811912): Remove "vaapi" and pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder()
+			// once the feature is enabled by default on VA-API devices.
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+		}, {
+			Name:              "vp8_cam",
+			Val:               videotype.VP8,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP8},
+			Pre:               pre.ChromeCameraPerf(),
+		}},
 	})
 }
 
-// MediaRecorder verifies the MediaRecorder API, e.g. functions such as start,
-// stop, pause, resume. The test fails if the media recorder cannot exercise
-// these basic functions.
+// MediaRecorder verifies that a video encode accelerator was used.
 func MediaRecorder(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL+"/media_recorder.html")
-	if err != nil {
-		s.Error(err, "failed to open recorder page")
-	}
-	defer conn.Close()
-	defer conn.CloseTarget(ctx)
-
-	runTest := func(js string) error {
-		s.Logf("Running %s", js)
-		if err := conn.EvalPromise(ctx, js, nil); err != nil {
-			return errors.Wrap(err, "failed to evaluate test function")
-		}
-		return nil
-	}
-
-	for _, js := range []string{
-		// Test start and stop.
-		"testStartAndRecorderState()",
-		"testStartStopAndRecorderState()",
-		"testStartAndDataAvailable('video/webm; codecs=h264')",
-		"testStartAndDataAvailable('video/webm; codecs=vp9')",
-		"testStartAndDataAvailable('video/webm; codecs=vp8')",
-		"testStartWithTimeSlice()",
-
-		// Test resume and pause.
-		"testResumeAndRecorderState()",
-		"testResumeAndDataAvailable()",
-		"testPauseAndRecorderState()",
-		"testPauseStopAndRecorderState()",
-		"testPausePreventsDataavailableFromBeingFired()",
-
-		// Test illegal operations handling.
-		"testIllegalResumeThrowsDOMError()",
-		"testIllegalPauseThrowsDOMError()",
-		"testIllegalStopThrowsDOMError()",
-		"testIllegalStartInRecordingStateThrowsDOMError()",
-		"testIllegalStartInPausedStateThrowsDOMError()",
-		"testIllegalRequestDataThrowsDOMError()",
-
-		"testTwoChannelAudio()",
-		"testAddingTrackToMediaStreamFiresErrorEvent()",
-		"testRemovingTrackFromMediaStreamFiresErrorEvent()",
-	} {
-		if err := runTest(js); err != nil {
-			s.Errorf("%v failed: %v", js, err)
-		}
+	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec)); err != nil {
+		s.Error("Failed to run VerifyMediaRecorderUsesEncodeAccelerator: ", err)
 	}
 }
