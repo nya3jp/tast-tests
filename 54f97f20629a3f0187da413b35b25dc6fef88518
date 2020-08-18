@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "eaf0f58f_dc003310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-18T00:15:03Z",
+      "side": 1,
+      "message": "Honestly I am very happy to use precondition in some cases. Inputs have so many conditions for testing, such as forced ui mode, system language, chrome flags. To use precondition, I need to do much more work to ensure other situations do not exist.",
+      "parentUuid": "b9f3742c_ed664499",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed2dd24_88326eb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -282,6 +306,30 @@
       "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ff8fbd_1f954b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-18T00:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efda26a_f400086a",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
