@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Files,
-		Desc:         "Checks that crostini files integration works including sshfs, shared folders, backup",
+		Desc:         "Checks that crostini files integration works including shared folders, backup, and FilesApp watch",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
@@ -70,37 +70,13 @@ func Files(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}
-	sshfsMountDir := fmt.Sprintf("/media/fuse/crostini_%s_%s_%s", ownerID, vm.DefaultVMName, vm.DefaultContainerName)
 
-	s.Log("Testing SSHFS Mount")
-	testSSHFSMount(ctx, s, ownerID, sshfsMountDir)
 	s.Log("Testing sharing files")
 	testShareFiles(ctx, s, ownerID, cr)
 	s.Log("Testing backup and restore")
 	testBackupRestore(ctx, s, tconn, ownerID)
 	s.Log("Testing filesapp watch")
 	testFilesAppWatch(ctx, s, tconn, ownerID)
-}
-
-func testSSHFSMount(ctx context.Context, s *testing.State, ownerID, sshfsMountDir string) {
-	if stat, err := os.Stat(sshfsMountDir); err != nil {
-		s.Fatalf("Didn't find sshfs mount %v: %v", sshfsMountDir, err)
-	} else if !stat.IsDir() {
-		s.Fatal("Didn't get directory for sshfs mount ", sshfsMountDir)
-	}
-
-	// Verify mount works for writing a file.
-	const (
-		testFileName    = "hello.txt"
-		testFileContent = "hello"
-	)
-	crosFileName := filepath.Join(sshfsMountDir, testFileName)
-	if err := ioutil.WriteFile(crosFileName, []byte(testFileContent), 0644); err != nil {
-		s.Fatalf("Failed writing file %v: %v", crosFileName, err)
-	}
-
-	// Verify hello.txt in the container.
-	verifyFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
 }
 
 func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *chrome.Chrome) {
