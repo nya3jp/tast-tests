@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 
 	"chromiumos/tast/errors"
@@ -53,4 +54,14 @@ func VerifyFileInContainer(ctx context.Context, cont *vm.Container, containerPat
 // VerifyFileNotInContainer works much like the above, but for absent files.
 func VerifyFileNotInContainer(ctx context.Context, cont *vm.Container, containerPath string) error {
 	return cont.Command(ctx, "test", "!", "-f", containerPath).Run()
+}
+
+// CreateFileInContainer creates a file in the container.
+func CreateFileInContainer(ctx context.Context, cont *vm.Container, containerPath, fileContent string) error {
+	cmd := cont.Command(ctx, "sh", "-c", fmt.Sprintf("echo -n %s > %s", shutil.Escape(fileContent), containerPath))
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrapf(err, "failed to write file %v in container", containerPath)
+	}
+	return nil
 }
