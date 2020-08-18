@@ -70,7 +70,29 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	const (
 		testFileName    = "BackupRestore.txt"
 		testFileContent = "BackupRestore"
+		copyName        = "penguin-tast-crostini-BackupRestore"
 	)
+
+	// We delete most files before backup and restore to speed the process.
+	// Create an lxc copy before we change anything, then restore at the end.
+	lxc := func(args ...string) {
+		err := cont.VM.LXCCommand(ctx, args...)
+		if err != nil {
+			s.Fatal("LXC: ", err)
+		}
+	}
+	lxc("copy", vm.DefaultContainerName, copyName)
+	defer func() {
+		lxc("delete", "-f", vm.DefaultContainerName)
+		lxc("rename", copyName, vm.DefaultContainerName)
+		// We must restart the VM and container.
+		if err := cont.VM.Stop(ctx); err != nil {
+			s.Fatal("Error stopping VM: ", err)
+		}
+		if err := vm.RestartDefaultVMContainer(ctx, s.OutDir(), cont); err != nil {
+			s.Fatal("Error restarting container: ", err)
+		}
+	}()
 
 	if err := cont.WriteFile(ctx, testFileName, testFileContent); err != nil {
 		s.Fatalf("Failed to write file %v in container: %v", testFileName, err)
