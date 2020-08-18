@@ -34,6 +34,41 @@
       "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36aea114_9eab6d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-18T09:08:23Z",
+      "side": 1,
+      "message": "I see. Thank you for the explanation!\nI also think it\u0027s \"a bit controversial\", but I\u0027m fine if the discussion is ongoing and you\u0027ll improve this test according to the result of the debate.\n\nI was wondering if we can share more logic between per_app_density.go and uniform_scale_factor.go since these are quite similar, but it\u0027s completely optional and up to you. I think we can refactor later.",
+      "parentUuid": "f070e96d_27b12b3e",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c7ca78_408574d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-18T09:08:23Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
