@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92b5d27a_1ff109a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2020-08-18T19:30:38Z",
+      "side": 1,
+      "message": "+ reason, something like this:\n\nMerge reason: Fix https://ci.chromium.org/p/chromium/builders/try-m84/chromeos-amd64-generic-rel failing due to CreateVault timeouts for CL: \nhttps://chromium-review.googlesource.com/c/chromium/src/+/2358835",
+      "parentUuid": "f55ab426_bcd5dc82",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "dea634d947a771905c4d409cacf8156665dffeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92db5897_3bc0077f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
