@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf08546_d6d152e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-18T17:39:55Z",
+      "side": 1,
+      "message": "This TODO is linked to an already-fixed issue.  Is that intentional?\nI\u0027m afraid that what was the remaining action item in that issue. Could you file a new issue for the actions needed for this TODO?",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "f4c54148cecba9649b31e36b0d0d8d014d4677b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
