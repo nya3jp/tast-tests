@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b66bc21d_14467768",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T04:24:01Z",
+      "side": 1,
+      "message": "That\u0027s true, if I use gRPC streaming,then I can call DiscoverBSSID() before configuring the roamToAP and I don\u0027t need the initial check.As you said I am not sure If that\u0027s better than the current solution.",
+      "parentUuid": "37f6f308_7ca155b7",
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3209619_42121cca",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 40
@@ -77,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0f589aa7_4fe65a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T04:24:01Z",
+      "side": 1,
+      "message": "That\u0027s true, I will move them.",
+      "parentUuid": "d3209619_42121cca",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 39
+      },
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53703a04_a94c47dc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 40
@@ -97,6 +139,30 @@
       "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb14d152_a71b5c05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T04:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53703a04_a94c47dc",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
