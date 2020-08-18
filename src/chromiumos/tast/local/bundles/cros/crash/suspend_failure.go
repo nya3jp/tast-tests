@@ -54,7 +54,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 
 	// Error is expected here. Set a 20 second wakeup just in case suspend
 	// somehow works here.
-	err = testexec.CommandContext(ctx, "powerd_dbus_suspend", "--timeout=10", "--wakeup_timeout=20").Run()
+	err = testexec.CommandContext(ctx, "powerd_dbus_suspend", "--timeout=30", "--wakeup_timeout=60").Run()
 	if err == nil {
 		s.Error("powerd_dbus_suspend didn't fail when we expect it to")
 	}
