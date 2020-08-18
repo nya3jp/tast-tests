@@ -161,6 +161,11 @@ func performIteration(ctx context.Context, s *testing.State) (normalTime, skipAl
 func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (time.Duration, float64, error) {
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if vmEnabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if vmEnabled {
+		args = append(args, "--ignore-arcvm-dev-conf")
+	}
 
 	switch mode {
 	case cacheNormal:

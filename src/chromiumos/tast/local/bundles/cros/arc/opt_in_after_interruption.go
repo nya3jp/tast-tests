@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -115,6 +116,11 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 	extraArgs := param.chromeArgs
 
 	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install"}
+	if vmEnabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if vmEnabled {
+		args = append(args, "--ignore-arcvm-dev-conf")
+	}
 	args = append(args, extraArgs...)
 
 	for _, delay := range param.delays {

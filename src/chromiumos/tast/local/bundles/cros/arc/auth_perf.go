@@ -119,6 +119,11 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	maxErrorBootCount := param.maxErrorBootCount
 
 	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if vmEnabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if vmEnabled {
+		args = append(args, "--ignore-arcvm-dev-conf")
+	}
 
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),

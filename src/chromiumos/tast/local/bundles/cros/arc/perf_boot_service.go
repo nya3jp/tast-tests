@@ -65,11 +65,20 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	// logcatEventEntryRegexp extracts boot pregress event name and time from a logcat entry.
 	logcatEventEntryRegexp := regexp.MustCompile(`\d+ I (boot_progress_[^:]+): (\d+)`)
 
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check whether ARCVM is enabled")
+	}
+
 	// TODO(niwa): Check if we should use GAIA login instead of fake login.
 	// (Currently KeepState option only works for fake login.)
 	// TODO(niwa): Check if we should really use KeepState.
+	args := []string{"--disable-arc-data-wipe"}
+	if vmEnabled {
+		args = append(args, "--ignore-arcvm-dev-conf")
+	}
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU(),
-		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe"))
+		chrome.KeepState(), chrome.ExtraArgs(args...))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
@@ -100,10 +109,6 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	adjustedArcStartTimeMS := int64(arcStartTimeMS)
 	testing.ContextLogf(ctx, "ARC start time in host uptime: %dms", adjustedArcStartTimeMS)
 
-	vmEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to check whether ARCVM is enabled")
-	}
 	if vmEnabled {
 		uptimeDeltaMS, err := uptimeDeltaMS(ctx, a)
 		if err != nil {
