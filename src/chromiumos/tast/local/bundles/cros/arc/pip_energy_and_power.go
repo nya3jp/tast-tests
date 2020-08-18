@@ -48,6 +48,12 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell mode: ", err)
+	}
+	defer cleanup(ctx)
+
 	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
 	}
