@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6f06d896_86a144c2",
+        "filename": "src/chromiumos/tast/common/network/iface/iface.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T18:51:08Z",
+      "side": 1,
+      "message": "this is implicitly a local operation, so this library probably belongs in local/, not common/.",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "c9613f3d8aabe4dbd20a9b02dc66d1580beedd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc0cdc10_bbe38eef",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 14
