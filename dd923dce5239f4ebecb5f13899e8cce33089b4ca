@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cae06df3_8af64b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:24:39Z",
+      "side": 1,
+      "message": "I think it\u0027s BSSAdded here.",
+      "range": {
+        "startLine": 269,
+        "startChar": 41,
+        "endLine": 269,
+        "endChar": 49
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a620b61d_dd537690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:24:39Z",
+      "side": 1,
+      "message": "The signal format is kind of complex. Not sure if we can also move this into wpasupplicant. As every signal to watch has its own format, probably not easy to have a generic watcher. But I think a utility function for parsing BSSAdded signal into a struct might help.",
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83f3da5_81cec916",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:24:39Z",
+      "side": 1,
+      "message": "nit: you might consider using CleanDisconnectWifi here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57dd7e4c_a1c4ea8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:24:39Z",
+      "side": 1,
+      "message": "nit: I wonder if expecting \"configuration\" state specifically here is good, although it should happen as the two APs have different subnet.\n\nI think waiting IsConnected to go false then true is simpler and more flexible but then we cannot exclude idle state... Not sure which one might be better.",
+      "range": {
+        "startLine": 97,
+        "startChar": 46,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973305fc_e68485fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-18T07:24:39Z",
+      "side": 1,
+      "message": "nit: remove this line?",
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
