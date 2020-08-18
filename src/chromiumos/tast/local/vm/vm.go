@@ -152,8 +152,7 @@ func (vm *VM) Stop(ctx context.Context) error {
 	return vm.Concierge.stopVM(ctx, vm)
 }
 
-// Command will return an testexec.Cmd with a vsh command that will run in this
-// VM.
+// Command returns a testexec.Cmd with a vsh command that will run in this VM.
 func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 	args := append([]string{"--vm_name=" + vm.name,
 		"--owner_id=" + vm.Concierge.ownerID,
@@ -164,6 +163,18 @@ func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
+}
+
+// LxcCommand runs lxc inside the VM with the specified args.
+func (vm *VM) LxcCommand(ctx context.Context, lxcArgs ...string) error {
+	envLxc := []string{"env", "LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf", "lxc"}
+	cmd := vm.Command(ctx, append(envLxc, lxcArgs...)...)
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrapf(err, "failed to run %v", strings.Join(cmd.Args, " "))
+	}
+	return nil
 }
 
 // ShareDownloadsPath shares a path relative to Downloads with the VM.
