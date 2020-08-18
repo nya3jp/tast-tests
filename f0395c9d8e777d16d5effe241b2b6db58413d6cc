@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f125898_7cbc7e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-18T04:06:59Z",
+      "side": 1,
+      "message": "Should this be moved to davidmunro\u0027s post test hook so that it is run for all tests?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2345889",
+      "revId": "f0395c9d8e777d16d5effe241b2b6db58413d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
