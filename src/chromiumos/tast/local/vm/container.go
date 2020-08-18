@@ -480,6 +480,14 @@ func (c *Container) CheckFileContent(ctx context.Context, filePath, testString s
 	return nil
 }
 
+// WriteFile creates a file in the container using echo.
+func (c *Container) WriteFile(ctx context.Context, filePath, fileContent string) error {
+	if err := c.Command(ctx, "sh", "-c", fmt.Sprintf("echo -n %s > %s", shutil.Escape(fileContent), filePath)).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to write file %v in container", filePath)
+	}
+	return nil
+}
+
 // ReadFile reads the content of file using command cat and returns it as a string.
 func (c *Container) ReadFile(ctx context.Context, filePath string) (content string, err error) {
 	cmd := c.Command(ctx, "cat", filePath)
