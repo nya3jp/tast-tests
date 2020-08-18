@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b9f3742c_ed664499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-18T00:04:29Z",
+      "side": 1,
+      "message": "Technically with the chrome.LoggedIn precondition, I believe that it should meet your requirements of not having vk enabled and having the IME set to US/en. If there is another test that manages to break these guarantees, it is a bug that should be fixed. That being said, I understand if you would prefer not to use the precondition in order to ensure safety.",
+      "parentUuid": "c284cf32_d245c8bd",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed2dd24_88326eb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Yes, it is strange. I replaced it with polling. Does it look good to you now?",
       "parentUuid": "3ea6b980_90f5e69b",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "54f97f20629a3f0187da413b35b25dc6fef88518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4efda26a_f400086a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-18T00:04:29Z",
+      "side": 1,
+      "message": "Looks mostly good, but you don\u0027t end up dealing with the case that the pollbreak fires. It will end the polling early, but not lead to the test failing.",
+      "parentUuid": "647e57cd_db3d2bfe",
       "range": {
         "startLine": 106,
         "startChar": 1,
