@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "4e00bd5e_c6411f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-18T23:12:21Z",
+      "side": 1,
+      "message": "TY!",
+      "revId": "594ba2cd27b6870fdf4bd25a3753e7396715260a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efdab33_661bb9ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
         "patchSetId": 1
