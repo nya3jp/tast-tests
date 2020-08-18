@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27edfc59_305cbeaa",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-18T12:52:36Z",
+      "side": 1,
+      "message": "I\u0027d add a comment here with what the executable looks like when it\u0027s been cros deploy\u0027d over, so that the code makes sense. You can even use your commit message\n\n\"With \u0027cros deploy\u0027, the underlying cryptohomed binary may be overwritten\nwhich results in a dangling symlink (\u0027/usr/sbin/cryptohomed (deleted)\u0027).\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "dcfe25a1afbf1acc11e0bd01d229f87efccaacb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
