@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf51e788_0606e9ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-08-18T10:11:36Z",
+      "side": 1,
+      "message": "Maybe we should add a TODO here to remind us to enable this check in the future?",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "6bf48ccdc0f69b658cee2818676c0bf3508d8c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
