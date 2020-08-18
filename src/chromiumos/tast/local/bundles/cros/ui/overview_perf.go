@@ -7,6 +7,10 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -18,7 +22,6 @@ import (
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -48,6 +51,7 @@ func init() {
 			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
 		}},
+		Data: []string{"blob/blob.zip"},
 	})
 }
 
@@ -86,6 +90,21 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		animationTypeMinimizedTabletMode
 	)
 
+	// Decompress and copy test contents to a temporary folder.
+	tempDir, err := ioutil.TempDir("/tmp", "blob")
+	if err != nil {
+		s.Fatal("Failed to create temp folder to place test contents: ", err)
+	}
+	defer os.RemoveAll(tempDir)
+
+	if err := perfutil.Unzip(s.DataPath("blob/blob.zip"), tempDir); err != nil {
+		s.Fatal("Failed to decompress test contents")
+	}
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(http.Dir(tempDir)))
+	defer server.Close()
+	url := server.URL + "/blob.html"
+
 	r := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
@@ -93,7 +112,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
