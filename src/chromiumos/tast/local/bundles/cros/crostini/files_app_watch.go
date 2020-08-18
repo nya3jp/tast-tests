@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,23 +6,19 @@ package crostini
 
 import (
 	"context"
-	"fmt"
 	"time"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/vm"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Files,
-		Desc:         "Check crostini FilesApp file watchers",
-		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
+		Func:         FilesAppWatch,
+		Desc:         "Checks crostini FilesApp watch",
+		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -58,43 +54,32 @@ func init() {
 	})
 }
 
-func Files(ctx context.Context, s *testing.State) {
+func FilesAppWatch(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	cr := pre.Chrome
 	tconn := pre.TestAPIConn
+	cont := s.PreValue().(crostini.PreData).Container
 
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
-	if err != nil {
-		s.Fatal("Failed to get user hash: ", err)
-	}
-
-	s.Log("Testing filesapp watch")
-	testFilesAppWatch(ctx, s, tconn, ownerID)
-}
-
-func createFileInContainer(ctx context.Context, s *testing.State, ownerID, fileName, fileContent string) {
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", fmt.Sprintf("echo -n %s > %s", shutil.Escape(fileContent), fileName))
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatalf("Failed to write file %v in container: %v", fileName, err)
-	}
-}
-
-func testFilesAppWatch(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ownerID string) {
 	const (
-		testFileName1   = "file1.txt"
-		testFileName2   = "file2.txt"
-		testFileContent = "content"
+		testFileName1   = "FilesAppWatch1.txt"
+		testFileName2   = "FilesAppWatch2.txt"
+		testFileContent = "FilesAppWatch"
 	)
 
-	createFileInContainer(ctx, s, ownerID, testFileName1, testFileContent)
+	if err := cont.WriteFile(ctx, testFileName1, testFileContent); err != nil {
+		s.Fatal("Create file failed: ", err)
+	}
+	defer cont.RemoveAll(ctx, testFileName1)
 
 	// Launch the files application
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Root.Release(ctx)
+	defer func(ctx context.Context) {
+		files.Root.Release(ctx)
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	// Validate file1.txt is shown in 'Linux files'.
 	if err := files.OpenDir(ctx, "Linux files", "Files - Linux files"); err != nil {
@@ -105,7 +90,10 @@ func testFilesAppWatch(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Create file2.txt in container and check that FilesApp refreshes.
-	createFileInContainer(ctx, s, ownerID, testFileName2, testFileContent)
+	if err := cont.WriteFile(ctx, testFileName2, testFileContent); err != nil {
+		s.Fatal("Create file failed: ", err)
+	}
+	defer cont.RemoveAll(ctx, testFileName2)
 	if err := files.WaitForFile(ctx, testFileName2, 10*time.Second); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
