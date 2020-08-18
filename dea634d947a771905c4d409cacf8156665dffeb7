@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f55ab426_bcd5dc82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-18T19:24:09Z",
+      "side": 1,
+      "message": "nit: can you please change commit title so it\u0027ll be clear that we merge it to M84:\n\n[Merge to M84] tast-tests: increase timeout in CreateVault",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "dea634d947a771905c4d409cacf8156665dffeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92db5897_3bc0077f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-18T19:24:09Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "dea634d947a771905c4d409cacf8156665dffeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
