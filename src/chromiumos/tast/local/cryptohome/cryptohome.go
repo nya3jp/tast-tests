@@ -115,7 +115,9 @@ func findMounterPID(mounter string) (int32, error) {
 	}
 
 	for _, proc := range procs {
-		if exe, err := proc.Exe(); err == nil && exe == mounter {
+		// With 'cros deploy', the underlying cryptohomed binary may be overwritten
+		// which results in a dangling symlink ('/usr/sbin/cryptohomed (deleted)').
+		if exe, err := proc.Exe(); err == nil && strings.Contains(exe, mounter) {
 			return proc.Pid, nil
 		}
 	}
