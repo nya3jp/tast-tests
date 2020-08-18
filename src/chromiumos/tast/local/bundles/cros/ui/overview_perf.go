@@ -7,6 +7,9 @@ package ui
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -18,7 +21,6 @@ import (
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -48,6 +50,7 @@ func init() {
 			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
 		}},
+		Data: []string{"blob/blob.zip"},
 	})
 }
 
@@ -86,6 +89,14 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		animationTypeMinimizedTabletMode
 	)
 
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL
+	dir, _ := filepath.Split(s.DataPath("blob/blob.zip"))
+	if err := perfutil.Unzip(s.DataPath("blob/blob.zip"), dir); err != nil {
+		s.Fatal("Failed to decompress test contents")
+	}
+	url += "/blob/blob.html"
 	r := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
@@ -93,7 +104,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
