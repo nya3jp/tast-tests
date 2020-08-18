@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc0cdc10_bbe38eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-18T17:54:31Z",
+      "side": 1,
+      "message": "To reduce dashboard noise and unnecessary resource usage, can you please add some hwdeps like dev_coredump.go now has (including the pending https://crrev.com/c/2357192) to skip known-bad boards?\n\n(Note that those deps aren\u0027t quite right yet; even with the recent change the test still runs on some boards that it shouldn\u0027t run on, but it\u0027s a big improvement.)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c9613f3d8aabe4dbd20a9b02dc66d1580beedd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
