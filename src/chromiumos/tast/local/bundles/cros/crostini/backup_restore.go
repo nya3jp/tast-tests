@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
@@ -70,7 +71,31 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	const (
 		testFileName    = "BackupRestore.txt"
 		testFileContent = "BackupRestore"
+		copyName        = "penguin-tast-crostini-BackupRestore"
 	)
+
+	// We delete most files before backup and restore to speed the process.
+	// Create an lxc copy before we change anything, then restore at the end.
+	lxc := func(args ...string) {
+		err := cont.VM.LXCCommand(ctx, args...)
+		if err != nil {
+			s.Fatal("LXC: ", err)
+		}
+	}
+	lxc("copy", vm.DefaultContainerName, copyName)
+	defer func(ctx context.Context) {
+		lxc("delete", "-f", vm.DefaultContainerName)
+		lxc("rename", copyName, vm.DefaultContainerName)
+		// We must restart the VM and container.
+		if err := cont.VM.Stop(ctx); err != nil {
+			s.Fatal("Error stopping VM: ", err)
+		}
+		if err := vm.RestartDefaultVMContainer(ctx, s.OutDir(), cont); err != nil {
+			s.Fatal("Error restarting container: ", err)
+		}
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
 	if err := cont.WriteFile(ctx, testFileName, testFileContent); err != nil {
 		s.Fatalf("Failed to write file %v in container: %v", testFileName, err)
