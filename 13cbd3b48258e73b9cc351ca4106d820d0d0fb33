@@ -34,6 +34,41 @@
       "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e572917_b84346e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-18T23:32:26Z",
+      "side": 1,
+      "message": "Subtle UI difference between clamshell/tablet can change the power consumption pattern, (tablet mode has more bg blurs on desktop, but maximized window may improve the performance as it reduces the overdraw), so it\u0027s better to be consistent.",
+      "parentUuid": "15c73e30_361a3d7a",
+      "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d519df94_e5fff521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-18T23:32:26Z",
+      "side": 1,
+      "message": "There ",
+      "revId": "13cbd3b48258e73b9cc351ca4106d820d0d0fb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
