@@ -239,6 +239,24 @@
       "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82600c78_7e3d6503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-18T08:26:27Z",
+      "side": 1,
+      "message": "FYI: if it\u0027s oneliner, it is considered \"long\" in Tast.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "parentUuid": "daed30a1_1d2b3c44",
+      "revId": "d14c64686f9b107db840c62204078ed23ef594f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
