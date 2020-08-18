@@ -69,14 +69,17 @@ func (e *EventLogger) Events() []*Event {
 }
 
 // EventsByType returns events captured with given EventType.
-func (e *EventLogger) EventsByType(et EventType) []*Event {
+func (e *EventLogger) EventsByType(ets ...EventType) []*Event {
 	e.lock.RLock()
 	defer e.lock.RUnlock()
 
 	var ret []*Event
 	for _, ev := range e.events {
-		if ev.Type == et {
-			ret = append(ret, ev)
+		for _, et := range ets {
+			if ev.Type == et {
+				ret = append(ret, ev)
+				break
+			}
 		}
 	}
 	return ret

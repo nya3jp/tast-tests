@@ -129,14 +129,16 @@ func (e *EventWatcher) Wait(ctx context.Context) (*Event, error) {
 
 // WaitByType waits for the next matched event.
 // Similar to Wait, a channelClosedError may be returned.
-func (e *EventWatcher) WaitByType(ctx context.Context, et EventType) (*Event, error) {
+func (e *EventWatcher) WaitByType(ctx context.Context, ets ...EventType) (*Event, error) {
 	for {
 		ev, err := e.Wait(ctx)
 		if err != nil {
 			return nil, err
 		}
-		if ev.Type == et {
-			return ev, nil
+		for _, et := range ets {
+			if ev.Type == et {
+				return ev, nil
+			}
 		}
 	}
 }
