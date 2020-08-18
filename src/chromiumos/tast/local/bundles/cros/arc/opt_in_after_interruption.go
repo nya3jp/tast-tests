@@ -114,7 +114,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar(param.password)
 	extraArgs := param.chromeArgs
 
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install"}
+	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--ignore-arcvm-dev-conf"}
 	args = append(args, extraArgs...)
 
 	for _, delay := range param.delays {

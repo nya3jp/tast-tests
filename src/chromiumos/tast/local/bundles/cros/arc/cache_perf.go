@@ -160,7 +160,7 @@ func performIteration(ctx context.Context, s *testing.State) (normalTime, skipAl
 // reports time elapsed from enabling ARC and Play Store is finally shown.
 func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (time.Duration, float64, error) {
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
-	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf")
 
 	switch mode {
 	case cacheNormal:
