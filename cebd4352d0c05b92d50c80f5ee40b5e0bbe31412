@@ -16,6 +16,87 @@
       "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "088718b7_84b4e276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T01:27:26Z",
+      "side": 1,
+      "message": "quick notes while I have them. I haven\u0027t looked through the whole thing yet",
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f6f308_7ca155b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T01:27:26Z",
+      "side": 1,
+      "message": "\u003e The PS40 it does an initial check in the BSSs (in case the signal was already sent), then waites for the \"BSSAdded\" signal.\n\nAre you sure you actually need the initial check? If you can start the BSSAdded watcher before you start the AP, then you *know* it must come from a new BSSAdded signal.\n\nThat would mean your API would look a little different, as you\u0027d have to push messages instead of just a call/response, but I\u0027m not sure that\u0027s a bad thing.",
+      "parentUuid": "77c7a4d9_81878a49",
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3209619_42121cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T01:27:26Z",
+      "side": 1,
+      "message": "any chance any of this wpasupplicant watcher stuff should move to the .../wpasupplicant package? It seems like, just as with our shill package, many of this \"watch wpa_supplicant properties\" stuff may need to be adapted and reused in other tests.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 39
+      },
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53703a04_a94c47dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T01:27:26Z",
+      "side": 1,
+      "message": "with my C or C++ brain, this *feels* like it\u0027s some sort of file-level scope, but in fact it\u0027s a package-level scope, and so it conflicts with your roam_ap_gone.go. I happen to have them both checked out locally, and I see:\n\n2020/08/17 17:41:57 Building local_test_runner, cros, remote_test_runner, cros\n2020/08/17 17:42:02 # chromiumos/tast/remote/bundles/cros/wifi\n2020/08/17 17:42:02 ../platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go:20:2: ap1BSSID redeclared in this block\n2020/08/17 17:42:02     previous declaration at ../platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go:29:13\n2020/08/17 17:42:02 ../platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go:22:2: ap2BSSID redeclared in this block\n2020/08/17 17:42:02     previous declaration at ../platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go:30:13\n2020/08/17 17:42:06 Failed to build and push: build failed: failed to build chromiumos/tast/remote/bundles/cros: exit status 2\n\nI guess we should just move this sort of stuff into the RoamDbus() function body.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "cebd4352d0c05b92d50c80f5ee40b5e0bbe31412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
