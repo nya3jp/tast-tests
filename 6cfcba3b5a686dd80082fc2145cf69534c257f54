@@ -87,6 +87,30 @@
       "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfee6a3_57b97d58",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e460bc_a3aefc3c",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "6cfcba3b5a686dd80082fc2145cf69534c257f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
