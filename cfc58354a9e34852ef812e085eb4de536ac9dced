@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e21310_405e3119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-08-18T12:59:10Z",
+      "side": 1,
+      "message": "Hi, can you kindly take another look at this? The HardwareDep still seems stuck on prepration work, so I\u0027d like to land this for now to get the test green.",
+      "revId": "cfc58354a9e34852ef812e085eb4de536ac9dced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
