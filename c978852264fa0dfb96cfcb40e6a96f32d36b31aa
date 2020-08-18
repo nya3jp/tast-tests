@@ -22,6 +22,30 @@
       "revId": "c978852264fa0dfb96cfcb40e6a96f32d36b31aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f021cd73_f94524f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/tab_loading_test.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-18T19:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70f3bd3_a0d54f49",
+      "range": {
+        "startLine": 6,
+        "startChar": 32,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "c978852264fa0dfb96cfcb40e6a96f32d36b31aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
