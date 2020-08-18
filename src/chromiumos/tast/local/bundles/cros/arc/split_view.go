@@ -24,7 +24,8 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "amusbach@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
+		Pre:          arc.Booted(),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -33,7 +34,6 @@ func init() {
 			{
 				Name:              "tablet_mode",
 				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Pre:               arc.BootedInTabletMode(),
 				Val:               true,
 			},
 		},
@@ -122,44 +122,20 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
-	// Enable DragToSnapInClamshellMode when testing clamshell split view.
-	// TODO(https://crbug.com/1073508): When the feature is fully launched, just
-	// use s.PreValue().(arc.PreData).
-	tabletMode := s.Param().(bool)
-	var p arc.PreData
-	var cr *chrome.Chrome
-	var a *arc.ARC
-	var err error
-	if tabletMode {
-		p = s.PreValue().(arc.PreData)
-		cr = p.Chrome
-	} else {
-		cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=DragToSnapInClamshellMode"))
-		if err != nil {
-			s.Fatal("Failed to connect to Chrome: ", err)
-		}
-		defer cr.Close(ctx)
-	}
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	if tabletMode {
-		// The precondition for the tablet_mode subtest ensures tablet mode.
-		a = p.ARC
-	} else {
-		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-		if err != nil {
-			s.Fatal("Failed to ensure in clamshell mode: ", err)
-		}
-		defer cleanup(ctx)
 
-		a, err = arc.New(ctx, s.OutDir())
-		if err != nil {
-			s.Fatal("Failed to start ARC: ", err)
-		}
-		defer a.Close()
+	tabletMode := s.Param().(bool)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatalf("Failed to ensure tablet-mode status to %t: %v", tabletMode, err)
 	}
+	defer cleanup(ctx)
 
 	tew, err := input.Touchscreen(ctx)
 	if err != nil {

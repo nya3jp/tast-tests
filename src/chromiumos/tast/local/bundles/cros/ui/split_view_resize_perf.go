@@ -33,7 +33,8 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      6 * time.Minute,
+		Timeout:      5 * time.Minute,
+		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -41,7 +42,6 @@ func init() {
 			},
 			{
 				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Pre:               chrome.LoggedIn(),
 				Val:               true,
 			},
 		},
@@ -49,27 +49,14 @@ func init() {
 }
 
 func SplitViewResizePerf(ctx context.Context, s *testing.State) {
-	// Enables DragToSnapInClamshellMode when testing clamshell split view.
-	// TODO(https://crbug.com/1073508): When the feature is fully launched, just
-	// use chrome.Pre().
-	tabletMode := s.Param().(bool)
-	var cr *chrome.Chrome
-	var err error
-	if tabletMode {
-		cr = s.PreValue().(*chrome.Chrome)
-	} else {
-		cr, err = chrome.New(ctx, chrome.ExtraArgs("--enable-features=DragToSnapInClamshellMode"))
-		if err != nil {
-			s.Fatal("Failed to connect to Chrome: ", err)
-		}
-		defer cr.Close(ctx)
-	}
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	tabletMode := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		if tabletMode {
