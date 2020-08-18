@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37097add_cb6c16ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-18T18:01:37Z",
+      "side": 1,
+      "message": "One initial nit.",
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a99c08ff_4e55be8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-18T18:01:37Z",
+      "side": 1,
+      "message": "t",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
