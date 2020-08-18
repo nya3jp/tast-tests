@@ -33,6 +33,41 @@
       "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cfef753_0cc82186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-18T19:04:06Z",
+      "side": 1,
+      "message": "tast-owners@ PTAL",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc90b6a1_d9221355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-18T19:04:06Z",
+      "side": 1,
+      "message": "Sure - will wait until next week or so, that should give time for\nthe (87) branch to settle.",
+      "parentUuid": "d1ee9c26_ff0c61f4",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
