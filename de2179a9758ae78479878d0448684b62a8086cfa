@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "18672afe_7c2ad5c6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-18T20:10:11Z",
+      "side": 1,
+      "message": "add comment",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d093d3_2ec098b0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-18T20:10:11Z",
+      "side": 1,
+      "message": "huh?",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8863520b_ffe0bf4e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-18T20:10:11Z",
+      "side": 1,
+      "message": "Let\u0027s chat to vlad about the correct naming of all of these things in our sync later today",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efac7b1a_a97d23e7",
         "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
         "patchSetId": 8
@@ -35,6 +104,29 @@
         "startChar": 0,
         "endLine": 174,
         "endChar": 1
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cba5521_a6890f7b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-18T20:10:11Z",
+      "side": 1,
+      "message": "Is there any autotestPrivate function for getting/setting these values?",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 24
       },
       "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
