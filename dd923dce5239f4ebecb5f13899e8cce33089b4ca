@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f4ef136_824bbbe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T20:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae06df3_8af64b73",
+      "range": {
+        "startLine": 269,
+        "startChar": 41,
+        "endLine": 269,
+        "endChar": 49
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a620b61d_dd537690",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 41
@@ -39,6 +63,24 @@
       "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1388da_96ead1bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T20:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a620b61d_dd537690",
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9c7f0b8c_c12be979",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T20:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f83f3da5_81cec916",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57dd7e4c_a1c4ea8b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 41
@@ -76,6 +142,30 @@
       "writtenOn": "2020-08-18T07:24:39Z",
       "side": 1,
       "message": "nit: I wonder if expecting \"configuration\" state specifically here is good, although it should happen as the two APs have different subnet.\n\nI think waiting IsConnected to go false then true is simpler and more flexible but then we cannot exclude idle state... Not sure which one might be better.",
+      "range": {
+        "startLine": 97,
+        "startChar": 46,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bc7b39_a628af17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T20:11:23Z",
+      "side": 1,
+      "message": "IIUC, (IsConnected\u003dfalse -\u003e IsConnected\u003dtrue) means the roaming has failed and a new connection happened.",
+      "parentUuid": "57dd7e4c_a1c4ea8b",
       "range": {
         "startLine": 97,
         "startChar": 46,
@@ -102,6 +192,24 @@
       "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b21bb7_1501f6f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-18T20:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "973305fc_e68485fe",
+      "revId": "dd923dce5239f4ebecb5f13899e8cce33089b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
