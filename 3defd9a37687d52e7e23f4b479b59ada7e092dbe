@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "29c1d22a_ad013839",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-18T00:31:42Z",
+      "side": 1,
+      "message": "makes total sense: re: next step define local v remote strategy",
+      "parentUuid": "a3ae2e02_b94b4306",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ea2dc3_92f7dc7f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 2
