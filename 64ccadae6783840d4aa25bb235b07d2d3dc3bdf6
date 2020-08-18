@@ -22,6 +22,30 @@
       "revId": "64ccadae6783840d4aa25bb235b07d2d3dc3bdf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184ecd0d_f1750172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-08-18T08:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bedc108_57f7e966",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 32
+      },
+      "revId": "64ccadae6783840d4aa25bb235b07d2d3dc3bdf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
