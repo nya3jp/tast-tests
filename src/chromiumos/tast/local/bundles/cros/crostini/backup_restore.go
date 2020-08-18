@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/crostini"
@@ -68,7 +69,26 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	const (
 		testFileName    = "backup.txt"
 		testFileContent = "backup"
+		copyName        = "penguin-tast-crostini-BackupRestore"
 	)
+
+	// We delete most files before backup and restore to speed the process.
+	// Create an lxc copy before we change anything, then restore at the end.
+	lxc := func(args ...string) {
+		envLxc := []string{"LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf", "lxc"}
+		cmd := cont.VM.Command(ctx, append(envLxc, args...)...)
+		err := cmd.Run()
+		if err != nil {
+			cmd.DumpLog(ctx)
+			s.Fatalf("Failed to run %v: %v", strings.Join(cmd.Args, " "), err)
+		}
+	}
+	lxc("copy", vm.DefaultContainerName, copyName)
+	defer func() {
+		lxc("delete", "-f", vm.DefaultContainerName)
+		lxc("rename", copyName, vm.DefaultContainerName)
+		lxc("start", vm.DefaultContainerName)
+	}()
 
 	if err := crostini.CreateFileInContainer(ctx, cont, testFileName, testFileContent); err != nil {
 		s.Fatalf("Failed to write file %v in container: %v", testFileName, err)
