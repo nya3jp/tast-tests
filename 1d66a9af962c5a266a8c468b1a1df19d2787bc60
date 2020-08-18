@@ -16,6 +16,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4314a8cb_a0303e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-08-18T16:58:25Z",
+      "side": 1,
+      "message": "I did a quick sync with Joel a few nights ago, he mentioned a possibility of a C library, but no plans on exposing structured output.  His guidance was anything that FAFT tests currently rely on is reasonably safe, so I think we are safe with the current approach.  Joel, please correct me if my recollection is off.\n\nI put some effort into checking go/tast-code-review-comments and https://github.com/golang/go/wiki/CodeReviewComments, but heads up I am new to this codebase (i.e. command of the content of those docs isn\u0027t that strong yet), so those two docs may be worth extra attention when you go through the self-review checklist https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#Self_review-checklist before passing to tast-owners.",
+      "parentUuid": "643e386e_6b520e96",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
