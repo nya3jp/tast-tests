@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5f6a1205_04834988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-18T19:53:44Z",
+      "side": 1,
+      "message": "In 9 years of being in Chrome OS we\u0027ve never changed the commit message title to reflect merges. Besides, it\u0027s clear from the branch that we\u0027re merging to M84: https://screenshot.googleplex.com/a1d41cd4-7159-41a6-a2dc-a7294a2a18b7\n\nAnd also from the email title:\n\n\"tast-tests: increase timeout in CreateVault [chromiumos/platform/tast-tests : release-R84-13099.B]\"\n\nI will amend the commit message to link the CL that needs it, but I will not add the M84 message to the commit title because that\u0027s pointless.",
+      "parentUuid": "92b5d27a_1ff109a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "dea634d947a771905c4d409cacf8156665dffeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92db5897_3bc0077f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
