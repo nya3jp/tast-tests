@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66ccd946_55424bf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "I think this is OK, minus a few nits.\n\nI still think there are probably better ways to abstract the wpa_supplicant library stuff, but I suppose this is good enough for now. (I\u0027m open to other reviewers\u0027 thoughts too.)",
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4581a0f0_c4900066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "BSSID",
+      "range": {
+        "startLine": 261,
+        "startChar": 43,
+        "endLine": 261,
+        "endChar": 47
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc287ae1_68be7f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "shouldn\u0027t this have a DiscoverBSSIDResponse?",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 14
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ba3ec1_ac061fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "these (\"SSID\" and \"BSSID\") should probably be wpasupplicant constants.\n\nAlternatively, ParseBSSAddedSignal() could parse the properties we want and but them directly in the \u0027bss\u0027 struct, so callers have less to worry about.",
+      "range": {
+        "startLine": 286,
+        "startChar": 29,
+        "endLine": 286,
+        "endChar": 35
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406d0a97_14d52ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "It\u0027s not really useful to print this, if the key is missing (i.e. \"!ok\"). Dump the whole bss.Props map (or the whole bss object?) or nothing.\n\nSame for line 294",
+      "range": {
+        "startLine": 288,
+        "startChar": 54,
+        "endLine": 288,
+        "endChar": 71
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b5047a_4f82474d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T20:54:30Z",
+      "side": 1,
+      "message": "Is there a reason to ignore this error? Seems like we should just \u0027return err\u0027.",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 56
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
