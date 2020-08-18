@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a3ae2e02_b94b4306",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "It\u0027s not a drop in since this is remote the other local, so nothing to do for now.  A higher level task would be to first define a local vs. remote strategy, then refactor our code according to that.  IMHO, we should implement things on the remote side unless there\u0027s a clear benefit to doing things on the local side, because there\u0027s no service layer overhead when logic is implemented remotely.",
+      "parentUuid": "cfcd1288_50212d04",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ea2dc3_92f7dc7f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4a0fc0_1f35fcab",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ea2dc3_92f7dc7f",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "7da24c5f_77528873",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ce594b_eef859bb",
+      "range": {
+        "startLine": 45,
+        "startChar": 92,
+        "endLine": 45,
+        "endChar": 97
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffefb40_fb5bece6",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
         "patchSetId": 2
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "15a7ba62_b8f2620a",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "Changed the first line to \"Package reporters is a collection of canonical methods to obtain test-relevant information about a DUT, in the form of \u003cinformation\u003e, error.\"  Replaced low-level with test-relevant because reporters are meant to make tests easier to write, the level of abstraction depends on needs of the tests.",
+      "parentUuid": "1ffefb40_fb5bece6",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e1cb7_82cbecba",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 2
@@ -131,6 +227,30 @@
       "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ae9e51_471ecbd9",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-18T00:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760e1cb7_82cbecba",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
