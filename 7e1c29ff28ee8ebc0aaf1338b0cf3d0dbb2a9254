@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5ef6866_bb40b1bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-18T21:13:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bcc6dfb_4e01a7b3",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "7e1c29ff28ee8ebc0aaf1338b0cf3d0dbb2a9254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0b8fc7d_0a4b713d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
