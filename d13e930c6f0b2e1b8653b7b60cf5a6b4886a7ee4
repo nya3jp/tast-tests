@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "448039b5_fab71069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-18T23:56:14Z",
+      "side": 1,
+      "message": "It seems like you did a mixture of my 2 suggestions, not one or the other.\n\nFor the latter: I meant that \"type BSSAddedSignal\" could just contain bare fields for \"BSSID\" and \"SSID\", and ParseBSSAddedSignal() would populate those for us. The Props map would be unnecessary, and could be dropped.",
+      "parentUuid": "e423801f_ae825abb",
+      "range": {
+        "startLine": 286,
+        "startChar": 29,
+        "endLine": 286,
+        "endChar": 35
+      },
+      "revId": "d13e930c6f0b2e1b8653b7b60cf5a6b4886a7ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "406d0a97_14d52ffd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 42
