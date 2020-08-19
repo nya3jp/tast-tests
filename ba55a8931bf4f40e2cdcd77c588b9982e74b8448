@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9757280_c20510a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-08-19T06:31:38Z",
+      "side": 1,
+      "message": "LGTM. Defer +2 to tast owners.",
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dead5c6_b896aef4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 6
