@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d37a555a_d2fd7869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T22:40:23Z",
+      "side": 1,
+      "message": "Please move the definition inside of the function",
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66de0a5_f867b8f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T22:40:23Z",
+      "side": 1,
+      "message": "Comparison of DPIX/DPIY might be great, but I feel like it\u0027s even nicer to compare bounds a bit more precisely, like math.Abs(...) \u003e roundingError for buttonBounds. That\u0027s the window bounds and so that should be verified in WM* tests. wdyt?",
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3883a9d_a157d16f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T22:40:23Z",
+      "side": 1,
+      "message": "I guess this is \"newZoom / dispInfoBeforeZoom.DisplayZoomFactor\" -- the old zoom factor might not be 1.",
+      "range": {
+        "startLine": 432,
+        "startChar": 13,
+        "endLine": 432,
+        "endChar": 20
+      },
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a73b41_095e4fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T22:40:23Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 435,
+        "startChar": 13,
+        "endLine": 435,
+        "endChar": 20
+      },
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
