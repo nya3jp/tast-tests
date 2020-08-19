@@ -33,7 +33,7 @@ func CrosHealthdProbeBacklightInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get backlight telemetry info: ", err)
 	}
 
-	hasBacklight, err := crosconfig.Get(ctx, "/cros-healthd/backlight", "has-backlight")
+	hasBacklight, err := crosconfig.Get(ctx, "/hardware-properties", "has-backlight")
 	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Failed to get has-backlight property: ", err)
 	}
