@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "18e96448_0aa6d42e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-19T07:31:55Z",
+      "side": 1,
+      "message": "What invalids the reason of aggregating many tests? Please elaborate.",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc6d422_10982149",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-19T07:31:55Z",
+      "side": 1,
+      "message": "It would be nice to have an issue to trace about this. Perhaps link to the issue that relief the constraint that each tests needs to install the container (via precondition?)",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f12f06_0ea1f345",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
