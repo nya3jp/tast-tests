@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f12f06_0ea1f345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T06:17:58Z",
+      "side": 1,
+      "message": "Since I have 5 fairly small CLs that are related, I will get @deanliao who was assigned the first CL to review them all.",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
