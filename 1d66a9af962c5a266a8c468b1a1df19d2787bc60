@@ -142,6 +142,42 @@
     },
     {
       "key": {
+        "uuid": "c09047c5_dbc05e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "1. I wanted enough functionality to be able to meaningfully test.  Besides, quite a bit of review effort has gone in here, so I think most of the cost of review is already paid here.\n2. This is just to test out the booted_device reporter.  In a real test it would need to be remote.",
+      "parentUuid": "f467a404_59e7fde9",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2db354e_a64cb83f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c46ec3eb_439c4af2",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a16822_0143d91a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
         "patchSetId": 5
@@ -156,6 +192,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a74680_1b54cc9b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "oops, copy/paste issue, removed.",
+      "parentUuid": "48a16822_0143d91a",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7e0868f4_816881e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Thanks for the link, done",
+      "parentUuid": "1f54e426_debca162",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9817987f_2dc40b31",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -217,6 +295,30 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "Go code tends to prefer short variable names. Due to the static typing of Go, we can avoid the Hungarian notation:\n\n    const (\n        NormalInternalSig    BootedDeviceType \u003d \"normal mode booted from internal device, signature verified kernel key\"\n        DeveloperInternalSig BootedDeviceType \u003d ...\n        ...\n    )",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237f0a96_27a84528",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "I prefixed with the type to have a consistent prefix to give more context to the const, otherwise it\u0027s not obvious that reporters.NormalInternalSig is associated with BootedDevice reporter.",
+      "parentUuid": "9817987f_2dc40b31",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -246,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "235488fe_5a5e0b53",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914df8f7_1127686f",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97d37d9b_b15426a4",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -260,6 +380,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b9bb0a_260cd558",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d37d9b_b15426a4",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -280,6 +418,24 @@
     },
     {
       "key": {
+        "uuid": "e6ecad44_830af7a9",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6d1ece_66ee3bfa",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94169316_0ceb21f1",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -294,6 +450,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e73ce1b_2d48e511",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Ah, the linter didn\u0027t flag it (it did flag a bunch of other else ones though, which I fixed) so I thought I was in the clear.  Done.",
+      "parentUuid": "94169316_0ceb21f1",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -320,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "06d5b046_356f19fa",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bec2aa1_e4a5444f",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b96c264_b5729068",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -340,6 +538,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd03d6d2_4485c439",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b96c264_b5729068",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -366,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "e2719fb8_7ba3e2e0",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c77af35_9037ae29",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c65ecb0_0010c170",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -377,6 +623,24 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "We already have a function for this in the local firmware package, tast-tests/src/chromiumos/tast/local/firmware/utils.go\u0027s deviceRemovable().",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a105bdd0_98bb64ee",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "That\u0027s a local function, will require larger discussion of remote vs. local tradeoffs, so prefer to leave as-is for now.",
+      "parentUuid": "0c65ecb0_0010c170",
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -406,6 +670,30 @@
     },
     {
       "key": {
+        "uuid": "6a491448_0a508a45",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07af9df6_2bbab2fc",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5b8bd0f_015e2bf9",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -426,6 +714,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47368458_f3584de1",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b8bd0f_015e2bf9",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 3
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -452,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "849adf2f_24cd4fb2",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1de429_ac153856",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4853f2_8d238578",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -475,6 +811,30 @@
     },
     {
       "key": {
+        "uuid": "bde47291_c259b5c8",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4853f2_8d238578",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7de8701a_6f732166",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -486,6 +846,30 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "As mentioned in booted_device.go, I think we can skip the type-name here:\n\n    const (\n        MainfwType CrossystemType \u003d \"mainfw_type\"\n        KernvfyKey CrossystemType \u003d \"\"kernkey_vfy\"\n    )",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fe1347_9c10c860",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Prefer to leave as-is, reasoning is that these consts all belong to the reporters package, so without Crossystem somewhere in the name, it\u0027s hard to tell which reporter the const is associated with.",
+      "parentUuid": "7de8701a_6f732166",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -521,6 +905,30 @@
     },
     {
       "key": {
+        "uuid": "66542d30_d14ffe9c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08e83ad_8e88adef",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b9a2e94_86267f00",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -541,6 +949,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e768b6c4_f877ce8e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b9a2e94_86267f00",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -567,6 +999,30 @@
     },
     {
       "key": {
+        "uuid": "13d4173d_f06c573c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abea2006_fb9178e5",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dedf5118_8dffca3c",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -587,6 +1043,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d792768_19a2ea2b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dedf5118_8dffca3c",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -613,6 +1093,30 @@
     },
     {
       "key": {
+        "uuid": "faa16e89_0a5f8778",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad916f9_b8f5d47c",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "963f878b_87a1144b",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -627,6 +1131,24 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5011c20_a2b4f379",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "963f878b_87a1144b",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -676,6 +1198,54 @@
     },
     {
       "key": {
+        "uuid": "63da794a_78e80a0f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "changed temp to all and res to known.",
+      "parentUuid": "e174f3f7_87526a09",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d97028d_a1aecfc9",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "That was the original implementation.  Kevin noted that we should not return everything but the commonly used ones.  So that\u0027s why the code now requires keys used by tests should be in knownCrossystemKeys and the parse will not return anything not on that list.",
+      "parentUuid": "8bcd5f24_03dd0d39",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b42a1ad_53ffb220",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
@@ -696,6 +1266,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed89e9d_66f832b3",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b42a1ad_53ffb220",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -745,6 +1339,54 @@
     },
     {
       "key": {
+        "uuid": "02eb8d13_12297308",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Changed to use kv[1] and kv[2].",
+      "parentUuid": "a6cabd3b_580ef947",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cde33c56_b1730b5d",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f474a0e0_49828351",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dc83a9d_00c3cf2b",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
         "patchSetId": 5
@@ -756,6 +1398,30 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "I would avoid asserting the return-type(s) here, just in case it\u0027s ever useful to break this standard. We might want to export a function with \u003cinformation1\u003e, \u003cinformation2\u003e, err; or a function where no error is possible.",
+      "range": {
+        "startLine": 5,
+        "startChar": 105,
+        "endLine": 5,
+        "endChar": 142
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6fa7ed1_04d58b63",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Wanted to standardize on a uniform interface, this makes test code and logging of reported values/errs more consistent.  Also, should tast assertions go through, it will work nicely with them.\n\n1) Multiple pieces of information, this can be addressed by putting them into a struct.\n2) Reporters without errs.  The reporter can always return nil for error in that case.  However, since reporters interact with the DUT, it is unlikely that no error is possible.",
+      "parentUuid": "6dc83a9d_00c3cf2b",
       "range": {
         "startLine": 5,
         "startChar": 105,
@@ -791,6 +1457,30 @@
     },
     {
       "key": {
+        "uuid": "c487ad5d_0c0b8a79",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6130a54f_3ddbd46e",
+      "range": {
+        "startLine": 6,
+        "startChar": 58,
+        "endLine": 6,
+        "endChar": 70
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e4ec4f_5c46eb9e",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -811,6 +1501,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf1be3d_2a66ca05",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "sg, created command_output.go and cat.go.",
+      "parentUuid": "52e4ec4f_5c46eb9e",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -837,6 +1551,30 @@
     },
     {
       "key": {
+        "uuid": "1aeeb348_2559e043",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "115eb37c_2aa10529",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db152c2_5a64f68b",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -857,6 +1595,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b872bd_a44a3e95",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db152c2_5a64f68b",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -883,6 +1645,30 @@
     },
     {
       "key": {
+        "uuid": "3fb97a32_5a6791ce",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0c72d1e_214a136e",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d330cc4_e3c08348",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -903,6 +1689,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e32cdd_73c6353c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d330cc4_e3c08348",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -929,6 +1739,30 @@
     },
     {
       "key": {
+        "uuid": "f522a93f_fddf81e7",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7b8fab_65fdc90d",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28661f8c_c22a39a9",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -949,6 +1783,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e812a929_d3318ea0",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28661f8c_c22a39a9",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -975,6 +1833,30 @@
     },
     {
       "key": {
+        "uuid": "c303752b_31008780",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7eff250_1ab9c38b",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4241b1a1_527bb855",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -998,6 +1880,30 @@
     },
     {
       "key": {
+        "uuid": "daa75d3f_9da0ec0e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4241b1a1_527bb855",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a474901c_4b9f510f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
         "patchSetId": 5
@@ -1009,6 +1915,30 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "I think you can skip the Conn() here:\n\n    res, err :\u003d r.d.Command(format, args...).Output(ctx)",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f740a40_ce984659",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "dut.go says d.Command is deprecated?",
+      "parentUuid": "a474901c_4b9f510f",
       "range": {
         "startLine": 54,
         "startChar": 17,
@@ -1041,6 +1971,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646dadf9_3b2d6737",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-19T17:17:30Z",
+      "side": 1,
+      "message": "nice, using TrimSuffix.",
+      "parentUuid": "7545ea14_07bf434c",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
