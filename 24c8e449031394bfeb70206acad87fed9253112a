@@ -16,6 +16,97 @@
       "revId": "24c8e449031394bfeb70206acad87fed9253112a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd29046_c2707695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-19T04:16:31Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nits.",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb6dabf6_00a11157",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-19T04:16:31Z",
+      "side": 1,
+      "message": "clar: I\u0027m not familiar with how arc tests. To check, this is not a file you can deploy as part of a test data dependency? Test data dependencies are generally preferred because they are cached at devservers in the lab and the test harness takes care of authentication to GS.",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 36
+      },
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d5dde8_47586fcb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-19T04:16:31Z",
+      "side": 1,
+      "message": "Prefer to use testexec.CommandContext(ctx, name, args...) rather than exec.Command(name, args...). This deals with test timeout and has an option to dump logs on error. Also, instead of s.Fatal(errors.Wrapf()), pass the argument directly to s.Fatal as a parameter.\n\ne.g.\nif err :\u003d testexec.CommandContext(\"gsutil\", \"copy\", url, jarPath).Run(testexec.DumpLogOnErrror); err !\u003d nil {\n   s.Fatal(\"failed to download from %s: %v\", url, err)\n}",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d085db_7bc5f7e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-19T04:16:31Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c449ad8_5558b953",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-19T04:16:31Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
