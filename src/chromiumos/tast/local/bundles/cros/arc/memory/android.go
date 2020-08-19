@@ -79,6 +79,7 @@ const apkFmt = "ArcMemoryAllocatorTest_%s.apk"
 var supportedArchs = map[string]bool{
 	"x86_64":      true,
 	"armeabi-v7a": true,
+	"arm64-v8a":   true,
 }
 
 // AndroidData is the list of data dependencies tests need to add to their
