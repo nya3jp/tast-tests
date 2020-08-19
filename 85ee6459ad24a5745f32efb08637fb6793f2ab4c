@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "4f17893d_72dbbfb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T23:55:42Z",
+      "side": 1,
+      "message": "Oops, sorry I missed that. Sounds good.",
+      "parentUuid": "a555d088_b6270fb3",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 106
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca494a97_b5117175",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 4
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "This line stores credentials for the sign-in profile. This is included in the CQ-Depend, but it\u0027s in the private repo. I am using this feature: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables\n\nIt\u0027s a mirror of ui.signinProfileTestExtensionManifestKey but I can\u0027t use that since it\u0027s in a different package. I just copied it into the wifi package.\n\nHopefully with the new patchset, if you pull the CQ-depend change as well as this one, you should be able to execute the test itself as is.\n\ntast -verbose run  {DUT_HOSTNAME} wifi.PersistenceBluetoothSansWifi/wifi.PersistenceWifiSansBluetooth",
       "parentUuid": "7c75d13a_767d3aaf",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855ad741_b6f3e7f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T23:55:42Z",
+      "side": 1,
+      "message": "\u003e I am using this feature: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables\n\nAh thanks, that makes sense. (Without knowledge of \"secret variables\", it looks like I have to provide this variable all the time.)",
+      "parentUuid": "f6bd7cca_55ca555f",
       "range": {
         "startLine": 28,
         "startChar": 9,
