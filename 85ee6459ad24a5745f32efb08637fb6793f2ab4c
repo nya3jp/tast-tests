@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2e5c85b_03dda1d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "404, not found",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855e8c27_e8525eb8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "umm, I think you were planning to do something with this?",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 137
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17316ae7_b3afb161",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "you probably want to add wificell attributes to Attr, now that you\u0027re relying on the wificell hardware. ({\"group:wificell\", \"wificell_unstable\", \"wificell_func\"})",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53506418_f2b0f57d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "wificell.TFServiceName",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b472a08b_b515d4ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "seems like this should just be 1 line (Golang doesn\u0027t have line limits). same at L25",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69aa9174_c9f298a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "Honest question: is there any need to clean this up at exit, or do we cleanly handle this in all other tests (either explicitly re-enabling WiFi, or else clearing the profile)?\n\nUsually, tests should re-configure whatever they need at startup, but sometimes we want to do both, just to be kind to developers, etc.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 106
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca494a97_b5117175",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "what are you waiting for? Write that, instead of testing.Sleep.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c75d13a_767d3aaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T17:45:17Z",
+      "side": 1,
+      "message": "what exactly is this doing? is this to help with getting real, persistent credentials, so we can get to the same UI store across reboots?\n\nalso, don\u0027t you actually need to check this in somewhere, or else reuse the credentials from elsewhere?\n\nand how do I run this myself? does Tast somehow magically fill this in, or do I have to specify this all on the CLI now?",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
