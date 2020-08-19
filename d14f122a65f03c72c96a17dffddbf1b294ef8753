@@ -1,0 +1,358 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee27d0cd_4a0583f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Sorry to keep on piling on comments! Again, the large CL thing.",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35c4e857_69c5d06e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Currently, the string values contained by BootedDeviceType contain the same information as verificationMap. We could remove lookupTuple and verificationMap entirely by defining BootedDeviceType as a struct:\n\n    type BootedDeviceType struct {\n        Mode      string\n        Removable bool\n        Vfy       string\n    }\n    \n    const (\n        BootedDeviceTypeNormalInternalSig \u003d BootedDeviceType{\"normal\", false, \"sig\"}\n        ...\n    )\n    \n    // ExpectedDeviceTypes enumerates all BootedDeviceTypes that we know to be possible.\n    var ExpectedBootedDeviceTypes \u003d []BootedDeviceType{\n        BootedDeviceTypeNormalInternalSig,\n        ...\n    }\n\n    func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {\n        ...\n        // Make sure that the bootedDevice is one that we expect\n        for _, bdt :\u003d range ExpectedBootedDeviceType {\n            if bootedDevice \u003d\u003d bdt {\n                return bootedDevice, nil\n            }\n        }\n        return nil, errors.Errorf(\"Unexpected booted device type: %+v\", bootedDevice)\n    }",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41b2dd9_d8bc8159",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "nit: \"Tuple\" isn\u0027t quite accurate here. And, the name is a little ambiguous - we might want to follow a similar pattern elsewhere in firmware/reporters/. What do you think about changing to deviceBootInfo?",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b54c3e_1114602b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Because this is only used in one function, I recommend defining it as close as possible to where it will be used (L96):\n\n    return regexp.MustCompile(`(?i)chrom(ium|e)os`).FindStringIndex(res[0]) !\u003d nil, nil\n    // OR\n    re :\u003d regexp.MustCompile(`(?i)chrom(ium|e)os`)\n    return re.FindStringIndex(res[0]) !\u003d nil, nil",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eef74e0_1a18c808",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Because this is only used in one function, I recommend defining it as close as possible to where it will be used (L111):\n\n    baseDev :\u003d regexp.MustCompile(`p?[0-9]+$`).ReplaceAllString(strings.Split(device, \"/\")[2], \"\")\n    // OR\n    re :\u003d regexp.MustCompile(`p?[0-9]+$`)\n    baseDev :\u003d re.ReplaceAllString(...)",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a887a6_03a67c90",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "nit/style: \"ok\" is the idiomatic term here",
+      "range": {
+        "startLine": 63,
+        "startChar": 15,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129b753c_2ef3571a",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "style: This log could be much shorter if you define a lookupTuple above L63:\n\n    lt :\u003d lookupTuple{\n        mode:      cs[CrossystemKeyMainfwType],\n        removable: removable,\n        vfy:       cs[CrossystemKeyKernkeyVfy],\n    }\n    bootedDevice, ok :\u003d verificatonMap[lt]\n    if !ok {\n        return \"\", errors.Errorf(\"unrecognized lookupTuple: %+v\", lt)\n    }\n    return bootedDevice",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9fe1217_ad3c0740",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "As mentioned elsewhere, I think that `res` usually refers to the result that will be returned by this function. How about `contents` instead?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e211b697_1fa7460f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "I think that `res` usually refers to the result that will be returned by the function. How about `contents` instead?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df04ba8b_a9a2fade",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Could you add a comment specifying what it would typically mean for res to be empty?",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6565dc_f36ccad2",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "It looks like you accidentally used the comment from isTargetHosted, here.",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 107
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6cdd97_5a9ff643",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "nit/style: I recommend a newline after L111 in order to clarify that the comment above does not apply to `removable, err :\u003d ...`",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab7d799_836908ed",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Seems like you could replace L117-122 with:\n\n    return removable \u003d\u003d \"1\", nil",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a92d5ce_55f4bec4",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/cat.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "nit/typo: \"reports\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 49,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf17513_b960c4aa",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "`crossystem` is used more broadly than just in firmware. Already it is used in firmware, crash, platform, and hwsec. To avoid duplication, maybe we should consider putting this into a more neutral location, such as tast-tests/src/chromiumos/tast/remote/dutfs/crossystem.go, or tast-tests/src/chromiumos/tast/remote/platform/crossystem.go.",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b223127d_e62d7457",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need to require this parameter. If a required key is missing from the crossystem output, then the error will already be apparent at runtime. Omitting this parameter will make our code more succinct.",
+      "range": {
+        "startLine": 29,
+        "startChar": 49,
+        "endLine": 29,
+        "endChar": 80
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f25f008_6ae044c5",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "TODO: Unit-test this",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bb47e4_828b942a",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "I still think that this function would be cleaner without keeping two separate maps. What do you think about the following?\n\n    func parseCrossystemOutput(outputLines []string) (map[CrossystemKey]string, error) {\n        csMap :\u003d make(map[string]string)\n        for _, line :\u003d range outputLines {\n            kv :\u003d rCrossystemLine.FindStringSubmatch(strings.TrimSpace(line))\n            if kv \u003d\u003d nil {\n                return nil, errors.Errorf(\"failed to parse crossystem line %q\", line)\n            }\n            if _, existing :\u003d csMap[kv[1]]; existing {\n                return nil, errors.Errorf(\"duplicating crossystem key %v, existing value %v, parsing line %q\", kv[1], csMap[kv[1]], line)\n            if isCSKeyKnown(CrossystemKey(kv[1])) {\n                csMap[CrossystemKey(kv[1])] \u003d kv[2]\n        }\n        return csMap\n    }\n    \n    func isCSKeyKnown(k1 CrossystemKey) bool {\n        for _, k2 :\u003d range knownCrossystemKeys {\n            if k1 \u003d\u003d k2 {\n                return true\n            }\n        }\n        return false\n    }",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "2fe5ccef_cd9d65bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "1. I think smaller chunks are also meaningfully testable here. Crossystem would be useful to have an individual test for. There\u0027s a lot of high-level structure added here that could also be separated.",
+      "parentUuid": "c09047c5_dbc05e5a",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48a16822_0143d91a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
         "patchSetId": 5
@@ -319,6 +337,30 @@
       "side": 1,
       "message": "I prefixed with the type to have a consistent prefix to give more context to the const, otherwise it\u0027s not obvious that reporters.NormalInternalSig is associated with BootedDevice reporter.",
       "parentUuid": "9817987f_2dc40b31",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b555aad7_6a2e69ab",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Yes, there is a balance to be struck between conciseness and descriptiveness. Go explicitly prefers short variable names, yet context is helpful becaue these are defined far away from where they will be used: https://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nHow would you feel about, say, BDNormalInternalSig, BDDeveloperInternalSig, etc.?",
+      "parentUuid": "237f0a96_27a84528",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -647,6 +689,24 @@
     },
     {
       "key": {
+        "uuid": "673636af_a82dff72",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "I think it will be good to avoid duplicated code. IMO, the best way to handle this will be to define IsRemovableDevice as an RPC.\n\nCould you add a TODO comment (with a tracking bug#, or either of our usernames) to deduplicate?",
+      "parentUuid": "a105bdd0_98bb64ee",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07af9df6_2bbab2fc",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -870,6 +930,30 @@
       "side": 1,
       "message": "Prefer to leave as-is, reasoning is that these consts all belong to the reporters package, so without Crossystem somewhere in the name, it\u0027s hard to tell which reporter the const is associated with.",
       "parentUuid": "7de8701a_6f732166",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb035292_2e86b109",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Similar to my comment for the BootedDevice constants, how would you feel about CSMainfwType/CSKernkeyVfy?",
+      "parentUuid": "95fe1347_9c10c860",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -1434,6 +1518,30 @@
     },
     {
       "key": {
+        "uuid": "34950d77_85717da2",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "\u003e this makes test code and logging of reported values/errs more consistent.\n\nThe standard of ([information, [information...]], error) is already ubiquitous in Tast. I don\u0027t think specifying it here adds value.\n\n\u003e Also, should tast assertions go through, it will work nicely with them.\n\nIn that case, I think that explicitly using an Interface will be the way to go. It will allow us to enforce the signature we expect, and to build functions/methods around the expected signature. It is safer than hoping that future developers follow the suggestion laid out here.\n\nI do not think that we should prescribe that *all* reporters return exactly (\u003cinformation\u003e error) even when it doesn\u0027t make sense. I would prefer to leave it open-ended until we actually need enforcement.",
+      "parentUuid": "e6fa7ed1_04d58b63",
+      "range": {
+        "startLine": 5,
+        "startChar": 105,
+        "endLine": 5,
+        "endChar": 142
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6130a54f_3ddbd46e",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
         "patchSetId": 5
@@ -1948,6 +2056,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e15b425_22417654",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "Done, didn\u0027t know that!",
+      "parentUuid": "6f740a40_ce984659",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

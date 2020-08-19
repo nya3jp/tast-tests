@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "5114f046_03f7f821",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T21:20:44Z",
+      "side": 1,
+      "message": "I would recommend the opposite heuristic. From go/tast-overview#remote-tests:\n\n    [Remote tests] run more slowly than local tests, are harder to write, and are more susceptible to infrastructure and hardware issues.\n\nLet\u0027s chat about local v. remote strategy. Possibilities include RPC services, and using tast-tests/src/chromiumos/tast/common/firmware/.",
+      "parentUuid": "29c1d22a_ad013839",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "3defd9a37687d52e7e23f4b479b59ada7e092dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ea2dc3_92f7dc7f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 2
