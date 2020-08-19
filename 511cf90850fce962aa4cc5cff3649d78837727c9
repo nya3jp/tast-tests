@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2a8ffd19_41e26fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T06:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac3ca57_fb9d0ee0",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2846631_537760cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
         "patchSetId": 2
@@ -89,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "bad6277c_40441676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T06:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0769b71_f039053c",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ec6dc64_a5f60cc8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
         "patchSetId": 2
@@ -100,6 +148,24 @@
       "writtenOn": "2020-08-19T04:06:05Z",
       "side": 1,
       "message": "I assume you have, but have you checked running another crostini test with the same precondition after this one?",
+      "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffe7c29_3e72e9b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T06:10:34Z",
+      "side": 1,
+      "message": "Yes.  I have run:\n\n  tast run localhost:8022 crostini.BackupRestore.artifact \\\n  crostini.SshfsMount.artifact crostini.ShareFiles.artifact  \\\n  crostini.FilesappWatch.artifact\n\nThis runs OK, but when I use that command, I can see the installer still runs between BackupRestore and SshfsMount.  Am I doing something wrong?\n\nhttps://paste.googleplex.com/4722646450176000",
+      "parentUuid": "9ec6dc64_a5f60cc8",
       "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
