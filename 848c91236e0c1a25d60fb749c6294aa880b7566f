@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11d0d2c_541c1ba8",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:56:47Z",
+      "side": 1,
+      "message": "Please fully capitalize, or fully uncapitalize, acronyms, per Go\u0027s naming conventions: https://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\n    Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case. For example, \"URL\" should appear as \"URL\" or \"url\" (as in \"urlPony\", or \"URLPony\"), never as \"Url\". As an example: ServeHTTP not ServeHttp.\n\nIn this case, please rename the function to LXCCommand; and in lines 170-171, please rename envLxc to envLXC.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "revId": "848c91236e0c1a25d60fb749c6294aa880b7566f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a90e4cd_82c21741",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:56:47Z",
+      "side": 1,
+      "message": "Could you instead use testexec.DumpLogOnError in L172?\n\n    cmd :\u003d vm.Command(ctx, append(envLxc, lxcArgs...)...)\n    err :\u003d cmd.Run(testexec.DumpLogOnError)\n    if err !\u003d nil {\n        return errors.Wrapf(err, ...)\n    }",
+      "revId": "848c91236e0c1a25d60fb749c6294aa880b7566f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8823702a_1d80d7f0",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:56:47Z",
+      "side": 1,
+      "message": "The object being wrapped here is just a string, so I recommend switching to %s or %q. In particular, I think %q most clearly show what is part of the command.",
+      "range": {
+        "startLine": 175,
+        "startChar": 42,
+        "endLine": 175,
+        "endChar": 44
+      },
+      "revId": "848c91236e0c1a25d60fb749c6294aa880b7566f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
