@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "291eea60_e8f21886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "This CL is in the private repo with this id and contains credentials for wifi.signinProfileTestExtensionManifestKey. I think my new patchset changes the commit message to use the internal repo",
+      "parentUuid": "b2e5c85b_03dda1d9",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "855e8c27_e8525eb8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-19T17:45:17Z",
       "side": 1,
       "message": "umm, I think you were planning to do something with this?",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 137
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a057dfe_6ea9b6c9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "Yeah, I need that setting disabled for this test because bluetooth persistence doesn\u0027t work for some reason if this is active (I\u0027m actually not sure why this is the only setting that matters, but I tried most combinations of parameters and this is the only one that seemed to have mattered). I\u0027m not sure what the best way to have this setting off for this test is without affecting other tests in tast. Maybe @yenlinlai has some thoughts on the best way to have this off for the test? If I ever figure out this bluetooth private stuff, I probably won\u0027t have to worry about this.\n\nI can try adding an option in a chrome package and condition on that to determine which flags to use.",
+      "parentUuid": "855e8c27_e8525eb8",
       "range": {
         "startLine": 737,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "44904548_457c84fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "Done and now mirrored in the other test.",
+      "parentUuid": "17316ae7_b3afb161",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53506418_f2b0f57d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af208ecf_8786e2a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "Done and now mirrored in the other test.",
+      "parentUuid": "53506418_f2b0f57d",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "77e57257_cf170dfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "Done and mirrored in the other test.",
+      "parentUuid": "b472a08b_b515d4ef",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69aa9174_c9f298a8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2020-08-19T17:45:17Z",
       "side": 1,
       "message": "Honest question: is there any need to clean this up at exit, or do we cleanly handle this in all other tests (either explicitly re-enabling WiFi, or else clearing the profile)?\n\nUsually, tests should re-configure whatever they need at startup, but sometimes we want to do both, just to be kind to developers, etc.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 106
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a555d088_b6270fb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "I think we should clean things up at exit to be on the safe side. I\u0027m not sure how concerned we are on tast runtiems, but I think persistence tests can be pretty dangerous. The cleanup function in line 38 in this patchset (which I have now labeled as such) will re-enable the technology on test termination in both tests.",
+      "parentUuid": "69aa9174_c9f298a8",
       "range": {
         "startLine": 124,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "adaae09d_f54730fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "I guess I don\u0027t need the sleep. I\u0027ll just remove it.",
+      "parentUuid": "ca494a97_b5117175",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c75d13a_767d3aaf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bd7cca_55ca555f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T19:36:42Z",
+      "side": 1,
+      "message": "This line stores credentials for the sign-in profile. This is included in the CQ-Depend, but it\u0027s in the private repo. I am using this feature: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables\n\nIt\u0027s a mirror of ui.signinProfileTestExtensionManifestKey but I can\u0027t use that since it\u0027s in a different package. I just copied it into the wifi package.\n\nHopefully with the new patchset, if you pull the CQ-depend change as well as this one, you should be able to execute the test itself as is.\n\ntast -verbose run  {DUT_HOSTNAME} wifi.PersistenceBluetoothSansWifi/wifi.PersistenceWifiSansBluetooth",
+      "parentUuid": "7c75d13a_767d3aaf",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
