@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "16f22176_ec312fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T11:26:34Z",
+      "side": 1,
+      "message": "Actually, this extra args is not required. Maybe I should remove this and not add HardwareDeps? Because when trying to add TouchScreen, my DUT doesn\u0027t meet the requirement. \n\nWhen I try to import the HardwareDeps that other test use, I got undefined: pre.InputsStableModels (http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go?l\u003d30\u0026rcl\u003d553334fd33bec10e8ec689786b6f7c6db3ffb94a) even though I have imported `\"chromiumos/tast/local/bundles/cros/inputs/pre\"`",
+      "parentUuid": "73ccb5d4_716f9b44",
+      "range": {
+        "startLine": 33,
+        "startChar": 75,
+        "endLine": 33,
+        "endChar": 125
+      },
+      "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e232f319_b6bf6b81",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 2
@@ -79,6 +103,30 @@
       "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8d4436_88d82338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T11:26:34Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "e232f319_b6bf6b81",
+      "range": {
+        "startLine": 103,
+        "startChar": 26,
+        "endLine": 103,
+        "endChar": 82
+      },
+      "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
