@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b21c2f99_1372fa01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f46f082a_f22b94d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "Can this be reduced now?",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643df78e_0664b39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "minor nit: keep this at the top, next to s.PreValue()",
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9594500_8e5e2021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "nit: t for bool",
+      "range": {
+        "startLine": 136,
+        "startChar": 52,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd650e3_fb8bcd23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "Can this be reduced now?",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d50b90_36bec41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-19T07:50:43Z",
+      "side": 1,
+      "message": "minor nit: keep this at the top, next to s.PreValue()",
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
