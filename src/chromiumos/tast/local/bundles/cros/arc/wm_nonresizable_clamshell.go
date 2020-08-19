@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -29,6 +31,8 @@ func init() {
 		Timeout:      8 * time.Minute,
 	})
 }
+
+const roundingError = 0.01
 
 func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
@@ -61,6 +65,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			// non-resizable/clamshell: hide shelf when app maximized
 			Name: "NC_hide_shelf_app_max",
 			Func: wmNC12,
+		},
+		wm.TestCase{
+			// non-resizable/clamshell: display size change
+			Name: "NC_display_size_change",
+			Func: wmNC15,
 		},
 	})
 }
@@ -328,6 +337,122 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return nil
+}
+
+// wmNC15 covers non-resizable/clamshell: display size change.
+// Expected behavior is defined in: go/arc-wm-r NC15: non-resizable/clamshell: display size change.
+func wmNC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, actName := range []string{
+		wm.NonResizableLandscapeActivity,
+		wm.NonResizablePortraitActivity,
+		wm.NonResizableUnspecifiedActivity,
+	} {
+		if err := displaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// displaySizeChangeTestsHelper is used for non-resizable Tast-tests that are testing resolution change.
+func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	// Start the activity.
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get primary display info before zoom.
+	dispInfoBeforeZoom, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dispInfoBeforeZoom == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	displayID := dispInfoBeforeZoom.ID
+
+	// Get buttons info before zoom.
+	buttonBoundsBeforeZoom, err := getButtonBounds(ctx, d, act.PackageName())
+	if err != nil {
+		return err
+	}
+
+	displayZoomFactors := dispInfoBeforeZoom.AvailableDisplayZoomFactors
+	newZoom := 0.
+
+	for _, z := range displayZoomFactors {
+		if z != 1 {
+			newZoom = z
+			break
+		}
+	}
+	if newZoom == 0 {
+		return errors.Errorf("invalid AvailableDisplayZoomFactors: got %v; want array with at least one value different than '1'", displayZoomFactors)
+	}
+	if err := wm.ChangeDisplayZoomFactor(ctx, tconn, displayID, newZoom); err != nil {
+		return err
+	}
+	defer wm.ChangeDisplayZoomFactor(ctx, tconn, displayID, dispInfoBeforeZoom.DisplayZoomFactor)
+
+	// Get buttons info after zoom.
+	buttonBoundsAfterZoom, err := getButtonBounds(ctx, d, act.PackageName())
+	if err != nil {
+		return err
+	}
+
+	// Get primary display info after zoom.
+	dispInfoAfterZoom, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dispInfoAfterZoom == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	// The window is maximized, so the content should be relayout (button bounds must be different).
+	if buttonBoundsBeforeZoom == buttonBoundsAfterZoom {
+		return errors.Errorf("invalid button bounds after resolution changed, got: %q, want: %q", buttonBoundsAfterZoom, buttonBoundsBeforeZoom)
+	}
+
+	// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient.
+	// Because of possible roundings, the difference is calculated that should be less than roundingError (0.01() to have up to 2 decimal points of precision.
+	if math.Abs(newZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > roundingError {
+		return errors.Errorf("invalid DPIX ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
+	}
+	if math.Abs(newZoom-dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY) > roundingError {
+		return errors.Errorf("invalid DPIY ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
+	}
+
+	return nil
+}
+
+func getButtonBounds(ctx context.Context, d *ui.Device, packageName string) (coords.Rect, error) {
+	button := d.Object(ui.PackageName(packageName),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
+	if err := button.WaitForExists(ctx, 5*time.Second); err != nil {
+		return coords.Rect{}, errors.Wrap(err, "getButtonBounds failed")
+	}
+
+	buttonBounds, err := button.GetBounds(ctx)
+	if err != nil {
+		return coords.Rect{}, errors.Wrap(err, "getButtonBounds failed")
+	}
+
+	return buttonBounds, nil
 }
 
 // checkMaxActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
