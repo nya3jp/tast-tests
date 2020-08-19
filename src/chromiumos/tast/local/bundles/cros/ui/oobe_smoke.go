@@ -23,7 +23,7 @@ func init() {
 
 func OOBESmoke(ctx context.Context, s *testing.State) {
 	// HID detection screen is shown before the welcome screen on certain devices, thus flag is added to prevent such cases.
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--disable-hid-detection-on-oobe"))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--disable-hid-detection-on-oobe"), chrome.EnableFeatures("ChildSpecificSignin"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -54,6 +54,13 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 	}
 	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-eula-md').$.acceptButton.click()"); err != nil {
 		s.Fatal("Failed to click accept eula button: ", err)
+	}
+
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('user-creation.hidden')"); err != nil {
+		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
+	}
+	if err := oobeConn.Exec(ctx, "document.querySelector('user-creation').$.nextButton.click()"); err != nil {
+		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('gaia-signin[hidden]')"); err != nil {
