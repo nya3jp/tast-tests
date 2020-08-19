@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aada97d_e845b207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-19T23:55:42Z",
+      "side": 1,
+      "message": "I think this looks pretty reasonable, apart from the existing concerns (e.g., chrome.go; whether or not to keep using UI poking for Bluetooth; perhaps some bikeshedding over names). Is there more for reviewers to contribute right now?",
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
