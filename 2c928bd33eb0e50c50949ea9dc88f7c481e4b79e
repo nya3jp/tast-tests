@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1ca0af2a_8f61fd70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T04:11:20Z",
+      "side": 1,
+      "message": "@Brian. I have put this in the wifi remote tests. I updated the wifi service to allow me to toggle the technology status through shill. I wrote a bluetooth service that toggles the bluetooth state. I am still using the ui with the current patchset. \n\n@Steven I will look into using bluetooth private. The test is indeed fragile to string change.",
+      "parentUuid": "ebef89b8_53d92c01",
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63ade6ca_0cfb8efa",
         "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
         "patchSetId": 1
@@ -77,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "448e91bc_73a24c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T04:11:20Z",
+      "side": 1,
+      "message": "Done. I rewrote the module.",
+      "parentUuid": "63ade6ca_0cfb8efa",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fd6b548_b79af883",
         "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
         "patchSetId": 1
@@ -97,6 +139,30 @@
       "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d117dc88_4da7c51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/coex/phytoggle/phy_toggle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-19T04:11:20Z",
+      "side": 1,
+      "message": "Done. Good point, I rewrote the module to accomplish this.",
+      "parentUuid": "3fd6b548_b79af883",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "2c928bd33eb0e50c50949ea9dc88f7c481e4b79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
