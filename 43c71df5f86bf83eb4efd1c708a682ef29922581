@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "5ad08938_1b52f0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-19T12:01:09Z",
+      "side": 1,
+      "message": "The reason to have --force-tablet-mode\u003dtouch_view is to force start device in tablet mode. Because most use cases for virtual keyboard is on tablet mode. @Alex, please let me know if it is ideal to add hwdep.TouchScreen(), we might need to update other tests as well. Anyway, we have not seen any issues so far in existing tests without hwdep.TouchScreen().",
+      "parentUuid": "16f22176_ec312fe1",
+      "range": {
+        "startLine": 33,
+        "startChar": 75,
+        "endLine": 33,
+        "endChar": 125
+      },
+      "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e232f319_b6bf6b81",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 2
