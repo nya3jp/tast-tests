@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90f457a6_f83cebce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-19T22:14:35Z",
+      "side": 1,
+      "message": "Hi Eliot, could you take a look at arc/pip.go and lacros/gpu_cuj.go? I\u0027ve added a wrapper for Quick Settings (a.k.a. ubertray) and updated these tests to use it as well, so just wanted to make sure you\u0027re OK with the changes. Thanks!",
+      "revId": "011d17093bbf7865c9bd61a4b826f58346e09f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
