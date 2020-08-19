@@ -16,6 +16,149 @@
       "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "673343a4_d0ec166a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "Oh, I was removed from R :-).\nAs I already did some review, let me leave drive-by comments. Defer to deanliao@.",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "380c5486_ad8d08a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "nit: Close should be placed just after NewConnForTarget().\n\nfconn, err :\u003d cr.NewConnForTarget(...)\nif err !\u003d nil {\n  ...\n}\ndefer fconn.Close()",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a37c8f_67786ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "Looks slightly weird, as this dumps the log on mkdir.\nMaybe some mistake in the past?\n\nI\u0027d recommend to remove this, and so that you can use testexec.DumpLogOnError at L139.\n\nif err :\u003d cont.Command(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  s.Fatalf(...)\n}",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2370a05_c43259e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "Instead of passing s, could you return an error, and check in the caller, like:\n\nif err :\u003d sharePath(...); err !\u003d nil {\n  s.Fatal(...)\n}\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d quote \u003d\u003d\nAvoid passing testing.State when it’s not actually necessary\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 169,
+        "startChar": 36,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec37f9c7_755d165f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 191,
+        "startChar": 38,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cebe1c05_7471acc0",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "you can use testexec.DumpLogOnError\n\nif err :\u003d c.Command(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 487,
+        "startChar": 2,
+        "endLine": 487,
+        "endChar": 18
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9bfc9e_21e70e54",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T06:47:46Z",
+      "side": 1,
+      "message": "shell shouldn\u0027t be needed here.\n\nc.Command(ctx, \"sudo\", \"rm\", \"-rf\", path).Run(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 495,
+        "startChar": 23,
+        "endLine": 495,
+        "endChar": 35
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
