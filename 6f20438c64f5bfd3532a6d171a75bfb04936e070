@@ -16,6 +16,23 @@
       "revId": "6f20438c64f5bfd3532a6d171a75bfb04936e070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e26e26c8_ab8505e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-19T05:21:22Z",
+      "side": 1,
+      "message": "nit/offtopic: as you are here...:\n\nconst javaClass \u003d \"...\"",
+      "revId": "6f20438c64f5bfd3532a6d171a75bfb04936e070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
