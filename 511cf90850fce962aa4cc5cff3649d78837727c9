@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac3ca57_fb9d0ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-19T03:38:44Z",
+      "side": 1,
+      "message": "iiuc this is a bashism\n\nprefer: {\"env\", \"LXD_DIR...\"\n\ne.g.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go;rcl\u003dd6384681aa4a2b78826063de70daec43343193dc;l\u003d274",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2846631_537760cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-19T03:38:44Z",
+      "side": 1,
+      "message": "Do we run lxd commands directly in other tests?\nI\u0027d consider making this a method in vm.VM e.g. cont.VM.LxcCommand(\"delete\", \"-f\"...\n\nup to you",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "511cf90850fce962aa4cc5cff3649d78837727c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
