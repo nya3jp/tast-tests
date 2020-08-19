@@ -735,7 +735,6 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 		"/usr/lib/gcc",
 		"/usr/lib/git-core",
 		"/usr/lib/python3",
-		"/usr/lib/python3.7",
 		"/usr/share/doc",
 		"/usr/share/fonts",
 		"/usr/share/i18n",
