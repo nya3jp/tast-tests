@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faa08356_d642e252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-19T22:38:37Z",
+      "side": 1,
+      "message": "I wonder whether there is a better way to do this.\n\nDoes tast data support directory? Or maybe putting them into an archive file as the external data then test could expand them under /tmp and serve from there. A third options would be using wpr.",
+      "revId": "6ae2b087bf49e407c742bef7140cfe5660d517be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
