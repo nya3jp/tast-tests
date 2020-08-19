@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c591e53_20d4f409",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T07:44:38Z",
+      "side": 1,
+      "message": "These tests were originally written 2 years ago before preconditions existed for tast.\n\nMany tests were aggregated so that we would only have to install the container once for all tests.\n\nPreconditions to include an installed container now make it possible to split the tests.",
+      "parentUuid": "18e96448_0aa6d42e",
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc6d422_10982149",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cffe6185_32a9c2a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-19T07:44:38Z",
+      "side": 1,
+      "message": "I have created a new bug.  The work to create preconditions was done by @hollingum probably more than 1 year ago.",
+      "parentUuid": "9cc6d422_10982149",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "f47b0d2e6fc334e14aee8481b6bd7facab1a5c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
