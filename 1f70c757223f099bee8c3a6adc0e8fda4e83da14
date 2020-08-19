@@ -16,6 +16,98 @@
       "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42b5544_0504ac18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-19T03:03:33Z",
+      "side": 1,
+      "message": "To align with real user experience, I think most Japanese users should have already set region in OOBE stage, so prefer to user chrome.region(\"jp\") in chrome.New instead of enabling the language.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783824a5_64b32e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-19T03:03:33Z",
+      "side": 1,
+      "message": "Hard sleep is not encouraged. Alternatively, we can use internal apis / javascript to wait for complete. Such as conn.WaitForExpr(ctx, `document.readyState \u003d\u003d\u003d \"complete\"`)",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d583fa_f6a310dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-19T03:03:33Z",
+      "side": 1,
+      "message": "This is locator is too general, since ui.FindWithTimeout searchs for entire os level a11y tree, it is very easy to be affected by other targets.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4b6389_cb7d9c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-19T03:03:33Z",
+      "side": 1,
+      "message": "This function can not be used for languages other than English qwer layout. It asserts at least 26 keys",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
