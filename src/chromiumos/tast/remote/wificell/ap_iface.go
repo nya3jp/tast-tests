@@ -94,10 +94,6 @@ func (h *APIface) start(fullCtx context.Context) (retErr error) {
 	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
 	defer cancel()
 
-	if err := h.configureIface(ctx); err != nil {
-		return errors.Wrap(err, "failed to setup interface")
-	}
-
 	hs, err := hostapd.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.config)
 	if err != nil {
 		return errors.Wrap(err, "failed to start hostapd")
@@ -105,6 +101,10 @@ func (h *APIface) start(fullCtx context.Context) (retErr error) {
 	h.hostapd = hs
 	// We only need to call cancel of the first shorten context.
 	ctx, _ = h.hostapd.ReserveForClose(ctx)
+
+	if err := h.configureIface(ctx); err != nil {
+		return errors.Wrap(err, "failed to setup interface")
+	}
 
 	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
 	if err != nil {
