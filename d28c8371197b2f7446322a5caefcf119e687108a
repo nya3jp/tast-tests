@@ -33,6 +33,46 @@
       "revId": "d28c8371197b2f7446322a5caefcf119e687108a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d787387a_07070c67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-19T14:25:05Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "d28c8371197b2f7446322a5caefcf119e687108a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64004dd_aa37d1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-19T14:25:05Z",
+      "side": 1,
+      "message": "nit: add comment about this extension e.g:\n// Open IME extension. (or whatever this page is...)",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 107
+      },
+      "revId": "d28c8371197b2f7446322a5caefcf119e687108a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
