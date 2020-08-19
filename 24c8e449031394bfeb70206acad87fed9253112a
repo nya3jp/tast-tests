@@ -76,6 +76,48 @@
     },
     {
       "key": {
+        "uuid": "f336251e_54f9bafc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-19T05:02:12Z",
+      "side": 1,
+      "message": "I understand your concern. However, it is build dependent. This test may use various jars based on target branch and build version. Also realized that is non-intentional paste. So this block is removed.",
+      "parentUuid": "bb6dabf6_00a11157",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 36
+      },
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a8181f_a1a66144",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-19T05:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d5dde8_47586fcb",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62d085db_7bc5f7e1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 3
@@ -93,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "8a1578ed_fb2a4313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-19T05:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d085db_7bc5f7e1",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c449ad8_5558b953",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
         "patchSetId": 3
@@ -107,6 +167,24 @@
       "revId": "24c8e449031394bfeb70206acad87fed9253112a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cedcabfb_0167ad64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-19T05:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c449ad8_5558b953",
+      "revId": "24c8e449031394bfeb70206acad87fed9253112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
