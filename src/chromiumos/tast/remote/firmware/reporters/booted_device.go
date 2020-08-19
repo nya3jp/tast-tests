@@ -25,12 +25,14 @@ const (
 	BootedDeviceTypeDeveloperRemovableHash BootedDeviceType = "developer mode booted from removable device, hash verified kernel key"
 )
 
+// lookupTuple groups all the info required to determine the correct BootedDeviceType
 type lookupTuple struct {
 	mode      string
 	removable bool
 	vfy       string
 }
 
+// verificationMap contains all the valid lookupTuples, if a tuple is not here, then it is not recognized
 var verificationMap = map[lookupTuple]BootedDeviceType{
 	lookupTuple{"normal", false, "sig"}:    BootedDeviceTypeNormalInternalSig,
 	lookupTuple{"developer", false, "sig"}: BootedDeviceTypeDeveloperInternalSig,
@@ -38,65 +40,84 @@ var verificationMap = map[lookupTuple]BootedDeviceType{
 	lookupTuple{"developer", true, "hash"}: BootedDeviceTypeDeveloperRemovableHash,
 }
 
-const (
-	targetHostedFile string = "/etc/lsb-release"
-)
-
 var rTargetHosted = regexp.MustCompile(`(?i)chrom(ium|e)os`)
 var rDevNameStripper = regexp.MustCompile(`p?[0-9]+$`)
 
-// Report the current BootedDeviceType of the DUT.
-func (r *reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
-	if cs, err := r.Crossystem(ctx, CrossystemTypeMainfwType, CrossystemTypeKernvfyKey); err != nil {
+// BootedDevice reports the current BootedDeviceType of the DUT.
+func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
+	cs, err := r.Crossystem(ctx, CrossystemKeyMainfwType, CrossystemKeyKernkeyVfy)
+	if err != nil {
 		return "", err
-	} else if rootPart, err := getRootPartition(ctx, r); err != nil {
-		return "", errors.Wrap(err, "failed to get root partition")
-	} else if removable, err := isRemovableDevice(ctx, r, rootPart); err != nil {
-		return "", errors.Wrapf(err, "failed to determine if %q is removable", rootPart)
-	} else if bootedDevice, found := verificationMap[lookupTuple{cs[CrossystemTypeMainfwType], removable, cs[CrossystemTypeKernvfyKey]}]; !found {
-		return "", errors.Errorf("unrecognized combination of %v=%v, %v=%v, %v=%v", CrossystemTypeMainfwType, cs[CrossystemTypeMainfwType], "removable", removable, CrossystemTypeKernvfyKey, cs[CrossystemTypeKernvfyKey])
-	} else {
-		return bootedDevice, nil
 	}
+
+	rootPart, err := getRootPartition(ctx, r)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get root partition")
+	}
+
+	removable, err := isRemovableDevice(ctx, r, rootPart)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to determine if %q is removable", rootPart)
+	}
+
+	bootedDevice, found := verificationMap[lookupTuple{cs[CrossystemKeyMainfwType], removable, cs[CrossystemKeyKernkeyVfy]}]
+	if !found {
+		return "", errors.Errorf("unrecognized combination of %v=%v, %v=%v, %v=%v", CrossystemKeyMainfwType, cs[CrossystemKeyMainfwType], "removable", removable, CrossystemKeyKernkeyVfy, cs[CrossystemKeyKernkeyVfy])
+	}
+
+	return bootedDevice, nil
 }
 
 // getRootPartition gets the root partition as reported by the 'rootdev -s' command.
-func getRootPartition(ctx context.Context, r *reporter) (string, error) {
-	if res, err := r.CommandLines(ctx, "rootdev", "-s"); err != nil {
+func getRootPartition(ctx context.Context, r *Reporter) (string, error) {
+	res, err := r.CommandOutputLines(ctx, "rootdev", "-s")
+	if err != nil {
 		return "", errors.Wrap(err, "failed to determine root partition")
-	} else if len(res) == 0 || res[0] == "" {
-		return "", errors.New("invalid empty string root partition")
-	} else {
-		return res[0], nil
 	}
+
+	if len(res) == 0 {
+		return "", errors.New("root partition not found")
+	}
+
+	return res[0], nil
 }
 
 // isTargetHosted determines if DUT is hosted by checking if /etc/lsb-release has chromiumos attributes.
-func isTargetHosted(ctx context.Context, r *reporter) (bool, error) {
-	if res, err := r.CatFileLines(ctx, targetHostedFile); err != nil {
+func isTargetHosted(ctx context.Context, r *Reporter) (bool, error) {
+	const targetHostedFile = "/etc/lsb-release"
+	res, err := r.CatFileLines(ctx, targetHostedFile)
+	if err != nil {
 		return false, err
-	} else if len(res) == 0 {
-		return false, nil
-	} else {
-		return rTargetHosted.FindStringIndex(res[0]) != nil, nil
 	}
+
+	if len(res) == 0 {
+		return false, nil
+	}
+	return rTargetHosted.FindStringIndex(res[0]) != nil, nil
 }
 
 // isRemovableDevice determines if DUT is hosted by checking if /etc/lsb-release has chromiumos attributes.
-func isRemovableDevice(ctx context.Context, r *reporter, device string) (bool, error) {
-	if res, err := isTargetHosted(ctx, r); err != nil {
+func isRemovableDevice(ctx context.Context, r *Reporter, device string) (bool, error) {
+	hosted, err := isTargetHosted(ctx, r)
+	if err != nil {
 		return false, err
-	} else if !res {
+	}
+
+	if !hosted {
 		return false, nil
 	}
 
 	// Removes the partition portion of the device.
 	baseDev := rDevNameStripper.ReplaceAllString(strings.Split(device, "/")[2], "")
-	if res, err := r.CatFile(ctx, fmt.Sprintf("/sys/block/%s/removable", baseDev)); err != nil {
+	removable, err := r.CatFile(ctx, fmt.Sprintf("/sys/block/%s/removable", baseDev))
+	if err != nil {
 		return false, err
-	} else if i, err := strconv.Atoi(res); err != nil {
-		return false, errors.Wrapf(err, "removable output %q is not a number", res)
-	} else {
-		return i == 1, nil
 	}
+
+	iRemovable, err := strconv.Atoi(removable)
+	if err != nil {
+		return false, errors.Wrapf(err, "removable output %q is not a number", removable)
+	}
+
+	return iRemovable == 1, nil
 }
