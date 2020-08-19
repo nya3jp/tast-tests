@@ -125,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "06326c27_7862ff54",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-19T00:01:48Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll leave it as is for now.",
+      "parentUuid": "c585cdf0_9683b078",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "d779d680652facbce8b7e5db12298e418a41c4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9c1df37_6ca594ad",
         "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
         "patchSetId": 6
