@@ -107,6 +107,23 @@
     },
     {
       "key": {
+        "uuid": "e1379f90_8fc0d4ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:41:22Z",
+      "side": 1,
+      "message": "Just sharing another link I found about removing unnecessary :\n\n...",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a16822_0143d91a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
         "patchSetId": 5
@@ -135,6 +152,30 @@
       "writtenOn": "2020-08-18T21:36:40Z",
       "side": 1,
       "message": "Per \"Effective Go\", it is typical to remove the unnecessary `else`:\n\n    bootType, err :\u003d r.BootedDevice(ctx)\n    if err !\u003d nil {\n        s.Fatal(...)\n    }\n    s.Log(...)\n\nref: http://go/effective-go#if:\n\n    In the Go libraries, you\u0027ll find that when an if statement doesn\u0027t flow into the next statement—that is, the body ends in break, continue, goto, or return—the unnecessary else is omitted.\n\n    f, err :\u003d os.Open(name)\n    if err !\u003d nil {\n        return err\n    }\n    codeUsing(f)",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e766866_13b7966d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:41:22Z",
+      "side": 1,
+      "message": "Just sharing another link I found about this: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "parentUuid": "1f54e426_debca162",
       "range": {
         "startLine": 30,
         "startChar": 2,
