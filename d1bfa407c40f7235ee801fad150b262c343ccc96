@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "cb7c69f3_3dd7559c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46f082a_f22b94d2",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "643df78e_0664b39f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 3
@@ -56,6 +80,24 @@
       "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd270d4_eeb89e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T18:08:03Z",
+      "side": 1,
+      "message": "It was asked by amusbach (the author of the test), I\u0027ll follow his preference.",
+      "parentUuid": "643df78e_0664b39f",
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "f67ef09c_871b43ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9594500_8e5e2021",
+      "range": {
+        "startLine": 136,
+        "startChar": 52,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afd650e3_fb8bcd23",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 3
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "e5efece0_de24a056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd650e3_fb8bcd23",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72d50b90_36bec41d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 3
@@ -119,6 +209,24 @@
       "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e23b4f_1f25b788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T18:08:03Z",
+      "side": 1,
+      "message": "It was asked by amusbach (the author of the test), I\u0027ll follow his preference.",
+      "parentUuid": "72d50b90_36bec41d",
+      "revId": "d1bfa407c40f7235ee801fad150b262c343ccc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
