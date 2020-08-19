@@ -239,7 +239,7 @@ VideoTrackNumLoop:
 }
 
 // VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for codec.
-func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, codec videotype.Codec) error {
+func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, codec videotype.Codec, recordTime time.Duration) error {
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
@@ -304,7 +304,7 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Ch
 	// racy. Insert a sleep() temporarily until Blink code is fixed: b/158858449.
 	testing.Sleep(ctx, 2*time.Second)
 
-	startRecordJS := fmt.Sprintf("startRecordingForResult(%q)", codec)
+	startRecordJS := fmt.Sprintf("startRecordingForResult(%q, %d)", codec, recordTime.Milliseconds())
 	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
 		return errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
 	}
