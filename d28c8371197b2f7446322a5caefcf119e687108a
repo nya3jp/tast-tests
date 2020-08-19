@@ -73,6 +73,30 @@
       "revId": "d28c8371197b2f7446322a5caefcf119e687108a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244ca551_8e617487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T19:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64004dd_aa37d1c7",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 107
+      },
+      "revId": "d28c8371197b2f7446322a5caefcf119e687108a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

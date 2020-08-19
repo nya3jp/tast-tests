@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "caffbb64_04a2865b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T19:14:34Z",
+      "side": 1,
+      "message": "Ah thanks Jun and Alex 😄",
+      "parentUuid": "753050fd_ea58e74d",
+      "range": {
+        "startLine": 33,
+        "startChar": 75,
+        "endLine": 33,
+        "endChar": 125
+      },
+      "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e232f319_b6bf6b81",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 2
