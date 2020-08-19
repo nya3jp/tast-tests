@@ -15,7 +15,7 @@ const userMediaConstraints = {audio: true, video: {width: 1280, height: 720}};
 
 // Starts recording with specified video codec and waits for the first
 // recorded blob in ondataavailable.
-async function startRecordingForResult(codec) {
+async function startRecordingForResult(codec, recordDurationMs) {
   const stream = await navigator.mediaDevices.getUserMedia(userMediaConstraints);
 
   document.getElementById('video').srcObject = stream;
@@ -31,9 +31,7 @@ async function startRecordingForResult(codec) {
     recorder.onerror = (event) => {
       reject(new Error('MediaRecorder error ' + event.error));
     };
-    // Let the MediaRecorder accumulate a few milliseconds, otherwise we might
-    // receive just bits and pieces of the container header in  ondataavailable.
-    recorder.start(100);
+    recorder.start(recordDurationMs);
   });
 }
 
