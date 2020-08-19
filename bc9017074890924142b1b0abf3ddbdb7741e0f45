@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f604f10_e9490cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-19T21:59:57Z",
+      "side": 1,
+      "message": "Updated naming per an offline email from Tim:\n\n\"\nTray/UberTray: The element in the bottom right containing the time, battery, etc.\nQuick Settings: The bubble that pops up after clicking on the tray\nStatus Area: The region in the shelf bar containing the tray as well as other buttons (e.g. IME, stylus tools, etc.)\n\"",
+      "revId": "bc9017074890924142b1b0abf3ddbdb7741e0f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "e4bc8ac0_4f184585",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-19T21:59:57Z",
+      "side": 1,
+      "message": "Updated all the names per Tim\u0027s email, let me know what you think.",
+      "parentUuid": "047e06c2_bc445d53",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efac7b1a_a97d23e7",
         "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
         "patchSetId": 8
@@ -266,6 +290,30 @@
       "side": 1,
       "message": "There might be something in settingsPrivate, but for this test specifically, I think we want to test the ui, not skip it through settingsPrivate.",
       "parentUuid": "cf5c868a_f5ce2f9c",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efaf0124_b6e8f9b9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-19T21:59:57Z",
+      "side": 1,
+      "message": "Right, this is mainly for checking the icon status in the Quick Settings UI. Checking the correlation between the Quick Settings icons and the setting values from settingsPrivate sounds like it could be good as a separate test perhaps.",
+      "parentUuid": "63df5e48_553d1eb3",
       "range": {
         "startLine": 179,
         "startChar": 5,
