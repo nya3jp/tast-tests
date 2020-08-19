@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d4688a18_97a80435",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-19T11:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ab1dd5_bf919090",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6667f500_0810a39b",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2020-08-19T05:07:27Z",
       "side": 1,
       "message": "This means the mode in the preconditions is ignored?",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "309df38f_ad248d91",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-19T11:49:10Z",
+      "side": 1,
+      "message": "It is not ignored. I do not want to make setupMode and related fields public so defined consts in installer and translating setupmode here.",
+      "parentUuid": "6667f500_0810a39b",
       "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -67,6 +103,24 @@
       "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48bcf6fc_2c4314c1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-19T11:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e7f4ec_f40cd724",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "40f5ccd2_b6228411",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-19T11:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b46b98_5eadd685",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13a75d96_6d4a474d",
         "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
         "patchSetId": 4
@@ -107,6 +185,24 @@
       "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e405e1_b782ce63",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-19T11:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a75d96_6d4a474d",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
