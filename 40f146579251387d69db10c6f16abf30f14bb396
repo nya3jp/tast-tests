@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ee4751_bd8ef3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-08-19T03:15:19Z",
+      "side": 1,
+      "message": "optional: not sure if conflicts are possible, but i\u0027d rename these to distinguish them from SshfsMount",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "40f146579251387d69db10c6f16abf30f14bb396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
