@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bcd9dca6_8dbacbec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T03:23:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c42b5544_0504ac18",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783824a5_64b32e0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e413c4_3739a1db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T03:23:13Z",
+      "side": 1,
+      "message": "👍 Not needed now because we are waiting for omnibox.",
+      "parentUuid": "783824a5_64b32e0e",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "bc661fd3_8d33d247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T03:23:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72d583fa_f6a310dc",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af4b6389_cb7d9c9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 1
@@ -108,6 +180,30 @@
       "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ade2d5_7ce20ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-08-19T03:23:13Z",
+      "side": 1,
+      "message": "Thanks 😊",
+      "parentUuid": "af4b6389_cb7d9c9e",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "1f70c757223f099bee8c3a6adc0e8fda4e83da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
