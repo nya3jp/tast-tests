@@ -254,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "63df5e48_553d1eb3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-19T18:40:35Z",
+      "side": 1,
+      "message": "There might be something in settingsPrivate, but for this test specifically, I think we want to test the ui, not skip it through settingsPrivate.",
+      "parentUuid": "cf5c868a_f5ce2f9c",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "de2179a9758ae78479878d0448684b62a8086cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2789bc3_28c9717c",
         "filename": "src/chromiumos/tast/local/chrome/ui/ubertray/ubertray.go",
         "patchSetId": 8

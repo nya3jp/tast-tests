@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7be4a46_d6eb27f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-19T18:40:35Z",
+      "side": 1,
+      "message": "Looks good from at tast/code standpoint. Just need to deal with the few comments from david.",
+      "revId": "322f0e89d7f877dcaa394c90701e045ecd936157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffcc94cd_a4a2acff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-19T18:40:35Z",
+      "side": 1,
+      "message": "Just wondering, is this necessary? Does the ui reset between tests not close the ubertray?\n\nIf this is necessary, can you add a comment to the Show method to say that people must defer hiding the ui?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "322f0e89d7f877dcaa394c90701e045ecd936157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
