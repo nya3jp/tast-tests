@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "753050fd_ea58e74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-08-19T12:35:27Z",
+      "side": 1,
+      "message": "Sorry, should have answered more clearly.\nIf you don\u0027t really need a touch screen then adding the HardwareDep doesn\u0027t make sense, I just thought maybe you are using a DUT that has one and thus you never ran into the problem of the test not working properly.\nIf the extra arg helps in your test but doesn\u0027t require the touchscreen feel free to add it again.",
+      "parentUuid": "634bb653_39094e21",
+      "range": {
+        "startLine": 33,
+        "startChar": 75,
+        "endLine": 33,
+        "endChar": 125
+      },
+      "revId": "43c71df5f86bf83eb4efd1c708a682ef29922581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e232f319_b6bf6b81",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
         "patchSetId": 2
