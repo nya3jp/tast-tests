@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74119a99_2aef689e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:15:01Z",
+      "side": 1,
+      "message": "huge nit:\n\n if err :\u003d ioutil.WriteFile(...); err !\u003d nil { ... }\n\nis an idiomatic style.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "1942e218acc15caf9b56780229ecff7950aa22e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

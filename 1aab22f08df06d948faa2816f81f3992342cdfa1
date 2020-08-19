@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "a67165a3_81c91013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:15:01Z",
+      "side": 1,
+      "message": "Looks not done.",
+      "parentUuid": "3159fec6_c9d70d36",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c273f34_4d10d8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -148,6 +172,30 @@
       "side": 1,
       "message": "Tried with this and few similar ones, but couldn\u0027t make it work. Any idea where I might be wrong?\n\nmatchPathConOutput, err :\u003d testexec.CommandContext(ctx, \"find\", \"directoryPath\", \"-exec\", \"matchpathcon\", \"-f\", dataDirFileContexts, \"-V\", \"{}\", \"\\\\;\")",
       "parentUuid": "28c0ab2c_27743984",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e2b713_dcba1a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:15:01Z",
+      "side": 1,
+      "message": "You don\u0027t need backslash escapes. i.e.\n\n testexec.CommandContext(ctx, \"find\", directoryPath, \"-exec\", \"matchpathcon\", \"-f\", dataDirFileContexts, \"-V\", \"{}\", \";\")",
+      "parentUuid": "0b72704c_cb2e23de",
       "range": {
         "startLine": 75,
         "startChar": 32,
@@ -442,6 +490,30 @@
     },
     {
       "key": {
+        "uuid": "80f25944_337c8cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:15:01Z",
+      "side": 1,
+      "message": "Yes, exactly.",
+      "parentUuid": "a9850c28_84acce28",
+      "range": {
+        "startLine": 139,
+        "startChar": 42,
+        "endLine": 139,
+        "endChar": 58
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1f876df_1ffaeaf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
@@ -533,6 +605,30 @@
       "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c918a09_91c83c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:15:01Z",
+      "side": 1,
+      "message": "Ack, thanks for clarification.",
+      "parentUuid": "4f99a373_6bf5f689",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
