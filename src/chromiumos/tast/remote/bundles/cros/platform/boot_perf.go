@@ -66,7 +66,8 @@ func assertRootfsVerification(ctx context.Context, s *testing.State) {
 
 // waitUntilCPUCoolDown waits until system CPU cools down to stabilize the test.
 func waitUntilCPUCoolDown(fullCtx context.Context, s *testing.State) {
-	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+	// Use a timeout of 30 seconds for waiting until the CPU cools down. A longer wait only has a marginal effect.
+	ctx, cancel := context.WithTimeout(fullCtx, 30*time.Second)
 	defer cancel()
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
