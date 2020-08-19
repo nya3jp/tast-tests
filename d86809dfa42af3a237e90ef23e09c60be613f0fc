@@ -16,6 +16,29 @@
       "revId": "d86809dfa42af3a237e90ef23e09c60be613f0fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc4e30c2_77e75af9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-19T09:09:09Z",
+      "side": 1,
+      "message": "len(c.enableFeatures) !\u003d 0\n\nnil is an empty slice, but it is not the only empty slice, e.g. make([]string, 0).",
+      "range": {
+        "startLine": 812,
+        "startChar": 4,
+        "endLine": 812,
+        "endChar": 27
+      },
+      "revId": "d86809dfa42af3a237e90ef23e09c60be613f0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
