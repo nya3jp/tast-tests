@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bb8a466d_4c2dc084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-19T03:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87fc1fbd_303f9a61",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f025c739_9d925364",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5583744_3c45536c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-19T03:13:32Z",
+      "side": 1,
+      "message": "Correct, from the reason you mentioned, I thought of i420 as unnecessary.",
+      "parentUuid": "f025c739_9d925364",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "5d56ba52_e6260465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-19T03:13:32Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b4c672a4_212a2419",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "051da71e_373f25c5",
         "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
         "patchSetId": 2
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "8a48a438_cccc6cb7",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-19T03:13:32Z",
+      "side": 1,
+      "message": "Ack. Me too!",
+      "parentUuid": "051da71e_373f25c5",
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "267e7de7_fb1e7ac2",
         "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
         "patchSetId": 2
@@ -119,6 +209,24 @@
       "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19955e4e_f16661bc",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-08-19T03:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267e7de7_fb1e7ac2",
+      "revId": "2e3da91f63a8ff8cb43e57ff23e064582142b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
