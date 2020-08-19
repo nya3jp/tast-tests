@@ -16,6 +16,24 @@
       "revId": "6ae2b087bf49e407c742bef7140cfe5660d517be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de0ab470_4ab75d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-19T23:08:05Z",
+      "side": 1,
+      "message": "yeah, I\u0027m kinda hesitant to do this, but I don\u0027t think directory is supported.\n\n- agree that WPR (replayer/cache) is a good solution for this. It\u0027s a bit complicated to deal with other preconditions like lacros / skia_renderer\n- another solution is to simply use a single zip file to hold those files.  Tast doesn\u0027t unarchive zip files, but it wouldn\u0027t be hard to do that by yourself with standard https://golang.org/pkg/archive/zip/ package",
+      "parentUuid": "faa08356_d642e252",
+      "revId": "6ae2b087bf49e407c742bef7140cfe5660d517be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
