@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "5214f2c5_8cffbc1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-19T15:48:01Z",
+      "side": 1,
+      "message": "whoops, ignore this comment -- wound up attaching it to another comment thread instead.",
+      "parentUuid": "e1379f90_8fc0d4ea",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a16822_0143d91a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go",
         "patchSetId": 5
