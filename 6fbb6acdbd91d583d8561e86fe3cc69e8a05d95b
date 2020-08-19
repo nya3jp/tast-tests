@@ -85,6 +85,23 @@
       "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2516bc54_94ab538d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-19T23:51:01Z",
+      "side": 1,
+      "message": "Re-sending to tast-owners@",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
