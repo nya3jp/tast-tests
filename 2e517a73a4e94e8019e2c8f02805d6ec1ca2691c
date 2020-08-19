@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "26dc273c_7249a968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-19T13:40:51Z",
+      "side": 1,
+      "message": "Are these used in other tests?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a99c08ff_4e55be8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -35,6 +58,52 @@
         "startChar": 25,
         "endLine": 32,
         "endChar": 26
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09870030_fc9435f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-19T13:40:51Z",
+      "side": 1,
+      "message": "Nit: Failed",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17144b2e_45ea6981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-19T13:40:51Z",
+      "side": 1,
+      "message": "I think we should keep this as Log while the test is informational.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
       },
       "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
