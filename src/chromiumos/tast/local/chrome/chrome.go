@@ -286,6 +286,11 @@ func ExtraArgs(args ...string) Option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
 }
 
+// EnableFeatures returns an Option that can be passed to New to enable specific features in Chrome.
+func EnableFeatures(features ...string) Option {
+	return func(c *Chrome) { c.enableFeatures = append(c.enableFeatures, features...) }
+}
+
 // UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
@@ -323,6 +328,7 @@ type Chrome struct {
 	// dumps directly to a hardcoded directory.
 	breakpadTestMode bool
 	extraArgs        []string
+	enableFeatures   []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -802,6 +808,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 				"--disable-arc-cpu-restriction")
 		}
 	}
+
+	if len(c.enableFeatures) != 0 {
+		args = append(args, "--enable-features="+strings.Join(c.enableFeatures, ","))
+	}
+
 	args = append(args, c.extraArgs...)
 	var envVars []string
 	if c.breakpadTestMode {
