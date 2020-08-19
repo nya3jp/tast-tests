@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ad124e_68b80b25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "Looking pretty good 😊",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4ab1dd5_bf919090",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "Can we remove this and the others now?  We shouldn\u0027t be duplicating the information.",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6667f500_0810a39b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "This means the mode in the preconditions is ignored?",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e7f4ec_f40cd724",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "Tconn, Cr and Cont should be arguments to the functions that need them, and Keyboard/Cont should be return values from where they are produced\n\nThe options should be only simple data, strings, ints and enums.",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b46b98_5eadd685",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "maybe prepareImages?  this does a lot more than starting the lxd server",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a75d96_6d4a474d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-19T05:07:27Z",
+      "side": 1,
+      "message": "Might be better to move the server setup code to a different function from the image preparation code.",
+      "revId": "b2d6ff48ea65802f61b17116c93da2ec6f5de94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
