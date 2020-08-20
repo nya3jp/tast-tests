@@ -283,14 +283,11 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
 		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
 	}
-
-	type getFieldValueFn func(val comm.ReplayResult) float64
-	getValues := func(vals []comm.ReplayResult, fn getFieldValueFn) []float64 {
-		var values []float64
-		for _, val := range vals {
-			values = append(values, fn(val))
+	getDirection := func(d int32) perf.Direction {
+		if d < 0 {
+			return perf.SmallerIsBetter
 		}
-		return values
+		return perf.BiggerIsBetter
 	}
 
 	failedEntries := 0
@@ -302,33 +299,15 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 			failedEntries++
 			continue
 		}
-		perfValues.Set(perf.Metric{
-			Name:      resultEntry.Name,
-			Variant:   "time",
-			Unit:      "sec",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  true,
-		}, getValues(resultEntry.Values, func(r comm.ReplayResult) float64 {
-			return float64(r.DurationInSeconds)
-		})...)
-		perfValues.Set(perf.Metric{
-			Name:      resultEntry.Name,
-			Variant:   "frames",
-			Unit:      "frame",
-			Direction: perf.BiggerIsBetter,
-			Multiple:  true,
-		}, getValues(resultEntry.Values, func(r comm.ReplayResult) float64 {
-			return float64(r.TotalFrames)
-		})...)
-		perfValues.Set(perf.Metric{
-			Name:      resultEntry.Name,
-			Variant:   "fps",
-			Unit:      "fps",
-			Direction: perf.BiggerIsBetter,
-			Multiple:  true,
-		}, getValues(resultEntry.Values, func(r comm.ReplayResult) float64 {
-			return float64(r.AverageFPS)
-		})...)
+		for key, value := range resultEntry.Values {
+			perfValues.Set(perf.Metric{
+				Name:      resultEntry.Name,
+				Variant:   key,
+				Unit:      value.Unit,
+				Direction: getDirection(value.Direction),
+				Multiple:  false,
+			}, float64(value.Value))
+		}
 	}
 
 	if err := perfValues.Save(resultDir); err != nil {
