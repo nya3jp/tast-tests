@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "12f742b2_9ab886ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-20T07:40:56Z",
+      "side": 1,
+      "message": "You may use Fatal if you want, but Fatal() is terminates the execution and should be treated like a return. When you use Fatal(), you don\u0027t need to wrap the normal condition in an else block because the error condition won\u0027t go beyond Fatal().",
+      "parentUuid": "5ce75cae_9ec5cbb0",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "325dc45c_11418573",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 6

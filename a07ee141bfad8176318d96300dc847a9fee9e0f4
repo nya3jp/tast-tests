@@ -172,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "67bf6035_ed6932bc",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-20T07:40:56Z",
+      "side": 1,
+      "message": "That looks good.",
+      "parentUuid": "0f1a3e8e_a5bb3bb2",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d59f4f7_7801e54f",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 1
@@ -1077,6 +1101,24 @@
       "side": 1,
       "message": "After some discussion with paulhsia, I modified my solution and RunningProf.End() return value so a PerfOutput type will be returned. PerfOutput type is a struct containing Prop which is a map[string]interface{}. I think this is a better solution than passing in the container of result. Test does not need to worry about mistakenly used the result value during perf running time. Test can only takes the result after perf End() so it is more robust. Test, however, need to takes care of getting the correct output from the correct perf in the RunningProf arrray.",
       "parentUuid": "50c1cddd_f0b26678",
+      "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46568bf_cabf33ae",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-08-20T07:40:56Z",
+      "side": 1,
+      "message": "\u003e Test, however, need to takes care of getting the correct output from the correct perf in the RunningProf arrray.\n\nYes, that\u0027s needs extra care. The example shows this possibility, but it\u0027s unclear how often tests will need to worry about not mixing results from multiple profilers. We can refactor if people find it painful checking the order of profiler return values in the array.",
+      "parentUuid": "1f42c02a_4c05cc39",
       "revId": "a07ee141bfad8176318d96300dc847a9fee9e0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
