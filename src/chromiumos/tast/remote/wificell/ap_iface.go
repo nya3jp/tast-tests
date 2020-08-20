@@ -249,3 +249,8 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 
 	return nil
 }
+
+// sendCSA sends CSA from AP.
+func (h *APIface) sendCSA(ctx context.Context, freq int) error {
+	return h.hostapd.SendCSA(ctx, freq)
+}

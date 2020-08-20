@@ -127,7 +127,7 @@ const (
 )
 
 // ServiceConnectedStates is a list of service states that are considered connected.
-var ServiceConnectedStates = []string{
+var ServiceConnectedStates = []interface{}{
 	ServiceStatePortal,
 	ServiceStateNoConnectivity,
 	ServiceStateRedirectFound,
