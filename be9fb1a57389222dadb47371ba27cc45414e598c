@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4611a01f_369aab37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-20T09:12:14Z",
+      "side": 1,
+      "message": "Not ready until dependent CLs in chromium and chromeos are merged. For arc.PerfBoot.vm, here is a result sample with and without \"--ignore-arcvm-dev-conf\".\n\nWithout flag:\n2020/08/20 02:00:48 [02:00:48.595] Host uptime: 54710ms, Guest uptime: 15530ms\n2020/08/20 02:00:48 [02:00:48.595] ARC start time in guest uptime: -1330ms\n[16.318, \"arc_new\", [\n    [6.572, \"wait_prop_net.tcp.default_init_rwnd\u003d60\"],\n    [4.126, \"wait_prop_sys.boot_completed\u003d1\"],\n    [2.837, \"wait_prop_ro.arc.boot_completed\u003d1\"],\n    [1.029, \"connect_adb\"]]]]]]]]],\n\nWith flag:\n2020/08/20 02:06:55 [02:06:55.096] Host uptime: 54150ms, Guest uptime: 15300ms\n2020/08/20 02:06:55 [02:06:55.096] ARC start time in guest uptime: -1210ms\n[16.041, \"arc_new\", [\n    [6.356, \"wait_prop_net.tcp.default_init_rwnd\u003d60\"],\n    [4.039, \"wait_prop_sys.boot_completed\u003d1\"],\n    [2.692, \"wait_prop_ro.arc.boot_completed\u003d1\"],\n    [1.034, \"connect_adb\"]]]]]]]]],\n\n\n",
+      "revId": "be9fb1a57389222dadb47371ba27cc45414e598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
