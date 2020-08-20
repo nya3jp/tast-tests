@@ -5,8 +5,9 @@
 // Package pre contains preconditions for apps tests
 package pre
 
-// AppsCriticalModels is a shortlist of boards aiming to run critical essential apps tests.
-var AppsCriticalModels = []string{
+import "chromiumos/tast/testing/hwdep"
+
+var stableModels = []string{
 	// Top VK usage board in 2020 -- convertible, ARM.
 	"hana",
 	// Another top board -- convertible, x64.
@@ -21,6 +22,11 @@ var AppsCriticalModels = []string{
 	"bobba",
 	"kefka",
 	"coral",
-	// VM used for basic development.
-	"betty",
 }
+
+// AppsStableModels is a shortlist of models aiming to run critical inputs tests.
+// More information refers to http://b/161415599.
+var AppsStableModels = hwdep.D(hwdep.Model(stableModels...))
+
+// AppsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
+var AppsUnstableModels = hwdep.D(hwdep.SkipOnModel(stableModels...))

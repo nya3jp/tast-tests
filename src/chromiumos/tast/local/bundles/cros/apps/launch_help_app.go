@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // testParameters contains all the data needed to run a single test iteration.
@@ -34,33 +33,67 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
-		Params: []testing.Param{{
-			Val: testParameters{
-				tabletMode: false,
-				oobe:       true,
+		Params: []testing.Param{
+			{
+				Name:              "clamshell_oobe_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val: testParameters{
+					tabletMode: false,
+					oobe:       true,
+				},
+			}, {
+				Name:              "clamshell_oobe_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       true,
+				},
+			}, {
+				Name:              "tablet_oobe_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       true,
+				},
+			}, {
+				Name:              "tablet_oobe_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       true,
+				},
+			}, {
+				Name:              "clamshell_logged_in_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val: testParameters{
+					tabletMode: false,
+					oobe:       false,
+				},
+				Pre: chrome.LoggedIn(),
+			}, {
+				Name:              "clamshell_logged_in_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       true,
+				},
+			}, {
+				Name:              "tablet_logged_in_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       false,
+				},
+				Pre: chrome.LoggedIn(),
+			}, {
+				Name:              "tablet_logged_in_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       false,
+				},
+				Pre: chrome.LoggedIn(),
 			},
-		}, {
-			Name: "tablet_oobe",
-			Val: testParameters{
-				tabletMode: true,
-				oobe:       true,
-			},
-		}, {
-			Name: "clamshell_logged_in",
-			Val: testParameters{
-				tabletMode: false,
-				oobe:       false,
-			},
-			Pre: chrome.LoggedIn(),
-		}, {
-			Name: "tablet_logged_in",
-			Val: testParameters{
-				tabletMode: true,
-				oobe:       false,
-			},
-			Pre: chrome.LoggedIn(),
-		},
 		}})
 }
 
