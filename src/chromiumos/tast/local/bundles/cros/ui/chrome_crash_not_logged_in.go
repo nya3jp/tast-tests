@@ -122,7 +122,6 @@ func init() {
 				handler: chromecrash.Breakpad,
 				consent: crash.MockConsent,
 			},
-			ExtraAttr: []string{"informational"},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"breakpad", "gpu_sandboxing"},
 		}, {
