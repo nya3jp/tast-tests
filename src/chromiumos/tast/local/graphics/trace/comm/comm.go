@@ -36,25 +36,26 @@ type SystemInfo struct {
 // the required host environment related information inside the guest
 type TestGroupConfig struct {
 	Labels      []string        `json:"Labels"`
+	Flags       []string        `json:"Flags"`
 	Repository  RepositoryInfo  `json:"Repository"`
 	Host        SystemInfo      `json:"Host"`
 	ProxyServer ProxyServerInfo `json:"ProxyServer"`
 	Timeout     uint32          `json:"Timeout,string"`
 }
 
-// ReplayResult struct contains the result of one trace replay pass
-type ReplayResult struct {
-	TotalFrames       uint32  `json:"TotalFrames,string"`
-	AverageFPS        float32 `json:"AverageFPS,string"`
-	DurationInSeconds float32 `json:"DurationInSeconds,string"`
+// ValueEntry struct contains the result metrics for one trace replay test
+type ValueEntry struct {
+	Unit      string  `json:"Unit"`
+	Direction int32   `json:"Direction,string"`
+	Value     float32 `json:"Value,string"`
 }
 
 // TestEntryResult struct contains the result of one TestEntry
 type TestEntryResult struct {
-	Name    string         `json:"Name"`
-	Result  string         `json:"Result"`
-	Message string         `json:"Message"`
-	Values  []ReplayResult `json:"Values"`
+	Name    string                `json:"Name"`
+	Result  string                `json:"Result"`
+	Message string                `json:"Message"`
+	Values  map[string]ValueEntry `json:"Values"`
 }
 
 // TestGroupResult struct is a part of guest->host communication protocol and it carries
