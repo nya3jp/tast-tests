@@ -798,6 +798,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	if clientFreq != uint32(serverFreq) {
 		return errors.Errorf("frequency does not match, got %d want %d", clientFreq, serverFreq)
 	}
+	testing.ContextLogf(ctx, "frequency match, got %d want %d", clientFreq, serverFreq)
 
 	// Check subnet.
 	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &network.GetIPv4AddrsRequest{InterfaceName: iface})
