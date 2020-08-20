@@ -152,15 +152,26 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
-	if err := WaitAndroidInit(ctx); err != nil {
-		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
-	}
-
-	// At this point we can start logcat.
+	// Prepare logcat file, it may be empty if early boot fails.
 	logcatPath := filepath.Join(outDir, logcatName)
 	if err := arc.setLogcatFile(logcatPath); err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
+
+	if err := WaitAndroidInit(ctx); err != nil {
+		// Try starting logcat just in case logcat is possible. Android might still be up.
+		if logcatCmd, err := startLogcat(ctx, &arc.logcatWriter); err != nil {
+			testing.ContextLog(ctx, "Tried starting logcat anyway but failed: ", err)
+			// Ignore.
+		} else {
+			arc.logcatCmd = logcatCmd
+			testing.ContextLog(ctx, "Forcing collection of logcat at early boot")
+		}
+
+		return nil, diagnose(logcatPath, errors.Wrap(err, "Android failed to boot in very early stage"))
+	}
+
+	// At this point we can start logcat.
 	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
