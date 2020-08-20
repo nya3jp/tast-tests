@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b420aaa5_b60e5d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T05:01:59Z",
+      "side": 1,
+      "message": "Reserve time for the deferred function:\nhttps://docs.google.com/document/d/18U9v4bLD7GkihVIPX1tH0xrHg5zMDu-XbapUtzYWHTU/edit#heading\u003dh.hk82hzjg2h39",
+      "revId": "74fd008c4652f63859950431a0d2db65a4e24360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
