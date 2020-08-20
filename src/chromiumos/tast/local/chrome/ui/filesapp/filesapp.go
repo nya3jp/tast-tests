@@ -7,6 +7,7 @@ package filesapp
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/apps"
@@ -15,15 +16,18 @@ import (
 )
 
 // DownloadPath is the location of Downloads for the user.
-const DownloadPath = "/home/chronos/user/Downloads/"
+const (
+	// DownloadPath is the location of Downloads for the user.
+	DownloadPath = "/home/chronos/user/Downloads/"
+)
 
 const uiTimeout = 15 * time.Second
 
 // TODO(crbug/1046853): Look for way to not rely on names being in English.
 var rootFindParams ui.FindParams = ui.FindParams{
-	Name:      "Files",
-	Role:      ui.RoleTypeWindow,
-	ClassName: "RootView",
+	Role:       ui.RoleTypeWindow,
+	ClassName:  "RootView",
+	Attributes: map[string]interface{}{"name": regexp.MustCompile(`^Files.*`)},
 }
 
 // FilesApp represents an instance of the Files App.
