@@ -24,6 +24,7 @@ func init() {
 		Desc:     "Runs a basic test on the default share folder (through UI) using a pre-built crostini image",
 		Contacts: []string{"jinrongwu@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),
