@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fc8b7b5_5ce48cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:58:27Z",
+      "side": 1,
+      "message": "FilesAppWatch\n\nsame below.",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "9417a5c7248dd654ab1a61109b3109138ea2b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bce748f_797598b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:58:27Z",
+      "side": 1,
+      "message": "Reserve time for deferred function to run:\n\nfiles, err :\u003d ..\nif err !\u003d nil { ... }\ndefer func(ctx context.Context) {\n  files.Root.Release(ctx)\n}(ctx)\nctx, cancel :\u003d ctxutil.Shorten(ctx, timeReserveForRelease)\n\nSee https://docs.google.com/document/d/18U9v4bLD7GkihVIPX1tH0xrHg5zMDu-XbapUtzYWHTU/edit#heading\u003dh.hk82hzjg2h39",
+      "revId": "9417a5c7248dd654ab1a61109b3109138ea2b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
