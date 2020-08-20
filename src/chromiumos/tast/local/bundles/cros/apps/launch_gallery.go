@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const testFile = "gear_wheels_4000*3000_20200624.jpg"
@@ -35,16 +34,24 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 		Data:         []string{testFile},
 		Params: []testing.Param{
 			{
-				Name: "clamshell",
-				Val:  false,
-			},
-			{
-				Name: "tablet",
-				Val:  true,
+				Name:              "clamshell_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val:               false,
+			}, {
+				Name:              "clamshell_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val:               false,
+			}, {
+				Name:              "tablet_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val:               true,
+			}, {
+				Name:              "tablet_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val:               true,
 			},
 		},
 	})
