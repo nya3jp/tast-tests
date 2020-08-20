@@ -58,26 +58,40 @@ func saveProcessList(dir string) {
 
 // saveScreenshot saves a screenshot.
 func saveScreenshot(ctx context.Context, dir string) {
-	if err := saveScreenshotCDP(ctx, dir); err != nil {
+	if err := saveScreenshotCDP(ctx, dir, ""); err != nil {
 		testing.ContextLog(ctx, "Failed to take screenshot by Chrome API: ", err)
 	} else {
 		return
 	}
 
 	// Fallback to native screenshot command.
-	if err := saveScreenshotNative(ctx, dir); err != nil {
+	if err := saveScreenshotNative(ctx, dir, ""); err != nil {
+		testing.ContextLog(ctx, "Failed to take screenshot by a command: ", err)
+	}
+}
+
+// SaveScreenshot saves a screenshot with given suffix.
+func SaveScreenshot(ctx context.Context, dir, suffix string) {
+	if err := saveScreenshotCDP(ctx, dir, suffix); err != nil {
+		testing.ContextLog(ctx, "Failed to take screenshot by Chrome API: ", err)
+	} else {
+		return
+	}
+
+	// Fallback to native screenshot command.
+	if err := saveScreenshotNative(ctx, dir, suffix); err != nil {
 		testing.ContextLog(ctx, "Failed to take screenshot by a command: ", err)
 	}
 }
 
 // saveScreenshotNative saves a screenshot by using "screenshot" command.
-func saveScreenshotNative(ctx context.Context, dir string) error {
-	path := filepath.Join(dir, "screenshot_native.png")
+func saveScreenshotNative(ctx context.Context, dir, suffix string) error {
+	path := filepath.Join(dir, "screenshot_native"+suffix+".png")
 	return screenshot.Capture(ctx, path)
 }
 
 // saveScreenshotCDP saves a screenshot by using Chrome API.
-func saveScreenshotCDP(ctx context.Context, dir string) error {
+func saveScreenshotCDP(ctx context.Context, dir, suffix string) error {
 	sm, err := cdputil.NewSession(ctx, cdputil.DebuggingPortPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a new Chrome Devtools Protocol session")
@@ -94,7 +108,7 @@ func saveScreenshotCDP(ctx context.Context, dir string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to make a new Conn")
 	}
-	path := filepath.Join(dir, "screenshot_chrome.png")
+	path := filepath.Join(dir, "screenshot_chrome"+suffix+".png")
 	testing.ContextLog(ctx, "Taking screenshot via chrome API")
 	return screenshot.CaptureCDP(ctx, co, path)
 }
