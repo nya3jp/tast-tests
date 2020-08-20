@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f6f69bc_2aa2754f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 24,
+        "startChar": 72,
+        "endLine": 24,
+        "endChar": 93
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec87ee2_c5e240c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "\"cont\" looks like a misspell of \"count\". Consider \"container\", \"con\", or \"ctnr\".",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bde9815_cde9b2c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "It would be nice to briefly describe why it prepares two files in two directories for each file system.",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1396461a_a9ffab0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "myFileCros or testDirCros",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3a2185_495d190c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "myFilesContainer / myFilesCtnr / testDirCtnr",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3fec95_618c6b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "How about checking \n\n\tif err :\u003d crostini.VerifyFileNotInContainer(ctx, cont, myfilesContFileName); err !\u003d nil {\n\t\ts.Errorf(\"File %v unexpectedly exists\", myfilesContFileName)\n\t}\n\nhere?",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b410ff37_7a778fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "Also check \n\n\tif err :\u003d crostini.VerifyFileNotInContainer(ctx, cont, sharedContFileName); err !\u003d nil {\n\t\ts.Errorf(\"File %v unexpectedly exists\", sharedContFileName)\n\t}\n\nbefore sharing.",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8ef4cc_9d1ef9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:19:02Z",
+      "side": 1,
+      "message": "A question, why we need to create a subdirectory to perform container -\u003e cros sharing? Can\u0027t it just create another test file under myFilesCont and see if we can see the file under myFilesCros?",
+      "range": {
+        "startLine": 142,
+        "startChar": 49,
+        "endLine": 142,
+        "endChar": 58
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
