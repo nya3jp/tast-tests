@@ -57,7 +57,7 @@ func init() {
 		Desc:         "Checks that anomaly detector reports whether crash_reporter was invoked",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "miss_breakpad",
 			ExtraSoftwareDeps: []string{"breakpad"},
@@ -76,6 +76,7 @@ func init() {
 		}, {
 			Name:              "miss_crashpad",
 			ExtraSoftwareDeps: []string{"crashpad"},
+			ExtraAttr:         []string{"informational"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Crashpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
@@ -96,6 +97,7 @@ func init() {
 		}, {
 			Name:              "success_crashpad",
 			ExtraSoftwareDeps: []string{"crashpad"},
+			ExtraAttr:         []string{"informational"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Crashpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
