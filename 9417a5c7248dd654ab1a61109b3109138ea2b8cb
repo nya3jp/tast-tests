@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18c4124c_dd049b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T05:36:18Z",
+      "side": 1,
+      "message": "I had it like that originally, but then I get this error:\n\n2020/08/19 22:29:32 Failed to build and push: failed to get data file list: Process exited with status 5: exit status 3 (error(s) in registered tests: /home/joelhockey/trunk/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go:18: word \"FilesApp\" at \"FilesAppWatch\"[0] should probably be \"Filesapp\" (acronyms also allowed at beginning and end))",
+      "parentUuid": "4fc8b7b5_5ce48cef",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "9417a5c7248dd654ab1a61109b3109138ea2b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bce748f_797598b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "9417a5c7248dd654ab1a61109b3109138ea2b8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2e222f_c2bcacf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/filesapp_watch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T05:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bce748f_797598b4",
+      "revId": "9417a5c7248dd654ab1a61109b3109138ea2b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
