@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -404,34 +405,84 @@ func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 	return capturer, ok
 }
 
+type connConfig struct {
+	ssid    string
+	hidden  bool
+	secConf security.Config
+	props   map[string]interface{}
+}
+
+// ConnOption is the function signature used to modify ConnectWifi.
+type ConnOption func(*connConfig)
+
+// ConnHidden returns a ConnOption which sets the hidden property.
+func ConnHidden(h bool) ConnOption {
+	return func(c *connConfig) {
+		c.hidden = h
+	}
+}
+
+// ConnSecurity returns a ConnOption which sets the security configuration.
+func ConnSecurity(s security.Config) ConnOption {
+	return func(c *connConfig) {
+		c.secConf = s
+	}
+}
+
+// ConnProperties returns a ConnOption which sets the service properties.
+func ConnProperties(p map[string]interface{}) ConnOption {
+	return func(c *connConfig) {
+		c.props = make(map[string]interface{})
+		for k, v := range p {
+			c.props[k] = v
+		}
+	}
+}
+
 // ConnectWifi asks the DUT to connect to the specified WiFi.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) (*network.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...ConnOption) (*network.ConnectResponse, error) {
+	c := &connConfig{
+		ssid:    ssid,
+		secConf: &base.Config{},
+	}
+	for _, op := range options {
+		op(c)
+	}
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
 	// Setup the NetCertStore only for EAP-related tests.
-	if secConf.NeedsNetCertStore() {
+	if c.secConf.NeedsNetCertStore() {
 		if err := tf.setupNetCertStore(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to set up the NetCertStore")
 		}
 
-		if err := secConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
+		if err := c.secConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
 			return nil, errors.Wrap(err, "failed to install client credentials")
 		}
 	}
 
-	props, err := secConf.ShillServiceProperties()
+	secProps, err := c.secConf.ShillServiceProperties()
 	if err != nil {
 		return nil, err
 	}
-	propsEnc, err := protoutil.EncodeToShillValMap(props)
+
+	props := make(map[string]interface{})
+	for k, v := range c.props {
+		props[k] = v
+	}
+	for k, v := range secProps {
+		props[k] = v
+	}
+
+	propsEnc, err := protoutil.EncodeToShillValMap(c.props)
 	if err != nil {
 		return nil, err
 	}
 	request := &network.ConnectRequest{
-		Ssid:       []byte(ssid),
-		Hidden:     hidden,
-		Security:   secConf.Class(),
+		Ssid:       []byte(c.ssid),
+		Hidden:     c.hidden,
+		Security:   c.secConf.Class(),
 		Shillprops: propsEnc,
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
@@ -442,9 +493,10 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*network.ConnectResponse, error) {
 	conf := ap.Config()
-	return tf.ConnectWifi(ctx, conf.SSID, conf.Hidden, conf.SecurityConfig)
+	opts := append([]ConnOption{ConnHidden(conf.Hidden), ConnSecurity(conf.SecurityConfig)}, options...)
+	return tf.ConnectWifi(ctx, conf.SSID, opts...)
 }
 
 func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
