@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
@@ -18,6 +19,15 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+// TestFunc contains the contents of the test itself.
+type testFunc func(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string)
+
+// TestEntry contains the function used in the test along with the names of the ZIP files the test is using.
+type testEntry struct {
+	TestCase testFunc
+	ZipFiles []string
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -30,26 +40,41 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"Texts.zip"},
+		Data:         []string{"Texts.zip", "Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+		Params: []testing.Param{{
+			Name: "mount_single",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.zip"},
+			},
+		}, {
+			Name: "cancel_multiple",
+			Val: testEntry{
+				TestCase: testCancelingMultiplePasswordDialogs,
+				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+			},
+		}},
 	})
 }
 
 func ZipMount(ctx context.Context, s *testing.State) {
+	testParams := s.Param().(testEntry)
+	zipFiles := testParams.ZipFiles
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=FilesZipMount"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
 
-	// ZIP files names.
-	const zipFile = "Texts.zip"
+	// Load ZIP files.
+	for _, zipFile := range zipFiles {
+		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
 
-	// Load ZIP file.
-	zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
-
-	if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
-		s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
+		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
+			s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
+		}
+		defer os.Remove(zipFileLocation)
 	}
-	defer os.Remove(zipFileLocation)
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -57,13 +82,6 @@ func ZipMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot create test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Define keyboard to perform keyboard shortcuts.
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Cannot create keyboard: ", err)
-	}
-	defer ew.Close()
 
 	// Open the Files App.
 	files, err := filesapp.Launch(ctx, tconn)
@@ -77,7 +95,93 @@ func ZipMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot open Downloads folder: ", err)
 	}
 
-	testMountingSingleZipFile(ctx, s, files, zipFile)
+	// Find and click the 'Name' button to order the file entries alphabetically.
+	// Polling is used since the 'Name' button is not always clickable at the time the corresponding node is found.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		params := ui.FindParams{
+			Name: "Name",
+			Role: ui.RoleTypeButton,
+		}
+
+		orderByNameButton, err := files.Root.Descendant(ctx, params)
+		if err != nil {
+			return errors.New("name button still not found")
+		}
+		defer orderByNameButton.Release(ctx)
+
+		if err := orderByNameButton.LeftClick(ctx); err != nil {
+			return errors.New("still unable to click name button to sort files alphabetically")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		s.Fatal("Cannot click 'Name' button: ", err)
+	}
+
+	// Wait until the ZIP files are correctly ordered in the list box.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		params := ui.FindParams{
+			Role:  ui.RoleTypeListBox,
+			State: map[ui.StateType]bool{ui.StateTypeFocusable: true, ui.StateTypeMultiselectable: true, ui.StateTypeVertical: true},
+		}
+
+		listBox, err := files.Root.Descendant(ctx, params)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		defer listBox.Release(ctx)
+
+		nodes, err := listBox.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeListBoxOption})
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		defer nodes.Release(ctx)
+
+		// The names of the descendant nodes should be ordered alphabetically.
+		for i, node := range nodes {
+			if node.Name != zipFiles[i] {
+				return errors.New("the files are still not ordered properly")
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		s.Fatal("Cannot sort ZIP files properly in the Files app list box: ", err)
+	}
+
+	testParams.TestCase(ctx, s, files, zipFiles)
+}
+
+// waitUntilPasswordDialogExists waits for the password dialog to display for a specific encrypted ZIP file.
+func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp, fileName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Get reference to the current password dialog.
+		params := ui.FindParams{
+			Name: "Password",
+			Role: ui.RoleTypeDialog,
+		}
+
+		passwordDialog, err := files.Root.Descendant(ctx, params)
+		if err != nil {
+			return errors.New("password dialog still not found")
+		}
+		defer passwordDialog.Release(ctx)
+
+		// Look for expected file name label within the current dialog.
+		params = ui.FindParams{
+			Name: fileName,
+			Role: ui.RoleTypeStaticText,
+		}
+		exists, err := passwordDialog.DescendantExists(ctx, params)
+		if err != nil {
+			return errors.Wrap(err, "failed to look for file name label")
+		}
+		if !exists {
+			return errors.New("expected file name label still not found")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second})
 }
 
 // checkAndUnmountZipFile checks that a given ZIP file is correctly mounted and click the 'eject' button to unmount it.
@@ -149,7 +253,12 @@ func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesa
 	}
 }
 
-func testMountingSingleZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) {
+func testMountingSingleZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string) {
+	if len(zipFiles) != 1 {
+		s.Fatal("Unexpected0 length for zipFiles")
+	}
+	zipFile := zipFiles[0]
+
 	// Select ZIP file.
 	if err := files.WaitForFile(ctx, zipFile, 5*time.Second); err != nil {
 		s.Fatal("Cannot wait for test ZIP file: ", err)
@@ -177,4 +286,64 @@ func testMountingSingleZipFile(ctx context.Context, s *testing.State, files *fil
 	}
 
 	checkAndUnmountZipFile(ctx, s, files, zipFile)
+}
+
+func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string) {
+	// Define keyboard to perform keyboard shortcuts.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Cannot create keyboard: ", err)
+	}
+	defer ew.Close()
+
+	// Select the 2 encrypted ZIP files.
+	if err := files.SelectMultipleFiles(ctx, zipFiles); err != nil {
+		s.Fatal("Cannot perform multi-selection on the encrypted files: ", err)
+	}
+
+	// Press Enter.
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot press 'Enter': ", err)
+	}
+
+	// Wait until the password dialog is active for the first encrypted ZIP archive.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
+		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	}
+
+	// Press Esc.
+	if err := ew.Accel(ctx, "Esc"); err != nil {
+		s.Fatal("Cannot press 'Esc': ", err)
+	}
+
+	// Wait until the password dialog is active for the second encrypted ZIP archive.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[1]); err != nil {
+		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[1], err)
+	}
+
+	// Click the 'Cancel' button.
+	params := ui.FindParams{
+		Name: "Cancel",
+		Role: ui.RoleTypeButton,
+	}
+
+	cancel, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
+	if err != nil {
+		s.Fatal("Cannot find password dialog cancel button: ", err)
+	}
+	defer cancel.Release(ctx)
+
+	if err := cancel.LeftClick(ctx); err != nil {
+		s.Fatal("Cannot cancel password dialog: ", err)
+	}
+
+	// Checks that the password dialog is not displayed anymore.
+	params = ui.FindParams{
+		Name: "Password",
+		Role: ui.RoleTypeDialog,
+	}
+
+	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
+		s.Fatal("The password dialog is still displayed: ", err)
+	}
 }

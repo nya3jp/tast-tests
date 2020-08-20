@@ -7,6 +7,8 @@ package filesapp
 
 import (
 	"context"
+	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -189,6 +191,44 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 	}
 	defer file.Release(ctx)
 	return file.LeftClick(ctx)
+}
+
+// SelectMultipleFiles selects multiple items in the Files app listBox while pressing 'Ctrl'.
+func (f *FilesApp) SelectMultipleFiles(ctx context.Context, fileList []string) error {
+	// Define keyboard to press 'Ctrl'.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer ew.Close()
+
+	// Hold Ctrl during multi selection.
+	if err := ew.AccelPress(ctx, "Ctrl"); err != nil {
+		return errors.Wrap(err, "failed to press Ctrl")
+	}
+	defer ew.AccelRelease(ctx, "Ctrl")
+
+	// Select files.
+	for _, fileName := range fileList {
+		if err := f.SelectFile(ctx, fileName); err != nil {
+			return errors.Wrapf(err, "failed to select %s", fileName)
+		}
+	}
+
+	// Define the label associated to the number of files we are selecting.
+	var selectionLabelRE = regexp.MustCompile(fmt.Sprintf("%d (files|items|folders) selected", len(fileList)))
+
+	params := ui.FindParams{
+		Role: ui.RoleTypeStaticText,
+		Attributes: map[string]interface{}{
+			"name": selectionLabelRE,
+		},
+	}
+
+	if err := f.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to find expected selection label")
+	}
+	return nil
 }
 
 // OpenFile executes double click on a file to open it with default app.
