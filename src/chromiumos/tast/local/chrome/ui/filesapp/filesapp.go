@@ -257,7 +257,7 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 }
 
 // SelectContextMenu right clicks and selects a context menu for a file.
-func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName, menuName string) error {
+func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuNames ...string) error {
 	file, err := f.file(ctx, fileName, 15*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find %s", fileName)
@@ -267,14 +267,16 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName, menuName str
 		return errors.Wrapf(err, "failed to right click on %s", fileName)
 	}
 
-	// Wait location.
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
-	}
+	for _, menuName := range menuNames {
+		// Wait location.
+		if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for animation finished")
+		}
 
-	// Left click menuItem.
-	if err := f.LeftClickItem(ctx, menuName, ui.RoleTypeMenuItem); err != nil {
-		return errors.Wrapf(err, "failed to click %s in context menu", menuName)
+		// Left click menuItem.
+		if err := f.LeftClickItem(ctx, menuName, ui.RoleTypeMenuItem); err != nil {
+			return errors.Wrapf(err, "failed to click %s in context menu", menuName)
+		}
 	}
 	return nil
 }
