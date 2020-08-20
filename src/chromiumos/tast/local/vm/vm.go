@@ -70,47 +70,6 @@ func GetRunningVM(ctx context.Context, user string) (*VM, error) {
 	return vm, nil
 }
 
-// CreateDefaultVM prepares a VM with default settings either the live or
-// staging container versions. The directory dir may be used to store
-// logs on failure. If the container type is Tarball, then artifactPath
-// must be specified with the path to the tarball containing the termina VM.
-// Otherwise, artifactPath is ignored. If enableGPU is set, VM will try to use
-// hardware gpu if possible.
-func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*VM, error) {
-	concierge, err := NewConcierge(ctx, user)
-	if err != nil {
-		if stopErr := StopConcierge(ctx); stopErr != nil {
-			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
-		}
-		return nil, err
-	}
-
-	vmInstance := NewDefaultVM(concierge, enableGPU, diskSize)
-	if err := vmInstance.Start(ctx); err != nil {
-		if stopErr := StopConcierge(ctx); stopErr != nil {
-			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
-		}
-		return nil, err
-	}
-	if t.Image == Tarball {
-		if _, err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
-			if stopErr := StopConcierge(ctx); stopErr != nil {
-				testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
-			}
-			return nil, errors.Wrap(err, "failed to share container image with VM")
-		}
-	}
-	return vmInstance, nil
-}
-
-// DiskSize returns actual disk size of the VM.
-func (vm *VM) DiskSize() (uint64, error) {
-	if vm.ContextID == -1 {
-		return 0, errors.New("disk hasn't been allocated")
-	}
-	return vm.diskSize, nil
-}
-
 func (vm *VM) vmCommand(ctx context.Context, args ...string) *testexec.Cmd {
 	args = append([]string{
 		"--vm_name=" + vm.name,
