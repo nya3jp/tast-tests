@@ -24,6 +24,7 @@ func init() {
 		Desc:     "Test command cd in Terminal window",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),

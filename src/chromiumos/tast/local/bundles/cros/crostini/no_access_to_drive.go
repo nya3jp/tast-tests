@@ -30,7 +30,7 @@ func init() {
 		Desc:     "Run a test to make sure crostini does not have access to GoogleDrive",
 		Contacts: []string{"jinrong@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		Vars:     []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:     []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID", "keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact_gaia",
 			Pre:               crostini.StartedByArtifactWithGaiaLogin(),

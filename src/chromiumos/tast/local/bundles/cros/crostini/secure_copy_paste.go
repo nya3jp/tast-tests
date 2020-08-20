@@ -42,6 +42,7 @@ func init() {
 		Desc:     "Verifies that background crostini apps can not access the clipboard",
 		Contacts: []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:      "copy_wayland_artifact",
 			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},

@@ -19,6 +19,7 @@ func init() {
 		Desc:         "Runs an X11 crostini application from the terminal and verifies that it renders",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
