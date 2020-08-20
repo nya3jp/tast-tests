@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a5efb7c8_74199ce8",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "In that case, how about we just call them `var` instead of `const`?",
+      "parentUuid": "0b1b6da8_9f8ec919",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e41b2dd9_d8bc8159",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -704,6 +722,24 @@
       "side": 1,
       "message": "The signature of isCSKeyKnown is self contradictory.  I mean, if k1 is already of type CrossystemKey, then by definition it\u0027s already known.  The type of k1 should be string.  \n\nSecondly, there\u0027s a subtle difference in that if there\u0027s a duplicate key detected (outside of the known keys), the existing version will return an error.  Now it is debatable whether we want this or not, but I believe it\u0027s safer to error out because a) that\u0027s the existing behavior in FAFT, b) we\u0027ve possibly encountered a bug or change in format of the crossystem output.\n\nI believe this is a subjective preference, having 2 maps or use a function.\n\nAs a compromise, I\u0027ve factored out the filtering block into its own function.",
       "parentUuid": "c1bb47e4_828b942a",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58a6cab4_4f0607a3",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "\u003e if k1 is already of type CrossystemKey, then by definition it\u0027s already known.\n\nI disagree. For example: \"fwb_tries\" is not a known CrossystemKey. For the line \"fwb_tries \u003d 0\", we\u0027ll get kv[1]\u003d\"fwb_tries\", kv[2]\u003d\"0\". When we check isCSKeyKnown(CrossystemKey(\"fwb_tries\")), then k1 will be a CrossystemKey which is not known.\n\nAnyway, separating the filter SGTM",
+      "parentUuid": "3be4bd54_412b61cf",
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

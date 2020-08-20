@@ -1032,6 +1032,54 @@
     },
     {
       "key": {
+        "uuid": "2e98efd1_588f22e0",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "519814d1_186d70f6",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef4cdda9_6c9e91fc",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "519814d1_186d70f6",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08e83ad_8e88adef",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 5
