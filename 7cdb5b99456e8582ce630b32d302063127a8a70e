@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e142057_12b0ae50",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-20T20:13:12Z",
+      "side": 1,
+      "message": "Yes - supportMove would be set to true in both rounds of the loop",
+      "parentUuid": "71e53689_9190d123",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 3
+      },
+      "revId": "7cdb5b99456e8582ce630b32d302063127a8a70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e2301f8_d9297ce5",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7cdb5b99456e8582ce630b32d302063127a8a70e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed771b69_5fda110b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1284601
+      },
+      "writtenOn": "2020-08-20T20:13:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e2301f8_d9297ce5",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 25
+      },
+      "revId": "7cdb5b99456e8582ce630b32d302063127a8a70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
