@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4e9a711a_2bf533cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T06:13:43Z",
+      "side": 1,
+      "message": "ACK. Let\u0027s follow the existing code.",
+      "parentUuid": "3809ebb2_0019a988",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63609421_7e9f1aeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
         "patchSetId": 3
