@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,10 +26,17 @@ func init() {
 			"blick-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.AppsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.AppsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
