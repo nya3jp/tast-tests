@@ -25,6 +25,7 @@ func init() {
 		Desc:         "Performance test for mouse responsiveness",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Vars:         []string{"keepState"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact, "mouse_perf.py"},
 		Pre:          crostini.StartedByArtifact(),

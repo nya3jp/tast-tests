@@ -27,6 +27,7 @@ func init() {
 		Desc:         "Checks that crostini files integration works including sshfs, shared folders, backup",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
@@ -65,6 +66,7 @@ func Files(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
+	defer crostini.RunCrostiniPostTest(ctx, pre.Container)
 
 	ownerID, err := cryptohome.UserHash(ctx, cr.User())
 	if err != nil {

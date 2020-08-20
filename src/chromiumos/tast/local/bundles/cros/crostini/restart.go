@@ -50,7 +50,7 @@ func init() {
 			ExtraAttr: []string{"informational"},
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Vars:         []string{"crostini.Restart.numRestarts"},
+		Vars:         []string{"crostini.Restart.numRestarts", "keepState"},
 	})
 }
 

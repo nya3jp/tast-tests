@@ -19,6 +19,7 @@ func init() {
 		Desc:     "Installs and then uninstalls a package that we have copied into the container",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),
