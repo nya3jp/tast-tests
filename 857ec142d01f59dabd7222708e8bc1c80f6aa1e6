@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "48a4cd0a_0922010c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-20T23:01:50Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "857ec142d01f59dabd7222708e8bc1c80f6aa1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d898cb1_6d472665",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
         "patchSetId": 2
