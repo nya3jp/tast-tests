@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "33a598f1_31e371ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ade90e2_685811f9",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d976f39_cbf411a7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 8
@@ -53,6 +77,30 @@
       "writtenOn": "2020-08-13T05:21:45Z",
       "side": 1,
       "message": "I guess the deferFunc can use the closure context? e.g. sCtx for DisconnectWifi and ctx for DeconfigAP. And then you can remove retCtx.",
+      "range": {
+        "startLine": 149,
+        "startChar": 25,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec200b3_698ae32c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "I think we should reserve time for disconnection, so I did the following:\ndefer disconnectPrimary(ctx)\nctx, cancel :\u003d tf.ReserveForDisconnect(ctx)\ndefer cancel()\n...",
+      "parentUuid": "0d976f39_cbf411a7",
       "range": {
         "startLine": 149,
         "startChar": 25,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "d5de8a6a_8e7a2124",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "I tried the hostapd_cli but there were no CSA frame detected. Only disconnection. I remember that you mentiond that \"hostapd_cli\" could be using the Beacon frame to trigger the CSA.",
+      "parentUuid": "a6cade60_a430501c",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 42
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfa7d931_0bf7dc04",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 8
@@ -108,6 +180,30 @@
       "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c2a4bf_1d8bd443",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa7d931_0bf7dc04",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 156,
+        "endChar": 16
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "1a8bf54c_3c32206c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f034836_a3100f44",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b59b9b5_0e6e3e83",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 8
@@ -154,6 +274,30 @@
       "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7d3aa8_fe586347",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b59b9b5_0e6e3e83",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 25
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -194,6 +338,30 @@
       "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f18bc9a_0b316278",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16562fbf_79e73155",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +434,78 @@
     },
     {
       "key": {
+        "uuid": "fa6e17d6_68361d2c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa824c6a_cecd1d4c",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa042cb5_f9894119",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f3f7758_d3457aa4",
+      "range": {
+        "startLine": 236,
+        "startChar": 54,
+        "endLine": 236,
+        "endChar": 57
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c07616bd_3c47e352",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04facdb0_3603ad85",
+      "range": {
+        "startLine": 236,
+        "startChar": 16,
+        "endLine": 236,
+        "endChar": 31
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "112352dd_174a3709",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 8
@@ -289,6 +529,30 @@
     },
     {
       "key": {
+        "uuid": "81f36353_c4d1d4e0",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112352dd_174a3709",
+      "range": {
+        "startLine": 237,
+        "startChar": 51,
+        "endLine": 237,
+        "endChar": 60
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04b871c8_0d9e7749",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 8
@@ -309,6 +573,30 @@
       "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d1b2db_32116027",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b871c8_0d9e7749",
+      "range": {
+        "startLine": 239,
+        "startChar": 65,
+        "endLine": 239,
+        "endChar": 68
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -356,6 +644,30 @@
       "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c0de18d_554d9660",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-20T18:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e99e802e_88c448a0",
+      "range": {
+        "startLine": 407,
+        "startChar": 107,
+        "endLine": 407,
+        "endChar": 141
+      },
+      "revId": "303e7d90555c9cb73b1acce8c1ad9b0357837631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
