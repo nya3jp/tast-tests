@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "eb794e02_ba6c8bed",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-08-20T22:08:47Z",
+      "side": 1,
+      "message": "I have added an option to disable the setting.",
+      "parentUuid": "57fb6870_df90f95f",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 137
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17316ae7_b3afb161",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 4
