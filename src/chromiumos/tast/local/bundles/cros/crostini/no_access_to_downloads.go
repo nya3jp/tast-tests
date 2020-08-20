@@ -25,6 +25,7 @@ func init() {
 		Desc:     "Run a test to make sure Linux does not have access to downloads on Chrome using a pre-built crostini image",
 		Contacts: []string{"jinrong@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),

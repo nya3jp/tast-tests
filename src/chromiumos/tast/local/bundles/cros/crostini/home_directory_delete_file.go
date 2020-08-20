@@ -25,6 +25,7 @@ func init() {
 		Desc:     "Test deleting a file in Linux files and container using a pre-built crostini image",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),
@@ -53,6 +54,7 @@ func init() {
 func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
