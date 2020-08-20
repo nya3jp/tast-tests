@@ -10,7 +10,6 @@ import (
 	"sort"
 	"strings"
 
-	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -95,7 +94,7 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expect a service with two WiFi frequencies: ", err)
 	}
 	s.Log("Verified. Asserting the connection")
-	if _, err := tf.ConnectWifi(ctx, ssid, false, &base.Config{}); err != nil {
+	if _, err := tf.ConnectWifi(ctx, ssid, wificell.ConnHidden(false)); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
