@@ -221,3 +221,8 @@ func (h *APIface) changeSubnetIdx(ctx context.Context, newIdx byte) (retErr erro
 	h.dhcpd = ds
 	return nil
 }
+
+// sendCSA sends CSA from AP.
+func (h *APIface) sendCSA(ctx context.Context, freq int) error {
+	return h.hostapd.SendCSA(ctx, freq)
+}
