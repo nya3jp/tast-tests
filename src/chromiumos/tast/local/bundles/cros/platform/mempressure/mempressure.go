@@ -135,13 +135,13 @@ func newTab(ctx context.Context, cr *chrome.Chrome, url string) (*tab, error) {
 		return nil, errors.Wrap(err, "failed to get the connection to the test extension")
 	}
 	var tabID int
-	if err := tconn.EvalPromise(ctx, `(async () => {
+	if err := tconn.Call(ctx, &tabID, `async () => {
 	  const tabs = await tast.promisify(chrome.tabs.query)({active: true});
 	  if (tabs.length !== 1) {
 	    throw new Error("unexpected number of active tabs: got " + tabs.length)
 	  }
 	  return tabs[0].id;
-	})()`, &tabID); err != nil {
+	}`); err != nil {
 		return nil, errors.Wrap(err, "cannot get tab id for the new tab")
 	}
 
@@ -175,16 +175,16 @@ func (t *tab) discarded(ctx context.Context) (bool, error) {
 	// Discarded tab may be reported by "No tab with id" error by JS, or
 	// "discarded" property.
 	var discarded bool
-	if err := t.tconn.EvalPromise(ctx, fmt.Sprintf(`(async () => {
+	if err := t.tconn.Call(ctx, &discarded, `async (id) => {
 	  try {
-	    const tab = await tast.promisify(chrome.tabs.get)(%d);
+	    const tab = await tast.promisify(chrome.tabs.get)(id);
 	    return tab.discarded;
 	  } catch (e) {
 	    if (e.message.startsWith("No tab with id: "))
 	      return true;
 	    throw e;
 	  }
-	})()`, t.id), &discarded); err != nil {
+	}`, t.id); err != nil {
 		return false, err
 	}
 	return discarded, nil
@@ -197,11 +197,7 @@ func (t *tab) activate(ctx context.Context) (time.Duration, error) {
 	startTime := time.Now()
 
 	// Request to activate the tab.
-	if err := t.tconn.EvalPromise(
-		ctx,
-		fmt.Sprintf(`tast.promisify(chrome.tabs.update)(%d, {active: true})`, t.id),
-		nil,
-	); err != nil {
+	if err := t.tconn.Call(ctx, nil, `async (id) => tast.promisify(chrome.tabs.update)(id, {active: true})`, t.id); err != nil {
 		return 0, err
 	}
 
@@ -214,10 +210,10 @@ func (t *tab) activate(ctx context.Context) (time.Duration, error) {
 	// requestAnimationFrame is called, we know that a frame is in the
 	// pipeline. When the second requestAnimationFrame is called, we know that
 	// the first frame has reached the screen.
-	if err := t.conn.EvalPromise(waitCtx, `(async () => {
+	if err := t.conn.Call(waitCtx, nil, `async () => {
 	  await new Promise(window.requestAnimationFrame);
 	  await new Promise(window.requestAnimationFrame);
-	})()`, nil); err != nil {
+	}`); err != nil {
 		return 0, err
 	}
 
@@ -234,18 +230,16 @@ func (t *tab) wiggle(ctx context.Context) error {
 		scrollDelay  = 50 * time.Millisecond
 		scrollAmount = 100
 	)
-	scrollDownCode := fmt.Sprintf("window.scrollBy(0, %d)", scrollAmount)
-	scrollUpCode := fmt.Sprintf("window.scrollBy(0, -%d)", scrollAmount*scrollCount)
 
 	for i := 0; i < scrollCount; i++ {
-		if err := t.conn.Exec(ctx, scrollDownCode); err != nil {
+		if err := t.conn.Call(ctx, nil, `(dy) => window.scrollBy(0, dy)`, scrollAmount); err != nil {
 			return errors.Wrap(err, "scroll down failed")
 		}
 		if err := testing.Sleep(ctx, scrollDelay); err != nil {
 			return err
 		}
 	}
-	if err := t.conn.Exec(ctx, scrollUpCode); err != nil {
+	if err := t.conn.Call(ctx, nil, `(dy) => window.scrollBy(0, dy)`, -scrollAmount*scrollCount); err != nil {
 		return errors.Wrap(err, "scroll up failed")
 	}
 	if err := testing.Sleep(ctx, scrollDelay); err != nil {
@@ -256,20 +250,16 @@ func (t *tab) wiggle(ctx context.Context) error {
 
 // pin pins the tab. This makes them less likely to be chosen as discard candidates.
 func (t *tab) pin(ctx context.Context) error {
-	return t.tconn.EvalPromise(
-		ctx,
-		fmt.Sprintf("tast.promisify(chrome.tabs.update)(%d, {pinned: true})", t.id),
-		nil,
-	)
+	return t.tconn.Call(ctx, nil, `(id) => tast.promisify(chrome.tabs.update)(id, {pinned: true})`, t.id)
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
 func getValidTabIDs(ctx context.Context, tconn *chrome.TestConn) ([]int, error) {
 	var out []int
-	if err := tconn.EvalPromise(ctx, `(async () => {
+	if err := tconn.Call(ctx, &out, `async () => {
 	  let tabs = await tast.promisify(chrome.tabs.query)({discarded: false});
 	  return tabs.map((tab) => tab.id);
-	})()`, &out); err != nil {
+	}`); err != nil {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil

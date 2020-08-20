@@ -228,7 +228,7 @@ func waitAllocation(ctx context.Context, conn *chrome.Conn) error {
 	// Waits for completion of JavaScript allocation.
 	// Checks completion only for the allocation page memory_stress.html.
 	// memory_stress.html saves the allocation result to document.out.
-	expr := "!window.location.href.includes('memory_stress') || document.hasOwnProperty('out') == true"
+	const expr = "!window.location.href.includes('memory_stress') || document.hasOwnProperty('out') == true"
 	if err := conn.WaitForExprFailOnErr(waitCtx, expr); err != nil {
 		if waitCtx.Err() == context.DeadlineExceeded {
 			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
@@ -291,14 +291,11 @@ func activeTabURL(ctx context.Context, cr *chrome.Chrome) (string, error) {
 	}
 
 	var tabURL string
-	const exp = `
-		new Promise((resolve, reject) => {
-			chrome.tabs.query({active: true}, (tlist) => {
-				resolve(tlist[0].url);
-			});
-		});`
-	if err := tconn.EvalPromise(ctx, exp, &tabURL); err != nil {
-		return "", errors.Wrap(err, "EvalPromise failed")
+	if err := tconn.Call(ctx, &tabURL, `async () => {
+		let tabs = await tast.promisify(chrome.tabs.query)({active: true});
+		return tabs[0].url;
+	}`); err != nil {
+		return "", errors.Wrap(err, "active tab URL not found")
 	}
 	return tabURL, nil
 }
@@ -310,7 +307,7 @@ func reloadActiveTab(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.Wrap(err, "cannot create test connection")
 	}
 
-	return tconn.Eval(ctx, "chrome.tabs.reload();", nil)
+	return tconn.Eval(ctx, "chrome.tabs.reload()", nil)
 }
 
 // reloadCrashedTab reload the active tab if it's crashed. Returns whether the tab is reloaded.

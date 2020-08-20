@@ -277,9 +277,8 @@ func startVM(ctx context.Context, te *TestEnv) error {
 		return nil
 	}
 	testing.ContextLog(ctx, "Waiting for crostini to install (typically ~ 3 mins) and mount sshfs")
-	if err := te.tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
-		return errors.Wrap(err, "Running autotestPrivate.runCrostiniInstaller failed")
+	if err := te.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)`); err != nil {
+		return errors.Wrap(err, "autotestPrivate.runCrostiniInstaller failed")
 	}
 	te.vm = true
 	return nil
@@ -288,8 +287,7 @@ func startVM(ctx context.Context, te *TestEnv) error {
 // Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
 func (te *TestEnv) Close(ctx context.Context) {
 	if te.vm {
-		if err := te.tconn.EvalPromise(ctx,
-			`tast.promisify(chrome.autotestPrivate.runCrostiniUninstaller)()`, nil); err != nil {
+		if err := te.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.runCrostiniUninstaller)`); err != nil {
 			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
 		}
 	}
