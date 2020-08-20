@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "25958b62_54e3d8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-20T09:07:52Z",
+      "side": 1,
+      "message": "10 * time.Second\n\n(perfDuration + 2) * time.Second // Command with there is a 1 second sleep time after CRAS command start\n(perfDuration + 15) * time.Second",
+      "parentUuid": "a64c18d3_d9e67aae",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62a717c4_54c9d603",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 13
