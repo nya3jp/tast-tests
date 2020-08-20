@@ -1142,8 +1142,17 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 				return err
 			}
 
+			// Some shill properties have the types uint16/unit8 which are not supported by protobuf.
+			if p.Key == shillconst.ServicePropertyWiFiFrequency {
+				uint16Val, ok := val.(uint16)
+				if !ok {
+					return errors.Errorf("property %s is not an uint16: %q", p.Key, val)
+				}
+				val = uint32(uint16Val)
+			}
+
 			if foundIn(val, excludedVals) {
-				return errors.Errorf("unexpected property %q: got %s, want any of %v", p.Key, val, expectedVals)
+				return errors.Errorf("unexpected property %q: got %v, want any of %v", p.Key, val, expectedVals)
 			}
 
 			if foundIn(val, expectedVals) {
@@ -1161,7 +1170,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 
 			// Return an error if the method is CHECK_ONLY and the property does not meet the criterion.
 			if p.Method == network.ExpectShillPropertyRequest_CHECK_ONLY {
-				return errors.Errorf("unexpected property %q: got %s, want any of %v", p.Key, val, expectedVals)
+				return errors.Errorf("unexpected property %q: got %v, want any of %v", p.Key, val, expectedVals)
 			}
 		}
 

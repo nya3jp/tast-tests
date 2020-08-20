@@ -117,6 +117,7 @@ message ShillVal {
     // Because 'repeated' label is not allowed in oneof type, we define StrArray
     // for repeated string field.
     StrArray strArray = 3;
+    uint32 uint32 = 4;
   }
 }
 

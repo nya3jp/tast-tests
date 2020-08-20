@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // Properties wraps shill D-Bus object properties.
@@ -218,6 +219,9 @@ func (pw *PropertiesWatcher) ExpectInExclude(ctx context.Context, prop string, a
 		if err != nil {
 			return nil, err
 		}
+
+		testing.ContextLogf(ctx, "The property %s = %v", prop, vals)
+
 		for _, e := range anyOf {
 			if reflect.DeepEqual(e, vals[0]) {
 				return vals[0], nil
