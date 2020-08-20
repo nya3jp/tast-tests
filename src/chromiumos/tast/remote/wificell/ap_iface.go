@@ -7,8 +7,10 @@ package wificell
 import (
 	"context"
 	"net"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
@@ -233,5 +235,37 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to reconfigure the hostapd server")
 	}
+	return nil
+}
+
+// StartChannelSwitch initiates a channel switch in the AP.
+func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error {
+	csaFreq, err := hostapd.ChannelToFrequency(channel)
+	if err != nil {
+		return errors.Wrap(err, "failed to convert channel to frequency")
+	}
+	if err := h.hostapd.StartChannelSwitch(ctx, count, csaFreq, opts...); err != nil {
+		return err
+	}
+	// Wait for the AP to change channel.
+	iwr := iw.NewRemoteRunner(h.hostapd.Host())
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		chConfig, err := iwr.RadioConfig(ctx, h.iface)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the radio configuration")
+		}
+		if chConfig.Number == channel {
+			// Update hostapd channel.
+			h.hostapd.Config().Channel = channel
+			return nil
+		}
+		return errors.Errorf("failed to switch to the alternate channel %s", channel)
+	}, &testing.PollOptions{
+		Timeout:  3 * time.Second,
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return err
+	}
+
 	return nil
 }

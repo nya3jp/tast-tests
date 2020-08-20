@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -58,12 +59,16 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 	ctx, st := timing.Start(ctx, "hostapd.StartServer")
 	defer st.End()
 
+	// Copying the struct config, because hostapd is keeing a *Config pointer from the caller.
+	// That could cause a problem if the caller assuems it's read-only.
+	hostapdConfigCopy := *config
+
 	s := &Server{
 		host:    host,
 		name:    name,
 		iface:   iface,
 		workDir: workDir,
-		conf:    config,
+		conf:    &hostapdConfigCopy,
 	}
 	// Clean up on error.
 	defer func() {
@@ -256,4 +261,49 @@ func (s *Server) Name() string {
 // NOTE: Caller should not modify the returned object.
 func (s *Server) Config() *Config {
 	return s.conf
+}
+
+// Host returns the host used by the hostapd.
+func (s *Server) Host() *ssh.Conn {
+	return s.host
+}
+
+// CSOption is the function signature used to specify options of CSA command.
+type CSOption func(*csaConfig)
+
+// CSAMode returns an Option which sets Frequency in CSA.
+func CSAMode(m string) CSOption {
+	return func(c *csaConfig) {
+		c.mode = m
+	}
+}
+
+// csaConfig is the configuration for the channel switch announcement.
+type csaConfig struct {
+	count int
+	freq  int
+	mode  string
+}
+
+// StartChannelSwitch initiates a channel switch in the AP.
+func (s *Server) StartChannelSwitch(ctx context.Context, count, frequency int, options ...CSOption) error {
+	cfg := &csaConfig{}
+	for _, opt := range options {
+		opt(cfg)
+	}
+
+	var args []string
+	args = append(args, fmt.Sprintf("-p%s", s.ctrlPath()))
+	args = append(args, "chan_switch")
+	args = append(args, strconv.Itoa(count))
+	args = append(args, strconv.Itoa(frequency))
+	if cfg.mode != "" {
+		args = append(args, cfg.mode)
+	}
+
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send CSA with freq %d", cfg.freq)
+	}
+
+	return nil
 }
