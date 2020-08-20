@@ -16,6 +16,40 @@
       "revId": "3e76d902ab12ba0b7a3e1f71a7db914914f7e8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c308f03c_031c959d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-20T07:54:03Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "3e76d902ab12ba0b7a3e1f71a7db914914f7e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e421dba_e98ab84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-20T07:54:03Z",
+      "side": 1,
+      "message": "Is this increased timeout realted to installing Samba, or is it because of other time consuming processes?",
+      "revId": "3e76d902ab12ba0b7a3e1f71a7db914914f7e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
