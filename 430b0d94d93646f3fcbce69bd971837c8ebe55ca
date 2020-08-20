@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3bb0cf97_dc347ca0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-08-20T20:20:06Z",
+      "side": 1,
+      "message": "It is the right one. This CL is step 1 to add the graphics page to overview perf only in case something bad happens, it doesn\u0027t bring all perf tests down.",
+      "parentUuid": "0e2e4f7f_f0e4e760",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a517f40_e57143f2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -65,6 +83,24 @@
       "writtenOn": "2020-08-20T18:48:08Z",
       "side": 1,
       "message": "Can we put the description about what this contents do somewhere, (what it does to make it\nintenstive) maybe with some expectation?",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "588fcaf9_9a82ce87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-08-20T20:20:06Z",
+      "side": 1,
+      "message": "I added some description. The main concerns about choosing site are \n- the web page needs to be constantly refreshing, some other sites, like the pacman, are also very good. But the pacman game doesn\u0027t last long (game autoplay ends before tast test itself ends), so some sub tests don\u0027t get the same refresh rates.\n- relatively easy to set up. 3D Aquarium is a very good example, but it involves tons of assets that need to be built with MS Visual Studio and Maya, etc.",
+      "parentUuid": "75173103_22fcb340",
       "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
