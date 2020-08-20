@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f782f618_12e18ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-20T00:35:57Z",
+      "side": 1,
+      "message": "I\u0027m still working on the Reassociate test, but in the meantime I\u0027ve finished porting network_WiFi_MultiAuth.\n\nThis one was pretty straightforward after I figured out why the second hostapd instance was failing (it was because the two interfaces need to have distinct BSSIDs / MACs).",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
