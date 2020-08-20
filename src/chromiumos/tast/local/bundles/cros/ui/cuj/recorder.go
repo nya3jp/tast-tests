@@ -25,7 +25,8 @@ const (
 	groupOther      metricGroup = ""
 )
 
-const checkInterval = time.Second
+// CheckInterval is the interval of timelines.
+const CheckInterval = time.Second
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {

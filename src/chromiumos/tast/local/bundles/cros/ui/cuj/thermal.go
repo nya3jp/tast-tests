@@ -18,13 +18,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Currently there's no way to obtain the temperature condition for a CPU to be throttled.
+// Thus a static value (75C) is used for now.
+// TODO(https://crbug.com/1113426): Find a way to obtain thermal throttling status directly.
+const throttlingTemp = 75
+
 type thermalMetric struct {
 	paths  []string
 	metric perf.Metric
 }
 
 type thermalDataSource struct {
-	metrics map[string]*thermalMetric
+	metrics       map[string]*thermalMetric
+	throttledTime perf.Metric
 }
 
 func newThermalDataSource(ctx context.Context) *thermalDataSource {
@@ -78,6 +84,14 @@ func (ds *thermalDataSource) Setup(ctx context.Context, prefix string) error {
 		}
 		metric.paths = append(metric.paths, filepath.Join(path, "temp"))
 	}
+
+	// Metrics for CPU's throttled time.
+	ds.throttledTime = perf.Metric{
+		Name:      prefix + "Thermal." + "ThrottledTime",
+		Unit:      "second",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true}
+
 	return nil
 }
 
@@ -101,7 +115,15 @@ func (ds *thermalDataSource) Snapshot(ctx context.Context, values *perf.Values) 
 			}
 			sum += temp
 		}
-		values.Append(metric.metric, sum/1000/float64(len(metric.paths)))
+		temp := sum / 1000 / float64(len(metric.paths))
+		var throttled float64
+		if temp > throttlingTemp {
+			throttled = CheckInterval.Seconds()
+		} else {
+			throttled = 0
+		}
+		values.Append(metric.metric, temp)
+		values.Append(ds.throttledTime, throttled)
 	}
 	return nil
 }
