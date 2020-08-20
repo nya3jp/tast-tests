@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a47055ec_ba75fb4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f6f69bc_2aa2754f",
+      "range": {
+        "startLine": 24,
+        "startChar": 72,
+        "endLine": 24,
+        "endChar": 93
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ec87ee2_c5e240c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fe6a77_ee36bad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "as before, this is the idiomatic name for container.",
+      "parentUuid": "7ec87ee2_c5e240c5",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,48 @@
     },
     {
       "key": {
+        "uuid": "705cd379_3fa1e324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1396461a_a9ffab0e",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf6e3ff6_3cafcef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "Updated the comment on line 73.",
+      "parentUuid": "6bde9815_cde9b2c7",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d3a2185_495d190c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
         "patchSetId": 5
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "e0239021_b4d63af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "myFilesCont",
+      "parentUuid": "0d3a2185_495d190c",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3fec95_618c6b49",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
         "patchSetId": 5
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "bdee96c7_3fe694ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3fec95_618c6b49",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b410ff37_7a778fea",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
         "patchSetId": 5
@@ -142,6 +274,24 @@
       "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4945fb8_91e05945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b410ff37_7a778fea",
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +315,30 @@
       "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d137c7d_df3ab3fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T04:50:33Z",
+      "side": 1,
+      "message": "There is no particular need to create the directory, but by doing this we validate that both directories and files within them are shared.",
+      "parentUuid": "dc8ef4cc_9d1ef9c4",
+      "range": {
+        "startLine": 142,
+        "startChar": 49,
+        "endLine": 142,
+        "endChar": 58
+      },
+      "revId": "84332a3f9218008cf6a274db30ce1f0687e04d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
