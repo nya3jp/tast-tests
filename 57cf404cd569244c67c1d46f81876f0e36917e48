@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76221738_4e8f1556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "We\u0027re getting close!",
+      "revId": "57cf404cd569244c67c1d46f81876f0e36917e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecaa6661_753593a5",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T17:52:38Z",
+      "side": 1,
+      "message": "Per go/inclusive-language, please consider avoiding using \"sanity\" in this context. How about \"Smoke test\" or \"Basic check\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "57cf404cd569244c67c1d46f81876f0e36917e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
