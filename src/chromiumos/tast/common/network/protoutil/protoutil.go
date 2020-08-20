@@ -41,6 +41,12 @@ func ToShillVal(i interface{}) (*network.ShillVal, error) {
 				Bool: x,
 			},
 		}, nil
+	case uint32:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Uint32{
+				Uint32: x,
+			},
+		}, nil
 	case []string:
 		return &network.ShillVal{
 			Val: &network.ShillVal_StrArray{
@@ -72,6 +78,8 @@ func FromShillVal(v *network.ShillVal) (interface{}, error) {
 		return x.Str, nil
 	case *network.ShillVal_Bool:
 		return x.Bool, nil
+	case *network.ShillVal_Uint32:
+		return x.Uint32, nil
 	case *network.ShillVal_StrArray:
 		return x.StrArray.Vals, nil
 	default:

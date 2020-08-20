@@ -801,3 +801,12 @@ func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 	return h.changeSubnetIdx(ctx, newIdx)
 }
+
+// SendCSA sends CSA from AP.
+func (r *Router) SendCSA(ctx context.Context, h *APIface, ch int) error {
+	freq, err := hostapd.ChannelToFrequency(ch)
+	if err != nil {
+		return errors.Wrap(err, "failed to get server frequency")
+	}
+	return h.sendCSA(ctx, freq)
+}
