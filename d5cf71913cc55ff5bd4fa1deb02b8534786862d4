@@ -34,6 +34,24 @@
       "revId": "d5cf71913cc55ff5bd4fa1deb02b8534786862d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2a08da6_35c5f47e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-20T22:27:29Z",
+      "side": 1,
+      "message": "BTW, I think I was wrong: I guess the .md docs *do* get published immediately.",
+      "parentUuid": "eeddbec8_051f382b",
+      "revId": "d5cf71913cc55ff5bd4fa1deb02b8534786862d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
