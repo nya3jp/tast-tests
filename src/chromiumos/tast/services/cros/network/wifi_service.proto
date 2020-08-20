@@ -148,6 +148,7 @@ service WifiService {
 
   // SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
   rpc SetGlobalFTProperty(SetGlobalFTPropertyRequest) returns (google.protobuf.Empty) {}
+
 }
 
 message ConnectRequest {
@@ -434,3 +435,4 @@ message GetGlobalFTPropertyResponse {
 message SetGlobalFTPropertyRequest {
   bool enabled = 1;
 }
+

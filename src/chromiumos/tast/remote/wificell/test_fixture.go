@@ -954,7 +954,13 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 		return errors.Wrap(err, "failed to query shill service information")
 	}
 	clientFreq := service.Wifi.Frequency
-	serverFreq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
+	// Update the server frequency in case a CSA happens during the test.
+	iwr := iw.NewRemoteRunner(tf.dut.Conn())
+	chConfig, err := iwr.RadioConfig(ctx, iface)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the radio configuration")
+	}
+	serverFreq, err := hostapd.ChannelToFrequency(chConfig.Number)
 	if err != nil {
 		return errors.Wrap(err, "failed to get server frequency")
 	}

@@ -1377,6 +1377,12 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 	// foundIn returns true if the property value v is found in vs; false otherwise.
 	foundIn := func(v interface{}, vs []interface{}) bool {
 		for _, ev := range vs {
+			// Protoutil does not support uint16 in the meantime.
+			// Change the type of v to uint32, if its type is uint16.
+			switch x := v.(type) {
+			case uint16:
+				v = uint32(x)
+			}
 			if reflect.DeepEqual(ev, v) {
 				return true
 			}
@@ -1446,6 +1452,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			if err != nil {
 				return errors.Wrapf(err, "failed to wait for the property %s", prop)
 			}
+
 			for _, mp := range req.MonitorProps {
 				if mp == prop {
 					monitorResult = append(monitorResult, protoutil.ShillPropertyHolder{Name: prop, Value: val})
