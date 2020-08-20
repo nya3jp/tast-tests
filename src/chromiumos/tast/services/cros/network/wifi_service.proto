@@ -96,6 +96,7 @@ service WifiService {
   // 1. CHECK_ONLY: checks if the criterion is met.
   // 2. ON_CHANGE: waits for the property changes to the expected values.
   // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
+  // 4. CHECK_POLL: checks if the criterion is met; if not, polls until the property's value is met.
   rpc ExpectShillProperty(ExpectShillPropertyRequest) returns (stream ExpectShillPropertyResponse) {}
 
   // ProfileBasicTest is the main body of the ProfileBasic test, which creates,
@@ -148,6 +149,9 @@ service WifiService {
 
   // SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
   rpc SetGlobalFTProperty(SetGlobalFTPropertyRequest) returns (google.protobuf.Empty) {}
+  // WaitForFrequency waits for the shill frequency property to equal the specified frequency.
+  rpc WaitForFrequency(WaitForFrequencyRequest) returns (google.protobuf.Empty) {}
+
 }
 
 message ConnectRequest {
@@ -327,6 +331,8 @@ message ExpectShillPropertyRequest {
     ON_CHANGE = 1;
     // Check if the property value is expected.
     CHECK_ONLY = 2;
+    // Check if the property value is expected; if not, poll until it is expected.
+    CHECK_POLL = 3;
   }
 
   message Criterion {
@@ -433,4 +439,9 @@ message GetGlobalFTPropertyResponse {
 
 message SetGlobalFTPropertyRequest {
   bool enabled = 1;
+}
+
+message WaitForFrequencyRequest {
+  string service_path = 1;
+  uint32 frequency = 2;
 }

@@ -622,6 +622,23 @@ func (tf *TestFixture) DiscoverBSSID(ctx context.Context, bssid, iface string, s
 	return nil
 }
 
+// WaitForFrequency waits for the shill frequency property to equal the specified frequency.
+func (tf *TestFixture) WaitForFrequency(ctx context.Context, servicePath string, ch int) error {
+	freq, err := hostapd.ChannelToFrequency(ch)
+	if err != nil {
+		return errors.Wrap(err, "failed to get server frequency")
+	}
+	request := &network.WaitForFrequencyRequest{
+		ServicePath: servicePath,
+		Frequency:   uint32(freq),
+	}
+	if _, err := tf.wifiClient.WaitForFrequency(ctx, request); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // RequestRoam requests DUT to roam to the specified BSSID and waits until the DUT has roamed.
 func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, timeout time.Duration) error {
 	request := &network.RequestRoamRequest{
@@ -954,7 +971,13 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 		return errors.Wrap(err, "failed to query shill service information")
 	}
 	clientFreq := service.Wifi.Frequency
-	serverFreq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
+	// Update the server frequency in case a CSA happens during the test.
+	iwr := iw.NewRemoteRunner(tf.dut.Conn())
+	chConfig, err := iwr.RadioConfig(ctx, iface)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the radio configuration")
+	}
+	serverFreq, err := hostapd.ChannelToFrequency(chConfig.Number)
 	if err != nil {
 		return errors.Wrap(err, "failed to get server frequency")
 	}

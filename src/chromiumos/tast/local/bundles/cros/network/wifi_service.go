@@ -1356,6 +1356,7 @@ func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*netw
 // 1. CHECK_ONLY: checks if the criterion is met.
 // 2. ON_CHANGE: waits for the property changes to the expected values.
 // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
+// 4. CHECK_POLL: checks if the criterion is met; if not, polls until the property's value is met.
 // This is the implementation of network.Wifi/ExpectShillProperty gRPC.
 func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyRequest, sender network.WifiService_ExpectShillPropertyServer) error {
 	ctx := sender.Context()
@@ -1377,6 +1378,13 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 	// foundIn returns true if the property value v is found in vs; false otherwise.
 	foundIn := func(v interface{}, vs []interface{}) bool {
 		for _, ev := range vs {
+			// Protoutil does not support uint16 in the meantime.
+			// Change the type of v to uint32, if its type is uint16.
+			switch x := v.(type) {
+			case uint16:
+				v = uint32(x)
+			}
+
 			if reflect.DeepEqual(ev, v) {
 				return true
 			}
@@ -1441,24 +1449,51 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 
 		// Wait for the property to change to an expected or unexpected value. Record the property changes we are monitoring.
 		var propVal interface{}
-		for {
-			prop, val, _, err := pw.Wait(ctx)
-			if err != nil {
-				return errors.Wrapf(err, "failed to wait for the property %s", prop)
-			}
-			for _, mp := range req.MonitorProps {
-				if mp == prop {
-					monitorResult = append(monitorResult, protoutil.ShillPropertyHolder{Name: prop, Value: val})
-					break
+		if p.Method == network.ExpectShillPropertyRequest_CHECK_POLL {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				props, err := service.GetProperties(ctx)
+				if err != nil {
+					return err
 				}
-			}
-			if prop == p.Key {
+				val, err := props.Get(p.Key)
+				if err != nil {
+					return err
+				}
+
+				if foundIn(val, excludedVals) {
+					return errors.Errorf("unexpected property [ %q ] value: got %v, want any of %v", p.Key, val, expectedVals)
+				}
 				if foundIn(val, expectedVals) {
 					propVal = val
-					break
+					return nil
 				}
-				if foundIn(val, excludedVals) {
-					return errors.Errorf("unexpected property %q: got %s, want any of %v", prop, val, expectedVals)
+				return errors.Errorf("unexpected property [ %q ] value: got %v, want any of %v", p.Key, reflect.TypeOf(val), reflect.TypeOf(expectedVals[0]))
+			}, &testing.PollOptions{
+				Timeout:  30 * time.Second,
+				Interval: 500 * time.Millisecond,
+			}); err != nil {
+				return err
+			}
+		} else {
+			for {
+				prop, val, _, err := pw.Wait(ctx)
+				if err != nil {
+					return errors.Wrapf(err, "failed to wait for the property %s", prop)
+				}
+				for _, mp := range req.MonitorProps {
+					if mp == prop {
+						monitorResult = append(monitorResult, protoutil.ShillPropertyHolder{Name: prop, Value: val})
+						break
+					}
+				}
+				if prop == p.Key {
+					if foundIn(val, expectedVals) {
+						propVal = val
+						break
+					}
+					if foundIn(val, excludedVals) {
+						return errors.Errorf("unexpected property %q: got %s, want any of %v", prop, val, expectedVals)
+					}
 				}
 			}
 		}
@@ -2063,5 +2098,39 @@ func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetG
 	if err := m.SetProperty(ctx, shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled); err != nil {
 		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled)
 	}
+	return &empty.Empty{}, nil
+}
+
+// WaitForFrequency waits for the shill frequency property to equal the specified frequency.
+// This is the implementation of network.WiFi/WaitForFrequency gRPC.
+func (s *WifiService) WaitForFrequency(ctx context.Context, req *network.WaitForFrequencyRequest) (*empty.Empty, error) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		resp, err := s.SelectedService(ctx, &empty.Empty{})
+		if err != nil {
+			return errors.Wrap(err, "failed to get selected service")
+		}
+		service, err := shill.NewService(ctx, dbus.ObjectPath(resp.ServicePath))
+		if err != nil {
+			return errors.Wrap(err, "failed to create service object")
+		}
+		props, err := service.GetProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get service properties")
+		}
+		freq, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get property %s", shillconst.ServicePropertyWiFiFrequency)
+		}
+		if uint32(freq) != req.Frequency {
+			return errors.Errorf("unexpected frequency: got %d, want %d ", freq, req.Frequency)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 500 * time.Millisecond,
+	}); err != nil {
+		return &empty.Empty{}, err
+	}
+
 	return &empty.Empty{}, nil
 }
