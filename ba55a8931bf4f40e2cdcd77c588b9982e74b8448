@@ -63,6 +63,184 @@
       "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ffb29d_0ef8dc20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "three nest-level is on edge case in terms of code complexity.\nHow about flatten one level (i.e. move this part to a function)?\n\nAlso, \"openInnterResolutionSetting\" sounds misleading, because after the completion of the function, it is closed.\n\nMaybe withInnterResolutionSetting?",
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e26b888_2f4586b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "style:\n\nactive, err :\u003d app.GetState(...)\nif err !\u003d nil {\n  return ...\n}\nif !active {\n  return ...\n}\nreturn nil",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 4
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60605af3_e087460a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "Indirection looks unnecessary. You can just call app.Click in defer.\n\nif err :\u003d openSetting(\"view-settngs\", cca.SettingsButton); err !\u003d nil {\n  ...\n}\ndefer app.Click(ctx, cca.SettingsBackButton)\n\nditto for below.",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 3
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3032b0c_4ece8e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "style:\n\nbtn, err :\u003d app.InnerResolutionSettingButton(...)\nif err !\u003d nil {\n  ...\n}\nview :\u003d ...\nif err :\u003d openSetting(view, *btn); err !\u003d nil {\n  ...\n}\n...",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 3
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f02965_ecc11383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "maybe returns 0 as default value?",
+      "range": {
+        "startLine": 282,
+        "startChar": 10,
+        "endLine": 282,
+        "endChar": 12
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f677e7_13582343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "You can directly call it.\n\nnumOptions, err :\u003d func() (int, error) {\n  var result int\n  if err :\u003d withInnterResolutionSetting(...) {\n    ...\n  ...\n}()\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 33
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e5bfc5_9057d5a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "style:\n\nchecked, err :\u003d ...\nif err !\u003d nil {\n  return ...\n}\nif checked {\n  testing.ContextLogf(...)\n} else {\n  if err :\u003d ... {\n    ...\n  }); err !\u003d nil {\n    return ...\n  }\n}",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 325,
+        "endChar": 4
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c36f8c43_4c6db2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-20T08:00:13Z",
+      "side": 1,
+      "message": "style:\n\nr, err :\u003d toggleOption(...)\nif err !\u003d nil {\n  return err\n}\nif err :\u003d onSwitched(r); err !\u003d nil {\n  return err\n}",
+      "range": {
+        "startLine": 337,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 3
+      },
+      "revId": "ba55a8931bf4f40e2cdcd77c588b9982e74b8448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
