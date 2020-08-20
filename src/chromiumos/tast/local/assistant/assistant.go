@@ -79,6 +79,16 @@ func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool
 	return setPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
 }
 
+// SetVoiceInteractionConsentValue enables/disables the consent value for Assistant voice interaction.
+func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn, value int) error {
+	return setPrefValue(ctx, tconn, "settings.voice_interaction.activity_control.consent_status", value)
+}
+
+// setPrefValue is a helper function to set value for Assistant related preferences.
+func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, value interface{}) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, value)
+}
+
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
 func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := tconn.Call(ctx, nil, `async () => {
@@ -95,11 +105,6 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
-}
-
-// setPrefValue is a helper function to set value for Assistant related preferences.
-func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
-	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
 }
 
 // VerboseLogging is a helper function passed into chrome.New which will:
