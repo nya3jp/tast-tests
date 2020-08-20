@@ -65,6 +65,9 @@ const (
 	Portrait = "portrait"
 )
 
+// CheckFunc represents a function that checks certain criteria for tests.
+type CheckFunc func(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error
+
 // TestFunc represents a function that tests if the window is in a certain state.
 type TestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
 

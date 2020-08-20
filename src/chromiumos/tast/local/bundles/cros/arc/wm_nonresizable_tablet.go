@@ -75,7 +75,7 @@ func wmNT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		},
 	}
 
-	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities); err != nil {
+	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities, wm.CheckMaximizeNonResizable); err != nil {
 		return err
 	}
 
@@ -91,5 +91,5 @@ func wmNT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		},
 	}
 
-	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities)
+	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeNonResizable)
 }

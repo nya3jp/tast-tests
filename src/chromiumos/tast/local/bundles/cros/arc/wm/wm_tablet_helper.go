@@ -117,7 +117,7 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 }
 
 // TabletShelfHideShowHelper runs tablet test-cases that hide and show the shelf.
-func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) error {
+func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo, checkFunc CheckFunc) error {
 	// Get primary display info to set shelf behavior.
 	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -128,7 +128,7 @@ func TabletShelfHideShowHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 	}
 
 	for _, tc := range activityInfo {
-		if err := showHideShelfHelper(ctx, tconn, a, d, tc, primaryDisplayInfo.ID); err != nil {
+		if err := showHideShelfHelper(ctx, tconn, a, d, tc, primaryDisplayInfo.ID, checkFunc); err != nil {
 			return errors.Wrapf(err, "%q test failed", tc)
 		}
 	}
@@ -259,7 +259,7 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 }
 
 // showHideShelfHelper runs shelf show/hide scenarios per activity on tablet.
-func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo, pdID string) (err error) {
+func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo, pdID string, checkFunc CheckFunc) (err error) {
 	// Get initial shelf behavior to make sure it is never hide.
 	initSB, initErr := ash.GetShelfBehavior(ctx, tconn, pdID)
 	if initErr != nil {
@@ -302,7 +302,8 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return err
 	}
-	if err := CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+
+	if err := checkFunc(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
@@ -355,7 +356,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		return errors.Wrap(err, "failed to wait for shelf animation to complete")
 	}
 
-	if err := CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+	if err := checkFunc(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
