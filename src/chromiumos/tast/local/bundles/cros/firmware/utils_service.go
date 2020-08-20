@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
+	evdev "github.com/gvalkov/golang-evdev"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
@@ -144,6 +145,9 @@ func (*UtilsService) ReadServoKeyboard(ctx context.Context, req *empty.Empty) (*
 	// gets assigned different values, such assignments are transparent, since we use the
 	// symlink.
 	const node = "/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd"
+	if !evdev.IsInputDevice(node) {
+		return nil, errors.Wrap(err, "keyboard node does not exist or is not a character input device")
+	}
 	kbd, err := os.Open(node)
 	if err != nil {
 		return nil, errors.Wrap(err, "opening keyboard emulator device node")
