@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "815a461d_cfd682bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:57:23Z",
+      "side": 1,
+      "message": "LGTM % Gabor\u0027s question.",
+      "revId": "3e76d902ab12ba0b7a3e1f71a7db914914f7e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e421dba_e98ab84c",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb.go",
         "patchSetId": 4
