@@ -27,6 +27,7 @@ import (
 
 const (
 	hostapdCmd = "hostapd"
+	hostapdCLI = "/usr/bin/hostapd_cli"
 )
 
 // KillAll kills all running hostapd on host, useful for environment setup/cleanup.
@@ -240,4 +241,13 @@ func (s *Server) Interface() string {
 // Config returns the config used by the hostapd.
 func (s *Server) Config() Config {
 	return *s.conf
+}
+
+// SendCSA sends CSA from AP.
+func (s *Server) SendCSA(ctx context.Context, freq int) error {
+	if err := s.host.Command(hostapdCLI, fmt.Sprintf("-p%s", s.ctrlPath()), "chan_switch", "5", fmt.Sprintf("%d", freq), "ht").Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send CSA with freq %d", freq)
+	}
+
+	return nil
 }
