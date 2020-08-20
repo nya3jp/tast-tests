@@ -79,6 +79,17 @@ func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool
 	return setPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
 }
 
+// SetVoiceInteractionConsentValue enables/disables the consent value for Assistant voice interaction.
+func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn, value int) error {
+	return tconn.Call(
+		ctx,
+		nil,
+		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`,
+		"settings.voice_interaction.activity_control.consent_status",
+		value,
+	)
+}
+
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
 func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := tconn.Call(ctx, nil, `async () => {
