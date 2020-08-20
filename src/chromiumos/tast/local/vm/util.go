@@ -18,7 +18,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/compupdater"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -65,25 +64,6 @@ func MountComponent(ctx context.Context, image string) error {
 	}
 
 	return nil
-}
-
-func mountComponentUpdater(ctx context.Context) error {
-	updater, err := compupdater.New(ctx)
-	if err != nil {
-		return err
-	}
-
-	testing.ContextLogf(ctx, "Mounting %q component", TerminaComponentName)
-	resp, err := updater.LoadComponent(ctx, TerminaComponentName, compupdater.Mount)
-	if err != nil {
-		return errors.Wrapf(err, "mounting %q component failed", TerminaComponentName)
-	}
-	testing.ContextLog(ctx, "Mounted component at path ", resp)
-
-	// Ensure that the 99999.0.0 component isn't used.
-	// Unmount any existing component and delete the 99999.0.0 directory.
-	unix.Unmount(TerminaMountDir, 0)
-	return os.RemoveAll(TerminaMountDir)
 }
 
 // UnmountComponent unmounts any active VM component.
@@ -174,29 +154,6 @@ func findIPv4(ips string) (string, error) {
 		}
 	}
 	return "", errors.Errorf("could not find IPv4 address in %q", ips)
-}
-
-// CreateDefaultVMContainer prepares a VM and container with default settings and
-// either the live or staging container versions. The directory dir may be used
-// to store logs on failure. If the container type is Tarball, then artifactPath
-// must be specified with the path to the tarball containing the termina VM
-// and container. Otherwise, artifactPath is ignored. If enableGPU is set, it will
-// pass it to VM to force gpu enabled.
-func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*Container, error) {
-	_, err := CreateDefaultVM(ctx, dir, user, t, artifactPath, enableGPU, diskSize)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create default VM instance")
-	}
-
-	container, err := CreateDefaultContainer(ctx, user, t, dir)
-	if err != nil {
-		// Stopping Concierge should also dispose vmInstance.
-		if stopErr := StopConcierge(ctx); stopErr != nil {
-			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
-		}
-		return nil, errors.Wrap(err, "failed to create default Container")
-	}
-	return container, nil
 }
 
 // RestartDefaultVMContainer restarts a VM and container that were previously shut down.

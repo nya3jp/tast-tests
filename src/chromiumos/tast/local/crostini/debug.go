@@ -11,5 +11,5 @@ const (
 	//
 	// This option exists to speed up debugging on developer workstations.
 	// It is not intended for use on lab devices.
-	FastDebug = false
+	FastDebug = true
 )
