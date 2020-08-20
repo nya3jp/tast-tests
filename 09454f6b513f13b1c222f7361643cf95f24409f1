@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "125000aa_02749094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-20T10:37:40Z",
+      "side": 1,
+      "message": "Some small fixes for the current ZipPerf tests, which success rate is only ~90% for now.\n\nI\u0027m not sure about the fix related to the context menu. If my hypothesis is verified, I don\u0027t know which row of the context menu can be missing, so it\u0027s easier to wait for a certain amount of time before clicking \u0027Zip selection\u0027. Happy to know what you think!",
+      "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
