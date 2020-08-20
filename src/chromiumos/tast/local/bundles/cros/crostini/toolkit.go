@@ -31,6 +31,7 @@ func init() {
 		Desc:     "Verifies the behaviour of GUI apps based on various toolkits",
 		Contacts: []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:      "gtk3_wayland",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},

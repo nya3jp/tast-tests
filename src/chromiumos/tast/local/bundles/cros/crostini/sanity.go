@@ -19,6 +19,7 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",

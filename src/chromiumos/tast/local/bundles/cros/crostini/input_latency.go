@@ -35,6 +35,7 @@ func init() {
 		Desc:         "Tests Crostini input latency",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Vars:         []string{"keepState"},
 		Timeout:      10 * time.Minute,
 		Data:         []string{"input_latency_server.py", crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
