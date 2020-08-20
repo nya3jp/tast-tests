@@ -104,6 +104,143 @@
       "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "097d95b8_cea38e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "the uniform",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e1a9a0_befc9d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "Note that in Golang world, private const in file scope is actually visible within the package. So if you don\u0027t intent to be shared with other files in the package, please move the const definition in the function.",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82ef922_0df0592c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "You may consider convert it to integer here.",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e3f959_2134066b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0879301_f638c3fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "For the deferred call that needs a ctx, we shall reserve time for it to make sure it can do the clean up. Consider using the pattern:\n\ncleanup, err :\u003d ..\nif err !\u003d nil { ... }\ndefer func(ctx context.Context) {\n  cleanup(ctx)\n}(ctx)\nctx, cancel :\u003d ctxutil.Shorten(ctx, timeToReserveForCleanup)\ndefer cancel()\n\nhttps://docs.google.com/document/d/18U9v4bLD7GkihVIPX1tH0xrHg5zMDu-XbapUtzYWHTU/edit#heading\u003dh.hk82hzjg2h39",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422c06e5_8e56fee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9767dfe7_18194f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T02:15:56Z",
+      "side": 1,
+      "message": "expect pixel count",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "28f01aa3b2a5da802b4f955daed386b27a24fc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
