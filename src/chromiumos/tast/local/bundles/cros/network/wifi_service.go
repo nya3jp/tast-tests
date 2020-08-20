@@ -1377,6 +1377,11 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 	// foundIn returns true if the property value v is found in vs; false otherwise.
 	foundIn := func(v interface{}, vs []interface{}) bool {
 		for _, ev := range vs {
+			// Protoutil does not support uint16 in the meantime.
+			// Change the type of v to uint32, if its type is uint16.
+			if x, ok := v.(uint16); ok {
+				v = uint32(x)
+			}
 			if reflect.DeepEqual(ev, v) {
 				return true
 			}
