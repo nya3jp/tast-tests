@@ -19,6 +19,7 @@ func init() {
 		Desc:     "Queries the information for a Debian package that we have copied into the container",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),

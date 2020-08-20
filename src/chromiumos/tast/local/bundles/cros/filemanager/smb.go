@@ -28,6 +28,7 @@ func init() {
 			"chromeos-files-syd@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Data:         []string{"smb.conf", crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
