@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ec80be8_b846052d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T02:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7029b457_bbb91588",
+      "range": {
+        "startLine": 27,
+        "startChar": 72,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce67c676_6d19a5f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a11b12_9d6eac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T02:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce67c676_6d19a5f4",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "74f13bc6_02a1568b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T02:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2835a87b_a1b539d6",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83293ca2_dc2d33ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3809ebb2_0019a988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T02:53:44Z",
+      "side": 1,
+      "message": "This is the idiomatic variable name for container within crostini code.\n\nhttps://source.corp.google.com/search?q\u003dcont%5B.%20%5D\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fcrostini%2F",
+      "parentUuid": "83293ca2_dc2d33ea",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63609421_7e9f1aeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ba82f2_54393cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T02:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63609421_7e9f1aeb",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "8eb96b8f2cb98db6980b2bd4407f2fb57b6efb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
