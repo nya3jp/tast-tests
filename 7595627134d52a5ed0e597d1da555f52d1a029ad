@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0745010f_d66614a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-20T16:01:48Z",
+      "side": 1,
+      "message": "Hi Jun, this CL seems to do several things: parameterizing several different tests, and also marking several tests as critical. It would be good to separate these into separate CL\u0027s: if we need to revert one aspect, we don\u0027t want to have to revert the whole CL.\n\nCould you create separate CL\u0027s for parameterizing each test, and separate CL\u0027s for promoting each to critical?",
+      "revId": "7595627134d52a5ed0e597d1da555f52d1a029ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
