@@ -16,6 +16,24 @@
       "revId": "74fd008c4652f63859950431a0d2db65a4e24360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f3acac_5797a5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T05:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b420aaa5_b60e5d60",
+      "revId": "74fd008c4652f63859950431a0d2db65a4e24360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
