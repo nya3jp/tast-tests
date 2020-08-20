@@ -16,6 +16,23 @@
       "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75173103_22fcb340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-20T18:48:08Z",
+      "side": 1,
+      "message": "Can we put the description about what this contents do somewhere, (what it does to make it\nintenstive) maybe with some expectation?",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
