@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e318e25_572d3839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-20T09:37:34Z",
+      "side": 1,
+      "message": "Just adding +1 back, as it is not sticky.",
+      "revId": "69f6dbcb0d73f7d7367df1419abbc9dd94f1c8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
