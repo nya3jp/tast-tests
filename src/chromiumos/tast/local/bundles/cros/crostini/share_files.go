@@ -26,6 +26,7 @@ func init() {
 		Desc:         "Checks crostini files sharing",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
@@ -64,6 +65,7 @@ func ShareFiles(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	ownerID, err := cryptohome.UserHash(ctx, cr.User())
 	if err != nil {
