@@ -82,6 +82,7 @@ func init() {
 		Desc:     "Test copy paste functionality",
 		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Data:     []string{copyApplet, pasteApplet},
 		// Test every combination of:
 		//   * Source container via Download/DownloadBuster/Artifact/Artifact unstable

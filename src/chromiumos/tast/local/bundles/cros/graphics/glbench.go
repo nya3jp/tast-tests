@@ -50,6 +50,7 @@ func init() {
 			"oka@chromium.org", // Tast port
 		},
 		SoftwareDeps: []string{"no_qemu"},
+		Vars:         []string{"keepState"},
 		Params: []testing.Param{
 			{
 				Name:      "",

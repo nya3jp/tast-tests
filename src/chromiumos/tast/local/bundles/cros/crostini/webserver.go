@@ -23,6 +23,7 @@ func init() {
 		Desc:         "Runs a webserver in the container, and confirms that the host can connect to it",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
