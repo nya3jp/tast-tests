@@ -22,6 +22,30 @@
       "revId": "be40cba2deca20cc02a75f35d06e43f526c13e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a294029_12e588e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-08-20T21:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "410b07a3_f54136d8",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 57
+      },
+      "revId": "be40cba2deca20cc02a75f35d06e43f526c13e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
