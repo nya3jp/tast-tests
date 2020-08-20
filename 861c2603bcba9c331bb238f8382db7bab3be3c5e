@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5db6e45_a42b9ea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-08-20T17:32:35Z",
+      "side": 1,
+      "message": "Another assistant performance test. This also relies on a change in chromium to allow setting another pref: \"settings.voice_interaction.activity_control.consent_status\". Without this pref set, the assistant suggestion chips are hidden.\n\nDepends on: https://chromium-review.googlesource.com/c/chromium/src/+/2367512",
+      "revId": "861c2603bcba9c331bb238f8382db7bab3be3c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
