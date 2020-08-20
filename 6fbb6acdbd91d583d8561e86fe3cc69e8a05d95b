@@ -119,6 +119,46 @@
       "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6358347_9b1d1d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-20T00:31:30Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c09acc80_a211e5b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-20T00:31:30Z",
+      "side": 1,
+      "message": "since these two attributes are constant for all variants of this test, can you put these back up top as under \"Attr:\"?",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
