@@ -65,6 +65,54 @@
     },
     {
       "key": {
+        "uuid": "5a542f16_8577b2c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T06:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6872800_1e5d83da",
+      "range": {
+        "startLine": 74,
+        "startChar": 49,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "2939e77b2a3a71108c9bb0a70096032693efc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b506d173_b8a3926e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T06:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c953b4bd_cc450ddc",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "2939e77b2a3a71108c9bb0a70096032693efc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78b7f1ee_dda53c77",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
         "patchSetId": 9
@@ -85,6 +133,30 @@
       "revId": "2939e77b2a3a71108c9bb0a70096032693efc3a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d26c97_5d23f4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-20T06:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b7f1ee_dda53c77",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "2939e77b2a3a71108c9bb0a70096032693efc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
