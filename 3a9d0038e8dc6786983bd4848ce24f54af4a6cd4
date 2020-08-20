@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d8ca30_a5ca4c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T07:21:09Z",
+      "side": 1,
+      "message": "The ctx shortening code should be placed after the defer function is defined. It is because the deferred lambda function binds the original ctx at the time the function is defined. If you shorten the ctx before the defer block, the deferred function will use the shortened ctx. This is subtle and special care is needed.\n\nHere you have two deferred calls with ctx. I would suggest you reserve fair amount of time for the two.\n\n\tcleanup, err :\u003d ash.EnsureTabletModeEnabled(ctx, tconn, false)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to set tablet mode to false: \", err)\n\t}\n\tdefer func(ctx context.Context) {\n\t\tcleanup(ctx)\n\t}(ctx)\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, cleanupTime)\n\tdefer cancel()\n\n\tif err :\u003d act.Start(ctx, tconn); err !\u003d nil {\n\t\ts.Fatal(\"Failed to start the activity: \", err)\n\t}\n\tdefer func(ctx context.Context, tconn *chrome.TestConn) {\n\t\tact.Stop(ctx, tconn)\n\t}(ctx, tconn)\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, cleanupTime)\n\tdefer cancel()",
+      "revId": "3a9d0038e8dc6786983bd4848ce24f54af4a6cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
