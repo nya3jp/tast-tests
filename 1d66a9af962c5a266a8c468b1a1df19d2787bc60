@@ -373,6 +373,30 @@
     },
     {
       "key": {
+        "uuid": "1b19d692_06ead2a4",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "ditto comment for crosssytem.go.  \"More unusual things and global variables need more descriptive names\". I\u0027ve removed \"Type\" from the consts.",
+      "parentUuid": "b555aad7_6a2e69ab",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "914df8f7_1127686f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -707,6 +731,24 @@
     },
     {
       "key": {
+        "uuid": "b3bbe3f6_00e469c8",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "done, added my ldap.",
+      "parentUuid": "673636af_a82dff72",
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07af9df6_2bbab2fc",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 5
@@ -954,6 +996,30 @@
       "side": 1,
       "message": "Similar to my comment for the BootedDevice constants, how would you feel about CSMainfwType/CSKernkeyVfy?",
       "parentUuid": "95fe1347_9c10c860",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519814d1_186d70f6",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "I think the short variable naming thing in golang is more applicable towards local variables.  For exported consts and functions, reducing ambiguity is more important.  Sure in crossystem.go, the meaning of CSMainfwType looks obvious.  But in some firmware test, CSKernvfyKey could take a while for the reader to figure out.\n\nThe reader may ask: Shouldn\u0027t Crossystem be abbreviated as C?  Or CP for Crossystem parameter (actually I\u0027ll rename CrossystemKey to CrossystemParam since parameter is more official).",
+      "parentUuid": "eb035292_2e86b109",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -1539,6 +1605,30 @@
       "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7f1eef_2b473be5",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "\"In that case, I think that explicitly using an Interface will be the way to go. It will allow us to enforce the signature we expect,\"\nIn effect, I\u0027m proposing that the signature be: interface{}, error\n\nI\u0027ll leave it out for now though since it looks like this warrants further discussion.",
+      "parentUuid": "34950d77_85717da2",
+      "range": {
+        "startLine": 5,
+        "startChar": 105,
+        "endLine": 5,
+        "endChar": 142
+      },
+      "revId": "1d66a9af962c5a266a8c468b1a1df19d2787bc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

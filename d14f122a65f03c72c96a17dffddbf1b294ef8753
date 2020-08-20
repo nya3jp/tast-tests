@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0b1b6da8_9f8ec919",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "oh darn, I really loved this idea, but it didn\u0027t compile because structs can\u0027t be constants in go even if all fields are known at compile time.",
+      "parentUuid": "35c4e857_69c5d06e",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e41b2dd9_d8bc8159",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "44e2337c_b5b39c1a",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Makes sense, changed to BootedDeviceInfo to better match BootedDeviceType, and changed verificationMap to knownBootedDeviceInfos.",
+      "parentUuid": "e41b2dd9_d8bc8159",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b54c3e_1114602b",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "f57dc2ca_70579494",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Putting it here because it will fail during load time if there\u0027s an error here as opposed to run time.  Found similar pattern here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/common/perf/perf.go;l\u003d47",
+      "parentUuid": "22b54c3e_1114602b",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eef74e0_1a18c808",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -90,6 +150,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a71e56_b779f39e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "ditto above.",
+      "parentUuid": "3eef74e0_1a18c808",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "a2c0b965_893db592",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a887a6_03a67c90",
+      "range": {
+        "startLine": 63,
+        "startChar": 15,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129b753c_2ef3571a",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -130,6 +232,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dcfedeb_f83d28b8",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129b753c_2ef3571a",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +276,30 @@
     },
     {
       "key": {
+        "uuid": "b5e106d4_bfa66f74",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "renamed to lines.",
+      "parentUuid": "d9fe1217_ad3c0740",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e211b697_1fa7460f",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -179,6 +323,30 @@
     },
     {
       "key": {
+        "uuid": "753104d3_c9124737",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "renamed to lines.",
+      "parentUuid": "e211b697_1fa7460f",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df04ba8b_a9a2fade",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -193,6 +361,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697d605f_8f785675",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df04ba8b_a9a2fade",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -219,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "599491ed_56449206",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "doh!",
+      "parentUuid": "3d6565dc_f36ccad2",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 107
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a6cdd97_5a9ff643",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -236,6 +446,24 @@
     },
     {
       "key": {
+        "uuid": "0ab59e54_f1268be8",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6cdd97_5a9ff643",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ab7d799_836908ed",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
@@ -250,6 +478,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6867713f_95149c3e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "It was logic from FAFT.  I will simplify it to just test for 0 or 1 with strings.",
+      "parentUuid": "2ab7d799_836908ed",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -276,6 +522,30 @@
     },
     {
       "key": {
+        "uuid": "1bf308a7_6001ceff",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/cat.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a92d5ce_55f4bec4",
+      "range": {
+        "startLine": 12,
+        "startChar": 49,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf17513_b960c4aa",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 6
@@ -290,6 +560,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1875b2_3c91c8e3",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "We can do that as a follow up if bandwidth allows.  Please keep in mind that making it more widely usable may involve significantly more design work to extract all the information from crossystem output and provide it in a useful manner.",
+      "parentUuid": "dcf17513_b960c4aa",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -316,6 +604,30 @@
     },
     {
       "key": {
+        "uuid": "35ad12ac_ad2e87d5",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Doing the check in this method to make tests less bloated, since otherwise they\u0027ll always first need to check if a key is present.",
+      "parentUuid": "b223127d_e62d7457",
+      "range": {
+        "startLine": 29,
+        "startChar": 49,
+        "endLine": 29,
+        "endChar": 80
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f25f008_6ae044c5",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 6
@@ -339,6 +651,30 @@
     },
     {
       "key": {
+        "uuid": "980a11d5_3f2ad6aa",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f25f008_6ae044c5",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1bb47e4_828b942a",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 6
@@ -353,6 +689,24 @@
       "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be4bd54_412b61cf",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T16:58:29Z",
+      "side": 1,
+      "message": "The signature of isCSKeyKnown is self contradictory.  I mean, if k1 is already of type CrossystemKey, then by definition it\u0027s already known.  The type of k1 should be string.  \n\nSecondly, there\u0027s a subtle difference in that if there\u0027s a duplicate key detected (outside of the known keys), the existing version will return an error.  Now it is debatable whether we want this or not, but I believe it\u0027s safer to error out because a) that\u0027s the existing behavior in FAFT, b) we\u0027ve possibly encountered a bug or change in format of the crossystem output.\n\nI believe this is a subjective preference, having 2 maps or use a function.\n\nAs a compromise, I\u0027ve factored out the filtering block into its own function.",
+      "parentUuid": "c1bb47e4_828b942a",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
