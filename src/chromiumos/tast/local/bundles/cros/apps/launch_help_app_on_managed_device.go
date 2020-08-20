@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,14 +25,23 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"apps.LaunchHelpAppOnManagedDevice.enterprise_username", "apps.LaunchHelpAppOnManagedDevice.enterprise_password"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.AppsCriticalModels...)),
 		Params: []testing.Param{
 			{
-				Name: "oobe",
-				Val:  true,
+				Name:              "oobe_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val:               true,
 			}, {
-				Name: "logged_in",
-				Val:  false,
+				Name:              "oobe_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val:               true,
+			}, {
+				Name:              "logged_in_stable",
+				ExtraHardwareDeps: pre.AppsStableModels,
+				Val:               false,
+			}, {
+				Name:              "logged_in_unstable",
+				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Val:               false,
 			},
 		}})
 }
