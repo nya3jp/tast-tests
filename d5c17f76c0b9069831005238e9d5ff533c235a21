@@ -45,6 +45,30 @@
       "revId": "d5c17f76c0b9069831005238e9d5ff533c235a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6473cd21_3e654c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-20T22:56:42Z",
+      "side": 1,
+      "message": "Thanks! Apologies for the delay, perf season is around again :-)",
+      "parentUuid": "d3c289ae_395cf82b",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "d5c17f76c0b9069831005238e9d5ff533c235a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
