@@ -27,6 +27,7 @@ func init() {
 		Desc:     "Test renaming a file in Linux files and container using a pre-built crostini image",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),

@@ -20,6 +20,7 @@ func init() {
 		Desc:         "Checks crostini FilesApp watch",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
@@ -58,6 +59,7 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	const (
 		testFileName1   = "FilesAppWatch1.txt"

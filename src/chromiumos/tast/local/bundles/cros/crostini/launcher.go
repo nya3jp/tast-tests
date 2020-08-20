@@ -37,6 +37,7 @@ func init() {
 		Desc:     "Runs applications from the launcher in low/high-DPI mode",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:      "local_wayland_artifact",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},

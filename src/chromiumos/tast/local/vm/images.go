@@ -23,7 +23,17 @@ import (
 )
 
 // The directory where images will be downloaded/extracted to.
-const imageDir = "/usr/local/cros-termina"
+const (
+	imageDir     = "/usr/local/cros-termina"
+	imageFile    = "image.ext4"
+	TerminaImage = "/usr/local/cros-termina/image.ext4"
+)
+
+// TerminaImageExists returns true if TerminaImage file exists and is readable.
+func TerminaImageExists() bool {
+	_, err := os.Stat(TerminaImage)
+	return err == nil
+}
 
 // DeleteImages deletes all images downloaded or extracted for the test by the other functions in this file.
 func DeleteImages() error {
@@ -46,11 +56,11 @@ func ExtractTermina(ctx context.Context, artifactPath string) (string, error) {
 
 	zipPath := filepath.Join(imageDir, "vm_image.zip")
 	// Extract the zip. We expect an image.ext4 file in the output.
-	if err := testexec.CommandContext(ctx, "unzip", "-u", zipPath, "image.ext4", "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
+	if err := testexec.CommandContext(ctx, "unzip", "-u", zipPath, imageFile, "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to unzip")
 	}
 
-	return filepath.Join(imageDir, "image.ext4"), nil
+	return TerminaImage, nil
 }
 
 // ExtractContainer extracts and renames container images from the artifact tarball.
@@ -115,16 +125,16 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 		}
 	}()
 
-	if err := os.RemoveAll(path.Join(imageDir, "image.ext4")); err != nil {
+	if err := os.RemoveAll(TerminaImage); err != nil {
 		return "", errors.Wrapf(err, "failed to delete old image.ext4 from %s", imageDir)
 	}
 
 	// Extract image.ext4 from the zip.
-	if err := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
+	if err := testexec.CommandContext(ctx, "unzip", filesPath, imageFile, "-d", imageDir).Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrapf(err, "failed to unzip image.ext4 from %s", filesPath)
 	}
 
-	return path.Join(imageDir, "image.ext4"), nil
+	return TerminaImage, nil
 }
 
 // DownloadStagingContainer downloads the current staging container images from Google Storage.
