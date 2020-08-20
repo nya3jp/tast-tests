@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/filemanager/Encrypted_ZipCrypto_20200820.zip",
+  "size": 2141,
+  "sha256sum": "0afd02f7437ae536daaa95b8a765b3e13fc38fc31507945ce5b4e8e5778c3f99"
+}
