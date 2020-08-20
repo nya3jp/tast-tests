@@ -16,6 +16,98 @@
       "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87155a0f_5f3c59cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-20T08:12:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a717c4_54c9d603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-20T08:12:12Z",
+      "side": 1,
+      "message": "Could this be move to device/device.go for future audio tests?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351e8a56_05d3c251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-20T08:12:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd64eae_b5cb787d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-20T08:12:12Z",
+      "side": 1,
+      "message": "Should we run this first and early return?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "dfd26c44754eb9c7feba6f736c7efabb4470cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
