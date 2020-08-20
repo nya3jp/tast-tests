@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2fa76fd9_a20ea556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Yes that makes sense. Thanks!",
+      "parentUuid": "5e51c661_43b5d0bb",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21682873_4d5e61ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5276a873_2621ae33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21682873_4d5e61ab",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 25
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "71d4ae87_fe0eff38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c49cac_d6698677",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9127b7ae_01b53717",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 12
@@ -91,6 +163,30 @@
       "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a8782d_976ec41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Yes good point. Thanks!",
+      "parentUuid": "9127b7ae_01b53717",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 3
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f97c5a91_69127ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "749177ad_1a48137e",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afec7137_935d2771",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 12
@@ -128,6 +248,30 @@
       "writtenOn": "2020-08-17T03:47:11Z",
       "side": 1,
       "message": "Should handle the err first.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1eed51_29af2388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "These are conditions to add perf opts so they will not early return. I think I can just put it this way ?",
+      "parentUuid": "afec7137_935d2771",
       "range": {
         "startLine": 134,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "dd8f1f2c_2a5e8340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "But I need to use p later in defer so I can\u0027t define it in p.\nI modified it to runningProfs so it is more readable.",
+      "parentUuid": "867025b9_0124eaab",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e805d510_64766ac6",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 12
@@ -183,6 +351,30 @@
       "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f878920b_633f3253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e805d510_64766ac6",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "5b2f5726d16c4602d13b88d4a5cbd36638888700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
