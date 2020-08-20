@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "5ce75cae_9ec5cbb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "I am a bit confused.\ns.Fatal(modified to s.Error) does not return.\nSo if I got that error, I don\u0027t want to log CPU cycle count per second.\nI think I need to use else to achieve that. Does this make sense to you ?\nThanks!",
+      "parentUuid": "0a3edd84_9efe772e",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "325dc45c_11418573",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 6
@@ -67,6 +85,24 @@
       "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5508f4_684559b3",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "Good point! Thanks!",
+      "parentUuid": "325dc45c_11418573",
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "b499b00c_e57e0706",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a63a109_f8c08ccc",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed9553e_e91477ae",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 6
@@ -104,6 +164,30 @@
       "writtenOn": "2020-08-13T12:13:40Z",
       "side": 1,
       "message": "It might be a bit tedious to handle errors from PerfStatOpts (while we don\u0027t have to do so for PerfRecordOpts/PerfStatRecordOpts). We can avoid this by checking pid in newPerf later. Actually, since callers can construct PerfOpts by themselves, I suppose we still need to check the validity of pid in newPerf.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cd58d0_3089455c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "Got it.\nNow that pid is not public, should I still heed to check validity of pid in newPerf ?",
+      "parentUuid": "0ed9553e_e91477ae",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -139,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "43cc4fc5_888c5860",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "Great, I moved the suggestion Oleh made into a function handleOutput.",
+      "parentUuid": "527aaaa5_5b9d425b",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb0adc00_4cfe6bba",
         "filename": "src/chromiumos/tast/local/profiler/profiler.go",
         "patchSetId": 6
@@ -150,6 +258,30 @@
       "writtenOn": "2020-08-13T12:13:40Z",
       "side": 1,
       "message": "Profilers of different types may have different structured outputs. I guess you tried to cover them by using map[string]interface{}, but then we lose type safety.\n\nTo be type-safe, you can add a pointer to an output variable in the constructor options, and fill it at the end of profiling, just like:\n\n type PerfStatOutput struct {\n   CyclesPerSecond float64\n }\n\n func PerfStatOpts(out *PerfStatOutput, pid int) *PerfOpts // out is filled in RunningProf.End",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e265c48_912a161b",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-20T06:28:06Z",
+      "side": 1,
+      "message": "Thank you for the suggestion, but this is what I would like to avoid. The reason is that test writer would need to know that they can only read the value after RunningProf.End. This seems to add extra burden to test writer. I guess this is a trade-off between type safety and the simplicity for test.",
+      "parentUuid": "bb0adc00_4cfe6bba",
       "range": {
         "startLine": 28,
         "startChar": 5,
