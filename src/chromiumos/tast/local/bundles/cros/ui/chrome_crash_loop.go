@@ -32,7 +32,7 @@ func init() {
 		Func:         ChromeCrashLoop,
 		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "memfd_create"},
 		Params: []testing.Param{{
 			Name: "breakpad",
@@ -55,6 +55,7 @@ func init() {
 				consent: crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "crashpad_mock_consent",
 			Val: chromeCrashLoopParams{
@@ -62,6 +63,7 @@ func init() {
 				consent: crash.MockConsent,
 			},
 			ExtraSoftwareDeps: []string{"crashpad"},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
