@@ -102,6 +102,23 @@
       "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30222692_b718a259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-20T00:10:10Z",
+      "side": 1,
+      "message": "LGTM. Let mcasas@ to decide when to land this (before branch or after)",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
