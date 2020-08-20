@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8c9f47a_b0e70658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-20T04:54:37Z",
+      "side": 1,
+      "message": "Restore the container and verify that the file is back.",
+      "revId": "1a4dd0a82af9946b46f9a1ae47a8c8b1245a1cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
