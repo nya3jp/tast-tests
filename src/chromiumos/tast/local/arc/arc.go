@@ -202,8 +202,22 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
 	}
 
-	// Connect to ADB.
-	if err := connectADB(ctx); err != nil {
+	// Poll to connect ADB. If it fails, re-do auth setup and restart adbd.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		checkCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+		// Connect to ADB.
+		if err := connectADB(checkCtx); err != nil {
+			//if vm {
+			//	restartADBForVM(ctx)
+			//} else {
+			//restartADBForContainer(ctx)
+			//}
+			//return err
+			testing.ContextLog(ctx, "ADB connection failed")
+		}
+		return nil
+	}, nil); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
 
