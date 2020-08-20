@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -49,6 +50,8 @@ type Server struct {
 	stderrFile *os.File
 }
 
+var hostapdConfigStr Config
+
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
@@ -58,12 +61,14 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 	ctx, st := timing.Start(ctx, "hostapd.StartServer")
 	defer st.End()
 
+	hostapdConfigStr := *config
+
 	s := &Server{
 		host:    host,
 		name:    name,
 		iface:   iface,
 		workDir: workDir,
-		conf:    config,
+		conf:    &hostapdConfigStr,
 	}
 	// Clean up on error.
 	defer func() {
@@ -256,4 +261,55 @@ func (s *Server) Name() string {
 // NOTE: Caller should not modify the returned object.
 func (s *Server) Config() *Config {
 	return s.conf
+}
+
+// CSAOption is the function signature used to specify options of CSA command.
+type CSAOption func(*csaConfig)
+
+// CSACount returns an Option which sets Count in CSA.
+func CSACount(csCount int) CSAOption {
+	return func(c *csaConfig) {
+		c.count = csCount
+	}
+}
+
+// CSAFrequency returns an Option which sets Frequency in CSA.
+func CSAFrequency(f int) CSAOption {
+	return func(c *csaConfig) {
+		c.freq = f
+	}
+}
+
+// CSAMode returns an Option which sets Frequency in CSA.
+func CSAMode(m string) CSAOption {
+	return func(c *csaConfig) {
+		c.mode = m
+	}
+}
+
+// csaConfig is the configration for the channel switch announcement.
+type csaConfig struct {
+	count int
+	freq  int
+	mode  string
+}
+
+// StartChannelSwitch initiates a CSA in the AP.
+func (s *Server) StartChannelSwitch(ctx context.Context, options ...CSAOption) error {
+	cfg := &csaConfig{}
+	for _, opt := range options {
+		opt(cfg)
+	}
+
+	var args []string
+	args = append(args, fmt.Sprintf("-p%s", s.ctrlPath()))
+	args = append(args, "chan_switch")
+	args = append(args, strconv.Itoa(cfg.count))
+	args = append(args, strconv.Itoa(cfg.freq))
+	args = append(args, cfg.mode)
+
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send CSA with freq %d", cfg.freq)
+	}
+	return nil
 }

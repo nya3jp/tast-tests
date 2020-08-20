@@ -943,23 +943,33 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 
 // VerifyConnection verifies that the AP is reachable by pinging, and we have the same frequency and subnet as AP's.
 func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error {
-	iface, err := tf.ClientInterface(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get interface from the DUT")
-	}
-
 	// Check frequency.
 	service, err := tf.QueryService(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to query shill service information")
 	}
 	clientFreq := service.Wifi.Frequency
+	// Update the server frequency in case a CSA happens during the test.
+	iwr := iw.NewRemoteRunner(tf.routers[0].host)
+	chConfig, err := iwr.RadioConfig(ctx, ap.hostapd.Interface())
+	if err != nil {
+		return errors.Wrap(err, "failed to get the radio configuration")
+	}
+	// Update hostapd channel.
+	if chConfig.Number != ap.Config().Channel {
+		ap.Config().Channel = chConfig.Number
+	}
 	serverFreq, err := hostapd.ChannelToFrequency(ap.Config().Channel)
 	if err != nil {
 		return errors.Wrap(err, "failed to get server frequency")
 	}
 	if clientFreq != uint32(serverFreq) {
 		return errors.Errorf("frequency does not match, got %d want %d", clientFreq, serverFreq)
+	}
+
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get interface from the DUT")
 	}
 
 	// Check subnet.

@@ -235,3 +235,8 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 	}
 	return nil
 }
+
+// StartChannelSwitch initiates a CSA in the AP.
+func (h *APIface) StartChannelSwitch(ctx context.Context, opts ...hostapd.CSAOption) error {
+	return h.hostapd.StartChannelSwitch(ctx, opts...)
+}
