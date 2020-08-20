@@ -39,6 +39,9 @@ func init() {
 		}, {
 			Name: "cancel_multiple",
 			Val:  "cancelMultiple",
+		}, {
+			Name: "mount_multiple",
+			Val:  "mountMultiple",
 		}},
 	})
 }
@@ -147,6 +150,8 @@ func ZipMount(ctx context.Context, s *testing.State) {
 		testMountingSingleZipFile(ctx, s, files, simpleZipFile)
 	case "cancelMultiple":
 		testCancelingMultiplePasswordDialogs(ctx, s, files, ew, encryptedZipFiles)
+	case "mountMultiple":
+		testMountingMultipleZipFiles(ctx, s, files, ew, zipFiles)
 	default:
 		s.Fatal("Unexpected test param: ", s.Param())
 	}
@@ -357,5 +362,116 @@ func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State,
 
 	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
 		s.Fatal("The password dialog is still displayed: ", err)
+	}
+}
+
+func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipFiles []string) {
+	// Select the 3 encrypted zip files
+	selectMultipleFiles(ctx, s, files, ew, zipFiles)
+
+	// Press Enter.
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot press 'Enter': ", err)
+	}
+
+	// Wait until the password dialog is active for the first encrypted ZIP archive.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
+		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	}
+
+	// Enter wrong password.
+	params := ui.FindParams{
+		Role:  ui.RoleTypeTextField,
+		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeProtected: true, ui.StateTypeFocused: true},
+	}
+
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+		s.Fatal("Cannot find password input field: ", err)
+	}
+
+	if err := ew.Type(ctx, "wrongPassword"); err != nil {
+		s.Fatal("Cannot enter 'wrongPassword': ", err)
+	}
+
+	// Validate password.
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot validate password by pressing 'Enter': ", err)
+	}
+
+	// Check that the password dialog is still active for the first encrypted ZIP archive.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
+		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	}
+
+	// Check that the password field is prefilled with the last entered password.
+	params = ui.FindParams{
+		Name:  "•••••••••••••",
+		Role:  ui.RoleTypeStaticText,
+		State: map[ui.StateType]bool{ui.StateTypeEditable: true},
+	}
+
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+		s.Fatal("Cannot find last entered password: ", err)
+	}
+
+	// Press Backspace.
+	if err := ew.Accel(ctx, "Backspace"); err != nil {
+		s.Fatal("Cannot press 'Backspace': ", err)
+	}
+
+	// Enter right password.
+	if err := ew.Type(ctx, "password"); err != nil {
+		s.Fatal("Cannot enter 'password': ", err)
+	}
+
+	// Validate password.
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot validate the name of the new directory: ", err)
+	}
+
+	// Check that the password dialog is active for the second encrypted ZIP archive.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[1]); err != nil {
+		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[1], err)
+	}
+
+	// Press Backspace.
+	if err := ew.Accel(ctx, "Backspace"); err != nil {
+		s.Fatal("Cannot press 'Backspace': ", err)
+	}
+
+	// Enter right password.
+	if err := ew.Type(ctx, "password"); err != nil {
+		s.Fatal("Cannot enter 'password': ", err)
+	}
+
+	// Click Unlock.
+	params = ui.FindParams{
+		Name: "Unlock",
+		Role: ui.RoleTypeButton,
+	}
+
+	unlock, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
+	if err != nil {
+		s.Fatal("Cannot find password dialog cancel button: ", err)
+	}
+	defer unlock.Release(ctx)
+
+	if err := unlock.LeftClick(ctx); err != nil {
+		s.Fatal("Cannot validate password with the Unlock button: ", err)
+	}
+
+	// Checks that the password dialog is not displayed anymore.
+	params = ui.FindParams{
+		Name: "Password",
+		Role: ui.RoleTypeDialog,
+	}
+
+	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
+		s.Fatal("The password dialog is still displayed: ", err)
+	}
+
+	// Check that the 3 zip files have been mounted correctly and unmount them.
+	for _, zipFile := range zipFiles {
+		checkAndUnmountZipFile(ctx, s, files, zipFile)
 	}
 }
