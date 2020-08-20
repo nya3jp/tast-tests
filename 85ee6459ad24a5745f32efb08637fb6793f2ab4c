@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "57fb6870_df90f95f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:22:27Z",
+      "side": 1,
+      "message": "(Sorry, I missed the comment here as I only read PS5 in previous round... Close the other comment)\n\nI\u0027m not very familiar with the chrome package but IMO, if we\u0027re going with this, the change will at least worth a chrome.Option so that other tests won\u0027t be bothered. I also think it would be better to figure out why it matters first. (I have no idea on this either now.) Maybe we can also include chrome/bluetooth folks for more suggestion?",
+      "parentUuid": "1a057dfe_6ea9b6c9",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 137
+      },
+      "revId": "85ee6459ad24a5745f32efb08637fb6793f2ab4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17316ae7_b3afb161",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 4

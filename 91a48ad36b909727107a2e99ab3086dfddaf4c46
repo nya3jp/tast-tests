@@ -59,6 +59,23 @@
     },
     {
       "key": {
+        "uuid": "940ee2df_b30cae44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:22:27Z",
+      "side": 1,
+      "message": "What is this Sleep waiting for? Can you add some comments for that?",
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab559aea_8b366f25",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -73,6 +90,24 @@
       "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca42c1a9_27770e38",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:22:27Z",
+      "side": 1,
+      "message": "resolve this one and have the discussion on another comment.",
+      "parentUuid": "ab559aea_8b366f25",
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +231,23 @@
     },
     {
       "key": {
+        "uuid": "a7dcca5f_65bc00bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:22:27Z",
+      "side": 1,
+      "message": "Tried the test a little bit, it seems this check might fail. I guess there\u0027s a potential race condition here: SetBluetoothStatus toggle the status from UI but the status might not yet changed in underlying service and the status we get here can still be ON.",
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c56a2c3a_970926ae",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 5
@@ -258,6 +310,29 @@
         "startChar": 51,
         "endLine": 146,
         "endChar": 54
+      },
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b31a407_87d2ae90",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-20T08:22:27Z",
+      "side": 1,
+      "message": "I think you want to share the request for similar enable/disable gRPC calls. We had a related discussion before in https://crrev.com/c/2156192/14/src/chromiumos/tast/services/cros/network/wifi.proto#22\n\nCopied from the thread there:\n\"Typically gRPC client/server might have different versions, so for version compatibility and extensibility it is recommended to use different messages for different methods. OTOH Tast always builds gRPC client/server from the same snapshot of source code so some of those best practices might not apply. But I still think it\u0027s good and less confusing to follow the established best practices.\"\n\nSo probably SetWifiStatusRequest is preferred?\n\n(BluetoothStatus{Request,Response} in bluetooth_service.proto is similar cases)",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 31
       },
       "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
