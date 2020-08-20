@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "88e6ff25_b9e436e3",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-08-20T18:08:50Z",
+      "side": 1,
+      "message": "Thought about that, but we don\u0027t want them to be mutable.  We could wrap them in a getter but that\u0027s more overhead than the savings.",
+      "parentUuid": "a5efb7c8_74199ce8",
+      "revId": "d14f122a65f03c72c96a17dffddbf1b294ef8753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e41b2dd9_d8bc8159",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/booted_device.go",
         "patchSetId": 6
