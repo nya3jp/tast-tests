@@ -6,8 +6,10 @@ package cdputil
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"strconv"
 	"strings"
 	"time"
@@ -103,6 +105,47 @@ func waitForDebuggingPort(ctx context.Context, debuggingPortPath string) (int, e
 	}
 
 	return port, nil
+}
+
+// IsCdpListening check if CDP debugging port is listening.
+func IsCdpListening(ctx context.Context) bool {
+	var version devtool.Version
+
+	port, err := readDebuggingPort(DebuggingPortPath)
+	if err != nil {
+		testing.ContextLog(ctx, "No debugging port found. Assume chrome is not listening: ", err)
+		return false
+	}
+
+	if err := readCdpVersion(ctx, port, &version); err != nil {
+		testing.ContextLog(ctx, "read from cdp url error: ", err.Error())
+		return false
+	}
+
+	return true
+}
+
+func readCdpVersion(ctx context.Context, cdpPort int, version *devtool.Version) error {
+	cdpVersionURL := fmt.Sprintf("http://127.0.0.1:%d/json/version", cdpPort)
+	resp, err := http.Get(cdpVersionURL)
+	if err != nil {
+		return errors.Wrap(err, "failed to read access "+cdpVersionURL)
+	}
+
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return errors.Wrap(err, "failed to read body from "+cdpVersionURL)
+	}
+	err = json.Unmarshal(body, version)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse json: "+string(body))
+	}
+
+	testing.ContextLog(ctx, "webSocketDebuggerUrl: ", version.WebSocketDebuggerURL, ", Browser: ", version.Browser,
+		", WebKit-Version: ", version.WebKit, ", Protocol-Version: ", version.Protocol)
+
+	return err
 }
 
 // readDebuggingPort returns the port number from the first line of p, a file

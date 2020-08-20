@@ -223,19 +223,25 @@ func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...int
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // Errors returned by Eval are treated the same as expr == false.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError)
+	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, 0)
+}
+
+// WaitForExprWithTimeout repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// Errors returned by Eval are treated the same as expr == false.
+func (c *Conn) WaitForExprWithTimeout(ctx context.Context, expr string, timeout time.Duration) error {
+	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, timeout)
 }
 
 // WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // It returns immediately if Eval returns an error.
 func (c *Conn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, cdputil.ExitOnError)
+	return c.waitForExprImpl(ctx, expr, cdputil.ExitOnError, 0)
 }
 
 // waitForExprImpl repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // The behavior on evaluation errors depends on the value of exitOnError.
-func (c *Conn) waitForExprImpl(ctx context.Context, expr string, ea cdputil.ErrorAction) error {
-	if err := c.co.WaitForExpr(ctx, expr, ea); err != nil {
+func (c *Conn) waitForExprImpl(ctx context.Context, expr string, ea cdputil.ErrorAction, timeout time.Duration) error {
+	if err := c.co.WaitForExprWithTimeout(ctx, expr, ea, timeout); err != nil {
 		return c.chromeErr(err)
 	}
 	return nil

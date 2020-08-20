@@ -16,6 +16,9 @@ import (
 // resetTimeout is the timeout durection to trying reset of the current precondition.
 const resetTimeout = 15 * time.Second
 
+// namePrefix is the precondition name prefix.
+const namePrefix = "chrome_"
+
 // LoggedIn returns a precondition that Chrome is already logged in when a test is run.
 //
 // When adding a test, the testing.Test.Pre field may be set to the value returned by this function.
@@ -36,10 +39,17 @@ func LoggedIn() testing.Precondition { return loggedInPre }
 // that require an already-started Chrome object that was created with opts.
 // suffix is appended to precondition's name.
 func NewPrecondition(suffix string, opts ...Option) testing.Precondition {
+	// By default return a LoggedIn precondition.
+	return newPrecondition(suffix, &preLoggedIn{}, opts...)
+}
+
+// newPrecondition returns preImpl but allow preInternal to be specified.
+func newPrecondition(suffix string, pi preInternal, opts ...Option) testing.Precondition {
 	return &preImpl{
-		name:    "chrome_" + suffix,
+		name:    namePrefix + suffix,
 		timeout: resetTimeout + LoginTimeout,
 		opts:    opts,
+		pi:      pi,
 	}
 }
 
@@ -51,7 +61,17 @@ type preImpl struct {
 	timeout time.Duration // testing.PreconditionImpl.Timeout
 	cr      *Chrome       // underlying Chrome instance
 	opts    []Option      // Options that should be passed to New
+	pi      preInternal   // internal precondition implementation which can implement different logics
 }
+
+// preInternal defines the atcual prepare and close functions.
+type preInternal interface {
+	prepare(ctx context.Context, s *testing.State, p *preImpl) interface{}
+	close(ctx context.Context, s *testing.State, p *preImpl)
+}
+
+// preLoggedIn implements the preInternal interface.
+type preLoggedIn struct{}
 
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
@@ -59,6 +79,11 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a *chrome.Chrome that can be used by tests.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+	return p.pi.prepare(ctx, s, p)
+}
+
+// prepare implements the preInternal prepare function.
+func (pl *preLoggedIn) prepare(ctx context.Context, s *testing.State, p *preImpl) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -99,6 +124,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 // Close is called by the test framework after the last test that uses this precondition.
 func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+	p.pi.close(ctx, s, p)
+}
+
+// close implements the preInternal close function.
+func (pl *preLoggedIn) close(ctx context.Context, s *testing.State, p *preImpl) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
@@ -115,4 +145,26 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
 	p.cr = nil
+}
+
+// checkChrome performs basic checks to verify that cr is responsive.
+func (p *preImpl) checkChrome(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "check_chrome")
+	defer st.End()
+
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	conn, err := p.cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	result := false
+	if err = conn.Eval(ctx, "true", &result); err != nil {
+		return err
+	}
+	if !result {
+		return errors.New("eval 'true' returned false")
+	}
+	return nil
 }
