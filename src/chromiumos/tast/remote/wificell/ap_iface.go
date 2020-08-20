@@ -249,3 +249,12 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 
 	return nil
 }
+
+// ChannelSwitch sends CSA from AP.
+func (h *APIface) ChannelSwitch(ctx context.Context, ch, csCount int, mode string) error {
+	freq, err := hostapd.ChannelToFrequency(ch)
+	if err != nil {
+		return errors.Wrap(err, "failed to get server frequency")
+	}
+	return h.hostapd.ChannelSwitch(ctx, freq, csCount, mode)
+}
