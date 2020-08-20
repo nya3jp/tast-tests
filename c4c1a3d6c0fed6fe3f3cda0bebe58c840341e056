@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59fd0dc6_99380be4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-20T04:50:17Z",
+      "side": 1,
+      "message": "Product Review: LGTM+2. Tast Shadow Review: LGTM+1 (wait for Shuhei to approve).",
+      "revId": "c4c1a3d6c0fed6fe3f3cda0bebe58c840341e056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
