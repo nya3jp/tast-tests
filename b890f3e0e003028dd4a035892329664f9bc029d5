@@ -22,6 +22,30 @@
       "revId": "b890f3e0e003028dd4a035892329664f9bc029d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f8350b_07744577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-20T16:58:53Z",
+      "side": 1,
+      "message": "I recommend to use ioutil.TempDir() to create a temporary directory (https://golang.org/pkg/io/ioutil/#TempDir), and ensure that\u0027s removed at the end.",
+      "parentUuid": "fa38832e_3e240590",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 4
+      },
+      "revId": "b890f3e0e003028dd4a035892329664f9bc029d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
