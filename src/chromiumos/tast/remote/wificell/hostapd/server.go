@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/common/network/daemonutil"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
@@ -58,12 +60,16 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 	ctx, st := timing.Start(ctx, "hostapd.StartServer")
 	defer st.End()
 
+	// Copying the struct config, because hostapd is keeing a *Config pointer from the caller.
+	// That could cause a problem if the caller assuems it's read-only.
+	hostapdConfigCopy := *config
+
 	s := &Server{
 		host:    host,
 		name:    name,
 		iface:   iface,
 		workDir: workDir,
-		conf:    config,
+		conf:    &hostapdConfigCopy,
 	}
 	// Clean up on error.
 	defer func() {
@@ -256,4 +262,66 @@ func (s *Server) Name() string {
 // NOTE: Caller should not modify the returned object.
 func (s *Server) Config() *Config {
 	return s.conf
+}
+
+// CSOption is the function signature used to specify options of CSA command.
+type CSOption func(*csaConfig)
+
+// CSAMode returns an Option which sets mode in CSA.
+func CSAMode(m string) CSOption {
+	return func(c *csaConfig) {
+		c.mode = m
+	}
+}
+
+// csaConfig is the configuration for the channel switch announcement.
+type csaConfig struct {
+	mode string
+}
+
+// StartChannelSwitch initiates a channel switch in the AP.
+func (s *Server) StartChannelSwitch(ctx context.Context, csCount, csChannel int, options ...CSOption) error {
+	csFreq, err := ChannelToFrequency(csChannel)
+	if err != nil {
+		return errors.Wrap(err, "failed to convert channel to frequency")
+	}
+	cfg := &csaConfig{}
+	for _, opt := range options {
+		opt(cfg)
+	}
+
+	var args []string
+	args = append(args, fmt.Sprintf("-p%s", s.ctrlPath()))
+	args = append(args, "chan_switch")
+	args = append(args, strconv.Itoa(csCount))
+	args = append(args, strconv.Itoa(csFreq))
+	if cfg.mode != "" {
+		args = append(args, cfg.mode)
+	}
+
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send CSA with freq %d", csFreq)
+	}
+
+	// Wait for the AP to change channel.
+	iwr := iw.NewRemoteRunner(s.host)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		chConfig, err := iwr.RadioConfig(ctx, s.iface)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the radio configuration")
+		}
+		if chConfig.Number == csChannel {
+			// Update hostapd channel.
+			s.conf.Channel = csChannel
+			return nil
+		}
+		return errors.Errorf("failed to switch to the alternate channel %s", csChannel)
+	}, &testing.PollOptions{
+		Timeout:  3 * time.Second,
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return err
+	}
+
+	return nil
 }
