@@ -330,6 +330,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.RequiredVar("crostini.gaiaID"),
 		), chrome.GAIALogin())
 	}
+	if FastDebug && vm.TerminaImageExists() {
+		// Retain the user's cryptohome directory and previously installed VM.
+		opts = append(opts, chrome.KeepState())
+	}
 	var err error
 	if p.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -339,84 +343,97 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	terminaImage := ""
-	containerDir := ""
+	if FastDebug && vm.TerminaImageExists() {
+		s.Log("FastDebug attempting to start the existing VM and container")
+		if err := p.fastDebugStart(ctx, s.OutDir()); err != nil {
+			// Delete TerminaImage so that the next run will clear cryptohome and reset to a good state.
+			vm.UnmountComponent(ctx)
+			if err := vm.DeleteImages(); err != nil {
+				s.Fatalf("FastDebug failed and could not reset. You must manually delete %s to reset: %v", vm.TerminaImage, err)
+			}
+			s.Fatal("FastDebug failed. Try again, cryptohome will be cleared on the next run to reset to a good state")
+		}
+	} else {
+		// Download images and run the GUI installer.
+		terminaImage := ""
+		containerDir := ""
 
-	switch p.mode {
-	case download:
-		terminaImage, err = vm.DownloadStagingTermina(ctx)
+		switch p.mode {
+		case download:
+			terminaImage, err = vm.DownloadStagingTermina(ctx)
+			if err != nil {
+				s.Fatal("Failed to download staging termina: ", err)
+			}
+
+			containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
+			if err != nil {
+				s.Fatal("Failed to download staging container: ", err)
+			}
+
+		case artifact:
+			artifactPath := s.DataPath(ImageArtifact)
+			terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
+			if err != nil {
+				s.Fatal("Failed to extract termina: ", err)
+			}
+
+			containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
+			if err != nil {
+				s.Fatal("Failed to extract container: ", err)
+			}
+		default:
+			s.Fatal("Unrecognized mode: ", p.mode)
+		}
+
+		server, err := lxd.NewServer(ctx, containerDir)
 		if err != nil {
-			s.Fatal("Failed to download staging termina: ", err)
+			s.Fatal("Error creating lxd image server: ", err)
 		}
-
-		containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
+		addr, err := server.ListenAndServe(ctx)
 		if err != nil {
-			s.Fatal("Failed to download staging container: ", err)
+			s.Fatal("Error starting lxd image server: ", err)
+		}
+		defer server.Shutdown(ctx)
+
+		s.Log("Installing crostini")
+
+		url := "http://" + addr + "/"
+		if err := p.tconn.Eval(ctx, fmt.Sprintf(
+			`chrome.autotestPrivate.registerComponent(%q, %q)`,
+			vm.ImageServerURLComponentName, url), nil); err != nil {
+			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 		}
 
-	case artifact:
-		artifactPath := s.DataPath(ImageArtifact)
-		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
+		vm.MountComponent(ctx, terminaImage)
+		if err := p.tconn.Eval(ctx, fmt.Sprintf(
+			`chrome.autotestPrivate.registerComponent(%q, %q)`,
+			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
+		}
+
+		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
+
+		settings, err := cui.OpenSettings(ctx, p.tconn)
 		if err != nil {
-			s.Fatal("Failed to extract termina: ", err)
+			s.Fatal("Failed to install Crostini: ", err)
 		}
-
-		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
+		installer, err := settings.OpenInstaller(ctx)
 		if err != nil {
-			s.Fatal("Failed to extract container: ", err)
+			s.Fatal("Failed to install Crostini: ", err)
 		}
-	default:
-		s.Fatal("Unrecognized mode: ", p.mode)
-	}
-
-	server, err := lxd.NewServer(ctx, containerDir)
-	if err != nil {
-		s.Fatal("Error creating lxd image server: ", err)
-	}
-	addr, err := server.ListenAndServe(ctx)
-	if err != nil {
-		s.Fatal("Error starting lxd image server: ", err)
-	}
-	defer server.Shutdown(ctx)
-
-	s.Log("Installing crostini")
-
-	url := "http://" + addr + "/"
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.ImageServerURLComponentName, url), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	vm.MountComponent(ctx, terminaImage)
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
-
-	settings, err := cui.OpenSettings(ctx, p.tconn)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	installer, err := settings.OpenInstaller(ctx)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	if p.minDiskSize != 0 {
-		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			s.Fatal("SetDiskSize error: ", err)
+		if p.minDiskSize != 0 {
+			if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
+				s.Fatal("SetDiskSize error: ", err)
+			}
 		}
-	}
-	if err := installer.Install(ctx); err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
+		if err := installer.Install(ctx); err != nil {
+			s.Fatal("Failed to install Crostini: ", err)
+		}
 
-	// Report disk size again after successful install.
-	if err := reportDiskUsage(ctx); err != nil {
-		s.Log("Failed to gather disk usage: ", err)
+		// Report disk size again after successful install.
+		if err := reportDiskUsage(ctx); err != nil {
+			s.Log("Failed to gather disk usage: ", err)
+		}
 	}
 
 	if err := p.Connect(ctx); err != nil {
@@ -499,8 +516,13 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	// It is always safe to unmount the component, which just posts some
 	// logs if it was never mounted.
 	vm.UnmountComponent(ctx)
-	if err := vm.DeleteImages(); err != nil {
-		s.Log("Error deleting images: ", err)
+	// Don't delete the image for FastDebug so that it can be used in the next run.
+	if FastDebug {
+		s.Log("FastDebug not deleting image in cleanUp")
+	} else {
+		if err := vm.DeleteImages(); err != nil {
+			s.Log("Error deleting images: ", err)
+		}
 	}
 
 	// Nothing special needs to be done to close the test API connection.
@@ -521,6 +543,35 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+}
+
+// fastDebugStart attempts to start the default VM and container if they
+// already exist on the device from a previous test run.
+func (p *preImpl) fastDebugStart(ctx context.Context, dir string) error {
+	if err := vm.MountComponent(ctx, vm.TerminaImage); err != nil {
+		return err
+	}
+	if err := p.tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+		return errors.Wrapf(err, "failed to run autotestPrivate.registerComponent: %v", err)
+	}
+	concierge, err := vm.NewConcierge(ctx, p.cr.User())
+	if err != nil {
+		return err
+	}
+	vmInstance := vm.NewDefaultVM(concierge, false, vm.DefaultDiskSize)
+	if err := vmInstance.Start(ctx); err != nil {
+		return err
+	}
+	c, err := vm.DefaultContainer(ctx, p.cr.User())
+	if err != nil {
+		return err
+	}
+	if err = c.StartAndWait(ctx, dir); err != nil {
+		return err
+	}
+	return nil
 }
 
 // reportDiskUsage logs a report of the current disk usage.
