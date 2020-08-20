@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a517f40_e57143f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-08-20T18:03:23Z",
+      "side": 1,
+      "message": "Later we can probably pull the http and file server setup/cleanup to some central location, setup before tast tests start running and clean-up after they finish.",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
