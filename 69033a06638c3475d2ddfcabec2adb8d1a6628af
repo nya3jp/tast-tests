@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac87897_e679a739",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-20T21:05:40Z",
+      "side": 1,
+      "message": "did you check the license? we may need to put it under third_party",
+      "revId": "69033a06638c3475d2ddfcabec2adb8d1a6628af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

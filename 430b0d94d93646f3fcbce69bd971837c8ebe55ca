@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4fd4e806_509d35cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-20T21:05:40Z",
+      "side": 1,
+      "message": "I think xiyuan fixed it. thanks.",
+      "parentUuid": "3bb0cf97_dc347ca0",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a517f40_e57143f2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I added some description. The main concerns about choosing site are \n- the web page needs to be constantly refreshing, some other sites, like the pacman, are also very good. But the pacman game doesn\u0027t last long (game autoplay ends before tast test itself ends), so some sub tests don\u0027t get the same refresh rates.\n- relatively easy to set up. 3D Aquarium is a very good example, but it involves tons of assets that need to be built with MS Visual Studio and Maya, etc.",
       "parentUuid": "75173103_22fcb340",
+      "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b6d213a_06b40869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-20T21:05:40Z",
+      "side": 1,
+      "message": "I think this has to be somewhere in the code/text in the repository. You can explain it the text or README file.",
+      "parentUuid": "588fcaf9_9a82ce87",
       "revId": "430b0d94d93646f3fcbce69bd971837c8ebe55ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
