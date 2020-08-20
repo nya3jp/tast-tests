@@ -50,10 +50,13 @@ type PreData struct {
 // The Chrome and ARC instances are also shared and cannot be closed by tests.
 func Booted() testing.Precondition { return bootedPre }
 
+const arcBootedName = "arc_booted"
+
 // bootedPre is returned by Booted.
 var bootedPre = &preImpl{
-	name:    "arc_booted",
+	name:    arcBootedName,
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+	pi:      &preBooted{},
 }
 
 // VMBooted returns a precondition similar to Booted(). The only difference from Booted() is
@@ -143,14 +146,29 @@ type preImpl struct {
 	origInitPID       int32               // initial PID (outside container) of ARC init process
 	origInstalledPkgs map[string]struct{} // initially-installed packages
 	origRunningPkgs   map[string]struct{} // initially-running packages
+
+	pi preInternal // internal precondition implementation which can implement different logics
 }
 
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
+// preInternal defines the atcual prepare and close functions
+type preInternal interface {
+	prepare(ctx context.Context, s *testing.State, p *preImpl) interface{}
+	close(ctx context.Context, s *testing.State, p *preImpl)
+}
+
+// preBooted implements the preInternal interface for Booted precondition
+type preBooted struct{}
+
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing objects that can be used by the test.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+	return p.pi.prepare(ctx, s, p)
+}
+
+func (pb *preBooted) prepare(ctx context.Context, s *testing.State, p *preImpl) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -281,6 +299,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 // Close is called by the test framework after the last test that uses this precondition.
 func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+	p.pi.close(ctx, s, p)
+	return
+}
+
+func (pb *preBooted) close(ctx context.Context, s *testing.State, p *preImpl) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
@@ -388,4 +411,24 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
 		}
 		p.cr = nil
 	}
+}
+
+// installedPackages returns a set of currently-installed packages, e.g. "android".
+// This operation is slow (700+ ms), so unnecessary calls should be avoided.
+func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, error) {
+	ctx, st := timing.Start(ctx, "installed_packages")
+	defer st.End()
+
+	out, err := p.arc.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "listing packages failed")
+	}
+
+	pkgs := make(map[string]struct{})
+	for _, pkg := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+		// |pm list packages| prepends "package:" to installed packages. Not needed.
+		n := strings.TrimPrefix(pkg, "package:")
+		pkgs[n] = struct{}{}
+	}
+	return pkgs, nil
 }
