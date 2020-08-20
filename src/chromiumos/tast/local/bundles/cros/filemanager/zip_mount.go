@@ -297,3 +297,35 @@ func testCancellingMultiplePasswordDialog(ctx context.Context, s *testing.State,
 		s.Fatal("The password dialog is still displayed: ", err)
 	}
 }
+
+func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipFiles []string) {
+	// Open the Downloads folder.
+	if err := files.OpenDownloads(ctx); err != nil {
+		s.Fatal("Opening Downloads folder failed: ", err)
+	}
+
+	// Select the 3 encrypted zip files
+	selectMultipleFiles(ctx, s, files, ew, zipFiles)
+
+	// Enter wrong password.
+
+	// Click enter.
+
+	// Check error message.
+
+	// Check archive name
+
+	// Enter right password.
+
+	// Click Unlock
+
+	// Check archive name
+
+	// Enter right password
+
+	// Click Unlock
+
+	// Check the contents of the 3 mounted zip files.
+
+	// Unmount the 3 zip files.
+}
