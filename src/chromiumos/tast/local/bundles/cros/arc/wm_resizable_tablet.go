@@ -36,6 +36,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			Func: wmRT01,
 		},
 		wm.TestCase{
+			// resizable/tablet: hide Shelf behavior
+			Name: "RT_hide_Shelf_behavior",
+			Func: wmRT12,
+		},
+		wm.TestCase{
 			// resizable/tablet: display size change
 			Name: "RT_display_size_change",
 			Func: wmRT15,
@@ -58,6 +63,40 @@ func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, true)
+}
+
+// wmRT12 covers resizable/tablet: hide Shelf behavior.
+// Expected behavior is defined in: go/arc-wm-r RT12: resizable/tablet: hide Shelf.
+func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// landscape | undefined activities.
+	luActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+	}
+
+	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities, wm.CheckMaximizeResizable); err != nil {
+		return err
+	}
+
+	// portrait | undefined activities.
+	puActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeResizable)
 }
 
 // wmRT15 covers resizable/tablet: display size change.
