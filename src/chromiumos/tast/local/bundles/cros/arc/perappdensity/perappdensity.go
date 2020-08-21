@@ -47,21 +47,29 @@ func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, e
 	if err := ew.Accel(ctx, dc.KeySequence); err != nil {
 		return errors.Wrapf(err, "could not change scale factor using %q", dc.KeySequence)
 	}
-	if err := CountBlackPixels(ctx, cr, int(dc.BlackPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(dc.BlackPixelCount)); err != nil {
 		return errors.Wrap(err, "could not check number of black pixels")
 	}
 	return nil
 }
 
-// CountBlackPixels grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
-func CountBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
+// CountBlackPixels grabs a screenshot and counts the number of black pixels.
+func CountBlackPixels(ctx context.Context, cr *chrome.Chrome) (int, error) {
+	img, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return 0, err
+	}
+	return screenshot.CountPixels(img, color.Black), nil
+}
+
+// ConfirmBlackPixelCount grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
+func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		gotPixelCount, err := CountBlackPixels(ctx, cr)
 		if err != nil {
-			return testing.PollBreak(err)
+			testing.PollBreak(err)
 		}
-		gotPixelCount := screenshot.CountPixels(img, color.Black)
 		diff := math.Abs(float64(wantPixelCount-gotPixelCount) / float64(wantPixelCount))
 		if diff > 0.01 {
 			return errors.Errorf("wrong number of black pixels, got: %d, want: %d", gotPixelCount, wantPixelCount)
@@ -137,7 +145,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for the activity to be fullscreen")
 	}
 
-	if err := CountBlackPixels(ctx, cr, int(expectedInitialPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(expectedInitialPixelCount)); err != nil {
 		return errors.Wrap(err, "failed to check initial state: ")
 	}
 
