@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3c90ee63_0eb37011",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T18:02:09Z",
+      "side": 1,
+      "message": "if settings is opened to the \"Manage shared folders\" page after clicking Manage on the toast notification, why would calling the settings.Open method be necessary? Generally, calling an open method for an already opened app seems incorrect.\n\nIt feels like maybe it would be best to have two methods: One for open and one for attach/find. That way, there won\u0027t be unintentional bugs depending on whether or not the app is already open.",
+      "parentUuid": "42786af2_a1faee15",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "a72269395467d01afc85ac9e743530f148f9b316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ec54c3f_c17b20ee",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 14
@@ -539,6 +563,30 @@
       "revId": "a72269395467d01afc85ac9e743530f148f9b316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10ddb86_136fe0b7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T18:02:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7dcd4c5d_c54445d2",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "a72269395467d01afc85ac9e743530f148f9b316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
