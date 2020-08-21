@@ -75,6 +75,19 @@ const (
 	WindowStatePIP WindowState = 6
 )
 
+// WindowStateType returns the equivalent WindowStateType for the provided WindowState.
+// Add equivalent window types as the usage arises.
+func (s WindowState) WindowStateType() ash.WindowStateType {
+	switch s {
+	case WindowStateNormal:
+		return ash.WindowStateNormal
+	case WindowStateFullscreen:
+		return ash.WindowStateFullscreen
+	default:
+		return ash.WindowStateNormal
+	}
+}
+
 // String returns a human-readable string representation for type WindowState.
 func (s WindowState) String() string {
 	switch s {
