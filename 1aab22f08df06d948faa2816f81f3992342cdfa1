@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "33f72d97_1e1b5a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-21T08:40:04Z",
+      "side": 1,
+      "message": "Hi Vaibhav,\n\nI don\u0027t see any change between PS14 (on my last review comment) and PS15 (latest) except for a small change for my another nitpick comment. Can you ensure a new change is uploaded?\n\nBTW, if you don\u0027t agree with review comments, please don\u0027t hesitate to reply to them. Code review is not a process to modify a CL just as reviewers say. It is a process to polish a CL by discussion, so that a new code becomes a good part of the whole codebase. Let\u0027s have discussion to make things better.",
+      "parentUuid": "a3438e5e_cdfa1a23",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c273f34_4d10d8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
