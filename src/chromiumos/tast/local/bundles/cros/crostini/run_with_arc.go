@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crostini"
@@ -20,9 +19,6 @@ func init() {
 		Contacts: []string{"niwa@chromium.org", "arcvm-eng@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Vars:     []string{"keepState"},
-		Timeout:  7 * time.Minute,
-		Data:     []string{crostini.ImageArtifact},
-		Pre:      crostini.StartedARCEnabled(),
 		// TODO(b/150013652): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"chrome", "vm_host", "arc"},
 		Params: []testing.Param{
@@ -55,7 +51,7 @@ func RunWithARC(ctx context.Context, s *testing.State) {
 	// Ensures package manager service is running by checking the existence of the "android" package.
 	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
-		s.Fatal("getting installed packages failed: ", err)
+		s.Fatal("Getting installed packages failed: ", err)
 	}
 
 	if _, ok := pkgs["android"]; !ok {

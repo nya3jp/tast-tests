@@ -47,11 +47,6 @@ func init() {
 }
 
 func TwoUsersInstall(ctx context.Context, s *testing.State) {
-	mode := cui.Artifact
-	if strings.HasPrefix(s.Param().(string), cui.Download) {
-		mode = cui.Download
-	}
-
 	// Login options for the first user.
 	optsUser1 := []chrome.Option{chrome.Auth(s.RequiredVar("crostini.gaiaUsername"), s.RequiredVar("crostini.gaiaPassword"), s.RequiredVar("crostini.gaiaID")),
 		chrome.ExtraArgs("--vmodule=crostini*=1"),
@@ -65,13 +60,8 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to login Chrome and get test API for %s: %s", s.RequiredVar("crostini.gaiaUsername"), err)
 	}
 
-	iOptionsUser1 := &cui.InstallationOptions{
-		UserName: firstCr.User(),
-		Mode:     mode,
-	}
-	if mode == cui.Artifact {
-		iOptionsUser1.ImageArtifactPath = s.DataPath(crostini.ImageArtifact)
-	}
+	iOptionsUser1 := crostini.GetInstallerOptions(s, vm.DebianBuster)
+	iOptionsUser1.UserName = firstCr.User()
 	// Cleanup for the first user.
 	defer func() {
 		if err := cleanup(ctx, optsUser1...); err != nil {
@@ -93,13 +83,8 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login Chrome and get test API for testuser: ", err)
 	}
 
-	iOptionsUser2 := &cui.InstallationOptions{
-		UserName: secondCr.User(),
-		Mode:     mode,
-	}
-	if mode == cui.Artifact {
-		iOptionsUser2.ImageArtifactPath = s.DataPath(crostini.ImageArtifact)
-	}
+	iOptionsUser2 := crostini.GetInstallerOptions(s, vm.DebianBuster)
+	iOptionsUser2.UserName = secondCr.User()
 	// Cleanup for the second user.
 	defer func() {
 		if err := cleanup(ctx, optsUser2); err != nil {

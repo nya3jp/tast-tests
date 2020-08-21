@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -35,9 +34,7 @@ func init() {
 		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		// TODO(crbug.com/1124920): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:      60 * time.Minute,
-		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
-		Pre:          crostini.StartedTraceVM(),
+		Data:         fioFiles(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"keepState"},
 		Params: []testing.Param{
