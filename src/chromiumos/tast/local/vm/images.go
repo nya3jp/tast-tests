@@ -138,7 +138,7 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 }
 
 // DownloadStagingContainer downloads the current staging container images from Google Storage.
-func DownloadStagingContainer(ctx context.Context, debianVersion ContainerArchType) (string, error) {
+func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebianVersion) (string, error) {
 	if err := os.MkdirAll(imageDir, 0755); err != nil {
 		return "", errors.Wrap(err, "failed to mkdir for container image")
 	}
