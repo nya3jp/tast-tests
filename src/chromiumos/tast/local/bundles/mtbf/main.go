@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundlemain"
 	// Underscore-imported packages register their tests via init functions.
 	_ "chromiumos/tast/local/bundles/mtbf/audio"
+	_ "chromiumos/tast/local/bundles/mtbf/camera"
 )
 
 func main() {
