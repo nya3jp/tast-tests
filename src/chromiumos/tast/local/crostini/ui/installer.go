@@ -37,19 +37,19 @@ var installWindowFindParams = ui.FindParams{
 
 // Image setup mode.
 const (
-	Artifact               = "artifact"
-	Download               = "download"
-	DownloadLargeContainer = "downloadLargeContainer"
+	Artifact = "artifact"
 )
 
 // InstallationOptions is a struct contains parameters for Crostini installation.
 type InstallationOptions struct {
-	UserName          string
-	Mode              string
-	ImageArtifactPath string
-	MinDiskSize       uint64
-	DebianVersion     vm.ContainerDebianVersion
-	IsSoftMinimum     bool // If true, use the maximum disk size if MinDiskSize is larger than the maximum disk size.
+	UserName              string
+	Mode                  string
+	VMArtifactPath        string
+	ContainerMetadataPath string
+	ContainerRootfsPath   string
+	MinDiskSize           uint64
+	DebianVersion         vm.ContainerDebianVersion
+	IsSoftMinimum         bool // If true, use the maximum disk size if MinDiskSize is larger than the maximum disk size.
 }
 
 // Installer is a page object for the settings screen of the Crostini Installer.
@@ -181,38 +181,20 @@ func (p *Installer) Install(ctx context.Context) error {
 	return nil
 }
 
-func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
+func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerMetadata, containerRootfs, terminaImage string, err error) {
 	// Prepare image.
-	switch iOptions.Mode {
-	case Download, DownloadLargeContainer:
-		terminaImage, err = vm.DownloadStagingTermina(ctx)
-		if err != nil {
-			return "", "", errors.Wrap(err, "failed to download staging termina")
-		}
-
-		containerDir, err = vm.DownloadStagingContainer(ctx, iOptions.DebianVersion, iOptions.Mode == DownloadLargeContainer)
-		if err != nil {
-			return "", "", errors.Wrap(err, "failed to download staging container")
-		}
-
-	case Artifact:
-		terminaImage, err = vm.ExtractTermina(ctx, iOptions.ImageArtifactPath)
-		if err != nil {
-			return "", "", errors.Wrap(err, "failed to extract termina: ")
-		}
-
-		containerDir, err = vm.ExtractContainer(ctx, iOptions.UserName, iOptions.ImageArtifactPath)
-		if err != nil {
-			return "", "", errors.Wrap(err, "failed to extract container: ")
-		}
-	default:
-		return "", "", errors.Errorf("unrecognized mode: %q", iOptions.Mode)
+	terminaImage, err = vm.ExtractTermina(ctx, iOptions.VMArtifactPath)
+	if err != nil {
+		return "", "", "", errors.Wrap(err, "failed to extract termina: ")
 	}
-	return containerDir, terminaImage, nil
+
+	containerMetadata = iOptions.ContainerMetadataPath
+	containerRootfs = iOptions.ContainerRootfsPath
+	return containerMetadata, containerRootfs, terminaImage, nil
 }
 
-func startLxdServer(ctx context.Context, containerDir string) (server *lxd.Server, addr string, err error) {
-	server, err = lxd.NewServer(ctx, containerDir)
+func startLxdServer(ctx context.Context, containerMetadata, containerRootfs string) (server *lxd.Server, addr string, err error) {
+	server, err = lxd.NewServer(ctx, containerMetadata, containerRootfs)
 	if err != nil {
 		return nil, "", errors.Wrap(err, "failed to create lxd image server")
 	}
@@ -232,11 +214,11 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 		return 0, errors.Wrap(err, "cannot install crostini: cannot stat /dev/kvm")
 	}
 	// Setup lxd server.
-	containerDir, terminaImage, err := prepareImages(ctx, iOptions)
+	containerMetadata, containerRootfs, terminaImage, err := prepareImages(ctx, iOptions)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to prepare image")
 	}
-	server, addr, err := startLxdServer(ctx, containerDir)
+	server, addr, err := startLxdServer(ctx, containerMetadata, containerRootfs)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to start lxd server")
 	}
