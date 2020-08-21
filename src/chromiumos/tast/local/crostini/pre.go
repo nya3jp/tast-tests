@@ -196,17 +196,17 @@ var startedByArtifactPre = &preImpl{
 }
 
 var startedByDownloadStretchPre = &preImpl{
-	name:    "crostini_started_by_download_stretch",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianStretch,
+	name:          "crostini_started_by_download_stretch",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianStretch,
 }
 
 var startedByDownloadBusterPre = &preImpl{
-	name:    "crostini_started_by_download_buster",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianBuster,
+	name:          "crostini_started_by_download_buster",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianBuster,
 }
 
 var startedTraceVMPre = &preImpl{
@@ -231,27 +231,27 @@ var startedByArtifactWithGaiaLoginPre = &preImpl{
 }
 
 var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
-	name:      "crostini_started_by_download_buster_gaialogin",
-	timeout:   chrome.LoginTimeout + 10*time.Minute,
-	mode:      download,
-	arch:      vm.DebianBuster,
-	loginType: loginGaia,
+	name:          "crostini_started_by_download_buster_gaialogin",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianBuster,
+	loginType:     loginGaia,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name        string               // Name of this precondition (for logging/uniqueing purposes).
-	timeout     time.Duration        // Timeout for completing the precondition.
-	mode        setupMode            // Where (download/build artifact) the container image comes from.
-	arch        vm.ContainerArchType // Architecture/distribution of the container image.
-	arcEnabled  bool                 // Flag for whether Arc++ should be available (as well as crostini).
-	minDiskSize uint64               // The minimum size of the VM image in bytes. 0 to use default disk size.
-	cr          *chrome.Chrome
-	tconn       *chrome.TestConn
-	cont        *vm.Container
-	keyboard    *input.KeyboardEventWriter
-	loginType   loginType
-	startedOK   bool
+	name          string                    // Name of this precondition (for logging/uniqueing purposes).
+	timeout       time.Duration             // Timeout for completing the precondition.
+	mode          setupMode                 // Where (download/build artifact) the container image comes from.
+	debianVersion vm.ContainerDebianVersion // OS version of the container image.
+	arcEnabled    bool                      // Flag for whether Arc++ should be available (as well as crostini).
+	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
+	cr            *chrome.Chrome
+	tconn         *chrome.TestConn
+	cont          *vm.Container
+	keyboard      *input.KeyboardEventWriter
+	loginType     loginType
+	startedOK     bool
 }
 
 // Interface methods for a testing.Precondition.
@@ -415,7 +415,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 				s.Fatal("Failed to download staging termina: ", err)
 			}
 
-			containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
+			containerDir, err = vm.DownloadStagingContainer(ctx, p.debianVersion)
 			if err != nil {
 				s.Fatal("Failed to download staging container: ", err)
 			}

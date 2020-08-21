@@ -50,22 +50,22 @@ const (
 	Tarball
 )
 
-// ContainerArchType represents the architecture+version of the container's image.
-type ContainerArchType int
+// ContainerDebianVersion represents the OS version of the container's image.
+type ContainerDebianVersion string
 
 const (
 	// DebianStretch refers to the "stretch" distribution of debian (a.k.a. debian 9).
-	DebianStretch ContainerArchType = iota
+	DebianStretch ContainerDebianVersion = "stretch"
 	// DebianBuster refers to the "buster" distribution of debian (a.k.a. debian 10).
-	DebianBuster
+	DebianBuster ContainerDebianVersion = "buster"
 )
 
 // ContainerType defines the type of container.
 type ContainerType struct {
 	// Image is the image source for this container.
 	Image ContainerImageType
-	// Arch is the architecture that the image has.
-	Arch ContainerArchType
+	// DebianVersion is the version of debian that the image has.
+	DebianVersion ContainerDebianVersion
 }
 
 // Container encapsulates a container running in a VM.
@@ -135,13 +135,8 @@ func (c *Container) Connect(ctx context.Context, user string) error {
 // ArchitectureAlias returns the alias subpath of the chosen container
 // architecture, i.e. part of the path used to compute the container's
 // gsutil URL.
-func ArchitectureAlias(t ContainerArchType) string {
-	switch t {
-	case DebianStretch:
-		return "debian/stretch/test"
-	default:
-		return "debian/buster/test"
-	}
+func ArchitectureAlias(t ContainerDebianVersion) string {
+	return fmt.Sprintf("debian/%s/test", t)
 }
 
 // Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
@@ -156,10 +151,10 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	switch t.Image {
 	case LiveImageServer:
 		req.ImageServer = liveContainerImageServerFormat
-		req.ImageAlias = ArchitectureAlias(t.Arch)
+		req.ImageAlias = ArchitectureAlias(t.DebianVersion)
 	case StagingImageServer:
 		req.ImageServer = stagingContainerImageServerFormat
-		req.ImageAlias = ArchitectureAlias(t.Arch)
+		req.ImageAlias = ArchitectureAlias(t.DebianVersion)
 	case Tarball:
 		req.RootfsPath = tarballRootfsPath
 		req.MetadataPath = tarballMetadataPath
