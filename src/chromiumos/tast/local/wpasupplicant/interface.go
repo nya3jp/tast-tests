@@ -6,6 +6,7 @@ package wpasupplicant
 
 import (
 	"context"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -17,10 +18,14 @@ const (
 	dbusInterfaceInterface         = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfaceMethodReassociate = "Reassociate"
 	dbusInterfacePropBSSs          = "BSSs"
+
 	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
 	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
 	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
+	// DBusInterfaceSignalEAP indicates the status of the EAP peer.
+	DBusInterfaceSignalEAP = "EAP"
+
 	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
 	DBusInterfaceStateAssociated = "associated"
 	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
@@ -118,4 +123,13 @@ func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signa
 // Reassociate calls the Reassociate method of the interface.
 func (iface *Interface) Reassociate(ctx context.Context) error {
 	return iface.dbus.Call(ctx, dbusInterfaceMethodReassociate).Err
+}
+
+// SignalName returns the name of the dbus.Signal, which may be one of DBusInterfaceSignal*.
+func SignalName(s *dbus.Signal) string {
+	parts := strings.Split(s.Name, ".")
+	if len(parts) == 0 {
+		return ""
+	}
+	return parts[len(parts)-1]
 }
