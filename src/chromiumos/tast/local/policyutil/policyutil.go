@@ -52,13 +52,8 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 	}
 
 	// Refresh policies and make sure Chrome is still sane.
-	result := false
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)().then(() => true);`, &result); err != nil {
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil); err != nil {
 		return errors.Wrap(err, "failed to refresh policies")
-	}
-
-	if !result {
-		return errors.New("eval 'true' returned false")
 	}
 
 	return nil
@@ -83,6 +78,5 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 // Note that this will not work for policies which require a reboot before a
 // change is applied.
 func Refresh(ctx context.Context, tconn *chrome.TestConn) error {
-	const cmd = `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`
-	return tconn.EvalPromise(ctx, cmd, nil)
+	return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil)
 }

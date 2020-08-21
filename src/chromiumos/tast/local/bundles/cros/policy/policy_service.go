@@ -153,7 +153,7 @@ func (c *PolicyService) UpdatePolicies(ctx context.Context, req *ppb.UpdatePolic
 	}
 
 	// Refresh policies.
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`, nil); err != nil {
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`, nil); err != nil {
 		return nil, errors.Wrap(err, "failed to refresh policies")
 	}
 
@@ -307,7 +307,7 @@ func (c *PolicyService) EvalInExtension(ctx context.Context, req *ppb.EvalInExte
 	}
 
 	var result json.RawMessage
-	if err := conn.EvalPromise(ctx, req.Expression, &result); err != nil {
+	if err := conn.Eval(ctx, req.Expression, &result); err != nil {
 		return nil, errors.Wrap(err, "failed to run javascript")
 	}
 

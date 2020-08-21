@@ -225,9 +225,8 @@ func Verify(ctx context.Context, tconn *chrome.TestConn, ps []policy.Policy) err
 // For example data, see the Export to JSON button on chrome://policy.
 // Note that a DUTPolicy contains a json.RawMessage value, not an unmarshalled value.
 func PoliciesFromDUT(ctx context.Context, tconn *chrome.TestConn) (*DUTPolicies, error) {
-	const cmd = "tast.promisify(chrome.autotestPrivate.getAllEnterprisePolicies)()"
 	var dps DUTPolicies
-	if err := tconn.EvalPromise(ctx, cmd, &dps); err != nil {
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getAllEnterprisePolicies)()`, &dps); err != nil {
 		return nil, errors.Wrap(err, "could not get policies from DUT")
 	}
 
